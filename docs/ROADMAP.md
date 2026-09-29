@@ -1,6 +1,6 @@
 # MTerm-CLI roadmap bootstrap
 
-This repository starts with 262 individually numbered acceptance seeds in docs/roadmap/requirements-seed.json.
+This repository starts with 300 individually numbered acceptance seeds in docs/roadmap/requirements-seed.json.
 
 **Bootstrap implementation credit: 0% by construction.** Repository/document scaffolding does not prove product features. The implementation session must expand affected items with scope, dependencies, platform applicability, evidence, tests, reviewed stage, estimates and blockers before assigning progress.
 

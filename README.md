@@ -16,7 +16,7 @@ Required command surface: mterm-cli, status, status --line, status --json, updat
 1. Read AGENTS.md.
 2. Read docs/execution/READ_FIRST.md.
 3. Execute docs/execution/MASTER_IMPLEMENTATION_PROMPT.md with Remote Desktop Commander and GitHub connected.
-4. Expand and review docs/roadmap/requirements-seed.json. Its 262 seeds grant no completion credit by themselves.
+4. Expand and review docs/roadmap/requirements-seed.json. Its 300 seeds grant no completion credit by themselves.
 
 Desktop development, the native C++/Qt application, Electron reference and GUI roadmap now live at [MTerm-GUI](https://github.com/MulattoTech/MTerm-GUI). The former [MTerm](https://github.com/MulattoTech/MTerm) repository is migration/history source only. See docs/REPOSITORY_SPLIT.md.
 

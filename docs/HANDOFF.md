@@ -11,7 +11,7 @@ Authoritative implementation instructions:
 - docs/execution/MASTER_IMPLEMENTATION_PROMPT.md
 - docs/roadmap/requirements-seed.json
 
-The seed contains 262 numbered requirements and deliberately awards no completion credit. Expand each affected item with real acceptance criteria, evidence, tests, estimates, platform scope and blockers before advancing status.
+The seed contains 300 numbered requirements and deliberately awards no completion credit. Expand each affected item with real acceptance criteria, evidence, tests, estimates, platform scope and blockers before advancing status.
 
 No real credentials, browser profile, paid model request, package release or CLI tag has been created by the split/bootstrap step. Recheck all upstream versions and GitHub/RDC capabilities before implementation.
 

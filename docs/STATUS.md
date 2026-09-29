@@ -2,7 +2,7 @@
 
 Date: 2026-09-27.
 
-MTerm-CLI is now a separate repository from MTerm-GUI. The repository contains the reviewed execution prompt, read-first handoff, 262-item acceptance seed, split record and contributor rules.
+MTerm-CLI is now a separate repository from MTerm-GUI. The repository contains the reviewed execution prompt, read-first handoff, 300-item acceptance seed, split record and contributor rules.
 
 This bootstrap does **not** claim working Codex/Web/status integration. Product implementation credit remains at 0% until reviewed requirements have real code, tests and evidence.
 

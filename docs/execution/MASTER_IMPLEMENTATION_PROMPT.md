@@ -46,6 +46,45 @@ Required commands:
 
 Add only narrowly necessary setup/doctor/help operations. Preserve Codex's familiar TUI rather than inventing a replacement chat UI.
 
+### Remote Desktop Commander replacement mission — priority
+
+Both MTerm products are intended to replace Remote Desktop Commander in the user's day-to-day development workflow, but **MTerm-CLI is the direct replacement target**.
+
+The immediate usability milestone is a **Windows Today Candidate**: before optional polish, make MTerm-CLI useful as a local agent-control host on the authorized workstation. The owner wants to be able to stop depending on Remote Desktop Commander for ordinary repository/filesystem/process work later today.
+
+The Today Candidate must expose a local MCP-compatible tool host, preferably through:
+
+`mterm-cli mcp --stdio --root <trusted-root> [--allow-exec]`
+
+and must be directly testable with local fixtures without requiring a cloud relay, paid model call, browser login, daemon, Electron, administrator privilege, or public listener.
+
+Minimum Today Candidate capabilities:
+- protocol initialize/ping/capability discovery;
+- bounded file read and file metadata;
+- atomic bounded file write/create;
+- directory listing;
+- safe move/rename;
+- file-name and content search with result/depth/size limits;
+- structured process start using executable + argument array, never shell interpolation by default;
+- process output polling with cursor/offset semantics and bounded retained output;
+- process stdin interaction;
+- owned process/session listing;
+- owned process termination and process-tree cleanup where supported;
+- local system/platform information;
+- read-only Git status/diff helpers or equivalent safe local Git inspection;
+- explicit allowed-root enforcement including symlink/reparse escape handling;
+- no elevation or global ACL/config widening;
+- no public TCP listener in the Today Candidate;
+- honest errors for unsupported operations and clean cancellation/shutdown;
+- a doctor/capabilities view showing exactly which local-tool features are enabled;
+- a tested path for Codex to register/use this MCP server.
+
+The GUI should eventually expose the same class of local machine operations through its native service layer, but GUI parity must not delay the CLI Today Candidate. Keep cross-product contracts documented and versioned rather than forcing either repository to depend on the other's runtime.
+
+A **direct ChatGPT Web replacement for Remote Desktop Commander's relay** is a separate acceptance layer. If the ChatGPT/Web integration or plugin system supports a legitimate secure local/remote MCP route, implement and test it. Otherwise the Today Candidate may be consumed by Codex or another local MCP-capable client while the secure Web relay remains visible as blocked/planned. Do not open an unauthenticated HTTP listener, invent a relay, tunnel credentials, or call local-stdio support equivalent to remote-Web reach.
+
+The CLI should also preserve the broader Codex/Web/quota goals below. "Ready today" means the local machine-control path is genuinely usable and tested on Windows; it does **not** permit falsely declaring the full 0.1.0 cross-platform/Web/status/update roadmap complete.
+
 ### GUI preservation mission
 
 Repository separation is not permission to redesign, reduce or falsely mark the desktop complete. Preserve the current native GUI, Electron reference, tests, source-project lineage, roadmap/metrics, evidence and AI/provenance rules in MTerm-GUI. CLI work must not pull Qt/Electron into CLI or change GUI business behavior for convenience.
@@ -657,7 +696,7 @@ The following appendix is an original engineering acceptance inventory derived f
 ---
 
 ## Appendix A — Individually numbered CLI implementation and acceptance seed
-This appendix contains **262 atomic seed items**. Expand each into the verbose product checklist and machine-readable catalog specified above. Their presence here awards no completion credit. Conditional upstream work stays visible until its requirement is satisfied or the user explicitly approves a scope change.
+This appendix contains **300 atomic seed items**. Expand each into the verbose product checklist and machine-readable catalog specified above. Their presence here awards no completion credit. Conditional upstream work stays visible until its requirement is satisfied or the user explicitly approves a scope change.
 For each item add: objective; detailed implementation boundaries; non-goals; dependencies; platform scope; safety constraints; exact test commands and evidence; reviewed stage and weight; remaining engineer-hour range/basis; ETA status/basis; blocker; reviewer/change ID/time. Further split multi-part acceptance when needed, preserving parent IDs and traceability.
 
 ### Access, discovery and source reconciliation
@@ -1486,6 +1525,120 @@ Acceptance seed: Measured regressions remain visible; no “never slows down” 
 
 **CLI-262 — Keep development tooling out of runtime.**
 Acceptance seed: Build/test/progress generation dependencies are excluded from installed CLI operation where possible.
+
+### Remote Desktop Commander replacement / local agent-control host
+
+**CLI-263 — Define the Today Candidate replacement milestone.**
+Acceptance seed: A documented Windows milestone states the minimum local machine-control features required before claiming the CLI can replace Remote Desktop Commander for ordinary development work.
+
+**CLI-264 — Provide an MCP stdio server entry point.**
+Acceptance seed: `mterm-cli mcp --stdio` performs real MCP initialization and remains usable without a network listener.
+
+**CLI-265 — Publish machine-readable tool capability discovery.**
+Acceptance seed: Clients can discover enabled tools, version, limits and disabled capabilities without guessing.
+
+**CLI-266 — Enforce explicit trusted filesystem roots.**
+Acceptance seed: Every filesystem/cwd path is confined to configured roots with Windows case/canonicalization handled correctly.
+
+**CLI-267 — Block symlink/reparse root escapes.**
+Acceptance seed: Existing and newly created paths cannot traverse an allowed root through symlink/reparse-point indirection.
+
+**CLI-268 — Implement bounded file read.**
+Acceptance seed: Read supports useful ranges/metadata while enforcing maximum bytes and UTF-8/binary diagnostics.
+
+**CLI-269 — Implement atomic bounded file write/create.**
+Acceptance seed: Writes use owned temporary staging/replace semantics and never truncate a target on validation failure.
+
+**CLI-270 — Implement directory listing.**
+Acceptance seed: Listing differentiates files/directories, is bounded, and cannot enumerate outside trusted roots.
+
+**CLI-271 — Implement safe move/rename.**
+Acceptance seed: Source and destination remain inside trusted roots and cross-boundary/reparse escapes fail closed.
+
+**CLI-272 — Implement file metadata inspection.**
+Acceptance seed: Size/type/timestamps and useful text metadata are returned without reading unbounded content.
+**CLI-273 — Implement bounded filename search.**
+Acceptance seed: Search has depth/result/time limits and ignores expensive development trees by policy unless explicitly included.
+
+**CLI-274 — Implement bounded content search.**
+Acceptance seed: Text search enforces file-size/result/time limits and returns safe context without secret/log flooding.
+
+**CLI-275 — Implement structured process start.**
+Acceptance seed: The tool accepts executable plus argument array/cwd/env subset, avoids shell interpolation by default, and records ownership.
+
+**CLI-276 — Gate executable/process capability explicitly.**
+Acceptance seed: Process tools are unavailable unless the MCP server is started with the documented execution capability enabled.
+
+**CLI-277 — Implement process output polling.**
+Acceptance seed: Output has cursor/offset semantics, stdout/stderr identity, byte bounds and explicit truncation state.
+
+**CLI-278 — Implement process stdin interaction.**
+Acceptance seed: Input targets only a currently owned live session and reports closed/blocked/error state safely.
+
+**CLI-279 — Implement owned process/session listing.**
+Acceptance seed: Clients can enumerate MTerm-owned sessions without treating unrelated machine processes as owned.
+
+**CLI-280 — Implement owned process termination.**
+Acceptance seed: Termination affects only the selected owned session and reports whether descendants were cleaned up.
+
+**CLI-281 — Implement process-tree cleanup tests.**
+Acceptance seed: Representative child/grandchild fixtures verify shutdown semantics on Windows and document remaining platform gaps.
+
+**CLI-282 — Implement local system information.**
+Acceptance seed: OS/architecture/runtime/host information is available without exposing credentials or private user data.
+
+**CLI-283 — Implement read-only Git status.**
+Acceptance seed: A trusted workspace can return repository status without shell interpolation or mutation.
+
+**CLI-284 — Implement read-only Git diff/summary.**
+Acceptance seed: Bounded diff/status data can be inspected without staging, committing, fetching or pushing.
+**CLI-285 — Bound retained process/log memory.**
+Acceptance seed: Long-running command output cannot grow the MCP server without a configured hard bound.
+
+**CLI-286 — Bound concurrent sessions and tool work.**
+Acceptance seed: Explicit limits prevent unbounded processes, searches, file reads or queued requests.
+
+**CLI-287 — Provide stable local-tool error contracts.**
+Acceptance seed: Root violation, missing file, disabled execution, timeout, truncation and dead session are distinguishable machine-readable failures.
+
+**CLI-288 — Preserve cancellation and MCP shutdown.**
+Acceptance seed: Client disconnect/server exit cancels or cleanly resolves owned transient work according to documented policy.
+
+**CLI-289 — Default to no public listener.**
+Acceptance seed: Today Candidate uses stdio/local-only transport and opens no TCP/HTTP port by default.
+
+**CLI-290 — Require explicit opt-in for any network transport.**
+Acceptance seed: Future HTTP/remote transport requires authentication, origin/bind policy and separate review rather than inheriting stdio trust.
+
+**CLI-291 — Implement local-tool doctor/capability report.**
+Acceptance seed: `mterm-cli doctor` clearly reports trusted roots, execution enablement, MCP support and dependencies without secrets.
+
+**CLI-292 — Implement Codex MCP registration guidance/helper.**
+Acceptance seed: A supported, reversible setup path registers MTerm's MCP server with Codex without overwriting unrelated Codex configuration.
+
+**CLI-293 — Smoke-test MCP initialize and tool listing through stdio.**
+Acceptance seed: A real subprocess protocol fixture completes initialize, initialized notification, tools/list and clean shutdown.
+
+**CLI-294 — Smoke-test file round trip through MCP.**
+Acceptance seed: A temporary trusted root is used to create/read/list/move a fixture with exact expected content and no outside writes.
+
+**CLI-295 — Smoke-test process round trip through MCP.**
+Acceptance seed: A deterministic child process starts, emits output, accepts input when applicable, and terminates without orphaning unrelated work.
+
+**CLI-296 — Test negative root and execution-policy cases.**
+Acceptance seed: Outside-root access and process execution without explicit enablement fail without side effects.
+**CLI-297 — Keep local agent-control startup lightweight.**
+Acceptance seed: `--help`, doctor and MCP startup do not initialize browser/Electron/Web-provider/quota clients.
+
+**CLI-298 — Define GUI/local-tool compatibility contract.**
+Acceptance seed: MTerm-GUI documents how equivalent native local operations map to the CLI tool vocabulary without runtime coupling.
+
+**CLI-299 — Define secure ChatGPT Web relay acceptance separately.**
+Acceptance seed: Direct replacement of Remote Desktop Commander's remote relay remains blocked until an authenticated, reviewed, supported Web-to-local transport is genuinely tested.
+
+**CLI-300 — Certify the Windows Today Candidate honestly.**
+Acceptance seed: A dated evidence report lists the exact commands/tools that work on the authorized Windows workstation, test results, known gaps, and whether Remote Desktop Commander is still required for any stated workflow.
+
 
 ---
 

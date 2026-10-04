@@ -69,6 +69,21 @@ test('review and generated files detect source, catalog and output drift indepen
   };
   await fs.writeFile(path.join(root, 'docs/roadmap/progress.json'), JSON.stringify(c));
   await fs.writeFile(
+    path.join(root, 'docs/roadmap/desktop-commander-parity.json'),
+    JSON.stringify({
+      closedGapCount: 0,
+      gaps: [{ id: 'DCP-001' }],
+      pass: false,
+      upstream: {
+        repository: 'fixture/DesktopCommanderMCP',
+        version: 'test',
+        commit: 'fixture',
+        publishedToolCount: 1,
+      },
+      epic: { issue: 1, url: 'https://example.invalid/issues/1' },
+    }),
+  );
+  await fs.writeFile(
     path.join(root, 'docs/ai/changes/test.json'),
     JSON.stringify({
       change_id: 'test',

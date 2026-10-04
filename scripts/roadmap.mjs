@@ -99,6 +99,9 @@ const singles = [
   'docs/SECURITY.md',
   'docs/ARCHITECTURE.md',
   'docs/TODAY_CANDIDATE.md',
+  'docs/roadmap/desktop-commander-parity.json',
+  'docs/DESKTOP_COMMANDER_CODEX_PARITY.md',
+  'docs/execution/DESKTOP_COMMANDER_100_PASS_PROMPT.md',
 ];
 async function sourceFingerprint(root) {
   const files = [];
@@ -213,7 +216,7 @@ async function approved(root) {
     );
   return s;
 }
-function outputs(c) {
+function outputs(c, parity) {
   const summary = summarize(c);
   const out = new Map();
   out.set('docs/roadmap/bars/overall.svg', svg(summary.percent, 'Overall CLI delivery maturity'));
@@ -227,6 +230,7 @@ function outputs(c) {
     out.set('docs/roadmap/bars/' + name, svg(s.percent, section, undefined, s.blocked > 0));
     dashboard += `| ${md(section)} | ![${s.percent}%](roadmap/bars/${name}) | ${group.length} |\n`;
   }
+  dashboard += `\n## DesktopCommander Codex parity gate\n\n**${parity.closedGapCount}/${parity.gaps.length} parity gaps closed — ${parity.pass ? 'PASS' : 'NOT PASS'}.** This gate is independent of the whole-product weighted maturity above.\n\nPinned baseline: \`${parity.upstream.repository}\` ${parity.upstream.version} / \`${parity.upstream.commit}\`, ${parity.upstream.publishedToolCount} published MCP tools.\n\n[Parity ledger](DESKTOP_COMMANDER_CODEX_PARITY.md) · [GitHub epic #${parity.epic.issue}](${parity.epic.url}) · [100%-PASS execution prompt](execution/DESKTOP_COMMANDER_100_PASS_PROMPT.md)\n`;
   let detail =
     '# Every MTerm CLI feature\n\nAll original requirement IDs/acceptance text are retained. Stage credit is explicit review, not lines of code or test count.\n\n';
   for (const x of c.items) {
@@ -251,7 +255,10 @@ function outputs(c) {
 }
 export async function render(root) {
   const s = await approved(root);
-  const result = outputs(s.c);
+  const parity = JSON.parse(
+    await fs.readFile(path.join(root, 'docs/roadmap/desktop-commander-parity.json'), 'utf8'),
+  );
+  const result = outputs(s.c, parity);
   for (const [rel, text] of result) {
     const file = path.join(root, rel);
     await fs.mkdir(path.dirname(file), { recursive: true });
@@ -261,7 +268,10 @@ export async function render(root) {
 }
 export async function check(root) {
   const s = await approved(root);
-  for (const [rel, text] of outputs(s.c)) {
+  const parity = JSON.parse(
+    await fs.readFile(path.join(root, 'docs/roadmap/desktop-commander-parity.json'), 'utf8'),
+  );
+  for (const [rel, text] of outputs(s.c, parity)) {
     const actual = await fs.readFile(path.join(root, rel), 'utf8').catch(() => null);
     if (actual !== text) throw Error('Generated roadmap is stale or altered: ' + rel);
   }

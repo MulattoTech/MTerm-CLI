@@ -65,3 +65,7 @@ The access-check branch is permission evidence, not product work.
 6. Continue source-project provenance and full300-ID metrics without importing GUI progress.
 
 Do not delete the archived legacy repository or local recovery checkpoints for cleanup.
+
+## Codex/DesktopCommander parity is now the release gate
+
+The user narrowed the replacement requirement to 100% DesktopCommanderMCP parity for Codex. Baseline is 0.2.52 / c774c3b505de990219637ecdc9a830c8772fae9d. Epic #2 indexes DCP-001 through DCP-048 (#3-#50). Work those issues independently; do not close the epic or claim PASS until all 48 are accepted. Claude-only preview UI and the Remote Device/Web relay are outside this Codex parity gate. Use docs/execution/DESKTOP_COMMANDER_100_PASS_PROMPT.md for the next full execution pass.

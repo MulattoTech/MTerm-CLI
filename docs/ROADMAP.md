@@ -32,3 +32,11 @@ No GUI progress is inherited. Baseline weights are rough engineering estimates, 
 | Release integration and delivery | ![10%](roadmap/bars/area-20.svg) | 10 |
 | Footprint and latency verification | ![51.25%](roadmap/bars/area-21.svg) | 8 |
 | Remote Desktop Commander replacement / local agent-control host | ![80.79%](roadmap/bars/area-22.svg) | 38 |
+
+## DesktopCommander Codex parity gate
+
+**0/48 parity gaps closed — NOT PASS.** This gate is independent of the whole-product weighted maturity above.
+
+Pinned baseline: `wonderwhy-er/DesktopCommanderMCP` 0.2.52 / `c774c3b505de990219637ecdc9a830c8772fae9d`, 26 published MCP tools.
+
+[Parity ledger](DESKTOP_COMMANDER_CODEX_PARITY.md) · [GitHub epic #2](https://github.com/MulattoTech/MTerm-CLI/issues/2) · [100%-PASS execution prompt](execution/DESKTOP_COMMANDER_100_PASS_PROMPT.md)

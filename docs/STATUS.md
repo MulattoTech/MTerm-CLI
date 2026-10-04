@@ -19,3 +19,7 @@ its own actual repository no-emit typecheck through MCP with exit0. No paid mode
 GitHub product content publication is blocked by the current safety denial. GUI remains unchanged.
 Read the generated roadmap for reviewed maturity; it is not readiness. Installed local-host runtime
 is about14.03MB excluding external Node/Codex and unimplemented Web/quota; full50MB bundle not verified.
+
+## DesktopCommander Codex parity gate
+
+Pinned baseline: DesktopCommanderMCP 0.2.52 / c774c3b505de990219637ecdc9a830c8772fae9d. GitHub epic #2 has 48 atomic open parity-gap issues (#3-#50). Current gate: NOT PASS, 0/48 gaps closed. Existing local functionality does not close a parity gap until its compatibility acceptance test proves the pinned semantics. See docs/DESKTOP_COMMANDER_CODEX_PARITY.md.

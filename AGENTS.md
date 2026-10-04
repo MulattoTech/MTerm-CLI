@@ -15,3 +15,11 @@ Before modifying source:
 10. Preserve upstream licenses/notices and original authorship. AI provenance is self-reported metadata, not cryptographic proof.
 
 Use Remote Desktop Commander for the authorized workstation and GitHub connector/local Git only within demonstrated permissions. Never force-push, reset/clean away user work, change OAuth scopes, or delete the legacy repo merely to simplify history.
+
+## Current local preview / mandatory metric review
+Read docs/HANDOFF.md, docs/SECURITY.md and docs/roadmap/METRICS.md before changing source.
+Keep the full300-ID seed unchanged; update reviewed stages/evidence or justify no stage change.
+Record actual provider/model/UTC/tests plus roadmap_updates, explicitly review, then render/check.
+Use build:code for development only; normal build/check/pack must reject stale review.
+Do not bypass the current GitHub content-write safety denial by using local Git or another API.
+No actual user Codex config/auth is modified by setup; it prints a reversible plan.

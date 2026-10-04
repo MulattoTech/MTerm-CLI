@@ -1,0 +1,43 @@
+{
+  "name": "mterm-cli",
+  "version": "0.0.1-preview.1",
+  "private": true,
+  "type": "module",
+  "description": "Scoped local MCP workstation tools and a thin Codex launcher",
+  "license": "MIT",
+  "bin": {
+    "mterm-cli": "bin/mterm-cli.js"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "files": [
+    "bin/",
+    "dist/",
+    "README.md",
+    "LICENSE",
+    "THIRD_PARTY.md",
+    "versions.json"
+  ],
+  "scripts": {
+    "build": "node scripts/roadmap.mjs --check && npm run build:code",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --test --test-concurrency=1 tests/*.test.mjs",
+    "check": "npm run roadmap:check && npm run typecheck && npm run format:check && npm test",
+    "roadmap:check": "node scripts/roadmap.mjs --check",
+    "build:code": "tsc -p tsconfig.json",
+    "format:check": "prettier --check \"src/**/*.ts\" \"bin/*.js\" \"scripts/*.mjs\" \"tests/*.mjs\"",
+    "prepack": "npm run check && npm run build:code",
+    "roadmap:render": "node scripts/roadmap.mjs --render"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/server": "2.3.0",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/client": "2.3.0",
+    "@types/node": "26.6.4",
+    "prettier": "3.9.9",
+    "typescript": "7.0.2"
+  }
+}

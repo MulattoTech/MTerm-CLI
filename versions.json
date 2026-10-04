@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "productVersion": "0.0.1-preview.1",
+  "profile": "dependency-reuse Windows local-MCP preview, not all-three-upstreams bundle",
+  "runtime": {
+    "minimumMajor": 24,
+    "testedVersion": "24.21.0",
+    "nodeDownload": "node-v24.21.0-win-x64.zip",
+    "nodeSha256": "158f7685b44de51f6c0df1d153526cbcd3e1bc739a8dfc607721cef75de9e541",
+    "bundled": false
+  },
+  "packages": [
+    {
+      "name": "@modelcontextprotocol/server",
+      "version": "2.3.0",
+      "license": "Apache-2.0",
+      "integrity": "sha512-+6b0LdsQLmHsvS7J6sQJ4weTpzUn61fU1JKS+321/+IyDYoHW5CR2Tgqcs6GgAAQvlesCo6yX3xttgmx+XGtJw==",
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/modelcontextprotocol/typescript-sdk.git"
+      },
+      "runtime": true
+    },
+    {
+      "name": "@modelcontextprotocol/client",
+      "version": "2.3.0",
+      "license": "Apache-2.0",
+      "integrity": "sha512-pbHtGj6EeFCHngFE8gtNPaKrsj8Mb1IMw45BLcaPML/m2WTxI7pyYmeNQvaux88Lw8BSO5r7nyRbUyIkICmGrg==",
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/modelcontextprotocol/typescript-sdk.git"
+      },
+      "runtime": false
+    },
+    {
+      "name": "zod",
+      "version": "4.6.5",
+      "license": "MIT",
+      "integrity": "sha512-v5l/aFXZQeai4awLbOpSoHecE9UiMrnfx75tEXLjNonXVARxQ5mOeipTjROUchszUNCqnE+hqAMujRsRHsut2Q==",
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/colinhacks/zod.git"
+      },
+      "runtime": true
+    },
+    {
+      "name": "typescript",
+      "version": "7.0.2",
+      "license": "Apache-2.0",
+      "integrity": "sha512-8FYau96o3NKOhbjKi/qNvG/W5jhzxkbdm5sj9AbZ/5T5sWqn3hJgLfGx27sRKZWTvyzCP8dLRBTf5tBTSRVUNA==",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/microsoft/TypeScript.git"
+      },
+      "runtime": false
+    },
+    {
+      "name": "@types/node",
+      "version": "26.6.4",
+      "license": "MIT",
+      "integrity": "sha512-ldVPDCzj7fsaGZrLB0NuHuTvJcsNasysBAqMolr/cgxrLd1xbqxIr3XJiPnHHJUCxj5sNF1vnRj9aWnrVh5Jcg==",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+        "directory": "types/node"
+      },
+      "runtime": false
+    },
+    {
+      "name": "prettier",
+      "version": "3.9.9",
+      "license": "MIT",
+      "integrity": "sha512-Z/CJHIkdujO/OtN7nXUii0Rf3VT5SRuhjBA82Xvu2XhBUgX3nhP67T0LHceBdQLex7OOFGTox+Q5Yg8Jk2Qivg==",
+      "repository": "prettier/prettier",
+      "runtime": false
+    }
+  ],
+  "upstreams": [
+    {
+      "name": "openai/codex",
+      "role": "coding agent",
+      "required": true,
+      "integration": "existing installation adapter",
+      "observedVersion": "0.160.0",
+      "sourceCommit": null,
+      "managedArtifact": null,
+      "bundled": false,
+      "evidence": "scripts/verify-codex-setup.mjs"
+    },
+    {
+      "name": "miuuyy/codex-chatgpt-web",
+      "role": "desired Web model route",
+      "required": true,
+      "integration": "not implemented",
+      "sourceCommit": null,
+      "bundled": false,
+      "blocker": "Current compliant runtime/authenticated Web route not verified; no browser or relay deployed"
+    },
+    {
+      "name": "lhl/pi-codex-status",
+      "role": "desired Codex quota adapter",
+      "required": true,
+      "integration": "not implemented",
+      "sourceCommit": null,
+      "bundled": false,
+      "blocker": "Credential/refresh/API compatibility not implemented; no live usage endpoint accessed"
+    }
+  ]
+}

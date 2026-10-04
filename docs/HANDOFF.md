@@ -1,18 +1,67 @@
-# MTerm-CLI continuation handoff — 2026-09-27
+# MTerm-CLI current handoff — local MCP implementation
 
-Active local checkout: C:\Tools\Dev\MTerm-CLI.
-Remote source of truth: https://github.com/MulattoTech/MTerm-CLI.
-Sibling desktop: https://github.com/MulattoTech/MTerm-GUI.
+Active checkout: C:/Tools/Dev/MTerm-CLI.
+Local branch: feat/local-mcp-candidate-20261004; baseline d0b7c77.
+GUI sibling: C:/Tools/Dev/MTerm-GUI at b5c4df5, unchanged in this pass.
 
-This repository was bootstrapped from its destination placeholder history rather than by grafting the desktop Git history. GUI/native history belongs to MTerm-GUI; the full pre-split legacy refs are recoverable from C:\Tools\Dev\MTerm\artifacts\split-20260927T182123Z.
+Read AGENTS.md, STATUS.md, TODAY_CANDIDATE.md, SECURITY.md, ARCHITECTURE.md,
+roadmap/METRICS.md and validation/2026-10-04-local-mcp.md first. The uploaded execution prompt is
+scope, not permission to replace newer work. Newer two-repository/local-MCP priorities override
+stale monorepo paragraphs in historical prompts. All300 original IDs remain in the seed/catalog.
 
-Authoritative implementation instructions:
-- docs/execution/READ_FIRST.md
-- docs/execution/MASTER_IMPLEMENTATION_PROMPT.md
-- docs/roadmap/requirements-seed.json
+## Recovery
 
-The seed contains 300 numbered requirements and deliberately awards no completion credit. Expand each affected item with real acceptance criteria, evidence, tests, estimates, platform scope and blockers before advancing status.
+Interrupted untracked JavaScript is preserved verbatim under:
+artifacts/checkpoints/resume-20261004T001338Z/interrupted-files/
+Its source ZIP, hashes and verified all-refs bundle are adjacent. Do not restore it over the
+working implementation. Core-green and final checkpoints live under artifacts/checkpoints/.
+Original GUI/legacy/user source was not deleted. Only test-owned temporary fixtures are disposable.
 
-No real credentials, browser profile, paid model request, package release or CLI tag has been created by the split/bootstrap step. Recheck all upstream versions and GitHub/RDC capabilities before implementation.
+## Working local preview
 
-Do not move this product back under MTerm-GUI or the legacy MTerm repository. Cross-product changes require explicit compatibility notes and separate commits/PRs.
+Compiled TypeScript ESM on Node24 uses the official MCP SDK. Default read-only rooted files;
+separate --allow-write and --allow-exec flags; strict schemas/UTF8/hash conflicts; bounded literal
+search, captured processes, UTF8 cursor rings, stdin queues, best-effort tree stop; Git read-only;
+system information and metadata-only in-memory audit. No network listener or daemon.
+Offline help/config/doctor and unchanged existing Codex launch. Setup prints its reversible plan;
+registration was tested only in synthetic CODEX_HOME. No real login, auth read or user config change.
+
+Start-MTerm-CLI.ps1 uses the verified Node24 recorded in artifacts/node-lts.json when available;
+a fresh clone needs its own supported Node. No automatic build/dependency/browser installation.
+Status/quota, Web routes/relay, managed updater and true terminal/PTY remain unimplemented.
+
+## Verify before delivery
+
+Use Node24.21.0 for current Windows evidence. build:code is the development-only compiler path.
+Normal build/check/prepack require explicit reviewed fingerprints:
+node scripts/roadmap.mjs --review --change CHANGE_ID
+node scripts/roadmap.mjs --render
+npm run build
+npm run check
+node scripts/verify-codex-setup.mjs
+node scripts/verify-package.mjs
+node scripts/verify-self-host.mjs
+
+Update affected requirement stages/evidence or justify unchanged stages before review. Rendering
+never awards credit. Package lock and npm-shrinkwrap must match. SDK callback cancellation is
+ctx.mcpReq.signal; do not replace negotiation with a hand-written echoed-version implementation.
+
+## Publication blocked
+
+GitHub reads/branch creation passed, but content-write was denied by platform safety checks.
+Do not bypass via local Git push, another API, credentials, scopes or protection edits.
+Local commits and bundles preserve work; they are NOT remote publication. No tag/merge/hosted CI.
+The access-check branch is permission evidence, not product work.
+
+## Next bounded engineering tasks
+
+1. Native Windows Job Objects for stronger pre-execution/detached descendant containment.
+2. Handle-anchored file operations if hostile concurrent local writers are in scope. Current
+   root/link/hash checks are defense in depth, not OS sandbox enforcement.
+3. Fresh source/pin/credential-refresh tests for pi-codex-status, retaining actual quota labels.
+4. Supported authenticated Web-to-local relay. Stdio does not replace RDC reach in ChatGPT Web.
+5. Transactional verified-pin updates, complete platform/PTY/soak matrix, distribution signing
+   and complete three-upstream size accounting. Keep missing features visible, not fake ready.
+6. Continue source-project provenance and full300-ID metrics without importing GUI progress.
+
+Do not delete the archived legacy repository or local recovery checkpoints for cleanup.

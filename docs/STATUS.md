@@ -1,17 +1,21 @@
-# MTerm-CLI status — repository split bootstrap
+# Current local candidate status
 
-Date: 2026-09-27.
+Working Windows local-MCP preview0.0.1-preview.1; not complete RDC remote relay or a final release.
 
-MTerm-CLI is now a separate repository from MTerm-GUI. The repository contains the reviewed execution prompt, read-first handoff, 300-item acceptance seed, split record and contributor rules.
+Implemented: official SDK stdio negotiation/discovery; bounded rooted files/search, hash-guarded
+writes, regular-file move/mkdir; owned captured processes/output/stdin/stop; read-only Git; system
+info/audit; existing Codex passthrough; strict small config; doctor; reversible setup plan; actual
+packed install, isolated-prefix npm link and full300-ID roadmap with review enforcement.
 
-This bootstrap does **not** claim working Codex/Web/status integration. Product implementation credit remains at 0% until reviewed requirements have real code, tests and evidence.
+Not implemented/certified: Web model routing, pi quota adapter, managed updater, Web-to-PC
+transport, all RDC operations, GUI parity, PTY/reconnect, full Windows Job Objects, hostile path
+races, macOS/Linux, hosted CI, production signing or release tags.
 
-## Current source authorities
-- CLI: https://github.com/MulattoTech/MTerm-CLI
-- GUI: https://github.com/MulattoTech/MTerm-GUI
-- Legacy migration source: https://github.com/MulattoTech/MTerm
+Final combined normal build/check passed: strict typecheck, format check, reviewed roadmap freshness,
+and43/43 tests with0 failures or skips. Exact log: artifacts/final-check.log. A later revision must rerun it.
+Existing Codex0.160.0 add/get/remove was verified in synthetic CODEX_HOME only. MTerm also ran
+its own actual repository no-emit typecheck through MCP with exit0. No paid models or user auth changes.
 
-## Next execution
-Read docs/execution/READ_FIRST.md, then execute docs/execution/MASTER_IMPLEMENTATION_PROMPT.md with Remote Desktop Commander and GitHub connected.
-
-The first engineering tasks are current-state reconciliation, fresh upstream feasibility/pinning, then credential-free CLI skeleton/status vertical slices. Web integration remains explicitly blocked until its runtime/browser/auth constraints are proven compatible or the owner approves a precise exception.
+GitHub product content publication is blocked by the current safety denial. GUI remains unchanged.
+Read the generated roadmap for reviewed maturity; it is not readiness. Installed local-host runtime
+is about14.03MB excluding external Node/Codex and unimplemented Web/quota; full50MB bundle not verified.

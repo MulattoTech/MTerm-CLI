@@ -1,23 +1,72 @@
 # MTerm-CLI
 
-Standalone command-line sibling of [MTerm-GUI](https://github.com/MulattoTech/MTerm-GUI).
+[![Reviewed delivery maturity](docs/roadmap/bars/overall.svg)](docs/ROADMAP.md)
 
-> **Current state:** repository split/bootstrap and executable implementation specification are present. This README does not claim the CLI is feature-complete or released.
+A **working Windows local-MCP preview** plus a thin launcher for an existing Codex installation.
+It replaces a useful subset of RDC-style local files/process operations for local MCP clients.
+It does **not** yet replace the authenticated ChatGPT-Web-to-PC relay, implement the quota/Web
+adapters, or deliver the entire requested cross-platform three-component product.
 
-## Product goal
-MTerm-CLI will preserve the familiar OpenAI Codex terminal experience while adding carefully bounded integration for:
-- OpenAI Codex CLI as the actual coding agent/TUI;
-- codex-chatgpt-web where its real browser/runtime/auth constraints can satisfy, or receive an explicit exception to, the CLI requirements;
-- pi-codex-status for Codex usage/status data with boxed, line and normalized JSON output.
+## Use the local candidate
 
-Required command surface: mterm-cli, status, status --line, status --json, update, and config, plus only narrowly necessary help/doctor/setup operations.
+```powershell
+cd C:\Tools\Dev\MTerm-CLI
+.\Start-MTerm-CLI.ps1 --help
+.\Start-MTerm-CLI.ps1 doctor --json --root C:\Tools\Dev\MTerm-CLI
+.\Start-MTerm-CLI.ps1 setup codex --root C:\Tools\Dev\MTerm-CLI --allow-write --allow-exec
+```
 
-## Start here
-1. Read AGENTS.md.
-2. Read docs/execution/READ_FIRST.md.
-3. Execute docs/execution/MASTER_IMPLEMENTATION_PROMPT.md with Remote Desktop Commander and GitHub connected.
-4. Expand and review docs/roadmap/requirements-seed.json. Its 300 seeds grant no completion credit by themselves.
+The last command prints a **reviewable registration plan**, including its inverse. It does not
+edit real Codex configuration. Its add/get/remove sequence was tested against the actual installed
+Codex using an isolated temporary CODEX_HOME. Review the root/privileges before applying it.
 
-Desktop development, the native C++/Qt application, Electron reference and GUI roadmap now live at [MTerm-GUI](https://github.com/MulattoTech/MTerm-GUI). The former [MTerm](https://github.com/MulattoTech/MTerm) repository is migration/history source only. See docs/REPOSITORY_SPLIT.md.
+Direct command from an installed/link-created package:
 
-The intended first complete CLI release is 0.1.0, but no tag or release should be created until mandatory integration, platform, footprint, licensing and test gates genuinely pass.
+```text
+mterm-cli mcp --stdio --root <one trusted directory> [--allow-write] [--allow-exec]
+mterm-cli                  # existing Codex TUI, no injected model/sandbox/approval flags
+mterm-cli -- <Codex args>   # explicit argument passthrough
+mterm-cli config show --json
+```
+
+MCP is a machine protocol: a plain terminal invocation waits for a client; it is not a chat prompt.
+Use an MCP-capable local client. Help/config/status never silently start a browser or daemon.
+
+## Available local tools
+
+Read/info/list/literal filename search/content search; guarded UTF-8 writes, one-level directory
+creation, no-overwrite regular-file move; owned captured process start/poll/input/list/stop;
+read-only Git status/diff; system info; bounded in-memory audit metadata.
+
+Files are read-only by default. Writes require --allow-write, OS process execution independently
+requires --allow-exec. Process execution runs as your OS user: root checks on file tools are **not
+an OS sandbox**. No listener is opened. Private credential/metadata paths and links are refused.
+See [security limits](docs/SECURITY.md) before granting execution.
+
+## Build and test
+
+Node24 LTS is the tested runtime. The project-local Windows launcher can use the verified Node24
+copy recorded in artifacts/node-lts.json; another clean checkout needs an installed supported Node.
+There is no automatic installation, update, global PATH edit or login flow.
+
+```text
+npm ci --ignore-scripts
+npm run build
+npm test
+npm link                 # deliberate user-level developer installation, not run globally by tests
+```
+
+Exact dependency locks and a production shrinkwrap are retained. For ongoing development, source
+changes require an explicit roadmap assessment; use build:code during red/green iterations and
+normal build/check/package gates for deliverable verification.
+
+## Full scope, not inflated readiness
+
+All **300** numbered requirements remain in [the roadmap](docs/ROADMAP.md), [verbose table](docs/roadmap/FEATURES.md)
+and [offline searchable dashboard](docs/roadmap/index.html). The bar is weighted planning maturity,
+not release readiness or fraction of lines written. Web/quota/update/platform blockers remain scored.
+No GUI completion credit is imported. This repo is separate from [MTerm-GUI](https://github.com/MulattoTech/MTerm-GUI).
+
+Start with AGENTS.md, docs/HANDOFF.md, docs/TODAY_CANDIDATE.md and docs/TESTING.md.
+GitHub content publication was blocked by the platform safety check in this session; the tested
+candidate is local until an authorized content-write path is available. No push/merge/release is claimed.

@@ -1,0 +1,394 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-04",
+  "upstream": {
+    "repository": "wonderwhy-er/DesktopCommanderMCP",
+    "version": "0.2.52",
+    "commit": "c774c3b505de990219637ecdc9a830c8772fae9d",
+    "publishedToolCount": 26,
+    "publishedTools": [
+      "get_config",
+      "set_config_value",
+      "read_file",
+      "read_multiple_files",
+      "write_file",
+      "write_pdf",
+      "create_directory",
+      "list_directory",
+      "move_file",
+      "start_search",
+      "get_more_search_results",
+      "stop_search",
+      "list_searches",
+      "get_file_info",
+      "edit_block",
+      "start_process",
+      "read_process_output",
+      "interact_with_process",
+      "force_terminate",
+      "list_sessions",
+      "list_processes",
+      "kill_process",
+      "get_usage_stats",
+      "get_recent_tool_calls",
+      "give_feedback_to_desktop_commander",
+      "get_prompts"
+    ]
+  },
+  "scope": "Codex-facing npm/MCP feature parity; excludes Claude-only preview UI and Remote Device/Web relay",
+  "epic": {
+    "issue": 2,
+    "url": "https://github.com/MulattoTech/MTerm-CLI/issues/2"
+  },
+  "gaps": [
+    {
+      "id": "DCP-001",
+      "issue": 3,
+      "title": "NPM-installable package and npx entry point",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/3"
+    },
+    {
+      "id": "DCP-002",
+      "issue": 4,
+      "title": "Idempotent Codex setup/registration command",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/4"
+    },
+    {
+      "id": "DCP-003",
+      "issue": 5,
+      "title": "Codex remove/uninstall with backup and rollback",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/5"
+    },
+    {
+      "id": "DCP-004",
+      "issue": 6,
+      "title": "Codex-managed background MCP lifecycle with no manual foreground server",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/6"
+    },
+    {
+      "id": "DCP-005",
+      "issue": 7,
+      "title": "Private/GitHub-friendly install and update path",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/7"
+    },
+    {
+      "id": "DCP-006",
+      "issue": 8,
+      "title": "Cross-platform npm/Codex install validation",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/8"
+    },
+    {
+      "id": "DCP-007",
+      "issue": 9,
+      "title": "DesktopCommander-compatible MCP tool names and schemas",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/9"
+    },
+    {
+      "id": "DCP-008",
+      "issue": 10,
+      "title": "Pinned upstream parity baseline and drift detector",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/10"
+    },
+    {
+      "id": "DCP-009",
+      "issue": 11,
+      "title": "Implement get_config MCP parity",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/11"
+    },
+    {
+      "id": "DCP-010",
+      "issue": 12,
+      "title": "Implement set_config_value MCP parity",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/12"
+    },
+    {
+      "id": "DCP-011",
+      "issue": 13,
+      "title": "Support multiple allowedDirectories roots",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/13"
+    },
+    {
+      "id": "DCP-012",
+      "issue": 14,
+      "title": "Implement configurable blockedCommands enforcement",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/14"
+    },
+    {
+      "id": "DCP-013",
+      "issue": 15,
+      "title": "Implement defaultShell configuration",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/15"
+    },
+    {
+      "id": "DCP-014",
+      "issue": 16,
+      "title": "Implement configurable file read/write line limits",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/16"
+    },
+    {
+      "id": "DCP-015",
+      "issue": 17,
+      "title": "Implement telemetryEnabled configuration semantics",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/17"
+    },
+    {
+      "id": "DCP-016",
+      "issue": 18,
+      "title": "Dynamic cross-process config reload without server restart",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/18"
+    },
+    {
+      "id": "DCP-017",
+      "issue": 19,
+      "title": "read_file negative offset / tail semantics",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/19"
+    },
+    {
+      "id": "DCP-018",
+      "issue": 20,
+      "title": "read_file URL support",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/20"
+    },
+    {
+      "id": "DCP-019",
+      "issue": 21,
+      "title": "read_multiple_files tool parity",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/21"
+    },
+    {
+      "id": "DCP-020",
+      "issue": 22,
+      "title": "write_file append mode parity",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/22"
+    },
+    {
+      "id": "DCP-021",
+      "issue": 23,
+      "title": "create_directory nested-path parity",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/23"
+    },
+    {
+      "id": "DCP-022",
+      "issue": 24,
+      "title": "Recursive list_directory depth parity",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/24"
+    },
+    {
+      "id": "DCP-023",
+      "issue": 25,
+      "title": "move_file files/directories and cross-filesystem parity",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/25"
+    },
+    {
+      "id": "DCP-024",
+      "issue": 26,
+      "title": "get_file_info complete metadata parity",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/26"
+    },
+    {
+      "id": "DCP-025",
+      "issue": 27,
+      "title": "edit_block surgical text replacement parity",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/27"
+    },
+    {
+      "id": "DCP-026",
+      "issue": 28,
+      "title": "Native Excel read/write/edit/search parity",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/28"
+    },
+    {
+      "id": "DCP-027",
+      "issue": 29,
+      "title": "PDF read/create/modify parity",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/29"
+    },
+    {
+      "id": "DCP-028",
+      "issue": 30,
+      "title": "DOCX read/create/edit/search parity",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/30"
+    },
+    {
+      "id": "DCP-029",
+      "issue": 31,
+      "title": "Asynchronous start_search session model",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/31"
+    },
+    {
+      "id": "DCP-030",
+      "issue": 32,
+      "title": "get_more_search_results pagination",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/32"
+    },
+    {
+      "id": "DCP-031",
+      "issue": 33,
+      "title": "stop_search cancellation",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/33"
+    },
+    {
+      "id": "DCP-032",
+      "issue": 34,
+      "title": "list_searches session inventory",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/34"
+    },
+    {
+      "id": "DCP-033",
+      "issue": 35,
+      "title": "Ripgrep search options parity",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/35"
+    },
+    {
+      "id": "DCP-034",
+      "issue": 36,
+      "title": "start_process shell/default-shell command parity",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/36"
+    },
+    {
+      "id": "DCP-035",
+      "issue": 37,
+      "title": "start_process timeout/background/readiness detection",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/37"
+    },
+    {
+      "id": "DCP-036",
+      "issue": 38,
+      "title": "interact_with_process wait-for-prompt semantics",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/38"
+    },
+    {
+      "id": "DCP-037",
+      "issue": 39,
+      "title": "read_process_output line pagination and tail semantics",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/39"
+    },
+    {
+      "id": "DCP-038",
+      "issue": 40,
+      "title": "force_terminate parity",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/40"
+    },
+    {
+      "id": "DCP-039",
+      "issue": 41,
+      "title": "list_sessions metadata and completed-session retention",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/41"
+    },
+    {
+      "id": "DCP-040",
+      "issue": 42,
+      "title": "System-wide list_processes tool parity",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/42"
+    },
+    {
+      "id": "DCP-041",
+      "issue": 43,
+      "title": "System-wide kill_process tool parity",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/43"
+    },
+    {
+      "id": "DCP-042",
+      "issue": 44,
+      "title": "Interactive PTY/REPL fidelity for SSH, databases and dev servers",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/44"
+    },
+    {
+      "id": "DCP-043",
+      "issue": 45,
+      "title": "Terminal output encoding and null-byte parity",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/45"
+    },
+    {
+      "id": "DCP-044",
+      "issue": 46,
+      "title": "get_usage_stats tool parity",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/46"
+    },
+    {
+      "id": "DCP-045",
+      "issue": 47,
+      "title": "Persistent get_recent_tool_calls history parity",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/47"
+    },
+    {
+      "id": "DCP-046",
+      "issue": 48,
+      "title": "Tool history rotation and trimming",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/48"
+    },
+    {
+      "id": "DCP-047",
+      "issue": 49,
+      "title": "give_feedback_to_desktop_commander compatibility behavior",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/49"
+    },
+    {
+      "id": "DCP-048",
+      "issue": 50,
+      "title": "get_prompts / onboarding prompt parity",
+      "state": "open",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/50"
+    }
+  ],
+  "closedGapCount": 0,
+  "openGapCount": 48,
+  "pass": false,
+  "passRule": [
+    "all 48 gap issues closed with committed acceptance evidence",
+    "clean npm/package install outside a development checkout",
+    "idempotent Codex setup/remove preserving unrelated configuration",
+    "Codex automatically starts and supervises MTerm as its stdio MCP child",
+    "full pinned DesktopCommander MCP compatibility suite green",
+    "supported Windows/macOS/Linux matrix green",
+    "no unresolved P0/P1 parity issue",
+    "roadmap/parity baseline, issue state, security/license/package gates green"
+  ]
+}

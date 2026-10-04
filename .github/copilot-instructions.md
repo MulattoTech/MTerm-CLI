@@ -1,0 +1,1 @@
+Read AGENTS.md and docs/roadmap/METRICS.md. Every source change needs explicit requirement/evidence review and provenance. Never infer completion from a green test count; no bypass of GitHub safety denials.

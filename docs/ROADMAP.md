@@ -1,12 +1,42 @@
-# MTerm-CLI roadmap bootstrap
+# MTerm CLI roadmap
 
-This repository starts with 300 individually numbered acceptance seeds in docs/roadmap/requirements-seed.json.
+![Weighted delivery maturity](roadmap/bars/overall.svg)
 
-**Bootstrap implementation credit: 0% by construction.** Repository/document scaffolding does not prove product features. The implementation session must expand affected items with scope, dependencies, platform applicability, evidence, tests, reviewed stage, estimates and blockers before assigning progress.
+**27.87% reviewed weighted delivery maturity** across 300 requirements; 0 complete and 45 blocked. Not release readiness.
 
-Stage rubric:
-not_started 0 · planned 10 · implementation 40 · integrated 65 · validated 85 · complete 100
+[Every feature and evidence](roadmap/FEATURES.md) · [Offline searchable dashboard](roadmap/index.html) · [Metric contract](roadmap/METRICS.md)
 
-Blocked items remain visible and cannot disappear from the denominator merely to improve a percentage. Calendar ETA remains Unscheduled until an actual owner/capacity/dependency basis exists.
+No GUI progress is inherited. Baseline weights are rough engineering estimates, frozen for this catalog. Calendar ETAs are Unscheduled without a real schedule.
 
-The executable implementation specification is docs/execution/MASTER_IMPLEMENTATION_PROMPT.md.
+| Area | Progress | Items |
+|---|---|---:|
+| Access, discovery and source reconciliation | ![75%](roadmap/bars/area-01.svg) | 12 |
+| GUI directory migration and preservation | ![0%](roadmap/bars/area-02.svg) | 18 |
+| Feasibility and architecture decisions | ![10%](roadmap/bars/area-03.svg) | 10 |
+| Entry point and CLI argument behavior | ![67%](roadmap/bars/area-04.svg) | 14 |
+| Codex binary integration | ![49.5%](roadmap/bars/area-05.svg) | 10 |
+| ChatGPT Web integration | ![0%](roadmap/bars/area-06.svg) | 18 |
+| Credential source and refresh safety | ![0%](roadmap/bars/area-07.svg) | 18 |
+| Quota acquisition and normalization | ![0%](roadmap/bars/area-08.svg) | 14 |
+| Status rendering and machine contracts | ![0%](roadmap/bars/area-09.svg) | 12 |
+| Cache ownership and performance | ![0%](roadmap/bars/area-10.svg) | 10 |
+| Configuration and diagnostics | ![53.75%](roadmap/bars/area-11.svg) | 10 |
+| Dependency pins and source provenance | ![24%](roadmap/bars/area-12.svg) | 10 |
+| Transactional updater | ![0%](roadmap/bars/area-13.svg) | 18 |
+| Install and runtime distribution | ![65.87%](roadmap/bars/area-14.svg) | 12 |
+| Platform support and native terminal behavior | ![32.5%](roadmap/bars/area-15.svg) | 10 |
+| Security and privacy gates | ![39%](roadmap/bars/area-16.svg) | 10 |
+| Automated testing and CI | ![35.83%](roadmap/bars/area-17.svg) | 12 |
+| CLI roadmap, progress bars and governance | ![52.78%](roadmap/bars/area-18.svg) | 18 |
+| AI attribution and recovery | ![65%](roadmap/bars/area-19.svg) | 8 |
+| Release integration and delivery | ![10%](roadmap/bars/area-20.svg) | 10 |
+| Footprint and latency verification | ![51.25%](roadmap/bars/area-21.svg) | 8 |
+| Remote Desktop Commander replacement / local agent-control host | ![80.79%](roadmap/bars/area-22.svg) | 38 |
+
+## DesktopCommander Codex parity gate
+
+**0/48 parity gaps closed — NOT PASS.** This gate is independent of the whole-product weighted maturity above.
+
+Pinned baseline: `wonderwhy-er/DesktopCommanderMCP` 0.2.52 / `c774c3b505de990219637ecdc9a830c8772fae9d`, 26 published MCP tools.
+
+[Parity ledger](DESKTOP_COMMANDER_CODEX_PARITY.md) · [GitHub epic #2](https://github.com/MulattoTech/MTerm-CLI/issues/2) · [100%-PASS execution prompt](execution/DESKTOP_COMMANDER_100_PASS_PROMPT.md)

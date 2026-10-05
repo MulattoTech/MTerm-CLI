@@ -13,7 +13,7 @@ export async function verifyBaseline(root) {
   const baseline = json(await fs.readFile(path.join(dir, 'baseline.json')));
   if (
     baseline.repository !== 'wonderwhy-er/DesktopCommanderMCP' ||
-    !/^\w{40}$/.test(baseline.commit) ||
+    !/^[a-f0-9]{40}$/.test(baseline.commit) ||
     baseline.version !== '0.2.52'
   )
     throw Error('Unreviewed baseline identity');

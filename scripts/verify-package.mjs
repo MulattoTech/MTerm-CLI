@@ -2,6 +2,7 @@
 // AI-Change: 2026-10-04-local-mcp
 // Fresh pack/install/link and official MCP round trip; only test-owned prefix/home/cache are used.
 import fs from 'node:fs/promises';
+import { resolveNpmEntry } from './npm-runtime.mjs';
 import path from 'node:path';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
@@ -11,8 +12,8 @@ import { Client } from '@modelcontextprotocol/client';
 import { StdioClientTransport } from '@modelcontextprotocol/client/stdio';
 const exec = promisify(execFile);
 const root = path.resolve('.');
-const npm = path.join(path.dirname(process.execPath), 'node_modules', 'npm', 'bin', 'npm-cli.js');
-await fs.access(npm);
+const npm = await resolveNpmEntry();
+await fs.mkdir(path.join(root, 'artifacts'), { recursive: true });
 const output = await fs.mkdtemp(path.join(root, 'artifacts', 'package-verify-'));
 const prefix = path.join(output, 'install'),
   linkPrefix = path.join(output, 'links'),
@@ -77,6 +78,12 @@ await npmRun([
 const installed = path.join(prefix, 'node_modules', 'mterm-cli', 'bin', 'mterm-cli.js');
 const version = await exec(process.execPath, [installed, '--version'], { cwd: home, env, timeout: 10000 });
 assert.equal(version.stdout.trim(), '0.0.1-preview.1');
+// npm exec is npx's modern execution path; use the already cached exact tarball offline.
+const npx = await npmRun(
+  ['exec', '--offline', '--yes', '--package', tarball, '--', 'mterm-cli', '--version'],
+  home,
+);
+assert.equal(npx.stdout.trim(), '0.0.1-preview.1');
 const timings = [];
 for (let i = 0; i < 5; i++) {
   const start = performance.now();
@@ -166,6 +173,7 @@ const report = {
   productionFiles,
   packagedMcpRoundTrip: true,
   ownedPrefixNpmLink: true,
+  offlineNpmExecFromTarball: true,
   fromOutsideCheckout: true,
   helpExternalLaunchSamplesMs: timings.map((x) => Math.round(x * 100) / 100),
   helpMedianMs: [...timings].sort((a, b) => a - b)[2],

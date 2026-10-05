@@ -97,6 +97,7 @@ const singles = [
   'GEMINI.md',
   'versions.json',
   'docs/SECURITY.md',
+  'docs/CODEX_REGISTRATION.md',
   'docs/ARCHITECTURE.md',
   'docs/TODAY_CANDIDATE.md',
   'docs/roadmap/desktop-commander-parity.json',

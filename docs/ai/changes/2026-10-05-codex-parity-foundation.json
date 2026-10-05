@@ -4,7 +4,7 @@
   "model": "GPT-6 Astra Pro",
   "identity_basis": "session-declared; self-reported",
   "started_at_utc": "2026-10-05T20:04:26Z",
-  "updated_at_utc": "2026-10-05T20:32:42.600919+00:00",
+  "updated_at_utc": "2026-10-05T20:38:17.733028+00:00",
   "base_commit": "5c4588be3afe36ee11951a73c84a023656fe6fec",
   "request": "Execute DesktopCommanderMCP Codex parity prompt and leave a forward-work prompt",
   "requirements": [
@@ -62,6 +62,10 @@
       "command": "node scripts/parity-baseline.mjs --probe",
       "result": "PASS: upstream main still matches c774c3b; approved target unchanged",
       "evidence": "artifacts/parity-execution-20261005T200426Z/upstream-probe.log"
+    },
+    {
+      "command": "npm resolver fixtures",
+      "result": "Two intentionally failing Windows/Unix location tests added; new resolver removes Windows-only npm path assumption."
     }
   ],
   "roadmap_updates": [
@@ -82,5 +86,6 @@
     "No real user CODEX_HOME/auth or model call modified"
   ],
   "checkpoint": "artifacts/parity-execution-20261005T200426Z/before.bundle",
-  "next_step": "Publish foundation; activate and inspect cross-platform CI before broader acceptance claims; implement real compatibility tools."
+  "next_step": "Publish foundation; activate and inspect cross-platform CI before broader acceptance claims; implement real compatibility tools.",
+  "workflow": ".github/workflows/cli-ci.yml, connector commit085d481; actual hosted conclusions pending"
 }

@@ -116,6 +116,16 @@ try {
   await client.close();
   await transport.close().catch(() => {});
 }
+const compatibility = JSON.parse(
+  (
+    await exec(
+      process.execPath,
+      [path.join(root, 'scripts/verify-compatibility-installed.mjs'), npm, tarball, scope],
+      { cwd: home, env, timeout: 40000, maxBuffer: 1048576, windowsHide: true },
+    )
+  ).stdout,
+);
+assert.equal(compatibility.compatibilityAliasesExercised, 8);
 // CLI --prefix changes npm's local package root; environment prefix selects an isolated global link destination.
 env.npm_config_prefix = linkPrefix;
 assert.equal((await npmRun(['prefix', '--global'])).stdout.trim(), linkPrefix);
@@ -174,6 +184,8 @@ const report = {
   packagedMcpRoundTrip: true,
   ownedPrefixNpmLink: true,
   offlineNpmExecFromTarball: true,
+  npmExecMcpCompatibilityTools: compatibility.compatibilityAliasesExercised,
+  fullDesktopCommanderParity: false,
   fromOutsideCheckout: true,
   helpExternalLaunchSamplesMs: timings.map((x) => Math.round(x * 100) / 100),
   helpMedianMs: [...timings].sort((a, b) => a - b)[2],

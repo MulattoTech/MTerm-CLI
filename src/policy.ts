@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-10-05-codex-parity-foundation; shared prevalidation for nested paths.
 // AI-Change: 2026-10-04-local-mcp (OpenAI / GPT-6 Astra Pro; self-reported)
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -43,7 +44,7 @@ export class RootPolicy {
     const rel = path.relative(this.root, candidate);
     return rel === '' || (!path.isAbsolute(rel) && rel !== '..' && !rel.startsWith('..' + path.sep));
   }
-  async resolve(input: string, missingLeaf = false): Promise<string> {
+  lexical(input: string): string {
     if (typeof input !== 'string' || !input || input.length > 4096 || /[\x00-\x1f\x7f]/.test(input))
       fail('INVALID_PATH', 'Invalid path.');
     if (/^[/\\]{2}/.test(input) || /^[A-Za-z]:[^/\\]/.test(input))
@@ -62,6 +63,12 @@ export class RootPolicy {
       if (privateName(component))
         fail('PRIVATE_PATH', 'Credential and repository metadata paths are not exposed.');
     }
+    return target;
+  }
+  async resolve(input: string, missingLeaf = false): Promise<string> {
+    const target = this.lexical(input);
+    const rel = path.relative(this.root, target);
+    const parts = rel ? rel.split(path.sep) : [];
     let current = this.root;
     for (let i = 0; i < parts.length; i++) {
       current = path.join(current, parts[i]!);

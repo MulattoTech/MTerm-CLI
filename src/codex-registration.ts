@@ -47,6 +47,7 @@ export async function planCodexRegistration(options: {
   root: string;
   allowWrite?: boolean;
   allowExec?: boolean;
+  compatDesktopCommander?: boolean;
   name?: string;
 }): Promise<RegistrationPlan> {
   const name = nameSchema.parse(options.name ?? 'mterm-local');
@@ -64,6 +65,7 @@ export async function planCodexRegistration(options: {
       policy.root,
       ...(options.allowWrite ? ['--allow-write'] : []),
       ...(options.allowExec ? ['--allow-exec'] : []),
+      ...(options.compatDesktopCommander ? ['--compat-desktop-commander'] : []),
     ],
   };
 }

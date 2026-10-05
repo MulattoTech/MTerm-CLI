@@ -46,7 +46,16 @@ const mterm = async (args) =>
     ).stdout,
   );
 const version = (await codexRun(['--version'])).stdout.trim();
-const args = ['setup', 'codex', '--root', workspace, '--allow-write', '--allow-exec', '--apply'];
+const args = [
+  'setup',
+  'codex',
+  '--root',
+  workspace,
+  '--allow-write',
+  '--allow-exec',
+  '--compat-desktop-commander',
+  '--apply',
+];
 assert.equal((await mterm(args)).changed, true);
 const installed = await fs.readFile(config, 'utf8');
 assert.ok(installed.startsWith(original));
@@ -66,6 +75,7 @@ for (let iteration = 0; iteration < 2; iteration++) {
     await client.ping();
     const toolList = await client.listTools();
     assert.ok(toolList.tools.some((x) => x.name === 'mterm_write_file'));
+    assert.ok(toolList.tools.some((x) => x.name === 'read_file'));
     const response = await client.callTool({ name: 'mterm_read_file', arguments: { path: 'fixture.txt' } });
     if (iteration === 0) {
       assert.equal(response.isError, true);
@@ -81,6 +91,12 @@ for (let iteration = 0; iteration < 2; iteration++) {
     } else {
       assert.equal(response.isError, false);
       assert.equal(response.structuredContent.text, 'configured MCP works');
+      const compatible = await client.callTool({
+        name: 'read_file',
+        arguments: { path: path.join(workspace, 'fixture.txt') },
+      });
+      assert.equal(compatible.isError, false);
+      assert.match(compatible.content[0].text, /configured MCP works/);
     }
   } finally {
     await client.close();
@@ -108,6 +124,7 @@ const report = {
   setupIdempotent: true,
   configurationParsedByCodex: true,
   registeredCommandMcpRounds: 2,
+  compatibilityProfilePersisted: true,
   shutdownVerified: true,
   removalPreservesUnrelatedBytes: true,
   backupsRetained: true,

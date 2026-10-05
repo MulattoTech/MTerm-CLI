@@ -4,7 +4,7 @@
   "model": "GPT-6 Astra Pro",
   "identity_basis": "session-declared; self-reported",
   "started_at_utc": "2026-10-05T20:04:26Z",
-  "updated_at_utc": "2026-10-05T20:38:17.733028+00:00",
+  "updated_at_utc": "2026-10-05T21:03:55.284246+00:00",
   "base_commit": "5c4588be3afe36ee11951a73c84a023656fe6fec",
   "request": "Execute DesktopCommanderMCP Codex parity prompt and leave a forward-work prompt",
   "requirements": [
@@ -16,14 +16,24 @@
     "DCP-008",
     "CLI-231",
     "CLI-233",
-    "CLI-292"
+    "CLI-292",
+    "DCP-007",
+    "DCP-017",
+    "DCP-019",
+    "DCP-020",
+    "DCP-021",
+    "DCP-022",
+    "DCP-023",
+    "DCP-024",
+    "DCP-025"
   ],
   "decisions": [
     "Preserve GUI and existing native MCP tools",
     "Fix LF/CRLF fingerprint defect without disabling review",
     "Generate and validate a managed Codex stanza through real Codex in isolated homes; explicit --apply only",
     "Keep all48 parity gaps open until their full acceptance is independently qualified",
-    "Snapshot upstream sources with MIT attribution; drift probe never advances baseline"
+    "Snapshot upstream sources with MIT attribution; drift probe never advances baseline",
+    "Add opt-in text/file aliases on the existing scoped/versioned FileService. Preserve stronger write intent and private-path boundaries; advertise no unimplemented stubs."
   ],
   "tests": [
     {
@@ -66,6 +76,25 @@
     {
       "command": "npm resolver fixtures",
       "result": "Two intentionally failing Windows/Unix location tests added; new resolver removes Windows-only npm path assumption."
+    },
+    {
+      "command": "DesktopCommander file compatibility slice",
+      "result": "7 intended missing-implementation tests failed before code;7 subsequently passed including36 read fixtures compared against the inspected pinned upstream text handler and an official SDK protocol round trip."
+    },
+    {
+      "command": "npm run build && npm run check after compatibility integration",
+      "result": "PASS:64 tests,0 failures,0 skips; all existing regressions retained",
+      "evidence": "artifacts/parity-execution-20261005T200426Z/compat-check-all.log"
+    },
+    {
+      "command": "node scripts/verify-package.mjs",
+      "result": "PASS: actual tarball install, offline npm exec MCP,8 compatible file aliases exercised, scoped native tools, owned-prefix link; installed production bytes14068573 excluding Node/Codex",
+      "evidence": "artifacts/package-verify-lg6yec/result.json"
+    },
+    {
+      "command": "MTERM_VERIFY_BIN=<fresh packed install> node scripts/verify-managed-codex.mjs",
+      "result": "PASS: Codex0.160.1; idempotent managed apply/remove;2 actual SDK sessions from Codex-parsed config; compatibility flag retained; user config unchanged; no model calls",
+      "evidence": "artifacts/managed-codex-TuWvBK/result.json"
     }
   ],
   "roadmap_updates": [
@@ -83,7 +112,8 @@
   "limitations": [
     "No hosted CI or full26-tool compatibility result yet",
     "Managed setup uses cooperative locking and compare-before-replace, not a guarantee against hostile uncooperative concurrent writers",
-    "No real user CODEX_HOME/auth or model call modified"
+    "No real user CODEX_HOME/auth or model call modified",
+    "GitHub Actions runners failed before any step: annotations cite failed recent account payments or spending limit. Billing/protections unchanged; hosted platform certification unavailable."
   ],
   "checkpoint": "artifacts/parity-execution-20261005T200426Z/before.bundle",
   "next_step": "Publish foundation; activate and inspect cross-platform CI before broader acceptance claims; implement real compatibility tools.",

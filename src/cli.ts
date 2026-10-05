@@ -7,7 +7,8 @@ export function parseHost(args: string[]) {
   let root: string | undefined,
     stdio = false,
     allowWrite = false,
-    allowExec = false;
+    allowExec = false,
+    compatDesktopCommander = false;
   for (let i = 0; i < args.length; i++) {
     const a = args[i];
     if (a === '--root') {
@@ -17,14 +18,15 @@ export function parseHost(args: string[]) {
     } else if (a === '--stdio') stdio = true;
     else if (a === '--allow-write') allowWrite = true;
     else if (a === '--allow-exec') allowExec = true;
+    else if (a === '--compat-desktop-commander') compatDesktopCommander = true;
     else fail('USAGE', 'Unsupported MCP option.');
   }
   if (!root) fail('USAGE', 'MCP requires --root PATH; no implicit whole-machine scope.');
   if (!stdio) fail('USAGE', 'Only --stdio transport is implemented.');
-  return { root: path.resolve(root), allowWrite, allowExec };
+  return { root: path.resolve(root), allowWrite, allowExec, compatDesktopCommander };
 }
 function help() {
-  return `MTerm-CLI ${VERSION} — local workstation preview\n\n  mterm-cli                         Launch existing Codex, unchanged TUI\n  mterm-cli -- <codex arguments>     Explicit pass-through, no injected flags\n  mterm-cli mcp --stdio --root PATH [--allow-write] [--allow-exec]\n  mterm-cli doctor --json [--root PATH]\n  mterm-cli setup codex --root PATH [--allow-write] [--allow-exec] [--apply]\n  mterm-cli remove codex [--name NAME] [--apply]\n  mterm-cli config [show|get KEY|set KEY VALUE|path] [--json]\n  mterm-cli status [--json|--line]    Quota integration not implemented yet\n  mterm-cli update                   Managed updater not implemented yet\n\nMCP defaults to read-only. Execution is separate and runs as your OS user, not a sandbox.\nNo browser, Web relay, network listener, daemon, quota request or automatic installation.\nsetup previews by default; --apply performs explicit backed-up registration. remove codex --apply removes only the exact owned block.\n`;
+  return `MTerm-CLI ${VERSION} — local workstation preview\n\n  mterm-cli                         Launch existing Codex, unchanged TUI\n  mterm-cli -- <codex arguments>     Explicit pass-through, no injected flags\n  mterm-cli mcp --stdio --root PATH [--allow-write] [--allow-exec]\n  mterm-cli doctor --json [--root PATH]\n  mterm-cli setup codex --root PATH [--allow-write] [--allow-exec] [--apply]\n  mterm-cli remove codex [--name NAME] [--apply]\n  mterm-cli config [show|get KEY|set KEY VALUE|path] [--json]\n  mterm-cli status [--json|--line]    Quota integration not implemented yet\n  mterm-cli update                   Managed updater not implemented yet\n\nOptional --compat-desktop-commander exposes eight implemented text/file aliases, not full26-tool parity.\nMCP defaults to read-only. Execution is separate and runs as your OS user, not a sandbox.\nNo browser, Web relay, network listener, daemon, quota request or automatic installation.\nsetup previews by default; --apply performs explicit backed-up registration. remove codex --apply removes only the exact owned block.\n`;
 }
 async function doctor(args: string[]) {
   const { settings } = await import('./config.js');

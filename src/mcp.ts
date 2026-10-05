@@ -1,10 +1,16 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-10-05-codex-parity-foundation; opt-in bounded DesktopCommander file aliases.
 // AI-Change: 2026-10-04-local-mcp (OpenAI / GPT-6 Astra Pro; self-reported)
 import os from 'node:os';
 import { z } from 'zod';
 import { McpServer } from '@modelcontextprotocol/server';
 import { StdioServerTransport, serveStdio } from '@modelcontextprotocol/server/stdio';
 import { FileService, fileSchemas } from './files.js';
+import {
+  DesktopCommanderFiles,
+  desktopFileSchemas,
+  type DesktopTextResult,
+} from './desktop-commander-files.js';
 import { ProcessService, processSchemas } from './processes.js';
 import { GitService, gitSchemas } from './git.js';
 import { safeError, fail, cancelled } from './errors.js';
@@ -12,6 +18,7 @@ export interface HostOptions {
   root: string;
   allowWrite?: boolean;
   allowExec?: boolean;
+  compatDesktopCommander?: boolean;
 }
 export async function runMcp(options: HostOptions): Promise<void> {
   const files = await FileService.create(options.root, { allowWrite: options.allowWrite, maxBytes: 262144 });
@@ -57,6 +64,7 @@ export async function runMcp(options: HostOptions): Promise<void> {
         schema: z.ZodObject,
         readOnly: boolean,
         handler: (args: unknown, signal: AbortSignal) => unknown | Promise<unknown>,
+        rawText = false,
       ) {
         server.registerTool(
           name,
@@ -90,6 +98,7 @@ export async function runMcp(options: HostOptions): Promise<void> {
                 outcome: 'ok',
                 durationMs: Math.round(performance.now() - began),
               });
+              if (rawText) return { content: (result as DesktopTextResult).content, isError: false };
               return {
                 content: [{ type: 'text' as const, text }],
                 structuredContent: result as Record<string, unknown>,
@@ -115,6 +124,75 @@ export async function runMcp(options: HostOptions): Promise<void> {
           },
         );
       }
+      if (options.compatDesktopCommander) {
+        const compat = DesktopCommanderFiles.using(files);
+        add(
+          'read_file',
+          'DesktopCommander text read: offset/length and negative tail; scoped UTF-8 only. URL/images/office formats remain unsupported.',
+          desktopFileSchemas.read,
+          true,
+          (a, s) => compat.readFile(a, s),
+          true,
+        );
+        add(
+          'read_multiple_files',
+          'Read bounded text files, retaining successful reads when individual paths fail. Binary/office content remains unsupported.',
+          desktopFileSchemas.multiple,
+          true,
+          (a, s) => compat.readMultipleFiles(a, s),
+          true,
+        );
+        add(
+          'list_directory',
+          'Recursive bounded directory listing with depth. Private paths and links remain protected.',
+          desktopFileSchemas.list,
+          true,
+          (a, s) => compat.listDirectory(a, s),
+          true,
+        );
+        add(
+          'get_file_info',
+          'Text file and directory metadata; office-specific metadata remains unsupported.',
+          desktopFileSchemas.info,
+          true,
+          (a) => compat.getFileInfo(a),
+          true,
+        );
+        if (files.allowWrite) {
+          add(
+            'write_file',
+            'Write text in explicit rewrite/append mode; omitted mode refuses replacing nonempty content.',
+            desktopFileSchemas.write,
+            false,
+            (a, s) => compat.writeFile(a, s),
+            true,
+          );
+          add(
+            'create_directory',
+            'Idempotent nested directory creation with complete path prevalidation.',
+            desktopFileSchemas.mkdir,
+            false,
+            (a, s) => compat.createDirectory(a, s),
+            true,
+          );
+          add(
+            'move_file',
+            'No-overwrite regular-file move within root; directory/cross-device parity remains unsupported.',
+            desktopFileSchemas.move,
+            false,
+            (a, s) => compat.moveFile(a, s),
+            true,
+          );
+          add(
+            'edit_block',
+            'Exact text search/replace with required match count. Fuzzy/XML/spreadsheet parity remains unsupported.',
+            desktopFileSchemas.edit,
+            false,
+            (a, s) => compat.editBlock(a, s),
+            true,
+          );
+        }
+      }
       const empty = z.strictObject({});
       add(
         'mterm_capabilities',
@@ -130,6 +208,11 @@ export async function runMcp(options: HostOptions): Promise<void> {
           executionEnabled: jobs.allowExec,
           networkListener: false,
           remoteWebRelay: false,
+          desktopCommanderCompatibility: {
+            enabled: options.compatDesktopCommander === true,
+            fullParity: false,
+            textFileAliases: options.compatDesktopCommander ? (files.allowWrite ? 8 : 4) : 0,
+          },
           osSandbox: false,
           limits: {
             fileBytes: files.maxBytes,

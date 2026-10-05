@@ -8,13 +8,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Match the discovered device to the intended MTerm host before any mutation.
 
-**Current scope:** Host/current state verified and interrupted source preserved. GitHub publication remains blocked; source metadata only, not product completion.
+**Current scope:** Authorized host and root reverified; GUI and archived legacy untouched. Product work published on PR52, hosted gate blocked.
 
 **Baseline weight:** 8 h (rough). **Remaining:** 1–2 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `docs/plans/2026-10-04-local-mcp.md`
+**Evidence:** `docs/plans/2026-10-04-local-mcp.md`, `docs/validation/2026-10-05-codex-parity-foundation.md`
 
 ## CLI-002 — Verify local source write access
 
@@ -32,17 +32,17 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 ## CLI-003 — Separate GitHub capabilities
 
-![65% integrated](bars/cli-003.svg)
+![85% validated](bars/cli-003.svg)
 
 **Objective / acceptance:** Record branch/content/workflow writes, CI, merges and tags as separately verified or untested.
 
-**Current scope:** Separate GitHub capability probe recorded. Reads/branch creation worked; content-write safety denial prevents current publication.
+**Current scope:** RDC write/rename, GitHub content/workflow writes, normal pushes and PR creation reverified. Actual hosted jobs are blocked by account billing/spending limits; merge/tag unperformed.
 
 **Baseline weight:** 8 h (rough). **Remaining:** 1–6 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `docs/plans/2026-10-04-local-mcp.md`
+**Evidence:** `docs/plans/2026-10-04-local-mcp.md`, `docs/validation/2026-10-05-codex-parity-foundation.md`
 
 ## CLI-004 — Check current repository identity
 
@@ -2450,7 +2450,7 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `scripts/verify-package.mjs`, `tests/cli.test.mjs`
+**Evidence:** `scripts/verify-package.mjs`, `tests/cli.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`
 
 ## CLI-176 — Resolve symlinked entry paths
 
@@ -2492,7 +2492,7 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `scripts/verify-package.mjs`, `tests/cli.test.mjs`
+**Evidence:** `scripts/verify-package.mjs`, `tests/cli.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`
 
 ## CLI-179 — Exclude private and development material
 
@@ -2612,13 +2612,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Run the actual supported artifact on an arm64 macOS environment.
 
-**Current scope:** Requirement preserved; no implementation or acceptance evidence in this local candidate.
+**Current scope:** Workflow job is defined with actual architecture assertions, but no runner steps executed. Platform implementation acceptance stays not_started.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 8–32 engineer hours. **ETA:** Unscheduled.
 
-**Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
+**Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** Hosted CI cannot start: GitHub account payment/spending-limit gate. Owner resolution needed; no billing or protection changes authorized..
 
-**Evidence:** None; no implementation credit.
+**Evidence:** `docs/validation/2026-10-05-codex-parity-foundation.md`
 
 ## CLI-188 — Validate macOS x86-64 execution
 
@@ -2626,13 +2626,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Run the actual Intel artifact rather than assuming arm64 results cover it.
 
-**Current scope:** Requirement preserved; no implementation or acceptance evidence in this local candidate.
+**Current scope:** Workflow job is defined with actual architecture assertions, but no runner steps executed. Platform implementation acceptance stays not_started.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 8–32 engineer hours. **ETA:** Unscheduled.
 
-**Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
+**Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** Hosted CI cannot start: GitHub account payment/spending-limit gate. Owner resolution needed; no billing or protection changes authorized..
 
-**Evidence:** None; no implementation credit.
+**Evidence:** `docs/validation/2026-10-05-codex-parity-foundation.md`
 
 ## CLI-189 — Validate Linux x86-64 execution
 
@@ -2640,13 +2640,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Declare and test the supported libc/distribution floor and executable permissions.
 
-**Current scope:** Requirement preserved; no implementation or acceptance evidence in this local candidate.
+**Current scope:** Workflow job is defined with actual architecture assertions, but no runner steps executed. Platform implementation acceptance stays not_started.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 8–32 engineer hours. **ETA:** Unscheduled.
 
-**Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
+**Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** Hosted CI cannot start: GitHub account payment/spending-limit gate. Owner resolution needed; no billing or protection changes authorized..
 
-**Evidence:** None; no implementation credit.
+**Evidence:** `docs/validation/2026-10-05-codex-parity-foundation.md`
 
 ## CLI-190 — Assess Linux arm64 explicitly
 
@@ -2888,31 +2888,31 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 ## CLI-207 — Create the root CLI workflow
 
-![10% planned](bars/cli-207.svg)
+![65% integrated](bars/cli-207.svg)
 
 **Objective / acceptance:** The actual .github/workflows/cli-ci.yml is present and readable on the intended branch.
 
-**Current scope:** Publishing and hosted workflow execution are blocked by current content-write safety denial; no workaround or green badge claimed.
+**Current scope:** Actual root workflow installed/read back on PR52, with four OS/architecture jobs. Job execution is account-blocked; presence is not platform acceptance.
 
-**Baseline weight:** 16 h (rough). **Remaining:** 7–29 engineer hours. **ETA:** Unscheduled.
+**Baseline weight:** 16 h (rough). **Remaining:** 1–6 engineer hours. **ETA:** Unscheduled.
 
-**Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** GitHub content-write probe blocked by platform safety checks; no bypass or hosted test run..
+**Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `docs/plans/2026-10-04-local-mcp.md`
+**Evidence:** `docs/plans/2026-10-04-local-mcp.md`, `docs/validation/2026-10-05-codex-parity-foundation.md`
 
 ## CLI-208 — Pin workflow actions and permissions
 
-![10% planned](bars/cli-208.svg)
+![85% validated](bars/cli-208.svg)
 
 **Objective / acceptance:** Third-party action refs and least-privilege settings are reviewed.
 
-**Current scope:** Publishing and hosted workflow execution are blocked by current content-write safety denial; no workaround or green badge claimed.
+**Current scope:** Third-party actions are exact-commit pinned; contents-read, no persisted checkout credential, exact Node/Codex tests and no model/auth calls. Runtime jobs remain blocked.
 
-**Baseline weight:** 16 h (rough). **Remaining:** 7–29 engineer hours. **ETA:** Unscheduled.
+**Baseline weight:** 16 h (rough). **Remaining:** 1–6 engineer hours. **ETA:** Unscheduled.
 
-**Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** GitHub content-write probe blocked by platform safety checks; no bypass or hosted test run..
+**Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `docs/plans/2026-10-04-local-mcp.md`
+**Evidence:** `docs/plans/2026-10-04-local-mcp.md`, `docs/validation/2026-10-05-codex-parity-foundation.md`
 
 ## CLI-209 — Run credential-free status JSON in CI
 
@@ -2986,17 +2986,17 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 ## CLI-214 — Run clean link/pack/install tests
 
-![65% integrated](bars/cli-214.svg)
+![85% validated](bars/cli-214.svg)
 
 **Objective / acceptance:** The produced CLI installs and runs outside the developer checkout without GUI dependencies.
 
-**Current scope:** Local Windows tests exercise actual SDK wire/lifecycle paths with synthetic roots and no account/model calls. No hosted CI, Unix/macOS or sandbox claim.
+**Current scope:** Fresh production tarball, offline npm exec MCP8aliases, isolated prefix link and actual Windows shim all passed. Cross-platform installed proof still pending.
 
-**Baseline weight:** 16 h (rough). **Remaining:** 3–11 engineer hours. **ETA:** Unscheduled.
+**Baseline weight:** 16 h (rough). **Remaining:** 1–6 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/cli.test.mjs`, `tests/mcp.test.mjs`, `tests/processes.test.mjs`
+**Evidence:** `tests/cli.test.mjs`, `tests/mcp.test.mjs`, `tests/processes.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`
 
 ## CLI-215 — Run all claimed OS/architecture jobs
 
@@ -3004,27 +3004,27 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Missing runners remain visible; a Windows-only local result is not cross-platform acceptance.
 
-**Current scope:** Publishing and hosted workflow execution are blocked by current content-write safety denial; no workaround or green badge claimed.
+**Current scope:** Content/workflow publication is now verified. Current unmerged PR52 and actual account-blocked hosted verification remain distinct from product acceptance.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 7–29 engineer hours. **ETA:** Unscheduled.
 
-**Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** GitHub content-write probe blocked by platform safety checks; no bypass or hosted test run..
+**Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** Hosted CI cannot start: GitHub account payment/spending-limit gate. Owner resolution needed; no billing or protection changes authorized..
 
-**Evidence:** `docs/plans/2026-10-04-local-mcp.md`
+**Evidence:** `docs/plans/2026-10-04-local-mcp.md`, `docs/validation/2026-10-05-codex-parity-foundation.md`
 
 ## CLI-216 — Inspect real workflow conclusions
 
-![10% planned](bars/cli-216.svg)
+![85% validated](bars/cli-216.svg)
 
 **Objective / acceptance:** Written, queued, skipped, failed and passed workflows are distinguished.
 
-**Current scope:** Publishing and hosted workflow execution are blocked by current content-write safety denial; no workaround or green badge claimed.
+**Current scope:** Read actual run/job/check annotations: jobs did not start due to account payment/spending-limit gate. Explicitly not code PASS, failure-in-test or skipped-platform success.
 
-**Baseline weight:** 16 h (rough). **Remaining:** 7–29 engineer hours. **ETA:** Unscheduled.
+**Baseline weight:** 16 h (rough). **Remaining:** 1–6 engineer hours. **ETA:** Unscheduled.
 
-**Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** GitHub content-write probe blocked by platform safety checks; no bypass or hosted test run..
+**Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `docs/plans/2026-10-04-local-mcp.md`
+**Evidence:** `docs/plans/2026-10-04-local-mcp.md`, `docs/validation/2026-10-05-codex-parity-foundation.md`
 
 ## CLI-217 — Keep model tests opt-in
 
@@ -3224,17 +3224,17 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 ## CLI-231 — Record reviewed source/catalog fingerprints
 
-![65% integrated](bars/cli-231.svg)
+![85% validated](bars/cli-231.svg)
 
 **Objective / acceptance:** Changing CLI source, pins or reviewed settings invalidates stale assessments.
 
-**Current scope:** All300 IDs retained in reviewed catalog. Local SVG/Markdown/JSON/offline HTML plus explicit review and stale-source/output tests; hosted publication/browser-matrix validation pending.
+**Current scope:** Reproduced prior clean Git checkout CRLF/LF mismatch and fixed normalized text fingerprints; binary and real source/catalog drift remain detected.
 
 **Baseline weight:** 8 h (rough). **Remaining:** 1–6 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `scripts/roadmap.mjs`, `tests/roadmap.test.mjs`
+**Evidence:** `scripts/roadmap.mjs`, `tests/roadmap.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`
 
 ## CLI-232 — Test exported GUI fingerprint coverage
 
@@ -3252,17 +3252,17 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 ## CLI-233 — Enforce metrics at relevant gates
 
-![65% integrated](bars/cli-233.svg)
+![85% validated](bars/cli-233.svg)
 
 **Objective / acceptance:** Build/package/CI publication checks reject stale reviews rather than silently regenerating credit.
 
-**Current scope:** All300 IDs retained in reviewed catalog. Local SVG/Markdown/JSON/offline HTML plus explicit review and stale-source/output tests; hosted publication/browser-matrix validation pending.
+**Current scope:** Normal build/check now enforce both roadmap review and pinned-parity integrity. Forged PASS/closure without evidence is rejected; generated credit is still explicit review.
 
 **Baseline weight:** 8 h (rough). **Remaining:** 1–6 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `scripts/roadmap.mjs`, `tests/roadmap.test.mjs`
+**Evidence:** `scripts/roadmap.mjs`, `tests/roadmap.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`
 
 ## CLI-234 — Update contributor entry points in both repositories
 
@@ -3424,13 +3424,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Migration, implementation, evidence, generated metrics and upstream decisions are inspectable.
 
-**Current scope:** Local development continues; no publication, merge or release claim while GitHub content writes are blocked.
+**Current scope:** Content/workflow publication is now verified. Current unmerged PR52 and actual account-blocked hosted verification remain distinct from product acceptance.
 
 **Baseline weight:** 8 h (rough). **Remaining:** 4–14 engineer hours. **ETA:** Unscheduled.
 
-**Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** GitHub content-write probe blocked by platform safety checks; no bypass or hosted test run..
+**Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** Hosted CI cannot start: GitHub account payment/spending-limit gate. Owner resolution needed; no billing or protection changes authorized..
 
-**Evidence:** `docs/plans/2026-10-04-local-mcp.md`
+**Evidence:** `docs/plans/2026-10-04-local-mcp.md`, `docs/validation/2026-10-05-codex-parity-foundation.md`
 
 ## CLI-246 — Reconcile concurrent upstream changes
 
@@ -3452,13 +3452,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Ordinary repository checks/permissions are respected without force or policy changes.
 
-**Current scope:** Local development continues; no publication, merge or release claim while GitHub content writes are blocked.
+**Current scope:** Content/workflow publication is now verified. Current unmerged PR52 and actual account-blocked hosted verification remain distinct from product acceptance.
 
 **Baseline weight:** 8 h (rough). **Remaining:** 4–14 engineer hours. **ETA:** Unscheduled.
 
-**Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** GitHub content-write probe blocked by platform safety checks; no bypass or hosted test run..
+**Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** Hosted CI cannot start: GitHub account payment/spending-limit gate. Owner resolution needed; no billing or protection changes authorized..
 
-**Evidence:** `docs/plans/2026-10-04-local-mcp.md`
+**Evidence:** `docs/plans/2026-10-04-local-mcp.md`, `docs/validation/2026-10-05-codex-parity-foundation.md`
 
 ## CLI-248 — Verify the resulting main tree
 
@@ -3466,13 +3466,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Fetch and compare remote/local state after the successful merge action.
 
-**Current scope:** Local development continues; no publication, merge or release claim while GitHub content writes are blocked.
+**Current scope:** Content/workflow publication is now verified. Current unmerged PR52 and actual account-blocked hosted verification remain distinct from product acceptance.
 
 **Baseline weight:** 8 h (rough). **Remaining:** 4–14 engineer hours. **ETA:** Unscheduled.
 
-**Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** GitHub content-write probe blocked by platform safety checks; no bypass or hosted test run..
+**Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** Hosted CI cannot start: GitHub account payment/spending-limit gate. Owner resolution needed; no billing or protection changes authorized..
 
-**Evidence:** `docs/plans/2026-10-04-local-mcp.md`
+**Evidence:** `docs/plans/2026-10-04-local-mcp.md`, `docs/validation/2026-10-05-codex-parity-foundation.md`
 
 ## CLI-249 — Select a non-conflicting CLI tag
 
@@ -3696,7 +3696,7 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`
+**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`
 
 ## CLI-265 — Publish machine-readable tool capability discovery
 
@@ -3710,7 +3710,7 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`
+**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`
 
 ## CLI-266 — Enforce explicit trusted filesystem roots
 
@@ -3752,7 +3752,7 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`
+**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`
 
 ## CLI-269 — Implement atomic bounded file write/create
 
@@ -3766,7 +3766,7 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`
+**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`
 
 ## CLI-270 — Implement directory listing
 
@@ -3780,7 +3780,7 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`
+**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`
 
 ## CLI-271 — Implement safe move/rename
 
@@ -3794,7 +3794,7 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`
+**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`
 
 ## CLI-272 — Implement file metadata inspection
 
@@ -3808,7 +3808,7 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`
+**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`
 
 ## CLI-273 — Implement bounded filename search
 
@@ -4082,13 +4082,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** A supported, reversible setup path registers MTerm's MCP server with Codex without overwriting unrelated Codex configuration.
 
-**Current scope:** Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains.
+**Current scope:** Managed --apply setup/removal, exact ownership and backup conflict handling passed on source and real installed artifact with Codex0.160.1, unrelated config preserved; no actual agent model call.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 1–5 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`
+**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`
 
 ## CLI-293 — Smoke-test MCP initialize and tool listing through stdio
 
@@ -4102,7 +4102,7 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`
+**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`
 
 ## CLI-294 — Smoke-test file round trip through MCP
 
@@ -4116,7 +4116,7 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`
+**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`
 
 ## CLI-295 — Smoke-test process round trip through MCP
 
@@ -4200,4 +4200,4 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`
+**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`

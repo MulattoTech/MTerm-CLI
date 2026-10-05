@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "reviewedAt": "2026-10-04",
+  "reviewedAt": "2026-10-05T21:08:42.944283+00:00",
   "upstream": {
     "repository": "wonderwhy-er/DesktopCommanderMCP",
     "version": "0.2.52",
@@ -46,28 +46,48 @@
       "issue": 3,
       "title": "NPM-installable package and npx entry point",
       "state": "open",
-      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/3"
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/3",
+      "implementationObservation": "Packed install, offline npm exec including actual MCP, and isolated link verified on Windows. Registry/Git-source distribution and full-platform lifecycle still open.",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ],
+      "lastReviewedAt": "2026-10-05T21:08:42.944283+00:00"
     },
     {
       "id": "DCP-002",
       "issue": 4,
       "title": "Idempotent Codex setup/registration command",
       "state": "open",
-      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/4"
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/4",
+      "implementationObservation": "Explicit managed setup is implemented and tested against real Codex0.160.1 plus installed package; platform/complete-contract qualification remains.",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ],
+      "lastReviewedAt": "2026-10-05T21:08:42.944283+00:00"
     },
     {
       "id": "DCP-003",
       "issue": 5,
       "title": "Codex remove/uninstall with backup and rollback",
       "state": "open",
-      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/5"
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/5",
+      "implementationObservation": "Exact owned removal with backups/idempotence/conflict protection tested; cooperative locking boundary and full-platform qualification remain.",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ],
+      "lastReviewedAt": "2026-10-05T21:08:42.944283+00:00"
     },
     {
       "id": "DCP-004",
       "issue": 6,
       "title": "Codex-managed background MCP lifecycle with no manual foreground server",
       "state": "open",
-      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/6"
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/6",
+      "implementationObservation": "Configuration parsed by actual Codex and2 SDK-managed registered-command lifecycles passed. Actual Codex agent tool session and platform acceptance remain unrun.",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ],
+      "lastReviewedAt": "2026-10-05T21:08:42.944283+00:00"
     },
     {
       "id": "DCP-005",
@@ -81,21 +101,36 @@
       "issue": 8,
       "title": "Cross-platform npm/Codex install validation",
       "state": "open",
-      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/8"
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/8",
+      "implementationObservation": "Hosted CI cannot start: GitHub account payment/spending-limit gate. Owner resolution needed; no billing or protection changes authorized.",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ],
+      "lastReviewedAt": "2026-10-05T21:08:42.944283+00:00"
     },
     {
       "id": "DCP-007",
       "issue": 9,
       "title": "DesktopCommander-compatible MCP tool names and schemas",
       "state": "open",
-      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/9"
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/9",
+      "implementationObservation": "Eight optional file/text aliases implemented and actually exercised through npm exec MCP. No stub tools. Full26-tool names/schemas/behavior remain incomplete.",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ],
+      "lastReviewedAt": "2026-10-05T21:08:42.944283+00:00"
     },
     {
       "id": "DCP-008",
       "issue": 10,
       "title": "Pinned upstream parity baseline and drift detector",
       "state": "open",
-      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/10"
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/10",
+      "implementationObservation": "Pinned manifest, schema and text-handler snapshots verified; drift probe does not advance target; false PASS/closure assertions rejected. Issue remains open pending full acceptance review.",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ],
+      "lastReviewedAt": "2026-10-05T21:08:42.944283+00:00"
     },
     {
       "id": "DCP-009",
@@ -158,7 +193,12 @@
       "issue": 19,
       "title": "read_file negative offset / tail semantics",
       "state": "open",
-      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/19"
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/19",
+      "implementationObservation": "36 differential text offset/tail cases match pinned TextFileHandler. Large-file/encoding/format/limits qualification still open.",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ],
+      "lastReviewedAt": "2026-10-05T21:08:42.944283+00:00"
     },
     {
       "id": "DCP-018",
@@ -172,49 +212,84 @@
       "issue": 21,
       "title": "read_multiple_files tool parity",
       "state": "open",
-      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/21"
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/21",
+      "implementationObservation": "Bounded text multi-file partial-error handling implemented. Image/document payloads not supported.",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ],
+      "lastReviewedAt": "2026-10-05T21:08:42.944283+00:00"
     },
     {
       "id": "DCP-020",
       "issue": 22,
       "title": "write_file append mode parity",
       "state": "open",
-      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/22"
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/22",
+      "implementationObservation": "Text append/rewrite/missing-target behavior and BOM preservation implemented. Dynamic configured limits/office behavior still missing.",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ],
+      "lastReviewedAt": "2026-10-05T21:08:42.944283+00:00"
     },
     {
       "id": "DCP-021",
       "issue": 23,
       "title": "create_directory nested-path parity",
       "state": "open",
-      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/23"
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/23",
+      "implementationObservation": "Nested directory creation idempotent with whole-path prevalidation tested. All-platform/security parity remains open.",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ],
+      "lastReviewedAt": "2026-10-05T21:08:42.944283+00:00"
     },
     {
       "id": "DCP-022",
       "issue": 24,
       "title": "Recursive list_directory depth parity",
       "state": "open",
-      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/24"
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/24",
+      "implementationObservation": "Bounded recursive depth listing implemented; top-level/overflow/error semantics differ from upstream and require resolution.",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ],
+      "lastReviewedAt": "2026-10-05T21:08:42.944283+00:00"
     },
     {
       "id": "DCP-023",
       "issue": 25,
       "title": "move_file files/directories and cross-filesystem parity",
       "state": "open",
-      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/25"
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/25",
+      "implementationObservation": "Regular-file same-filesystem no-overwrite move only. Directories and cross-device parity remain open.",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ],
+      "lastReviewedAt": "2026-10-05T21:08:42.944283+00:00"
     },
     {
       "id": "DCP-024",
       "issue": 26,
       "title": "get_file_info complete metadata parity",
       "state": "open",
-      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/26"
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/26",
+      "implementationObservation": "Text/stat metadata implemented; spreadsheet/document metadata and complete platform behavior remain open.",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ],
+      "lastReviewedAt": "2026-10-05T21:08:42.944283+00:00"
     },
     {
       "id": "DCP-025",
       "issue": 27,
       "title": "edit_block surgical text replacement parity",
       "state": "open",
-      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/27"
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/27",
+      "implementationObservation": "Exact replacement with required occurrence count implemented; fuzzy diagnostics, normalized/office matching remain open.",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ],
+      "lastReviewedAt": "2026-10-05T21:08:42.944283+00:00"
     },
     {
       "id": "DCP-026",
@@ -390,5 +465,71 @@
     "supported Windows/macOS/Linux matrix green",
     "no unresolved P0/P1 parity issue",
     "roadmap/parity baseline, issue state, security/license/package gates green"
+  ],
+  "releaseChecks": [
+    {
+      "id": "package",
+      "status": "pending",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ],
+      "notes": "Partial implementation evidence is not completed parity acceptance."
+    },
+    {
+      "id": "codex-lifecycle",
+      "status": "pending",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ],
+      "notes": "Partial implementation evidence is not completed parity acceptance."
+    },
+    {
+      "id": "tool-contracts",
+      "status": "pending",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ],
+      "notes": "Partial implementation evidence is not completed parity acceptance."
+    },
+    {
+      "id": "windows",
+      "status": "blocked",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ],
+      "notes": "Hosted CI cannot start: GitHub account payment/spending-limit gate. Owner resolution needed; no billing or protection changes authorized."
+    },
+    {
+      "id": "macos",
+      "status": "blocked",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ],
+      "notes": "Hosted CI cannot start: GitHub account payment/spending-limit gate. Owner resolution needed; no billing or protection changes authorized."
+    },
+    {
+      "id": "linux",
+      "status": "blocked",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ],
+      "notes": "Hosted CI cannot start: GitHub account payment/spending-limit gate. Owner resolution needed; no billing or protection changes authorized."
+    },
+    {
+      "id": "security-licenses",
+      "status": "pending",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ],
+      "notes": "Partial implementation evidence is not completed parity acceptance."
+    },
+    {
+      "id": "final-main",
+      "status": "blocked",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ],
+      "notes": "Partial implementation evidence is not completed parity acceptance."
+    }
   ]
 }

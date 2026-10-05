@@ -1,25 +1,25 @@
-# Current local candidate status
+# MTerm-CLI current status — 2026-10-05
 
-Working Windows local-MCP preview0.0.1-preview.1; not complete RDC remote relay or a final release.
+**DesktopCommander Codex parity:0/48 accepted gaps, NOT PASS.** The pinned authority remains
+DesktopCommanderMCP0.2.52 /c774c3b505de990219637ecdc9a830c8772fae9d. Implementation progress is
+not the same as accepted full parity. All48 DCP issues are still open.
 
-Implemented: official SDK stdio negotiation/discovery; bounded rooted files/search, hash-guarded
-writes, regular-file move/mkdir; owned captured processes/output/stdin/stop; read-only Git; system
-info/audit; existing Codex passthrough; strict small config; doctor; reversible setup plan; actual
-packed install, isolated-prefix npm link and full300-ID roadmap with review enforcement.
+Current work: branch feat/codex-parity-foundation-20261005, PR #52 (unmerged). Code checkpoint
+6431dd71db6775c480086f944a77c0d42d6c3a0e, based on main5c4588be3afe36ee11951a73c84a023656fe6fec.
+Fetch current refs before resuming; follow-up evidence/roadmap commits may advance the PR head.
 
-Not implemented/certified: Web model routing, pi quota adapter, managed updater, Web-to-PC
-transport, all RDC operations, GUI parity, PTY/reconnect, full Windows Job Objects, hostile path
-races, macOS/Linux, hosted CI, production signing or release tags.
+Implemented: existing scoped native MCP file/search/process/Git services; now managed Codex
+setup/removal with backups and idempotence,8 optional real DesktopCommander text/file aliases,
+upstream differential read tests, snapshot/drift/PASS validation, portable npm resolution and
+real offline npm-exec MCP packaged verification. Node24.21.0 Windows x64:64 tests passed, no skips.
+Actual Codex0.160.1 parsed isolated configuration and the registered executable passed2 SDK sessions
+from a fresh installed package. No Codex model call or real user config/auth mutation occurred.
 
-Final combined normal build/check passed: strict typecheck, format check, reviewed roadmap freshness,
-and43/43 tests with0 failures or skips. Exact log: artifacts/final-check.log. A later revision must rerun it.
-Existing Codex0.160.0 add/get/remove was verified in synthetic CODEX_HOME only. MTerm also ran
-its own actual repository no-emit typecheck through MCP with exit0. No paid models or user auth changes.
+Hosted workflow writes now work. Jobs are blocked before execution by GitHub billing/spending-limit
+annotations; no Windows/Linux/macOS hosted PASS or protected merge is claimed. PR #52 preserves
+work without bypassing that gate. GUI and legacy repositories remain unchanged.
 
-GitHub product content publication is blocked by the current safety denial. GUI remains unchanged.
-Read the generated roadmap for reviewed maturity; it is not readiness. Installed local-host runtime
-is about14.03MB excluding external Node/Codex and unimplemented Web/quota; full50MB bundle not verified.
-
-## DesktopCommander Codex parity gate
-
-Pinned baseline: DesktopCommanderMCP 0.2.52 / c774c3b505de990219637ecdc9a830c8772fae9d. GitHub epic #2 has 48 atomic open parity-gap issues (#3-#50). Current gate: NOT PASS, 0/48 gaps closed. Existing local functionality does not close a parity gap until its compatibility acceptance test proves the pinned semantics. See docs/DESKTOP_COMMANDER_CODEX_PARITY.md.
+Missing: full26 upstream tool contracts, multiple-root/dynamic config, search sessions, process
+aliases/PTY/system processes, image/office/PDF behavior, fuzzy editing, full history/prompts,
+managed updates, Web/quota extras and cross-platform/release qualification. The optional8 aliases
+are a tested subset, not8 fully closed parity issues. See validation/2026-10-05-codex-parity-foundation.md.

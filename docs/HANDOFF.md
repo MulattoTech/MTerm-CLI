@@ -1,71 +1,63 @@
-# MTerm-CLI current handoff — local MCP implementation
+# MTerm-CLI handoff — 2026-10-05 parity implementation
 
 Active checkout: C:/Tools/Dev/MTerm-CLI.
-Local branch: feat/local-mcp-candidate-20261004; baseline d0b7c77.
-GUI sibling: C:/Tools/Dev/MTerm-GUI at b5c4df5, unchanged in this pass.
+Active branch: feat/codex-parity-foundation-20261005. PR #52 is open, not merged.
+Code checkpoint:6431dd71db6775c480086f944a77c0d42d6c3a0e.
+Base main:5c4588be3afe36ee11951a73c84a023656fe6fec.
+GUI and archived legacy repositories are unchanged. Exclude access-check/* and recovery-only refs.
 
-Read AGENTS.md, STATUS.md, TODAY_CANDIDATE.md, SECURITY.md, ARCHITECTURE.md,
-roadmap/METRICS.md and validation/2026-10-04-local-mcp.md first. The uploaded execution prompt is
-scope, not permission to replace newer work. Newer two-repository/local-MCP priorities override
-stale monorepo paragraphs in historical prompts. All300 original IDs remain in the seed/catalog.
+Read AGENTS.md, STATUS.md, DESKTOP_COMMANDER_CODEX_PARITY.md, CODEX_REGISTRATION.md,
+parity/README.md, SECURITY.md, roadmap/METRICS.md, validation/2026-10-05-codex-parity-foundation.md,
+and execution/NEXT_PARITY_PROMPT.md. Fetch current refs; never reset to stale main over this branch.
 
-## Recovery
+## Proven work
 
-Interrupted untracked JavaScript is preserved verbatim under:
-artifacts/checkpoints/resume-20261004T001338Z/interrupted-files/
-Its source ZIP, hashes and verified all-refs bundle are adjacent. Do not restore it over the
-working implementation. Core-green and final checkpoints live under artifacts/checkpoints/.
-Original GUI/legacy/user source was not deleted. Only test-owned temporary fixtures are disposable.
+Managed setup codex --apply and remove codex --apply use exact owned stanzas, backups,
+conflict checks and actual Codex generation/parsing in temporary homes. Default setup/remove is
+preview. No user auth/model call was used. Preserve these controls during later config integration.
 
-## Working local preview
+Optional --compat-desktop-commander exposes8 real text/file aliases on the existing root-scoped,
+versioned FileService. It does not advertise unimplemented tools. Supported text-read output matches
+36 fixtures from the pinned inspected TextFileHandler. Other format and safety differences remain
+explicit, not silently counted as parity. Real npm-exec packaged MCP exercised all8 aliases.
 
-Compiled TypeScript ESM on Node24 uses the official MCP SDK. Default read-only rooted files;
-separate --allow-write and --allow-exec flags; strict schemas/UTF8/hash conflicts; bounded literal
-search, captured processes, UTF8 cursor rings, stdin queues, best-effort tree stop; Git read-only;
-system information and metadata-only in-memory audit. No network listener or daemon.
-Offline help/config/doctor and unchanged existing Codex launch. Setup prints its reversible plan;
-registration was tested only in synthetic CODEX_HOME. No real login, auth read or user config change.
+64 tests passed plus normal build/check/parity, packed-install/link, actual Codex0.160.1 managed
+registration and2 SDK sessions using the parsed command. Use supported Node24; this workstation's
+known-good runtime is artifacts/toolchain/node-v24.21.0-win-x64. Other checkouts need installed Node.
 
-Start-MTerm-CLI.ps1 uses the verified Node24 recorded in artifacts/node-lts.json when available;
-a fresh clone needs its own supported Node. No automatic build/dependency/browser installation.
-Status/quota, Web routes/relay, managed updater and true terminal/PTY remain unimplemented.
+## Build review contract
 
-## Verify before delivery
-
-Use Node24.21.0 for current Windows evidence. build:code is the development-only compiler path.
-Normal build/check/prepack require explicit reviewed fingerprints:
-node scripts/roadmap.mjs --review --change CHANGE_ID
+Update affected metrics/evidence deliberately, then:
+node scripts/roadmap.mjs --review --change YOUR_CHANGE_ID
 node scripts/roadmap.mjs --render
 npm run build
 npm run check
-node scripts/verify-codex-setup.mjs
 node scripts/verify-package.mjs
-node scripts/verify-self-host.mjs
+node scripts/verify-managed-codex.mjs
+npm run parity:probe  # explicit network; never updates the target
 
-Update affected requirement stages/evidence or justify unchanged stages before review. Rendering
-never awards credit. Package lock and npm-shrinkwrap must match. SDK callback cancellation is
-ctx.mcpReq.signal; do not replace negotiation with a hand-written echoed-version implementation.
+Known UTF-8 text hashes normalize CRLF/LF; binaries and real content edits stay strict. Do not
+restore the old byte-mismatched review or disable the freshness gate. build:code is for red/green
+iterations only, never a substitute for final build/check/prepack. Package lock/shrinkwrap must match.
 
-## Publication blocked
+## Blocked hosted gate
 
-GitHub reads/branch creation passed, but content-write was denied by platform safety checks.
-Do not bypass via local Git push, another API, credentials, scopes or protection edits.
-Local commits and bundles preserve work; they are NOT remote publication. No tag/merge/hosted CI.
-The access-check branch is permission evidence, not product work.
+GitHub content/workflow writes and normal pushes are verified now; earlier safety-denial notes are
+historical. Current Actions jobs fail before steps because the account's payment/spending-limit gate
+prevents execution. Do not change billing, org protection or credentials; do not rerun indefinitely.
+PR #52 remains unmerged pending valid checks/owner resolution. No macOS/Linux support claim.
 
-## Next bounded engineering tasks
+## Next work
 
-1. Native Windows Job Objects for stronger pre-execution/detached descendant containment.
-2. Handle-anchored file operations if hostile concurrent local writers are in scope. Current
-   root/link/hash checks are defense in depth, not OS sandbox enforcement.
-3. Fresh source/pin/credential-refresh tests for pi-codex-status, retaining actual quota labels.
-4. Supported authenticated Web-to-local relay. Stdio does not replace RDC reach in ChatGPT Web.
-5. Transactional verified-pin updates, complete platform/PTY/soak matrix, distribution signing
-   and complete three-upstream size accounting. Keep missing features visible, not fake ready.
-6. Continue source-project provenance and full300-ID metrics without importing GUI progress.
+1. Inspect the latest PR head and issue evidence, preserve checkpoint, rerun local gates.
+2. Implement configuration contracts DCP-009..016 and multi-root model, respecting capability
+   ceilings and explicit safety differences rather than letting an agent widen its own authority.
+3. Finish file-format/read/edit/list/move compatibility with exact schemas and installed tests.
+4. Add asynchronous ripgrep/search sessions and process compatibility using existing native
+   services as a base, not a wholesale rewrite. Preserve cancellation/output bounds and identities.
+5. Complete packed Codex lifecycle and required actual-platform validation; close issues only with
+   committed accepted evidence. Keep all26 tool contracts and all48 DCP issues visible.
 
-Do not delete the archived legacy repository or local recovery checkpoints for cleanup.
-
-## Codex/DesktopCommander parity is now the release gate
-
-The user narrowed the replacement requirement to 100% DesktopCommanderMCP parity for Codex. Baseline is 0.2.52 / c774c3b505de990219637ecdc9a830c8772fae9d. Epic #2 indexes DCP-001 through DCP-048 (#3-#50). Work those issues independently; do not close the epic or claim PASS until all 48 are accepted. Claude-only preview UI and the Remote Device/Web relay are outside this Codex parity gate. Use docs/execution/DESKTOP_COMMANDER_100_PASS_PROMPT.md for the next full execution pass.
+Recovery before this pass: artifacts/parity-execution-20261005T200426Z/before.bundle and
+before-source.zip. Earlier interrupted source and checkpoints remain intact. Final checkpoints
+are additive under artifacts/checkpoints/. Do not delete user files or the archived legacy source.

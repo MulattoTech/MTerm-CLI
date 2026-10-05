@@ -20,15 +20,17 @@
     "versions.json"
   ],
   "scripts": {
-    "build": "node scripts/roadmap.mjs --check && npm run build:code",
+    "build": "npm run roadmap:check && npm run parity:check && npm run build:code",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "node --test --test-concurrency=1 tests/*.test.mjs",
-    "check": "npm run roadmap:check && npm run typecheck && npm run format:check && npm test",
+    "check": "npm run roadmap:check && npm run parity:check && npm run typecheck && npm run format:check && npm test",
     "roadmap:check": "node scripts/roadmap.mjs --check",
     "build:code": "tsc -p tsconfig.json",
     "format:check": "prettier --check \"src/**/*.ts\" \"bin/*.js\" \"scripts/*.mjs\" \"tests/*.mjs\"",
     "prepack": "npm run check && npm run build:code",
-    "roadmap:render": "node scripts/roadmap.mjs --render"
+    "roadmap:render": "node scripts/roadmap.mjs --render",
+    "parity:check": "node scripts/parity-baseline.mjs --check",
+    "parity:probe": "node scripts/parity-baseline.mjs --probe"
   },
   "dependencies": {
     "@modelcontextprotocol/server": "2.3.0",

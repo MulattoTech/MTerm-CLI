@@ -2,7 +2,7 @@
 
 ![Weighted delivery maturity](roadmap/bars/overall.svg)
 
-**27.87% reviewed weighted delivery maturity** across 300 requirements; 0 complete and 45 blocked. Not release readiness.
+**28.87% reviewed weighted delivery maturity** across 300 requirements; 0 complete and 45 blocked. Not release readiness.
 
 [Every feature and evidence](roadmap/FEATURES.md) · [Offline searchable dashboard](roadmap/index.html) · [Metric contract](roadmap/METRICS.md)
 
@@ -10,7 +10,7 @@ No GUI progress is inherited. Baseline weights are rough engineering estimates, 
 
 | Area | Progress | Items |
 |---|---|---:|
-| Access, discovery and source reconciliation | ![75%](roadmap/bars/area-01.svg) | 12 |
+| Access, discovery and source reconciliation | ![76.67%](roadmap/bars/area-01.svg) | 12 |
 | GUI directory migration and preservation | ![0%](roadmap/bars/area-02.svg) | 18 |
 | Feasibility and architecture decisions | ![10%](roadmap/bars/area-03.svg) | 10 |
 | Entry point and CLI argument behavior | ![67%](roadmap/bars/area-04.svg) | 14 |
@@ -26,8 +26,8 @@ No GUI progress is inherited. Baseline weights are rough engineering estimates, 
 | Install and runtime distribution | ![65.87%](roadmap/bars/area-14.svg) | 12 |
 | Platform support and native terminal behavior | ![32.5%](roadmap/bars/area-15.svg) | 10 |
 | Security and privacy gates | ![39%](roadmap/bars/area-16.svg) | 10 |
-| Automated testing and CI | ![35.83%](roadmap/bars/area-17.svg) | 12 |
-| CLI roadmap, progress bars and governance | ![52.78%](roadmap/bars/area-18.svg) | 18 |
+| Automated testing and CI | ![54.58%](roadmap/bars/area-17.svg) | 12 |
+| CLI roadmap, progress bars and governance | ![55%](roadmap/bars/area-18.svg) | 18 |
 | AI attribution and recovery | ![65%](roadmap/bars/area-19.svg) | 8 |
 | Release integration and delivery | ![10%](roadmap/bars/area-20.svg) | 10 |
 | Footprint and latency verification | ![51.25%](roadmap/bars/area-21.svg) | 8 |

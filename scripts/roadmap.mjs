@@ -83,7 +83,7 @@ export function renderHtml(c, summary) {
       '',
     )}</select><p id="count"></p><table><thead><tr><th>ID</th><th>Feature and acceptance</th><th>Progress</th><th>Remaining / ETA</th></tr></thead><tbody id="rows"></tbody></table><script id="catalog" type="application/json">${data}</script><script>const items=JSON.parse(document.getElementById('catalog').textContent);const rows=document.getElementById('rows');function draw(){const q=document.getElementById('search').value.toLowerCase();const f=document.getElementById('filter').value;const selected=items.filter(x=>(f==='all'||f==='blocked'&&x.blocker||x.stage===f)&&[x.id,x.title,x.section,x.acceptance,x.notes,x.blocker].join(' ').toLowerCase().includes(q));rows.replaceChildren();for(const x of selected){const tr=document.createElement('tr');tr.className=x.blocker?'blocked':x.stage;for(let i=0;i<4;i++)tr.appendChild(document.createElement('td'));tr.children[0].textContent=x.id;tr.children[1].textContent=x.title;const detail=document.createElement('small');detail.textContent=x.acceptance+' — '+x.notes+(x.blocker?' BLOCKED: '+x.blocker:'');tr.children[1].appendChild(detail);const bar=document.createElement('progress');bar.max=100;bar.value=x.percent;bar.setAttribute('aria-label',x.id+' '+x.percent+'%');tr.children[2].appendChild(bar);const state=document.createElement('small');state.textContent=x.percent+'% '+x.stage;tr.children[2].appendChild(state);tr.children[3].textContent=x.remainingHours.join('–')+' h · '+x.eta;rows.appendChild(tr);}document.getElementById('count').textContent=selected.length+' of '+items.length+' visible';}document.getElementById('search').addEventListener('input',draw);document.getElementById('filter').addEventListener('change',draw);draw();</script></html>\n`;
 }
-const roots = ['src', 'bin', 'scripts', 'tests', '.github'];
+const roots = ['src', 'bin', 'scripts', 'tests', '.github', 'docs/parity'];
 const singles = [
   'package.json',
   'package-lock.json',
@@ -97,12 +97,24 @@ const singles = [
   'GEMINI.md',
   'versions.json',
   'docs/SECURITY.md',
+  'docs/CODEX_REGISTRATION.md',
+  'docs/execution/NEXT_PARITY_PROMPT.md',
+  'docs/validation/2026-10-05-codex-parity-foundation.md',
   'docs/ARCHITECTURE.md',
   'docs/TODAY_CANDIDATE.md',
   'docs/roadmap/desktop-commander-parity.json',
   'docs/DESKTOP_COMMANDER_CODEX_PARITY.md',
   'docs/execution/DESKTOP_COMMANDER_100_PASS_PROMPT.md',
 ];
+// Git normalizes known text to LF; hash equivalent CRLF checkouts identically.
+// Binary files remain byte-exact. Content edits still require explicit metric review.
+export function sourceDigest(bytes, relativePath) {
+  if (/\.(?:md|txt|json|mjs|cjs|js|ts|tsx|yaml|yml|toml|ps1|sh|css|html|svg)$/.test(relativePath)) {
+    const text = new TextDecoder('utf-8', { fatal: true, ignoreBOM: true }).decode(bytes);
+    return digest(text.replace(/\r\n/g, '\n'));
+  }
+  return digest(bytes);
+}
 async function sourceFingerprint(root) {
   const files = [];
   async function walk(relative) {
@@ -127,7 +139,7 @@ async function sourceFingerprint(root) {
       files.push(f);
     } catch {}
   const manifest = {};
-  for (const f of files.sort()) manifest[f] = digest(await fs.readFile(path.join(root, f)));
+  for (const f of files.sort()) manifest[f] = sourceDigest(await fs.readFile(path.join(root, f)), f);
   return { hash: digest(json(manifest)), files: manifest };
 }
 async function load(root) {

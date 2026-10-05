@@ -69,3 +69,14 @@ Do not delete the archived legacy repository or local recovery checkpoints for c
 ## Codex/DesktopCommander parity is now the release gate
 
 The user narrowed the replacement requirement to 100% DesktopCommanderMCP parity for Codex. Baseline is 0.2.52 / c774c3b505de990219637ecdc9a830c8772fae9d. Epic #2 indexes DCP-001 through DCP-048 (#3-#50). Work those issues independently; do not close the epic or claim PASS until all 48 are accepted. Claude-only preview UI and the Remote Device/Web relay are outside this Codex parity gate. Use docs/execution/DESKTOP_COMMANDER_100_PASS_PROMPT.md for the next full execution pass.
+
+## 2026-10-05 foundation checkpoint
+
+Managed `setup codex --apply` and `remove codex --apply` now exist; default remains preview.
+See CODEX_REGISTRATION.md. Real Codex0.160.1 parsed isolated configurations,2 SDK sessions from
+the registered executable passed, and the same proof passed against a freshly installed tarball.
+No real home/auth/model changes.55 tests pass. Full26-tool compatibility and all48 issue acceptance
+remain incomplete. Source hashes now canonicalize CRLF/LF for known text; the original clean-checkout
+stale-review defect was reproduced and repaired, not bypassed. Pinned reference identity/drift and
+false-PASS validation are enforced by `npm run parity:check`. The approved target is unchanged.
+The isolated GitHub content write was verified this session; historical denial notes are not current.

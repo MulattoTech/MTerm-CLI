@@ -1,7 +1,6 @@
 // SPDX-License-Identifier: MIT
 // AI-Change: 2026-10-04-local-mcp (OpenAI / GPT-6 Astra Pro; self-reported)
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { safeError, fail } from './errors.js';
 export const VERSION = '0.0.1-preview.1';
 export function parseHost(args: string[]) {
@@ -25,7 +24,7 @@ export function parseHost(args: string[]) {
   return { root: path.resolve(root), allowWrite, allowExec };
 }
 function help() {
-  return `MTerm-CLI ${VERSION} — local workstation preview\n\n  mterm-cli                         Launch existing Codex, unchanged TUI\n  mterm-cli -- <codex arguments>     Explicit pass-through, no injected flags\n  mterm-cli mcp --stdio --root PATH [--allow-write] [--allow-exec]\n  mterm-cli doctor --json [--root PATH]\n  mterm-cli setup codex --root PATH [--allow-write] [--allow-exec]\n  mterm-cli config [show|get KEY|set KEY VALUE|path] [--json]\n  mterm-cli status [--json|--line]    Quota integration not implemented yet\n  mterm-cli update                   Managed updater not implemented yet\n\nMCP defaults to read-only. Execution is separate and runs as your OS user, not a sandbox.\nNo browser, Web relay, network listener, daemon, quota request or automatic installation.\nsetup prints a reversible plan; it never writes your real Codex configuration.\n`;
+  return `MTerm-CLI ${VERSION} — local workstation preview\n\n  mterm-cli                         Launch existing Codex, unchanged TUI\n  mterm-cli -- <codex arguments>     Explicit pass-through, no injected flags\n  mterm-cli mcp --stdio --root PATH [--allow-write] [--allow-exec]\n  mterm-cli doctor --json [--root PATH]\n  mterm-cli setup codex --root PATH [--allow-write] [--allow-exec] [--apply]\n  mterm-cli remove codex [--name NAME] [--apply]\n  mterm-cli config [show|get KEY|set KEY VALUE|path] [--json]\n  mterm-cli status [--json|--line]    Quota integration not implemented yet\n  mterm-cli update                   Managed updater not implemented yet\n\nMCP defaults to read-only. Execution is separate and runs as your OS user, not a sandbox.\nNo browser, Web relay, network listener, daemon, quota request or automatic installation.\nsetup previews by default; --apply performs explicit backed-up registration. remove codex --apply removes only the exact owned block.\n`;
 }
 async function doctor(args: string[]) {
   const { settings } = await import('./config.js');
@@ -142,38 +141,44 @@ export async function main(args: string[]): Promise<number> {
     }
     fail('USAGE', 'Use config show|get KEY|set KEY VALUE|path.');
   }
-  if (args[0] === 'setup' && args[1] === 'codex') {
-    const opts = parseHost(['--stdio', ...args.slice(2)]);
-    const { RootPolicy } = await import('./policy.js');
-    const root = await RootPolicy.create(opts.root);
-    const bin = fileURLToPath(new URL('../bin/mterm-cli.js', import.meta.url));
-    const childArgs = [
-      bin,
-      'mcp',
-      '--stdio',
-      '--root',
-      root.root,
-      ...(opts.allowWrite ? ['--allow-write'] : []),
-      ...(opts.allowExec ? ['--allow-exec'] : []),
-    ];
-    console.log(
-      JSON.stringify(
-        {
-          schemaVersion: 1,
-          applied: false,
-          add: {
-            command: 'codex',
-            args: ['mcp', 'add', 'mterm-local', '--', process.execPath, ...childArgs],
+  if ((args[0] === 'setup' || args[0] === 'remove') && args[1] === 'codex') {
+    let apply = false,
+      name = 'mterm-local';
+    const host: string[] = [];
+    for (let i = 2; i < args.length; ++i) {
+      if (args[i] === '--apply') {
+        if (apply) fail('USAGE', '--apply must occur once.');
+        apply = true;
+      } else if (args[i] === '--name') {
+        name = args[++i] ?? '';
+      } else host.push(args[i]!);
+    }
+    const registration = await import('./codex-registration.js');
+    if (args[0] === 'remove') {
+      if (host.length) fail('USAGE', 'Use remove codex [--name NAME] [--apply].');
+      console.log(JSON.stringify(await registration.removeCodexRegistration({ name, apply }), null, 2));
+      return 0;
+    }
+    const opts = parseHost(['--stdio', ...host]);
+    const plan = await registration.planCodexRegistration({ ...opts, name });
+    if (apply) console.log(JSON.stringify(await registration.applyCodexRegistration(plan), null, 2));
+    else
+      console.log(
+        JSON.stringify(
+          {
+            schemaVersion: 1,
+            applied: false,
+            add: { command: 'codex', args: ['mcp', 'add', name, '--', plan.command, ...plan.args] },
+            verify: { command: 'codex', args: ['mcp', 'get', name, '--json'] },
+            remove: { command: 'codex', args: ['mcp', 'remove', name] },
+            managedRemoval: { command: 'mterm-cli', args: ['remove', 'codex', '--name', name, '--apply'] },
+            warning:
+              'Preview only. Use setup codex --apply to apply with ownership tracking and backups. Direct Codex add is unmanaged. Existing unowned or changed entries are never overwritten. Execution runs as your OS user.',
           },
-          verify: { command: 'codex', args: ['mcp', 'get', 'mterm-local', '--json'] },
-          remove: { command: 'codex', args: ['mcp', 'remove', 'mterm-local'] },
-          warning:
-            'Review the root and privileges before applying. Do not replace an existing mterm-local entry without reviewing it. These local tools are not a Web relay or OS sandbox.',
-        },
-        null,
-        2,
-      ),
-    );
+          null,
+          2,
+        ),
+      );
     return 0;
   }
   if (args[0] === 'status' || args[0] === 'update') {

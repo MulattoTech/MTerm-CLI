@@ -1,0 +1,86 @@
+{
+  "change_id": "2026-10-05-codex-parity-foundation",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "identity_basis": "session-declared; self-reported",
+  "started_at_utc": "2026-10-05T20:04:26Z",
+  "updated_at_utc": "2026-10-05T20:32:42.600919+00:00",
+  "base_commit": "5c4588be3afe36ee11951a73c84a023656fe6fec",
+  "request": "Execute DesktopCommanderMCP Codex parity prompt and leave a forward-work prompt",
+  "requirements": [
+    "DCP-001",
+    "DCP-002",
+    "DCP-003",
+    "DCP-004",
+    "DCP-006",
+    "DCP-008",
+    "CLI-231",
+    "CLI-233",
+    "CLI-292"
+  ],
+  "decisions": [
+    "Preserve GUI and existing native MCP tools",
+    "Fix LF/CRLF fingerprint defect without disabling review",
+    "Generate and validate a managed Codex stanza through real Codex in isolated homes; explicit --apply only",
+    "Keep all48 parity gaps open until their full acceptance is independently qualified",
+    "Snapshot upstream sources with MIT attribution; drift probe never advances baseline"
+  ],
+  "tests": [
+    {
+      "command": "baseline npm run build",
+      "result": "FAILED before source edits:3 LF-normalized documentation files differed from CRLF review hashes",
+      "evidence": "artifacts/parity-execution-20261005T200426Z/baseline-review-mismatch.json"
+    },
+    {
+      "command": "foundation regression tests before implementation",
+      "result": "8 intended missing-implementation failures observed"
+    },
+    {
+      "command": "foundation regression tests after implementation",
+      "result": "12/12 passed (7 new registration,4 original roadmap,1 normalization)"
+    },
+    {
+      "command": "baseline detector tests before/after implementation",
+      "result": "4 intended failures observed; all4 subsequently passed"
+    },
+    {
+      "command": "node scripts/verify-managed-codex.mjs",
+      "result": "PASS: real Codex0.160.1; idempotent apply/remove and exact unrelated config preservation;2 MCP protocol sessions from registered executable; no model calls",
+      "evidence": "artifacts/managed-codex-bAbgIM/result.json"
+    },
+    {
+      "command": "npm run build && npm run check",
+      "result": "PASS:55 tests,0 failures,0 skips; original regressions retained",
+      "evidence": "artifacts/parity-execution-20261005T200426Z/foundation-check-all.log"
+    },
+    {
+      "command": "node scripts/verify-package.mjs; MTERM_VERIFY_BIN=<installed artifact> node scripts/verify-managed-codex.mjs",
+      "result": "PASS: actual packed install; managed Codex apply/idempotence/remove;2 SDK launches from configuration parsed by real Codex0.160.1; no model call",
+      "evidence": "artifacts/managed-codex-i4lcCH/result.json"
+    },
+    {
+      "command": "node scripts/parity-baseline.mjs --probe",
+      "result": "PASS: upstream main still matches c774c3b; approved target unchanged",
+      "evidence": "artifacts/parity-execution-20261005T200426Z/upstream-probe.log"
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "ids": [
+        "CLI-001",
+        "CLI-003",
+        "CLI-231",
+        "CLI-233",
+        "CLI-292"
+      ],
+      "assessment": "Fresh RDC/GitHub write proofs and targeted registration/fingerprint work. Baseline weights preserved; full parity remains NOT PASS. No blanket completion credit."
+    }
+  ],
+  "limitations": [
+    "No hosted CI or full26-tool compatibility result yet",
+    "Managed setup uses cooperative locking and compare-before-replace, not a guarantee against hostile uncooperative concurrent writers",
+    "No real user CODEX_HOME/auth or model call modified"
+  ],
+  "checkpoint": "artifacts/parity-execution-20261005T200426Z/before.bundle",
+  "next_step": "Publish foundation; activate and inspect cross-platform CI before broader acceptance claims; implement real compatibility tools."
+}

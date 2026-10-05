@@ -16,9 +16,10 @@ cd C:\Tools\Dev\MTerm-CLI
 .\Start-MTerm-CLI.ps1 setup codex --root C:\Tools\Dev\MTerm-CLI --allow-write --allow-exec
 ```
 
-The last command prints a **reviewable registration plan**, including its inverse. It does not
-edit real Codex configuration. Its add/get/remove sequence was tested against the actual installed
-Codex using an isolated temporary CODEX_HOME. Review the root/privileges before applying it.
+The last command previews registration. Add `--apply` deliberately to apply a backed-up, ownership-tracked
+entry; `remove codex --apply` removes only that exact owned entry. Repeated operations are idempotent.
+Actual Codex0.160.1 and a freshly installed package were tested in isolated CODEX_HOME, not your real
+configuration. See [registration and limits](docs/CODEX_REGISTRATION.md).
 
 Direct command from an installed/link-created package:
 
@@ -34,8 +35,8 @@ Use an MCP-capable local client. Help/config/status never silently start a brows
 
 ## Available local tools
 
-Read/info/list/literal filename search/content search; guarded UTF-8 writes, one-level directory
-creation, no-overwrite regular-file move; owned captured process start/poll/input/list/stop;
+Native read/info/list/literal filename search/content search; guarded UTF-8 writes and regular-file
+moves; an optional compatibility profile additionally supports nested directory creation and recursive listing; owned captured process start/poll/input/list/stop;
 read-only Git status/diff; system info; bounded in-memory audit metadata.
 
 Files are read-only by default. Writes require --allow-write, OS process execution independently
@@ -68,5 +69,18 @@ not release readiness or fraction of lines written. Web/quota/update/platform bl
 No GUI completion credit is imported. This repo is separate from [MTerm-GUI](https://github.com/MulattoTech/MTerm-GUI).
 
 Start with AGENTS.md, docs/HANDOFF.md, docs/TODAY_CANDIDATE.md and docs/TESTING.md.
-GitHub content publication was blocked by the platform safety check in this session; the tested
-candidate is local until an authorized content-write path is available. No push/merge/release is claimed.
+Current parity implementation is published in [PR #52](https://github.com/MulattoTech/MTerm-CLI/pull/52)
+on `feat/codex-parity-foundation-20261005`, not yet merged. Hosted verification is blocked before steps
+by a GitHub account billing/spending-limit gate. Workflow writes now work; no hosted PASS is claimed.
+
+## DesktopCommander-compatible file profile
+
+Add `--compat-desktop-commander` to `mcp --stdio` or `setup codex` to expose implemented aliases:
+`read_file`, `read_multiple_files`, `list_directory`, `get_file_info`, plus `write_file`,
+`create_directory`, `move_file` and `edit_block` with `--allow-write`. Use absolute file paths.
+This is a bounded text/file subset, not full26-tool DesktopCommander parity. Native names remain.
+URL, images/office formats, fuzzy edits, directory/cross-device moves and other contracts remain open.
+
+**Parity acceptance remains0/48, NOT PASS.** [Current implementation evidence](docs/validation/2026-10-05-codex-parity-foundation.md)
+and [next execution prompt](docs/execution/NEXT_PARITY_PROMPT.md) distinguish tested work from gaps.
+The full300-item product maturity bar is not this separate binary parity certification.

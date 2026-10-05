@@ -14,3 +14,5 @@ No actual user Codex config/auth is modified by setup; it prints a reversible pl
 
 ## Codex parity execution update (2026-10-05)
 Read docs/parity/README.md and the DCP ledger. `setup codex` is preview-only unless `--apply` is explicit; `remove codex --apply` removes only an exact owned stanza. Tests use isolated CODEX_HOME and never real auth. GitHub content writes were freshly verified on an excluded access-check branch; prior denial notes are historical, not current proof. Source fingerprints normalize CRLF to LF for known UTF-8 text; all real source changes still require metric review.
+
+Current continuation: docs/execution/NEXT_PARITY_PROMPT.md. Reconcile the actual PR52 head before using main; do not discard unmerged verified work or bypass the account-blocked hosted gate.

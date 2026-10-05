@@ -21,3 +21,8 @@ called every DesktopCommander-compatible tool; that broader acceptance remains o
 Verification: `node scripts/verify-managed-codex.mjs` uses only synthetic isolated homes and twice
 launches the MCP executable parsed from the actual Codex configuration. Test-owned output is retained
 under artifacts. `MTERM_VERIFY_BIN` selects a freshly installed artifact for the same verification.
+
+Optional `--compat-desktop-commander` is saved in the generated command and verified by installed
+registration tests. It enables only the eight implemented text/file aliases; it does not silently
+claim complete DesktopCommander compatibility or remove native MTerm tools. Changing a saved scope
+or profile requires deliberate removal/reconfiguration; a repeated setup never widens it silently.

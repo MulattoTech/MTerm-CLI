@@ -98,6 +98,8 @@ const singles = [
   'versions.json',
   'docs/SECURITY.md',
   'docs/CODEX_REGISTRATION.md',
+  'docs/execution/NEXT_PARITY_PROMPT.md',
+  'docs/validation/2026-10-05-codex-parity-foundation.md',
   'docs/ARCHITECTURE.md',
   'docs/TODAY_CANDIDATE.md',
   'docs/roadmap/desktop-commander-parity.json',

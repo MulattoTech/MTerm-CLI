@@ -44,4 +44,18 @@ test('parity closure count and PASS cannot be asserted without issue evidence an
   fake.gaps[0].state = 'closed';
   fake.closedGapCount = 1;
   assert.throws(() => mod.validateParity(fake), /evidence/i);
+  fake.gaps[0].evidence = ['tests/fixture-acceptance.md'];
+  assert.throws(() => mod.validateParity(fake), /acceptance|evidence/i);
+  fake.gaps[0].acceptanceReview = {
+    allCriteriaSatisfied: true,
+    reviewer: 'test-fixture-only',
+    testedCommit: 'a'.repeat(40),
+    upstreamCommit: fake.upstream.commit,
+    acceptedAt: '2026-10-05T00:00:00Z',
+    report: 'tests/fixture-acceptance.md',
+  };
+  assert.equal(mod.validateParity(fake).closed, 1);
+  assert.equal(mod.validateParity(fake).pass, false);
+  fake.gaps[0].acceptanceReview.upstreamCommit = 'b'.repeat(40);
+  assert.throws(() => mod.validateParity(fake), /acceptance|evidence/i);
 });

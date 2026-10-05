@@ -4,7 +4,7 @@
   "model": "GPT-6 Astra Pro",
   "identity_basis": "session-declared; self-reported",
   "started_at_utc": "2026-10-05T20:04:26Z",
-  "updated_at_utc": "2026-10-05T21:03:55.284246+00:00",
+  "updated_at_utc": "2026-10-05T21:23:09.785804+00:00",
   "base_commit": "5c4588be3afe36ee11951a73c84a023656fe6fec",
   "request": "Execute DesktopCommanderMCP Codex parity prompt and leave a forward-work prompt",
   "requirements": [
@@ -95,18 +95,193 @@
       "command": "MTERM_VERIFY_BIN=<fresh packed install> node scripts/verify-managed-codex.mjs",
       "result": "PASS: Codex0.160.1; idempotent managed apply/remove;2 actual SDK sessions from Codex-parsed config; compatibility flag retained; user config unchanged; no model calls",
       "evidence": "artifacts/managed-codex-TuWvBK/result.json"
+    },
+    {
+      "command": "Final parity-status negative test after attaching partial evidence",
+      "result": "Caught that a mere state edit could count partial evidence as closure. Strengthened validator requires explicit matching upstream/tested-commit acceptanceReview; positive synthetic review and wrong-baseline negatives added. No actual issue closure."
+    },
+    {
+      "command": "node scripts/verify-self-host.mjs",
+      "result": "Observed inherited hardcoded /local-mcp-candidate/ assertion fail on the new branch although MCP Git returned correct current status; replaced with an independent read-only Git header comparison, preserving actual verification."
+    },
+    {
+      "command": "Final normal build/check/prepack and self-host after acceptance-validator and branch-harness fixes",
+      "result": "PASS:64 tests,0fail/skip; normal npm pack including prepack passed; actual repo read/Git/no-emit typecheck through own MCP exit0. No model calls.",
+      "evidence": [
+        "artifacts/parity-execution-20261005T200426Z/final-check.log",
+        "artifacts/parity-execution-20261005T200426Z/final-prepack.log",
+        "artifacts/parity-execution-20261005T200426Z/final-self-host.log"
+      ]
     }
   ],
   "roadmap_updates": [
     {
-      "ids": [
-        "CLI-001",
-        "CLI-003",
-        "CLI-231",
-        "CLI-233",
-        "CLI-292"
-      ],
-      "assessment": "Fresh RDC/GitHub write proofs and targeted registration/fingerprint work. Baseline weights preserved; full parity remains NOT PASS. No blanket completion credit."
+      "id": "CLI-001",
+      "from": "validated",
+      "to": "validated",
+      "notes": "Authorized host and root reverified; GUI and archived legacy untouched. Product work published on PR52, hosted gate blocked."
+    },
+    {
+      "id": "CLI-003",
+      "from": "integrated",
+      "to": "validated",
+      "notes": "RDC write/rename, GitHub content/workflow writes, normal pushes and PR creation reverified. Actual hosted jobs are blocked by account billing/spending limits; merge/tag unperformed."
+    },
+    {
+      "id": "CLI-175",
+      "from": "validated",
+      "to": "validated",
+      "notes": "Real production tarball install, official-client MCP file round trip outside checkout, isolated-prefix npm link and actual Windows shim passed. No user-global prefix mutation; other platforms and full three-component bundle remain unverified."
+    },
+    {
+      "id": "CLI-178",
+      "from": "validated",
+      "to": "validated",
+      "notes": "Real production tarball install, official-client MCP file round trip outside checkout, isolated-prefix npm link and actual Windows shim passed. No user-global prefix mutation; other platforms and full three-component bundle remain unverified."
+    },
+    {
+      "id": "CLI-187",
+      "from": "not_started",
+      "to": "not_started",
+      "notes": "Workflow job is defined with actual architecture assertions, but no runner steps executed. Platform implementation acceptance stays not_started."
+    },
+    {
+      "id": "CLI-188",
+      "from": "not_started",
+      "to": "not_started",
+      "notes": "Workflow job is defined with actual architecture assertions, but no runner steps executed. Platform implementation acceptance stays not_started."
+    },
+    {
+      "id": "CLI-189",
+      "from": "not_started",
+      "to": "not_started",
+      "notes": "Workflow job is defined with actual architecture assertions, but no runner steps executed. Platform implementation acceptance stays not_started."
+    },
+    {
+      "id": "CLI-207",
+      "from": "planned",
+      "to": "integrated",
+      "notes": "Actual root workflow installed/read back on PR52, with four OS/architecture jobs. Job execution is account-blocked; presence is not platform acceptance."
+    },
+    {
+      "id": "CLI-208",
+      "from": "planned",
+      "to": "validated",
+      "notes": "Third-party actions are exact-commit pinned; contents-read, no persisted checkout credential, exact Node/Codex tests and no model/auth calls. Runtime jobs remain blocked."
+    },
+    {
+      "id": "CLI-214",
+      "from": "integrated",
+      "to": "validated",
+      "notes": "Fresh production tarball, offline npm exec MCP8aliases, isolated prefix link and actual Windows shim all passed. Cross-platform installed proof still pending."
+    },
+    {
+      "id": "CLI-215",
+      "from": "planned",
+      "to": "planned",
+      "notes": "Content/workflow publication is now verified. Current unmerged PR52 and actual account-blocked hosted verification remain distinct from product acceptance."
+    },
+    {
+      "id": "CLI-216",
+      "from": "planned",
+      "to": "validated",
+      "notes": "Read actual run/job/check annotations: jobs did not start due to account payment/spending-limit gate. Explicitly not code PASS, failure-in-test or skipped-platform success."
+    },
+    {
+      "id": "CLI-231",
+      "from": "integrated",
+      "to": "validated",
+      "notes": "Reproduced prior clean Git checkout CRLF/LF mismatch and fixed normalized text fingerprints; binary and real source/catalog drift remain detected."
+    },
+    {
+      "id": "CLI-233",
+      "from": "integrated",
+      "to": "validated",
+      "notes": "Normal build/check now enforce both roadmap review and pinned-parity integrity. Forged PASS/closure without evidence is rejected; generated credit is still explicit review."
+    },
+    {
+      "id": "CLI-245",
+      "from": "planned",
+      "to": "planned",
+      "notes": "Content/workflow publication is now verified. Current unmerged PR52 and actual account-blocked hosted verification remain distinct from product acceptance."
+    },
+    {
+      "id": "CLI-247",
+      "from": "planned",
+      "to": "planned",
+      "notes": "Content/workflow publication is now verified. Current unmerged PR52 and actual account-blocked hosted verification remain distinct from product acceptance."
+    },
+    {
+      "id": "CLI-248",
+      "from": "planned",
+      "to": "planned",
+      "notes": "Content/workflow publication is now verified. Current unmerged PR52 and actual account-blocked hosted verification remain distinct from product acceptance."
+    },
+    {
+      "id": "CLI-264",
+      "from": "validated",
+      "to": "validated",
+      "notes": "Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains."
+    },
+    {
+      "id": "CLI-265",
+      "from": "validated",
+      "to": "validated",
+      "notes": "Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains."
+    },
+    {
+      "id": "CLI-268",
+      "from": "validated",
+      "to": "validated",
+      "notes": "Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains."
+    },
+    {
+      "id": "CLI-269",
+      "from": "validated",
+      "to": "validated",
+      "notes": "Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains."
+    },
+    {
+      "id": "CLI-270",
+      "from": "validated",
+      "to": "validated",
+      "notes": "Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains."
+    },
+    {
+      "id": "CLI-271",
+      "from": "integrated",
+      "to": "integrated",
+      "notes": "Conservative root/link checks and live-parent tree cleanup work; hostile filesystem races, directory moves, detached descendants and direct Web relay are not guaranteed. Local candidate is partial, not complete RDC relay replacement."
+    },
+    {
+      "id": "CLI-272",
+      "from": "validated",
+      "to": "validated",
+      "notes": "Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains."
+    },
+    {
+      "id": "CLI-292",
+      "from": "validated",
+      "to": "validated",
+      "notes": "Managed --apply setup/removal, exact ownership and backup conflict handling passed on source and real installed artifact with Codex0.160.1, unrelated config preserved; no actual agent model call."
+    },
+    {
+      "id": "CLI-293",
+      "from": "validated",
+      "to": "validated",
+      "notes": "Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains."
+    },
+    {
+      "id": "CLI-294",
+      "from": "validated",
+      "to": "validated",
+      "notes": "Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains."
+    },
+    {
+      "id": "CLI-300",
+      "from": "integrated",
+      "to": "integrated",
+      "notes": "Conservative root/link checks and live-parent tree cleanup work; hostile filesystem races, directory moves, detached descendants and direct Web relay are not guaranteed. Local candidate is partial, not complete RDC relay replacement."
     }
   ],
   "limitations": [
@@ -116,6 +291,64 @@
     "GitHub Actions runners failed before any step: annotations cite failed recent account payments or spending limit. Billing/protections unchanged; hosted platform certification unavailable."
   ],
   "checkpoint": "artifacts/parity-execution-20261005T200426Z/before.bundle",
-  "next_step": "Publish foundation; activate and inspect cross-platform CI before broader acceptance claims; implement real compatibility tools.",
-  "workflow": ".github/workflows/cli-ci.yml, connector commit085d481; actual hosted conclusions pending"
+  "next_step": "Read NEXT_PARITY_PROMPT, verify the current PR52 head and local gates, then implement configuration and remaining tool contracts; no CI bypass or unsupported issue closures.",
+  "workflow": ".github/workflows/cli-ci.yml, connector commit085d481; actual hosted conclusions pending",
+  "publication": {
+    "branch": "feat/codex-parity-foundation-20261005",
+    "pr": 52,
+    "codeCheckpoint": "6431dd71db6775c480086f944a77c0d42d6c3a0e",
+    "merged": false,
+    "main": "5c4588be3afe36ee11951a73c84a023656fe6fec",
+    "hostedGate": "Hosted CI cannot start: GitHub account payment/spending-limit gate. Owner resolution needed; no billing or protection changes authorized."
+  },
+  "files_modified": [
+    "AGENTS.md",
+    "CLAUDE.md",
+    "CONTRIBUTING.md",
+    "GEMINI.md",
+    "README.md",
+    "THIRD_PARTY.md",
+    "docs/DESKTOP_COMMANDER_CODEX_PARITY.md",
+    "docs/HANDOFF.md",
+    "docs/STATUS.md",
+    "docs/roadmap/METRICS.md",
+    "docs/roadmap/desktop-commander-parity.json",
+    "docs/roadmap/progress.json",
+    "docs/roadmap/review.json",
+    "package.json",
+    "scripts/roadmap.mjs",
+    "scripts/verify-package.mjs",
+    "src/cli.ts",
+    "src/files.ts",
+    "src/mcp.ts",
+    "src/policy.ts",
+    "tests/roadmap.test.mjs"
+  ],
+  "files_created": [
+    ".github/workflows/cli-ci.yml",
+    "docs/CODEX_REGISTRATION.md",
+    "docs/ai/changes/2026-10-05-codex-parity-foundation.json",
+    "docs/execution/NEXT_PARITY_PROMPT.md",
+    "docs/parity/README.md",
+    "docs/parity/baseline.json",
+    "docs/parity/upstream/LICENSE",
+    "docs/parity/upstream/manifest.template.json",
+    "docs/parity/upstream/package.json",
+    "docs/parity/upstream/src/handlers/filesystem-handlers.ts",
+    "docs/parity/upstream/src/index.ts",
+    "docs/parity/upstream/src/tools/schemas.ts",
+    "docs/parity/upstream/src/utils/files/text.ts",
+    "docs/validation/2026-10-05-codex-parity-foundation.md",
+    "scripts/npm-runtime.mjs",
+    "scripts/parity-baseline.mjs",
+    "scripts/verify-compatibility-installed.mjs",
+    "scripts/verify-managed-codex.mjs",
+    "src/codex-registration.ts",
+    "src/desktop-commander-files.ts",
+    "tests/codex-registration.test.mjs",
+    "tests/desktop-commander-files.test.mjs",
+    "tests/npm-runtime.test.mjs",
+    "tests/parity-baseline.test.mjs"
+  ],
+  "continuation_prompt": "docs/execution/NEXT_PARITY_PROMPT.md"
 }

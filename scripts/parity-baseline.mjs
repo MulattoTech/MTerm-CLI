@@ -84,6 +84,22 @@ export function validateParity(p) {
         !row.evidence.every((x) => typeof x === 'string' && x.length)
       )
         throw Error('Closed parity gaps require committed evidence');
+      // Partial implementation evidence is not an acceptance review. Require an explicit
+      // scoped attestation before an issue-state edit can award closed-gap credit.
+      const accepted = row.acceptanceReview;
+      if (
+        !accepted ||
+        accepted.allCriteriaSatisfied !== true ||
+        typeof accepted.reviewer !== 'string' ||
+        !accepted.reviewer.trim() ||
+        !/^[a-f0-9]{40}$/.test(accepted.testedCommit ?? '') ||
+        accepted.upstreamCommit !== p.upstream?.commit ||
+        typeof accepted.acceptedAt !== 'string' ||
+        !Number.isFinite(Date.parse(accepted.acceptedAt)) ||
+        typeof accepted.report !== 'string' ||
+        !row.evidence.includes(accepted.report)
+      )
+        throw Error('Closed parity evidence requires an explicit scoped acceptance review');
       closed++;
     }
   }

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baseline": "cli-300-initial-effort-v1",
-  "reviewedAt": "2026-10-04T01:00:26.884218+00:00",
+  "reviewedAt": "2026-10-05T21:08:42.944283+00:00",
   "sourceSeedSha256": "09a5f76c7d5f83add8383b3cec3d02fb3fd41c9b2c4c80fbd482ffae29f457a2",
   "scope": "Full 300-item desired product, not just this Windows local MCP preview",
   "weightBasis": "Initial bands: ordinary acceptance8h; narrow UI/entry4h; Web40h; auth/update24h; platform/security/local tools16h. These rough baseline bands are frozen on first review.",
@@ -21,12 +21,13 @@
       "eta": "Unscheduled",
       "blocker": null,
       "evidence": [
-        "docs/plans/2026-10-04-local-mcp.md"
+        "docs/plans/2026-10-04-local-mcp.md",
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
       ],
-      "notes": "Host/current state verified and interrupted source preserved. GitHub publication remains blocked; source metadata only, not product completion.",
+      "notes": "Authorized host and root reverified; GUI and archived legacy untouched. Product work published on PR52, hosted gate blocked.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-10-05-codex-parity-foundation"
     },
     {
       "id": "CLI-002",
@@ -55,7 +56,7 @@
       "section": "Access, discovery and source reconciliation",
       "title": "Separate GitHub capabilities",
       "acceptance": "Record branch/content/workflow writes, CI, merges and tags as separately verified or untested.",
-      "stage": "integrated",
+      "stage": "validated",
       "weight": 8,
       "remainingHours": [
         1,
@@ -65,12 +66,13 @@
       "eta": "Unscheduled",
       "blocker": null,
       "evidence": [
-        "docs/plans/2026-10-04-local-mcp.md"
+        "docs/plans/2026-10-04-local-mcp.md",
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
       ],
-      "notes": "Separate GitHub capability probe recorded. Reads/branch creation worked; content-write safety denial prevents current publication.",
+      "notes": "RDC write/rename, GitHub content/workflow writes, normal pushes and PR creation reverified. Actual hosted jobs are blocked by account billing/spending limits; merge/tag unperformed.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-10-05-codex-parity-foundation"
     },
     {
       "id": "CLI-004",
@@ -3645,12 +3647,13 @@
       "blocker": null,
       "evidence": [
         "scripts/verify-package.mjs",
-        "tests/cli.test.mjs"
+        "tests/cli.test.mjs",
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
       ],
       "notes": "Real production tarball install, official-client MCP file round trip outside checkout, isolated-prefix npm link and actual Windows shim passed. No user-global prefix mutation; other platforms and full three-component bundle remain unverified.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-10-05-codex-parity-foundation"
     },
     {
       "id": "CLI-176",
@@ -3714,12 +3717,13 @@
       "blocker": null,
       "evidence": [
         "scripts/verify-package.mjs",
-        "tests/cli.test.mjs"
+        "tests/cli.test.mjs",
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
       ],
       "notes": "Real production tarball install, official-client MCP file round trip outside checkout, isolated-prefix npm link and actual Windows shim passed. No user-global prefix mutation; other platforms and full three-component bundle remain unverified.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-10-05-codex-parity-foundation"
     },
     {
       "id": "CLI-179",
@@ -3915,12 +3919,14 @@
       ],
       "estimateBasis": "Initial rough engineering range; not a schedule or measured AI runtime. Security/upstream/platform uncertainty can increase this estimate.",
       "eta": "Unscheduled",
-      "blocker": null,
-      "evidence": [],
-      "notes": "Requirement preserved; no implementation or acceptance evidence in this local candidate.",
+      "blocker": "Hosted CI cannot start: GitHub account payment/spending-limit gate. Owner resolution needed; no billing or protection changes authorized.",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ],
+      "notes": "Workflow job is defined with actual architecture assertions, but no runner steps executed. Platform implementation acceptance stays not_started.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-10-05-codex-parity-foundation"
     },
     {
       "id": "CLI-188",
@@ -3935,12 +3941,14 @@
       ],
       "estimateBasis": "Initial rough engineering range; not a schedule or measured AI runtime. Security/upstream/platform uncertainty can increase this estimate.",
       "eta": "Unscheduled",
-      "blocker": null,
-      "evidence": [],
-      "notes": "Requirement preserved; no implementation or acceptance evidence in this local candidate.",
+      "blocker": "Hosted CI cannot start: GitHub account payment/spending-limit gate. Owner resolution needed; no billing or protection changes authorized.",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ],
+      "notes": "Workflow job is defined with actual architecture assertions, but no runner steps executed. Platform implementation acceptance stays not_started.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-10-05-codex-parity-foundation"
     },
     {
       "id": "CLI-189",
@@ -3955,12 +3963,14 @@
       ],
       "estimateBasis": "Initial rough engineering range; not a schedule or measured AI runtime. Security/upstream/platform uncertainty can increase this estimate.",
       "eta": "Unscheduled",
-      "blocker": null,
-      "evidence": [],
-      "notes": "Requirement preserved; no implementation or acceptance evidence in this local candidate.",
+      "blocker": "Hosted CI cannot start: GitHub account payment/spending-limit gate. Owner resolution needed; no billing or protection changes authorized.",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ],
+      "notes": "Workflow job is defined with actual architecture assertions, but no runner steps executed. Platform implementation acceptance stays not_started.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-10-05-codex-parity-foundation"
     },
     {
       "id": "CLI-190",
@@ -4351,44 +4361,46 @@
       "section": "Automated testing and CI",
       "title": "Create the root CLI workflow",
       "acceptance": "The actual .github/workflows/cli-ci.yml is present and readable on the intended branch.",
-      "stage": "planned",
+      "stage": "integrated",
       "weight": 16,
       "remainingHours": [
-        7,
-        29
+        1,
+        6
       ],
       "estimateBasis": "Initial rough engineering range; not a schedule or measured AI runtime. Security/upstream/platform uncertainty can increase this estimate.",
       "eta": "Unscheduled",
-      "blocker": "GitHub content-write probe blocked by platform safety checks; no bypass or hosted test run.",
+      "blocker": null,
       "evidence": [
-        "docs/plans/2026-10-04-local-mcp.md"
+        "docs/plans/2026-10-04-local-mcp.md",
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
       ],
-      "notes": "Publishing and hosted workflow execution are blocked by current content-write safety denial; no workaround or green badge claimed.",
+      "notes": "Actual root workflow installed/read back on PR52, with four OS/architecture jobs. Job execution is account-blocked; presence is not platform acceptance.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-10-05-codex-parity-foundation"
     },
     {
       "id": "CLI-208",
       "section": "Automated testing and CI",
       "title": "Pin workflow actions and permissions",
       "acceptance": "Third-party action refs and least-privilege settings are reviewed.",
-      "stage": "planned",
+      "stage": "validated",
       "weight": 16,
       "remainingHours": [
-        7,
-        29
+        1,
+        6
       ],
       "estimateBasis": "Initial rough engineering range; not a schedule or measured AI runtime. Security/upstream/platform uncertainty can increase this estimate.",
       "eta": "Unscheduled",
-      "blocker": "GitHub content-write probe blocked by platform safety checks; no bypass or hosted test run.",
+      "blocker": null,
       "evidence": [
-        "docs/plans/2026-10-04-local-mcp.md"
+        "docs/plans/2026-10-04-local-mcp.md",
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
       ],
-      "notes": "Publishing and hosted workflow execution are blocked by current content-write safety denial; no workaround or green badge claimed.",
+      "notes": "Third-party actions are exact-commit pinned; contents-read, no persisted checkout credential, exact Node/Codex tests and no model/auth calls. Runtime jobs remain blocked.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-10-05-codex-parity-foundation"
     },
     {
       "id": "CLI-209",
@@ -4511,11 +4523,11 @@
       "section": "Automated testing and CI",
       "title": "Run clean link/pack/install tests",
       "acceptance": "The produced CLI installs and runs outside the developer checkout without GUI dependencies.",
-      "stage": "integrated",
+      "stage": "validated",
       "weight": 16,
       "remainingHours": [
-        3,
-        11
+        1,
+        6
       ],
       "estimateBasis": "Initial rough engineering range; not a schedule or measured AI runtime. Security/upstream/platform uncertainty can increase this estimate.",
       "eta": "Unscheduled",
@@ -4523,12 +4535,13 @@
       "evidence": [
         "tests/cli.test.mjs",
         "tests/mcp.test.mjs",
-        "tests/processes.test.mjs"
+        "tests/processes.test.mjs",
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
       ],
-      "notes": "Local Windows tests exercise actual SDK wire/lifecycle paths with synthetic roots and no account/model calls. No hosted CI, Unix/macOS or sandbox claim.",
+      "notes": "Fresh production tarball, offline npm exec MCP8aliases, isolated prefix link and actual Windows shim all passed. Cross-platform installed proof still pending.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-10-05-codex-parity-foundation"
     },
     {
       "id": "CLI-215",
@@ -4543,36 +4556,38 @@
       ],
       "estimateBasis": "Initial rough engineering range; not a schedule or measured AI runtime. Security/upstream/platform uncertainty can increase this estimate.",
       "eta": "Unscheduled",
-      "blocker": "GitHub content-write probe blocked by platform safety checks; no bypass or hosted test run.",
+      "blocker": "Hosted CI cannot start: GitHub account payment/spending-limit gate. Owner resolution needed; no billing or protection changes authorized.",
       "evidence": [
-        "docs/plans/2026-10-04-local-mcp.md"
+        "docs/plans/2026-10-04-local-mcp.md",
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
       ],
-      "notes": "Publishing and hosted workflow execution are blocked by current content-write safety denial; no workaround or green badge claimed.",
+      "notes": "Content/workflow publication is now verified. Current unmerged PR52 and actual account-blocked hosted verification remain distinct from product acceptance.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-10-05-codex-parity-foundation"
     },
     {
       "id": "CLI-216",
       "section": "Automated testing and CI",
       "title": "Inspect real workflow conclusions",
       "acceptance": "Written, queued, skipped, failed and passed workflows are distinguished.",
-      "stage": "planned",
+      "stage": "validated",
       "weight": 16,
       "remainingHours": [
-        7,
-        29
+        1,
+        6
       ],
       "estimateBasis": "Initial rough engineering range; not a schedule or measured AI runtime. Security/upstream/platform uncertainty can increase this estimate.",
       "eta": "Unscheduled",
-      "blocker": "GitHub content-write probe blocked by platform safety checks; no bypass or hosted test run.",
+      "blocker": null,
       "evidence": [
-        "docs/plans/2026-10-04-local-mcp.md"
+        "docs/plans/2026-10-04-local-mcp.md",
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
       ],
-      "notes": "Publishing and hosted workflow execution are blocked by current content-write safety denial; no workaround or green badge claimed.",
+      "notes": "Read actual run/job/check annotations: jobs did not start due to account payment/spending-limit gate. Explicitly not code PASS, failure-in-test or skipped-platform success.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-10-05-codex-parity-foundation"
     },
     {
       "id": "CLI-217",
@@ -4897,7 +4912,7 @@
       "section": "CLI roadmap, progress bars and governance",
       "title": "Record reviewed source/catalog fingerprints",
       "acceptance": "Changing CLI source, pins or reviewed settings invalidates stale assessments.",
-      "stage": "integrated",
+      "stage": "validated",
       "weight": 8,
       "remainingHours": [
         1,
@@ -4908,12 +4923,13 @@
       "blocker": null,
       "evidence": [
         "scripts/roadmap.mjs",
-        "tests/roadmap.test.mjs"
+        "tests/roadmap.test.mjs",
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
       ],
-      "notes": "All300 IDs retained in reviewed catalog. Local SVG/Markdown/JSON/offline HTML plus explicit review and stale-source/output tests; hosted publication/browser-matrix validation pending.",
+      "notes": "Reproduced prior clean Git checkout CRLF/LF mismatch and fixed normalized text fingerprints; binary and real source/catalog drift remain detected.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-10-05-codex-parity-foundation"
     },
     {
       "id": "CLI-232",
@@ -4942,7 +4958,7 @@
       "section": "CLI roadmap, progress bars and governance",
       "title": "Enforce metrics at relevant gates",
       "acceptance": "Build/package/CI publication checks reject stale reviews rather than silently regenerating credit.",
-      "stage": "integrated",
+      "stage": "validated",
       "weight": 8,
       "remainingHours": [
         1,
@@ -4953,12 +4969,13 @@
       "blocker": null,
       "evidence": [
         "scripts/roadmap.mjs",
-        "tests/roadmap.test.mjs"
+        "tests/roadmap.test.mjs",
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
       ],
-      "notes": "All300 IDs retained in reviewed catalog. Local SVG/Markdown/JSON/offline HTML plus explicit review and stale-source/output tests; hosted publication/browser-matrix validation pending.",
+      "notes": "Normal build/check now enforce both roadmap review and pinned-parity integrity. Forged PASS/closure without evidence is rejected; generated credit is still explicit review.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-10-05-codex-parity-foundation"
     },
     {
       "id": "CLI-234",
@@ -5217,14 +5234,15 @@
       ],
       "estimateBasis": "Initial rough engineering range; not a schedule or measured AI runtime. Security/upstream/platform uncertainty can increase this estimate.",
       "eta": "Unscheduled",
-      "blocker": "GitHub content-write probe blocked by platform safety checks; no bypass or hosted test run.",
+      "blocker": "Hosted CI cannot start: GitHub account payment/spending-limit gate. Owner resolution needed; no billing or protection changes authorized.",
       "evidence": [
-        "docs/plans/2026-10-04-local-mcp.md"
+        "docs/plans/2026-10-04-local-mcp.md",
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
       ],
-      "notes": "Local development continues; no publication, merge or release claim while GitHub content writes are blocked.",
+      "notes": "Content/workflow publication is now verified. Current unmerged PR52 and actual account-blocked hosted verification remain distinct from product acceptance.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-10-05-codex-parity-foundation"
     },
     {
       "id": "CLI-246",
@@ -5261,14 +5279,15 @@
       ],
       "estimateBasis": "Initial rough engineering range; not a schedule or measured AI runtime. Security/upstream/platform uncertainty can increase this estimate.",
       "eta": "Unscheduled",
-      "blocker": "GitHub content-write probe blocked by platform safety checks; no bypass or hosted test run.",
+      "blocker": "Hosted CI cannot start: GitHub account payment/spending-limit gate. Owner resolution needed; no billing or protection changes authorized.",
       "evidence": [
-        "docs/plans/2026-10-04-local-mcp.md"
+        "docs/plans/2026-10-04-local-mcp.md",
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
       ],
-      "notes": "Local development continues; no publication, merge or release claim while GitHub content writes are blocked.",
+      "notes": "Content/workflow publication is now verified. Current unmerged PR52 and actual account-blocked hosted verification remain distinct from product acceptance.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-10-05-codex-parity-foundation"
     },
     {
       "id": "CLI-248",
@@ -5283,14 +5302,15 @@
       ],
       "estimateBasis": "Initial rough engineering range; not a schedule or measured AI runtime. Security/upstream/platform uncertainty can increase this estimate.",
       "eta": "Unscheduled",
-      "blocker": "GitHub content-write probe blocked by platform safety checks; no bypass or hosted test run.",
+      "blocker": "Hosted CI cannot start: GitHub account payment/spending-limit gate. Owner resolution needed; no billing or protection changes authorized.",
       "evidence": [
-        "docs/plans/2026-10-04-local-mcp.md"
+        "docs/plans/2026-10-04-local-mcp.md",
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
       ],
-      "notes": "Local development continues; no publication, merge or release claim while GitHub content writes are blocked.",
+      "notes": "Content/workflow publication is now verified. Current unmerged PR52 and actual account-blocked hosted verification remain distinct from product acceptance.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-10-05-codex-parity-foundation"
     },
     {
       "id": "CLI-249",
@@ -5659,12 +5679,13 @@
         "tests/processes.test.mjs",
         "tests/mcp.test.mjs",
         "tests/git.test.mjs",
-        "tests/cli.test.mjs"
+        "tests/cli.test.mjs",
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
       ],
       "notes": "Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-10-05-codex-parity-foundation"
     },
     {
       "id": "CLI-265",
@@ -5685,7 +5706,8 @@
         "tests/processes.test.mjs",
         "tests/mcp.test.mjs",
         "tests/git.test.mjs",
-        "tests/cli.test.mjs"
+        "tests/cli.test.mjs",
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
       ],
       "notes": "Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
@@ -5693,7 +5715,7 @@
         "CLI-033",
         "CLI-264"
       ],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-10-05-codex-parity-foundation"
     },
     {
       "id": "CLI-266",
@@ -5768,7 +5790,8 @@
         "tests/processes.test.mjs",
         "tests/mcp.test.mjs",
         "tests/git.test.mjs",
-        "tests/cli.test.mjs"
+        "tests/cli.test.mjs",
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
       ],
       "notes": "Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
@@ -5776,7 +5799,7 @@
         "CLI-033",
         "CLI-264"
       ],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-10-05-codex-parity-foundation"
     },
     {
       "id": "CLI-269",
@@ -5797,7 +5820,8 @@
         "tests/processes.test.mjs",
         "tests/mcp.test.mjs",
         "tests/git.test.mjs",
-        "tests/cli.test.mjs"
+        "tests/cli.test.mjs",
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
       ],
       "notes": "Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
@@ -5805,7 +5829,7 @@
         "CLI-033",
         "CLI-264"
       ],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-10-05-codex-parity-foundation"
     },
     {
       "id": "CLI-270",
@@ -5826,7 +5850,8 @@
         "tests/processes.test.mjs",
         "tests/mcp.test.mjs",
         "tests/git.test.mjs",
-        "tests/cli.test.mjs"
+        "tests/cli.test.mjs",
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
       ],
       "notes": "Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
@@ -5834,7 +5859,7 @@
         "CLI-033",
         "CLI-264"
       ],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-10-05-codex-parity-foundation"
     },
     {
       "id": "CLI-271",
@@ -5853,7 +5878,8 @@
       "evidence": [
         "tests/files.test.mjs",
         "tests/processes.test.mjs",
-        "tests/mcp.test.mjs"
+        "tests/mcp.test.mjs",
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
       ],
       "notes": "Conservative root/link checks and live-parent tree cleanup work; hostile filesystem races, directory moves, detached descendants and direct Web relay are not guaranteed. Local candidate is partial, not complete RDC relay replacement.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
@@ -5861,7 +5887,7 @@
         "CLI-033",
         "CLI-264"
       ],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-10-05-codex-parity-foundation"
     },
     {
       "id": "CLI-272",
@@ -5882,7 +5908,8 @@
         "tests/processes.test.mjs",
         "tests/mcp.test.mjs",
         "tests/git.test.mjs",
-        "tests/cli.test.mjs"
+        "tests/cli.test.mjs",
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
       ],
       "notes": "Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
@@ -5890,7 +5917,7 @@
         "CLI-033",
         "CLI-264"
       ],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-10-05-codex-parity-foundation"
     },
     {
       "id": "CLI-273",
@@ -6458,15 +6485,16 @@
         "tests/processes.test.mjs",
         "tests/mcp.test.mjs",
         "tests/git.test.mjs",
-        "tests/cli.test.mjs"
+        "tests/cli.test.mjs",
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
       ],
-      "notes": "Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains.",
+      "notes": "Managed --apply setup/removal, exact ownership and backup conflict handling passed on source and real installed artifact with Codex0.160.1, unrelated config preserved; no actual agent model call.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [
         "CLI-033",
         "CLI-264"
       ],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-10-05-codex-parity-foundation"
     },
     {
       "id": "CLI-293",
@@ -6487,7 +6515,8 @@
         "tests/processes.test.mjs",
         "tests/mcp.test.mjs",
         "tests/git.test.mjs",
-        "tests/cli.test.mjs"
+        "tests/cli.test.mjs",
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
       ],
       "notes": "Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
@@ -6495,7 +6524,7 @@
         "CLI-033",
         "CLI-264"
       ],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-10-05-codex-parity-foundation"
     },
     {
       "id": "CLI-294",
@@ -6516,7 +6545,8 @@
         "tests/processes.test.mjs",
         "tests/mcp.test.mjs",
         "tests/git.test.mjs",
-        "tests/cli.test.mjs"
+        "tests/cli.test.mjs",
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
       ],
       "notes": "Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
@@ -6524,7 +6554,7 @@
         "CLI-033",
         "CLI-264"
       ],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-10-05-codex-parity-foundation"
     },
     {
       "id": "CLI-295",
@@ -6684,7 +6714,8 @@
       "evidence": [
         "tests/files.test.mjs",
         "tests/processes.test.mjs",
-        "tests/mcp.test.mjs"
+        "tests/mcp.test.mjs",
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
       ],
       "notes": "Conservative root/link checks and live-parent tree cleanup work; hostile filesystem races, directory moves, detached descendants and direct Web relay are not guaranteed. Local candidate is partial, not complete RDC relay replacement.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
@@ -6692,7 +6723,7 @@
         "CLI-033",
         "CLI-264"
       ],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-10-05-codex-parity-foundation"
     }
   ]
 }

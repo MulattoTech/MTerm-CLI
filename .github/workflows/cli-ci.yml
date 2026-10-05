@@ -1,0 +1,64 @@
+# SPDX-License-Identifier: MIT
+# AI-Change: 2026-10-05-codex-parity-foundation
+name: CLI compatibility foundation
+on:
+  pull_request:
+  push:
+    branches: [main, 'feat/**']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: cli-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    name: ${{ matrix.os }} / Node 24
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-2022
+            platform: win32
+            arch: x64
+          - os: ubuntu-24.04
+            platform: linux
+            arch: x64
+          - os: macos-14
+            platform: darwin
+            arch: arm64
+          - os: macos-15-intel
+            platform: darwin
+            arch: x64
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24.21.0'
+      - name: Verify actual runtime architecture
+        run: node -e "const a=require('node:assert/strict');a.equal(process.platform,process.env.EXPECT_PLATFORM);a.equal(process.arch,process.env.EXPECT_ARCH);console.log(JSON.stringify({node:process.version,platform:process.platform,arch:process.arch}))"
+        env:
+          EXPECT_PLATFORM: ${{ matrix.platform }}
+          EXPECT_ARCH: ${{ matrix.arch }}
+      - name: Reproducible dependencies without lifecycle side effects
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Reviewed source and pinned parity baseline
+        run: npm run build
+      - name: Typecheck formatting and deterministic tests
+        run: npm run check
+      - name: Verify packed install and isolated npm link
+        run: node scripts/verify-package.mjs
+      - name: Install pinned Codex into test-owned prefix
+        run: npm install --prefix artifacts/ci-codex --no-audit --no-fund --ignore-scripts --package-lock=false @openai/codex@0.160.1
+      - name: Real Codex registration without login or model calls
+        shell: bash
+        run: |
+          set -euo pipefail
+          export PATH="$PWD/artifacts/ci-codex/node_modules/.bin:$PATH"
+          node scripts/verify-managed-codex.mjs
+      - name: Exact source remains unchanged by tests
+        run: git diff --exit-code

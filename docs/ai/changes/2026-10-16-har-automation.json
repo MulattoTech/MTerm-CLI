@@ -1,0 +1,107 @@
+{
+  "change_id": "2026-10-16-har-automation",
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "identity_basis": "session-declared, self-reported",
+  "started_at_utc": "2026-10-17T04:00:27.153227+00:00",
+  "base_commit": "1d900464ba8a36a1121e2ae51ea65c14c3ee41c1",
+  "request": "Analyze supplied remote Desktop Commander HAR, add web feature issues, improve MTerm CLI automation inspired by MJobs and DevFleet.",
+  "requirements": [
+    "CLI-175",
+    "CLI-291",
+    "CLI-292",
+    "CLI-297",
+    "CLI-300",
+    "WEB-001",
+    "WEB-002",
+    "WEB-003",
+    "WEB-004",
+    "WEB-005",
+    "WEB-006",
+    "WEB-007",
+    "WEB-008",
+    "WEB-009",
+    "WEB-010",
+    "WEB-011",
+    "WEB-012"
+  ],
+  "decisions": [
+    "Keep the raw HAR and all credential-bearing content out of Git.",
+    "Track Web work separately from Codex DCP-001..048.",
+    "Preview one-command setup before explicit -Apply; default root read-only.",
+    "One Codex worker per issue and isolated worktree; never auto-merge or force-push.",
+    "Do not deploy Cloudflare resources or create permanent services without owner configuration."
+  ],
+  "tests": [
+    {
+      "command": "pwsh ParseFile both automation scripts; Setup preview; reject drive-root; Sprint preview issue #3",
+      "result": "PASS; zero model calls and no Codex config writes"
+    },
+    {
+      "command": "node --test tests/automation.test.mjs",
+      "result": "PASS 3/3 on Windows Node24; no paid model calls"
+    },
+    {
+      "command": "normal npm build, check, package verify, managed Codex verifier",
+      "result": "PASS before self-host test in the linked worktree; normal build, 67 tests, package and synthetic Codex registration"
+    },
+    {
+      "command": "node scripts/verify-self-host.mjs in linked Git worktree",
+      "result": "KNOWN LIMITATION: Git metadata is outside trusted root; fail-closed GIT_OUTSIDE_ROOT. Issue #66. Not a source compilation failure."
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "id": "CLI-175",
+      "from": "validated",
+      "to": "validated",
+      "notes": "Reviewed: preview-first bootstrap and bounded Codex issue runner. No platform/full parity completion credit earned; isolated tests only."
+    },
+    {
+      "id": "CLI-291",
+      "from": "validated",
+      "to": "validated",
+      "notes": "Reviewed: preview-first bootstrap and bounded Codex issue runner. No platform/full parity completion credit earned; isolated tests only."
+    },
+    {
+      "id": "CLI-292",
+      "from": "validated",
+      "to": "validated",
+      "notes": "Reviewed: preview-first bootstrap and bounded Codex issue runner. No platform/full parity completion credit earned; isolated tests only."
+    },
+    {
+      "id": "CLI-297",
+      "from": "validated",
+      "to": "validated",
+      "notes": "Reviewed: preview-first bootstrap and bounded Codex issue runner. No platform/full parity completion credit earned; isolated tests only."
+    },
+    {
+      "id": "CLI-300",
+      "from": "integrated",
+      "to": "integrated",
+      "notes": "Reviewed: preview-first bootstrap and bounded Codex issue runner. No platform/full parity completion credit earned; isolated tests only."
+    }
+  ],
+  "files_created": [
+    "docs/research/DESKTOP_COMMANDER_REMOTE_HAR_2026-10-16.md",
+    "docs/REMOTE_MCP_ROADMAP.md",
+    "docs/automation/README.md",
+    "docs/roadmap/bars/remote-web.svg",
+    "scripts/automation/Setup-MTermCLI.ps1",
+    "scripts/automation/Start-MTermSprint.ps1",
+    "tests/automation.test.mjs"
+  ],
+  "limitations": [
+    "HAR captured device dashboard/billing; no remote MCP tool invocation was present.",
+    "Cloudflare remote MCP is not implemented; GitHub issues #53..65 are new acceptance work.",
+    "Sprint -Execute and real-user Codex registration were deliberately not run.",
+    "Published PR #52 remains open; 48 local parity gaps remain unaccepted.",
+    "MCP Git status/diff in linked worktrees currently rejects external common .git directory; issue #66. Validate self-host separately from a normal clone."
+  ],
+  "next_steps": [
+    "Complete an isolated synthetic CODEX_HOME -Apply smoke after normal gates.",
+    "Implement WEB-001..012 with authenticated remote read-only round-trip first.",
+    "Continue DCP 48-issue parity and protect against CI billing gates."
+  ],
+  "updated_at_utc": "2026-10-17T04:05:23.710207+00:00"
+}

@@ -84,3 +84,12 @@ URL, images/office formats, fuzzy edits, directory/cross-device moves and other 
 **Parity acceptance remains0/48, NOT PASS.** [Current implementation evidence](docs/validation/2026-10-05-codex-parity-foundation.md)
 and [next execution prompt](docs/execution/NEXT_PARITY_PROMPT.md) distinguish tested work from gaps.
 The full300-item product maturity bar is not this separate binary parity certification.
+
+
+## Remote MCP and automation (separate from local Codex parity)
+
+- [Sanitized owner HAR evidence](docs/research/DESKTOP_COMMANDER_REMOTE_HAR_2026-10-16.md) — credentials intentionally excluded.
+- [WEB-001..012 / epic #53](docs/REMOTE_MCP_ROADMAP.md) — 0/12 accepted, remote Cloudflare gateway NOT IMPLEMENTED.
+- [One-command setup and bounded issue workflow](docs/automation/README.md) — preview-first; actual registration/agent calls require explicit flags.
+
+Do not confuse remote Cloudflare/Web readiness with the existing DCP-001..048 local Codex parity gate.

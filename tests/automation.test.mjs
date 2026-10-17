@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
-import { mkdtemp, readdir, rm } from 'node:fs/promises';
+import { mkdtemp, readdir, rm, readFile } from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -63,4 +63,14 @@ test('one-command setup refuses a whole-drive root', { skip: !available }, () =>
   const result = run(setup, ['-TrustedRoot', path.parse(root).root]);
   assert.notEqual(result.status, 0);
   assert.match(result.stderr + result.stdout, /whole-drive root/i);
+});
+
+test('setup executes the actual CLI bin entry, not the export-only compiled module', async () => {
+  const source = await readFile(setup, 'utf8');
+  assert.match(source, /bin\\mterm-cli\.js/);
+  assert.match(source, /& \$node\.Source \$entry @commandArgs '--apply'/);
+  assert.doesNotMatch(
+    source,
+    /Join-Path \$repo 'dist\\cli\.js'\s*\n\s*if \(!\(Test-Path -LiteralPath \$entry\)/,
+  );
 });

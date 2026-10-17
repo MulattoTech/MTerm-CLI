@@ -13,7 +13,7 @@ Set-StrictMode -Version Latest
 $repo = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '..\..')).Path
 $gh = Get-Command gh -ErrorAction SilentlyContinue
 $git = Get-Command git -ErrorAction SilentlyContinue
-$codex = Get-Command codex -ErrorAction SilentlyContinue
+$codex = Get-Command codex -All -ErrorAction SilentlyContinue | Where-Object { $_.CommandType -eq 'Application' -and $_.Source -match '\.(cmd|exe)$' } | Select-Object -First 1
 if (!$git) { throw 'Git is required.' }
 if (!$gh) { throw 'GitHub CLI (gh) is required for issue selection and claims.' }
 if ($Execute -and !$codex) { throw 'Codex CLI is required for -Execute.' }

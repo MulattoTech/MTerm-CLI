@@ -26,7 +26,7 @@ if ($trusted.TrimEnd('\','/') -eq $driveRoot.TrimEnd('\','/')) {
 }
 $node = Get-Command node -ErrorAction SilentlyContinue
 $npm = Get-Command npm -ErrorAction SilentlyContinue
-$codex = Get-Command codex -ErrorAction SilentlyContinue
+$codex = Get-Command codex -All -ErrorAction SilentlyContinue | Where-Object { $_.CommandType -eq 'Application' -and $_.Source -match '\.(cmd|exe)$' } | Select-Object -First 1
 if (!$node -or !$npm) { throw 'Node.js and npm are required. Install a supported Node LTS first.' }
 $versionString = (& $node.Source --version).TrimStart('v')
 if ($LASTEXITCODE) { throw 'Could not read Node.js version.' }
@@ -52,7 +52,7 @@ $plan = [ordered]@{
     allowExec = [bool]$AllowExec
     compatDesktopCommander = [bool]$CompatDesktopCommander
     validation = $(if ($SkipTests) { 'skipped-by-explicit-request' } else { 'required' })
-    command = @('node','dist/cli.js') + $commandArgs + @('--apply')
+    command = @('node','bin/mterm-cli.js') + $commandArgs + @('--apply')
     warning = 'Never set a drive root, re-register another existing entry, copy auth secrets or enable broad exec by default.'
 }
 if (!$Apply) {
@@ -77,7 +77,9 @@ try {
             & $npm.Source run check
             if ($LASTEXITCODE) { throw 'npm run check failed. No Codex registration attempted.' }
         }
-        $entry = Join-Path $repo 'dist\cli.js'
+        $compiled = Join-Path $repo 'dist\cli.js'
+        if (!(Test-Path -LiteralPath $compiled)) { throw 'Compiled module is missing.' }
+        $entry = Join-Path $repo 'bin\mterm-cli.js'
         if (!(Test-Path -LiteralPath $entry)) { throw 'Compiled CLI entry is missing.' }
         & $node.Source $entry @commandArgs '--apply'
         if ($LASTEXITCODE) { throw 'Managed Codex registration failed; inspect its safe backup and error.' }

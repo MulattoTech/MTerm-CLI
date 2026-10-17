@@ -48,6 +48,18 @@
     {
       "command": "node scripts/verify-self-host.mjs in linked Git worktree",
       "result": "KNOWN LIMITATION: Git metadata is outside trusted root; fail-closed GIT_OUTSIDE_ROOT. Issue #66. Not a source compilation failure."
+    },
+    {
+      "command": "Synthetic one-command -Apply setup regression after first run",
+      "result": "Initial failure exposed wrong executable entry dist/cli.js; corrected to bin/mterm-cli.js and pinned actual Windows codex.cmd"
+    },
+    {
+      "command": "Setup-MTermCLI.ps1 -Apply -CodexHome fresh synthetic home -CompatDesktopCommander -SkipTests; codex.cmd mcp get mterm-local --json",
+      "result": "PASS after bin/entry fix: actual configured codex.cmd reads synthetic registration; real user auth/config untouched."
+    },
+    {
+      "command": "node --test tests/automation.test.mjs",
+      "result": "PASS 4/4 including newly-added test forbidding export-only dist/cli.js as the executable entry."
     }
   ],
   "roadmap_updates": [
@@ -103,5 +115,5 @@
     "Implement WEB-001..012 with authenticated remote read-only round-trip first.",
     "Continue DCP 48-issue parity and protect against CI billing gates."
   ],
-  "updated_at_utc": "2026-10-17T04:05:23.710207+00:00"
+  "updated_at_utc": "2026-10-17T04:13:12.720961+00:00"
 }

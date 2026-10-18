@@ -23,3 +23,9 @@ Missing: full26 upstream tool contracts, multiple-root/dynamic config, search se
 aliases/PTY/system processes, image/office/PDF behavior, fuzzy editing, full history/prompts,
 managed updates, Web/quota extras and cross-platform/release qualification. The optional8 aliases
 are a tested subset, not8 fully closed parity issues. See validation/2026-10-05-codex-parity-foundation.md.
+
+## Automated CLI setup update — 2026-10-18
+
+The current PR #67 worktree adds `Install-MTermCLI.ps1` as a single visible Plan/Install/Repair/Verify/Sprint entry point inspired by MJobs' starter and DevFleet's staged setup discipline. All privileged operations remain opt-in and delegated to the existing owner-tracked setup/sprint modules. Root-launcher preview/readiness tests pass locally; inspect the latest verification report for full current gates.
+
+This is local Codex stdio usability work only. The Cloudflare remote gateway, device supervision, user portal and real remote MCP round trip remain WEB-001..012 **0/12 — NOT PASS**. The independent DesktopCommander Codex gate remains **0/48 — NOT PASS** until accepted issue evidence exists.

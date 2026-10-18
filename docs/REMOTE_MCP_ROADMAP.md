@@ -32,3 +32,9 @@
 ## Development automation
 
 Use [Automation setup](automation/README.md) when available for one-command local preflight/build/Codex registration and a bounded issue-work cycle using the same claim/worktree/test/PR discipline as the MJobs/DevFleet repositories. Keep model calls opt-in, preserve dirty work, never silently auto-merge or declare 100% based on an exit code.
+
+## Local automation is not remote-agent completion
+
+The one-command `Install-MTermCLI.ps1` setup and `Start-MTermSprint.ps1` help local Codex MCP use and issue-based development. They do **not** install or supervise an outbound Cloudflare device agent, provision OAuth/Access, configure DNS/tunnels or pass a remote tool round-trip test. WEB-011 remains **Not started** for the remote-agent requirement and this table stays 0/12 NOT PASS.
+
+The 2026-10-18 recheck of the supplied HAR found the same 251 requests and no recorded remote MCP execution. Commercial billing/Stripe checkout and optional third-party analytics are observed website features, not assumed mandatory for a private MTechLabs deployment; any requested commercial portal should be scoped separately.

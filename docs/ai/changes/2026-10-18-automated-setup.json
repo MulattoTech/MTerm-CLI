@@ -1,0 +1,114 @@
+{
+  "change_id": "2026-10-18-automated-setup",
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "identity_basis": "session-declared, self-reported",
+  "started_at_utc": "2026-10-18T10:04:08Z",
+  "base_commit": "9059292da2c7fdaabd6406c27d6dfa39974a6eea",
+  "request": "Recheck owner-provided Desktop Commander HAR and current GitHub updates; make MTerm-CLI one-command setup/repair/readiness/sprint automation comparable to MJobs or DevFleet while retaining explicit permission boundaries.",
+  "requirements": [
+    "CLI-175",
+    "CLI-291",
+    "CLI-292",
+    "CLI-297",
+    "CLI-300"
+  ],
+  "decisions": [
+    "Existing PR #67 already inventories all 251 HAR entries and WEB-001..012; no newly observed mandatory remote feature was demonstrated.",
+    "Do not commit raw HAR, cookies, device tokens, identities, payment links or frontend bundle.",
+    "Add a top-level PowerShell orchestration entrypoint; reuse existing Setup-MTermCLI.ps1 and Start-MTermSprint.ps1, do not duplicate installation or privilege logic.",
+    "Plan/Install/Repair default to preview. Only -Apply updates the owner's managed Codex MCP registration.",
+    "Verify is read-only and explicitly distinguishes local MCP from unimplemented Cloudflare/Web relay.",
+    "Sprint defaults to checked-out committed HEAD, records base SHA, refuses a dirty checkout and requires -Execute for any model invocation.",
+    "Do not award DCP/WEB issue closure or CLI stage credit for this convenience interface alone.",
+    "Do not deploy Cloudflare resources, create a Windows Service, or change real Codex config in tests."
+  ],
+  "tests": [
+    {
+      "command": "node --test tests/automation.test.mjs",
+      "result": "Initial added launcher tests 8/8 PASS on Windows with PowerShell; no live Codex config modifications."
+    },
+    {
+      "command": "node --test --test-name-pattern 'autonomous sprint starts' tests/automation.test.mjs",
+      "result": "RED observed against origin/main default; GREEN after pinned HEAD, baseCommit and dirty-worktree preflight."
+    },
+    {
+      "command": "node scripts/roadmap.mjs --review --change 2026-10-18-automated-setup; --render; --check",
+      "result": "PASS; reviewed maturity stays 28.87% with no new parity closure"
+    },
+    {
+      "command": "npm run build; npm run check (Windows Node24.21.0)",
+      "result": "PASS; 73/73 project tests, zero failures/skips"
+    },
+    {
+      "command": "node scripts/verify-package.mjs",
+      "result": "PASS; packed install and portable runtime validation; external Node/Codex/Web/quota not bundled"
+    },
+    {
+      "command": "node scripts/verify-managed-codex.mjs",
+      "result": "PASS; synthetic CODEX_HOME, managed registration/removal and two MCP rounds; no real user config/auth or model calls"
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "id": "CLI-175",
+      "from": "validated",
+      "to": "validated",
+      "notes": "Reviewed: repo-local one-command Plan/Install/Repair uses existing verified npm/Codex flow; no new cross-platform distribution evidence or release credit."
+    },
+    {
+      "id": "CLI-291",
+      "from": "validated",
+      "to": "validated",
+      "notes": "Reviewed: read-only Verify reports local runtime readiness; this does not prove an authenticated remote gateway or user-account setup."
+    },
+    {
+      "id": "CLI-292",
+      "from": "validated",
+      "to": "validated",
+      "notes": "Reviewed: top-level launcher delegates to existing ownership-tracked Codex setup; real user Codex registration was not modified."
+    },
+    {
+      "id": "CLI-297",
+      "from": "validated",
+      "to": "validated",
+      "notes": "Reviewed: Plan/Verify need no browser/daemon/network listener/model call; full startup and installed-runtime acceptance remain unchanged."
+    },
+    {
+      "id": "CLI-300",
+      "from": "integrated",
+      "to": "integrated",
+      "notes": "Reviewed: automated local bootstrap is improved, but full RDC parity and remote Cloudflare/Web functionality remain NOT PASS."
+    }
+  ],
+  "files_created": [
+    "Install-MTermCLI.ps1",
+    "docs/validation/2026-10-18-automated-setup.md",
+    "docs/ai/changes/2026-10-18-automated-setup.json"
+  ],
+  "files_modified": [
+    "README.md",
+    "docs/automation/README.md",
+    "docs/research/DESKTOP_COMMANDER_REMOTE_HAR_2026-10-16.md",
+    "scripts/automation/Start-MTermSprint.ps1",
+    "tests/automation.test.mjs",
+    "AGENTS.md",
+    "docs/HANDOFF.md",
+    "docs/STATUS.md",
+    "docs/REMOTE_MCP_ROADMAP.md"
+  ],
+  "limitations": [
+    "Full Cloudflare remote gateway/device agent remains WEB-001..012 NOT PASS, no authenticated tool round trip.",
+    "The HAR shows discovery, session, presence, Realtime and billing, not an executed remote MCP tool call.",
+    "Local root launcher is Windows PowerShell convenience; macOS/Linux installer parity is separate.",
+    "GitHub Actions billing/spending gate may still block hosted verification; no CI bypass.",
+    "No live model calls or real user Codex auth/config changes from this continuation."
+  ],
+  "next_steps": [
+    "Complete normal build/check/package and isolated Codex verification from this branch.",
+    "Review roadmap with change ID without advancing stages, render and check.",
+    "Push verified changes to PR #67 and keep stacked PRs open until hosted acceptance is available.",
+    "Continue WEB-001..012 with a localhost-authenticated gateway fixture, remote read-only end-to-end before write/exec."
+  ],
+  "updated_at_utc": "2026-10-18T10:12:28.146571+00:00"
+}

@@ -61,3 +61,17 @@ PR #52 remains unmerged pending valid checks/owner resolution. No macOS/Linux su
 Recovery before this pass: artifacts/parity-execution-20261005T200426Z/before.bundle and
 before-source.zip. Earlier interrupted source and checkpoints remain intact. Final checkpoints
 are additive under artifacts/checkpoints/. Do not delete user files or the archived legacy source.
+
+## 2026-10-18 HAR and automation continuation
+
+The owner supplied a private `mcp.desktopcommander.app.har` (251 requests, 4 pages). Its sanitized feature audit was already present in PR #67; a second structural review confirmed no additional **observed mandatory** remote feature beyond WEB-001..012. A remote MCP tool invocation was not captured. Do not place the raw HAR, tokens, billing URLs or proprietary frontend bundle in Git.
+
+The current branch adds the root `Install-MTermCLI.ps1` facade:
+- `-Mode Plan` (default): harmless setup preview;
+- `-Mode Install -Apply` or `-Mode Repair -Apply`: run the existing pinned build/check and owner-tracked Codex setup;
+- `-Mode Verify`: read-only local readiness JSON (`-FullTests` optionally runs project checks);
+- `-Mode Sprint`: preview one GitHub issue; only `-Execute` invokes Codex.
+
+Direct sprint scripts now default to a pinned current HEAD rather than outdated `origin/main`; execution refuses dirty worktrees. These convenience improvements do NOT certify an authenticated Cloudflare gateway or the full DCP 48-gap gate. Read `docs/validation/2026-10-18-automated-setup.md` and `docs/ai/changes/2026-10-18-automated-setup.json` for test evidence and exact limitations.
+
+Original `C:\Tools\Dev\MTerm-CLI` configuration work (eight modified and three untracked files) remains preserved untouched. Development occurred in the separate `artifacts/worktrees/har-automation-20261016` worktree on PR #67, stacked atop PR #52. GitHub Actions billing/spending qualification may still block hosted checks. No live user Codex configuration, login, model prompt, Cloudflare DNS, or public endpoint was changed.

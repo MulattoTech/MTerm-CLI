@@ -86,6 +86,31 @@ and [next execution prompt](docs/execution/NEXT_PARITY_PROMPT.md) distinguish te
 The full300-item product maturity bar is not this separate binary parity certification.
 
 
+## One-command installation, readiness and development
+
+From a checkout, `Install-MTermCLI.ps1` is the top-level PowerShell entry point. It follows the MJobs/DevFleet pattern of one visible command, explicit readiness checks, and recoverable project-local work.
+
+```powershell
+# Read-only plan, no Codex registration or model usage
+.\Install-MTermCLI.ps1 -Mode Plan -TrustedRoot C:\Tools\Dev\MTerm-CLI -CompatDesktopCommander
+
+# One explicit invocation performs pinned npm ci, build/check and managed Codex registration
+.\Install-MTermCLI.ps1 -Mode Install -TrustedRoot C:\Tools\Dev\MTerm-CLI -CompatDesktopCommander -Apply
+
+# Re-run the idempotent verified setup after an interrupted setup
+.\Install-MTermCLI.ps1 -Mode Repair -TrustedRoot C:\Tools\Dev\MTerm-CLI -CompatDesktopCommander -Apply
+
+# Read-only local readiness; optional -FullTests runs the existing project gates
+.\Install-MTermCLI.ps1 -Mode Verify -TrustedRoot C:\Tools\Dev\MTerm-CLI
+
+# Issue automation: preview by default; only -Execute invokes a model
+.\Install-MTermCLI.ps1 -Mode Sprint -IssueNumber 3
+```
+
+File writes and process execution remain separately opt-in (`-AllowWrite`, `-AllowExec`). For local Codex, the configured stdio MCP server is started by Codex when needed: a Windows Service or permanent daemon is **not** required. A **remote Cloudflare gateway/device agent** is separate, remains unimplemented and would need explicit authenticated setup.
+
+See [automation docs](docs/automation/README.md) and [readiness evidence](docs/validation/2026-10-18-automated-bootstrap.md).
+
 ## Remote MCP and automation (separate from local Codex parity)
 
 - [Sanitized owner HAR evidence](docs/research/DESKTOP_COMMANDER_REMOTE_HAR_2026-10-16.md) — credentials intentionally excluded.

@@ -4,6 +4,29 @@ The GUI and CLI are separate repositories. The CLI currently provides a local st
 This work automates installing/building, managed Codex registration and single-issue iterations.
 It does NOT implement the Cloudflare remote service or promise full DesktopCommander parity.
 
+## One top-level command
+
+Use `Install-MTermCLI.ps1` in the repository root. It delegates to the existing, tested setup and issue-runner modules without a second installation implementation.
+
+| Mode | Default side effect | Explicit action |
+|---|---|---|
+| `Plan` | Read-only setup plan | N/A |
+| `Install` | Read-only setup plan | `-Apply` builds/checks/registers Codex |
+| `Repair` | Read-only setup plan | `-Apply` re-runs the idempotent setup, never wipes old configuration |
+| `Verify` | Read-only local health JSON | `-FullTests` runs the regular project validation gate |
+| `Sprint` | Read-only issue selection and plan | `-Execute` invokes one Codex issue run |
+
+```powershell
+pwsh -NoProfile -File .\Install-MTermCLI.ps1 -Mode Plan -TrustedRoot C:\Tools\Dev\MTerm-CLI
+pwsh -NoProfile -File .\Install-MTermCLI.ps1 -Mode Install -Apply -CompatDesktopCommander -TrustedRoot C:\Tools\Dev\MTerm-CLI
+pwsh -NoProfile -File .\Install-MTermCLI.ps1 -Mode Verify -TrustedRoot C:\Tools\Dev\MTerm-CLI
+pwsh -NoProfile -File .\Install-MTermCLI.ps1 -Mode Sprint -IssueNumber 3
+```
+
+No `-Apply` means no Codex configuration changes. No `-Execute` means no model invocation or issue claim. The direct sprint defaults to the current **committed HEAD** (not potentially stale `origin/main`), records its exact base SHA and refuses to execute from a dirty checkout. This preserves unmerged feature dependencies while keeping parallel work isolated.
+
+An all-in-one root launcher is analogous to MJobs' `Start-MJobs.ps1` and DevFleet's bootstrap entry, but **not equivalent to DevFleet's full installer/repair/reboot certification**. Local Codex stdio requires no permanent service. Remote Cloudflare agent deployment/service supervision is still WEB-011, NOT PASS.
+
 ## 1. One-command setup
 
 From `C:\Tools\Dev\MTerm-CLI` after this branch has been integrated:

@@ -61,6 +61,14 @@ A self-hosted personal gateway **does not require copying** the vendor's Stripe 
 - Avoid copying DesktopCommander's identity backend/project ID/keys; deploy a separate MTechLabs instance and authorization boundary.
 - No production Cloudflare deployment or billing changes until target hostname, ownership, identity policy and credentials are explicitly configured and tested.
 
+## 2026-10-18 verification of the newly supplied capture
+
+A second, private structural inspection of `mcp.desktopcommander.app.har` counted the same **251 requests and four page records** as this report. Its observable first-party interfaces remained discovery, authenticated session/device inventory/Realtime, usage/subscription and checkout. The captured request counts included nine usage reads, eight subscription reads, two MCP discovery reads, two authenticated session reads, two device-list reads, and three WebSocket upgrades.
+
+**No additional mandatory remote MCP tool or device-control feature was demonstrated beyond WEB-001..012.** Optional third-party billing/checkout and telemetry are not needed for an owner-only MTechLabs gateway; if a commercial SaaS experience is later required, track it as a separately approved scope.
+
+The HAR contains credential-bearing content. This recheck intentionally records route names and field keys only, not request bodies, private IDs, keys, user identity, cookies or session tokens. The remote MCP round trip still has no captured proof.
+
 ## Suggested next steps
 
 1. Create a separate WEB epic/issues; keep the 48 DCP Codex parity issues unchanged.

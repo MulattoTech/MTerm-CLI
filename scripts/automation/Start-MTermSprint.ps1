@@ -5,7 +5,7 @@
 param(
     [ValidateRange(0,99999)][int]$IssueNumber = 0,
     [switch]$Execute,
-    [string]$BaseRef = 'origin/main',
+    [string]$BaseRef = 'HEAD',
     [string]$Model = ''
 )
 $ErrorActionPreference = 'Stop'
@@ -45,12 +45,16 @@ $stamp = (Get-Date).ToUniversalTime().ToString('yyyyMMddTHHmmssZ')
 $branch = "feat/$identifier-$stamp"
 $worktreeRoot = Join-Path $repo 'artifacts\automation\worktrees'
 $worktree = Join-Path $worktreeRoot "$identifier-$stamp"
+$resolvedBase = (& $git.Source -C $repo rev-parse --verify "$BaseRef^{commit}")
+if ($LASTEXITCODE -ne 0 -or !$resolvedBase) { throw 'Base commit could not be resolved. Review -BaseRef before continuing.' }
+$resolvedBase = ([string]($resolvedBase | Select-Object -First 1)).Trim()
 $plan = [ordered]@{
     mode = $(if ($Execute) { 'execute-one-bounded-issue' } else { 'preview' })
     issue = $IssueNumber
     identifier = $identifier
     title = $issue.title
     base = $BaseRef
+    baseCommit = $resolvedBase
     newBranch = $branch
     worktree = $worktree
     selectedBy = $(if ($PSBoundParameters.ContainsKey('IssueNumber')) { 'explicit' } else { 'first-open-unassigned-DCP' })
@@ -62,6 +66,9 @@ if (!$Execute) {
     Write-Host 'PREVIEW ONLY: pass -Execute for a single authorized Codex development cycle.' -ForegroundColor Yellow
     return
 }
+$dirty = @(& $git.Source -C $repo status --porcelain)
+if ($LASTEXITCODE -ne 0) { throw 'Git status failed; refusing issue execution.' }
+if ($dirty.Count -gt 0) { throw 'Worktree is dirty. Preserve/checkpoint user work and execute from a clean commit.' }
 New-Item -ItemType Directory -Force -Path (Split-Path $worktreeRoot -Parent) | Out-Null
 $lock = Join-Path (Split-Path $worktreeRoot -Parent) 'codex-worker.lock'
 $handle = $null
@@ -76,13 +83,13 @@ try {
     & $git.Source -C $repo rev-parse --verify $BaseRef | Out-Null
     if ($LASTEXITCODE) { throw 'Base ref is missing; no issue claim was made.' }
     New-Item -ItemType Directory -Force -Path $worktreeRoot | Out-Null
-    & $git.Source -C $repo worktree add -b $branch $worktree $BaseRef
+    & $git.Source -C $repo worktree add -b $branch $worktree $resolvedBase
     if ($LASTEXITCODE) { throw 'Worktree creation failed; nothing was discarded.' }
     $stillOpen = Read-Issue $IssueNumber
     if ($stillOpen.state -ne 'OPEN' -or @($stillOpen.assignees | Where-Object { $_ }).Count -gt 0) {
         throw 'Issue changed during preflight. Worktree retained; no Codex process started.'
     }
-    $claim = "MTerm autonomous sprint: one Codex worker claims $identifier in $branch (base $BaseRef, UTC $stamp). No auto-merge. Worktree preserved on interruption."
+    $claim = "MTerm autonomous sprint: one Codex worker claims $identifier in $branch (base $resolvedBase, UTC $stamp). No auto-merge. Worktree preserved on interruption."
     & $gh.Source issue comment $IssueNumber --repo $repoName --body $claim | Out-Null
     if ($LASTEXITCODE) { throw 'Issue claim comment failed; Codex was not started.' }
     $instructions = @(

@@ -28,3 +28,9 @@ No actual user Codex config/auth is modified by setup; it prints a reversible pl
 Read docs/parity/README.md and the DCP ledger. `setup codex` is preview-only unless `--apply` is explicit; `remove codex --apply` removes only an exact owned stanza. Tests use isolated CODEX_HOME and never real auth. GitHub content writes were freshly verified on an excluded access-check branch; prior denial notes are historical, not current proof. Source fingerprints normalize CRLF to LF for known UTF-8 text; all real source changes still require metric review.
 
 Current continuation: docs/execution/NEXT_PARITY_PROMPT.md. Reconcile the actual PR52 head before using main; do not discard unmerged verified work or bypass the account-blocked hosted gate.
+
+## One-command automation entry point (2026-10-18)
+
+The root `Install-MTermCLI.ps1` is the supported PowerShell entry for one-command local setup/repair/readiness and one-issue Codex development. It **delegates** to the existing `scripts/automation/` modules rather than duplicating Codex configuration mutation. Plan, Install, Repair and Sprint are preview-only unless the human adds `-Apply` or `-Execute` for the respective operation. Verify never grants a capability.
+
+Do not classify local setup as Cloudflare remote-agent readiness. The active `WEB-011` issue remains open. When changing automation, run the real PowerShell syntax/preview tests and review CLI-175/291/292/297/300 through `roadmap.mjs` without self-awarding completion. New autonomous sprints start from the current clean committed HEAD unless the owner specifies a different reviewed base, and must record its resolved SHA.

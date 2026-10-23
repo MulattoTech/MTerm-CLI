@@ -1,0 +1,34 @@
+# SPDX-License-Identifier: MIT
+# AI-Change: 2026-10-21-orchestrator-ready (OpenAI / GPT-6)
+name: CLI fast checks
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: cli-fast-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  fast:
+    name: CI / fast
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24.21.0'
+          cache: npm
+      - name: Reproducible install without lifecycle scripts
+        run: npm ci --ignore-scripts --no-audit --no-fund
+      - name: Pinned reviewed build
+        run: npm run build
+      - name: Deterministic tests
+        run: npm run check
+      - name: No test-induced source mutation
+        run: git diff --exit-code

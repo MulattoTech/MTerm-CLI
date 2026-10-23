@@ -68,5 +68,10 @@ not release readiness or fraction of lines written. Web/quota/update/platform bl
 No GUI completion credit is imported. This repo is separate from [MTerm-GUI](https://github.com/MulattoTech/MTerm-GUI).
 
 Start with AGENTS.md, docs/HANDOFF.md, docs/TODAY_CANDIDATE.md and docs/TESTING.md.
-GitHub content publication was blocked by the platform safety check in this session; the tested
-candidate is local until an authorized content-write path is available. No push/merge/release is claimed.
+This repository publishes the local MCP candidate on main. Advanced compatibility work is
+in open PR #52 and stacked PR #67; they are not merged. See docs/ORCHESTRATION.md for
+safe parallel development, docs/GITHUB_ORCHESTRATION_SETUP.md for CI and GitHub configuration.
+
+## AI-orchestrated development
+
+MTerm-CLI uses Orchestrator.inc with Codex workers in isolated worktrees. Start with [orchestration operations](docs/ORCHESTRATION.md) and [GitHub setup](docs/GITHUB_ORCHESTRATION_SETUP.md). Standard worker verification: node scripts/orchestration/verify.mjs --quick. Codex hook/CI portability blockers currently prevent an unattended fleet certification.

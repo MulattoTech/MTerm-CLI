@@ -1,0 +1,69 @@
+{
+  "change_id": "2026-10-21-orchestrator-ready",
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "identity_basis": "session-declared, self-reported",
+  "started_at_utc": "2026-10-22T02:02:11.503169+00:00",
+  "base_sha": "5c4588be3afe36ee11951a73c84a023656fe6fec",
+  "requirements": [
+    "CLI-234",
+    "CLI-237",
+    "AUTO-001",
+    "DCP-008"
+  ],
+  "summary": "Repository-only preparation for Orchestrator.inc/ Codex isolated AI development, standalone worktree bootstrapping, fast CI, task intake, CODEOWNERS and honest acceptance controls.",
+  "roadmap_updates": [
+    {
+      "ids": "CLI-234, CLI-237 and orchestration/GitHub governance",
+      "assessment": "No product feature/acceptance stage or baseline weight increased. CI script, issue template, docs and dev tooling only. DCP 0/48 and WEB 0/12 unchanged; no model agent was spawned."
+    }
+  ],
+  "tests": [
+    {
+      "command": "Node24 scripts/orchestration/post-create.mjs --dry-run",
+      "result": "PASS: deterministic plan, no model/login"
+    },
+    {
+      "command": "Node24 --test tests/orchestration.test.mjs",
+      "result": "PASS: 5/5 before final suite"
+    },
+    {
+      "command": "Node24 scripts/orchestration/post-create.mjs",
+      "result": "PASS: locked npm ci and TypeScript build:code, no model calls"
+    }
+  ],
+  "limitations": [
+    "AO Codex hook flag diagnostic warns with Codex 0.163.0; one-worker TUI/Chat integration not yet certified.",
+    "Hosted CI Windows short/long path and macOS canonical root failures still outstanding.",
+    "AO GitHub intake remains opt-in OFF and no sessions/PRs are auto-created.",
+    "PR52 and stacked PR67 are not yet integrated into main.",
+    "CODEOWNERS is advisory until the owner enables branch protection review."
+  ],
+  "files_created": [
+    "docs/ORCHESTRATION.md",
+    "docs/GITHUB_ORCHESTRATION_SETUP.md",
+    "scripts/orchestration/npm-entry.mjs",
+    "scripts/orchestration/post-create.mjs",
+    "scripts/orchestration/verify.mjs",
+    "tests/orchestration.test.mjs",
+    ".github/ISSUE_TEMPLATE/agent_task.yml",
+    ".github/workflows/ci-fast.yml",
+    ".github/CODEOWNERS"
+  ],
+  "files_modified": [
+    "AGENTS.md",
+    "CLAUDE.md",
+    "GEMINI.md",
+    "CONTRIBUTING.md",
+    "README.md",
+    "docs/HANDOFF.md",
+    ".github/copilot-instructions.md",
+    ".github/pull_request_template.md"
+  ],
+  "next_steps": [
+    "Run normal build/check from this isolated worktree and record exact pass/failure.",
+    "Push PR and await CI / fast exact-head result, repair blockers without bypass.",
+    "Register AO mterm-cli project without spawning models; configure scripts/reviews via UI after hook compatibility proof.",
+    "Pilot one low-risk issue, then two workers/reviewer at most if stable."
+  ]
+}

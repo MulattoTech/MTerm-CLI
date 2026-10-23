@@ -22,3 +22,5 @@ Record actual provider/model/UTC/tests plus roadmap_updates, explicitly review, 
 Use build:code for development only; normal build/check/pack must reject stale review.
 Do not bypass the current GitHub content-write safety denial by using local Git or another API.
 No actual user Codex config/auth is modified by setup; it prints a reversible plan.
+
+For orchestrated changes, use docs/ORCHESTRATION.md. One independently accepted issue per PR, owner check, RED/GREEN evidence, roadmap review, exact head SHA, and retained worktree recovery. No shared mutable node_modules between agent worktrees.

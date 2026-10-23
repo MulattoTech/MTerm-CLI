@@ -111,3 +111,19 @@ test('review and generated files detect source, catalog and output drift indepen
   await fs.appendFile(path.join(root, 'docs/ROADMAP.md'), 'altered');
   await assert.rejects(mod.check(root), /generated/i);
 });
+
+// Cross-platform review: LF/CRLF equivalence applies only to known UTF-8 text.
+test('roadmap source fingerprint normalizes only line endings in text', () => {
+  assert.equal(
+    mod.sourceDigest(Buffer.from('a\r\nb\r\n'), 'docs/x.md'),
+    mod.sourceDigest(Buffer.from('a\nb\n'), 'docs/x.md'),
+  );
+  assert.notEqual(
+    mod.sourceDigest(Buffer.from('a\nb\n'), 'src/x.ts'),
+    mod.sourceDigest(Buffer.from('a\nc\n'), 'src/x.ts'),
+  );
+  assert.notEqual(
+    mod.sourceDigest(Buffer.from('a\r\nb'), 'test.bin'),
+    mod.sourceDigest(Buffer.from('a\nb'), 'test.bin'),
+  );
+});

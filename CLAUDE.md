@@ -9,5 +9,7 @@ Read docs/HANDOFF.md, docs/SECURITY.md and docs/roadmap/METRICS.md before changi
 Keep the full300-ID seed unchanged; update reviewed stages/evidence or justify no stage change.
 Record actual provider/model/UTC/tests plus roadmap_updates, explicitly review, then render/check.
 Use build:code for development only; normal build/check/pack must reject stale review.
-Do not bypass the current GitHub content-write safety denial by using local Git or another API.
+Verify current GitHub permissions; never bypass an active publication denial.
 No actual user Codex config/auth is modified by setup; it prints a reversible plan.
+
+For orchestrated work, read docs/ORCHESTRATION.md and coordinate via issue ownership, isolated worktrees and exact-HEAD CI. Never self-award parity closure.

@@ -103,6 +103,15 @@ const singles = [
   'docs/DESKTOP_COMMANDER_CODEX_PARITY.md',
   'docs/execution/DESKTOP_COMMANDER_100_PASS_PROMPT.md',
 ];
+// Normalize Git checkout line endings only for known UTF-8 source text; binary remains exact.
+// Backported from unmerged PR #52 to make the independent fast CI gate portable.
+export function sourceDigest(bytes, relativePath) {
+  if (/\.(?:md|txt|json|mjs|cjs|js|ts|tsx|yaml|yml|toml|ps1|sh|css|html|svg)$/.test(relativePath)) {
+    const text = new TextDecoder('utf-8', { fatal: true, ignoreBOM: true }).decode(bytes);
+    return digest(text.replace(/\r\n/g, '\n'));
+  }
+  return digest(bytes);
+}
 async function sourceFingerprint(root) {
   const files = [];
   async function walk(relative) {
@@ -127,7 +136,7 @@ async function sourceFingerprint(root) {
       files.push(f);
     } catch {}
   const manifest = {};
-  for (const f of files.sort()) manifest[f] = digest(await fs.readFile(path.join(root, f)));
+  for (const f of files.sort()) manifest[f] = sourceDigest(await fs.readFile(path.join(root, f)), f);
   return { hash: digest(json(manifest)), files: manifest };
 }
 async function load(root) {

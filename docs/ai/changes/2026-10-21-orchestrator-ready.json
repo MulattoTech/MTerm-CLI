@@ -11,7 +11,7 @@
     "AUTO-001",
     "DCP-008"
   ],
-  "summary": "Repository-only preparation for Orchestrator.inc/ Codex isolated AI development, standalone worktree bootstrapping, fast CI, task intake, CODEOWNERS and honest acceptance controls.",
+  "summary": "Repository-only preparation for Orchestrator.inc/ Codex isolated AI development, standalone worktree bootstrapping, fast CI, task intake, CODEOWNERS and honest acceptance controls. Reused the CRLF/LF text-only fingerprint fix from unmerged PR #52 to make new CI fast workflow runnable on clean Linux checkout.",
   "roadmap_updates": [
     {
       "ids": "CLI-234, CLI-237 and orchestration/GitHub governance",
@@ -30,6 +30,10 @@
     {
       "command": "Node24 scripts/orchestration/post-create.mjs",
       "result": "PASS: locked npm ci and TypeScript build:code, no model calls"
+    },
+    {
+      "command": "Node24 node --test tests/roadmap.test.mjs",
+      "result": "PASS including binary-exact and text line-ending normalization assertions"
     }
   ],
   "limitations": [
@@ -37,7 +41,8 @@
     "Hosted CI Windows short/long path and macOS canonical root failures still outstanding.",
     "AO GitHub intake remains opt-in OFF and no sessions/PRs are auto-created.",
     "PR52 and stacked PR67 are not yet integrated into main.",
-    "CODEOWNERS is advisory until the owner enables branch protection review."
+    "CODEOWNERS is advisory until the owner enables branch protection review.",
+    "Text-only fingerprint normalization is backported from PR #52; reconcile identical code on merge rather than duplicating implementation."
   ],
   "files_created": [
     "docs/ORCHESTRATION.md",
@@ -51,14 +56,16 @@
     ".github/CODEOWNERS"
   ],
   "files_modified": [
+    ".github/copilot-instructions.md",
+    ".github/pull_request_template.md",
     "AGENTS.md",
     "CLAUDE.md",
-    "GEMINI.md",
     "CONTRIBUTING.md",
+    "GEMINI.md",
     "README.md",
     "docs/HANDOFF.md",
-    ".github/copilot-instructions.md",
-    ".github/pull_request_template.md"
+    "scripts/roadmap.mjs",
+    "tests/roadmap.test.mjs"
   ],
   "next_steps": [
     "Run normal build/check from this isolated worktree and record exact pass/failure.",

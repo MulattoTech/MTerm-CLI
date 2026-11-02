@@ -18,7 +18,8 @@ import {
 
 /** A remote root is deliberately narrower than an entire drive or user profile. */
 export async function remoteRoot(input: string): Promise<string> {
-  if (!path.isAbsolute(input)) fail('INVALID_ROOT', 'Select an explicit absolute trusted directory.');
+  if (!path.isAbsolute(input) || /^[/\\]{2}/.test(input))
+    fail('INVALID_ROOT', 'Select an explicit local absolute trusted directory; UNC/device paths are not supported.');
   const root = await fs.realpath(input);
   if (root.split(path.sep).some(component => privateName(component)))
     fail('PRIVATE_PATH', 'Credential and repository metadata directories cannot be exposed as remote roots.');

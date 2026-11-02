@@ -69,7 +69,7 @@ async function pair(store: RemoteStateStore): Promise<number> {
     try { verification = new URL(value.verificationUri ?? ''); }
     catch { fail('REMOTE_PROTOCOL', 'Pairing verification URL is invalid.'); }
     if (!value.pairId || !UUID_PATTERN.test(value.pairId) || typeof value.deviceCode !== 'string' || value.deviceCode.length < 24 || value.deviceCode.length > 256 ||
-      typeof value.userCode !== 'string' || !/^[A-Z0-9-]{6,20}$/.test(value.userCode) ||
+      typeof value.userCode !== 'string' || !/^[A-Z0-9_-]{6,20}$/.test(value.userCode) ||
       verification.origin !== (config.dashboard ?? config.gateway) || verification.username || verification.password ||
       !Number.isSafeInteger(value.expiresAt) || value.expiresAt! <= Date.now() || value.expiresAt! > Date.now() + 600000 ||
       !Number.isInteger(value.pollIntervalMs) || value.pollIntervalMs! < 1000 || value.pollIntervalMs! > 30000)

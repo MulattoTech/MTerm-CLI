@@ -37,7 +37,9 @@ export const READ_TOOLS = [
   {
     name: 'mterm_read_file',
     description: 'Read bounded UTF-8 text from the explicitly paired computer and trusted root.',
-    inputSchema: schema({ path: pathname, offset: integer(0, 1000000, 0), length: integer(1, 1000000) }, ['path']),
+    inputSchema: schema({ path: pathname, offset: integer(0, 1000000, 0), length: integer(1, 1000000) }, [
+      'path',
+    ]),
     annotations,
   },
   {

@@ -13,7 +13,10 @@ test('npm resolver recognizes Windows adjacent and Unix lib installation layouts
   const win = path.join(root, 'windows', 'node_modules', 'npm', 'bin', 'npm-cli.js');
   await fs.mkdir(path.dirname(win), { recursive: true });
   await fs.writeFile(win, 'fixture');
-  assert.equal(await mod.resolveNpmEntry({ execPath: path.join(root, 'windows', 'node.exe'), env: {} }), await fs.realpath(win));
+  assert.equal(
+    await mod.resolveNpmEntry({ execPath: path.join(root, 'windows', 'node.exe'), env: {} }),
+    await fs.realpath(win),
+  );
   const unix = path.join(root, 'unix', 'lib', 'node_modules', 'npm', 'bin', 'npm-cli.js');
   await fs.mkdir(path.dirname(unix), { recursive: true });
   await fs.writeFile(unix, 'fixture');

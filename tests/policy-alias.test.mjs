@@ -25,7 +25,10 @@ test('an explicitly selected root alias resolves existing files and missing leav
   const policy = await RootPolicy.create(f.alias);
   assert.equal(policy.root, f.real);
   assert.equal(await policy.resolve(path.join(f.alias, 'fixture.txt')), path.join(f.real, 'fixture.txt'));
-  assert.equal(policy.lexical(path.join(f.alias, 'nested', 'new.txt')), path.join(f.real, 'nested', 'new.txt'));
+  assert.equal(
+    policy.lexical(path.join(f.alias, 'nested', 'new.txt')),
+    path.join(f.real, 'nested', 'new.txt'),
+  );
   assert.equal(await policy.resolve(path.join(f.alias, 'new.txt'), true), path.join(f.real, 'new.txt'));
   assert.equal(await policy.resolve('fixture.txt'), path.join(f.real, 'fixture.txt'));
 });
@@ -66,7 +69,10 @@ test('nested links remain rejected through both selected aliases and canonical p
   await fs.symlink(f.real, nested, linkType);
   const policy = await RootPolicy.create(f.alias);
   for (const root of [f.alias, f.real]) {
-    await assert.rejects(policy.resolve(path.join(root, 'nested-link', 'fixture.txt')), code('LINK_REJECTED'));
+    await assert.rejects(
+      policy.resolve(path.join(root, 'nested-link', 'fixture.txt')),
+      code('LINK_REJECTED'),
+    );
   }
 });
 

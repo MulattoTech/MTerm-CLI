@@ -7,7 +7,16 @@ function shell(title, nonce, contents, script = '') {
 }
 export function consentPage({ nonce: consent, clientName, redirectOrigin }) {
   const nonce = randomToken(16);
-  return html(shell('Authorize MTerm read access', nonce, `<main class="consent"><span class="badge">Private MTerm authorization</span><h1 class="spaced">Connect ${escapeHtml(clientName)}</h1><p>Client callback: <strong>${escapeHtml(redirectOrigin)}</strong></p><p>This client is requesting read access to computers paired with your signed-in identity. You will explicitly choose the computer on each tool call.</p><div class="panel"><h2>Permission: mterm:read</h2><ul><li>List your paired computers and connection status.</li><li>Read text files, metadata and folders within each computer’s owner-selected root.</li><li>Search filenames and text within that root.</li></ul><p>File writing and process execution are disabled. You can revoke this client from the MTerm dashboard.</p></div><form method="post" action="/oauth/authorize"><input type="hidden" name="consent" value="${escapeHtml(consent)}"><button type="submit" name="decision" value="approve">Authorize read access</button><button class="secondary" type="submit" name="decision" value="deny">Cancel</button></form></main>`), nonce, 200, redirectOrigin);
+  return html(
+    shell(
+      'Authorize MTerm read access',
+      nonce,
+      `<main class="consent"><span class="badge">Private MTerm authorization</span><h1 class="spaced">Connect ${escapeHtml(clientName)}</h1><p>Client callback: <strong>${escapeHtml(redirectOrigin)}</strong></p><p>This client is requesting read access to computers paired with your signed-in identity. You will explicitly choose the computer on each tool call.</p><div class="panel"><h2>Permission: mterm:read</h2><ul><li>List your paired computers and connection status.</li><li>Read text files, metadata and folders within each computer’s owner-selected root.</li><li>Search filenames and text within that root.</li></ul><p>File writing and process execution are disabled. You can revoke this client from the MTerm dashboard.</p></div><form method="post" action="/oauth/authorize"><input type="hidden" name="consent" value="${escapeHtml(consent)}"><button type="submit" name="decision" value="approve">Authorize read access</button><button class="secondary" type="submit" name="decision" value="deny">Cancel</button></form></main>`,
+    ),
+    nonce,
+    200,
+    redirectOrigin,
+  );
 }
 export function dashboardPage(conf, env) {
   const nonce = randomToken(16);

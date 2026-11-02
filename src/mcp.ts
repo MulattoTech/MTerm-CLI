@@ -27,16 +27,23 @@ export interface HostOptions {
 }
 export async function runMcp(options: HostOptions): Promise<void> {
   const roots = options.roots ?? [options.root];
-  const configuration = options.compatDesktopCommander ? await CompatibilityConfig.create({roots,file:options.compatConfig,allowConfigWrite:options.allowConfigWrite,allowedShells:options.allowedShells}) : undefined;
+  const configuration = options.compatDesktopCommander
+    ? await CompatibilityConfig.create({
+        roots,
+        file: options.compatConfig,
+        allowConfigWrite: options.allowConfigWrite,
+        allowedShells: options.allowedShells,
+      })
+    : undefined;
   const files = await FileService.create(roots, { allowWrite: options.allowWrite, maxBytes: 262144 });
   const jobs = await ProcessService.create(roots, { allowExec: options.allowExec });
   const git = await GitService.create(roots);
   if (configuration) {
-    for(const policy of [files.policy,jobs.policy,git.policy]) configuration.bindPolicy(policy);
-    jobs.setExecutionGuard(command => configuration.checkExecutable(command));
-    git.setExecutionGuard(command => configuration.checkExecutable(command));
+    for (const policy of [files.policy, jobs.policy, git.policy]) configuration.bindPolicy(policy);
+    jobs.setExecutionGuard((command) => configuration.checkExecutable(command));
+    git.setExecutionGuard((command) => configuration.checkExecutable(command));
   }
-  const cleanupTools = new Set(['mterm_stop_process','mterm_read_process_output','mterm_list_sessions']);
+  const cleanupTools = new Set(['mterm_stop_process', 'mterm_read_process_output', 'mterm_list_sessions']);
   let active = 0;
   const audit: Array<{ at: string; tool: string; outcome: string; durationMs: number }> = [];
   class OwnedTransport extends StdioServerTransport {
@@ -100,7 +107,8 @@ export async function runMcp(options: HostOptions): Promise<void> {
               cancelled(ctx.mcpReq.signal);
               const execute = () => handler(args, ctx.mcpReq.signal);
               // Owned cleanup/status remains available even when a malformed policy denies new work.
-              const result = configuration && !cleanupTools.has(name) ? await configuration.run(execute) : await execute();
+              const result =
+                configuration && !cleanupTools.has(name) ? await configuration.run(execute) : await execute();
               const text = JSON.stringify(result);
               if (Buffer.byteLength(text) > 524288)
                 fail(
@@ -113,7 +121,14 @@ export async function runMcp(options: HostOptions): Promise<void> {
                 outcome: 'ok',
                 durationMs: Math.round(performance.now() - began),
               });
-              if (rawText) { const raw=result as DesktopTextResult; return {content:raw.content,...(raw.structuredContent ? {structuredContent:raw.structuredContent} : {}),isError:raw.isError??false}; }
+              if (rawText) {
+                const raw = result as DesktopTextResult;
+                return {
+                  content: raw.content,
+                  ...(raw.structuredContent ? { structuredContent: raw.structuredContent } : {}),
+                  isError: raw.isError ?? false,
+                };
+              }
               return {
                 content: [{ type: 'text' as const, text }],
                 structuredContent: result as Record<string, unknown>,
@@ -141,12 +156,38 @@ export async function runMcp(options: HostOptions): Promise<void> {
       }
       if (options.compatDesktopCommander && configuration) {
         const compat = DesktopCommanderFiles.using(files, () => configuration.current());
-        add('get_config','Report effective compatibility preferences, capability ceilings and actual local client information.',compatibilityConfigSchemas.get,true,()=>configuration.describe(server.server.getClientVersion()),true);
-        if(configuration.allowConfigWrite) add('set_config_value','Persist validated runtime preferences inside owner-defined capability ceilings. Empty roots deny all; no telemetry is emitted.',compatibilityConfigSchemas.set,false,async (a,signal)=>{
-          const parsed=compatibilityConfigSchemas.set.parse(a);
-          const next=await configuration.set(parsed.key,parsed.value,signal);
-          return {content:[{type:'text' as const,text:'Successfully set '+parsed.key+'\n\nUpdated configuration:\n'+JSON.stringify(next,null,2)}]};
-        },true);
+        add(
+          'get_config',
+          'Report effective compatibility preferences, capability ceilings and actual local client information.',
+          compatibilityConfigSchemas.get,
+          true,
+          () => configuration.describe(server.server.getClientVersion()),
+          true,
+        );
+        if (configuration.allowConfigWrite)
+          add(
+            'set_config_value',
+            'Persist validated runtime preferences inside owner-defined capability ceilings. Empty roots deny all; no telemetry is emitted.',
+            compatibilityConfigSchemas.set,
+            false,
+            async (a, signal) => {
+              const parsed = compatibilityConfigSchemas.set.parse(a);
+              const next = await configuration.set(parsed.key, parsed.value, signal);
+              return {
+                content: [
+                  {
+                    type: 'text' as const,
+                    text:
+                      'Successfully set ' +
+                      parsed.key +
+                      '\n\nUpdated configuration:\n' +
+                      JSON.stringify(next, null, 2),
+                  },
+                ],
+              };
+            },
+            true,
+          );
         add(
           'read_file',
           'DesktopCommander text read: offset/length and negative tail; scoped UTF-8 only. URL/images/office formats remain unsupported.',
@@ -254,7 +295,15 @@ export async function runMcp(options: HostOptions): Promise<void> {
         'Read bounded UTF-8 text and SHA-256 version; optional zero-based line range.',
         fileSchemas.read,
         true,
-        (a) => files.read(configuration ? {...(a as object),length:(a as {length?:number}).length ?? configuration.current().fileReadLineLimit} : a),
+        (a) =>
+          files.read(
+            configuration
+              ? {
+                  ...(a as object),
+                  length: (a as { length?: number }).length ?? configuration.current().fileReadLineLimit,
+                }
+              : a,
+          ),
       );
       add(
         'mterm_file_info',

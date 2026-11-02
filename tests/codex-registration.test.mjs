@@ -131,84 +131,132 @@ async function withRenameFault(platform, fault, operation) {
 async function assertNoStages(home) {
   for (const directory of [home, path.join(home, '.mterm-registration')]) {
     const names = await fs.readdir(directory);
-    assert.ok(!names.some(name => name.startsWith('.mterm-stage-')), 'owned staged files are cleaned');
+    assert.ok(!names.some((name) => name.startsWith('.mterm-stage-')), 'owned staged files are cleaned');
   }
 }
-test('Windows transient EPERM and EBUSY during journal replacement recover without deleting the destination', { concurrency: false }, async (t) => {
-  const f = await fixture(t), p = await plan(f.root);
-  const original = 'model = "preserved"\n';
-  await fs.writeFile(f.config, original);
-  const journal = path.join(f.home, '.mterm-registration', p.name + '.json');
-  let attempts = 0;
-  await withRenameFault('win32', async (source, target, rename) => {
-    if (target === journal) {
-      attempts++;
-      const before = JSON.parse(await fs.readFile(journal, 'utf8'));
-      assert.equal(before.phase, 'installing');
-      if (attempts <= 2) throw Object.assign(new Error('synthetic transient lock'), { code: attempts === 1 ? 'EPERM' : 'EBUSY' });
-    }
-    return rename(source, target);
-  }, async () => {
-    assert.equal((await mod.applyCodexRegistration(p, { home: f.home, generateTable: table })).changed, true);
-  });
-  assert.equal(attempts, 3);
-  assert.equal(JSON.parse(await fs.readFile(journal, 'utf8')).phase, 'installed');
-  assert.ok((await fs.readFile(f.config, 'utf8')).startsWith(original));
-  await assertNoStages(f.home);
-});
-test('Windows rename retry rechecks the expected snapshot and preserves an intervening external edit', { concurrency: false }, async (t) => {
-  const f = await fixture(t), p = await plan(f.root);
-  const original = 'model = "before"\n', external = 'model = "external owner edit"\n';
-  await fs.writeFile(f.config, original);
-  let attempts = 0;
-  await withRenameFault('win32', async (source, target, rename) => {
-    if (target === f.config) {
-      attempts++;
-      await fs.writeFile(f.config, external);
-      throw Object.assign(new Error('synthetic transient lock'), { code: 'EPERM' });
-    }
-    return rename(source, target);
-  }, async () => {
-    await assert.rejects(mod.applyCodexRegistration(p, { home: f.home, generateTable: table }), e => e.code === 'CONFIG_CONFLICT');
-  });
-  assert.equal(attempts, 1, 'changed bytes prevent a second rename attempt');
-  assert.equal(await fs.readFile(f.config, 'utf8'), external);
-  const backups = path.join(f.home, '.mterm-registration', 'backups');
-  assert.equal(await fs.readFile(path.join(backups, (await fs.readdir(backups))[0]), 'utf8'), original);
-  await assertNoStages(f.home);
-});
-test('Windows rename retry is bounded and leaves existing bytes and backup intact after exhaustion', { concurrency: false }, async (t) => {
-  const f = await fixture(t), p = await plan(f.root);
-  const original = 'model = "before"\n';
-  await fs.writeFile(f.config, original);
-  let attempts = 0;
-  await withRenameFault('win32', async (source, target, rename) => {
-    if (target === f.config) {
-      attempts++;
-      throw Object.assign(new Error('synthetic persistent lock'), { code: 'EBUSY' });
-    }
-    return rename(source, target);
-  }, async () => {
-    await assert.rejects(mod.applyCodexRegistration(p, { home: f.home, generateTable: table }), e => e.code === 'EBUSY');
-  });
-  assert.equal(attempts, 5);
-  assert.equal(await fs.readFile(f.config, 'utf8'), original);
-  await assertNoStages(f.home);
-});
+test(
+  'Windows transient EPERM and EBUSY during journal replacement recover without deleting the destination',
+  { concurrency: false },
+  async (t) => {
+    const f = await fixture(t),
+      p = await plan(f.root);
+    const original = 'model = "preserved"\n';
+    await fs.writeFile(f.config, original);
+    const journal = path.join(f.home, '.mterm-registration', p.name + '.json');
+    let attempts = 0;
+    await withRenameFault(
+      'win32',
+      async (source, target, rename) => {
+        if (target === journal) {
+          attempts++;
+          const before = JSON.parse(await fs.readFile(journal, 'utf8'));
+          assert.equal(before.phase, 'installing');
+          if (attempts <= 2)
+            throw Object.assign(new Error('synthetic transient lock'), {
+              code: attempts === 1 ? 'EPERM' : 'EBUSY',
+            });
+        }
+        return rename(source, target);
+      },
+      async () => {
+        assert.equal(
+          (await mod.applyCodexRegistration(p, { home: f.home, generateTable: table })).changed,
+          true,
+        );
+      },
+    );
+    assert.equal(attempts, 3);
+    assert.equal(JSON.parse(await fs.readFile(journal, 'utf8')).phase, 'installed');
+    assert.ok((await fs.readFile(f.config, 'utf8')).startsWith(original));
+    await assertNoStages(f.home);
+  },
+);
+test(
+  'Windows rename retry rechecks the expected snapshot and preserves an intervening external edit',
+  { concurrency: false },
+  async (t) => {
+    const f = await fixture(t),
+      p = await plan(f.root);
+    const original = 'model = "before"\n',
+      external = 'model = "external owner edit"\n';
+    await fs.writeFile(f.config, original);
+    let attempts = 0;
+    await withRenameFault(
+      'win32',
+      async (source, target, rename) => {
+        if (target === f.config) {
+          attempts++;
+          await fs.writeFile(f.config, external);
+          throw Object.assign(new Error('synthetic transient lock'), { code: 'EPERM' });
+        }
+        return rename(source, target);
+      },
+      async () => {
+        await assert.rejects(
+          mod.applyCodexRegistration(p, { home: f.home, generateTable: table }),
+          (e) => e.code === 'CONFIG_CONFLICT',
+        );
+      },
+    );
+    assert.equal(attempts, 1, 'changed bytes prevent a second rename attempt');
+    assert.equal(await fs.readFile(f.config, 'utf8'), external);
+    const backups = path.join(f.home, '.mterm-registration', 'backups');
+    assert.equal(await fs.readFile(path.join(backups, (await fs.readdir(backups))[0]), 'utf8'), original);
+    await assertNoStages(f.home);
+  },
+);
+test(
+  'Windows rename retry is bounded and leaves existing bytes and backup intact after exhaustion',
+  { concurrency: false },
+  async (t) => {
+    const f = await fixture(t),
+      p = await plan(f.root);
+    const original = 'model = "before"\n';
+    await fs.writeFile(f.config, original);
+    let attempts = 0;
+    await withRenameFault(
+      'win32',
+      async (source, target, rename) => {
+        if (target === f.config) {
+          attempts++;
+          throw Object.assign(new Error('synthetic persistent lock'), { code: 'EBUSY' });
+        }
+        return rename(source, target);
+      },
+      async () => {
+        await assert.rejects(
+          mod.applyCodexRegistration(p, { home: f.home, generateTable: table }),
+          (e) => e.code === 'EBUSY',
+        );
+      },
+    );
+    assert.equal(attempts, 5);
+    assert.equal(await fs.readFile(f.config, 'utf8'), original);
+    await assertNoStages(f.home);
+  },
+);
 test('non-Windows permission failures are not retried', { concurrency: false }, async (t) => {
-  const f = await fixture(t), p = await plan(f.root);
+  const f = await fixture(t),
+    p = await plan(f.root);
   const original = 'model = "before"\n';
   await fs.writeFile(f.config, original);
   let attempts = 0;
-  await withRenameFault('linux', async (source, target, rename) => {
-    if (target === f.config) {
-      attempts++;
-      throw Object.assign(new Error('synthetic permission failure'), { code: 'EPERM' });
-    }
-    return rename(source, target);
-  }, async () => {
-    await assert.rejects(mod.applyCodexRegistration(p, { home: f.home, generateTable: table }), e => e.code === 'EPERM');
-  });
+  await withRenameFault(
+    'linux',
+    async (source, target, rename) => {
+      if (target === f.config) {
+        attempts++;
+        throw Object.assign(new Error('synthetic permission failure'), { code: 'EPERM' });
+      }
+      return rename(source, target);
+    },
+    async () => {
+      await assert.rejects(
+        mod.applyCodexRegistration(p, { home: f.home, generateTable: table }),
+        (e) => e.code === 'EPERM',
+      );
+    },
+  );
   assert.equal(attempts, 1);
   assert.equal(await fs.readFile(f.config, 'utf8'), original);
   await assertNoStages(f.home);

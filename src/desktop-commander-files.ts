@@ -52,7 +52,10 @@ const countLines = (text: string) =>
 const office = /\.(?:xlsx?|xlsm|pdf|docx|png|jpe?g|gif|webp)$/i;
 export class DesktopCommanderFiles {
   private queue: Promise<unknown> = Promise.resolve();
-  private constructor(readonly files: FileService, private readonly preferences?: () => CompatibilityPreferences) {}
+  private constructor(
+    readonly files: FileService,
+    private readonly preferences?: () => CompatibilityPreferences,
+  ) {}
   static async create(root: string, allowWrite = false) {
     return new DesktopCommanderFiles(await FileService.create(root, { allowWrite, maxBytes: 262144 }));
   }

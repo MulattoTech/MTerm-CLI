@@ -38,7 +38,9 @@ export class RootPolicy {
   private constructor(
     readonly roots: readonly string[],
     private readonly aliases: readonly Readonly<{ selected: string; canonical: string }>[],
-  ) { this.root = roots[0]!; }
+  ) {
+    this.root = roots[0]!;
+  }
   static async create(input: string | readonly string[]): Promise<RootPolicy> {
     const requested = typeof input === 'string' ? [input] : input;
     if (!Array.isArray(requested) || requested.length < 1 || requested.length > 16)
@@ -50,25 +52,35 @@ export class RootPolicy {
         fail('INVALID_ROOT', 'Choose explicit absolute trusted directories.');
       const real = await fs.realpath(root);
       if (!(await fs.lstat(real)).isDirectory()) fail('INVALID_ROOT', 'Trusted root must be a directory.');
-      if (!roots.some(r => path.relative(r, real) === '')) roots.push(real);
+      if (!roots.some((r) => path.relative(r, real) === '')) roots.push(real);
       aliases.push(Object.freeze({ selected: path.resolve(root), canonical: real }));
     }
-    return new RootPolicy(Object.freeze(roots), Object.freeze(aliases.sort((a, b) => a.selected.length - b.selected.length)));
+    return new RootPolicy(
+      Object.freeze(roots),
+      Object.freeze(aliases.sort((a, b) => a.selected.length - b.selected.length)),
+    );
   }
-  setAccessGuard(guard: (target: string) => void): void { this.accessGuard = guard; }
+  setAccessGuard(guard: (target: string) => void): void {
+    this.accessGuard = guard;
+  }
   private contains(root: string, candidate: string): boolean {
     const rel = path.relative(root, candidate);
     return rel === '' || (!path.isAbsolute(rel) && rel !== '..' && !rel.startsWith('..' + path.sep));
   }
   /** Use the outermost containing owner root so nested grants cannot hide private path components. */
   anchor(candidate: string): string {
-    const roots = this.roots.filter(r => this.contains(r, candidate)).sort((a,b) => a.length-b.length);
+    const roots = this.roots.filter((r) => this.contains(r, candidate)).sort((a, b) => a.length - b.length);
     if (!roots.length) fail('OUTSIDE_ROOT', 'Requested path is outside the owner-selected roots.');
     return roots[0]!;
   }
   inside(candidate: string): boolean {
-    if (!this.roots.some(r => this.contains(r,candidate))) return false;
-    try { this.accessGuard?.(candidate); return true; } catch { return false; }
+    if (!this.roots.some((r) => this.contains(r, candidate))) return false;
+    try {
+      this.accessGuard?.(candidate);
+      return true;
+    } catch {
+      return false;
+    }
   }
   lexical(input: string): string {
     if (typeof input !== 'string' || !input || input.length > 4096 || /[\x00-\x1f\x7f]/.test(input))
@@ -76,11 +88,11 @@ export class RootPolicy {
     if (/^[/\\]{2}/.test(input) || /^[A-Za-z]:[^/\\]/.test(input))
       fail('INVALID_PATH', 'UNC/device/drive-relative paths are not supported.');
     let target = path.resolve(this.root, input);
-    if (!this.roots.some(root => this.contains(root, target))) {
+    if (!this.roots.some((root) => this.contains(root, target))) {
       // Only startup-selected aliases may be translated, never arbitrary realpaths.
       // Prefer the outermost selected alias so nested links/private names still undergo
       // the same component checks. A path already in a canonical root is not remapped.
-      const alias = this.aliases.find(item => this.contains(item.selected, target));
+      const alias = this.aliases.find((item) => this.contains(item.selected, target));
       if (alias) target = path.resolve(alias.canonical, path.relative(alias.selected, target));
     }
     if (!this.inside(target)) fail('OUTSIDE_ROOT', 'Requested path is outside the trusted root.');
@@ -117,11 +129,14 @@ export class RootPolicy {
         fail('LINK_REJECTED', 'Symlinks, junctions and multiply-linked files are refused.');
       if (i < parts.length - 1 && !st.isDirectory()) fail('NOT_DIRECTORY', 'Parent is not a directory.');
       const real = await fs.realpath(current);
-      if (!this.roots.some(r => this.contains(r, real))) fail('OUTSIDE_ROOT', 'Canonical path escapes the owner roots.');
+      if (!this.roots.some((r) => this.contains(r, real)))
+        fail('OUTSIDE_ROOT', 'Canonical path escapes the owner roots.');
     }
     return target;
   }
   relative(full: string): string {
-    return this.contains(this.root, full) ? (path.relative(this.root, full).split(path.sep).join('/') || '.') : full;
+    return this.contains(this.root, full)
+      ? path.relative(this.root, full).split(path.sep).join('/') || '.'
+      : full;
   }
 }

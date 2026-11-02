@@ -19,7 +19,9 @@ export const gitSchemas = {
 };
 export class GitService {
   private executionGuard?: (command: string) => void;
-  setExecutionGuard(guard: (command: string) => void) { this.executionGuard = guard; }
+  setExecutionGuard(guard: (command: string) => void) {
+    this.executionGuard = guard;
+  }
   private constructor(readonly policy: RootPolicy) {}
   static async create(root: string | readonly string[]) {
     return new GitService(await RootPolicy.create(root));

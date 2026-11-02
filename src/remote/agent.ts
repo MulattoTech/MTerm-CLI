@@ -13,11 +13,20 @@ import {
 
 export function normalizeGateway(value: string): string {
   let url: URL;
-  try { url = new URL(value); } catch { fail('GATEWAY_URL', 'Gateway must be an absolute HTTPS origin.'); }
+  try {
+    url = new URL(value);
+  } catch {
+    fail('GATEWAY_URL', 'Gateway must be an absolute HTTPS origin.');
+  }
   if (
-    url.protocol !== 'https:' || url.username || url.password || url.search || url.hash ||
+    url.protocol !== 'https:' ||
+    url.username ||
+    url.password ||
+    url.search ||
+    url.hash ||
     (url.pathname !== '/' && url.pathname !== '')
-  ) fail('GATEWAY_URL', 'Gateway must be an HTTPS origin without credentials, a path, query or fragment.');
+  )
+    fail('GATEWAY_URL', 'Gateway must be an HTTPS origin without credentials, a path, query or fragment.');
   return url.origin;
 }
 
@@ -32,24 +41,35 @@ export class GatewayTransport {
     if (token !== undefined && (!token || token.length > 4096 || /[\x00-\x20\x7f]/.test(token)))
       fail('REMOTE_CREDENTIAL', 'Device credential is invalid.');
   }
-  async post(endpoint: string, value: unknown, signal?: AbortSignal): Promise<{ status: number; data: unknown }> {
+  async post(
+    endpoint: string,
+    value: unknown,
+    signal?: AbortSignal,
+  ): Promise<{ status: number; data: unknown }> {
     if (!/^\/api\/(agent|pair)\/[a-z]+$/.test(endpoint))
       fail('REMOTE_ENDPOINT', 'Endpoint is not part of the device protocol.');
     const body = JSON.stringify(value);
-    if (Buffer.byteLength(body) > MAX_FRAME_BYTES) fail('REMOTE_REQUEST_LIMIT', 'Remote frame exceeds its byte limit.');
+    if (Buffer.byteLength(body) > MAX_FRAME_BYTES)
+      fail('REMOTE_REQUEST_LIMIT', 'Remote frame exceeds its byte limit.');
     const timeout = AbortSignal.timeout(25000);
     const bound = signal ? AbortSignal.any([signal, timeout]) : timeout;
     let response: Response;
     try {
       response = await this.fetcher(this.gateway + endpoint, {
         method: 'POST',
-        headers: { 'content-type': 'application/json', ...(this.token ? { authorization: 'Bearer ' + this.token } : {}) },
+        headers: {
+          'content-type': 'application/json',
+          ...(this.token ? { authorization: 'Bearer ' + this.token } : {}),
+        },
         body,
         redirect: 'error',
         signal: bound,
       });
     } catch {
-      fail('REMOTE_NETWORK', 'Gateway request failed or timed out; no response or credential data is logged.');
+      fail(
+        'REMOTE_NETWORK',
+        'Gateway request failed or timed out; no response or credential data is logged.',
+      );
     }
     if (response.status === 410 && endpoint === '/api/agent/result') {
       await response.body?.cancel().catch(() => {});
@@ -61,11 +81,17 @@ export class GatewayTransport {
     }
     if ([401, 403, 410].includes(response.status)) {
       await response.body?.cancel().catch(() => {});
-      fail('REMOTE_REVOKED', 'Device authorization is expired, revoked or unavailable. Pair again explicitly.');
+      fail(
+        'REMOTE_REVOKED',
+        'Device authorization is expired, revoked or unavailable. Pair again explicitly.',
+      );
     }
     if (!response.ok) {
       await response.body?.cancel().catch(() => {});
-      fail(response.status === 429 ? 'REMOTE_RATE_LIMIT' : 'REMOTE_HTTP', 'Gateway declined the request; retry is bounded.');
+      fail(
+        response.status === 429 ? 'REMOTE_RATE_LIMIT' : 'REMOTE_HTTP',
+        'Gateway declined the request; retry is bounded.',
+      );
     }
     if (Number(response.headers.get('content-length')) > MAX_FRAME_BYTES) {
       await response.body?.cancel().catch(() => {});
@@ -86,25 +112,46 @@ export class GatewayTransport {
           }
           chunks.push(part.value);
         }
-      } finally { reader.releaseLock(); }
+      } finally {
+        reader.releaseLock();
+      }
     }
     if (!total) return { status: response.status, data: {} };
     try {
-      return { status: response.status, data: JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(Buffer.concat(chunks))) };
-    } catch { fail('REMOTE_PROTOCOL', 'Gateway response is not valid bounded JSON.'); }
+      return {
+        status: response.status,
+        data: JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(Buffer.concat(chunks))),
+      };
+    } catch {
+      fail('REMOTE_PROTOCOL', 'Gateway response is not valid bounded JSON.');
+    }
   }
 }
 
 function parsePoll(value: unknown): AgentPoll {
   const p = value as AgentPoll;
   if (
-    !p || typeof p !== 'object' || !Array.isArray(p.requests) || p.requests.length > 4 ||
-    !Array.isArray(p.cancelled) || p.cancelled.length > 64 ||
-    p.cancelled.some(id => typeof id !== 'string' || !UUID_PATTERN.test(id)) ||
-    !Number.isInteger(p.pollAfterMs) || p.pollAfterMs < 1000 || p.pollAfterMs > 30000 ||
-    p.requests.some(r => !r || typeof r !== 'object' || !UUID_PATTERN.test(r.requestId ?? '') ||
-      !UUID_PATTERN.test(r.deviceId ?? '') || r.version !== WIRE_VERSION || !Number.isSafeInteger(r.deadline))
-  ) fail('REMOTE_PROTOCOL', 'Gateway poll response does not match the bounded device protocol.');
+    !p ||
+    typeof p !== 'object' ||
+    !Array.isArray(p.requests) ||
+    p.requests.length > 4 ||
+    !Array.isArray(p.cancelled) ||
+    p.cancelled.length > 64 ||
+    p.cancelled.some((id) => typeof id !== 'string' || !UUID_PATTERN.test(id)) ||
+    !Number.isInteger(p.pollAfterMs) ||
+    p.pollAfterMs < 1000 ||
+    p.pollAfterMs > 30000 ||
+    p.requests.some(
+      (r) =>
+        !r ||
+        typeof r !== 'object' ||
+        !UUID_PATTERN.test(r.requestId ?? '') ||
+        !UUID_PATTERN.test(r.deviceId ?? '') ||
+        r.version !== WIRE_VERSION ||
+        !Number.isSafeInteger(r.deadline),
+    )
+  )
+    fail('REMOTE_PROTOCOL', 'Gateway poll response does not match the bounded device protocol.');
   return p;
 }
 
@@ -138,17 +185,31 @@ export class RemoteAgent {
     const sleep = this.options.sleep ?? ((ms, s) => delay(ms, undefined, { signal: s }));
     const random = this.options.random ?? Math.random;
     let reason: 'stopped' | 'revoked' = 'stopped';
-    const event = (state: AgentEvent['state']) => this.options.onEvent?.({ at: new Date().toISOString(), state, activeRequests: active.size });
-    const revoked = () => { reason = 'revoked'; event('revoked'); controller.abort(); };
+    const event = (state: AgentEvent['state']) =>
+      this.options.onEvent?.({ at: new Date().toISOString(), state, activeRequests: active.size });
+    const revoked = () => {
+      reason = 'revoked';
+      event('revoked');
+      controller.abort();
+    };
     const isRevoked = (e: unknown) => e instanceof ToolError && e.code === 'REMOTE_REVOKED';
     const execute = async (request: ToolRequest, child: AbortController) => {
       const bound = AbortSignal.any([controller.signal, child.signal]);
       const result = await this.options.adapter.execute(request, bound);
       // Result delivery may retry; filesystem execution above never does.
-      for (let attempt = 0; attempt < 3 && !controller.signal.aborted && Date.now() < request.deadline; attempt++) {
-        try { await this.options.transport.post('/api/agent/result', result, controller.signal); return; }
-        catch (e) {
-          if (isRevoked(e)) { revoked(); return; }
+      for (
+        let attempt = 0;
+        attempt < 3 && !controller.signal.aborted && Date.now() < request.deadline;
+        attempt++
+      ) {
+        try {
+          await this.options.transport.post('/api/agent/result', result, controller.signal);
+          return;
+        } catch (e) {
+          if (isRevoked(e)) {
+            revoked();
+            return;
+          }
           if (e instanceof ToolError && e.code === 'REMOTE_REQUEST_EXPIRED') return;
           if (attempt < 2) await sleep(Math.min(2000, 500 * 2 ** attempt), controller.signal).catch(() => {});
         }
@@ -159,7 +220,11 @@ export class RemoteAgent {
     try {
       while (!controller.signal.aborted) {
         try {
-          const { data } = await this.options.transport.post('/api/agent/poll', { version: WIRE_VERSION, deviceId: this.options.adapter.deviceId }, controller.signal);
+          const { data } = await this.options.transport.post(
+            '/api/agent/poll',
+            { version: WIRE_VERSION, deviceId: this.options.adapter.deviceId },
+            controller.signal,
+          );
           const poll = parsePoll(data);
           failures = 0;
           for (const id of poll.cancelled) active.get(id)?.controller.abort();
@@ -170,23 +235,33 @@ export class RemoteAgent {
             if (active.size >= 4 || seen.size >= 4096) break;
             seen.set(request.requestId, Math.max(now + 60000, request.deadline + 60000));
             const child = new AbortController();
-            const done = execute(request, child).catch(() => {}).finally(() => { active.delete(request.requestId); });
+            const done = execute(request, child)
+              .catch(() => {})
+              .finally(() => {
+                active.delete(request.requestId);
+              });
             active.set(request.requestId, { controller: child, done });
           }
           event('online');
           await sleep(poll.pollAfterMs, controller.signal);
         } catch (e) {
           if (controller.signal.aborted) break;
-          if (isRevoked(e)) { revoked(); break; }
+          if (isRevoked(e)) {
+            revoked();
+            break;
+          }
           event('reconnecting');
           failures = Math.min(failures + 1, 6);
-          await sleep(Math.min(30000, 500 * 2 ** failures) + Math.floor(random() * 500), controller.signal).catch(() => {});
+          await sleep(
+            Math.min(30000, 500 * 2 ** failures) + Math.floor(random() * 500),
+            controller.signal,
+          ).catch(() => {});
         }
       }
     } finally {
       controller.abort();
       for (const job of active.values()) job.controller.abort();
-      await Promise.allSettled([...active.values()].map(j => j.done));
+      await Promise.allSettled([...active.values()].map((j) => j.done));
       signal?.removeEventListener('abort', abort);
       if (reason === 'stopped') event('stopped');
     }

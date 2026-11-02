@@ -74,7 +74,9 @@ export function childEnvironment(): NodeJS.ProcessEnv {
 export class ProcessService {
   readonly sessions = new Map<string, Session>();
   private executionGuard?: (command: string) => void;
-  setExecutionGuard(guard: (command: string) => void) { this.executionGuard = guard; }
+  setExecutionGuard(guard: (command: string) => void) {
+    this.executionGuard = guard;
+  }
   private closed = false;
   private starting = 0;
   private constructor(

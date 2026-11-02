@@ -146,12 +146,25 @@ test('MCP refuses missing root and unknown transport flags', async () => {
   }
 });
 test('remote help and setup preview are explicit and do not create state', async (t) => {
-  const dir = await home(t), root = path.join(dir, 'project'), state = path.join(dir, 'state');
+  const dir = await home(t),
+    root = path.join(dir, 'project'),
+    state = path.join(dir, 'state');
   await fs.mkdir(root);
   const help = await invoke(['remote', 'help']);
   assert.equal(help.code, 0);
   assert.match(help.stdout, /outbound read-only/);
-  const preview = await invoke(['remote', 'setup', '--gateway', 'https://mcp.example.invalid', '--dashboard', 'https://dashboard.example.invalid', '--root', root, '--state-dir', state]);
+  const preview = await invoke([
+    'remote',
+    'setup',
+    '--gateway',
+    'https://mcp.example.invalid',
+    '--dashboard',
+    'https://dashboard.example.invalid',
+    '--root',
+    root,
+    '--state-dir',
+    state,
+  ]);
   assert.equal(preview.code, 0, preview.stderr);
   const plan = JSON.parse(preview.stdout);
   assert.equal(plan.applied, false);

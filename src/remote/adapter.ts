@@ -19,11 +19,13 @@ import {
 /** A remote root is deliberately narrower than an entire drive or user profile. */
 export async function remoteRoot(input: string): Promise<string> {
   if (!path.isAbsolute(input) || /^[/\\]{2}/.test(input))
-    fail('INVALID_ROOT', 'Select an explicit local absolute trusted directory; UNC/device paths are not supported.');
+    fail(
+      'INVALID_ROOT',
+      'Select an explicit local absolute trusted directory; UNC/device paths are not supported.',
+    );
   const root = await fs.realpath(input);
-  if (!(await fs.lstat(root)).isDirectory())
-    fail('INVALID_ROOT', 'Trusted remote root must be a directory.');
-  if (root.split(path.sep).some(component => privateName(component)))
+  if (!(await fs.lstat(root)).isDirectory()) fail('INVALID_ROOT', 'Trusted remote root must be a directory.');
+  if (root.split(path.sep).some((component) => privateName(component)))
     fail('PRIVATE_PATH', 'Credential and repository metadata directories cannot be exposed as remote roots.');
   const home = await fs.realpath(os.homedir());
   if (path.relative(root, path.parse(root).root) === '' || path.relative(root, home) === '')
@@ -77,7 +79,10 @@ export class RemoteReadAdapter {
       for (const [id, expires] of this.admitted) if (expires <= now) this.admitted.delete(id);
       if (this.admitted.has(request.requestId)) fail('REPLAY_REJECTED', 'A request ID cannot execute twice.');
       if (this.active >= 4 || this.admitted.size >= 4096)
-        fail('BUSY', 'Remote request capacity is bounded; retry with a new request after prior work completes.');
+        fail(
+          'BUSY',
+          'Remote request capacity is bounded; retry with a new request after prior work completes.',
+        );
       this.admitted.set(request.requestId, request.deadline + 60000);
       this.active++;
       counted = true;

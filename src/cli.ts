@@ -4,32 +4,48 @@ import path from 'node:path';
 import { safeError, fail } from './errors.js';
 export const VERSION = '0.0.1-preview.1';
 export function parseHost(args: string[]) {
-  const roots: string[] = [], allowedShells: string[] = [];
-  let stdio=false,allowWrite=false,allowExec=false,compatDesktopCommander=false,allowConfigWrite=false;
+  const roots: string[] = [],
+    allowedShells: string[] = [];
+  let stdio = false,
+    allowWrite = false,
+    allowExec = false,
+    compatDesktopCommander = false,
+    allowConfigWrite = false;
   let compatConfig: string | undefined;
-  for (let i=0;i<args.length;i++) {
-    const option=args[i];
-    if (option==='--root' || option==='--compat-config' || option==='--allow-shell') {
-      const value=args[++i];
-      if (!value || value.startsWith('--')) fail('USAGE', option+' requires a value.');
-      if (option==='--root') roots.push(path.resolve(value));
-      else if(option==='--compat-config') {
-        if(compatConfig || !path.isAbsolute(value)) fail('USAGE','--compat-config requires one absolute file path.');
-        compatConfig=path.resolve(value);
+  for (let i = 0; i < args.length; i++) {
+    const option = args[i];
+    if (option === '--root' || option === '--compat-config' || option === '--allow-shell') {
+      const value = args[++i];
+      if (!value || value.startsWith('--')) fail('USAGE', option + ' requires a value.');
+      if (option === '--root') roots.push(path.resolve(value));
+      else if (option === '--compat-config') {
+        if (compatConfig || !path.isAbsolute(value))
+          fail('USAGE', '--compat-config requires one absolute file path.');
+        compatConfig = path.resolve(value);
       } else allowedShells.push(value);
-    } else if(option==='--stdio') stdio=true;
-    else if(option==='--allow-write') allowWrite=true;
-    else if(option==='--allow-exec') allowExec=true;
-    else if(option==='--compat-desktop-commander') compatDesktopCommander=true;
-    else if(option==='--allow-config-write') allowConfigWrite=true;
-    else fail('USAGE','Unsupported MCP option.');
+    } else if (option === '--stdio') stdio = true;
+    else if (option === '--allow-write') allowWrite = true;
+    else if (option === '--allow-exec') allowExec = true;
+    else if (option === '--compat-desktop-commander') compatDesktopCommander = true;
+    else if (option === '--allow-config-write') allowConfigWrite = true;
+    else fail('USAGE', 'Unsupported MCP option.');
   }
-  if(roots.length<1 || roots.length>16) fail('USAGE','MCP requires between one and sixteen explicit --root directories.');
-  if(!stdio) fail('USAGE','Only --stdio transport is implemented.');
-  if(!compatDesktopCommander && (compatConfig || allowConfigWrite || allowedShells.length))
-    fail('USAGE','Compatibility configuration options require --compat-desktop-commander.');
-  if(allowedShells.length>16) fail('USAGE','At most sixteen owner-selected shells are supported.');
-  return {root:roots[0]!,roots,allowWrite,allowExec,compatDesktopCommander,compatConfig,allowConfigWrite,allowedShells};
+  if (roots.length < 1 || roots.length > 16)
+    fail('USAGE', 'MCP requires between one and sixteen explicit --root directories.');
+  if (!stdio) fail('USAGE', 'Only --stdio transport is implemented.');
+  if (!compatDesktopCommander && (compatConfig || allowConfigWrite || allowedShells.length))
+    fail('USAGE', 'Compatibility configuration options require --compat-desktop-commander.');
+  if (allowedShells.length > 16) fail('USAGE', 'At most sixteen owner-selected shells are supported.');
+  return {
+    root: roots[0]!,
+    roots,
+    allowWrite,
+    allowExec,
+    compatDesktopCommander,
+    compatConfig,
+    allowConfigWrite,
+    allowedShells,
+  };
 }
 
 function help() {
@@ -75,7 +91,14 @@ async function doctor(args: string[]) {
     nodeIsLts: !!process.release.lts,
     localMcp: { ...rootState, transport: 'stdio', defaultReadOnly: true, execIsNotSandbox: true },
     codex,
-    remoteWebRelay: { ready: false, implemented: true, optIn: true, permissions: 'read-only', reason: 'Use remote status to inspect the explicitly configured agent. This doctor does not contact the gateway.' },
+    remoteWebRelay: {
+      ready: false,
+      implemented: true,
+      optIn: true,
+      permissions: 'read-only',
+      reason:
+        'Use remote status to inspect the explicitly configured agent. This doctor does not contact the gateway.',
+    },
     quota: { ready: false, reason: 'Not integrated' },
     networkChecked: false,
   };

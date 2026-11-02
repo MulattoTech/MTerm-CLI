@@ -67,13 +67,13 @@ export async function planCodexRegistration(options: {
       bin,
       'mcp',
       '--stdio',
-      ...policy.roots.flatMap(root => ['--root', root]),
+      ...policy.roots.flatMap((root) => ['--root', root]),
       ...(options.allowWrite ? ['--allow-write'] : []),
       ...(options.allowExec ? ['--allow-exec'] : []),
       ...(options.compatDesktopCommander ? ['--compat-desktop-commander'] : []),
       ...(options.compatConfig ? ['--compat-config', options.compatConfig] : []),
       ...(options.allowConfigWrite ? ['--allow-config-write'] : []),
-      ...(options.allowedShells ?? []).flatMap(shell => ['--allow-shell', shell]),
+      ...(options.allowedShells ?? []).flatMap((shell) => ['--allow-shell', shell]),
     ],
   };
 }

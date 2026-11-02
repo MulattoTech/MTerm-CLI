@@ -202,7 +202,7 @@ test('Windows short filenames cannot expose existing compatibility policy storag
   await fs.writeFile(file, JSON.stringify({ schemaVersion: 1, fileReadLineLimit: 7 }));
   const result = spawnSync('cmd.exe', ['/d', '/c', 'for %F in ("' + file + '") do @echo %~sF'], { encoding: 'utf8', windowsHide: true });
   assert.equal(result.status, 0, result.stderr);
-  const shortFile = result.stdout.trim();
+  const shortFile = result.stdout.trim().replace(/^"(.*)"$/, '$1');
   if (path.basename(shortFile).toLowerCase() === path.basename(file).toLowerCase()) {
     t.skip('The test filesystem does not create Windows 8.3 filename aliases.');
     return;

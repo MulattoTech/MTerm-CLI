@@ -89,7 +89,11 @@ export async function verifyAccess(request, env, fetcher = fetch) {
     const iss = safeOrigin(env.ACCESS_ISSUER);
     requireValue(new URL(iss).hostname.endsWith('.cloudflareaccess.com'), 503, 'invalid_configuration');
     const now = Math.floor(Date.now() / 1000);
-    requireValue(c.type === 'app' && c.iss === iss && Array.isArray(c.aud) && c.aud.includes(env.ACCESS_AUDIENCE) && Number.isFinite(c.exp) && c.exp > now && (!c.nbf || c.nbf <= now + 5) && Number.isFinite(c.iat) && c.iat <= now + 5, 401, 'invalid_identity');
+    // RFC 7519 permits either one audience string or an array. Cloudflare's live
+    // service JWT uses the string form; both forms still require an exact match.
+    const audienceMatches = typeof c.aud === 'string' ? c.aud === env.ACCESS_AUDIENCE
+      : Array.isArray(c.aud) && c.aud.every(a => typeof a === 'string') && c.aud.includes(env.ACCESS_AUDIENCE);
+    requireValue(c.type === 'app' && c.iss === iss && audienceMatches && Number.isFinite(c.exp) && c.exp > now && (!c.nbf || c.nbf <= now + 5) && Number.isFinite(c.iat) && c.iat <= now + 5, 401, 'invalid_identity');
     const response = await fetcher(iss + '/cdn-cgi/access/certs', { signal: AbortSignal.timeout(5000), redirect: 'error' });
     requireValue(response.ok, 503, 'identity_keys_unavailable');
     const keys = JSON.parse(await boundedText(response, 32768));

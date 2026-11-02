@@ -93,6 +93,10 @@ test('Access JWT signature, audience, expiry and allowlist are enforced independ
   const valid = await f.identity();
   assert.equal((await f.req('/api/dashboard', { jwt: valid.slice(0, -10) + 'INVALIDSIG', host: dashboard })).status, 401);
   assert.equal((await f.req('/api/dashboard', { jwt: valid, host: dashboard })).status, 200);
+  // Actual Access service JWTs can use the RFC 7519 single-audience string form.
+  assert.equal((await f.req('/api/dashboard', { jwt: await f.identity('owner@example.test', { aud: 'audience-one' }), host: dashboard })).status, 200);
+  for (const aud of ['wrong', 'audience-one.evil', ['wrong'], 1, null])
+    assert.equal((await f.req('/api/dashboard', { jwt: await f.identity('owner@example.test', { aud }), host: dashboard })).status, 401);
 });
 test('PKCE code is single use and tokens are resource-bound', async () => {
   const f = await fixture(), auth = await f.oauth();

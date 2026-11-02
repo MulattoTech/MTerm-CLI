@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-02-canonical-leaf-policy; revalidate canonical final targets and missing leaves.
 // Modified: 2026-11-02-foundation-portability; bind explicitly selected aliases to immutable canonical roots.
 // Modified: 2026-10-06-config-parity; multiple immutable roots and per-request scope guard.
 // Modified: 2026-10-05-codex-parity-foundation; shared prevalidation for nested paths.
@@ -122,7 +123,7 @@ export class RootPolicy {
         st = await fs.lstat(current);
       } catch (error) {
         if ((error as NodeJS.ErrnoException).code === 'ENOENT' && missingLeaf && i === parts.length - 1)
-          return target;
+          return this.lexical(current);
         throw error;
       }
       if (st.isSymbolicLink() || (st.isFile() && st.nlink > 1))
@@ -131,8 +132,12 @@ export class RootPolicy {
       const real = await fs.realpath(current);
       if (!this.roots.some((r) => this.contains(r, real)))
         fail('OUTSIDE_ROOT', 'Canonical path escapes the owner roots.');
+      // Retain canonical prefixes, including Windows short-name expansions. Do not
+      // apply the request guard to intermediate parents: a narrowed allowed directory
+      // may legitimately be below a broader owner root. Validate the final identity.
+      current = real;
     }
-    return target;
+    return this.lexical(current);
   }
   relative(full: string): string {
     return this.contains(this.root, full)

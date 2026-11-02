@@ -5,7 +5,8 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import os from 'node:os';
-import { RootPolicy } from '../dist/policy.js';
+import { spawnSync } from 'node:child_process';
+import { RootPolicy, privateName } from '../dist/policy.js';
 
 const code = (expected) => (error) => error?.code === expected;
 const linkType = process.platform === 'win32' ? 'junction' : 'dir';
@@ -130,4 +131,93 @@ test('retargeting a startup alias never redirects immutable canonical authority'
   const resolved = await policy.resolve(path.join(f.alias, 'fixture.txt'));
   assert.equal(resolved, path.join(f.real, 'fixture.txt'));
   assert.equal(await fs.readFile(resolved, 'utf8'), 'authorized fixture');
+});
+
+test('runtime narrowing checks the final target without rejecting its broader owner-root parents', async (t) => {
+  const f = await fixture(t);
+  const parent = path.join(f.real, 'parent');
+  const allowed = path.join(parent, 'allowed-child');
+  await fs.mkdir(allowed, { recursive: true });
+  const existing = path.join(allowed, 'fixture.txt');
+  const missing = path.join(allowed, 'new.txt');
+  await fs.writeFile(existing, 'allowed fixture');
+  const policy = await RootPolicy.create(f.alias);
+  const seen = [];
+  policy.setAccessGuard((target) => {
+    seen.push(target);
+    const relative = path.relative(allowed, target);
+    if (path.isAbsolute(relative) || relative === '..' || relative.startsWith('..' + path.sep))
+      throw new Error('Outside narrowed directory');
+  });
+  assert.equal(await policy.resolve(existing), existing);
+  assert.equal(await policy.resolve(missing, true), missing);
+  assert.ok(seen.every((target) => target === existing || target === missing));
+});
+
+function shortLeaf(t, file) {
+  const result = spawnSync('cmd.exe', ['/d', '/c', 'for %F in ("' + file + '") do @echo %~sF'], { encoding: 'utf8', windowsHide: true });
+  assert.equal(result.status, 0, result.stderr);
+  const basename = path.basename(result.stdout.trim());
+  if (basename.toLowerCase() === path.basename(file).toLowerCase()) {
+    t.skip('The test filesystem does not create Windows 8.3 aliases for this name.');
+    return;
+  }
+  // Keep every ancestor canonical so this specifically exercises a leaf alias,
+  // rather than being rejected early for an unselected alias of an outer root.
+  return path.join(path.dirname(file), basename);
+}
+
+test('Windows short file aliases return canonical identities and cannot evade the request guard', { skip: process.platform !== 'win32' }, async (t) => {
+  const f = await fixture(t);
+  const file = path.join(f.real, 'owner-compatibility-settings.json');
+  await fs.writeFile(file, 'protected fixture');
+  const alias = shortLeaf(t, file);
+  if (!alias) return;
+  const canonical = await fs.realpath(file);
+  assert.equal(await fs.realpath(alias), canonical);
+  const policy = await RootPolicy.create(f.real);
+  assert.equal(await policy.resolve(alias), canonical);
+  policy.setAccessGuard((target) => {
+    if (target.toLowerCase() === canonical.toLowerCase()) throw new Error('Protected canonical file');
+  });
+  await assert.rejects(policy.resolve(alias), code('OUTSIDE_ROOT'));
+});
+
+test('Windows short file aliases cannot conceal a private canonical filename', { skip: process.platform !== 'win32' }, async (t) => {
+  const f = await fixture(t);
+  const file = path.join(f.real, '.env.private-credential-fixture');
+  await fs.writeFile(file, 'fixture secret');
+  const alias = shortLeaf(t, file);
+  if (!alias) return;
+  assert.equal(privateName(path.basename(alias)), false, 'The fixture must conceal its private name lexically');
+  assert.equal(await fs.realpath(alias), await fs.realpath(file));
+  const policy = await RootPolicy.create(f.real);
+  await assert.rejects(policy.resolve(alias), code('PRIVATE_PATH'));
+});
+
+test('Windows missing leaves retain their canonical parent and final request guard', { skip: process.platform !== 'win32' }, async (t) => {
+  const f = await fixture(t);
+  const parent = path.join(f.real, 'configuration-parent-with-long-name');
+  await fs.mkdir(parent);
+  const alias = shortLeaf(t, parent);
+  if (!alias) return;
+  const missing = path.join(await fs.realpath(parent), 'new.txt');
+  const requested = path.join(alias, 'new.txt');
+  const policy = await RootPolicy.create(f.real);
+  assert.equal(await policy.resolve(requested, true), missing);
+  policy.setAccessGuard((target) => {
+    if (target.toLowerCase() === missing.toLowerCase()) throw new Error('Protected canonical target');
+  });
+  await assert.rejects(policy.resolve(requested, true), code('OUTSIDE_ROOT'));
+});
+
+test('Windows missing leaves cannot be created below an aliased private directory', { skip: process.platform !== 'win32' }, async (t) => {
+  const f = await fixture(t);
+  const parent = path.join(f.real, '.config');
+  await fs.mkdir(parent);
+  const alias = shortLeaf(t, parent);
+  if (!alias) return;
+  assert.equal(privateName(path.basename(alias)), false, 'The fixture must conceal its private name lexically');
+  const policy = await RootPolicy.create(f.real);
+  await assert.rejects(policy.resolve(path.join(alias, 'new.json'), true), code('PRIVATE_PATH'));
 });

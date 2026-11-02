@@ -17,8 +17,8 @@ const exec = promisify(execFile),
 async function selectTestCodex() {
   const requestedPrefix = process.env.MTERM_CODEX_TEST_PREFIX;
   const expectedVersion = process.env.MTERM_CODEX_EXPECTED_VERSION;
-  const ci = process.env.GITHUB_ACTIONS === 'true' ||
-    !!process.env.CI && !['false', '0'].includes(process.env.CI);
+  const ci =
+    process.env.GITHUB_ACTIONS === 'true' || (!!process.env.CI && !['false', '0'].includes(process.env.CI));
   if (!requestedPrefix && !expectedVersion) {
     assert.ok(!ci, 'CI requires MTERM_CODEX_TEST_PREFIX and MTERM_CODEX_EXPECTED_VERSION');
     return undefined;
@@ -27,12 +27,19 @@ async function selectTestCodex() {
   assert.match(expectedVersion, /^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/);
   const contains = (parent, candidate) => {
     const relative = path.relative(parent, candidate);
-    return relative !== '' && !path.isAbsolute(relative) && relative !== '..' &&
-      !relative.startsWith('..' + path.sep);
+    return (
+      relative !== '' &&
+      !path.isAbsolute(relative) &&
+      relative !== '..' &&
+      !relative.startsWith('..' + path.sep)
+    );
   };
   const artifacts = await fs.realpath(path.join(root, 'artifacts'));
   const prefix = await fs.realpath(path.resolve(root, requestedPrefix));
-  assert.ok(contains(artifacts, prefix), 'Codex test prefix must be inside this checkout artifacts directory');
+  assert.ok(
+    contains(artifacts, prefix),
+    'Codex test prefix must be inside this checkout artifacts directory',
+  );
   const packageRoot = async (name) => {
     const directory = await fs.realpath(path.join(prefix, 'node_modules', ...name.split('/')));
     assert.ok(contains(prefix, directory), 'Codex fixture package escapes its test prefix');
@@ -101,8 +108,11 @@ const mterm = async (args) =>
   );
 const version = (await codexRun(['--version'])).stdout.trim();
 if (testCodex)
-  assert.equal(/^codex(?:-cli)? (\S+)$/.exec(version)?.[1], testCodex.expectedVersion,
-    'Native Codex --version differs from the test pin');
+  assert.equal(
+    /^codex(?:-cli)? (\S+)$/.exec(version)?.[1],
+    testCodex.expectedVersion,
+    'Native Codex --version differs from the test pin',
+  );
 const args = [
   'setup',
   'codex',

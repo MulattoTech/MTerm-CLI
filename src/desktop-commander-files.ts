@@ -5,6 +5,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import os from 'node:os';
 import { z } from 'zod';
+import type { CompatibilityPreferences } from './compat-config.js';
 import { FileService } from './files.js';
 import { privateName } from './policy.js';
 import { cancelled, fail, safeError } from './errors.js';
@@ -15,7 +16,7 @@ export const desktopFileSchemas = {
     path: pathname,
     isUrl: z.boolean().default(false),
     offset: z.number().int().min(-1000000).max(1000000).default(0),
-    length: z.number().int().min(0).max(1000000).default(1000),
+    length: z.number().int().min(0).max(1000000).optional(),
     sheet: z.string().optional(),
     range: z.string().optional(),
     options: z.record(z.string(), z.unknown()).optional(),
@@ -43,6 +44,7 @@ export const desktopFileSchemas = {
 export interface DesktopTextResult {
   content: Array<{ type: 'text'; text: string }>;
   isError?: boolean;
+  structuredContent?: Record<string, unknown>;
 }
 const reply = (text: string): DesktopTextResult => ({ content: [{ type: 'text', text }] });
 const countLines = (text: string) =>
@@ -50,13 +52,13 @@ const countLines = (text: string) =>
 const office = /\.(?:xlsx?|xlsm|pdf|docx|png|jpe?g|gif|webp)$/i;
 export class DesktopCommanderFiles {
   private queue: Promise<unknown> = Promise.resolve();
-  private constructor(readonly files: FileService) {}
+  private constructor(readonly files: FileService, private readonly preferences?: () => CompatibilityPreferences) {}
   static async create(root: string, allowWrite = false) {
     return new DesktopCommanderFiles(await FileService.create(root, { allowWrite, maxBytes: 262144 }));
   }
   /** Also used by the MCP host to share native versioned storage and permission policy. */
-  static using(files: FileService) {
-    return new DesktopCommanderFiles(files);
+  static using(files: FileService, preferences?: () => CompatibilityPreferences) {
+    return new DesktopCommanderFiles(files, preferences);
   }
   private absolute(input: string): string {
     const expanded =
@@ -103,7 +105,7 @@ export class DesktopCommanderFiles {
     const selected =
       a.offset < 0
         ? lines.slice(-Math.min(lines.length, Math.abs(a.offset)))
-        : lines.slice(a.offset, a.offset + a.length);
+        : lines.slice(a.offset, a.offset + (a.length ?? this.preferences?.().fileReadLineLimit ?? 1000));
     const status =
       a.offset < 0
         ? `[Reading last ${selected.length} lines (total: ${total} lines)]`
@@ -165,7 +167,7 @@ export class DesktopCommanderFiles {
       );
       const lines = a.content.split('\n').length;
       return reply(
-        `Successfully ${a.mode === 'append' ? 'appended to' : 'wrote to'} ${a.path} (${lines} lines)${lines > 50 ? '\nPerformance tip: consider smaller chunks for subsequent writes.' : ''}`,
+        `Successfully ${a.mode === 'append' ? 'appended to' : 'wrote to'} ${a.path} (${lines} lines)${lines > (this.preferences?.().fileWriteLineLimit ?? 50) ? '\nPerformance tip: consider smaller chunks for subsequent writes.' : ''}`,
       );
     });
   }

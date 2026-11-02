@@ -45,13 +45,17 @@ interface ApplyOptions {
 }
 export async function planCodexRegistration(options: {
   root: string;
+  roots?: readonly string[];
+  compatConfig?: string;
+  allowConfigWrite?: boolean;
+  allowedShells?: readonly string[];
   allowWrite?: boolean;
   allowExec?: boolean;
   compatDesktopCommander?: boolean;
   name?: string;
 }): Promise<RegistrationPlan> {
   const name = nameSchema.parse(options.name ?? 'mterm-local');
-  const policy = await RootPolicy.create(path.resolve(options.root));
+  const policy = await RootPolicy.create(options.roots ?? path.resolve(options.root));
   const bin = fileURLToPath(new URL('../bin/mterm-cli.js', import.meta.url));
   return {
     name,
@@ -61,11 +65,13 @@ export async function planCodexRegistration(options: {
       bin,
       'mcp',
       '--stdio',
-      '--root',
-      policy.root,
+      ...policy.roots.flatMap(root => ['--root', root]),
       ...(options.allowWrite ? ['--allow-write'] : []),
       ...(options.allowExec ? ['--allow-exec'] : []),
       ...(options.compatDesktopCommander ? ['--compat-desktop-commander'] : []),
+      ...(options.compatConfig ? ['--compat-config', options.compatConfig] : []),
+      ...(options.allowConfigWrite ? ['--allow-config-write'] : []),
+      ...(options.allowedShells ?? []).flatMap(shell => ['--allow-shell', shell]),
     ],
   };
 }

@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-10-06-config-parity; multiple immutable roots and per-request scope guard.
 // Modified: 2026-10-05-codex-parity-foundation; shared prevalidation for nested paths.
 // AI-Change: 2026-10-04-local-mcp (OpenAI / GPT-6 Astra Pro; self-reported)
 import fs from 'node:fs/promises';
@@ -31,18 +32,37 @@ export function privateName(name: string): boolean {
 /** Conservative path policy, not an OS sandbox. Symlinks/junctions and hardlinks are refused.
  * An adversarial local process can still race separate path checks; see SECURITY.md. */
 export class RootPolicy {
-  private constructor(readonly root: string) {}
-  static async create(root: string): Promise<RootPolicy> {
-    if (typeof root !== 'string' || !root || !path.isAbsolute(root))
-      fail('INVALID_ROOT', 'Choose an explicit absolute trusted directory.');
-    const real = await fs.realpath(root);
-    const st = await fs.lstat(real);
-    if (!st.isDirectory()) fail('INVALID_ROOT', 'Trusted root must be a directory.');
-    return new RootPolicy(real);
+  private accessGuard?: (target: string) => void;
+  readonly root: string;
+  private constructor(readonly roots: readonly string[]) { this.root = roots[0]!; }
+  static async create(input: string | readonly string[]): Promise<RootPolicy> {
+    const requested = typeof input === 'string' ? [input] : input;
+    if (!Array.isArray(requested) || requested.length < 1 || requested.length > 16)
+      fail('INVALID_ROOT', 'Choose between one and sixteen explicit trusted directories.');
+    const roots: string[] = [];
+    for (const root of requested) {
+      if (typeof root !== 'string' || !root || !path.isAbsolute(root))
+        fail('INVALID_ROOT', 'Choose explicit absolute trusted directories.');
+      const real = await fs.realpath(root);
+      if (!(await fs.lstat(real)).isDirectory()) fail('INVALID_ROOT', 'Trusted root must be a directory.');
+      if (!roots.some(r => path.relative(r, real) === '')) roots.push(real);
+    }
+    return new RootPolicy(Object.freeze(roots));
+  }
+  setAccessGuard(guard: (target: string) => void): void { this.accessGuard = guard; }
+  private contains(root: string, candidate: string): boolean {
+    const rel = path.relative(root, candidate);
+    return rel === '' || (!path.isAbsolute(rel) && rel !== '..' && !rel.startsWith('..' + path.sep));
+  }
+  /** Use the outermost containing owner root so nested grants cannot hide private path components. */
+  anchor(candidate: string): string {
+    const roots = this.roots.filter(r => this.contains(r, candidate)).sort((a,b) => a.length-b.length);
+    if (!roots.length) fail('OUTSIDE_ROOT', 'Requested path is outside the owner-selected roots.');
+    return roots[0]!;
   }
   inside(candidate: string): boolean {
-    const rel = path.relative(this.root, candidate);
-    return rel === '' || (!path.isAbsolute(rel) && rel !== '..' && !rel.startsWith('..' + path.sep));
+    if (!this.roots.some(r => this.contains(r,candidate))) return false;
+    try { this.accessGuard?.(candidate); return true; } catch { return false; }
   }
   lexical(input: string): string {
     if (typeof input !== 'string' || !input || input.length > 4096 || /[\x00-\x1f\x7f]/.test(input))
@@ -51,7 +71,7 @@ export class RootPolicy {
       fail('INVALID_PATH', 'UNC/device/drive-relative paths are not supported.');
     const target = path.resolve(this.root, input);
     if (!this.inside(target)) fail('OUTSIDE_ROOT', 'Requested path is outside the trusted root.');
-    const rel = path.relative(this.root, target);
+    const rel = path.relative(this.anchor(target), target);
     const parts = rel ? rel.split(path.sep) : [];
     for (const component of parts) {
       if (
@@ -67,9 +87,9 @@ export class RootPolicy {
   }
   async resolve(input: string, missingLeaf = false): Promise<string> {
     const target = this.lexical(input);
-    const rel = path.relative(this.root, target);
+    const rel = path.relative(this.anchor(target), target);
     const parts = rel ? rel.split(path.sep) : [];
-    let current = this.root;
+    let current = this.anchor(target);
     for (let i = 0; i < parts.length; i++) {
       current = path.join(current, parts[i]!);
       let st;
@@ -84,11 +104,11 @@ export class RootPolicy {
         fail('LINK_REJECTED', 'Symlinks, junctions and multiply-linked files are refused.');
       if (i < parts.length - 1 && !st.isDirectory()) fail('NOT_DIRECTORY', 'Parent is not a directory.');
       const real = await fs.realpath(current);
-      if (!this.inside(real)) fail('OUTSIDE_ROOT', 'Canonical path escapes the trusted root.');
+      if (!this.roots.some(r => this.contains(r, real))) fail('OUTSIDE_ROOT', 'Canonical path escapes the owner roots.');
     }
     return target;
   }
   relative(full: string): string {
-    return path.relative(this.root, full).split(path.sep).join('/') || '.';
+    return this.contains(this.root, full) ? (path.relative(this.root, full).split(path.sep).join('/') || '.') : full;
   }
 }

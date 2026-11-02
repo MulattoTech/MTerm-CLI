@@ -40,7 +40,7 @@ export class FileService {
     readonly maxBytes: number,
   ) {}
   static async create(
-    root: string,
+    root: string | readonly string[],
     options: { allowWrite?: boolean; maxBytes?: number } = {},
   ): Promise<FileService> {
     const max = options.maxBytes ?? 1048576;
@@ -181,24 +181,33 @@ export class FileService {
       const a = fileSchemas.mkdir.parse(input);
       // Validate all lexical components first so a later forbidden name cannot leave earlier dirs.
       const target = this.policy.lexical(a.path);
-      const relative = path.relative(this.policy.root, target);
-      const parts = relative ? relative.split(path.sep) : [];
-      if (parts.length > 64) fail('PATH_DEPTH', 'Directory creation depth exceeds64 components.');
-      let current = this.policy.root,
-        created = 0;
-      for (const component of parts) {
+      // Find the deepest existing scoped ancestor, then create only the missing suffix.
+      // Starting from the owner root would incorrectly reject a deeper runtime-selected root.
+      let current = target, created = 0;
+      const missing: string[] = [];
+      for (;;) {
         cancelled(signal);
-        current = path.join(current, component);
-        const checked = await this.policy.resolve(current, true);
         try {
-          await fs.mkdir(checked, { mode: 0o700 });
-          created++;
+          await this.policy.resolve(current);
+          if (!(await fs.lstat(current)).isDirectory()) fail('NOT_DIRECTORY','Existing component is not a directory.');
+          break;
         } catch (e) {
-          if ((e as NodeJS.ErrnoException).code !== 'EEXIST') throw e;
+          if ((e as NodeJS.ErrnoException).code !== 'ENOENT') throw e;
+          if (missing.length >= 64) fail('PATH_DEPTH','Directory creation depth exceeds64 components.');
+          missing.unshift(path.basename(current));
+          const parent=path.dirname(current);
+          if(parent===current) throw e;
+          current=parent;
         }
+      }
+      for (const component of missing) {
+        cancelled(signal);
+        current=path.join(current,component);
+        const checked=await this.policy.resolve(current,true);
+        try {await fs.mkdir(checked,{mode:0o700});created++;}
+        catch(e){if((e as NodeJS.ErrnoException).code!=='EEXIST')throw e;}
         await this.policy.resolve(current);
-        if (!(await fs.lstat(current)).isDirectory())
-          fail('NOT_DIRECTORY', 'Existing component is not a directory.');
+        if(!(await fs.lstat(current)).isDirectory()) fail('NOT_DIRECTORY','Existing component is not a directory.');
       }
       return { path: this.policy.relative(target), created };
     });

@@ -4,29 +4,36 @@ import path from 'node:path';
 import { safeError, fail } from './errors.js';
 export const VERSION = '0.0.1-preview.1';
 export function parseHost(args: string[]) {
-  let root: string | undefined,
-    stdio = false,
-    allowWrite = false,
-    allowExec = false,
-    compatDesktopCommander = false;
-  for (let i = 0; i < args.length; i++) {
-    const a = args[i];
-    if (a === '--root') {
-      if (root) fail('USAGE', '--root must occur once.');
-      root = args[++i];
-      if (!root || root.startsWith('--')) fail('USAGE', '--root requires an explicit directory.');
-    } else if (a === '--stdio') stdio = true;
-    else if (a === '--allow-write') allowWrite = true;
-    else if (a === '--allow-exec') allowExec = true;
-    else if (a === '--compat-desktop-commander') compatDesktopCommander = true;
-    else fail('USAGE', 'Unsupported MCP option.');
+  const roots: string[] = [], allowedShells: string[] = [];
+  let stdio=false,allowWrite=false,allowExec=false,compatDesktopCommander=false,allowConfigWrite=false;
+  let compatConfig: string | undefined;
+  for (let i=0;i<args.length;i++) {
+    const option=args[i];
+    if (option==='--root' || option==='--compat-config' || option==='--allow-shell') {
+      const value=args[++i];
+      if (!value || value.startsWith('--')) fail('USAGE', option+' requires a value.');
+      if (option==='--root') roots.push(path.resolve(value));
+      else if(option==='--compat-config') {
+        if(compatConfig || !path.isAbsolute(value)) fail('USAGE','--compat-config requires one absolute file path.');
+        compatConfig=path.resolve(value);
+      } else allowedShells.push(value);
+    } else if(option==='--stdio') stdio=true;
+    else if(option==='--allow-write') allowWrite=true;
+    else if(option==='--allow-exec') allowExec=true;
+    else if(option==='--compat-desktop-commander') compatDesktopCommander=true;
+    else if(option==='--allow-config-write') allowConfigWrite=true;
+    else fail('USAGE','Unsupported MCP option.');
   }
-  if (!root) fail('USAGE', 'MCP requires --root PATH; no implicit whole-machine scope.');
-  if (!stdio) fail('USAGE', 'Only --stdio transport is implemented.');
-  return { root: path.resolve(root), allowWrite, allowExec, compatDesktopCommander };
+  if(roots.length<1 || roots.length>16) fail('USAGE','MCP requires between one and sixteen explicit --root directories.');
+  if(!stdio) fail('USAGE','Only --stdio transport is implemented.');
+  if(!compatDesktopCommander && (compatConfig || allowConfigWrite || allowedShells.length))
+    fail('USAGE','Compatibility configuration options require --compat-desktop-commander.');
+  if(allowedShells.length>16) fail('USAGE','At most sixteen owner-selected shells are supported.');
+  return {root:roots[0]!,roots,allowWrite,allowExec,compatDesktopCommander,compatConfig,allowConfigWrite,allowedShells};
 }
+
 function help() {
-  return `MTerm-CLI ${VERSION} — local workstation preview\n\n  mterm-cli                         Launch existing Codex, unchanged TUI\n  mterm-cli -- <codex arguments>     Explicit pass-through, no injected flags\n  mterm-cli mcp --stdio --root PATH [--allow-write] [--allow-exec]\n  mterm-cli doctor --json [--root PATH]\n  mterm-cli setup codex --root PATH [--allow-write] [--allow-exec] [--apply]\n  mterm-cli remove codex [--name NAME] [--apply]\n  mterm-cli config [show|get KEY|set KEY VALUE|path] [--json]\n  mterm-cli status [--json|--line]    Quota integration not implemented yet\n  mterm-cli update                   Managed updater not implemented yet\n\nOptional --compat-desktop-commander exposes eight implemented text/file aliases, not full26-tool parity.\nMCP defaults to read-only. Execution is separate and runs as your OS user, not a sandbox.\nNo browser, Web relay, network listener, daemon, quota request or automatic installation.\nsetup previews by default; --apply performs explicit backed-up registration. remove codex --apply removes only the exact owned block.\n`;
+  return `MTerm-CLI ${VERSION} — local workstation preview\n\n  mterm-cli                         Launch existing Codex, unchanged TUI\n  mterm-cli -- <codex arguments>     Explicit pass-through, no injected flags\n  mterm-cli mcp --stdio --root PATH [--root OTHER] [--allow-write] [--allow-exec]\n  mterm-cli doctor --json [--root PATH]\n  mterm-cli setup codex --root PATH [--allow-write] [--allow-exec] [--apply]\n  mterm-cli remove codex [--name NAME] [--apply]\n  mterm-cli config [show|get KEY|set KEY VALUE|path] [--json]\n  mterm-cli status [--json|--line]    Quota integration not implemented yet\n  mterm-cli update                   Managed updater not implemented yet\n\nOptional --compat-desktop-commander exposes eight implemented text/file aliases, not full26-tool parity.\nCompatibility options: --compat-desktop-commander [--compat-config ABSOLUTE_FILE] [--allow-config-write] [--allow-shell EXECUTABLE].\nMCP defaults to read-only. Execution is separate and runs as your OS user, not a sandbox.\nNo browser, Web relay, network listener, daemon, quota request or automatic installation.\nsetup previews by default; --apply performs explicit backed-up registration. remove codex --apply removes only the exact owned block.\n`;
 }
 async function doctor(args: string[]) {
   const { settings } = await import('./config.js');
@@ -102,11 +109,13 @@ export async function main(args: string[]): Promise<number> {
   if (args[0] === 'tools') {
     const opts = parseHost(['--stdio', ...args.slice(1)]);
     const { RootPolicy } = await import('./policy.js');
-    const root = await RootPolicy.create(opts.root);
+    const root = await RootPolicy.create(opts.roots);
     console.log(
       JSON.stringify(
         {
           root: root.root,
+          ownerRoots: root.roots,
+          configWriteEnabled: opts.allowConfigWrite,
           writeEnabled: opts.allowWrite,
           executionEnabled: opts.allowExec,
           transport: 'stdio',

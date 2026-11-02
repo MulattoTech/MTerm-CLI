@@ -73,6 +73,8 @@ export function childEnvironment(): NodeJS.ProcessEnv {
  * race-free detached descendant containment needs a future native Job Object helper. */
 export class ProcessService {
   readonly sessions = new Map<string, Session>();
+  private executionGuard?: (command: string) => void;
+  setExecutionGuard(guard: (command: string) => void) { this.executionGuard = guard; }
   private closed = false;
   private starting = 0;
   private constructor(
@@ -82,7 +84,7 @@ export class ProcessService {
     readonly maxOutputBytes: number,
   ) {}
   static async create(
-    root: string,
+    root: string | readonly string[],
     options: { allowExec?: boolean; maxSessions?: number; maxOutputBytes?: number } = {},
   ) {
     const count = options.maxSessions ?? 8,
@@ -140,11 +142,13 @@ export class ProcessService {
         'INVALID_COMMAND',
         'Choose an absolute executable; scripts require an explicitly selected interpreter and argument array.',
       );
+    this.executionGuard?.(a.command);
     const cwd = await this.policy.resolve(a.cwd);
     if (!(await fs.stat(cwd)).isDirectory())
       fail('NOT_DIRECTORY', 'Process cwd must be a trusted directory.');
     const command = await fs.realpath(a.command);
     if (!(await fs.stat(command)).isFile()) fail('INVALID_COMMAND', 'Executable must be a file.');
+    this.executionGuard?.(command);
     if (this.closed) fail('HOST_CLOSED', 'Host is shutting down.');
     if ([...this.sessions.values()].filter((s) => this.active(s)).length >= this.maxSessions)
       fail('SESSION_LIMIT', 'Active process limit reached.');

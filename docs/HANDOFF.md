@@ -90,3 +90,11 @@ Both PR histories, automation modules, and orchestration guidance are retained.
 No feature acceptance credit is awarded by reconciliation. The original Windows
 checkout and its unpublished changes remain untouched; recovery and CI repair follow
 as separate commits.
+
+### Recovered configuration work
+
+The next isolated checkpoint recovers the eleven unpublished source/test files exactly
+from the verified Windows backup. It adds owner-bounded compatibility preferences,
+multiple roots and per-request config snapshots. Runtime qualification is pending;
+DCP-009..016 and all other parity issues remain open. Original file attribution is
+retained and SHA-256 values are recorded in the recovery change record.

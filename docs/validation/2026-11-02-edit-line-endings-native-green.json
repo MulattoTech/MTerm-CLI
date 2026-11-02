@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "mode": "green",
+  "startedAtUtc": "2026-11-02T19:55:24.399Z",
+  "root": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\parity-iteration-20261102-1952",
+  "node": "v24.21.0",
+  "platform": "win32",
+  "arch": "x64",
+  "commands": [
+    {
+      "name": "green-compile",
+      "executable": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+      "arguments": [
+        "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "build:code"
+      ],
+      "cwd": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\parity-iteration-20261102-1952",
+      "startedAtUtc": "2026-11-02T19:55:24.499Z",
+      "completedAtUtc": "2026-11-02T19:55:24.817Z",
+      "pid": 17728,
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "green-compile.stdout.log",
+        "bytes": 64,
+        "sha256": "9a9214dd92f21ea05ec920f34a2d1b1e5699936c060ba52eba85b89808758cb9"
+      },
+      "stderr": {
+        "file": "green-compile.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "green-focused",
+      "executable": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+      "arguments": [
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/compat-edit-block.test.mjs"
+      ],
+      "cwd": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\parity-iteration-20261102-1952",
+      "startedAtUtc": "2026-11-02T19:55:24.818Z",
+      "completedAtUtc": "2026-11-02T19:55:25.239Z",
+      "pid": 13064,
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "green-focused.stdout.log",
+        "bytes": 6938,
+        "sha256": "29a18665c33e89a3af6da57b69b234081972f4def5e5c15fdcfe262ad8c23fad"
+      },
+      "stderr": {
+        "file": "green-focused.stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "modelCalls": 0,
+  "actualCodexAgentToolInvocation": false,
+  "realUserConfigChanged": false,
+  "sourceSha": "99c3c9e7d23d76a3207b903554f552f59cebf236",
+  "sourceTree": "4873caa7b342bf3521eb7a8b6fa85d0299fa9c47",
+  "sourceHashes": {
+    "src/desktop-commander-files.ts": {
+      "bytes": 19530,
+      "sha256": "570946f9b68db88159f868a77f8846a99baf7d4bfda52d8dc5a4e6cd80da3215",
+      "normalizedSha256": "570946f9b68db88159f868a77f8846a99baf7d4bfda52d8dc5a4e6cd80da3215"
+    },
+    "tests/compat-edit-block.test.mjs": {
+      "bytes": 13904,
+      "sha256": "81afa22554c1a4d2857f32c28fbbffc358bfec2c8b2527190f447c8acf26858b",
+      "normalizedSha256": "81afa22554c1a4d2857f32c28fbbffc358bfec2c8b2527190f447c8acf26858b"
+    },
+    "scripts/verify-compatibility-installed.mjs": {
+      "bytes": 23627,
+      "sha256": "e93c5b4c3a22f44a6e9b9f780ec59efd7044493006c2ff92efa14fb541cc73e1",
+      "normalizedSha256": "e93c5b4c3a22f44a6e9b9f780ec59efd7044493006c2ff92efa14fb541cc73e1"
+    },
+    "package-lock.json": {
+      "bytes": 19974,
+      "sha256": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec",
+      "normalizedSha256": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec"
+    },
+    "npm-shrinkwrap.json": {
+      "bytes": 19974,
+      "sha256": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec",
+      "normalizedSha256": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec"
+    }
+  },
+  "focused": {
+    "tests": 30,
+    "pass": 30,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "ok": true,
+  "completedAtUtc": "2026-11-02T19:55:25.240Z"
+}

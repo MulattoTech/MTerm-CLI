@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "reviewer": {
+    "provider": "OpenAI",
+    "model": "GPT-6 Astra Pro",
+    "agent": "/root/live_issue_audit",
+    "independence": "No edits to runtime/tests/harness or qualification driver; reviewed source and ran independent test commands."
+  },
+  "observedAt": "2026-11-02T19:57:46.222709+00:00",
+  "base": "99c3c9e7d23d76a3207b903554f552f59cebf236",
+  "supersedes": "Initial review conclusion only; original failed allocation observations remain unchanged in edit-source-review-initial.json.",
+  "scope": "Source/test/harness approval for bounded DCP025 EOL normalization and preconstruction size guard. No native/installed/hosted/client execution claims by this reviewer.",
+  "approvedHashes": [
+    {
+      "path": "src/desktop-commander-files.ts",
+      "bytes": 19530,
+      "sha256": "570946f9b68db88159f868a77f8846a99baf7d4bfda52d8dc5a4e6cd80da3215",
+      "lfNormalizedSha256": "570946f9b68db88159f868a77f8846a99baf7d4bfda52d8dc5a4e6cd80da3215"
+    },
+    {
+      "path": "scripts/verify-compatibility-installed.mjs",
+      "bytes": 28071,
+      "sha256": "1435527928e3472535c9b5fe276b22536f05de8b3623ba381da470b13a0a0e95",
+      "lfNormalizedSha256": "1435527928e3472535c9b5fe276b22536f05de8b3623ba381da470b13a0a0e95"
+    },
+    {
+      "path": "tests/compat-edit-block.test.mjs",
+      "bytes": 13904,
+      "sha256": "81afa22554c1a4d2857f32c28fbbffc358bfec2c8b2527190f447c8acf26858b",
+      "lfNormalizedSha256": "81afa22554c1a4d2857f32c28fbbffc358bfec2c8b2527190f447c8acf26858b"
+    },
+    {
+      "path": "dist/desktop-commander-files.js",
+      "bytes": 20357,
+      "sha256": "ea38a10cc72168d23c780451578dffdac3b8a86a841304776da88e8d2d50783f",
+      "lfNormalizedSha256": "ea38a10cc72168d23c780451578dffdac3b8a86a841304776da88e8d2d50783f"
+    }
+  ],
+  "findings": [
+    {
+      "id": "EDIT-REVIEW-001",
+      "status": "resolved",
+      "resolution": "Before split/join, exact resulting UTF16 length is compared with FileService.maxBytes. Every UTF16 unit contributes at least one UTF8 byte under Node conversion, so necessarily oversized output is rejected without allocation; surviving output is bounded and the original shared writer enforces exact UTF8 bytes. This safely handles surrogate boundaries without a false byte-delta estimate.",
+      "verification": "Independent focused30/30 and original oversized probe now returns FILE_TOO_LARGE with preserved source bytes and no staging."
+    }
+  ],
+  "sourceAssessment": [
+    "First newline detection and platform fallback match approved pinned upstream helper for supported platforms.",
+    "Only request strings normalize; untouched mixed delimiters, BOM, Unicode and literal dollar sequences remain unchanged.",
+    "Count mismatch and existing nonoverlapping/MATCH_LIMIT semantics remain; error precedence and explicit partial compatibility are consistent.",
+    "After-read cancellation propagates before matching or allocation; shared FileService still controls path policy, version conflicts, exact bytes and atomic mutation.",
+    "Output length expression is exact for split/join nonoverlapping replacements and within safe integer range under schema limits.",
+    "Guard introduces no capability, root, encoding, format or telemetry expansion.",
+    "Original29 tests remain meaningful; added30th case is a genuine safe allocation regression and all30 pass.",
+    "Installed harness statically exercises real MCP schemas/envelopes and exact persisted bytes plus negative policy/size/count behavior; it does not assert any actual model/client acceptance."
+  ],
+  "commands": [
+    {
+      "command": [
+        "node",
+        "--test",
+        "--test-isolation=none",
+        "--test-reporter=tap",
+        "tests/compat-edit-block.test.mjs"
+      ],
+      "exitCode": 0,
+      "node": "v24.22.1",
+      "platform": "linux",
+      "counts": {
+        "tests": 30,
+        "passed": 30,
+        "failed": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "log": "audit/review-focused-final.log"
+    },
+    {
+      "command": [
+        "node",
+        "--max-old-space-size=64",
+        "../audit/review-allocation-probe.mjs"
+      ],
+      "exitCode": 0,
+      "productObservation": {
+        "node": "v24.22.1",
+        "maxStringLength": 536870888,
+        "projectedUnits": 5242880002,
+        "error": {
+          "name": "ToolError",
+          "code": "FILE_TOO_LARGE",
+          "message": "Write exceeds configured byte limit."
+        },
+        "originalBytesPreserved": true,
+        "stagingFiles": [],
+        "correctPolicyError": true
+      },
+      "log": "audit/review-allocation-probe-final.log"
+    }
+  ],
+  "qualificationDriverReview": {
+    "file": "audit/native-qualification.mjs",
+    "status": "reviewed with evidence-provenance limitations to verify in receipts",
+    "strengths": [
+      "Asserts Windows Node24.21.0; test-owned pinned Codex prefix/version; explicit modelCalls0 and parsed/SDK distinction.",
+      "spawnSync actual status/signals/errors retained with stdout/stderr SHA256; unexpected exits fail and report.okfalse.",
+      "Native requires clean committed candidate, invokes actual full wrapper plus selfhost/normalprepack/installedCodex, then checks source hashes and cleanliness.",
+      "Fresh uses exact Git commit archive, isolated extraction, locked install, normal build/prepack/package, and selected normalized source hash equality.",
+      "Preservation compares primary HEAD/status/alldirtypaths+hashes/worktree list and supported owner fields against before receipt."
+    ],
+    "limitations": [
+      "save() currently writes mode.json repeatedly; reusing a completed/failed phase may overwrite its original receipt despite exclusive log guard. Use additive receipt paths for retries or retain original first.",
+      "latestResult() selects the latest mtime directory; verify its creation/time and associated logs correspond to current command before attributing results.",
+      "Owner snapshot establishes exposed status/pid/instance/start fields; it is not independent OS process provenance and does not prove all protected enrollment bytes identical. Pair with separately observed current process identity and keep claims scoped.",
+      "Fresh sourceHashes covers five files. All archive members/tree/modes still need independent final recovery verification.",
+      "Driver declares no real-user-config change from intended commands, so inspect managed-Codex synthetic-home provenance in returned receipts rather than treating the boolean alone as proof."
+    ]
+  },
+  "artifacts": [
+    {
+      "path": "audit/edit-source-review-initial.json",
+      "bytes": 7298,
+      "sha256": "a121f5a5d0f7b52dd42b68a229cae157247f1289ab4ce2154fd981b9113033dc"
+    },
+    {
+      "path": "audit/review-focused-final.log",
+      "bytes": 7000,
+      "sha256": "488f6aee2b5dd107459cd4f276f905e440720786b8a71fa4bd89f36ad8d00abe"
+    },
+    {
+      "path": "audit/review-allocation-probe-final.log",
+      "bytes": 252,
+      "sha256": "dc29a46ddfce1709c4a904d7c71e147a5bdedbc98f522fa5a96e2b82e2626829"
+    },
+    {
+      "path": "audit/native-qualification.mjs",
+      "bytes": 9391,
+      "sha256": "449f847fb9394a33d870902343f8c808818c81787b2f26aa52d07ae2f539d18a"
+    }
+  ],
+  "conclusion": {
+    "sourceApproved": true,
+    "blockingSourceFindings": 0,
+    "requiredNext": "Run native/full/package/fresh/hosted gates, correlate returned evidence, preserve environment, and review final docs/merge separately. No full DCP/WEB acceptance awarded."
+  }
+}

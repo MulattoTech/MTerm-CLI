@@ -1,0 +1,708 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "DCP-025-DOCUMENTATION-REVIEW-001",
+  "reviewer": "Independent /root/live_issue_audit agent",
+  "observedAtUtc": "2026-11-02T20:04:12.059375+00:00",
+  "decision": "approved_with_nonblocking_wording_clarifications",
+  "blockingFindings": [],
+  "scope": "Preparation documentation, ledger invariants and evidence provenance. No repository edits, remote calls, native process execution or hosted acceptance awarded during this review. Candidate became committed while review was in progress.",
+  "repository": {
+    "root": "/workspace/scratch/1a6479138b13/mterm-cli",
+    "baseSha": "99c3c9e7d23d76a3207b903554f552f59cebf236",
+    "inspectedHead": "d8c232e306372a78ec3b264bd2608f6733a9dc2f",
+    "inspectedTree": "0b43e3ca878ea7a185efc73618e5d3597cc7bf60",
+    "branch": "fix/dcp-025-edit-eol-20261102",
+    "workingTreeClean": true,
+    "snapshotStillExactAtEnd": true
+  },
+  "inspectedArtifacts": [
+    {
+      "path": "docs/HANDOFF.md",
+      "bytes": 33219,
+      "sha256": "f63080b20beb3cd07223e796004b5c11b7c8c3acb56d15e993ba58d1611c49aa",
+      "normalizedSha256": "f63080b20beb3cd07223e796004b5c11b7c8c3acb56d15e993ba58d1611c49aa",
+      "method": "Changed human-authored content reviewed; JSON structurally compared; generated roadmap output verified by official read-only check."
+    },
+    {
+      "path": "docs/STATUS.md",
+      "bytes": 17690,
+      "sha256": "98c65aacb29427d15ea90467f9be89354a9b6df21e238401c4df739402f1c12c",
+      "normalizedSha256": "98c65aacb29427d15ea90467f9be89354a9b6df21e238401c4df739402f1c12c",
+      "method": "Changed human-authored content reviewed; JSON structurally compared; generated roadmap output verified by official read-only check."
+    },
+    {
+      "path": "docs/TESTING.md",
+      "bytes": 22898,
+      "sha256": "9888bfcaf3a8453c39272605eab58c9a0f03bad288f99647e4aa21c7af3fce8e",
+      "normalizedSha256": "9888bfcaf3a8453c39272605eab58c9a0f03bad288f99647e4aa21c7af3fce8e",
+      "method": "Changed human-authored content reviewed; JSON structurally compared; generated roadmap output verified by official read-only check."
+    },
+    {
+      "path": "docs/ai/changes/2026-11-02-edit-line-endings.json",
+      "bytes": 3525,
+      "sha256": "83a0b405beaefd2fb765e10d4ee50c6c156c11e29b552fab517a3b20f497ac39",
+      "normalizedSha256": "83a0b405beaefd2fb765e10d4ee50c6c156c11e29b552fab517a3b20f497ac39",
+      "method": "Changed human-authored content reviewed; JSON structurally compared; generated roadmap output verified by official read-only check."
+    },
+    {
+      "path": "docs/execution/NEXT_PARITY_PROMPT.md",
+      "bytes": 40228,
+      "sha256": "88850b1e2f80f156b29c465a18531d1edb3932b8411d559b2d1af5d0f4190c0c",
+      "normalizedSha256": "88850b1e2f80f156b29c465a18531d1edb3932b8411d559b2d1af5d0f4190c0c",
+      "method": "Changed human-authored content reviewed; JSON structurally compared; generated roadmap output verified by official read-only check."
+    },
+    {
+      "path": "docs/roadmap/FEATURES.md",
+      "bytes": 292852,
+      "sha256": "680c6ec610798abdcb9a3487e38493efe964cefa3691386cf0c885e240ba82b4",
+      "normalizedSha256": "680c6ec610798abdcb9a3487e38493efe964cefa3691386cf0c885e240ba82b4",
+      "method": "Changed human-authored content reviewed; JSON structurally compared; generated roadmap output verified by official read-only check."
+    },
+    {
+      "path": "docs/roadmap/desktop-commander-parity.json",
+      "bytes": 38849,
+      "sha256": "403fab5627bee37f7b369aac808c508fa401ca086172ffac603d8bed32ae713d",
+      "normalizedSha256": "403fab5627bee37f7b369aac808c508fa401ca086172ffac603d8bed32ae713d",
+      "method": "Changed human-authored content reviewed; JSON structurally compared; generated roadmap output verified by official read-only check."
+    },
+    {
+      "path": "docs/roadmap/index.html",
+      "bytes": 340281,
+      "sha256": "54d072f299e1f0e71c74e7bc78eedea3d8090724287208afb7e52cc98b4eac04",
+      "normalizedSha256": "54d072f299e1f0e71c74e7bc78eedea3d8090724287208afb7e52cc98b4eac04",
+      "method": "Changed human-authored content reviewed; JSON structurally compared; generated roadmap output verified by official read-only check."
+    },
+    {
+      "path": "docs/roadmap/progress.json",
+      "bytes": 392076,
+      "sha256": "99c6e0f357f303849f383f221737f62263e2fed747bcd333313cabb85c9973bf",
+      "normalizedSha256": "99c6e0f357f303849f383f221737f62263e2fed747bcd333313cabb85c9973bf",
+      "method": "Changed human-authored content reviewed; JSON structurally compared; generated roadmap output verified by official read-only check."
+    },
+    {
+      "path": "docs/roadmap/review.json",
+      "bytes": 11015,
+      "sha256": "48a88b6bd16c60c4965bf84faf687db3ec24bb1a7bbd1a9c9470a0e0e0ad611a",
+      "normalizedSha256": "48a88b6bd16c60c4965bf84faf687db3ec24bb1a7bbd1a9c9470a0e0e0ad611a",
+      "method": "Changed human-authored content reviewed; JSON structurally compared; generated roadmap output verified by official read-only check."
+    },
+    {
+      "path": "docs/validation/2026-11-02-edit-line-endings-development.json",
+      "bytes": 2178,
+      "sha256": "5a06bc1839d43ca0a131f4ce9530041f44443de453a5fd4be2e673cbbd4207ec",
+      "normalizedSha256": "5a06bc1839d43ca0a131f4ce9530041f44443de453a5fd4be2e673cbbd4207ec",
+      "method": "Changed human-authored content reviewed; JSON structurally compared; generated roadmap output verified by official read-only check."
+    },
+    {
+      "path": "docs/validation/2026-11-02-edit-line-endings-native-green.json",
+      "bytes": 3795,
+      "sha256": "0f50ce6513d6829779660eb2b77b8d64ff3218025e06b5aef419ec81b3fb9814",
+      "normalizedSha256": "0f50ce6513d6829779660eb2b77b8d64ff3218025e06b5aef419ec81b3fb9814",
+      "method": "Changed human-authored content reviewed; JSON structurally compared; generated roadmap output verified by official read-only check."
+    },
+    {
+      "path": "docs/validation/2026-11-02-edit-line-endings-native-red.json",
+      "bytes": 3782,
+      "sha256": "05d839d2e0524816c27a1e33bec6018c4a2f1c2926a034ba96b63621ee056f56",
+      "normalizedSha256": "05d839d2e0524816c27a1e33bec6018c4a2f1c2926a034ba96b63621ee056f56",
+      "method": "Changed human-authored content reviewed; JSON structurally compared; generated roadmap output verified by official read-only check."
+    },
+    {
+      "path": "docs/validation/2026-11-02-edit-line-endings-references.json",
+      "bytes": 1407,
+      "sha256": "9203b010104e67a2ab24ee70e6b5d7c4255c1a996b60111eccffa0e91c565c96",
+      "normalizedSha256": "9203b010104e67a2ab24ee70e6b5d7c4255c1a996b60111eccffa0e91c565c96",
+      "method": "Changed human-authored content reviewed; JSON structurally compared; generated roadmap output verified by official read-only check."
+    },
+    {
+      "path": "docs/validation/2026-11-02-edit-line-endings-source-review-supplement.json",
+      "bytes": 7525,
+      "sha256": "bb1a6b5eebcc3e714757ccea2ff7d4c9195691e299c2d060db409e407f05d015",
+      "normalizedSha256": "bb1a6b5eebcc3e714757ccea2ff7d4c9195691e299c2d060db409e407f05d015",
+      "method": "Changed human-authored content reviewed; JSON structurally compared; generated roadmap output verified by official read-only check."
+    },
+    {
+      "path": "docs/validation/2026-11-02-edit-line-endings-source-review.json",
+      "bytes": 7298,
+      "sha256": "a121f5a5d0f7b52dd42b68a229cae157247f1289ab4ce2154fd981b9113033dc",
+      "normalizedSha256": "a121f5a5d0f7b52dd42b68a229cae157247f1289ab4ce2154fd981b9113033dc",
+      "method": "Changed human-authored content reviewed; JSON structurally compared; generated roadmap output verified by official read-only check."
+    },
+    {
+      "path": "docs/validation/2026-11-02-edit-line-endings.md",
+      "bytes": 5622,
+      "sha256": "11040f6dba58681c5f6887c5bc82d46fb7f5471715c47b6f2919782fe103de78",
+      "normalizedSha256": "11040f6dba58681c5f6887c5bc82d46fb7f5471715c47b6f2919782fe103de78",
+      "method": "Changed human-authored content reviewed; JSON structurally compared; generated roadmap output verified by official read-only check."
+    },
+    {
+      "path": "scripts/verify-compatibility-installed.mjs",
+      "bytes": 28071,
+      "sha256": "1435527928e3472535c9b5fe276b22536f05de8b3623ba381da470b13a0a0e95",
+      "normalizedSha256": "1435527928e3472535c9b5fe276b22536f05de8b3623ba381da470b13a0a0e95",
+      "method": "Exact hash compared against separately approved source review."
+    },
+    {
+      "path": "src/desktop-commander-files.ts",
+      "bytes": 19530,
+      "sha256": "570946f9b68db88159f868a77f8846a99baf7d4bfda52d8dc5a4e6cd80da3215",
+      "normalizedSha256": "570946f9b68db88159f868a77f8846a99baf7d4bfda52d8dc5a4e6cd80da3215",
+      "method": "Exact hash compared against separately approved source review."
+    },
+    {
+      "path": "tests/compat-edit-block.test.mjs",
+      "bytes": 13904,
+      "sha256": "81afa22554c1a4d2857f32c28fbbffc358bfec2c8b2527190f447c8acf26858b",
+      "normalizedSha256": "81afa22554c1a4d2857f32c28fbbffc358bfec2c8b2527190f447c8acf26858b",
+      "method": "Exact hash compared against separately approved source review."
+    }
+  ],
+  "additionalInspectedFiles": [
+    {
+      "path": "docs/roadmap/remote-web-progress.json",
+      "bytes": 93612,
+      "sha256": "5deb22938e24fe15f318f5ade28d42102fd2765eae02454c072a8c5fd51122aa",
+      "normalizedSha256": "5deb22938e24fe15f318f5ade28d42102fd2765eae02454c072a8c5fd51122aa"
+    },
+    {
+      "path": "docs/roadmap/requirements-seed.json",
+      "bytes": 116202,
+      "sha256": "af0e40402e186c4223e7e513f64230dd3740b9f882e99ecb4f6229ba81cf103c",
+      "normalizedSha256": "af0e40402e186c4223e7e513f64230dd3740b9f882e99ecb4f6229ba81cf103c"
+    }
+  ],
+  "sourceHashes": {
+    "src/desktop-commander-files.ts": {
+      "bytes": 19530,
+      "sha256": "570946f9b68db88159f868a77f8846a99baf7d4bfda52d8dc5a4e6cd80da3215",
+      "normalizedSha256": "570946f9b68db88159f868a77f8846a99baf7d4bfda52d8dc5a4e6cd80da3215"
+    },
+    "tests/compat-edit-block.test.mjs": {
+      "bytes": 13904,
+      "sha256": "81afa22554c1a4d2857f32c28fbbffc358bfec2c8b2527190f447c8acf26858b",
+      "normalizedSha256": "81afa22554c1a4d2857f32c28fbbffc358bfec2c8b2527190f447c8acf26858b"
+    },
+    "scripts/verify-compatibility-installed.mjs": {
+      "bytes": 28071,
+      "sha256": "1435527928e3472535c9b5fe276b22536f05de8b3623ba381da470b13a0a0e95",
+      "normalizedSha256": "1435527928e3472535c9b5fe276b22536f05de8b3623ba381da470b13a0a0e95"
+    }
+  },
+  "protectedLedgerChecks": [
+    {
+      "path": "docs/roadmap/desktop-commander-parity.json",
+      "baselinePath": "/workspace/scratch/1a6479138b13/audit/baseline-desktop-commander-parity.json",
+      "baselineSha256": "c4a02548c653700d931749197af0bf6927ef390c9f93e71e9d0601719f5e68ee",
+      "currentSha256": "403fab5627bee37f7b369aac808c508fa401ca086172ffac603d8bed32ae713d",
+      "baselineEqualsOriginalMainBytes": true,
+      "workingBytesEqualInspectedHead": true,
+      "exactBytesUnchanged": false,
+      "protectedProjectionEqual": true,
+      "protectedProjectionSha256": "24a222673ef3bbcf48043af9e0214774ff0425a167d527fd62118ca9804faba5",
+      "projectionRule": {
+        "excludedFields": [
+          "implementationObservation",
+          "evidence",
+          "lastReviewedAt"
+        ],
+        "onlyForIds": [
+          "DCP-025"
+        ],
+        "allOtherFieldsCompared": true
+      },
+      "changedRows": [
+        {
+          "id": "DCP-025",
+          "changedFields": [
+            "evidence",
+            "implementationObservation",
+            "lastReviewedAt"
+          ],
+          "previousEvidenceRetained": true,
+          "notesAreAppendOnly": true,
+          "addedEvidence": [
+            "docs/validation/2026-11-02-edit-line-endings.md",
+            "docs/validation/2026-11-02-edit-line-endings-development.json",
+            "docs/validation/2026-11-02-edit-line-endings-source-review-supplement.json",
+            "tests/compat-edit-block.test.mjs",
+            "scripts/verify-compatibility-installed.mjs"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/roadmap/progress.json",
+      "baselinePath": "/workspace/scratch/1a6479138b13/audit/baseline-progress.json",
+      "baselineSha256": "9f7bd8e180d3837e4150c6c3abe4bb2b2dba838e5929191a5ed32b8c57aaba91",
+      "currentSha256": "99c6e0f357f303849f383f221737f62263e2fed747bcd333313cabb85c9973bf",
+      "baselineEqualsOriginalMainBytes": true,
+      "workingBytesEqualInspectedHead": true,
+      "exactBytesUnchanged": false,
+      "protectedProjectionEqual": true,
+      "protectedProjectionSha256": "e4c3715fd9761e4784edf6fe562509ebe838f330177f10f8c7b0e74a7be7ede8",
+      "projectionRule": {
+        "excludedFields": [
+          "evidence",
+          "notes",
+          "reviewer"
+        ],
+        "onlyForIds": [
+          "CLI-260",
+          "CLI-266",
+          "CLI-267",
+          "CLI-269",
+          "CLI-286",
+          "CLI-287",
+          "CLI-288",
+          "CLI-294",
+          "CLI-296",
+          "CLI-300"
+        ],
+        "allOtherFieldsCompared": true
+      },
+      "changedRows": [
+        {
+          "id": "CLI-260",
+          "changedFields": [
+            "evidence",
+            "notes",
+            "reviewer"
+          ],
+          "previousEvidenceRetained": true,
+          "notesAreAppendOnly": true,
+          "addedEvidence": [
+            "docs/validation/2026-11-02-edit-line-endings.md",
+            "docs/validation/2026-11-02-edit-line-endings-development.json",
+            "docs/validation/2026-11-02-edit-line-endings-source-review-supplement.json",
+            "tests/compat-edit-block.test.mjs"
+          ]
+        },
+        {
+          "id": "CLI-266",
+          "changedFields": [
+            "evidence",
+            "notes",
+            "reviewer"
+          ],
+          "previousEvidenceRetained": true,
+          "notesAreAppendOnly": true,
+          "addedEvidence": [
+            "docs/validation/2026-11-02-edit-line-endings.md",
+            "docs/validation/2026-11-02-edit-line-endings-development.json",
+            "docs/validation/2026-11-02-edit-line-endings-source-review-supplement.json",
+            "tests/compat-edit-block.test.mjs"
+          ]
+        },
+        {
+          "id": "CLI-267",
+          "changedFields": [
+            "evidence",
+            "notes",
+            "reviewer"
+          ],
+          "previousEvidenceRetained": true,
+          "notesAreAppendOnly": true,
+          "addedEvidence": [
+            "docs/validation/2026-11-02-edit-line-endings.md",
+            "docs/validation/2026-11-02-edit-line-endings-development.json",
+            "docs/validation/2026-11-02-edit-line-endings-source-review-supplement.json",
+            "tests/compat-edit-block.test.mjs"
+          ]
+        },
+        {
+          "id": "CLI-269",
+          "changedFields": [
+            "evidence",
+            "notes",
+            "reviewer"
+          ],
+          "previousEvidenceRetained": true,
+          "notesAreAppendOnly": true,
+          "addedEvidence": [
+            "docs/validation/2026-11-02-edit-line-endings.md",
+            "docs/validation/2026-11-02-edit-line-endings-development.json",
+            "docs/validation/2026-11-02-edit-line-endings-source-review-supplement.json",
+            "tests/compat-edit-block.test.mjs",
+            "scripts/verify-compatibility-installed.mjs"
+          ]
+        },
+        {
+          "id": "CLI-286",
+          "changedFields": [
+            "evidence",
+            "notes",
+            "reviewer"
+          ],
+          "previousEvidenceRetained": true,
+          "notesAreAppendOnly": true,
+          "addedEvidence": [
+            "docs/validation/2026-11-02-edit-line-endings.md",
+            "docs/validation/2026-11-02-edit-line-endings-development.json",
+            "docs/validation/2026-11-02-edit-line-endings-source-review-supplement.json",
+            "tests/compat-edit-block.test.mjs"
+          ]
+        },
+        {
+          "id": "CLI-287",
+          "changedFields": [
+            "evidence",
+            "notes",
+            "reviewer"
+          ],
+          "previousEvidenceRetained": true,
+          "notesAreAppendOnly": true,
+          "addedEvidence": [
+            "docs/validation/2026-11-02-edit-line-endings.md",
+            "docs/validation/2026-11-02-edit-line-endings-development.json",
+            "docs/validation/2026-11-02-edit-line-endings-source-review-supplement.json",
+            "tests/compat-edit-block.test.mjs"
+          ]
+        },
+        {
+          "id": "CLI-288",
+          "changedFields": [
+            "evidence",
+            "notes",
+            "reviewer"
+          ],
+          "previousEvidenceRetained": true,
+          "notesAreAppendOnly": true,
+          "addedEvidence": [
+            "docs/validation/2026-11-02-edit-line-endings.md",
+            "docs/validation/2026-11-02-edit-line-endings-development.json",
+            "docs/validation/2026-11-02-edit-line-endings-source-review-supplement.json",
+            "tests/compat-edit-block.test.mjs"
+          ]
+        },
+        {
+          "id": "CLI-294",
+          "changedFields": [
+            "evidence",
+            "notes",
+            "reviewer"
+          ],
+          "previousEvidenceRetained": true,
+          "notesAreAppendOnly": true,
+          "addedEvidence": [
+            "docs/validation/2026-11-02-edit-line-endings.md",
+            "docs/validation/2026-11-02-edit-line-endings-development.json",
+            "docs/validation/2026-11-02-edit-line-endings-source-review-supplement.json",
+            "tests/compat-edit-block.test.mjs"
+          ]
+        },
+        {
+          "id": "CLI-296",
+          "changedFields": [
+            "evidence",
+            "notes",
+            "reviewer"
+          ],
+          "previousEvidenceRetained": true,
+          "notesAreAppendOnly": true,
+          "addedEvidence": [
+            "docs/validation/2026-11-02-edit-line-endings.md",
+            "docs/validation/2026-11-02-edit-line-endings-development.json",
+            "docs/validation/2026-11-02-edit-line-endings-source-review-supplement.json",
+            "tests/compat-edit-block.test.mjs"
+          ]
+        },
+        {
+          "id": "CLI-300",
+          "changedFields": [
+            "evidence",
+            "notes",
+            "reviewer"
+          ],
+          "previousEvidenceRetained": true,
+          "notesAreAppendOnly": true,
+          "addedEvidence": [
+            "docs/validation/2026-11-02-edit-line-endings.md",
+            "docs/validation/2026-11-02-edit-line-endings-development.json",
+            "docs/validation/2026-11-02-edit-line-endings-source-review-supplement.json",
+            "tests/compat-edit-block.test.mjs"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "docs/roadmap/remote-web-progress.json",
+      "baselinePath": "/workspace/scratch/1a6479138b13/audit/baseline-remote-web-progress.json",
+      "baselineSha256": "5deb22938e24fe15f318f5ade28d42102fd2765eae02454c072a8c5fd51122aa",
+      "currentSha256": "5deb22938e24fe15f318f5ade28d42102fd2765eae02454c072a8c5fd51122aa",
+      "baselineEqualsOriginalMainBytes": true,
+      "workingBytesEqualInspectedHead": true,
+      "exactBytesUnchanged": true,
+      "protectedProjectionEqual": true,
+      "protectedProjectionSha256": "78ba649a9ab9af930a53a53407e26cff5272eea3b385280bc681df94d4059c48",
+      "projectionRule": {
+        "excludedFields": [],
+        "onlyForIds": [],
+        "allOtherFieldsCompared": true
+      },
+      "changedRows": []
+    },
+    {
+      "path": "docs/roadmap/requirements-seed.json",
+      "baselinePath": "/workspace/scratch/1a6479138b13/audit/baseline-requirements-seed.json",
+      "baselineSha256": "af0e40402e186c4223e7e513f64230dd3740b9f882e99ecb4f6229ba81cf103c",
+      "currentSha256": "af0e40402e186c4223e7e513f64230dd3740b9f882e99ecb4f6229ba81cf103c",
+      "baselineEqualsOriginalMainBytes": true,
+      "workingBytesEqualInspectedHead": true,
+      "exactBytesUnchanged": true,
+      "protectedProjectionEqual": true,
+      "protectedProjectionSha256": "911949efa33c28ba8ea0300ac70c7021b87975b7297d7110b8e4683d3dff8e78",
+      "projectionRule": {
+        "excludedFields": [],
+        "onlyForIds": [],
+        "allOtherFieldsCompared": true
+      },
+      "changedRows": []
+    }
+  ],
+  "acceptanceSummary": {
+    "dcp": {
+      "closed": 0,
+      "open": 48,
+      "pass": false,
+      "all48StatesOpen": true,
+      "releaseChecksEqualBaseline": true,
+      "noNewAcceptanceReview": true
+    },
+    "web": {
+      "accepted": 0,
+      "items": 12,
+      "allAcceptanceEvidenceNull": true,
+      "exactSha256": "5deb22938e24fe15f318f5ade28d42102fd2765eae02454c072a8c5fd51122aa"
+    },
+    "broad": {
+      "items": 300,
+      "percent": 29.12,
+      "baselineWeight": 4068,
+      "complete": 0,
+      "blocked": 45,
+      "notStarted": 127,
+      "idsStagesWeightsAcceptanceEstimatesDependenciesPlatformsBlockersUnchanged": true,
+      "changedIds": [
+        "CLI-260",
+        "CLI-266",
+        "CLI-267",
+        "CLI-269",
+        "CLI-286",
+        "CLI-287",
+        "CLI-288",
+        "CLI-294",
+        "CLI-296",
+        "CLI-300"
+      ]
+    },
+    "ownerDecisions": "No new owner ruling is asserted for DCP-009/010/022/024. Full issue #27 acceptance and real Codex/ChatGPT invocation remain explicitly incomplete."
+  },
+  "roadmapReviewChecks": {
+    "catalogFingerprintMatchesProgress": true,
+    "sourceHashMismatches": [],
+    "weightFingerprintUnchanged": true,
+    "weightFingerprint": "3bbcd6acde44c38922429b79939480398048ae2f710640e68fd41705220fff7c",
+    "allNewEvidenceFilesPresent": true
+  },
+  "nativeFocusedEvidence": [
+    {
+      "mode": "red",
+      "receiptPath": "docs/validation/2026-11-02-edit-line-endings-native-red.json",
+      "bytes": 3782,
+      "sha256": "05d839d2e0524816c27a1e33bec6018c4a2f1c2926a034ba96b63621ee056f56",
+      "normalizedSha256": "05d839d2e0524816c27a1e33bec6018c4a2f1c2926a034ba96b63621ee056f56",
+      "rawAuditCopyByteIdentical": true,
+      "focusedCommand": {
+        "executable": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+        "arguments": [
+          "--test",
+          "--test-reporter=tap",
+          "--test-concurrency=1",
+          "tests/compat-edit-block.test.mjs"
+        ],
+        "exitCode": 1,
+        "signal": null,
+        "error": null,
+        "startedAtUtc": "2026-11-02T19:55:07.240Z",
+        "completedAtUtc": "2026-11-02T19:55:07.559Z"
+      },
+      "rawLogPath": "/workspace/scratch/1a6479138b13/audit/native/red-focused.stdout.log",
+      "rawLogHashVerified": true,
+      "rawLog": {
+        "bytes": 24524,
+        "sha256": "d361545f278d9dc8468097e6da1859465d11c70a4112b10bc782485bcd6b01f4",
+        "normalizedSha256": "d361545f278d9dc8468097e6da1859465d11c70a4112b10bc782485bcd6b01f4"
+      },
+      "parsedCounts": {
+        "tests": 30,
+        "pass": 7,
+        "fail": 23,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "assertionFailures": 15,
+      "sourceIdentity": {
+        "recordedBaseSha": "99c3c9e7d23d76a3207b903554f552f59cebf236",
+        "recordedBaseTree": "4873caa7b342bf3521eb7a8b6fa85d0299fa9c47",
+        "runtimeSha256": "63c2540ee3a453dff7e109f184fc1822fcbc9236bcb34b790d105aa26b5f359b",
+        "runtimeMatches": "99c3c9e7d23d76a3207b903554f552f59cebf236",
+        "testSha256": "81afa22554c1a4d2857f32c28fbbffc358bfec2c8b2527190f447c8acf26858b",
+        "testMatchesCurrent": true,
+        "recordedInstalledHarnessSha256": "e93c5b4c3a22f44a6e9b9f780ec59efd7044493006c2ff92efa14fb541cc73e1",
+        "recordedHarnessIsBaseVersion": true
+      },
+      "scope": "Actual recorded native Windows direct-service focused test process. Focused receipt is not installed-harness, full-wrapper, packaging, fresh-source, hosted, real Codex-agent or ChatGPT-client proof."
+    },
+    {
+      "mode": "green",
+      "receiptPath": "docs/validation/2026-11-02-edit-line-endings-native-green.json",
+      "bytes": 3795,
+      "sha256": "0f50ce6513d6829779660eb2b77b8d64ff3218025e06b5aef419ec81b3fb9814",
+      "normalizedSha256": "0f50ce6513d6829779660eb2b77b8d64ff3218025e06b5aef419ec81b3fb9814",
+      "rawAuditCopyByteIdentical": true,
+      "focusedCommand": {
+        "executable": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+        "arguments": [
+          "--test",
+          "--test-reporter=tap",
+          "--test-concurrency=1",
+          "tests/compat-edit-block.test.mjs"
+        ],
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "startedAtUtc": "2026-11-02T19:55:24.818Z",
+        "completedAtUtc": "2026-11-02T19:55:25.239Z"
+      },
+      "rawLogPath": "/workspace/scratch/1a6479138b13/audit/native/green-focused.stdout.log",
+      "rawLogHashVerified": true,
+      "rawLog": {
+        "bytes": 6938,
+        "sha256": "29a18665c33e89a3af6da57b69b234081972f4def5e5c15fdcfe262ad8c23fad",
+        "normalizedSha256": "29a18665c33e89a3af6da57b69b234081972f4def5e5c15fdcfe262ad8c23fad"
+      },
+      "parsedCounts": {
+        "tests": 30,
+        "pass": 30,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "assertionFailures": 0,
+      "sourceIdentity": {
+        "recordedBaseSha": "99c3c9e7d23d76a3207b903554f552f59cebf236",
+        "recordedBaseTree": "4873caa7b342bf3521eb7a8b6fa85d0299fa9c47",
+        "runtimeSha256": "570946f9b68db88159f868a77f8846a99baf7d4bfda52d8dc5a4e6cd80da3215",
+        "runtimeMatches": "d8c232e306372a78ec3b264bd2608f6733a9dc2f",
+        "testSha256": "81afa22554c1a4d2857f32c28fbbffc358bfec2c8b2527190f447c8acf26858b",
+        "testMatchesCurrent": true,
+        "recordedInstalledHarnessSha256": "e93c5b4c3a22f44a6e9b9f780ec59efd7044493006c2ff92efa14fb541cc73e1",
+        "recordedHarnessIsBaseVersion": true
+      },
+      "scope": "Actual recorded native Windows direct-service focused test process. Focused receipt is not installed-harness, full-wrapper, packaging, fresh-source, hosted, real Codex-agent or ChatGPT-client proof."
+    }
+  ],
+  "pinnedReferenceChecks": [
+    {
+      "path": "src/tools/edit.ts",
+      "sha256": "e39442d1478c3ef0d3e18a0da085a7c734ba00aa06495d89d8a8e8e1af12f5b6",
+      "bytes": 23572,
+      "matchesIndependentPinnedRetrieval": true
+    },
+    {
+      "path": "src/utils/lineEndingHandler.ts",
+      "sha256": "181f79d6ee9cdcc76f35ee9128f3a91a1dda268ba5ad67e19f2db4cfbed5f1a0",
+      "bytes": 2417,
+      "matchesIndependentPinnedRetrieval": true
+    }
+  ],
+  "independentReviewCopies": [
+    {
+      "path": "docs/validation/2026-11-02-edit-line-endings-source-review.json",
+      "source": "/workspace/scratch/1a6479138b13/audit/edit-source-review-initial.json",
+      "byteIdentical": true,
+      "bytes": 7298,
+      "sha256": "a121f5a5d0f7b52dd42b68a229cae157247f1289ab4ce2154fd981b9113033dc",
+      "normalizedSha256": "a121f5a5d0f7b52dd42b68a229cae157247f1289ab4ce2154fd981b9113033dc"
+    },
+    {
+      "path": "docs/validation/2026-11-02-edit-line-endings-source-review-supplement.json",
+      "source": "/workspace/scratch/1a6479138b13/audit/edit-source-review-supplement.json",
+      "byteIdentical": true,
+      "bytes": 7525,
+      "sha256": "bb1a6b5eebcc3e714757ccea2ff7d4c9195691e299c2d060db409e407f05d015",
+      "normalizedSha256": "bb1a6b5eebcc3e714757ccea2ff7d4c9195691e299c2d060db409e407f05d015"
+    }
+  ],
+  "claimAssessment": {
+    "preparationStatusExplicit": true,
+    "fullNativeInstalledFreshHostedGatesClaimedComplete": false,
+    "realCodexAgentClaimed": false,
+    "realChatGptClientClaimed": false,
+    "modelCallsInDevelopmentRecord": 0,
+    "original30FixtureUnchangedAcrossNativeRedGreen": true,
+    "sourceHashDisambiguatesUncommittedNativeFocusedGreen": true,
+    "sixInstalledHarnessGroupsDescribedAsAddedChecksNotExecutedResults": true,
+    "historicalPendingRecordsClearlyMarked": true
+  },
+  "nonblockingFindings": [
+    {
+      "id": "EDIT-DOC-001",
+      "severity": "low",
+      "path": "docs/roadmap/desktop-commander-parity.json",
+      "field": "gaps[DCP-025].implementationObservation",
+      "finding": "The retained initial sentence says normalized/office matching remain open, immediately before the new first-delimiter normalization observation. This preserves history but can read as a current contradiction.",
+      "recommendedCorrection": "In a later additive observation, explicitly distinguish the delivered newline-normalization slice from remaining complete normalized/fuzzy/Office contract acceptance; do not close DCP-025 or grant stage credit."
+    },
+    {
+      "id": "EDIT-DOC-002",
+      "severity": "low",
+      "path": "docs/validation/2026-11-02-edit-line-endings.md",
+      "finding": "Independent review added the thirtieth allocation regression can imply the reviewer authored the regression. The review found/reproduced the bug; parent implementation added the test.",
+      "recommendedCorrection": "Use: Independent review identified the allocation gap; a thirtieth regression was added before repair."
+    }
+  ],
+  "scopeCautions": [
+    "Native focused GREEN records HEAD as original base plus explicit working source hashes; it must not be relabeled an immutable committed-native qualification. The subsequent full campaign must identify its actual committed SHA.",
+    "Both focused native receipts record the earlier installed harness e93c5b4c3a22f44a6e9b9f780ec59efd7044493006c2ff92efa14fb541cc73e1. That harness was not executed by the focused command. Full/installed qualification must bind final harness 1435527928e3472535c9b5fe276b22536f05de8b3623ba381da470b13a0a0e95.",
+    "This review verified transferred native logs and receipts, not direct process identity on Windows. Owner-preservation final comparison and all native/fresh/hosted delivery proof remain separate."
+  ],
+  "commands": [
+    {
+      "command": "git status --short; git log -2 --format=fuller (separate read-only invocations)",
+      "result": "Clean working tree at d8c232e306372a78ec3b264bd2608f6733a9dc2f; parent original main 99c3c9e7d23d76a3207b903554f552f59cebf236."
+    },
+    {
+      "command": "Python byte hashes, full JSON protected projections and base/HEAD git-show comparisons",
+      "exitCode": 0,
+      "result": "All protected fields identical; only allowed additive observations/evidence/review metadata changed."
+    },
+    {
+      "command": "Python compare native receipt stdout SHA/byte counts and parse TAP summaries",
+      "exitCode": 0,
+      "result": "Native RED and GREEN logs exactly match committed receipt hashes and counts; unchanged final fixture verified."
+    },
+    {
+      "command": "node scripts/roadmap.mjs --check",
+      "exitCode": 0,
+      "stdout": {
+        "count": 300,
+        "percent": 29.12,
+        "baselineWeight": 4068,
+        "complete": 0,
+        "blocked": 45,
+        "notStarted": 127
+      }
+    },
+    {
+      "command": "node scripts/parity-baseline.mjs --check",
+      "exitCode": 0,
+      "result": "Pinned upstream0.2.52,26tools,7snapshotfiles verified; runtimeParityProved false; closed0/gaps48/passfalse."
+    },
+    {
+      "command": "git diff --check 99c3c9e7d23d76a3207b903554f552f59cebf236 HEAD",
+      "exitCode": 0,
+      "stdout": ""
+    }
+  ]
+}

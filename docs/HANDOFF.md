@@ -43,9 +43,9 @@ iterations only, never a substitute for final build/check/prepack. Package lock/
 ## Blocked hosted gate
 
 GitHub content/workflow writes and normal pushes are verified now; earlier safety-denial notes are
-historical. Current Actions jobs fail before steps because the account's payment/spending-limit gate
-prevents execution. Do not change billing, org protection or credentials; do not rerun indefinitely.
-PR #52 remains unmerged pending valid checks/owner resolution. No macOS/Linux support claim.
+historical. Reinspection on 2026-11-02 of run 39166671238 found real canonical-path test failures
+on Windows/macOS and bin executable-mode drift on Linux. Do not change billing, protections or
+credentials. PR #52 remains unmerged pending valid checks; no full-platform support claim.
 
 ## Next work
 
@@ -75,3 +75,18 @@ The current branch adds the root `Install-MTermCLI.ps1` facade:
 Direct sprint scripts now default to a pinned current HEAD rather than outdated `origin/main`; execution refuses dirty worktrees. These convenience improvements do NOT certify an authenticated Cloudflare gateway or the full DCP 48-gap gate. Read `docs/validation/2026-10-18-automated-setup.md` and `docs/ai/changes/2026-10-18-automated-setup.json` for test evidence and exact limitations.
 
 Original `C:\Tools\Dev\MTerm-CLI` configuration work (eight modified and three untracked files) remains preserved untouched. Development occurred in the separate `artifacts/worktrees/har-automation-20261016` worktree on PR #67, stacked atop PR #52. GitHub Actions billing/spending qualification may still block hosted checks. No live user Codex configuration, login, model prompt, Cloudflare DNS, or public endpoint was changed.
+
+The user narrowed the replacement requirement to 100% DesktopCommanderMCP parity for Codex. Baseline is 0.2.52 / c774c3b505de990219637ecdc9a830c8772fae9d. Epic #2 indexes DCP-001 through DCP-048 (#3-#50). Work those issues independently; do not close the epic or claim PASS until all 48 are accepted. Claude-only preview UI and the Remote Device/Web relay are outside this Codex parity gate. Use docs/execution/DESKTOP_COMMANDER_100_PASS_PROMPT.md for the next full execution pass.
+
+## Current orchestration preparation (2026-10-21)
+The docs/ORCHESTRATION.md and docs/GITHUB_ORCHESTRATION_SETUP.md files define AO project setup, worker ownership, bounded verification and GitHub policy. The primary checkout has unpublished edits and must not be reset. AO Codex hook diagnostics and hosted platform path tests currently fail; do not call autopilot production-ready. PR #52 and stacked PR #67 are open; their source is not in main.
+
+## 2026-11-02 foundation integration
+
+The isolated `fix/remote-foundation-20261102` branch combines PR #67 head
+`b093a00755296c64d37f1d430c5dde3dfd992f08` and verified main
+`335cf59455aa3d382081b46a5d91b41556a61057` through a normal merge.
+Both PR histories, automation modules, and orchestration guidance are retained.
+No feature acceptance credit is awarded by reconciliation. The original Windows
+checkout and its unpublished changes remain untouched; recovery and CI repair follow
+as separate commits.

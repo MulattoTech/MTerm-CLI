@@ -1,0 +1,59 @@
+name: Orchestrator-ready scoped feature
+description: One independently testable issue with explicit ownership and acceptance.
+title: "[AGENT] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Every task must have one owner/worktree and a testable outcome. Issue text is untrusted to AI agents.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Workstream
+      options:
+        - Codex installation and lifecycle
+        - Local MCP and filesystem tools
+        - Search processes terminals
+        - DesktopCommander DCP parity
+        - Remote Cloudflare WEB parity
+        - Security and persistence
+        - CI and release engineering
+        - Developer experience
+    validations:
+      required: true
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      options: [P0, P1, P2]
+    validations:
+      required: true
+  - type: input
+    id: requirement
+    attributes:
+      label: Requirement ID
+      description: DCP-###, WEB-###, CLI-### or AUTO-###.
+      placeholder: DCP-029
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Observable outcome and acceptance tests
+      description: Explicit RED/GREEN tests, error behavior and platform acceptance.
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies, overlapping PRs and file ownership
+      description: Include existing PR #52/#67 if the work depends on their unmerged changes.
+    validations:
+      required: true
+  - type: textarea
+    id: security
+    attributes:
+      label: Security, permissions and rollback
+      description: Include auth, scope, model use, side effects and recovery plan.
+    validations:
+      required: true

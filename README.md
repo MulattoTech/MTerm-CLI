@@ -70,8 +70,9 @@ No GUI completion credit is imported. This repo is separate from [MTerm-GUI](htt
 
 Start with AGENTS.md, docs/HANDOFF.md, docs/TODAY_CANDIDATE.md and docs/TESTING.md.
 Current parity implementation is published in [PR #52](https://github.com/MulattoTech/MTerm-CLI/pull/52)
-on `feat/codex-parity-foundation-20261005`, not yet merged. Hosted verification is blocked before steps
-by a GitHub account billing/spending-limit gate. Workflow writes now work; no hosted PASS is claimed.
+on `feat/codex-parity-foundation-20261005`, not yet merged into main. Reinspection of hosted run
+39166671238 found real canonical-path test failures and an executable-mode drift; older billing
+failures are historical. No full-platform PASS is claimed.
 
 ## DesktopCommander-compatible file profile
 
@@ -118,3 +119,11 @@ See [automation docs](docs/automation/README.md) and [readiness evidence](docs/v
 - [One-command setup and bounded issue workflow](docs/automation/README.md) — preview-first; actual registration/agent calls require explicit flags.
 
 Do not confuse remote Cloudflare/Web readiness with the existing DCP-001..048 local Codex parity gate.
+
+This repository publishes the local MCP candidate on main. Advanced compatibility work is
+in open PR #52 and stacked PR #67; they are not merged. See docs/ORCHESTRATION.md for
+safe parallel development, docs/GITHUB_ORCHESTRATION_SETUP.md for CI and GitHub configuration.
+
+## AI-orchestrated development
+
+MTerm-CLI uses Orchestrator.inc with Codex workers in isolated worktrees. Start with [orchestration operations](docs/ORCHESTRATION.md) and [GitHub setup](docs/GITHUB_ORCHESTRATION_SETUP.md). Standard worker verification: node scripts/orchestration/verify.mjs --quick. Codex hook/CI portability blockers currently prevent an unattended fleet certification.

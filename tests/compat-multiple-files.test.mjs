@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 // AI-Change: 2026-11-02-aggregate-output (OpenAI / GPT-6 Astra Pro; self-reported)
+// Modified: 2026-11-02-utf16le-read; retain behavioral mocks at the explicit compatibility read boundary.
 // Original fixtures for the pinned text envelope and MTerm's existing aggregate ceiling.
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -163,9 +164,9 @@ test('multi-file overflow stops further file reads and never returns a truncated
   const overhead = utf8Bytes(expectedBatch([{ path: large, text: 'x' }])) - 1;
   await fs.writeFile(large, fillBytes(limit + 1 - overhead));
   await fs.writeFile(later, 'LATER-READ-SENTINEL');
-  const read = f.service.files.read.bind(f.service.files);
+  const read = f.service.files.readCompatibilityText.bind(f.service.files);
   const seen = [];
-  t.mock.method(f.service.files, 'read', async (input) => {
+  t.mock.method(f.service.files, 'readCompatibilityText', async (input) => {
     seen.push(input.path);
     return read(input);
   });
@@ -229,8 +230,8 @@ test('multi-file unexpected errors do not expose raw error text and preserve lat
   const good = f.file('good.txt');
   const failed = f.file('failed.txt');
   await fs.writeFile(good, 'safe');
-  const read = f.service.files.read.bind(f.service.files);
-  t.mock.method(f.service.files, 'read', async (input) => {
+  const read = f.service.files.readCompatibilityText.bind(f.service.files);
+  t.mock.method(f.service.files, 'readCompatibilityText', async (input) => {
     if (input.path === failed) throw new Error('PRIVATE-ERROR-SENTINEL');
     return read(input);
   });
@@ -242,7 +243,9 @@ test('multi-file unexpected errors do not expose raw error text and preserve lat
 
 test('multi-file pre-cancellation performs no reads', async (t) => {
   const f = await fixture(t);
-  const read = t.mock.method(f.service.files, 'read', async () => assert.fail('Cancelled read must not run'));
+  const read = t.mock.method(f.service.files, 'readCompatibilityText', async () =>
+    assert.fail('Cancelled read must not run'),
+  );
   await assert.rejects(f.service.readMultipleFiles({ paths: [f.file('a.txt')] }, AbortSignal.abort()), {
     code: 'CANCELLED',
   });
@@ -257,9 +260,9 @@ for (const fails of [false, true]) {
     await fs.writeFile(first, 'first');
     await fs.writeFile(later, 'later');
     const controller = new AbortController();
-    const read = f.service.files.read.bind(f.service.files);
+    const read = f.service.files.readCompatibilityText.bind(f.service.files);
     const seen = [];
-    t.mock.method(f.service.files, 'read', async (input) => {
+    t.mock.method(f.service.files, 'readCompatibilityText', async (input) => {
       seen.push(input.path);
       const result = await read(input);
       controller.abort();

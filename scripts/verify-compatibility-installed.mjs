@@ -4,6 +4,7 @@
 // Modified: 2026-11-02-file-info-contract; qualify actual metadata envelopes and read-only restart.
 // Modified: 2026-11-02-aggregate-output; qualify complete UTF-8 batch budgets in a read-only package.
 // Modified: 2026-11-02-edit-line-endings; qualify normalized exact edits and byte-preserving refusals.
+// Modified: 2026-11-02-read-utf16; qualify BOM-marked reads without expanding mutation encodings.
 // Invoked by verify-package with its isolated npm cache, tarball and workspace.
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -20,10 +21,21 @@ const directoryScenarios = [];
 const fileInfoScenarios = [];
 const multipleFileScenarios = [];
 const editScenarios = [];
+const utf16ReadScenarios = [];
 let npmPid;
 let productPid;
 let stderrBytes = 0;
 let failure;
+function assertDomainError(result, code, message) {
+  assert.equal(result.isError, true);
+  const data = result.structuredContent;
+  assert.equal(data?.ok, false);
+  assert.equal(data.error.code, code);
+  if (message !== undefined) assert.equal(data.error.message, message);
+  assert.deepEqual(result.content, [{ type: 'text', text: JSON.stringify(data) }]);
+  assert.ok(Buffer.byteLength(JSON.stringify(result)) < 8192);
+}
+const utf16le = (text) => Buffer.concat([Buffer.from([0xff, 0xfe]), Buffer.from(text, 'utf16le')]);
 async function verifyExit(pid) {
   assert.ok(Number.isInteger(pid) && pid > 0, 'Original owned process identity required');
   for (let i = 0; i < 100; i++) {
@@ -90,6 +102,25 @@ try {
   assert.ok(config.structuredContent?.config, 'Expected get_config structured envelope');
   productPid = config.structuredContent.config.systemInfo.processInfo.pid;
   assert.ok(Number.isInteger(productPid) && productPid > 0);
+  const utf16WriteTarget = path.join(listingRoot, 'utf16-write-guard.txt');
+  const utf16WriteBytes = utf16le('UTF16-MUTATION-SENTINEL α\n');
+  await fs.writeFile(utf16WriteTarget, utf16WriteBytes);
+  for (const [name, args] of [
+    ['mterm_read_file', { path: utf16WriteTarget }],
+    ['write_file', { path: utf16WriteTarget, content: 'replacement', mode: 'rewrite' }],
+    ['write_file', { path: utf16WriteTarget, content: 'append', mode: 'append' }],
+    [
+      'edit_block',
+      { file_path: utf16WriteTarget, old_string: 'UTF16-MUTATION-SENTINEL', new_string: 'replacement' },
+    ],
+  ]) {
+    const result = await client.callTool({ name, arguments: args }, requestOptions);
+    assertDomainError(result, 'BINARY_FILE', 'Binary data is not exposed as text.');
+    assert.doesNotMatch(JSON.stringify(result), /UTF16-MUTATION-SENTINEL/);
+    assert.deepEqual(await fs.readFile(utf16WriteTarget), utf16WriteBytes);
+  }
+  await fs.unlink(utf16WriteTarget);
+  utf16ReadScenarios.push('native-UTF8-read-and-compatibility-write-edit-refusals-preserve-bytes');
   const file = path.join(scope, 'compatibility.txt');
   await call('write_file', { path: file, content: 'first\nsecond\n' });
   const tail = await call('read_file', { path: file, offset: -1, length: 0 });
@@ -475,6 +506,11 @@ try {
   assert.equal(multipleTool?.annotations?.readOnlyHint, true);
   assert.equal(multipleTool.inputSchema.properties.paths.minItems, 1);
   assert.equal(multipleTool.inputSchema.properties.paths.maxItems, 20);
+  const readTool = listed.tools.find((tool) => tool.name === 'read_file');
+  assert.equal(readTool?.annotations?.readOnlyHint, true);
+  assert.equal(readTool.inputSchema.properties.path.minLength, 1);
+  assert.equal(readTool.inputSchema.properties.offset.minimum, -1000000);
+  assert.equal(readTool.inputSchema.properties.length.minimum, 0);
   for (const name of [
     'write_file',
     'create_directory',
@@ -499,6 +535,7 @@ try {
   for (const key of ['writeEnabled', 'executionEnabled', 'configWriteEnabled'])
     assert.equal(capabilities.structuredContent?.[key], false, key);
   editScenarios.push('read-only-restart-omits-edit-and-mutation-capabilities');
+  utf16ReadScenarios.push('read-only-installed-restart-schema-and-capability-separation');
   const result = await readOnlyClient.callTool(
     {
       name: 'get_file_info',
@@ -538,6 +575,131 @@ try {
     assert.ok(Buffer.byteLength(JSON.stringify(result)) < 8192);
     assert.doesNotMatch(JSON.stringify(result), /contents:|AGGREGATE-CONTENT-SENTINEL/);
   };
+  const utf16Root = path.join(multipleRoot, 'utf16');
+  await fs.mkdir(utf16Root);
+  const utf16Target = path.join(utf16Root, 'read-😀.txt');
+  const readCall = (args) => readOnlyClient.callTool({ name: 'read_file', arguments: args }, requestOptions);
+  const assertRead = (result, text) => {
+    assert.equal(result.isError, false, JSON.stringify(result));
+    assert.equal(result.structuredContent, undefined);
+    assert.deepEqual(result.content, [{ type: 'text', text }]);
+  };
+  for (const [text, args, expected] of [
+    ['', {}, '[Reading 0 lines from start (total: 0 lines, 0 remaining)]\n\n'],
+    [
+      '\uFEFFα\r\n😀\r\nlast\r\n',
+      {},
+      '[Reading 3 lines from start (total: 3 lines, 0 remaining)]\n\n\uFEFFα\n😀\nlast',
+    ],
+    [
+      'α\r\n😀\r\nlast\r\n',
+      { offset: 1, length: 1 },
+      '[Reading 1 lines from line 1 (total: 3 lines, 1 remaining)]\n\n😀',
+    ],
+    ['α\r\n😀\r\nlast\r\n', { offset: -2, length: 0 }, '[Reading last 2 lines (total: 3 lines)]\n\n😀\nlast'],
+    ['α\n😀\nlast', { length: 0 }, '[Reading 0 lines from start (total: 3 lines, 3 remaining)]\n\n'],
+    [
+      'α\n😀\nlast',
+      { offset: 99, length: 1 },
+      '[Reading 0 lines from line 99 (total: 3 lines, 0 remaining)]\n\n',
+    ],
+    ['a\rb\r', {}, '[Reading 2 lines from start (total: 1 lines, 0 remaining)]\n\na\nb'],
+  ]) {
+    const bytes = utf16le(text);
+    await fs.writeFile(utf16Target, bytes);
+    assertRead(await readCall({ path: utf16Target, ...args }), expected);
+    assert.deepEqual(await fs.readFile(utf16Target), bytes);
+  }
+  utf16ReadScenarios.push('exact-BOM-empty-Unicode-CRLF-CR-offset-tail-envelopes');
+  for (const [bytes, code, message] of [
+    [Buffer.from([0xff, 0xfe, 0x41]), 'INVALID_UTF16', 'File is not valid BOM-marked UTF-16LE.'],
+    [Buffer.from([0xff, 0xfe, 0x00, 0xd8]), 'INVALID_UTF16', 'File is not valid BOM-marked UTF-16LE.'],
+    [Buffer.from([0xff, 0xfe, 0x00, 0xdc]), 'INVALID_UTF16', 'File is not valid BOM-marked UTF-16LE.'],
+    [utf16le('UTF16-PRIVATE-SENTINEL\0'), 'BINARY_FILE', 'Binary data is not exposed as text.'],
+    [Buffer.from([0x41, 0x00]), 'BINARY_FILE', 'Binary data is not exposed as text.'],
+    [Buffer.from([0xfe, 0xff, 0x4e, 0x2d]), 'INVALID_UTF8', 'File is not valid UTF-8.'],
+  ]) {
+    await fs.writeFile(utf16Target, bytes);
+    const refused = await readCall({ path: utf16Target });
+    assertDomainError(refused, code, message);
+    assert.doesNotMatch(JSON.stringify(refused), /UTF16-PRIVATE-SENTINEL/);
+    assertBatch(await batchCall([utf16Target]), [`${utf16Target}: Error - ${code} ${message}`]);
+    assert.deepEqual(await fs.readFile(utf16Target), bytes);
+  }
+  utf16ReadScenarios.push('malformed-surrogate-NUL-and-unsupported-encoding-refusals');
+  const oneLineStatus = '[Reading 1 lines from start (total: 1 lines, 0 remaining)]\n\n';
+  const rawBoundaryText = 'a'.repeat(131071);
+  assert.equal(utf16le(rawBoundaryText).length, 262144);
+  await fs.writeFile(utf16Target, utf16le(rawBoundaryText));
+  assertRead(await readCall({ path: utf16Target }), oneLineStatus + rawBoundaryText);
+  for (const bytes of [
+    Buffer.concat([utf16le(rawBoundaryText), Buffer.from([0x41])]),
+    utf16le(rawBoundaryText + 'a'),
+  ]) {
+    await fs.writeFile(utf16Target, bytes);
+    assertDomainError(
+      await readCall({ path: utf16Target }),
+      'FILE_TOO_LARGE',
+      'File exceeds configured byte limit.',
+    );
+  }
+  const expandedText = '漢'.repeat(131071);
+  await fs.writeFile(utf16Target, utf16le(expandedText));
+  const expanded = await readCall({ path: utf16Target });
+  assertRead(expanded, oneLineStatus + expandedText);
+  assert.ok(textBytes(expanded) > 262144, 'The existing single-read contract has no new text cap');
+  await overflow([utf16Target]);
+  utf16ReadScenarios.push('inclusive-raw-byte-ceiling-counts-BOM-and-permits-bounded-UTF8-expansion');
+  const utf16Overhead = Buffer.byteLength(summary(utf16Target) + body(utf16Target, ''), 'utf8');
+  const utf16Budget = 262144 - utf16Overhead;
+  const aggregateText = '漢'.repeat(Math.floor(utf16Budget / 3)) + 'x'.repeat(utf16Budget % 3);
+  assert.ok(utf16le(aggregateText).length < 262144);
+  await fs.writeFile(utf16Target, utf16le(aggregateText));
+  const utf16ExactBatch = await batchCall([utf16Target]);
+  assertBatch(utf16ExactBatch, [summary(utf16Target), body(utf16Target, aggregateText)]);
+  assert.equal(textBytes(utf16ExactBatch), 262144);
+  await fs.writeFile(utf16Target, utf16le(aggregateText + 'x'));
+  await overflow([utf16Target]);
+  utf16ReadScenarios.push('expanded-UTF8-aggregate-text-exact-byte-boundary');
+  // MCP bounds JSON.stringify(handler result), before the outer isError/RPC fields.
+  const wireSize = (text) =>
+    Buffer.byteLength(JSON.stringify({ content: [{ type: 'text', text: oneLineStatus + text }] }));
+  const wireBudget = 524288 - wireSize('');
+  const wireText = '\u0001'.repeat(Math.floor(wireBudget / 6)) + 'x'.repeat(wireBudget % 6);
+  assert.equal(wireSize(wireText), 524288);
+  assert.ok(utf16le(wireText + 'x').length < 262144);
+  await fs.writeFile(utf16Target, utf16le(wireText));
+  assertRead(await readCall({ path: utf16Target }), oneLineStatus + wireText);
+  await fs.writeFile(utf16Target, utf16le(wireText + 'x'));
+  const wireOverflow = await readCall({ path: utf16Target });
+  assertDomainError(
+    wireOverflow,
+    'RESPONSE_LIMIT',
+    'Response exceeds wire budget; request a smaller range or result count.',
+  );
+  assert.doesNotMatch(JSON.stringify(wireOverflow), /Reading|\\u0001/);
+  utf16ReadScenarios.push('serialized-adapter-result-exact-byte-boundary-after-JSON-escaping');
+  const utf16Private = path.join(utf16Root, '.env');
+  const utf16Link = path.join(utf16Root, 'link');
+  const utf16Hardlink = path.join(utf16Root, 'hardlink.txt');
+  const policyBytes = utf16le('UTF16-POLICY-SENTINEL');
+  await fs.writeFile(utf16Target, policyBytes);
+  await fs.writeFile(utf16Private, policyBytes);
+  await fs.link(utf16Target, utf16Hardlink);
+  await fs.symlink(utf16Root, utf16Link, process.platform === 'win32' ? 'junction' : 'dir');
+  for (const [file, code] of [
+    [utf16Private, 'PRIVATE_PATH'],
+    [path.dirname(scope), 'OUTSIDE_ROOT'],
+    [utf16Hardlink, 'LINK_REJECTED'],
+    [path.join(utf16Link, path.basename(utf16Target)), 'LINK_REJECTED'],
+  ]) {
+    const denied = await readCall({ path: file });
+    assertDomainError(denied, code);
+    assert.doesNotMatch(JSON.stringify(denied), /UTF16-POLICY-SENTINEL/);
+  }
+  assert.deepEqual(await fs.readFile(utf16Target), policyBytes);
+  assert.deepEqual(await fs.readFile(utf16Private), policyBytes);
+  utf16ReadScenarios.push('UTF16-root-private-hardlink-and-symlink-denials-preserve-bytes');
   const target = path.join(multipleRoot, 'budget-😀.txt');
   const missing = path.join(multipleRoot, 'missing.txt');
   const shortText = 'AGGREGATE-CONTENT-SENTINEL α😀';
@@ -672,6 +834,15 @@ console.log(
       readOnlyRestart: true,
     },
     editBlock: { scenarios: editScenarios, passed: editScenarios.length, readOnlyRestart: true },
+    utf16Read: {
+      scenarios: utf16ReadScenarios,
+      passed: utf16ReadScenarios.length,
+      rawFileBytes: 262144,
+      aggregateTextBytes: 262144,
+      serializedAdapterResultBytes: 524288,
+      readOnlyRestart: true,
+      writesRemainUTF8: true,
+    },
     ownedProcessExitsVerified: true,
     directoryFixtureCleanupVerified: true,
     multipleFileFixtureCleanupVerified: true,

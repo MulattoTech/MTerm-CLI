@@ -14,5 +14,10 @@ The test harness verifies snapshot hashes and erases only TypeScript types from 
 filesystem-only TextFileHandler. It marks the original type-only import explicitly, not runtime
 logic. The upstream server/index/telemetry/bootstrap is never executed. The installed product
 does not load reference source. Differential cases cover empty files, LF/CRLF, Unicode/BOM,
-zero-length reads, offsets beyond EOF, and negative tails ignoring length. This is not full
-image/document/UTF-16/large-file parity.
+zero-length reads, offsets beyond EOF, and negative tails ignoring length. The
+[bounded UTF-16LE read slice](../validation/2026-11-02-utf16le-read.md) additionally
+checks 48 windows across eight BOM-marked documents, including CR/mixed endings,
+supplementary Unicode and repeated BOMs. Strict malformed/binary refusal, raw-byte
+limits and output budgets remain intentional MTerm boundaries. Native read,
+metadata and write/edit encodings remain UTF-8. Broader encoding, image/document,
+large-file and actual-client parity remain open.

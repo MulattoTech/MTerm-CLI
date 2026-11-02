@@ -1,0 +1,107 @@
+{
+  "change_id": "2026-11-02-utf16le-read",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "identity_basis": "session-declared; self-reported",
+  "started_at_utc": "2026-11-02T21:12:27Z",
+  "updated_at_utc": "2026-11-02T21:19:58.192720+00:00",
+  "base_sha": "dd3f052e1d270c6ca305e43e14180bb5f7579de6",
+  "base_tree": "54def6b4748694a2962dd86a37e9bfde6261c940",
+  "branch": "fix/dcp-017-utf16le-20261102t211227",
+  "primary_issue": 19,
+  "requirements": [
+    "DCP-017",
+    "CLI-260",
+    "CLI-266",
+    "CLI-267",
+    "CLI-268",
+    "CLI-269",
+    "CLI-286",
+    "CLI-287",
+    "CLI-288",
+    "CLI-294",
+    "CLI-296",
+    "CLI-300"
+  ],
+  "summary": "Add strict bounded BOM-marked UTF-16LE compatibility reads while preserving native UTF-8 and owner authority.",
+  "files_modified": [
+    "src/files.ts",
+    "src/desktop-commander-files.ts",
+    "tests/compat-read-utf16.test.mjs",
+    "tests/compat-multiple-files.test.mjs",
+    "scripts/verify-compatibility-installed.mjs",
+    "docs/HANDOFF.md",
+    "docs/STATUS.md",
+    "docs/TESTING.md",
+    "docs/execution/NEXT_PARITY_PROMPT.md",
+    "docs/parity/README.md",
+    "docs/SECURITY.md",
+    "docs/roadmap/progress.json",
+    "docs/roadmap/desktop-commander-parity.json",
+    "docs/validation/2026-11-02-utf16le-read.md",
+    "docs/validation/2026-11-02-utf16le-read-development.json",
+    "docs/validation/2026-11-02-utf16le-read-source-review.json",
+    "docs/validation/2026-11-02-utf16le-read-protected-ledgers.json"
+  ],
+  "source_sha256": {
+    "src/files.ts": "7c1f5170df70c0333834df9ea20b90d3a9a44216b9712a95ffdf3087fc6c4180",
+    "src/desktop-commander-files.ts": "94ea1c75df5d90c690a091e0c585dd25cd52590555c511774944f5e2ba3b77ea",
+    "tests/compat-read-utf16.test.mjs": "68c3fee765b7e16a2a1fa9aa3a865795b2ad757da960e7474bc9d264ecb4e0c7",
+    "tests/compat-multiple-files.test.mjs": "d093e2e8b89a6ad8357b55ea3426a499f6b9d82b53480f2a63697c2c2b5f6869",
+    "scripts/verify-compatibility-installed.mjs": "ca044bca56b2adbe57cc9ab59581e531c3749f2dd1e215887f425d9dbfc59fc0",
+    "package-lock.json": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec",
+    "npm-shrinkwrap.json": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec"
+  },
+  "upstream_commit": "c774c3b505de990219637ecdc9a830c8772fae9d",
+  "decisions": [
+    "Use an explicit read-only compatibility method; native reads, metadata, writes and edits retain UTF-8 semantics.",
+    "Recognize exactly FF FE, strip one framing marker, preserve embedded BOMs, strictly reject malformed UTF16 and decoded NUL.",
+    "Keep raw262144, aggregate-text262144 and serialized-handler-result524288 limits distinct; no new standalone read cap.",
+    "Retain original fixture and all unsuccessful product/verifier/infrastructure attempts without relabeling.",
+    "Only evidence/notes/reviewer and DCP017 implementation observations change; all protected projections remain equal."
+  ],
+  "tests": [
+    {
+      "command": "Original new30 fixture on baseline runtime, scratch and native Windows",
+      "result": "Both30 tests:3pass27fail; actual test exits1. Native Node24.21.0 at21:16:31–32UTC.",
+      "evidence": "docs/validation/2026-11-02-utf16le-read-development.json"
+    },
+    {
+      "command": "Focused GREEN plus existing batch regressions; shared FileService/edit/metadata regressions",
+      "result": "Unchanged new30+existing14 pass44/44; separate64/64 regression pass; actual exits0. Supplementary scratch Node24.22.1.",
+      "evidence": "docs/validation/2026-11-02-utf16le-read-development.json"
+    },
+    {
+      "command": "Independent exact-source/contract/security review and focused rerun",
+      "result": "No blocking finding;44/44 independent rerun; exact source/test/harness identities retained.",
+      "evidence": "docs/validation/2026-11-02-utf16le-read-source-review.json"
+    },
+    {
+      "command": "Supplementary real installed npm-exec MCP probe",
+      "result": "Eight UTF16 groups plus retained directory6/metadata8/batch6/edit6 groups passed; actual exit0, owned process exits and cleanup observed. --ignore-scripts preparation is not normal prepack qualification.",
+      "evidence": "docs/validation/2026-11-02-utf16le-read-development.json"
+    }
+  ],
+  "limitations": [
+    "Full native, fresh committed-source, hosted and delivery gates pending at this preparation.",
+    "No model-driven Codex or ChatGPT invocation; SDK and dashboard evidence are distinct.",
+    "Strict whole-file decode, byte ceilings and root restrictions remain intentional differences; broader encoding/format/large-file scope remains open.",
+    "Existing normal tarball lockfile inclusion policy remains separate; source lockfiles are unchanged.",
+    "Pathname checks remain cooperative and do not establish an OS sandbox."
+  ],
+  "roadmap_updates": [
+    {
+      "ids": "CLI-260,CLI-266,CLI-267,CLI-268,CLI-269,CLI-286,CLI-287,CLI-288,CLI-294,CLI-296,CLI-300",
+      "assessment": "Evidence, notes and reviewer only; all stages, weights, acceptance, estimates, dependencies, platforms and blockers unchanged."
+    },
+    {
+      "ids": "DCP-017",
+      "assessment": "Implementation observation and evidence only; state, acceptanceReview, timestamps, other rows and release gates unchanged."
+    }
+  ],
+  "next_unverified_action": "Commit the reviewed candidate, complete native full/self-host/normal prepack/package/source-and-installed Codex gates, then exact committed-source fresh qualification and hosted checks.",
+  "checkpoint": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\checkpoints\\mterm-web-pro-loop\\20261102T211227Z-dcp017",
+  "model_calls": 0,
+  "actualCodexAgentToolInvocation": false,
+  "actualChatGPTToolInvocation": false
+}

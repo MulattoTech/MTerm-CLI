@@ -1,3 +1,20 @@
+## Current DCP-017 verification — 2026-11-02
+
+[Contract and development receipts](validation/2026-11-02-utf16le-read.md) separate native
+original-source RED from supplementary Linux GREEN and installed MCP evidence.
+The unchanged 30-test fixture failed 27 cases on original Windows Node 24.21.0,
+then passed 30/30 in scratch; 14 retained batch and 64 storage/edit/metadata
+regressions also passed. Independent focused rerun passed 44/44. The installed
+harness adds eight UTF-16 groups, including exact raw, aggregate-text and serialized
+adapter-result boundaries, while retaining prior groups and owned-child cleanup.
+
+Focused development commands are `npm run build:code` and
+`node --test --test-concurrency=1 tests/compat-read-utf16.test.mjs tests/compat-multiple-files.test.mjs`.
+Scratch used `--test-isolation=none`; its `--ignore-scripts` packed probe is supplementary.
+Normal native full wrapper/self-host/prepack/source-and-installed Codex, fresh
+committed extraction, hosted candidate/final-head, and merged-main gates are still
+pending. No paid/model or actual ChatGPT tool invocation is established.
+
 ## DCP-025 observed qualification — 2026-11-02T20:13:07.672246+00:00
 
 [PR #78](https://github.com/MulattoTech/MTerm-CLI/pull/78) qualified candidate

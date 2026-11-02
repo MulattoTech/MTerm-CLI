@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 // Modified: 2026-10-05-codex-parity-foundation; preserve UTF-8 BOM and add guarded mkdirTree.
+// Modified: 2026-11-02-utf16le-read; explicit bounded compatibility decoding and read cancellation.
 // AI-Change: 2026-10-04-local-mcp (OpenAI / GPT-6 Astra Pro; self-reported)
 import fs from 'node:fs/promises';
 import { constants } from 'node:fs';
@@ -57,20 +58,25 @@ export class FileService {
     this.queue = result.catch(() => {});
     return result;
   }
-  private async bytes(full: string): Promise<Buffer> {
+  private async bytes(full: string, signal?: AbortSignal): Promise<Buffer> {
+    cancelled(signal);
     const handle = await fs.open(
       full,
       constants.O_RDONLY | (process.platform === 'win32' ? 0 : constants.O_NOFOLLOW),
     );
     try {
+      cancelled(signal);
       const st = await handle.stat();
+      cancelled(signal);
       if (!st.isFile()) fail('NOT_FILE', 'Expected a regular file.');
       if (st.nlink > 1) fail('LINK_REJECTED', 'Multiply-linked files are refused.');
       if (st.size > this.maxBytes) fail('FILE_TOO_LARGE', 'File exceeds configured byte limit.');
       const b = Buffer.alloc(this.maxBytes + 1);
       let total = 0;
       while (total < b.length) {
+        cancelled(signal);
         const r = await handle.read(b, total, b.length - total, null);
+        cancelled(signal);
         if (!r.bytesRead) break;
         total += r.bytesRead;
       }
@@ -87,6 +93,25 @@ export class FileService {
     } catch {
       fail('INVALID_UTF8', 'File is not valid UTF-8.');
     }
+  }
+  /** Read-only compatibility opt-in; native reads, metadata, writes and edits remain UTF-8. */
+  async readCompatibilityText(input: unknown, signal?: AbortSignal): Promise<string> {
+    cancelled(signal);
+    const a = fileSchemas.info.parse(input);
+    const full = await this.policy.resolve(a.path);
+    const b = await this.bytes(full, signal);
+    cancelled(signal);
+    if (b[0] !== 0xff || b[1] !== 0xfe) return this.text(b);
+    let text: string;
+    try {
+      // Strip only the framing marker. A second or embedded BOM is document content.
+      // Fatal decoding refuses odd byte counts and unpaired UTF-16 surrogates.
+      text = new TextDecoder('utf-16le', { fatal: true, ignoreBOM: true }).decode(b.subarray(2));
+    } catch {
+      fail('INVALID_UTF16', 'File is not valid BOM-marked UTF-16LE.');
+    }
+    if (text.includes('\0')) fail('BINARY_FILE', 'Binary data is not exposed as text.');
+    return text;
   }
   async read(input: unknown) {
     const a = fileSchemas.read.parse(input);

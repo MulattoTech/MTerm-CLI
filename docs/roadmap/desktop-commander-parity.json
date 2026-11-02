@@ -275,9 +275,14 @@
       "title": "read_file negative offset / tail semantics",
       "state": "open",
       "url": "https://github.com/MulattoTech/MTerm-CLI/issues/19",
-      "implementationObservation": "36 differential text offset/tail cases match pinned TextFileHandler. Large-file/encoding/format/limits qualification still open.",
+      "implementationObservation": "36 differential text offset/tail cases match pinned TextFileHandler. Large-file/encoding/format/limits qualification still open. Explicit BOM-marked UTF-16LE read slice adds48 differential window comparisons, strict malformed/NUL refusal and retained raw/aggregate/serialized bounds. Original native RED30:3pass27fail; supplementary local GREEN44/44 plus64 regressions and installed8groups pass. Full committed native/fresh/hosted/delivery and actual-client acceptance remain pending; issue stays open.",
       "evidence": [
-        "docs/validation/2026-10-05-codex-parity-foundation.md"
+        "docs/validation/2026-10-05-codex-parity-foundation.md",
+        "docs/validation/2026-11-02-utf16le-read.md",
+        "docs/validation/2026-11-02-utf16le-read-development.json",
+        "docs/validation/2026-11-02-utf16le-read-source-review.json",
+        "tests/compat-read-utf16.test.mjs",
+        "scripts/verify-compatibility-installed.mjs"
       ],
       "lastReviewedAt": "2026-10-05T21:08:42.944283+00:00"
     },

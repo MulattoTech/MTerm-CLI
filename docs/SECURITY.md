@@ -230,8 +230,11 @@ is authoritative for final Git merge/checkpoint state and the linked CI evidence
 and dedicated Access service-auth policy were deleted, and `STAGING_SERVICE_ID`
 is absent from the current Worker's bindings. The original owner allow policy
 remains; Workers.dev and preview URLs are disabled. The SQLite registry was preserved.
-MCP remains enabled with only read-only tools. No test agent or owner-paired agent
-is left running.
+MCP remains enabled with only read-only tools. At the historical 01:24 UTC
+fixture closeout, no test agent or owner-paired agent remained running. The later
+[owner connection checkpoint](validation/2026-11-02-owner-connection.md) records
+an explicitly authorized real owner pairing and foreground online/stop/reconnect
+sequence; it does not create a service or enable autostart.
 
 Future separately authorized staging tests may temporarily configure an exact
 service client ID. The verifier accepts that identity only in an explicitly staging
@@ -239,8 +242,10 @@ environment with the expected signed Access service-token claims. Remove the new
 binding, policy and token after testing; fixture cleanup alone does not remove those
 Cloudflare resources. Do not deploy a testing identity to production.
 
-Service-principal acceptance is distinct from human authorization. Owner Google/Access
-sign-in, browser consent/callback and ChatGPT connector use remain unverified. The
-owner must pair the intended computer and complete the supported client's consent.
+Service-principal acceptance is distinct from human authorization. Owner-authorized
+pairing through an existing authenticated dashboard session is now observed.
+Fresh Google/Access login, client consent/callback and ChatGPT connector tool use
+remain unverified; plugin creation and automated ChatGPT browser access encountered
+explicit blockers recorded in the owner checkpoint.
 Production promotion, remote write/execute activation and full DCP/WEB acceptance
 remain separate gates.

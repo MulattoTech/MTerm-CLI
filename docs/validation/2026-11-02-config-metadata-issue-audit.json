@@ -1,0 +1,1445 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-11-02T04:29:19Z",
+  "repository": "MulattoTech/MTerm-CLI",
+  "ledgerCommit": "535d99e20b52a30ba9a24b6d2205d8e6687f6ca6",
+  "ledgerPath": "docs/roadmap/desktop-commander-parity.json",
+  "ledgerUrl": "https://github.com/MulattoTech/MTerm-CLI/blob/535d99e20b52a30ba9a24b6d2205d8e6687f6ca6/docs/roadmap/desktop-commander-parity.json",
+  "liveIssueCollection": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues?state=all&per_page=100&page=1&sort=created&direction=asc",
+  "method": "Read all 48 issue bodies and all 21 existing comments, then compare ID/number/title/URL/state and acceptance scope with the immutable implementation ledger. Read-only GitHub calls; no workflow retries, issue mutations or product tests. This local report is the only new artifact.",
+  "summary": {
+    "issueCount": 48,
+    "ledgerCount": 48,
+    "open": 48,
+    "closed": 0,
+    "assigneeCount": 0,
+    "commentsReviewed": 21,
+    "issuesWithoutComments": 27,
+    "idTitleUrlStateMismatches": 0,
+    "upstreamOrEpicMismatches": 0,
+    "ledgerClosedGapCount": 0,
+    "ledgerOpenGapCount": 48,
+    "ledgerPass": false
+  },
+  "comparisonBoundaries": [
+    "The ledger mirrors ID, issue number, title, URL and state; it has no assignee or detailed acceptance-criteria fields. All live issues are unassigned, so no ownership conflict was observed.",
+    "The two live acceptance templates differ in wording. Issues 3\u201322 explicitly require committed acceptance evidence before closure; issues 23\u201350 use a shorter compatibility-suite closure sentence. Both require actual installed behavior, Codex discovery/call, deterministic positive/negative boundaries, bounded output/no secret logging, explicit platforms and linked roadmap evidence. Repository-wide committed-evidence requirements still apply.",
+    "All eight releaseChecks remain pending for full 26-tool/all-48-issue acceptance. Passing scoped configuration/platform jobs do not contradict those release-level pending states."
+  ],
+  "findings": [
+    {
+      "id": "DCP-AUDIT-001",
+      "kind": "stale_implementation_observation",
+      "issues": [
+        22
+      ],
+      "ledgerIds": [
+        "DCP-020"
+      ],
+      "detail": "Ledger and latest historical issue comment still say dynamic configured limits are missing. PR72 installed evidence and current issue16 comment already establish live advisory write-warning thresholds with exact Unicode append/rewrite bytes. Office behavior and full boundaries remain open.",
+      "suggestedAction": "At documentation closeout, replace only the stale dynamic-limits clause with scoped delivered evidence, retain remaining limitations and the open issue state.",
+      "sources": [
+        "https://github.com/MulattoTech/MTerm-CLI/issues/16#issuecomment-6568569947",
+        "https://github.com/MulattoTech/MTerm-CLI/issues/22#issuecomment-6003254760",
+        "https://github.com/MulattoTech/MTerm-CLI/blob/c408e286c437bec1c8c88fbbae29d89a9f8f90c8/docs/validation/2026-11-02-config-installed-qualification.md"
+      ]
+    },
+    {
+      "id": "DCP-AUDIT-002",
+      "kind": "historical_issue_comments",
+      "issues": [
+        3,
+        4,
+        5,
+        6,
+        8,
+        9,
+        10,
+        19,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27
+      ],
+      "detail": "Fifteen latest issue comments date from 2026-10-05 and describe a billing/spending gate or jobs failing before steps. They are historical evidence, not a current blocker: merged main c408e and later PR matrices ran and passed scoped checks. The present implementation has a separate npm-install timeout in one push job, not that historical account gate.",
+      "suggestedAction": "Retain dated history; do not reuse it as current diagnosis. Any future issue evidence update should distinguish the newer actual results."
+    },
+    {
+      "id": "DCP-AUDIT-003",
+      "kind": "ledger_evidence_lag",
+      "issues": [
+        13,
+        16,
+        17
+      ],
+      "ledgerIds": [
+        "DCP-011",
+        "DCP-014",
+        "DCP-015"
+      ],
+      "detail": "These ledger rows still contain only the generic recovered-configuration observation/evidence, while live comments now link PR72 installed multi-root, dynamic-limit and no-transport qualification. Their full-contract pending statements and open states remain valid.",
+      "suggestedAction": "Append the scoped PR72 evidence when updating these rows; do not award full acceptance or remove the documented differences."
+    },
+    {
+      "id": "DCP-AUDIT-004",
+      "kind": "expected_current_closeout_update",
+      "issues": [
+        11
+      ],
+      "ledgerIds": [
+        "DCP-009"
+      ],
+      "detail": "The immutable implementation ledger correctly records its pre-qualification candidate checkpoint with native/full/installed/hosted gates pending. Root now reports completed native 175/175 and package/Codex qualification; current hosted observation is 8 successes and 1 failed push macOS ARM npm-install timeout. Final closeout must replace the pending wording with exact actual outcomes and keep complete metadata/contract acceptance open.",
+      "suggestedAction": "Use actual native/fresh-extraction reports and each exact-head hosted conclusion; do not state all nine green at implementation 535d99e."
+    }
+  ],
+  "acceptanceGroups": [
+    {
+      "id": "A",
+      "text": "- behavior is implemented through the actual installed MCP server;\n- Codex can discover/call it through the compatibility surface;\n- deterministic positive and negative tests cover boundaries/error cases;\n- output is bounded and secrets are not logged;\n- platform status is explicit;\n- parity roadmap links this issue and records evidence/stage;\n- issue closes only after acceptance evidence is committed and the parity suite is green.",
+      "issues": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ]
+    },
+    {
+      "id": "B",
+      "text": "- implemented through the actual installed MCP server;\n- Codex can discover/call the compatible tool surface;\n- deterministic positive/negative tests cover boundaries and errors;\n- output is bounded and secrets are not logged;\n- platform status is explicit;\n- parity roadmap links this issue and records evidence/stage;\n- closes only when the compatibility suite is green.\n\nCurrent status: open parity gap; required for 100% PASS.",
+      "issues": [
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "id": "DCP-001",
+      "issue": 3,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/3",
+      "title": "[DCP-001] NPM-installable package and npx entry point",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-05T21:25:33Z",
+      "gapScope": "Package MTerm-CLI so a clean user can install/run it through npm tooling (registry, approved GitHub package, or npm-supported Git source) without cloning the development checkout. `npx`/installed bin must launch the MCP server from outside the repo. Verify packed allowlist, production dependencies, uninstall behavior, and no GUI/Electron dependency.",
+      "acceptanceGroup": "A",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [
+        {
+          "id": 6003249099,
+          "url": "https://github.com/MulattoTech/MTerm-CLI/issues/3#issuecomment-6003249099",
+          "historicalBillingStatement": true
+        }
+      ],
+      "ledgerObservation": "Packed install, offline npm exec including actual MCP, and isolated link verified on Windows. Registry/Git-source distribution and full-platform lifecycle still open.",
+      "ledgerLastReviewedAt": "2026-10-05T21:08:42.944283+00:00",
+      "ledgerEvidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ]
+    },
+    {
+      "id": "DCP-002",
+      "issue": 4,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/4",
+      "title": "[DCP-002] Idempotent Codex setup/registration command",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-05T21:25:35Z",
+      "gapScope": "Implement a real setup command that registers MTerm as a Codex stdio MCP server using supported Codex configuration mechanisms. Re-running setup must be idempotent and must preserve unrelated Codex config. Add isolated CODEX_HOME integration tests.",
+      "acceptanceGroup": "A",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [
+        {
+          "id": 6003249709,
+          "url": "https://github.com/MulattoTech/MTerm-CLI/issues/4#issuecomment-6003249709",
+          "historicalBillingStatement": true
+        }
+      ],
+      "ledgerObservation": "Explicit managed setup is implemented and tested against real Codex0.160.1 plus installed package; platform/complete-contract qualification remains.",
+      "ledgerLastReviewedAt": "2026-10-05T21:08:42.944283+00:00",
+      "ledgerEvidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ]
+    },
+    {
+      "id": "DCP-003",
+      "issue": 5,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/5",
+      "title": "[DCP-003] Codex remove/uninstall with backup and rollback",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-05T21:25:37Z",
+      "gapScope": "Implement removal of only MTerm-owned Codex configuration, with backup/conflict checks and rollback on failure. Never remove unrelated MCP servers or user settings.",
+      "acceptanceGroup": "A",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [
+        {
+          "id": 6003250367,
+          "url": "https://github.com/MulattoTech/MTerm-CLI/issues/5#issuecomment-6003250367",
+          "historicalBillingStatement": true
+        }
+      ],
+      "ledgerObservation": "Exact owned removal with backups/idempotence/conflict protection tested; cooperative locking boundary and full-platform qualification remain.",
+      "ledgerLastReviewedAt": "2026-10-05T21:08:42.944283+00:00",
+      "ledgerEvidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ]
+    },
+    {
+      "id": "DCP-004",
+      "issue": 6,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/6",
+      "title": "[DCP-004] Codex-managed background MCP lifecycle with no manual foreground server",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-05T21:25:39Z",
+      "gapScope": "Once configured, Codex must spawn and supervise MTerm automatically as an stdio MCP child, so the user does not manually keep a terminal window open. Verify startup, reconnect/relaunch after Codex restart, clean EOF shutdown, and no persistent daemon unless explicitly selected.",
+      "acceptanceGroup": "A",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [
+        {
+          "id": 6003251145,
+          "url": "https://github.com/MulattoTech/MTerm-CLI/issues/6#issuecomment-6003251145",
+          "historicalBillingStatement": true
+        }
+      ],
+      "ledgerObservation": "Configuration parsed by actual Codex and2 SDK-managed registered-command lifecycles passed. Actual Codex agent tool session and platform acceptance remain unrun.",
+      "ledgerLastReviewedAt": "2026-10-05T21:08:42.944283+00:00",
+      "ledgerEvidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ]
+    },
+    {
+      "id": "DCP-005",
+      "issue": 7,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/7",
+      "title": "[DCP-005] Private/GitHub-friendly install and update path",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-04T01:57:50Z",
+      "gapScope": "Provide a supported update/install path even if MTerm is not published to the public npm registry. Document and test immutable GitHub/tag/package installs and user-initiated updates without `git pull` against a user checkout.",
+      "acceptanceGroup": "A",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [],
+      "ledgerObservation": null,
+      "ledgerLastReviewedAt": null,
+      "ledgerEvidence": []
+    },
+    {
+      "id": "DCP-006",
+      "issue": 8,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/8",
+      "title": "[DCP-006] Cross-platform npm/Codex install validation",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-05T21:09:44Z",
+      "gapScope": "Validate the install/setup/MCP lifecycle on Windows, macOS and Linux using supported Node/Codex versions. Keep unsupported architectures explicit until tested.",
+      "acceptanceGroup": "A",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [
+        {
+          "id": 6002975244,
+          "url": "https://github.com/MulattoTech/MTerm-CLI/issues/8#issuecomment-6002975244",
+          "historicalBillingStatement": true
+        }
+      ],
+      "ledgerObservation": "Verified baseline main 059413ffa4fb3b18c8e15af907744a40e0b874a7 passed Windows2022, Ubuntu24.04, macOS14 ARM64 and macOS15 Intel normal build/check/package/pinned Codex gates in run41375692062 plus fast41375691964. This is foundation/platform evidence; all feature contracts and actual Codex agent acceptance remain open. New changes need their own exact-source checks.",
+      "ledgerLastReviewedAt": "2026-11-02T03:07:05.180902+00:00",
+      "ledgerEvidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md",
+        "docs/ai/changes/2026-11-02-foundation-portability.json",
+        "docs/validation/2026-11-02-config-baseline-ci.json",
+        "docs/validation/2026-11-02-remote-sprint.md"
+      ]
+    },
+    {
+      "id": "DCP-007",
+      "issue": 9,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/9",
+      "title": "[DCP-007] DesktopCommander-compatible MCP tool names and schemas",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-05T21:25:42Z",
+      "gapScope": "Expose DesktopCommander-compatible tool names and argument/result semantics (or rigorously tested aliases) for Codex, while retaining any MTerm-native names internally. Compatibility must cover all published upstream MCP tools so existing Codex instructions do not need rewriting.",
+      "acceptanceGroup": "A",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [
+        {
+          "id": 6003252031,
+          "url": "https://github.com/MulattoTech/MTerm-CLI/issues/9#issuecomment-6003252031",
+          "historicalBillingStatement": true
+        }
+      ],
+      "ledgerObservation": "Eight optional file/text aliases implemented and actually exercised through npm exec MCP. No stub tools. Full26-tool names/schemas/behavior remain incomplete.",
+      "ledgerLastReviewedAt": "2026-10-05T21:08:42.944283+00:00",
+      "ledgerEvidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ]
+    },
+    {
+      "id": "DCP-008",
+      "issue": 10,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/10",
+      "title": "[DCP-008] Pinned upstream parity baseline and drift detector",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-05T21:25:44Z",
+      "gapScope": "Record the exact DesktopCommander parity baseline (version/commit/tool manifest) and add a review/check that detects upstream tool/schema changes. Updating the baseline must be explicit and regenerate the parity matrix/issues.",
+      "acceptanceGroup": "A",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [
+        {
+          "id": 6003252893,
+          "url": "https://github.com/MulattoTech/MTerm-CLI/issues/10#issuecomment-6003252893",
+          "historicalBillingStatement": true
+        }
+      ],
+      "ledgerObservation": "Pinned manifest, schema and text-handler snapshots verified; drift probe does not advance target; false PASS/closure assertions rejected. Issue remains open pending full acceptance review.",
+      "ledgerLastReviewedAt": "2026-10-05T21:08:42.944283+00:00",
+      "ledgerEvidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ]
+    },
+    {
+      "id": "DCP-009",
+      "issue": 11,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/11",
+      "title": "[DCP-009] Implement get_config MCP parity",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-11-02T03:47:33Z",
+      "gapScope": "Add `get_config` with effective blockedCommands, defaultShell, allowedDirectories, fileReadLineLimit, fileWriteLineLimit, telemetryEnabled, client/system information and any other published fields required by the pinned baseline.",
+      "acceptanceGroup": "A",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [
+        {
+          "id": 6568569472,
+          "url": "https://github.com/MulattoTech/MTerm-CLI/issues/11#issuecomment-6568569472",
+          "historicalBillingStatement": false
+        }
+      ],
+      "ledgerObservation": "Preserved unpublished owner-bounded compatibility configuration recovered with tests. Snapshot reload, multi-root ceilings, blocked executable names, limits and telemetry preference implemented; full platform/security/installed contract acceptance pending. DCP-009 candidate adds pinned five-field memory formatting, truthful OS/Node/process metadata, generic example paths, empty no-provider flags, bounded client identity and six-entry ordering. Explicit omitted Python/container/env/path fields and owner-bounded shell/editability differences keep full acceptance open. Direct RED/GREEN and config/retry regressions passed in scratch; native/full/installed/hosted candidate gates remain pending.",
+      "ledgerLastReviewedAt": "2026-11-02T04:06:38.171Z",
+      "ledgerEvidence": [
+        "docs/ai/changes/2026-11-02-foundation-portability.json",
+        "src/compat-config.ts",
+        "tests/compat-config-metadata.test.mjs",
+        "scripts/verify-configuration-installed.mjs",
+        "docs/validation/2026-11-02-config-metadata.md",
+        "docs/ai/changes/2026-11-02-config-metadata.json"
+      ]
+    },
+    {
+      "id": "DCP-010",
+      "issue": 12,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/12",
+      "title": "[DCP-010] Implement set_config_value MCP parity",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-11-02T03:24:29Z",
+      "gapScope": "Add `set_config_value` for supported settings with validation, atomic persistence, safe error handling and runtime effect matching the pinned upstream semantics.",
+      "acceptanceGroup": "A",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [
+        {
+          "id": 6568288236,
+          "url": "https://github.com/MulattoTech/MTerm-CLI/issues/12#issuecomment-6568288236",
+          "historicalBillingStatement": false
+        }
+      ],
+      "ledgerObservation": "Recovered six-setting implementation now tolerates bounded Windows EPERM/EBUSY for config/backup replacement, with expected bytes and owned-stage validation on every attempt. Native Windows focused38/38 passes. Exact upstream outputs/coercions/security differences and full installed/Codex acceptance remain open.",
+      "ledgerLastReviewedAt": "2026-11-02T03:11:17.574762+00:00",
+      "ledgerEvidence": [
+        "docs/ai/changes/2026-11-02-foundation-portability.json",
+        "docs/validation/2026-11-02-config-retry.md"
+      ]
+    },
+    {
+      "id": "DCP-011",
+      "issue": 13,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/13",
+      "title": "[DCP-011] Support multiple allowedDirectories roots",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-11-02T03:47:35Z",
+      "gapScope": "Expand single-root policy to a safe multi-root allowedDirectories model. Canonical/reparse/symlink checks must apply independently to every root and must not weaken current protections.",
+      "acceptanceGroup": "A",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [
+        {
+          "id": 6568569680,
+          "url": "https://github.com/MulattoTech/MTerm-CLI/issues/13#issuecomment-6568569680",
+          "historicalBillingStatement": false
+        }
+      ],
+      "ledgerObservation": "Preserved unpublished owner-bounded compatibility configuration recovered with tests. Snapshot reload, multi-root ceilings, blocked executable names, limits and telemetry preference implemented; full platform/security/installed contract acceptance pending.",
+      "ledgerLastReviewedAt": "2026-11-02T00:18:44.138456+00:00",
+      "ledgerEvidence": [
+        "docs/ai/changes/2026-11-02-foundation-portability.json"
+      ]
+    },
+    {
+      "id": "DCP-012",
+      "issue": 14,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/14",
+      "title": "[DCP-012] Implement configurable blockedCommands enforcement",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-04T01:58:02Z",
+      "gapScope": "Implement the DesktopCommander blockedCommands safety model and enforce it in command execution paths. Configuration changes must take effect safely and tests must cover bypass attempts.",
+      "acceptanceGroup": "A",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [],
+      "ledgerObservation": "Preserved unpublished owner-bounded compatibility configuration recovered with tests. Snapshot reload, multi-root ceilings, blocked executable names, limits and telemetry preference implemented; full platform/security/installed contract acceptance pending.",
+      "ledgerLastReviewedAt": "2026-11-02T00:18:44.138456+00:00",
+      "ledgerEvidence": [
+        "docs/ai/changes/2026-11-02-foundation-portability.json"
+      ]
+    },
+    {
+      "id": "DCP-013",
+      "issue": 15,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/15",
+      "title": "[DCP-013] Implement defaultShell configuration",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-04T01:58:03Z",
+      "gapScope": "Support a configurable default shell matching DesktopCommander semantics on Windows/macOS/Linux and report it through config. Shell selection must be explicit and injection-safe.",
+      "acceptanceGroup": "A",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [],
+      "ledgerObservation": "Preserved unpublished owner-bounded compatibility configuration recovered with tests. Snapshot reload, multi-root ceilings, blocked executable names, limits and telemetry preference implemented; full platform/security/installed contract acceptance pending.",
+      "ledgerLastReviewedAt": "2026-11-02T00:18:44.138456+00:00",
+      "ledgerEvidence": [
+        "docs/ai/changes/2026-11-02-foundation-portability.json"
+      ]
+    },
+    {
+      "id": "DCP-014",
+      "issue": 16,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/16",
+      "title": "[DCP-014] Implement configurable file read/write line limits",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-11-02T03:47:36Z",
+      "gapScope": "Implement fileReadLineLimit and fileWriteLineLimit semantics and dynamic validation. Tool pagination/defaults must follow config without unbounded output.",
+      "acceptanceGroup": "A",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [
+        {
+          "id": 6568569947,
+          "url": "https://github.com/MulattoTech/MTerm-CLI/issues/16#issuecomment-6568569947",
+          "historicalBillingStatement": false
+        }
+      ],
+      "ledgerObservation": "Preserved unpublished owner-bounded compatibility configuration recovered with tests. Snapshot reload, multi-root ceilings, blocked executable names, limits and telemetry preference implemented; full platform/security/installed contract acceptance pending.",
+      "ledgerLastReviewedAt": "2026-11-02T00:18:44.138456+00:00",
+      "ledgerEvidence": [
+        "docs/ai/changes/2026-11-02-foundation-portability.json"
+      ]
+    },
+    {
+      "id": "DCP-015",
+      "issue": 17,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/17",
+      "title": "[DCP-015] Implement telemetryEnabled configuration semantics",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-11-02T03:47:37Z",
+      "gapScope": "Expose telemetryEnabled parity and ensure disabling it prevents telemetry emission. MTerm-specific telemetry must remain opt-in/transparent and never expose secrets.",
+      "acceptanceGroup": "A",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [
+        {
+          "id": 6568570151,
+          "url": "https://github.com/MulattoTech/MTerm-CLI/issues/17#issuecomment-6568570151",
+          "historicalBillingStatement": false
+        }
+      ],
+      "ledgerObservation": "Preserved unpublished owner-bounded compatibility configuration recovered with tests. Snapshot reload, multi-root ceilings, blocked executable names, limits and telemetry preference implemented; full platform/security/installed contract acceptance pending.",
+      "ledgerLastReviewedAt": "2026-11-02T00:18:44.138456+00:00",
+      "ledgerEvidence": [
+        "docs/ai/changes/2026-11-02-foundation-portability.json"
+      ]
+    },
+    {
+      "id": "DCP-016",
+      "issue": 18,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/18",
+      "title": "[DCP-016] Dynamic cross-process config reload without server restart",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-11-02T03:47:32Z",
+      "gapScope": "Match DesktopCommander dynamic config behavior: supported config changes become visible to running MCP instances without requiring Codex restart, with safe cross-process watching/coordination and deterministic tests.",
+      "acceptanceGroup": "A",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [
+        {
+          "id": 6568569267,
+          "url": "https://github.com/MulattoTech/MTerm-CLI/issues/18#issuecomment-6568569267",
+          "historicalBillingStatement": false
+        }
+      ],
+      "ledgerObservation": "Preserved unpublished owner-bounded compatibility configuration recovered with tests. Snapshot reload, multi-root ceilings, blocked executable names, limits and telemetry preference implemented; complete pinned-contract and actual Codex-client acceptance pending. Qualification checkpoint (2026-11-02): Standalone native Windows installed probe passed seven scenarios with two concurrent MCP processes and a restart: live limits/roots/blocks, distinct-key writes, corruption denial and owned cleanup. The revised integrated Windows workflow subsequently passed 164/164 tests, normal package, self-host, normal prepack and source/installed managed-Codex gates. Implementation def85d2 subsequently passed all nine exact-head checks across Windows, Linux and both macOS architectures, plus a clean committed extraction with normal prepack and installed package validation. Full issue acceptance is not awarded.",
+      "ledgerLastReviewedAt": "2026-11-02T03:38:49.148739+00:00",
+      "ledgerEvidence": [
+        "docs/ai/changes/2026-11-02-foundation-portability.json",
+        "docs/validation/2026-11-02-config-installed-qualification.md",
+        "docs/validation/2026-11-02-config-installed-windows.json",
+        "docs/validation/2026-11-02-config-delivery.json"
+      ]
+    },
+    {
+      "id": "DCP-017",
+      "issue": 19,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/19",
+      "title": "[DCP-017] read_file negative offset / tail semantics",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-05T21:25:46Z",
+      "gapScope": "Extend read_file to support DesktopCommander-style negative offsets for reading from the end of a file, with bounded line semantics and tests for short/large/Unicode files.",
+      "acceptanceGroup": "A",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [
+        {
+          "id": 6003253568,
+          "url": "https://github.com/MulattoTech/MTerm-CLI/issues/19#issuecomment-6003253568",
+          "historicalBillingStatement": true
+        }
+      ],
+      "ledgerObservation": "36 differential text offset/tail cases match pinned TextFileHandler. Large-file/encoding/format/limits qualification still open.",
+      "ledgerLastReviewedAt": "2026-10-05T21:08:42.944283+00:00",
+      "ledgerEvidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ]
+    },
+    {
+      "id": "DCP-018",
+      "issue": 20,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/20",
+      "title": "[DCP-018] read_file URL support",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-04T01:58:13Z",
+      "gapScope": "Implement the pinned upstream `isUrl` behavior for safe URL reads, with protocol allowlists, size/time limits, redirect policy, SSRF protections and deterministic fixtures.",
+      "acceptanceGroup": "A",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [],
+      "ledgerObservation": null,
+      "ledgerLastReviewedAt": null,
+      "ledgerEvidence": []
+    },
+    {
+      "id": "DCP-019",
+      "issue": 21,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/21",
+      "title": "[DCP-019] read_multiple_files tool parity",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-05T21:25:49Z",
+      "gapScope": "Add `read_multiple_files` with per-file errors, bounded aggregate output, root policy enforcement and format handling consistent with individual reads.",
+      "acceptanceGroup": "A",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [
+        {
+          "id": 6003254195,
+          "url": "https://github.com/MulattoTech/MTerm-CLI/issues/21#issuecomment-6003254195",
+          "historicalBillingStatement": true
+        }
+      ],
+      "ledgerObservation": "Bounded text multi-file partial-error handling implemented. Image/document payloads not supported.",
+      "ledgerLastReviewedAt": "2026-10-05T21:08:42.944283+00:00",
+      "ledgerEvidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ]
+    },
+    {
+      "id": "DCP-020",
+      "issue": 22,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/22",
+      "title": "[DCP-020] write_file append mode parity",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-05T21:25:51Z",
+      "gapScope": "Add `mode: append` semantics in addition to rewrite, with concurrency/version behavior that cannot silently corrupt content. Preserve safe atomic behavior where applicable.",
+      "acceptanceGroup": "A",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [
+        {
+          "id": 6003254760,
+          "url": "https://github.com/MulattoTech/MTerm-CLI/issues/22#issuecomment-6003254760",
+          "historicalBillingStatement": true
+        }
+      ],
+      "ledgerObservation": "Text append/rewrite/missing-target behavior and BOM preservation implemented. Dynamic configured limits/office behavior still missing.",
+      "ledgerLastReviewedAt": "2026-10-05T21:08:42.944283+00:00",
+      "ledgerEvidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ]
+    },
+    {
+      "id": "DCP-021",
+      "issue": 23,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/23",
+      "title": "[DCP-021] create_directory nested-path parity",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-05T21:25:53Z",
+      "gapScope": "Match DesktopCommander create_directory behavior for nested directory creation and existing-directory cases while enforcing allowed roots and link safety.",
+      "acceptanceGroup": "B",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [
+        {
+          "id": 6003255464,
+          "url": "https://github.com/MulattoTech/MTerm-CLI/issues/23#issuecomment-6003255464",
+          "historicalBillingStatement": true
+        }
+      ],
+      "ledgerObservation": "Nested directory creation idempotent with whole-path prevalidation tested. All-platform/security parity remains open.",
+      "ledgerLastReviewedAt": "2026-10-05T21:08:42.944283+00:00",
+      "ledgerEvidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ]
+    },
+    {
+      "id": "DCP-022",
+      "issue": 24,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/24",
+      "title": "[DCP-022] Recursive list_directory depth parity",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-05T21:25:57Z",
+      "gapScope": "Implement recursive directory listing with configurable depth and context/output protection, while preserving hidden/private policy and deterministic truncation metadata.",
+      "acceptanceGroup": "B",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [
+        {
+          "id": 6003256771,
+          "url": "https://github.com/MulattoTech/MTerm-CLI/issues/24#issuecomment-6003256771",
+          "historicalBillingStatement": true
+        }
+      ],
+      "ledgerObservation": "Bounded recursive depth listing implemented; top-level/overflow/error semantics differ from upstream and require resolution.",
+      "ledgerLastReviewedAt": "2026-10-05T21:08:42.944283+00:00",
+      "ledgerEvidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ]
+    },
+    {
+      "id": "DCP-023",
+      "issue": 25,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/25",
+      "title": "[DCP-023] move_file files/directories and cross-filesystem parity",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-05T21:25:59Z",
+      "gapScope": "Extend move_file beyond current regular-file-only same-filesystem behavior to the pinned upstream contract, including directories, collision rules and safe cross-device fallback.",
+      "acceptanceGroup": "B",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [
+        {
+          "id": 6003257511,
+          "url": "https://github.com/MulattoTech/MTerm-CLI/issues/25#issuecomment-6003257511",
+          "historicalBillingStatement": true
+        }
+      ],
+      "ledgerObservation": "Regular-file same-filesystem no-overwrite move only. Directories and cross-device parity remain open.",
+      "ledgerLastReviewedAt": "2026-10-05T21:08:42.944283+00:00",
+      "ledgerEvidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ]
+    },
+    {
+      "id": "DCP-024",
+      "issue": 26,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/26",
+      "title": "[DCP-024] get_file_info complete metadata parity",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-05T21:26:01Z",
+      "gapScope": "Expand metadata to the pinned DesktopCommander result: type, size, timestamps, permissions/attributes and other published fields, with cross-platform normalization.",
+      "acceptanceGroup": "B",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [
+        {
+          "id": 6003258373,
+          "url": "https://github.com/MulattoTech/MTerm-CLI/issues/26#issuecomment-6003258373",
+          "historicalBillingStatement": true
+        }
+      ],
+      "ledgerObservation": "Text/stat metadata implemented; spreadsheet/document metadata and complete platform behavior remain open.",
+      "ledgerLastReviewedAt": "2026-10-05T21:08:42.944283+00:00",
+      "ledgerEvidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ]
+    },
+    {
+      "id": "DCP-025",
+      "issue": 27,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/27",
+      "title": "[DCP-025] edit_block surgical text replacement parity",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-05T21:26:04Z",
+      "gapScope": "Implement edit_block text replacement with old_string/new_string, expected_replacements, exact ambiguity errors, line-ending preservation and safe atomic writes.",
+      "acceptanceGroup": "B",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [
+        {
+          "id": 6003259178,
+          "url": "https://github.com/MulattoTech/MTerm-CLI/issues/27#issuecomment-6003259178",
+          "historicalBillingStatement": true
+        }
+      ],
+      "ledgerObservation": "Exact replacement with required occurrence count implemented; fuzzy diagnostics, normalized/office matching remain open.",
+      "ledgerLastReviewedAt": "2026-10-05T21:08:42.944283+00:00",
+      "ledgerEvidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ]
+    },
+    {
+      "id": "DCP-026",
+      "issue": 28,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/28",
+      "title": "[DCP-026] Native Excel read/write/edit/search parity",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-04T01:58:59Z",
+      "gapScope": "Support .xlsx/.xls/.xlsm operations exposed by DesktopCommander: read sheets/ranges, write/edit cells/ranges and search workbook content with bounded output and formula/value fidelity.",
+      "acceptanceGroup": "B",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [],
+      "ledgerObservation": null,
+      "ledgerLastReviewedAt": null,
+      "ledgerEvidence": []
+    },
+    {
+      "id": "DCP-027",
+      "issue": 29,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/29",
+      "title": "[DCP-027] PDF read/create/modify parity",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-04T01:59:01Z",
+      "gapScope": "Support PDF text extraction in read_file plus write_pdf creation and insert/delete modification operations, with bounded parsing/rendering and deterministic tests.",
+      "acceptanceGroup": "B",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [],
+      "ledgerObservation": null,
+      "ledgerLastReviewedAt": null,
+      "ledgerEvidence": []
+    },
+    {
+      "id": "DCP-028",
+      "issue": 30,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/30",
+      "title": "[DCP-028] DOCX read/create/edit/search parity",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-04T01:59:02Z",
+      "gapScope": "Support DOCX reading, creation, surgical XML/range editing and searching as exposed by DesktopCommander, preserving document integrity and bounded outputs.",
+      "acceptanceGroup": "B",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [],
+      "ledgerObservation": null,
+      "ledgerLastReviewedAt": null,
+      "ledgerEvidence": []
+    },
+    {
+      "id": "DCP-029",
+      "issue": 31,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/31",
+      "title": "[DCP-029] Asynchronous start_search session model",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-04T01:59:23Z",
+      "gapScope": "Replace/augment synchronous search with DesktopCommander-compatible start_search sessions that return session IDs and continue safely for large searches.",
+      "acceptanceGroup": "B",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [],
+      "ledgerObservation": null,
+      "ledgerLastReviewedAt": null,
+      "ledgerEvidence": []
+    },
+    {
+      "id": "DCP-030",
+      "issue": 32,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/32",
+      "title": "[DCP-030] get_more_search_results pagination",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-04T01:59:25Z",
+      "gapScope": "Implement result paging by search session ID with offset/length semantics and stable ordering, without losing unread results.",
+      "acceptanceGroup": "B",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [],
+      "ledgerObservation": null,
+      "ledgerLastReviewedAt": null,
+      "ledgerEvidence": []
+    },
+    {
+      "id": "DCP-031",
+      "issue": 33,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/33",
+      "title": "[DCP-031] stop_search cancellation",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-04T01:59:27Z",
+      "gapScope": "Implement explicit cancellation of an owned search session and prove underlying ripgrep/search work is terminated promptly without affecting other sessions.",
+      "acceptanceGroup": "B",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [],
+      "ledgerObservation": null,
+      "ledgerLastReviewedAt": null,
+      "ledgerEvidence": []
+    },
+    {
+      "id": "DCP-032",
+      "issue": 34,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/34",
+      "title": "[DCP-032] list_searches session inventory",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-04T01:59:28Z",
+      "gapScope": "Expose active/completed search session metadata needed for recovery and context continuation, with bounded retention.",
+      "acceptanceGroup": "B",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [],
+      "ledgerObservation": null,
+      "ledgerLastReviewedAt": null,
+      "ledgerEvidence": []
+    },
+    {
+      "id": "DCP-033",
+      "issue": 35,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/35",
+      "title": "[DCP-033] Ripgrep search options parity",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-04T01:59:30Z",
+      "gapScope": "Match start_search options: files/content mode, regex vs literal, filePattern, ignoreCase, includeHidden, contextLines, timeout, maxResults, earlyTermination, and vscode-ripgrep-backed large-repo behavior.",
+      "acceptanceGroup": "B",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [],
+      "ledgerObservation": null,
+      "ledgerLastReviewedAt": null,
+      "ledgerEvidence": []
+    },
+    {
+      "id": "DCP-034",
+      "issue": 36,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/36",
+      "title": "[DCP-034] start_process shell/default-shell command parity",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-04T01:59:32Z",
+      "gapScope": "Support DesktopCommander-style command strings and explicit/default shell selection in addition to MTerm's structured executable mode, while retaining injection/safety controls and blockedCommands enforcement.",
+      "acceptanceGroup": "B",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [],
+      "ledgerObservation": null,
+      "ledgerLastReviewedAt": null,
+      "ledgerEvidence": []
+    },
+    {
+      "id": "DCP-035",
+      "issue": 37,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/37",
+      "title": "[DCP-035] start_process timeout/background/readiness detection",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-04T01:59:34Z",
+      "gapScope": "Match DesktopCommander process launch semantics for timeout_ms, background execution and smart readiness/input detection; define running vs completed without blocking Codex.",
+      "acceptanceGroup": "B",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [],
+      "ledgerObservation": null,
+      "ledgerLastReviewedAt": null,
+      "ledgerEvidence": []
+    },
+    {
+      "id": "DCP-036",
+      "issue": 38,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/38",
+      "title": "[DCP-036] interact_with_process wait-for-prompt semantics",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-04T01:59:35Z",
+      "gapScope": "Extend process input to support timeout_ms, wait_for_prompt and response collection semantics used for interactive shells/REPLs.",
+      "acceptanceGroup": "B",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [],
+      "ledgerObservation": null,
+      "ledgerLastReviewedAt": null,
+      "ledgerEvidence": []
+    },
+    {
+      "id": "DCP-037",
+      "issue": 39,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/39",
+      "title": "[DCP-037] read_process_output line pagination and tail semantics",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-04T01:59:52Z",
+      "gapScope": "Match pid/offset/length/timeout output reads, including negative tail offsets and completed-session reads, while preserving bounded UTF-8-safe output.",
+      "acceptanceGroup": "B",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [],
+      "ledgerObservation": null,
+      "ledgerLastReviewedAt": null,
+      "ledgerEvidence": []
+    },
+    {
+      "id": "DCP-038",
+      "issue": 40,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/40",
+      "title": "[DCP-038] force_terminate parity",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-04T01:59:53Z",
+      "gapScope": "Expose force_terminate semantics for a managed terminal session, including descendant cleanup and honest platform-specific guarantees.",
+      "acceptanceGroup": "B",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [],
+      "ledgerObservation": null,
+      "ledgerLastReviewedAt": null,
+      "ledgerEvidence": []
+    },
+    {
+      "id": "DCP-039",
+      "issue": 41,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/41",
+      "title": "[DCP-039] list_sessions metadata and completed-session retention",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-04T01:59:55Z",
+      "gapScope": "Match DesktopCommander session inventory fields/lifecycle so Codex can recover running/completed long-lived terminal work after context switches.",
+      "acceptanceGroup": "B",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [],
+      "ledgerObservation": null,
+      "ledgerLastReviewedAt": null,
+      "ledgerEvidence": []
+    },
+    {
+      "id": "DCP-040",
+      "issue": 42,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/42",
+      "title": "[DCP-040] System-wide list_processes tool parity",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-04T01:59:57Z",
+      "gapScope": "Add read-only system process enumeration equivalent to DesktopCommander's list_processes, with bounded output and platform-specific fields.",
+      "acceptanceGroup": "B",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [],
+      "ledgerObservation": null,
+      "ledgerLastReviewedAt": null,
+      "ledgerEvidence": []
+    },
+    {
+      "id": "DCP-041",
+      "issue": 43,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/43",
+      "title": "[DCP-041] System-wide kill_process tool parity",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-04T01:59:59Z",
+      "gapScope": "Add kill_process for explicitly selected OS processes with clear safety rules, failure modes and platform behavior; do not confuse this with MTerm-owned session termination.",
+      "acceptanceGroup": "B",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [],
+      "ledgerObservation": null,
+      "ledgerLastReviewedAt": null,
+      "ledgerEvidence": []
+    },
+    {
+      "id": "DCP-042",
+      "issue": 44,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/44",
+      "title": "[DCP-042] Interactive PTY/REPL fidelity for SSH, databases and dev servers",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-04T02:00:00Z",
+      "gapScope": "Provide interactive process behavior sufficient for SSH, Python/Node/R REPLs, database shells and development servers, including prompts, Unicode and terminal semantics expected by DesktopCommander.",
+      "acceptanceGroup": "B",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [],
+      "ledgerObservation": null,
+      "ledgerLastReviewedAt": null,
+      "ledgerEvidence": []
+    },
+    {
+      "id": "DCP-043",
+      "issue": 45,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/45",
+      "title": "[DCP-043] Terminal output encoding and null-byte parity",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-04T02:00:03Z",
+      "gapScope": "Handle Windows/PowerShell UTF-16 plus null-byte and mixed-encoding output edge cases covered by DesktopCommander tests without corrupting output or MCP framing.",
+      "acceptanceGroup": "B",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [],
+      "ledgerObservation": null,
+      "ledgerLastReviewedAt": null,
+      "ledgerEvidence": []
+    },
+    {
+      "id": "DCP-044",
+      "issue": 46,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/46",
+      "title": "[DCP-044] get_usage_stats tool parity",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-04T02:00:05Z",
+      "gapScope": "Implement get_usage_stats with local tool/performance usage metrics and privacy controls matching the pinned upstream behavior; keep this separate from Codex account quota.",
+      "acceptanceGroup": "B",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [],
+      "ledgerObservation": null,
+      "ledgerLastReviewedAt": null,
+      "ledgerEvidence": []
+    },
+    {
+      "id": "DCP-045",
+      "issue": 47,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/47",
+      "title": "[DCP-045] Persistent get_recent_tool_calls history parity",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-04T02:00:22Z",
+      "gapScope": "Persist bounded recent MCP tool history including tool name, arguments and bounded output previews, with filtering by count/tool/time and no credential leakage.",
+      "acceptanceGroup": "B",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [],
+      "ledgerObservation": null,
+      "ledgerLastReviewedAt": null,
+      "ledgerEvidence": []
+    },
+    {
+      "id": "DCP-046",
+      "issue": 48,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/48",
+      "title": "[DCP-046] Tool history rotation and trimming",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-04T02:00:23Z",
+      "gapScope": "Add size/count-based rotation/trimming for persisted tool history so history survives restarts but cannot grow without bound.",
+      "acceptanceGroup": "B",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [],
+      "ledgerObservation": null,
+      "ledgerLastReviewedAt": null,
+      "ledgerEvidence": []
+    },
+    {
+      "id": "DCP-047",
+      "issue": 49,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/49",
+      "title": "[DCP-047] give_feedback_to_desktop_commander compatibility behavior",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-04T02:00:25Z",
+      "gapScope": "Provide a compatibility implementation or documented MTerm-equivalent for the published feedback tool so the advertised Codex tool surface is complete without impersonating upstream telemetry.",
+      "acceptanceGroup": "B",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [],
+      "ledgerObservation": null,
+      "ledgerLastReviewedAt": null,
+      "ledgerEvidence": []
+    },
+    {
+      "id": "DCP-048",
+      "issue": 50,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/50",
+      "title": "[DCP-048] get_prompts / onboarding prompt parity",
+      "liveState": "open",
+      "ledgerState": "open",
+      "assignees": [],
+      "updatedAt": "2026-10-04T02:00:27Z",
+      "gapScope": "Expose the published get_prompts behavior and bundled onboarding/help prompt data needed by Codex-facing parity, with versioned local resources and no hidden network dependency.",
+      "acceptanceGroup": "B",
+      "parentEpicMatches": true,
+      "upstreamPinMatches": true,
+      "mappingMatches": true,
+      "commentsReviewed": [],
+      "ledgerObservation": null,
+      "ledgerLastReviewedAt": null,
+      "ledgerEvidence": []
+    }
+  ],
+  "releaseChecks": [
+    {
+      "id": "package",
+      "status": "pending",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ],
+      "notes": "Partial implementation evidence is not completed parity acceptance."
+    },
+    {
+      "id": "codex-lifecycle",
+      "status": "pending",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ],
+      "notes": "Partial implementation evidence is not completed parity acceptance."
+    },
+    {
+      "id": "tool-contracts",
+      "status": "pending",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ],
+      "notes": "Partial implementation evidence is not completed parity acceptance."
+    },
+    {
+      "id": "windows",
+      "status": "pending",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md",
+        "docs/validation/2026-11-02-config-baseline-ci.json",
+        "docs/validation/2026-11-02-remote-sprint.md"
+      ],
+      "notes": "Foundation baseline main059413f passed exact-source hosted checks and contains PR52/67 integration; prior billing/path failures are historical. Complete 26-tool/all48-issue release acceptance remains pending, and subsequent changes require their own exact-source validation."
+    },
+    {
+      "id": "macos",
+      "status": "pending",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md",
+        "docs/validation/2026-11-02-config-baseline-ci.json",
+        "docs/validation/2026-11-02-remote-sprint.md"
+      ],
+      "notes": "Foundation baseline main059413f passed exact-source hosted checks and contains PR52/67 integration; prior billing/path failures are historical. Complete 26-tool/all48-issue release acceptance remains pending, and subsequent changes require their own exact-source validation."
+    },
+    {
+      "id": "linux",
+      "status": "pending",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md",
+        "docs/validation/2026-11-02-config-baseline-ci.json",
+        "docs/validation/2026-11-02-remote-sprint.md"
+      ],
+      "notes": "Foundation baseline main059413f passed exact-source hosted checks and contains PR52/67 integration; prior billing/path failures are historical. Complete 26-tool/all48-issue release acceptance remains pending, and subsequent changes require their own exact-source validation."
+    },
+    {
+      "id": "security-licenses",
+      "status": "pending",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md"
+      ],
+      "notes": "Partial implementation evidence is not completed parity acceptance."
+    },
+    {
+      "id": "final-main",
+      "status": "pending",
+      "evidence": [
+        "docs/validation/2026-10-05-codex-parity-foundation.md",
+        "docs/validation/2026-11-02-config-baseline-ci.json",
+        "docs/validation/2026-11-02-remote-sprint.md"
+      ],
+      "notes": "Foundation baseline main059413f passed exact-source hosted checks and contains PR52/67 integration; prior billing/path failures are historical. Complete 26-tool/all48-issue release acceptance remains pending, and subsequent changes require their own exact-source validation."
+    }
+  ],
+  "implementationHostedChecks": {
+    "head": "535d99e20b52a30ba9a24b6d2205d8e6687f6ca6",
+    "success": 8,
+    "failure": {
+      "runId": 41388126481,
+      "jobId": 125093389299,
+      "platform": "macos-14 / Node 24 / ARM64",
+      "failedStep": "Verify packed install and isolated npm link",
+      "observedFailure": "The package verifier's npm tarball installation was terminated after about 120 seconds; code:null, killed:true, signal:SIGTERM, empty stdout/stderr. The underlying install-hang cause is not established.",
+      "tests": {
+        "total": 175,
+        "passed": 163,
+        "failed": 0,
+        "skipped": 12
+      },
+      "subsequentCodexSteps": "skipped",
+      "comparison": "Same-platform PR job 125093489875 passed on the same implementation head.",
+      "retryPerformed": false
+    },
+    "checks": [
+      {
+        "id": 125093489949,
+        "name": "windows-2022 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "head": "535d99e20b52a30ba9a24b6d2205d8e6687f6ca6",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41388159750/job/125093489949",
+        "startedAt": "2026-11-02T04:23:09Z",
+        "completedAt": "2026-11-02T04:24:45Z"
+      },
+      {
+        "id": 125093489875,
+        "name": "macos-14 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "head": "535d99e20b52a30ba9a24b6d2205d8e6687f6ca6",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41388159750/job/125093489875",
+        "startedAt": "2026-11-02T04:23:10Z",
+        "completedAt": "2026-11-02T04:23:56Z"
+      },
+      {
+        "id": 125093489771,
+        "name": "macos-15-intel / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "head": "535d99e20b52a30ba9a24b6d2205d8e6687f6ca6",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41388159750/job/125093489771",
+        "startedAt": "2026-11-02T04:23:10Z",
+        "completedAt": "2026-11-02T04:24:49Z"
+      },
+      {
+        "id": 125093489665,
+        "name": "CI / fast",
+        "status": "completed",
+        "conclusion": "success",
+        "head": "535d99e20b52a30ba9a24b6d2205d8e6687f6ca6",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41388159762/job/125093489665",
+        "startedAt": "2026-11-02T04:23:10Z",
+        "completedAt": "2026-11-02T04:23:44Z"
+      },
+      {
+        "id": 125093489650,
+        "name": "ubuntu-24.04 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "head": "535d99e20b52a30ba9a24b6d2205d8e6687f6ca6",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41388159750/job/125093489650",
+        "startedAt": "2026-11-02T04:23:09Z",
+        "completedAt": "2026-11-02T04:23:43Z"
+      },
+      {
+        "id": 125093389427,
+        "name": "ubuntu-24.04 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "head": "535d99e20b52a30ba9a24b6d2205d8e6687f6ca6",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41388126481/job/125093389427",
+        "startedAt": "2026-11-02T04:22:48Z",
+        "completedAt": "2026-11-02T04:23:25Z"
+      },
+      {
+        "id": 125093389299,
+        "name": "macos-14 / Node 24",
+        "status": "completed",
+        "conclusion": "failure",
+        "head": "535d99e20b52a30ba9a24b6d2205d8e6687f6ca6",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41388126481/job/125093389299",
+        "startedAt": "2026-11-02T04:22:49Z",
+        "completedAt": "2026-11-02T04:26:19Z"
+      },
+      {
+        "id": 125093389236,
+        "name": "macos-15-intel / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "head": "535d99e20b52a30ba9a24b6d2205d8e6687f6ca6",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41388126481/job/125093389236",
+        "startedAt": "2026-11-02T04:22:49Z",
+        "completedAt": "2026-11-02T04:24:23Z"
+      },
+      {
+        "id": 125093388915,
+        "name": "windows-2022 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "head": "535d99e20b52a30ba9a24b6d2205d8e6687f6ca6",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41388126481/job/125093388915",
+        "startedAt": "2026-11-02T04:22:48Z",
+        "completedAt": "2026-11-02T04:24:20Z"
+      }
+    ]
+  }
+}

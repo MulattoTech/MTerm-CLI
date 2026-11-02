@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "reviewedAt": "2026-11-02T04:06:38.171Z",
+  "reviewedAt": "2026-11-02T12:00:58.518Z",
   "upstream": {
     "repository": "wonderwhy-er/DesktopCommanderMCP",
     "version": "0.2.52",
@@ -141,15 +141,19 @@
       "title": "Implement get_config MCP parity",
       "state": "open",
       "url": "https://github.com/MulattoTech/MTerm-CLI/issues/11",
-      "implementationObservation": "Preserved unpublished owner-bounded compatibility configuration recovered with tests. Snapshot reload, multi-root ceilings, blocked executable names, limits and telemetry preference implemented; full platform/security/installed contract acceptance pending. DCP-009 candidate adds pinned five-field memory formatting, truthful OS/Node/process metadata, generic example paths, empty no-provider flags, bounded client identity and six-entry ordering. Explicit omitted Python/container/env/path fields and owner-bounded shell/editability differences keep full acceptance open. Direct RED/GREEN and config/retry regressions passed in scratch; native/full/installed/hosted candidate gates remain pending.",
-      "lastReviewedAt": "2026-11-02T04:06:38.171Z",
+      "implementationObservation": "Preserved unpublished owner-bounded compatibility configuration recovered with tests. Snapshot reload, multi-root ceilings, blocked executable names, limits and telemetry preference implemented; full platform/security/installed contract acceptance pending. DCP-009 candidate adds pinned five-field memory formatting, truthful OS/Node/process metadata, generic example paths, empty no-provider flags, bounded client identity and six-entry ordering. Explicit omitted Python/container/env/path fields and owner-bounded shell/editability differences keep full acceptance open. Direct RED/GREEN and config/retry regressions passed in scratch. At535d99e, actual Windows passed175/175 with zero skips, seven native gates, eight installed scenarios and fresh committed extraction/prepack/install. Native Codex0.160.1 parsed synthetic source/installed registration; SDK exercised tools, actual model invocation remains false. Latest implementation hosted checks passed 9/9 after one supported macOS ARM64 retry at unchanged 535d99e, including eight installed scenarios and native Codex parsing/SDK calls. The original npm tarball install timeout remains recorded with unestablished cause. Hosted managed-Codex used a source entry; no model invocation occurred. Full pinned/intentional-difference acceptance and final exact-head delivery remain open.",
+      "lastReviewedAt": "2026-11-02T12:05:28.512Z",
       "evidence": [
         "docs/ai/changes/2026-11-02-foundation-portability.json",
         "src/compat-config.ts",
         "tests/compat-config-metadata.test.mjs",
         "scripts/verify-configuration-installed.mjs",
         "docs/validation/2026-11-02-config-metadata.md",
-        "docs/ai/changes/2026-11-02-config-metadata.json"
+        "docs/ai/changes/2026-11-02-config-metadata.json",
+        "docs/validation/2026-11-02-config-metadata-delivery.json",
+        "docs/validation/2026-11-02-config-metadata-windows.json",
+        "docs/validation/2026-11-02-config-metadata-fresh.json",
+        "docs/validation/2026-11-02-config-metadata-hosted-retry.json"
       ]
     },
     {
@@ -171,10 +175,14 @@
       "title": "Support multiple allowedDirectories roots",
       "state": "open",
       "url": "https://github.com/MulattoTech/MTerm-CLI/issues/13",
-      "implementationObservation": "Preserved unpublished owner-bounded compatibility configuration recovered with tests. Snapshot reload, multi-root ceilings, blocked executable names, limits and telemetry preference implemented; full platform/security/installed contract acceptance pending.",
-      "lastReviewedAt": "2026-11-02T00:18:44.138456+00:00",
+      "implementationObservation": "Owner-bounded multiple roots are implemented. PR #72 installed qualification and the repeated535d99e native package run exercised two concurrent MCP children over two explicit roots, cross-process narrowing, empty-root denial, refusal to widen the startup ceiling, and restart persistence. Empty roots deliberately deny access rather than upstream unrestricted access. Complete alias/private-path/security/platform boundary acceptance and applicable actual Codex-client acceptance remain open.",
+      "lastReviewedAt": "2026-11-02T12:00:58.518Z",
       "evidence": [
-        "docs/ai/changes/2026-11-02-foundation-portability.json"
+        "docs/ai/changes/2026-11-02-foundation-portability.json",
+        "docs/validation/2026-11-02-config-installed-qualification.md",
+        "docs/validation/2026-11-02-config-metadata-windows.json",
+        "scripts/verify-configuration-installed.mjs",
+        "docs/validation/2026-11-02-config-metadata-issue-audit.json"
       ]
     },
     {
@@ -207,10 +215,14 @@
       "title": "Implement configurable file read/write line limits",
       "state": "open",
       "url": "https://github.com/MulattoTech/MTerm-CLI/issues/16",
-      "implementationObservation": "Preserved unpublished owner-bounded compatibility configuration recovered with tests. Snapshot reload, multi-root ceilings, blocked executable names, limits and telemetry preference implemented; full platform/security/installed contract acceptance pending.",
-      "lastReviewedAt": "2026-11-02T00:18:44.138456+00:00",
+      "implementationObservation": "PR #72 installed qualification and the repeated535d99e native package run verified live native, compatible and multi-file read defaults plus configurable advisory write-warning thresholds with exact Unicode append/rewrite bytes. Warnings are advisory, not a hard write refusal. MTerm uses the live single-read preference whereas the pinned upstream schema supplies length1000; exact upstream output/format boundaries and compatible process read/interact line-limit semantics remain open.",
+      "lastReviewedAt": "2026-11-02T12:00:58.518Z",
       "evidence": [
-        "docs/ai/changes/2026-11-02-foundation-portability.json"
+        "docs/ai/changes/2026-11-02-foundation-portability.json",
+        "docs/validation/2026-11-02-config-installed-qualification.md",
+        "docs/validation/2026-11-02-config-metadata-windows.json",
+        "scripts/verify-configuration-installed.mjs",
+        "docs/validation/2026-11-02-config-metadata-issue-audit.json"
       ]
     },
     {
@@ -219,10 +231,14 @@
       "title": "Implement telemetryEnabled configuration semantics",
       "state": "open",
       "url": "https://github.com/MulattoTech/MTerm-CLI/issues/17",
-      "implementationObservation": "Preserved unpublished owner-bounded compatibility configuration recovered with tests. Snapshot reload, multi-root ceilings, blocked executable names, limits and telemetry preference implemented; full platform/security/installed contract acceptance pending.",
-      "lastReviewedAt": "2026-11-02T00:18:44.138456+00:00",
+      "implementationObservation": "The stored telemetry preference persists and reloads, while MTerm exposes telemetryTransport:none and effectiveTelemetryEnabled:false. PR #72 qualification and repeated535d99e installed runs exercised true/false preferences with10positive Node-network canaries and0observed product attempts in the instrumented MCP children. No vendor transport or final opt-out event is added. This is scoped Node-API evidence, not an OS or arbitrary-descendant network certificate; exact pinned semantic differences and full issue acceptance remain open.",
+      "lastReviewedAt": "2026-11-02T12:00:58.518Z",
       "evidence": [
-        "docs/ai/changes/2026-11-02-foundation-portability.json"
+        "docs/ai/changes/2026-11-02-foundation-portability.json",
+        "docs/validation/2026-11-02-config-installed-qualification.md",
+        "docs/validation/2026-11-02-config-metadata-windows.json",
+        "scripts/verify-configuration-installed.mjs",
+        "docs/validation/2026-11-02-config-metadata-issue-audit.json"
       ]
     },
     {
@@ -277,11 +293,15 @@
       "title": "write_file append mode parity",
       "state": "open",
       "url": "https://github.com/MulattoTech/MTerm-CLI/issues/22",
-      "implementationObservation": "Text append/rewrite/missing-target behavior and BOM preservation implemented. Dynamic configured limits/office behavior still missing.",
+      "implementationObservation": "Text append/rewrite/missing-target behavior and BOM preservation are implemented. PR #72 qualification and repeated535d99e installed scenarios verify live configured advisory write-warning thresholds and exact Unicode append/rewrite bytes. The former claim that dynamic configured warnings were missing is superseded by that evidence. Office behavior, complete format/size/error boundaries and exact pinned output compatibility remain open.",
       "evidence": [
-        "docs/validation/2026-10-05-codex-parity-foundation.md"
+        "docs/validation/2026-10-05-codex-parity-foundation.md",
+        "docs/validation/2026-11-02-config-installed-qualification.md",
+        "docs/validation/2026-11-02-config-metadata-windows.json",
+        "scripts/verify-configuration-installed.mjs",
+        "docs/validation/2026-11-02-config-metadata-issue-audit.json"
       ],
-      "lastReviewedAt": "2026-10-05T21:08:42.944283+00:00"
+      "lastReviewedAt": "2026-11-02T12:00:58.518Z"
     },
     {
       "id": "DCP-021",

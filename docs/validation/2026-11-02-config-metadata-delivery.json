@@ -1,0 +1,304 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-02T12:05:28.512Z",
+  "implementationSource": "535d99e20b52a30ba9a24b6d2205d8e6687f6ca6",
+  "baseMain": "c408e286c437bec1c8c88fbbae29d89a9f8f90c8",
+  "pullRequest": {
+    "number": 73,
+    "url": "https://github.com/MulattoTech/MTerm-CLI/pull/73",
+    "stateAtPreparation": "open",
+    "finalDocumentationHead": null,
+    "mergedMain": null,
+    "finalHeadChecks": "pending",
+    "postMergeChecks": "pending",
+    "lastRepositoryObservation": {
+      "observedAtUtc": "2026-11-02T12:00Z",
+      "source": "Integration-owner read-only GitHub recheck",
+      "main": "c408e286c437bec1c8c88fbbae29d89a9f8f90c8",
+      "head": "535d99e20b52a30ba9a24b6d2205d8e6687f6ca6",
+      "state": "open",
+      "draft": true
+    }
+  },
+  "sourceFilesUnchangedSinceImplementation": {
+    "src/compat-config.ts": "73d3f109bd4ce67a83e9ba7c5eb55e70eaa45f4cab63d96165a365b4698c9af9",
+    "tests/compat-config-metadata.test.mjs": "339185ac2c71168277537721b3582561232e565c70735e6742ed913d8057ecf1",
+    "scripts/verify-configuration-installed.mjs": "8753e31da16faa4627a3032b0fd31c2cb1ec0a9c19781f5ea26a4d1d7fc94205"
+  },
+  "evidenceRecords": [
+    {
+      "file": "docs/validation/2026-11-02-config-metadata-windows.json",
+      "sha256": "f3523766c8a80d8e5f1df56650f78719d6c7fead2e6e1f65ad1056aa4c2ddffb"
+    },
+    {
+      "file": "docs/validation/2026-11-02-config-metadata-fresh.json",
+      "sha256": "a641458db92e41f80d68751d5f8780ef812ef0055c62c92b226723eb2cc1d213"
+    },
+    {
+      "file": "docs/validation/2026-11-02-owner-connection.json",
+      "sha256": "f6c93f663e3c79f36e95b5f269e8346528bed49ebcb1a5a281811542c5f02674"
+    },
+    {
+      "file": "docs/validation/2026-11-02-config-metadata-issue-audit.json",
+      "sha256": "1e4bc682a23dd803ccaa8e2778c1c3b3a32026f5022d937fb9533beb33bf9c14"
+    },
+    {
+      "file": "docs/validation/2026-11-02-config-metadata-hosted-retry.json",
+      "sha256": "6dec037731b0ddf389bf64920dd91d0353e356067d3c4615e64762a52c5aa4a2"
+    }
+  ],
+  "native": {
+    "source": "535d99e20b52a30ba9a24b6d2205d8e6687f6ca6",
+    "node": "v24.21.0",
+    "platform": "win32",
+    "architecture": "x64",
+    "startedAt": "2026-11-02T04:22:27.383Z",
+    "finishedAt": "2026-11-02T04:24:00.960Z",
+    "distPresentBeforeBuild": false,
+    "gates": [
+      {
+        "name": "build",
+        "exitCode": 0,
+        "signal": null,
+        "elapsedMs": 2217
+      },
+      {
+        "name": "check",
+        "exitCode": 0,
+        "signal": null,
+        "elapsedMs": 34266
+      },
+      {
+        "name": "self-host",
+        "exitCode": 0,
+        "signal": null,
+        "elapsedMs": 1204
+      },
+      {
+        "name": "package",
+        "exitCode": 0,
+        "signal": null,
+        "elapsedMs": 15498
+      },
+      {
+        "name": "managed-codex-source",
+        "exitCode": 0,
+        "signal": null,
+        "elapsedMs": 2625
+      },
+      {
+        "name": "normal-prepack",
+        "exitCode": 0,
+        "signal": null,
+        "elapsedMs": 35752
+      },
+      {
+        "name": "managed-codex-installed",
+        "exitCode": 0,
+        "signal": null,
+        "elapsedMs": 1953
+      }
+    ],
+    "testSummary": {
+      "tests": 175,
+      "suites": 0,
+      "pass": 175,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "duration_ms": 30670.3631
+    },
+    "testSummarySource": "Unchanged check.stdout.log; initial runner recognized TAP prefixes only, this log uses the Node spec reporter.",
+    "checkLogSha256": "d934d0b88876fc396b3001f54ddf6e7aef84cf737e913a5c99904ccf090a60ab",
+    "orchestrationCoverage": {
+      "description": "All four commands comprising verify.mjs --full ran individually with captured exit results; no wrapper success is inferred.",
+      "commands": [
+        "npm run build",
+        "npm run check",
+        "node scripts/verify-package.mjs",
+        "node scripts/verify-managed-codex.mjs"
+      ]
+    },
+    "extraGates": [
+      "self-host",
+      "normal-prepack",
+      "managed-codex-installed"
+    ],
+    "package": {
+      "archiveBytes": 57843,
+      "unpackedBytes": 224214,
+      "installedProductionBytes": 14171584,
+      "productionFiles": 992,
+      "installedConfigurationScenarios": 8,
+      "installedConfigModuleSha256": "f6f412a83d13a1aab24398f1d54ca1c301e093c6de1511f2097e0d43b720cc32",
+      "networkCanaries": 10,
+      "observedProductNetworkAttempts": 0,
+      "shutdownVerified": true,
+      "ownedFixtureCleanup": true,
+      "externalNodeAndCodex": true
+    },
+    "codex": {
+      "version": "0.160.1",
+      "sourceEntryPassed": true,
+      "installedEntryPassed": true,
+      "registeredCommandMcpRoundsPerVerifier": 2,
+      "configurationParsedByNativeCodex": true,
+      "toolsInvokedBySdk": true,
+      "actualCodexAgentToolInvocation": false,
+      "modelCalls": 0,
+      "realCodexAuthOrConfigChanged": false
+    },
+    "retainedEvidence": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\config-metadata-20261102\\artifacts\\metadata-native-UcyKQC"
+  },
+  "freshExtraction": {
+    "source": "535d99e20b52a30ba9a24b6d2205d8e6687f6ca6",
+    "archiveSha256": "7e2c015a34fb10cafe53b8df713c48824541acaac59cb6e6f5f6446803f4afae",
+    "initialDistPresent": false,
+    "initialNodeModulesPresent": false,
+    "steps": [
+      {
+        "name": "npm-ci",
+        "exitCode": 0,
+        "elapsedMs": 3802
+      },
+      {
+        "name": "build",
+        "exitCode": 0,
+        "elapsedMs": 1641
+      },
+      {
+        "name": "normal-prepack",
+        "exitCode": 0,
+        "elapsedMs": 35001
+      },
+      {
+        "name": "installed-package",
+        "exitCode": 0,
+        "elapsedMs": 10560
+      }
+    ],
+    "finishedAt": "2026-11-02T04:26:18.411Z",
+    "retainedEvidence": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\config-metadata-20261102\\artifacts\\source-extract-535d99e",
+    "scope": "Fresh committed source; exact locked install, reviewed build, normal prepack and actual installed package proof."
+  },
+  "implementationHosted": {
+    "source": "535d99e20b52a30ba9a24b6d2205d8e6687f6ca6",
+    "status": "9_of_9_latest_checks_passed_after_supported_retry",
+    "prMatrix": {
+      "runId": 41388159750,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41388159750",
+      "passed": 4,
+      "total": 4
+    },
+    "fast": {
+      "runId": 41388159762,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41388159762",
+      "conclusion": "success"
+    },
+    "pushMatrix": {
+      "runId": 41388126481,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41388126481",
+      "passed": 4,
+      "total": 4,
+      "attempt": 2,
+      "executionScope": "Only the failed macOS ARM64 job was newly executed. The three previously successful jobs retain their original execution timestamps."
+    },
+    "failure": {
+      "jobId": 125093389299,
+      "platform": "macOS ARM64",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41388126481/job/125093389299",
+      "phase": "npm tarball installation",
+      "timeoutMs": 120000,
+      "signal": "SIGTERM",
+      "capturedOutput": "empty",
+      "testSummary": {
+        "tests": 175,
+        "pass": 163,
+        "fail": 0,
+        "skipped": 12
+      },
+      "samePlatformPrJobPassed": true,
+      "cause": "not established",
+      "followup": "One supported rerun of the failed job passed at the unchanged implementation head. The initial timeout is retained; the successful rerun does not establish why the original install stalled."
+    },
+    "retry": {
+      "originalJobId": 125093389299,
+      "requestAccepted": true,
+      "runId": 41388126481,
+      "attempt": 2,
+      "jobId": 125262922093,
+      "status": "success",
+      "head": "535d99e20b52a30ba9a24b6d2205d8e6687f6ca6",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41388126481/job/125262922093",
+      "startedAt": "2026-11-02T11:59:54Z",
+      "completedAt": "2026-11-02T12:00:47Z",
+      "tests": {
+        "total": 175,
+        "passed": 163,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 12,
+        "durationMs": 17781.046666
+      },
+      "installedConfigurationScenarios": 8,
+      "installedConfigurationPassed": true,
+      "managedCodexVersion": "codex-cli 0.160.1",
+      "managedCodexInstalledEntry": false,
+      "actualCodexAgentToolInvocation": false,
+      "modelCalls": 0,
+      "initialDecodedLogSha256": "edee32f2edb9e6aa5329b05cfd025dc2a732985e588f8ce28a2ea4fa41d9de38",
+      "retryDecodedLogSha256": "f641727bed4be09f941370f3dcb374d112919b5228c4b38d9468cb29194045ed"
+    },
+    "observedAtUtc": "2026-11-02T12:02:49Z",
+    "evidenceRef": "docs/validation/2026-11-02-config-metadata-hosted-retry.json",
+    "evidenceSha256": "6dec037731b0ddf389bf64920dd91d0353e356067d3c4615e64762a52c5aa4a2"
+  },
+  "ownerConnection": {
+    "evidenceRef": "docs/validation/2026-11-02-owner-connection.json",
+    "observedAt": "2026-11-02T04:26:07Z",
+    "paired": true,
+    "foregroundOnline": true,
+    "gracefulStopAndSamePairingReconnect": true,
+    "permissions": "read-only",
+    "autostart": false,
+    "freshGoogleLoginPerformed": false,
+    "chatgptConnected": false,
+    "actualClientToolDiscovery": false,
+    "actualClientFileRead": false,
+    "ownerRevokeNotPerformed": true,
+    "fullWebAcceptance": false,
+    "laterLocalStatusRecheck": {
+      "observedAt": "2026-11-02T12:00:53.619Z",
+      "source": "Integration-owner local-status observation, separately reported",
+      "paired": true,
+      "foregroundOnline": true,
+      "sameEnrollment": true,
+      "foregroundSourceCheckout": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\config-qualification-20261102",
+      "foregroundSourceHead": "c408e286c437bec1c8c88fbbae29d89a9f8f90c8",
+      "protectRunningCheckout": true,
+      "originalPublicRecordUnchanged": true
+    }
+  },
+  "limits": [
+    "DCP acceptance remains 0/48; WEB remains 0/12; broad maturity remains29.12% with all stages and weights unchanged.",
+    "Exact final documentation and merged-main checks require separate recorded results.",
+    "Native Codex parsing plus SDK invocation does not prove model-driven Codex tool use.",
+    "Owner pairing and foreground presence do not prove ChatGPT consent, tool discovery or file reads.",
+    "No source, test, verifier or deployed gateway change is made by this documentation closeout."
+  ],
+  "nextAction": "Qualify the final documentation head, then publish/merge only after acceptable exact-head checks; record final main and recovery separately in PR #73. The implementation retry is complete and the initial failure remains recorded.",
+  "issueAudit": {
+    "evidenceRef": "docs/validation/2026-11-02-config-metadata-issue-audit.json",
+    "sha256": "1e4bc682a23dd803ccaa8e2778c1c3b3a32026f5022d937fb9533beb33bf9c14",
+    "observedAt": "2026-11-02T04:29:19Z",
+    "issueCount": 48,
+    "commentsReviewed": 21,
+    "stateMismatches": 0,
+    "open": 48,
+    "closed": 0,
+    "assigneeCount": 0,
+    "scope": "Read-only comparison of immutable535d99e ledger to live bodies/comments. Current closeout refreshes four scoped evidence observations; audit remains the original dated snapshot.",
+    "historicalBillingComments": "15dated October threads retain superseded billing/spending observations. They are preserved as history, not reused as a current diagnosis; no mass GitHub comment edits."
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "Independent /root/upstream_review; OpenAI GPT-6 Astra Pro (session-declared; self-reported)",
+  "reviewedAtUtc": "2026-11-02T18:49:36.785574+00:00",
+  "baseCommit": "7e5f8287532765f11f055cb89d0312e1c1b236bd",
+  "reviewDisposition": "APPROVE_SCOPED_SOURCE_AND_FIXTURES; mandatory native, installed, fresh-source, hosted, final-head and delivery gates remain separate",
+  "scope": "DCP-019 / issue21 bounded aggregate text-byte repair",
+  "upstream": {
+    "version": "0.2.52",
+    "commit": "c774c3b505de990219637ecdc9a830c8772fae9d",
+    "paths": [
+      "src/handlers/filesystem-handlers.ts",
+      "src/tools/schemas.ts"
+    ],
+    "license": "MIT; pinned upstream snapshots and license unchanged"
+  },
+  "reviewedFiles": {
+    "src/desktop-commander-files.ts": "63c2540ee3a453dff7e109f184fc1822fcbc9236bcb34b790d105aa26b5f359b",
+    "tests/compat-multiple-files.test.mjs": "ebdab58524f16255dbc73b9cc051a88400dedf318f9b56bf9764dfe450f2c3c6",
+    "scripts/verify-compatibility-installed.mjs": "e93c5b4c3a22f44a6e9b9f780ec59efd7044493006c2ff92efa14fb541cc73e1"
+  },
+  "blockingFindings": [],
+  "assessment": {
+    "correctness": "Every summary line and joining LF plus each successful labeled content block contributes exactly its UTF8 byte count. Inclusive262144 limit; cap rejection sits outside per-file error conversion and terminates further reads.",
+    "scopeAndBoundaries": "No schema, startup capability, RootPolicy, FileService, format, configured line limit or per-file error contract change. Response envelope/order/duplicates preserved. JSON wire budget remains independently524288.",
+    "securityAndPrivacy": "SafeError remains the source for per-file failures; unknown errors omit raw bodies. No new networking, authority, dependencies or credential handling. Overflow response carries no partial contents. Cooperative cancellation remains covered before work and after read awaits.",
+    "resourceOwnership": "No new product resources. Installed fixture lives beneath owned temporary scope; launcher and server are independently checked for exit before removal. Missing/invalid PID makes cleanup fail and retain fixture instead of claiming process cleanup. Junction and hardlink negative fixtures are task-owned.",
+    "testQuality": "Tests use a literal response-format oracle and exact aggregate byte computations, not the implementation counter. Boundary fixtures exercise summary-only bypasses and separator/error contributions. Original corrected RED fails real assertions on baseline; GREEN uses the same fixture bytes.",
+    "portability": "Fixture roots use fs.realpath, UTF8 filenames/content and platform-specific junction creation already supported by suite. Actual native/hosted execution is not inferred from inspection.",
+    "licensing": "Original MTerm change; existing SPDX/provenance retained; upstream source remains reference-only."
+  },
+  "evidenceInspection": {
+    "developmentManifestVerified": true,
+    "manifestFilesVerified": 16,
+    "correctedRed": {
+      "total": 14,
+      "passed": 7,
+      "failed": 7,
+      "assertionFailureKinds": [
+        "Missing expected RESPONSE_LIMIT rejection",
+        "Later file read occurred after earlier total-byte limit was crossed"
+      ]
+    },
+    "green": {
+      "total": 14,
+      "passed": 14,
+      "failed": 0
+    },
+    "sameCorrectedRedAndFinalFixtureBytes": true,
+    "preservedInitialFixtureDefect": "First run had one wrong long-relative-path expectation (OUTSIDE_ROOT). Policy correctly returns INVALID_PATH after absolute expansion; initial source and log retained and corrected RED rerun before behavior change.",
+    "independentSupplementaryRun": {
+      "command": [
+        "node",
+        "--test",
+        "--test-isolation=none",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/compat-multiple-files.test.mjs"
+      ],
+      "start": "2026-11-02T18:49:12.285480+00:00",
+      "end": "2026-11-02T18:49:12.537999+00:00",
+      "exitCode": 0,
+      "logSha256": "31286fc98836454b0890c7257467b0964d0300059e970494b888c079aa2afe5d",
+      "sourceSha256": "63c2540ee3a453dff7e109f184fc1822fcbc9236bcb34b790d105aa26b5f359b",
+      "testSha256": "ebdab58524f16255dbc73b9cc051a88400dedf318f9b56bf9764dfe450f2c3c6",
+      "installedVerifierSha256": "e93c5b4c3a22f44a6e9b9f780ec59efd7044493006c2ff92efa14fb541cc73e1",
+      "developmentManifestFilesVerified": [
+        "base-source.zip",
+        "base.bundle",
+        "corrected-red-compat-multiple-files.test.mjs",
+        "corrected-red.json",
+        "corrected-red.tap",
+        "development-summary.json",
+        "green-build.json",
+        "green-build.log",
+        "green.json",
+        "green.tap",
+        "original-compat-multiple-files.test.mjs",
+        "original-desktop-commander-files.ts",
+        "red-build.json",
+        "red-build.log",
+        "red.json",
+        "red.tap"
+      ],
+      "sameCorrectedRedAndFinalTestBytes": true,
+      "qualificationScope": "Supplementary direct-service Linux scratch with test-isolation=none; no native or installed proof."
+    }
+  },
+  "installedVerifierReviewed": {
+    "groups": 6,
+    "actualExecutionByThisReviewer": false,
+    "covered": [
+      "summary/order/duplicates/ENOENT",
+      "schema1..20 and empty paths",
+      "exact262144 vs262145 text bytes with emoji padding",
+      "error-summary+separator in both orders",
+      "private/outside/unsupported/hardlink/symlink policy without content disclosure",
+      "read-only restart and absent write/process/config capabilities"
+    ],
+    "exitsAndCleanup": "Both original npm transport PID and product PID captured; verifyExit checks OS process existence; owned fixture removed only after confirmed exits and stat absence asserted."
+  },
+  "acceptanceLimitations": [
+    "No full DCP019 acceptance; image/Office/UTF16/large-file parity remains open.",
+    "No actual model-driven Codex or actual ChatGPT client invocation performed.",
+    "No proof of OS sandboxing or all concurrency interleavings.",
+    "This report reviews identified working-tree bytes; it is not an exact-final-commit or merged-main observation."
+  ],
+  "mutations": "Only independent review artifacts and owned temporary test fixtures; no repository source/Windows/GitHub/configuration mutation."
+}

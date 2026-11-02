@@ -1,3 +1,51 @@
+# Aggregate-output qualification observed — PR #77, 2026-11-02
+
+Implementation `c510908017d7937173189d483fd2697645d42748` repairs the complete
+UTF-8 text-byte budget for DCP-019 / issue #21. The inclusive 262,144-byte bound
+counts summary rows, error rows, LF separators and successful content. Existing
+owner authority, safe errors, ordering, duplicates and cancellation remain.
+
+Native Windows original-source RED had 7 passes / 7 assertion failures; the
+unchanged fixture passed 14/14 after the repair. The actual full wrapper and
+normal native/fresh prepack each passed 242/242 with no skips. Self-host, native
+and fresh packed MCP, and source/installed synthetic Codex 0.160.1 passed.
+Packed probes passed six aggregate, eight metadata and six directory groups,
+including read-only restart, actual process exits and cleanup. The recovered
+Windows fresh ZIP matches all 548 source files and Git modes independently.
+
+Implementation hosted checks passed 5/5 on attempt 1. Windows passed 242;
+Linux and both macOS architectures passed 230 with 12 named Windows-only skips.
+All 14 new regressions passed everywhere. Read the aggregate-output validation,
+native/fresh/hosted records and independent reviews before repeating gates.
+
+Final documentation build/checks, normal expected-head merge, main observation,
+final preservation and additive recovery remain later gates at this preparation.
+The PR delivery receipt and new downloadable continuation will record those
+outcomes. Earlier pending notes below retain their original preparation context.
+DCP 0/48, WEB 0/12 and maturity 29.12% remain unchanged; issue #21 stays open.
+Codex parser/SDK proof is separate from actual model or ChatGPT client use.
+
+## Preserved implementation preparation
+
+# Current aggregate-output iteration — 2026-11-02
+
+The bounded DCP-019 / issue #21 change starts from verified main
+`7e5f8287532765f11f055cb89d0312e1c1b236bd` on
+`fix/dcp-019-aggregate-output-20261102`. Read the
+[contract and qualification record](validation/2026-11-02-aggregate-output.md) before repeating work.
+It counts every returned UTF-8 summary/content byte against the existing
+262,144-byte budget. Corrected direct-service RED was 7 passes/7 assertion
+failures; unchanged GREEN passed 14/14. Independent source review found no
+blocker. Native, installed, fresh, hosted and final delivery gates remain
+separately observed work at this preparation.
+
+PR #73/#74/#75/#76 are already delivered; their earlier pending fields below
+are historical preparation. Preserve the unpublished primary checkout and
+running config-qualification owner agent. No pairing, deployment, real auth or
+model call is needed. DCP 0/48, WEB 0/12 and maturity 29.12% stay unchanged.
+
+## Preserved earlier record
+
 # New file metadata qualification — 2026-11-02
 
 ## DCP-024 qualification observed — PR #76, 2026-11-02

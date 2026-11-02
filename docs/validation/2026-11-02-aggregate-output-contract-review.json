@@ -1,0 +1,55 @@
+{
+  "reviewer": "Independent /root/upstream_review; OpenAI GPT-6 Astra Pro (session-declared, self-reported)",
+  "observed_at_utc": "2026-11-02T18:46:37.270764+00:00",
+  "phase": "pre-implementation contract review",
+  "base_commit": "7e5f8287532765f11f055cb89d0312e1c1b236bd",
+  "issue": "https://github.com/MulattoTech/MTerm-CLI/issues/21",
+  "requirement": "DCP-019",
+  "upstream": {
+    "version": "0.2.52",
+    "commit": "c774c3b505de990219637ecdc9a830c8772fae9d",
+    "license": "MIT; vendored source/notice retained"
+  },
+  "source_hashes": {
+    "src/desktop-commander-files.ts": "f111c97949db5b10a6e1a0dc05bf3a65a6163198f2b13ce5cdcdb4fd94489008",
+    "src/errors.ts": "cb846f81c0cdfacf741991bda5c2be5ba25835ad57edd86d6fba6ee0baf3020f",
+    "src/mcp.ts": "54ea5248a41f48ee39c14cb9df2b1bf380c42a74c6b4c4cce1aadbd9c17f1f5b",
+    "src/files.ts": "7561018127fff0dd2d1ccb5c07152fd32c0689ae7de8f7bd961542442a332091",
+    "docs/parity/baseline.json": "fa26621bb2878d1ab7fa29042ef259bd56158006abaf79b5bcaed14e94ef64df",
+    "docs/parity/upstream/src/handlers/filesystem-handlers.ts": "813ea5cca7a68368b2a71f0bc7430d6c566c3eec2fbe49945f1735233aee6d03",
+    "docs/parity/upstream/src/tools/schemas.ts": "d33547e24df350a1162ef25a92414a09eca709abe292d7a0b00ea0eb55237b7f",
+    "scripts/verify-compatibility-installed.mjs": "e2327ed4e397c63a89d159a7a6939e56e9a00b7f64953186046adfc3740fc720"
+  },
+  "finding": {
+    "severity": "confirmed defect",
+    "summary": "readMultipleFiles counts only successful content blocks toward its 262144-byte cap; summary text, error summaries and summary newlines are uncounted."
+  },
+  "proposed_contract": [
+    "Sum Buffer.byteLength(text, utf8) for every returned text content item, including all joined summary lines and separators. Inclusive cap 262144.",
+    "Retain one summary item first followed by successful text items in input order; duplicate paths remain repeated, per-file safe errors stay summaries.",
+    "Any aggregate overflow rejects the whole tool operation with stable RESPONSE_LIMIT. Do not truncate file text or silently omit data.",
+    "Preserve existing 1..20 path schema, nonempty path max4096 UTF16 code units, FileService root/private/link policy and configured file ceilings.",
+    "Keep total text cap distinct from unchanged 524288 serialized result wire cap in src/mcp.ts.",
+    "Use checked append after read outcome or equivalently explicit summary+block counters; a limit error must never be converted to an ordinary per-file summary.",
+    "Do not read subsequent paths after budget exhaustion; preserve cancellation at pre-read and post-await boundaries."
+  ],
+  "test_recommendations": [
+    "Literal expected response for mixed success/ENOENT/private/outside/unsupported, correct input order and successful items order.",
+    "Single-file total text bytes exactly262144 accepted, one byte more rejected even though file and block separately fit old limits.",
+    "UTF8 multibyte contents and path names counted in bytes; no truncation or replacement character introduced.",
+    "Near-limit success followed by missing/private summary exceeds aggregate and is rejected.",
+    "Multiple successes and summary separator bytes across exact boundary; duplicates are counted per occurrence.",
+    "All errors produce summary-only response, raw OS/unknown error text never appears.",
+    "Empty/21-path/invalid path schema errors; pre-cancel and abort during read do not continue to subsequent path.",
+    "Real packed installed MCP exact boundary/error envelope and read-only tool exposure, independently observed npm launcher/server exits and owned-fixture cleanup."
+  ],
+  "owner_decision_required_for_this_repair": false,
+  "blocking_findings_for_scope": [],
+  "acceptance_limits": [
+    "No full DCP-019 acceptance: image/Office/format contracts remain unsupported.",
+    "SDK-invoked installed or Codex-parsed commands do not prove model-driven Codex or actual ChatGPT invocation.",
+    "No claim of OS sandbox or universal cancellation interleavings."
+  ],
+  "tests_run_by_reviewer": [],
+  "mutations": "Only this task-scoped review file; no source, Windows, GitHub, enrollment or config mutation."
+}

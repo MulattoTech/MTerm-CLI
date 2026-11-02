@@ -2,6 +2,7 @@
 // AI-Change: 2026-10-05-codex-parity-foundation
 // Modified: 2026-11-02-directory-contract; verify packed directory contracts and owned exits.
 // Modified: 2026-11-02-file-info-contract; qualify actual metadata envelopes and read-only restart.
+// Modified: 2026-11-02-aggregate-output; qualify complete UTF-8 batch budgets in a read-only package.
 // Invoked by verify-package with its isolated npm cache, tarball and workspace.
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -16,6 +17,7 @@ const requestOptions = { timeout: 10000 };
 const listingRoot = await fs.mkdtemp(path.join(scope, 'directory-contract-'));
 const directoryScenarios = [];
 const fileInfoScenarios = [];
+const multipleFileScenarios = [];
 let npmPid;
 let productPid;
 let stderrBytes = 0;
@@ -349,6 +351,7 @@ const readOnlyTransport = new StdioClientTransport({
   stderr: 'pipe',
 });
 const readOnlyClient = new Client({ name: 'mterm-packed-read-only-metadata', version: '1' });
+const multipleRoot = await fs.mkdtemp(path.join(scope, 'multiple-contract-'));
 readOnlyTransport.stderr?.on('data', (chunk) => {
   stderrBytes += chunk.length;
 });
@@ -367,6 +370,10 @@ try {
   const listed = await readOnlyClient.listTools(undefined, requestOptions);
   const metadataTool = listed.tools.find((tool) => tool.name === 'get_file_info');
   assert.equal(metadataTool?.annotations?.readOnlyHint, true);
+  const multipleTool = listed.tools.find((tool) => tool.name === 'read_multiple_files');
+  assert.equal(multipleTool?.annotations?.readOnlyHint, true);
+  assert.equal(multipleTool.inputSchema.properties.paths.minItems, 1);
+  assert.equal(multipleTool.inputSchema.properties.paths.maxItems, 20);
   for (const name of [
     'write_file',
     'create_directory',
@@ -402,6 +409,113 @@ try {
   assert.match(result.content[0].text, /\nlineCount: 2\nlastLine: 1\nappendPosition: 2$/);
   assert.match(result.content[0].text, /\nmodified: "[^"\n]+Z"\n/);
   fileInfoScenarios.push('read-only-installed-restart-independent-capabilities');
+  const batchCall = (paths) =>
+    readOnlyClient.callTool({ name: 'read_multiple_files', arguments: { paths } }, requestOptions);
+  const textBytes = (result) =>
+    result.content.reduce((total, item) => {
+      assert.equal(item.type, 'text');
+      return total + Buffer.byteLength(item.text, 'utf8');
+    }, 0);
+  const summary = (file) => file + ': text/plain (text)';
+  const body = (file, text) =>
+    '\n--- ' + file + ' contents: ---\n[Reading 1 lines from start (total: 1 lines, 0 remaining)]\n\n' + text;
+  const assertBatch = (result, texts) => {
+    assert.equal(result.isError, false);
+    assert.equal(result.structuredContent, undefined);
+    assert.deepEqual(
+      result.content,
+      texts.map((text) => ({ type: 'text', text })),
+    );
+    assert.ok(textBytes(result) <= 262144);
+  };
+  const overflow = async (paths) => {
+    const result = await batchCall(paths);
+    assert.equal(result.isError, true, 'Oversized aggregate must fail as a complete request');
+    const data = result.structuredContent ?? JSON.parse(result.content[0].text);
+    assert.equal(data.error.code, 'RESPONSE_LIMIT');
+    assert.ok(Buffer.byteLength(JSON.stringify(result)) < 8192);
+    assert.doesNotMatch(JSON.stringify(result), /contents:|AGGREGATE-CONTENT-SENTINEL/);
+  };
+  const target = path.join(multipleRoot, 'budget-😀.txt');
+  const missing = path.join(multipleRoot, 'missing.txt');
+  const shortText = 'AGGREGATE-CONTENT-SENTINEL α😀';
+  await fs.writeFile(target, shortText);
+  const missingResult = await batchCall([missing]);
+  assert.equal(missingResult.isError, false);
+  assert.equal(missingResult.content.length, 1);
+  const missingSummary = missingResult.content[0].text;
+  assert.equal(missingSummary, missing + ': Error - ENOENT Requested path or executable was not found.');
+  assertBatch(await batchCall([target, missing, target]), [
+    [summary(target), missingSummary, summary(target)].join('\n'),
+    body(target, shortText),
+    body(target, shortText),
+  ]);
+  multipleFileScenarios.push('ordered-summary-successes-duplicates-and-safe-partial-error');
+  assertBatch(await batchCall(Array(20).fill(target)), [
+    Array(20).fill(summary(target)).join('\n'),
+    ...Array(20).fill(body(target, shortText)),
+  ]);
+  for (const paths of [[], Array(21).fill(target), ['']]) {
+    const invalid = await batchCall(paths);
+    assert.equal(invalid.isError, true);
+    assert.ok(Buffer.byteLength(JSON.stringify(invalid)) < 8192);
+  }
+  multipleFileScenarios.push('published-schema-and-one-to-twenty-path-boundaries');
+  // Independent response oracle: one summary plus the published labeled read block.
+  // Multibyte padding makes character-count accounting fail the same byte boundary.
+  const padding = (bytes) => '😀'.repeat(Math.floor(bytes / 4)) + 'x'.repeat(bytes % 4);
+  const overhead = Buffer.byteLength(summary(target) + body(target, ''), 'utf8');
+  const exactText = padding(262144 - overhead);
+  await fs.writeFile(target, exactText);
+  const exact = await batchCall([target]);
+  assertBatch(exact, [summary(target), body(target, exactText)]);
+  assert.equal(textBytes(exact), 262144);
+  await fs.writeFile(target, exactText + 'x');
+  await overflow([target]);
+  multipleFileScenarios.push('inclusive-full-text-byte-ceiling-and-one-byte-overflow');
+  const mixedText = padding(262144 - overhead - Buffer.byteLength(missingSummary, 'utf8') - 1);
+  await fs.writeFile(target, mixedText);
+  for (const paths of [
+    [target, missing],
+    [missing, target],
+  ]) {
+    const exactMixed = await batchCall(paths);
+    assertBatch(exactMixed, [
+      paths.map((file) => (file === missing ? missingSummary : summary(file))).join('\n'),
+      body(target, mixedText),
+    ]);
+    assert.equal(textBytes(exactMixed), 262144);
+  }
+  await fs.writeFile(target, mixedText + 'x');
+  await overflow([target, missing]);
+  await overflow([missing, target]);
+  multipleFileScenarios.push('error-summary-and-separator-budget-in-both-orders');
+  await fs.writeFile(target, shortText);
+  const privateFile = path.join(multipleRoot, '.env');
+  const unsupported = path.join(multipleRoot, 'unsupported.pdf');
+  const hardlink = path.join(multipleRoot, 'hardlink.txt');
+  const link = path.join(multipleRoot, 'link');
+  await fs.writeFile(privateFile, 'PRIVATE-BATCH-SENTINEL');
+  await fs.writeFile(unsupported, 'FORMAT-BATCH-SENTINEL');
+  await fs.link(target, hardlink);
+  await fs.symlink(path.join(scope, 'nested'), link, process.platform === 'win32' ? 'junction' : 'dir');
+  for (const [file, code] of [
+    [privateFile, 'PRIVATE_PATH'],
+    [path.dirname(scope), 'OUTSIDE_ROOT'],
+    [unsupported, 'UNSUPPORTED_FORMAT'],
+    [hardlink, 'LINK_REJECTED'],
+    [path.join(link, 'compatibility.txt'), 'LINK_REJECTED'],
+  ]) {
+    const denied = await batchCall([file]);
+    assert.equal(denied.isError, false, 'Individual path failures retain the summary envelope');
+    assert.equal(denied.content.length, 1);
+    assert.ok(denied.content[0].text.startsWith(file + ': Error - ' + code + ' '));
+    assert.doesNotMatch(JSON.stringify(denied), /PRIVATE-BATCH-SENTINEL|FORMAT-BATCH-SENTINEL|contents:/);
+    assert.ok(textBytes(denied) <= 262144);
+  }
+  assert.equal(await fs.readFile(target, 'utf8'), shortText);
+  multipleFileScenarios.push('private-outside-format-hardlink-and-symlink-denials-no-mutation');
+  multipleFileScenarios.push('read-only-installed-restart-capability-separation');
 } catch (error) {
   readOnlyFailure = error;
 } finally {
@@ -413,9 +527,18 @@ try {
       errors.push(error);
     }
   }
+  let exitsConfirmed = true;
   for (const pid of new Set([readOnlyNpmPid, readOnlyProductPid])) {
     try {
       await verifyExit(pid);
+    } catch (error) {
+      exitsConfirmed = false;
+      errors.push(error);
+    }
+  }
+  if (exitsConfirmed) {
+    try {
+      await fs.rm(multipleRoot, { recursive: true, force: true });
     } catch (error) {
       errors.push(error);
     }
@@ -427,14 +550,28 @@ try {
     );
 }
 assert.equal(readOnlyTransport.pid, null);
+assert.equal(
+  await fs.stat(multipleRoot).then(
+    () => true,
+    () => false,
+  ),
+  false,
+);
 console.log(
   JSON.stringify({
     npmExecMcp: true,
     compatibilityAliasesExercised: 8,
     directoryListing: { scenarios: directoryScenarios, passed: directoryScenarios.length },
     fileInfo: { scenarios: fileInfoScenarios, passed: fileInfoScenarios.length, readOnlyRestart: true },
+    multipleFiles: {
+      scenarios: multipleFileScenarios,
+      passed: multipleFileScenarios.length,
+      maxTextBytes: 262144,
+      readOnlyRestart: true,
+    },
     ownedProcessExitsVerified: true,
     directoryFixtureCleanupVerified: true,
+    multipleFileFixtureCleanupVerified: true,
     stderrCapturedBytes: stderrBytes,
     fullParity: false,
     modelCalls: 0,

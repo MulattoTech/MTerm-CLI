@@ -294,11 +294,28 @@
       "title": "read_multiple_files tool parity",
       "state": "open",
       "url": "https://github.com/MulattoTech/MTerm-CLI/issues/21",
-      "implementationObservation": "Bounded text multi-file partial-error handling implemented. Image/document payloads not supported.",
+      "implementationObservation": "Bounded text multi-file partial-error handling implemented. Image/document payloads not supported. Complete aggregate UTF-8 text accounting now includes summary rows, LF separators and per-file errors as well as success blocks. Exact262144 bytes accepted; overflow is whole-call RESPONSE_LIMIT with no later reads or truncated success. Corrected focused RED14:7pass7assertion failures to unchangedGREEN14/14; independent source review approved. Native/installed/fresh/hosted/delivery gates remain pending at preparation. No full contract or actual-client acceptance inferred. Qualification observed at c510908: native original RED 7 passes/7 assertion failures then unchanged GREEN 14/14; actual full wrapper, normal prepack and fresh prepack each 242/242 with no skips. Self-host, native/fresh packed MCP (6 aggregate, 8 metadata, 6 directory groups), source/installed synthetic Codex 0.160.1 and exact fresh archive passed. Implementation hosted checks passed 5/5 on attempt 1. Final documentation/head, merge/main and recovery remain subsequent observations; no stage or acceptance credit.",
       "evidence": [
-        "docs/validation/2026-10-05-codex-parity-foundation.md"
+        "docs/validation/2026-10-05-codex-parity-foundation.md",
+        "src/desktop-commander-files.ts",
+        "tests/compat-multiple-files.test.mjs",
+        "scripts/verify-compatibility-installed.mjs",
+        "docs/validation/2026-11-02-aggregate-output.md",
+        "docs/validation/2026-11-02-aggregate-output-development.json",
+        "docs/validation/2026-11-02-aggregate-output-source-review.json",
+        "docs/validation/2026-11-02-aggregate-output-windows.json",
+        "docs/validation/2026-11-02-aggregate-output-fresh.json",
+        "docs/validation/2026-11-02-aggregate-output-hosted.json",
+        "docs/validation/2026-11-02-aggregate-output-native-review.json",
+        "docs/validation/2026-11-02-aggregate-output-fresh-archive-review.json",
+        "docs/validation/2026-11-02-aggregate-output-evidence-review.json",
+        "docs/validation/2026-11-02-aggregate-output-evidence-review-supplement.json",
+        "docs/validation/2026-11-02-aggregate-output-implementation-doc-review.json",
+        "docs/validation/2026-11-02-aggregate-output-connection.json",
+        "docs/validation/2026-11-02-aggregate-output-observations.json",
+        "docs/validation/2026-11-02-aggregate-output-delivery.json"
       ],
-      "lastReviewedAt": "2026-10-05T21:08:42.944283+00:00"
+      "lastReviewedAt": "2026-11-02T19:11:38.609739+00:00"
     },
     {
       "id": "DCP-020",

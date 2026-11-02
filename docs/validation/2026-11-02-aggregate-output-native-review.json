@@ -1,0 +1,407 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUtc": "2026-11-02T19:07:50Z",
+  "reviewer": "Independent issue_audit agent; OpenAI GPT-6 Astra Pro (inherited session identity; self-reported)",
+  "scope": "Read-only local provenance, actual log/exit, qualification and preservation audit. No Windows/GitHub mutation or additional qualification run.",
+  "verdict": "PASS for native and fresh bounded DCP-019 qualification; no blocking finding in inspected evidence. Final owner/main/recovery remain separate.",
+  "source": {
+    "base": "7e5f8287532765f11f055cb89d0312e1c1b236bd",
+    "implementation": "c510908017d7937173189d483fd2697645d42748",
+    "tree": "3ce2707dd71612f310c14589ae1c2d0b71defcab",
+    "sourceHashes": {
+      "src/desktop-commander-files.ts": "63c2540ee3a453dff7e109f184fc1822fcbc9236bcb34b790d105aa26b5f359b",
+      "tests/compat-multiple-files.test.mjs": "ebdab58524f16255dbc73b9cc051a88400dedf318f9b56bf9764dfe450f2c3c6",
+      "scripts/verify-compatibility-installed.mjs": "e93c5b4c3a22f44a6e9b9f780ec59efd7044493006c2ff92efa14fb541cc73e1"
+    },
+    "originalRuntimeSha256": "f111c97949db5b10a6e1a0dc05bf3a65a6163198f2b13ce5cdcdb4fd94489008",
+    "unchangedCorrectedFixtureAcrossRedGreen": true,
+    "nativeFreshCommittedBytesMatch": true
+  },
+  "runtime": {
+    "platform": "win32",
+    "arch": "x64",
+    "node": "v24.21.0",
+    "codex": "0.160.1"
+  },
+  "integrity": {
+    "independentlyVerifiedCommandLogFiles": 38,
+    "independentlyVerifiedCommandRecords": 19,
+    "hashOrSizeMismatches": 0,
+    "transferReceipt": "qualification-transfer-receipt.json",
+    "transferReceiptFiles": 75,
+    "transferReceiptClaim": "All destination bytes verified by integration-owner transfer; this reviewer independently checked each of the 38 command stdout/stderr files against its recorded size/hash and source/fixture bytes against Git commits.",
+    "rdcObservations": "rdc-process-observations.json"
+  },
+  "counts": {
+    "red-focused": {
+      "tests": 14,
+      "pass": 7,
+      "fail": 7,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "green-focused": {
+      "tests": 14,
+      "pass": 14,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "full-wrapper": {
+      "tests": 242,
+      "pass": 242,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "normal-prepack": {
+      "tests": 242,
+      "pass": 242,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "fresh-normal-prepack": {
+      "tests": 242,
+      "pass": 242,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    }
+  },
+  "commands": [
+    {
+      "name": "branch-switch",
+      "startedAtUtc": "2026-11-02T19:01:53.974Z",
+      "completedAtUtc": "2026-11-02T19:01:54.118Z",
+      "pid": 58864,
+      "exitCode": 0
+    },
+    {
+      "name": "bundle-import",
+      "startedAtUtc": "2026-11-02T19:01:53.841Z",
+      "completedAtUtc": "2026-11-02T19:01:53.973Z",
+      "pid": 38748,
+      "exitCode": 0
+    },
+    {
+      "name": "bundle-verify",
+      "startedAtUtc": "2026-11-02T19:01:53.779Z",
+      "completedAtUtc": "2026-11-02T19:01:53.840Z",
+      "pid": 30236,
+      "exitCode": 0
+    },
+    {
+      "name": "codex-fixture-install",
+      "startedAtUtc": "2026-11-02T19:03:21.551Z",
+      "completedAtUtc": "2026-11-02T19:03:24.912Z",
+      "pid": 64044,
+      "exitCode": 0
+    },
+    {
+      "name": "fresh-archive",
+      "startedAtUtc": "2026-11-02T19:05:22.738Z",
+      "completedAtUtc": "2026-11-02T19:05:22.885Z",
+      "pid": 52464,
+      "exitCode": 0
+    },
+    {
+      "name": "fresh-extract",
+      "startedAtUtc": "2026-11-02T19:05:22.887Z",
+      "completedAtUtc": "2026-11-02T19:05:29.509Z",
+      "pid": 70604,
+      "exitCode": 0
+    },
+    {
+      "name": "fresh-locked-install",
+      "startedAtUtc": "2026-11-02T19:05:29.510Z",
+      "completedAtUtc": "2026-11-02T19:05:32.882Z",
+      "pid": 56404,
+      "exitCode": 0
+    },
+    {
+      "name": "fresh-normal-prepack",
+      "startedAtUtc": "2026-11-02T19:05:34.414Z",
+      "completedAtUtc": "2026-11-02T19:06:10.098Z",
+      "pid": 66536,
+      "exitCode": 0
+    },
+    {
+      "name": "fresh-package",
+      "startedAtUtc": "2026-11-02T19:06:10.099Z",
+      "completedAtUtc": "2026-11-02T19:06:21.181Z",
+      "pid": 25192,
+      "exitCode": 0
+    },
+    {
+      "name": "fresh-reviewed-build",
+      "startedAtUtc": "2026-11-02T19:05:32.882Z",
+      "completedAtUtc": "2026-11-02T19:05:34.413Z",
+      "pid": 67920,
+      "exitCode": 0
+    },
+    {
+      "name": "full-wrapper",
+      "startedAtUtc": "2026-11-02T19:03:24.913Z",
+      "completedAtUtc": "2026-11-02T19:04:13.065Z",
+      "pid": 61736,
+      "exitCode": 0
+    },
+    {
+      "name": "green-build",
+      "startedAtUtc": "2026-11-02T19:01:58.813Z",
+      "completedAtUtc": "2026-11-02T19:02:00.214Z",
+      "pid": 48292,
+      "exitCode": 0
+    },
+    {
+      "name": "green-focused",
+      "startedAtUtc": "2026-11-02T19:02:00.215Z",
+      "completedAtUtc": "2026-11-02T19:02:00.662Z",
+      "pid": 59524,
+      "exitCode": 0
+    },
+    {
+      "name": "implementation-push",
+      "startedAtUtc": "2026-11-02T19:01:54.171Z",
+      "completedAtUtc": "2026-11-02T19:01:58.812Z",
+      "pid": 20064,
+      "exitCode": 0
+    },
+    {
+      "name": "installed-codex",
+      "startedAtUtc": "2026-11-02T19:04:49.368Z",
+      "completedAtUtc": "2026-11-02T19:04:51.224Z",
+      "pid": 61492,
+      "exitCode": 0
+    },
+    {
+      "name": "normal-prepack",
+      "startedAtUtc": "2026-11-02T19:04:13.882Z",
+      "completedAtUtc": "2026-11-02T19:04:49.366Z",
+      "pid": 27968,
+      "exitCode": 0
+    },
+    {
+      "name": "red-build",
+      "startedAtUtc": "2026-11-02T19:01:42.344Z",
+      "completedAtUtc": "2026-11-02T19:01:42.979Z",
+      "pid": 57324,
+      "exitCode": 0
+    },
+    {
+      "name": "red-focused",
+      "startedAtUtc": "2026-11-02T19:01:42.981Z",
+      "completedAtUtc": "2026-11-02T19:01:43.282Z",
+      "pid": 51944,
+      "exitCode": 1
+    },
+    {
+      "name": "self-host",
+      "startedAtUtc": "2026-11-02T19:04:13.066Z",
+      "completedAtUtc": "2026-11-02T19:04:13.881Z",
+      "pid": 43580,
+      "exitCode": 0
+    }
+  ],
+  "rdcShellExits": [
+    {
+      "pid": 63444,
+      "observedExit": 0
+    },
+    {
+      "pid": 68068,
+      "observedExit": 1
+    },
+    {
+      "pid": 21488,
+      "observedExit": 0
+    },
+    {
+      "pid": 44132,
+      "observedExit": 0
+    },
+    {
+      "pid": 47788,
+      "observedExit": 0
+    },
+    {
+      "pid": 14420,
+      "observedExit": 0
+    }
+  ],
+  "red": {
+    "meaningfulAssertionFailures": 7,
+    "runnerInitializationFailure": false,
+    "originalSourceCompileExit": 0,
+    "focusedTestExit": 1,
+    "outerObserverExit": 0,
+    "startedAtUtc": "2026-11-02T19:01:42.981Z",
+    "completedAtUtc": "2026-11-02T19:01:43.282Z"
+  },
+  "fullWrapper": {
+    "actualInvocation": [
+      "node",
+      "scripts/orchestration/verify.mjs",
+      "--full"
+    ],
+    "exitCode": 0,
+    "startedAtUtc": "2026-11-02T19:03:24.913Z",
+    "completedAtUtc": "2026-11-02T19:04:13.065Z",
+    "includedGates": [
+      "normal reviewed build",
+      "normal check with 242 tests",
+      "portable installed package",
+      "source-entry synthetic native Codex registration"
+    ],
+    "all14NewTestsPresentInFullLog": true
+  },
+  "selfHost": {
+    "actualRepositoryRead": true,
+    "actualGitStatus": true,
+    "typecheckExecutedThroughMtermMcp": true,
+    "typecheckExit": 0,
+    "toolCount": 15,
+    "rootWritesEnabled": false,
+    "executionExplicitlyEnabled": true,
+    "modelsInvoked": 0,
+    "webRelay": false,
+    "node": "v24.21.0"
+  },
+  "installed": {
+    "native-package-result.json": {
+      "version": "0.0.1-preview.1",
+      "archiveBytes": 59547,
+      "unpackedBytes": 231360,
+      "installedProductionBytes": 14178730,
+      "aggregateGroups": 6,
+      "metadataGroups": 8,
+      "directoryGroups": 6,
+      "ownedProcessExitsVerified": true,
+      "fixtureCleanupVerified": true,
+      "capturedMcpStderrBytes": 0,
+      "readOnlyRestart": true
+    },
+    "fresh-package-result.json": {
+      "version": "0.0.1-preview.1",
+      "archiveBytes": 59547,
+      "unpackedBytes": 231360,
+      "installedProductionBytes": 14178730,
+      "aggregateGroups": 6,
+      "metadataGroups": 8,
+      "directoryGroups": 6,
+      "ownedProcessExitsVerified": true,
+      "fixtureCleanupVerified": true,
+      "capturedMcpStderrBytes": 0,
+      "readOnlyRestart": true
+    }
+  },
+  "codex": {
+    "native-source-codex-result.json": {
+      "codexVersion": "codex-cli 0.160.1",
+      "testOwnedCodex": true,
+      "configurationParsedByCodex": true,
+      "registeredCommandMcpRounds": 2,
+      "shutdownVerified": true,
+      "installedEntry": false,
+      "actualCodexAgentToolInvocation": false,
+      "realUserConfigChanged": false,
+      "modelCalls": 0
+    },
+    "native-installed-codex-result.json": {
+      "codexVersion": "codex-cli 0.160.1",
+      "testOwnedCodex": true,
+      "configurationParsedByCodex": true,
+      "registeredCommandMcpRounds": 2,
+      "shutdownVerified": true,
+      "installedEntry": true,
+      "actualCodexAgentToolInvocation": false,
+      "realUserConfigChanged": false,
+      "modelCalls": 0
+    }
+  },
+  "fresh": {
+    "sourceSha": "c510908017d7937173189d483fd2697645d42748",
+    "startedAtUtc": "2026-11-02T19:05:22.737Z",
+    "completedAtUtc": "2026-11-02T19:06:21.183Z",
+    "archive": {
+      "path": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\aggregate-qualification-20261102\\artifacts\\aggregate-qualification\\fresh-committed-source.zip",
+      "bytes": 1221025,
+      "sha256": "5a5f3147ca49c4ded148c523f9e14c85a4dd2319b6256dd82a64f806305398d8"
+    },
+    "archiveExtractLockedInstallReviewedBuildNormalPrepackInstalledPackageExitsAllZero": true,
+    "packageAndShrinkwrapMatch": true,
+    "actualFreshCodexRerunClaimed": false
+  },
+  "preservation": {
+    "beforeUtc": "2026-11-02T19:01:42.005Z",
+    "afterFullUtc": "2026-11-02T19:04:51.269Z",
+    "primaryHead": "1d900464ba8a36a1121e2ae51ea65c14c3ee41c1",
+    "dirtyFilesUnchanged": 11,
+    "primaryStatusUnchanged": true,
+    "registeredWorktreeListingUnchanged": true,
+    "taskCleanAfterFull": true,
+    "ownerInitialObservation": {
+      "startedAtUtc": "2026-11-02T19:06:15.415Z",
+      "status": {
+        "gateway": "https://mcp-staging.m-techlabs.com",
+        "root": "C:\\Tools\\Dev\\MTerm-RemoteWorkspace",
+        "paired": true,
+        "permissions": "read-only",
+        "autostart": false,
+        "observedStatus": "online",
+        "networkChecked": false,
+        "runtime": {
+          "at": "2026-11-02T19:06:14.233Z",
+          "state": "online",
+          "activeRequests": 0
+        }
+      },
+      "process": {
+        "pid": 38384,
+        "parentPid": 40924,
+        "started": "/Date(1793592390550)/",
+        "executable": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+        "expectedRemoteStartCommand": true
+      }
+    },
+    "ownerFinalObservationPending": true,
+    "qualificationSnapshotLimit": "Primary and linked-worktree before/after checks cover the native campaign through 19:04:51Z. Owner-before snapshot was taken at 19:06:15Z; final owner enrollment/process comparison remains pending and is not claimed."
+  },
+  "failureHistory": [
+    {
+      "classification": "test-fixture defect",
+      "phase": "initial supplementary scratch RED",
+      "observation": "14 cases: 6 pass/8 fail; seven genuine aggregate failures plus one incorrect OUTSIDE_ROOT expectation for a 4096-character relative path. Only that assertion was corrected to exact INVALID_PATH; original fixture/log preserved. Corrected RED was 7 pass/7 fail, unchanged fixture GREEN14. Scratch used --test-isolation=none and is supplementary."
+    },
+    {
+      "classification": "observer/test-runner defect",
+      "phase": "native preservation preflight",
+      "startedAtUtc": "2026-11-02T19:01:25.010Z",
+      "completedAtUtc": "2026-11-02T19:01:25.226Z",
+      "shellExit": 1,
+      "commandsExecuted": 0,
+      "observation": "Git stdout trim() removed leading porcelain status whitespace; row.slice(3) produced rc/cli.ts. Corrected observer uses trimEnd(); only that line changed. No product tests ran and this is not meaningful RED."
+    },
+    {
+      "classification": "observer/tool timeout",
+      "phase": "delegated read-only environment inspection",
+      "durationSeconds": 750.7,
+      "observation": "This reviewer observed functions.exec aborted after 750.7 seconds with no RDC PID/call ID/result. Intended operation was read-only git status/worktree/toolchain metadata. No qualification or mutation was launched by that agent; call was not reissued. Cause is unestablished."
+    }
+  ],
+  "limitations": [
+    "Native Codex proves real parser plus SDK invocation of the parsed registered command, not model-driven Codex use or actual ChatGPT consent/discovery/read. Model calls remain zero.",
+    "Installed cleanup/exit assertions are inspected bounded observer evidence, not OS-wide lifecycle guarantees.",
+    "Fresh source archive bytes are recorded/hashes supplied by Windows report; archive itself is not among this 75-file transfer and its destination bytes were not independently rehashed by this reviewer. Exact relevant extracted source hashes match committed source.",
+    "Owner final preservation, final documentation checks, exact-head hosted checks, merge/main and final recovery are separate integration-owner gates.",
+    "Primary worktree listing equality does not independently prove filesystem contents of every separate historic ordinary clone."
+  ],
+  "blockers": [],
+  "acceptanceAwarded": false
+}

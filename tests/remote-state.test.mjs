@@ -40,3 +40,18 @@ test('remote state refuses exposing its credential directory and unapproved reco
     await assert.rejects(store.configure({ schemaVersion: 1, gateway: 'https://other.test', root, name: 'Fixture' }), e => e.code === 'REMOTE_PAIRED');
   } finally { await fs.rm(temp, { recursive: true, force: true }); }
 });
+
+test('concurrent pair saves retain one coherent device/token binding', async () => {
+  const temp = await fs.mkdtemp(path.join(os.tmpdir(), 'mterm-state-race-'));
+  try {
+    const root = path.join(temp, 'fixture'); await fs.mkdir(root);
+    const store = await RemoteStateStore.open(path.join(temp, 'state'));
+    await store.configure({ schemaVersion: 1, gateway: 'https://gateway.test', root, name: 'Fixture' });
+    const pairs = [{ deviceId: randomUUID(), token: 'fixture-token-one' }, { deviceId: randomUUID(), token: 'fixture-token-two' }];
+    const results = await Promise.allSettled(pairs.map(p => store.savePairing(p.deviceId, p.token)));
+    assert.equal(results.filter(r => r.status === 'fulfilled').length, 1);
+    const credential = await store.credential();
+    assert.equal(credential.token, pairs.find(p => p.deviceId === credential.deviceId).token);
+    assert.equal((await store.config()).deviceId, credential.deviceId);
+  } finally { await fs.rm(temp, { recursive: true, force: true }); }
+});

@@ -26,6 +26,8 @@ test('gateway transport bounds input and error output, and distinguishes revocat
   const revoked = new GatewayTransport('https://gateway.test', 'sentinel', async () =>
     new Response('NEVER_LOG_THIS_SECRET', { status: 401 }));
   await assert.rejects(revoked.post('/api/agent/poll', {}), e => e.code === 'REMOTE_REVOKED' && !e.message.includes('NEVER'));
+  const expiredResult = new GatewayTransport('https://gateway.test', 'sentinel', async () => new Response('', { status: 410 }));
+  await assert.rejects(expiredResult.post('/api/agent/result', {}), e => e.code === 'REMOTE_REQUEST_EXPIRED');
 });
 
 test('outbound agent delivers a real adapter result once, rejects replay after reconnect, and stops on revocation', async () => {

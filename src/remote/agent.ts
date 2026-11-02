@@ -51,6 +51,14 @@ export class GatewayTransport {
     } catch {
       fail('REMOTE_NETWORK', 'Gateway request failed or timed out; no response or credential data is logged.');
     }
+    if (response.status === 410 && endpoint === '/api/agent/result') {
+      await response.body?.cancel().catch(() => {});
+      fail('REMOTE_REQUEST_EXPIRED', 'This request expired; the paired device remains authorized.');
+    }
+    if (response.status === 410 && endpoint === '/api/pair/poll') {
+      await response.body?.cancel().catch(() => {});
+      fail('PAIRING_EXPIRED', 'Pairing expired; start a new one-time request explicitly.');
+    }
     if ([401, 403, 410].includes(response.status)) {
       await response.body?.cancel().catch(() => {});
       fail('REMOTE_REVOKED', 'Device authorization is expired, revoked or unavailable. Pair again explicitly.');
@@ -91,7 +99,7 @@ function parsePoll(value: unknown): AgentPoll {
   const p = value as AgentPoll;
   if (
     !p || typeof p !== 'object' || !Array.isArray(p.requests) || p.requests.length > 4 ||
-    !Array.isArray(p.cancelled) || p.cancelled.length > 32 ||
+    !Array.isArray(p.cancelled) || p.cancelled.length > 64 ||
     p.cancelled.some(id => typeof id !== 'string' || !UUID_PATTERN.test(id)) ||
     !Number.isInteger(p.pollAfterMs) || p.pollAfterMs < 1000 || p.pollAfterMs > 30000 ||
     p.requests.some(r => !r || typeof r !== 'object' || !UUID_PATTERN.test(r.requestId ?? '') ||
@@ -141,6 +149,7 @@ export class RemoteAgent {
         try { await this.options.transport.post('/api/agent/result', result, controller.signal); return; }
         catch (e) {
           if (isRevoked(e)) { revoked(); return; }
+          if (e instanceof ToolError && e.code === 'REMOTE_REQUEST_EXPIRED') return;
           if (attempt < 2) await sleep(Math.min(2000, 500 * 2 ** attempt), controller.signal).catch(() => {});
         }
       }

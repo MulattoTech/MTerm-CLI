@@ -32,6 +32,7 @@ export function defaultRemoteStateDirectory(): string {
 function validateConfig(value: unknown): RemoteConfig {
   const c = value as RemoteConfig;
   if (!c || c.schemaVersion !== 1 || typeof c.root !== 'string' || !path.isAbsolute(c.root) ||
+    (c.dashboard !== undefined && typeof c.dashboard !== 'string') ||
     typeof c.name !== 'string' || !c.name.trim() || c.name.length > 80 || /[\x00-\x1f\x7f]/.test(c.name) ||
     (c.deviceId !== undefined && !UUID_PATTERN.test(c.deviceId)) ||
     Object.keys(c).some(k => !['schemaVersion', 'gateway', 'dashboard', 'root', 'name', 'deviceId'].includes(k)))
@@ -120,6 +121,25 @@ export class RemoteStateStore {
     try { await fs.rename(temp, path.join(this.directory, name)); }
     finally { await fs.unlink(temp).catch(() => {}); }
   }
+  /** Cross-process admission keeps config and its credential binding coherent during pairing. */
+  private async mutate<T>(operation: () => Promise<T>): Promise<T> {
+    const file = path.join(this.directory, 'state.lock'), nonce = randomUUID();
+    let handle;
+    try { handle = await fs.open(file, 'wx', 0o600); }
+    catch (error) {
+      if ((error as NodeJS.ErrnoException).code === 'EEXIST')
+        fail('REMOTE_STATE_BUSY', 'Another remote configuration operation holds the lock; stale locks are never stolen.');
+      throw error;
+    }
+    try {
+      await handle.writeFile(JSON.stringify({ nonce }));
+      return await operation();
+    } finally {
+      await handle.close();
+      const lock = await this.read('state.lock') as { nonce?: string } | undefined;
+      if (lock?.nonce === nonce) await fs.unlink(file);
+    }
+  }
   async config(): Promise<RemoteConfig> {
     const raw = await this.read('config.json');
     if (!raw) fail('REMOTE_UNCONFIGURED', 'Run remote setup with an explicit gateway and trusted directory.');
@@ -128,6 +148,7 @@ export class RemoteStateStore {
     return config;
   }
   async configure(input: RemoteConfig): Promise<RemoteConfig> {
+    return this.mutate(async () => {
     const root = await remoteRoot(input.root);
     const next = validateConfig({ ...input, root });
     if (next.deviceId) fail('REMOTE_CONFIG', 'Device identity is assigned by authenticated pairing only.');
@@ -142,8 +163,10 @@ export class RemoteStateStore {
     }
     await this.write('config.json', next);
     return next;
+    });
   }
   async savePairing(deviceId: string, token: string): Promise<void> {
+    await this.mutate(async () => {
     const config = await this.config();
     if (config.deviceId) fail('REMOTE_PAIRED', 'A device is already paired; revoke it explicitly before pairing again.');
     if (!UUID_PATTERN.test(deviceId) || typeof token !== 'string' || !token || token.length > 4096 || /[\x00-\x20\x7f]/.test(token))
@@ -152,6 +175,7 @@ export class RemoteStateStore {
     const protectedValue = process.platform === 'win32' ? await dpapi('Protect', Buffer.from(json).toString('base64')) : json;
     await this.write('credential.json', { schemaVersion: 1, protection: process.platform === 'win32' ? 'windows-dpapi-current-user' : 'posix-0600', value: protectedValue });
     await this.write('config.json', { ...config, deviceId });
+    });
   }
   async credential(): Promise<{ deviceId: string; token: string }> {
     const config = await this.config();
@@ -170,11 +194,13 @@ export class RemoteStateStore {
     return { deviceId: config.deviceId, token: value.token };
   }
   async clearPairing(): Promise<void> {
+    await this.mutate(async () => {
     const config = await this.config();
     delete config.deviceId;
     await this.write('config.json', config);
     await this.read('credential.json');
     await fs.unlink(path.join(this.directory, 'credential.json')).catch(e => { if (e.code !== 'ENOENT') throw e; });
+    });
   }
   async status(): Promise<Record<string, unknown>> {
     const config = await this.config();

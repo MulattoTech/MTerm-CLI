@@ -1,0 +1,1422 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-11-02T20:12:46.923822+00:00",
+  "reviewer": "/root/edit_contract_audit",
+  "repository": "MulattoTech/MTerm-CLI",
+  "pullRequest": 78,
+  "ok": true,
+  "headCommit": "5723f5d0914d2e3c7e165506cf6f11980eb54fc2",
+  "headTree": "5e3cdba9071d1149ab1ec28e67e3d7edb3335f65",
+  "executedCheckout": {
+    "commit": "aee25a1adffe55033814da64b8458d3c48586359",
+    "ref": "refs/remotes/pull/78/merge",
+    "tree": "5e3cdba9071d1149ab1ec28e67e3d7edb3335f65",
+    "headAndExecutedTreeIdentical": true,
+    "proof": [
+      "commit-initial.json",
+      "executed-merge-commit.json",
+      "Every retained job log records git log -1 --format=%H."
+    ]
+  },
+  "runs": [
+    {
+      "id": 41516238559,
+      "html_url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41516238559",
+      "head_sha": "5723f5d0914d2e3c7e165506cf6f11980eb54fc2",
+      "run_attempt": 1,
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-02T20:07:10Z",
+      "updated_at": "2026-11-02T20:10:01Z"
+    },
+    {
+      "id": 41516238581,
+      "html_url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41516238581",
+      "head_sha": "5723f5d0914d2e3c7e165506cf6f11980eb54fc2",
+      "run_attempt": 1,
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-11-02T20:07:10Z",
+      "updated_at": "2026-11-02T20:07:46Z"
+    }
+  ],
+  "jobs": [
+    {
+      "jobId": 125520410722,
+      "name": "windows-2022 / Node 24",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41516238559/job/125520410722",
+      "runId": 41516238559,
+      "runAttempt": 1,
+      "headSha": "5723f5d0914d2e3c7e165506cf6f11980eb54fc2",
+      "executedCheckoutCommit": "aee25a1adffe55033814da64b8458d3c48586359",
+      "executedTree": "5e3cdba9071d1149ab1ec28e67e3d7edb3335f65",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-02T20:07:12Z",
+      "completedAt": "2026-11-02T20:08:48Z",
+      "nodeVersion": "v24.21.0",
+      "unitCounts": {
+        "tests": 272,
+        "suites": 0,
+        "pass": 272,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "editBlockUnitPasses": 30,
+      "editBlockUnitEvidence": [
+        "2026-11-02T20:07:52.5201116Z ✔ edit_block preserves exact bytes for LF requests against CRLF files (24.0678ms)",
+        "2026-11-02T20:07:52.5300658Z ✔ edit_block preserves exact bytes for CRLF requests against LF files (10.0164ms)",
+        "2026-11-02T20:07:52.5469270Z ✔ edit_block preserves exact bytes for mixed request delimiters against CR files (16.7211ms)",
+        "2026-11-02T20:07:52.5600597Z ✔ edit_block preserves exact bytes for mixed request delimiters against LF files (12.9603ms)",
+        "2026-11-02T20:07:52.5692995Z ✔ edit_block preserves exact bytes for multiline replacement after a single-line match (9.233ms)",
+        "2026-11-02T20:07:52.5786602Z ✔ edit_block preserves exact bytes for empty replacement deletes only the normalized match (9.3703ms)",
+        "2026-11-02T20:07:52.5897633Z ✔ edit_block preserves exact bytes for BOM, Unicode, indentation and literal dollar replacement strings (11.0154ms)",
+        "2026-11-02T20:07:52.5989444Z ✔ edit_block preserves exact bytes for first CRLF delimiter wins and untouched minority LF stays unchanged (9.1799ms)",
+        "2026-11-02T20:07:52.6091756Z ✔ edit_block preserves exact bytes for first LF delimiter wins and untouched minority CRLF stays unchanged (9.9429ms)",
+        "2026-11-02T20:07:52.6184511Z ✔ edit_block uses the native default when the original file has no delimiter (9.281ms)",
+        "2026-11-02T20:07:52.6307780Z ✔ edit_block counts normalized matches before any write and replaces all only at the exact count (12.1395ms)",
+        "2026-11-02T20:07:52.6357805Z ✔ edit_block rejects no-match and whitespace-only approximations without mutation (5.0234ms)",
+        "2026-11-02T20:07:52.6380974Z ✔ edit_block does not normalize the entire mixed-ending file to create a match (2.4501ms)",
+        "2026-11-02T20:07:52.6560508Z ✔ edit_block retains non-overlapping occurrence semantics for adjacent and overlapping patterns (17.5979ms)",
+        "2026-11-02T20:07:52.6598460Z ✔ edit_block validates empty search and invalid expected counts without writes (3.9249ms)",
+        "2026-11-02T20:07:52.6632501Z ✔ edit_block retains the match-work ceiling after newline normalization (3.3934ms)",
+        "2026-11-02T20:07:52.6748958Z ✔ edit_block accepts exactly the UTF-8 byte ceiling after CRLF expansion: a (11.5778ms)",
+        "2026-11-02T20:07:52.6772786Z ✔ edit_block rejects one byte over the ceiling after CRLF expansion: a (2.5556ms)",
+        "2026-11-02T20:07:52.6939091Z ✔ edit_block accepts exactly the UTF-8 byte ceiling after CRLF expansion: é (16.286ms)",
+        "2026-11-02T20:07:52.6963211Z ✔ edit_block rejects one byte over the ceiling after CRLF expansion: é (2.633ms)",
+        "2026-11-02T20:07:52.7081953Z ✔ edit_block accepts exactly the UTF-8 byte ceiling after CRLF expansion: 😀 (11.667ms)",
+        "2026-11-02T20:07:52.7112879Z ✔ edit_block rejects one byte over the ceiling after CRLF expansion: 😀 (2.8976ms)",
+        "2026-11-02T20:07:52.7130770Z ✔ edit_block remains unavailable without the separate write capability (1.9401ms)",
+        "2026-11-02T20:07:52.7172038Z ✔ edit_block keeps private, outside-root, missing and unsupported file failures (4.0729ms)",
+        "2026-11-02T20:07:52.7204306Z ✔ edit_block refuses directory links and multiply-linked files without changing either target (3.2413ms)",
+        "2026-11-02T20:07:52.7239918Z ✔ edit_block preserves a concurrent writer when the read version becomes stale (3.4613ms)",
+        "2026-11-02T20:07:52.7260867Z ✔ pre-cancelled edit_block performs no read or write (1.9024ms)",
+        "2026-11-02T20:07:52.7289957Z ✔ cancellation during edit_block read takes precedence over matching: old",
+        "2026-11-02T20:07:52.7315506Z ✔ cancellation during edit_block read takes precedence over matching: absent (2.6962ms)",
+        "2026-11-02T20:07:52.7504031Z ✔ edit_block rejects oversized repeated replacement before allocating the output string (18.5845ms)"
+      ],
+      "skippedTests": [],
+      "sourceMutationGate": {
+        "step": {
+          "name": "Exact source remains unchanged by tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-02T20:08:24Z",
+          "completed_at": "2026-11-02T20:08:24Z"
+        },
+        "commandEvidence": [
+          "2026-11-02T20:08:24.5462266Z ##[group]Run git diff --exit-code",
+          "2026-11-02T20:08:24.5462481Z \u001b[36;1mgit diff --exit-code\u001b[0m"
+        ],
+        "scope": "Successful git diff --exit-code compares the working tree with the index. It does not enumerate untracked artifacts or independently compare staged content with HEAD."
+      },
+      "allStepsSuccessful": true,
+      "rawLog": {
+        "file": "/workspace/scratch/1a6479138b13/audit/hosted-candidate/job-125520410722.log",
+        "bytes": 69452,
+        "sha256": "746c912859ec8a992fb68893cdc270a7e5076f5a8963fda80db719261534a612"
+      },
+      "actualRuntime": {
+        "node": "v24.21.0",
+        "platform": "win32",
+        "arch": "x64"
+      },
+      "installedPackageEvidence": {
+        "packageVersion": "0.0.1-preview.1",
+        "archiveBytes": 59896,
+        "packageUnpackedBytes": 232234,
+        "installedProductionBytes": 14179604,
+        "productionFiles": 992,
+        "packagedMcpRoundTrip": true,
+        "ownedPrefixNpmLink": true,
+        "offlineNpmExecFromTarball": true,
+        "npmExecMcpCompatibilityTools": 8,
+        "installedCompatibility": {
+          "npmExecMcp": true,
+          "compatibilityAliasesExercised": 8,
+          "directoryListing": {
+            "scenarios": [
+              "zero-depth",
+              "one-level-depth",
+              "default-depth-stable-exact-visible-overflow",
+              "link-not-traversed",
+              "root-private-link-missing-denials",
+              "schema-depth-denial"
+            ],
+            "passed": 6
+          },
+          "fileInfo": {
+            "scenarios": [
+              "text-stat-order-dates-empty-LF-CRLF-CR-BOM-Unicode",
+              "directory-handler-discriminator-no-lines",
+              "unchanged-inclusive-262144-byte-ceiling",
+              "binary-invalid-utf8-oversize-safe-omissions",
+              "unsupported-formats-stat-only",
+              "outside-private-link-hardlink-missing-denials",
+              "schema-path-denial",
+              "read-only-installed-restart-independent-capabilities"
+            ],
+            "passed": 8,
+            "readOnlyRestart": true
+          },
+          "multipleFiles": {
+            "scenarios": [
+              "ordered-summary-successes-duplicates-and-safe-partial-error",
+              "published-schema-and-one-to-twenty-path-boundaries",
+              "inclusive-full-text-byte-ceiling-and-one-byte-overflow",
+              "error-summary-and-separator-budget-in-both-orders",
+              "private-outside-format-hardlink-and-symlink-denials-no-mutation",
+              "read-only-installed-restart-capability-separation"
+            ],
+            "passed": 6,
+            "maxTextBytes": 262144,
+            "readOnlyRestart": true
+          },
+          "editBlock": {
+            "scenarios": [
+              "write-enabled-schema-discovery",
+              "CRLF-LF-CR-native-default-first-style-and-literal-byte-fidelity",
+              "normalized-exact-count-mismatch-and-schema-no-write",
+              "inclusive-UTF8-byte-limit-after-newline-expansion",
+              "private-and-outside-root-denials-preserve-bytes",
+              "read-only-restart-omits-edit-and-mutation-capabilities"
+            ],
+            "passed": 6,
+            "readOnlyRestart": true
+          },
+          "ownedProcessExitsVerified": true,
+          "directoryFixtureCleanupVerified": true,
+          "multipleFileFixtureCleanupVerified": true,
+          "stderrCapturedBytes": 0,
+          "fullParity": false,
+          "modelCalls": 0
+        },
+        "installedConfiguration": {
+          "ok": true,
+          "packageVersion": "0.0.1-preview.1",
+          "node": "v24.21.0",
+          "platform": "win32",
+          "architecture": "x64",
+          "installedEntryUnderOwnedPrefix": true,
+          "installedEntrySha256": "1376dfb68527a2fef2444be718a0011c53333c90f416eb377a8bde43e5dcc5b0",
+          "installedConfigModuleSha256": "f6f412a83d13a1aab24398f1d54ca1c301e093c6de1511f2097e0d43b720cc32",
+          "concurrentMcpProcesses": 2,
+          "restartedMcpProcesses": 1,
+          "compatibilityToolsDiscovered": [
+            "get_config",
+            "set_config_value"
+          ],
+          "getConfigMetadata": {
+            "textMatchesStructuredConfig": true,
+            "processIdentityMatchesOwnedChild": true,
+            "boundedMemoryAndRuntimeFields": true,
+            "orderedPreferenceTypes": true,
+            "clientExtrasOmitted": true,
+            "unsupportedProbesExplicitlyOmitted": true,
+            "featureFlagProvider": "none"
+          },
+          "setConfigContract": {
+            "preferencesExercised": [
+              "blockedCommands",
+              "allowedDirectories",
+              "defaultShell",
+              "fileReadLineLimit",
+              "fileWriteLineLimit",
+              "telemetryEnabled"
+            ],
+            "exactTextOnlySuccess": true,
+            "successValueMatchesCommittedEffectiveSnapshot": true,
+            "normalizedBooleanStrings": true,
+            "singletonAndJsonArrays": true,
+            "deduplicatedCanonicalRootsAndMandatoryBlocks": true,
+            "rejectedCases": 14,
+            "rejectedPolicyAndBackupBytesPreserved": true,
+            "rejectedValuesOmittedFromErrors": true,
+            "shellPreferencePersistsWithoutShellExecutionClaim": true
+          },
+          "steps": [
+            "two-installed-processes-discovery-and-owner-roots",
+            "get-config-envelope-memory-process-metadata-and-omissions",
+            "six-setting-success-output-and-normalized-effective-values",
+            "six-setting-rejections-preserve-policy-backup-and-safe-error-output",
+            "cross-process-read-defaults-and-write-warning-byte-fidelity",
+            "three-concurrent-distinct-key-writes-without-lost-updates",
+            "runtime-root-narrowing-empty-denial-and-owner-ceiling-preservation",
+            "telemetry-preference-has-no-observed-node-network-transport",
+            "malformed-policy-denial-and-owned-process-cleanup",
+            "restart-persistence-without-inheriting-config-write-authority"
+          ],
+          "telemetryNetworkGuard": {
+            "interceptedCanaryAttempts": 10,
+            "canaryApis": [
+              "net.Socket.connect",
+              "tls.connect",
+              "http.get",
+              "https.request",
+              "http2.connect",
+              "dgram.Socket.send",
+              "dns.lookup",
+              "dns.promises.lookup",
+              "fetch",
+              "WebSocket"
+            ],
+            "observedProductAttempts": 0,
+            "maximumRetainedAttemptsPerChild": 128,
+            "preferenceValuesExercised": [
+              true,
+              false
+            ],
+            "scope": "Instrumented standard Node network APIs in the three MCP children; not an OS sandbox or a descendant-process network monitor."
+          },
+          "actualCodexAgentToolInvocation": false,
+          "processExitProof": "Bounded signal-0 polling observed ESRCH for each captured MCP PID and owned fixture process; no numeric-PID termination fallback.",
+          "fullConfigurationParity": false,
+          "modelCalls": 0,
+          "realUserConfigChanged": false,
+          "evidence": "D:\\a\\MTerm-CLI\\MTerm-CLI\\artifacts\\package-verify-vttwE8\\configuration-NOuET7",
+          "shutdownVerified": true,
+          "ownedFixtureCleanup": true,
+          "stderrCapturedBytes": [
+            0,
+            0,
+            0
+          ]
+        },
+        "fullDesktopCommanderParity": false,
+        "fromOutsideCheckout": true,
+        "helpExternalLaunchSamplesMs": [
+          37.96,
+          43.02,
+          37.27,
+          37.93,
+          37.91
+        ],
+        "helpMedianMs": 37.93209999999999,
+        "nodeVersion": "v24.21.0",
+        "nodePrerequisiteBytes": 93580104,
+        "nodeBundled": false,
+        "codexBundled": false,
+        "webBundled": false,
+        "quotaAdapterBundled": false,
+        "fullThreeComponentUnder50MB": "NOT VERIFIED; this is a dependency-reuse local host, not that bundle",
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "evidence": "D:\\a\\MTerm-CLI\\MTerm-CLI\\artifacts\\package-verify-vttwE8"
+      },
+      "codexRegistrationEvidence": {
+        "codexVersion": "codex-cli 0.160.1",
+        "codexExpectedVersion": "0.160.1",
+        "testOwnedCodex": true,
+        "codexTestPrefix": "artifacts/ci-codex",
+        "codexNativeExecutable": "node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/bin/codex.exe",
+        "node": "v24.21.0",
+        "platform": "win32",
+        "arch": "x64",
+        "setupApplied": true,
+        "setupIdempotent": true,
+        "configurationParsedByCodex": true,
+        "registeredCommandMcpRounds": 2,
+        "compatibilityProfilePersisted": true,
+        "configurationToolsDiscovered": [
+          "get_config",
+          "set_config_value"
+        ],
+        "syntheticConfigurationPathVerified": true,
+        "multipleRootsParsedByCodex": true,
+        "configurationPersistsAcrossRegisteredCommandRestarts": true,
+        "configuredReadLimitExercised": true,
+        "shutdownVerified": true,
+        "shutdownEvidence": "The original MCP process IDs returned ESRCH to bounded signal-0 polling after SDK close.",
+        "removalPreservesUnrelatedBytes": true,
+        "backupsRetained": true,
+        "actualCodexAgentToolInvocation": false,
+        "realUserConfigChanged": false,
+        "modelCalls": 0,
+        "installedEntry": false,
+        "evidence": "D:\\a\\MTerm-CLI\\MTerm-CLI\\artifacts\\managed-codex-BUhVNt"
+      }
+    },
+    {
+      "jobId": 125520410882,
+      "name": "macos-14 / Node 24",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41516238559/job/125520410882",
+      "runId": 41516238559,
+      "runAttempt": 1,
+      "headSha": "5723f5d0914d2e3c7e165506cf6f11980eb54fc2",
+      "executedCheckoutCommit": "aee25a1adffe55033814da64b8458d3c48586359",
+      "executedTree": "5e3cdba9071d1149ab1ec28e67e3d7edb3335f65",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-02T20:07:13Z",
+      "completedAt": "2026-11-02T20:09:21Z",
+      "nodeVersion": "v24.21.0",
+      "unitCounts": {
+        "tests": 272,
+        "suites": 0,
+        "pass": 260,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 12
+      },
+      "editBlockUnitPasses": 30,
+      "editBlockUnitEvidence": [
+        "2026-11-02T20:07:46.2423940Z ✔ edit_block preserves exact bytes for LF requests against CRLF files (24.080667ms)",
+        "2026-11-02T20:07:46.2500570Z ✔ edit_block preserves exact bytes for CRLF requests against LF files (7.157917ms)",
+        "2026-11-02T20:07:46.2649200Z ✔ edit_block preserves exact bytes for mixed request delimiters against CR files (15.282334ms)",
+        "2026-11-02T20:07:46.2730500Z ✔ edit_block preserves exact bytes for mixed request delimiters against LF files (7.632167ms)",
+        "2026-11-02T20:07:46.2808890Z ✔ edit_block preserves exact bytes for multiline replacement after a single-line match (7.8155ms)",
+        "2026-11-02T20:07:46.2874030Z ✔ edit_block preserves exact bytes for empty replacement deletes only the normalized match (6.742875ms)",
+        "2026-11-02T20:07:46.2923670Z ✔ edit_block preserves exact bytes for BOM, Unicode, indentation and literal dollar replacement strings (5.023125ms)",
+        "2026-11-02T20:07:46.2980050Z ✔ edit_block preserves exact bytes for first CRLF delimiter wins and untouched minority LF stays unchanged (5.155792ms)",
+        "2026-11-02T20:07:46.3057220Z ✔ edit_block preserves exact bytes for first LF delimiter wins and untouched minority CRLF stays unchanged (7.478958ms)",
+        "2026-11-02T20:07:46.3114950Z ✔ edit_block uses the native default when the original file has no delimiter (5.962666ms)",
+        "2026-11-02T20:07:46.3185890Z ✔ edit_block counts normalized matches before any write and replaces all only at the exact count (6.978167ms)",
+        "2026-11-02T20:07:46.3244950Z ✔ edit_block rejects no-match and whitespace-only approximations without mutation (5.812666ms)",
+        "2026-11-02T20:07:46.3279110Z ✔ edit_block does not normalize the entire mixed-ending file to create a match (2.77725ms)",
+        "2026-11-02T20:07:46.3396090Z ✔ edit_block retains non-overlapping occurrence semantics for adjacent and overlapping patterns (12.081417ms)",
+        "2026-11-02T20:07:46.3440880Z ✔ edit_block validates empty search and invalid expected counts without writes (4.555166ms)",
+        "2026-11-02T20:07:46.3486300Z ✔ edit_block retains the match-work ceiling after newline normalization (4.39375ms)",
+        "2026-11-02T20:07:46.3624160Z ✔ edit_block accepts exactly the UTF-8 byte ceiling after CRLF expansion: a (6.714916ms)",
+        "2026-11-02T20:07:46.3659610Z ✔ edit_block rejects one byte over the ceiling after CRLF expansion: a (2.892584ms)",
+        "2026-11-02T20:07:46.3673500Z ✔ edit_block accepts exactly the UTF-8 byte ceiling after CRLF expansion: é (9.003834ms)",
+        "2026-11-02T20:07:46.3713020Z ✔ edit_block rejects one byte over the ceiling after CRLF expansion: é (3.858ms)",
+        "2026-11-02T20:07:46.3827350Z ✔ edit_block accepts exactly the UTF-8 byte ceiling after CRLF expansion: 😀 (11.236792ms)",
+        "2026-11-02T20:07:46.3857250Z ✔ edit_block rejects one byte over the ceiling after CRLF expansion: 😀 (2.829542ms)",
+        "2026-11-02T20:07:46.3879590Z ✔ edit_block remains unavailable without the separate write capability (2.597292ms)",
+        "2026-11-02T20:07:46.3922750Z ✔ edit_block keeps private, outside-root, missing and unsupported file failures (4.172916ms)",
+        "2026-11-02T20:07:46.3964080Z ✔ edit_block refuses directory links and multiply-linked files without changing either target (3.687625ms)",
+        "2026-11-02T20:07:46.4001370Z ✔ edit_block preserves a concurrent writer when the read version becomes stale (3.62075ms)",
+        "2026-11-02T20:07:46.4044770Z ✔ pre-cancelled edit_block performs no read or write (4.245792ms)",
+        "2026-11-02T20:07:46.4091140Z ✔ cancellation during edit_block read takes precedence over matching: old",
+        "2026-11-02T20:07:46.4115400Z ✔ cancellation during edit_block read takes precedence over matching: absent (2.459875ms)",
+        "2026-11-02T20:07:46.4345450Z ✔ edit_block rejects oversized repeated replacement before allocating the output string (23.081125ms)"
+      ],
+      "skippedTests": [
+        "﹣ automation PowerShell scripts parse without executing (0.50825ms) # SKIP",
+        "﹣ one-command setup preview is read-only and permission-conservative (0.478709ms) # SKIP",
+        "﹣ one-command setup refuses a whole-drive root (0.051042ms) # SKIP",
+        "﹣ top-level MTerm CLI launcher parses as PowerShell without execution (0.15025ms) # SKIP",
+        "﹣ top-level Plan and Install preview do not modify the selected workspace (0.044917ms) # SKIP",
+        "﹣ top-level Verify reports explicit local versus remote readiness without mutation (0.043333ms) # SKIP",
+        "﹣ top-level launcher refuses unsafe root and unapproved execution paths (0.048375ms) # SKIP",
+        "﹣ Windows short filenames cannot expose existing compatibility policy storage (0.108042ms) # SKIP",
+        "﹣ Windows short file aliases return canonical identities and cannot evade the request guard (0.360583ms) # SKIP",
+        "﹣ Windows short file aliases cannot conceal a private canonical filename (0.088958ms) # SKIP",
+        "﹣ Windows missing leaves retain their canonical parent and final request guard (0.073375ms) # SKIP",
+        "﹣ Windows missing leaves cannot be created below an aliased private directory (0.061667ms) # SKIP"
+      ],
+      "sourceMutationGate": {
+        "step": {
+          "name": "Exact source remains unchanged by tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-02T20:08:13Z",
+          "completed_at": "2026-11-02T20:08:13Z"
+        },
+        "commandEvidence": [
+          "2026-11-02T20:08:13.5606250Z ##[group]Run git diff --exit-code",
+          "2026-11-02T20:08:13.5606600Z \u001b[36;1mgit diff --exit-code\u001b[0m"
+        ],
+        "scope": "Successful git diff --exit-code compares the working tree with the index. It does not enumerate untracked artifacts or independently compare staged content with HEAD."
+      },
+      "allStepsSuccessful": true,
+      "rawLog": {
+        "file": "/workspace/scratch/1a6479138b13/audit/hosted-candidate/job-125520410882.log",
+        "bytes": 68889,
+        "sha256": "fc0728f279c911c631f4a166f81f5ae526572f9009c6237f5a7b367be18dbfb9"
+      },
+      "actualRuntime": {
+        "node": "v24.21.0",
+        "platform": "darwin",
+        "arch": "arm64"
+      },
+      "installedPackageEvidence": {
+        "packageVersion": "0.0.1-preview.1",
+        "archiveBytes": 59902,
+        "packageUnpackedBytes": 232234,
+        "installedProductionBytes": 14178043,
+        "productionFiles": 989,
+        "packagedMcpRoundTrip": true,
+        "ownedPrefixNpmLink": true,
+        "offlineNpmExecFromTarball": true,
+        "npmExecMcpCompatibilityTools": 8,
+        "installedCompatibility": {
+          "npmExecMcp": true,
+          "compatibilityAliasesExercised": 8,
+          "directoryListing": {
+            "scenarios": [
+              "zero-depth",
+              "one-level-depth",
+              "default-depth-stable-exact-visible-overflow",
+              "link-not-traversed",
+              "root-private-link-missing-denials",
+              "schema-depth-denial"
+            ],
+            "passed": 6
+          },
+          "fileInfo": {
+            "scenarios": [
+              "text-stat-order-dates-empty-LF-CRLF-CR-BOM-Unicode",
+              "directory-handler-discriminator-no-lines",
+              "unchanged-inclusive-262144-byte-ceiling",
+              "binary-invalid-utf8-oversize-safe-omissions",
+              "unsupported-formats-stat-only",
+              "outside-private-link-hardlink-missing-denials",
+              "schema-path-denial",
+              "read-only-installed-restart-independent-capabilities"
+            ],
+            "passed": 8,
+            "readOnlyRestart": true
+          },
+          "multipleFiles": {
+            "scenarios": [
+              "ordered-summary-successes-duplicates-and-safe-partial-error",
+              "published-schema-and-one-to-twenty-path-boundaries",
+              "inclusive-full-text-byte-ceiling-and-one-byte-overflow",
+              "error-summary-and-separator-budget-in-both-orders",
+              "private-outside-format-hardlink-and-symlink-denials-no-mutation",
+              "read-only-installed-restart-capability-separation"
+            ],
+            "passed": 6,
+            "maxTextBytes": 262144,
+            "readOnlyRestart": true
+          },
+          "editBlock": {
+            "scenarios": [
+              "write-enabled-schema-discovery",
+              "CRLF-LF-CR-native-default-first-style-and-literal-byte-fidelity",
+              "normalized-exact-count-mismatch-and-schema-no-write",
+              "inclusive-UTF8-byte-limit-after-newline-expansion",
+              "private-and-outside-root-denials-preserve-bytes",
+              "read-only-restart-omits-edit-and-mutation-capabilities"
+            ],
+            "passed": 6,
+            "readOnlyRestart": true
+          },
+          "ownedProcessExitsVerified": true,
+          "directoryFixtureCleanupVerified": true,
+          "multipleFileFixtureCleanupVerified": true,
+          "stderrCapturedBytes": 0,
+          "fullParity": false,
+          "modelCalls": 0
+        },
+        "installedConfiguration": {
+          "ok": true,
+          "packageVersion": "0.0.1-preview.1",
+          "node": "v24.21.0",
+          "platform": "darwin",
+          "architecture": "arm64",
+          "installedEntryUnderOwnedPrefix": true,
+          "installedEntrySha256": "1376dfb68527a2fef2444be718a0011c53333c90f416eb377a8bde43e5dcc5b0",
+          "installedConfigModuleSha256": "f6f412a83d13a1aab24398f1d54ca1c301e093c6de1511f2097e0d43b720cc32",
+          "concurrentMcpProcesses": 2,
+          "restartedMcpProcesses": 1,
+          "compatibilityToolsDiscovered": [
+            "get_config",
+            "set_config_value"
+          ],
+          "getConfigMetadata": {
+            "textMatchesStructuredConfig": true,
+            "processIdentityMatchesOwnedChild": true,
+            "boundedMemoryAndRuntimeFields": true,
+            "orderedPreferenceTypes": true,
+            "clientExtrasOmitted": true,
+            "unsupportedProbesExplicitlyOmitted": true,
+            "featureFlagProvider": "none"
+          },
+          "setConfigContract": {
+            "preferencesExercised": [
+              "blockedCommands",
+              "allowedDirectories",
+              "defaultShell",
+              "fileReadLineLimit",
+              "fileWriteLineLimit",
+              "telemetryEnabled"
+            ],
+            "exactTextOnlySuccess": true,
+            "successValueMatchesCommittedEffectiveSnapshot": true,
+            "normalizedBooleanStrings": true,
+            "singletonAndJsonArrays": true,
+            "deduplicatedCanonicalRootsAndMandatoryBlocks": true,
+            "rejectedCases": 14,
+            "rejectedPolicyAndBackupBytesPreserved": true,
+            "rejectedValuesOmittedFromErrors": true,
+            "shellPreferencePersistsWithoutShellExecutionClaim": true
+          },
+          "steps": [
+            "two-installed-processes-discovery-and-owner-roots",
+            "get-config-envelope-memory-process-metadata-and-omissions",
+            "six-setting-success-output-and-normalized-effective-values",
+            "six-setting-rejections-preserve-policy-backup-and-safe-error-output",
+            "cross-process-read-defaults-and-write-warning-byte-fidelity",
+            "three-concurrent-distinct-key-writes-without-lost-updates",
+            "runtime-root-narrowing-empty-denial-and-owner-ceiling-preservation",
+            "telemetry-preference-has-no-observed-node-network-transport",
+            "malformed-policy-denial-and-owned-process-cleanup",
+            "restart-persistence-without-inheriting-config-write-authority"
+          ],
+          "telemetryNetworkGuard": {
+            "interceptedCanaryAttempts": 10,
+            "canaryApis": [
+              "net.Socket.connect",
+              "tls.connect",
+              "http.get",
+              "https.request",
+              "http2.connect",
+              "dgram.Socket.send",
+              "dns.lookup",
+              "dns.promises.lookup",
+              "fetch",
+              "WebSocket"
+            ],
+            "observedProductAttempts": 0,
+            "maximumRetainedAttemptsPerChild": 128,
+            "preferenceValuesExercised": [
+              true,
+              false
+            ],
+            "scope": "Instrumented standard Node network APIs in the three MCP children; not an OS sandbox or a descendant-process network monitor."
+          },
+          "actualCodexAgentToolInvocation": false,
+          "processExitProof": "Bounded signal-0 polling observed ESRCH for each captured MCP PID and owned fixture process; no numeric-PID termination fallback.",
+          "fullConfigurationParity": false,
+          "modelCalls": 0,
+          "realUserConfigChanged": false,
+          "evidence": "/Users/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-BK7NhL/configuration-jq9M6h",
+          "shutdownVerified": true,
+          "ownedFixtureCleanup": true,
+          "stderrCapturedBytes": [
+            0,
+            0,
+            0
+          ]
+        },
+        "fullDesktopCommanderParity": false,
+        "fromOutsideCheckout": true,
+        "helpExternalLaunchSamplesMs": [
+          44.62,
+          39.51,
+          44.36,
+          68.28,
+          39.79
+        ],
+        "helpMedianMs": 44.3589579999998,
+        "nodeVersion": "v24.21.0",
+        "nodePrerequisiteBytes": 122129232,
+        "nodeBundled": false,
+        "codexBundled": false,
+        "webBundled": false,
+        "quotaAdapterBundled": false,
+        "fullThreeComponentUnder50MB": "NOT VERIFIED; this is a dependency-reuse local host, not that bundle",
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "evidence": "/Users/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-BK7NhL"
+      },
+      "codexRegistrationEvidence": {
+        "codexVersion": "codex-cli 0.160.1",
+        "codexExpectedVersion": "0.160.1",
+        "testOwnedCodex": true,
+        "codexTestPrefix": "artifacts/ci-codex",
+        "codexNativeExecutable": "node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex",
+        "node": "v24.21.0",
+        "platform": "darwin",
+        "arch": "arm64",
+        "setupApplied": true,
+        "setupIdempotent": true,
+        "configurationParsedByCodex": true,
+        "registeredCommandMcpRounds": 2,
+        "compatibilityProfilePersisted": true,
+        "configurationToolsDiscovered": [
+          "get_config",
+          "set_config_value"
+        ],
+        "syntheticConfigurationPathVerified": true,
+        "multipleRootsParsedByCodex": true,
+        "configurationPersistsAcrossRegisteredCommandRestarts": true,
+        "configuredReadLimitExercised": true,
+        "shutdownVerified": true,
+        "shutdownEvidence": "The original MCP process IDs returned ESRCH to bounded signal-0 polling after SDK close.",
+        "removalPreservesUnrelatedBytes": true,
+        "backupsRetained": true,
+        "actualCodexAgentToolInvocation": false,
+        "realUserConfigChanged": false,
+        "modelCalls": 0,
+        "installedEntry": false,
+        "evidence": "/Users/runner/work/MTerm-CLI/MTerm-CLI/artifacts/managed-codex-2cea6n"
+      }
+    },
+    {
+      "jobId": 125520410988,
+      "name": "ubuntu-24.04 / Node 24",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41516238559/job/125520410988",
+      "runId": 41516238559,
+      "runAttempt": 1,
+      "headSha": "5723f5d0914d2e3c7e165506cf6f11980eb54fc2",
+      "executedCheckoutCommit": "aee25a1adffe55033814da64b8458d3c48586359",
+      "executedTree": "5e3cdba9071d1149ab1ec28e67e3d7edb3335f65",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-02T20:07:12Z",
+      "completedAt": "2026-11-02T20:09:49Z",
+      "nodeVersion": "v24.21.0",
+      "unitCounts": {
+        "tests": 272,
+        "suites": 0,
+        "pass": 260,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 12
+      },
+      "editBlockUnitPasses": 30,
+      "editBlockUnitEvidence": [
+        "2026-11-02T20:07:35.8553256Z ✔ edit_block preserves exact bytes for LF requests against CRLF files (21.270622ms)",
+        "2026-11-02T20:07:35.8603644Z ✔ edit_block preserves exact bytes for CRLF requests against LF files (5.049445ms)",
+        "2026-11-02T20:07:35.8725314Z ✔ edit_block preserves exact bytes for mixed request delimiters against CR files (12.042367ms)",
+        "2026-11-02T20:07:35.8769231Z ✔ edit_block preserves exact bytes for mixed request delimiters against LF files (4.308913ms)",
+        "2026-11-02T20:07:35.8812742Z ✔ edit_block preserves exact bytes for multiline replacement after a single-line match (4.1819ms)",
+        "2026-11-02T20:07:35.8857209Z ✔ edit_block preserves exact bytes for empty replacement deletes only the normalized match (4.519598ms)",
+        "2026-11-02T20:07:35.8898537Z ✔ edit_block preserves exact bytes for BOM, Unicode, indentation and literal dollar replacement strings (4.028775ms)",
+        "2026-11-02T20:07:35.8939787Z ✔ edit_block preserves exact bytes for first CRLF delimiter wins and untouched minority LF stays unchanged (4.026602ms)",
+        "2026-11-02T20:07:35.8989412Z ✔ edit_block preserves exact bytes for first LF delimiter wins and untouched minority CRLF stays unchanged (4.767199ms)",
+        "2026-11-02T20:07:35.9062142Z ✔ edit_block uses the native default when the original file has no delimiter (7.343512ms)",
+        "2026-11-02T20:07:35.9115594Z ✔ edit_block counts normalized matches before any write and replaces all only at the exact count (5.198616ms)",
+        "2026-11-02T20:07:35.9160888Z ✔ edit_block rejects no-match and whitespace-only approximations without mutation (4.513868ms)",
+        "2026-11-02T20:07:35.9182656Z ✔ edit_block does not normalize the entire mixed-ending file to create a match (2.138728ms)",
+        "2026-11-02T20:07:35.9264041Z ✔ edit_block retains non-overlapping occurrence semantics for adjacent and overlapping patterns (8.145309ms)",
+        "2026-11-02T20:07:35.9302718Z ✔ edit_block validates empty search and invalid expected counts without writes (3.79745ms)",
+        "2026-11-02T20:07:35.9336971Z ✔ edit_block retains the match-work ceiling after newline normalization (3.300621ms)",
+        "2026-11-02T20:07:35.9397550Z ✔ edit_block accepts exactly the UTF-8 byte ceiling after CRLF expansion: a (6.055215ms)",
+        "2026-11-02T20:07:35.9424085Z ✔ edit_block rejects one byte over the ceiling after CRLF expansion: a (2.674626ms)",
+        "2026-11-02T20:07:35.9478774Z ✔ edit_block accepts exactly the UTF-8 byte ceiling after CRLF expansion: é (5.364209ms)",
+        "2026-11-02T20:07:35.9507759Z ✔ edit_block rejects one byte over the ceiling after CRLF expansion: é (2.844822ms)",
+        "2026-11-02T20:07:35.9580369Z ✔ edit_block accepts exactly the UTF-8 byte ceiling after CRLF expansion: 😀 (7.081855ms)",
+        "2026-11-02T20:07:35.9618482Z ✔ edit_block rejects one byte over the ceiling after CRLF expansion: 😀 (3.541619ms)",
+        "2026-11-02T20:07:35.9637790Z ✔ edit_block remains unavailable without the separate write capability (2.113182ms)",
+        "2026-11-02T20:07:35.9677727Z ✔ edit_block keeps private, outside-root, missing and unsupported file failures (3.96705ms)",
+        "2026-11-02T20:07:35.9742558Z ✔ edit_block refuses directory links and multiply-linked files without changing either target (6.502467ms)",
+        "2026-11-02T20:07:35.9779172Z ✔ edit_block preserves a concurrent writer when the read version becomes stale (3.563519ms)",
+        "2026-11-02T20:07:35.9799193Z ✔ pre-cancelled edit_block performs no read or write (1.762238ms)",
+        "2026-11-02T20:07:35.9823199Z ✔ cancellation during edit_block read takes precedence over matching: old",
+        "2026-11-02T20:07:35.9848078Z ✔ cancellation during edit_block read takes precedence over matching: absent (2.332149ms)",
+        "2026-11-02T20:07:36.0114305Z ✔ edit_block rejects oversized repeated replacement before allocating the output string (26.58587ms)"
+      ],
+      "skippedTests": [
+        "﹣ automation PowerShell scripts parse without executing (1.027462ms) # SKIP",
+        "﹣ one-command setup preview is read-only and permission-conservative (0.71471ms) # SKIP",
+        "﹣ one-command setup refuses a whole-drive root (0.137676ms) # SKIP",
+        "﹣ top-level MTerm CLI launcher parses as PowerShell without execution (0.318903ms) # SKIP",
+        "﹣ top-level Plan and Install preview do not modify the selected workspace (0.099886ms) # SKIP",
+        "﹣ top-level Verify reports explicit local versus remote readiness without mutation (0.113221ms) # SKIP",
+        "﹣ top-level launcher refuses unsafe root and unapproved execution paths (0.079408ms) # SKIP",
+        "﹣ Windows short filenames cannot expose existing compatibility policy storage (0.138537ms) # SKIP",
+        "﹣ Windows short file aliases return canonical identities and cannot evade the request guard (0.237923ms) # SKIP",
+        "﹣ Windows short file aliases cannot conceal a private canonical filename (0.070492ms) # SKIP",
+        "﹣ Windows missing leaves retain their canonical parent and final request guard (0.054481ms) # SKIP",
+        "﹣ Windows missing leaves cannot be created below an aliased private directory (0.04806ms) # SKIP"
+      ],
+      "sourceMutationGate": {
+        "step": {
+          "name": "Exact source remains unchanged by tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-02T20:07:59Z",
+          "completed_at": "2026-11-02T20:07:59Z"
+        },
+        "commandEvidence": [
+          "2026-11-02T20:07:59.2401413Z ##[group]Run git diff --exit-code",
+          "2026-11-02T20:07:59.2401952Z \u001b[36;1mgit diff --exit-code\u001b[0m"
+        ],
+        "scope": "Successful git diff --exit-code compares the working tree with the index. It does not enumerate untracked artifacts or independently compare staged content with HEAD."
+      },
+      "allStepsSuccessful": true,
+      "rawLog": {
+        "file": "/workspace/scratch/1a6479138b13/audit/hosted-candidate/job-125520410988.log",
+        "bytes": 69477,
+        "sha256": "2d204d0ccdf8e70ebb987a05c09aae8ef70930719e21e2181be5dd7b6640684e"
+      },
+      "actualRuntime": {
+        "node": "v24.21.0",
+        "platform": "linux",
+        "arch": "x64"
+      },
+      "installedPackageEvidence": {
+        "packageVersion": "0.0.1-preview.1",
+        "archiveBytes": 59902,
+        "packageUnpackedBytes": 232234,
+        "installedProductionBytes": 14178043,
+        "productionFiles": 989,
+        "packagedMcpRoundTrip": true,
+        "ownedPrefixNpmLink": true,
+        "offlineNpmExecFromTarball": true,
+        "npmExecMcpCompatibilityTools": 8,
+        "installedCompatibility": {
+          "npmExecMcp": true,
+          "compatibilityAliasesExercised": 8,
+          "directoryListing": {
+            "scenarios": [
+              "zero-depth",
+              "one-level-depth",
+              "default-depth-stable-exact-visible-overflow",
+              "link-not-traversed",
+              "root-private-link-missing-denials",
+              "schema-depth-denial"
+            ],
+            "passed": 6
+          },
+          "fileInfo": {
+            "scenarios": [
+              "text-stat-order-dates-empty-LF-CRLF-CR-BOM-Unicode",
+              "directory-handler-discriminator-no-lines",
+              "unchanged-inclusive-262144-byte-ceiling",
+              "binary-invalid-utf8-oversize-safe-omissions",
+              "unsupported-formats-stat-only",
+              "outside-private-link-hardlink-missing-denials",
+              "schema-path-denial",
+              "read-only-installed-restart-independent-capabilities"
+            ],
+            "passed": 8,
+            "readOnlyRestart": true
+          },
+          "multipleFiles": {
+            "scenarios": [
+              "ordered-summary-successes-duplicates-and-safe-partial-error",
+              "published-schema-and-one-to-twenty-path-boundaries",
+              "inclusive-full-text-byte-ceiling-and-one-byte-overflow",
+              "error-summary-and-separator-budget-in-both-orders",
+              "private-outside-format-hardlink-and-symlink-denials-no-mutation",
+              "read-only-installed-restart-capability-separation"
+            ],
+            "passed": 6,
+            "maxTextBytes": 262144,
+            "readOnlyRestart": true
+          },
+          "editBlock": {
+            "scenarios": [
+              "write-enabled-schema-discovery",
+              "CRLF-LF-CR-native-default-first-style-and-literal-byte-fidelity",
+              "normalized-exact-count-mismatch-and-schema-no-write",
+              "inclusive-UTF8-byte-limit-after-newline-expansion",
+              "private-and-outside-root-denials-preserve-bytes",
+              "read-only-restart-omits-edit-and-mutation-capabilities"
+            ],
+            "passed": 6,
+            "readOnlyRestart": true
+          },
+          "ownedProcessExitsVerified": true,
+          "directoryFixtureCleanupVerified": true,
+          "multipleFileFixtureCleanupVerified": true,
+          "stderrCapturedBytes": 0,
+          "fullParity": false,
+          "modelCalls": 0
+        },
+        "installedConfiguration": {
+          "ok": true,
+          "packageVersion": "0.0.1-preview.1",
+          "node": "v24.21.0",
+          "platform": "linux",
+          "architecture": "x64",
+          "installedEntryUnderOwnedPrefix": true,
+          "installedEntrySha256": "1376dfb68527a2fef2444be718a0011c53333c90f416eb377a8bde43e5dcc5b0",
+          "installedConfigModuleSha256": "f6f412a83d13a1aab24398f1d54ca1c301e093c6de1511f2097e0d43b720cc32",
+          "concurrentMcpProcesses": 2,
+          "restartedMcpProcesses": 1,
+          "compatibilityToolsDiscovered": [
+            "get_config",
+            "set_config_value"
+          ],
+          "getConfigMetadata": {
+            "textMatchesStructuredConfig": true,
+            "processIdentityMatchesOwnedChild": true,
+            "boundedMemoryAndRuntimeFields": true,
+            "orderedPreferenceTypes": true,
+            "clientExtrasOmitted": true,
+            "unsupportedProbesExplicitlyOmitted": true,
+            "featureFlagProvider": "none"
+          },
+          "setConfigContract": {
+            "preferencesExercised": [
+              "blockedCommands",
+              "allowedDirectories",
+              "defaultShell",
+              "fileReadLineLimit",
+              "fileWriteLineLimit",
+              "telemetryEnabled"
+            ],
+            "exactTextOnlySuccess": true,
+            "successValueMatchesCommittedEffectiveSnapshot": true,
+            "normalizedBooleanStrings": true,
+            "singletonAndJsonArrays": true,
+            "deduplicatedCanonicalRootsAndMandatoryBlocks": true,
+            "rejectedCases": 14,
+            "rejectedPolicyAndBackupBytesPreserved": true,
+            "rejectedValuesOmittedFromErrors": true,
+            "shellPreferencePersistsWithoutShellExecutionClaim": true
+          },
+          "steps": [
+            "two-installed-processes-discovery-and-owner-roots",
+            "get-config-envelope-memory-process-metadata-and-omissions",
+            "six-setting-success-output-and-normalized-effective-values",
+            "six-setting-rejections-preserve-policy-backup-and-safe-error-output",
+            "cross-process-read-defaults-and-write-warning-byte-fidelity",
+            "three-concurrent-distinct-key-writes-without-lost-updates",
+            "runtime-root-narrowing-empty-denial-and-owner-ceiling-preservation",
+            "telemetry-preference-has-no-observed-node-network-transport",
+            "malformed-policy-denial-and-owned-process-cleanup",
+            "restart-persistence-without-inheriting-config-write-authority"
+          ],
+          "telemetryNetworkGuard": {
+            "interceptedCanaryAttempts": 10,
+            "canaryApis": [
+              "net.Socket.connect",
+              "tls.connect",
+              "http.get",
+              "https.request",
+              "http2.connect",
+              "dgram.Socket.send",
+              "dns.lookup",
+              "dns.promises.lookup",
+              "fetch",
+              "WebSocket"
+            ],
+            "observedProductAttempts": 0,
+            "maximumRetainedAttemptsPerChild": 128,
+            "preferenceValuesExercised": [
+              true,
+              false
+            ],
+            "scope": "Instrumented standard Node network APIs in the three MCP children; not an OS sandbox or a descendant-process network monitor."
+          },
+          "actualCodexAgentToolInvocation": false,
+          "processExitProof": "Bounded signal-0 polling observed ESRCH for each captured MCP PID and owned fixture process; no numeric-PID termination fallback.",
+          "fullConfigurationParity": false,
+          "modelCalls": 0,
+          "realUserConfigChanged": false,
+          "evidence": "/home/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-QIjXNi/configuration-CsfvLM",
+          "shutdownVerified": true,
+          "ownedFixtureCleanup": true,
+          "stderrCapturedBytes": [
+            0,
+            0,
+            0
+          ]
+        },
+        "fullDesktopCommanderParity": false,
+        "fromOutsideCheckout": true,
+        "helpExternalLaunchSamplesMs": [
+          30.8,
+          28.62,
+          28.35,
+          29.84,
+          29.93
+        ],
+        "helpMedianMs": 29.836918999999853,
+        "nodeVersion": "v24.21.0",
+        "nodePrerequisiteBytes": 126595440,
+        "nodeBundled": false,
+        "codexBundled": false,
+        "webBundled": false,
+        "quotaAdapterBundled": false,
+        "fullThreeComponentUnder50MB": "NOT VERIFIED; this is a dependency-reuse local host, not that bundle",
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "evidence": "/home/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-QIjXNi"
+      },
+      "codexRegistrationEvidence": {
+        "codexVersion": "codex-cli 0.160.1",
+        "codexExpectedVersion": "0.160.1",
+        "testOwnedCodex": true,
+        "codexTestPrefix": "artifacts/ci-codex",
+        "codexNativeExecutable": "node_modules/@openai/codex-linux-x64/vendor/x86_64-unknown-linux-musl/bin/codex",
+        "node": "v24.21.0",
+        "platform": "linux",
+        "arch": "x64",
+        "setupApplied": true,
+        "setupIdempotent": true,
+        "configurationParsedByCodex": true,
+        "registeredCommandMcpRounds": 2,
+        "compatibilityProfilePersisted": true,
+        "configurationToolsDiscovered": [
+          "get_config",
+          "set_config_value"
+        ],
+        "syntheticConfigurationPathVerified": true,
+        "multipleRootsParsedByCodex": true,
+        "configurationPersistsAcrossRegisteredCommandRestarts": true,
+        "configuredReadLimitExercised": true,
+        "shutdownVerified": true,
+        "shutdownEvidence": "The original MCP process IDs returned ESRCH to bounded signal-0 polling after SDK close.",
+        "removalPreservesUnrelatedBytes": true,
+        "backupsRetained": true,
+        "actualCodexAgentToolInvocation": false,
+        "realUserConfigChanged": false,
+        "modelCalls": 0,
+        "installedEntry": false,
+        "evidence": "/home/runner/work/MTerm-CLI/MTerm-CLI/artifacts/managed-codex-GOYimi"
+      }
+    },
+    {
+      "jobId": 125520411085,
+      "name": "macos-15-intel / Node 24",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41516238559/job/125520411085",
+      "runId": 41516238559,
+      "runAttempt": 1,
+      "headSha": "5723f5d0914d2e3c7e165506cf6f11980eb54fc2",
+      "executedCheckoutCommit": "aee25a1adffe55033814da64b8458d3c48586359",
+      "executedTree": "5e3cdba9071d1149ab1ec28e67e3d7edb3335f65",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-02T20:07:13Z",
+      "completedAt": "2026-11-02T20:10:01Z",
+      "nodeVersion": "v24.21.0",
+      "unitCounts": {
+        "tests": 272,
+        "suites": 0,
+        "pass": 260,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 12
+      },
+      "editBlockUnitPasses": 30,
+      "editBlockUnitEvidence": [
+        "2026-11-02T20:08:07.1396310Z ✔ edit_block preserves exact bytes for LF requests against CRLF files (61.391292ms)",
+        "2026-11-02T20:08:07.1703150Z ✔ edit_block preserves exact bytes for CRLF requests against LF files (25.285136ms)",
+        "2026-11-02T20:08:07.2045330Z ✔ edit_block preserves exact bytes for mixed request delimiters against CR files (37.148248ms)",
+        "2026-11-02T20:08:07.2274460Z ✔ edit_block preserves exact bytes for mixed request delimiters against LF files (24.072032ms)",
+        "2026-11-02T20:08:07.2559270Z ✔ edit_block preserves exact bytes for multiline replacement after a single-line match (26.32657ms)",
+        "2026-11-02T20:08:07.2903110Z ✔ edit_block preserves exact bytes for empty replacement deletes only the normalized match (31.066291ms)",
+        "2026-11-02T20:08:07.3105860Z ✔ edit_block preserves exact bytes for BOM, Unicode, indentation and literal dollar replacement strings (25.769846ms)",
+        "2026-11-02T20:08:07.4121320Z ✔ edit_block preserves exact bytes for first CRLF delimiter wins and untouched minority LF stays unchanged (99.103162ms)",
+        "2026-11-02T20:08:07.4731870Z ✔ edit_block preserves exact bytes for first LF delimiter wins and untouched minority CRLF stays unchanged (62.548557ms)",
+        "2026-11-02T20:08:07.4966460Z ✔ edit_block uses the native default when the original file has no delimiter (22.164035ms)",
+        "2026-11-02T20:08:07.5200870Z ✔ edit_block counts normalized matches before any write and replaces all only at the exact count (25.301089ms)",
+        "2026-11-02T20:08:07.5425010Z ✔ edit_block rejects no-match and whitespace-only approximations without mutation (18.769945ms)",
+        "2026-11-02T20:08:07.5495990Z ✔ edit_block does not normalize the entire mixed-ending file to create a match (8.570037ms)",
+        "2026-11-02T20:08:07.5935690Z ✔ edit_block retains non-overlapping occurrence semantics for adjacent and overlapping patterns (42.796582ms)",
+        "2026-11-02T20:08:07.6022820Z ✔ edit_block validates empty search and invalid expected counts without writes (11.783143ms)",
+        "2026-11-02T20:08:07.6127460Z ✔ edit_block retains the match-work ceiling after newline normalization (9.061487ms)",
+        "2026-11-02T20:08:07.6380210Z ✔ edit_block accepts exactly the UTF-8 byte ceiling after CRLF expansion: a (25.906589ms)",
+        "2026-11-02T20:08:07.6479020Z ✔ edit_block rejects one byte over the ceiling after CRLF expansion: a (8.673443ms)",
+        "2026-11-02T20:08:07.6720940Z ✔ edit_block accepts exactly the UTF-8 byte ceiling after CRLF expansion: é (22.876953ms)",
+        "2026-11-02T20:08:07.6791750Z ✔ edit_block rejects one byte over the ceiling after CRLF expansion: é (9.38528ms)",
+        "2026-11-02T20:08:07.7136080Z ✔ edit_block accepts exactly the UTF-8 byte ceiling after CRLF expansion: 😀 (33.874348ms)",
+        "2026-11-02T20:08:07.7236590Z ✔ edit_block rejects one byte over the ceiling after CRLF expansion: 😀 (10.425789ms)",
+        "2026-11-02T20:08:07.7334010Z ✔ edit_block remains unavailable without the separate write capability (6.422515ms)",
+        "2026-11-02T20:08:07.7469980Z ✔ edit_block keeps private, outside-root, missing and unsupported file failures (15.351941ms)",
+        "2026-11-02T20:08:07.7583420Z ✔ edit_block refuses directory links and multiply-linked files without changing either target (12.267643ms)",
+        "2026-11-02T20:08:07.7721910Z ✔ edit_block preserves a concurrent writer when the read version becomes stale (13.521268ms)",
+        "2026-11-02T20:08:07.7789690Z ✔ pre-cancelled edit_block performs no read or write (6.567229ms)",
+        "2026-11-02T20:08:07.7909810Z ✔ cancellation during edit_block read takes precedence over matching: old",
+        "2026-11-02T20:08:07.8010940Z ✔ cancellation during edit_block read takes precedence over matching: absent (9.156674ms)",
+        "2026-11-02T20:08:07.8589510Z ✔ edit_block rejects oversized repeated replacement before allocating the output string (59.661236ms)"
+      ],
+      "skippedTests": [
+        "﹣ automation PowerShell scripts parse without executing (2.129586ms) # SKIP",
+        "﹣ one-command setup preview is read-only and permission-conservative (1.741367ms) # SKIP",
+        "﹣ one-command setup refuses a whole-drive root (0.239905ms) # SKIP",
+        "﹣ top-level MTerm CLI launcher parses as PowerShell without execution (0.547849ms) # SKIP",
+        "﹣ top-level Plan and Install preview do not modify the selected workspace (0.200715ms) # SKIP",
+        "﹣ top-level Verify reports explicit local versus remote readiness without mutation (0.241235ms) # SKIP",
+        "﹣ top-level launcher refuses unsafe root and unapproved execution paths (0.179142ms) # SKIP",
+        "﹣ Windows short filenames cannot expose existing compatibility policy storage (0.288544ms) # SKIP",
+        "﹣ Windows short file aliases return canonical identities and cannot evade the request guard (0.723803ms) # SKIP",
+        "﹣ Windows short file aliases cannot conceal a private canonical filename (0.170706ms) # SKIP",
+        "﹣ Windows missing leaves retain their canonical parent and final request guard (0.112756ms) # SKIP",
+        "﹣ Windows missing leaves cannot be created below an aliased private directory (0.117186ms) # SKIP"
+      ],
+      "sourceMutationGate": {
+        "step": {
+          "name": "Exact source remains unchanged by tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-11-02T20:09:17Z",
+          "completed_at": "2026-11-02T20:09:17Z"
+        },
+        "commandEvidence": [
+          "2026-11-02T20:09:17.1691300Z ##[group]Run git diff --exit-code",
+          "2026-11-02T20:09:17.1692480Z \u001b[36;1mgit diff --exit-code\u001b[0m"
+        ],
+        "scope": "Successful git diff --exit-code compares the working tree with the index. It does not enumerate untracked artifacts or independently compare staged content with HEAD."
+      },
+      "allStepsSuccessful": true,
+      "rawLog": {
+        "file": "/workspace/scratch/1a6479138b13/audit/hosted-candidate/job-125520411085.log",
+        "bytes": 68954,
+        "sha256": "530b0bcc30c26f9433476c1b7d6fbd461e1e0fb816e27e050b06f56eae1e4ac7"
+      },
+      "actualRuntime": {
+        "node": "v24.21.0",
+        "platform": "darwin",
+        "arch": "x64"
+      },
+      "installedPackageEvidence": {
+        "packageVersion": "0.0.1-preview.1",
+        "archiveBytes": 59902,
+        "packageUnpackedBytes": 232234,
+        "installedProductionBytes": 14178043,
+        "productionFiles": 989,
+        "packagedMcpRoundTrip": true,
+        "ownedPrefixNpmLink": true,
+        "offlineNpmExecFromTarball": true,
+        "npmExecMcpCompatibilityTools": 8,
+        "installedCompatibility": {
+          "npmExecMcp": true,
+          "compatibilityAliasesExercised": 8,
+          "directoryListing": {
+            "scenarios": [
+              "zero-depth",
+              "one-level-depth",
+              "default-depth-stable-exact-visible-overflow",
+              "link-not-traversed",
+              "root-private-link-missing-denials",
+              "schema-depth-denial"
+            ],
+            "passed": 6
+          },
+          "fileInfo": {
+            "scenarios": [
+              "text-stat-order-dates-empty-LF-CRLF-CR-BOM-Unicode",
+              "directory-handler-discriminator-no-lines",
+              "unchanged-inclusive-262144-byte-ceiling",
+              "binary-invalid-utf8-oversize-safe-omissions",
+              "unsupported-formats-stat-only",
+              "outside-private-link-hardlink-missing-denials",
+              "schema-path-denial",
+              "read-only-installed-restart-independent-capabilities"
+            ],
+            "passed": 8,
+            "readOnlyRestart": true
+          },
+          "multipleFiles": {
+            "scenarios": [
+              "ordered-summary-successes-duplicates-and-safe-partial-error",
+              "published-schema-and-one-to-twenty-path-boundaries",
+              "inclusive-full-text-byte-ceiling-and-one-byte-overflow",
+              "error-summary-and-separator-budget-in-both-orders",
+              "private-outside-format-hardlink-and-symlink-denials-no-mutation",
+              "read-only-installed-restart-capability-separation"
+            ],
+            "passed": 6,
+            "maxTextBytes": 262144,
+            "readOnlyRestart": true
+          },
+          "editBlock": {
+            "scenarios": [
+              "write-enabled-schema-discovery",
+              "CRLF-LF-CR-native-default-first-style-and-literal-byte-fidelity",
+              "normalized-exact-count-mismatch-and-schema-no-write",
+              "inclusive-UTF8-byte-limit-after-newline-expansion",
+              "private-and-outside-root-denials-preserve-bytes",
+              "read-only-restart-omits-edit-and-mutation-capabilities"
+            ],
+            "passed": 6,
+            "readOnlyRestart": true
+          },
+          "ownedProcessExitsVerified": true,
+          "directoryFixtureCleanupVerified": true,
+          "multipleFileFixtureCleanupVerified": true,
+          "stderrCapturedBytes": 0,
+          "fullParity": false,
+          "modelCalls": 0
+        },
+        "installedConfiguration": {
+          "ok": true,
+          "packageVersion": "0.0.1-preview.1",
+          "node": "v24.21.0",
+          "platform": "darwin",
+          "architecture": "x64",
+          "installedEntryUnderOwnedPrefix": true,
+          "installedEntrySha256": "1376dfb68527a2fef2444be718a0011c53333c90f416eb377a8bde43e5dcc5b0",
+          "installedConfigModuleSha256": "f6f412a83d13a1aab24398f1d54ca1c301e093c6de1511f2097e0d43b720cc32",
+          "concurrentMcpProcesses": 2,
+          "restartedMcpProcesses": 1,
+          "compatibilityToolsDiscovered": [
+            "get_config",
+            "set_config_value"
+          ],
+          "getConfigMetadata": {
+            "textMatchesStructuredConfig": true,
+            "processIdentityMatchesOwnedChild": true,
+            "boundedMemoryAndRuntimeFields": true,
+            "orderedPreferenceTypes": true,
+            "clientExtrasOmitted": true,
+            "unsupportedProbesExplicitlyOmitted": true,
+            "featureFlagProvider": "none"
+          },
+          "setConfigContract": {
+            "preferencesExercised": [
+              "blockedCommands",
+              "allowedDirectories",
+              "defaultShell",
+              "fileReadLineLimit",
+              "fileWriteLineLimit",
+              "telemetryEnabled"
+            ],
+            "exactTextOnlySuccess": true,
+            "successValueMatchesCommittedEffectiveSnapshot": true,
+            "normalizedBooleanStrings": true,
+            "singletonAndJsonArrays": true,
+            "deduplicatedCanonicalRootsAndMandatoryBlocks": true,
+            "rejectedCases": 14,
+            "rejectedPolicyAndBackupBytesPreserved": true,
+            "rejectedValuesOmittedFromErrors": true,
+            "shellPreferencePersistsWithoutShellExecutionClaim": true
+          },
+          "steps": [
+            "two-installed-processes-discovery-and-owner-roots",
+            "get-config-envelope-memory-process-metadata-and-omissions",
+            "six-setting-success-output-and-normalized-effective-values",
+            "six-setting-rejections-preserve-policy-backup-and-safe-error-output",
+            "cross-process-read-defaults-and-write-warning-byte-fidelity",
+            "three-concurrent-distinct-key-writes-without-lost-updates",
+            "runtime-root-narrowing-empty-denial-and-owner-ceiling-preservation",
+            "telemetry-preference-has-no-observed-node-network-transport",
+            "malformed-policy-denial-and-owned-process-cleanup",
+            "restart-persistence-without-inheriting-config-write-authority"
+          ],
+          "telemetryNetworkGuard": {
+            "interceptedCanaryAttempts": 10,
+            "canaryApis": [
+              "net.Socket.connect",
+              "tls.connect",
+              "http.get",
+              "https.request",
+              "http2.connect",
+              "dgram.Socket.send",
+              "dns.lookup",
+              "dns.promises.lookup",
+              "fetch",
+              "WebSocket"
+            ],
+            "observedProductAttempts": 0,
+            "maximumRetainedAttemptsPerChild": 128,
+            "preferenceValuesExercised": [
+              true,
+              false
+            ],
+            "scope": "Instrumented standard Node network APIs in the three MCP children; not an OS sandbox or a descendant-process network monitor."
+          },
+          "actualCodexAgentToolInvocation": false,
+          "processExitProof": "Bounded signal-0 polling observed ESRCH for each captured MCP PID and owned fixture process; no numeric-PID termination fallback.",
+          "fullConfigurationParity": false,
+          "modelCalls": 0,
+          "realUserConfigChanged": false,
+          "evidence": "/Users/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-4SuKsI/configuration-dcMr4T",
+          "shutdownVerified": true,
+          "ownedFixtureCleanup": true,
+          "stderrCapturedBytes": [
+            0,
+            0,
+            0
+          ]
+        },
+        "fullDesktopCommanderParity": false,
+        "fromOutsideCheckout": true,
+        "helpExternalLaunchSamplesMs": [
+          131.85,
+          139.16,
+          124.86,
+          117.91,
+          115.47
+        ],
+        "helpMedianMs": 124.85592200000065,
+        "nodeVersion": "v24.21.0",
+        "nodePrerequisiteBytes": 125270960,
+        "nodeBundled": false,
+        "codexBundled": false,
+        "webBundled": false,
+        "quotaAdapterBundled": false,
+        "fullThreeComponentUnder50MB": "NOT VERIFIED; this is a dependency-reuse local host, not that bundle",
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "evidence": "/Users/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-4SuKsI"
+      },
+      "codexRegistrationEvidence": {
+        "codexVersion": "codex-cli 0.160.1",
+        "codexExpectedVersion": "0.160.1",
+        "testOwnedCodex": true,
+        "codexTestPrefix": "artifacts/ci-codex",
+        "codexNativeExecutable": "node_modules/@openai/codex-darwin-x64/vendor/x86_64-apple-darwin/bin/codex",
+        "node": "v24.21.0",
+        "platform": "darwin",
+        "arch": "x64",
+        "setupApplied": true,
+        "setupIdempotent": true,
+        "configurationParsedByCodex": true,
+        "registeredCommandMcpRounds": 2,
+        "compatibilityProfilePersisted": true,
+        "configurationToolsDiscovered": [
+          "get_config",
+          "set_config_value"
+        ],
+        "syntheticConfigurationPathVerified": true,
+        "multipleRootsParsedByCodex": true,
+        "configurationPersistsAcrossRegisteredCommandRestarts": true,
+        "configuredReadLimitExercised": true,
+        "shutdownVerified": true,
+        "shutdownEvidence": "The original MCP process IDs returned ESRCH to bounded signal-0 polling after SDK close.",
+        "removalPreservesUnrelatedBytes": true,
+        "backupsRetained": true,
+        "actualCodexAgentToolInvocation": false,
+        "realUserConfigChanged": false,
+        "modelCalls": 0,
+        "installedEntry": false,
+        "evidence": "/Users/runner/work/MTerm-CLI/MTerm-CLI/artifacts/managed-codex-Z0zlwm"
+      }
+    },
+    {
+      "jobId": 125520410587,
+      "name": "CI / fast",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41516238581/job/125520410587",
+      "runId": 41516238581,
+      "runAttempt": 1,
+      "headSha": "5723f5d0914d2e3c7e165506cf6f11980eb54fc2",
+      "executedCheckoutCommit": "aee25a1adffe55033814da64b8458d3c48586359",
+      "executedTree": "5e3cdba9071d1149ab1ec28e67e3d7edb3335f65",
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-11-02T20:07:12Z",
+      "completedAt": "2026-11-02T20:07:46Z",
+      "nodeVersion": "v24.21.0",
+      "unitCounts": {
+        "tests": 272,
+        "suites": 0,
+        "pass": 260,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 12
+      },
+      "editBlockUnitPasses": 30,
+      "editBlockUnitEvidence": [
+        "2026-11-02T20:07:33.8182993Z ✔ edit_block preserves exact bytes for LF requests against CRLF files (15.696376ms)",
+        "2026-11-02T20:07:33.8293807Z ✔ edit_block preserves exact bytes for CRLF requests against LF files (11.189916ms)",
+        "2026-11-02T20:07:33.8400289Z ✔ edit_block preserves exact bytes for mixed request delimiters against CR files (10.544451ms)",
+        "2026-11-02T20:07:33.8433683Z ✔ edit_block preserves exact bytes for mixed request delimiters against LF files (3.285705ms)",
+        "2026-11-02T20:07:33.8467773Z ✔ edit_block preserves exact bytes for multiline replacement after a single-line match (3.301403ms)",
+        "2026-11-02T20:07:33.8502038Z ✔ edit_block preserves exact bytes for empty replacement deletes only the normalized match (3.40841ms)",
+        "2026-11-02T20:07:33.8535424Z ✔ edit_block preserves exact bytes for BOM, Unicode, indentation and literal dollar replacement strings (3.284967ms)",
+        "2026-11-02T20:07:33.8569210Z ✔ edit_block preserves exact bytes for first CRLF delimiter wins and untouched minority LF stays unchanged (3.082329ms)",
+        "2026-11-02T20:07:33.8604570Z ✔ edit_block preserves exact bytes for first LF delimiter wins and untouched minority CRLF stays unchanged (3.58906ms)",
+        "2026-11-02T20:07:33.8680483Z ✔ edit_block uses the native default when the original file has no delimiter (6.539371ms)",
+        "2026-11-02T20:07:33.8722336Z ✔ edit_block counts normalized matches before any write and replaces all only at the exact count (4.989674ms)",
+        "2026-11-02T20:07:33.8755088Z ✔ edit_block rejects no-match and whitespace-only approximations without mutation (3.366486ms)",
+        "2026-11-02T20:07:33.8773140Z ✔ edit_block does not normalize the entire mixed-ending file to create a match (1.67904ms)",
+        "2026-11-02T20:07:33.8853203Z ✔ edit_block retains non-overlapping occurrence semantics for adjacent and overlapping patterns (7.721518ms)",
+        "2026-11-02T20:07:33.8890070Z ✔ edit_block validates empty search and invalid expected counts without writes (3.870358ms)",
+        "2026-11-02T20:07:33.8916753Z ✔ edit_block retains the match-work ceiling after newline normalization (2.678881ms)",
+        "2026-11-02T20:07:33.8973105Z ✔ edit_block accepts exactly the UTF-8 byte ceiling after CRLF expansion: a (5.566593ms)",
+        "2026-11-02T20:07:33.8990868Z ✔ edit_block rejects one byte over the ceiling after CRLF expansion: a (1.841013ms)",
+        "2026-11-02T20:07:33.9031973Z ✔ edit_block accepts exactly the UTF-8 byte ceiling after CRLF expansion: é (4.059176ms)",
+        "2026-11-02T20:07:33.9052329Z ✔ edit_block rejects one byte over the ceiling after CRLF expansion: é (2.010586ms)",
+        "2026-11-02T20:07:33.9106834Z ✔ edit_block accepts exactly the UTF-8 byte ceiling after CRLF expansion: 😀 (5.326357ms)",
+        "2026-11-02T20:07:33.9134869Z ✔ edit_block rejects one byte over the ceiling after CRLF expansion: 😀 (2.532046ms)",
+        "2026-11-02T20:07:33.9147680Z ✔ edit_block remains unavailable without the separate write capability (1.456127ms)",
+        "2026-11-02T20:07:33.9202200Z ✔ edit_block keeps private, outside-root, missing and unsupported file failures (5.321307ms)",
+        "2026-11-02T20:07:33.9222967Z ✔ edit_block refuses directory links and multiply-linked files without changing either target (2.12281ms)",
+        "2026-11-02T20:07:33.9250156Z ✔ edit_block preserves a concurrent writer when the read version becomes stale (2.633394ms)",
+        "2026-11-02T20:07:33.9269622Z ✔ pre-cancelled edit_block performs no read or write (1.215101ms)",
+        "2026-11-02T20:07:33.9287636Z ✔ cancellation during edit_block read takes precedence over matching: old",
+        "2026-11-02T20:07:33.9309450Z ✔ cancellation during edit_block read takes precedence over matching: absent (2.124569ms)",
+        "2026-11-02T20:07:33.9520624Z ✔ edit_block rejects oversized repeated replacement before allocating the output string (21.137848ms)"
+      ],
+      "skippedTests": [
+        "﹣ automation PowerShell scripts parse without executing (0.707889ms) # SKIP",
+        "﹣ one-command setup preview is read-only and permission-conservative (0.69465ms) # SKIP",
+        "﹣ one-command setup refuses a whole-drive root (0.087027ms) # SKIP",
+        "﹣ top-level MTerm CLI launcher parses as PowerShell without execution (0.279369ms) # SKIP",
+        "﹣ top-level Plan and Install preview do not modify the selected workspace (0.089562ms) # SKIP",
+        "﹣ top-level Verify reports explicit local versus remote readiness without mutation (0.087552ms) # SKIP",
+        "﹣ top-level launcher refuses unsafe root and unapproved execution paths (0.053147ms) # SKIP",
+        "﹣ Windows short filenames cannot expose existing compatibility policy storage (0.101822ms) # SKIP",
+        "﹣ Windows short file aliases return canonical identities and cannot evade the request guard (0.221533ms) # SKIP",
+        "﹣ Windows short file aliases cannot conceal a private canonical filename (0.056082ms) # SKIP",
+        "﹣ Windows missing leaves retain their canonical parent and final request guard (0.055222ms) # SKIP",
+        "﹣ Windows missing leaves cannot be created below an aliased private directory (0.025991ms) # SKIP"
+      ],
+      "sourceMutationGate": {
+        "step": {
+          "name": "No test-induced source mutation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-02T20:07:43Z",
+          "completed_at": "2026-11-02T20:07:43Z"
+        },
+        "commandEvidence": [
+          "2026-11-02T20:07:43.5378262Z ##[group]Run git diff --exit-code",
+          "2026-11-02T20:07:43.5378627Z \u001b[36;1mgit diff --exit-code\u001b[0m"
+        ],
+        "scope": "Successful git diff --exit-code compares the working tree with the index. It does not enumerate untracked artifacts or independently compare staged content with HEAD."
+      },
+      "allStepsSuccessful": true,
+      "rawLog": {
+        "file": "/workspace/scratch/1a6479138b13/audit/hosted-candidate/job-125520410587.log",
+        "bytes": 54840,
+        "sha256": "a352bb212ada9c3fcceeb132da97ee9a7dbf57acaae823632ba8bc5bcb2f93d1"
+      },
+      "scope": "Build and deterministic checks only; no separate packed-install or native Codex registration step in the fast workflow."
+    }
+  ],
+  "expectedUnitScope": "272 tests discovered in each job. Windows runs all 272. Other jobs pass 260 and skip the same 12: seven Windows/PowerShell automation tests and five Windows 8.3 alias tests. All 30 edit_block tests pass on each runner.",
+  "nativeCodexScope": "The matrix runs the actual platform-native Codex CLI 0.160.1 from a test-owned npm prefix against synthetic configuration, then exercises two registered-command MCP SDK rounds. Its reported installedEntry is false. Packaged installed-entry MCP verification is separate. There are no actual Codex agent/model tool calls, and no real user configuration changes.",
+  "installedEditScenarios": [
+    "write-enabled-schema-discovery",
+    "CRLF-LF-CR-native-default-first-style-and-literal-byte-fidelity",
+    "normalized-exact-count-mismatch-and-schema-no-write",
+    "inclusive-UTF8-byte-limit-after-newline-expansion",
+    "private-and-outside-root-denials-preserve-bytes",
+    "read-only-restart-omits-edit-and-mutation-capabilities"
+  ],
+  "sourceArchiveBinding": {
+    "report": {
+      "file": "/workspace/scratch/1a6479138b13/audit/qualified-source-verification.json",
+      "bytes": 279300,
+      "sha256": "f27cbb2bd640e9c61b03cb17e4075b8e8d5599a82ce2d8aae679a0e80cd6eb89"
+    },
+    "archive": {
+      "file": "/workspace/scratch/1a6479138b13/audit/qualified-source.zip",
+      "bytes": 1290033,
+      "sha256": "e7457c04d8e39dbb64b09a5ee4a5e3048a6dcd2fd6e472196447d09332e299b8"
+    },
+    "counts": {
+      "files": 569,
+      "directories": 29,
+      "executables": 1,
+      "sourceBytes": 4143981
+    },
+    "completeMemberSetVerified": true,
+    "allBlobBytesVerified": true,
+    "allGitLogicalModesVerified": true,
+    "cleanPristineExtraction": {
+      "root": "/workspace/scratch/1a6479138b13/audit/qualified-pristine-source",
+      "allMembersVerified": true,
+      "noUnrelatedMembers": true,
+      "exactBlobBytesVerified": true,
+      "posixExecutableModesVerified": true,
+      "modeLimitation": null,
+      "createdFromPreviouslyVerifiedArchiveMembers": true
+    }
+  },
+  "priorFailurePreserved": {
+    "head": "d8c232e306372a78ec3b264bd2608f6733a9dc2f",
+    "report": "../hosted-initial/independent-initial-run-audit.json",
+    "classification": "Four failed initial matrix jobs retained as failures. Their installed test observer incorrectly parsed MCP SDK schema-error text as JSON after the unit suites passed. The corrected head has new run IDs, each attempt 1; this audit does not relabel the earlier runs."
+  },
+  "methodology": [
+    "Only read-only GitHub connector GET and job-log retrieval were used.",
+    "Raw decoded log strings were encoded directly to UTF-8 without normalization, preserving BOM and newline bytes returned by the connector.",
+    "Every job was inspected independently. Assertions bind run metadata, actual checkout hash, commit tree, full suite counts, installed groups, native executable evidence, and completed source-mutation step.",
+    "No tests, retries, cancellations, remote writes, or product repository mutations were performed for this audit."
+  ],
+  "limitations": [
+    "This report audits hosted-run evidence, not the separate Windows native full-wrapper/fresh-extraction qualification.",
+    "Passing the bounded edit scenarios does not establish full Desktop Commander parity or broader DCP acceptance.",
+    "The hosted source-mutation command checks working tree versus index, not untracked files or a separate staged-content comparison."
+  ]
+}

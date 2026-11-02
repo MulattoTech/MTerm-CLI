@@ -1,0 +1,627 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "DCP-025-FRESH-QUALIFIED-REVIEW-001",
+  "reviewer": "Independent /root/live_issue_audit agent",
+  "observedAtUtc": "2026-11-02T20:12:47.410445+00:00",
+  "decision": "approved_recorded_fresh_qualification_native_zip_member_audit_separate",
+  "blockingExecutionFindings": [],
+  "scope": "Read-only audit of recovered native fresh receipt and all12 named logs; immutable source identity, current invocation package evidence and actual command results verified. No suite reruns or repository/native/remote mutations. Actual native ZIP transfer/all-member validation is a separate pending receipt at this review.",
+  "qualifiedSource": {
+    "sha": "5723f5d0914d2e3c7e165506cf6f11980eb54fc2",
+    "tree": "5e3cdba9071d1149ab1ec28e67e3d7edb3335f65",
+    "platform": "win32",
+    "node": "v24.21.0",
+    "arch": "x64",
+    "selectedSourceHashes": [
+      {
+        "path": "src/desktop-commander-files.ts",
+        "bytes": 19530,
+        "sha256": "570946f9b68db88159f868a77f8846a99baf7d4bfda52d8dc5a4e6cd80da3215",
+        "normalizedSha256": "570946f9b68db88159f868a77f8846a99baf7d4bfda52d8dc5a4e6cd80da3215",
+        "matchesImmutableGitBlob": true
+      },
+      {
+        "path": "tests/compat-edit-block.test.mjs",
+        "bytes": 13904,
+        "sha256": "81afa22554c1a4d2857f32c28fbbffc358bfec2c8b2527190f447c8acf26858b",
+        "normalizedSha256": "81afa22554c1a4d2857f32c28fbbffc358bfec2c8b2527190f447c8acf26858b",
+        "matchesImmutableGitBlob": true
+      },
+      {
+        "path": "scripts/verify-compatibility-installed.mjs",
+        "bytes": 28664,
+        "sha256": "d36fb8d1236d808a81fa25e1056370120b537a0709e884b00a677230f46394be",
+        "normalizedSha256": "d36fb8d1236d808a81fa25e1056370120b537a0709e884b00a677230f46394be",
+        "matchesImmutableGitBlob": true
+      },
+      {
+        "path": "package-lock.json",
+        "bytes": 19974,
+        "sha256": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec",
+        "normalizedSha256": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec",
+        "matchesImmutableGitBlob": true
+      },
+      {
+        "path": "npm-shrinkwrap.json",
+        "bytes": 19974,
+        "sha256": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec",
+        "normalizedSha256": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec",
+        "matchesImmutableGitBlob": true
+      }
+    ],
+    "sourceHashesEqualNativeQualifiedCampaign": true,
+    "runtimeSha256": "570946f9b68db88159f868a77f8846a99baf7d4bfda52d8dc5a4e6cd80da3215",
+    "focusedFixtureSha256": "81afa22554c1a4d2857f32c28fbbffc358bfec2c8b2527190f447c8acf26858b",
+    "installedHarnessSha256": "d36fb8d1236d808a81fa25e1056370120b537a0709e884b00a677230f46394be",
+    "sourceLockAndShrinkwrapSha256": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec"
+  },
+  "receipt": {
+    "path": "/workspace/scratch/1a6479138b13/audit/native/qualification-2/fresh.json",
+    "bytes": 15740,
+    "sha256": "e172092986ef17632854f39740c203f32cb4149b22c4e26a6f27bd07e60faac9",
+    "normalizedSha256": "e172092986ef17632854f39740c203f32cb4149b22c4e26a6f27bd07e60faac9",
+    "startedAtUtc": "2026-11-02T20:08:58.197Z",
+    "completedAtUtc": "2026-11-02T20:09:57.030Z",
+    "ok": true
+  },
+  "commandChecks": [
+    {
+      "name": "fresh-archive",
+      "executable": "git",
+      "arguments": [
+        "archive",
+        "--format=zip",
+        "--output=C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\parity-iteration-20261102-1952\\artifacts\\edit-eol\\qualification-2\\fresh-committed-source.zip",
+        "5723f5d0914d2e3c7e165506cf6f11980eb54fc2"
+      ],
+      "cwd": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\parity-iteration-20261102-1952",
+      "startedAtUtc": "2026-11-02T20:08:58.288Z",
+      "completedAtUtc": "2026-11-02T20:08:58.419Z",
+      "pid": 25672,
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "verifiedLogs": {
+        "stdout": {
+          "path": "/workspace/scratch/1a6479138b13/audit/native/qualification-2/fresh-archive.stdout.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "normalizedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "matchesReceipt": true
+        },
+        "stderr": {
+          "path": "/workspace/scratch/1a6479138b13/audit/native/qualification-2/fresh-archive.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "normalizedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "matchesReceipt": true
+        }
+      }
+    },
+    {
+      "name": "fresh-extract",
+      "executable": "powershell.exe",
+      "arguments": [
+        "-NoProfile",
+        "-Command",
+        "Expand-Archive -LiteralPath 'C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\parity-iteration-20261102-1952\\artifacts\\edit-eol\\qualification-2\\fresh-committed-source.zip' -DestinationPath 'C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\parity-iteration-20261102-1952\\artifacts\\edit-eol\\qualification-2\\fresh-source-1vvkbi' -ErrorAction Stop"
+      ],
+      "cwd": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\parity-iteration-20261102-1952",
+      "startedAtUtc": "2026-11-02T20:08:58.421Z",
+      "completedAtUtc": "2026-11-02T20:09:05.499Z",
+      "pid": 68948,
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "verifiedLogs": {
+        "stdout": {
+          "path": "/workspace/scratch/1a6479138b13/audit/native/qualification-2/fresh-extract.stdout.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "normalizedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "matchesReceipt": true
+        },
+        "stderr": {
+          "path": "/workspace/scratch/1a6479138b13/audit/native/qualification-2/fresh-extract.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "normalizedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "matchesReceipt": true
+        }
+      }
+    },
+    {
+      "name": "fresh-locked-install",
+      "executable": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+      "arguments": [
+        "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+        "ci",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund"
+      ],
+      "cwd": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\parity-iteration-20261102-1952\\artifacts\\edit-eol\\qualification-2\\fresh-source-1vvkbi",
+      "startedAtUtc": "2026-11-02T20:09:05.503Z",
+      "completedAtUtc": "2026-11-02T20:09:08.926Z",
+      "pid": 54104,
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "verifiedLogs": {
+        "stdout": {
+          "path": "/workspace/scratch/1a6479138b13/audit/native/qualification-2/fresh-locked-install.stdout.log",
+          "bytes": 25,
+          "sha256": "0c5ce40684ad250e16d011aa5ef2c95710d30b423cc5c7e68601ba53df6368cf",
+          "normalizedSha256": "0c5ce40684ad250e16d011aa5ef2c95710d30b423cc5c7e68601ba53df6368cf",
+          "matchesReceipt": true
+        },
+        "stderr": {
+          "path": "/workspace/scratch/1a6479138b13/audit/native/qualification-2/fresh-locked-install.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "normalizedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "matchesReceipt": true
+        }
+      }
+    },
+    {
+      "name": "fresh-reviewed-build",
+      "executable": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+      "arguments": [
+        "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "build"
+      ],
+      "cwd": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\parity-iteration-20261102-1952\\artifacts\\edit-eol\\qualification-2\\fresh-source-1vvkbi",
+      "startedAtUtc": "2026-11-02T20:09:08.927Z",
+      "completedAtUtc": "2026-11-02T20:09:10.341Z",
+      "pid": 25484,
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "verifiedLogs": {
+        "stdout": {
+          "path": "/workspace/scratch/1a6479138b13/audit/native/qualification-2/fresh-reviewed-build.stdout.log",
+          "bytes": 786,
+          "sha256": "e88e6133625427b3e6b7c5148fdcedda65ce86a1d5f8a7c409bbe102e9784ad3",
+          "normalizedSha256": "e88e6133625427b3e6b7c5148fdcedda65ce86a1d5f8a7c409bbe102e9784ad3",
+          "matchesReceipt": true
+        },
+        "stderr": {
+          "path": "/workspace/scratch/1a6479138b13/audit/native/qualification-2/fresh-reviewed-build.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "normalizedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "matchesReceipt": true
+        }
+      }
+    },
+    {
+      "name": "fresh-normal-prepack",
+      "executable": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+      "arguments": [
+        "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+        "pack",
+        "--json",
+        "--pack-destination",
+        "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\parity-iteration-20261102-1952\\artifacts\\edit-eol\\qualification-2\\fresh-source-1vvkbi\\artifacts\\normal-pack"
+      ],
+      "cwd": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\parity-iteration-20261102-1952\\artifacts\\edit-eol\\qualification-2\\fresh-source-1vvkbi",
+      "startedAtUtc": "2026-11-02T20:09:10.342Z",
+      "completedAtUtc": "2026-11-02T20:09:46.173Z",
+      "pid": 8544,
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "verifiedLogs": {
+        "stdout": {
+          "path": "/workspace/scratch/1a6479138b13/audit/native/qualification-2/fresh-normal-prepack.stdout.log",
+          "bytes": 30234,
+          "sha256": "27b93dd9d6c1f7f6f536573f36e9689ce181d7a25c7de6f1770a670a4f473de5",
+          "normalizedSha256": "27b93dd9d6c1f7f6f536573f36e9689ce181d7a25c7de6f1770a670a4f473de5",
+          "matchesReceipt": true
+        },
+        "stderr": {
+          "path": "/workspace/scratch/1a6479138b13/audit/native/qualification-2/fresh-normal-prepack.stderr.log",
+          "bytes": 738,
+          "sha256": "34ee2bf9f08bdddd50d9d8090fb49ab20d6fb4d2b43c3e78b954c09282fd02ee",
+          "normalizedSha256": "34ee2bf9f08bdddd50d9d8090fb49ab20d6fb4d2b43c3e78b954c09282fd02ee",
+          "matchesReceipt": true
+        }
+      }
+    },
+    {
+      "name": "fresh-package",
+      "executable": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+      "arguments": [
+        "scripts/verify-package.mjs"
+      ],
+      "cwd": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\parity-iteration-20261102-1952\\artifacts\\edit-eol\\qualification-2\\fresh-source-1vvkbi",
+      "startedAtUtc": "2026-11-02T20:09:46.175Z",
+      "completedAtUtc": "2026-11-02T20:09:57.028Z",
+      "pid": 40804,
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "verifiedLogs": {
+        "stdout": {
+          "path": "/workspace/scratch/1a6479138b13/audit/native/qualification-2/fresh-package.stdout.log",
+          "bytes": 6690,
+          "sha256": "d8cb7fe9c185affa5f6d7c715de8f952bc57587e151f3ac003586562661f05b8",
+          "normalizedSha256": "d8cb7fe9c185affa5f6d7c715de8f952bc57587e151f3ac003586562661f05b8",
+          "matchesReceipt": true
+        },
+        "stderr": {
+          "path": "/workspace/scratch/1a6479138b13/audit/native/qualification-2/fresh-package.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "normalizedSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "matchesReceipt": true
+        }
+      }
+    }
+  ],
+  "allSixActualExitCodesZero": true,
+  "allTwelveRawLogHashesVerified": true,
+  "serialTimesAndCwdProvenanceVerified": true,
+  "freshExtraction": {
+    "path": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\parity-iteration-20261102-1952\\artifacts\\edit-eol\\qualification-2\\fresh-source-1vvkbi",
+    "exactCommitNamedInGitArchiveCommand": true,
+    "powershellExpandArchiveSucceeded": true,
+    "driverAssertsNoInitialNodeModulesOrDist": true,
+    "driverComparesFiveNormalizedExtractedSourceHashesToCommittedCloneBeforeInstall": true,
+    "lockedInstallArguments": [
+      "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+      "ci",
+      "--ignore-scripts",
+      "--no-audit",
+      "--no-fund"
+    ],
+    "lockedInstallStdout": "\nadded 19 packages in 3s\n",
+    "reviewedBuildExecutedFromFreshExtraction": true,
+    "freshPackageResultEqualsCurrentStdout": true,
+    "freshPackageResultDirectory": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\parity-iteration-20261102-1952\\artifacts\\edit-eol\\qualification-2\\fresh-source-1vvkbi\\artifacts\\package-verify-Z7zKfg",
+    "resultIsDistinctFromOriginalClonePackageResult": true,
+    "driverCurrentInvocationMtimeAndOutputGuardReviewed": true
+  },
+  "normalPrepack": {
+    "actualNpmPackWithoutIgnoreScripts": true,
+    "prepackLifecycle": "npm run check && npm run build:code",
+    "lifecycleObservedInStderr": true,
+    "testCounts": {
+      "tests": 272,
+      "pass": 272,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "packMetadata": {
+      "id": "mterm-cli@0.0.1-preview.1",
+      "name": "mterm-cli",
+      "version": "0.0.1-preview.1",
+      "size": 59896,
+      "unpackedSize": 232234,
+      "shasum": "dfccdd44ef70c76c3c87eebf0553d069f7c82932",
+      "integrity": "sha512-YWQ8IrCrm455jn5n3to0P3UTlBhS+gkIY51XKhjkRfrhEqc8ACA6OWFvPTmVsNVki2G4HAQbLYF8ceFJxZv0pg==",
+      "filename": "mterm-cli-0.0.1-preview.1.tgz",
+      "entryCount": 42,
+      "bundled": []
+    },
+    "packMemberPaths": [
+      "LICENSE",
+      "README.md",
+      "THIRD_PARTY.md",
+      "bin/mterm-cli.js",
+      "dist/cli.d.ts",
+      "dist/cli.js",
+      "dist/codex-registration.d.ts",
+      "dist/codex-registration.js",
+      "dist/codex.d.ts",
+      "dist/codex.js",
+      "dist/compat-config.d.ts",
+      "dist/compat-config.js",
+      "dist/config.d.ts",
+      "dist/config.js",
+      "dist/desktop-commander-files.d.ts",
+      "dist/desktop-commander-files.js",
+      "dist/errors.d.ts",
+      "dist/errors.js",
+      "dist/executables.d.ts",
+      "dist/executables.js",
+      "dist/files.d.ts",
+      "dist/files.js",
+      "dist/git.d.ts",
+      "dist/git.js",
+      "dist/mcp.d.ts",
+      "dist/mcp.js",
+      "dist/policy.d.ts",
+      "dist/policy.js",
+      "dist/processes.d.ts",
+      "dist/processes.js",
+      "dist/remote/adapter.d.ts",
+      "dist/remote/adapter.js",
+      "dist/remote/agent.d.ts",
+      "dist/remote/agent.js",
+      "dist/remote/cli.d.ts",
+      "dist/remote/cli.js",
+      "dist/remote/protocol.d.ts",
+      "dist/remote/protocol.js",
+      "dist/remote/state.d.ts",
+      "dist/remote/state.js",
+      "package.json",
+      "versions.json"
+    ],
+    "npmReportedIntegrityMatchesNativeNormalPrepack": "sha512-YWQ8IrCrm455jn5n3to0P3UTlBhS+gkIY51XKhjkRfrhEqc8ACA6OWFvPTmVsNVki2G4HAQbLYF8ceFJxZv0pg==",
+    "scope": "Reported successful normal-pack artifact and npm integrity; tarball bytes were not independently transferred or hashed in this audit."
+  },
+  "freshInstalledPackage": {
+    "archiveBytes": 59896,
+    "packageUnpackedBytes": 232234,
+    "installedProductionBytes": 14179604,
+    "productionFiles": 992,
+    "packageResultPath": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\parity-iteration-20261102-1952\\artifacts\\edit-eol\\qualification-2\\fresh-source-1vvkbi\\artifacts\\package-verify-Z7zKfg",
+    "installedEntry": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\parity-iteration-20261102-1952\\artifacts\\edit-eol\\qualification-2\\fresh-source-1vvkbi\\artifacts\\package-verify-Z7zKfg\\install\\node_modules\\mterm-cli\\bin\\mterm-cli.js",
+    "fromOutsideCheckout": true,
+    "packagedMcpRoundTrip": true,
+    "offlineNpmExecFromTarball": true,
+    "ownedPrefixNpmLink": true,
+    "compatibility": {
+      "npmExecMcp": true,
+      "compatibilityAliasesExercised": 8,
+      "directoryListing": {
+        "scenarios": [
+          "zero-depth",
+          "one-level-depth",
+          "default-depth-stable-exact-visible-overflow",
+          "link-not-traversed",
+          "root-private-link-missing-denials",
+          "schema-depth-denial"
+        ],
+        "passed": 6
+      },
+      "fileInfo": {
+        "scenarios": [
+          "text-stat-order-dates-empty-LF-CRLF-CR-BOM-Unicode",
+          "directory-handler-discriminator-no-lines",
+          "unchanged-inclusive-262144-byte-ceiling",
+          "binary-invalid-utf8-oversize-safe-omissions",
+          "unsupported-formats-stat-only",
+          "outside-private-link-hardlink-missing-denials",
+          "schema-path-denial",
+          "read-only-installed-restart-independent-capabilities"
+        ],
+        "passed": 8,
+        "readOnlyRestart": true
+      },
+      "multipleFiles": {
+        "scenarios": [
+          "ordered-summary-successes-duplicates-and-safe-partial-error",
+          "published-schema-and-one-to-twenty-path-boundaries",
+          "inclusive-full-text-byte-ceiling-and-one-byte-overflow",
+          "error-summary-and-separator-budget-in-both-orders",
+          "private-outside-format-hardlink-and-symlink-denials-no-mutation",
+          "read-only-installed-restart-capability-separation"
+        ],
+        "passed": 6,
+        "maxTextBytes": 262144,
+        "readOnlyRestart": true
+      },
+      "editBlock": {
+        "scenarios": [
+          "write-enabled-schema-discovery",
+          "CRLF-LF-CR-native-default-first-style-and-literal-byte-fidelity",
+          "normalized-exact-count-mismatch-and-schema-no-write",
+          "inclusive-UTF8-byte-limit-after-newline-expansion",
+          "private-and-outside-root-denials-preserve-bytes",
+          "read-only-restart-omits-edit-and-mutation-capabilities"
+        ],
+        "passed": 6,
+        "readOnlyRestart": true
+      },
+      "ownedProcessExitsVerified": true,
+      "directoryFixtureCleanupVerified": true,
+      "multipleFileFixtureCleanupVerified": true,
+      "stderrCapturedBytes": 0,
+      "fullParity": false,
+      "modelCalls": 0
+    },
+    "configuration": {
+      "ok": true,
+      "packageVersion": "0.0.1-preview.1",
+      "node": "v24.21.0",
+      "platform": "win32",
+      "architecture": "x64",
+      "installedEntryUnderOwnedPrefix": true,
+      "installedEntrySha256": "1376dfb68527a2fef2444be718a0011c53333c90f416eb377a8bde43e5dcc5b0",
+      "installedConfigModuleSha256": "f6f412a83d13a1aab24398f1d54ca1c301e093c6de1511f2097e0d43b720cc32",
+      "concurrentMcpProcesses": 2,
+      "restartedMcpProcesses": 1,
+      "compatibilityToolsDiscovered": [
+        "get_config",
+        "set_config_value"
+      ],
+      "getConfigMetadata": {
+        "textMatchesStructuredConfig": true,
+        "processIdentityMatchesOwnedChild": true,
+        "boundedMemoryAndRuntimeFields": true,
+        "orderedPreferenceTypes": true,
+        "clientExtrasOmitted": true,
+        "unsupportedProbesExplicitlyOmitted": true,
+        "featureFlagProvider": "none"
+      },
+      "setConfigContract": {
+        "preferencesExercised": [
+          "blockedCommands",
+          "allowedDirectories",
+          "defaultShell",
+          "fileReadLineLimit",
+          "fileWriteLineLimit",
+          "telemetryEnabled"
+        ],
+        "exactTextOnlySuccess": true,
+        "successValueMatchesCommittedEffectiveSnapshot": true,
+        "normalizedBooleanStrings": true,
+        "singletonAndJsonArrays": true,
+        "deduplicatedCanonicalRootsAndMandatoryBlocks": true,
+        "rejectedCases": 14,
+        "rejectedPolicyAndBackupBytesPreserved": true,
+        "rejectedValuesOmittedFromErrors": true,
+        "shellPreferencePersistsWithoutShellExecutionClaim": true
+      },
+      "steps": [
+        "two-installed-processes-discovery-and-owner-roots",
+        "get-config-envelope-memory-process-metadata-and-omissions",
+        "six-setting-success-output-and-normalized-effective-values",
+        "six-setting-rejections-preserve-policy-backup-and-safe-error-output",
+        "cross-process-read-defaults-and-write-warning-byte-fidelity",
+        "three-concurrent-distinct-key-writes-without-lost-updates",
+        "runtime-root-narrowing-empty-denial-and-owner-ceiling-preservation",
+        "telemetry-preference-has-no-observed-node-network-transport",
+        "malformed-policy-denial-and-owned-process-cleanup",
+        "restart-persistence-without-inheriting-config-write-authority"
+      ],
+      "telemetryNetworkGuard": {
+        "interceptedCanaryAttempts": 10,
+        "canaryApis": [
+          "net.Socket.connect",
+          "tls.connect",
+          "http.get",
+          "https.request",
+          "http2.connect",
+          "dgram.Socket.send",
+          "dns.lookup",
+          "dns.promises.lookup",
+          "fetch",
+          "WebSocket"
+        ],
+        "observedProductAttempts": 0,
+        "maximumRetainedAttemptsPerChild": 128,
+        "preferenceValuesExercised": [
+          true,
+          false
+        ],
+        "scope": "Instrumented standard Node network APIs in the three MCP children; not an OS sandbox or a descendant-process network monitor."
+      },
+      "actualCodexAgentToolInvocation": false,
+      "processExitProof": "Bounded signal-0 polling observed ESRCH for each captured MCP PID and owned fixture process; no numeric-PID termination fallback.",
+      "fullConfigurationParity": false,
+      "modelCalls": 0,
+      "realUserConfigChanged": false,
+      "evidence": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\parity-iteration-20261102-1952\\artifacts\\edit-eol\\qualification-2\\fresh-source-1vvkbi\\artifacts\\package-verify-Z7zKfg\\configuration-eOYiBs",
+      "shutdownVerified": true,
+      "ownedFixtureCleanup": true,
+      "stderrCapturedBytes": [
+        0,
+        0,
+        0
+      ]
+    },
+    "noUserGlobalPrefixModified": true,
+    "modelCalls": 0,
+    "fullDesktopCommanderParity": false
+  },
+  "archiveIdentity": {
+    "nativeZipRecordedInReceipt": {
+      "path": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\parity-iteration-20261102-1952\\artifacts\\edit-eol\\qualification-2\\fresh-committed-source.zip",
+      "bytes": 1290033,
+      "sha256": "0cfe53f8076fefb1b8279539d37994d938f5fe842ec8ef04a3b3cd92a1ef1227"
+    },
+    "nativeZipAllMembersIndependentlyVerifiedByThisReview": false,
+    "nativeZipVerificationStatus": "Transfer and separate all-member verifier receipt pending; do not substitute a locally generated ZIP hash.",
+    "localReferenceZip": {
+      "path": "/workspace/scratch/1a6479138b13/audit/qualified-source.zip",
+      "bytes": 1290033,
+      "sha256": "e7457c04d8e39dbb64b09a5ee4a5e3048a6dcd2fd6e472196447d09332e299b8",
+      "normalizedSha256": "82f09f480d8f5bc8bf63e5bd859ca7de73e60e5e5e9a08091c3fee6023a47112",
+      "commitComment": "5723f5d0914d2e3c7e165506cf6f11980eb54fc2"
+    },
+    "sameSize": true,
+    "sameZipBytes": false,
+    "differenceCause": "Unestablished; no compression, metadata, timestamp or implementation cause inferred.",
+    "requiredFollowUp": "Verify recovered native ZIP SHA256 equals0cfe53f8076fefb1b8279539d37994d938f5fe842ec8ef04a3b3cd92a1ef1227 and verify complete path set, modes and bytes against immutable5723f5d tree; preserve additive receipt."
+  },
+  "existingPackagingCaveat": {
+    "id": "EDIT-NATIVE-001",
+    "scope": "Existing packaging policy outside DCP-025 edit slice; package manifest/allowlist and both source locks unchanged from original main.",
+    "observation": "Both current native and fresh normal-pack metadata omit npm-shrinkwrap.json from42members. Source lock equality and npm ci provenance are verified; an embedded package dependency lock is not claimed.",
+    "nativeReviewPath": "/workspace/scratch/1a6479138b13/audit/native-qualified-review.json",
+    "requiredWording": "Retain as packaging follow-up and do not imply full package/distribution acceptance."
+  },
+  "claimBoundaries": {
+    "actualCodexAgentToolInvocation": false,
+    "actualChatGptClientInvocationProved": false,
+    "modelCalls": 0,
+    "freshCampaignRunsManagedCodexRegistration": false,
+    "nativeSourceAndInstalledSyntheticCodexEvidence": "Separate approved native campaign; fresh campaign here covers archive, extraction, locked install, reviewed build, normal prepack and package/SDK/configuration probes.",
+    "fullDcpAcceptance": false,
+    "fullWebAcceptance": false,
+    "hostedFinalHeadOrMergeMainVerified": false,
+    "originalOwnerPreservationVerifiedByThisFreshReceipt": false
+  },
+  "inspectedDriver": {
+    "path": "/workspace/scratch/1a6479138b13/audit/native-qualification-2.mjs",
+    "bytes": 10100,
+    "sha256": "eeaf73347e3071df695580a60fd4bffb12eca6c04078306244bf49e9b36dc819",
+    "normalizedSha256": "eeaf73347e3071df695580a60fd4bffb12eca6c04078306244bf49e9b36dc819"
+  },
+  "inspectedVerifierHashes": [
+    {
+      "path": "scripts/verify-package.mjs",
+      "bytes": 8715,
+      "sha256": "ed6c9ad534c7f63b9b9c4d2e353e53fe3e5de7aebddd52dca00fbebc8f589335",
+      "normalizedSha256": "ed6c9ad534c7f63b9b9c4d2e353e53fe3e5de7aebddd52dca00fbebc8f589335"
+    },
+    {
+      "path": "scripts/verify-compatibility-installed.mjs",
+      "bytes": 28664,
+      "sha256": "d36fb8d1236d808a81fa25e1056370120b537a0709e884b00a677230f46394be",
+      "normalizedSha256": "d36fb8d1236d808a81fa25e1056370120b537a0709e884b00a677230f46394be"
+    },
+    {
+      "path": "scripts/verify-configuration-installed.mjs",
+      "bytes": 29323,
+      "sha256": "ff38f93d738b4a6d47347d62fc62c84bedb1228ea0ff488e0aee1bd44232e49b",
+      "normalizedSha256": "ff38f93d738b4a6d47347d62fc62c84bedb1228ea0ff488e0aee1bd44232e49b"
+    },
+    {
+      "path": "scripts/roadmap.mjs",
+      "bytes": 17008,
+      "sha256": "92bbc92f823898130e74ae2f0595c8aa7dc1507240a688990462adbe0e31906f",
+      "normalizedSha256": "92bbc92f823898130e74ae2f0595c8aa7dc1507240a688990462adbe0e31906f"
+    },
+    {
+      "path": "scripts/parity-baseline.mjs",
+      "bytes": 7564,
+      "sha256": "20bf8b42c6def91632091a3903dcffd881099f899b63fb062db582031a6f3dff",
+      "normalizedSha256": "20bf8b42c6def91632091a3903dcffd881099f899b63fb062db582031a6f3dff"
+    },
+    {
+      "path": "package.json",
+      "bytes": 1446,
+      "sha256": "3a0391f576831c42713c1fd28224416c2d74e8dc88e00914e3036a336f286fc4",
+      "normalizedSha256": "3a0391f576831c42713c1fd28224416c2d74e8dc88e00914e3036a336f286fc4"
+    }
+  ],
+  "reviewCommands": [
+    {
+      "operation": "Read-only hash/byte-count verification of fresh.json plus12 named stdout/stderr logs",
+      "result": "All match recorded receipt."
+    },
+    {
+      "operation": "Read-only parse of normal-prepack lifecycle,272test summary and npm-pack metadata",
+      "result": "Actual lifecycle and272/272 zero-skip result observed;42-member npm pack metadata retained."
+    },
+    {
+      "operation": "Read-only compare fresh package stdout JSON to embedded receipt; inspect extraction-scoped paths",
+      "result": "Exact object equality and new extraction-specific package directory confirmed."
+    },
+    {
+      "operation": "Read-only git show exact5723f5d selected source/lock blobs",
+      "result": "All five recorded hashes match immutable commit and approved native campaign."
+    },
+    {
+      "operation": "Read-only SHA256/size/ZIP comment of audit/qualified-source.zip",
+      "result": "Local referenceZIP and recorded nativeZIP have equal sizes and unequal hashes; neither substituted for the other."
+    }
+  ]
+}

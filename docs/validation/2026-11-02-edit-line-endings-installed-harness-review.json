@@ -1,0 +1,230 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "DCP-025-INSTALLED-HARNESS-REVIEW-001",
+  "reviewer": "Independent /root/live_issue_audit agent",
+  "observedAtUtc": "2026-11-02T20:07:05.464352+00:00",
+  "decision": "approved_harness_correction_pending_exact_new_head_qualification",
+  "blockingSourceFindings": [],
+  "scope": "Review of one installed-harness schema-negative assertion after actual native wrapper failure. No production/source change, native retry, hosted rerun, PR creation or repository mutation performed by this reviewer.",
+  "repository": {
+    "root": "/workspace/scratch/1a6479138b13/mterm-cli",
+    "failedHead": "d8c232e306372a78ec3b264bd2608f6733a9dc2f",
+    "failedTree": "0b43e3ca878ea7a185efc73618e5d3597cc7bf60",
+    "observedCurrentHead": "5723f5d0914d2e3c7e165506cf6f11980eb54fc2",
+    "observedBranch": "fix/dcp-025-edit-eol-20261102",
+    "workingStatus": ""
+  },
+  "correctedHarness": {
+    "path": "scripts/verify-compatibility-installed.mjs",
+    "bytes": 28664,
+    "sha256": "d36fb8d1236d808a81fa25e1056370120b537a0709e884b00a677230f46394be",
+    "normalizedSha256": "d36fb8d1236d808a81fa25e1056370120b537a0709e884b00a677230f46394be",
+    "priorSha256": "1435527928e3472535c9b5fe276b22536f05de8b3623ba381da470b13a0a0e95",
+    "exactOnlyChange": "Replace the empty-old_string invocation of generic JSON/domain-code helper with a dedicated SDK schema-validation result assertion. Entire remainder of harness is byte-equivalent.",
+    "fullDiff": "diff --git a/scripts/verify-compatibility-installed.mjs b/scripts/verify-compatibility-installed.mjs\nindex 02a3f91..53ab7ba 100644\n--- a/scripts/verify-compatibility-installed.mjs\n+++ b/scripts/verify-compatibility-installed.mjs\n@@ -218,7 +218,21 @@ try {\n     { file_path: editTarget, old_string: 'absent', new_string: 'changed' },\n     'REPLACEMENT_COUNT',\n   );\n-  await rejectEdit({ file_path: editTarget, old_string: '', new_string: 'changed' }, 'INVALID_ARGUMENT');\n+  const beforeInvalidEdit = await fs.readFile(editTarget);\n+  const invalidEdit = await client.callTool(\n+    { name: 'edit_block', arguments: { file_path: editTarget, old_string: '', new_string: 'changed' } },\n+    requestOptions,\n+  );\n+  assert.equal(invalidEdit.isError, true);\n+  assert.equal(invalidEdit.content.length, 1);\n+  assert.equal(invalidEdit.content[0].type, 'text');\n+  assert.match(\n+    invalidEdit.content[0].text,\n+    /^Input validation error: Invalid arguments for tool edit_block:/,\n+  );\n+  assert.match(invalidEdit.content[0].text, /old_string/);\n+  assert.ok(Buffer.byteLength(JSON.stringify(invalidEdit)) < 8192);\n+  assert.deepEqual(await fs.readFile(editTarget), beforeInvalidEdit);\n   editScenarios.push('normalized-exact-count-mismatch-and-schema-no-write');\n   await fs.writeFile(editTarget, 'x\\r\\n');\n   await call('edit_block', { file_path: editTarget, old_string: 'x', new_string: '\u03b1'.repeat(131070) + '\\n' });"
+  },
+  "unchangedFiles": [
+    {
+      "path": "src/desktop-commander-files.ts",
+      "bytes": 19530,
+      "sha256": "570946f9b68db88159f868a77f8846a99baf7d4bfda52d8dc5a4e6cd80da3215",
+      "normalizedSha256": "570946f9b68db88159f868a77f8846a99baf7d4bfda52d8dc5a4e6cd80da3215",
+      "identicalToFailedHead": true
+    },
+    {
+      "path": "src/mcp.ts",
+      "bytes": 16991,
+      "sha256": "54ea5248a41f48ee39c14cb9df2b1bf380c42a74c6b4c4cce1aadbd9c17f1f5b",
+      "normalizedSha256": "54ea5248a41f48ee39c14cb9df2b1bf380c42a74c6b4c4cce1aadbd9c17f1f5b",
+      "identicalToFailedHead": true
+    },
+    {
+      "path": "tests/compat-edit-block.test.mjs",
+      "bytes": 13904,
+      "sha256": "81afa22554c1a4d2857f32c28fbbffc358bfec2c8b2527190f447c8acf26858b",
+      "normalizedSha256": "81afa22554c1a4d2857f32c28fbbffc358bfec2c8b2527190f447c8acf26858b",
+      "identicalToFailedHead": true
+    },
+    {
+      "path": "package.json",
+      "bytes": 1446,
+      "sha256": "3a0391f576831c42713c1fd28224416c2d74e8dc88e00914e3036a336f286fc4",
+      "normalizedSha256": "3a0391f576831c42713c1fd28224416c2d74e8dc88e00914e3036a336f286fc4",
+      "identicalToFailedHead": true
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 19974,
+      "sha256": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec",
+      "normalizedSha256": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec",
+      "identicalToFailedHead": true
+    },
+    {
+      "path": "npm-shrinkwrap.json",
+      "bytes": 19974,
+      "sha256": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec",
+      "normalizedSha256": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec",
+      "identicalToFailedHead": true
+    }
+  ],
+  "retainedFailure": {
+    "receiptPath": "/workspace/scratch/1a6479138b13/audit/native/native.json",
+    "bytes": 3288,
+    "sha256": "27f081aff8cdd882827180c382a7194010dd915353b5a8fba94cf5beb529672a",
+    "normalizedSha256": "27f081aff8cdd882827180c382a7194010dd915353b5a8fba94cf5beb529672a",
+    "sourceSha": "d8c232e306372a78ec3b264bd2608f6733a9dc2f",
+    "sourceTree": "0b43e3ca878ea7a185efc73618e5d3597cc7bf60",
+    "startedAtUtc": "2026-11-02T20:02:38.540Z",
+    "completedAtUtc": "2026-11-02T20:03:21.121Z",
+    "exitCode": 1,
+    "signal": null,
+    "spawnError": null,
+    "fullWrapperPassed": false,
+    "observedUnitTests": {
+      "tests": 272,
+      "pass": 272,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "failedGate": "portable package -> verify-compatibility-installed.mjs -> rejectEdit empty old_string",
+    "failure": "JSON.parse attempted to parse the SDK input-validation text response; SyntaxError Unexpected token I.",
+    "classification": "Incorrect installed verifier assumption about the pinned SDK input-schema validation envelope; this record does not convert the failed wrapper into a pass.",
+    "logs": {
+      "stdout": {
+        "path": "/workspace/scratch/1a6479138b13/audit/native/native-full-wrapper.stdout.log",
+        "bytes": 27227,
+        "sha256": "c62aa145a3d3f46ec1c8e60bc44afb497780d7f962de9139e0b87b4f4ccea393",
+        "normalizedSha256": "c62aa145a3d3f46ec1c8e60bc44afb497780d7f962de9139e0b87b4f4ccea393",
+        "matchesRecordedNativeReceipt": true
+      },
+      "stderr": {
+        "path": "/workspace/scratch/1a6479138b13/audit/native/native-full-wrapper.stderr.log",
+        "bytes": 4136,
+        "sha256": "8e2873b9ae082ead85879fac70ffe4e25408965835ea993be717a5b0d46ca53e",
+        "normalizedSha256": "fafbad7a65e114e8f7b1f7c24446ba1b1aa0ee2bc3ca31052a933abb32efd69e",
+        "matchesRecordedNativeReceipt": true
+      }
+    }
+  },
+  "sdkEvidence": {
+    "package": "@modelcontextprotocol/server",
+    "version": "2.3.0",
+    "lockRecord": {
+      "version": "2.3.0",
+      "resolved": "https://registry.npmjs.org/@modelcontextprotocol/server/-/server-2.3.0.tgz",
+      "integrity": "sha512-+6b0LdsQLmHsvS7J6sQJ4weTpzUn61fU1JKS+321/+IyDYoHW5CR2Tgqcs6GgAAQvlesCo6yX3xttgmx+XGtJw==",
+      "license": "Apache-2.0",
+      "dependencies": {
+        "@modelcontextprotocol/core": "2.3.0",
+        "zod": "^4.2.0"
+      },
+      "engines": {
+        "node": ">=20"
+      }
+    },
+    "runtimeFile": {
+      "path": "node_modules/@modelcontextprotocol/server/dist/mcp-DIH4cS6P.mjs",
+      "bytes": 106735,
+      "sha256": "2657fbeaebe76ef461e8d0860308da4c3404d2d3b6b1f06960b8ffc578fec1b4",
+      "normalizedSha256": "2657fbeaebe76ef461e8d0860308da4c3404d2d3b6b1f06960b8ffc578fec1b4"
+    },
+    "mtermRegistrationFile": {
+      "path": "src/mcp.ts",
+      "bytes": 16991,
+      "sha256": "54ea5248a41f48ee39c14cb9df2b1bf380c42a74c6b4c4cce1aadbd9c17f1f5b",
+      "normalizedSha256": "54ea5248a41f48ee39c14cb9df2b1bf380c42a74c6b4c4cce1aadbd9c17f1f5b"
+    },
+    "observations": [
+      "MTerm registers desktopFileSchemas.edit as the SDK inputSchema; old_string has minimum length 1.",
+      "Pinned SDK tools/call validates arguments before executeToolHandler. Failed validation throws a ProtocolError carrying the Input validation error: Invalid arguments for tool edit_block: prefix.",
+      "Pinned SDK catch converts that error to content:[{type:text,text:errorMessage}], isError:true; it does not produce the MTerm domain JSON error object.",
+      "The generic rejectEdit helper remains unchanged and checks exact REPLACEMENT_COUNT, FILE_TOO_LARGE, PRIVATE_PATH and OUTSIDE_ROOT codes for requests that reach the MTerm handler."
+    ]
+  },
+  "correctedAssertionReview": {
+    "stillMakesRealClientCall": true,
+    "sameRequestAndOptions": true,
+    "requiresIsErrorTrue": true,
+    "requiresExactlyOneTextBlock": true,
+    "requiresPinnedSdkAndExactToolPrefix": true,
+    "requiresOldStringFieldDiagnostic": true,
+    "requiresResponseBelow8192Bytes": true,
+    "requiresUnchangedTargetBytes": true,
+    "domainErrorCodeChecksUnchanged": true,
+    "readOnlyRestartDiscoveryUnchanged": true,
+    "ownedCleanupAndExitVerificationUnchanged": true,
+    "noGenericCatchOrIgnoredErrorAdded": true,
+    "noPolicyCapabilitySchemaDependencyChange": true
+  },
+  "independentProbe": {
+    "receiptPath": "/workspace/scratch/1a6479138b13/audit/review-installed-schema-probe-receipt.json",
+    "command": [
+      "node",
+      "/workspace/scratch/1a6479138b13/audit/review-installed-schema-probe.mjs"
+    ],
+    "cwd": "/workspace/scratch/1a6479138b13/mterm-cli",
+    "startedAtUtc": "2026-11-02T20:06:29.712925+00:00",
+    "completedAtUtc": "2026-11-02T20:06:29.922422+00:00",
+    "exitCode": 0,
+    "scriptSha256": "8766f10bec1075dec8a2af15e2952db43179d46adc5a381c232c29b5ed52c735",
+    "stdout": {
+      "path": "/workspace/scratch/1a6479138b13/audit/review-installed-schema-probe.stdout.log",
+      "bytes": 622,
+      "sha256": "319f2cb4ae2a87353916c877a2dff25de0c54cdacfd6ff4e7fc049f38bd8173e"
+    },
+    "stderr": {
+      "path": "/workspace/scratch/1a6479138b13/audit/review-installed-schema-probe.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "result": {
+      "ok": true,
+      "node": "v24.22.1",
+      "platform": "linux",
+      "handlerCalls": 0,
+      "response": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Input validation error: Invalid arguments for tool edit_block: old_string: Too small: expected string to have >=1 characters"
+          }
+        ],
+        "isError": true
+      },
+      "responseBytes": 178,
+      "assertions": "Corrected schema response assertions passed; old JSON parse fails; handler not called",
+      "scope": "Pinned SDK in-memory protocol and actual compiled edit schema only; no filesystem, installed-package, native Windows, hosted, or model-client proof"
+    },
+    "scopeLimit": "The probe uses the real pinned SDK in-memory transport and actual compiled edit schema. It independently verifies response shape, diagnostic prefix and zero handler calls, and reproduces failure of old JSON parsing. It performs no file operation and does not establish installed/native/full-wrapper/hosted success."
+  },
+  "commands": [
+    {
+      "command": "git diff d8c232e306372a78ec3b264bd2608f6733a9dc2f -- scripts/verify-compatibility-installed.mjs",
+      "exitCode": 0,
+      "result": "One invalid-schema assertion replaced; other harness bytes unchanged."
+    },
+    {
+      "command": "node --check scripts/verify-compatibility-installed.mjs",
+      "exitCode": 0,
+      "stdout": ""
+    },
+    {
+      "command": "git diff --check d8c232e306372a78ec3b264bd2608f6733a9dc2f -- scripts/verify-compatibility-installed.mjs",
+      "exitCode": 0,
+      "stdout": ""
+    },
+    {
+      "command": "node /workspace/scratch/1a6479138b13/audit/review-installed-schema-probe.mjs",
+      "exitCode": 0,
+      "result": "178-byte schema error matches corrected checks; handlerCalls0; old JSON parsing throws SyntaxError."
+    }
+  ],
+  "requiredNextEvidence": [
+    "Retain original native failure and any hosted failures at d8c232e; do not rerun the identical head to erase failure history.",
+    "Commit corrected harness and refreshed review/qualification documentation; bind receipts to actual new commit and d36fb8d1236d808a81fa25e1056370120b537a0709e884b00a677230f46394be.",
+    "Run native retry into a new additive output directory, then separately verify full wrapper, normal packaging/installed harness, source/installed synthetic Codex, fresh-source and exact-head hosted gates.",
+    "No actual model-driven Codex or ChatGPT invocation and no full DCP/WEB acceptance follows from this correction."
+  ],
+  "supersession": "The earlier source review remains valid for unchanged production/runtime/tests. This additive review supersedes only the previously approved installed harness hash and acknowledges the missed SDK envelope assumption."
+}

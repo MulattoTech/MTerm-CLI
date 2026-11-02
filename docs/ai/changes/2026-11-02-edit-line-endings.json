@@ -4,7 +4,7 @@
   "model": "GPT-6 Astra Pro",
   "identity_basis": "session-declared; self-reported",
   "started_at_utc": "2026-11-02T19:49:19.848Z",
-  "updated_at_utc": "2026-11-02T20:05:52.322012+00:00",
+  "updated_at_utc": "2026-11-02T20:13:07.672246+00:00",
   "base_sha": "99c3c9e7d23d76a3207b903554f552f59cebf236",
   "base_tree": "4873caa7b342bf3521eb7a8b6fa85d0299fa9c47",
   "branch": "fix/dcp-025-edit-eol-20261102",
@@ -37,7 +37,9 @@
   "source_sha256": {
     "src/desktop-commander-files.ts": "570946f9b68db88159f868a77f8846a99baf7d4bfda52d8dc5a4e6cd80da3215",
     "tests/compat-edit-block.test.mjs": "81afa22554c1a4d2857f32c28fbbffc358bfec2c8b2527190f447c8acf26858b",
-    "scripts/verify-compatibility-installed.mjs": "d36fb8d1236d808a81fa25e1056370120b537a0709e884b00a677230f46394be"
+    "scripts/verify-compatibility-installed.mjs": "d36fb8d1236d808a81fa25e1056370120b537a0709e884b00a677230f46394be",
+    "package-lock.json": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec",
+    "npm-shrinkwrap.json": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec"
   },
   "upstream_commit": "c774c3b505de990219637ecdc9a830c8772fae9d",
   "decisions": [
@@ -62,12 +64,18 @@
       "command": "Initial committed native full wrapper at d8c232e306372a78ec3b264bd2608f6733a9dc2f",
       "result": "272/272 normal Windows tests passed; wrapper exit1 at portable package due verifier JSON parsing of SDK schema-error text. Harness-only correction requires new qualification. Original failure retained.",
       "evidence": "docs/validation/2026-11-02-edit-line-endings-initial-package-attempt.json"
+    },
+    {
+      "command": "Actual native full wrapper/self-host/normal prepack/source+installed synthetic Codex; fresh committed extraction and installed package; corrected candidate hosted matrix/fast",
+      "result": "All commands exited0; full/prepack/fresh suites272/272; installed edit6groups; hosted5/5attempt1 with explicit non-Windows skips. First package-observer failure retained.",
+      "evidence": "docs/validation/2026-11-02-edit-line-endings-qualification.json"
     }
   ],
   "limitations": [
     "Complete fuzzy/Office/preview/schema/client parity remains open.",
     "Source and direct focused proof do not establish installed/full/native Codex/hosted acceptance.",
-    "Cooperative path/version checks are not an OS sandbox."
+    "Cooperative path/version checks are not an OS sandbox.",
+    "Source locked installs and observed packed installations are distinct. The unchanged normal package file list omits npm-shrinkwrap.json; no claim is made that the tarball embeds a dependency lock. Packaging policy is outside this edit slice."
   ],
   "roadmap_updates": [
     {
@@ -79,7 +87,9 @@
       "assessment": "Implementation observation/evidence only. Issue remains open; no acceptanceReview or release gate change."
     }
   ],
-  "next_unverified_action": "Commit reviewed source, run actual native full wrapper/self-host/prepack/source+installed Codex, fresh committed qualification, publish draft PR, inspect exact-head hosted gates, normal expected-head merge, verify main, recover and deliver.",
+  "next_unverified_action": "Finalize documentation with unchanged runtime/test/harness hashes; reviewed build, exact final-head hosted checks and independent review; normal expected-head merge; verify main; preserve additive hashed recovery, public receipts and downloads.",
   "model_calls": 0,
-  "actualCodexAgentToolInvocation": false
+  "actualCodexAgentToolInvocation": false,
+  "qualified_candidate": "5723f5d0914d2e3c7e165506cf6f11980eb54fc2",
+  "qualified_tree": "5e3cdba9071d1149ab1ec28e67e3d7edb3335f65"
 }

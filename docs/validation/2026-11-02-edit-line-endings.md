@@ -96,3 +96,34 @@ unchanged target bytes. Runtime policy and all domain error-code checks remain
 unchanged. The original failed receipt and log hashes are preserved in
 [the attempt record](2026-11-02-edit-line-endings-initial-package-attempt.json);
 a new committed candidate and additive qualification outputs are required.
+
+## Observed qualification — 2026-11-02T20:13:07.672246+00:00
+
+The corrected committed candidate `5723f5d0914d2e3c7e165506cf6f11980eb54fc2` passed the real native full
+wrapper, self-host, ordinary prepack, installed-package MCP and source/installed
+Codex gates. A fresh committed-source extraction passed locked dependency install,
+normal reviewed build, normal prepack and package qualification. Both native test
+suites and fresh normal prepack each passed 272/272. All six installed edit groups
+passed in native and fresh installations, with owned launcher/server exits and
+read-only restart checks. See [the exact gate summary](2026-11-02-edit-line-endings-qualification.json),
+[native review](2026-11-02-edit-line-endings-native-review.json), [fresh review](2026-11-02-edit-line-endings-fresh-review.json)
+and [corrected harness review](2026-11-02-edit-line-endings-installed-harness-review.json).
+
+All five hosted checks passed at that candidate on attempt1. Windows passed272/272;
+Ubuntu and both Mac architectures passed260 with12 explicit Windows-only skips.
+Every new edit test passed. The independently verified PR merge tree equals the
+qualified tree. [Hosted review](2026-11-02-edit-line-endings-hosted.json) preserves identities, logs,
+counts, scope and the actual synthetic Codex0.160.1 result. The earlier four hosted
+package failures remain in [their original-attempt review](2026-11-02-edit-line-endings-initial-hosted-attempt.json).
+
+No claim is made that ordinary tarballs embed npm-shrinkwrap.json: the unchanged
+packaging file list omits it. Source locked install and actual package installation
+are separately observed facts. This existing packaging question remains outside
+the edit slice. Browser observations show the owner online and read-only, with
+zero client authorizations or requests. Cloudflare management/plugin-list calls
+did not yield usable fresh results; historical deployment pins are not recertified.
+See [the bounded connection observation](2026-11-02-edit-line-endings-connection.json).
+
+Final documentation/build checks, exact final-head hosted gates, normal expected-head
+merge, main checks, final preservation and additive recovery/download delivery are
+still subsequent gates at this timestamp. Protected acceptance remains unchanged.

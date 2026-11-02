@@ -1,3 +1,26 @@
+## DCP-025 observed qualification — 2026-11-02T20:13:07.672246+00:00
+
+[PR #78](https://github.com/MulattoTech/MTerm-CLI/pull/78) qualified candidate
+`5723f5d0914d2e3c7e165506cf6f11980eb54fc2` (tree `5e3cdba9071d1149ab1ec28e67e3d7edb3335f65`).
+Actual Windows full wrapper, self-host, normal prepack, packed MCP and source/installed
+Codex registration exited 0. Full and normal-prepack suites each passed **272/272**;
+the installed edit contract passed all **six groups**, including refusal/no-write,
+read-only restart and owned-process cleanup. Fresh committed extraction, locked
+install, reviewed build, normal prepack **272/272**, and installed package also passed.
+All **five hosted jobs passed, attempt 1**: Windows 272/272; Ubuntu and both Mac
+architectures 260 passed plus 12 explicit Windows-only skips. All 30 new edit cases
+passed on every platform. Actions' PR merge tree equals the qualified source tree.
+
+The earlier `d8c232e` run passed all unit tests but failed package verification because
+the new verifier parsed SDK schema-error text as JSON. The harness-only correction,
+original failures, exact logs and independent reviews are preserved in
+[qualification evidence](validation/2026-11-02-edit-line-endings-qualification.json).
+Native Codex 0.160.1 parsed synthetic configuration; SDK clients invoked the registered
+command. No actual model-driven Codex/ChatGPT tool invocation is claimed.
+DCP **0/48**, WEB **0/12**, maturity **29.12%** remain unchanged; #27 stays open.
+Final documentation review/build, exact final-head checks, merge/main verification,
+preservation and recovery/download delivery remain subsequent gates at this observation.
+
 # Current editing iteration — 2026-11-02
 
 The DCP-025 / issue #27 candidate starts from verified merged main

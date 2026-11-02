@@ -1,0 +1,838 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-11-02T20:09:00.478102+00:00",
+  "reviewer": "OpenAI / GPT-6 Astra Pro (self-reported), independent edit_contract_audit agent",
+  "repository": "MulattoTech/MTerm-CLI",
+  "pr": 78,
+  "headSha": "d8c232e306372a78ec3b264bd2608f6733a9dc2f",
+  "matrix": {
+    "id": 41515807338,
+    "attempt": 1,
+    "status": "completed",
+    "conclusion": "failure",
+    "createdAtUtc": "2026-11-02T20:04:25Z",
+    "updatedAtUtc": "2026-11-02T20:06:31Z"
+  },
+  "fast": {
+    "id": 41515807355,
+    "attempt": 1,
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "jobs": [
+    {
+      "id": 125518957060,
+      "name": "windows-2022 / Node 24",
+      "headSha": "d8c232e306372a78ec3b264bd2608f6733a9dc2f",
+      "runAttempt": 1,
+      "status": "completed",
+      "conclusion": "failure",
+      "startedAtUtc": "2026-11-02T20:04:28Z",
+      "completedAtUtc": "2026-11-02T20:05:51Z",
+      "observedRuntime": [
+        {
+          "node": "v24.21.0",
+          "platform": "win32",
+          "arch": "x64"
+        }
+      ],
+      "unitResults": {
+        "tests": 272,
+        "suites": 0,
+        "pass": 272,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "newEditTestsPassed": 30,
+      "skippedTests": [],
+      "failureExcerpts": [
+        "2026-11-02T20:05:47.3819386Z     SyntaxError: Unexpected token 'I', \"Input vali\"... is not valid JSON",
+        "2026-11-02T20:05:47.3820329Z         at JSON.parse (<anonymous>)",
+        "2026-11-02T20:05:47.3821612Z         at rejectEdit (file:///D:/a/MTerm-CLI/MTerm-CLI/scripts/verify-compatibility-installed.mjs:199:51)",
+        "2026-11-02T20:05:47.3823221Z         at async file:///D:/a/MTerm-CLI/MTerm-CLI/scripts/verify-compatibility-installed.mjs:221:3",
+        "2026-11-02T20:05:47.3837050Z     `    SyntaxError: Unexpected token 'I', \"Input vali\"... is not valid JSON\\r\\n` +"
+      ],
+      "log": {
+        "path": "audit/hosted-initial/job-125518957060.log",
+        "bytes": 58832,
+        "sha256": "ca2ad3bb1f441465cdcb2208c5ae3fac26c0499b4847774cbbb93bf6ba4cb099"
+      },
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-02T20:04:29Z",
+          "completed_at": "2026-11-02T20:04:29Z"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-02T20:04:29Z",
+          "completed_at": "2026-11-02T20:04:36Z"
+        },
+        {
+          "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-02T20:04:36Z",
+          "completed_at": "2026-11-02T20:04:44Z"
+        },
+        {
+          "name": "Verify actual runtime architecture",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-02T20:04:44Z",
+          "completed_at": "2026-11-02T20:04:44Z"
+        },
+        {
+          "name": "Reproducible dependencies without lifecycle side effects",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-02T20:04:44Z",
+          "completed_at": "2026-11-02T20:04:49Z"
+        },
+        {
+          "name": "Reviewed source and pinned parity baseline",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-02T20:04:49Z",
+          "completed_at": "2026-11-02T20:04:52Z"
+        },
+        {
+          "name": "Typecheck formatting and deterministic tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-02T20:04:52Z",
+          "completed_at": "2026-11-02T20:05:40Z"
+        },
+        {
+          "name": "Verify packed install and isolated npm link",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 8,
+          "started_at": "2026-11-02T20:05:40Z",
+          "completed_at": "2026-11-02T20:05:47Z"
+        },
+        {
+          "name": "Install pinned Codex into test-owned prefix",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 9,
+          "started_at": "2026-11-02T20:05:47Z",
+          "completed_at": "2026-11-02T20:05:47Z"
+        },
+        {
+          "name": "Real Codex registration without login or model calls",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 10,
+          "started_at": "2026-11-02T20:05:47Z",
+          "completed_at": "2026-11-02T20:05:47Z"
+        },
+        {
+          "name": "Exact source remains unchanged by tests",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 11,
+          "started_at": "2026-11-02T20:05:47Z",
+          "completed_at": "2026-11-02T20:05:47Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 21,
+          "started_at": "2026-11-02T20:05:47Z",
+          "completed_at": "2026-11-02T20:05:47Z"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22,
+          "started_at": "2026-11-02T20:05:47Z",
+          "completed_at": "2026-11-02T20:05:49Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-11-02T20:05:49Z",
+          "completed_at": "2026-11-02T20:05:49Z"
+        }
+      ]
+    },
+    {
+      "id": 125518957468,
+      "name": "macos-15-intel / Node 24",
+      "headSha": "d8c232e306372a78ec3b264bd2608f6733a9dc2f",
+      "runAttempt": 1,
+      "status": "completed",
+      "conclusion": "failure",
+      "startedAtUtc": "2026-11-02T20:04:29Z",
+      "completedAtUtc": "2026-11-02T20:06:30Z",
+      "observedRuntime": [
+        {
+          "node": "v24.21.0",
+          "platform": "darwin",
+          "arch": "x64"
+        }
+      ],
+      "unitResults": {
+        "tests": 272,
+        "suites": 0,
+        "pass": 260,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 12
+      },
+      "newEditTestsPassed": 30,
+      "skippedTests": [
+        "automation PowerShell scripts parse without executing",
+        "one-command setup preview is read-only and permission-conservative",
+        "one-command setup refuses a whole-drive root",
+        "top-level MTerm CLI launcher parses as PowerShell without execution",
+        "top-level Plan and Install preview do not modify the selected workspace",
+        "top-level Verify reports explicit local versus remote readiness without mutation",
+        "top-level launcher refuses unsafe root and unapproved execution paths",
+        "Windows short filenames cannot expose existing compatibility policy storage",
+        "Windows short file aliases return canonical identities and cannot evade the request guard",
+        "Windows short file aliases cannot conceal a private canonical filename",
+        "Windows missing leaves retain their canonical parent and final request guard",
+        "Windows missing leaves cannot be created below an aliased private directory"
+      ],
+      "failureExcerpts": [
+        "2026-11-02T20:06:25.1997740Z     SyntaxError: Unexpected token 'I', \"Input vali\"... is not valid JSON",
+        "2026-11-02T20:06:25.2109170Z         at JSON.parse (<anonymous>)",
+        "2026-11-02T20:06:25.2161170Z         at rejectEdit (file:///Users/runner/work/MTerm-CLI/MTerm-CLI/scripts/verify-compatibility-installed.mjs:199:51)",
+        "2026-11-02T20:06:25.2266700Z         at async file:///Users/runner/work/MTerm-CLI/MTerm-CLI/scripts/verify-compatibility-installed.mjs:221:3",
+        "2026-11-02T20:06:25.3207100Z     `    SyntaxError: Unexpected token 'I', \"Input vali\"... is not valid JSON\\n` +"
+      ],
+      "log": {
+        "path": "audit/hosted-initial/job-125518957468.log",
+        "bytes": 58319,
+        "sha256": "87f012e2e139a8017ca0c2369a56d7ad25227ffd487da6b997404f9108b47d17"
+      },
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-02T20:04:30Z",
+          "completed_at": "2026-11-02T20:04:31Z"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-02T20:04:31Z",
+          "completed_at": "2026-11-02T20:04:35Z"
+        },
+        {
+          "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-02T20:04:35Z",
+          "completed_at": "2026-11-02T20:05:02Z"
+        },
+        {
+          "name": "Verify actual runtime architecture",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-02T20:05:02Z",
+          "completed_at": "2026-11-02T20:05:02Z"
+        },
+        {
+          "name": "Reproducible dependencies without lifecycle side effects",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-02T20:05:02Z",
+          "completed_at": "2026-11-02T20:05:09Z"
+        },
+        {
+          "name": "Reviewed source and pinned parity baseline",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-02T20:05:09Z",
+          "completed_at": "2026-11-02T20:05:12Z"
+        },
+        {
+          "name": "Typecheck formatting and deterministic tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-02T20:05:12Z",
+          "completed_at": "2026-11-02T20:06:11Z"
+        },
+        {
+          "name": "Verify packed install and isolated npm link",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 8,
+          "started_at": "2026-11-02T20:06:11Z",
+          "completed_at": "2026-11-02T20:06:25Z"
+        },
+        {
+          "name": "Install pinned Codex into test-owned prefix",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 9,
+          "started_at": "2026-11-02T20:06:25Z",
+          "completed_at": "2026-11-02T20:06:25Z"
+        },
+        {
+          "name": "Real Codex registration without login or model calls",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 10,
+          "started_at": "2026-11-02T20:06:25Z",
+          "completed_at": "2026-11-02T20:06:25Z"
+        },
+        {
+          "name": "Exact source remains unchanged by tests",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 11,
+          "started_at": "2026-11-02T20:06:25Z",
+          "completed_at": "2026-11-02T20:06:25Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 21,
+          "started_at": "2026-11-02T20:06:25Z",
+          "completed_at": "2026-11-02T20:06:25Z"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22,
+          "started_at": "2026-11-02T20:06:25Z",
+          "completed_at": "2026-11-02T20:06:26Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-11-02T20:06:26Z",
+          "completed_at": "2026-11-02T20:06:27Z"
+        }
+      ]
+    },
+    {
+      "id": 125518957474,
+      "name": "ubuntu-24.04 / Node 24",
+      "headSha": "d8c232e306372a78ec3b264bd2608f6733a9dc2f",
+      "runAttempt": 1,
+      "status": "completed",
+      "conclusion": "failure",
+      "startedAtUtc": "2026-11-02T20:04:28Z",
+      "completedAtUtc": "2026-11-02T20:05:08Z",
+      "observedRuntime": [
+        {
+          "node": "v24.21.0",
+          "platform": "linux",
+          "arch": "x64"
+        }
+      ],
+      "unitResults": {
+        "tests": 272,
+        "suites": 0,
+        "pass": 260,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 12
+      },
+      "newEditTestsPassed": 30,
+      "skippedTests": [
+        "automation PowerShell scripts parse without executing",
+        "one-command setup preview is read-only and permission-conservative",
+        "one-command setup refuses a whole-drive root",
+        "top-level MTerm CLI launcher parses as PowerShell without execution",
+        "top-level Plan and Install preview do not modify the selected workspace",
+        "top-level Verify reports explicit local versus remote readiness without mutation",
+        "top-level launcher refuses unsafe root and unapproved execution paths",
+        "Windows short filenames cannot expose existing compatibility policy storage",
+        "Windows short file aliases return canonical identities and cannot evade the request guard",
+        "Windows short file aliases cannot conceal a private canonical filename",
+        "Windows missing leaves retain their canonical parent and final request guard",
+        "Windows missing leaves cannot be created below an aliased private directory"
+      ],
+      "failureExcerpts": [
+        "2026-11-02T20:05:06.1609840Z     SyntaxError: Unexpected token 'I', \"Input vali\"... is not valid JSON",
+        "2026-11-02T20:05:06.1610260Z         at JSON.parse (<anonymous>)",
+        "2026-11-02T20:05:06.1610865Z         at rejectEdit (file:///home/runner/work/MTerm-CLI/MTerm-CLI/scripts/verify-compatibility-installed.mjs:199:51)",
+        "2026-11-02T20:05:06.1612687Z         at async file:///home/runner/work/MTerm-CLI/MTerm-CLI/scripts/verify-compatibility-installed.mjs:221:3",
+        "2026-11-02T20:05:06.1621091Z     `    SyntaxError: Unexpected token 'I', \"Input vali\"... is not valid JSON\\n` +"
+      ],
+      "log": {
+        "path": "audit/hosted-initial/job-125518957474.log",
+        "bytes": 58668,
+        "sha256": "d24ece5851dda8df482227224e18a85ddf3ecba86c4b29e62c842b449d93b080"
+      },
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-02T20:04:29Z",
+          "completed_at": "2026-11-02T20:04:30Z"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-02T20:04:30Z",
+          "completed_at": "2026-11-02T20:04:32Z"
+        },
+        {
+          "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-02T20:04:32Z",
+          "completed_at": "2026-11-02T20:04:38Z"
+        },
+        {
+          "name": "Verify actual runtime architecture",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-02T20:04:38Z",
+          "completed_at": "2026-11-02T20:04:38Z"
+        },
+        {
+          "name": "Reproducible dependencies without lifecycle side effects",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-02T20:04:38Z",
+          "completed_at": "2026-11-02T20:04:39Z"
+        },
+        {
+          "name": "Reviewed source and pinned parity baseline",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-02T20:04:39Z",
+          "completed_at": "2026-11-02T20:04:40Z"
+        },
+        {
+          "name": "Typecheck formatting and deterministic tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-02T20:04:40Z",
+          "completed_at": "2026-11-02T20:05:03Z"
+        },
+        {
+          "name": "Verify packed install and isolated npm link",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 8,
+          "started_at": "2026-11-02T20:05:03Z",
+          "completed_at": "2026-11-02T20:05:06Z"
+        },
+        {
+          "name": "Install pinned Codex into test-owned prefix",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 9,
+          "started_at": "2026-11-02T20:05:06Z",
+          "completed_at": "2026-11-02T20:05:06Z"
+        },
+        {
+          "name": "Real Codex registration without login or model calls",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 10,
+          "started_at": "2026-11-02T20:05:06Z",
+          "completed_at": "2026-11-02T20:05:06Z"
+        },
+        {
+          "name": "Exact source remains unchanged by tests",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 11,
+          "started_at": "2026-11-02T20:05:06Z",
+          "completed_at": "2026-11-02T20:05:06Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 21,
+          "started_at": "2026-11-02T20:05:06Z",
+          "completed_at": "2026-11-02T20:05:06Z"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22,
+          "started_at": "2026-11-02T20:05:06Z",
+          "completed_at": "2026-11-02T20:05:06Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-11-02T20:05:06Z",
+          "completed_at": "2026-11-02T20:05:06Z"
+        }
+      ]
+    },
+    {
+      "id": 125518957515,
+      "name": "macos-14 / Node 24",
+      "headSha": "d8c232e306372a78ec3b264bd2608f6733a9dc2f",
+      "runAttempt": 1,
+      "status": "completed",
+      "conclusion": "failure",
+      "startedAtUtc": "2026-11-02T20:04:29Z",
+      "completedAtUtc": "2026-11-02T20:05:18Z",
+      "observedRuntime": [
+        {
+          "node": "v24.21.0",
+          "platform": "darwin",
+          "arch": "arm64"
+        }
+      ],
+      "unitResults": {
+        "tests": 272,
+        "suites": 0,
+        "pass": 260,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 12
+      },
+      "newEditTestsPassed": 30,
+      "skippedTests": [
+        "automation PowerShell scripts parse without executing",
+        "one-command setup preview is read-only and permission-conservative",
+        "one-command setup refuses a whole-drive root",
+        "top-level MTerm CLI launcher parses as PowerShell without execution",
+        "top-level Plan and Install preview do not modify the selected workspace",
+        "top-level Verify reports explicit local versus remote readiness without mutation",
+        "top-level launcher refuses unsafe root and unapproved execution paths",
+        "Windows short filenames cannot expose existing compatibility policy storage",
+        "Windows short file aliases return canonical identities and cannot evade the request guard",
+        "Windows short file aliases cannot conceal a private canonical filename",
+        "Windows missing leaves retain their canonical parent and final request guard",
+        "Windows missing leaves cannot be created below an aliased private directory"
+      ],
+      "failureExcerpts": [
+        "2026-11-02T20:05:13.9243360Z     SyntaxError: Unexpected token 'I', \"Input vali\"... is not valid JSON",
+        "2026-11-02T20:05:13.9244510Z         at JSON.parse (<anonymous>)",
+        "2026-11-02T20:05:13.9245950Z         at rejectEdit (file:///Users/runner/work/MTerm-CLI/MTerm-CLI/scripts/verify-compatibility-installed.mjs:199:51)",
+        "2026-11-02T20:05:13.9249700Z         at async file:///Users/runner/work/MTerm-CLI/MTerm-CLI/scripts/verify-compatibility-installed.mjs:221:3",
+        "2026-11-02T20:05:13.9278360Z     `    SyntaxError: Unexpected token 'I', \"Input vali\"... is not valid JSON\\n` +"
+      ],
+      "log": {
+        "path": "audit/hosted-initial/job-125518957515.log",
+        "bytes": 58180,
+        "sha256": "d122573479f6bc8242593c505ab6fd055783f28111b07430055fc429291507af"
+      },
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-02T20:04:30Z",
+          "completed_at": "2026-11-02T20:04:31Z"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-02T20:04:31Z",
+          "completed_at": "2026-11-02T20:04:33Z"
+        },
+        {
+          "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-02T20:04:33Z",
+          "completed_at": "2026-11-02T20:04:40Z"
+        },
+        {
+          "name": "Verify actual runtime architecture",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-02T20:04:40Z",
+          "completed_at": "2026-11-02T20:04:41Z"
+        },
+        {
+          "name": "Reproducible dependencies without lifecycle side effects",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-02T20:04:41Z",
+          "completed_at": "2026-11-02T20:04:42Z"
+        },
+        {
+          "name": "Reviewed source and pinned parity baseline",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-02T20:04:42Z",
+          "completed_at": "2026-11-02T20:04:44Z"
+        },
+        {
+          "name": "Typecheck formatting and deterministic tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-02T20:04:44Z",
+          "completed_at": "2026-11-02T20:05:08Z"
+        },
+        {
+          "name": "Verify packed install and isolated npm link",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 8,
+          "started_at": "2026-11-02T20:05:08Z",
+          "completed_at": "2026-11-02T20:05:13Z"
+        },
+        {
+          "name": "Install pinned Codex into test-owned prefix",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 9,
+          "started_at": "2026-11-02T20:05:13Z",
+          "completed_at": "2026-11-02T20:05:13Z"
+        },
+        {
+          "name": "Real Codex registration without login or model calls",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 10,
+          "started_at": "2026-11-02T20:05:13Z",
+          "completed_at": "2026-11-02T20:05:13Z"
+        },
+        {
+          "name": "Exact source remains unchanged by tests",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 11,
+          "started_at": "2026-11-02T20:05:13Z",
+          "completed_at": "2026-11-02T20:05:13Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 21,
+          "started_at": "2026-11-02T20:05:13Z",
+          "completed_at": "2026-11-02T20:05:13Z"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22,
+          "started_at": "2026-11-02T20:05:13Z",
+          "completed_at": "2026-11-02T20:05:14Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-11-02T20:05:14Z",
+          "completed_at": "2026-11-02T20:05:15Z"
+        }
+      ]
+    },
+    {
+      "id": 125518956730,
+      "name": "CI / fast",
+      "headSha": "d8c232e306372a78ec3b264bd2608f6733a9dc2f",
+      "runAttempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "startedAtUtc": "2026-11-02T20:04:28Z",
+      "completedAtUtc": "2026-11-02T20:05:05Z",
+      "observedRuntime": [],
+      "unitResults": {
+        "tests": 272,
+        "suites": 0,
+        "pass": 260,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 12
+      },
+      "newEditTestsPassed": 30,
+      "skippedTests": [
+        "automation PowerShell scripts parse without executing",
+        "one-command setup preview is read-only and permission-conservative",
+        "one-command setup refuses a whole-drive root",
+        "top-level MTerm CLI launcher parses as PowerShell without execution",
+        "top-level Plan and Install preview do not modify the selected workspace",
+        "top-level Verify reports explicit local versus remote readiness without mutation",
+        "top-level launcher refuses unsafe root and unapproved execution paths",
+        "Windows short filenames cannot expose existing compatibility policy storage",
+        "Windows short file aliases return canonical identities and cannot evade the request guard",
+        "Windows short file aliases cannot conceal a private canonical filename",
+        "Windows missing leaves retain their canonical parent and final request guard",
+        "Windows missing leaves cannot be created below an aliased private directory"
+      ],
+      "failureExcerpts": [],
+      "log": {
+        "path": "audit/hosted-initial/job-125518956730.log",
+        "bytes": 54845,
+        "sha256": "9758d06abd5cef9b115f190fadd4c9fdc73db2d57239b39d9abc1dca17c63f3a"
+      },
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-11-02T20:04:29Z",
+          "completed_at": "2026-11-02T20:04:30Z"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-11-02T20:04:30Z",
+          "completed_at": "2026-11-02T20:04:31Z"
+        },
+        {
+          "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-11-02T20:04:31Z",
+          "completed_at": "2026-11-02T20:04:37Z"
+        },
+        {
+          "name": "Reproducible install without lifecycle scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-11-02T20:04:37Z",
+          "completed_at": "2026-11-02T20:04:38Z"
+        },
+        {
+          "name": "Pinned reviewed build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-11-02T20:04:38Z",
+          "completed_at": "2026-11-02T20:04:39Z"
+        },
+        {
+          "name": "Deterministic tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-11-02T20:04:39Z",
+          "completed_at": "2026-11-02T20:05:02Z"
+        },
+        {
+          "name": "No test-induced source mutation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-11-02T20:05:02Z",
+          "completed_at": "2026-11-02T20:05:02Z"
+        },
+        {
+          "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-11-02T20:05:02Z",
+          "completed_at": "2026-11-02T20:05:02Z"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-11-02T20:05:02Z",
+          "completed_at": "2026-11-02T20:05:02Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-11-02T20:05:02Z",
+          "completed_at": "2026-11-02T20:05:02Z"
+        }
+      ]
+    }
+  ],
+  "classification": {
+    "kind": "installed-test observer defect",
+    "basis": "Each completed matrix log independently shows JSON.parse of text beginning Input vali at rejectEdit line199, reached by the empty-old_string schema test at line221. Original committed harness assumes application JSON for an SDK schema-validation text response. The actual response already has isError:true, verified by the preceding assertion. Unit gates pass.",
+    "notClassifiedAs": [
+      "product edit regression",
+      "infrastructure timeout",
+      "successful full qualification"
+    ],
+    "remainingGateScope": "Package qualification and later Codex/final-clean-source gates were not passed by this failed matrix run."
+  },
+  "nativeFailure": {
+    "receipt": "audit/native/native.json",
+    "sourceSha": "d8c232e306372a78ec3b264bd2608f6733a9dc2f",
+    "sourceTree": "0b43e3ca878ea7a185efc73618e5d3597cc7bf60",
+    "exitCode": 1,
+    "startedAtUtc": "2026-11-02T20:02:38.540Z",
+    "completedAtUtc": "2026-11-02T20:03:21.121Z",
+    "unitTests": 272,
+    "unitPass": 272,
+    "unitFail": 0,
+    "logHashesMatchRetrievedBytes": true,
+    "stdout": {
+      "file": "native-full-wrapper.stdout.log",
+      "bytes": 27227,
+      "sha256": "c62aa145a3d3f46ec1c8e60bc44afb497780d7f962de9139e0b87b4f4ccea393"
+    },
+    "stderr": {
+      "file": "native-full-wrapper.stderr.log",
+      "bytes": 4136,
+      "sha256": "8e2873b9ae082ead85879fac70ffe4e25408965835ea993be717a5b0d46ca53e"
+    },
+    "classification": "same installed-test observer defect independently confirmed in retained native stderr"
+  },
+  "skipsReason": "Non-Windows jobs explicitly skip seven PowerShell automation tests guarded by Windows/PowerShell availability and five Windows8.3-specific tests guarded by platform. All272pass on Windows.",
+  "rerunSemantics": {
+    "actionsTakenByReviewer": "GET metadata/log retrieval only; no rerun, cancellation, dispatch, publish or merge",
+    "originalAttemptPreserved": true,
+    "needed": "Commit the scoped harness correction and qualify that new head. A new push produces a distinct run, not a successful reclassification of this attempt1. Retain the native failed receipt and use additive new phase logs for the resumed full wrapper.",
+    "unchangedFocusedTests": "No further optional focused unit runs performed by this audit."
+  },
+  "acceptanceCredit": false
+}

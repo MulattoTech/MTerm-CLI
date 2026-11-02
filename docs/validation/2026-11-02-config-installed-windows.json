@@ -1,0 +1,416 @@
+{
+  "schemaVersion": 1,
+  "kind": "sanitized-native-observation",
+  "evidenceBasis": "Integration owner inspected native Windows execution and retained output; this is a selected-field observation, not a byte-for-byte copy of the complete result.json.",
+  "primaryRequirement": "DCP-016",
+  "issue": 18,
+  "qualifierBaseCommit": "059413ffa4fb3b18c8e15af907744a40e0b874a7",
+  "candidateVerifierSha256": "d9e1ad6169ee24e5800b8c9e3c7e0d95202eb90d8ea28e304f9c6b2e8038d642",
+  "productSourceCommit": null,
+  "productSourceNote": "The original standalone artifacts-only probe ran before the DCP010 source commit. The later integrated installation on published implementation def85d256fe558ef26e0cdf7d0218ce250682150 has matching installed entry/config-module hashes. Keep the original observation distinct from the integrated evidence below.",
+  "launcherLogLastModifiedUtc": "2026-11-02T03:15:48.208Z",
+  "launcherLog": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\config-retry-20261102\\artifacts\\config-retry-validation\\installed-configuration-probe.log",
+  "resultFile": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\config-retry-20261102\\artifacts\\package-verify-ktDEkl\\configuration-09yct2\\result.json",
+  "installedPackage": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\config-retry-20261102\\artifacts\\package-verify-ktDEkl\\install\\node_modules\\mterm-cli",
+  "standaloneResult": {
+    "ok": true,
+    "packageVersion": "0.0.1-preview.1",
+    "node": "v24.21.0",
+    "platform": "win32",
+    "architecture": "x64",
+    "installedEntrySha256": "1376dfb68527a2fef2444be718a0011c53333c90f416eb377a8bde43e5dcc5b0",
+    "installedConfigModuleSha256": "18e20ed25d20124e2530e8a236133d49317fdf9116531df2c4de4fc455225c50",
+    "concurrentMcpProcesses": 2,
+    "restartedMcpProcesses": 1,
+    "steps": [
+      "two-installed-processes-discovery-and-owner-roots",
+      "cross-process-read-defaults-and-write-warning-byte-fidelity",
+      "three-concurrent-distinct-key-writes-without-lost-updates",
+      "runtime-root-narrowing-empty-denial-and-owner-ceiling-preservation",
+      "telemetry-preference-has-no-observed-node-network-transport",
+      "malformed-policy-denial-and-owned-process-cleanup",
+      "restart-persistence-without-inheriting-config-write-authority"
+    ],
+    "interceptedNetworkCanaries": 10,
+    "observedProductNetworkAttempts": 0,
+    "telemetryEvidenceScope": "Instrumented standard Node network APIs in the MCP children; not an OS sandbox or descendant-process network monitor.",
+    "stderrCapturedBytes": [
+      0,
+      0,
+      0
+    ],
+    "shutdownVerified": true,
+    "shutdownEvidence": "ESRCH observed for each captured MCP child PID and the owned fixture process using bounded signal-zero polling.",
+    "ownedFixtureCleanup": true,
+    "actualCodexAgentToolInvocation": false,
+    "realUserConfigChanged": false,
+    "modelCalls": 0
+  },
+  "revisedIntegratedPackageGate": "passed on native Windows; see integratedWindowsWorkflow",
+  "revisedManagedCodexGate": "source-entry and explicit installed-entry passed on native Windows",
+  "newExactHeadHostedGate": "All nine checks passed at implementation def85d256fe558ef26e0cdf7d0218ce250682150; see config-delivery.json. Final documentation and main checks are recorded by PR72.",
+  "fullConfigurationParity": false,
+  "dcpAccepted": 0,
+  "dcpTotal": 48,
+  "webAccepted": 0,
+  "webTotal": 12,
+  "negativeVerifierTests": {
+    "passed": 2,
+    "failed": 0,
+    "skipped": 0,
+    "durationMs": 483.4784,
+    "platform": "win32 x64 / Node24.21.0",
+    "sourceBaseCommit": "297877435c4b3358ac53414af28edd11504e35ed",
+    "evidence": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\config-qualification-20261102\\artifacts\\config-qualification-validation\\negative-fixtures.log"
+  },
+  "integrationDependencyMain": "932c310914d8af822c5b1611ac85c5e79c2c5097",
+  "integratedWindowsWorkflow": {
+    "evidenceBasis": "Native execution and retained results inspected and supplied by the integration owner; selected fields, not a byte-for-byte raw report.",
+    "sourceState": "Dependency main 932c310 plus the four transferred, hash-verified verifier source files.",
+    "testCount": 164,
+    "testPass": 164,
+    "testSkip": 0,
+    "testDurationMs": 31150.2471,
+    "normalPackageGate": "passed",
+    "packageEvidence": "artifacts/package-verify-6R87k5/result.json",
+    "sourceManagedCodexGate": "passed",
+    "sourceManagedCodexEvidence": "artifacts/managed-codex-gRHQMc/result.json",
+    "configurationAssertions": "all true as supplied by the integration owner",
+    "actualCodexAgentToolInvocation": false,
+    "separatePrepack": "passed",
+    "installedEntryManagedCodex": "passed",
+    "installedEntryManagedCodexEvidence": "artifacts/managed-codex-4MeAZP/result.json"
+  },
+  "integratedNativeResults": {
+    "observedAtUtc": "2026-11-02T03:29:34.871Z",
+    "base": "932c310914d8af822c5b1611ac85c5e79c2c5097",
+    "sourceFingerprint": "020a7a45b1e00aab91df26932ff2b4feb7166cacc9ed132940a6c2e7aed749a1",
+    "steps": {
+      "full-workflow": {
+        "step": "full-workflow",
+        "exitCode": 0,
+        "durationMs": 57444
+      },
+      "self-host": {
+        "step": "self-host",
+        "exitCode": 0,
+        "durationMs": 1383
+      },
+      "normal-prepack": {
+        "step": "normal-prepack",
+        "exitCode": 0,
+        "durationMs": 37346
+      },
+      "installed-codex": {
+        "step": "installed-codex",
+        "exitCode": 0,
+        "durationMs": 2137
+      }
+    },
+    "package": {
+      "packageVersion": "0.0.1-preview.1",
+      "archiveBytes": 56649,
+      "packageUnpackedBytes": 220182,
+      "installedProductionBytes": 14167552,
+      "productionFiles": 992,
+      "packagedMcpRoundTrip": true,
+      "ownedPrefixNpmLink": true,
+      "offlineNpmExecFromTarball": true,
+      "npmExecMcpCompatibilityTools": 8,
+      "installedConfiguration": {
+        "ok": true,
+        "packageVersion": "0.0.1-preview.1",
+        "node": "v24.21.0",
+        "platform": "win32",
+        "architecture": "x64",
+        "installedEntryUnderOwnedPrefix": true,
+        "installedEntrySha256": "1376dfb68527a2fef2444be718a0011c53333c90f416eb377a8bde43e5dcc5b0",
+        "installedConfigModuleSha256": "18e20ed25d20124e2530e8a236133d49317fdf9116531df2c4de4fc455225c50",
+        "concurrentMcpProcesses": 2,
+        "restartedMcpProcesses": 1,
+        "compatibilityToolsDiscovered": [
+          "get_config",
+          "set_config_value"
+        ],
+        "steps": [
+          "two-installed-processes-discovery-and-owner-roots",
+          "cross-process-read-defaults-and-write-warning-byte-fidelity",
+          "three-concurrent-distinct-key-writes-without-lost-updates",
+          "runtime-root-narrowing-empty-denial-and-owner-ceiling-preservation",
+          "telemetry-preference-has-no-observed-node-network-transport",
+          "malformed-policy-denial-and-owned-process-cleanup",
+          "restart-persistence-without-inheriting-config-write-authority"
+        ],
+        "telemetryNetworkGuard": {
+          "interceptedCanaryAttempts": 10,
+          "canaryApis": [
+            "net.Socket.connect",
+            "tls.connect",
+            "http.get",
+            "https.request",
+            "http2.connect",
+            "dgram.Socket.send",
+            "dns.lookup",
+            "dns.promises.lookup",
+            "fetch",
+            "WebSocket"
+          ],
+          "observedProductAttempts": 0,
+          "maximumRetainedAttemptsPerChild": 128,
+          "preferenceValuesExercised": [
+            true,
+            false
+          ],
+          "scope": "Instrumented standard Node network APIs in the three MCP children; not an OS sandbox or a descendant-process network monitor."
+        },
+        "actualCodexAgentToolInvocation": false,
+        "processExitProof": "Bounded signal-0 polling observed ESRCH for each captured MCP PID and owned fixture process; no numeric-PID termination fallback.",
+        "fullConfigurationParity": false,
+        "modelCalls": 0,
+        "realUserConfigChanged": false,
+        "evidence": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\config-qualification-20261102\\artifacts\\package-verify-6R87k5\\configuration-anPVEV",
+        "shutdownVerified": true,
+        "ownedFixtureCleanup": true,
+        "stderrCapturedBytes": [
+          0,
+          0,
+          0
+        ]
+      },
+      "fullDesktopCommanderParity": false,
+      "fromOutsideCheckout": true,
+      "helpExternalLaunchSamplesMs": [
+        46.28,
+        48.06,
+        48.39,
+        52.24,
+        48.63
+      ],
+      "helpMedianMs": 48.39269999999851,
+      "nodeVersion": "v24.21.0",
+      "nodePrerequisiteBytes": 93580104,
+      "nodeBundled": false,
+      "codexBundled": false,
+      "webBundled": false,
+      "quotaAdapterBundled": false,
+      "fullThreeComponentUnder50MB": "NOT VERIFIED; this is a dependency-reuse local host, not that bundle",
+      "modelCalls": 0,
+      "userGlobalPrefixModified": false,
+      "evidence": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\config-qualification-20261102\\artifacts\\package-verify-6R87k5"
+    },
+    "sourceCodex": {
+      "codexVersion": "codex-cli 0.160.1",
+      "codexExpectedVersion": "0.160.1",
+      "testOwnedCodex": true,
+      "codexTestPrefix": "artifacts/ci-codex",
+      "codexNativeExecutable": "node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/bin/codex.exe",
+      "node": "v24.21.0",
+      "platform": "win32",
+      "arch": "x64",
+      "setupApplied": true,
+      "setupIdempotent": true,
+      "configurationParsedByCodex": true,
+      "registeredCommandMcpRounds": 2,
+      "compatibilityProfilePersisted": true,
+      "configurationToolsDiscovered": [
+        "get_config",
+        "set_config_value"
+      ],
+      "syntheticConfigurationPathVerified": true,
+      "multipleRootsParsedByCodex": true,
+      "configurationPersistsAcrossRegisteredCommandRestarts": true,
+      "configuredReadLimitExercised": true,
+      "shutdownVerified": true,
+      "shutdownEvidence": "The original MCP process IDs returned ESRCH to bounded signal-0 polling after SDK close.",
+      "removalPreservesUnrelatedBytes": true,
+      "backupsRetained": true,
+      "actualCodexAgentToolInvocation": false,
+      "realUserConfigChanged": false,
+      "modelCalls": 0,
+      "installedEntry": false,
+      "evidence": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\config-qualification-20261102\\artifacts\\managed-codex-gRHQMc"
+    },
+    "installedCodex": {
+      "codexVersion": "codex-cli 0.160.1",
+      "codexExpectedVersion": "0.160.1",
+      "testOwnedCodex": true,
+      "codexTestPrefix": "artifacts/ci-codex",
+      "codexNativeExecutable": "node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/bin/codex.exe",
+      "node": "v24.21.0",
+      "platform": "win32",
+      "arch": "x64",
+      "setupApplied": true,
+      "setupIdempotent": true,
+      "configurationParsedByCodex": true,
+      "registeredCommandMcpRounds": 2,
+      "compatibilityProfilePersisted": true,
+      "configurationToolsDiscovered": [
+        "get_config",
+        "set_config_value"
+      ],
+      "syntheticConfigurationPathVerified": true,
+      "multipleRootsParsedByCodex": true,
+      "configurationPersistsAcrossRegisteredCommandRestarts": true,
+      "configuredReadLimitExercised": true,
+      "shutdownVerified": true,
+      "shutdownEvidence": "The original MCP process IDs returned ESRCH to bounded signal-0 polling after SDK close.",
+      "removalPreservesUnrelatedBytes": true,
+      "backupsRetained": true,
+      "actualCodexAgentToolInvocation": false,
+      "realUserConfigChanged": false,
+      "modelCalls": 0,
+      "installedEntry": true,
+      "evidence": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\config-qualification-20261102\\artifacts\\managed-codex-4MeAZP"
+    }
+  },
+  "dependencyDelivery": {
+    "observedAtUtc": "2026-11-02T03:29:44.535Z",
+    "implementation": "297877435c4b3358ac53414af28edd11504e35ed",
+    "pr": 71,
+    "merge": "932c310914d8af822c5b1611ac85c5e79c2c5097",
+    "checks": [
+      {
+        "id": 125076750594,
+        "name": "windows-2022 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41382703553/job/125076750594",
+        "head_sha": "297877435c4b3358ac53414af28edd11504e35ed",
+        "started_at": "2026-11-02T03:22:02Z",
+        "completed_at": "2026-11-02T03:23:23Z"
+      },
+      {
+        "id": 125076750584,
+        "name": "ubuntu-24.04 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41382703553/job/125076750584",
+        "head_sha": "297877435c4b3358ac53414af28edd11504e35ed",
+        "started_at": "2026-11-02T03:22:02Z",
+        "completed_at": "2026-11-02T03:22:45Z"
+      },
+      {
+        "id": 125076750562,
+        "name": "macos-14 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41382703553/job/125076750562",
+        "head_sha": "297877435c4b3358ac53414af28edd11504e35ed",
+        "started_at": "2026-11-02T03:22:02Z",
+        "completed_at": "2026-11-02T03:22:50Z"
+      },
+      {
+        "id": 125076750490,
+        "name": "macos-15-intel / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41382703553/job/125076750490",
+        "head_sha": "297877435c4b3358ac53414af28edd11504e35ed",
+        "started_at": "2026-11-02T03:22:06Z",
+        "completed_at": "2026-11-02T03:24:05Z"
+      },
+      {
+        "id": 125076750392,
+        "name": "CI / fast",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41382703583/job/125076750392",
+        "head_sha": "297877435c4b3358ac53414af28edd11504e35ed",
+        "started_at": "2026-11-02T03:22:02Z",
+        "completed_at": "2026-11-02T03:22:37Z"
+      },
+      {
+        "id": 125076328004,
+        "name": "ubuntu-24.04 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41382566783/job/125076328004",
+        "head_sha": "297877435c4b3358ac53414af28edd11504e35ed",
+        "started_at": "2026-11-02T03:20:33Z",
+        "completed_at": "2026-11-02T03:21:15Z"
+      },
+      {
+        "id": 125076327834,
+        "name": "macos-15-intel / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41382566783/job/125076327834",
+        "head_sha": "297877435c4b3358ac53414af28edd11504e35ed",
+        "started_at": "2026-11-02T03:20:34Z",
+        "completed_at": "2026-11-02T03:22:01Z"
+      },
+      {
+        "id": 125076327790,
+        "name": "macos-14 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41382566783/job/125076327790",
+        "head_sha": "297877435c4b3358ac53414af28edd11504e35ed",
+        "started_at": "2026-11-02T03:20:33Z",
+        "completed_at": "2026-11-02T03:21:15Z"
+      },
+      {
+        "id": 125076327570,
+        "name": "windows-2022 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41382566783/job/125076327570",
+        "head_sha": "297877435c4b3358ac53414af28edd11504e35ed",
+        "started_at": "2026-11-02T03:20:33Z",
+        "completed_at": "2026-11-02T03:21:59Z"
+      }
+    ],
+    "mainChecks": [
+      {
+        "id": 125077390886,
+        "name": "macos-15-intel / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41382914828/job/125077390886",
+        "head_sha": "932c310914d8af822c5b1611ac85c5e79c2c5097",
+        "started_at": "2026-11-02T03:24:20Z",
+        "completed_at": "2026-11-02T03:25:52Z"
+      },
+      {
+        "id": 125077390868,
+        "name": "macos-14 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41382914828/job/125077390868",
+        "head_sha": "932c310914d8af822c5b1611ac85c5e79c2c5097",
+        "started_at": "2026-11-02T03:24:20Z",
+        "completed_at": "2026-11-02T03:25:09Z"
+      },
+      {
+        "id": 125077390752,
+        "name": "windows-2022 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41382914828/job/125077390752",
+        "head_sha": "932c310914d8af822c5b1611ac85c5e79c2c5097",
+        "started_at": "2026-11-02T03:24:19Z",
+        "completed_at": "2026-11-02T03:25:48Z"
+      },
+      {
+        "id": 125077390741,
+        "name": "ubuntu-24.04 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41382914828/job/125077390741",
+        "head_sha": "932c310914d8af822c5b1611ac85c5e79c2c5097",
+        "started_at": "2026-11-02T03:24:19Z",
+        "completed_at": "2026-11-02T03:24:53Z"
+      },
+      {
+        "id": 125077390257,
+        "name": "CI / fast",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41382914744/job/125077390257",
+        "head_sha": "932c310914d8af822c5b1611ac85c5e79c2c5097",
+        "started_at": "2026-11-02T03:24:19Z",
+        "completed_at": "2026-11-02T03:24:50Z"
+      }
+    ]
+  }
+}

@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 // AI-Change: 2026-10-04-local-mcp
+// Modified: 2026-11-02-config-installed-qualification; qualify shared runtime preferences from the installed package.
 // Fresh pack/install/link and official MCP round trip; only test-owned prefix/home/cache are used.
 import fs from 'node:fs/promises';
 import { resolveNpmEntry } from './npm-runtime.mjs';
@@ -126,6 +127,25 @@ const compatibility = JSON.parse(
   ).stdout,
 );
 assert.equal(compatibility.compatibilityAliasesExercised, 8);
+const configuration = JSON.parse(
+  (
+    await exec(
+      process.execPath,
+      [
+        path.join(root, 'scripts/verify-configuration-installed.mjs'),
+        installed,
+        prefix,
+        output,
+        pack.version,
+      ],
+      { cwd: home, env, timeout: 60000, maxBuffer: 1048576, windowsHide: true },
+    )
+  ).stdout,
+);
+assert.equal(configuration.ok, true);
+assert.equal(configuration.concurrentMcpProcesses, 2);
+assert.equal(configuration.shutdownVerified, true);
+assert.equal(configuration.telemetryNetworkGuard.observedProductAttempts, 0);
 // CLI --prefix changes npm's local package root; environment prefix selects an isolated global link destination.
 env.npm_config_prefix = linkPrefix;
 assert.equal((await npmRun(['prefix', '--global'])).stdout.trim(), linkPrefix);
@@ -185,6 +205,7 @@ const report = {
   ownedPrefixNpmLink: true,
   offlineNpmExecFromTarball: true,
   npmExecMcpCompatibilityTools: compatibility.compatibilityAliasesExercised,
+  installedConfiguration: configuration,
   fullDesktopCommanderParity: false,
   fromOutsideCheckout: true,
   helpExternalLaunchSamplesMs: timings.map((x) => Math.round(x * 100) / 100),

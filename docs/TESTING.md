@@ -1,11 +1,42 @@
 # Verification commands and evidence — 2026-11-02
 
-The [final sprint report](validation/2026-11-02-remote-sprint.md) and
-[PR #69](https://github.com/MulattoTech/MTerm-CLI/pull/69) are authoritative for
-the final merge/main SHA, documentation checks and recovery checkpoint. The code
-qualified below is `b90432a1bc138d59305692a9f74f110a475d0881`.
+The current configuration proof is recorded in [PR #72](https://github.com/MulattoTech/MTerm-CLI/pull/72)
+and the [delivery record](validation/2026-11-02-config-delivery.json), at implementation
+`def85d256fe558ef26e0cdf7d0218ce250682150`. The earlier remote release remains
+recorded separately by [PR #69](https://github.com/MulattoTech/MTerm-CLI/pull/69)
+and its [report](validation/2026-11-02-remote-sprint.md).
 
-## Latest observed results
+## Installed configuration qualification
+
+The [DCP-016 report](validation/2026-11-02-config-installed-qualification.md) records
+a passing standalone Windows Node 24.21.0 probe against an actual packed package:
+two simultaneous MCP children, one restart, seven scenarios, ten intercepted network
+canaries and no observed product transport attempts. Dynamic native/compatible/multi-file
+reads, warning and append bytes, concurrent writes, narrowed/empty roots, policy corruption,
+owned cleanup and persistence were exercised. All captured child/fixture PIDs had an
+independently observed exit. This artifacts-only probe precedes the new integrated gate.
+
+`verify-package.mjs` now invokes `verify-configuration-installed.mjs` automatically.
+For a focused rerun against a package verifier's retained installation, provide the exact
+installed entry, its owned installation prefix, an existing owned evidence directory and
+the expected package version:
+
+```powershell
+node scripts/verify-configuration-installed.mjs <absolute-installed-entry> <absolute-install-prefix> <absolute-evidence-directory> 0.0.1-preview.1
+node --test --test-concurrency=1 tests/configuration-verifier.test.mjs
+```
+
+The verifier refuses source-checkout substitution, drains bounded stderr and uses five-second
+MCP deadlines that leave time for cleanup. Its network evidence concerns instrumented Node
+APIs, not an OS network sandbox. The separate negative tests verify that source and wrong-package
+inputs are rejected before product execution. The revised Windows workflow subsequently
+passed **164/164 tests**, the normal package gate and source-entry managed-Codex gate.
+Separate normal prepack, self-host and explicit installed-entry Codex also passed.
+All nine implementation-head hosted checks and fresh committed archive extraction then
+passed. The final documentation head and post-merge main checks are recorded in PR #72.
+No parity acceptance or stage credit is inferred from these scoped gates.
+
+## Previous release results
 
 | Gate | Result and scope |
 | --- | --- |

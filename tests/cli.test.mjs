@@ -167,5 +167,9 @@ test('remote CLI rejects missing scope and unsupported privilege flags', async (
     ['remote', 'setup', '--gateway', 'http://example.invalid', '--root', dir],
     ['remote', 'setup', '--gateway', 'https://example.invalid', '--root', dir, '--allow-write'],
     ['remote', 'start', '--allow-exec'],
-  ]) assert.equal((await invoke(args)).code, 2);
+  ]) {
+    const result = await invoke(args);
+    assert.notEqual(result.code, 0);
+    assert.match(result.stderr, /USAGE|REMOTE_GATEWAY/);
+  }
 });

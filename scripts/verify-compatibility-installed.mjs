@@ -218,7 +218,21 @@ try {
     { file_path: editTarget, old_string: 'absent', new_string: 'changed' },
     'REPLACEMENT_COUNT',
   );
-  await rejectEdit({ file_path: editTarget, old_string: '', new_string: 'changed' }, 'INVALID_ARGUMENT');
+  const beforeInvalidEdit = await fs.readFile(editTarget);
+  const invalidEdit = await client.callTool(
+    { name: 'edit_block', arguments: { file_path: editTarget, old_string: '', new_string: 'changed' } },
+    requestOptions,
+  );
+  assert.equal(invalidEdit.isError, true);
+  assert.equal(invalidEdit.content.length, 1);
+  assert.equal(invalidEdit.content[0].type, 'text');
+  assert.match(
+    invalidEdit.content[0].text,
+    /^Input validation error: Invalid arguments for tool edit_block:/,
+  );
+  assert.match(invalidEdit.content[0].text, /old_string/);
+  assert.ok(Buffer.byteLength(JSON.stringify(invalidEdit)) < 8192);
+  assert.deepEqual(await fs.readFile(editTarget), beforeInvalidEdit);
   editScenarios.push('normalized-exact-count-mismatch-and-schema-no-write');
   await fs.writeFile(editTarget, 'x\r\n');
   await call('edit_block', { file_path: editTarget, old_string: 'x', new_string: 'α'.repeat(131070) + '\n' });

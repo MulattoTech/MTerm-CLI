@@ -40,8 +40,8 @@ UTF-8 check. The 262,144-byte compatibility ceiling remains inclusive.
 ## Test-first and independent review
 
 Original supplementary Linux direct-service RED: 29 cases, 7 passed and 22
-assertions failed. Independent review added the thirtieth allocation regression:
-the EOL implementation passed 29/30 before its repair. The original fixture/logs
+assertions failed. Independent review identified the allocation gap; a thirtieth regression was
+added before repair. The EOL implementation passed 29/30 before that repair. The original fixture/logs
 are preserved separately. Final native Windows original-source RED: 30 cases,
 7 passed and 23 assertions failed, exit 1. The exact same final fixture then passed
 30/30, exit 0, with no skips or cancellations. See [development evidence](2026-11-02-edit-line-endings-development.json),
@@ -84,3 +84,15 @@ The owner-approved root remains `C:\Tools\Dev\MTerm-RemoteWorkspace`; pairing,
 read-only mode and no-autostart stay unchanged. No paid model/auth experiment,
 deployment or security-policy change is needed. Actual-client connection remains
 separate from SDK/package and dashboard observations.
+
+## Initial installed-verifier correction
+
+The first committed native full wrapper at `d8c232e306372a78ec3b264bd2608f6733a9dc2f`
+passed all 272 tests, then failed in the new installed edit schema probe. The MCP
+SDK rejects an empty `old_string` before the adapter runs and returns its standard
+text validation response. The verifier incorrectly attempted JSON decoding.
+The correction asserts the SDK error prefix, affected field, bounded response and
+unchanged target bytes. Runtime policy and all domain error-code checks remain
+unchanged. The original failed receipt and log hashes are preserved in
+[the attempt record](2026-11-02-edit-line-endings-initial-package-attempt.json);
+a new committed candidate and additive qualification outputs are required.

@@ -4,7 +4,7 @@
   "model": "GPT-6 Astra Pro",
   "identity_basis": "session-declared; self-reported",
   "started_at_utc": "2026-11-02T19:49:19.848Z",
-  "updated_at_utc": "2026-11-02T19:58:56.061613+00:00",
+  "updated_at_utc": "2026-11-02T20:05:52.322012+00:00",
   "base_sha": "99c3c9e7d23d76a3207b903554f552f59cebf236",
   "base_tree": "4873caa7b342bf3521eb7a8b6fa85d0299fa9c47",
   "branch": "fix/dcp-025-edit-eol-20261102",
@@ -37,14 +37,15 @@
   "source_sha256": {
     "src/desktop-commander-files.ts": "570946f9b68db88159f868a77f8846a99baf7d4bfda52d8dc5a4e6cd80da3215",
     "tests/compat-edit-block.test.mjs": "81afa22554c1a4d2857f32c28fbbffc358bfec2c8b2527190f447c8acf26858b",
-    "scripts/verify-compatibility-installed.mjs": "1435527928e3472535c9b5fe276b22536f05de8b3623ba381da470b13a0a0e95"
+    "scripts/verify-compatibility-installed.mjs": "d36fb8d1236d808a81fa25e1056370120b537a0709e884b00a677230f46394be"
   },
   "upstream_commit": "c774c3b505de990219637ecdc9a830c8772fae9d",
   "decisions": [
     "Use original production adapter and shared versioned FileService; no policy/capability expansion.",
     "Preserve non-overlap counts, untouched mixed regions and literal replacement strings.",
     "UTF16 size lower bound prevents enormous allocations; exact UTF8 ceiling remains in FileService.",
-    "No protected ledger fields or acceptance credit changed."
+    "No protected ledger fields or acceptance credit changed.",
+    "Retain first failed full-wrapper receipt; handle the SDK schema validation envelope explicitly without weakening domain error or no-write checks."
   ],
   "tests": [
     {
@@ -56,6 +57,11 @@
       "command": "Independent source review and focused rerun",
       "result": "Initial allocation finding reproduced and resolved; final30/30.",
       "evidence": "docs/validation/2026-11-02-edit-line-endings-source-review-supplement.json"
+    },
+    {
+      "command": "Initial committed native full wrapper at d8c232e306372a78ec3b264bd2608f6733a9dc2f",
+      "result": "272/272 normal Windows tests passed; wrapper exit1 at portable package due verifier JSON parsing of SDK schema-error text. Harness-only correction requires new qualification. Original failure retained.",
+      "evidence": "docs/validation/2026-11-02-edit-line-endings-initial-package-attempt.json"
     }
   ],
   "limitations": [

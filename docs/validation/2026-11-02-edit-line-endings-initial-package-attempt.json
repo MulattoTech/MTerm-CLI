@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "mode": "native",
+  "startedAtUtc": "2026-11-02T20:02:38.357Z",
+  "root": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\parity-iteration-20261102-1952",
+  "node": "v24.21.0",
+  "platform": "win32",
+  "arch": "x64",
+  "commands": [
+    {
+      "name": "native-full-wrapper",
+      "executable": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+      "arguments": [
+        "scripts/orchestration/verify.mjs",
+        "--full"
+      ],
+      "cwd": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\parity-iteration-20261102-1952",
+      "startedAtUtc": "2026-11-02T20:02:38.540Z",
+      "completedAtUtc": "2026-11-02T20:03:21.121Z",
+      "pid": 66024,
+      "exitCode": 1,
+      "signal": null,
+      "error": null,
+      "stdout": {
+        "file": "native-full-wrapper.stdout.log",
+        "bytes": 27227,
+        "sha256": "c62aa145a3d3f46ec1c8e60bc44afb497780d7f962de9139e0b87b4f4ccea393"
+      },
+      "stderr": {
+        "file": "native-full-wrapper.stderr.log",
+        "bytes": 4136,
+        "sha256": "8e2873b9ae082ead85879fac70ffe4e25408965835ea993be717a5b0d46ca53e"
+      }
+    }
+  ],
+  "modelCalls": 0,
+  "actualCodexAgentToolInvocation": false,
+  "realUserConfigChanged": false,
+  "sourceSha": "d8c232e306372a78ec3b264bd2608f6733a9dc2f",
+  "sourceTree": "0b43e3ca878ea7a185efc73618e5d3597cc7bf60",
+  "sourceHashes": {
+    "src/desktop-commander-files.ts": {
+      "bytes": 19530,
+      "sha256": "570946f9b68db88159f868a77f8846a99baf7d4bfda52d8dc5a4e6cd80da3215",
+      "normalizedSha256": "570946f9b68db88159f868a77f8846a99baf7d4bfda52d8dc5a4e6cd80da3215"
+    },
+    "tests/compat-edit-block.test.mjs": {
+      "bytes": 13904,
+      "sha256": "81afa22554c1a4d2857f32c28fbbffc358bfec2c8b2527190f447c8acf26858b",
+      "normalizedSha256": "81afa22554c1a4d2857f32c28fbbffc358bfec2c8b2527190f447c8acf26858b"
+    },
+    "scripts/verify-compatibility-installed.mjs": {
+      "bytes": 28071,
+      "sha256": "1435527928e3472535c9b5fe276b22536f05de8b3623ba381da470b13a0a0e95",
+      "normalizedSha256": "1435527928e3472535c9b5fe276b22536f05de8b3623ba381da470b13a0a0e95"
+    },
+    "package-lock.json": {
+      "bytes": 19974,
+      "sha256": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec",
+      "normalizedSha256": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec"
+    },
+    "npm-shrinkwrap.json": {
+      "bytes": 19974,
+      "sha256": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec",
+      "normalizedSha256": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec"
+    }
+  },
+  "ok": false,
+  "failure": "AssertionError [ERR_ASSERTION]: native-full-wrapper failed; inspect retained logs\n\n1 !== 0\n\n    at run (file:///C:/Tools/Dev/MTerm-CLI/artifacts/worktrees/parity-iteration-20261102-1952/artifacts/edit-eol/native-qualification.mjs:47:10)\n    at file:///C:/Tools/Dev/MTerm-CLI/artifacts/worktrees/parity-iteration-20261102-1952/artifacts/edit-eol/native-qualification.mjs:98:5\n    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)\n    at async node:internal/modules/esm/loader:647:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)",
+  "completedAtUtc": "2026-11-02T20:03:21.122Z",
+  "classification": "test-fixture defect; SDK input validation text incorrectly treated as JSON by new installed verifier",
+  "unitTestObservation": {
+    "tests": 272,
+    "pass": 272,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "retryPolicy": "New committed harness correction; new additive output directory. Original receipt/logs retained. No identical-head retry."
+}

@@ -83,5 +83,7 @@ verification and eight opt-in text/file aliases.64 local tests plus installed np
 actual Codex-parsed registration passed. All48 issues stay OPEN until their complete acceptance.
 Implementation observations are attached to the corresponding DCP rows in the JSON ledger.
 
-Hosted Actions jobs are blocked before steps by the account's payment/spending-limit gate.
-No CI bypass, platform PASS or merge is claimed. See [evidence](validation/2026-10-05-codex-parity-foundation.md).
+At that October checkpoint, hosted jobs were blocked before execution. This is historical.
+The November 2 baseline main `059413f` passed all four platforms and fast CI after PR #69/#70.
+See [current CI evidence](validation/2026-11-02-config-baseline-ci.json).
+Full 26-tool and 48-issue acceptance remains pending; the passing foundation does not close these rows.

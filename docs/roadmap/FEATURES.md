@@ -1926,13 +1926,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Unsupported keys and wrong types are rejected before mutation.
 
-**Current scope:** Final 2026-11-02 evidence at b90432a: Typed get/set, separate config-write capability, immutable root/shell ceilings and per-call snapshots are implemented and tested; no parity issue acceptance is implied. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.
+**Current scope:** 2026-11-02 config reliability: Windows-only bounded EPERM/EBUSY retries revalidate expected bytes and staging identity; unrelated edits and unsafe cleanup paths are preserved. Native Windows focused gate38/38, no skips. This is partial DCP010/016 implementation; full parity and OS-handle race guarantees remain open. Existing stage and weight retained.
 
 **Baseline weight:** 4 h (rough). **Remaining:** 1–3 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/cli.test.mjs`, `src/compat-config.ts`, `tests/compat-config.test.mjs`, `tests/compat-config-mcp.test.mjs`, `docs/ai/changes/2026-11-02-config-storage-identity.json`, `docs/validation/2026-11-02-remote-sprint.md`, `docs/validation/2026-11-02-remote-staging-smoke-final.json`
+**Evidence:** `tests/cli.test.mjs`, `src/compat-config.ts`, `tests/compat-config.test.mjs`, `tests/compat-config-mcp.test.mjs`, `docs/ai/changes/2026-11-02-config-storage-identity.json`, `docs/validation/2026-11-02-remote-sprint.md`, `docs/validation/2026-11-02-remote-staging-smoke-final.json`, `tests/compat-config-retry.test.mjs`, `docs/validation/2026-11-02-config-retry.md`
 
 ## CLI-139 — Implement safe config editing
 
@@ -1968,13 +1968,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** A failed write/migration does not strand the installed CLI.
 
-**Current scope:** Final 2026-11-02 evidence at b90432a: Atomic bounded config writes, backups, locking/conflict handling and canonical storage guards passed the recorded regression suite; hostile local filesystem races remain outside the guarantee. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.
+**Current scope:** 2026-11-02 config reliability: Windows-only bounded EPERM/EBUSY retries revalidate expected bytes and staging identity; unrelated edits and unsafe cleanup paths are preserved. Native Windows focused gate38/38, no skips. This is partial DCP010/016 implementation; full parity and OS-handle race guarantees remain open. Existing stage and weight retained.
 
 **Baseline weight:** 8 h (rough). **Remaining:** 1–6 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/cli.test.mjs`, `src/compat-config.ts`, `tests/compat-config.test.mjs`, `tests/compat-config-mcp.test.mjs`, `docs/ai/changes/2026-11-02-config-storage-identity.json`, `docs/validation/2026-11-02-remote-sprint.md`, `docs/validation/2026-11-02-remote-staging-smoke-final.json`
+**Evidence:** `tests/cli.test.mjs`, `src/compat-config.ts`, `tests/compat-config.test.mjs`, `tests/compat-config-mcp.test.mjs`, `docs/ai/changes/2026-11-02-config-storage-identity.json`, `docs/validation/2026-11-02-remote-sprint.md`, `docs/validation/2026-11-02-remote-staging-smoke-final.json`, `tests/compat-config-retry.test.mjs`, `docs/validation/2026-11-02-config-retry.md`
 
 ## CLI-142 — Reject prototype-pollution keys
 
@@ -2752,13 +2752,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Local file/network/process capabilities are separated and no global settings are widened.
 
-**Current scope:** Final 2026-11-02 evidence at b90432a: Local capabilities remain separate; gateway and device independently enforce read-only scope, device identity and trusted roots. Live mutation/root-escape/cross-device denials passed. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.
+**Current scope:** 2026-11-02 config reliability: Windows-only bounded EPERM/EBUSY retries revalidate expected bytes and staging identity; unrelated edits and unsafe cleanup paths are preserved. Native Windows focused gate38/38, no skips. This is partial DCP010/016 implementation; full parity and OS-handle race guarantees remain open. Existing stage and weight retained.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 3–11 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/cli.test.mjs`, `tests/mcp.test.mjs`, `tests/processes.test.mjs`, `tests/remote-gateway.test.mjs`, `tests/remote-agent.test.mjs`, `tests/remote-adapter.test.mjs`, `tests/remote-state.test.mjs`, `docs/ai/changes/2026-11-02-remote-gateway.json`, `docs/ai/changes/2026-11-02-remote-agent.json`, `docs/validation/2026-11-02-remote-staging-smoke.json`, `docs/validation/2026-11-02-remote-sprint.md`, `docs/validation/2026-11-02-remote-staging-smoke-final.json`
+**Evidence:** `tests/cli.test.mjs`, `tests/mcp.test.mjs`, `tests/processes.test.mjs`, `tests/remote-gateway.test.mjs`, `tests/remote-agent.test.mjs`, `tests/remote-adapter.test.mjs`, `tests/remote-state.test.mjs`, `docs/ai/changes/2026-11-02-remote-gateway.json`, `docs/ai/changes/2026-11-02-remote-agent.json`, `docs/validation/2026-11-02-remote-staging-smoke.json`, `docs/validation/2026-11-02-remote-sprint.md`, `docs/validation/2026-11-02-remote-staging-smoke-final.json`, `tests/compat-config-retry.test.mjs`, `docs/validation/2026-11-02-config-retry.md`
 
 ## CLI-198 — Keep Codex safety controls intact
 
@@ -3340,13 +3340,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Ownership, credential boundaries, units and lifecycle assumptions are visible near relevant code.
 
-**Current scope:** Vendor-neutral attribution, preserved interrupted work and exact local evidence are recorded. Review fingerprints/checkpoint references updated before final delivery.
+**Current scope:** 2026-11-02 config reliability: Windows-only bounded EPERM/EBUSY retries revalidate expected bytes and staging identity; unrelated edits and unsafe cleanup paths are preserved. Native Windows focused gate38/38, no skips. This is partial DCP010/016 implementation; full parity and OS-handle race guarantees remain open. Existing stage and weight retained.
 
 **Baseline weight:** 8 h (rough). **Remaining:** 1–6 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `docs/ai/changes/2026-10-04-local-mcp.json`
+**Evidence:** `docs/ai/changes/2026-10-04-local-mcp.json`, `tests/compat-config-retry.test.mjs`, `docs/validation/2026-11-02-config-retry.md`
 
 ## CLI-240 — Write durable task change records
 

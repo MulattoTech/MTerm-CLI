@@ -1,31 +1,57 @@
-# MTerm-CLI current status — 2026-10-05
+# MTerm-CLI status — 2026-11-02 UTC
 
-**DesktopCommander Codex parity:0/48 accepted gaps, NOT PASS.** The pinned authority remains
-DesktopCommanderMCP0.2.52 /c774c3b505de990219637ecdc9a830c8772fae9d. Implementation progress is
-not the same as accepted full parity. All48 DCP issues are still open.
+**DesktopCommander Codex acceptance remains 0/48, NOT PASS.** The 300-item
+weighted maturity ledger is a separate measurement. Neither passing CI nor a
+merged implementation closes a full parity requirement.
 
-Current work: branch feat/codex-parity-foundation-20261005, PR #52 (unmerged). Code checkpoint
-6431dd71db6775c480086f944a77c0d42d6c3a0e, based on main5c4588be3afe36ee11951a73c84a023656fe6fec.
-Fetch current refs before resuming; follow-up evidence/roadmap commits may advance the PR head.
+## Verified starting point for the configuration sprint
 
-Implemented: existing scoped native MCP file/search/process/Git services; now managed Codex
-setup/removal with backups and idempotence,8 optional real DesktopCommander text/file aliases,
-upstream differential read tests, snapshot/drift/PASS validation, portable npm resolution and
-real offline npm-exec MCP packaged verification. Node24.21.0 Windows x64:64 tests passed, no skips.
-Actual Codex0.160.1 parsed isolated configuration and the registered executable passed2 SDK sessions
-from a fresh installed package. No Codex model call or real user config/auth mutation occurred.
+Current main was verified at `059413ffa4fb3b18c8e15af907744a40e0b874a7`, after
+PRs #69 and #70. PR #52 is merged; PR #67 is closed with its source incorporated.
+All seven published product branches were ancestors of that main. There was no
+additional unique product branch to merge. Access-check branches remain excluded.
 
-Hosted workflow writes now work. Jobs are blocked before execution by GitHub billing/spending-limit
-annotations; no Windows/Linux/macOS hosted PASS or protected merge is claimed. PR #52 preserves
-work without bypassing that gate. GUI and legacy repositories remain unchanged.
+The exact main passed fast CI and the four-platform matrix: Windows 2022,
+Ubuntu 24.04, macOS 14 ARM64 and macOS 15 Intel. The old billing and canonical-path
+failure notes are historical, not current blockers. See the
+[baseline CI record](validation/2026-11-02-config-baseline-ci.json) and
+[48-issue audit](validation/2026-11-02-config-issue-audit.json).
 
-Missing: full26 upstream tool contracts, multiple-root/dynamic config, search sessions, process
-aliases/PTY/system processes, image/office/PDF behavior, fuzzy editing, full history/prompts,
-managed updates, Web/quota extras and cross-platform/release qualification. The optional8 aliases
-are a tested subset, not8 fully closed parity issues. See validation/2026-10-05-codex-parity-foundation.md.
+The configuration continuation is qualifying the recovered implementation and
+repairing bounded Windows config-file replacement. Its own source, tests and
+delivery results are recorded in
+[the configuration reliability report](validation/2026-11-02-config-retry.md).
+The older passing main does not certify later changes.
 
-## Automated CLI setup update — 2026-10-18
+## Implemented scope and remaining contracts
 
-The current PR #67 worktree adds `Install-MTermCLI.ps1` as a single visible Plan/Install/Repair/Verify/Sprint entry point inspired by MJobs' starter and DevFleet's staged setup discipline. All privileged operations remain opt-in and delegated to the existing owner-tracked setup/sprint modules. Root-launcher preview/readiness tests pass locally; inspect the latest verification report for full current gates.
+Local native file/search/process/Git services, reversible managed Codex
+registration, eight optional text/file compatibility aliases and the recovered
+get_config/set_config_value implementation are present. Configuration changes
+remain bounded by immutable owner-selected roots, shells and capability flags.
+Running MCP instances load a fresh policy snapshot for newly admitted calls.
 
-This is local Codex stdio usability work only. The Cloudflare remote gateway, device supervision, user portal and real remote MCP round trip remain WEB-001..012 **0/12 — NOT PASS**. The independent DesktopCommander Codex gate remains **0/48 — NOT PASS** until accepted issue evidence exists.
+The full 26-tool contract remains incomplete. Missing or intentionally different
+behavior includes complete config metadata/coercion, shell-command execution and
+dynamic shell/blocklist contracts, process line pagination/PTY behavior,
+asynchronous ripgrep searches, URL/image/office/PDF formats, directory/cross-device
+moves, fuzzy edits, history and prompts. Empty roots deny access; runtime settings
+cannot elevate owner capabilities; telemetry does not gain a network transport.
+
+## Private remote staging
+
+Staging still serves the previously verified `b90432a` artifact, with read-only
+MCP enabled and only the owner Access policy. The completed SDK/service-principal
+smoke passed 11/11 and its temporary identities were removed. This sprint makes
+no new deployment or production promotion. See
+[the remote sprint report](validation/2026-11-02-remote-sprint.md).
+
+An existing authorized Brave session opened the real dashboard during this
+continuation. It displayed zero paired computers and zero client authorizations.
+This confirms authenticated dashboard access through that existing session; it
+does not certify a fresh Google login, pairing, OAuth consent/callback or ChatGPT
+tool use. A dedicated harmless workspace preview is prepared; owner selection
+and approval are still required before applying it or pairing an agent.
+
+The original dirty Windows checkout, existing AO worktrees, MJobs activity,
+real Codex configuration and credentials remain outside this sprint's changes.

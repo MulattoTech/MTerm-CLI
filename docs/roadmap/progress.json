@@ -2890,12 +2890,14 @@
         "tests/compat-config-mcp.test.mjs",
         "docs/ai/changes/2026-11-02-config-storage-identity.json",
         "docs/validation/2026-11-02-remote-sprint.md",
-        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json",
+        "tests/compat-config-retry.test.mjs",
+        "docs/validation/2026-11-02-config-retry.md"
       ],
-      "notes": "Final 2026-11-02 evidence at b90432a: Typed get/set, separate config-write capability, immutable root/shell ceilings and per-call snapshots are implemented and tested; no parity issue acceptance is implied. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
+      "notes": "2026-11-02 config reliability: Windows-only bounded EPERM/EBUSY retries revalidate expected bytes and staging identity; unrelated edits and unsafe cleanup paths are preserved. Native Windows focused gate38/38, no skips. This is partial DCP010/016 implementation; full parity and OS-handle race guarantees remain open. Existing stage and weight retained.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-11-02-config-rename-retry"
     },
     {
       "id": "CLI-139",
@@ -2961,12 +2963,14 @@
         "tests/compat-config-mcp.test.mjs",
         "docs/ai/changes/2026-11-02-config-storage-identity.json",
         "docs/validation/2026-11-02-remote-sprint.md",
-        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json",
+        "tests/compat-config-retry.test.mjs",
+        "docs/validation/2026-11-02-config-retry.md"
       ],
-      "notes": "Final 2026-11-02 evidence at b90432a: Atomic bounded config writes, backups, locking/conflict handling and canonical storage guards passed the recorded regression suite; hostile local filesystem races remain outside the guarantee. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
+      "notes": "2026-11-02 config reliability: Windows-only bounded EPERM/EBUSY retries revalidate expected bytes and staging identity; unrelated edits and unsafe cleanup paths are preserved. Native Windows focused gate38/38, no skips. This is partial DCP010/016 implementation; full parity and OS-handle race guarantees remain open. Existing stage and weight retained.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-11-02-config-rename-retry"
     },
     {
       "id": "CLI-142",
@@ -4204,12 +4208,14 @@
         "docs/ai/changes/2026-11-02-remote-agent.json",
         "docs/validation/2026-11-02-remote-staging-smoke.json",
         "docs/validation/2026-11-02-remote-sprint.md",
-        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json",
+        "tests/compat-config-retry.test.mjs",
+        "docs/validation/2026-11-02-config-retry.md"
       ],
-      "notes": "Final 2026-11-02 evidence at b90432a: Local capabilities remain separate; gateway and device independently enforce read-only scope, device identity and trusted roots. Live mutation/root-escape/cross-device denials passed. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
+      "notes": "2026-11-02 config reliability: Windows-only bounded EPERM/EBUSY retries revalidate expected bytes and staging identity; unrelated edits and unsafe cleanup paths are preserved. Native Windows focused gate38/38, no skips. This is partial DCP010/016 implementation; full parity and OS-handle race guarantees remain open. Existing stage and weight retained.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-11-02-config-rename-retry"
     },
     {
       "id": "CLI-198",
@@ -5208,12 +5214,14 @@
       "eta": "Unscheduled",
       "blocker": null,
       "evidence": [
-        "docs/ai/changes/2026-10-04-local-mcp.json"
+        "docs/ai/changes/2026-10-04-local-mcp.json",
+        "tests/compat-config-retry.test.mjs",
+        "docs/validation/2026-11-02-config-retry.md"
       ],
-      "notes": "Vendor-neutral attribution, preserved interrupted work and exact local evidence are recorded. Review fingerprints/checkpoint references updated before final delivery.",
+      "notes": "2026-11-02 config reliability: Windows-only bounded EPERM/EBUSY retries revalidate expected bytes and staging identity; unrelated edits and unsafe cleanup paths are preserved. Native Windows focused gate38/38, no skips. This is partial DCP010/016 implementation; full parity and OS-handle race guarantees remain open. Existing stage and weight retained.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-11-02-config-rename-retry"
     },
     {
       "id": "CLI-240",

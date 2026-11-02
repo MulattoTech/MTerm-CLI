@@ -1,0 +1,104 @@
+{
+  "change_id": "2026-11-02-config-rename-retry",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "identity_basis": "session-declared; self-reported",
+  "updated_at_utc": "2026-11-02T03:19:57.248886+00:00",
+  "base_commit": "059413ffa4fb3b18c8e15af907744a40e0b874a7",
+  "request": "Advance DCP010 configuration persistence after verified remote staging handoff, preserving owner ceilings and exact acceptance boundaries.",
+  "requirements": [
+    "DCP-010",
+    "CLI-138",
+    "CLI-141",
+    "CLI-197",
+    "CLI-239"
+  ],
+  "files_modified": [
+    "src/compat-config.ts",
+    "docs/HANDOFF.md",
+    "docs/STATUS.md",
+    "docs/SECURITY.md",
+    "docs/DESKTOP_COMMANDER_CODEX_PARITY.md",
+    "docs/roadmap/desktop-commander-parity.json",
+    "docs/roadmap/progress.json"
+  ],
+  "files_created": [
+    "tests/compat-config-retry.test.mjs",
+    "docs/validation/2026-11-02-config-retry.md",
+    "docs/validation/2026-11-02-config-baseline-ci.json",
+    "docs/validation/2026-11-02-config-issue-audit.json",
+    "docs/ai/changes/2026-11-02-config-rename-retry.json"
+  ],
+  "decisions": [
+    "Retry only Windows EPERM/EBUSY: five attempts, 25/50/100/200ms waits. Recheck original expected bytes, safe parents/leaf, cancellation and staging inode each attempt.",
+    "Preserve foreign changes and substituted stages. Unsafe-parent cleanup retains owned recovery material; no stale-lock stealing, target deletion or permission widening.",
+    "One parent-retarget fixture exercises the production replacement method directly because Windows rejects parent rename while public set holds its cooperative lock. Other tests use the public setter.",
+    "Refresh stale baseline CI observations without converting foundation passes into full DCP acceptance. All48 issues remain open; all300 weights/IDs/stages remain unchanged.",
+    "An existing authenticated Brave dashboard session is observed, but owner root approval/pairing/client consent are distinct uncompleted actions. No Worker deployment changed."
+  ],
+  "tests": [
+    {
+      "command": "node tests/compat-config-retry.test.mjs before implementation",
+      "result": "RED on LinuxNode24.22.1:13total,5pass,8fail,exit1; injected Windows sharing faults."
+    },
+    {
+      "command": "node tests/compat-config-retry.test.mjs after implementation and fixture correction",
+      "result": "GREEN:13/13,zero skips; scratch child-process/MCP results are not accepted due observed environment anomaly."
+    },
+    {
+      "command": "Actual Windows Node24.21.0: node --test --test-concurrency=1 tests/compat-config-retry.test.mjs tests/compat-config.test.mjs tests/compat-config-mcp.test.mjs",
+      "result": "RED before source transfer38total30pass8fail. FinalGREEN38/38,zero skips/cancellations,6365ms. Retained logs artifacts/config-retry-validation/{focused-red,focused-final}.log."
+    },
+    {
+      "command": "Independent source and revised Windows fixture review",
+      "result": "No blocking findings; known pathname races and unchanged lock-cleanup boundary remain explicit."
+    },
+    {
+      "command": "Actual Windows Node24.21.0: node scripts/orchestration/verify.mjs --full",
+      "result": "PASS exit0;162/162 tests,zero skips,48210.5085ms; full workflow76205ms. Normal build/check, installed package and isolated native Codex phases passed."
+    },
+    {
+      "command": "Actual Windows: node scripts/verify-self-host.mjs; separate normal npm pack --json --pack-destination artifacts/config-retry-validation",
+      "result": "Both PASS exit0; selfhost1341ms,normal prepack30908ms. Archive56649bytes,unpacked220182bytes,installed production14167552bytes/992files. External prerequisites excluded."
+    },
+    {
+      "command": "Actual Windows: MTERM_VERIFY_BIN=<owned installed package bin> node scripts/verify-managed-codex.mjs",
+      "result": "PASS exit0,1851ms,installedEntry=true; native Codex0.160.1 parser,2SDK MCP rounds,shutdown/removal/backup preservation. Actual model-driven invocation false;0model calls;real user config/auth unchanged."
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "id": "CLI-138",
+      "from": "integrated",
+      "to": "integrated",
+      "notes": "Evidence-only review; no stage/weight or acceptance increase from focused config repair."
+    },
+    {
+      "id": "CLI-141",
+      "from": "integrated",
+      "to": "integrated",
+      "notes": "Evidence-only review; no stage/weight or acceptance increase from focused config repair."
+    },
+    {
+      "id": "CLI-197",
+      "from": "integrated",
+      "to": "integrated",
+      "notes": "Evidence-only review; no stage/weight or acceptance increase from focused config repair."
+    },
+    {
+      "id": "CLI-239",
+      "from": "integrated",
+      "to": "integrated",
+      "notes": "Evidence-only review; no stage/weight or acceptance increase from focused config repair."
+    }
+  ],
+  "limitations": [
+    "Persistent OS locks fail after bounded backoff. No ACL hardening or OS-wide transaction is claimed.",
+    "The scratch subprocess harness failed existing MCP cases; actual Windows and hosted checks are authoritative for process gates.",
+    "All48 DCP issues remain open. Actual Codex model-driven invocation and owner ChatGPT consent remain untested."
+  ],
+  "checkpoint": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\checkpoints\\config-sprint-start-20261102",
+  "next_steps": [
+    "Publish the coherent issue12 branch/PR, inspect exact-source hosted checks and merge only when acceptable; complete separate installed-configuration qualification under issue18."
+  ]
+}

@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "changeId": "2026-11-02-web-metadata-correction",
-  "reviewedAt": "2026-11-02T01:58:40.356Z",
-  "sourceFingerprint": "3f3024a148106beef62fe736a4d284d23ca0b50bd1526770ca297bb963e6b5da",
+  "changeId": "2026-11-02-config-rename-retry",
+  "reviewedAt": "2026-11-02T03:13:44.706Z",
+  "sourceFingerprint": "6ce80fefb69f71c75c6f2d4309a9f0efd31a616d10e7389de5292ebd558e4ecb",
   "sourceFiles": {
     ".github/CODEOWNERS": "c777b0028194e52d38f1485a4732d08709943142a777b65a50e1d8968c95bbd8",
     ".github/ISSUE_TEMPLATE/agent_task.yml": "1e78199bd8a5af4d8923002f9a716411da3c52e42dae8f15145a4cca9038c7b1",
@@ -19,8 +19,8 @@
     "bin/mterm-cli.js": "1376dfb68527a2fef2444be718a0011c53333c90f416eb377a8bde43e5dcc5b0",
     "docs/ARCHITECTURE.md": "97f3508f4598244b1d89f30a2beff5719e9ec798addcb2f4fd877ec0561ff149",
     "docs/CODEX_REGISTRATION.md": "ca51eb8d57a98a2aa76b453326d5524a21114665048c8b79ba0a8a4ce4a0366e",
-    "docs/DESKTOP_COMMANDER_CODEX_PARITY.md": "ba0f20ff9f8ec15ee05c83b886096e2f20846a3a1f27679f9d5ea7b708f7d01e",
-    "docs/SECURITY.md": "fb9a0e4c4cd85f301aae2632742c28e78118114e9db864c46851cf0ca9f7f224",
+    "docs/DESKTOP_COMMANDER_CODEX_PARITY.md": "d4a706fc08c0a94b6e2654b3497cc4ed5853fd9724809f3f0ce998302afe0937",
+    "docs/SECURITY.md": "c01a449a0724fdf75d1eb1f160ca9c1edc0be63382b1f0e7d446ab4c3e051a16",
     "docs/TODAY_CANDIDATE.md": "b95fbc1c02797a68f2c26a3e80c8448de7c3ec59a6a025b29fda13cbfad64ba4",
     "docs/execution/DESKTOP_COMMANDER_100_PASS_PROMPT.md": "2002abd688feb28e6526e0ddb12a4e3e1e6151fd9b0af9df79960a6544df0c68",
     "docs/execution/NEXT_PARITY_PROMPT.md": "6e47190e69b5931916f7cf0748748743b8773a05eb775a6de9efa2c5a1ba4e5f",
@@ -33,7 +33,7 @@
     "docs/parity/upstream/src/index.ts": "854a91a41cf355c18c7d2caf857db2881a3622a0a54e4849d6bc62682907cd6a",
     "docs/parity/upstream/src/tools/schemas.ts": "d33547e24df350a1162ef25a92414a09eca709abe292d7a0b00ea0eb55237b7f",
     "docs/parity/upstream/src/utils/files/text.ts": "6b603846026daede265afbe604200f32c7e968adb19f4661ae23401096dd2672",
-    "docs/roadmap/desktop-commander-parity.json": "e9f521e5de39c44e9363e024322f3431793835e726f63ca112ec16a04375c004",
+    "docs/roadmap/desktop-commander-parity.json": "b25b6696ad257eb94f12961b1d5931486435de26535d2ed7f55535f4c97c3dc0",
     "docs/validation/2026-10-05-codex-parity-foundation.md": "54fb38a415650be355cdc37e7a379027807e264f052997ca5b26cdbffea7787b",
     "gateway/app.mjs": "ebddfdb2290005d8909356326e3de96080185a4a7aa4df98dec2064679a3164a",
     "gateway/dashboard.mjs": "37de2f57ba8f6dfcd1c3331ab8cb994aea419dcfc673c5e3e6f6ef6df208c240",
@@ -62,7 +62,7 @@
     "src/cli.ts": "9efa7b67b84d0df7119c2fc6ba99aa379b0939870825a8609e7790faa2eec0b6",
     "src/codex-registration.ts": "04f963fb691f9138567cdd77a1cf86eb3c38884d9e4ece0216274e9956508e2d",
     "src/codex.ts": "4e05a2810959e16fdc867538602bcebf9304b3da51049f14a0208001ec45d403",
-    "src/compat-config.ts": "9b471f57f73433eaad00ac2f34e1126088cf7c0ed5f23f2d41a272e82626e8ab",
+    "src/compat-config.ts": "c0311d75e9380df1c7b0b751b5a47a608738e221986da332186926fb6b85024f",
     "src/config.ts": "6f86d5c56ac07a5d4decf3a5bdab03cd7e595486bd18752e32c3564087f26fae",
     "src/desktop-commander-files.ts": "6b625cd73bb77d4f947e8c354a4c879d35f7e566cd17928f24e5f838a8680782",
     "src/errors.ts": "cb846f81c0cdfacf741991bda5c2be5ba25835ad57edd86d6fba6ee0baf3020f",
@@ -81,6 +81,7 @@
     "tests/cli.test.mjs": "5a5b6f96a581f1c7c5e6fba72966405f32ebe62b9bdd683254b5665e06bdf852",
     "tests/codex-registration.test.mjs": "599aad16f86d8e28042893faa0d09869a706f76489ae20690878435fe04fc4bf",
     "tests/compat-config-mcp.test.mjs": "42660b01bf950c19cb3da674ddf76a2ea9241ece1b00fd6a6bced3c0ba3cd1fe",
+    "tests/compat-config-retry.test.mjs": "b10e5bba9b39156e527aabc5031cdbeb1ba5700ed44b7cb5ffed9cc3def4c797",
     "tests/compat-config.test.mjs": "59ddd2440c67c145612e49ef3737b65eb42f02b512e2b194b4cdb029939807cb",
     "tests/desktop-commander-files.test.mjs": "39356a52bf6fc6afeef8e8801e58a37d188701fbfb22ded2f5b396f2bb54352a",
     "tests/files.test.mjs": "db7de0a574afeac7dfb25fd74088a228b2645a764322daf39479e00737dd1aca",
@@ -99,7 +100,7 @@
     "tsconfig.json": "fec3c51cf36536da44ee036dfe6ad70c708c7a8e4c33911c2e496832e312593d",
     "versions.json": "1999f8b98b57bd73f0de389c657b1af42baa01334d3f5ec19230144f6d617bf7"
   },
-  "catalogFingerprint": "372d73e46218b058841cb5305f27cb3b8f6576bc73d2e870afd7970fa025fe1d",
+  "catalogFingerprint": "f5580bdc5e564b51d351b24b991934354654cf8c4b89aa5382e453125489c0ec",
   "weightFingerprint": "3bbcd6acde44c38922429b79939480398048ae2f710640e68fd41705220fff7c",
   "assessment": "Explicit source/catalog review; rendering does not infer progress"
 }

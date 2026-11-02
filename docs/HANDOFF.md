@@ -1,4 +1,30 @@
-# MTerm-CLI handoff — 2026-11-02 remote MCP staging
+# MTerm-CLI handoff — 2026-11-02 configuration continuation
+
+The current continuation starts from verified main `059413ffa4fb3b18c8e15af907744a40e0b874a7`
+(PR #70, after the #69 integration). See [STATUS.md](STATUS.md), the
+[configuration reliability report](validation/2026-11-02-config-retry.md), and the
+[current 48-issue audit](validation/2026-11-02-config-issue-audit.json).
+All DCP issues remain open; implementation evidence does not close full contracts.
+
+Configuration reliability work uses the isolated ordinary Windows clone
+`C:\Tools\Dev\MTerm-CLI\artifacts\worktrees\config-retry-20261102`.
+The primary checkout and its eleven modified/new files are preserved. The additive
+pre-change checkpoint is `artifacts/checkpoints/config-sprint-start-20261102` under
+the primary checkout. The report records bundle/source/manifest hashes.
+
+The private staging Worker remains on `af4fd06e-c4a3-4545-ad22-31d0ae956215`, serving
+the unchanged tested `b90432a` artifact. Existing authorized Brave access opened the
+real dashboard and displayed zero computers and zero client authorizations. Fresh
+Google login and actual client consent/tool use remain untested.
+
+A narrow owner setup preview was prepared at `C:\Tools\Dev\MTerm-RemoteWorkspace`
+with one harmless `connection-check.txt`. Preview reports `applied:false`,
+`paired:false`, `permissions:read-only`, `autostart:false`; no protected state was
+created. The owner must select that directory (or another explicit narrow root)
+before `--apply`, approve the displayed pairing, and complete ChatGPT consent.
+Do not start a polling pairing request until the owner is ready for its five-minute window.
+
+## Previous completed remote staging sprint
 
 **The read-only staging service is enabled and its final deployment passed 11/11
 live checks.** The [final sprint report](validation/2026-11-02-remote-sprint.md)

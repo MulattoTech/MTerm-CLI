@@ -1,0 +1,204 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUtc": "2026-11-02T21:52:48.490316+00:00",
+  "reviewer": "/root/contract_inventory",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro (self-reported)",
+  "changeId": "2026-11-02-windows-dpapi-bounds",
+  "baseSha": "458e0bd72b94f34fbc74662a0cfd570bdb42bdcb",
+  "disposition": "PASS_FOR_REVIEWED_SOURCE_AND_SUPPLEMENTARY_DETERMINISTIC_EVIDENCE",
+  "blockers": [],
+  "scope": "Independent read-only review of exact working-tree runtime, new deterministic tests, existing state tests and installed verifier integration. No acceptance, native qualification, hosted, final-head or delivered recovery claim.",
+  "coverage": [
+    {
+      "file": "src/remote/state.ts",
+      "reviewed": "Every changed line plus supporting savePairing, credential, mutate, read/write and default-directory paths. No other runtime file changed at this checkpoint."
+    },
+    {
+      "file": "tests/remote-state-dpapi.test.mjs",
+      "reviewed": "Complete new fixture, deterministic clock, synthetic child and scoped builtin/platform restoration. Exact fixture bytes retained from original RED to GREEN."
+    },
+    {
+      "file": "tests/remote-state.test.mjs",
+      "reviewed": "Existing five cases and exact baseline byte equality; no weakening or skip."
+    },
+    {
+      "file": "scripts/verify-remote-state-installed.mjs",
+      "reviewed": "Complete new verifier including module-source binding, synthetic state, Windows child observation, ENOENT refusal, state/cleanup, environment restoration and fixed public diagnostics."
+    },
+    {
+      "file": "scripts/verify-package.mjs",
+      "reviewed": "All added lines and surrounding package/install/Codex-home environment/result pipeline. Public compiled remote modules snapshotted before pack, exact installed inventory/hash checked and reported."
+    }
+  ],
+  "reasoning": [
+    "Thirty-second operation and five-second cleanup timers are fixed internal policy. Success still requires zero-code close, bounded output and no latched failure; observed exit alone cannot resolve success.",
+    "Timeout, overflow, stdin/stdout/stderr/child failures latch failure before a single owned ChildProcess kill request. Reentrant/late events see the latch. No signal is sent through a numeric PID or unrelated process handle. Kill return value is not treated as proof of termination.",
+    "On failure, observed exit or close permits generic rejection and disposal of owned streams. Synchronous spawn throw and asynchronous error without a PID are sanitized and do not invent an existing child or retain a pointless mutation lock.",
+    "After cleanup grace with no observed termination, only owned streams are disposed and owned child unreferenced. A module-private WeakSet marker causes mutate to close its file handle but retain state.lock. Later events cannot silently release that quarantined admission lock. No exported test seam or public marker exists.",
+    "Protect failure reaches mutate before any credential/config write. Unprotect failure maps to the existing generic REMOTE_CREDENTIAL boundary and preserves files. The underlying credential binding, CurrentUser DPAPI, fixed entropy, fixed command script, stdin-only secret transport and 32768-byte output ceiling remain unchanged.",
+    "The new test file runs sequentially in an isolated test process, invokes actual RemoteStateStore with fixture directories, and substitutes builtin spawn/platform/timers only for each test. Existing platform-native roundtrip tests remain present. Deterministic fake children prove the state machine, not actual DPAPI cryptography or OS termination.",
+    "Installed verifier imports the installed module from the isolated prefix after matching exact pre-pack remote module bytes, then exercises synthetic savePairing/credential/clearPairing. It explicitly reports actualRemoteEnrollment:false, realUserStateAccessed:false, modelCalls:0, and Windows-only fields as null on POSIX.",
+    "Successful installed Protect and Unprotect require close observed when the store operation settles. Missing-executable attempts are separately required to have ENOENT, no PID and no exit observation. The verifier never prints raw token, ciphertext, child streams or unexpected error text."
+  ],
+  "evidenceAssessment": {
+    "originalRed": {
+      "platform": "Linux supplementary",
+      "node": "v24.22.1",
+      "actualExitCode": 1,
+      "tests": 17,
+      "pass": 4,
+      "fail": 13,
+      "cancelled": 0,
+      "skipped": 0,
+      "substantiveFailures": [
+        "Old ten-second deadline kills valid 15000/29999 ms operations.",
+        "Original overflow handler can request termination repeatedly.",
+        "Original stdin and spawned-child failures settle without requesting/observing owned-child termination.",
+        "Original kill-false/unknown-cleanup path releases pairing lock; kill throw leaks synthetic diagnostic through timer."
+      ]
+    },
+    "green": {
+      "platform": "Linux supplementary",
+      "actualExitCode": 0,
+      "tests": 22,
+      "pass": 22,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "composition": "17 byte-identical new lifecycle tests plus 5 unchanged existing state tests"
+    },
+    "compile": {
+      "command": "npm run build:code",
+      "exitCode": 0,
+      "stderr": "99-byte npm warning about existing http-proxy environment key; no compiler error. Development build is not a full reviewed-build gate."
+    },
+    "reviewerChecks": [
+      "All RED/GREEN/compile log byte counts and SHA-256 matched receipts.",
+      "Raw TAP totals and individual failures/passes inspected.",
+      "Original RED fixture byte-equals current fixture.",
+      "Existing five-case test file byte-equals baseline.",
+      "git diff --check exited 0."
+    ],
+    "newTestRunsByReviewer": 0,
+    "nativeRed": "Root reported independent original-source 17/4/13 on pinned Windows; raw export not reviewed in this checkpoint.",
+    "installedExecution": "Pending separate result from installed_probe; no installed RED claimed."
+  },
+  "limits": [
+    "The original merged-main Windows failure remains RED at run 41529733903/job 125566510677; no rerun or infrastructure-cause proof is substituted.",
+    "Event-loop timers are finite operational policy, not a hard real-time bound or guaranteed OS termination. Unknown termination leaves the pairing lock for explicit local inspection; no automatic stale-lock recovery is introduced.",
+    "Unprotect is a read operation outside mutation admission; no new global process supervisor, Windows Job Object or OS sandbox guarantee is made.",
+    "Native Windows full/fresh/normal-package qualification, exact hosted campaigns, committed final diff, protected-ledger/docs review and delivered recovery verification remain separate gates.",
+    "DCP acceptance 0/48, WEB acceptance 0/12 and broad maturity 29.12% must remain unchanged; WEB-003 whole-issue acceptance is not established."
+  ],
+  "officialReferences": [
+    {
+      "url": "https://nodejs.org/download/release/v24.21.0/docs/api/child_process.html",
+      "purpose": "ChildProcess event and kill semantics; signal success is not termination proof."
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/dotnet/api/system.security.cryptography.protecteddata?view=netframework-4.8.1",
+      "purpose": "Windows CurrentUser DPAPI boundary; no OS duration SLA inferred."
+    }
+  ],
+  "fileBindings": [
+    {
+      "path": "mterm-dpapi/src/remote/state.ts",
+      "bytes": 16476,
+      "sha256": "ed995c3ba94a49f786eac6c618787baf6a32936507f7b09df0f2b88f03835916"
+    },
+    {
+      "path": "mterm-dpapi/tests/remote-state-dpapi.test.mjs",
+      "bytes": 16523,
+      "sha256": "1125e477a85d2dd264942a5a97edeccdf799528b85a7bccb4adc9de0404ebd58"
+    },
+    {
+      "path": "mterm-dpapi/tests/remote-state.test.mjs",
+      "bytes": 6231,
+      "sha256": "f100ea72488ada413ef12d0960675858cde46d48d7ecf706ae1b557654bd343b"
+    },
+    {
+      "path": "mterm-dpapi/scripts/verify-remote-state-installed.mjs",
+      "bytes": 12353,
+      "sha256": "d6061a2fe27bf8a1b20546ebac7e0fa3f28b34408a5534eb82b47832d7722c2f"
+    },
+    {
+      "path": "mterm-dpapi/scripts/verify-package.mjs",
+      "bytes": 10696,
+      "sha256": "d0fa2f9920b1fb24ff58cffeccd07bb7f0f651ca94b97a8b065fa5402d793cb8"
+    },
+    {
+      "path": "mterm-dpapi/dist/remote/state.js",
+      "bytes": 17059,
+      "sha256": "27981330f53530327218149e85eb8461da4cfa871dd41cb705c8763e28465f5e"
+    }
+  ],
+  "evidenceBindings": [
+    {
+      "path": "evidence/reviews/dpapi-design-review.json",
+      "bytes": 6238,
+      "sha256": "b9f396d9d8db2eb2cd9fa007dff9d72d95deb9c4e30a4c2188e6def7b8995a0d"
+    },
+    {
+      "path": "evidence/reviews/main-dpapi-timeout-assessment.json",
+      "bytes": 7412,
+      "sha256": "73aee8dcae62f5218e3531c767c84cfe70091079650738e114cce5ae289adf93"
+    },
+    {
+      "path": "evidence/dpapi/local/contract.json",
+      "bytes": 3796,
+      "sha256": "8f9171f075c8d3fcc042be97172105362768fe95497e73d82a9ccf377b415030"
+    },
+    {
+      "path": "evidence/dpapi/local/red.json",
+      "bytes": 1193,
+      "sha256": "8297634793135ab28285de7cbe1d2e545c74631a623ad8f23d025846a749e9e3"
+    },
+    {
+      "path": "evidence/dpapi/local/red.stdout.log",
+      "bytes": 15211,
+      "sha256": "faad9eeb3ca2277cd75bec3c60edb08df51446b8ffb7f6518521c722b4a48e1b"
+    },
+    {
+      "path": "evidence/dpapi/local/red.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/dpapi/local/green.json",
+      "bytes": 1037,
+      "sha256": "bb6e8319b5ae4d44e1cb32a59393828530d121db42daf4595e7ebb0a35e68539"
+    },
+    {
+      "path": "evidence/dpapi/local/green.stdout.log",
+      "bytes": 5323,
+      "sha256": "4476989e55f31b8168aa0d34653c404b407d70a7bd938e31abd16e6cef57cccc"
+    },
+    {
+      "path": "evidence/dpapi/local/green.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "evidence/dpapi/local/compile-green.json",
+      "bytes": 445,
+      "sha256": "397c4a7888982e646662ad2faf974b67d70273f44ba9cfc655884ddaa936982f"
+    },
+    {
+      "path": "evidence/dpapi/local/compile-green.stdout.log",
+      "bytes": 64,
+      "sha256": "9a9214dd92f21ea05ec920f34a2d1b1e5699936c060ba52eba85b89808758cb9"
+    },
+    {
+      "path": "evidence/dpapi/local/compile-green.stderr.log",
+      "bytes": 99,
+      "sha256": "7125f194612fcff2f454c05d848e7cb71facc1967b4d5017e25b34fdee3ba74f"
+    },
+    {
+      "path": "evidence/dpapi/local/original-red-remote-state-dpapi.test.mjs",
+      "bytes": 16523,
+      "sha256": "1125e477a85d2dd264942a5a97edeccdf799528b85a7bccb4adc9de0404ebd58"
+    }
+  ],
+  "reviewerWrites": "Only scratch evidence reports; no source/GitHub/native device/owner state mutation."
+}

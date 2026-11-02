@@ -1,0 +1,523 @@
+{
+  "schemaVersion": 1,
+  "changeId": "2026-11-02-windows-dpapi-bounds",
+  "preparedAtUtc": "2026-11-02T21:55:56.070535+00:00",
+  "status": "Source candidate preparation; full native/fresh/hosted/delivery gates pending",
+  "baseSha": "458e0bd72b94f34fbc74662a0cfd570bdb42bdcb",
+  "baseTree": "0ddf875d9f5f5e571aaa199ef373707b87aa3882",
+  "branch": "fix/web-003-dpapi-deadline-20261102t2142",
+  "scope": "WEB-003 fixed Windows DPAPI budget and owned-child failure lifecycle",
+  "sourceHashes": [
+    {
+      "path": "src/remote/state.ts",
+      "bytes": 16476,
+      "sha256": "ed995c3ba94a49f786eac6c618787baf6a32936507f7b09df0f2b88f03835916"
+    },
+    {
+      "path": "tests/remote-state-dpapi.test.mjs",
+      "bytes": 16523,
+      "sha256": "1125e477a85d2dd264942a5a97edeccdf799528b85a7bccb4adc9de0404ebd58"
+    },
+    {
+      "path": "tests/remote-state.test.mjs",
+      "bytes": 6231,
+      "sha256": "f100ea72488ada413ef12d0960675858cde46d48d7ecf706ae1b557654bd343b"
+    },
+    {
+      "path": "scripts/verify-package.mjs",
+      "bytes": 10696,
+      "sha256": "d0fa2f9920b1fb24ff58cffeccd07bb7f0f651ca94b97a8b065fa5402d793cb8"
+    },
+    {
+      "path": "scripts/verify-remote-state-installed.mjs",
+      "bytes": 12353,
+      "sha256": "d6061a2fe27bf8a1b20546ebac7e0fa3f28b34408a5534eb82b47832d7722c2f"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 19974,
+      "sha256": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec"
+    },
+    {
+      "path": "npm-shrinkwrap.json",
+      "bytes": 19974,
+      "sha256": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec"
+    }
+  ],
+  "originalHostedFailure": {
+    "runId": 41529733903,
+    "jobId": 125566510677,
+    "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41529733903/job/125566510677",
+    "headSha": "458e0bd72b94f34fbc74662a0cfd570bdb42bdcb",
+    "tests": 302,
+    "pass": 301,
+    "fail": 1,
+    "skipped": 0,
+    "newUtf16TestsPassed": 30,
+    "symptom": "Timeout callback in unchanged DPAPI helper after10000ms; REMOTE_SECRET_STORAGE",
+    "underlyingOsCause": "Not established",
+    "fullLog": {
+      "path": "evidence/hosted-main/job-125566510677.log",
+      "bytes": 57232,
+      "sha256": "88ae8d5b715707987672c5692c1a90453aa30aadc83be4fd5b2a422d75a7d151"
+    },
+    "audit": {
+      "path": "evidence/hosted-main/independent-main-hosted-audit.json",
+      "bytes": 73582,
+      "sha256": "080871a6538b97687f1f5441713865f498d8821481d1d8440ca4b214333105b9"
+    },
+    "comparison": {
+      "path": "evidence/hosted-main/windows-timeout-comparison.json",
+      "bytes": 6985,
+      "sha256": "8075df6f5e74a2d0df4962a69674a35fb1970f08ab2df02a69c09ccfc0b326c9"
+    }
+  },
+  "contractBeforeSourceChanges": {
+    "path": "evidence/dpapi/local/contract.json",
+    "bytes": 3796,
+    "sha256": "8f9171f075c8d3fcc042be97172105362768fe95497e73d82a9ccf377b415030"
+  },
+  "localOriginalRed": {
+    "schemaVersion": 1,
+    "kind": "Original-source meaningful RED; expected nonzero actual exit",
+    "baseSha": "458e0bd72b94f34fbc74662a0cfd570bdb42bdcb",
+    "startedAtUtc": "2026-11-02T21:49:03.598181+00:00",
+    "completedAtUtc": "2026-11-02T21:49:03.990998+00:00",
+    "command": [
+      "node",
+      "--test",
+      "--test-isolation=none",
+      "--test-reporter=tap",
+      "--test-concurrency=1",
+      "tests/remote-state-dpapi.test.mjs"
+    ],
+    "node": "v24.22.1",
+    "platform": "Linux supplementary",
+    "exitCode": 1,
+    "counts": {
+      "tests": 17,
+      "pass": 4,
+      "fail": 13,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "files": [
+      {
+        "path": "src/remote/state.ts",
+        "bytes": 14642,
+        "sha256": "5cf39c4d5a2c5ea10f0cd14fc1c50b445c1ee8697a023cc87ba0cd5a85558bcb"
+      },
+      {
+        "path": "tests/remote-state-dpapi.test.mjs",
+        "bytes": 16523,
+        "sha256": "1125e477a85d2dd264942a5a97edeccdf799528b85a7bccb4adc9de0404ebd58"
+      }
+    ],
+    "stdout": {
+      "bytes": 15211,
+      "sha256": "faad9eeb3ca2277cd75bec3c60edb08df51446b8ffb7f6518521c722b4a48e1b"
+    },
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "nativeOriginalRed": {
+    "schemaVersion": 1,
+    "mode": "red",
+    "runId": "20261102T214500Z-web003-dpapi",
+    "loopId": "20261102T211227Z-dcp017",
+    "root": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\20261102T214500Z-web003-dpapi",
+    "startedAtUtc": "2026-11-02T21:50:23.604Z",
+    "node": "v24.21.0",
+    "platform": "win32",
+    "arch": "x64",
+    "pid": 5660,
+    "commands": [
+      {
+        "name": "compile",
+        "exe": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+        "args": [
+          "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "build:code"
+        ],
+        "cwd": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\20261102T214500Z-web003-dpapi",
+        "startedAtUtc": "2026-11-02T21:50:23.818Z",
+        "completedAtUtc": "2026-11-02T21:50:24.159Z",
+        "pid": 12060,
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "stdout": {
+          "path": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\checkpoints\\mterm-web-pro-loop\\20261102T211227Z-dcp017\\followups\\20261102T214500Z-web003-dpapi\\qualification\\red\\compile.stdout.log",
+          "bytes": 64,
+          "sha256": "9a9214dd92f21ea05ec920f34a2d1b1e5699936c060ba52eba85b89808758cb9"
+        },
+        "stderr": {
+          "path": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\checkpoints\\mterm-web-pro-loop\\20261102T211227Z-dcp017\\followups\\20261102T214500Z-web003-dpapi\\qualification\\red\\compile.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "name": "focused",
+        "exe": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+        "args": [
+          "--test",
+          "--test-reporter=tap",
+          "--test-concurrency=1",
+          "tests/remote-state-dpapi.test.mjs"
+        ],
+        "cwd": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\20261102T214500Z-web003-dpapi",
+        "startedAtUtc": "2026-11-02T21:50:24.165Z",
+        "completedAtUtc": "2026-11-02T21:50:24.538Z",
+        "pid": 9900,
+        "exitCode": 1,
+        "signal": null,
+        "error": null,
+        "stdout": {
+          "path": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\checkpoints\\mterm-web-pro-loop\\20261102T211227Z-dcp017\\followups\\20261102T214500Z-web003-dpapi\\qualification\\red\\focused.stdout.log",
+          "bytes": 17013,
+          "sha256": "076627eee7f59af25ef0e2e2b71a1affbbb620b06cb86f6c0476ea7bd46d363e"
+        },
+        "stderr": {
+          "path": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\checkpoints\\mterm-web-pro-loop\\20261102T211227Z-dcp017\\followups\\20261102T214500Z-web003-dpapi\\qualification\\red\\focused.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    ],
+    "modelCalls": 0,
+    "actualCodexAgentToolInvocation": false,
+    "realUserConfigChanged": false,
+    "npmVersion": "11.19.0",
+    "sourceSha": "458e0bd72b94f34fbc74662a0cfd570bdb42bdcb",
+    "sourceTree": "0ddf875d9f5f5e571aaa199ef373707b87aa3882",
+    "sourceHashes": {
+      "src/remote/state.ts": {
+        "bytes": 14642,
+        "sha256": "5cf39c4d5a2c5ea10f0cd14fc1c50b445c1ee8697a023cc87ba0cd5a85558bcb",
+        "normalizedSha256": "5cf39c4d5a2c5ea10f0cd14fc1c50b445c1ee8697a023cc87ba0cd5a85558bcb"
+      },
+      "tests/remote-state-dpapi.test.mjs": {
+        "bytes": 16523,
+        "sha256": "1125e477a85d2dd264942a5a97edeccdf799528b85a7bccb4adc9de0404ebd58",
+        "normalizedSha256": "1125e477a85d2dd264942a5a97edeccdf799528b85a7bccb4adc9de0404ebd58"
+      },
+      "scripts/verify-package.mjs": {
+        "bytes": 8715,
+        "sha256": "ed6c9ad534c7f63b9b9c4d2e353e53fe3e5de7aebddd52dca00fbebc8f589335",
+        "normalizedSha256": "ed6c9ad534c7f63b9b9c4d2e353e53fe3e5de7aebddd52dca00fbebc8f589335"
+      },
+      "package-lock.json": {
+        "bytes": 19974,
+        "sha256": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec",
+        "normalizedSha256": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec"
+      },
+      "npm-shrinkwrap.json": {
+        "bytes": 19974,
+        "sha256": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec",
+        "normalizedSha256": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec"
+      }
+    },
+    "counts": {
+      "tests": 17,
+      "pass": 4,
+      "fail": 13,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "ok": true,
+    "completedAtUtc": "2026-11-02T21:50:24.542Z"
+  },
+  "nativeRedTransferredStreamsVerified": true,
+  "nativeRedReceipt": {
+    "path": "evidence/dpapi/native-red-early/result.json",
+    "bytes": 4460,
+    "sha256": "f01e8934d3e6320e096bbf6e00176d3b9623143d3c4a01182eebd26d3e8724a0"
+  },
+  "localGreen": {
+    "schemaVersion": 1,
+    "startedAtUtc": "2026-11-02T21:50:21.489749+00:00",
+    "completedAtUtc": "2026-11-02T21:50:22.168335+00:00",
+    "command": [
+      "node",
+      "--test",
+      "--test-isolation=none",
+      "--test-reporter=tap",
+      "--test-concurrency=1",
+      "tests/remote-state-dpapi.test.mjs",
+      "tests/remote-state.test.mjs"
+    ],
+    "exitCode": 0,
+    "stdout": {
+      "bytes": 5323,
+      "sha256": "4476989e55f31b8168aa0d34653c404b407d70a7bd938e31abd16e6cef57cccc"
+    },
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "counts": {
+      "tests": 22,
+      "pass": 22,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "files": [
+      {
+        "path": "src/remote/state.ts",
+        "bytes": 16476,
+        "sha256": "ed995c3ba94a49f786eac6c618787baf6a32936507f7b09df0f2b88f03835916"
+      },
+      {
+        "path": "tests/remote-state-dpapi.test.mjs",
+        "bytes": 16523,
+        "sha256": "1125e477a85d2dd264942a5a97edeccdf799528b85a7bccb4adc9de0404ebd58"
+      }
+    ]
+  },
+  "newFixtureUnchangedRedToGreen": true,
+  "sourceReview": {
+    "path": "evidence/reviews/dpapi-source-security-review.json",
+    "bytes": 10878,
+    "sha256": "43c05d6f8fe92dd146af8807034c147eb4fa4bc410e7aad008863dc7c723bb5f"
+  },
+  "installedVerifier": {
+    "sourceReviewed": true,
+    "scope": "Installed RemoteStateStore with pre-pack remote-module inventory/hash binding, synthetic local values and Windows-only real DPAPI plus ENOENT refusal. POSIX must report Windows-only fields null.",
+    "executionAtPreparation": "Supplementary Linux offline installed synthetic state roundtrip passed; Windows-only DPAPI fields null. Normal native/fresh/Windows installed qualification remains pending."
+  },
+  "preservedFields": {
+    "currentUserScope": true,
+    "fixedEntropy": true,
+    "stdinOnlyInput": true,
+    "stdoutLimitBytes": 32768,
+    "noRetriesOrPlaintextFallback": true,
+    "perCallBinaryResolution": true,
+    "nativeUtf16ReadSliceUnchanged": true
+  },
+  "cleanupPolicy": {
+    "operationTimerMs": 30000,
+    "cleanupGraceTimerMs": 5000,
+    "success": "Zero-code close, bounded output and no latched failure",
+    "confirmedFailure": "Observe owned-child exit or close before returning; confirmed failed spawn has no child to terminate",
+    "unknownFailure": "At grace exhaustion, dispose only owned streams and unref owned child; generic failure is not proof of OS termination",
+    "mutationLock": "Only a savePairing Protect failure with unconfirmed child termination retains state.lock through a module-private WeakSet marker. credential() Unprotect is read-only and has no mutation lock to retain.",
+    "retainedLockRecovery": "No automatic retry, stale-lock stealing or delayed silent removal. Deliberate local inspection is required.",
+    "timeLimit": "30s plus5s event-loop timer policy, not a hard real-time or OS scheduling/termination guarantee"
+  },
+  "remainingGates": [
+    "Committed native focused GREEN and actual DPAPI/installed full qualification",
+    "Normal reviewed build/full wrapper/self-host/prepack/source+installed official Codex",
+    "Fresh exact committed source archive/build/prepack/installed proof",
+    "Candidate/final-head hosted review",
+    "Normal expected-head merge and actual merged-main jobs",
+    "Final primary/owner preservation and verified additive recovery/public readbacks"
+  ],
+  "acceptance": {
+    "dcpAccepted": 0,
+    "dcpTotal": 48,
+    "webAccepted": 0,
+    "webTotal": 12,
+    "maturityPercent": 29.12,
+    "stageOrAcceptanceCredit": false
+  },
+  "modelCalls": 0,
+  "actualCodexAgentToolInvocation": false,
+  "actualChatGPTToolInvocation": false,
+  "realUserAuthOrEnrollmentTouched": false,
+  "installedSupplementary": {
+    "initialAttemptReceipt": {
+      "path": "evidence/local/dpapi-installed-green/result.json",
+      "bytes": 2788,
+      "sha256": "68991275b4a8692bb789becea513e21af0d70aa984390e99a905842cd582ebd5"
+    },
+    "initialDriverFailure": {
+      "driverSessionId": 39608,
+      "driverSessionExitCode": 1,
+      "npmInstallTimeoutSeconds": 180,
+      "originalNpmExitCode": null,
+      "originalNpmPidCaptured": false,
+      "productVerifierInvoked": false,
+      "source": "Registry fetches failed EPERM in this supplementary sandbox; not a DPAPI product failure.",
+      "closure": {
+        "path": "evidence/local/dpapi-installed-green/infrastructure-closure.json",
+        "bytes": 3133,
+        "sha256": "1ae7e4c99dd4e4c364e8ebc9bd2f9c979e55f5d339071aa763ce42212ad58151"
+      },
+      "limitation": "The original driver did not retain the npm PID or wait for its exit after TimeoutExpired; no ordinary npm exit code is claimed. The tool session has ended and previously observed dedicated sandbox wrapper PIDs are absent."
+    },
+    "correctedOfflineReceipt": {
+      "path": "evidence/local/dpapi-installed-offline/result.json",
+      "bytes": 6763,
+      "sha256": "d9abec9b7016da1c48163b5734caa2a84593d31da1502eb9720a095ec149093c"
+    },
+    "correctedOfflineRun": {
+      "schemaVersion": 1,
+      "scope": "Supplementary Linux installed synthetic RemoteStateStore; Windows DPAPI not exercised",
+      "startedAtUtc": "2026-11-02T21:53:07.952651+00:00",
+      "node": "v24.22.1",
+      "runtimeSource": {
+        "path": "/workspace/scratch/f52dcd30a91c/mterm-dpapi/src/remote/state.ts",
+        "bytes": 16476,
+        "sha256": "ed995c3ba94a49f786eac6c618787baf6a32936507f7b09df0f2b88f03835916"
+      },
+      "verifier": {
+        "path": "/workspace/scratch/f52dcd30a91c/mterm-dpapi/scripts/verify-remote-state-installed.mjs",
+        "bytes": 12353,
+        "sha256": "d6061a2fe27bf8a1b20546ebac7e0fa3f28b34408a5534eb82b47832d7722c2f"
+      },
+      "commands": [
+        {
+          "name": "pack",
+          "args": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/lib/node_modules/npm/bin/npm-cli.js",
+            "pack",
+            "--ignore-scripts",
+            "--json",
+            "--pack-destination",
+            "/workspace/scratch/f52dcd30a91c/evidence/local/dpapi-installed-offline"
+          ],
+          "cwd": "/workspace/scratch/f52dcd30a91c/mterm-dpapi",
+          "pid": 6,
+          "exitCode": 0,
+          "startedAtUtc": "2026-11-02T21:53:07.959073+00:00",
+          "completedAtUtc": "2026-11-02T21:53:08.424309+00:00",
+          "stdout": {
+            "path": "/workspace/scratch/f52dcd30a91c/evidence/local/dpapi-installed-offline/pack.stdout.log",
+            "bytes": 4502,
+            "sha256": "c318864f7727e718d64ffd9899964d0c3f496dc259406b21bc8aac6db3be0340"
+          },
+          "stderr": {
+            "path": "/workspace/scratch/f52dcd30a91c/evidence/local/dpapi-installed-offline/pack.stderr.log",
+            "bytes": 99,
+            "sha256": "7125f194612fcff2f454c05d848e7cb71facc1967b4d5017e25b34fdee3ba74f"
+          }
+        },
+        {
+          "name": "install",
+          "args": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/lib/node_modules/npm/bin/npm-cli.js",
+            "install",
+            "--offline",
+            "/workspace/scratch/f52dcd30a91c/evidence/local/dpapi-installed-offline/mterm-cli-0.0.1-preview.1.tgz",
+            "--prefix",
+            "/workspace/scratch/f52dcd30a91c/evidence/local/dpapi-installed-offline/install",
+            "--omit=dev",
+            "--ignore-scripts",
+            "--no-audit",
+            "--no-fund"
+          ],
+          "cwd": "/workspace/scratch/f52dcd30a91c/evidence/local/dpapi-installed-offline/home",
+          "pid": 18,
+          "exitCode": 0,
+          "startedAtUtc": "2026-11-02T21:53:08.425451+00:00",
+          "completedAtUtc": "2026-11-02T21:53:09.243506+00:00",
+          "stdout": {
+            "path": "/workspace/scratch/f52dcd30a91c/evidence/local/dpapi-installed-offline/install.stdout.log",
+            "bytes": 27,
+            "sha256": "4d297fef75828c17046ec6196c00e16977969439a743ef09d854003a40ba41c8"
+          },
+          "stderr": {
+            "path": "/workspace/scratch/f52dcd30a91c/evidence/local/dpapi-installed-offline/install.stderr.log",
+            "bytes": 99,
+            "sha256": "7125f194612fcff2f454c05d848e7cb71facc1967b4d5017e25b34fdee3ba74f"
+          }
+        },
+        {
+          "name": "installed-remote-state",
+          "args": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "/workspace/scratch/f52dcd30a91c/mterm-dpapi/scripts/verify-remote-state-installed.mjs",
+            "/workspace/scratch/f52dcd30a91c/evidence/local/dpapi-installed-offline/install/node_modules/mterm-cli/bin/mterm-cli.js",
+            "/workspace/scratch/f52dcd30a91c/evidence/local/dpapi-installed-offline/install",
+            "/workspace/scratch/f52dcd30a91c/evidence/local/dpapi-installed-offline",
+            "0.0.1-preview.1",
+            "/workspace/scratch/f52dcd30a91c/evidence/local/dpapi-installed-offline/remote-source-snapshot.json"
+          ],
+          "cwd": "/workspace/scratch/f52dcd30a91c/evidence/local/dpapi-installed-offline/home",
+          "pid": 30,
+          "exitCode": 0,
+          "startedAtUtc": "2026-11-02T21:53:09.244065+00:00",
+          "completedAtUtc": "2026-11-02T21:53:09.408621+00:00",
+          "stdout": {
+            "path": "/workspace/scratch/f52dcd30a91c/evidence/local/dpapi-installed-offline/installed-remote-state.stdout.log",
+            "bytes": 1564,
+            "sha256": "cc2cddb76c4bfd8960907b6f8508d16971bf7c1fbfe04a19a0862d6a8a6a8c47"
+          },
+          "stderr": {
+            "path": "/workspace/scratch/f52dcd30a91c/evidence/local/dpapi-installed-offline/installed-remote-state.stderr.log",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      ],
+      "snapshot": {
+        "path": "/workspace/scratch/f52dcd30a91c/evidence/local/dpapi-installed-offline/remote-source-snapshot.json",
+        "bytes": 823,
+        "sha256": "dc2d4353dff982f692c7afd09e5f1a1f22e36fa013bcb44a97aea028325128ed"
+      },
+      "tarball": {
+        "path": "/workspace/scratch/f52dcd30a91c/evidence/local/dpapi-installed-offline/mterm-cli-0.0.1-preview.1.tgz",
+        "bytes": 60694,
+        "sha256": "29ae5d944f33d596d8f29a4c2a6c8b70a6700741c317a61eb9abdb1b1c72943c"
+      },
+      "probe": {
+        "ok": true,
+        "packageVersion": "0.0.1-preview.1",
+        "installedModule": "/workspace/scratch/f52dcd30a91c/evidence/local/dpapi-installed-offline/install/node_modules/mterm-cli/dist/remote/state.js",
+        "sourceSnapshotSHA256": "dc2d4353dff982f692c7afd09e5f1a1f22e36fa013bcb44a97aea028325128ed",
+        "moduleBindings": [
+          {
+            "path": "dist/remote/adapter.js",
+            "bytes": 6001,
+            "sha256": "d24f7c484cae8537652730fbe473ae631895b673d72c2b8cae3b2f0abb1faca4"
+          },
+          {
+            "path": "dist/remote/agent.js",
+            "bytes": 10112,
+            "sha256": "e19c1c28bf04f83a201f9aefce7533c7f37fa2cebad3c49c65a7fa5efb693b9f"
+          },
+          {
+            "path": "dist/remote/cli.js",
+            "bytes": 10586,
+            "sha256": "b27236e2aeb8ba8add5e781e775c5f6745ce126ed6e5e69e2a07f331c7e9ef6f"
+          },
+          {
+            "path": "dist/remote/protocol.js",
+            "bytes": 2552,
+            "sha256": "7d7f108e735b4c0ea05d1ead7a567497f451c05c75d8a4de6e7d4bed4a4444a1"
+          },
+          {
+            "path": "dist/remote/state.js",
+            "bytes": 17059,
+            "sha256": "27981330f53530327218149e85eb8461da4cfa871dd41cb705c8763e28465f5e"
+          }
+        ],
+        "syntheticOnly": true,
+        "actualRemoteEnrollment": false,
+        "realUserStateAccessed": false,
+        "windowsDpapiExercised": false,
+        "protectionFailurePreservesState": null,
+        "unprotectFailurePreservesState": null,
+        "platform": "linux",
+        "protection": "posix-0600",
+        "syntheticCredentialRoundtrip": true,
+        "spawnedProtectionChildren": null,
+        "ownedProcessExitsVerified": null,
+        "childObservations": [],
+        "fixtureCleanupVerified": true,
+        "modelCalls": 0
+      },
+      "ok": true,
+      "completedAtUtc": "2026-11-02T21:53:09.409243+00:00"
+    },
+    "packagingScope": "Supplementary --ignore-scripts preparation, not normal prepack qualification",
+    "allSixCorrectedRawStreamsByteAndSha256Verified": true
+  }
+}

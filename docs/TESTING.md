@@ -1,3 +1,26 @@
+## Windows DPAPI bounds follow-up — 2026-11-02T21:55:56.070535+00:00
+
+PR #79 merged as `458e0bd72b94f34fbc74662a0cfd570bdb42bdcb` with the qualified
+UTF-16LE tree. Its actual main Windows run `41529733903`, job `125566510677`,
+failed **301/302** at the unchanged DPAPI helper's 10-second timer. All 30 new
+UTF-16 cases passed. Preserve that failed attempt; its underlying OS cause is
+unknown, and earlier candidate success is not main PASS.
+
+The [bounded DPAPI contract](validation/2026-11-02-windows-dpapi-bounds.md) uses a fixed 30-second
+operation timer and five-second cleanup grace, generic secret-free failures and
+only the owned child handle. Unconfirmed Protect cleanup retains pairing
+`state.lock` for deliberate local inspection; read-only Unprotect has no mutation
+lock. CurrentUser, fixed entropy, stdin-only input and 32 KiB output remain.
+Original Windows and Linux RED each had 17 tests, four passes and 13 failures;
+unchanged supplementary GREEN passed 22/22 including the five existing cases.
+Independent source/test review found no blocker. Full committed native, installed,
+fresh, hosted, merge/main and recovery gates remain pending at this preparation.
+
+DCP 0/48, WEB 0/12 and maturity 29.12% are unchanged. No real auth/enrollment,
+owner, autostart or deployment change is needed. The shrinkwrap follow-up is
+postponed until main is healthy. Older dated preparation records follow; later
+exact-head receipts supersede their pending statuses without backdating them.
+
 ## Current DCP-017 verification — 2026-11-02
 
 [Contract and development receipts](validation/2026-11-02-utf16le-read.md) separate native

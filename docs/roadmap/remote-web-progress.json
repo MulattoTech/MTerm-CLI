@@ -245,6 +245,20 @@
       ],
       "observation": "Approved narrow root paired via existing authenticated dashboard; online, graceful stop/offline and same-enrollment reconnect observed. Last state paired/online, no autostart. No client grant or ChatGPT tool read; fresh Google login not performed.",
       "limits": "Plugin creation returned non-retryable409 Scoped plugin release was deleted; browser host gate denied ChatGPT navigation. No bypass, no created plugin, no owner revocation or full acceptance."
+    },
+    {
+      "id": "WINDOWS-DPAPI-BOUNDS-20261102",
+      "level": "local deterministic source evidence; original Windows RED; full committed qualification pending",
+      "status": "source_reviewed_native_red_supplementary_green",
+      "refs": [
+        "docs/validation/2026-11-02-windows-dpapi-bounds.md",
+        "docs/validation/2026-11-02-windows-dpapi-bounds-development.json",
+        "docs/validation/2026-11-02-windows-dpapi-bounds-source-review.json",
+        "tests/remote-state-dpapi.test.mjs",
+        "scripts/verify-remote-state-installed.mjs"
+      ],
+      "observation": "Original actual-main DPAPI10s timer failure retained; policy30s operation+5s cleanup, observed owned-child termination or generic unknown failure. Protect cleanup uncertainty retains pairing lock; Unprotect is read-only. Original native/Linux17/4pass13fail; unchanged supplementary22/22; independent source review found no blocker.",
+      "limits": "No real enrollment, user auth, owner or deployed/staging change; no OS-cause or guaranteed termination claim. Native/fresh/installed/hosted final-head qualification remains pending. No accepted/stage/remaining-work credit."
     }
   ],
   "pendingEvidence": [
@@ -525,9 +539,10 @@
         "WINDOWS-ALIAS-CHECKPOINT",
         "LIVE-SMOKE-FINAL",
         "FINAL-GATES",
-        "OWNER-CONNECTION-20261102"
+        "OWNER-CONNECTION-20261102",
+        "WINDOWS-DPAPI-BOUNDS-20261102"
       ],
-      "implemented": "Five-minute, single-use pairing and protected state are implemented. Two real Windows devices completed staging pairing and DPAPI round trips; wrong displayed codes, wrong device codes and consumed pairing replay were rejected.",
+      "implemented": "Five-minute, single-use pairing and protected state are implemented. Two real Windows devices completed staging pairing and DPAPI round trips; wrong displayed codes, wrong device codes and consumed pairing replay were rejected. Bounded local DPAPI follow-up preparation: fixed30s operation and5s cleanup grace, generic failures, byte preservation and retained mutation lock only for unconfirmed Protect child cleanup; Unprotect remains read-only. Original native/Linux RED17/4pass13fail and unchanged supplementaryGREEN22/22 are implementation evidence only; committed full qualification and whole-issue acceptance remain pending.",
       "remainingWork": [
         {
           "description": "Exercise live expiration, interrupted approval/credential persistence and restart failure paths, proving no extra usable enrollment can emerge from a failed operation.",

@@ -1,0 +1,110 @@
+{
+  "change_id": "2026-11-02-windows-dpapi-bounds",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "identity_basis": "Self-reported assistant/independent subagent attribution, not cryptographic provider proof",
+  "started_at_utc": "2026-11-02T21:45:00Z",
+  "updated_at_utc": "2026-11-02T21:55:56.070535+00:00",
+  "base_sha": "458e0bd72b94f34fbc74662a0cfd570bdb42bdcb",
+  "base_tree": "0ddf875d9f5f5e571aaa199ef373707b87aa3882",
+  "branch": "fix/web-003-dpapi-deadline-20261102t2142",
+  "primary_issue": "WEB-003 / GitHub #56",
+  "requirements": [
+    "CLI-191",
+    "CLI-195",
+    "CLI-200",
+    "CLI-206",
+    "CLI-215",
+    "CLI-239",
+    "CLI-300",
+    "WEB-003"
+  ],
+  "summary": "Separate bounded reliability correction after original merged-main Windows DPAPI timer expiry; fixed30s operation plus5s failure cleanup with confirmed child lifecycle or retained Protect admission. Original failure preserved; cause unknown.",
+  "files_modified": [
+    "src/remote/state.ts",
+    "tests/remote-state-dpapi.test.mjs",
+    "scripts/verify-package.mjs",
+    "scripts/verify-remote-state-installed.mjs",
+    "docs/SECURITY.md",
+    "docs/HANDOFF.md",
+    "docs/STATUS.md",
+    "docs/TESTING.md",
+    "docs/execution/NEXT_PARITY_PROMPT.md",
+    "docs/roadmap/progress.json",
+    "docs/roadmap/remote-web-progress.json",
+    "docs/validation/2026-11-02-windows-dpapi-bounds.md",
+    "docs/validation/2026-11-02-windows-dpapi-bounds-development.json",
+    "docs/validation/2026-11-02-windows-dpapi-bounds-source-review.json",
+    "docs/validation/2026-11-02-windows-dpapi-bounds-protected-ledgers.json",
+    "docs/roadmap/review.json",
+    "docs/roadmap/FEATURES.md",
+    "docs/roadmap/index.html"
+  ],
+  "source_sha256": {
+    "src/remote/state.ts": "ed995c3ba94a49f786eac6c618787baf6a32936507f7b09df0f2b88f03835916",
+    "tests/remote-state-dpapi.test.mjs": "1125e477a85d2dd264942a5a97edeccdf799528b85a7bccb4adc9de0404ebd58",
+    "tests/remote-state.test.mjs": "f100ea72488ada413ef12d0960675858cde46d48d7ecf706ae1b557654bd343b",
+    "scripts/verify-package.mjs": "d0fa2f9920b1fb24ff58cffeccd07bb7f0f651ca94b97a8b065fa5402d793cb8",
+    "scripts/verify-remote-state-installed.mjs": "d6061a2fe27bf8a1b20546ebac7e0fa3f28b34408a5534eb82b47832d7722c2f",
+    "package-lock.json": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec",
+    "npm-shrinkwrap.json": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec"
+  },
+  "decisions": [
+    "No claim about original OS delay cause or original child termination.",
+    "Preserve fixed CurrentUser/entropy/stdin-only/32KiB behavior, no retries/plaintext fallback.",
+    "Success requires close0; failure uses only owned ChildProcess and confirmed exit/close.",
+    "Five-second cleanup exhaustion yields generic failure, owned stream disposal/unref and module-private Protect error marking for retained pairing lock. Read-only Unprotect has no mutation lock.",
+    "Test-only builtin/platform/timer substitution invokes actual state store; no production test hook.",
+    "Installed verifier binds exact installed remote modules and uses only synthetic local state.",
+    "Protected acceptance/stage/deployment identity remains unchanged."
+  ],
+  "tests": [
+    {
+      "name": "original actual-main failure",
+      "result": "Windows301pass1fail/302; newUTF16cases30pass; retained",
+      "evidence": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41529733903/job/125566510677"
+    },
+    {
+      "name": "original-source deterministic RED",
+      "result": "NativeWindows and supplementaryLinux each17tests4pass13fail,exit1,0skip/cancel",
+      "evidence": "docs/validation/2026-11-02-windows-dpapi-bounds-development.json"
+    },
+    {
+      "name": "supplementary GREEN",
+      "result": "22/22,exit0; unchangednew17+existing5",
+      "evidence": "docs/validation/2026-11-02-windows-dpapi-bounds-development.json"
+    },
+    {
+      "name": "independent source/test/harness review",
+      "result": "No blockers; pendingfullqualification",
+      "evidence": "docs/validation/2026-11-02-windows-dpapi-bounds-source-review.json"
+    },
+    {
+      "name": "supplementary installed RemoteStateStore",
+      "result": "Offline Linux synthetic POSIX roundtrip passed with actual command exits0; Windows DPAPI fieldsnull. Earlier registry-preparation driver timeout retained; npmPID/exituncaptured, originalNpmExitCode:null. No installed product RED claimed.",
+      "evidence": "docs/validation/2026-11-02-windows-dpapi-bounds-development.json"
+    }
+  ],
+  "limitations": [
+    "Event-loop30s+5s policy is not a hard wall-clock or guaranteed OS termination bound.",
+    "No real enrollment, real user auth or model calls; actual client proof remains absent.",
+    "Normal committed native/fresh/installed/hosted/final-head/merged-main/recovery gates pending at this timestamp.",
+    "The original first-main failure remains historical RED; candidate success is not substituted."
+  ],
+  "roadmap_updates": [
+    {
+      "ids": "CLI-191,CLI-195,CLI-200,CLI-206,CLI-215,CLI-239,CLI-300",
+      "assessment": "Only evidence, notes and reviewer changed; stages, acceptance, weights, estimates, dependencies, blockers and platforms unchanged."
+    },
+    {
+      "ids": "WEB-003",
+      "assessment": "Only a scoped evidence record plus item evidence/implemented observation; acceptance, criteria, stage, remainingWork, dependencies, blockers, deployment/staging identities and source lineage unchanged."
+    }
+  ],
+  "next_unverified_action": "Qualify exact committed correction on native Windows, normal installed package and fresh source; then hosted final head, reviewed merge, actual main, final preservation and recovery. Shrinkwrap scope postponed.",
+  "checkpoint": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\checkpoints\\mterm-web-pro-loop\\20261102T211227Z-dcp017\\followups\\20261102T214500Z-web003-dpapi",
+  "model_calls": 0,
+  "actualCodexAgentToolInvocation": false,
+  "actualChatGPTToolInvocation": false,
+  "realUserAuthOrEnrollmentTouched": false
+}

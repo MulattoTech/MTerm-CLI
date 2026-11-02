@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 // AI-Change: 2026-11-02-remote-agent (OpenAI / GPT-6 Astra Pro; self-reported)
+// AI-Change: 2026-11-02-windows-dpapi-bounds (OpenAI / GPT-6 Astra Pro; self-reported)
 import fs from 'node:fs/promises';
 import { constants } from 'node:fs';
 import path from 'node:path';
@@ -20,6 +21,17 @@ export interface RemoteConfig {
   deviceId?: string;
 }
 const LIMIT = 32768;
+const DPAPI_TIMEOUT_MS = 30000;
+const DPAPI_CLEANUP_MS = 5000;
+// Only errors created here can retain mutation admission after uncertain cleanup.
+const unconfirmedDpapiErrors = new WeakSet<Error>();
+function protectionError(unconfirmed = false): Error {
+  const error = Object.assign(new Error('Windows current-user credential protection failed.'), {
+    code: 'REMOTE_SECRET_STORAGE',
+  });
+  if (unconfirmed) unconfirmedDpapiErrors.add(error);
+  return error;
+}
 const inside = (root: string, candidate: string) => {
   const rel = path.relative(root, candidate);
   return !rel || (!path.isAbsolute(rel) && rel !== '..' && !rel.startsWith('..' + path.sep));
@@ -72,41 +84,80 @@ async function dpapi(mode: 'Protect' | 'Unprotect', input: string): Promise<stri
       'v1.0',
       'powershell.exe',
     );
-    const child = spawn(binary, ['-NoLogo', '-NoProfile', '-NonInteractive', '-Command', script], {
-      windowsHide: true,
-      stdio: ['pipe', 'pipe', 'pipe'],
-    });
+    let child;
+    try {
+      child = spawn(binary, ['-NoLogo', '-NoProfile', '-NonInteractive', '-Command', script], {
+        windowsHide: true,
+        stdio: ['pipe', 'pipe', 'pipe'],
+      });
+    } catch {
+      reject(protectionError());
+      return;
+    }
     const chunks: Buffer[] = [];
     let bytes = 0,
-      finished = false;
-    const done = (error?: boolean) => {
+      finished = false,
+      failed = false,
+      terminated = false;
+    let cleanupTimer: NodeJS.Timeout | undefined;
+    const done = (unconfirmed = false) => {
       if (finished) return;
       finished = true;
       clearTimeout(timer);
-      if (error)
-        reject(
-          Object.assign(new Error('Windows current-user credential protection failed.'), {
-            code: 'REMOTE_SECRET_STORAGE',
-          }),
-        );
-      else resolve(Buffer.concat(chunks).toString('utf8').trim());
+      clearTimeout(cleanupTimer);
+      if (failed) {
+        child.stdin.destroy();
+        child.stdout.destroy();
+        child.stderr.destroy();
+        if (unconfirmed) child.unref();
+        reject(protectionError(unconfirmed));
+      } else resolve(Buffer.concat(chunks).toString('utf8').trim());
     };
-    const timer = setTimeout(() => {
-      child.kill();
-      done(true);
-    }, 10000);
-    child.stdout.on('data', (chunk: Buffer) => {
-      bytes += chunk.length;
-      if (bytes > LIMIT) {
+    const stop = () => {
+      if (finished || failed) return;
+      failed = true; // Latch failure before kill can emit error/exit/close.
+      clearTimeout(timer);
+      if (terminated) return done();
+      cleanupTimer = setTimeout(() => done(true), DPAPI_CLEANUP_MS);
+      try {
         child.kill();
-        done(true);
-      } else chunks.push(chunk);
+      } catch {
+        // A failed termination request is not proof that the child exited.
+      }
+    };
+    const timer = setTimeout(stop, DPAPI_TIMEOUT_MS);
+    child.stdout.on('data', (chunk: Buffer) => {
+      if (finished || failed) return;
+      bytes += chunk.length;
+      if (bytes > LIMIT) stop();
+      else chunks.push(chunk);
     });
+    child.stdout.on('error', stop);
+    child.stderr.on('error', stop);
     child.stderr.resume();
-    child.on('error', () => done(true));
-    child.on('close', (code) => done(code !== 0));
-    child.stdin.on('error', () => done(true));
-    child.stdin.end(input);
+    child.on('error', () => {
+      if (finished) return;
+      if (child.pid === undefined) {
+        failed = true; // Failed spawn: no child process exists to terminate.
+        done();
+      } else stop();
+    });
+    child.on('exit', (code) => {
+      terminated = true;
+      if (failed) done();
+      else if (code !== 0) stop();
+    });
+    child.on('close', (code) => {
+      terminated = true;
+      if (code !== 0) failed = true;
+      done();
+    });
+    child.stdin.on('error', stop);
+    try {
+      child.stdin.end(input);
+    } catch {
+      stop();
+    }
   });
 }
 
@@ -195,13 +246,19 @@ export class RemoteStateStore {
         );
       throw error;
     }
+    let retainLock = false;
     try {
       await handle.writeFile(JSON.stringify({ nonce }));
       return await operation();
+    } catch (error) {
+      retainLock = error instanceof Error && unconfirmedDpapiErrors.has(error);
+      throw error;
     } finally {
       await handle.close();
-      const lock = (await this.read('state.lock')) as { nonce?: string } | undefined;
-      if (lock?.nonce === nonce) await fs.unlink(file);
+      if (!retainLock) {
+        const lock = (await this.read('state.lock')) as { nonce?: string } | undefined;
+        if (lock?.nonce === nonce) await fs.unlink(file);
+      }
     }
   }
   async config(): Promise<RemoteConfig> {

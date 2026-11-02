@@ -71,6 +71,16 @@ Empty allowedDirectories denies all new file work. Each admitted call uses its o
 configuration snapshot; active cleanup stays available when new work is denied. Telemetry
 preferences do not enable a network transport.
 
+
+Existing compatibility config and backup replacement use at most five Windows
+rename attempts, only for EPERM/EBUSY, with 25/50/100/200 ms backoffs. Every attempt
+rechecks safe parents, destination bytes/leaf state, cancellation and the original
+staging inode. External changes abort; permission changes and target deletion are
+never recovery tactics. Cleanup refuses substituted stages or unsafe parents and
+may retain inaccessible owned staging bytes for deliberate local recovery. Initial
+no-overwrite file creation remains a hard-link operation. These pathname checks
+are cooperative defense, not an OS-wide transaction or handle-anchored sandbox.
+
 Only root spellings explicitly selected at startup are mapped to their fixed canonical roots.
 Mapping preserves component validation and runtime narrowing. Nested symlinks/junctions remain
 rejected, including overlapping root aliases; retargeting the original alias cannot redirect

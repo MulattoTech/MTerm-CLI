@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-02-config-rename-retry; bounded Windows retries revalidate snapshots and staging ownership.
 // Modified: 2026-11-02-config-storage-identity; canonical policy storage and file-tool exclusion share one identity.
 // AI-Change: 2026-10-06-config-parity (OpenAI / GPT-6 Astra Pro; self-reported)
 // Runtime preferences are bounded by immutable owner-selected startup capabilities.
@@ -355,26 +356,71 @@ export class CompatibilityConfig {
     if (next.length > LIMIT) fail('CONFIG_LIMIT', 'Configuration exceeds byte limit.');
     const temp = this.file + '.mterm-' + randomUUID() + '.tmp';
     let owned = false;
+    let staged: { dev: number; ino: number } | undefined;
     try {
       await this.safeParents();
       const h = await fs.open(temp, 'wx', 0o600);
       owned = true;
       try {
+        const stat = await h.stat();
+        staged = { dev: stat.dev, ino: stat.ino };
         await h.writeFile(next);
         await h.sync();
       } finally {
         await h.close();
       }
-      const check = await this.bytes(file);
-      if ((old === undefined) !== (check === undefined) || (old && check && !old.equals(check)))
-        fail('CONFIG_CONFLICT', 'Configuration changed outside the cooperative lock.');
-      cancelled(signal);
-      if (old) {
-        await fs.rename(temp, file);
-        owned = false;
-      } else await fs.link(temp, file);
+      // Windows scanners can briefly deny a replacement after our handles close.
+      // Each attempt checks the unchanged destination, safe parents and owned stage;
+      // the cooperative lock is not an OS transaction against unrelated writers.
+      const attempts = process.platform === 'win32' ? 5 : 1;
+      for (let attempt = 0; attempt < attempts; attempt++) {
+        cancelled(signal);
+        const check = await this.bytes(file);
+        if ((old === undefined) !== (check === undefined) || (old && check && !old.equals(check)))
+          fail('CONFIG_CONFLICT', 'Configuration changed outside the cooperative lock.');
+        const stage = await fs.lstat(temp);
+        if (
+          !stage.isFile() ||
+          stage.isSymbolicLink() ||
+          stage.nlink !== 1 ||
+          stage.dev !== staged.dev ||
+          stage.ino !== staged.ino
+        )
+          fail('CONFIG_UNSAFE', 'Configuration staging identity changed before replacement.');
+        cancelled(signal);
+        if (!old) {
+          await fs.link(temp, file);
+          break;
+        }
+        try {
+          await fs.rename(temp, file);
+          owned = false;
+          break;
+        } catch (error) {
+          const code = (error as NodeJS.ErrnoException).code;
+          if (attempt === attempts - 1 || (code !== 'EPERM' && code !== 'EBUSY')) throw error;
+          await new Promise((resolve) => setTimeout(resolve, 25 * 2 ** attempt));
+        }
+      }
     } finally {
-      if (owned) await fs.unlink(temp).catch(() => {});
+      if (owned && staged) {
+        try {
+          await this.safeParents();
+          const stage = await fs.lstat(temp);
+          // Initial creation links this inode into the destination before unlinking
+          // its temporary name, so cleanup intentionally permits that second link.
+          if (
+            stage.isFile() &&
+            !stage.isSymbolicLink() &&
+            stage.dev === staged.dev &&
+            stage.ino === staged.ino
+          )
+            await fs.unlink(temp);
+        } catch {
+          // Never follow a replaced parent or delete a substituted staging file.
+          // An inaccessible owned stage may remain for explicit local recovery.
+        }
+      }
     }
   }
   async set(key: string, value: unknown, signal?: AbortSignal): Promise<CompatibilityPreferences> {

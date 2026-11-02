@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "reviewedAt": "2026-10-05T21:08:42.944283+00:00",
+  "reviewedAt": "2026-11-02T03:07:05.180902+00:00",
   "upstream": {
     "repository": "wonderwhy-er/DesktopCommanderMCP",
     "version": "0.2.52",
@@ -102,12 +102,14 @@
       "title": "Cross-platform npm/Codex install validation",
       "state": "open",
       "url": "https://github.com/MulattoTech/MTerm-CLI/issues/8",
-      "implementationObservation": "Latest inspected hosted run 39166671238 actually executed: Windows/macOS canonical path failures and Linux bin executable-mode drift. Candidate fixes have focused Linux tests; fresh hosted matrix pending.",
+      "implementationObservation": "Verified baseline main 059413ffa4fb3b18c8e15af907744a40e0b874a7 passed Windows2022, Ubuntu24.04, macOS14 ARM64 and macOS15 Intel normal build/check/package/pinned Codex gates in run41375692062 plus fast41375691964. This is foundation/platform evidence; all feature contracts and actual Codex agent acceptance remain open. New changes need their own exact-source checks.",
       "evidence": [
         "docs/validation/2026-10-05-codex-parity-foundation.md",
-        "docs/ai/changes/2026-11-02-foundation-portability.json"
+        "docs/ai/changes/2026-11-02-foundation-portability.json",
+        "docs/validation/2026-11-02-config-baseline-ci.json",
+        "docs/validation/2026-11-02-remote-sprint.md"
       ],
-      "lastReviewedAt": "2026-11-02T00:18:44.138456+00:00"
+      "lastReviewedAt": "2026-11-02T03:07:05.180902+00:00"
     },
     {
       "id": "DCP-007",
@@ -151,10 +153,11 @@
       "title": "Implement set_config_value MCP parity",
       "state": "open",
       "url": "https://github.com/MulattoTech/MTerm-CLI/issues/12",
-      "implementationObservation": "Preserved unpublished owner-bounded compatibility configuration recovered with tests. Snapshot reload, multi-root ceilings, blocked executable names, limits and telemetry preference implemented; full platform/security/installed contract acceptance pending.",
-      "lastReviewedAt": "2026-11-02T00:18:44.138456+00:00",
+      "implementationObservation": "Recovered six-setting implementation now tolerates bounded Windows EPERM/EBUSY for config/backup replacement, with expected bytes and owned-stage validation on every attempt. Native Windows focused38/38 passes. Exact upstream outputs/coercions/security differences and full installed/Codex acceptance remain open.",
+      "lastReviewedAt": "2026-11-02T03:11:17.574762+00:00",
       "evidence": [
-        "docs/ai/changes/2026-11-02-foundation-portability.json"
+        "docs/ai/changes/2026-11-02-foundation-portability.json",
+        "docs/validation/2026-11-02-config-retry.md"
       ]
     },
     {
@@ -534,27 +537,33 @@
     },
     {
       "id": "windows",
-      "status": "blocked",
+      "status": "pending",
       "evidence": [
-        "docs/validation/2026-10-05-codex-parity-foundation.md"
+        "docs/validation/2026-10-05-codex-parity-foundation.md",
+        "docs/validation/2026-11-02-config-baseline-ci.json",
+        "docs/validation/2026-11-02-remote-sprint.md"
       ],
-      "notes": "Prior hosted jobs executed with canonical path or executable mode failures. Current foundation candidate requires a fresh exact-head platform run; no pass credit from local evidence."
+      "notes": "Foundation baseline main059413f passed exact-source hosted checks and contains PR52/67 integration; prior billing/path failures are historical. Complete 26-tool/all48-issue release acceptance remains pending, and subsequent changes require their own exact-source validation."
     },
     {
       "id": "macos",
-      "status": "blocked",
+      "status": "pending",
       "evidence": [
-        "docs/validation/2026-10-05-codex-parity-foundation.md"
+        "docs/validation/2026-10-05-codex-parity-foundation.md",
+        "docs/validation/2026-11-02-config-baseline-ci.json",
+        "docs/validation/2026-11-02-remote-sprint.md"
       ],
-      "notes": "Prior hosted jobs executed with canonical path or executable mode failures. Current foundation candidate requires a fresh exact-head platform run; no pass credit from local evidence."
+      "notes": "Foundation baseline main059413f passed exact-source hosted checks and contains PR52/67 integration; prior billing/path failures are historical. Complete 26-tool/all48-issue release acceptance remains pending, and subsequent changes require their own exact-source validation."
     },
     {
       "id": "linux",
-      "status": "blocked",
+      "status": "pending",
       "evidence": [
-        "docs/validation/2026-10-05-codex-parity-foundation.md"
+        "docs/validation/2026-10-05-codex-parity-foundation.md",
+        "docs/validation/2026-11-02-config-baseline-ci.json",
+        "docs/validation/2026-11-02-remote-sprint.md"
       ],
-      "notes": "Prior hosted jobs executed with canonical path or executable mode failures. Current foundation candidate requires a fresh exact-head platform run; no pass credit from local evidence."
+      "notes": "Foundation baseline main059413f passed exact-source hosted checks and contains PR52/67 integration; prior billing/path failures are historical. Complete 26-tool/all48-issue release acceptance remains pending, and subsequent changes require their own exact-source validation."
     },
     {
       "id": "security-licenses",
@@ -566,11 +575,13 @@
     },
     {
       "id": "final-main",
-      "status": "blocked",
+      "status": "pending",
       "evidence": [
-        "docs/validation/2026-10-05-codex-parity-foundation.md"
+        "docs/validation/2026-10-05-codex-parity-foundation.md",
+        "docs/validation/2026-11-02-config-baseline-ci.json",
+        "docs/validation/2026-11-02-remote-sprint.md"
       ],
-      "notes": "Partial implementation evidence is not completed parity acceptance."
+      "notes": "Foundation baseline main059413f passed exact-source hosted checks and contains PR52/67 integration; prior billing/path failures are historical. Complete 26-tool/all48-issue release acceptance remains pending, and subsequent changes require their own exact-source validation."
     }
   ]
 }

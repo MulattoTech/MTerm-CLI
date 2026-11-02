@@ -1,0 +1,31 @@
+{
+  "change_id": "2026-11-02-remote-agent",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "identity_basis": "session-declared; self-reported",
+  "base_sha": "69809e2b067540efc1082e938203762ad4d0a1e0",
+  "summary": "Opt-in outbound read-only workstation agent, shared versioned protocol, FileService adapter, protected pairing state and six remote management commands.",
+  "requirements": ["WEB-003", "WEB-004", "WEB-005", "WEB-006", "WEB-009", "WEB-011", "WEB-012", "CLI-197", "CLI-201", "CLI-202", "CLI-205", "CLI-286", "CLI-288", "CLI-290", "CLI-299"],
+  "decisions": [
+    "Reuse existing FileService with writes disabled; validate each device, tool, root, arguments, deadline and bounded result independently of the gateway.",
+    "Interactive outbound HTTPS polling with reconnect backoff; no local listener, startup task, model call, elevated process or remote mutation capability.",
+    "Bind protected device credentials to the gateway, device and canonical enrolled folder. Store Windows credentials using current-user DPAPI through stdin; POSIX storage uses private directory/file modes.",
+    "Require explicit private dashboard origin for pairing; reject network/device roots, drive/home/credential roots and changed enrolled filesystem identity.",
+    "Serialize pairing/config updates, distinguish request expiry from device revocation and never replay a dispatched filesystem operation after reconnect.",
+    "Keep default local MCP and Codex launcher behavior; remote mode requires explicit setup, authenticated approval and foreground start."
+  ],
+  "tests": [
+    {"command": "Pure transport/lifecycle tests on Linux Node24.22.1", "result": "4/4 PASS after RED/GREEN expiry and replay regressions; built-in TypeScript transformation is not a typecheck."},
+    {"command": "Pinned TypeScript compile and remote/CLI focused tests on Windows Node24.21.0, isolated ordinary clone at9cc4690", "result": "TypeScript PASS. 34/35 groups PASS, including actual FileService and Windows DPAPI. One new CLI test expected usage exit2 for a policy validation error; actual safe rejection was exit1. Assertion corrected to existing bin semantics; final rerun pending."},
+    {"command": "Final directory-type and idempotent setup regressions; integrated full/package/CI gates", "result": "Pending at this provenance checkpoint. See final staging validation record for subsequent observations."}
+  ],
+  "roadmap_updates": [
+    {"ids": "WEB-003..006,009,011,012 and related broad CLI remote requirements", "assessment": "Implementation and focused Windows evidence added. Preserve broad stages/weights and all accepted DCP/WEB counts until complete external criteria are observed."}
+  ],
+  "limitations": [
+    "No remote write/process activation or autostart service.",
+    "Stale owned state/run locks fail closed and require explicit inspection; no automatic lock stealing.",
+    "The local host is not an OS sandbox against a hostile same-user process or filesystem reparse races.",
+    "Human Google authorization, ChatGPT consent and hosted cross-platform qualification remain separate observations."
+  ]
+}

@@ -1,0 +1,1857 @@
+{
+  "schemaVersion": 1,
+  "ledger": "remote-web-12",
+  "reviewedAt": "2026-11-02T01:26:54Z",
+  "reviewer": {
+    "provider": "OpenAI",
+    "model": "GPT-6 Astra Pro",
+    "identityBasis": "session-declared, self-reported"
+  },
+  "scope": "Remote WEB-001..012 acceptance; independent of local DCP-001..048 and broad CLI-300 maturity",
+  "sourceHead": "b90432a1bc138d59305692a9f74f110a475d0881",
+  "sourceLineage": "Reviewed integration b90432a with final Windows/package/pinned-native-Codex gates and all four hosted platforms passing; Final publication and documentation checks are recorded in PR #69.",
+  "githubEpic": "https://github.com/MulattoTech/MTerm-CLI/issues/53",
+  "acceptance": {
+    "accepted": 0,
+    "total": 12,
+    "status": "NOT PASS",
+    "issueClosures": 0,
+    "rule": "Implementation, focused tests and staging deployment are evidence, not issue acceptance. No WEB issue is closed by this ledger."
+  },
+  "stageDefinitions": {
+    "implemented_tested": "Substantial scoped implementation with fixture/local test evidence; required live/full acceptance still pending.",
+    "implemented_preview": "Preview UI implemented and protection boundary observed; authenticated browser/client acceptance pending.",
+    "staging_deployed": "Restricted staging deployment observed; reproducibility, provenance and remaining secure-ingress acceptance pending.",
+    "partially_implemented": "Usable implementation/evidence exists but one or more required capabilities or full acceptance suites are absent.",
+    "implemented_live_smoke": "Scoped implementation plus a recorded live Cloudflare-to-Windows smoke using a temporary Access service identity and the real MCP SDK; full issue/human-client acceptance remains pending."
+  },
+  "estimateBasis": "Remaining engineering-hour ranges are judgment for implementation, integration and validation, not measured agent runtime or calendar promises. They exclude waits for human identity/client access, CI and owner decisions. Shared tests overlap across rows; do not sum these rows as a project schedule.",
+  "dependencyBasis": "Dependencies name needed deliverables, not closure of other WEB issues. Shared acceptance dependencies do not impose circular issue-close ordering.",
+  "staging": {
+    "worker": "mterm-gateway-staging",
+    "gatewayOrigin": "https://mcp-staging.m-techlabs.com",
+    "mcpEndpoint": "https://mcp-staging.m-techlabs.com/mcp",
+    "dashboardOrigin": "https://mterm-staging.m-techlabs.com",
+    "workerVersionId": "af4fd06e-c4a3-4545-ad22-31d0ae956215",
+    "deployedSourceCommit": "b90432a1bc138d59305692a9f74f110a475d0881",
+    "artifactSha256": "97a0457b78e113c058ae8da3d3a6a54fcd93c2b35d1dd1781316c41001ac10a6",
+    "deploymentRecord": "docs/validation/2026-11-02-remote-sprint.md",
+    "identityAcceptance": "Temporary Cloudflare Access service identity verified; owner Google/Access browser sign-in, human consent/callback and ChatGPT explicitly unverified",
+    "capabilities": "Read-only; no remote write/exec; foreground agent; no inbound workstation listener or autostart",
+    "deploymentStampSource": "Integration-owner verified deployment; final smoke build matches b90432a. Current Worker version follows removal of the temporary validation binding.",
+    "liveSmokeRunId": "2026-11-02T01-23-39-600Z-a0b41954-29c8-4163-b93f-a04a5c64b6a6",
+    "liveSmokeStatus": "Final 11/11 passed",
+    "liveSmokeStartedAt": "2026-11-02T01:23:39.601Z",
+    "liveSmokeFinishedAt": "2026-11-02T01:24:29.669Z",
+    "syntheticCleanup": {
+      "syntheticDevicesAndGrantsRevoked": true,
+      "agentsStopped": true,
+      "sdkClosed": true,
+      "onlyCreatedLocalFixturesRemoved": true
+    },
+    "smokeWorkerVersionId": "f643872f-5fbb-44be-9e3d-a6f8f3f32aab",
+    "deploymentId": "5a0ff21c-6341-4e73-b4af-169e98b76db2",
+    "temporaryAccessPolicyDeleted": true,
+    "temporaryServiceTokenDeleted": true,
+    "temporaryBindingRemoved": true,
+    "ownerPolicyOnly": true,
+    "workersDevEnabled": false,
+    "mcpEnabled": true,
+    "rollbackDrill": "docs/validation/2026-11-02-rollback-drill.json"
+  },
+  "evidence": [
+    {
+      "id": "HAR-AUDIT",
+      "level": "sanitized research",
+      "status": "recorded",
+      "refs": [
+        "docs/research/DESKTOP_COMMANDER_REMOTE_HAR_2026-10-16.md"
+      ],
+      "observation": "251-request HAR structural audit; no original vendor remote call, completed pairing or revocation proof. No raw HAR credentials/assets included."
+    },
+    {
+      "id": "GATEWAY-SOURCE",
+      "level": "implementation",
+      "status": "committed",
+      "commit": "3d207b367b23a6e7c3a2dbcd8921450503222cca",
+      "refs": [
+        "gateway/app.mjs",
+        "gateway/security.mjs",
+        "gateway/registry.mjs",
+        "gateway/dashboard.mjs",
+        "scripts/build-gateway.mjs",
+        "docs/ai/changes/2026-11-02-remote-gateway.json"
+      ],
+      "observation": "Own read-only gateway, signed Access identity verification, OAuth, pairing, bounded registry and private dashboard."
+    },
+    {
+      "id": "GATEWAY-TESTS",
+      "level": "fixture tests",
+      "status": "passed",
+      "refs": [
+        "tests/remote-gateway.test.mjs",
+        "docs/ai/changes/2026-11-02-remote-gateway.json"
+      ],
+      "observation": "14/14 gateway test groups passed on Linux Node24.22.1, including independent security review rerun.",
+      "limits": "Real cryptographic signatures; synthetic identities and in-memory Durable Object fixture. Not live OAuth or Cloudflare/Windows end-to-end proof."
+    },
+    {
+      "id": "AGENT-SOURCE",
+      "level": "implementation",
+      "status": "committed",
+      "commit": "9ed607f37c30db48e96bf9fda36ce168705ff992",
+      "refs": [
+        "src/remote/protocol.ts",
+        "src/remote/adapter.ts",
+        "src/remote/agent.ts",
+        "src/remote/state.ts",
+        "src/remote/cli.ts",
+        "src/cli.ts",
+        "docs/ai/changes/2026-11-02-remote-agent.json"
+      ],
+      "observation": "Opt-in foreground agent, FileService read adapter, root/device-bound credential storage and six management commands; later fixes are listed per requirement."
+    },
+    {
+      "id": "WINDOWS-FOCUSED",
+      "level": "actual Windows local tests",
+      "status": "passed_superseded_by_full_suite",
+      "refs": [
+        "tests/remote-agent.test.mjs",
+        "tests/remote-adapter.test.mjs",
+        "tests/remote-state.test.mjs",
+        "docs/ai/changes/2026-11-02-remote-agent.json"
+      ],
+      "observation": "Integration owner reports pinned TypeScript compile PASS on Windows Node 24.21.0 and 13 remote test groups PASS, including actual Windows DPAPI.",
+      "limits": "Historical focused checkpoint. Final 149/149 full Windows, package/native-Codex and all four hosted platforms passed at b90432a; broader feature acceptance remains open."
+    },
+    {
+      "id": "STAGING-HTTP",
+      "level": "live deployment boundary",
+      "status": "observed",
+      "refs": [
+        "https://mcp-staging.m-techlabs.com/.well-known/oauth-protected-resource/mcp",
+        "https://mcp-staging.m-techlabs.com/.well-known/oauth-authorization-server",
+        "https://mcp-staging.m-techlabs.com/mcp",
+        "https://mterm-staging.m-techlabs.com",
+        "docs/validation/2026-11-02-remote-staging-smoke.json"
+      ],
+      "observation": "Deployed Worker mterm-gateway-staging on two HTTPS hosts; live report confirms both discovery endpoints HTTP200, anonymous MCP HTTP401 and anonymous private dashboard HTTP302.",
+      "limits": "These HTTP boundary observations are supplemented by LIVE-SMOKE. They still do not establish human Google/Access sign-in or ChatGPT acceptance."
+    },
+    {
+      "id": "OWNER-GUIDE",
+      "level": "current integration documentation",
+      "status": "committed",
+      "refs": [
+        "docs/REMOTE_MCP.md",
+        "scripts/verify-remote-staging.mjs"
+      ],
+      "observation": "Owner setup/rollback instructions and a secret-safe staging smoke harness were committed after the initial 08973d2 review base. A harness is not a passing test result.",
+      "commit": "ad3a370a2be5065b7b225b5d81efa3d3e682d50a"
+    },
+    {
+      "id": "LIVE-SMOKE",
+      "level": "historical first live Cloudflare / Windows / SDK smoke",
+      "status": "passed_historical",
+      "refs": [
+        "docs/validation/2026-11-02-remote-staging-smoke.json",
+        "scripts/verify-remote-staging.mjs"
+      ],
+      "runId": "2026-11-02T00-56-44-313Z-8cdbd4f8-8e08-4517-97f1-9683573132be",
+      "startedAt": "2026-11-02T00:56:44.314Z",
+      "finishedAt": "2026-11-02T00:57:05.458Z",
+      "build": "305c89c88a10f4c9243096e3d1125bde76f17563",
+      "observation": "11/11 checks passed using a genuine temporary Cloudflare Access service principal, manual S256 PKCE and @modelcontextprotocol/client 2.3.0 StreamableHTTPClientTransport without fallback. Two Windows Node 24.21.0 devices paired with current-user DPAPI; SDK initialize, all six tools, inventory and two real FileService reads matched exact expected SHA-256 values. Wrong pair/device codes, pairing replay, wrong PKCE/resource, authorization-code replay, cross-device credentials, mutation and outside-root access were denied. Revoking one device stopped it while the second remained usable; OAuth revocation caused subsequent MCP HTTP401. Synthetic devices/grants were revoked, agents stopped, SDK closed and only created local fixtures removed.",
+      "limits": "Historical build 305c89c smoke; final b90432a smoke is recorded separately in LIVE-SMOKE-FINAL. Human Google/ChatGPT and broader acceptance were not verified."
+    },
+    {
+      "id": "WINDOWS-ALIAS-CHECKPOINT",
+      "level": "historical Windows canonical-alias checkpoint",
+      "status": "passed_historical",
+      "refs": [
+        "docs/HANDOFF.md",
+        "docs/TODAY_CANDIDATE.md",
+        "tests/policy-alias.test.mjs",
+        "tests/compat-config.test.mjs"
+      ],
+      "sourceCommit": "14971ac54c6b4b99a27f20c8be82d97137f11bc2",
+      "policyFixCommit": "bbf1d0e9b75cf153243a4722ad1ab91392445540",
+      "observation": "Actual Windows Node 24.21.0 passed 33/33 focused tests and 149/149 full tests with no skips or cancellations; full duration 33,685 ms. Five native Windows 8.3 cases ran, including private configuration self-protection, private filenames and canonical missing-leaf handling. Integration owner verified Windows/root source-byte identity.",
+      "limits": "33/33 focused and 149/149 full at 14971ac are historical; final full orchestration/package/Codex/CI results at b90432a are in FINAL-GATES."
+    },
+    {
+      "id": "LIVE-SMOKE-FINAL",
+      "level": "final actual Cloudflare / Windows / SDK smoke",
+      "status": "passed",
+      "refs": [
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json",
+        "docs/validation/2026-11-02-remote-sprint.md"
+      ],
+      "sourceCommit": "b90432a1bc138d59305692a9f74f110a475d0881",
+      "runId": "2026-11-02T01-23-39-600Z-a0b41954-29c8-4163-b93f-a04a5c64b6a6",
+      "startedAt": "2026-11-02T01:23:39.601Z",
+      "finishedAt": "2026-11-02T01:24:29.669Z",
+      "observation": "11/11 live checks passed at b90432a with SDK 2.3.0, real Windows FileService/DPAPI, exact two-device read hashes, authentication/pairing/replay/root/mutation denials and device/grant revocation. All synthetic devices/grants/agents/SDK/fixtures cleaned up. Temporary Access policy, service token and validation binding removed; only owner policy remains, workers.dev disabled and MCP read-only enabled.",
+      "limits": "Temporary service-identity/manual PKCE proof, not human Google sign-in, browser consent or ChatGPT acceptance. Broader two-owner/client, refresh, network fault, rate/load and supervision/update criteria remain open."
+    },
+    {
+      "id": "FINAL-GATES",
+      "level": "final Windows orchestration and exact hosted CI",
+      "status": "passed",
+      "refs": [
+        "docs/validation/2026-11-02-remote-sprint.md"
+      ],
+      "sourceCommit": "b90432a1bc138d59305692a9f74f110a475d0881",
+      "observation": "Windows existing full orchestration passed in 55.35s: reviewed build/typecheck/format/parity, 149/149 tests without skips (32,829 ms), package/isolated-link and test-owned native Codex 0.160.1 managed verification; tracked diff clean. PR matrix 41372073094 passed all four platforms, fast 41372073095 passed, push matrix 41372068412 passed. Final publication and documentation checks are recorded in PR #69.",
+      "limits": "These are exact-build gates, not additional CLI stage credit or WEB issue acceptance. Final documentation checks are recorded in PR #69."
+    },
+    {
+      "id": "DEPLOYMENT-CONFIG",
+      "level": "reviewable deployment configuration and instructions",
+      "status": "documented",
+      "refs": [
+        "gateway/deployment.example.json",
+        "docs/deployment/MTERM_STAGING.md"
+      ],
+      "observation": "Public template and staging instructions specify initial-only SQLite migration, preserved registry namespace, required nonsecret bindings, Access owner-policy/environment inventory, immutable artifact/module checks and current owner-only recovery identity. This attachment is complete.",
+      "limits": "The template is not Wrangler configuration or an automated deployment script. Repeatable dry-run automation and platform secret-binding lifecycle validation remain open. Live pause/restore drill observations have not yet been supplied."
+    }
+  ],
+  "pendingEvidence": [
+    {
+      "id": "PENDING-LIVE-OAUTH",
+      "status": "passed_scoped",
+      "result": "Live manual S256 exchange, wrong PKCE/resource/code replay denial and OAuth revoke 401 passed using one temporary Access service identity. Two-client refresh/expiry and human consent remain open.",
+      "evidenceRef": "docs/validation/2026-11-02-remote-staging-smoke-final.json",
+      "required": "Deployed registration/PKCE token lifecycle, two-client isolation, refresh and revocation; record synthetic service identity separately from human consent."
+    },
+    {
+      "id": "PENDING-LIVE-PAIR",
+      "status": "passed_scoped",
+      "result": "Two Windows devices paired; wrong pair/device codes and pairing replay rejected; real DPAPI round trips passed. Live expiry/crash and human approval remain open.",
+      "evidenceRef": "docs/validation/2026-11-02-remote-staging-smoke-final.json",
+      "required": "Real isolated Windows pairing, protected credential persistence, mismatch/expired/replayed code denial and no credential leakage."
+    },
+    {
+      "id": "PENDING-SDK-READ",
+      "status": "passed",
+      "result": "SDK 2.3.0 StreamableHTTPClientTransport initialized without fallback, discovered six tools, listed two devices and returned exact SHA-256-matched Windows FileService reads.",
+      "evidenceRef": "docs/validation/2026-11-02-remote-staging-smoke-final.json",
+      "required": "Actual supported MCP SDK initialize/tools/list/device selection/read of a known Windows fixture through deployed HTTPS, with exact byte comparison and source/deployment stamps."
+    },
+    {
+      "id": "PENDING-LIVE-FAULTS",
+      "status": "partially_passed",
+      "result": "Cross-device credentials, mutation, root escape and device/grant revocation passed. Disconnect/reconnect, cancel, cross-owner, rate/size/soak remain pending.",
+      "evidenceRef": "docs/validation/2026-11-02-remote-staging-smoke-final.json",
+      "required": "Live cancellation, disconnect/reconnect, revocation, isolation, rate/size bounds, private paths and disabled write/exec."
+    },
+    {
+      "id": "PENDING-HUMAN-GOOGLE",
+      "status": "explicitly_unverified",
+      "result": null,
+      "evidenceRef": null,
+      "required": "Owner-performed Google/Access sign-in and dashboard/consent interaction. Access redirect or service credentials are not proof."
+    },
+    {
+      "id": "PENDING-HUMAN-CHATGPT",
+      "status": "explicitly_unverified",
+      "result": null,
+      "evidenceRef": null,
+      "required": "Owner's supported ChatGPT connector registration, consent and real tool call. SDK evidence is recorded separately."
+    },
+    {
+      "id": "PENDING-DEPLOYMENT-STAMP",
+      "status": "recorded_followups_pending",
+      "result": "Artifact/source/version/deployment identities and reproducible nonsecret migration/binding/Access/environment configuration are recorded. Automation/dry-run and platform secret-binding lifecycle remain open. Live pause/recorded-version restore drill is in progress; no success is claimed.",
+      "evidenceRef": "docs/deployment/MTERM_STAGING.md",
+      "required": "Evaluate the reported pause/restore drill when available; complete repeatable deployment/dry-run automation and platform secret-binding lifecycle qualification."
+    },
+    {
+      "id": "PENDING-FINAL-GATES",
+      "status": "passed_documentation_ci_pending",
+      "result": "Final b90432a Windows full orchestration, 149/149 tests, package/isolated-link, native Codex 0.160.1, all four PR matrix platforms, fast and push matrix passed. Final publication and documentation checks are recorded in PR #69.",
+      "evidenceRef": "docs/validation/2026-11-02-remote-sprint.md",
+      "required": "Verify final documentation commit CI; retain remaining human/feature-specific acceptance gates."
+    }
+  ],
+  "items": [
+    {
+      "id": "WEB-001",
+      "scope": "Authenticated Streamable HTTP and standards discovery",
+      "priority": "P0",
+      "stage": "implemented_live_smoke",
+      "evidence": [
+        "GATEWAY-SOURCE",
+        "GATEWAY-TESTS",
+        "STAGING-HTTP",
+        "LIVE-SMOKE",
+        "LIVE-SMOKE-FINAL",
+        "FINAL-GATES"
+      ],
+      "implemented": "Public discovery and bearer-gated MCP are deployed. The real SDK 2.3.0 initialized over Streamable HTTP without fallback and discovered all six read-only tools; discovery returned 200 and anonymous MCP returned 401.",
+      "remainingWork": [
+        {
+          "description": "Complete the supported-client/protocol matrix and live error handling for JSON POST, unsupported GET/SSE, Origin, content negotiation and protocol revisions; retain the actual negotiated SDK behavior.",
+          "dependencies": [
+            "Recorded SDK 2.3.0 smoke",
+            "WEB-012 protocol regression matrix"
+          ],
+          "blockers": [
+            "One SDK smoke is not full standards/client interoperability certification; human clients remain unverified."
+          ],
+          "remainingHours": [
+            2,
+            6
+          ],
+          "eta": "Unscheduled"
+        }
+      ],
+      "githubIssue": {
+        "number": 54,
+        "url": "https://github.com/MulattoTech/MTerm-CLI/issues/54",
+        "state": "open",
+        "assignees": [],
+        "criteriaUpdatedAt": "2026-10-17T03:47:35Z",
+        "criteriaReviewedAt": "2026-11-02T00:53:15Z"
+      },
+      "acceptanceCriteria": "Implement a separate MTechLabs HTTPS /mcp endpoint with valid MCP initialize/tools/list, protected resource metadata, OAuth authorization-server discovery and client interoperability. Require authentication before any tool dispatch; do not expose a public unauthenticated listener. Prove a client can discover but not invoke tools without authorization.",
+      "accepted": false,
+      "acceptanceEvidence": null,
+      "dependencies": [
+        "Recorded SDK 2.3.0 smoke",
+        "WEB-012 protocol regression matrix"
+      ],
+      "blockers": [
+        "One SDK smoke is not full standards/client interoperability certification; human clients remain unverified."
+      ],
+      "remainingHours": [
+        2,
+        6
+      ],
+      "eta": "Unscheduled",
+      "implementingCommits": [
+        {
+          "sha": "3d207b367b23a6e7c3a2dbcd8921450503222cca",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/3d207b367b23a6e7c3a2dbcd8921450503222cca"
+        },
+        {
+          "sha": "a3a05cf5c4dd0fe2d04ec4ae91917905b9692295",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/a3a05cf5c4dd0fe2d04ec4ae91917905b9692295"
+        },
+        {
+          "sha": "ad3a370a2be5065b7b225b5d81efa3d3e682d50a",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/ad3a370a2be5065b7b225b5d81efa3d3e682d50a"
+        },
+        {
+          "sha": "305c89c88a10f4c9243096e3d1125bde76f17563",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/305c89c88a10f4c9243096e3d1125bde76f17563"
+        },
+        {
+          "sha": "b90432a1bc138d59305692a9f74f110a475d0881",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/b90432a1bc138d59305692a9f74f110a475d0881"
+        }
+      ],
+      "reviewedHead": "b90432a1bc138d59305692a9f74f110a475d0881",
+      "pullRequest": {
+        "number": 69,
+        "status": "source_candidate_ci_passed; see GitHub for final publication state",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/pull/69",
+        "finalDocumentationCi": "See PR #69 checks for the final documentation commit"
+      },
+      "completedWork": [
+        {
+          "description": "Supported SDK initialized and listed all six tools against the deployed endpoint with live authentication and anonymous dispatch denial.",
+          "evidence": [
+            "LIVE-SMOKE"
+          ],
+          "runId": "2026-11-02T00-56-44-313Z-8cdbd4f8-8e08-4517-97f1-9683573132be",
+          "acceptedRequirement": false
+        }
+      ]
+    },
+    {
+      "id": "WEB-002",
+      "scope": "Per-client OAuth grants, scopes and revocation",
+      "priority": "P0",
+      "stage": "implemented_live_smoke",
+      "evidence": [
+        "GATEWAY-SOURCE",
+        "GATEWAY-TESTS",
+        "LIVE-SMOKE",
+        "LIVE-SMOKE-FINAL",
+        "FINAL-GATES"
+      ],
+      "implemented": "OAuth S256 PKCE, exact resource binding, expiring grants, refresh rotation and replay/revocation are implemented. Live manual service-identity authorization rejected wrong PKCE/resource and code replay; grant revocation caused subsequent SDK MCP HTTP401.",
+      "remainingWork": [
+        {
+          "description": "Complete live two-client grant isolation, refresh rotation/replay, expiry, exact callback and CSRF negatives; prove one client cannot expand or exchange another client's grant.",
+          "dependencies": [
+            "Recorded live OAuth smoke",
+            "Two separately registered synthetic clients"
+          ],
+          "blockers": [
+            "The smoke used one service identity/client lifecycle; live two-client isolation and refresh/expiry coverage remain pending."
+          ],
+          "remainingHours": [
+            3,
+            7
+          ],
+          "eta": "Unscheduled"
+        },
+        {
+          "description": "Complete and record owner browser consent and the desired client's authorization lifecycle independently of the service-principal harness.",
+          "dependencies": [
+            "WEB-007 owner dashboard access",
+            "Owner Google/Access session and eligible client account"
+          ],
+          "blockers": [
+            "Human Google sign-in, consent/callback and ChatGPT connector authorization are explicitly unverified."
+          ],
+          "remainingHours": [
+            2,
+            6
+          ],
+          "eta": "Unscheduled"
+        }
+      ],
+      "githubIssue": {
+        "number": 55,
+        "url": "https://github.com/MulattoTech/MTerm-CLI/issues/55",
+        "state": "open",
+        "assignees": [],
+        "criteriaUpdatedAt": "2026-10-17T03:47:37Z",
+        "criteriaReviewedAt": "2026-11-02T00:53:15Z"
+      },
+      "acceptanceCriteria": "Implement standards-compatible authorization/token lifecycle for each client, scoped permission grants, expiry/refresh/revocation and audit. Protect CSRF/PKCE and validate token audience. Prove two clients cannot reuse/expand each other's grants and revoking one takes effect immediately.",
+      "accepted": false,
+      "acceptanceEvidence": null,
+      "dependencies": [
+        "Recorded live OAuth smoke",
+        "Two separately registered synthetic clients",
+        "WEB-007 owner dashboard access",
+        "Owner Google/Access session and eligible client account"
+      ],
+      "blockers": [
+        "The smoke used one service identity/client lifecycle; live two-client isolation and refresh/expiry coverage remain pending.",
+        "Human Google sign-in, consent/callback and ChatGPT connector authorization are explicitly unverified."
+      ],
+      "remainingHours": [
+        5,
+        13
+      ],
+      "eta": "Unscheduled",
+      "implementingCommits": [
+        {
+          "sha": "3d207b367b23a6e7c3a2dbcd8921450503222cca",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/3d207b367b23a6e7c3a2dbcd8921450503222cca"
+        },
+        {
+          "sha": "ad3a370a2be5065b7b225b5d81efa3d3e682d50a",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/ad3a370a2be5065b7b225b5d81efa3d3e682d50a"
+        },
+        {
+          "sha": "305c89c88a10f4c9243096e3d1125bde76f17563",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/305c89c88a10f4c9243096e3d1125bde76f17563"
+        },
+        {
+          "sha": "b90432a1bc138d59305692a9f74f110a475d0881",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/b90432a1bc138d59305692a9f74f110a475d0881"
+        }
+      ],
+      "reviewedHead": "b90432a1bc138d59305692a9f74f110a475d0881",
+      "pullRequest": {
+        "number": 69,
+        "status": "source_candidate_ci_passed; see GitHub for final publication state",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/pull/69",
+        "finalDocumentationCi": "See PR #69 checks for the final documentation commit"
+      },
+      "completedWork": [
+        {
+          "description": "Real service-identity manual PKCE exchange, wrong PKCE/resource and authorization-code replay denial, followed by OAuth grant revocation and MCP HTTP 401.",
+          "evidence": [
+            "LIVE-SMOKE"
+          ],
+          "runId": "2026-11-02T00-56-44-313Z-8cdbd4f8-8e08-4517-97f1-9683573132be",
+          "acceptedRequirement": false
+        }
+      ]
+    },
+    {
+      "id": "WEB-003",
+      "scope": "One-time device pairing and verification",
+      "priority": "P0",
+      "stage": "implemented_live_smoke",
+      "evidence": [
+        "GATEWAY-SOURCE",
+        "GATEWAY-TESTS",
+        "AGENT-SOURCE",
+        "WINDOWS-FOCUSED",
+        "LIVE-SMOKE",
+        "WINDOWS-ALIAS-CHECKPOINT",
+        "LIVE-SMOKE-FINAL",
+        "FINAL-GATES"
+      ],
+      "implemented": "Five-minute, single-use pairing and protected state are implemented. Two real Windows devices completed staging pairing and DPAPI round trips; wrong displayed codes, wrong device codes and consumed pairing replay were rejected.",
+      "remainingWork": [
+        {
+          "description": "Exercise live expiration, interrupted approval/credential persistence and restart failure paths, proving no extra usable enrollment can emerge from a failed operation.",
+          "dependencies": [
+            "Recorded two-device staging pairing",
+            "WEB-004 lifecycle fault tests"
+          ],
+          "blockers": [
+            "Consumed replay and code mismatches passed; expiry/crash/persistence-failure coverage in the real runtime remains pending."
+          ],
+          "remainingHours": [
+            3,
+            6
+          ],
+          "eta": "Unscheduled"
+        },
+        {
+          "description": "Finish the owner-visible browser code-match flow and sanitized pairing log/state privacy review.",
+          "dependencies": [
+            "WEB-007 human dashboard session",
+            "WEB-012 secret-sentinel review"
+          ],
+          "blockers": [
+            "The smoke used authenticated service-identity API approval; human approval and complete deployed log/state inspection are unverified."
+          ],
+          "remainingHours": [
+            2,
+            4
+          ],
+          "eta": "Unscheduled"
+        }
+      ],
+      "githubIssue": {
+        "number": 56,
+        "url": "https://github.com/MulattoTech/MTerm-CLI/issues/56",
+        "state": "open",
+        "assignees": [],
+        "criteriaUpdatedAt": "2026-10-17T03:47:39Z",
+        "criteriaReviewedAt": "2026-11-02T00:53:15Z"
+      },
+      "acceptanceCriteria": "Implement a one-time expiration-bound pairing code, local agent initiation and authenticated dashboard approval requiring displayed code match. Prove mismatch/expired/replayed code is refused and secrets never appear in logs or Git.",
+      "accepted": false,
+      "acceptanceEvidence": null,
+      "dependencies": [
+        "Recorded two-device staging pairing",
+        "WEB-004 lifecycle fault tests",
+        "WEB-007 human dashboard session",
+        "WEB-012 secret-sentinel review"
+      ],
+      "blockers": [
+        "Consumed replay and code mismatches passed; expiry/crash/persistence-failure coverage in the real runtime remains pending.",
+        "The smoke used authenticated service-identity API approval; human approval and complete deployed log/state inspection are unverified."
+      ],
+      "remainingHours": [
+        5,
+        10
+      ],
+      "eta": "Unscheduled",
+      "implementingCommits": [
+        {
+          "sha": "3d207b367b23a6e7c3a2dbcd8921450503222cca",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/3d207b367b23a6e7c3a2dbcd8921450503222cca"
+        },
+        {
+          "sha": "9ed607f37c30db48e96bf9fda36ce168705ff992",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/9ed607f37c30db48e96bf9fda36ce168705ff992"
+        },
+        {
+          "sha": "17303028e4f84c41d994f03512f7f45436dae9c5",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/17303028e4f84c41d994f03512f7f45436dae9c5"
+        },
+        {
+          "sha": "e3b61548e760a16f0902f672adb16b5eaac6827e",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/e3b61548e760a16f0902f672adb16b5eaac6827e"
+        },
+        {
+          "sha": "bbf1d0e9b75cf153243a4722ad1ab91392445540",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/bbf1d0e9b75cf153243a4722ad1ab91392445540"
+        },
+        {
+          "sha": "14971ac54c6b4b99a27f20c8be82d97137f11bc2",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/14971ac54c6b4b99a27f20c8be82d97137f11bc2"
+        },
+        {
+          "sha": "b90432a1bc138d59305692a9f74f110a475d0881",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/b90432a1bc138d59305692a9f74f110a475d0881"
+        }
+      ],
+      "reviewedHead": "b90432a1bc138d59305692a9f74f110a475d0881",
+      "pullRequest": {
+        "number": 69,
+        "status": "source_candidate_ci_passed; see GitHub for final publication state",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/pull/69",
+        "finalDocumentationCi": "See PR #69 checks for the final documentation commit"
+      },
+      "completedWork": [
+        {
+          "description": "Two real Windows enrollments, wrong-pair-code HTTP 400, wrong-device-code HTTP 403 and consumed-pairing HTTP 410 with current-user DPAPI persistence.",
+          "evidence": [
+            "LIVE-SMOKE"
+          ],
+          "runId": "2026-11-02T00-56-44-313Z-8cdbd4f8-8e08-4517-97f1-9683573132be",
+          "acceptedRequirement": false
+        }
+      ]
+    },
+    {
+      "id": "WEB-004",
+      "scope": "Outbound agent, reconnect, heartbeat and shutdown",
+      "priority": "P0",
+      "stage": "implemented_live_smoke",
+      "evidence": [
+        "AGENT-SOURCE",
+        "WINDOWS-FOCUSED",
+        "LIVE-SMOKE",
+        "WINDOWS-ALIAS-CHECKPOINT",
+        "LIVE-SMOKE-FINAL",
+        "FINAL-GATES"
+      ],
+      "implemented": "Foreground outbound polling carried actual Windows FileService results through Cloudflare. Both agents reached online state; device A stopped on revocation and device B stopped during owned cleanup. Backoff, cancellation and no-redelivery also have local transport tests.",
+      "remainingWork": [
+        {
+          "description": "Interrupt real connectivity and test heartbeat/offline/reconnect, in-flight cancellation and no duplicate operation after restart or delayed result delivery.",
+          "dependencies": [
+            "Recorded live agent/read path",
+            "WEB-009 network fault scenarios"
+          ],
+          "blockers": [
+            "The successful smoke did not inject network loss, backoff exhaustion or restart during a delivered request."
+          ],
+          "remainingHours": [
+            3,
+            8
+          ],
+          "eta": "Unscheduled"
+        },
+        {
+          "description": "Verify packaged start/status/stop/restart, stale-lock recovery instructions and absence of an inbound workstation listener.",
+          "dependencies": [
+            "Recorded b90432a package/Codex/platform evidence; final documentation checks recorded in PR #69",
+            "WEB-011 on-demand lifecycle"
+          ],
+          "blockers": [
+            "Package/isolated-link and managed Codex passed; remote packaged start/stop/restart/crash lifecycle still needs separate validation."
+          ],
+          "remainingHours": [
+            2,
+            6
+          ],
+          "eta": "Unscheduled"
+        }
+      ],
+      "githubIssue": {
+        "number": 57,
+        "url": "https://github.com/MulattoTech/MTerm-CLI/issues/57",
+        "state": "open",
+        "assignees": [],
+        "criteriaUpdatedAt": "2026-10-17T03:47:41Z",
+        "criteriaReviewedAt": "2026-11-02T00:53:15Z"
+      },
+      "acceptanceCriteria": "Build a local opt-in device agent with authenticated outbound connectivity, bounded backoff, heartbeat, offline behavior and clean termination. Never open an inbound workstation port by default. Ensure reconnect does not replay state-changing tool calls.",
+      "accepted": false,
+      "acceptanceEvidence": null,
+      "dependencies": [
+        "Recorded live agent/read path",
+        "WEB-009 network fault scenarios",
+        "Recorded b90432a package/Codex/platform evidence; final documentation checks recorded in PR #69",
+        "WEB-011 on-demand lifecycle"
+      ],
+      "blockers": [
+        "The successful smoke did not inject network loss, backoff exhaustion or restart during a delivered request.",
+        "Package/isolated-link and managed Codex passed; remote packaged start/stop/restart/crash lifecycle still needs separate validation."
+      ],
+      "remainingHours": [
+        5,
+        14
+      ],
+      "eta": "Unscheduled",
+      "implementingCommits": [
+        {
+          "sha": "a3a05cf5c4dd0fe2d04ec4ae91917905b9692295",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/a3a05cf5c4dd0fe2d04ec4ae91917905b9692295"
+        },
+        {
+          "sha": "9ed607f37c30db48e96bf9fda36ce168705ff992",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/9ed607f37c30db48e96bf9fda36ce168705ff992"
+        },
+        {
+          "sha": "a4eb9c36a9c78a4c14b21501e5593543bae7949e",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/a4eb9c36a9c78a4c14b21501e5593543bae7949e"
+        },
+        {
+          "sha": "17303028e4f84c41d994f03512f7f45436dae9c5",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/17303028e4f84c41d994f03512f7f45436dae9c5"
+        },
+        {
+          "sha": "9cc46909ad038dc1fc3ab26c236bdf3129c6788f",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/9cc46909ad038dc1fc3ab26c236bdf3129c6788f"
+        },
+        {
+          "sha": "bbf1d0e9b75cf153243a4722ad1ab91392445540",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/bbf1d0e9b75cf153243a4722ad1ab91392445540"
+        },
+        {
+          "sha": "14971ac54c6b4b99a27f20c8be82d97137f11bc2",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/14971ac54c6b4b99a27f20c8be82d97137f11bc2"
+        },
+        {
+          "sha": "b90432a1bc138d59305692a9f74f110a475d0881",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/b90432a1bc138d59305692a9f74f110a475d0881"
+        }
+      ],
+      "reviewedHead": "b90432a1bc138d59305692a9f74f110a475d0881",
+      "pullRequest": {
+        "number": 69,
+        "status": "source_candidate_ci_passed; see GitHub for final publication state",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/pull/69",
+        "finalDocumentationCi": "See PR #69 checks for the final documentation commit"
+      },
+      "completedWork": [
+        {
+          "description": "Two real outbound Windows agents reached online, completed requests and stopped with recorded revoked/stopped reasons; all fixture agents were cleaned up.",
+          "evidence": [
+            "LIVE-SMOKE"
+          ],
+          "runId": "2026-11-02T00-56-44-313Z-8cdbd4f8-8e08-4517-97f1-9683573132be",
+          "acceptedRequirement": false
+        }
+      ]
+    },
+    {
+      "id": "WEB-005",
+      "scope": "Device inventory, presence, capabilities and last seen",
+      "priority": "P1",
+      "stage": "implemented_live_smoke",
+      "evidence": [
+        "GATEWAY-SOURCE",
+        "GATEWAY-TESTS",
+        "AGENT-SOURCE",
+        "LIVE-SMOKE",
+        "LIVE-SMOKE-FINAL",
+        "FINAL-GATES"
+      ],
+      "implemented": "Owner-scoped inventory, capabilities and heartbeat-derived presence are implemented. The live SDK listed exactly two paired Windows devices, routed independent reads, and observed that revoking one did not disable the other.",
+      "remainingWork": [
+        {
+          "description": "Complete two-owner inventory isolation and time-based online/reconnecting/offline transitions through real disconnect/reconnect and revocation.",
+          "dependencies": [
+            "Recorded two-device inventory",
+            "WEB-004 connectivity fault tests",
+            "Second synthetic owner identity"
+          ],
+          "blockers": [
+            "The smoke used one owner with two devices; cross-owner inventory and stale-heartbeat transitions are not yet live-tested."
+          ],
+          "remainingHours": [
+            2,
+            6
+          ],
+          "eta": "Unscheduled"
+        },
+        {
+          "description": "Inspect authenticated dashboard/API privacy, escaped device names/capabilities and empty/error states without credential exposure.",
+          "dependencies": [
+            "WEB-007 authenticated browser view",
+            "WEB-012 privacy review"
+          ],
+          "blockers": [
+            "API presence is proven narrowly; full browser/privacy and presentation acceptance remains pending."
+          ],
+          "remainingHours": [
+            2,
+            4
+          ],
+          "eta": "Unscheduled"
+        }
+      ],
+      "githubIssue": {
+        "number": 58,
+        "url": "https://github.com/MulattoTech/MTerm-CLI/issues/58",
+        "state": "open",
+        "assignees": [],
+        "criteriaUpdatedAt": "2026-10-17T03:48:02Z",
+        "criteriaReviewedAt": "2026-11-02T00:53:15Z"
+      },
+      "acceptanceCriteria": "Authenticated portal lists only user-owned devices, including online/connecting/offline states, last seen and supported tool capabilities. Presence changes reflect authenticated heartbeats; stale devices become offline. No device auth tokens are returned to ordinary UI.",
+      "accepted": false,
+      "acceptanceEvidence": null,
+      "dependencies": [
+        "Recorded two-device inventory",
+        "WEB-004 connectivity fault tests",
+        "Second synthetic owner identity",
+        "WEB-007 authenticated browser view",
+        "WEB-012 privacy review"
+      ],
+      "blockers": [
+        "The smoke used one owner with two devices; cross-owner inventory and stale-heartbeat transitions are not yet live-tested.",
+        "API presence is proven narrowly; full browser/privacy and presentation acceptance remains pending."
+      ],
+      "remainingHours": [
+        4,
+        10
+      ],
+      "eta": "Unscheduled",
+      "implementingCommits": [
+        {
+          "sha": "3d207b367b23a6e7c3a2dbcd8921450503222cca",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/3d207b367b23a6e7c3a2dbcd8921450503222cca"
+        },
+        {
+          "sha": "a3a05cf5c4dd0fe2d04ec4ae91917905b9692295",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/a3a05cf5c4dd0fe2d04ec4ae91917905b9692295"
+        },
+        {
+          "sha": "9ed607f37c30db48e96bf9fda36ce168705ff992",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/9ed607f37c30db48e96bf9fda36ce168705ff992"
+        },
+        {
+          "sha": "b90432a1bc138d59305692a9f74f110a475d0881",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/b90432a1bc138d59305692a9f74f110a475d0881"
+        }
+      ],
+      "reviewedHead": "b90432a1bc138d59305692a9f74f110a475d0881",
+      "pullRequest": {
+        "number": 69,
+        "status": "source_candidate_ci_passed; see GitHub for final publication state",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/pull/69",
+        "finalDocumentationCi": "See PR #69 checks for the final documentation commit"
+      },
+      "completedWork": [
+        {
+          "description": "Live inventory returned the two fixture devices; both reached online and selected-device operations stayed distinct.",
+          "evidence": [
+            "LIVE-SMOKE"
+          ],
+          "runId": "2026-11-02T00-56-44-313Z-8cdbd4f8-8e08-4517-97f1-9683573132be",
+          "acceptedRequirement": false
+        }
+      ]
+    },
+    {
+      "id": "WEB-006",
+      "scope": "Device/client revocation, rotation and local logout",
+      "priority": "P0",
+      "stage": "partially_implemented",
+      "evidence": [
+        "GATEWAY-SOURCE",
+        "GATEWAY-TESTS",
+        "AGENT-SOURCE",
+        "WINDOWS-FOCUSED",
+        "LIVE-SMOKE",
+        "WINDOWS-ALIAS-CHECKPOINT",
+        "LIVE-SMOKE-FINAL",
+        "FINAL-GATES"
+      ],
+      "implemented": "Live revoke-one invalidated the selected device with HTTP410, stopped its agent and denied further reads while the second device remained usable. OAuth grant revocation caused MCP HTTP 401 and cleanup revoked all synthetic state. Revoke-all epochs are fixture-tested; device replacement currently uses revoke/re-pair.",
+      "remainingWork": [
+        {
+          "description": "Test live revoke-all with unclaimed pairings/codes and in-flight work, plus old-credential restart and local logout failure paths.",
+          "dependencies": [
+            "Recorded device/grant revocation smoke",
+            "WEB-002 multi-client lifecycle",
+            "WEB-004 restart tests"
+          ],
+          "blockers": [
+            "Single-device and grant revocation passed; comprehensive revoke-all/stale-restart behavior remains pending."
+          ],
+          "remainingHours": [
+            3,
+            7
+          ],
+          "eta": "Unscheduled"
+        },
+        {
+          "description": "Define and implement/test device credential replacement/rotation for issue #59, or obtain explicit issue acceptance of revoke-and-re-pair, including failure and rollback.",
+          "dependencies": [
+            "Owner security decision on device credential lifecycle",
+            "Existing protected credential store"
+          ],
+          "blockers": [
+            "No separately verified device-token rotation workflow exists; OAuth refresh rotation does not close that gap."
+          ],
+          "remainingHours": [
+            6,
+            16
+          ],
+          "eta": "Unscheduled"
+        }
+      ],
+      "githubIssue": {
+        "number": 59,
+        "url": "https://github.com/MulattoTech/MTerm-CLI/issues/59",
+        "state": "open",
+        "assignees": [],
+        "criteriaUpdatedAt": "2026-10-17T03:48:04Z",
+        "criteriaReviewedAt": "2026-11-02T00:53:15Z"
+      },
+      "acceptanceCriteria": "Support owner-confirmed revoke-one/revoke-all with immediate relay denial, credential invalidation/rotation, local agent logout, audit entries and stale-session rejection. Test that previously authorized sessions cannot resume after revocation.",
+      "accepted": false,
+      "acceptanceEvidence": null,
+      "dependencies": [
+        "Recorded device/grant revocation smoke",
+        "WEB-002 multi-client lifecycle",
+        "WEB-004 restart tests",
+        "Owner security decision on device credential lifecycle",
+        "Existing protected credential store"
+      ],
+      "blockers": [
+        "Single-device and grant revocation passed; comprehensive revoke-all/stale-restart behavior remains pending.",
+        "No separately verified device-token rotation workflow exists; OAuth refresh rotation does not close that gap."
+      ],
+      "remainingHours": [
+        9,
+        23
+      ],
+      "eta": "Unscheduled",
+      "implementingCommits": [
+        {
+          "sha": "3d207b367b23a6e7c3a2dbcd8921450503222cca",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/3d207b367b23a6e7c3a2dbcd8921450503222cca"
+        },
+        {
+          "sha": "9ed607f37c30db48e96bf9fda36ce168705ff992",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/9ed607f37c30db48e96bf9fda36ce168705ff992"
+        },
+        {
+          "sha": "17303028e4f84c41d994f03512f7f45436dae9c5",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/17303028e4f84c41d994f03512f7f45436dae9c5"
+        },
+        {
+          "sha": "9cc46909ad038dc1fc3ab26c236bdf3129c6788f",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/9cc46909ad038dc1fc3ab26c236bdf3129c6788f"
+        },
+        {
+          "sha": "bbf1d0e9b75cf153243a4722ad1ab91392445540",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/bbf1d0e9b75cf153243a4722ad1ab91392445540"
+        },
+        {
+          "sha": "14971ac54c6b4b99a27f20c8be82d97137f11bc2",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/14971ac54c6b4b99a27f20c8be82d97137f11bc2"
+        },
+        {
+          "sha": "b90432a1bc138d59305692a9f74f110a475d0881",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/b90432a1bc138d59305692a9f74f110a475d0881"
+        }
+      ],
+      "reviewedHead": "b90432a1bc138d59305692a9f74f110a475d0881",
+      "pullRequest": {
+        "number": 69,
+        "status": "source_candidate_ci_passed; see GitHub for final publication state",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/pull/69",
+        "finalDocumentationCi": "See PR #69 checks for the final documentation commit"
+      },
+      "completedWork": [
+        {
+          "description": "Live revoke-one, selected-agent shutdown, second-device continuity, OAuth revoke/MCP HTTP 401 and synthetic cleanup succeeded.",
+          "evidence": [
+            "LIVE-SMOKE"
+          ],
+          "runId": "2026-11-02T00-56-44-313Z-8cdbd4f8-8e08-4517-97f1-9683573132be",
+          "acceptedRequirement": false
+        }
+      ]
+    },
+    {
+      "id": "WEB-007",
+      "scope": "Private dashboard and client onboarding",
+      "priority": "P1",
+      "stage": "implemented_preview",
+      "evidence": [
+        "GATEWAY-SOURCE",
+        "GATEWAY-TESTS",
+        "STAGING-HTTP",
+        "OWNER-GUIDE",
+        "LIVE-SMOKE",
+        "LIVE-SMOKE-FINAL",
+        "FINAL-GATES"
+      ],
+      "implemented": "Dashboard and consent UI code covers pairing, presence, read-only permissions, grants, cancellation, audit and revoke controls. Live Access service authentication and management API approval work; unauthenticated browsers redirect to Access. No human UI or connector session was exercised.",
+      "remainingWork": [
+        {
+          "description": "Complete owner Google/Access sign-in, device verification and the desired client's consent/connector setup; record each actual client's result independently.",
+          "dependencies": [
+            "Owner-approved identity/account availability",
+            "WEB-002 authorization",
+            "WEB-003 pairing"
+          ],
+          "blockers": [
+            "A 302 Access redirect does not prove Google sign-in; human sign-in and ChatGPT connection are unverified."
+          ],
+          "remainingHours": [
+            3,
+            8
+          ],
+          "eta": "Unscheduled"
+        },
+        {
+          "description": "Exercise keyboard/screen-reader and narrow-screen onboarding, errors, disabled capabilities, confirmation controls, and tested client-specific instructions.",
+          "dependencies": [
+            "Authenticated browser session",
+            "WEB-005 live inventory",
+            "WEB-006 revoke behavior"
+          ],
+          "blockers": [
+            "Desktop/mobile visual QA passed, including a 390px viewport/document without overflow; full accessibility and human/client onboarding acceptance remain open."
+          ],
+          "remainingHours": [
+            6,
+            12
+          ],
+          "eta": "Unscheduled"
+        }
+      ],
+      "githubIssue": {
+        "number": 60,
+        "url": "https://github.com/MulattoTech/MTerm-CLI/issues/60",
+        "state": "open",
+        "assignees": [],
+        "criteriaUpdatedAt": "2026-10-17T03:48:06Z",
+        "criteriaReviewedAt": "2026-11-02T00:53:15Z"
+      },
+      "acceptanceCriteria": "Provide a private web dashboard with accessible onboarding, device verification, status, revocation, scoped connection/approval view, copyable MCP URL and client-specific setup steps. It must identify unavailable capabilities rather than fake success.",
+      "accepted": false,
+      "acceptanceEvidence": null,
+      "dependencies": [
+        "Owner-approved identity/account availability",
+        "WEB-002 authorization",
+        "WEB-003 pairing",
+        "Authenticated browser session",
+        "WEB-005 live inventory",
+        "WEB-006 revoke behavior"
+      ],
+      "blockers": [
+        "A 302 Access redirect does not prove Google sign-in; human sign-in and ChatGPT connection are unverified.",
+        "Desktop/mobile visual QA passed, including a 390px viewport/document without overflow; full accessibility and human/client onboarding acceptance remain open."
+      ],
+      "remainingHours": [
+        9,
+        20
+      ],
+      "eta": "Unscheduled",
+      "implementingCommits": [
+        {
+          "sha": "3d207b367b23a6e7c3a2dbcd8921450503222cca",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/3d207b367b23a6e7c3a2dbcd8921450503222cca"
+        },
+        {
+          "sha": "ad3a370a2be5065b7b225b5d81efa3d3e682d50a",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/ad3a370a2be5065b7b225b5d81efa3d3e682d50a"
+        },
+        {
+          "sha": "305c89c88a10f4c9243096e3d1125bde76f17563",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/305c89c88a10f4c9243096e3d1125bde76f17563"
+        },
+        {
+          "sha": "b90432a1bc138d59305692a9f74f110a475d0881",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/b90432a1bc138d59305692a9f74f110a475d0881"
+        }
+      ],
+      "reviewedHead": "b90432a1bc138d59305692a9f74f110a475d0881",
+      "pullRequest": {
+        "number": 69,
+        "status": "source_candidate_ci_passed; see GitHub for final publication state",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/pull/69",
+        "finalDocumentationCi": "See PR #69 checks for the final documentation commit"
+      },
+      "completedWork": [
+        {
+          "description": "Real staging Access service identity reached authenticated management APIs; anonymous dashboard requests redirected HTTP 302.",
+          "evidence": [
+            "LIVE-SMOKE"
+          ],
+          "runId": "2026-11-02T00-56-44-313Z-8cdbd4f8-8e08-4517-97f1-9683573132be",
+          "acceptedRequirement": false
+        }
+      ]
+    },
+    {
+      "id": "WEB-008",
+      "scope": "Cloudflare deployment and secure environment ingress",
+      "priority": "P0",
+      "stage": "staging_deployed",
+      "evidence": [
+        "GATEWAY-SOURCE",
+        "STAGING-HTTP",
+        "OWNER-GUIDE",
+        "LIVE-SMOKE",
+        "LIVE-SMOKE-FINAL",
+        "FINAL-GATES",
+        "DEPLOYMENT-CONFIG"
+      ],
+      "implemented": "Restricted staging is deployed from b90432a with immutable artifact 97a0457b78e113c058ae8da3d3a6a54fcd93c2b35d1dd1781316c41001ac10a6. Final SDK smoke passed 11/11. Current version af4fd06e follows removal of temporary validation binding; temporary Access policy/token deleted, only owner policy remains, workers.dev disabled, MCP read-only enabled. Reproducible nonsecret migrations/bindings/Access/environment metadata and deployment/recovery instructions are attached in gateway/deployment.example.json and docs/deployment/MTERM_STAGING.md; the template is deliberately not an executable deployment script.",
+      "remainingWork": [
+        {
+          "description": "Automate reviewed template application and repeatable dev/staging dry-run validation, including immutable-module checks and platform secret-binding preservation/rotation. Retain the completed pause/restore drill as evidence; future incompatible-migration scenarios remain separate.",
+          "dependencies": [
+            "Attached deployment template and staging inventory",
+            "Recorded immutable artifact and owner-only recovery version",
+            "Authorized isolated deployment controls"
+          ],
+          "blockers": [
+            "The template and configuration attachment are complete. Automated application/dry-run and platform secret-binding lifecycle qualification are not yet demonstrated. The non-destructive pause/restore drill passed; its report documents the code10214 recovery constraint."
+          ],
+          "remainingHours": [
+            6,
+            12
+          ],
+          "eta": "Unscheduled"
+        }
+      ],
+      "githubIssue": {
+        "number": 61,
+        "url": "https://github.com/MulattoTech/MTerm-CLI/issues/61",
+        "state": "open",
+        "assignees": [],
+        "criteriaUpdatedAt": "2026-10-17T03:48:08Z",
+        "criteriaReviewedAt": "2026-11-02T00:53:15Z"
+      },
+      "acceptanceCriteria": "Use a user-approved MTechLabs hostname. Configure TLS, Cloudflare Access/OAuth provider, protected resource discovery, dev/staging separation and secrets via deployment secret store. Produce reproducible IaC and dry-run tests. No account/DNS/billing changes without explicit configuration/approval.",
+      "accepted": false,
+      "acceptanceEvidence": null,
+      "dependencies": [
+        "Attached deployment template and staging inventory",
+        "Recorded immutable artifact and owner-only recovery version",
+        "Authorized isolated deployment controls"
+      ],
+      "blockers": [
+        "The template and configuration attachment are complete. Automated application/dry-run and platform secret-binding lifecycle qualification are not yet demonstrated. The non-destructive pause/restore drill passed; its report documents the code10214 recovery constraint."
+      ],
+      "remainingHours": [
+        6,
+        12
+      ],
+      "eta": "Unscheduled",
+      "implementingCommits": [
+        {
+          "sha": "3d207b367b23a6e7c3a2dbcd8921450503222cca",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/3d207b367b23a6e7c3a2dbcd8921450503222cca"
+        },
+        {
+          "sha": "ad3a370a2be5065b7b225b5d81efa3d3e682d50a",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/ad3a370a2be5065b7b225b5d81efa3d3e682d50a"
+        },
+        {
+          "sha": "305c89c88a10f4c9243096e3d1125bde76f17563",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/305c89c88a10f4c9243096e3d1125bde76f17563"
+        },
+        {
+          "sha": "b90432a1bc138d59305692a9f74f110a475d0881",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/b90432a1bc138d59305692a9f74f110a475d0881"
+        }
+      ],
+      "reviewedHead": "b90432a1bc138d59305692a9f74f110a475d0881",
+      "pullRequest": {
+        "number": 69,
+        "status": "source_candidate_ci_passed; see GitHub for final publication state",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/pull/69",
+        "finalDocumentationCi": "See PR #69 checks for the final documentation commit"
+      },
+      "completedWork": [
+        {
+          "description": "Recorded Worker version/artifact/source identity and live discovery/authenticated Windows SDK smoke.",
+          "evidence": [
+            "LIVE-SMOKE"
+          ],
+          "runId": "2026-11-02T00-56-44-313Z-8cdbd4f8-8e08-4517-97f1-9683573132be",
+          "acceptedRequirement": false
+        },
+        {
+          "description": "Attached the reproducible public staging configuration: initial-only SQLite migration, existing registry preservation, nonsecret Worker bindings, Access policy/environment inventory, immutable artifact/version identities and recovery instructions.",
+          "evidence": [
+            "DEPLOYMENT-CONFIG"
+          ],
+          "refs": [
+            "gateway/deployment.example.json",
+            "docs/deployment/MTERM_STAGING.md"
+          ],
+          "acceptedRequirement": false
+        },
+        {
+          "description": "Actual MCP disable and recorded owner-only version restore passed; identical immutable artifact reupload handled observed Cloudflare settings code10214, preserving registry and owner-only permissions.",
+          "evidence": [
+            "docs/validation/2026-11-02-rollback-drill.json",
+            "docs/deployment/MTERM_STAGING.md"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "WEB-009",
+      "scope": "Authorized relay and verified remote read",
+      "priority": "P0",
+      "stage": "implemented_live_smoke",
+      "evidence": [
+        "GATEWAY-SOURCE",
+        "GATEWAY-TESTS",
+        "AGENT-SOURCE",
+        "WINDOWS-FOCUSED",
+        "OWNER-GUIDE",
+        "LIVE-SMOKE",
+        "WINDOWS-ALIAS-CHECKPOINT",
+        "LIVE-SMOKE-FINAL",
+        "FINAL-GATES"
+      ],
+      "implemented": "A real MCP SDK 2.3.0 session initialized six read-only tools, listed two Windows devices and read two actual FileService markers through the deployed gateway; returned SHA-256 values exactly matched both originals. Cross-device credentials, mutation and outside-root access were denied; revoke-one and grant revocation took effect.",
+      "remainingWork": [
+        {
+          "description": "Exercise the remaining metadata/list/search read tools and their schema/result bounds through the actual deployed SDK path.",
+          "dependencies": [
+            "Recorded read_file/inventory round trip",
+            "Known harmless Windows fixtures"
+          ],
+          "blockers": [
+            "The live smoke proved read_file and inventory; all other tool methods and boundary cases need live coverage."
+          ],
+          "remainingHours": [
+            2,
+            4
+          ],
+          "eta": "Unscheduled"
+        },
+        {
+          "description": "Complete cross-owner/private-path isolation, concurrent/oversized output, deadlines, cancellation and disconnect/restart tests without redelivery.",
+          "dependencies": [
+            "Recorded live relay",
+            "WEB-004 connectivity faults",
+            "WEB-012 full negative matrix"
+          ],
+          "blockers": [
+            "Mutation, cross-device credentials and root escape passed; broader isolation and network fault/soak coverage remain pending."
+          ],
+          "remainingHours": [
+            6,
+            12
+          ],
+          "eta": "Unscheduled"
+        }
+      ],
+      "githubIssue": {
+        "number": 62,
+        "url": "https://github.com/MulattoTech/MTerm-CLI/issues/62",
+        "state": "open",
+        "assignees": [],
+        "criteriaUpdatedAt": "2026-10-17T03:48:32Z",
+        "criteriaReviewedAt": "2026-11-02T00:53:15Z"
+      },
+      "acceptanceCriteria": "Create a protocol-correct authenticated broker routing only to the selected verified device and authorized tool scope; enforce run IDs, request IDs, deadlines, cancellation, output limits, idempotency and no replay of mutations. Prove read-only tool invocation end-to-end with synthetic credentials before enabling write/process tools.",
+      "accepted": false,
+      "acceptanceEvidence": null,
+      "dependencies": [
+        "Recorded read_file/inventory round trip",
+        "Known harmless Windows fixtures",
+        "Recorded live relay",
+        "WEB-004 connectivity faults",
+        "WEB-012 full negative matrix"
+      ],
+      "blockers": [
+        "The live smoke proved read_file and inventory; all other tool methods and boundary cases need live coverage.",
+        "Mutation, cross-device credentials and root escape passed; broader isolation and network fault/soak coverage remain pending."
+      ],
+      "remainingHours": [
+        8,
+        16
+      ],
+      "eta": "Unscheduled",
+      "implementingCommits": [
+        {
+          "sha": "3d207b367b23a6e7c3a2dbcd8921450503222cca",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/3d207b367b23a6e7c3a2dbcd8921450503222cca"
+        },
+        {
+          "sha": "a3a05cf5c4dd0fe2d04ec4ae91917905b9692295",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/a3a05cf5c4dd0fe2d04ec4ae91917905b9692295"
+        },
+        {
+          "sha": "9ed607f37c30db48e96bf9fda36ce168705ff992",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/9ed607f37c30db48e96bf9fda36ce168705ff992"
+        },
+        {
+          "sha": "a4eb9c36a9c78a4c14b21501e5593543bae7949e",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/a4eb9c36a9c78a4c14b21501e5593543bae7949e"
+        },
+        {
+          "sha": "ad3a370a2be5065b7b225b5d81efa3d3e682d50a",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/ad3a370a2be5065b7b225b5d81efa3d3e682d50a"
+        },
+        {
+          "sha": "305c89c88a10f4c9243096e3d1125bde76f17563",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/305c89c88a10f4c9243096e3d1125bde76f17563"
+        },
+        {
+          "sha": "bbf1d0e9b75cf153243a4722ad1ab91392445540",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/bbf1d0e9b75cf153243a4722ad1ab91392445540"
+        },
+        {
+          "sha": "14971ac54c6b4b99a27f20c8be82d97137f11bc2",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/14971ac54c6b4b99a27f20c8be82d97137f11bc2"
+        },
+        {
+          "sha": "b90432a1bc138d59305692a9f74f110a475d0881",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/b90432a1bc138d59305692a9f74f110a475d0881"
+        }
+      ],
+      "reviewedHead": "b90432a1bc138d59305692a9f74f110a475d0881",
+      "pullRequest": {
+        "number": 69,
+        "status": "source_candidate_ci_passed; see GitHub for final publication state",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/pull/69",
+        "finalDocumentationCi": "See PR #69 checks for the final documentation commit"
+      },
+      "completedWork": [
+        {
+          "description": "Actual HTTPS\u2192gateway\u2192two Windows agents\u2192FileService\u2192SDK reads matched exact hashes without storing raw file contents; specified denial and revocation checks passed.",
+          "evidence": [
+            "LIVE-SMOKE"
+          ],
+          "runId": "2026-11-02T00-56-44-313Z-8cdbd4f8-8e08-4517-97f1-9683573132be",
+          "acceptedRequirement": false
+        }
+      ]
+    },
+    {
+      "id": "WEB-010",
+      "scope": "Authenticated diagnostics and privacy-safe audit",
+      "priority": "P1",
+      "stage": "partially_implemented",
+      "evidence": [
+        "GATEWAY-SOURCE",
+        "GATEWAY-TESTS",
+        "AGENT-SOURCE",
+        "OWNER-GUIDE",
+        "LIVE-SMOKE",
+        "LIVE-SMOKE-FINAL",
+        "FINAL-GATES"
+      ],
+      "implemented": "Minimal public health, authenticated dashboard metadata, safe tool errors, offline local status and bounded metadata-only audit exist. The live smoke returned bounded authorization/device/root-policy errors without raw file content in its evidence report. Full deployed diagnostics/audit review remains incomplete.",
+      "remainingWork": [
+        {
+          "description": "Complete/verify authenticated service-device diagnostics that expose actionable current health and failure causes without returning credentials, request arguments or file bodies.",
+          "dependencies": [
+            "Recorded live agent/tool errors",
+            "WEB-007 authenticated browser dashboard",
+            "Authenticated diagnostic contract"
+          ],
+          "blockers": [
+            "The public health response and current dashboard are only partial evidence for issue #63's authenticated diagnostic acceptance."
+          ],
+          "remainingHours": [
+            4,
+            10
+          ],
+          "eta": "Unscheduled"
+        },
+        {
+          "description": "Use sentinel secrets and real Durable Object storage to verify audit redaction, ownership isolation, retention/deletion and bounded error reporting; document optional usage reporting as excluded scope unless separately requested.",
+          "dependencies": [
+            "WEB-008 real runtime",
+            "WEB-012 privacy/retention tests"
+          ],
+          "blockers": [
+            "No complete deployed audit/redaction/retention report is attached; optional quota history must not be fabricated."
+          ],
+          "remainingHours": [
+            4,
+            8
+          ],
+          "eta": "Unscheduled"
+        }
+      ],
+      "githubIssue": {
+        "number": 63,
+        "url": "https://github.com/MulattoTech/MTerm-CLI/issues/63",
+        "state": "open",
+        "assignees": [],
+        "criteriaUpdatedAt": "2026-10-17T03:48:34Z",
+        "criteriaReviewedAt": "2026-11-02T00:53:15Z"
+      },
+      "acceptanceCriteria": "Implement authenticated health diagnostics, service/device tool errors, bounded redacted request audit, and optional per-user usage/limit/reset reporting. No raw prompts/files or billing identifiers in telemetry. Distinguish quota measurement from payment processing; payments are not part of private gateway parity.",
+      "accepted": false,
+      "acceptanceEvidence": null,
+      "dependencies": [
+        "Recorded live agent/tool errors",
+        "WEB-007 authenticated browser dashboard",
+        "Authenticated diagnostic contract",
+        "WEB-008 real runtime",
+        "WEB-012 privacy/retention tests"
+      ],
+      "blockers": [
+        "The public health response and current dashboard are only partial evidence for issue #63's authenticated diagnostic acceptance.",
+        "No complete deployed audit/redaction/retention report is attached; optional quota history must not be fabricated."
+      ],
+      "remainingHours": [
+        8,
+        18
+      ],
+      "eta": "Unscheduled",
+      "implementingCommits": [
+        {
+          "sha": "3d207b367b23a6e7c3a2dbcd8921450503222cca",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/3d207b367b23a6e7c3a2dbcd8921450503222cca"
+        },
+        {
+          "sha": "9ed607f37c30db48e96bf9fda36ce168705ff992",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/9ed607f37c30db48e96bf9fda36ce168705ff992"
+        },
+        {
+          "sha": "9cc46909ad038dc1fc3ab26c236bdf3129c6788f",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/9cc46909ad038dc1fc3ab26c236bdf3129c6788f"
+        },
+        {
+          "sha": "b90432a1bc138d59305692a9f74f110a475d0881",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/b90432a1bc138d59305692a9f74f110a475d0881"
+        }
+      ],
+      "reviewedHead": "b90432a1bc138d59305692a9f74f110a475d0881",
+      "pullRequest": {
+        "number": 69,
+        "status": "source_candidate_ci_passed; see GitHub for final publication state",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/pull/69",
+        "finalDocumentationCi": "See PR #69 checks for the final documentation commit"
+      },
+      "completedWork": [
+        {
+          "description": "The sanitized live report captured safe statuses, result hashes and cleanup without raw file bodies; no claim of full telemetry/audit retention verification.",
+          "evidence": [
+            "LIVE-SMOKE"
+          ],
+          "runId": "2026-11-02T00-56-44-313Z-8cdbd4f8-8e08-4517-97f1-9683573132be",
+          "acceptedRequirement": false
+        }
+      ]
+    },
+    {
+      "id": "WEB-011",
+      "scope": "Remote setup, supervision and safe updates",
+      "priority": "P1",
+      "stage": "partially_implemented",
+      "evidence": [
+        "AGENT-SOURCE",
+        "WINDOWS-FOCUSED",
+        "OWNER-GUIDE",
+        "LIVE-SMOKE",
+        "WINDOWS-ALIAS-CHECKPOINT",
+        "LIVE-SMOKE-FINAL",
+        "FINAL-GATES"
+      ],
+      "implemented": "Preview/apply setup and pair/start/status/stop/revoke commands, ownership locks and protected state are implemented. Two Windows DPAPI agents paired, ran real SDK reads and stopped in the live harness. Service/task supervision and safe update/rollback remain unimplemented.",
+      "remainingWork": [
+        {
+          "description": "Finish a reversible interactive setup/repair flow and package update/rollback procedure tied to immutable verified artifacts, preserving enrolled roots and credentials.",
+          "dependencies": [
+            "Installed/package validation",
+            "WEB-003 working pairing",
+            "Existing local setup automation"
+          ],
+          "blockers": [
+            "Foreground commands do not yet constitute the issue's complete one-command installation and safe update experience."
+          ],
+          "remainingHours": [
+            8,
+            16
+          ],
+          "eta": "Unscheduled"
+        },
+        {
+          "description": "Implement an explicitly opted-in service/task option with same-user credential access, bounded restart behavior, on-demand controls and safe removal; preserve preview mode and avoid implicit elevation.",
+          "dependencies": [
+            "Owner-selected supervision mode",
+            "Windows protected credential identity",
+            "WEB-004 lifecycle tests"
+          ],
+          "blockers": [
+            "No service, scheduled task or autostart mechanism is implemented; no background readiness claim is justified."
+          ],
+          "remainingHours": [
+            8,
+            24
+          ],
+          "eta": "Unscheduled"
+        },
+        {
+          "description": "Verify clean install, upgrade failure, rollback, restart, uninstall and crash recovery on isolated Windows state; record the effect on running requests and local credentials.",
+          "dependencies": [
+            "Reversible installer/update implementation",
+            "Opt-in supervision option",
+            "WEB-006 revocation"
+          ],
+          "blockers": [
+            "Installed lifecycle certification and update failure evidence are absent."
+          ],
+          "remainingHours": [
+            4,
+            10
+          ],
+          "eta": "Unscheduled"
+        }
+      ],
+      "githubIssue": {
+        "number": 64,
+        "url": "https://github.com/MulattoTech/MTerm-CLI/issues/64",
+        "state": "open",
+        "assignees": [],
+        "criteriaUpdatedAt": "2026-10-17T03:48:36Z",
+        "criteriaReviewedAt": "2026-11-02T00:53:15Z"
+      },
+      "acceptanceCriteria": "Provide a reversible interactive installation/configuration flow for MTerm-CLI remote mode, with protected local credential store, service/task option, on-demand start/stop/restart, authenticated pairing and explicit rollback. No auto-start/service creation or privilege escalation without owner opt-in.",
+      "accepted": false,
+      "acceptanceEvidence": null,
+      "dependencies": [
+        "Installed/package validation",
+        "WEB-003 working pairing",
+        "Existing local setup automation",
+        "Owner-selected supervision mode",
+        "Windows protected credential identity",
+        "WEB-004 lifecycle tests",
+        "Reversible installer/update implementation",
+        "Opt-in supervision option",
+        "WEB-006 revocation"
+      ],
+      "blockers": [
+        "Foreground commands do not yet constitute the issue's complete one-command installation and safe update experience.",
+        "No service, scheduled task or autostart mechanism is implemented; no background readiness claim is justified.",
+        "Installed lifecycle certification and update failure evidence are absent."
+      ],
+      "remainingHours": [
+        20,
+        50
+      ],
+      "eta": "Unscheduled",
+      "implementingCommits": [
+        {
+          "sha": "9ed607f37c30db48e96bf9fda36ce168705ff992",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/9ed607f37c30db48e96bf9fda36ce168705ff992"
+        },
+        {
+          "sha": "17303028e4f84c41d994f03512f7f45436dae9c5",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/17303028e4f84c41d994f03512f7f45436dae9c5"
+        },
+        {
+          "sha": "9cc46909ad038dc1fc3ab26c236bdf3129c6788f",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/9cc46909ad038dc1fc3ab26c236bdf3129c6788f"
+        },
+        {
+          "sha": "acd1c0b08a0b040b295994062f0d3251dc62c174",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/acd1c0b08a0b040b295994062f0d3251dc62c174"
+        },
+        {
+          "sha": "bbf1d0e9b75cf153243a4722ad1ab91392445540",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/bbf1d0e9b75cf153243a4722ad1ab91392445540"
+        },
+        {
+          "sha": "14971ac54c6b4b99a27f20c8be82d97137f11bc2",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/14971ac54c6b4b99a27f20c8be82d97137f11bc2"
+        },
+        {
+          "sha": "b90432a1bc138d59305692a9f74f110a475d0881",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/b90432a1bc138d59305692a9f74f110a475d0881"
+        }
+      ],
+      "reviewedHead": "b90432a1bc138d59305692a9f74f110a475d0881",
+      "pullRequest": {
+        "number": 69,
+        "status": "source_candidate_ci_passed; see GitHub for final publication state",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/pull/69",
+        "finalDocumentationCi": "See PR #69 checks for the final documentation commit"
+      },
+      "completedWork": [
+        {
+          "description": "Actual paired foreground agents and protected credentials worked; fixture teardown stopped owned agents and revoked synthetic state.",
+          "evidence": [
+            "LIVE-SMOKE"
+          ],
+          "runId": "2026-11-02T00-56-44-313Z-8cdbd4f8-8e08-4517-97f1-9683573132be",
+          "acceptedRequirement": false
+        }
+      ]
+    },
+    {
+      "id": "WEB-012",
+      "scope": "Threat model, sanitized fixtures and full acceptance",
+      "priority": "P0",
+      "stage": "partially_implemented",
+      "evidence": [
+        "HAR-AUDIT",
+        "GATEWAY-TESTS",
+        "WINDOWS-FOCUSED",
+        "OWNER-GUIDE",
+        "LIVE-SMOKE",
+        "WINDOWS-ALIAS-CHECKPOINT",
+        "LIVE-SMOKE-FINAL",
+        "FINAL-GATES"
+      ],
+      "implemented": "Sanitized HAR analysis, independent gateway review and 14 gateway fixture groups are recorded. The live 11-check smoke adds signed Access service authentication, PKCE negatives, pairing/replay/DPAPI, actual SDK/Windows reads, root/mutation/device denials and revocation. Human-client, broader fault and full platform acceptance remain incomplete.",
+      "remainingWork": [
+        {
+          "description": "Record a complete remote threat model and trace sanitized structural fixtures to actual issue acceptance, including trust boundaries, credential lifetime, local rename-race limits and storage failure behavior.",
+          "dependencies": [
+            "Gateway/agent design and source",
+            "Existing HAR-safe research",
+            "WEB-006 credential lifecycle decision"
+          ],
+          "blockers": [
+            "The local-only security document does not yet describe the complete deployed remote boundary; raw HAR must remain excluded."
+          ],
+          "remainingHours": [
+            6,
+            12
+          ],
+          "eta": "Unscheduled"
+        },
+        {
+          "description": "Complete deployed negative and fault tests for rate limits, malformed HTTP/unsupported SSE, disconnect/restart, persistence cleanup, cross-user leakage and credential redaction; preserve disabled write/exec.",
+          "dependencies": [
+            "WEB-008 reproducible staging",
+            "WEB-009 live relay",
+            "WEB-010 diagnostics/audit"
+          ],
+          "blockers": [
+            "The in-memory storage fixture does not certify Cloudflare persistence, rate/load behavior or the actual network transport."
+          ],
+          "remainingHours": [
+            8,
+            20
+          ],
+          "eta": "Unscheduled"
+        },
+        {
+          "description": "Finish the human supported-client matrix, preserving the distinction between completed Windows/package/native-Codex/hosted/SDK gates and owner Google/ChatGPT acceptance.",
+          "dependencies": [
+            "Remaining WEB-001..011 deliverables",
+            "Owner-supported client/account access"
+          ],
+          "blockers": [
+            "Human Google/Access sign-in, human consent and actual supported-client/ChatGPT tool use remain unverified."
+          ],
+          "remainingHours": [
+            4,
+            12
+          ],
+          "eta": "Unscheduled"
+        }
+      ],
+      "githubIssue": {
+        "number": 65,
+        "url": "https://github.com/MulattoTech/MTerm-CLI/issues/65",
+        "state": "open",
+        "assignees": [],
+        "criteriaUpdatedAt": "2026-10-17T03:48:37Z",
+        "criteriaReviewedAt": "2026-11-02T00:53:15Z"
+      },
+      "acceptanceCriteria": "Never publish raw HAR. Create sanitized structural fixtures and regression tests for unauthenticated clients, expired/replayed pairing, revoked devices, cross-user leakage, malformed SSE/HTTP, device disconnect, rate limits, read-only round trip and gated exec. Test real supported clients separately; do not declare Cloudflare production PASS from static UI capture.",
+      "accepted": false,
+      "acceptanceEvidence": null,
+      "dependencies": [
+        "Gateway/agent design and source",
+        "Existing HAR-safe research",
+        "WEB-006 credential lifecycle decision",
+        "WEB-008 reproducible staging",
+        "WEB-009 live relay",
+        "WEB-010 diagnostics/audit",
+        "Remaining WEB-001..011 deliverables",
+        "Owner-supported client/account access"
+      ],
+      "blockers": [
+        "The local-only security document does not yet describe the complete deployed remote boundary; raw HAR must remain excluded.",
+        "The in-memory storage fixture does not certify Cloudflare persistence, rate/load behavior or the actual network transport.",
+        "Human Google/Access sign-in, human consent and actual supported-client/ChatGPT tool use remain unverified."
+      ],
+      "remainingHours": [
+        18,
+        44
+      ],
+      "eta": "Unscheduled",
+      "implementingCommits": [
+        {
+          "sha": "3d207b367b23a6e7c3a2dbcd8921450503222cca",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/3d207b367b23a6e7c3a2dbcd8921450503222cca"
+        },
+        {
+          "sha": "a3a05cf5c4dd0fe2d04ec4ae91917905b9692295",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/a3a05cf5c4dd0fe2d04ec4ae91917905b9692295"
+        },
+        {
+          "sha": "9ed607f37c30db48e96bf9fda36ce168705ff992",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/9ed607f37c30db48e96bf9fda36ce168705ff992"
+        },
+        {
+          "sha": "08973d21a75d79fb699bfb2a6dbd3d070cbb53b8",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/08973d21a75d79fb699bfb2a6dbd3d070cbb53b8"
+        },
+        {
+          "sha": "ad3a370a2be5065b7b225b5d81efa3d3e682d50a",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/ad3a370a2be5065b7b225b5d81efa3d3e682d50a"
+        },
+        {
+          "sha": "305c89c88a10f4c9243096e3d1125bde76f17563",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/305c89c88a10f4c9243096e3d1125bde76f17563"
+        },
+        {
+          "sha": "bbf1d0e9b75cf153243a4722ad1ab91392445540",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/bbf1d0e9b75cf153243a4722ad1ab91392445540"
+        },
+        {
+          "sha": "14971ac54c6b4b99a27f20c8be82d97137f11bc2",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/14971ac54c6b4b99a27f20c8be82d97137f11bc2"
+        },
+        {
+          "sha": "b90432a1bc138d59305692a9f74f110a475d0881",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/commit/b90432a1bc138d59305692a9f74f110a475d0881"
+        }
+      ],
+      "reviewedHead": "b90432a1bc138d59305692a9f74f110a475d0881",
+      "pullRequest": {
+        "number": 69,
+        "status": "source_candidate_ci_passed; see GitHub for final publication state",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/pull/69",
+        "finalDocumentationCi": "See PR #69 checks for the final documentation commit"
+      },
+      "completedWork": [
+        {
+          "description": "Recorded 11/11 live service-identity checks with exact deployment/build and SDK/runtime identities; all synthetic credentials/devices/processes cleaned up.",
+          "evidence": [
+            "LIVE-SMOKE"
+          ],
+          "runId": "2026-11-02T00-56-44-313Z-8cdbd4f8-8e08-4517-97f1-9683573132be",
+          "acceptedRequirement": false
+        }
+      ]
+    }
+  ],
+  "sourceReviewBase": "08973d21a75d79fb699bfb2a6dbd3d070cbb53b8",
+  "windowsValidation": {
+    "nodeVersion": "24.21.0",
+    "platform": "win32",
+    "sourceCommit": "b90432a1bc138d59305692a9f74f110a475d0881",
+    "full": {
+      "passed": 149,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "durationMs": 32829
+    },
+    "orchestration": {
+      "status": "passed",
+      "durationMs": 55350,
+      "checks": [
+        "reviewed build",
+        "typecheck",
+        "format",
+        "parity",
+        "149 tests",
+        "packed install and isolated npm link",
+        "test-owned native Codex 0.160.1 managed registration",
+        "clean tracked diff"
+      ]
+    },
+    "focusedHistorical": {
+      "passed": 33,
+      "native83Cases": 5,
+      "sourceCommit": "14971ac54c6b4b99a27f20c8be82d97137f11bc2"
+    },
+    "remaining": "Final documentation commit CI; remaining WEB-specific human, fault, service/update and acceptance criteria."
+  },
+  "pullRequest": {
+    "number": 69,
+    "url": "https://github.com/MulattoTech/MTerm-CLI/pull/69",
+    "status": "source_candidate_ci_passed; see GitHub for final publication state",
+    "testedCommit": "b90432a1bc138d59305692a9f74f110a475d0881",
+    "finalDocumentationCi": "See PR #69 checks for the final documentation commit"
+  },
+  "historicalStaging": [
+    {
+      "worker": "mterm-gateway-staging",
+      "gatewayOrigin": "https://mcp-staging.m-techlabs.com",
+      "mcpEndpoint": "https://mcp-staging.m-techlabs.com/mcp",
+      "dashboardOrigin": "https://mterm-staging.m-techlabs.com",
+      "workerVersionId": "2083411f-68a7-4ec8-9ecc-5c2473ad09b9",
+      "deployedSourceCommit": "305c89c88a10f4c9243096e3d1125bde76f17563",
+      "artifactSha256": "f76e37d77c218bc9c2bc9203346ec98d590e5a69b7fef285bcd16792ae32c0f1",
+      "deploymentRecord": "docs/validation/2026-11-02-remote-staging-smoke.json",
+      "identityAcceptance": "Temporary Cloudflare Access service identity verified; owner Google/Access browser sign-in, human consent/callback and ChatGPT explicitly unverified",
+      "capabilities": "Read-only; no remote write/exec; foreground agent; no inbound workstation listener or autostart",
+      "deploymentStampSource": "Worker version/artifact digest supplied by integration-owner deployment observation; smoke report build matches the deployed source SHA.",
+      "liveSmokeRunId": "2026-11-02T00-56-44-313Z-8cdbd4f8-8e08-4517-97f1-9683573132be",
+      "liveSmokeStatus": "11/11 passed",
+      "liveSmokeStartedAt": "2026-11-02T00:56:44.314Z",
+      "liveSmokeFinishedAt": "2026-11-02T00:57:05.458Z",
+      "syntheticCleanup": {
+        "syntheticDevicesAndGrantsRevoked": true,
+        "agentsStopped": true,
+        "sdkClosed": true,
+        "onlyCreatedLocalFixturesRemoved": true
+      },
+      "scope": "First live smoke; historical, superseded by final smoke below"
+    }
+  ],
+  "historicalWindowsValidation": {
+    "nodeVersion": "24.21.0",
+    "platform": "win32",
+    "sourceCommit": "14971ac54c6b4b99a27f20c8be82d97137f11bc2",
+    "policyFixCommit": "bbf1d0e9b75cf153243a4722ad1ab91392445540",
+    "focused": {
+      "passed": 33,
+      "failed": 0,
+      "skipped": 0,
+      "native83Cases": 5
+    },
+    "full": {
+      "passed": 149,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "durationMs": 33685
+    },
+    "sourceIdentity": "Integration owner reports Windows source bytes identical to root 14971ac",
+    "remaining": "Reviewed final build/check, package installation/link, pinned managed Codex 0.160.1 and exact published CI gates remain separate."
+  },
+  "ci": {
+    "testedCommit": "b90432a1bc138d59305692a9f74f110a475d0881",
+    "prMatrix": {
+      "runId": 41372073094,
+      "status": "passed",
+      "platforms": [
+        "windows-2022/x64",
+        "ubuntu-24.04/x64",
+        "macos-14/arm64",
+        "macos-15-intel/x64"
+      ]
+    },
+    "prFast": {
+      "runId": 41372073095,
+      "status": "passed"
+    },
+    "pushMatrix": {
+      "runId": 41372068412,
+      "status": "passed"
+    },
+    "finalDocumentationCi": "See PR #69 checks for the final documentation commit"
+  },
+  "integrationOwner": "MulattoTech",
+  "issueOwnership": {
+    "verifiedAt": "2026-11-02T01:36:30Z",
+    "epic": 53,
+    "issues": [
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65
+    ],
+    "assignee": "MulattoTech",
+    "integrationPullRequest": 69,
+    "state": "all remain open; no acceptance closure"
+  }
+}

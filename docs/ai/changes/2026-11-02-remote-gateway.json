@@ -1,0 +1,34 @@
+{
+  "change_id": "2026-11-02-remote-gateway",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "identity_basis": "session-declared; self-reported",
+  "base_sha": "69809e2",
+  "summary": "Authenticated read-only Cloudflare gateway, OAuth PKCE, one-time device pairing, private management dashboard and bounded outbound polling contract.",
+  "requirements": ["CLI-197", "CLI-201", "CLI-202", "CLI-205", "CLI-286", "CLI-288", "CLI-290", "CLI-299", "WEB-001", "WEB-002", "WEB-003", "WEB-005", "WEB-006", "WEB-007", "WEB-008", "WEB-009", "WEB-010", "WEB-012"],
+  "decisions": [
+    "Separate private Access-protected dashboard/consent origin from public OAuth discovery and bearer-protected MCP origin.",
+    "Verify Cloudflare application JWT signature, issuer, audience, expiry and explicit owner allowlist independently at the Worker.",
+    "OAuth uses single-use S256 codes, exact registered callback, resource/scope binding, rotating refresh credentials and revocation epochs; opaque tokens are hashed at rest.",
+    "Use one SQLite Durable Object for private staging metadata and bounded request delivery; no D1 database, tunnel or inbound workstation port is needed.",
+    "Reuse the device agent's versioned read-only contract; filesystem implementation remains in FileService on the selected computer.",
+    "Delivered jobs never return to the queue; cancellation survives client result consumption. Temporary results are removed after delivery and expire automatically.",
+    "Keep remote writes/processes disabled and expose that limit in discovery, consent and dashboard.",
+    "No full parity closure or latest-2026 MCP conformance is claimed from these tests. Supported protocol revisions are 2025-11-25, 2025-06-18 and 2025-03-26."
+  ],
+  "tests": [
+    {"command": "node --test --test-isolation=none tests/remote-gateway.test.mjs", "result": "RED before implementation, then 14/14 PASS on Linux Node24.22.1. Real cryptographic JWT signatures, PKCE, pairing, queued request delivery, cross-user/device rejection, token rotation/replay, revocation, cancellation, expiry, bounded input, cleanup continuation and storage-fault injection."},
+    {"command": "Independent security review and registry reproductions", "result": "Found and fixed cleanup postponement, pending authorization/pairing revocation, consent CSP callback, pairing crash replay, strict Access service identity, optional MCP arguments and consumed-cancellation race. Independent reviewer reran 14/14 PASS and found no remaining concrete blocker for restricted staging."},
+    {"command": "Live Cloudflare and Windows acceptance", "result": "Pending at this checkpoint; managed staging identity creation alone is not deployment or real MCP acceptance."}
+  ],
+  "roadmap_updates": [
+    {"ids": "CLI-197,201,202,205,286,288,290,299; WEB-001..012", "assessment": "Implementation evidence added with no broad stage or parity acceptance increase at this checkpoint. External staging/Windows and human-client acceptance remain distinct gates."}
+  ],
+  "limitations": [
+    "14 groups use synthetic identities and an in-memory Durable Object storage fixture; actual Cloudflare runtime and Windows agent must be checked separately.",
+    "Human Google sign-in/consent and ChatGPT connector installation require owner consent and are not represented by service-principal tests.",
+    "Private staging limits: 20 active devices per identity, 32 grants, 200 retained requests, 128 audit events per identity, 20-second jobs; scale certification remains open.",
+    "No remote write or process execution activation, no autostart service, no production promotion at this checkpoint."
+  ],
+  "next_unverified_action": "Integrate the tested device agent, run the full Windows/package gates, deploy the identical hashed artifact to isolated staging and execute a real MCP SDK read from a dedicated Windows fixture root."
+}

@@ -1,0 +1,49 @@
+{
+  "change_id": "2026-11-02-foundation-merge",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "identity_basis": "session-declared, self-reported",
+  "started_at_utc": "2026-11-02T00:15:17.748489+00:00",
+  "base_sha": "b093a00755296c64d37f1d430c5dde3dfd992f08",
+  "merged_sha": "335cf59455aa3d382081b46a5d91b41556a61057",
+  "summary": "Reconcile compatibility/automation branch with verified orchestration main, preserving both histories and correcting stale CI blocker descriptions.",
+  "requirements": [
+    "CLI-005",
+    "CLI-006",
+    "CLI-010",
+    "CLI-011",
+    "CLI-234",
+    "CLI-240",
+    "CLI-246"
+  ],
+  "decisions": [
+    "Preserve both sets of instructions and automation.",
+    "Retain PR52 text fingerprint implementation; main contains the same backport.",
+    "Retain existing stage and baseline weights; no DCP or WEB acceptance credit.",
+    "Do not modify original Windows worktrees."
+  ],
+  "tests": [
+    {
+      "command": "git diff --check",
+      "result": "PASS"
+    },
+    {
+      "command": "node --test --test-isolation=none tests/roadmap.test.mjs",
+      "result": "PASS 5/5 on Linux Node24.22.1"
+    },
+    {
+      "command": "node tests/orchestration.test.mjs",
+      "result": "BLOCKED in scratch environment: even spawnSync(node, [\"-e\",\"console.log(123)\"]) returns EPERM and empty stdout/stderr. Direct post-create --dry-run emits valid JSON. Windows recheck required."
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "ids": "CLI-005,CLI-006,CLI-010,CLI-011,CLI-234,CLI-240,CLI-246",
+      "assessment": "Reconciliation only; all stages and weights unchanged. DCP 0/48 and WEB 0/12 remain unaccepted."
+    }
+  ],
+  "limitations": [
+    "TypeScript/full-platform suites are still pending the separate source recovery and canonical-path fixes."
+  ],
+  "next_unverified_action": "Recover preserved config source in a separate commit, then repair proven CI failures."
+}

@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 1,
+  "runId": "2026-11-02T00-56-44-313Z-8cdbd4f8-8e08-4517-97f1-9683573132be",
+  "startedAt": "2026-11-02T00:56:44.314Z",
+  "status": "passed",
+  "platform": "win32",
+  "nodeVersion": "24.21.0",
+  "endpoints": {
+    "mcp": "https://mcp-staging.m-techlabs.com/mcp",
+    "dashboard": "https://mterm-staging.m-techlabs.com"
+  },
+  "identity": "temporary-cloudflare-access-service-principal",
+  "humanGoogleLoginVerified": false,
+  "humanConsentVerified": false,
+  "browserCallbackVisited": false,
+  "chatgptConnectorVerified": false,
+  "remoteWriteOrExecutionEnabled": false,
+  "sdk": {
+    "package": "@modelcontextprotocol/client",
+    "version": "2.3.0",
+    "transport": "StreamableHTTPClientTransport",
+    "initialized": true,
+    "fallbackUsed": false,
+    "installedVersionVerified": true,
+    "toolCount": 6
+  },
+  "devices": [
+    {
+      "label": "fixture-a",
+      "deviceId": "0a22a08b-a4ce-4101-a36d-018ad3f241f0",
+      "platform": "win32",
+      "permissions": "read-only",
+      "credentialProtection": "windows-dpapi-current-user",
+      "agentEventCounts": {
+        "connecting": 1,
+        "online": 3,
+        "revoked": 1
+      },
+      "agentStopReason": "revoked"
+    },
+    {
+      "label": "fixture-b",
+      "deviceId": "eec7a379-0430-4c55-9f85-4372005fea2a",
+      "platform": "win32",
+      "permissions": "read-only",
+      "credentialProtection": "windows-dpapi-current-user",
+      "agentEventCounts": {
+        "connecting": 1,
+        "online": 4,
+        "stopped": 1
+      },
+      "agentStopReason": "stopped"
+    }
+  ],
+  "checks": [
+    {
+      "name": "windows_runtime_and_real_modules",
+      "status": "passed",
+      "durationMs": 204,
+      "evidence": {
+        "windows": true,
+        "localToolHost": "FileService through RemoteReadAdapter",
+        "credentialProtection": "windows-dpapi-current-user"
+      }
+    },
+    {
+      "name": "live_discovery_and_anonymous_denial",
+      "status": "passed",
+      "durationMs": 432,
+      "evidence": {
+        "resourceDiscovery": 200,
+        "authorizationServerDiscovery": 200,
+        "anonymousMcpStatus": 401,
+        "anonymousDashboardStatus": 302
+      }
+    },
+    {
+      "name": "real_access_service_authentication",
+      "status": "passed",
+      "durationMs": 506,
+      "evidence": {
+        "authenticated": true,
+        "identityKind": "staging-service",
+        "initiallyEmpty": true,
+        "humanLoginTested": false
+      }
+    },
+    {
+      "name": "live_pkce_consent_exchange_and_code_replay",
+      "status": "passed",
+      "durationMs": 666,
+      "evidence": {
+        "pkce": "S256",
+        "scope": "mterm:read",
+        "consentIdentity": "staging-service",
+        "wrongPkceStatus": 400,
+        "wrongResourceStatus": 400,
+        "codeReplayStatus": 400,
+        "browserCallbackVisited": false
+      }
+    },
+    {
+      "name": "pair_and_protect_fixture-a",
+      "status": "passed",
+      "durationMs": 1246,
+      "evidence": {
+        "deviceId": "0a22a08b-a4ce-4101-a36d-018ad3f241f0",
+        "wrongPairCodeStatus": 400,
+        "wrongDeviceCodeStatus": 403,
+        "pairingReplayStatus": 410,
+        "dpapiRoundtrip": true,
+        "agentOnline": true
+      }
+    },
+    {
+      "name": "pair_and_protect_fixture-b",
+      "status": "passed",
+      "durationMs": 1342,
+      "evidence": {
+        "deviceId": "eec7a379-0430-4c55-9f85-4372005fea2a",
+        "wrongPairCodeStatus": 400,
+        "wrongDeviceCodeStatus": 403,
+        "pairingReplayStatus": 410,
+        "dpapiRoundtrip": true,
+        "agentOnline": true
+      }
+    },
+    {
+      "name": "real_sdk_initialize_and_tool_discovery",
+      "status": "passed",
+      "durationMs": 413,
+      "evidence": {
+        "initialized": true,
+        "toolCount": 6,
+        "allReadOnly": true,
+        "legacyNegotiation": true,
+        "fallbackUsed": false
+      }
+    },
+    {
+      "name": "sdk_device_inventory_and_two_real_windows_reads",
+      "status": "passed",
+      "durationMs": 1874,
+      "evidence": {
+        "inventoryCount": 2,
+        "independentFixtureReads": [
+          {
+            "deviceId": "0a22a08b-a4ce-4101-a36d-018ad3f241f0",
+            "expectedSha256": "2bbbea5e031910c4f3404d39a35f788fd600f1606dc185c42672457c374b96b4",
+            "actualSha256": "2bbbea5e031910c4f3404d39a35f788fd600f1606dc185c42672457c374b96b4",
+            "bytes": 59
+          },
+          {
+            "deviceId": "eec7a379-0430-4c55-9f85-4372005fea2a",
+            "expectedSha256": "90f03f8f7af2098445e60a3a5a9d8f95128acf1c094f800522063c5fc7e937f2",
+            "actualSha256": "90f03f8f7af2098445e60a3a5a9d8f95128acf1c094f800522063c5fc7e937f2",
+            "bytes": 59
+          }
+        ],
+        "rawFileContentRecorded": false
+      }
+    },
+    {
+      "name": "cross_device_credential_and_mutation_denial",
+      "status": "passed",
+      "durationMs": 1237,
+      "evidence": {
+        "crossDeviceStatus": 403,
+        "mutationDenied": true,
+        "protocolErrorCode": -32602,
+        "fixtureUnchanged": true,
+        "outsideRootDenied": true
+      }
+    },
+    {
+      "name": "one_device_revocation_and_other_device_isolation",
+      "status": "passed",
+      "durationMs": 3265,
+      "evidence": {
+        "revokedDeviceStatus": 410,
+        "agentStoppedBecauseRevoked": true,
+        "revokedReadDenied": true,
+        "secondDeviceReadStillWorks": true
+      }
+    },
+    {
+      "name": "oauth_grant_revocation",
+      "status": "passed",
+      "durationMs": 94,
+      "evidence": {
+        "revocationStatus": 200,
+        "subsequentMcpStatus": 401
+      }
+    }
+  ],
+  "cleanup": {
+    "syntheticDevicesAndGrantsRevoked": true,
+    "agentsStopped": true,
+    "sdkClosed": true,
+    "onlyCreatedLocalFixturesRemoved": true
+  },
+  "build": "305c89c88a10f4c9243096e3d1125bde76f17563",
+  "realWindowsReadViaDeployedGatewayAndSdk": true,
+  "finishedAt": "2026-11-02T00:57:05.458Z"
+}

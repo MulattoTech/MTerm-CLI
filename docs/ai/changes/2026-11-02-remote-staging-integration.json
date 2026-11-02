@@ -1,0 +1,151 @@
+{
+  "change_id": "2026-11-02-remote-staging-integration",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "identity_basis": "session-declared; self-reported",
+  "updated_at_utc": "2026-11-02T01:21:00Z",
+  "base_commit": "335cf59455aa3d382081b46a5d91b41556a61057",
+  "integration_lineage": [
+    "PR #52 at 1d900464ba8a36a1121e2ae51ea65c14c3ee41c1",
+    "PR #67 at b093a00755296c64d37f1d430c5dde3dfd992f08",
+    "Verified main merged without rewriting either feature history",
+    "Eleven exact unpublished configuration files recovered at 0a21d30"
+  ],
+  "requirements": [
+    "CLI-141",
+    "CLI-175",
+    "CLI-197",
+    "CLI-201",
+    "CLI-202",
+    "CLI-205",
+    "CLI-216",
+    "CLI-286",
+    "CLI-288",
+    "CLI-290",
+    "CLI-291",
+    "CLI-292",
+    "CLI-297",
+    "CLI-299",
+    "CLI-300",
+    "WEB-001",
+    "WEB-002",
+    "WEB-003",
+    "WEB-004",
+    "WEB-005",
+    "WEB-006",
+    "WEB-007",
+    "WEB-008",
+    "WEB-009",
+    "WEB-010",
+    "WEB-011",
+    "WEB-012"
+  ],
+  "summary": "Preserve and integrate existing local work, implement and deploy the authenticated read-only remote slice, repair actual Windows safety/portability failures, retain acceptance evidence and independently review fixed-weight roadmap progress.",
+  "files_modified": [
+    "src/policy.ts",
+    "src/compatibility/config.ts",
+    "src/codex-registration.ts",
+    "src/cli.ts",
+    "src/remote/",
+    "gateway/",
+    "tests/policy-alias.test.mjs",
+    "tests/compat-config.test.mjs",
+    "tests/remote-*.test.mjs",
+    "scripts/verify-remote-staging.mjs",
+    "scripts/verify-managed-codex.mjs",
+    ".github/workflows/cli-ci.yml",
+    "README.md",
+    "docs/SECURITY.md",
+    "docs/HANDOFF.md",
+    "docs/TODAY_CANDIDATE.md",
+    "docs/TESTING.md",
+    "docs/execution/NEXT_PARITY_PROMPT.md",
+    "docs/REMOTE_MCP_ROADMAP.md",
+    "docs/roadmap/progress.json"
+  ],
+  "files_created": [
+    "docs/REMOTE_MCP.md",
+    "docs/deployment/MTERM_STAGING.md",
+    "gateway/deployment.example.json",
+    "docs/roadmap/remote-web-progress.json",
+    "docs/validation/2026-11-02-remote-staging-smoke.json",
+    "docs/validation/2026-11-02-dashboard-visual.json",
+    "docs/validation/remote-dashboard-mobile.png",
+    "docs/validation/remote-dashboard-desktop.png"
+  ],
+  "decisions": [
+    "Preserve primary dirty checkout, all refs and eleven unpublished files in an additive checksum-verified checkpoint; ordinary isolated Windows clone retains real self-host fail-closed verification.",
+    "A single integration branch preserves PR52/67 ancestry and bounded component commits, because the recovered policy and shared transport changes require one coherent tested source. Do not merge the access-check branch.",
+    "Use exact-owner Access for dashboard identity, an independent OAuth S256 authorization server for MCP, one SQLite Durable Object, and foreground outbound HTTPS device agents reusing FileService.",
+    "Restrict remote tools to inventory and five filesystem reads; write/process activation, OS startup and production promotion are outside this acceptance.",
+    "Fix observed scalar Access audience and Workers manual-redirect runtime requirements with tests before claiming live authorization.",
+    "Canonicalize final filesystem identities and missing leaves before reapplying private-name and request-scope checks. Preserve narrowed-directory semantics by not applying those checks to intermediate parents.",
+    "The actual Windows short-filename config guard test failed before this repair; corrected native cmd quoting ensures the probe truly resolves a leaf alias and cannot pass because an unrelated parent alias was refused.",
+    "Windows transient Codex journal replacement uses bounded EPERM/EBUSY retries with the original expected snapshot rechecked; no destination deletion or ACL relaxation.",
+    "Dashboard mobile controls wrap without overflow hiding. Test-owned headless Edge used a CDP pipe with exact viewport metrics; fixtures contain synthetic state, not browser authentication.",
+    "Pinned Codex verification selects the explicitly configured test-owned installation, checks the real native binary version, and uses synthetic CODEX_HOME without model calls.",
+    "Only CLI-201 advances from not_started to integrated from real deployed-discovery/SDK evidence. All 300 weights and acceptance text stay fixed; DCP0/48 and WEB0/12 remain NOT PASS."
+  ],
+  "tests": [
+    {
+      "command": "Original Windows native alias regression before canonical-target repair",
+      "result": "RED: protected compatibility configuration could be reached through its native short filename. Confirmed with a missing expected rejection."
+    },
+    {
+      "command": "Pinned Node24.21.0 TypeScript compile; node --test tests/policy-alias.test.mjs tests/compat-config.test.mjs",
+      "result": "PASS on actual Windows:33/33, no skips; includes five native 8.3 cases, guarded config, canonical existing/missing targets, private names and narrowed directories."
+    },
+    {
+      "command": "node --test --test-concurrency=1 tests/*.test.mjs",
+      "result": "PASS on actual Windows:149/149, zero failures/skips/cancellations,33,685ms. Retained artifacts/full-tests-canonical-green-20261102.log. Exact tested source is bbf1d0e plus the identical test bytes committed as14971ac; later dashboard/verifier changes require final gate."
+    },
+    {
+      "command": "scripts/verify-remote-staging.mjs with temporary Access service principal through live Cloudflare and two real Windows DPAPI fixture agents",
+      "result": "PASS11/11 at source305c89c, Worker2083411f-68a7-4ec8-9ecc-5c2473ad09b9,artifactf76e37d77c218bc9c2bc9203346ec98d590e5a69b7fef285bcd16792ae32c0f1. Real SDK initialization/list/read, PKCE/pairing/replay negatives, device isolation and revocation. Synthetic cleanup alltrue."
+    },
+    {
+      "command": "Headless Edge production-page fixture render with exact1280x900 and390x844 viewports",
+      "result": "PASS both inspected full-page images; no overflow elements; mobile document width390. Authentication and live button interactions are separate acceptance."
+    },
+    {
+      "command": "node scripts/verify-package.mjs on the actual Windows canonical-fix tree",
+      "result": "PASS: real npm pack/install, offline npm exec, isolated prefix npm link, installed MCP read/write, and all eight supported compatibility aliases. 54,173-byte archive, 212,719 unpacked package bytes, 14,160,089 installed production bytes; zero model calls or global-prefix changes. Evidence artifacts/package-verify-8SfTVE/result.json; final reviewed-head rerun remains in the full gate."
+    },
+    {
+      "command": "Final reviewed orchestration --full, packed npm install, pinned native Codex, exact-head hosted matrix, final staging artifact and temporary identity cleanup",
+      "result": "PENDING at this review checkpoint. Record observed results in the final sprint validation report; do not infer them from earlier passes."
+    },
+    {
+      "command": "Exact061ab6f full reviewed workflow followed by pinned native-Codex verifier repair",
+      "result": "Reviewed build/typecheck/format/149 tests and packed-install passed on actual Windows. The final registration step correctly failed because the verifier assumed the npm platform alias had its directory name as manifest identity. Inspected official0.160.1 wrapper/platform manifests; repaired exact optionalDependency alias, original package name, suffixed platform version and os/cpu checks. Real native0.160.1 then passed idempotent registration, actual Codex parsing, two MCP sessions, shutdown, exact removal and backup preservation. No model calls or real user config changes. Final workflow rerun follows the fixed commit."
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "id": "CLI-201",
+      "from": "not_started",
+      "to": "integrated",
+      "remainingHours": [
+        2,
+        6
+      ],
+      "reason": "Real deployed discovery, authenticated MCP SDK initialization and scoped reads prove integrated preview routing; broader supported-client/protocol acceptance remains open."
+    },
+    {
+      "ids": "Other existing CLI evidence rows",
+      "assessment": "Evidence and limitations updated only; no other stage, weight, seed, acceptance text or scope changes."
+    },
+    {
+      "ids": "DCP-001..048 and WEB-001..012",
+      "assessment": "Zero full issue acceptances. WEB ledger records each current stage, evidence, remaining work, blocker, dependencies, engineering-hour estimate, unscheduled ETA and GitHub issue."
+    }
+  ],
+  "limitations": [
+    "The first live proof uses a temporary Access service identity with a manual consent/PKCE exchange. Owner Google sign-in, browser consent/callback, ChatGPT Web and Claude connectors are unverified.",
+    "MCP is paused during qualification of the final canonical-target fix. Re-enable only after actual Windows verification; redeploy and smoke the immutable final artifact, then remove the temporary Access policy/token/binding.",
+    "Windows full149 tests passed, but later source changes and hosted Windows/Linux/macOS ARM/macOS Intel are not yet certified at this checkpoint.",
+    "Handle-anchored filesystem defenses, native Windows Job Objects, hosted scale/soak, two-owner live isolation, current-2026 protocol/client coverage, full DCP/WEB parity and production promotion remain open.",
+    "All source/model provenance is self-reported and is not cryptographic proof of authorship."
+  ],
+  "next_unverified_action": "Finish exact-source pinned full verification, publish the normal PR, observe all supported-platform checks, deploy and smoke the final immutable artifact, revoke temporary infrastructure identity, preserve final checkpoint and merge only after required gates."
+}

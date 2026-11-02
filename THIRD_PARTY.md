@@ -18,3 +18,10 @@ re-verified before importing or shipping those components.
 Keep production dependency license files in distribution. Python/TypeScript compiler, official
 MCP test client and formatting tools are development-only. The installed application does not
 require Qt/Electron, a C++ toolchain or Python. System Node remains a declared prerequisite.
+
+## Read-only parity reference snapshots
+
+`docs/parity/upstream/` contains selected MIT DesktopCommanderMCP0.2.52 source at
+c774c3b505de990219637ecdc9a830c8772fae9d. Original LICENSE is retained there. Those files
+are not attributed to MTerm or bundled in the installed runtime; they are hashed conformance inputs.
+They are never executed by the drift detector.

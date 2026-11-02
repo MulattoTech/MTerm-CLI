@@ -75,3 +75,13 @@ get_config, set_config_value, read_file, read_multiple_files, write_file, write_
 - [ ] roadmap/parity baseline, issue state, security/license/package gates green
 
 Creating issues, implementing a subset, or reaching 100% on MTerm's broader weighted roadmap does not satisfy this parity gate. Every gap must close with evidence against the pinned upstream baseline.
+
+## 2026-10-05 tested implementation progress, not accepted closure
+
+PR #52 contains managed Codex registration/removal, pinned baseline/drift checks, portable npm
+verification and eight opt-in text/file aliases.64 local tests plus installed npm-exec MCP and
+actual Codex-parsed registration passed. All48 issues stay OPEN until their complete acceptance.
+Implementation observations are attached to the corresponding DCP rows in the JSON ledger.
+
+Hosted Actions jobs are blocked before steps by the account's payment/spending-limit gate.
+No CI bypass, platform PASS or merge is claimed. See [evidence](validation/2026-10-05-codex-parity-foundation.md).

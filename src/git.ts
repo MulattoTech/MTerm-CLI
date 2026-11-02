@@ -18,13 +18,18 @@ export const gitSchemas = {
   }),
 };
 export class GitService {
+  private executionGuard?: (command: string) => void;
+  setExecutionGuard(guard: (command: string) => void) {
+    this.executionGuard = guard;
+  }
   private constructor(readonly policy: RootPolicy) {}
-  static async create(root: string) {
+  static async create(root: string | readonly string[]) {
     return new GitService(await RootPolicy.create(root));
   }
   private async run(cwd: string, args: string[], signal?: AbortSignal) {
     cancelled(signal);
     const git = await resolveExecutable('git');
+    this.executionGuard?.(git);
     try {
       const r = await exec(
         git,

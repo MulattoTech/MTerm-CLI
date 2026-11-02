@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 1,
+  "runId": "2026-11-02T01-23-39-600Z-a0b41954-29c8-4163-b93f-a04a5c64b6a6",
+  "startedAt": "2026-11-02T01:23:39.601Z",
+  "status": "passed",
+  "platform": "win32",
+  "nodeVersion": "24.21.0",
+  "endpoints": {
+    "mcp": "https://mcp-staging.m-techlabs.com/mcp",
+    "dashboard": "https://mterm-staging.m-techlabs.com"
+  },
+  "identity": "temporary-cloudflare-access-service-principal",
+  "humanGoogleLoginVerified": false,
+  "humanConsentVerified": false,
+  "browserCallbackVisited": false,
+  "chatgptConnectorVerified": false,
+  "remoteWriteOrExecutionEnabled": false,
+  "sdk": {
+    "package": "@modelcontextprotocol/client",
+    "version": "2.3.0",
+    "transport": "StreamableHTTPClientTransport",
+    "initialized": true,
+    "fallbackUsed": false,
+    "installedVersionVerified": true,
+    "toolCount": 6
+  },
+  "devices": [
+    {
+      "label": "fixture-a",
+      "deviceId": "9aabeac8-6264-46ef-b921-88fd45bb8c57",
+      "platform": "win32",
+      "permissions": "read-only",
+      "credentialProtection": "windows-dpapi-current-user",
+      "agentEventCounts": {
+        "connecting": 1,
+        "online": 3,
+        "revoked": 1
+      },
+      "agentStopReason": "revoked"
+    },
+    {
+      "label": "fixture-b",
+      "deviceId": "cef4be59-eb38-4937-8c4f-4c91c7bb1a75",
+      "platform": "win32",
+      "permissions": "read-only",
+      "credentialProtection": "windows-dpapi-current-user",
+      "agentEventCounts": {
+        "connecting": 1,
+        "online": 4,
+        "stopped": 1
+      },
+      "agentStopReason": "stopped"
+    }
+  ],
+  "checks": [
+    {
+      "name": "windows_runtime_and_real_modules",
+      "status": "passed",
+      "durationMs": 132,
+      "evidence": {
+        "windows": true,
+        "localToolHost": "FileService through RemoteReadAdapter",
+        "credentialProtection": "windows-dpapi-current-user"
+      }
+    },
+    {
+      "name": "live_discovery_and_anonymous_denial",
+      "status": "passed",
+      "durationMs": 489,
+      "evidence": {
+        "resourceDiscovery": 200,
+        "authorizationServerDiscovery": 200,
+        "anonymousMcpStatus": 401,
+        "anonymousDashboardStatus": 302
+      }
+    },
+    {
+      "name": "real_access_service_authentication",
+      "status": "passed",
+      "durationMs": 342,
+      "evidence": {
+        "authenticated": true,
+        "identityKind": "staging-service",
+        "initiallyEmpty": true,
+        "humanLoginTested": false
+      }
+    },
+    {
+      "name": "live_pkce_consent_exchange_and_code_replay",
+      "status": "passed",
+      "durationMs": 621,
+      "evidence": {
+        "pkce": "S256",
+        "scope": "mterm:read",
+        "consentIdentity": "staging-service",
+        "wrongPkceStatus": 400,
+        "wrongResourceStatus": 400,
+        "codeReplayStatus": 400,
+        "browserCallbackVisited": false
+      }
+    },
+    {
+      "name": "pair_and_protect_fixture-a",
+      "status": "passed",
+      "durationMs": 1105,
+      "evidence": {
+        "deviceId": "9aabeac8-6264-46ef-b921-88fd45bb8c57",
+        "wrongPairCodeStatus": 400,
+        "wrongDeviceCodeStatus": 403,
+        "pairingReplayStatus": 410,
+        "dpapiRoundtrip": true,
+        "agentOnline": true
+      }
+    },
+    {
+      "name": "pair_and_protect_fixture-b",
+      "status": "passed",
+      "durationMs": 1085,
+      "evidence": {
+        "deviceId": "cef4be59-eb38-4937-8c4f-4c91c7bb1a75",
+        "wrongPairCodeStatus": 400,
+        "wrongDeviceCodeStatus": 403,
+        "pairingReplayStatus": 410,
+        "dpapiRoundtrip": true,
+        "agentOnline": true
+      }
+    },
+    {
+      "name": "real_sdk_initialize_and_tool_discovery",
+      "status": "passed",
+      "durationMs": 206,
+      "evidence": {
+        "initialized": true,
+        "toolCount": 6,
+        "allReadOnly": true,
+        "legacyNegotiation": true,
+        "fallbackUsed": false
+      }
+    },
+    {
+      "name": "sdk_device_inventory_and_two_real_windows_reads",
+      "status": "passed",
+      "durationMs": 2361,
+      "evidence": {
+        "inventoryCount": 2,
+        "independentFixtureReads": [
+          {
+            "deviceId": "9aabeac8-6264-46ef-b921-88fd45bb8c57",
+            "expectedSha256": "3b29f5629f0be77b20bb9bea396d27aacb28de7fa50075c59ce1ea4f4208e044",
+            "actualSha256": "3b29f5629f0be77b20bb9bea396d27aacb28de7fa50075c59ce1ea4f4208e044",
+            "bytes": 59
+          },
+          {
+            "deviceId": "cef4be59-eb38-4937-8c4f-4c91c7bb1a75",
+            "expectedSha256": "ed87af23768a09471d248336fa5500356d9babb4be6c72b57414b528c573d472",
+            "actualSha256": "ed87af23768a09471d248336fa5500356d9babb4be6c72b57414b528c573d472",
+            "bytes": 59
+          }
+        ],
+        "rawFileContentRecorded": false
+      }
+    },
+    {
+      "name": "cross_device_credential_and_mutation_denial",
+      "status": "passed",
+      "durationMs": 714,
+      "evidence": {
+        "crossDeviceStatus": 403,
+        "mutationDenied": true,
+        "protocolErrorCode": -32602,
+        "fixtureUnchanged": true,
+        "outsideRootDenied": true
+      }
+    },
+    {
+      "name": "one_device_revocation_and_other_device_isolation",
+      "status": "passed",
+      "durationMs": 3058,
+      "evidence": {
+        "revokedDeviceStatus": 410,
+        "agentStoppedBecauseRevoked": true,
+        "revokedReadDenied": true,
+        "secondDeviceReadStillWorks": true
+      }
+    },
+    {
+      "name": "oauth_grant_revocation",
+      "status": "passed",
+      "durationMs": 99,
+      "evidence": {
+        "revocationStatus": 200,
+        "subsequentMcpStatus": 401
+      }
+    }
+  ],
+  "cleanup": {
+    "syntheticDevicesAndGrantsRevoked": true,
+    "agentsStopped": true,
+    "sdkClosed": true,
+    "onlyCreatedLocalFixturesRemoved": true
+  },
+  "build": "b90432a1bc138d59305692a9f74f110a475d0881",
+  "realWindowsReadViaDeployedGatewayAndSdk": true,
+  "finishedAt": "2026-11-02T01:24:29.669Z"
+}

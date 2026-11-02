@@ -1,7 +1,10 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-10-05-codex-parity-foundation; verify actual branch, not obsolete fixture name.
 // AI-Change: 2026-10-04-local-mcp
 // Real project inspection/typecheck through MTerm's own MCP tools; no models or source mutation.
 import path from 'node:path';
+import { execFile } from 'node:child_process';
+import { promisify } from 'node:util';
 import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
 import { Client } from '@modelcontextprotocol/client';
@@ -24,7 +27,15 @@ try {
   const source = await tool('mterm_read_file', { path: 'package.json' });
   assert.equal(JSON.parse(source.text).name, 'mterm-cli');
   const git = await tool('mterm_git_status', { path: '.' });
-  assert.match(git.stdout, /local-mcp-candidate/);
+  // Compare the actual branch/header against independent read-only Git, never a historical branch name.
+  const direct = await promisify(execFile)('git', ['-C', root, 'status', '--short', '--branch'], {
+    timeout: 10000,
+    maxBuffer: 1048576,
+    windowsHide: true,
+  });
+  const expectedHeader = direct.stdout.split(/\r?\n/)[0];
+  assert.ok(expectedHeader?.startsWith('## '), 'Independent Git must return its current branch header');
+  assert.equal(git.stdout.split(/\r?\n/)[0], expectedHeader);
   const compiler = path.join(root, 'node_modules', 'typescript', 'bin', 'tsc');
   await fs.access(compiler);
   const run = await tool('mterm_start_process', {

@@ -52,7 +52,7 @@ test('start preserves structured args, working directory and final exit code', a
   const result = await wait(service, run.sessionId, (o) => !o.running);
   assert.equal(result.exitCode, 7);
   const data = JSON.parse(text(result));
-  assert.equal(data.cwd, root);
+  assert.equal(await fs.realpath(data.cwd), await fs.realpath(root));
   assert.deepEqual(data.args, ['space value', 'x;echo BAD', '文']);
 });
 test('spawn failure has no falsely running session', async (t) => {

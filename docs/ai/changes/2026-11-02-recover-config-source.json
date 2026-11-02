@@ -1,0 +1,60 @@
+{
+  "change_id": "2026-11-02-recover-config-source",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "identity_basis": "recovery and review by this session; original file attribution retained",
+  "started_at_utc": "2026-11-02T00:16:23.013718+00:00",
+  "base_sha": "2c6131a",
+  "summary": "Recover eleven checksum-verified unpublished config foundation files from the preserved Windows source into an isolated branch, unchanged in behavior. Original checkout remains untouched.",
+  "requirements": [
+    "CLI-005",
+    "CLI-009",
+    "CLI-137",
+    "CLI-138",
+    "CLI-141",
+    "CLI-266",
+    "CLI-296",
+    "DCP-009",
+    "DCP-010",
+    "DCP-011",
+    "DCP-012",
+    "DCP-013",
+    "DCP-014",
+    "DCP-015",
+    "DCP-016"
+  ],
+  "source_sha256": {
+    "src/cli.ts": "897e2051c18ad01c9a3492c791f96b50a0c751fd3318288c3006be1b5a834ac2",
+    "src/codex-registration.ts": "90c104d71efb103af85bf94b0b3c90838a13d0ab733e29165aeeb8a39203a62e",
+    "src/compat-config.ts": "5548b38519a1689d543f14b28b58145bd976ffcea0275659d3dbc9c69b358e6f",
+    "src/desktop-commander-files.ts": "10798c09912dec50461a00125c955e6dfb27eb30b7b8c0520fdbd6dc5877746e",
+    "src/files.ts": "70a6cfc734ad77078c1238ff3978a238d4c5c541192e3329d42d943e11e58b5e",
+    "src/git.ts": "f60ecd2f9b4cb71ffa4c0a3ab5140f4f660285da270252fe5f9e214d5d93fbdb",
+    "src/mcp.ts": "a4f468b6da779ee3b4be71b026b3d84b0043592cb0551fd22e1de650d1957b0f",
+    "src/policy.ts": "649540d897fe4d9173c32ab5c57b0b63e48f47730a82534e3ba6758cbd20cd6b",
+    "src/processes.ts": "64a12cb903c09d2f1d23584fd9fa09da2d7cad02289b5455dd39570750b5f5f5",
+    "tests/compat-config-mcp.test.mjs": "2b944828c1ceed9be9a555ea2df513513d4b255a162e52622140a6f8d4fdb2e5",
+    "tests/compat-config.test.mjs": "f96c4a66b104c2b24fe1c1d839c1b77cb2bc02370284dfadda7c94a3e69ca540"
+  },
+  "tests": [
+    {
+      "command": "Compare each recovered file SHA256 to root-verified transfer source",
+      "result": "PASS 11/11 exact bytes before Git text normalization."
+    },
+    {
+      "command": "Review recovered source and tests",
+      "result": "Review complete; runtime/build/platform qualification pending. Source retains existing canonical root alias defect and unformatted sections; not release accepted."
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "ids": "CLI-005,CLI-009,CLI-137,CLI-138,CLI-141,CLI-266,CLI-296; DCP-009..016",
+      "assessment": "No stage changes or parity issue closures. Recovery is preserved implementation evidence awaiting build, security and cross-platform tests."
+    }
+  ],
+  "limitations": [
+    "Scratch sandbox denies child process spawning; Windows isolated test runner required.",
+    "Original configuration work was not published or accepted; subsequent fixes and formatting follow separately."
+  ],
+  "next_unverified_action": "Write and reproduce alias security regressions, fix canonical paths and executable mode, then run actual isolated Windows and hosted matrix."
+}

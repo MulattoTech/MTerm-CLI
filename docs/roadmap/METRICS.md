@@ -28,3 +28,19 @@ not a cryptographic attestation or substitute for testing.
 
 Generated local SVGs, Markdown, JSON and HTML need no external badge service. HTML includes literal
 search and stage/blocked filters; it is an offline file, not a deployed GitHub Pages site.
+
+## 2026-10-05 reproducibility and parity safeguards
+
+Known UTF-8 text fingerprints normalize CRLF to LF; actual content changes and binary bytes remain
+strict. The mismatch was reproduced on a clean Git checkout before this repair. Reference snapshots,
+managed setup documentation and the continuation/evidence documents are now covered as well.
+
+`parity:check` separately validates the pinned upstream files/tool manifest and the48-issue ledger.
+Closed rows require evidence and full PASS requires all48 plus explicit release gates. This is not
+computed from the broader300-row percentage. A review may update implementation observations without
+closing a DCP issue; a billing-blocked hosted run never supplies platform pass credit.
+
+Partial implementation evidence is not an acceptance review. Closing a DCP row additionally
+requires acceptanceReview with reviewer, testedCommit, upstreamCommit, acceptedAt, report included
+in evidence, and allCriteriaSatisfied:true. This is an explicit auditable assertion, not a
+cryptographic proof; the reviewer still must inspect the report and actual GitHub closure.

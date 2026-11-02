@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-10-05-codex-parity-foundation; preserve UTF-8 BOM and add guarded mkdirTree.
 // AI-Change: 2026-10-04-local-mcp (OpenAI / GPT-6 Astra Pro; self-reported)
 import fs from 'node:fs/promises';
 import { constants } from 'node:fs';
@@ -39,7 +40,7 @@ export class FileService {
     readonly maxBytes: number,
   ) {}
   static async create(
-    root: string,
+    root: string | readonly string[],
     options: { allowWrite?: boolean; maxBytes?: number } = {},
   ): Promise<FileService> {
     const max = options.maxBytes ?? 1048576;
@@ -82,7 +83,7 @@ export class FileService {
   private text(b: Buffer): string {
     if (b.includes(0)) fail('BINARY_FILE', 'Binary data is not exposed as text.');
     try {
-      return new TextDecoder('utf-8', { fatal: true }).decode(b);
+      return new TextDecoder('utf-8', { fatal: true, ignoreBOM: true }).decode(b);
     } catch {
       fail('INVALID_UTF8', 'File is not valid UTF-8.');
     }
@@ -172,6 +173,50 @@ export class FileService {
       const full = await this.policy.resolve(a.path, true);
       await fs.mkdir(full, { mode: 0o700 });
       return { path: this.policy.relative(full), created: true };
+    });
+  }
+  async mkdirTree(input: unknown, signal?: AbortSignal) {
+    return this.mutation(async () => {
+      cancelled(signal);
+      const a = fileSchemas.mkdir.parse(input);
+      // Validate all lexical components first so a later forbidden name cannot leave earlier dirs.
+      const target = this.policy.lexical(a.path);
+      // Find the deepest existing scoped ancestor, then create only the missing suffix.
+      // Starting from the owner root would incorrectly reject a deeper runtime-selected root.
+      let current = target,
+        created = 0;
+      const missing: string[] = [];
+      for (;;) {
+        cancelled(signal);
+        try {
+          await this.policy.resolve(current);
+          if (!(await fs.lstat(current)).isDirectory())
+            fail('NOT_DIRECTORY', 'Existing component is not a directory.');
+          break;
+        } catch (e) {
+          if ((e as NodeJS.ErrnoException).code !== 'ENOENT') throw e;
+          if (missing.length >= 64) fail('PATH_DEPTH', 'Directory creation depth exceeds64 components.');
+          missing.unshift(path.basename(current));
+          const parent = path.dirname(current);
+          if (parent === current) throw e;
+          current = parent;
+        }
+      }
+      for (const component of missing) {
+        cancelled(signal);
+        current = path.join(current, component);
+        const checked = await this.policy.resolve(current, true);
+        try {
+          await fs.mkdir(checked, { mode: 0o700 });
+          created++;
+        } catch (e) {
+          if ((e as NodeJS.ErrnoException).code !== 'EEXIST') throw e;
+        }
+        await this.policy.resolve(current);
+        if (!(await fs.lstat(current)).isDirectory())
+          fail('NOT_DIRECTORY', 'Existing component is not a directory.');
+      }
+      return { path: this.policy.relative(target), created };
     });
   }
   async move(input: unknown, signal?: AbortSignal) {

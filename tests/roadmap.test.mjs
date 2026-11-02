@@ -112,8 +112,8 @@ test('review and generated files detect source, catalog and output drift indepen
   await assert.rejects(mod.check(root), /generated/i);
 });
 
-// Cross-platform review: LF/CRLF equivalence applies only to known UTF-8 text.
-test('roadmap source fingerprint normalizes only line endings in text', () => {
+test('text fingerprints survive Git LF checkout while binary and real edits stay detectable', () => {
+  assert.equal(typeof mod.sourceDigest, 'function');
   assert.equal(
     mod.sourceDigest(Buffer.from('a\r\nb\r\n'), 'docs/x.md'),
     mod.sourceDigest(Buffer.from('a\nb\n'), 'docs/x.md'),

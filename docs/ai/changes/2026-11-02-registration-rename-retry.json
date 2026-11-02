@@ -1,0 +1,55 @@
+{
+  "change_id": "2026-11-02-registration-rename-retry",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "identity_basis": "session-declared; self-reported",
+  "updated_at_utc": "2026-11-02T00:55:54.907Z",
+  "base_commit": "8bc585c7e41ee3afe00622477593b8bf37f91ccf",
+  "request": "Repair the observed Windows transient EPERM replacing a Codex registration journal after closed file handles, while preserving expected-snapshot conflict detection and owned-file cleanup.",
+  "requirements": ["CLI-141", "CLI-292"],
+  "files_modified": ["src/codex-registration.ts", "tests/codex-registration.test.mjs"],
+  "files_created": ["docs/ai/changes/2026-11-02-registration-rename-retry.json"],
+  "decisions": [
+    "Retry existing-file atomic rename only on Windows and only for EPERM or EBUSY.",
+    "Allow at most five rename attempts, separated by 25, 50, 100 and 200 milliseconds, for 375 milliseconds total maximum retry waiting.",
+    "Repeat safe destination snapshot validation before each attempt and preserve the original expected bytes, existence and mode across all retries.",
+    "A changed or unsafe destination aborts with the existing conflict/security errors. Never delete the destination, widen permissions, disable locks, or adopt new expected bytes.",
+    "Keep missing-destination no-overwrite link creation and finally-based owned temporary-file cleanup unchanged.",
+    "Tests inject faults only inside sequential, awaited scopes and restore fs.rename and the process platform descriptor before fixture cleanup.",
+    "No actual Codex credentials, user configuration or model calls are used by the regression fixtures."
+  ],
+  "tests": [
+    {
+      "command": "node --test --test-isolation=none artifacts/registration-replace-probe.test.mjs before source change",
+      "result": "RED: 3 failures and 1 pass. The probe executes the actual snapshot/replace source functions after Node TypeScript transformation; transient Windows recovery, intervening-edit conflict, and bounded retry assertions failed as expected."
+    },
+    {
+      "command": "node --test --test-isolation=none artifacts/registration-replace-probe.test.mjs after source change",
+      "result": "GREEN: all 4 focused tests pass. Transient EPERM/EBUSY recovery, conflict preservation, bounded exhaustion/cleanup, and no non-Windows retry were observed."
+    },
+    {
+      "command": "node --test tests/codex-registration.test.mjs",
+      "result": "Four public-API regression tests added. Full-module execution with pinned dependencies and actual Windows integration is pending the parent integration run; no Windows PASS is claimed by this child record."
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "id": "CLI-141",
+      "from": "integrated",
+      "to": "integrated",
+      "notes": "Reliability repair retains atomic writes, conflict checks, backups and existing scope. No broader configuration acceptance credit is awarded."
+    },
+    {
+      "id": "CLI-292",
+      "from": "validated",
+      "to": "validated",
+      "notes": "Codex registration retry behavior receives focused regression coverage; release/platform acceptance still depends on the integrated exact-head gates."
+    }
+  ],
+  "limitations": [
+    "A persistent OS lock still fails after the bounded retry budget; no ACL changes or destination deletion are attempted.",
+    "Safe snapshot checks and rename remain separate OS calls, so this is not a handle-anchored defense against a hostile local writer ignoring the ownership lock.",
+    "The parent integration owner must run full TypeScript/build, registration tests and the previously failing Windows suite, then perform final source/roadmap review."
+  ],
+  "next_steps": ["Integrate the commit, format touched source/tests, run the actual Windows gates, and attach exact-head results to the final sprint evidence."]
+}

@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "description": "Public staging deployment template. This is not wrangler configuration. Supply the reviewed artifact SHA and exact owner allowlist through authorized deployment controls; MCP stays disabled and identities denied by default.",
+  "account_id": "9e18ebcb3c1a920c9ef58a3d61b8d6b6",
+  "zone_id": "8bd58c3aba1973a88d32ae09ccca9595",
+  "script_name": "mterm-gateway-staging",
+  "upload_metadata": {
+    "main_module": "gateway/worker.mjs",
+    "compatibility_date": "2026-11-01",
+    "compatibility_flags": [
+      "enable_request_signal"
+    ],
+    "bindings": [
+      {
+        "name": "PUBLIC_ORIGIN",
+        "type": "plain_text",
+        "text": "https://mcp-staging.m-techlabs.com"
+      },
+      {
+        "name": "DASHBOARD_ORIGIN",
+        "type": "plain_text",
+        "text": "https://mterm-staging.m-techlabs.com"
+      },
+      {
+        "name": "ACCESS_ISSUER",
+        "type": "plain_text",
+        "text": "https://broken-breeze-d0bb.cloudflareaccess.com"
+      },
+      {
+        "name": "ACCESS_AUDIENCE",
+        "type": "plain_text",
+        "text": "9533396534dbc90c78bae02791ecdd0fab21f775876ed7164ed3b57bf54e1563"
+      },
+      {
+        "name": "ALLOWED_EMAILS",
+        "type": "plain_text",
+        "text": ""
+      },
+      {
+        "name": "ENVIRONMENT",
+        "type": "plain_text",
+        "text": "staging"
+      },
+      {
+        "name": "MCP_ENABLED",
+        "type": "plain_text",
+        "text": "false"
+      },
+      {
+        "name": "BUILD_SHA",
+        "type": "plain_text",
+        "text": "REQUIRED_FROM_VERIFIED_ARTIFACT_MANIFEST"
+      },
+      {
+        "name": "REGISTRY",
+        "type": "durable_object_namespace",
+        "class_name": "MTermRegistry"
+      }
+    ],
+    "observability": {
+      "enabled": false,
+      "redact_query_string": true
+    },
+    "logpush": false
+  },
+  "initial_migration_only": {
+    "new_tag": "v1",
+    "new_sqlite_classes": [
+      "MTermRegistry"
+    ]
+  },
+  "existing_registry": {
+    "class_name": "MTermRegistry",
+    "namespace_id": "b66edc2d536e474093e1a18d0e88a24d",
+    "storage": "SQLite",
+    "migration_tag": "v1",
+    "instruction": "Preserve this namespace for the existing staging Worker. Omit migrations on ordinary subsequent uploads; never recreate or delete the registry as rollback."
+  },
+  "subdomain_settings": {
+    "enabled": false,
+    "previews_enabled": false
+  },
+  "custom_domains": [
+    {
+      "hostname": "mcp-staging.m-techlabs.com",
+      "zone_id": "8bd58c3aba1973a88d32ae09ccca9595",
+      "service": "mterm-gateway-staging",
+      "environment": "production"
+    },
+    {
+      "hostname": "mterm-staging.m-techlabs.com",
+      "zone_id": "8bd58c3aba1973a88d32ae09ccca9595",
+      "service": "mterm-gateway-staging",
+      "environment": "production"
+    }
+  ],
+  "custom_domain_instruction": "Inspect ownership/conflicts before creating a missing hostname. The API environment value production selects this staging Worker's default slot; it does not promote MTerm to production.",
+  "access": {
+    "dashboard_application_id": "598ab343-fa9c-40d7-8308-b1fa24b55d81",
+    "existing_google_identity_provider_id": "7ce61789-b506-4480-bf8d-7138a1765165",
+    "owner_allow_policy_id": "278aac2d-13d9-424f-845b-dd7c27d43662",
+    "owner_identity": "REQUIRED_OWNER_ALLOWLIST_SUPPLIED_OUTSIDE_GIT",
+    "instruction": "Keep the dashboard behind its existing exact-owner Access policy. The Worker independently validates signed Access JWT issuer/audience/expiry and its nonempty ALLOWED_EMAILS allowlist. Never use a wildcard or bypass policy."
+  },
+  "temporary_test_identity": {
+    "normal_binding_present": false,
+    "instruction": "Current owner-only staging has no STAGING_SERVICE_ID binding; the temporary acceptance policy and service token were deleted. Future separately authorized service-principal tests must remove all three resources again after proof. Never add a test identity to production.",
+    "cleanup_status": "complete",
+    "current_binding_present": false,
+    "temporary_access_policy_deleted": true,
+    "temporary_service_token_deleted": true
+  },
+  "first_recorded_good_smoke": {
+    "worker_version_id": "2083411f-68a7-4ec8-9ecc-5c2473ad09b9",
+    "source_commit": "305c89c88a10f4c9243096e3d1125bde76f17563",
+    "artifact_sha256": "f76e37d77c218bc9c2bc9203346ec98d590e5a69b7fef285bcd16792ae32c0f1",
+    "instruction": "Historical first-smoke evidence only. Prefer current_verified_staging.safe_recovery_worker_version_id, which preserves the final tested artifact and removes temporary acceptance bindings."
+  },
+  "current_verified_staging": {
+    "source_commit": "b90432a1bc138d59305692a9f74f110a475d0881",
+    "artifact_sha256": "97a0457b78e113c058ae8da3d3a6a54fcd93c2b35d1dd1781316c41001ac10a6",
+    "artifact_origin": "Windows pinned build",
+    "final_smoke_worker_version_id": "f643872f-5fbb-44be-9e3d-a6f8f3f32aab",
+    "final_smoke_finished_at": "2026-11-02T01:24:29.669Z",
+    "final_smoke_checks": {
+      "passed": 11,
+      "total": 11
+    },
+    "worker_version_id": "af4fd06e-c4a3-4545-ad22-31d0ae956215",
+    "safe_recovery_worker_version_id": "af4fd06e-c4a3-4545-ad22-31d0ae956215",
+    "deployment_id": "5a0ff21c-6341-4e73-b4af-169e98b76db2",
+    "mcp_enabled": true,
+    "permissions": "read-only",
+    "owner_access_policy_only": true,
+    "temporary_test_identity_removed": true,
+    "workers_dev_enabled": false,
+    "preview_urls_enabled": false,
+    "registry_namespace_id": "b66edc2d536e474093e1a18d0e88a24d",
+    "registry_preserved": true,
+    "fixture_cleanup_complete": true,
+    "owner_paired_agent_left_running": false,
+    "human_google_login_verified": false,
+    "chatgpt_connector_verified": false,
+    "evidence": "docs/validation/2026-11-02-remote-staging-smoke-final.json",
+    "final_git_and_checkpoint_authority": "docs/validation/2026-11-02-remote-sprint.md",
+    "verification": {
+      "windows_full_gates": "PASS",
+      "native_codex": "PASS",
+      "four_platform_ci": "PASS",
+      "pr_matrix_run_id": 41372073094,
+      "pr_fast_run_id": 41372073095,
+      "push_run_id": 41372068412
+    },
+    "instruction": "Observed owner-only staging state. This does not alter fail-closed upload template defaults, establish human client acceptance, or authorize deleting/recreating the existing Durable Object."
+  }
+}

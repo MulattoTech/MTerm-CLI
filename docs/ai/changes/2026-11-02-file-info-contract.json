@@ -5,7 +5,7 @@
   "identity_basis": "session-declared; self-reported",
   "started_at_utc": null,
   "first_recorded_development_check_at_utc": "2026-11-02T17:12:34.413305+00:00",
-  "updated_at_utc": "2026-11-02T17:17:54.102772+00:00",
+  "updated_at_utc": "2026-11-02T17:34:06.228130+00:00",
   "base_sha": "71353344bb78bb15135bc76be1c32db4aff14f47",
   "base_tree": "27d3fb9bd6512bf23671d6c788176231aacb8c1d",
   "branch": "feat/dcp-024-file-info-contract-20261102",
@@ -24,7 +24,17 @@
     "docs/HANDOFF.md",
     "docs/STATUS.md",
     "docs/TESTING.md",
-    "docs/execution/NEXT_PARITY_PROMPT.md"
+    "docs/execution/NEXT_PARITY_PROMPT.md",
+    "docs/validation/2026-11-02-file-info-focused-windows.json",
+    "docs/validation/2026-11-02-file-info-native.json",
+    "docs/validation/2026-11-02-file-info-windows.json",
+    "docs/validation/2026-11-02-file-info-fresh.json",
+    "docs/validation/2026-11-02-file-info-native-review.json",
+    "docs/validation/2026-11-02-file-info-hosted.json",
+    "docs/validation/2026-11-02-file-info-implementation-doc-review.json",
+    "docs/validation/2026-11-02-file-info-connection.json",
+    "docs/validation/2026-11-02-file-info-observation-notes.json",
+    "docs/validation/2026-11-02-file-info-delivery.json"
   ],
   "requirements": [
     "DCP-024",
@@ -56,6 +66,26 @@
       "command": "Independent source/test/installed-harness review",
       "result": "No remaining blocking findings; actual native/installed/hosted execution remains pending at preparation.",
       "evidence": "docs/validation/2026-11-02-file-info-source-review.json"
+    },
+    {
+      "command": "Native Windows original focused RED then GREEN",
+      "result": "Same23-case fixture;6pass17assertion failures before fix;23/23 after;zero skips/cancellations;actual exits1/0.",
+      "evidence": "docs/validation/2026-11-02-file-info-focused-windows.json"
+    },
+    {
+      "command": "node scripts/orchestration/verify.mjs --full; node scripts/verify-self-host.mjs; normal npm pack; source/installed Codex; explicit installed probe",
+      "result": "All actual native commands exit0;full228/228;installed metadata8groups and directory6groups/read-only restart/exits/cleanup.",
+      "evidence": "docs/validation/2026-11-02-file-info-native.json"
+    },
+    {
+      "command": "Fresh exact-commit extraction; locked install; reviewed build; normal prepack; actual installed package; explicit installed probe",
+      "result": "Initially absentdist/node_modules;all exit0;normal prepack228/228;metadata8groups/directory6groups;model0.",
+      "evidence": "docs/validation/2026-11-02-file-info-fresh.json"
+    },
+    {
+      "command": "Exact implementation hosted push/PR matrix and fast",
+      "result": "9/9success,attempt1,no retries;Windows228passes;Linux/macOS216+12named skips;all23new regressions;all8matrix executionsinstalled8+6groups.",
+      "evidence": "docs/validation/2026-11-02-file-info-hosted.json"
     }
   ],
   "source_sha256": {
@@ -82,7 +112,11 @@
       "assessment": "Implementation observation/evidence only; remains open. Full contract and actual-client acceptance not inferred."
     }
   ],
-  "next_unverified_action": "Complete native ordered RED/GREEN, then normal reviewed full/installed/fresh gates at exact committed implementation.",
+  "next_unverified_action": "Review final documentation, normal Windows build at final head, exact-head hosted checks, expected-head normal merge, main verification and additive recovery.",
   "model_calls": 0,
-  "actualCodexAgentToolInvocation": false
+  "actualCodexAgentToolInvocation": false,
+  "implementation_commit": "450578f7761a5dabc28fad3feda0c3119f130ecb",
+  "implementation_tree": "152e1490ef91b42697d46af7e829473c0ddf8dc3",
+  "completed_qualification_at_utc": "2026-11-02T17:28:36.884Z",
+  "implementation_hosted_observed_at_utc": "2026-11-02T17:29:50.904Z"
 }

@@ -1,5 +1,27 @@
 # Current file metadata continuation authority — 2026-11-02
 
+## DCP-024 qualification observed — PR #76, 2026-11-02
+
+Implementation `450578f7761a5dabc28fad3feda0c3119f130ecb` completes the bounded
+file-info text/stat and failure-propagation slice. Native original RED23 had
+6 passes / 17 assertion failures; unchanged-fixture GREEN passed23/23. Actual
+Windows full wrapper passed228/228, followed by self-host, normal prepack,
+installed metadata, source/installed synthetic Codex0.160.1 and fresh extraction.
+Both explicit installed probes passed eight metadata groups plus six directory
+groups, including read-only restart, independent exits and cleanup. Model calls0.
+
+Exact implementation hosted checks passed9/9, all attempt1, independently observed
+17:29:50.904Z; all23 new regressions passed. Windows228passes; Linux/macOS216passes
+with12named Windows-specific skips. Read `docs/validation/2026-11-02-file-info-contract.md`
+and `2026-11-02-file-info-delivery.json` for original receipts and exact scope.
+
+Final documentation build/checks, expected-head normal merge, main observation and
+additive recovery are still subsequent gates at this preparation. Later public
+and downloadable delivery receipts supply observed completion without backdating
+these notes. DCP0/48, WEB0/12 and maturity29.12% remain unchanged; issue26 remains
+open. Actual supported-client acceptance and precise owner contract rulings are
+separate. Earlier preparation and PR73/74/75 records below retain their timestamps.
+
 The new DCP-024/#26 slice starts from verified merged main
 `71353344bb78bb15135bc76be1c32db4aff14f47` on
 `feat/dcp-024-file-info-contract-20261102`. Read

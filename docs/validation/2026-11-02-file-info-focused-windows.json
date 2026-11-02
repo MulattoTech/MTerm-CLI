@@ -1,0 +1,304 @@
+{
+  "schemaVersion": 1,
+  "startedAtUtc": "2026-11-02T17:24:16.459Z",
+  "node": "v24.21.0",
+  "platform": "win32",
+  "arch": "x64",
+  "root": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\file-info-contract-20261102",
+  "base": "71353344bb78bb15135bc76be1c32db4aff14f47",
+  "output": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\file-info-contract-20261102\\artifacts\\file-info-native-focused-oyS6oj",
+  "checkpoint": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\checkpoints\\file-info-contract-start-9YDpxN",
+  "payloadSha256": "1482f34bfb693cb871f0bad91ad92b90ef98fc27ff0db2277fde881c89b1f61e",
+  "runtimeBefore": {
+    "rawSha256": "3cd606ebbf5404da939c238d6173721d4656d1ee28fd4982ba259b826ec062de",
+    "normalizedSha256": "3cd606ebbf5404da939c238d6173721d4656d1ee28fd4982ba259b826ec062de"
+  },
+  "modelCalls": 0,
+  "actualCodexAgentToolInvocation": false,
+  "steps": [
+    {
+      "name": "locked-install",
+      "command": [
+        "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+        "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+        "ci",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund",
+        "--prefer-offline",
+        "--no-progress"
+      ],
+      "startedAtUtc": "2026-11-02T17:24:18.747Z",
+      "completedAtUtc": "2026-11-02T17:24:22.860Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "log": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\file-info-contract-20261102\\artifacts\\file-info-native-focused-oyS6oj\\locked-install.log",
+      "logSha256": "113f5ace47ddfcc63e56e11de0e150485f44bc7fe84ce208c43073f454d13541"
+    },
+    {
+      "name": "red-build-code",
+      "command": [
+        "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+        "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "build:code"
+      ],
+      "startedAtUtc": "2026-11-02T17:24:22.865Z",
+      "completedAtUtc": "2026-11-02T17:24:23.218Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "log": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\file-info-contract-20261102\\artifacts\\file-info-native-focused-oyS6oj\\red-build-code.log",
+      "logSha256": "9a9214dd92f21ea05ec920f34a2d1b1e5699936c060ba52eba85b89808758cb9"
+    },
+    {
+      "name": "focused-red",
+      "command": [
+        "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/compat-file-info.test.mjs"
+      ],
+      "startedAtUtc": "2026-11-02T17:24:23.219Z",
+      "completedAtUtc": "2026-11-02T17:24:23.530Z",
+      "exitCode": 1,
+      "signal": null,
+      "error": null,
+      "log": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\file-info-contract-20261102\\artifacts\\file-info-native-focused-oyS6oj\\focused-red.log",
+      "logSha256": "86ba33aee3e099f7a406891c8c8a3b25b927056d45621dde90426d8e5b078237"
+    },
+    {
+      "name": "green-build-code",
+      "command": [
+        "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+        "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "build:code"
+      ],
+      "startedAtUtc": "2026-11-02T17:24:23.535Z",
+      "completedAtUtc": "2026-11-02T17:24:23.874Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "log": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\file-info-contract-20261102\\artifacts\\file-info-native-focused-oyS6oj\\green-build-code.log",
+      "logSha256": "9a9214dd92f21ea05ec920f34a2d1b1e5699936c060ba52eba85b89808758cb9"
+    },
+    {
+      "name": "focused-green",
+      "command": [
+        "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/compat-file-info.test.mjs"
+      ],
+      "startedAtUtc": "2026-11-02T17:24:23.875Z",
+      "completedAtUtc": "2026-11-02T17:24:24.206Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "log": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\file-info-contract-20261102\\artifacts\\file-info-native-focused-oyS6oj\\focused-green.log",
+      "logSha256": "abc122c424922ae33ecf26c605d1b97ba2d4ca083be488f30dbdc593f7d5b1da"
+    }
+  ],
+  "previousProtectedBaselineVerified": true,
+  "ownerBefore": {
+    "observedAtUtc": "2026-11-02T17:24:18.261Z",
+    "paired": true,
+    "permissions": "read-only",
+    "autostart": false,
+    "observedStatus": "online",
+    "networkChecked": false,
+    "runtime": {
+      "pid": 38384,
+      "startedAt": "2026-11-02T04:06:30.929Z",
+      "at": "2026-11-02T17:24:17.468Z",
+      "state": "online",
+      "activeRequests": 0
+    }
+  },
+  "bundleVerification": "The bundle contains these 5 refs:\n71353344bb78bb15135bc76be1c32db4aff14f47 refs/heads/main\n71353344bb78bb15135bc76be1c32db4aff14f47 refs/remotes/origin/HEAD\n71353344bb78bb15135bc76be1c32db4aff14f47 refs/remotes/origin/main\n4939122f5db03e3a78c0499708457c8634601c35 refs/remotes/origin/qualification/dcp-022-6eed7f0dc9cc\n71353344bb78bb15135bc76be1c32db4aff14f47 HEAD\nThe bundle records a complete history.\nThe bundle uses this hash algorithm: sha1",
+  "checkpointManifestSha256": "d261f1a2af1f3b20be1fa56d310a73b925926a992f25e88b84b536c66b73673b",
+  "red": {
+    "mcpRawSha256": "d585feb3c9b4707c24e266e4d8476e18ce21bc25169ebe08275fa972a34d400b",
+    "mcpNormalizedSha256": "d585feb3c9b4707c24e266e4d8476e18ce21bc25169ebe08275fa972a34d400b",
+    "counts": {
+      "tests": 23,
+      "pass": 6,
+      "fail": 17,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "testSha256": "237327b5ef81a5451597d74187da260fca6ef1ea722fd0982757545ec9af5e52",
+    "runtimeRawSha256": "3cd606ebbf5404da939c238d6173721d4656d1ee28fd4982ba259b826ec062de",
+    "runtimeNormalizedSha256": "3cd606ebbf5404da939c238d6173721d4656d1ee28fd4982ba259b826ec062de"
+  },
+  "green": {
+    "counts": {
+      "tests": 23,
+      "pass": 23,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "files": [
+      {
+        "path": "src/desktop-commander-files.ts",
+        "sha256": "f111c97949db5b10a6e1a0dc05bf3a65a6163198f2b13ce5cdcdb4fd94489008"
+      },
+      {
+        "path": "src/mcp.ts",
+        "sha256": "54ea5248a41f48ee39c14cb9df2b1bf380c42a74c6b4c4cce1aadbd9c17f1f5b"
+      },
+      {
+        "path": "tests/compat-file-info.test.mjs",
+        "sha256": "237327b5ef81a5451597d74187da260fca6ef1ea722fd0982757545ec9af5e52"
+      },
+      {
+        "path": "scripts/verify-compatibility-installed.mjs",
+        "sha256": "e2327ed4e397c63a89d159a7a6939e56e9a00b7f64953186046adfc3740fc720"
+      },
+      {
+        "path": "scripts/verify-package.mjs",
+        "sha256": "ed6c9ad534c7f63b9b9c4d2e353e53fe3e5de7aebddd52dca00fbebc8f589335"
+      }
+    ]
+  },
+  "ok": true,
+  "preservationAfter": {
+    "primary": {
+      "path": "C:/Tools/Dev/MTerm-CLI",
+      "head": "1d900464ba8a36a1121e2ae51ea65c14c3ee41c1",
+      "branch": "feat/codex-parity-foundation-20261005",
+      "status": " M src/cli.ts\n M src/codex-registration.ts\n M src/desktop-commander-files.ts\n M src/files.ts\n M src/git.ts\n M src/mcp.ts\n M src/policy.ts\n M src/processes.ts\n?? src/compat-config.ts\n?? tests/compat-config-mcp.test.mjs\n?? tests/compat-config.test.mjs"
+    },
+    "originalFiles": [
+      {
+        "path": "src/cli.ts",
+        "bytes": 10366,
+        "sha256": "897e2051c18ad01c9a3492c791f96b50a0c751fd3318288c3006be1b5a834ac2"
+      },
+      {
+        "path": "src/codex-registration.ts",
+        "bytes": 14574,
+        "sha256": "90c104d71efb103af85bf94b0b3c90838a13d0ab733e29165aeeb8a39203a62e"
+      },
+      {
+        "path": "src/desktop-commander-files.ts",
+        "bytes": 13012,
+        "sha256": "10798c09912dec50461a00125c955e6dfb27eb30b7b8c0520fdbd6dc5877746e"
+      },
+      {
+        "path": "src/files.ts",
+        "bytes": 12951,
+        "sha256": "70a6cfc734ad77078c1238ff3978a238d4c5c541192e3329d42d943e11e58b5e"
+      },
+      {
+        "path": "src/git.ts",
+        "bytes": 4123,
+        "sha256": "f60ecd2f9b4cb71ffa4c0a3ab5140f4f660285da270252fe5f9e214d5d93fbdb"
+      },
+      {
+        "path": "src/mcp.ts",
+        "bytes": 16091,
+        "sha256": "a4f468b6da779ee3b4be71b026b3d84b0043592cb0551fd22e1de650d1957b0f"
+      },
+      {
+        "path": "src/policy.ts",
+        "bytes": 5254,
+        "sha256": "649540d897fe4d9173c32ab5c57b0b63e48f47730a82534e3ba6758cbd20cd6b"
+      },
+      {
+        "path": "src/processes.ts",
+        "bytes": 12719,
+        "sha256": "64a12cb903c09d2f1d23584fd9fa09da2d7cad02289b5455dd39570750b5f5f5"
+      },
+      {
+        "path": "src/compat-config.ts",
+        "bytes": 13165,
+        "sha256": "5548b38519a1689d543f14b28b58145bd976ffcea0275659d3dbc9c69b358e6f"
+      },
+      {
+        "path": "tests/compat-config-mcp.test.mjs",
+        "bytes": 6721,
+        "sha256": "2b944828c1ceed9be9a555ea2df513513d4b255a162e52622140a6f8d4fdb2e5"
+      },
+      {
+        "path": "tests/compat-config.test.mjs",
+        "bytes": 9574,
+        "sha256": "f96c4a66b104c2b24fe1c1d839c1b77cb2bc02370284dfadda7c94a3e69ca540"
+      }
+    ],
+    "protectedRepositories": [
+      {
+        "path": "C:/Tools/Dev/MTerm-CLI/artifacts/worktrees/ao-orchestrator-20261022T014443Z",
+        "head": "4d5d380ae824ae8815734213f7401aac3252b0dd",
+        "branch": "chore/ao-orchestrator-20261022T014443Z",
+        "status": ""
+      },
+      {
+        "path": "C:/Tools/Dev/MTerm-CLI/artifacts/worktrees/config-contract-20261102",
+        "head": "7d55c6a2c498a02ce0191ce3f0a1a4a109c042ea",
+        "branch": "main",
+        "status": ""
+      },
+      {
+        "path": "C:/Tools/Dev/MTerm-CLI/artifacts/worktrees/config-metadata-20261102",
+        "head": "acaf276066c9e0436af2398c0120a38f7c04f5f0",
+        "branch": "main",
+        "status": ""
+      },
+      {
+        "path": "C:/Tools/Dev/MTerm-CLI/artifacts/worktrees/config-qualification-20261102",
+        "head": "c408e286c437bec1c8c88fbbae29d89a9f8f90c8",
+        "branch": "main",
+        "status": ""
+      },
+      {
+        "path": "C:/Tools/Dev/MTerm-CLI/artifacts/worktrees/config-retry-20261102",
+        "head": "297877435c4b3358ac53414af28edd11504e35ed",
+        "branch": "feat/dcp-010-config-retry-20261102",
+        "status": ""
+      },
+      {
+        "path": "C:/Tools/Dev/MTerm-CLI/artifacts/worktrees/directory-contract-20261102",
+        "head": "71353344bb78bb15135bc76be1c32db4aff14f47",
+        "branch": "main",
+        "status": ""
+      },
+      {
+        "path": "C:/Tools/Dev/MTerm-CLI/artifacts/worktrees/har-automation-20261016",
+        "head": "b093a00755296c64d37f1d430c5dde3dfd992f08",
+        "branch": "feat/har-automation-20261016",
+        "status": ""
+      },
+      {
+        "path": "C:/Tools/Dev/MTerm-CLI/artifacts/worktrees/remote-mcp-20261102",
+        "head": "8f0016c91f12aba31b4c64eae05dc0836f228b8f",
+        "branch": "docs/remote-closeout-metadata-20261102",
+        "status": ""
+      }
+    ]
+  },
+  "preservationVerified": true,
+  "ownerAfter": {
+    "observedAtUtc": "2026-11-02T17:24:25.541Z",
+    "paired": true,
+    "permissions": "read-only",
+    "autostart": false,
+    "observedStatus": "online",
+    "networkChecked": false,
+    "runtime": {
+      "pid": 38384,
+      "startedAt": "2026-11-02T04:06:30.929Z",
+      "at": "2026-11-02T17:24:23.763Z",
+      "state": "online",
+      "activeRequests": 0
+    }
+  },
+  "completedAtUtc": "2026-11-02T17:24:25.541Z"
+}

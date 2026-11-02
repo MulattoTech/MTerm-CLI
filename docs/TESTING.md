@@ -1,6 +1,47 @@
 # Verification commands and evidence — 2026-11-02
 
-The current configuration proof is recorded in [PR #72](https://github.com/MulattoTech/MTerm-CLI/pull/72)
+## Current DCP-010 contract qualification
+
+The [setter contract report](validation/2026-11-02-config-contract.md) records a
+focused native Windows Node 24.21.0 RED/GREEN at an uncommitted candidate based on
+`acaf276066c9e0436af2398c0120a38f7c04f5f0`. Before the runtime change, 12 tests
+produced 2 passes and 10 success-text assertion failures. After the minimal output
+fix, all 12 passed with zero skips or cancellations. The report pins the old and
+new source/test/log hashes; a cleanup-only helper repair separates the two test
+revisions. Scratch `CONNECTION_CLOSED` occurred during initialization and supplies
+no product RED or runtime qualification.
+
+The new cases use real SDK stdio clients to check all six preference outputs,
+normalization, owner ceilings, 32 rejected inputs with exact policy/backup byte
+preservation, no-op writes, sampled same-key concurrency and the independent
+config-write capability. The installed verifier retains its prior scenarios and
+adds six-setting success and 14 rejection checks, bringing its expected total to
+ten scenarios. Those extended packed-installed scenarios are **pending execution**
+at this record's preparation; source review and syntax validation are separate.
+
+```powershell
+npm run build:code
+node --test --test-reporter=tap --test-concurrency=1 tests/compat-config-set-contract.test.mjs
+```
+
+The integration owner must explicitly review/render the affected roadmap before
+normal build/check/package gates. Full native qualification, normal prepack,
+source/installed native-Codex checks, fresh committed extraction and hosted/final
+delivery gates for this change remain pending. No model calls or real Codex
+auth/config mutation are part of these checks. Independent static review has no
+blocking findings, and all acceptance/stage metrics remain unchanged.
+
+## Completed configuration qualification checkpoints
+
+The immediately preceding metadata slice is complete in
+[PR #73's final delivery receipt](https://github.com/MulattoTech/MTerm-CLI/pull/73#issuecomment-6577021102):
+implementation `535d99e` passed 175/175 native Windows tests and eight installed
+scenarios; final head `6757c1f` passed 9/9 checks, and merged main `acaf276` passed
+5/5, with no retries on either final head or main. Its initial implementation
+macOS ARM npm-install timeout and one supported successful retry remain recorded
+with unknown cause. Those results do not qualify the new DCP-010 candidate.
+
+The earlier configuration proof is recorded in [PR #72](https://github.com/MulattoTech/MTerm-CLI/pull/72)
 and the [delivery record](validation/2026-11-02-config-delivery.json), at implementation
 `def85d256fe558ef26e0cdf7d0218ce250682150`. The earlier remote release remains
 recorded separately by [PR #69](https://github.com/MulattoTech/MTerm-CLI/pull/69)

@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-02-config-contract; set success reports its committed effective preference value.
 // Modified: 2026-10-05-codex-parity-foundation; opt-in bounded DesktopCommander file aliases.
 // AI-Change: 2026-10-04-local-mcp (OpenAI / GPT-6 Astra Pro; self-reported)
 import os from 'node:os';
@@ -173,6 +174,9 @@ export async function runMcp(options: HostOptions): Promise<void> {
             async (a, signal) => {
               const parsed = compatibilityConfigSchemas.set.parse(a);
               const next = await configuration.set(parsed.key, parsed.value, signal);
+              // set() validates the key and returns this write's effective snapshot.
+              // Do not echo raw input or reread a later concurrent writer's value.
+              const effectiveValue = next[parsed.key as keyof typeof next];
               return {
                 content: [
                   {
@@ -180,6 +184,8 @@ export async function runMcp(options: HostOptions): Promise<void> {
                     text:
                       'Successfully set ' +
                       parsed.key +
+                      ' to ' +
+                      JSON.stringify(effectiveValue, null, 2) +
                       '\n\nUpdated configuration:\n' +
                       JSON.stringify(next, null, 2),
                   },

@@ -4,7 +4,30 @@
 weighted maturity ledger is a separate measurement. Neither passing CI nor a
 merged implementation closes a full parity requirement.
 
-## DCP-009 qualification and delivery
+## Current DCP-010 setter contract candidate
+
+The isolated candidate on `feat/dcp-010-config-contract-20261102`, based on merged
+main `acaf276066c9e0436af2398c0120a38f7c04f5f0`, adds the missing
+` to <effective JSON value>` success segment while retaining the existing
+owner-bounded six-preference contract. Each acknowledgement uses the same
+validated write snapshot as its configuration body. No coercions, capabilities,
+storage behavior or telemetry transport are added.
+
+Focused native Windows Node 24.21.0 tests reached the actual success assertions:
+**2 passed/10 failed before the edit, then 12/12 passed with no skips or
+cancellations**. The corrected test helper preserves fixture state if an owned
+child's exit cannot be verified. The [contract report](validation/2026-11-02-config-contract.md)
+records both source identities, cleanup-only test revision, all six normalization
+rules and the distinction between native RED and scratch `CONNECTION_CLOSED`
+initialization failures. Independent source review has no blocking findings.
+
+Normal roadmap-reviewed build/check, full native gates, execution of the extended
+packed-installed verifier, fresh committed extraction and hosted/publication
+gates remain pending for this uncommitted candidate. Earlier results below do
+not qualify it. DCP acceptance remains **0/48**, WEB **0/12** and weighted CLI
+maturity **29.12%**, with all stages and weights unchanged.
+
+## Completed DCP-009 qualification and delivery
 
 [PR #73](https://github.com/MulattoTech/MTerm-CLI/pull/73) carries tested implementation
 `535d99e20b52a30ba9a24b6d2205d8e6687f6ca6`, based on verified main `c408e286`.
@@ -21,13 +44,23 @@ intercepted and zero product network attempts observed within the instrumented
 Node APIs. Native Codex 0.160.1 parsed isolated registration; SDK clients called
 the registered command. Actual Codex model tool invocation remains unperformed.
 
-At the 12:02:49 UTC observation, implementation hosted checks are **9/9 passed**.
+At the 12:02:49 UTC observation, implementation hosted checks were **9/9 passed**.
 The initial push macOS ARM64 job timed out during npm tarball installation after
 its tests passed. One supported rerun of that job passed at unchanged `535d99e`,
 including package and native-Codex gates. The initial failed attempt and its
-unestablished cause remain recorded. Final documentation/merged-main checks are
-separate. Read the [delivery record](validation/2026-11-02-config-metadata-delivery.json)
-and PR #73 for the latest exact-head outcome and eventual merge identity.
+unestablished cause remain recorded. The directly retrieved
+[final PR #73 receipt](https://github.com/MulattoTech/MTerm-CLI/pull/73#issuecomment-6577021102)
+resolves its earlier pending delivery state: final documentation head `6757c1f`
+passed 9/9 checks without retries, normal merge produced `acaf276` at 12:17:20 UTC,
+and merged main passed 5/5 without retries, rechecked 12:20:35 UTC. Final-head and
+merged trees match. The [earlier delivery record](validation/2026-11-02-config-metadata-delivery.json)
+remains the historical implementation qualification record.
+
+DCP-009 still needs the owner's contract ruling on documented omitted probes and
+owner/privacy restrictions, or a decision defining which truthful bounded fields
+are required. The [current report](validation/2026-11-02-config-contract.md#earlier-dcp-009-delivery-and-the-remaining-owner-ruling)
+lists those differences. This acceptance ruling does not authorize a model call
+and does not replace actual supported-client acceptance.
 
 ## Historical configuration sprint baseline
 

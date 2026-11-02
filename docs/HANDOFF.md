@@ -1,6 +1,42 @@
 # MTerm-CLI handoff — 2026-11-02 configuration continuation
 
-## DCP-009 qualification and current owner connection
+## Current DCP-010 setter contract continuation
+
+The isolated `feat/dcp-010-config-contract-20261102` candidate starts from merged
+main `acaf276066c9e0436af2398c0120a38f7c04f5f0`. It adds the missing
+` to <effective JSON value>` segment to each successful `set_config_value`
+response, using the same validated write snapshot as the configuration body.
+Owner ceilings, strict per-key validation, storage, safe errors and independent
+configuration-write capability are unchanged. The
+[contract report](validation/2026-11-02-config-contract.md) documents all six
+preferences, intentional upstream differences, rejected-write byte preservation
+and source identities.
+
+Native Windows Node 24.21.0 observed a meaningful **2-pass/10-fail RED**, then
+**12/12 GREEN with zero skips or cancellations**. Both ran in the uncommitted
+isolated candidate based on `acaf276`; the report identifies the actual source
+hashes rather than attributing the fix to base main. The test cleanup helper was
+repaired between RED and GREEN without changing contract assertions. Scratch
+stdio initialization failed with `CONNECTION_CLOSED`; that is an environment
+observation, not product RED. Independent static review has no blocking findings.
+The extended installed verifier adds six-setting output/rejection checks; its
+new packed-installed execution remains pending.
+
+Next, the integration owner reviews the final evidence and documentation,
+explicitly reviews/renders the roadmap, then runs normal/native, packed-installed,
+fresh-source and hosted/publication gates. Those gates are not yet established
+for this candidate. All 48 DCP issues remain open, WEB acceptance is 0/12 and
+broad maturity stays 29.12%; no stages or weights change.
+
+The DCP-009 owner ruling still required is whether its documented omitted probes
+and owner/privacy restrictions are acceptable intentional differences in the
+Codex-facing parity contract; otherwise specify the truthful bounded fields
+required. The [report](validation/2026-11-02-config-contract.md#earlier-dcp-009-delivery-and-the-remaining-owner-ruling)
+lists the exact differences. This is contract acceptance, not permission for
+model calls or real user configuration changes; actual supported-client
+acceptance remains separate.
+
+## Completed DCP-009 delivery and existing owner connection
 
 The independent `feat/dcp-009-config-metadata-20261102` implementation is
 `535d99e20b52a30ba9a24b6d2205d8e6687f6ca6`, based on verified main
@@ -21,10 +57,14 @@ The [delivery record](validation/2026-11-02-config-metadata-delivery.json) recor
 9/9 latest implementation hosted checks passing at unchanged `535d99e`. The initial
 push macOS ARM64 npm-install timeout remains recorded with cause unestablished;
 one supported rerun passed its tests, package and native-Codex gates at 12:00:47 UTC.
-Only that failed platform job was rerun. PR #73 is the authority for final
-documentation head, merge/main and checkpoint results. Native Codex parsing plus
-SDK calls does not establish a model-driven tool invocation. All DCP issues remain
-open and broad stages/weights unchanged.
+Only that failed platform job was rerun. The directly retrieved
+[final delivery receipt](https://github.com/MulattoTech/MTerm-CLI/pull/73#issuecomment-6577021102)
+supersedes older prepublication notes: final head `6757c1f` passed 9/9 checks
+without retries, normal merge produced `acaf276` at 12:17:20 UTC, and merged main
+passed 5/5 without retries, rechecked 12:20:35 UTC. The final head and merged tree
+are identical. Native Codex parsing plus SDK calls does not establish a
+model-driven tool invocation. All DCP issues remain open and broad stages/weights
+unchanged.
 
 The owner has approved the prepared `C:\Tools\Dev\MTerm-RemoteWorkspace` root.
 Real owner-authorized pairing through an existing authenticated dashboard, online

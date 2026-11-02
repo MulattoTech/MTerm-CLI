@@ -1,0 +1,209 @@
+{
+  "change_id": "2026-11-02-config-contract",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "identity_basis": "session-declared; self-reported",
+  "started_at_utc": null,
+  "first_recorded_development_check_at_utc": "2026-11-02T12:39:42.001505Z",
+  "timing_basis": "Initial worker setup time was not recorded. The first retained development-check timestamp is explicit; updated_at_utc records documentation preparation.",
+  "updated_at_utc": "2026-11-02T12:56:27Z",
+  "base_sha": "acaf276066c9e0436af2398c0120a38f7c04f5f0",
+  "base_tree": "9a8338bde6207c13005d6b1bb2583201bc609931",
+  "branch": "feat/dcp-010-config-contract-20261102",
+  "primary_issue": 12,
+  "upstream_commit": "c774c3b505de990219637ecdc9a830c8772fae9d",
+  "summary": "Add the missing accepted effective value to set_config_value success text, prove the six-preference contract through focused native MCP tests, and extend installed verification while preserving strict normalization, owner ceilings and safe errors.",
+  "files_modified": [
+    "src/mcp.ts",
+    "scripts/verify-configuration-installed.mjs",
+    "docs/HANDOFF.md",
+    "docs/STATUS.md",
+    "docs/TESTING.md",
+    "docs/roadmap/progress.json",
+    "docs/roadmap/desktop-commander-parity.json",
+    "docs/execution/NEXT_PARITY_PROMPT.md",
+    "docs/roadmap/FEATURES.md",
+    "docs/roadmap/index.html",
+    "docs/roadmap/review.json"
+  ],
+  "files_created": [
+    "tests/compat-config-set-contract.test.mjs",
+    "docs/validation/2026-11-02-config-contract.md",
+    "docs/validation/2026-11-02-config-contract-review.json",
+    "docs/ai/changes/2026-11-02-config-contract.json"
+  ],
+  "requirements": [
+    "DCP-010",
+    "DCP-009",
+    "CLI-137",
+    "CLI-138",
+    "CLI-141",
+    "CLI-287",
+    "CLI-300"
+  ],
+  "decisions": [
+    "Continue in an independent ordinary clone based on verified merged main acaf276. Preserve the original primary checkout, prior clones, protected worktrees and running owner agent. Root owns workstation qualification and publication.",
+    "Read the immutable pinned upstream handler and field definitions without executing upstream bootstrap, telemetry or probes. Match the success wording and JSON indentation while explicitly reporting the accepted effective value, which can differ from upstream valueToStore for canonical roots and mandatory blocks.",
+    "Select the acknowledged value from the successful setter return object used by the existing configuration body. Do not echo raw request data or reread a later writer. Preserve the text-only success envelope and existing schemaVersion extension.",
+    "Leave src/compat-config.ts, storage/retries, six supported keys, strict bounds, boolean-string and array-string normalization, owner root/shell ceilings, mandatory command blocks and safe error handling unchanged. A configuration preference cannot grant write, execution or network capability.",
+    "Write the new contract tests before the runtime edit and establish meaningful RED on native Windows. Classify scratch CONNECTION_CLOSED at initialization as environment/observation failure, not behavior RED.",
+    "Repair the independent review finding in test cleanup: attempt every client and transport close, verify all owned child exits, aggregate failures and retain fixture state on unconfirmed exit. Contract assertions remain unchanged from original RED test bytes.",
+    "Add exact six-key success checks, 32 rejected cases with policy/backup byte preservation, no-op integer endpoints, sampled two-round same-key concurrency and independent capability checks through actual SDK stdio clients. Do not describe sampled concurrency as a forced-interleaving proof.",
+    "Extend the existing actual-package verifier with six-key success normalization and 14 rejected-write checks, retaining prior metadata, concurrent-child, restart, network-canary and owned-cleanup behavior. Harmless shell preferences are selected but never executed by the new contract scenarios.",
+    "Resolve DCP-009 historical prepublication text from the directly retrieved final PR #73 comment. Preserve its omitted-field/privacy owner ruling as contract acceptance only, separate from supported-client acceptance and any model authorization.",
+    "Update only the five relevant CLI rows evidence/notes/reviewer and DCP-009/010 observations/evidence. Preserve all stages, weights, acceptance text, dependencies, estimates, issue states, 29.12 percent broad maturity, DCP 0/48 and WEB 0/12. Do not edit the WEB ledger.",
+    "Copy the independent source review byte-for-byte after checking it contains source identities and bounded review observations, with no owner identifiers or credentials. Do not infer runtime gates from static review.",
+    "Integration owner reviewed source, static review, documentation and protected ledger differences; corrected independent #12 acceptance boundary, refreshed continuation from the user-supplied verified PR #73 receipt, and recorded bounded current dashboard/public-health evidence without retrying blocked client flows. Explicit roadmap review/render and committed qualification follow this review.",
+    "Preserve the first normal-build evidence-path failure and correct only the new ledger reference; the offline parity checker remains unchanged."
+  ],
+  "tests": [
+    {
+      "command": "npm run build:code before and after the runtime edit (scratch Linux x64 Node 24.22.1)",
+      "result": "PASS; development compilation only. The initial locked offline install failed ENOTCACHED. An independent copy of cached dependencies was used after exact package.json/package-lock.json/npm-shrinkwrap.json equality; no shared mutable node_modules or fresh-install claim."
+    },
+    {
+      "command": "Scratch node --test and direct new-test attempts",
+      "result": "UNQUALIFIED environment observation: file-level runner failure and CONNECTION_CLOSED during initialization before behavior assertions. These runs do not establish product RED. Further scratch stdio attempts stopped."
+    },
+    {
+      "command": "Native Windows Node 24.21.0 npm run build:code; node --test --test-reporter=tap --test-concurrency=1 tests/compat-config-set-contract.test.mjs (pre-fix)",
+      "result": "Meaningful RED observed by integration owner at 2026-11-02T12:43:10Z..12:43:14Z: 12 tests, 2 passed, 10 failed, 0 skipped/cancelled. All 10 failures reached the success-text assertion; rejection/capability cases passed. Uncommitted isolated clone based on acaf276, old runtime dad705164 and original test f824462; exact hashes in native_focused below."
+    },
+    {
+      "command": "Native Windows Node 24.21.0 npm run build:code; node --test --test-reporter=tap --test-concurrency=1 tests/compat-config-set-contract.test.mjs (fixed)",
+      "result": "PASS observed by integration owner at 2026-11-02T12:47:32.574Z..12:47:36.990Z: 12 tests, 12 passed, 0 failed/skipped/cancelled; 3494.2329 ms. Compile exit 0. Uncommitted isolated candidate with runtime d585feb and cleanup-corrected test 9ca666; do not attribute fix to base acaf276."
+    },
+    {
+      "command": "Independent read-only runtime/test/installed-verifier review",
+      "result": "No blocking findings in exact reviewed bytes. Cleanup finding P2 resolved with assertions intact. Reviewer executed no runtime or publication gate. Unchanged source report SHA-256 8bfefad15ac19d4a49a6d1ba70f247b799c2fab7f7cc9665d5d2ac122e215d0c."
+    },
+    {
+      "command": "Source/test/verifier syntax and formatting; git diff --check (development worker)",
+      "result": "PASS before documentation preparation. No normal roadmap-reviewed build/check/package qualification is inferred."
+    },
+    {
+      "command": "Explicit roadmap review/render/check and normal build/check",
+      "result": "PENDING integration-owner review of final documentation and gate evidence."
+    },
+    {
+      "command": "Complete native Windows, self-host, packed-installed configuration, normal prepack and source/installed managed-Codex qualification",
+      "result": "PENDING for this candidate. The verifier source expects 10 scenarios including 6 preference responses and 14 rejections; those extended installed results are not yet observed."
+    },
+    {
+      "command": "Fresh committed source extraction, locked install and actual installed verification",
+      "result": "PENDING. No committed implementation SHA or fresh artifact identity is asserted."
+    },
+    {
+      "command": "Hosted implementation/final-documentation checks, merge/main and recovery checkpoint",
+      "result": "PENDING. Historical PR #73 final 9/9 and main 5/5 results qualify only that previous delivery."
+    },
+    {
+      "command": "Bounded documentation JSON parse, immutable-base protected-field comparison, source/test/verifier/review hash checks and git diff --check",
+      "result": "PASS: all 300 CLI rows preserve protected fields; only the five authorized rows change evidence/notes/reviewer. All 48 DCP rows retain protected fields and open states; only DCP-009/010 observations/evidence timestamps change. WEB ledger is byte-identical to base. Runtime/test/verifier and copied review hashes match. Explicit roadmap review/render and normal qualification were not run by this worker."
+    },
+    {
+      "command": "Initial reviewed normal scratch build after documentation preparation",
+      "result": "FAILED at parity evidence validation: a new remote PR comment URL was supplied where the existing checker accepts committed local paths. Corrected the evidence entry to the committed contract report, which retains the direct PR comment citation; no runtime/checker change and no gate waiver. The surrounding ad-hoc shell ended 0 after a subsequent diff check; npm build output itself explicitly failed."
+    },
+    {
+      "command": "Integration-owner explicit roadmap review/render, normal npm run build, npm run format:check, git diff --check after evidence-path correction",
+      "result": "PASS in scratch. Offline pin/parity validation reports 26 tools, 0/48 accepted, pass false; broad maturity 29.12%, baseline weight 4068. Normal native check/full/package/Codex/fresh gates remain pending for the committed candidate."
+    }
+  ],
+  "native_focused": {
+    "node": "v24.21.0",
+    "platform": "win32",
+    "architecture": "x64",
+    "source_basis": "Both runs used an uncommitted isolated clone based on acaf276; file hashes identify the actual runtime/test bytes.",
+    "red": {
+      "started_at_utc": "2026-11-02T12:43:10Z",
+      "completed_at_utc": "2026-11-02T12:43:14Z",
+      "tests": 12,
+      "passed": 2,
+      "failed": 10,
+      "skipped": 0,
+      "cancelled": 0,
+      "runtime_sha256": "dad705164d249068696ec303b5d4a4b2e6712625b25f1c74ca142639db708540",
+      "test_sha256": "f824462c68b0f1216232afad767718e0fdeb2ecf748828b4a7a3176f16f12117",
+      "stdout_sha256": "434d981b92e8c322b26ede98a50464018a4be6f1c207754b4bc295111b9a63ef",
+      "retained_evidence": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\config-contract-20261102\\artifacts\\config-contract-red"
+    },
+    "green": {
+      "started_at_utc": "2026-11-02T12:47:32.574Z",
+      "completed_at_utc": "2026-11-02T12:47:36.990Z",
+      "tests": 12,
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "duration_ms": 3494.2329,
+      "compile_exit_code": 0,
+      "runtime_sha256": "d585feb3c9b4707c24e266e4d8476e18ce21bc25169ebe08275fa972a34d400b",
+      "test_sha256": "9ca666989736911aacf24b3b4516cb91e8a6548bdbfb0736cd7ae136b353d992",
+      "stdout_sha256": "a0e04c288dc02fa0be2c53b7ea8e4e16ac2f5787ed2055939c6dc4683ace3c1f",
+      "retained_evidence": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\config-contract-20261102\\artifacts\\config-contract-green"
+    },
+    "test_revision": "Cleanup only changed after original RED; all contract assertions retained."
+  },
+  "roadmap_updates": [
+    {
+      "ids": "CLI-137,CLI-138,CLI-141,CLI-287,CLI-300",
+      "assessment": "Append scoped output, typed rejection, policy/backup byte and focused native evidence; keep normal/full/installed/fresh/hosted gates explicitly pending. Only evidence/notes/reviewer change. All 300 stages/weights/acceptance/dependencies/estimates and 29.12 percent maturity remain unchanged."
+    },
+    {
+      "ids": "DCP-010",
+      "assessment": "Record exact output slice, native 2-pass/10-fail RED then 12/12 GREEN and independent static review. #12 remains open for its own complete setter contract, accepted intentional differences and applicable actual client evidence; separate DCP-012/013/014/034 shell/process contracts remain unqualified by this slice. All 48 issues remain open, closed 0, pass false; no acceptanceReview or closure."
+    },
+    {
+      "ids": "DCP-009",
+      "assessment": "Resolve prior final-delivery pending wording from direct PR #73 final comment: final head 6757c1f 9/9; merge acaf276; main 5/5; finalhead/main no retries. Keep initial implementation ARM timeout and successful supported retry historical. Preserve precise omitted-field/privacy owner ruling and actual-client acceptance as separate remaining requirements."
+    },
+    {
+      "ids": "WEB-001..012",
+      "assessment": "No WEB ledger edit, deployment/client-consent change or acceptance credit in this worker; accepted 0/12 remains."
+    }
+  ],
+  "limitations": [
+    "Focused Windows 12/12 and source review do not replace pending normal reviewed full/native/packed-installed/fresh-source/hosted/final delivery gates.",
+    "Success text matches the pinned wording, but its accepted effective value and schemaVersion body intentionally differ from upstream raw/coerced storage echo. Existing stricter coercions and owner/privacy rules are not broadened.",
+    "Rejected seeded writes and identical no-op writes preserve measured bytes; no universal I/O rollback or OS-wide atomic transaction is claimed. Two-round same-key concurrency is sampled coverage.",
+    "Selected shell fixture names establish allowed preference persistence, not shell availability or actual shell execution. Separate DCP-012/013/014/034 shell/process contracts remain unqualified by this slice; their full acceptance is not imported into independently closeable #12.",
+    "DCP-009 requires an owner acceptance-contract ruling on documented omitted probes and owner/privacy restrictions, or definition of required truthful bounded fields. This is not model-call authorization.",
+    "No paid/model call, real auth/config mutation, pairing, deployment, publication or full parity acceptance was performed by this worker. Prior native Codex parser+SDK proof remains separate from model-driven tool invocation.",
+    "Network instrumentation concerns selected Node APIs only and is not an OS network sandbox. New installed execution remains pending in this preparation."
+  ],
+  "previous_delivery_receipt": {
+    "url": "https://github.com/MulattoTech/MTerm-CLI/pull/73#issuecomment-6577021102",
+    "comment_created_at_utc": "2026-11-02T12:22:35Z",
+    "observation": "Direct GitHub comments read during this documentation preparation",
+    "implementation_sha": "535d99e20b52a30ba9a24b6d2205d8e6687f6ca6",
+    "final_head": "6757c1fbb0df2dc41087640793f589c80a135302",
+    "merged_main": "acaf276066c9e0436af2398c0120a38f7c04f5f0",
+    "identical_tree": "9a8338bde6207c13005d6b1bb2583201bc609931",
+    "merged_at_utc": "2026-11-02T12:17:20Z",
+    "final_head_checks": "9/9 passed, no retries",
+    "main_checks": "5/5 passed, no retries; last completion 12:19:42Z; rechecked 12:20:35Z",
+    "scope": "Historical DCP-009 delivery only; does not qualify new DCP-010 bytes."
+  },
+  "checkpoint": {
+    "directory": "artifacts/checkpoints/dcp010-start-20261102",
+    "git_bundle_sha256": "ed43eabe3b2345bb6441f8ac29b14e9ef2fa444a1e2418be2dca8d5085c654e7",
+    "source_tar_sha256": "ba0fe3e5a395c1c65f7ba6ce7137430fb104ef6812d138e550093c034f062f9c"
+  },
+  "source_sha256": {
+    "src/mcp.ts": "d585feb3c9b4707c24e266e4d8476e18ce21bc25169ebe08275fa972a34d400b",
+    "src/compat-config.ts": "73d3f109bd4ce67a83e9ba7c5eb55e70eaa45f4cab63d96165a365b4698c9af9",
+    "tests/compat-config-set-contract.test.mjs": "9ca666989736911aacf24b3b4516cb91e8a6548bdbfb0736cd7ae136b353d992",
+    "scripts/verify-configuration-installed.mjs": "ff38f93d738b4a6d47347d62fc62c84bedb1228ea0ff488e0aee1bd44232e49b"
+  },
+  "reference_source_sha256": {
+    "upstream/src/tools/config.ts": "540d963760e5e4766bf78ca60545a3e3df80638ffd25d282cf0ecba7b0184e7c",
+    "upstream/src/config-field-definitions.ts": "d705dd5bd35fa2bee7129918dc4c44714db4f1cfd3b989e8bf9d3d68b7f2c843"
+  },
+  "independent_review": {
+    "path": "docs/validation/2026-11-02-config-contract-review.json",
+    "sha256": "8bfefad15ac19d4a49a6d1ba70f247b799c2fab7f7cc9665d5d2ac122e215d0c",
+    "result": "No blocking findings; static source/test/verifier review only."
+  },
+  "next_unverified_action": "Integration owner reviews final documentation and collected gate evidence, explicitly reviews/renders roadmap, then completes normal native/package/prepack/source-and-installed Codex, fresh committed extraction and exact-head hosted/publication gates. No commits or publication by documentation worker."
+}

@@ -33,7 +33,7 @@ export function parseHost(args: string[]) {
 }
 
 function help() {
-  return `MTerm-CLI ${VERSION} — local workstation preview\n\n  mterm-cli                         Launch existing Codex, unchanged TUI\n  mterm-cli -- <codex arguments>     Explicit pass-through, no injected flags\n  mterm-cli mcp --stdio --root PATH [--root OTHER] [--allow-write] [--allow-exec]\n  mterm-cli doctor --json [--root PATH]\n  mterm-cli setup codex --root PATH [--allow-write] [--allow-exec] [--apply]\n  mterm-cli remove codex [--name NAME] [--apply]\n  mterm-cli config [show|get KEY|set KEY VALUE|path] [--json]\n  mterm-cli status [--json|--line]    Quota integration not implemented yet\n  mterm-cli update                   Managed updater not implemented yet\n\nOptional --compat-desktop-commander exposes eight implemented text/file aliases, not full26-tool parity.\nCompatibility options: --compat-desktop-commander [--compat-config ABSOLUTE_FILE] [--allow-config-write] [--allow-shell EXECUTABLE].\nMCP defaults to read-only. Execution is separate and runs as your OS user, not a sandbox.\nNo browser, Web relay, network listener, daemon, quota request or automatic installation.\nsetup previews by default; --apply performs explicit backed-up registration. remove codex --apply removes only the exact owned block.\n`;
+  return `MTerm-CLI ${VERSION} — workstation preview\n\n  mterm-cli                         Launch existing Codex, unchanged TUI\n  mterm-cli -- <codex arguments>     Explicit pass-through, no injected flags\n  mterm-cli mcp --stdio --root PATH [--root OTHER] [--allow-write] [--allow-exec]\n  mterm-cli remote help              Configure and pair an outbound read-only agent\n  mterm-cli doctor --json [--root PATH]\n  mterm-cli setup codex --root PATH [--allow-write] [--allow-exec] [--apply]\n  mterm-cli remove codex [--name NAME] [--apply]\n  mterm-cli config [show|get KEY|set KEY VALUE|path] [--json]\n  mterm-cli status [--json|--line]    Quota integration not implemented yet\n  mterm-cli update                   Managed updater not implemented yet\n\nOptional --compat-desktop-commander exposes eight implemented text/file aliases, not full26-tool parity.\nCompatibility options: --compat-desktop-commander [--compat-config ABSOLUTE_FILE] [--allow-config-write] [--allow-shell EXECUTABLE].\nMCP defaults to read-only. Execution is separate and runs as your OS user, not a sandbox.\nRemote access requires explicit setup, authenticated pairing and foreground remote start.\nDefault local commands open no listener, start no daemon and make no quota request or automatic installation.\nsetup previews by default; --apply performs explicit backed-up registration. remove codex --apply removes only the exact owned block.\n`;
 }
 async function doctor(args: string[]) {
   const { settings } = await import('./config.js');
@@ -75,14 +75,14 @@ async function doctor(args: string[]) {
     nodeIsLts: !!process.release.lts,
     localMcp: { ...rootState, transport: 'stdio', defaultReadOnly: true, execIsNotSandbox: true },
     codex,
-    remoteWebRelay: { ready: false, reason: 'Not implemented' },
+    remoteWebRelay: { ready: false, implemented: true, optIn: true, permissions: 'read-only', reason: 'Use remote status to inspect the explicitly configured agent. This doctor does not contact the gateway.' },
     quota: { ready: false, reason: 'Not integrated' },
     networkChecked: false,
   };
   console.log(
     args.includes('--json')
       ? JSON.stringify(report, null, 2)
-      : `MTerm-CLI ${VERSION}\nLocal MCP: ${rootState.ready ? 'ready for the selected root' : 'root not verified'}\nNode: ${process.version} (${process.release.lts ?? 'not LTS; use Node 24 LTS'})\nWeb relay: not implemented\nNo network or account checks performed.`,
+      : `MTerm-CLI ${VERSION}\nLocal MCP: ${rootState.ready ? 'ready for the selected root' : 'root not verified'}\nNode: ${process.version} (${process.release.lts ?? 'not LTS; use Node 24 LTS'})\nRemote agent: opt-in read-only mode; use remote status\nNo network or account checks performed.`,
   );
   return report.ok ? 0 : 2;
 }
@@ -105,6 +105,7 @@ export async function main(args: string[]): Promise<number> {
     await (await import('./mcp.js')).runMcp(options);
     return 0;
   }
+  if (args[0] === 'remote') return (await import('./remote/cli.js')).remoteMain(args.slice(1));
   if (args[0] === 'doctor') return doctor(args.slice(1));
   if (args[0] === 'tools') {
     const opts = parseHost(['--stdio', ...args.slice(1)]);

@@ -145,3 +145,27 @@ test('MCP refuses missing root and unknown transport flags', async () => {
     assert.equal(r.code, 2);
   }
 });
+test('remote help and setup preview are explicit and do not create state', async (t) => {
+  const dir = await home(t), root = path.join(dir, 'project'), state = path.join(dir, 'state');
+  await fs.mkdir(root);
+  const help = await invoke(['remote', 'help']);
+  assert.equal(help.code, 0);
+  assert.match(help.stdout, /outbound read-only/);
+  const preview = await invoke(['remote', 'setup', '--gateway', 'https://mcp.example.invalid', '--dashboard', 'https://dashboard.example.invalid', '--root', root, '--state-dir', state]);
+  assert.equal(preview.code, 0, preview.stderr);
+  const plan = JSON.parse(preview.stdout);
+  assert.equal(plan.applied, false);
+  assert.equal(plan.permissions, 'read-only');
+  assert.equal(plan.autostart, false);
+  assert.equal(plan.dashboard, 'https://dashboard.example.invalid');
+  assert.deepEqual(await fs.readdir(dir), ['project']);
+});
+test('remote CLI rejects missing scope and unsupported privilege flags', async (t) => {
+  const dir = await home(t);
+  for (const args of [
+    ['remote', 'setup'],
+    ['remote', 'setup', '--gateway', 'http://example.invalid', '--root', dir],
+    ['remote', 'setup', '--gateway', 'https://example.invalid', '--root', dir, '--allow-write'],
+    ['remote', 'start', '--allow-exec'],
+  ]) assert.equal((await invoke(args)).code, 2);
+});

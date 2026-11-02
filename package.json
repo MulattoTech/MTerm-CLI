@@ -26,7 +26,7 @@
     "check": "npm run roadmap:check && npm run parity:check && npm run typecheck && npm run format:check && npm test",
     "roadmap:check": "node scripts/roadmap.mjs --check",
     "build:code": "tsc -p tsconfig.json",
-    "format:check": "prettier --check \"src/**/*.ts\" \"bin/*.js\" \"scripts/*.mjs\" \"tests/*.mjs\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"bin/*.js\" \"scripts/*.mjs\" \"tests/*.mjs\" \"gateway/*.mjs\"",
     "prepack": "npm run check && npm run build:code",
     "roadmap:render": "node scripts/roadmap.mjs --render",
     "parity:check": "node scripts/parity-baseline.mjs --check",

@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 // AI-Change: 2026-10-05-codex-parity-foundation (OpenAI / GPT-6 Astra Pro; self-reported)
+// Modified: 2026-11-02-registration-rename-retry; bounded Windows retries retain conflict checks.
 import fs from 'node:fs/promises';
 import { constants } from 'node:fs';
 import path from 'node:path';
@@ -8,6 +9,7 @@ import { createHash, randomUUID } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
+import { setTimeout as delay } from 'node:timers/promises';
 import { z } from 'zod';
 import { RootPolicy } from './policy.js';
 import { resolveCodex } from './codex.js';
@@ -138,14 +140,32 @@ async function replace(file: string, bytes: Buffer, expected: Snapshot): Promise
     } finally {
       await h.close();
     }
-    const current = await snapshot(file);
-    if (current.exists !== expected.exists || !current.bytes.equals(expected.bytes))
-      fail('CONFIG_CONFLICT', 'Configuration changed during setup; original and backup were preserved.');
-    // This serializes MTerm writers, not a hostile writer ignoring the lock. No OS-sandbox claim.
-    if (expected.exists) {
-      await fs.rename(tmp, file);
-      owned = false;
-    } else await fs.link(tmp, file);
+    // Windows scanners can briefly deny replacement after all our handles close.
+    // Revalidate the original snapshot for every attempt; never delete the destination.
+    const attempts = process.platform === 'win32' ? 5 : 1;
+    for (let attempt = 0; attempt < attempts; attempt++) {
+      const current = await snapshot(file);
+      if (
+        current.exists !== expected.exists ||
+        current.mode !== expected.mode ||
+        !current.bytes.equals(expected.bytes)
+      )
+        fail('CONFIG_CONFLICT', 'Configuration changed during setup; original and backup were preserved.');
+      // This serializes MTerm writers, not a hostile writer ignoring the lock. No OS-sandbox claim.
+      if (!expected.exists) {
+        await fs.link(tmp, file);
+        break;
+      }
+      try {
+        await fs.rename(tmp, file);
+        owned = false;
+        break;
+      } catch (error) {
+        const code = (error as NodeJS.ErrnoException).code;
+        if (attempt === attempts - 1 || (code !== 'EPERM' && code !== 'EBUSY')) throw error;
+        await delay(25 * 2 ** attempt);
+      }
+    }
   } finally {
     if (owned) await fs.unlink(tmp).catch(() => {});
   }

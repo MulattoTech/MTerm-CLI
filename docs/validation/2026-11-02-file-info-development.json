@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "assembledAt": "2026-11-02T17:17:54.102772+00:00",
+  "baseCommit": "71353344bb78bb15135bc76be1c32db4aff14f47",
+  "scope": "Supplementary Linux scratch direct-service RED/GREEN; native/installed/full/hosted gates separate.",
+  "red": {
+    "startedAt": "2026-11-02T17:12:34.413305+00:00",
+    "finishedAt": "2026-11-02T17:12:34.733491+00:00",
+    "command": [
+      "node",
+      "--test",
+      "--test-isolation=none",
+      "--test-reporter=tap",
+      "--test-concurrency=1",
+      "tests/compat-file-info.test.mjs"
+    ],
+    "exitCode": 1,
+    "counts": {
+      "tests": 23,
+      "pass": 6,
+      "fail": 17,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "node": "v24.22.1",
+    "scope": "Supplementary Linux scratch direct-service RED; native Windows independent run remains pending.",
+    "files": {
+      "desktop-commander-files.ts": "3cd606ebbf5404da939c238d6173721d4656d1ee28fd4982ba259b826ec062de",
+      "mcp.ts": "d585feb3c9b4707c24e266e4d8476e18ce21bc25169ebe08275fa972a34d400b",
+      "compat-file-info.test.mjs": "237327b5ef81a5451597d74187da260fca6ef1ea722fd0982757545ec9af5e52",
+      "focused.log": "af90ecd5ab10d0f6b5d9fba65a47663882db16fe34a6b30d8409284090d2a6c8"
+    }
+  },
+  "green": {
+    "startedAt": "2026-11-02T17:12:59.609763+00:00",
+    "finishedAt": "2026-11-02T17:12:59.984351+00:00",
+    "command": [
+      "node",
+      "--test",
+      "--test-isolation=none",
+      "--test-reporter=tap",
+      "--test-concurrency=1",
+      "tests/compat-file-info.test.mjs"
+    ],
+    "exitCode": 0,
+    "counts": {
+      "tests": 23,
+      "pass": 23,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0
+    },
+    "node": "v24.22.1",
+    "scope": "Supplementary Linux scratch direct-service GREEN; native full/installed/fresh gates remain pending.",
+    "sourceHashes": {
+      "src/desktop-commander-files.ts": "f111c97949db5b10a6e1a0dc05bf3a65a6163198f2b13ce5cdcdb4fd94489008",
+      "src/mcp.ts": "54ea5248a41f48ee39c14cb9df2b1bf380c42a74c6b4c4cce1aadbd9c17f1f5b",
+      "tests/compat-file-info.test.mjs": "237327b5ef81a5451597d74187da260fca6ef1ea722fd0982757545ec9af5e52"
+    },
+    "logSha256": "4e876dd19a8b5985622431146816b2c8f5f51514ed4be5aa4a5b80f7acbb0a20"
+  }
+}

@@ -370,11 +370,18 @@
       "title": "get_file_info complete metadata parity",
       "state": "open",
       "url": "https://github.com/MulattoTech/MTerm-CLI/issues/26",
-      "implementationObservation": "Text/stat metadata implemented; spreadsheet/document metadata and complete platform behavior remain open.",
+      "implementationObservation": "Bounded text/stat candidate corrects quoted ISO timestamps, empty lastLine=-1 and directory fileType=text handler discriminator. Optional metadata reads preserve existing content bounds and safe known operational fallback while propagating cancellation, policy, changed-path and unexpected errors. Direct RED23:6pass17assertion failures; identical fixture GREEN23/23; independent static review has no blockers. Native/installed/fresh/hosted and delivery gates remain separately unverified at preparation. Full type/format/encoding/large-file behavior and intentional-difference/actual-client acceptance remain open; no acceptance credit.",
       "evidence": [
-        "docs/validation/2026-10-05-codex-parity-foundation.md"
+        "docs/validation/2026-10-05-codex-parity-foundation.md",
+        "src/desktop-commander-files.ts",
+        "tests/compat-file-info.test.mjs",
+        "scripts/verify-compatibility-installed.mjs",
+        "docs/validation/2026-11-02-file-info-contract.md",
+        "docs/validation/2026-11-02-file-info-development.json",
+        "docs/validation/2026-11-02-file-info-source-review.json",
+        "docs/ai/changes/2026-11-02-file-info-contract.json"
       ],
-      "lastReviewedAt": "2026-10-05T21:08:42.944283+00:00"
+      "lastReviewedAt": "2026-11-02T17:17:54.102772+00:00"
     },
     {
       "id": "DCP-025",

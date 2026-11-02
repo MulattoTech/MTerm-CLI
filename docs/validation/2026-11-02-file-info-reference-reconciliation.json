@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-02T17:17:26.796259+00:00",
+  "reviewer": {
+    "provider": "OpenAI",
+    "model": "GPT-6 Astra Pro",
+    "agent": "/root/issue_audit",
+    "identityBasis": "self-reported; no cryptographic signature claim"
+  },
+  "upstream": {
+    "repository": "wonderwhy-er/DesktopCommanderMCP",
+    "commit": "c774c3b505de990219637ecdc9a830c8772fae9d",
+    "path": "src/tools/filesystem.ts"
+  },
+  "historicalReference": {
+    "source": "/workspace/scratch/9d76c3a0c50a/upstream-filesystem-c774c3b.ts",
+    "retainedCopy": "upstream-filesystem-historical-reference-copy.ts",
+    "bytes": 43491,
+    "sha256": "f3802e7439a44aea69f96757cfe5dd70e5aa739888c1aba0da6b185d66c38a0b",
+    "gitBlobSha1": "290745b52819384b4b407febdf0fb38ba12b066c",
+    "lfCount": 1111,
+    "crCount": 0,
+    "crlfCount": 0,
+    "utf8BOM": false,
+    "crlfNormalizedSha256": "f3802e7439a44aea69f96757cfe5dd70e5aa739888c1aba0da6b185d66c38a0b"
+  },
+  "currentExactBlob": {
+    "path": "upstream-filesystem.ts",
+    "bytes": 43490,
+    "sha256": "d9ccdbffc9a58def48b511df6bc6ee4d52ca23b0beff6a70c99186d04a1a1f30",
+    "gitBlobSha1": "0476a7ca11cd212a88cc30dbe194716ef6cbd073",
+    "lfCount": 1110,
+    "crCount": 0,
+    "crlfCount": 0,
+    "utf8BOM": false,
+    "crlfNormalizedSha256": "d9ccdbffc9a58def48b511df6bc6ee4d52ca23b0beff6a70c99186d04a1a1f30",
+    "githubFetchFileReportedBlob": "0476a7ca11cd212a88cc30dbe194716ef6cbd073",
+    "reportedBlobMatchesComputed": true,
+    "independentFetchBlobMatchesByteForByte": true,
+    "blobRecheckObservedAt": "2026-11-02T17:16:55.221Z"
+  },
+  "difference": {
+    "relation": "historicalBytes === currentExactBlobBytes + one LF byte",
+    "appendedHex": "0a",
+    "addedBytes": 1,
+    "offsetZeroBased": 43490,
+    "bothLFOnly": true,
+    "neitherHasBOM": true,
+    "crlfNormalizationDoesNotRemoveDifference": true,
+    "noOtherByteDifference": true,
+    "causeOfHistoricalTrailingLF": "not established; no assumption about writer/tool made"
+  },
+  "checkpointArchive": {
+    "path": "/workspace/scratch/9d76c3a0c50a/mterm-directory-source-evidence-20261102.zip",
+    "bytes": 665905,
+    "sha256": "3409bd736d4d555365e6d0d6b87d914460242c92da864c1d08d7952abd3ae381",
+    "member": "upstream-filesystem-c774c3b.ts",
+    "memberMatchesHistoricalBytes": true
+  },
+  "conclusion": "The PR75 reference hash f380\u2026 correctly identifies its preserved reference-copy bytes, which contain one extra terminal LF. The d9cc\u2026 hash identifies exact upstream blob bytes matching GitHub blob0476\u2026. There is no changed executable source line. These byte hashes must not be interchanged or attributed to CRLF/BOM normalization.",
+  "preservation": {
+    "historicalFileUnchanged": true,
+    "historicalArchiveUnchanged": true,
+    "originalAuditManifestsUnchanged": true,
+    "productSourceEdited": false,
+    "upstreamExecuted": false
+  }
+}

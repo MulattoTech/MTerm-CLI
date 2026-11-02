@@ -1,3 +1,23 @@
+# File metadata continuation — 2026-11-02
+
+The new DCP-024/#26 slice starts from verified merged main
+`71353344bb78bb15135bc76be1c32db4aff14f47` on
+`feat/dcp-024-file-info-contract-20261102`. Read
+[the metadata contract](validation/2026-11-02-file-info-contract.md),
+its development receipt and independent source review. Supplementary scratch
+RED had 23 tests: 6 passes and 17 assertion failures; unchanged test bytes then passed 23/23.
+Native full/installed/fresh/hosted gates and exact-head delivery remain next at
+this preparation; later observed receipts supersede pending fields.
+
+PR75's final delivery receipt confirms directory implementation, final/main
+checks, merge and recovery are complete. PR74 and PR73 also remain delivered.
+Do not repeat those gates, owner setup/pairing or deployment from older notes.
+Preserve the dirty primary, protected clones and running config-qualification
+owner. No paid/model calls or actual-client acceptance is inferred. DCP 0/48,
+WEB 0/12 and maturity 29.12% remain unchanged, with all protected fields intact.
+
+## Preserved earlier record
+
 # MTerm-CLI handoff — qualified directory contract
 
 ## Current DCP-022 delivery

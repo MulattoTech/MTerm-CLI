@@ -1,0 +1,88 @@
+{
+  "change_id": "2026-11-02-file-info-contract",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "identity_basis": "session-declared; self-reported",
+  "started_at_utc": null,
+  "first_recorded_development_check_at_utc": "2026-11-02T17:12:34.413305+00:00",
+  "updated_at_utc": "2026-11-02T17:17:54.102772+00:00",
+  "base_sha": "71353344bb78bb15135bc76be1c32db4aff14f47",
+  "base_tree": "27d3fb9bd6512bf23671d6c788176231aacb8c1d",
+  "branch": "feat/dcp-024-file-info-contract-20261102",
+  "primary_issue": 26,
+  "integration_owner": "Root assistant; independent read-only source review and task-owned native qualification",
+  "upstream_commit": "c774c3b505de990219637ecdc9a830c8772fae9d",
+  "summary": "Correct bounded get_file_info text/stat rendering, empty-file sentinel and cancellation/policy failure propagation without expanding filesystem capabilities or acceptance.",
+  "files_modified": [
+    "src/desktop-commander-files.ts",
+    "src/mcp.ts",
+    "tests/compat-file-info.test.mjs",
+    "scripts/verify-compatibility-installed.mjs",
+    "scripts/verify-package.mjs",
+    "docs/roadmap/progress.json",
+    "docs/roadmap/desktop-commander-parity.json",
+    "docs/HANDOFF.md",
+    "docs/STATUS.md",
+    "docs/TESTING.md",
+    "docs/execution/NEXT_PARITY_PROMPT.md"
+  ],
+  "requirements": [
+    "DCP-024",
+    "CLI-260",
+    "CLI-266",
+    "CLI-267",
+    "CLI-272",
+    "CLI-287",
+    "CLI-288",
+    "CLI-296",
+    "CLI-300"
+  ],
+  "decisions": [
+    "Preserve completed PR73/74/75 delivery and older immutable evidence; new ordinary clones start from current independently observed main71353344.",
+    "Use original bounded adapter through existing FileService. Three dates use pinned Date serialization; empty text lastLine=-1; directory text is handler discriminator.",
+    "Keep current byte ceiling, unsupported format/encoding omissions and owner/private/link protections. Optional read fallback is explicitly allowed content/operational errors only; policy/cancellation/unexpected errors propagate.",
+    "Forward actual MCP signal; cancellation is cooperative and not OS interruption. Reject forbidden link replacement observed at post-resolution stat without claiming complete path-race protection.",
+    "Focused RED precedes runtime changes and uses the same23-case fixture as GREEN. Separate scratch direct-service evidence from native and installed proof.",
+    "Installed harness adds eight metadata groups including a second read-only process; captures both process identities before later assertions, checks independent exits and preserves bounded result summaries in package receipts.",
+    "All stages, weights, acceptance texts/states, estimates, dependencies, platforms and blockers remain unchanged. No paid/model/auth/owner lifecycle/deployment changes."
+  ],
+  "tests": [
+    {
+      "command": "node --test --test-isolation=none --test-reporter=tap --test-concurrency=1 tests/compat-file-info.test.mjs",
+      "result": "RED23:6pass17assertion failures; GREEN23/23; no skips/cancellations. Same test hash.",
+      "evidence": "docs/validation/2026-11-02-file-info-development.json"
+    },
+    {
+      "command": "Independent source/test/installed-harness review",
+      "result": "No remaining blocking findings; actual native/installed/hosted execution remains pending at preparation.",
+      "evidence": "docs/validation/2026-11-02-file-info-source-review.json"
+    }
+  ],
+  "source_sha256": {
+    "src/desktop-commander-files.ts": "f111c97949db5b10a6e1a0dc05bf3a65a6163198f2b13ce5cdcdb4fd94489008",
+    "src/mcp.ts": "54ea5248a41f48ee39c14cb9df2b1bf380c42a74c6b4c4cce1aadbd9c17f1f5b",
+    "tests/compat-file-info.test.mjs": "237327b5ef81a5451597d74187da260fca6ef1ea722fd0982757545ec9af5e52",
+    "scripts/verify-compatibility-installed.mjs": "e2327ed4e397c63a89d159a7a6939e56e9a00b7f64953186046adfc3740fc720",
+    "scripts/verify-package.mjs": "ed6c9ad534c7f63b9b9c4d2e353e53fe3e5de7aebddd52dca00fbebc8f589335"
+  },
+  "limitations": [
+    "Full document/image/binary/UTF16LE and larger-file metadata parity remains open.",
+    "Stat and content are separate observations; optional fallback can be stale.",
+    "Direct fault injection does not certify actual installed client cancellation.",
+    "Native Codex parser/SDK proof cannot be called model-driven invocation; model calls0.",
+    "DCP0/48;WEB0/12;maturity29.12%;owner rulings unchanged."
+  ],
+  "roadmap_updates": [
+    {
+      "ids": "CLI-260,CLI-266,CLI-267,CLI-272,CLI-287,CLI-288,CLI-296,CLI-300",
+      "assessment": "Evidence/notes/reviewer only. Same stages, weights, acceptance texts, dependencies, estimates, ETA, platforms and blockers. Native full/installed/fresh/hosted gates remain separate."
+    },
+    {
+      "ids": "DCP-024",
+      "assessment": "Implementation observation/evidence only; remains open. Full contract and actual-client acceptance not inferred."
+    }
+  ],
+  "next_unverified_action": "Complete native ordered RED/GREEN, then normal reviewed full/installed/fresh gates at exact committed implementation.",
+  "model_calls": 0,
+  "actualCodexAgentToolInvocation": false
+}

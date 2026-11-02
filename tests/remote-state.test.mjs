@@ -1,0 +1,42 @@
+// SPDX-License-Identifier: MIT
+// AI-Change: 2026-11-02-remote-agent (OpenAI / GPT-6 Astra Pro; self-reported)
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+import os from 'node:os';
+import path from 'node:path';
+import { randomUUID } from 'node:crypto';
+import { RemoteStateStore } from '../dist/remote/state.js';
+
+test('remote state separates public config from protected credentials and round-trips local protection', async () => {
+  const temp = await fs.mkdtemp(path.join(os.tmpdir(), 'mterm-state-'));
+  try {
+    const root = path.join(temp, 'fixture'); await fs.mkdir(root);
+    const store = await RemoteStateStore.open(path.join(temp, 'state'));
+    await store.configure({ schemaVersion: 1, gateway: 'https://gateway.test', root, name: 'Fixture PC' });
+    const deviceId = randomUUID();
+    await store.savePairing(deviceId, 'SECRET_FIXTURE_TOKEN');
+    const state = await store.config();
+    assert.equal(state.deviceId, deviceId);
+    assert.ok(!JSON.stringify(state).includes('SECRET'));
+    assert.equal((await store.credential()).token, 'SECRET_FIXTURE_TOKEN');
+    const raw = await fs.readFile(path.join(store.directory, 'credential.json'), 'utf8');
+    if (process.platform === 'win32') assert.ok(!raw.includes('SECRET_FIXTURE_TOKEN'));
+    else assert.equal((await fs.stat(path.join(store.directory, 'credential.json'))).mode & 0o777, 0o600);
+    await store.clearPairing();
+    assert.equal((await store.config()).deviceId, undefined);
+    await assert.rejects(store.credential(), e => e.code === 'REMOTE_UNPAIRED');
+  } finally { await fs.rm(temp, { recursive: true, force: true }); }
+});
+
+test('remote state refuses exposing its credential directory and unapproved reconfiguration of a paired device', async () => {
+  const temp = await fs.mkdtemp(path.join(os.tmpdir(), 'mterm-state-'));
+  try {
+    const store = await RemoteStateStore.open(path.join(temp, 'state'));
+    await assert.rejects(store.configure({ schemaVersion: 1, gateway: 'https://gateway.test', root: temp, name: 'Fixture' }), e => e.code === 'STATE_IN_ROOT');
+    const root = path.join(temp, 'fixture'); await fs.mkdir(root);
+    await store.configure({ schemaVersion: 1, gateway: 'https://gateway.test', root, name: 'Fixture' });
+    await store.savePairing(randomUUID(), 'fixture-secret');
+    await assert.rejects(store.configure({ schemaVersion: 1, gateway: 'https://other.test', root, name: 'Fixture' }), e => e.code === 'REMOTE_PAIRED');
+  } finally { await fs.rm(temp, { recursive: true, force: true }); }
+});

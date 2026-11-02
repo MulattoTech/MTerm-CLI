@@ -88,3 +88,57 @@ read-only/no-autostart mode and dirty primary checkout are preserved.
 New development uses ordinary isolated clones named `aggregate-qualification-20261102`
 on Windows and `MTerm-CLI` in the task scratch workspace. No source under the
 running owner agent is changed; no production deployment or policy changes occur.
+
+## Additive observed qualification — PR #77
+
+Implementation `c510908017d7937173189d483fd2697645d42748`, tree
+`3ce2707dd71612f310c14589ae1c2d0b71defcab`, is qualified on native Windows
+Node 24.21.0. The [Windows receipt](2026-11-02-aggregate-output-windows.json)
+records meaningful original RED (7 passing / 7 assertion failures, exit 1),
+unchanged-fixture GREEN (14/14, exit 0), and actual full-wrapper exit 0 at
+19:04:13.065Z. Its normal suite passed 242/242 with zero skips/cancellations.
+Separate self-host, normal `npm pack`/prepack and installed-entry Codex exited 0.
+
+The [fresh receipt](2026-11-02-aggregate-output-fresh.json) records exact-commit
+archive/extraction, locked install, reviewed build, normal prepack and package
+verification, all exit 0. Its normal suite passed 242/242. The actual Windows
+ZIP (1,221,025 bytes, SHA-256
+`5a5f3147ca49c4ded148c523f9e14c85a4dd2319b6256dd82a64f806305398d8`)
+was recovered and independently checked: all 548 file contents, member CRCs,
+paths and executable modes match the exact Git tree.
+
+Native and fresh package results each pass six aggregate scenarios, eight
+metadata and six directory groups, read-only restart, owned npm/server exits
+and fixture cleanup, with zero captured MCP stderr. Native Codex 0.160.1 parses
+both source and installed registrations, and the SDK runs the parsed command
+twice per entry. There are zero model calls; actual agent/client use is unproved.
+
+The [implementation hosted audit](2026-11-02-aggregate-output-hosted.json) records
+matrix run 41506338992 and fast run 41506338995: five successful jobs, all
+attempt 1, no retry. Windows passed 242/242; Ubuntu 24.04, macOS ARM64, macOS
+Intel and fast CI each passed 230 with 12 named Windows-only skips. All 14 new
+regressions passed everywhere. All four matrix jobs passed packed aggregate
+scenarios and source-entry synthetic Codex. The PR synthetic merge tree matched
+the implementation tree and had the expected base/implementation parents.
+
+[Native review](2026-11-02-aggregate-output-native-review.json), its
+[fresh-archive supplement](2026-11-02-aggregate-output-fresh-archive-review.json),
+[source/evidence review](2026-11-02-aggregate-output-evidence-review.json) and
+[supplement](2026-11-02-aggregate-output-evidence-review-supplement.json) found
+no blocking issue. Original review observations remain immutable; supplements
+close only the subsequently resolved archive-byte limitation. Primary HEAD,
+status, all 11 dirty file hashes and registered worktrees matched through native
+qualification. Final owner/preservation observations remain later gates.
+
+The [observer history](2026-11-02-aggregate-output-observations.json) preserves
+the initial fixture correction, a read-only tool stall and a native observer
+status-parsing defect before any test. Neither observer failure is RED proof.
+The [connection observation](2026-11-02-aggregate-output-connection.json) keeps
+one paired online read-only owner, zero client authorizations/requests, unchanged
+staging Worker/build and absent actual-client tool evidence distinct.
+
+This final documentation preparation changes no qualified runtime, test or
+installed-verifier bytes. A reviewed native build and the workflow's required
+final-head checks remain necessary, followed by expected-head merge, actual
+main checks and recovery. Later public/downloadable delivery observations will
+supersede these pending fields. No protected ledger acceptance changes.

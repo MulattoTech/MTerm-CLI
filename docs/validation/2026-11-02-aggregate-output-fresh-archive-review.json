@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUtc": "2026-11-02T19:09:52.423952+00:00",
+  "reviewer": "Independent issue_audit agent; OpenAI GPT-6 Astra Pro (inherited session identity; self-reported)",
+  "scope": "Additive exact-byte fresh Windows source-archive proof. Read-only verification against local exact Git objects; no Windows or repository mutations.",
+  "supplements": {
+    "file": "independent-native-audit.json",
+    "sha256": "2d430065f6b6113220982f6ac92ca313be671e6b939668d084c2681a32641313",
+    "priorBytesUnchanged": true
+  },
+  "archive": {
+    "file": "mterm-native/fresh-committed-source.zip",
+    "bytes": 1221025,
+    "sha256": "5a5f3147ca49c4ded148c523f9e14c85a4dd2319b6256dd82a64f806305398d8",
+    "matchesNativeFreshReport": true
+  },
+  "sourceVerification": {
+    "commit": "c510908017d7937173189d483fd2697645d42748",
+    "tree": "3ce2707dd71612f310c14589ae1c2d0b71defcab",
+    "prefix": "",
+    "files": 548,
+    "bytes": 3853098,
+    "memberBytesAndModesMatchGit": true
+  },
+  "checks": {
+    "allArchiveMemberBytesAndModesMatchGit": true,
+    "allFileCrcsVerified": true,
+    "safeUniqueMemberNames": true,
+    "encryptedMembersAbsent": true,
+    "archiveHashMatchesWindowsReport": true,
+    "memberPathsMatchExactCommitTree": true
+  },
+  "resolvedLimitation": "The prior audit did not independently rehash the absent source archive. The archive is now recovered and this reviewer independently verified the complete ZIP bytes/hash plus every member against the exact committed source. That specific limitation is resolved; other original scope and pending-owner/main/acceptance limitations remain.",
+  "verdict": "PASS",
+  "blockers": []
+}

@@ -5,7 +5,7 @@
   "identity_basis": "session-declared; self-reported",
   "started_at_utc": null,
   "first_recorded_development_check_at_utc": "2026-11-02T18:47:36.516742+00:00",
-  "updated_at_utc": "2026-11-02T18:50:32.604650+00:00",
+  "updated_at_utc": "2026-11-02T19:11:38.609739+00:00",
   "base_sha": "7e5f8287532765f11f055cb89d0312e1c1b236bd",
   "base_tree": "a88361f42b20e0cddd99ac16ce123ebf706a3ae1",
   "branch": "fix/dcp-019-aggregate-output-20261102",
@@ -53,6 +53,26 @@
       "command": "Independent source/test/installed-harness review and focused rerun",
       "result": "No blocking findings; independent14/14; native/installed/hosted execution remains pending.",
       "evidence": "docs/validation/2026-11-02-aggregate-output-source-review.json"
+    },
+    {
+      "command": "Native original focused RED / unchanged focused GREEN",
+      "result": "7 passing / 7 assertion failures, exit 1; then 14/14, exit 0.",
+      "evidence": "docs/validation/2026-11-02-aggregate-output-windows.json"
+    },
+    {
+      "command": "node scripts/orchestration/verify.mjs --full; separate self-host, normal prepack and installed Codex",
+      "result": "Actual full wrapper exited 0; 242/242, no skips. Other commands exited 0; packed aggregate6 and independent process exits/cleanup verified.",
+      "evidence": "docs/validation/2026-11-02-aggregate-output-windows.json"
+    },
+    {
+      "command": "Fresh git archive / extraction / locked install / reviewed build / normal prepack / package verification",
+      "result": "All exits 0; 242/242, aggregate6; all548 archive source files and modes independently match c510908.",
+      "evidence": "docs/validation/2026-11-02-aggregate-output-fresh.json"
+    },
+    {
+      "command": "PR #77 exact implementation hosted jobs",
+      "result": "5/5 success, attempt 1. Windows242passes; other jobs230passes plus12named Windows-only skips; all14new regressions pass.",
+      "evidence": "docs/validation/2026-11-02-aggregate-output-hosted.json"
     }
   ],
   "source_sha256": {
@@ -76,7 +96,9 @@
       "assessment": "Implementation observations and evidence only; issue remains open; no acceptance or release-check change."
     }
   ],
-  "next_unverified_action": "Native original RED, focused GREEN, full-wrapper/selfhost/prepack/installed/Codex/fresh and exact-head hosted qualification, normal merge/main and recovery.",
+  "next_unverified_action": "Final documentation native reviewed build, exact final-head checks, expected-head normal merge, merged-main checks, final preservation, additive recovery, public receipts and downloads.",
   "model_calls": 0,
-  "actualCodexAgentToolInvocation": false
+  "actualCodexAgentToolInvocation": false,
+  "pull_request": 77,
+  "implementation_sha": "c510908017d7937173189d483fd2697645d42748"
 }

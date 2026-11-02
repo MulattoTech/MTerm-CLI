@@ -1,0 +1,667 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-11-02T19:11:38.609739+00:00",
+  "scope": "Observed native Windows implementation qualification, not complete product acceptance",
+  "implementation": "c510908017d7937173189d483fd2697645d42748",
+  "implementationTree": "3ce2707dd71612f310c14589ae1c2d0b71defcab",
+  "base": "7e5f8287532765f11f055cb89d0312e1c1b236bd",
+  "taskClone": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\aggregate-qualification-20261102",
+  "node": "v24.21.0",
+  "platform": "win32",
+  "arch": "x64",
+  "sourceSha256": {
+    "src/desktop-commander-files.ts": "63c2540ee3a453dff7e109f184fc1822fcbc9236bcb34b790d105aa26b5f359b",
+    "tests/compat-multiple-files.test.mjs": "ebdab58524f16255dbc73b9cc051a88400dedf318f9b56bf9764dfe450f2c3c6",
+    "scripts/verify-compatibility-installed.mjs": "e93c5b4c3a22f44a6e9b9f780ec59efd7044493006c2ff92efa14fb541cc73e1"
+  },
+  "red": {
+    "tests": 14,
+    "pass": 7,
+    "fail": 7,
+    "commands": [
+      {
+        "name": "red-build",
+        "executable": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+        "arguments": [
+          "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "build:code"
+        ],
+        "cwd": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\aggregate-qualification-20261102",
+        "startedAtUtc": "2026-11-02T19:01:42.344Z",
+        "completedAtUtc": "2026-11-02T19:01:42.979Z",
+        "durationMs": 635,
+        "pid": 57324,
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "stdout": {
+          "file": "red-build.stdout.log",
+          "bytes": 64,
+          "sha256": "9a9214dd92f21ea05ec920f34a2d1b1e5699936c060ba52eba85b89808758cb9"
+        },
+        "stderr": {
+          "file": "red-build.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "name": "red-focused",
+        "executable": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+        "arguments": [
+          "--test",
+          "--test-reporter=tap",
+          "--test-concurrency=1",
+          "tests/compat-multiple-files.test.mjs"
+        ],
+        "cwd": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\aggregate-qualification-20261102",
+        "startedAtUtc": "2026-11-02T19:01:42.981Z",
+        "completedAtUtc": "2026-11-02T19:01:43.282Z",
+        "durationMs": 301,
+        "pid": 51944,
+        "exitCode": 1,
+        "signal": null,
+        "error": null,
+        "stdout": {
+          "file": "red-focused.stdout.log",
+          "bytes": 7999,
+          "sha256": "e2166ebe7b7b8edc430b3f54302bcfd0395d05a21923d706327daebe703d681a"
+        },
+        "stderr": {
+          "file": "red-focused.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    ],
+    "fixtureSha256": "ebdab58524f16255dbc73b9cc051a88400dedf318f9b56bf9764dfe450f2c3c6",
+    "completedAtUtc": "2026-11-02T19:01:43.283Z"
+  },
+  "green": {
+    "tests": 14,
+    "pass": 14,
+    "fail": 0,
+    "commands": [
+      {
+        "name": "bundle-verify",
+        "executable": "git",
+        "arguments": [
+          "bundle",
+          "verify",
+          "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\aggregate-qualification-20261102\\artifacts\\aggregate-qualification\\implementation.bundle"
+        ],
+        "cwd": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\aggregate-qualification-20261102",
+        "startedAtUtc": "2026-11-02T19:01:53.779Z",
+        "completedAtUtc": "2026-11-02T19:01:53.840Z",
+        "durationMs": 61,
+        "pid": 30236,
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "stdout": {
+          "file": "bundle-verify.stdout.log",
+          "bytes": 190,
+          "sha256": "250a087e360ed926a41d30b9def4b0ef76fbe63f65caffe88e25511f90645497"
+        },
+        "stderr": {
+          "file": "bundle-verify.stderr.log",
+          "bytes": 140,
+          "sha256": "3833517be69330fe6b327c2f95736a31d2a0dfc45bc42cbbda8f6fb8da5a21b8"
+        }
+      },
+      {
+        "name": "bundle-import",
+        "executable": "git",
+        "arguments": [
+          "fetch",
+          "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\aggregate-qualification-20261102\\artifacts\\aggregate-qualification\\implementation.bundle",
+          "HEAD"
+        ],
+        "cwd": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\aggregate-qualification-20261102",
+        "startedAtUtc": "2026-11-02T19:01:53.841Z",
+        "completedAtUtc": "2026-11-02T19:01:53.973Z",
+        "durationMs": 132,
+        "pid": 38748,
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "stdout": {
+          "file": "bundle-import.stdout.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "bundle-import.stderr.log",
+          "bytes": 183,
+          "sha256": "92a766b9938177f8f828f7af1fd85f782ab2dd00f487f85c5dd987c56a866f6d"
+        }
+      },
+      {
+        "name": "branch-switch",
+        "executable": "git",
+        "arguments": [
+          "switch",
+          "-c",
+          "fix/dcp-019-aggregate-output-20261102",
+          "FETCH_HEAD"
+        ],
+        "cwd": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\aggregate-qualification-20261102",
+        "startedAtUtc": "2026-11-02T19:01:53.974Z",
+        "completedAtUtc": "2026-11-02T19:01:54.118Z",
+        "durationMs": 144,
+        "pid": 58864,
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "stdout": {
+          "file": "branch-switch.stdout.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "file": "branch-switch.stderr.log",
+          "bytes": 65,
+          "sha256": "d36c29670574f6e3feef236598eaf349639a1ced2290a20c1dac9bc10c6050fa"
+        }
+      },
+      {
+        "name": "implementation-push",
+        "executable": "git",
+        "arguments": [
+          "push",
+          "-u",
+          "origin",
+          "fix/dcp-019-aggregate-output-20261102"
+        ],
+        "cwd": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\aggregate-qualification-20261102",
+        "startedAtUtc": "2026-11-02T19:01:54.171Z",
+        "completedAtUtc": "2026-11-02T19:01:58.812Z",
+        "durationMs": 4641,
+        "pid": 20064,
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "stdout": {
+          "file": "implementation-push.stdout.log",
+          "bytes": 111,
+          "sha256": "b9101b5319608c038ad9e992b0ea89bb92ea669ae59dca11395dc38ff79c30f7"
+        },
+        "stderr": {
+          "file": "implementation-push.stderr.log",
+          "bytes": 380,
+          "sha256": "acac9fcf1b2d618c24be4ca5fd1cedad41191df7d79daaf4c1b1e9a4595fb7c4"
+        }
+      },
+      {
+        "name": "green-build",
+        "executable": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+        "arguments": [
+          "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+          "run",
+          "build"
+        ],
+        "cwd": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\aggregate-qualification-20261102",
+        "startedAtUtc": "2026-11-02T19:01:58.813Z",
+        "completedAtUtc": "2026-11-02T19:02:00.214Z",
+        "durationMs": 1401,
+        "pid": 48292,
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "stdout": {
+          "file": "green-build.stdout.log",
+          "bytes": 786,
+          "sha256": "e88e6133625427b3e6b7c5148fdcedda65ce86a1d5f8a7c409bbe102e9784ad3"
+        },
+        "stderr": {
+          "file": "green-build.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "name": "green-focused",
+        "executable": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+        "arguments": [
+          "--test",
+          "--test-reporter=tap",
+          "--test-concurrency=1",
+          "tests/compat-multiple-files.test.mjs"
+        ],
+        "cwd": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\aggregate-qualification-20261102",
+        "startedAtUtc": "2026-11-02T19:02:00.215Z",
+        "completedAtUtc": "2026-11-02T19:02:00.662Z",
+        "durationMs": 447,
+        "pid": 59524,
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "stdout": {
+          "file": "green-focused.stdout.log",
+          "bytes": 3339,
+          "sha256": "3572f32da2fd77fa2c69617367d8d727ebe9c563419d0e86743d899f62d491eb"
+        },
+        "stderr": {
+          "file": "green-focused.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    ],
+    "completedAtUtc": "2026-11-02T19:02:00.666Z"
+  },
+  "fullCampaign": {
+    "commands": [
+      {
+        "name": "codex-fixture-install",
+        "executable": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+        "arguments": [
+          "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+          "install",
+          "--prefix",
+          "artifacts/ci-codex",
+          "--no-audit",
+          "--no-fund",
+          "--ignore-scripts",
+          "--package-lock=false",
+          "@openai/codex@0.160.1"
+        ],
+        "cwd": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\aggregate-qualification-20261102",
+        "startedAtUtc": "2026-11-02T19:03:21.551Z",
+        "completedAtUtc": "2026-11-02T19:03:24.912Z",
+        "durationMs": 3361,
+        "pid": 64044,
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "stdout": {
+          "file": "codex-fixture-install.stdout.log",
+          "bytes": 24,
+          "sha256": "bf14b7a2bc076990244fa3239536925868dfe5ad05089c7d459b5fa482abfc72"
+        },
+        "stderr": {
+          "file": "codex-fixture-install.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "name": "full-wrapper",
+        "executable": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+        "arguments": [
+          "scripts/orchestration/verify.mjs",
+          "--full"
+        ],
+        "cwd": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\aggregate-qualification-20261102",
+        "startedAtUtc": "2026-11-02T19:03:24.913Z",
+        "completedAtUtc": "2026-11-02T19:04:13.065Z",
+        "durationMs": 48152,
+        "pid": 61736,
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "stdout": {
+          "file": "full-wrapper.stdout.log",
+          "bytes": 31863,
+          "sha256": "f09a31473365eee97513a90a2b0becd933ee516e8dde84a0b5fe165bac2e26d6"
+        },
+        "stderr": {
+          "file": "full-wrapper.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "name": "self-host",
+        "executable": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+        "arguments": [
+          "scripts/verify-self-host.mjs"
+        ],
+        "cwd": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\aggregate-qualification-20261102",
+        "startedAtUtc": "2026-11-02T19:04:13.066Z",
+        "completedAtUtc": "2026-11-02T19:04:13.881Z",
+        "durationMs": 815,
+        "pid": 43580,
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "stdout": {
+          "file": "self-host.stdout.log",
+          "bytes": 280,
+          "sha256": "a38e3215a05a401ae8d110826c15f2fc3c8cc6fd77ca564d863d87cfb0b116d9"
+        },
+        "stderr": {
+          "file": "self-host.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      {
+        "name": "normal-prepack",
+        "executable": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+        "arguments": [
+          "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+          "pack",
+          "--json",
+          "--pack-destination",
+          "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\aggregate-qualification-20261102\\artifacts\\aggregate-qualification\\normal-package"
+        ],
+        "cwd": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\aggregate-qualification-20261102",
+        "startedAtUtc": "2026-11-02T19:04:13.882Z",
+        "completedAtUtc": "2026-11-02T19:04:49.366Z",
+        "durationMs": 35484,
+        "pid": 27968,
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "stdout": {
+          "file": "normal-prepack.stdout.log",
+          "bytes": 27382,
+          "sha256": "9784d93bf3ef69744f7e9cd868bd8eb43d19167f97936149b59eef46c68dd592"
+        },
+        "stderr": {
+          "file": "normal-prepack.stderr.log",
+          "bytes": 738,
+          "sha256": "34ee2bf9f08bdddd50d9d8090fb49ab20d6fb4d2b43c3e78b954c09282fd02ee"
+        }
+      },
+      {
+        "name": "installed-codex",
+        "executable": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+        "arguments": [
+          "scripts/verify-managed-codex.mjs"
+        ],
+        "cwd": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\aggregate-qualification-20261102",
+        "startedAtUtc": "2026-11-02T19:04:49.368Z",
+        "completedAtUtc": "2026-11-02T19:04:51.224Z",
+        "durationMs": 1856,
+        "pid": 61492,
+        "exitCode": 0,
+        "signal": null,
+        "error": null,
+        "stdout": {
+          "file": "installed-codex.stdout.log",
+          "bytes": 1221,
+          "sha256": "805cdc34067e8219ad24ff50927a43b357105cebccfdf1f23834c8f7b55f7c70"
+        },
+        "stderr": {
+          "file": "installed-codex.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    ],
+    "startedAtUtc": "2026-11-02T19:03:21.455Z",
+    "completedAtUtc": "2026-11-02T19:04:51.426Z",
+    "actualFullWrapperInvoked": true,
+    "tests": 242,
+    "pass": 242,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "installedPackage": {
+    "packageVersion": "0.0.1-preview.1",
+    "archiveBytes": 59547,
+    "packageUnpackedBytes": 231360,
+    "installedProductionBytes": 14178730,
+    "productionFiles": 992,
+    "packagedMcpRoundTrip": true,
+    "ownedPrefixNpmLink": true,
+    "offlineNpmExecFromTarball": true,
+    "npmExecMcpCompatibilityTools": 8,
+    "installedCompatibility": {
+      "npmExecMcp": true,
+      "compatibilityAliasesExercised": 8,
+      "directoryListing": {
+        "scenarios": [
+          "zero-depth",
+          "one-level-depth",
+          "default-depth-stable-exact-visible-overflow",
+          "link-not-traversed",
+          "root-private-link-missing-denials",
+          "schema-depth-denial"
+        ],
+        "passed": 6
+      },
+      "fileInfo": {
+        "scenarios": [
+          "text-stat-order-dates-empty-LF-CRLF-CR-BOM-Unicode",
+          "directory-handler-discriminator-no-lines",
+          "unchanged-inclusive-262144-byte-ceiling",
+          "binary-invalid-utf8-oversize-safe-omissions",
+          "unsupported-formats-stat-only",
+          "outside-private-link-hardlink-missing-denials",
+          "schema-path-denial",
+          "read-only-installed-restart-independent-capabilities"
+        ],
+        "passed": 8,
+        "readOnlyRestart": true
+      },
+      "multipleFiles": {
+        "scenarios": [
+          "ordered-summary-successes-duplicates-and-safe-partial-error",
+          "published-schema-and-one-to-twenty-path-boundaries",
+          "inclusive-full-text-byte-ceiling-and-one-byte-overflow",
+          "error-summary-and-separator-budget-in-both-orders",
+          "private-outside-format-hardlink-and-symlink-denials-no-mutation",
+          "read-only-installed-restart-capability-separation"
+        ],
+        "passed": 6,
+        "maxTextBytes": 262144,
+        "readOnlyRestart": true
+      },
+      "ownedProcessExitsVerified": true,
+      "directoryFixtureCleanupVerified": true,
+      "multipleFileFixtureCleanupVerified": true,
+      "stderrCapturedBytes": 0,
+      "fullParity": false,
+      "modelCalls": 0
+    },
+    "installedConfiguration": {
+      "ok": true,
+      "packageVersion": "0.0.1-preview.1",
+      "node": "v24.21.0",
+      "platform": "win32",
+      "architecture": "x64",
+      "installedEntryUnderOwnedPrefix": true,
+      "installedEntrySha256": "1376dfb68527a2fef2444be718a0011c53333c90f416eb377a8bde43e5dcc5b0",
+      "installedConfigModuleSha256": "f6f412a83d13a1aab24398f1d54ca1c301e093c6de1511f2097e0d43b720cc32",
+      "concurrentMcpProcesses": 2,
+      "restartedMcpProcesses": 1,
+      "compatibilityToolsDiscovered": [
+        "get_config",
+        "set_config_value"
+      ],
+      "getConfigMetadata": {
+        "textMatchesStructuredConfig": true,
+        "processIdentityMatchesOwnedChild": true,
+        "boundedMemoryAndRuntimeFields": true,
+        "orderedPreferenceTypes": true,
+        "clientExtrasOmitted": true,
+        "unsupportedProbesExplicitlyOmitted": true,
+        "featureFlagProvider": "none"
+      },
+      "setConfigContract": {
+        "preferencesExercised": [
+          "blockedCommands",
+          "allowedDirectories",
+          "defaultShell",
+          "fileReadLineLimit",
+          "fileWriteLineLimit",
+          "telemetryEnabled"
+        ],
+        "exactTextOnlySuccess": true,
+        "successValueMatchesCommittedEffectiveSnapshot": true,
+        "normalizedBooleanStrings": true,
+        "singletonAndJsonArrays": true,
+        "deduplicatedCanonicalRootsAndMandatoryBlocks": true,
+        "rejectedCases": 14,
+        "rejectedPolicyAndBackupBytesPreserved": true,
+        "rejectedValuesOmittedFromErrors": true,
+        "shellPreferencePersistsWithoutShellExecutionClaim": true
+      },
+      "steps": [
+        "two-installed-processes-discovery-and-owner-roots",
+        "get-config-envelope-memory-process-metadata-and-omissions",
+        "six-setting-success-output-and-normalized-effective-values",
+        "six-setting-rejections-preserve-policy-backup-and-safe-error-output",
+        "cross-process-read-defaults-and-write-warning-byte-fidelity",
+        "three-concurrent-distinct-key-writes-without-lost-updates",
+        "runtime-root-narrowing-empty-denial-and-owner-ceiling-preservation",
+        "telemetry-preference-has-no-observed-node-network-transport",
+        "malformed-policy-denial-and-owned-process-cleanup",
+        "restart-persistence-without-inheriting-config-write-authority"
+      ],
+      "telemetryNetworkGuard": {
+        "interceptedCanaryAttempts": 10,
+        "canaryApis": [
+          "net.Socket.connect",
+          "tls.connect",
+          "http.get",
+          "https.request",
+          "http2.connect",
+          "dgram.Socket.send",
+          "dns.lookup",
+          "dns.promises.lookup",
+          "fetch",
+          "WebSocket"
+        ],
+        "observedProductAttempts": 0,
+        "maximumRetainedAttemptsPerChild": 128,
+        "preferenceValuesExercised": [
+          true,
+          false
+        ],
+        "scope": "Instrumented standard Node network APIs in the three MCP children; not an OS sandbox or a descendant-process network monitor."
+      },
+      "actualCodexAgentToolInvocation": false,
+      "processExitProof": "Bounded signal-0 polling observed ESRCH for each captured MCP PID and owned fixture process; no numeric-PID termination fallback.",
+      "fullConfigurationParity": false,
+      "modelCalls": 0,
+      "realUserConfigChanged": false,
+      "evidence": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\aggregate-qualification-20261102\\artifacts\\package-verify-fNk7Sp\\configuration-VA6JPL",
+      "shutdownVerified": true,
+      "ownedFixtureCleanup": true,
+      "stderrCapturedBytes": [
+        0,
+        0,
+        0
+      ]
+    },
+    "fullDesktopCommanderParity": false,
+    "fromOutsideCheckout": true,
+    "helpExternalLaunchSamplesMs": [
+      51.51,
+      52.13,
+      41.34,
+      37.05,
+      39.72
+    ],
+    "helpMedianMs": 41.335799999999836,
+    "nodeVersion": "v24.21.0",
+    "nodePrerequisiteBytes": 93580104,
+    "nodeBundled": false,
+    "codexBundled": false,
+    "webBundled": false,
+    "quotaAdapterBundled": false,
+    "fullThreeComponentUnder50MB": "NOT VERIFIED; this is a dependency-reuse local host, not that bundle",
+    "modelCalls": 0,
+    "userGlobalPrefixModified": false,
+    "evidence": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\aggregate-qualification-20261102\\artifacts\\package-verify-fNk7Sp"
+  },
+  "sourceEntryCodex": {
+    "codexVersion": "codex-cli 0.160.1",
+    "codexExpectedVersion": "0.160.1",
+    "testOwnedCodex": true,
+    "codexTestPrefix": "artifacts/ci-codex",
+    "codexNativeExecutable": "node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/bin/codex.exe",
+    "node": "v24.21.0",
+    "platform": "win32",
+    "arch": "x64",
+    "setupApplied": true,
+    "setupIdempotent": true,
+    "configurationParsedByCodex": true,
+    "registeredCommandMcpRounds": 2,
+    "compatibilityProfilePersisted": true,
+    "configurationToolsDiscovered": [
+      "get_config",
+      "set_config_value"
+    ],
+    "syntheticConfigurationPathVerified": true,
+    "multipleRootsParsedByCodex": true,
+    "configurationPersistsAcrossRegisteredCommandRestarts": true,
+    "configuredReadLimitExercised": true,
+    "shutdownVerified": true,
+    "shutdownEvidence": "The original MCP process IDs returned ESRCH to bounded signal-0 polling after SDK close.",
+    "removalPreservesUnrelatedBytes": true,
+    "backupsRetained": true,
+    "actualCodexAgentToolInvocation": false,
+    "realUserConfigChanged": false,
+    "modelCalls": 0,
+    "installedEntry": false,
+    "evidence": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\aggregate-qualification-20261102\\artifacts\\managed-codex-uSoBOo"
+  },
+  "installedEntryCodex": {
+    "codexVersion": "codex-cli 0.160.1",
+    "codexExpectedVersion": "0.160.1",
+    "testOwnedCodex": true,
+    "codexTestPrefix": "artifacts/ci-codex",
+    "codexNativeExecutable": "node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/bin/codex.exe",
+    "node": "v24.21.0",
+    "platform": "win32",
+    "arch": "x64",
+    "setupApplied": true,
+    "setupIdempotent": true,
+    "configurationParsedByCodex": true,
+    "registeredCommandMcpRounds": 2,
+    "compatibilityProfilePersisted": true,
+    "configurationToolsDiscovered": [
+      "get_config",
+      "set_config_value"
+    ],
+    "syntheticConfigurationPathVerified": true,
+    "multipleRootsParsedByCodex": true,
+    "configurationPersistsAcrossRegisteredCommandRestarts": true,
+    "configuredReadLimitExercised": true,
+    "shutdownVerified": true,
+    "shutdownEvidence": "The original MCP process IDs returned ESRCH to bounded signal-0 polling after SDK close.",
+    "removalPreservesUnrelatedBytes": true,
+    "backupsRetained": true,
+    "actualCodexAgentToolInvocation": false,
+    "realUserConfigChanged": false,
+    "modelCalls": 0,
+    "installedEntry": true,
+    "evidence": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\aggregate-qualification-20261102\\artifacts\\managed-codex-sd6TVQ"
+  },
+  "primaryPreservation": {
+    "originalHead": "1d900464ba8a36a1121e2ae51ea65c14c3ee41c1",
+    "dirtyFiles": 11,
+    "headStatusFileHashesAndRegisteredWorktreesMatched": true,
+    "observedThroughUtc": "2026-11-02T19:04:51.426Z",
+    "privateFileContentsExported": false
+  },
+  "enclosingRdcProcesses": {
+    "lockedInstall63444": 0,
+    "red21488": 0,
+    "green44132": 0,
+    "full47788": 0
+  },
+  "rawEvidence": {
+    "directory": "evidence/native in the delivery archive",
+    "transferReceiptSha256": "d010df93c008e68a5a63f83cd16f4c5c07d634417f0cf60d16592d4feab44e9e",
+    "rdcProcessObservationsSha256": "6ec8e886b4722c1092dd77c1cac49e65bb487cbad65abe120f42780e10ca9216"
+  },
+  "actualCodexAgentToolInvocation": false,
+  "actualChatGptToolInvocation": false,
+  "modelCalls": 0,
+  "pendingAtObservation": [
+    "final documentation native build",
+    "final PR-head checks",
+    "normal expected-head merge",
+    "merged-main checks",
+    "final owner observation",
+    "additive recovery and downloads"
+  ]
+}

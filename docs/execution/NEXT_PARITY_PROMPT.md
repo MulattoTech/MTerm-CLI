@@ -1,4 +1,4 @@
-# MTerm-CLI: qualify DCP-010 and finish supported client connection
+# MTerm-CLI: finish verified DCP-010 delivery and supported client connection
 
 **Continuation date: 2026-11-02. Execute the work.** Re-read current GitHub, local
 state, retained logs and deployed identity before mutation. This is a checkpoint,
@@ -8,51 +8,82 @@ Repository: <https://github.com/MulattoTech/MTerm-CLI>. The long-term target rem
 **100% DesktopCommanderMCP parity as consumed by Codex, then 100% — PASS**. The
 300-item maturity ledger, 48 DCP issues and 12 remote WEB issues are independent.
 
-## Current DCP-010 continuation — candidate, not yet delivered
+## Current DCP-010 implementation — finish final delivery gates
 
-The new bounded DCP-010/#12 candidate is in ordinary branch
-`feat/dcp-010-config-contract-20261102`, based on verified merged main
-`acaf276066c9e0436af2398c0120a38f7c04f5f0`. It adds the accepted effective value
-to the `set_config_value` success text, using the same validated setter snapshot
-as the configuration body. It preserves strict coercions, owner ceilings, safe
-errors and independent configuration-write capability. The storage module is
-unchanged. Read `docs/validation/2026-11-02-config-contract.md`, its immutable
-source-review JSON and `docs/ai/changes/2026-11-02-config-contract.json`.
+[PR #74](https://github.com/MulattoTech/MTerm-CLI/pull/74) is draft at this
+record's preparation. Tested implementation is
+`16ea3ff82062c6f3018385b1a59600431e475c36`, based on verified merged main
+`acaf276066c9e0436af2398c0120a38f7c04f5f0`. The branch is
+`feat/dcp-010-config-contract-20261102`. Observe later final-head/merge/main and
+checkpoint identities directly before starting another change.
 
-Meaningful native Windows RED reached 12 tests: 2 passed and 10 failed the
-missing success text. GREEN passed all 12, with zero failures/skips/cancellations.
-These focused runs used an uncommitted isolated candidate; exact source/test/log
-hashes identify the bytes. Static review found no remaining blocking issue.
-The installed harness now expects ten scenarios, including all six preference
-responses and fourteen rejected writes. Full native, package, fresh committed
-extraction and hosted/publication gates are pending at this initial checkpoint.
-Do not describe expected counts as observed qualification.
+The bounded DCP-010/#12 fix adds the accepted effective value to
+`set_config_value` success text, using the same validated setter snapshot as the
+configuration body. Strict coercions, owner ceilings, safe errors, the storage
+module and the independent configuration-write capability are unchanged.
+Read `docs/validation/2026-11-02-config-contract.md`, its immutable source review,
+Windows/fresh/hosted receipts and the matching AI change record.
+
+| Evidence for `16ea3ff` | Observed result |
+| --- | --- |
+| Focused native Windows | Meaningful RED: 2 passed / 10 success-text failures; GREEN: 12/12, zero skips/cancellations |
+| Full native Windows | Actual `verify.mjs --full` invocation passed; reviewed build/check, 187/187 tests, portable package and source-entry Codex; separate self-host, normal prepack and installed-entry Codex passed |
+| Installed configuration | Ten actual-package scenarios, all six preferences and fourteen rejections; policy/backup bytes preserved, two concurrent MCP children and one restart |
+| Network/cleanup | Ten positive canaries intercepted, zero product attempts through instrumented Node APIs; owned exits and cleanup verified; this is not an OS-wide network certificate |
+| Native Codex | Test-owned 0.160.1 parsed synthetic configuration; SDK exercised source and installed registered commands twice each; actual agent tool invocation false, model calls zero |
+| Fresh committed extraction | No initial dist/node_modules; locked install, reviewed build, normal prepack with 187/187 tests and installed package with ten scenarios passed |
+| Fresh source archive SHA-256 | `652bf67178f734be5bc80d7a7a3108e59baf76ae893029652d614e4311e7074c` |
+| Package sizes | 57,977 archive bytes; 224,683 unpacked bytes; 14,172,053 installed production bytes; external Node/Codex excluded |
+| Hosted implementation | 9/9 passed, all attempts 1; observed 2026-11-02T13:09:16.557Z, final completion 13:08:30Z |
+| Final documentation, merge/main and final checkpoint | Pending at this prepublication preparation; do not infer them from implementation checks |
+
+Implementation hosted runs: [branch matrix](https://github.com/MulattoTech/MTerm-CLI/actions/runs/41449904997),
+[PR matrix](https://github.com/MulattoTech/MTerm-CLI/actions/runs/41450112186),
+and [PR fast](https://github.com/MulattoTech/MTerm-CLI/actions/runs/41450112178).
+Native full qualification ran 13:00:35.849–13:02:02.058 UTC; fresh qualification
+ran 13:02:54.753–13:03:44.492 UTC. Original focused RED/GREEN used an isolated uncommitted candidate. GREEN runtime
+and corrected test hashes match the committed implementation; RED retains the
+pre-fix runtime and original cleanup-helper test hashes.
+Do not attribute the fix to base main or repeat completed gates without a new risk.
 
 The source clone is `/workspace/scratch/fbf97b0a779d/mterm-dcp010-20261102`.
-The separate Windows clone is
+The ordinary Windows clone is
 `C:\Tools\Dev\MTerm-CLI\artifacts\worktrees\config-contract-20261102`.
-Preserve the running owner agent in `config-qualification-20261102` and the
-original dirty primary checkout. The additive starting bundle/source identities
-are in the new contract report. Do not repeat meaningful RED or owner pairing.
+Its task-owned focused files were preserved by a scoped stash
+`394944d1a7ced5423bd279bdbe5eff0ed0cc84a9` before the clean committed import.
+The implementation transfer bundle is SHA-256
+`5d2c8873d3d17cfc2addc0121b0bb2a58c445fd576b7c643e33d2ac50a40cc42`.
+Preserve the running owner agent's separate checkout and the original dirty
+primary checkout. Starting checkpoint identities remain in the contract report.
 
-A read-only Brave dashboard observation at approximately 12:56 UTC again showed
+The current 48-issue audit read all bodies and 22 comments at its recorded
+12:34:25 UTC snapshot: zero identity/state mismatches, all open, accepted 0/48.
+Read `docs/validation/2026-11-02-config-contract-issue-audit.json`; later comments
+are additive and do not invalidate that time-bounded audit. A first normal
+scratch build rejected a remote URL in a ledger field requiring local paths.
+Only that evidence reference was corrected; normal build/format and subsequent
+native gates passed. An import-script newline hash comparison and intermittent
+reader retrieval were observation issues, not product failures or test reruns.
+
+At approximately 12:56 UTC the real authenticated Brave dashboard again showed
 one online owner computer, no client authorizations and no active requests.
-The public `/health` response reported enabled read-only staging at deployed
+The bounded public `/health` response reported enabled read-only staging at
 build `b90432a1bc138d59305692a9f74f110a475d0881`. Personal-plugin listing and a
-bounded MTerm plugin search found no MTerm result; this is not proof that the
-historical non-retryable creation failure is repaired. A Cloudflare management
-read returned no result and was interrupted; no fresh management version or
-Access-policy verification is claimed. No consent, discovery, client file read,
-new pairing, deployment, revocation or model invocation occurred.
+bounded MTerm search found no MTerm result, without proving the historical
+non-retryable creation failure repaired. A Cloudflare management read returned
+no result and was interrupted; no fresh management version or Access-policy
+verification is claimed. Read `docs/validation/2026-11-02-connection-recheck.json`.
+No consent, discovery, client file read, new pairing, deployment, revocation or
+model invocation occurred. Do not retry or bypass the existing client blockers.
 
 DCP-010 remains open for its own complete setter contract, accepted intentional
-differences and applicable actual-client evidence. Separate downstream
-DCP-012/013/014/034 shell/process contracts remain unqualified by this slice;
-their full closures are not silently added to #12's acceptance contract.
-All acceptance/stage/weight counts below remain unchanged. The PR #73 material
-that follows is the verified previous delivery, not qualification of these new
-bytes. After the pending gates, update this section with observed commit/PR/main
-and recovery identities; never predict them.
+differences and applicable actual-client evidence. Separate DCP-012/013/014/034
+shell/process contracts remain unqualified; their full closures are not added to
+#12's independent acceptance contract. DCP-009's precise omitted-field/privacy
+owner ruling is documented in the contract report and issue audit. No progress
+stage, weight, acceptance text, dependency or estimate changed: DCP 0/48, WEB
+0/12 and broad maturity 29.12% remain. The following PR #73 material is the
+verified previous delivery; keep its historical single ARM install-timeout retry.
 
 ## Previous DCP-009 implementation and delivery authority
 

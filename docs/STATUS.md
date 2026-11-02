@@ -4,28 +4,51 @@
 weighted maturity ledger is a separate measurement. Neither passing CI nor a
 merged implementation closes a full parity requirement.
 
-## Current DCP-010 setter contract candidate
+## Current DCP-010 setter contract qualification
 
-The isolated candidate on `feat/dcp-010-config-contract-20261102`, based on merged
-main `acaf276066c9e0436af2398c0120a38f7c04f5f0`, adds the missing
+Implementation `16ea3ff82062c6f3018385b1a59600431e475c36`, carried by draft
+[PR #74](https://github.com/MulattoTech/MTerm-CLI/pull/74), adds the missing
 ` to <effective JSON value>` success segment while retaining the existing
-owner-bounded six-preference contract. Each acknowledgement uses the same
-validated write snapshot as its configuration body. No coercions, capabilities,
-storage behavior or telemetry transport are added.
+owner-bounded six-preference contract. It is based on merged main `acaf276`.
+Each acknowledgement uses the same validated setter snapshot as its body; no
+coercions, storage behavior, capabilities or telemetry transport are added.
 
-Focused native Windows Node 24.21.0 tests reached the actual success assertions:
-**2 passed/10 failed before the edit, then 12/12 passed with no skips or
-cancellations**. The corrected test helper preserves fixture state if an owned
-child's exit cannot be verified. The [contract report](validation/2026-11-02-config-contract.md)
-records both source identities, cleanup-only test revision, all six normalization
-rules and the distinction between native RED and scratch `CONNECTION_CLOSED`
-initialization failures. Independent source review has no blocking findings.
+**Native Windows Node 24.21.0 passed 187/187 tests, with zero failures, skips or
+cancellations.** The actual full-orchestration wrapper passed normal build/check,
+package and source-entry native Codex; separate self-host, normal prepack and
+installed-entry native Codex also passed. The real installed verifier passed
+ten scenarios, including all six setting responses and 14 rejection cases with
+unchanged policy/backup bytes. Ten network canaries and zero product attempts
+were observed in bounded Node instrumentation, with verified owned-process
+shutdown and cleanup. A fresh exact-commit archive/extraction passed locked
+install, reviewed build, normal prepack and actual installed verification.
 
-Normal roadmap-reviewed build/check, full native gates, execution of the extended
-packed-installed verifier, fresh committed extraction and hosted/publication
-gates remain pending for this uncommitted candidate. Earlier results below do
-not qualify it. DCP acceptance remains **0/48**, WEB **0/12** and weighted CLI
-maturity **29.12%**, with all stages and weights unchanged.
+The [contract report](validation/2026-11-02-config-contract.md),
+[native receipt](validation/2026-11-02-config-contract-windows.json) and
+[fresh-source receipt](validation/2026-11-02-config-contract-fresh.json) retain
+exact source and evidence identities. The original focused native RED was
+2 passes/10 success-text failures, followed by 12/12 GREEN. The cleanup-only test
+revision and scratch initialization failures remain separately documented.
+Native Codex 0.160.1 parsed synthetic registration and the SDK ran two MCP rounds
+for each source/installed entry; actual model-driven tool invocation remains
+false and model calls remain zero.
+
+All nine [hosted implementation checks](validation/2026-11-02-config-contract-hosted.json)
+passed at `16ea3ff` without retries, observed 13:09:16.557 UTC. Final-documentation,
+merge/main and final recovery gates remain pending; no later head or merge is
+predicted. #12 remains open for its
+own complete setter contract, accepted intentional differences and applicable
+actual-client evidence; separate shell/process contracts are not prerequisites
+silently added to it. DCP acceptance remains **0/48**, WEB **0/12** and weighted
+CLI maturity **29.12%**, with protected fields unchanged. The
+[issue-audit receipt](validation/2026-11-02-config-contract-issue-audit.json)
+preserves the original audit timestamp and all-open result.
+
+The separate [connection receipt](validation/2026-11-02-connection-recheck.json)
+records one owner computer online and zero client authorizations at the existing
+read-only dashboard around 12:56:08 UTC. Actual ChatGPT consent, discovery and
+file reading remain unobserved; plugin creation repair and fresh Cloudflare
+management version/Access-policy state were not established.
 
 ## Completed DCP-009 qualification and delivery
 

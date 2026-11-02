@@ -2,34 +2,69 @@
 
 ## Current DCP-010 contract qualification
 
-The [setter contract report](validation/2026-11-02-config-contract.md) records a
-focused native Windows Node 24.21.0 RED/GREEN at an uncommitted candidate based on
-`acaf276066c9e0436af2398c0120a38f7c04f5f0`. Before the runtime change, 12 tests
-produced 2 passes and 10 success-text assertion failures. After the minimal output
-fix, all 12 passed with zero skips or cancellations. The report pins the old and
-new source/test/log hashes; a cleanup-only helper repair separates the two test
-revisions. Scratch `CONNECTION_CLOSED` occurred during initialization and supplies
-no product RED or runtime qualification.
+The [setter contract report](validation/2026-11-02-config-contract.md) records
+qualified implementation `16ea3ff82062c6f3018385b1a59600431e475c36`, based on
+merged main `acaf276`. Native Windows x64 Node 24.21.0 passed **187/187 tests with
+zero failures, skips or cancellations**. The actual full wrapper ran from
+13:00:35.945 to 13:01:25.726 UTC and exited 0:
 
-The new cases use real SDK stdio clients to check all six preference outputs,
-normalization, owner ceilings, 32 rejected inputs with exact policy/backup byte
-preservation, no-op writes, sampled same-key concurrency and the independent
-config-write capability. The installed verifier retains its prior scenarios and
-adds six-setting success and 14 rejection checks, bringing its expected total to
-ten scenarios. Those extended packed-installed scenarios are **pending execution**
-at this record's preparation; source review and syntax validation are separate.
+```powershell
+node scripts/orchestration/verify.mjs --full
+```
+
+That observed invocation includes normal reviewed build/check, package
+verification and source-entry native Codex. Separate self-host, normal prepack
+and installed-entry native Codex also exited 0. See the exact
+[native receipt](validation/2026-11-02-config-contract-windows.json), which records
+a clean checkout and unchanged source/test/verifier hashes before and after.
+Normal prepack repeated the 187/187 test result; those runs are not added together
+as distinct test coverage.
+
+The actual installed verifier passed **ten scenarios**, including the six
+preference response contracts and 14 rejection cases with policy/backup byte
+preservation. Two concurrent MCP children plus restart completed with observed
+owned-process exits and fixture cleanup. Ten network canaries were intercepted;
+zero product attempts were observed within the instrumented standard Node APIs.
+This is not an OS network sandbox. Native Codex 0.160.1 parsed synthetic source
+and installed registration, and SDK clients completed two MCP rounds per entry;
+actual Codex-agent tool invocation remains false and model calls remain zero.
+
+The separate [fresh-source receipt](validation/2026-11-02-config-contract-fresh.json)
+records exact-commit archive/extraction, locked install, reviewed build, normal
+prepack and actual installed verification from 13:02:54.753 to 13:03:44.492 UTC.
+All gates exited 0, normal prepack passed 187/187 tests without skips, and the
+installed verifier again passed ten scenarios. Package sizes were 57,977 archive
+bytes, 224,683 unpacked bytes and 14,172,053 installed production bytes; external
+Node/Codex prerequisites remain outside that footprint.
+
+The initial focused native campaign preceded the runtime edit:
 
 ```powershell
 npm run build:code
 node --test --test-reporter=tap --test-concurrency=1 tests/compat-config-set-contract.test.mjs
 ```
 
-The integration owner must explicitly review/render the affected roadmap before
-normal build/check/package gates. Full native qualification, normal prepack,
-source/installed native-Codex checks, fresh committed extraction and hosted/final
-delivery gates for this change remain pending. No model calls or real Codex
-auth/config mutation are part of these checks. Independent static review has no
-blocking findings, and all acceptance/stage metrics remain unchanged.
+It reached the real success assertions with 2 passes/10 failures, then passed
+12/12 after the fix. Original RED and corrected-cleanup GREEN test hashes remain
+separate; contract assertions did not change. The focused tests also cover
+32 rejected inputs, no-op integer writes, sampled same-key concurrency and the
+independent configuration-write capability. Scratch `CONNECTION_CLOSED` occurred
+before behavior assertions and supplies no product RED. The report preserves the
+failed local-path evidence validation and corrected pre-execution import hash
+comparison as separate setup observations.
+
+All nine [hosted implementation checks](validation/2026-11-02-config-contract-hosted.json)
+passed at `16ea3ff`: push matrix `41449904997`, PR matrix `41450112186` and fast
+`41450112178`, all on attempt 1, observed 13:09:16.557 UTC. Final-documentation
+checks, merge/main and final recovery remain pending for
+[PR #74](https://github.com/MulattoTech/MTerm-CLI/pull/74).
+The integration owner must review this final evidence and explicitly review/render
+the refreshed roadmap before the final documentation gates. No actual model
+invocation or real Codex auth/config mutation is claimed. Independent static
+review has no blocking findings; all parity/stage metrics remain unchanged.
+The [issue audit](validation/2026-11-02-config-contract-issue-audit.json) and
+[connection receipt](validation/2026-11-02-connection-recheck.json) are separate
+observations and do not supply new client acceptance.
 
 ## Completed configuration qualification checkpoints
 

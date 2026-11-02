@@ -163,8 +163,8 @@
       "title": "Implement set_config_value MCP parity",
       "state": "open",
       "url": "https://github.com/MulattoTech/MTerm-CLI/issues/12",
-      "implementationObservation": "Recovered six-setting implementation now tolerates bounded Windows EPERM/EBUSY for config/backup replacement, with expected bytes and owned-stage validation on every attempt. Native Windows focused38/38 passes. Exact upstream outputs/coercions/security differences and full installed/Codex acceptance remain open. Bounded 2026-11-02 candidate based on merged main acaf276 adds the missing success prefix value from the setter returned effective snapshot; preserves text-only success, schemaVersion body, strict coercions, owner ceilings, storage and safe errors. Native Windows Node 24.21.0 observed 12 tests, 2 passed/10 failed success-text RED, then 12/12 GREEN with zero skips/cancellations; the RED original test and cleanup-only corrected test are separately hashed. New tests cover six preferences, 32 seeded rejected-write byte checks, no-op boundaries and sampled same-key concurrency; installed verifier adds six-setting output and 14 rejection checks. Independent static review has no blockers. Normal reviewed/full native, extended packed-installed 10-scenario, fresh-source and hosted/final-delivery gates remain pending for this uncommitted candidate. #12 remains open for its own complete setter contract, accepted intentional differences and applicable actual client evidence; separate DCP-012/013/014/034 shell/process contracts remain unqualified by this slice.",
-      "lastReviewedAt": "2026-11-02T12:52:10.822Z",
+      "implementationObservation": "Recovered six-setting implementation includes the prior bounded Windows EPERM/EBUSY replacement repair and native focused 38/38 proof. The bounded 2026-11-02 contract slice at 16ea3ff82062c6f3018385b1a59600431e475c36 adds the missing success prefix value from the returned effective write snapshot; text-only success, schemaVersion body, strict coercions, owner ceilings, storage and safe errors remain. Focused native Windows RED was 12 tests, 2 passed/10 success-text failures, followed by 12/12 GREEN; original and cleanup-only corrected test hashes remain distinct. The committed implementation passed actual full-wrapper/native qualification with 187/187 zero-skip tests, seven conceptual gates, ten real installed scenarios and 14 installed rejections. Fresh exact-commit archive/extraction, locked install, normal prepack and installed proof passed with matching hashes. Ten intercepted canaries and zero product attempts cover bounded Node API instrumentation only. Source/installed native Codex 0.160.1 each parsed synthetic registration and completed two SDK MCP rounds; model calls 0 and actual agent invocation false. All nine implementation hosted checks passed on attempt 1 without retries, observed 13:09:16.557 UTC. Independent static review has no blockers. Final documentation-head, merge/main and recovery gates remain pending. #12 remains open for its own complete setter contract, accepted intentional differences and applicable actual-client evidence; separate DCP-012/013/014/034 shell/process contracts remain unqualified by this slice and are not imported as prerequisites.",
+      "lastReviewedAt": "2026-11-02T13:11:57.635Z",
       "evidence": [
         "docs/ai/changes/2026-11-02-foundation-portability.json",
         "docs/validation/2026-11-02-config-retry.md",
@@ -173,7 +173,11 @@
         "scripts/verify-configuration-installed.mjs",
         "docs/validation/2026-11-02-config-contract.md",
         "docs/validation/2026-11-02-config-contract-review.json",
-        "docs/ai/changes/2026-11-02-config-contract.json"
+        "docs/ai/changes/2026-11-02-config-contract.json",
+        "docs/validation/2026-11-02-config-contract-windows.json",
+        "docs/validation/2026-11-02-config-contract-fresh.json",
+        "docs/validation/2026-11-02-config-contract-hosted.json",
+        "docs/validation/2026-11-02-config-contract-issue-audit.json"
       ]
     },
     {

@@ -1,32 +1,59 @@
 # MTerm-CLI handoff — 2026-11-02 configuration continuation
 
-## Current DCP-010 setter contract continuation
+## Current DCP-010 setter contract qualification
 
-The isolated `feat/dcp-010-config-contract-20261102` candidate starts from merged
-main `acaf276066c9e0436af2398c0120a38f7c04f5f0`. It adds the missing
-` to <effective JSON value>` segment to each successful `set_config_value`
-response, using the same validated write snapshot as the configuration body.
-Owner ceilings, strict per-key validation, storage, safe errors and independent
-configuration-write capability are unchanged. The
-[contract report](validation/2026-11-02-config-contract.md) documents all six
-preferences, intentional upstream differences, rejected-write byte preservation
-and source identities.
+Tested implementation `16ea3ff82062c6f3018385b1a59600431e475c36` on
+`feat/dcp-010-config-contract-20261102` is carried by draft
+[PR #74](https://github.com/MulattoTech/MTerm-CLI/pull/74), based on merged main
+`acaf276066c9e0436af2398c0120a38f7c04f5f0`. It adds the missing
+` to <effective JSON value>` success segment from the same validated setter
+snapshot as the configuration body. Strict normalization, owner ceilings,
+storage, safe errors and independent configuration-write authority are unchanged.
+The [contract report](validation/2026-11-02-config-contract.md) records all six
+preferences and the intentional upstream differences.
 
-Native Windows Node 24.21.0 observed a meaningful **2-pass/10-fail RED**, then
-**12/12 GREEN with zero skips or cancellations**. Both ran in the uncommitted
-isolated candidate based on `acaf276`; the report identifies the actual source
-hashes rather than attributing the fix to base main. The test cleanup helper was
-repaired between RED and GREEN without changing contract assertions. Scratch
-stdio initialization failed with `CONNECTION_CLOSED`; that is an environment
-observation, not product RED. Independent static review has no blocking findings.
-The extended installed verifier adds six-setting output/rejection checks; its
-new packed-installed execution remains pending.
+Native Windows Node 24.21.0 passed **187/187 tests with no skips or
+cancellations**, the actual full-orchestration wrapper, self-host, normal prepack
+and installed-entry native Codex. The seven conceptual gates include normal
+build/check, real package and source Codex within that observed wrapper.
+The real installed verifier passed **ten scenarios**, including six-setting
+responses and 14 rejected-write byte checks. Two concurrent MCP children and a
+restart completed with independently verified exits and owned fixture cleanup.
+Ten network canaries were intercepted and zero product attempts observed within
+bounded Node API instrumentation. Source and installed Codex 0.160.1 each parsed
+synthetic registration and completed two SDK MCP rounds; model calls were zero
+and actual Codex-agent tool invocation remains false.
 
-Next, the integration owner reviews the final evidence and documentation,
-explicitly reviews/renders the roadmap, then runs normal/native, packed-installed,
-fresh-source and hosted/publication gates. Those gates are not yet established
-for this candidate. All 48 DCP issues remain open, WEB acceptance is 0/12 and
-broad maturity stays 29.12%; no stages or weights change.
+A separate exact-commit archive/extraction passed locked install, reviewed build,
+normal prepack and installed verification, again with 187/187 tests and ten
+installed scenarios. See the immutable [native receipt](validation/2026-11-02-config-contract-windows.json)
+and [fresh-source receipt](validation/2026-11-02-config-contract-fresh.json).
+These committed-source results follow the original focused native **2-pass/10-fail
+RED** and **12/12 GREEN**. Their old/new test hashes remain distinct because only
+the cleanup helper changed between the two focused runs. Scratch
+`CONNECTION_CLOSED` during initialization is an environment observation, not
+product RED. The report also preserves the corrected local-evidence-path build
+failure and pre-execution import hash comparison; neither is hidden or relabeled.
+
+All nine [hosted implementation checks](validation/2026-11-02-config-contract-hosted.json)
+passed at `16ea3ff` without retries, observed 13:09:16.557 UTC; the last completed
+at 13:08:30 UTC. Final documentation checks, merge/main and final recovery remain
+pending. The integration owner must review this updated evidence,
+explicitly review/render the refreshed roadmap and finish exact-head delivery.
+All 48 DCP issues remain open, WEB acceptance is 0/12 and broad maturity stays
+29.12%; no protected fields or acceptance credit change. The
+[additive issue audit](validation/2026-11-02-config-contract-issue-audit.json)
+retains its original 48-body/22-comment observation rather than claiming a new
+remote audit at receipt time.
+
+The separate [connection recheck](validation/2026-11-02-connection-recheck.json)
+records the existing-session dashboard at approximately 12:56:08 UTC: one owner
+computer online, read-only, zero client authorizations and zero active requests.
+Actual ChatGPT consent, discovery and file reading remain unobserved. Plugin
+listing does not prove the earlier creation error is repaired, and no blocked
+host retry, new login, consent or pairing was performed. Matching dashboard and
+public-health build values do not independently verify a fresh Cloudflare
+management version or Access policy.
 
 The DCP-009 owner ruling still required is whether its documented omitted probes
 and owner/privacy restrictions are acceptable intentional differences in the
@@ -34,7 +61,9 @@ Codex-facing parity contract; otherwise specify the truthful bounded fields
 required. The [report](validation/2026-11-02-config-contract.md#earlier-dcp-009-delivery-and-the-remaining-owner-ruling)
 lists the exact differences. This is contract acceptance, not permission for
 model calls or real user configuration changes; actual supported-client
-acceptance remains separate.
+acceptance remains separate. Independently closeable #12 remains open for its
+own complete setter contract, accepted intentional differences and applicable
+actual-client evidence. Separate shell/process contracts are not imported into it.
 
 ## Completed DCP-009 delivery and existing owner connection
 

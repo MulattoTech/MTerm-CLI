@@ -1,19 +1,24 @@
 # DCP-010 configuration setter contract — 2026-11-02
 
-**The focused native Windows contract tests passed 12/12 after an observed
-2-pass/10-fail RED.** This change completes a bounded success-output correction
-and adds six-preference contract checks. Normal reviewed build/check, full native
-qualification, packed-installed execution of the extended verifier, fresh-source
-qualification and hosted/publication gates remain pending at this record's
-preparation. It does not accept or close [DCP-010 / #12](https://github.com/MulattoTech/MTerm-CLI/issues/12).
+**Implementation `16ea3ff82062c6f3018385b1a59600431e475c36` passed 187/187 native
+Windows tests, all seven conceptual qualification gates, ten actual installed
+configuration scenarios and fresh committed-source qualification.** The actual
+full-orchestration wrapper ran successfully. The focused setter tests first
+established a 2-pass/10-fail RED, then passed 12/12 after the bounded output fix.
+[PR #74](https://github.com/MulattoTech/MTerm-CLI/pull/74) is a draft at this
+record's preparation. All nine implementation hosted checks also passed without
+retries. Final documentation checks, merge/main and final recovery remain
+pending. This does not accept or close
+[DCP-010 / #12](https://github.com/MulattoTech/MTerm-CLI/issues/12).
 
 The ordinary continuation clone is on `feat/dcp-010-config-contract-20261102`,
 based on merged main `acaf276066c9e0436af2398c0120a38f7c04f5f0` (tree
 `9a8338bde6207c13005d6b1bb2583201bc609931`). Both focused Windows runs used the
 uncommitted isolated candidate based on that commit; the fixed source is
-identified by its file hash below. Base `acaf276` itself does not contain this fix.
-The original dirty Windows checkout, protected worktrees and the running owner
-agent's separate checkout are preserved by the integration owner.
+identified by its file hash below. The later full native and fresh-source gates
+used committed implementation `16ea3ff`; base `acaf276` itself does not contain
+the fix. The original dirty Windows checkout, protected worktrees and the running
+owner agent's separate checkout are preserved by the integration owner.
 
 ## Exact output change and its boundary
 
@@ -98,10 +103,12 @@ The [installed verifier](../../scripts/verify-configuration-installed.mjs) now
 adds the same six-key response contract and 14 rejected-write checks to its
 existing actual-package scenarios. It checks both policy and backup bytes,
 mandatory blocks, canonical roots, boolean strings, line-limit types and a
-selected shell after restart. This extends its expected scenario count from
+selected shell after restart. This extends its scenario count from
 eight to ten while retaining two concurrent MCP children, restart, metadata and
-network-guard checks. Execution of this extended installed gate is still pending
-here; source inspection and syntax checks do not supply installed evidence.
+network-guard checks. All ten scenarios passed against the real installed
+package in both native and fresh-source qualification at `16ea3ff`, with verified
+owned-child shutdown and fixture cleanup. The new shell fixtures establish
+preference persistence without claiming actual shell execution.
 
 ## Observed RED and GREEN
 
@@ -119,9 +126,10 @@ repair changes cleanup only; the contract assertions are unchanged.
 | Native RED, 12:43:10–12:43:14 UTC | Windows x64 Node 24.21.0, 12 tests: **2 passed, 10 failed**, zero skips/cancellations. All ten failures reached the success-text assertion. The rejection and capability cases passed. Runtime remained the base bytes; original test cleanup revision identified below. |
 | Native GREEN, 12:47:32.574–12:47:36.990 UTC | Windows x64 Node 24.21.0, **12 passed, zero failed/skipped/cancelled**; test duration 3494.2329 ms. Compile exit 0. Fixed runtime and corrected-cleanup test hashes are identified below. |
 | Independent source review | No blocking findings in the reviewed runtime, test and installed-verifier bytes. The cleanup finding is resolved. Review was static and does not infer a runtime or publication gate. |
-| Normal roadmap-reviewed build/check; complete native/package/prepack/Codex gates | Pending integration-owner qualification of this change. |
-| Fresh committed extraction and actual installed proof | Pending. No new committed implementation SHA is asserted. |
-| Hosted implementation, final documentation, merge/main and recovery gates | Pending; historical PR #73 results do not qualify this new candidate. |
+| Normal roadmap-reviewed build/check; complete native/package/prepack/Codex gates | PASS at committed `16ea3ff`, Windows x64 Node 24.21.0. Actual full wrapper, self-host, normal prepack and installed Codex all exited 0; 187/187 tests with zero failures/skips/cancellations. Exact receipt below. |
+| Fresh committed extraction and actual installed proof | PASS at exact committed `16ea3ff`: archive/extract, locked install, reviewed build, normal prepack and actual installed package verification. 187/187 tests, no skips; ten installed scenarios. |
+| Hosted implementation checks | PASS: all nine checks at `16ea3ff`, no retries, observed 13:09:16.557 UTC. Exact runs and scope below. |
+| Final documentation, merge/main and recovery gates | Pending; implementation or historical PR #73 results do not qualify a future documentation or merge head. |
 
 Both focused native runs used:
 
@@ -138,6 +146,17 @@ with `ENOTCACHED`; an independent copy of the earlier cached dependency tree was
 used only after all three package/lock/shrinkwrap files matched exactly. No
 mutable dependency tree was shared. This is not a fresh locked-install result.
 
+The first normal scratch build failed parity evidence validation because a new
+remote PR-comment URL had been placed in an evidence list that accepts committed
+local paths. The integration owner corrected only that ledger reference to this
+local report, retaining the direct PR citation here; normal build and formatting
+then passed. The failed `npm run build` remains a failed gate even though the
+surrounding ad-hoc shell ended with a later successful diff check. No checker or
+runtime was weakened. Separately, an initial Windows import-wrapper hash check
+compared a trailing-newline variant with the bytes actually sent. The exact-byte
+comparison was corrected and verified before execution; this was an import
+observation, not a product failure.
+
 | Evidence identity | SHA-256 |
 | --- | --- |
 | Pre-fix `src/mcp.ts` used for native RED | `dad705164d249068696ec303b5d4a4b2e6712625b25f1c74ca142639db708540` |
@@ -149,6 +168,99 @@ mutable dependency tree was shared. This is not a fresh locked-install result.
 | Extended installed verifier | `ff38f93d738b4a6d47347d62fc62c84bedb1228ea0ff488e0aee1bd44232e49b` |
 | Unchanged `src/compat-config.ts` | `73d3f109bd4ce67a83e9ba7c5eb55e70eaa45f4cab63d96165a365b4698c9af9` |
 | [Independent source review](2026-11-02-config-contract-review.json) | `8bfefad15ac19d4a49a6d1ba70f247b799c2fab7f7cc9665d5d2ac122e215d0c` |
+
+## Committed native and fresh-source qualification
+
+The [native Windows receipt](2026-11-02-config-contract-windows.json) identifies
+exact head `16ea3ff82062c6f3018385b1a59600431e475c36`, a clean checkout before
+and after qualification, and unchanged source/test/verifier hashes. The complete
+native campaign ran from **13:00:35.849 to 13:02:02.058 UTC**. The actual
+`node scripts/orchestration/verify.mjs --full` invocation ran from
+**13:00:35.945 to 13:01:25.726 UTC** and exited 0. This is observed wrapper
+execution; the earlier DCP-009 campaign's individually executed components are a
+different historical record.
+
+| Conceptual native gate | Execution and result |
+| --- | --- |
+| Reviewed normal build | PASS within the actual full wrapper. |
+| Normal check | PASS within the wrapper: 187 passed, 0 failed/skipped/cancelled; test duration 31070.6053 ms. |
+| Real package verification | PASS within the wrapper: actual pack/install, external launch, offline npm exec, owned-prefix link and ten installed configuration scenarios. |
+| Source-entry native Codex | PASS within the wrapper: native Codex 0.160.1 parsed synthetic registration; the SDK completed two registered-command MCP rounds. |
+| Self-host | Separate gate exited 0. |
+| Normal prepack | Separate gate exited 0, including 187/187 tests with no skips or cancellations. |
+| Installed-entry native Codex | Separate gate exited 0; native parser and two SDK MCP rounds passed for the installed entry. |
+
+The installed scenarios exercise six setting responses, 14 rejected-write cases,
+policy/backup byte preservation, canonical roots, mandatory blocks, concurrency,
+metadata and restart. All captured MCP/fixture exits were verified and owned
+fixtures were cleaned. Ten deliberate network canaries were intercepted and
+zero product attempts were observed in the instrumented standard Node APIs of
+the three MCP children. This does not establish an OS network sandbox or monitor
+arbitrary descendants.
+
+The package archive was **57,977 bytes**, unpacked payload **224,683 bytes**, and
+installed production footprint **14,172,053 bytes** across 992 files. Node and
+Codex remain external prerequisites; these sizes are not full three-component
+bundle acceptance. Source and installed Codex checks used synthetic state,
+preserved unrelated bytes and verified shutdown. Both report native parsing and
+two SDK rounds, **zero model calls**, **no real user configuration changes** and
+`actualCodexAgentToolInvocation: false`.
+
+The [fresh-source receipt](2026-11-02-config-contract-fresh.json) records a
+separate exact-commit campaign from **13:02:54.753 to 13:03:44.492 UTC**. Archive,
+extraction, locked dependency installation, reviewed build, normal prepack and
+actual installed package verification all exited 0. The fresh normal prepack
+again passed **187/187 tests with zero skips**, and the real installed verifier
+passed all ten scenarios with the same package sizes above. This is independent
+of the earlier scratch dependency-copy setup. The extraction initially contained
+neither `dist` nor `node_modules`; all four extracted source/test/verifier hashes
+matched the tested implementation. Source archive SHA-256:
+`652bf67178f734be5bc80d7a7a3108e59baf76ae893029652d614e4311e7074c`.
+
+| Qualification receipt | SHA-256 |
+| --- | --- |
+| Native Windows | `0edc45757735bb1eb4e9aca0bcd76baac58b2ca24f8d4b7569af6e41a8cbdb29` |
+| Fresh committed source | `031023ab4df73e7929006a647fbf9ae18a29a8f36061763a7070357ac15f7121` |
+| Hosted implementation | `fc7a332db7c03dbacde1580c2aca224c69ed128a55a097cf9b8124d350917717` |
+
+## Hosted implementation checks
+
+The [hosted receipt](2026-11-02-config-contract-hosted.json) records **9/9 checks
+passed** at exact implementation `16ea3ff`, observed **13:09:16.557 UTC**. The
+last check completed at **13:08:30 UTC**. Each workflow remained on attempt 1;
+there were no retries in this campaign.
+
+| Workflow | Scope and result |
+| --- | --- |
+| [Push matrix 41449904997](https://github.com/MulattoTech/MTerm-CLI/actions/runs/41449904997) | PASS: Windows 2022, Ubuntu 24.04, macOS 14 and macOS 15 Intel on Node 24. |
+| [PR matrix 41450112186](https://github.com/MulattoTech/MTerm-CLI/actions/runs/41450112186) | PASS: the same four platform jobs. |
+| [PR fast 41450112178](https://github.com/MulattoTech/MTerm-CLI/actions/runs/41450112178) | PASS. |
+
+These are implementation-head results. The retained receipt reports check/run
+state; the native and fresh records provide the detailed counts and installed
+behavior above. Final documentation-head checks, merge/main checks and additive
+recovery remain separate pending actions. PR #73's older timeout/retry history
+remains preserved and is not attributed to this no-retry implementation campaign.
+
+## Issue and connection observations
+
+The [additive issue-audit receipt](2026-11-02-config-contract-issue-audit.json)
+preserves the original 12:34:25 UTC observation of all 48 live DCP issue bodies
+and 22 comments, with zero ledger identity/state/title/URL/pin/epic mismatches.
+Its later receipt timestamp is not a new remote audit. No acceptance decision
+was made, and the nine named historical records remain byte-identical to the
+frozen base.
+
+The separate [connection recheck](2026-11-02-connection-recheck.json) records an
+existing-session Brave dashboard observation at approximately 12:56:08 UTC:
+one owner computer online, read-only access, zero client authorizations and zero
+active requests. Dashboard and public health reported the earlier staging build
+`b90432a`; they do not independently verify the Cloudflare management version or
+Access policy. Actual ChatGPT consent, discovery and file reading remain
+unobserved. Successful personal plugin listing/search does not establish repair
+of the earlier non-retryable creation error, and the blocked ChatGPT host was not
+retried or bypassed. These are separate connection observations, not setter or
+client-acceptance credit.
 
 ## Earlier DCP-009 delivery and the remaining owner ruling
 
@@ -181,9 +293,11 @@ model calls were zero and actual Codex-agent tool invocation was false.
 
 ## Remaining work and unchanged acceptance
 
-The integration owner must review the final documentation and evidence, explicitly
-review/render the roadmap, and complete the pending native, packed-installed,
-fresh-source and exact-head delivery gates. #12 remains open for its own complete
+The integration owner must review this final documentation and evidence, explicitly
+review/render the refreshed roadmap, and complete pending final-documentation,
+merge/main and recovery gates. Native, fresh-source and hosted proof above
+qualify implementation `16ea3ff`; they do not predict a later documentation
+head or merge. #12 remains open for its own complete
 setter contract, accepted intentional differences and applicable actual client
 evidence; separate DCP-012/013/014/034 shell/process contracts remain unqualified
 by this slice. This source change performs no deployment, pairing, owner enrollment

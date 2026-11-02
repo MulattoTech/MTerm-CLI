@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-02T17:16:00.734348+00:00",
+  "reviewer": {
+    "provider": "OpenAI",
+    "model": "GPT-6 Astra Pro",
+    "agent": "/root/issue_audit",
+    "identityBasis": "session-declared, self-reported",
+    "cryptographicSignature": false
+  },
+  "reviewType": "Independent static source/test/installed-harness review; not full acceptance",
+  "baseCommit": "71353344bb78bb15135bc76be1c32db4aff14f47",
+  "observedHead": "71353344bb78bb15135bc76be1c32db4aff14f47",
+  "branch": "feat/dcp-024-file-info-contract-20261102",
+  "reviewedSourceHashes": {
+    "src/desktop-commander-files.ts": "f111c97949db5b10a6e1a0dc05bf3a65a6163198f2b13ce5cdcdb4fd94489008",
+    "src/mcp.ts": "54ea5248a41f48ee39c14cb9df2b1bf380c42a74c6b4c4cce1aadbd9c17f1f5b",
+    "tests/compat-file-info.test.mjs": "237327b5ef81a5451597d74187da260fca6ef1ea722fd0982757545ec9af5e52",
+    "scripts/verify-compatibility-installed.mjs": "e2327ed4e397c63a89d159a7a6939e56e9a00b7f64953186046adfc3740fc720",
+    "scripts/verify-package.mjs": "ed6c9ad534c7f63b9b9c4d2e353e53fe3e5de7aebddd52dca00fbebc8f589335"
+  },
+  "upstream": {
+    "version": "0.2.52",
+    "commit": "c774c3b505de990219637ecdc9a830c8772fae9d",
+    "references": [
+      "src/tools/schemas.ts:GetFileInfoArgsSchema",
+      "src/handlers/filesystem-handlers.ts:formatValue and handleGetFileInfo",
+      "src/utils/files/text.ts:TextFileHandler.getInfo and countLines",
+      "src/tools/filesystem.ts:getFileInfo"
+    ]
+  },
+  "disposition": "PASS_FOR_BOUNDED_SOURCE_REVIEW",
+  "blockingFindings": [],
+  "reviewedContract": [
+    "Date values are serialized by JSON.stringify only for Date fields, matching quoted ISO output without adding unrelated object/array handling.",
+    "Successful supported text metadata uses lineCount-1 including -1 for the empty-file sentinel; fields and order match inspected pin.",
+    "Directory fileType=text is explicitly documented as a handler discriminator, with no content read or line metadata.",
+    "Binary, invalid UTF-8 and over-limit fallback remains honest and omits fileType/line fields; office/image stat-only behavior remains unchanged.",
+    "Signal is forwarded by the real MCP handler; cancellation is checked at entry and after awaited policy/stat/read operations and catch/final response boundaries.",
+    "Fallback accepts only the three existing bounded content ToolErrors or an explicit ordinary errno allowlist; policy, changed-path, cancellation and unexpected errors propagate.",
+    "A symlink or hardlink replacement seen by the post-resolution lstat is rejected; a forbidden replacement during optional read is rejected through the existing FileService.",
+    "Installed verifier exercises seven metadata scenario groups then a separate read-only process for group eight; existing six directory groups remain intact.",
+    "Read-only child identity is captured before discovery/capability assertions; all thirteen current write/exec/config-write tool names are absent and capability booleans are false.",
+    "Both installed launchers and actual server PIDs are independently checked for exit; unknown identity or close failure prevents a passing result.",
+    "Metadata fixtures are under the owned listing root and removed only after confirmed first-process exits; package evidence scope remains retained for recovery.",
+    "Package report now preserves the child compatibility scenario/cleanup report rather than only its alias count."
+  ],
+  "resolvedReviewSuggestions": [
+    {
+      "finding": "Read-only product PID initially captured after assertions that might fail.",
+      "resolution": "Moved get_config PID capture immediately after successful connect and before tool assertions."
+    },
+    {
+      "finding": "Read-only tool-absence list initially covered only five names.",
+      "resolution": "Expanded to all thirteen current write/config/exec tool names and asserted three capability booleans false."
+    }
+  ],
+  "evidenceReviewed": {
+    "redResult": {
+      "startedAt": "2026-11-02T17:12:34.413305+00:00",
+      "finishedAt": "2026-11-02T17:12:34.733491+00:00",
+      "command": [
+        "node",
+        "--test",
+        "--test-isolation=none",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/compat-file-info.test.mjs"
+      ],
+      "exitCode": 1,
+      "counts": {
+        "tests": 23,
+        "pass": 6,
+        "fail": 17,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "node": "v24.22.1",
+      "scope": "Supplementary Linux scratch direct-service RED; native Windows independent run remains pending.",
+      "files": {
+        "desktop-commander-files.ts": "3cd606ebbf5404da939c238d6173721d4656d1ee28fd4982ba259b826ec062de",
+        "mcp.ts": "d585feb3c9b4707c24e266e4d8476e18ce21bc25169ebe08275fa972a34d400b",
+        "compat-file-info.test.mjs": "237327b5ef81a5451597d74187da260fca6ef1ea722fd0982757545ec9af5e52",
+        "focused.log": "af90ecd5ab10d0f6b5d9fba65a47663882db16fe34a6b30d8409284090d2a6c8"
+      }
+    },
+    "greenResult": {
+      "startedAt": "2026-11-02T17:12:59.609763+00:00",
+      "finishedAt": "2026-11-02T17:12:59.984351+00:00",
+      "command": [
+        "node",
+        "--test",
+        "--test-isolation=none",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/compat-file-info.test.mjs"
+      ],
+      "exitCode": 0,
+      "counts": {
+        "tests": 23,
+        "pass": 23,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "node": "v24.22.1",
+      "scope": "Supplementary Linux scratch direct-service GREEN; native full/installed/fresh gates remain pending.",
+      "sourceHashes": {
+        "src/desktop-commander-files.ts": "f111c97949db5b10a6e1a0dc05bf3a65a6163198f2b13ce5cdcdb4fd94489008",
+        "src/mcp.ts": "54ea5248a41f48ee39c14cb9df2b1bf380c42a74c6b4c4cce1aadbd9c17f1f5b",
+        "tests/compat-file-info.test.mjs": "237327b5ef81a5451597d74187da260fca6ef1ea722fd0982757545ec9af5e52"
+      },
+      "logSha256": "4e876dd19a8b5985622431146816b2c8f5f51514ed4be5aa4a5b80f7acbb0a20"
+    },
+    "redAssertionFailureCount": 17,
+    "focusedTestBytesUnchanged": true,
+    "retainedLogHashesVerified": true,
+    "originalRuntimeMatchesBase": {
+      "src/desktop-commander-files.ts": true,
+      "src/mcp.ts": true
+    }
+  },
+  "testsRunByReviewer": [],
+  "whyNoDuplicateTestRun": "Matching retained RED/GREEN logs and source hashes plus static review resolve this review scope. Native, full-wrapper and installed verification remain separate integration gates. Known scratch subprocess limitations were not retried.",
+  "limitations": [
+    "No claim of installed MCP cancellation fault injection; cancellation/error-injection evidence is direct-service only.",
+    "Optional text metadata and earlier stat fields are not an atomic snapshot; path checks are cooperative and not handle-anchored sandbox guarantees.",
+    "A blocked OS await remains noninterruptible by these cooperative cancellation checks.",
+    "Full format/UTF-16/large-file metadata parity and applicable actual-client acceptance remain open.",
+    "No runtime execution, native/full/package/fresh/hosted pass is asserted by this review."
+  ],
+  "acceptance": {
+    "DCP": "0/48 unchanged",
+    "WEB": "0/12 unchanged",
+    "maturity": "29.12% unchanged",
+    "issue26Closed": false,
+    "actualCodexAgentToolInvocation": false,
+    "modelCalls": 0
+  },
+  "nextUnverifiedAction": "Integration owner review/render and actual pinned native, installed/fresh and exact-head hosted qualification at the reviewed source identity."
+}

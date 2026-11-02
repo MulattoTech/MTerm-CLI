@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 // Modified: 2026-11-02-config-contract; set success reports its committed effective preference value.
+// Modified: 2026-11-02-file-info-contract; forward cooperative metadata cancellation.
 // Modified: 2026-10-05-codex-parity-foundation; opt-in bounded DesktopCommander file aliases.
 // AI-Change: 2026-10-04-local-mcp (OpenAI / GPT-6 Astra Pro; self-reported)
 import os from 'node:os';
@@ -223,7 +224,7 @@ export async function runMcp(options: HostOptions): Promise<void> {
           'Text file and directory metadata; office-specific metadata remains unsupported.',
           desktopFileSchemas.info,
           true,
-          (a) => compat.getFileInfo(a),
+          (a, s) => compat.getFileInfo(a, s),
           true,
         );
         if (files.allowWrite) {

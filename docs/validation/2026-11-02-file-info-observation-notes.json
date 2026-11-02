@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-11-02T17:33:17.274502+00:00",
+  "scope": "Preparation and observation failures, separate from product RED/qualification",
+  "events": [
+    {
+      "stage": "Subagent native preparation read",
+      "outcome": "Read-only call stalled without PID/call_id; integration owner interrupted after reported726 seconds",
+      "sourceMutation": false,
+      "productTestStarted": false
+    },
+    {
+      "stage": "Root transfer hash-check launcher",
+      "ownedSessionPid": 48688,
+      "exitCode": 1,
+      "outcome": "PowerShell Get-FileHash cmdlet unavailable before helper execution",
+      "productTestStarted": false
+    },
+    {
+      "stage": "Root inline Node transfer verifier",
+      "ownedSessionPid": 51988,
+      "exitCode": 1,
+      "outcome": "Windows native argument quoting removed inline path quotes; Node syntax error before helper execution",
+      "productTestStarted": false
+    },
+    {
+      "stage": "Root file-based verifier and focused helper",
+      "ownedSessionPid": 67704,
+      "exitCode": 0,
+      "outcome": "Transfer hashes verified; native RED/GREEN and preservation complete",
+      "focusedReport": "docs/validation/2026-11-02-file-info-focused-windows.json"
+    },
+    {
+      "stage": "Hosted log audit parser",
+      "outcome": "Reviewer corrected local parser for indented subtests and Windows CRLF; retained raw logs unchanged",
+      "productSourceOrTestsChanged": false,
+      "hostedRetry": false
+    }
+  ],
+  "qualificationGateFailures": 0,
+  "hostedRetries": 0,
+  "limitations": "Initial launcher error text/exits observed by root in RDC output. These are not product assertion failures; no test was rerun to disguise them."
+}

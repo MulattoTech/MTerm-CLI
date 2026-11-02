@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 // AI-Change: 2026-10-05-codex-parity-foundation (OpenAI / GPT-6 Astra Pro; self-reported)
 // Modified: 2026-11-02-directory-contract; bounded deterministic listing and honest partial diagnostics.
+// Modified: 2026-11-02-file-info-contract; bounded metadata rendering and fail-closed cancellation/policy.
 // Original bounded adapter. Pinned upstream behavioral references and limitations: docs/parity/.
 import type { Dirent } from 'node:fs';
 import fs from 'node:fs/promises';
@@ -360,33 +361,56 @@ export class DesktopCommanderFiles {
       return reply('Successfully moved ' + a.source + ' to ' + a.destination);
     });
   }
-  async getFileInfo(input: unknown): Promise<DesktopTextResult> {
+  async getFileInfo(input: unknown, signal?: AbortSignal): Promise<DesktopTextResult> {
+    cancelled(signal);
     const a = desktopFileSchemas.info.parse(input);
     const full = await this.files.policy.resolve(this.absolute(a.path));
+    cancelled(signal);
     const st = await fs.lstat(full);
+    cancelled(signal);
+    // Reject a forbidden replacement observed after resolution; pathname checks
+    // remain cooperative and do not provide a handle-anchored filesystem snapshot.
+    if (st.isSymbolicLink() || (st.isFile() && st.nlink > 1))
+      fail('LINK_REJECTED', 'Links and multiply-linked files are refused.');
     const fields: Record<string, unknown> = {
       size: st.size,
-      created: st.birthtime.toISOString(),
-      modified: st.mtime.toISOString(),
-      accessed: st.atime.toISOString(),
+      created: st.birthtime,
+      modified: st.mtime,
+      accessed: st.atime,
       isDirectory: st.isDirectory(),
       isFile: st.isFile(),
       permissions: st.mode.toString(8).slice(-3),
     };
+    // For directories this is the pinned handler discriminator, not content type.
+    if (st.isDirectory()) fields.fileType = 'text';
     if (st.isFile() && !office.test(full))
       try {
         const content = (await this.files.read({ path: full })).text;
+        cancelled(signal);
         const count = countLines(content);
         fields.fileType = 'text';
         fields.lineCount = count;
-        fields.lastLine = Math.max(0, count - 1);
+        fields.lastLine = count - 1;
         fields.appendPosition = count;
-      } catch {
+      } catch (error) {
+        cancelled(signal);
+        // Optional text metadata may be unavailable, but policy, changed-path,
+        // cancellation and unexpected errors must never become successful output.
+        const unavailable =
+          error instanceof ToolError
+            ? ['FILE_TOO_LARGE', 'BINARY_FILE', 'INVALID_UTF8'].includes(error.code)
+            : error instanceof Error &&
+              error.name !== 'AbortError' &&
+              ['EACCES', 'EPERM', 'EBUSY', 'EIO', 'ETIMEDOUT', 'EMFILE', 'ENFILE', 'ENOENT'].includes(
+                (error as NodeJS.ErrnoException).code ?? '',
+              );
+        if (!unavailable) throw error;
         fields.textMetadata = 'unavailable';
       }
+    cancelled(signal);
     return reply(
       Object.entries(fields)
-        .map(([k, v]) => k + ': ' + String(v))
+        .map(([k, v]) => k + ': ' + (v instanceof Date ? JSON.stringify(v) : String(v)))
         .join('\n'),
     );
   }

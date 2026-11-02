@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 // AI-Change: 2026-10-05-codex-parity-foundation
 // Modified: 2026-11-02-directory-contract; verify packed directory contracts and owned exits.
+// Modified: 2026-11-02-file-info-contract; qualify actual metadata envelopes and read-only restart.
 // Invoked by verify-package with its isolated npm cache, tarball and workspace.
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -14,6 +15,7 @@ for (const value of [npm, tarball, scope])
 const requestOptions = { timeout: 10000 };
 const listingRoot = await fs.mkdtemp(path.join(scope, 'directory-contract-'));
 const directoryScenarios = [];
+const fileInfoScenarios = [];
 let npmPid;
 let productPid;
 let stderrBytes = 0;
@@ -154,6 +156,114 @@ try {
   await call('edit_block', { file_path: moved, old_string: 'second', new_string: 'changed' });
   const info = await call('get_file_info', { path: moved });
   assert.match(info.content[0].text, /lineCount: 2/);
+  const metadataRoot = path.join(listingRoot, 'metadata');
+  await fs.mkdir(metadataRoot);
+  const inspect = async (file) => {
+    const result = await call('get_file_info', { path: file });
+    assert.equal(result.content.length, 1);
+    assert.equal(result.content[0].type, 'text');
+    assert.equal(result.structuredContent, undefined);
+    const entries = result.content[0].text.split('\n').map((line) => {
+      const at = line.indexOf(': ');
+      assert.ok(at > 0);
+      return [line.slice(0, at), line.slice(at + 2)];
+    });
+    assert.equal(new Set(entries.map(([key]) => key)).size, entries.length);
+    return Object.fromEntries(entries);
+  };
+  const expectedStat = (st) => ({
+    size: String(st.size),
+    created: JSON.stringify(st.birthtime),
+    modified: JSON.stringify(st.mtime),
+    accessed: JSON.stringify(st.atime),
+    isDirectory: String(st.isDirectory()),
+    isFile: String(st.isFile()),
+    permissions: st.mode.toString(8).slice(-3),
+  });
+  for (const [index, [content, count]] of [
+    ['', 0],
+    ['one', 1],
+    ['one\n', 1],
+    ['\n', 1],
+    ['one\r\ntwo\r\n', 2],
+    ['one\rtwo\r', 1],
+    ['\uFEFFα\n😀\nlast', 3],
+  ].entries()) {
+    const target = path.join(metadataRoot, 'text-' + index + '.txt');
+    await fs.writeFile(target, content);
+    const expected = {
+      ...expectedStat(await fs.stat(target)),
+      fileType: 'text',
+      lineCount: String(count),
+      lastLine: String(count - 1),
+      appendPosition: String(count),
+    };
+    const actual = await inspect(target);
+    assert.deepEqual(Object.keys(actual), Object.keys(expected));
+    assert.deepEqual(actual, expected);
+    assert.equal(await fs.readFile(target, 'utf8'), content);
+  }
+  fileInfoScenarios.push('text-stat-order-dates-empty-LF-CRLF-CR-BOM-Unicode');
+  const metadataDir = path.join(metadataRoot, 'folder.pdf');
+  await fs.mkdir(metadataDir);
+  assert.deepEqual(await inspect(metadataDir), {
+    ...expectedStat(await fs.stat(metadataDir)),
+    fileType: 'text',
+  });
+  fileInfoScenarios.push('directory-handler-discriminator-no-lines');
+  const maxText = path.join(metadataRoot, 'limit.txt');
+  await fs.writeFile(maxText, 'x'.repeat(262144));
+  const atLimit = await inspect(maxText);
+  assert.equal(atLimit.size, '262144');
+  assert.equal(atLimit.lineCount, '1');
+  fileInfoScenarios.push('unchanged-inclusive-262144-byte-ceiling');
+  for (const [label, bytes] of [
+    ['binary', Buffer.from([65, 0, 66])],
+    ['invalid-utf8', Buffer.from([0xc3, 0x28])],
+    ['oversize', Buffer.alloc(262145, 120)],
+  ]) {
+    const target = path.join(metadataRoot, label + '.dat');
+    await fs.writeFile(target, bytes);
+    const actual = await inspect(target);
+    assert.equal(actual.size, String(bytes.length));
+    assert.equal(actual.textMetadata, 'unavailable');
+    for (const key of ['fileType', 'lineCount', 'lastLine', 'appendPosition'])
+      assert.equal(actual[key], undefined);
+    assert.deepEqual(await fs.readFile(target), bytes);
+  }
+  fileInfoScenarios.push('binary-invalid-utf8-oversize-safe-omissions');
+  for (const ext of ['pdf', 'docx', 'xlsx', 'PNG']) {
+    const target = path.join(metadataRoot, 'unsupported.' + ext);
+    await fs.writeFile(target, 'UNSUPPORTED-FORMAT-FIXTURE');
+    assert.deepEqual(await inspect(target), expectedStat(await fs.stat(target)));
+  }
+  fileInfoScenarios.push('unsupported-formats-stat-only');
+  const hardlink = path.join(metadataRoot, 'hardlink.txt');
+  await fs.link(maxText, hardlink);
+  for (const [target, code] of [
+    [path.dirname(scope), 'OUTSIDE_ROOT'],
+    [path.join(directory, '.ssh'), 'PRIVATE_PATH'],
+    [link, 'LINK_REJECTED'],
+    [hardlink, 'LINK_REJECTED'],
+    [path.join(metadataRoot, 'missing.txt'), 'ENOENT'],
+  ]) {
+    const result = await client.callTool(
+      { name: 'get_file_info', arguments: { path: target } },
+      requestOptions,
+    );
+    assert.equal(result.isError, true);
+    const data = result.structuredContent ?? JSON.parse(result.content[0].text);
+    assert.equal(data.error.code, code);
+    assert.doesNotMatch(JSON.stringify(result), /PRIVATE-DIRECTORY-FIXTURE|UNSUPPORTED-FORMAT-FIXTURE/);
+  }
+  fileInfoScenarios.push('outside-private-link-hardlink-missing-denials');
+  const invalidInfo = await client.callTool(
+    { name: 'get_file_info', arguments: { path: '' } },
+    requestOptions,
+  );
+  assert.equal(invalidInfo.isError, true);
+  assert.ok(Buffer.byteLength(JSON.stringify(invalidInfo)) < 8192);
+  fileInfoScenarios.push('schema-path-denial');
   assert.equal(
     (
       await client.callTool(
@@ -216,11 +326,113 @@ assert.equal(
   ),
   false,
 );
+// A second installed process starts without mutation capabilities. Metadata must
+// remain available independently of the earlier write-enabled round-trip fixture.
+const readOnlyTransport = new StdioClientTransport({
+  command: process.execPath,
+  args: [
+    npm,
+    'exec',
+    '--offline',
+    '--yes',
+    '--package',
+    tarball,
+    '--',
+    'mterm-cli',
+    'mcp',
+    '--stdio',
+    '--root',
+    scope,
+    '--compat-desktop-commander',
+  ],
+  env: { ...process.env },
+  stderr: 'pipe',
+});
+const readOnlyClient = new Client({ name: 'mterm-packed-read-only-metadata', version: '1' });
+readOnlyTransport.stderr?.on('data', (chunk) => {
+  stderrBytes += chunk.length;
+});
+let readOnlyNpmPid;
+let readOnlyProductPid;
+let readOnlyFailure;
+try {
+  const connected = readOnlyClient.connect(readOnlyTransport, requestOptions);
+  readOnlyNpmPid = readOnlyTransport.pid;
+  await connected;
+  // Capture child ownership before assertions that may fail during discovery.
+  const config = await readOnlyClient.callTool({ name: 'get_config', arguments: {} }, requestOptions);
+  assert.equal(config.isError, false);
+  readOnlyProductPid = config.structuredContent?.config?.systemInfo?.processInfo?.pid;
+  assert.ok(Number.isInteger(readOnlyProductPid) && readOnlyProductPid > 0);
+  const listed = await readOnlyClient.listTools(undefined, requestOptions);
+  const metadataTool = listed.tools.find((tool) => tool.name === 'get_file_info');
+  assert.equal(metadataTool?.annotations?.readOnlyHint, true);
+  for (const name of [
+    'write_file',
+    'create_directory',
+    'move_file',
+    'edit_block',
+    'set_config_value',
+    'mterm_write_file',
+    'mterm_create_directory',
+    'mterm_move',
+    'mterm_start_process',
+    'mterm_process_input',
+    'mterm_stop_process',
+    'mterm_read_process_output',
+    'mterm_list_sessions',
+  ])
+    assert.ok(!listed.tools.some((tool) => tool.name === name), name + ' must be absent');
+  const capabilities = await readOnlyClient.callTool(
+    { name: 'mterm_capabilities', arguments: {} },
+    requestOptions,
+  );
+  assert.equal(capabilities.isError, false);
+  for (const key of ['writeEnabled', 'executionEnabled', 'configWriteEnabled'])
+    assert.equal(capabilities.structuredContent?.[key], false, key);
+  const result = await readOnlyClient.callTool(
+    {
+      name: 'get_file_info',
+      arguments: { path: path.join(scope, 'nested', 'compatibility.txt') },
+    },
+    requestOptions,
+  );
+  assert.equal(result.isError, false);
+  assert.equal(result.structuredContent, undefined);
+  assert.match(result.content[0].text, /\nlineCount: 2\nlastLine: 1\nappendPosition: 2$/);
+  assert.match(result.content[0].text, /\nmodified: "[^"\n]+Z"\n/);
+  fileInfoScenarios.push('read-only-installed-restart-independent-capabilities');
+} catch (error) {
+  readOnlyFailure = error;
+} finally {
+  const errors = [];
+  for (const close of [() => readOnlyClient.close(), () => readOnlyTransport.close()]) {
+    try {
+      await close();
+    } catch (error) {
+      errors.push(error);
+    }
+  }
+  for (const pid of new Set([readOnlyNpmPid, readOnlyProductPid])) {
+    try {
+      await verifyExit(pid);
+    } catch (error) {
+      errors.push(error);
+    }
+  }
+  if (readOnlyFailure || errors.length)
+    throw new AggregateError(
+      [...(readOnlyFailure ? [readOnlyFailure] : []), ...errors],
+      'Read-only metadata verification failed',
+    );
+}
+assert.equal(readOnlyTransport.pid, null);
 console.log(
   JSON.stringify({
     npmExecMcp: true,
     compatibilityAliasesExercised: 8,
     directoryListing: { scenarios: directoryScenarios, passed: directoryScenarios.length },
+    fileInfo: { scenarios: fileInfoScenarios, passed: fileInfoScenarios.length, readOnlyRestart: true },
     ownedProcessExitsVerified: true,
     directoryFixtureCleanupVerified: true,
     stderrCapturedBytes: stderrBytes,

@@ -1,0 +1,509 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUtc": "2026-11-02T17:31:52.606661Z",
+  "reviewer": {
+    "provider": "OpenAI",
+    "model": "GPT-6 Astra Pro",
+    "agentTask": "native_preparation"
+  },
+  "implementation": "450578f7761a5dabc28fad3feda0c3119f130ecb",
+  "tree": "152e1490ef91b42697d46af7e829473c0ddf8dc3",
+  "result": "PASS for retained native evidence consistency and bounded qualification scope; acceptance unchanged",
+  "reviewMode": "Independent local inspection of downloaded Windows receipts and logs; no new native execution by reviewer.",
+  "originalReports": [
+    {
+      "path": "artifacts/file-info-native-qualification-result.json",
+      "bytes": 40502,
+      "sha256": "139d12e49098236894591f64bf00abf72d8b3d54907e146a1441aa69e92fdc46"
+    },
+    {
+      "path": "artifacts/file-info-native-focused-result.json",
+      "bytes": 11765,
+      "sha256": "f10442dcd83bd83596bc44f1a7e4435f821d3a22ce9bdffcce99639f060ab2f6"
+    }
+  ],
+  "downloadArchive": {
+    "path": "artifacts/file-info-native-observations.zip",
+    "bytes": 92940,
+    "sha256": "3a68e0ca37f8cf0cbb6a9c93bc5b626381e262751359c5f1f2f6f7c2cc1694f2",
+    "members": 50,
+    "crcVerified": true
+  },
+  "logFilesHashVerified": 31,
+  "nestedReceiptsHashAndValueVerified": 4,
+  "allThirteenQualificationStepsReportedExitZero": true,
+  "focused": {
+    "tests": 23,
+    "redPass": 6,
+    "redAssertionFailures": 17,
+    "redExit": 1,
+    "greenPass": 23,
+    "greenExit": 0,
+    "zeroSkipsAndCancellations": true,
+    "sameOriginalAndGreenTestBytes": true
+  },
+  "fullWrapperActuallyInvoked": true,
+  "fullWrapperComponentMarkersVerified": [
+    "reviewed build",
+    "normal acceptance tests",
+    "portable package",
+    "isolated Codex registration"
+  ],
+  "fullNormalAndFreshPrepackCountsVerified": {
+    "tests": 228,
+    "pass": 228,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "all23NamedFocusedCasesPresentInAllThreeFullRuns": true,
+  "installedSourceAndFreshExplicitJsonMatchesReceipts": true,
+  "installedMetadataGroups": 8,
+  "installedDirectoryGroups": 6,
+  "installedMcpCapturedStderrBytes": 0,
+  "selfHost": {
+    "actualRepositoryRead": true,
+    "actualGitStatus": true,
+    "typecheckExecutedThroughMtermMcp": true,
+    "typecheckExit": 0,
+    "toolCount": 15,
+    "rootWritesEnabled": false,
+    "executionExplicitlyEnabled": true,
+    "modelsInvoked": 0,
+    "webRelay": false,
+    "node": "v24.21.0"
+  },
+  "codex": {
+    "version": "0.160.1",
+    "sourceAndInstalledEntry": true,
+    "syntheticConfigurationParsed": true,
+    "sdkRoundsPerEntry": 2,
+    "actualCodexAgentToolInvocation": false,
+    "modelCalls": 0,
+    "rawSourceAndInstalledReceiptsMatch": true
+  },
+  "preservation": {
+    "primaryFiles": 11,
+    "otherRepositories": 8,
+    "fullBeforeAfterAndFocusedAfterEqual": true
+  },
+  "rawCommitGitObjectIdentityVerified": true,
+  "cryptographicSignatureVerificationClaimed": false,
+  "sourceArchiveRawBytesTransferredToReviewer": false,
+  "sourceArchiveHashProvenance": "Native helper recorded Git archive; exact TAR remains on Windows. No independent scratch rehash of that source TAR claimed.",
+  "normalNpmStderr": {
+    "noticeOnly": [
+      "test-owned-codex-install",
+      "fresh-locked-install"
+    ],
+    "lifecycleCommandEchoes": [
+      "normal-prepack",
+      "fresh-normal-prepack"
+    ],
+    "explanation": "Successful npm output; zero stderr claim applies to MCP children and explicit installed probes, not every qualification gate."
+  },
+  "preexecutionWrapperFailures": {
+    "reportedByIntegrationOwner": [
+      "Get-FileHash unavailable",
+      "Node inline quoting failure"
+    ],
+    "rawWrapperReceiptsReviewed": false,
+    "classification": "Preexecution wrapper/observation failures, distinct from the17 expected original product assertion failures and the passing qualification gates."
+  },
+  "countsVerified": [
+    {
+      "gate": "test-owned-codex-install",
+      "counts": {
+        "tests": null,
+        "pass": null,
+        "fail": null,
+        "cancelled": null,
+        "skipped": null,
+        "todo": null
+      },
+      "exitCode": 0,
+      "exitCodeSource": "Hash-verified qualification result JSON; source/helper log files retained."
+    },
+    {
+      "gate": "full-orchestration",
+      "counts": {
+        "tests": 228,
+        "pass": 228,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "exitCode": 0,
+      "exitCodeSource": "Hash-verified qualification result JSON; source/helper log files retained."
+    },
+    {
+      "gate": "self-host",
+      "counts": {
+        "tests": null,
+        "pass": null,
+        "fail": null,
+        "cancelled": null,
+        "skipped": null,
+        "todo": null
+      },
+      "exitCode": 0,
+      "exitCodeSource": "Hash-verified qualification result JSON; source/helper log files retained."
+    },
+    {
+      "gate": "normal-prepack",
+      "counts": {
+        "tests": 228,
+        "pass": 228,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "exitCode": 0,
+      "exitCodeSource": "Hash-verified qualification result JSON; source/helper log files retained."
+    },
+    {
+      "gate": "installed-file-info-contract",
+      "counts": {
+        "tests": null,
+        "pass": null,
+        "fail": null,
+        "cancelled": null,
+        "skipped": null,
+        "todo": null
+      },
+      "exitCode": 0,
+      "exitCodeSource": "Hash-verified qualification result JSON; source/helper log files retained."
+    },
+    {
+      "gate": "installed-entry-codex",
+      "counts": {
+        "tests": null,
+        "pass": null,
+        "fail": null,
+        "cancelled": null,
+        "skipped": null,
+        "todo": null
+      },
+      "exitCode": 0,
+      "exitCodeSource": "Hash-verified qualification result JSON; source/helper log files retained."
+    },
+    {
+      "gate": "fresh-archive",
+      "counts": {
+        "tests": null,
+        "pass": null,
+        "fail": null,
+        "cancelled": null,
+        "skipped": null,
+        "todo": null
+      },
+      "exitCode": 0,
+      "exitCodeSource": "Hash-verified qualification result JSON; source/helper log files retained."
+    },
+    {
+      "gate": "fresh-extract",
+      "counts": {
+        "tests": null,
+        "pass": null,
+        "fail": null,
+        "cancelled": null,
+        "skipped": null,
+        "todo": null
+      },
+      "exitCode": 0,
+      "exitCodeSource": "Hash-verified qualification result JSON; source/helper log files retained."
+    },
+    {
+      "gate": "fresh-locked-install",
+      "counts": {
+        "tests": null,
+        "pass": null,
+        "fail": null,
+        "cancelled": null,
+        "skipped": null,
+        "todo": null
+      },
+      "exitCode": 0,
+      "exitCodeSource": "Hash-verified qualification result JSON; source/helper log files retained."
+    },
+    {
+      "gate": "fresh-reviewed-build",
+      "counts": {
+        "tests": null,
+        "pass": null,
+        "fail": null,
+        "cancelled": null,
+        "skipped": null,
+        "todo": null
+      },
+      "exitCode": 0,
+      "exitCodeSource": "Hash-verified qualification result JSON; source/helper log files retained."
+    },
+    {
+      "gate": "fresh-normal-prepack",
+      "counts": {
+        "tests": 228,
+        "pass": 228,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "exitCode": 0,
+      "exitCodeSource": "Hash-verified qualification result JSON; source/helper log files retained."
+    },
+    {
+      "gate": "fresh-installed-package",
+      "counts": {
+        "tests": null,
+        "pass": null,
+        "fail": null,
+        "cancelled": null,
+        "skipped": null,
+        "todo": null
+      },
+      "exitCode": 0,
+      "exitCodeSource": "Hash-verified qualification result JSON; source/helper log files retained."
+    },
+    {
+      "gate": "fresh-installed-file-info-contract",
+      "counts": {
+        "tests": null,
+        "pass": null,
+        "fail": null,
+        "cancelled": null,
+        "skipped": null,
+        "todo": null
+      },
+      "exitCode": 0,
+      "exitCodeSource": "Hash-verified qualification result JSON; source/helper log files retained."
+    }
+  ],
+  "verifiedFiles": [
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-qualification-5xEQZy/test-owned-codex-install.stdout.log",
+      "bytes": 24,
+      "sha256": "38e52724612a7580e8d50bb84ab98b85fdd136506510b44ac58f41a297b3d0e1"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-qualification-5xEQZy/test-owned-codex-install.stderr.log",
+      "bytes": 209,
+      "sha256": "0c5e2568b4c79c13debcc497cf347b98e7a01e636ae2bed42cf3faa742048c94"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-qualification-5xEQZy/full-orchestration.stdout.log",
+      "bytes": 29908,
+      "sha256": "7da5ee8430cf1155e87c674c16cd0753300da67f0b47b59ea3b5899f63c35e1e"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-qualification-5xEQZy/full-orchestration.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-qualification-5xEQZy/self-host.stdout.log",
+      "bytes": 280,
+      "sha256": "a38e3215a05a401ae8d110826c15f2fc3c8cc6fd77ca564d863d87cfb0b116d9"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-qualification-5xEQZy/self-host.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-qualification-5xEQZy/normal-prepack.stdout.log",
+      "bytes": 26045,
+      "sha256": "ca8fb3a891799e86a7b1422be13d2944564d5bb2c42dd25856a02d8efaae8404"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-qualification-5xEQZy/normal-prepack.stderr.log",
+      "bytes": 738,
+      "sha256": "34ee2bf9f08bdddd50d9d8090fb49ab20d6fb4d2b43c3e78b954c09282fd02ee"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-qualification-5xEQZy/installed-file-info-contract.stdout.log",
+      "bytes": 787,
+      "sha256": "79c056509298533ff9a5f9becddb21471ee197cbd17bcf791afc995b3a566c01"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-qualification-5xEQZy/installed-file-info-contract.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-qualification-5xEQZy/installed-entry-codex.stdout.log",
+      "bytes": 1216,
+      "sha256": "782247b61099cd12b6e4a0d2ef3710908fc907c8cd081b7d432a3198f9919f7a"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-qualification-5xEQZy/installed-entry-codex.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-qualification-5xEQZy/fresh-archive.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-qualification-5xEQZy/fresh-archive.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-qualification-5xEQZy/fresh-extract.stdout.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-qualification-5xEQZy/fresh-extract.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-qualification-5xEQZy/fresh-locked-install.stdout.log",
+      "bytes": 25,
+      "sha256": "c6fad950797c013180be1a80154e2451813b0c7211c805514fc71084ee7f08f9"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-qualification-5xEQZy/fresh-locked-install.stderr.log",
+      "bytes": 209,
+      "sha256": "0c5e2568b4c79c13debcc497cf347b98e7a01e636ae2bed42cf3faa742048c94"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-qualification-5xEQZy/fresh-reviewed-build.stdout.log",
+      "bytes": 786,
+      "sha256": "e88e6133625427b3e6b7c5148fdcedda65ce86a1d5f8a7c409bbe102e9784ad3"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-qualification-5xEQZy/fresh-reviewed-build.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-qualification-5xEQZy/fresh-normal-prepack.stdout.log",
+      "bytes": 26051,
+      "sha256": "1234e6bf4f4b829e23146578fe22278bebd1db5d410a0b4caef7462311de5b3d"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-qualification-5xEQZy/fresh-normal-prepack.stderr.log",
+      "bytes": 738,
+      "sha256": "34ee2bf9f08bdddd50d9d8090fb49ab20d6fb4d2b43c3e78b954c09282fd02ee"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-qualification-5xEQZy/fresh-installed-package.stdout.log",
+      "bytes": 5641,
+      "sha256": "9baf8ff973c4b87cbb88576b209877e2612c2728916a67e3647486dd2b82fd99"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-qualification-5xEQZy/fresh-installed-package.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-qualification-5xEQZy/fresh-installed-file-info-contract.stdout.log",
+      "bytes": 787,
+      "sha256": "79c056509298533ff9a5f9becddb21471ee197cbd17bcf791afc995b3a566c01"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-qualification-5xEQZy/fresh-installed-file-info-contract.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-focused-oyS6oj/locked-install.log",
+      "bytes": 234,
+      "sha256": "113f5ace47ddfcc63e56e11de0e150485f44bc7fe84ce208c43073f454d13541"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-focused-oyS6oj/red-build-code.log",
+      "bytes": 64,
+      "sha256": "9a9214dd92f21ea05ec920f34a2d1b1e5699936c060ba52eba85b89808758cb9"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-focused-oyS6oj/focused-red.log",
+      "bytes": 25249,
+      "sha256": "86ba33aee3e099f7a406891c8c8a3b25b927056d45621dde90426d8e5b078237"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-focused-oyS6oj/green-build-code.log",
+      "bytes": 64,
+      "sha256": "9a9214dd92f21ea05ec920f34a2d1b1e5699936c060ba52eba85b89808758cb9"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-focused-oyS6oj/focused-green.log",
+      "bytes": 5266,
+      "sha256": "abc122c424922ae33ecf26c605d1b97ba2d4ca083be488f30dbdc593f7d5b1da"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/package-verify-ITsmcw/result.json",
+      "bytes": 5512,
+      "sha256": "b750c675173a923dfc95e6ca9c87cb415ebee5c0ca62a02ed61df18a39b26161"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/managed-codex-FcN6Gx/result.json",
+      "bytes": 1216,
+      "sha256": "5b25edc99ff1fa36db8ab84482c02e27df1630e25c2c55a901acdac567cdc303"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/managed-codex-XtQgpD/result.json",
+      "bytes": 1215,
+      "sha256": "d44751dc8adff34afcc1cc06c444a4f00978c0e3292a901ddc77c9b71499cfb7"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-qualification-5xEQZy/fresh-source/artifacts/package-verify-NT98hU/result.json",
+      "bytes": 5640,
+      "sha256": "19945ef7db7241895106edbe03732c057d705948141637db8372b0c411252967"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-qualification.mjs",
+      "bytes": 16896,
+      "sha256": "88b4d3b8741bc10a1e8c3bbcfed7f68275de042dac9363bf36d8e4dbca41bb72"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-focused.mjs",
+      "bytes": 13456,
+      "sha256": "0a5da85dc10a950cb2f133ac1583306a6de029cac3c844515c31425ef93da3ec"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-focused-oyS6oj/original-runtime/desktop-commander-files.ts",
+      "bytes": 16884,
+      "sha256": "3cd606ebbf5404da939c238d6173721d4656d1ee28fd4982ba259b826ec062de"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-focused-oyS6oj/original-runtime/mcp.ts",
+      "bytes": 16898,
+      "sha256": "d585feb3c9b4707c24e266e4d8476e18ce21bc25169ebe08275fa972a34d400b"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-red/compat-file-info.original.mjs",
+      "bytes": 11315,
+      "sha256": "237327b5ef81a5451597d74187da260fca6ef1ea722fd0982757545ec9af5e52"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-qualification-5xEQZy/candidate-commit.raw",
+      "bytes": 551,
+      "sha256": "a79eac3b176409c06678e779069a29888a58953b5e5ecf5063ae646540c7f71e"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-qualification-5xEQZy/preservation-before.json",
+      "bytes": 3925,
+      "sha256": "bc921eeb687bf84e7d7b8df3e2000f3b75ec294c5a72ec021793e32e922dd3f4"
+    },
+    {
+      "path": "artifacts/native-observations/artifacts/file-info-native-qualification-5xEQZy/preservation-after.json",
+      "bytes": 3925,
+      "sha256": "bc921eeb687bf84e7d7b8df3e2000f3b75ec294c5a72ec021793e32e922dd3f4"
+    }
+  ],
+  "blockersFound": [],
+  "acceptance": {
+    "DCP": "0/48",
+    "WEB": "0/12",
+    "maturity": "29.12%",
+    "changed": false
+  }
+}

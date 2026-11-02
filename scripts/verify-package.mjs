@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 // AI-Change: 2026-10-04-local-mcp
 // Modified: 2026-11-02-config-installed-qualification; qualify shared runtime preferences from the installed package.
+// Modified: 2026-11-02-file-info-contract; retain installed compatibility scenario and cleanup evidence.
 // Fresh pack/install/link and official MCP round trip; only test-owned prefix/home/cache are used.
 import fs from 'node:fs/promises';
 import { resolveNpmEntry } from './npm-runtime.mjs';
@@ -205,6 +206,7 @@ const report = {
   ownedPrefixNpmLink: true,
   offlineNpmExecFromTarball: true,
   npmExecMcpCompatibilityTools: compatibility.compatibilityAliasesExercised,
+  installedCompatibility: compatibility,
   installedConfiguration: configuration,
   fullDesktopCommanderParity: false,
   fromOutsideCheckout: true,

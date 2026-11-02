@@ -204,8 +204,8 @@ The tested code was [b90432a1bc138d59305692a9f74f110a475d0881](https://github.co
 with Windows-built immutable artifact SHA-256
 `97a0457b78e113c058ae8da3d3a6a54fcd93c2b35d1dd1781316c41001ac10a6`.
 The final smoke used Worker version `f643872f-5fbb-44be-9e3d-a6f8f3f32aab`.
-The current owner-only version `4b726ec9-4389-4ba8-ada3-5758a3889c27`, deployment
-`dcccecfe-353c-4c45-8691-a508bc6d8ee6`, serves that same artifact after removal
+The current owner-only version `af4fd06e-c4a3-4545-ad22-31d0ae956215`, deployment
+`5a0ff21c-6341-4e73-b4af-169e98b76db2`, serves that same artifact after removal
 of the temporary testing identity binding. The earlier `305c89c` / `2083411f`
 smoke is historical evidence, not the current recovery target.
 

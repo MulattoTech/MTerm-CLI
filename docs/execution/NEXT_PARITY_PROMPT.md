@@ -53,7 +53,7 @@ A remote smoke or Windows suite does not establish that broader acceptance.
   push matrix **41372068412 PASS**. Final document/merge status belongs to the
   final sprint report and PR state, not an assumed stale pending/merged label.
 - **Staging MCP is enabled (`MCP_ENABLED=true`)** on Worker version
-  `4b726ec9-4389-4ba8-ada3-5758a3889c27`, artifact SHA-256
+  `af4fd06e-c4a3-4545-ad22-31d0ae956215`, artifact SHA-256
   `97a0457b78e113c058ae8da3d3a6a54fcd93c2b35d1dd1781316c41001ac10a6`.
 
 Read `docs/validation/2026-11-02-remote-staging-smoke-final.json` for the sanitized live
@@ -171,7 +171,7 @@ certification. Report a current external blocker only from current evidence.
 | Durable Object | `MTermRegistry`, namespace `b66edc2d536e474093e1a18d0e88a24d`, SQLite migration `v1` |
 | Access issuer / app | `https://broken-breeze-d0bb.cloudflareaccess.com` / `598ab343-fa9c-40d7-8308-b1fa24b55d81` |
 | Access audience | `9533396534dbc90c78bae02791ecdd0fab21f775876ed7164ed3b57bf54e1563` |
-| Current Worker version | `4b726ec9-4389-4ba8-ada3-5758a3889c27` |
+| Current Worker version | `af4fd06e-c4a3-4545-ad22-31d0ae956215` |
 | Current artifact SHA-256 | `97a0457b78e113c058ae8da3d3a6a54fcd93c2b35d1dd1781316c41001ac10a6` |
 
 1. Read the final report and PR #69 state; select the verified delivered source

@@ -27,7 +27,7 @@ The temporary service policy, token and Worker binding were deleted. Access is
 owner-only; no persistent owner agent is paired.
 
 Staging MCP is **enabled (`MCP_ENABLED=true`)**, Worker version
-`4b726ec9-4389-4ba8-ada3-5758a3889c27`, artifact SHA-256
+`af4fd06e-c4a3-4545-ad22-31d0ae956215`, artifact SHA-256
 `97a0457b78e113c058ae8da3d3a6a54fcd93c2b35d1dd1781316c41001ac10a6`.
 The earlier full Windows run passed 143/144 and exposed
 a real canonical-leaf/Windows 8.3 defect. The integrated repair (`bbf1d0e`, fixture

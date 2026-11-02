@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "performedAt": "2026-11-02T01:33:38Z",
+  "completedAt": "2026-11-02T01:35:35Z",
+  "environment": "staging",
+  "sourceCommit": "b90432a1bc138d59305692a9f74f110a475d0881",
+  "artifactSha256": "97a0457b78e113c058ae8da3d3a6a54fcd93c2b35d1dd1781316c41001ac10a6",
+  "noFixtureDevicesOrGrantsActive": true,
+  "steps": [
+    {
+      "name": "Pause new MCP intake",
+      "result": "passed",
+      "workerVersion": "e817a83a-6108-42e0-a329-9e5e8d4f75af",
+      "deploymentId": "d36598dc-b022-4f92-b97a-28ba6323feaa",
+      "healthHttp": 200,
+      "healthEnabled": false,
+      "temporaryIdentityAbsent": true
+    },
+    {
+      "name": "Restore recorded owner-only version through deployments API",
+      "result": "passed",
+      "workerVersion": "4b726ec9-4389-4ba8-ada3-5758a3889c27",
+      "deploymentId": "87c53f0b-16f4-4d53-973f-4e6bc69de28d",
+      "percentage": 100,
+      "healthHttp": 200,
+      "healthEnabled": true,
+      "anonymousMcpHttp": 401
+    },
+    {
+      "name": "Identify post-rollback settings constraint",
+      "result": "observed_and_handled",
+      "latestUploadSettingsEnabled": false,
+      "activeVersionHealthEnabled": true,
+      "settingsPatchHttp": 400,
+      "cloudflareCode": 10214,
+      "observation": "Cloudflare rejected editing the latest upload because it was not the currently deployed version. Recovery requires uploading the saved artifact with intended bindings; settings GET alone is not proof of active-version flags."
+    },
+    {
+      "name": "Reupload identical immutable modules with preserved owner-only enabled bindings",
+      "result": "passed",
+      "workerVersion": "af4fd06e-c4a3-4545-ad22-31d0ae956215",
+      "deploymentId": "5a0ff21c-6341-4e73-b4af-169e98b76db2",
+      "healthHttp": 200,
+      "healthEnabled": true,
+      "settingsEnabled": true,
+      "anonymousMcpHttp": 401,
+      "temporaryIdentityAbsent": true
+    }
+  ],
+  "registryNamespace": "b66edc2d536e474093e1a18d0e88a24d",
+  "registryPreserved": true,
+  "remoteWriteOrExecutionEnabled": false,
+  "passed": true,
+  "limits": [
+    "Tests a real pause and recorded-version restore without active owner devices; does not certify incompatible storage migration rollback or arbitrary future versions.",
+    "The same previously verified source modules were reuploaded; no rebuild or new service identity was introduced.",
+    "Human Google/ChatGPT consent remains outside this drill."
+  ]
+}

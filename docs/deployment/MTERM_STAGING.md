@@ -130,8 +130,8 @@ default slot `environment:"production"`. That slot name does not change the prod
 | Tested source | `b90432a1bc138d59305692a9f74f110a475d0881` |
 | Immutable Windows-built artifact SHA-256 | `97a0457b78e113c058ae8da3d3a6a54fcd93c2b35d1dd1781316c41001ac10a6` |
 | Final smoke Worker version | `f643872f-5fbb-44be-9e3d-a6f8f3f32aab` |
-| Current owner-only version / preferred safe recovery target | `4b726ec9-4389-4ba8-ada3-5758a3889c27` |
-| Current deployment | `dcccecfe-353c-4c45-8691-a508bc6d8ee6` |
+| Current owner-only version / preferred safe recovery target | `af4fd06e-c4a3-4545-ad22-31d0ae956215` |
+| Current deployment | `5a0ff21c-6341-4e73-b4af-169e98b76db2` |
 | Final live SDK-to-Windows checks | 11/11 PASS; finished 2026-11-02 01:24:29 UTC / 2026-11-01 19:24:29 Central |
 | Current MCP mode | Enabled; read-only |
 | Temporary test identity | Service token and dedicated Access policy deleted; `STAGING_SERVICE_ID` removed |
@@ -232,8 +232,15 @@ First preserve the current version/deployment IDs and settings, stop agents, and
 revoke affected grants if necessary. Inspect the target version and its bindings.
 An exact version rollback may restore old `MCP_ENABLED` or temporary service binding
 values; the earlier pause is not a guarantee that an old version stays disabled.
-After rollback, reapply the pause above and remove any temporary test identity
-through the authorized controls before restarting or re-enabling client access.
+After rollback, verify the active version through the deployments API and public
+health endpoint. During the recorded drill, GET settings still described the latest
+uploaded paused version, while the restored active version correctly served enabled
+MCP. A settings PATCH then returned Cloudflare code 10214 because that latest upload
+was not deployed. To change bindings after such a rollback, upload the retained
+immutable artifact with the intended complete binding set as described above; do
+not repeatedly PATCH, delete storage, or relax authentication. The drill reuploaded
+the same verified modules with owner-only read-only settings and checked both the
+settings inventory and live endpoint. Remove any temporary identity before reuse.
 
 The preferred recorded target below is the post-cleanup owner-only version, using
 the final verified artifact. Inspect its availability and current compatibility
@@ -245,7 +252,7 @@ In the same PowerShell session as the pause commands:
 $MTermRollbackBody = @{
     strategy = 'percentage'
     versions = @(@{
-        version_id = '4b726ec9-4389-4ba8-ada3-5758a3889c27'
+        version_id = 'af4fd06e-c4a3-4545-ad22-31d0ae956215'
         percentage = 100
     })
 } | ConvertTo-Json -Depth 8 -Compress
@@ -261,6 +268,16 @@ The REST action is
 If Cloudflare refuses a version because it is unavailable or incompatible with
 Durable Object migrations, leave intake disabled. Restore the retained verified
 artifact using compatible current bindings instead of forcing a storage reset.
+
+## Recorded rollback drill
+
+The [actual staging drill](../validation/2026-11-02-rollback-drill.json) paused new
+MCP intake, observed health enabled=false, restored the recorded owner-only version
+through POST deployments, and observed health enabled=true with anonymous MCP 401.
+After the observed code-10214 settings constraint, the identical saved artifact was
+reuploaded with preserved owner-only bindings. The final version and deployment are
+listed above; the registry namespace was unchanged. No owner device was active.
+This proves that controlled drill, not arbitrary future migration compatibility.
 
 ## Qualification after deployment or rollback
 

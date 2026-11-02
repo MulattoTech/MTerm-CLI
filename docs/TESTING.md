@@ -30,7 +30,7 @@ Access service principal, manual S256 PKCE and SDK transport, not a human Google
 login or ChatGPT connector. Both synthetic devices/grants were revoked and both
 agents stopped. Temporary service policy/token/Worker binding were deleted;
 owner-only access remains and no persistent owner agent is paired. Staging MCP
-is enabled on Worker `4b726ec9-4389-4ba8-ada3-5758a3889c27`, artifact SHA-256
+is enabled on Worker `af4fd06e-c4a3-4545-ad22-31d0ae956215`, artifact SHA-256
 `97a0457b78e113c058ae8da3d3a6a54fcd93c2b35d1dd1781316c41001ac10a6`.
 Final smoke run: `2026-11-02T01-23-39-600Z-a0b41954-29c8-4163-b93f-a04a5c64b6a6`.
 

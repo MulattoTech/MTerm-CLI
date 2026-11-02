@@ -32,7 +32,7 @@
     "gatewayOrigin": "https://mcp-staging.m-techlabs.com",
     "mcpEndpoint": "https://mcp-staging.m-techlabs.com/mcp",
     "dashboardOrigin": "https://mterm-staging.m-techlabs.com",
-    "workerVersionId": "4b726ec9-4389-4ba8-ada3-5758a3889c27",
+    "workerVersionId": "af4fd06e-c4a3-4545-ad22-31d0ae956215",
     "deployedSourceCommit": "b90432a1bc138d59305692a9f74f110a475d0881",
     "artifactSha256": "97a0457b78e113c058ae8da3d3a6a54fcd93c2b35d1dd1781316c41001ac10a6",
     "deploymentRecord": "docs/validation/2026-11-02-remote-sprint.md",
@@ -50,13 +50,14 @@
       "onlyCreatedLocalFixturesRemoved": true
     },
     "smokeWorkerVersionId": "f643872f-5fbb-44be-9e3d-a6f8f3f32aab",
-    "deploymentId": "dcccecfe-353c-4c45-8691-a508bc6d8ee6",
+    "deploymentId": "5a0ff21c-6341-4e73-b4af-169e98b76db2",
     "temporaryAccessPolicyDeleted": true,
     "temporaryServiceTokenDeleted": true,
     "temporaryBindingRemoved": true,
     "ownerPolicyOnly": true,
     "workersDevEnabled": false,
-    "mcpEnabled": true
+    "mcpEnabled": true,
+    "rollbackDrill": "docs/validation/2026-11-02-rollback-drill.json"
   },
   "evidence": [
     {
@@ -203,6 +204,17 @@
       "sourceCommit": "b90432a1bc138d59305692a9f74f110a475d0881",
       "observation": "Windows existing full orchestration passed in 55.35s: reviewed build/typecheck/format/parity, 149/149 tests without skips (32,829 ms), package/isolated-link and test-owned native Codex 0.160.1 managed verification; tracked diff clean. PR matrix 41372073094 passed all four platforms, fast 41372073095 passed, push matrix 41372068412 passed. Final publication and documentation checks are recorded in PR #69.",
       "limits": "These are exact-build gates, not additional CLI stage credit or WEB issue acceptance. Final documentation checks are recorded in PR #69."
+    },
+    {
+      "id": "DEPLOYMENT-CONFIG",
+      "level": "reviewable deployment configuration and instructions",
+      "status": "documented",
+      "refs": [
+        "gateway/deployment.example.json",
+        "docs/deployment/MTERM_STAGING.md"
+      ],
+      "observation": "Public template and staging instructions specify initial-only SQLite migration, preserved registry namespace, required nonsecret bindings, Access owner-policy/environment inventory, immutable artifact/module checks and current owner-only recovery identity. This attachment is complete.",
+      "limits": "The template is not Wrangler configuration or an automated deployment script. Repeatable dry-run automation and platform secret-binding lifecycle validation remain open. Live pause/restore drill observations have not yet been supplied."
     }
   ],
   "pendingEvidence": [
@@ -251,9 +263,9 @@
     {
       "id": "PENDING-DEPLOYMENT-STAMP",
       "status": "recorded_followups_pending",
-      "result": "Final artifact/source/smoke version/current post-cleanup version and deployment IDs recorded. Temporary service identity policy/token/binding removed; owner-only policy remains. Disaster/rollback and broader environment lifecycle tests remain separate.",
-      "evidenceRef": "docs/validation/2026-11-02-remote-sprint.md",
-      "required": "Worker version, immutable manifest digest, source SHA, nonsecret configuration and reproducible environment/dry-run/rollback evidence."
+      "result": "Artifact/source/version/deployment identities and reproducible nonsecret migration/binding/Access/environment configuration are recorded. Automation/dry-run and platform secret-binding lifecycle remain open. Live pause/recorded-version restore drill is in progress; no success is claimed.",
+      "evidenceRef": "docs/deployment/MTERM_STAGING.md",
+      "required": "Evaluate the reported pause/restore drill when available; complete repeatable deployment/dry-run automation and platform secret-binding lifecycle qualification."
     },
     {
       "id": "PENDING-FINAL-GATES",
@@ -620,7 +632,7 @@
         {
           "description": "Verify packaged start/status/stop/restart, stale-lock recovery instructions and absence of an inbound workstation listener.",
           "dependencies": [
-            "Passed b90432a package/Codex/matrix gates; final documentation checks recorded in PR #69",
+            "Recorded b90432a package/Codex/platform evidence; final documentation checks recorded in PR #69",
             "WEB-011 on-demand lifecycle"
           ],
           "blockers": [
@@ -647,7 +659,7 @@
       "dependencies": [
         "Recorded live agent/read path",
         "WEB-009 network fault scenarios",
-        "Passed b90432a package/Codex/matrix gates; final documentation checks recorded in PR #69",
+        "Recorded b90432a package/Codex/platform evidence; final documentation checks recorded in PR #69",
         "WEB-011 on-demand lifecycle"
       ],
       "blockers": [
@@ -1069,33 +1081,20 @@
         "OWNER-GUIDE",
         "LIVE-SMOKE",
         "LIVE-SMOKE-FINAL",
-        "FINAL-GATES"
+        "FINAL-GATES",
+        "DEPLOYMENT-CONFIG"
       ],
-      "implemented": "Restricted staging is deployed from b90432a with immutable artifact 97a0457b78e113c058ae8da3d3a6a54fcd93c2b35d1dd1781316c41001ac10a6. Final SDK smoke passed 11/11. Current version 4b726ec9 follows removal of temporary validation binding; temporary Access policy/token deleted, only owner policy remains, workers.dev disabled, MCP read-only enabled.",
+      "implemented": "Restricted staging is deployed from b90432a with immutable artifact 97a0457b78e113c058ae8da3d3a6a54fcd93c2b35d1dd1781316c41001ac10a6. Final SDK smoke passed 11/11. Current version af4fd06e follows removal of temporary validation binding; temporary Access policy/token deleted, only owner policy remains, workers.dev disabled, MCP read-only enabled. Reproducible nonsecret migrations/bindings/Access/environment metadata and deployment/recovery instructions are attached in gateway/deployment.example.json and docs/deployment/MTERM_STAGING.md; the template is deliberately not an executable deployment script.",
       "remainingWork": [
         {
-          "description": "Attach reproducible nonsecret Durable Object migration/bindings, Access policy and environment configuration to the versioned deployment record.",
+          "description": "Automate reviewed template application and repeatable dev/staging dry-run validation, including immutable-module checks and platform secret-binding preservation/rotation. Retain the completed pause/restore drill as evidence; future incompatible-migration scenarios remain separate.",
           "dependencies": [
-            "Recorded Worker/artifact/source stamp",
-            "Integration owner's Cloudflare configuration"
+            "Attached deployment template and staging inventory",
+            "Recorded immutable artifact and owner-only recovery version",
+            "Authorized isolated deployment controls"
           ],
           "blockers": [
-            "Runtime/version evidence is recorded; complete reproducible infrastructure/binding configuration is still incomplete."
-          ],
-          "remainingHours": [
-            2,
-            4
-          ],
-          "eta": "Unscheduled"
-        },
-        {
-          "description": "Prove dry-run environment isolation, secret-store handling, the MCP disable switch and recorded-version rollback using the deployment controls.",
-          "dependencies": [
-            "Reproducible deployment configuration",
-            "Recorded immutable artifact"
-          ],
-          "blockers": [
-            "The successful deployment/smoke does not certify dry-run, rollback or the complete secrets/configuration lifecycle."
+            "The template and configuration attachment are complete. Automated application/dry-run and platform secret-binding lifecycle qualification are not yet demonstrated. The non-destructive pause/restore drill passed; its report documents the code10214 recovery constraint."
           ],
           "remainingHours": [
             6,
@@ -1116,18 +1115,16 @@
       "accepted": false,
       "acceptanceEvidence": null,
       "dependencies": [
-        "Recorded Worker/artifact/source stamp",
-        "Integration owner's Cloudflare configuration",
-        "Reproducible deployment configuration",
-        "Recorded immutable artifact"
+        "Attached deployment template and staging inventory",
+        "Recorded immutable artifact and owner-only recovery version",
+        "Authorized isolated deployment controls"
       ],
       "blockers": [
-        "Runtime/version evidence is recorded; complete reproducible infrastructure/binding configuration is still incomplete.",
-        "The successful deployment/smoke does not certify dry-run, rollback or the complete secrets/configuration lifecycle."
+        "The template and configuration attachment are complete. Automated application/dry-run and platform secret-binding lifecycle qualification are not yet demonstrated. The non-destructive pause/restore drill passed; its report documents the code10214 recovery constraint."
       ],
       "remainingHours": [
-        8,
-        16
+        6,
+        12
       ],
       "eta": "Unscheduled",
       "implementingCommits": [
@@ -1163,6 +1160,24 @@
           ],
           "runId": "2026-11-02T00-56-44-313Z-8cdbd4f8-8e08-4517-97f1-9683573132be",
           "acceptedRequirement": false
+        },
+        {
+          "description": "Attached the reproducible public staging configuration: initial-only SQLite migration, existing registry preservation, nonsecret Worker bindings, Access policy/environment inventory, immutable artifact/version identities and recovery instructions.",
+          "evidence": [
+            "DEPLOYMENT-CONFIG"
+          ],
+          "refs": [
+            "gateway/deployment.example.json",
+            "docs/deployment/MTERM_STAGING.md"
+          ],
+          "acceptedRequirement": false
+        },
+        {
+          "description": "Actual MCP disable and recorded owner-only version restore passed; identical immutable artifact reupload handled observed Cloudflare settings code10214, preserving registry and owner-only permissions.",
+          "evidence": [
+            "docs/validation/2026-11-02-rollback-drill.json",
+            "docs/deployment/MTERM_STAGING.md"
+          ]
         }
       ]
     },
@@ -1605,14 +1620,13 @@
           "eta": "Unscheduled"
         },
         {
-          "description": "Finish the human supported-client matrix and verify final documentation CI, preserving the distinction between completed Windows/package/native-Codex/hosted/SDK gates and owner Google/ChatGPT acceptance.",
+          "description": "Finish the human supported-client matrix, preserving the distinction between completed Windows/package/native-Codex/hosted/SDK gates and owner Google/ChatGPT acceptance.",
           "dependencies": [
             "Remaining WEB-001..011 deliverables",
-            "Owner-supported client/account access",
-            "Draft PR #69; final documentation checks recorded in PR #69"
+            "Owner-supported client/account access"
           ],
           "blockers": [
-            "Final SDK smoke, Windows full/package/Codex and all four hosted platforms passed. Human sign-in/client acceptance remain open; final documentation checks are recorded in PR #69."
+            "Human Google/Access sign-in, human consent and actual supported-client/ChatGPT tool use remain unverified."
           ],
           "remainingHours": [
             4,
@@ -1640,13 +1654,12 @@
         "WEB-009 live relay",
         "WEB-010 diagnostics/audit",
         "Remaining WEB-001..011 deliverables",
-        "Owner-supported client/account access",
-        "Draft PR #69; final documentation checks recorded in PR #69"
+        "Owner-supported client/account access"
       ],
       "blockers": [
         "The local-only security document does not yet describe the complete deployed remote boundary; raw HAR must remain excluded.",
         "The in-memory storage fixture does not certify Cloudflare persistence, rate/load behavior or the actual network transport.",
-        "Final SDK smoke, Windows full/package/Codex and all four hosted platforms passed. Human sign-in/client acceptance remain open; final documentation checks are recorded in PR #69."
+        "Human Google/Access sign-in, human consent and actual supported-client/ChatGPT tool use remain unverified."
       ],
       "remainingHours": [
         18,
@@ -1818,5 +1831,27 @@
       "status": "passed"
     },
     "finalDocumentationCi": "See PR #69 checks for the final documentation commit"
+  },
+  "integrationOwner": "MulattoTech",
+  "issueOwnership": {
+    "verifiedAt": "2026-11-02T01:36:30Z",
+    "epic": 53,
+    "issues": [
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65
+    ],
+    "assignee": "MulattoTech",
+    "integrationPullRequest": 69,
+    "state": "all remain open; no acceptance closure"
   }
 }

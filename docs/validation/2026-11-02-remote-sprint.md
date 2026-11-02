@@ -62,13 +62,13 @@ Codex itself parsed the isolated registration; setup was idempotent, two configu
 | Worker | `mterm-gateway-staging` |
 | Artifact SHA-256 | `97a0457b78e113c058ae8da3d3a6a54fcd93c2b35d1dd1781316c41001ac10a6` |
 | Smoke-tested Worker version | `f643872f-5fbb-44be-9e3d-a6f8f3f32aab` |
-| Current owner-only Worker version | `4b726ec9-4389-4ba8-ada3-5758a3889c27` |
-| Current deployment | `dcccecfe-353c-4c45-8691-a508bc6d8ee6` |
+| Current owner-only Worker version | `af4fd06e-c4a3-4545-ad22-31d0ae956215` |
+| Current deployment | `5a0ff21c-6341-4e73-b4af-169e98b76db2` |
 | Registry namespace | `b66edc2d536e474093e1a18d0e88a24d`, preserved SQLite `MTermRegistry` |
 | Product state | Staging, MCP enabled, read-only, owner Access policy only |
 | Workers.dev / preview URLs | Both disabled |
 
-The six immutable modules were built from the reviewed Windows TypeScript output, hashed, transferred and individually reverified before upload. The post-smoke settings change removed only the temporary staging identity binding while retaining the same source artifact and registry.
+The six immutable modules were built from the reviewed Windows TypeScript output, hashed, transferred and individually reverified before upload. The post-smoke settings change removed the temporary staging identity binding. A later [real pause/restore drill](2026-11-02-rollback-drill.json) restored the recorded owner-only version, then reuploaded these exact immutable modules to reconcile Cloudflare's post-rollback settings constraint. The final version above retains the same artifact, owner-only bindings and registry.
 
 The [final live report](2026-11-02-remote-staging-smoke-final.json) records **11/11 passed**. The official MCP client 2.3.0 initialized Streamable HTTP without fallback, discovered six tools, selected two actual paired Windows agents and received independent exact SHA-256-matched file results. Actual Access JWT service authentication, S256 code exchange, wrong PKCE/resource/code replay denial, pairing/DPAPI/invalid-code/replay rejection, cross-device credential denial, root escape and mutation denial, one-device revocation with the other still usable, and OAuth grant revocation all passed.
 
@@ -104,6 +104,6 @@ manifest SHA-256:
 
 The final additive source/artifact/checks checkpoint and verified merge SHA are recorded in the PR release closeout. The original checkpoint and dirty primary checkout remain preserved.
 
-[Deployment recovery commands](../deployment/MTERM_STAGING.md) show how to pause `MCP_ENABLED` while preserving every binding and how to deploy a recorded version. Prefer the post-cleanup version above; do not recreate/delete the registry or restore a temporary service identity. The first earlier good smoke remains separately recorded for history.
+[Deployment recovery commands](../deployment/MTERM_STAGING.md) show how to pause `MCP_ENABLED` while preserving every binding and how to deploy a recorded version. Prefer the final owner-only version above; do not recreate/delete the registry or restore a temporary service identity. The controlled pause/recorded-version restore drill passed; the guide documents the observed settings-API code10214 and the exact-artifact reupload recovery. The first earlier good smoke remains separately recorded for history.
 
 Continue with [NEXT_PARITY_PROMPT.md](../execution/NEXT_PARITY_PROMPT.md). Read current GitHub/main/deployment state first, retain the completed proof, and advance one bounded remaining acceptance item at a time.

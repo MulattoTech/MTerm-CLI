@@ -3,7 +3,7 @@
   "provider": "OpenAI",
   "model": "GPT-6 Astra Pro",
   "identity_basis": "session-declared; self-reported",
-  "updated_at_utc": "2026-11-02T01:31:00Z",
+  "updated_at_utc": "2026-11-02T01:37:00Z",
   "base_commit": "b90432a1bc138d59305692a9f74f110a475d0881",
   "summary": "Record completed staged SDK/Windows acceptance, four-platform and pinned-Codex gates, owner-only cleanup, preserved primary source and the remaining owner/parity work. Documentation and deployment-template changes only; deployed executable modules remain the previously tested immutable artifact.",
   "files_modified": [
@@ -25,7 +25,8 @@
     "docs/validation/2026-11-02-primary-preservation.json",
     "docs/validation/2026-11-02-remote-sprint.md",
     "docs/validation/2026-11-02-remote-staging-smoke-final.json",
-    "docs/validation/2026-11-02-staging-boundary-final.json"
+    "docs/validation/2026-11-02-staging-boundary-final.json",
+    "docs/validation/2026-11-02-rollback-drill.json"
   ],
   "decisions": [
     "Retain executable source b90432a and the exact six-module artifact97a0457b78e113c058ae8da3d3a6a54fcd93c2b35d1dd1781316c41001ac10a6 rather than rebuilding deployment from later documentation commits.",
@@ -33,7 +34,8 @@
     "Record current Worker4b726ec9-4389-4ba8-ada3-5758a3889c27 as the owner-only recovery version. Its settings-only change preserves the smoke-tested code/artifact.",
     "Reference PR69 for final documentation checks, merge SHA and additive recovery checkpoint, avoiding a stale hardcoded draft/merge claim in self-referential source records.",
     "Keep owner Google/consent/ChatGPT, production promotion, broad client/scale/fault certification and all full DCP/WEB acceptance open.",
-    "Preserve the entire300-item scope, weights, stages and estimates in this closeout; correct stale billing-only notes using observed successful hosted runs."
+    "Preserve the entire300-item scope, weights, stages and estimates in this closeout; correct stale billing-only notes using observed successful hosted runs.",
+    "Correct recovery guidance for the actually observed post-rollback settings constraint. The final artifact was reuploaded unchanged; current owner-only version is af4fd06e-c4a3-4545-ad22-31d0ae956215. Epic53 and WEB54..65 remain open with one owner MulattoTech and integrationPR69."
   ],
   "tests": [
     {
@@ -59,6 +61,10 @@
     {
       "command": "Evidence/template JSON parsing, whitespace, roadmap review/render/check and parity baseline",
       "result": "Run for this documentation closeout; no new completion credit. Exact final documentation-head hosted results and normal merge are verified through PR69 before release closeout."
+    },
+    {
+      "command": "Actual staging MCP pause, recorded-version restore, and unchanged-artifact recovery reupload",
+      "result": "PASS pause health enabled=false; deployment API restored owner-only4b726ec9 with health enabled=true and anonymous401. Observed Cloudflare code10214 when settings PATCH addressed an undeployed latest upload; handled through normal PUT upload of the identical verified artifact. Finalversionaf4fd06e-c4a3-4545-ad22-31d0ae956215/deployment5a0ff21c-6341-4e73-b4af-169e98b76db2 has settings+healthenabled=true, no temporary identity, unchangedregistry and anonymous401. No source rebuild or permissions expansion."
     }
   ],
   "roadmap_updates": [

@@ -19,7 +19,7 @@ agent is paired. Production has not been promoted.
 | Fix provenance | Canonical-leaf worker fix `28ff573c407a588489abe9545cdaf18a8af7b6b3` is integrated as `bbf1d0e9b75cf153243a4722ad1ab91392445540`; Windows fixture quoting/format is committed as `14971ac`. The Windows-tested bytes match that combination. Codex bounded rename repair is `2cb2f07`. |
 | Package and Codex | **PASS**: archive 55,636 bytes; unpacked payload 216,577 bytes; installed production footprint 14,163,947 bytes. Actual pack/install/link and eight aliases passed. Native Codex 0.160.1 parsed isolated registration and launched two MCP sessions; no user config or model calls. |
 | Hosted CI | All four PR matrix jobs in `41372073094`, fast run `41372073095`, and push matrix `41372068412` **PASS**. Final-document checks and merge status are recorded by the final report/PR. |
-| Enabled staging | Worker version `4b726ec9-4389-4ba8-ada3-5758a3889c27`; artifact SHA-256 `97a0457b78e113c058ae8da3d3a6a54fcd93c2b35d1dd1781316c41001ac10a6`; `MCP_ENABLED=true`, owner-only access. |
+| Enabled staging | Worker version `af4fd06e-c4a3-4545-ad22-31d0ae956215`; artifact SHA-256 `97a0457b78e113c058ae8da3d3a6a54fcd93c2b35d1dd1781316c41001ac10a6`; `MCP_ENABLED=true`, owner-only access. |
 
 The current isolated Windows clone is
 `C:\Tools\Dev\MTerm-CLI\artifacts\worktrees\remote-mcp-20261102`.

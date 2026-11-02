@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 1,
+  "kind": "sanitized-additive-issue-audit-receipt",
+  "repository": "MulattoTech/MTerm-CLI",
+  "recordedAtUtc": "2026-11-02 13:04:27 UTC",
+  "sourceAuditObservedAtUtc": "2026-11-02 12:34:25 UTC",
+  "contractReviewObservedAtUtc": "2026-11-02 12:36:04 UTC",
+  "timestampScope": "The source audit timestamp is retained exactly from the original read-only GitHub snapshot; this receipt is not a new remote observation.",
+  "baseMain": "acaf276066c9e0436af2398c0120a38f7c04f5f0",
+  "implementationHeadAtReceipt": "16ea3ff82062c6f3018385b1a59600431e475c36",
+  "method": "Read all 48 live DCP issue bodies and their 22 comments via the GitHub connector; compare issue identity, state, title, URL, upstream version/pin and epic with the pinned ledger. Read the PR73 final delivery record and all nine named historical records. No gates were rerun for this receipt.",
+  "issueAudit": {
+    "dcpIds": "DCP-001 through DCP-048",
+    "githubIssueNumbers": "3 through 50",
+    "issueBodiesRead": 48,
+    "commentsRead": 22,
+    "sequenceComplete": true,
+    "commentCountsMatch": true,
+    "open": 48,
+    "closed": 0,
+    "ledgerMismatchCount": 0,
+    "comparedFields": [
+      "DCP ID",
+      "issue number",
+      "state",
+      "title",
+      "URL",
+      "upstream version",
+      "upstream commit pin",
+      "epic"
+    ],
+    "acceptance": {
+      "dcpAccepted": 0,
+      "dcpTotal": 48,
+      "webAccepted": 0,
+      "webTotal": 12,
+      "broadCliMaturityPercent": 29.12
+    },
+    "acceptanceDecisionMade": false
+  },
+  "retainedAuditArtifacts": [
+    {
+      "path": "/workspace/scratch/fbf97b0a779d/audit/2026-11-02-dcp-live-audit.json",
+      "sha256": "6a13a03074c87013549b5254891f323f533358af309fea91ffe8101b7540e044"
+    },
+    {
+      "path": "/workspace/scratch/fbf97b0a779d/audit/2026-11-02-dcp-contract-review.json",
+      "sha256": "9754bbe5f40f65cd95c7aca30bcc1391422e4c578b6e21f388bb8232cd06590e"
+    }
+  ],
+  "upstreamReference": {
+    "repository": "wonderwhy-er/DesktopCommanderMCP",
+    "version": "0.2.52",
+    "commit": "c774c3b505de990219637ecdc9a830c8772fae9d",
+    "referenceOnlyNotExecuted": true,
+    "artifacts": [
+      {
+        "path": "/workspace/scratch/fbf97b0a779d/audit/upstream-config.ts",
+        "sha256": "540d963760e5e4766bf78ca60545a3e3df80638ffd25d282cf0ecba7b0184e7c",
+        "gitBlobSha": "6d681da59c236a931eab8849a794961278830d7a",
+        "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/c774c3b505de990219637ecdc9a830c8772fae9d/src/tools/config.ts"
+      },
+      {
+        "path": "/workspace/scratch/fbf97b0a779d/audit/upstream-config-field-definitions.ts",
+        "sha256": "d705dd5bd35fa2bee7129918dc4c44714db4f1cfd3b989e8bf9d3d68b7f2c843",
+        "gitBlobSha": "77efa9bf329d1a2bf80ba76651fd2330fc99d3e1",
+        "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/c774c3b505de990219637ecdc9a830c8772fae9d/src/config-field-definitions.ts"
+      }
+    ]
+  },
+  "pr73Authority": {
+    "url": "https://github.com/MulattoTech/MTerm-CLI/pull/73",
+    "finalDeliveryComment": "https://github.com/MulattoTech/MTerm-CLI/pull/73#issuecomment-6577021102",
+    "finalDeliveryCommentCreatedAtUtc": "2026-11-02T12:22:35Z",
+    "merged": true,
+    "mergedAtUtc": "2026-11-02T12:17:20Z",
+    "finalHead": "6757c1fbb0df2dc41087640793f589c80a135302",
+    "mergedMain": "acaf276066c9e0436af2398c0120a38f7c04f5f0",
+    "identicalFinalHeadAndMainTree": "9a8338bde6207c13005d6b1bb2583201bc609931",
+    "finalHeadChecks": "9/9 success, no retries",
+    "mergedMainChecks": "5/5 success, no retries",
+    "mainLastCompletionUtc": "2026-11-02T12:19:42Z",
+    "independentRecheckReportedAtUtc": "2026-11-02T12:20:35Z",
+    "attribution": "Merge identity was verified in the retained main ref and PR record. Check counts and tree identity above are the final delivery comment observations; they do not qualify the current implementation.",
+    "historicalCaution": "The original implementation macOS ARM npm install timeout and its one supported successful retry remain preserved with unknown cause. Dated October billing comments do not establish a current blocker. Historical pending publication fields are resolved by this final delivery authority."
+  },
+  "historicalRecords": {
+    "recordsRead": 9,
+    "allMatchFrozenBase": true,
+    "frozenBase": "acaf276066c9e0436af2398c0120a38f7c04f5f0",
+    "matchMeaning": "All nine current files are byte-identical to the frozen merged base; their historical scope and provenance remain unchanged.",
+    "files": [
+      {
+        "path": "docs/validation/2026-11-02-config-metadata.md",
+        "sha256": "019bb7f8a745f21264a8630091c35733a97cc46690ad810c97d9ef38f76b3839"
+      },
+      {
+        "path": "docs/validation/2026-11-02-config-metadata-delivery.json",
+        "sha256": "5434339d40636969b91bdd23174480687bce28508213d8ee8d1a7e857249ae58"
+      },
+      {
+        "path": "docs/validation/2026-11-02-config-metadata-windows.json",
+        "sha256": "f3523766c8a80d8e5f1df56650f78719d6c7fead2e6e1f65ad1056aa4c2ddffb"
+      },
+      {
+        "path": "docs/validation/2026-11-02-config-metadata-fresh.json",
+        "sha256": "a641458db92e41f80d68751d5f8780ef812ef0055c62c92b226723eb2cc1d213"
+      },
+      {
+        "path": "docs/validation/2026-11-02-config-metadata-hosted-retry.json",
+        "sha256": "6dec037731b0ddf389bf64920dd91d0353e356067d3c4615e64762a52c5aa4a2"
+      },
+      {
+        "path": "docs/validation/2026-11-02-owner-connection.md",
+        "sha256": "0ff29bf8be04bce7c8a5b735d77123187195719b6e8db989bee6424577149a45"
+      },
+      {
+        "path": "docs/validation/2026-11-02-owner-connection.json",
+        "sha256": "f6c93f663e3c79f36e95b5f269e8346528bed49ebcb1a5a281811542c5f02674"
+      },
+      {
+        "path": "docs/validation/2026-11-02-config-metadata-issue-audit.json",
+        "sha256": "1e4bc682a23dd803ccaa8e2778c1c3b3a32026f5022d937fb9533beb33bf9c14"
+      },
+      {
+        "path": "docs/validation/2026-11-02-config-delivery.json",
+        "sha256": "519d3adcca32e47a4aceb88c6ca0d65520da9b0976c2fb0b70cfd38d6ada2431"
+      }
+    ]
+  },
+  "dcp009AcceptanceBoundary": {
+    "issue": "https://github.com/MulattoTech/MTerm-CLI/issues/11",
+    "status": "open; owner contract ruling pending",
+    "requiredRuling": "Decide whether the documented omitted probes and owner/privacy restrictions are acceptable intentional differences within the Codex-facing parity contract; otherwise define which truthful, bounded fields are required.",
+    "omittedFields": [
+      "docker",
+      "pythonInfo",
+      "isDXT",
+      "nodeInfo.path",
+      "nodeInfo.npmVersion",
+      "examplePaths.accessible"
+    ],
+    "otherIntentionalDifferences": [
+      "OS platformName has no container suffix.",
+      "defaultShell reports the effective owner-approved preference rather than upstream's static OS hint.",
+      "availableShells is the owner ceiling, not machine probing.",
+      "Only bounded client name/version are reflected; rejected identity is omitted.",
+      "Empty featureFlags with explicit absent provider rather than vendor experiment service.",
+      "Editable flags depend on separately owner-granted configuration capability.",
+      "Mandatory command blocks and owner roots cannot be widened; empty roots deny access.",
+      "Telemetry defaults false and has no network transport.",
+      "Malformed policy fails closed rather than returning permissive empty configuration."
+    ],
+    "authorizationBoundary": "This is acceptance-contract review, not authorization for model calls or user credential/configuration changes, and it does not replace applicable actual supported-client acceptance.",
+    "qualifiedScope": "PR73 completes the bounded installed metadata slice; it does not establish complete pinned field/privacy-difference acceptance or actual-client acceptance."
+  },
+  "dcp010AcceptanceBoundary": {
+    "issue": "https://github.com/MulattoTech/MTerm-CLI/issues/12",
+    "status": "open",
+    "remaining": "Its own complete setter contract, accepted intentional differences and applicable actual client evidence.",
+    "independence": "Separate DCP-012/013/014/034 shell/process contracts remain unqualified by this slice; closure of those issues is not asserted as a prerequisite for accepting DCP-010.",
+    "correctedWordingObservedIn": "docs/validation/2026-11-02-config-contract.md",
+    "runtimeBoundary": "The bounded success response uses the effective value returned by the successful configuration write. This audit receipt adds no runtime or qualification claim."
+  },
+  "receiptLimits": [
+    "No issue body/comment dumps, owner credentials, pairing material or private owner-state contents are included.",
+    "No issue states, requirement stages, weights, dependencies or acceptance counts are changed.",
+    "No model invocation, client consent/discovery/read, deployment, pairing or authentication operation was performed for this receipt.",
+    "Current native, packed-installed, fresh-source and exact-head delivery results must be supplied by their own evidence; this receipt certifies none of those gates."
+  ]
+}

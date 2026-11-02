@@ -1,6 +1,82 @@
 # Verification commands and evidence — 2026-11-02
 
-The current configuration proof is recorded in [PR #72](https://github.com/MulattoTech/MTerm-CLI/pull/72)
+## Current DCP-010 contract qualification
+
+The [setter contract report](validation/2026-11-02-config-contract.md) records
+qualified implementation `16ea3ff82062c6f3018385b1a59600431e475c36`, based on
+merged main `acaf276`. Native Windows x64 Node 24.21.0 passed **187/187 tests with
+zero failures, skips or cancellations**. The actual full wrapper ran from
+13:00:35.945 to 13:01:25.726 UTC and exited 0:
+
+```powershell
+node scripts/orchestration/verify.mjs --full
+```
+
+That observed invocation includes normal reviewed build/check, package
+verification and source-entry native Codex. Separate self-host, normal prepack
+and installed-entry native Codex also exited 0. See the exact
+[native receipt](validation/2026-11-02-config-contract-windows.json), which records
+a clean checkout and unchanged source/test/verifier hashes before and after.
+Normal prepack repeated the 187/187 test result; those runs are not added together
+as distinct test coverage.
+
+The actual installed verifier passed **ten scenarios**, including the six
+preference response contracts and 14 rejection cases with policy/backup byte
+preservation. Two concurrent MCP children plus restart completed with observed
+owned-process exits and fixture cleanup. Ten network canaries were intercepted;
+zero product attempts were observed within the instrumented standard Node APIs.
+This is not an OS network sandbox. Native Codex 0.160.1 parsed synthetic source
+and installed registration, and SDK clients completed two MCP rounds per entry;
+actual Codex-agent tool invocation remains false and model calls remain zero.
+
+The separate [fresh-source receipt](validation/2026-11-02-config-contract-fresh.json)
+records exact-commit archive/extraction, locked install, reviewed build, normal
+prepack and actual installed verification from 13:02:54.753 to 13:03:44.492 UTC.
+All gates exited 0, normal prepack passed 187/187 tests without skips, and the
+installed verifier again passed ten scenarios. Package sizes were 57,977 archive
+bytes, 224,683 unpacked bytes and 14,172,053 installed production bytes; external
+Node/Codex prerequisites remain outside that footprint.
+
+The initial focused native campaign preceded the runtime edit:
+
+```powershell
+npm run build:code
+node --test --test-reporter=tap --test-concurrency=1 tests/compat-config-set-contract.test.mjs
+```
+
+It reached the real success assertions with 2 passes/10 failures, then passed
+12/12 after the fix. Original RED and corrected-cleanup GREEN test hashes remain
+separate; contract assertions did not change. The focused tests also cover
+32 rejected inputs, no-op integer writes, sampled same-key concurrency and the
+independent configuration-write capability. Scratch `CONNECTION_CLOSED` occurred
+before behavior assertions and supplies no product RED. The report preserves the
+failed local-path evidence validation and corrected pre-execution import hash
+comparison as separate setup observations.
+
+All nine [hosted implementation checks](validation/2026-11-02-config-contract-hosted.json)
+passed at `16ea3ff`: push matrix `41449904997`, PR matrix `41450112186` and fast
+`41450112178`, all on attempt 1, observed 13:09:16.557 UTC. Final-documentation
+checks, merge/main and final recovery remain pending for
+[PR #74](https://github.com/MulattoTech/MTerm-CLI/pull/74).
+The integration owner must review this final evidence and explicitly review/render
+the refreshed roadmap before the final documentation gates. No actual model
+invocation or real Codex auth/config mutation is claimed. Independent static
+review has no blocking findings; all parity/stage metrics remain unchanged.
+The [issue audit](validation/2026-11-02-config-contract-issue-audit.json) and
+[connection receipt](validation/2026-11-02-connection-recheck.json) are separate
+observations and do not supply new client acceptance.
+
+## Completed configuration qualification checkpoints
+
+The immediately preceding metadata slice is complete in
+[PR #73's final delivery receipt](https://github.com/MulattoTech/MTerm-CLI/pull/73#issuecomment-6577021102):
+implementation `535d99e` passed 175/175 native Windows tests and eight installed
+scenarios; final head `6757c1f` passed 9/9 checks, and merged main `acaf276` passed
+5/5, with no retries on either final head or main. Its initial implementation
+macOS ARM npm-install timeout and one supported successful retry remain recorded
+with unknown cause. Those results do not qualify the new DCP-010 candidate.
+
+The earlier configuration proof is recorded in [PR #72](https://github.com/MulattoTech/MTerm-CLI/pull/72)
 and the [delivery record](validation/2026-11-02-config-delivery.json), at implementation
 `def85d256fe558ef26e0cdf7d0218ce250682150`. The earlier remote release remains
 recorded separately by [PR #69](https://github.com/MulattoTech/MTerm-CLI/pull/69)

@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "repository": "MulattoTech/MTerm-CLI",
+  "recordType": "additive read-only staging connection recheck",
+  "recordedAtUtc": "2026-11-02T13:02:34Z",
+  "sourceAudit": {
+    "artifact": "audit/2026-11-02-connection-recheck.json",
+    "sha256": "17c42d55fa55474d486b64aaeb358b9220eeb11b4e75a242c8010a5407195a62",
+    "auditStartUtc": "2026-11-02T12:33:40Z",
+    "timeScope": "Audit start, not a timestamp for every individual read",
+    "observations": {
+      "schemaVersion": 1,
+      "repository": "MulattoTech/MTerm-CLI",
+      "observedAtUtc": "2026-11-02T12:33:40Z",
+      "observationTimeScope": "Audit start, not a timestamp for every individual read",
+      "personalPluginListing": {
+        "status": "passed",
+        "defaultArguments": true,
+        "returned": 3,
+        "nextCursor": null,
+        "mtermFound": false,
+        "scope": "USER private personal only"
+      },
+      "pluginSearch": {
+        "query": "MTerm",
+        "status": "passed",
+        "results": 0
+      },
+      "cloudflare": {
+        "specLookup": "passed",
+        "freshAccountOrDeploymentObservation": false,
+        "accountRead": "GET /accounts?per_page=50 returned no result; read-only operation canceled after 1051.2 seconds of waiting",
+        "mutation": false
+      },
+      "browser": {
+        "calls": 0,
+        "freshDashboardObservation": false,
+        "chatgptHostAttempted": false
+      },
+      "client": {
+        "pluginCreationRetried": false,
+        "repairVerified": false,
+        "actualConsentObserved": false,
+        "toolDiscoveryObserved": false,
+        "fileReadObserved": false
+      },
+      "historicalBlockers": [
+        "Plugin creation non-retryable HTTP409: Scoped plugin release was deleted.",
+        "Browser host restrictions denied chatgpt.com access; not retried or bypassed."
+      ],
+      "limits": [
+        "A successful listing does not prove plugin creation repaired.",
+        "A missing personal listing/search result is not proof of absence from every possible scope.",
+        "No Cloudflare version or policy observation was returned."
+      ]
+    }
+  },
+  "integrationOwnerObservations": {
+    "provenance": "Observed by the integration owner in the parent task and relayed to the delegated receipt author; these are separate from the earlier audit.",
+    "dashboard": {
+      "observedAtUtcApproximate": "2026-11-02T12:56:08Z",
+      "timePrecision": "approximate, reported by integration owner",
+      "surface": "Actual Browser plugin, existing authenticated Brave dashboard session",
+      "url": "https://mterm-staging.m-techlabs.com",
+      "renderedMode": "staging · read-only",
+      "identityVerified": true,
+      "readAccessEnabled": true,
+      "writingEnabled": false,
+      "executionEnabled": false,
+      "ownerComputersOnline": 1,
+      "activeClientAuthorizations": 0,
+      "activeRequests": 0,
+      "build": "b90432a1bc138d59305692a9f74f110a475d0881",
+      "newLoginPerformed": false,
+      "newConsentPerformed": false,
+      "pairingRepeated": false
+    },
+    "publicHealth": {
+      "observedWindowUtcApproximate": {
+        "start": "2026-11-02T12:55:00Z",
+        "end": "2026-11-02T12:56:59Z"
+      },
+      "timePrecision": "minute range reported by integration owner; not exact request timestamps",
+      "surface": "Bounded Remote Desktop Commander Invoke-RestMethod read",
+      "service": "mterm-remote",
+      "mode": "read-only",
+      "enabled": true,
+      "environment": "staging",
+      "build": "b90432a1bc138d59305692a9f74f110a475d0881"
+    },
+    "cloudflareManagement": {
+      "freshWorkerVersionObserved": false,
+      "freshAccessPolicyObserved": false,
+      "limit": "Dashboard and public health build values do not independently verify the Cloudflare Worker version identifier or current Access policy."
+    }
+  },
+  "clientAcceptance": {
+    "actualConsentObserved": false,
+    "actualToolDiscoveryObserved": false,
+    "actualClientFileReadObserved": false,
+    "clientAcceptanceEstablished": false,
+    "pluginCreationRetried": false,
+    "pluginCreationRepairVerified": false,
+    "blockedChatgptHostRetried": false,
+    "historicalBlockers": [
+      "Plugin creation non-retryable HTTP409: Scoped plugin release was deleted.",
+      "Browser host restrictions denied chatgpt.com access; not retried or bypassed."
+    ]
+  },
+  "limits": [
+    "The earlier audit browser calls=0 and freshDashboardObservation=false describe only that delegated audit; the later parent-task dashboard observation is recorded separately.",
+    "The audit-start timestamp is not a timestamp for the later dashboard or public-health observations.",
+    "Successful plugin listing does not establish that plugin creation is repaired.",
+    "Absence from a USER-scoped personal listing and a plugin search does not prove absence from every possible scope.",
+    "An online owner computer and matching dashboard/public-health build do not establish ChatGPT consent, tool discovery, or a client file read.",
+    "No fresh Cloudflare management version or Access-policy result was obtained.",
+    "No enrollment IDs, private user identifiers, credentials, tokens, or raw browser metadata are included in this receipt."
+  ]
+}

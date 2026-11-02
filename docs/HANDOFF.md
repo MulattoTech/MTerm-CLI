@@ -1,6 +1,71 @@
 # MTerm-CLI handoff — 2026-11-02 configuration continuation
 
-## DCP-009 qualification and current owner connection
+## Current DCP-010 setter contract qualification
+
+Tested implementation `16ea3ff82062c6f3018385b1a59600431e475c36` on
+`feat/dcp-010-config-contract-20261102` is carried by draft
+[PR #74](https://github.com/MulattoTech/MTerm-CLI/pull/74), based on merged main
+`acaf276066c9e0436af2398c0120a38f7c04f5f0`. It adds the missing
+` to <effective JSON value>` success segment from the same validated setter
+snapshot as the configuration body. Strict normalization, owner ceilings,
+storage, safe errors and independent configuration-write authority are unchanged.
+The [contract report](validation/2026-11-02-config-contract.md) records all six
+preferences and the intentional upstream differences.
+
+Native Windows Node 24.21.0 passed **187/187 tests with no skips or
+cancellations**, the actual full-orchestration wrapper, self-host, normal prepack
+and installed-entry native Codex. The seven conceptual gates include normal
+build/check, real package and source Codex within that observed wrapper.
+The real installed verifier passed **ten scenarios**, including six-setting
+responses and 14 rejected-write byte checks. Two concurrent MCP children and a
+restart completed with independently verified exits and owned fixture cleanup.
+Ten network canaries were intercepted and zero product attempts observed within
+bounded Node API instrumentation. Source and installed Codex 0.160.1 each parsed
+synthetic registration and completed two SDK MCP rounds; model calls were zero
+and actual Codex-agent tool invocation remains false.
+
+A separate exact-commit archive/extraction passed locked install, reviewed build,
+normal prepack and installed verification, again with 187/187 tests and ten
+installed scenarios. See the immutable [native receipt](validation/2026-11-02-config-contract-windows.json)
+and [fresh-source receipt](validation/2026-11-02-config-contract-fresh.json).
+These committed-source results follow the original focused native **2-pass/10-fail
+RED** and **12/12 GREEN**. Their old/new test hashes remain distinct because only
+the cleanup helper changed between the two focused runs. Scratch
+`CONNECTION_CLOSED` during initialization is an environment observation, not
+product RED. The report also preserves the corrected local-evidence-path build
+failure and pre-execution import hash comparison; neither is hidden or relabeled.
+
+All nine [hosted implementation checks](validation/2026-11-02-config-contract-hosted.json)
+passed at `16ea3ff` without retries, observed 13:09:16.557 UTC; the last completed
+at 13:08:30 UTC. Final documentation checks, merge/main and final recovery remain
+pending. The integration owner must review this updated evidence,
+explicitly review/render the refreshed roadmap and finish exact-head delivery.
+All 48 DCP issues remain open, WEB acceptance is 0/12 and broad maturity stays
+29.12%; no protected fields or acceptance credit change. The
+[additive issue audit](validation/2026-11-02-config-contract-issue-audit.json)
+retains its original 48-body/22-comment observation rather than claiming a new
+remote audit at receipt time.
+
+The separate [connection recheck](validation/2026-11-02-connection-recheck.json)
+records the existing-session dashboard at approximately 12:56:08 UTC: one owner
+computer online, read-only, zero client authorizations and zero active requests.
+Actual ChatGPT consent, discovery and file reading remain unobserved. Plugin
+listing does not prove the earlier creation error is repaired, and no blocked
+host retry, new login, consent or pairing was performed. Matching dashboard and
+public-health build values do not independently verify a fresh Cloudflare
+management version or Access policy.
+
+The DCP-009 owner ruling still required is whether its documented omitted probes
+and owner/privacy restrictions are acceptable intentional differences in the
+Codex-facing parity contract; otherwise specify the truthful bounded fields
+required. The [report](validation/2026-11-02-config-contract.md#earlier-dcp-009-delivery-and-the-remaining-owner-ruling)
+lists the exact differences. This is contract acceptance, not permission for
+model calls or real user configuration changes; actual supported-client
+acceptance remains separate. Independently closeable #12 remains open for its
+own complete setter contract, accepted intentional differences and applicable
+actual-client evidence. Separate shell/process contracts are not imported into it.
+
+## Completed DCP-009 delivery and existing owner connection
 
 The independent `feat/dcp-009-config-metadata-20261102` implementation is
 `535d99e20b52a30ba9a24b6d2205d8e6687f6ca6`, based on verified main
@@ -21,10 +86,14 @@ The [delivery record](validation/2026-11-02-config-metadata-delivery.json) recor
 9/9 latest implementation hosted checks passing at unchanged `535d99e`. The initial
 push macOS ARM64 npm-install timeout remains recorded with cause unestablished;
 one supported rerun passed its tests, package and native-Codex gates at 12:00:47 UTC.
-Only that failed platform job was rerun. PR #73 is the authority for final
-documentation head, merge/main and checkpoint results. Native Codex parsing plus
-SDK calls does not establish a model-driven tool invocation. All DCP issues remain
-open and broad stages/weights unchanged.
+Only that failed platform job was rerun. The directly retrieved
+[final delivery receipt](https://github.com/MulattoTech/MTerm-CLI/pull/73#issuecomment-6577021102)
+supersedes older prepublication notes: final head `6757c1f` passed 9/9 checks
+without retries, normal merge produced `acaf276` at 12:17:20 UTC, and merged main
+passed 5/5 without retries, rechecked 12:20:35 UTC. The final head and merged tree
+are identical. Native Codex parsing plus SDK calls does not establish a
+model-driven tool invocation. All DCP issues remain open and broad stages/weights
+unchanged.
 
 The owner has approved the prepared `C:\Tools\Dev\MTerm-RemoteWorkspace` root.
 Real owner-authorized pairing through an existing authenticated dashboard, online

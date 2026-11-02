@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUtc": "2026-11-02T12:45:31.891377+00:00",
+  "reviewer": {
+    "provider": "OpenAI",
+    "model": "GPT-6 Astra Pro",
+    "identityBasis": "session-declared self-report",
+    "role": "independent read-only reviewer"
+  },
+  "repository": "MulattoTech/MTerm-CLI",
+  "baseMain": "acaf276066c9e0436af2398c0120a38f7c04f5f0",
+  "scope": "Bounded DCP010 set_config_value success-output delta, new MCP contract tests, installed verification additions; static independent review only",
+  "inputFiles": [
+    {
+      "path": "src/mcp.ts",
+      "sha256": "d585feb3c9b4707c24e266e4d8476e18ce21bc25169ebe08275fa972a34d400b"
+    },
+    {
+      "path": "src/compat-config.ts",
+      "sha256": "73d3f109bd4ce67a83e9ba7c5eb55e70eaa45f4cab63d96165a365b4698c9af9"
+    },
+    {
+      "path": "tests/compat-config-set-contract.test.mjs",
+      "sha256": "9ca666989736911aacf24b3b4516cb91e8a6548bdbfb0736cd7ae136b353d992"
+    },
+    {
+      "path": "scripts/verify-configuration-installed.mjs",
+      "sha256": "ff38f93d738b4a6d47347d62fc62c84bedb1228ea0ff488e0aee1bd44232e49b"
+    }
+  ],
+  "verdict": "No blocking findings remain in the reviewed source/test/verifier bytes. Runtime qualification and exact-head publication gates remain separate.",
+  "openFindings": [],
+  "resolvedFindings": [
+    {
+      "id": "DCP010-REVIEW-001",
+      "severity": "P2",
+      "originalFileSha256": "f824462c68b0f1216232afad767718e0fdeb2ecf748828b4a7a3176f16f12117",
+      "resolvedFileSha256": "9ca666989736911aacf24b3b4516cb91e8a6548bdbfb0736cd7ae136b353d992",
+      "problem": "First failed cleanup/assertion could skip later owned clients and still erase fixture state.",
+      "resolution": "Every client and transport closure is independently attempted; exit verification and stderr assertions aggregate errors; fixture removal requires every owned exit to be verified. Contract assertions unchanged.",
+      "verifiedBy": "Read-only review of corrected hook and source file hash; no cleanup-fault test executed by reviewer."
+    }
+  ],
+  "sourceReview": {
+    "validatedKeyBeforeIndex": true,
+    "valueFromSuccessfulSetterSnapshot": true,
+    "noNewConfigReread": true,
+    "noRawRequestValueEcho": true,
+    "normalizationStorageOwnerCeilingsUnchanged": true,
+    "errorHandlingAndCapabilitiesUnchanged": true,
+    "textOnlyEnvelopePreserved": true,
+    "reasoning": "configuration.set validates supported keys and committed effective values before returning. The new prefix serializes next[validated key] from that returned object, which also supplies the existing updated configuration section. It does not inspect the raw request value or observe a later writer."
+  },
+  "testsReview": {
+    "sixPreferencesViaMcp": true,
+    "normalizedRootsAndMandatoryBlocks": true,
+    "booleanStringNormalization": true,
+    "integerLimitsAndNoOpBackupBytes": true,
+    "rejectedPolicyAndBackupBytes": true,
+    "safeErrorSentinelChecks": true,
+    "configWriteCapabilitySeparation": true,
+    "existingInstalledScenariosRetained": true,
+    "fixtureShellsDoNotClaimExecution": true,
+    "sameKeyConcurrencyScope": "Two repeated concurrent request samples; no forced interleaving certificate.",
+    "negativeCaseCountNewMcpTest": 32,
+    "negativeCaseCountInstalledExtension": 14
+  },
+  "evidenceReportedByIntegrationOwner": {
+    "preFixNativeRed": {
+      "tests": 12,
+      "passed": 2,
+      "failed": 10,
+      "skipped": 0,
+      "failingContract": "success-output assertions",
+      "testFileSha256": "f824462c68b0f1216232afad767718e0fdeb2ecf748828b4a7a3176f16f12117"
+    },
+    "observationStatus": "Reported to reviewer, not independently re-executed. Root retains native evidence. Original RED precedes cleanup-only helper repair."
+  },
+  "testsRunByReviewer": [],
+  "gatesRunByReviewer": [],
+  "limits": [
+    "No scratch stdio tests were rerun because integration owner identified a concrete CONNECTION_CLOSED environment issue.",
+    "No native GREEN, packed-installed, fresh-source or hosted result is inferred from static review.",
+    "The chosen success value is effective and owner-bounded, which intentionally differs from upstream raw/coerced valueToStore for roots and mandatory command blocks.",
+    "Full DCP010, all26-tool/all48-issue acceptance, actual Codex-agent invocation and Web-client consent remain unproved by this slice."
+  ],
+  "initialReviewArtifact": "2026-11-02-dcp010-test-review-initial.json",
+  "initialReviewSha256": "a1b9acf27e0c44199219388adc68bc952696d2b82a97a112bb235e1171edd40a",
+  "mutations": "Only this local audit artifact; no repository edits or external mutations"
+}

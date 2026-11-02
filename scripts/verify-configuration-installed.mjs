@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-02-config-contract; prove set responses and rejected-write byte preservation in installed MCP children.
 // Modified: 2026-11-02-config-metadata; inspect the installed get_config metadata and response contract.
 // AI-Change: 2026-11-02-config-installed-qualification
 // Installed-package proof only. Every policy, process and network canary is fixture-owned.
@@ -50,6 +51,7 @@ const workspace = path.join(evidence, 'fixtures');
 await fs.mkdir(workspace);
 const roots = [path.join(workspace, 'root one'), path.join(workspace, 'root two')];
 const configurationFile = path.join(workspace, 'state', 'compat-policy.json');
+const fixtureShells = ['fixture-owner-shell-a', 'fixture-owner-shell-b'];
 for (const root of roots) await fs.mkdir(root);
 const originalText = 'alpha\nβeta\ngamma\n';
 for (const root of roots) await fs.writeFile(path.join(root, 'fixture.txt'), originalText);
@@ -183,6 +185,7 @@ async function connect({ allowConfigWrite = true } = {}) {
       '--compat-desktop-commander',
       '--compat-config',
       configurationFile,
+      ...fixtureShells.flatMap((shell) => ['--allow-shell', shell]),
       '--allow-write',
       '--allow-exec',
       ...(allowConfigWrite ? ['--allow-config-write'] : []),
@@ -313,7 +316,24 @@ const get = async (connection) => {
   );
   return config;
 };
-const set = (connection, key, value) => call(connection, 'set_config_value', { key, value });
+const set = async (connection, key, value, expectedValue = value) => {
+  const result = await call(connection, 'set_config_value', { key, value });
+  assert.equal(result.structuredContent, undefined, 'Pinned set success is text-only');
+  assert.equal(result.content.length, 1);
+  assert.equal(result.content[0].type, 'text');
+  const separator = '\n\nUpdated configuration:\n';
+  const text = plain(result);
+  const boundary = text.indexOf(separator);
+  assert.ok(boundary >= 0, 'Set response includes the updated configuration');
+  const config = JSON.parse(text.slice(boundary + separator.length));
+  assert.deepEqual(config[key], expectedValue, 'Installed response reports the accepted effective value');
+  assert.equal(
+    text,
+    `Successfully set ${key} to ${JSON.stringify(expectedValue, null, 2)}${separator}${JSON.stringify(config, null, 2)}`,
+    'Installed success prefix and configuration share the committed snapshot',
+  );
+  return result;
+};
 async function noWriteDebris() {
   const names = await fs.readdir(path.dirname(configurationFile));
   assert.ok(
@@ -344,6 +364,63 @@ try {
   }
   steps.push('two-installed-processes-discovery-and-owner-roots');
   steps.push('get-config-envelope-memory-process-metadata-and-omissions');
+
+  const initialConfig = await get(a);
+  const rawCommands = ['  Fixture.EXE  ', '/fixture/bin/FIXTURE.exe', 'sudo'];
+  const rawRoots = [roots[1] + path.sep + '.', roots[1]];
+  const configContractCases = [
+    [
+      'blockedCommands',
+      '  ' + JSON.stringify(rawCommands),
+      [...initialConfig.blockedCommands, 'fixture'],
+      rawCommands,
+    ],
+    ['allowedDirectories', '  ' + JSON.stringify(rawRoots), [roots[1]], rawRoots],
+    ['defaultShell', fixtureShells[1], fixtureShells[1], fixtureShells[1]],
+    ['fileReadLineLimit', 17, 17, 17],
+    ['fileWriteLineLimit', 23, 23, 23],
+    ['telemetryEnabled', '  TrUe  ', true, true],
+  ];
+  for (const [key, value, effectiveValue, storedValue] of configContractCases) {
+    await set(a, key, value, effectiveValue);
+    assert.deepEqual((await get(b))[key], effectiveValue);
+    assert.deepEqual(JSON.parse(await fs.readFile(configurationFile, 'utf8'))[key], storedValue);
+  }
+  await set(a, 'blockedCommands', 'Single.EXE', [...initialConfig.blockedCommands, 'single']);
+  await set(a, 'blockedCommands', [], initialConfig.blockedCommands);
+  await set(a, 'allowedDirectories', roots[0], [roots[0]]);
+  await set(a, 'allowedDirectories', roots);
+  await set(a, 'telemetryEnabled', '  FaLsE  ', false);
+  steps.push('six-setting-success-output-and-normalized-effective-values');
+
+  const rejectedValueSentinel = 'MTERM_REJECTED_CONFIG_VALUE_SENTINEL';
+  const contractPolicy = await fs.readFile(configurationFile);
+  const contractBackup = await fs.readFile(configurationFile + '.previous');
+  for (const [key, value, code] of [
+    [rejectedValueSentinel, true, 'CONFIG_KEY'],
+    ['__proto__', rejectedValueSentinel, 'CONFIG_KEY'],
+    ['blockedCommands', null, 'INVALID_ARGUMENT'],
+    ['blockedCommands', 7, 'INVALID_ARGUMENT'],
+    ['blockedCommands', '["' + rejectedValueSentinel + '"', 'CONFIG_INVALID'],
+    ['allowedDirectories', rejectedValueSentinel, 'CONFIG_SCOPE'],
+    ['allowedDirectories', [workspace], 'OUTSIDE_ROOT'],
+    ['defaultShell', rejectedValueSentinel, 'CONFIG_SCOPE'],
+    ['fileReadLineLimit', '2', 'INVALID_ARGUMENT'],
+    ['fileReadLineLimit', 0, 'INVALID_ARGUMENT'],
+    ['fileWriteLineLimit', 10001, 'INVALID_ARGUMENT'],
+    ['fileWriteLineLimit', 1.5, 'INVALID_ARGUMENT'],
+    ['telemetryEnabled', rejectedValueSentinel, 'INVALID_ARGUMENT'],
+    ['telemetryEnabled', 1, 'INVALID_ARGUMENT'],
+  ]) {
+    const response = await denied(a, 'set_config_value', { key, value }, code);
+    assert.ok(!JSON.stringify(response).includes(rejectedValueSentinel));
+    assert.ok(!JSON.stringify(response).includes('Successfully set'));
+    assert.deepEqual(response.content, [{ type: 'text', text: JSON.stringify(response.structuredContent) }]);
+    assert.deepEqual(await fs.readFile(configurationFile), contractPolicy);
+    assert.deepEqual(await fs.readFile(configurationFile + '.previous'), contractBackup);
+    await noWriteDebris();
+  }
+  steps.push('six-setting-rejections-preserve-policy-backup-and-safe-error-output');
 
   await set(a, 'fileReadLineLimit', 1);
   assert.equal((await get(b)).fileReadLineLimit, 1);
@@ -445,7 +522,7 @@ try {
   ).structuredContent;
   fixtureProcesses.push({ connection: a, sessionId: started.sessionId, pid: started.pid });
   assert.ok(Number.isInteger(started.pid));
-  await set(b, 'blockedCommands', ['node']);
+  await set(b, 'blockedCommands', ['node'], [...initialConfig.blockedCommands, 'node']);
   await denied(
     a,
     'mterm_start_process',
@@ -479,6 +556,7 @@ try {
   assert.equal(persisted.fileWriteLineLimit, 4);
   assert.deepEqual(persisted.allowedDirectories, roots);
   assert.equal(persisted.telemetryEnabled, false);
+  assert.equal(persisted.defaultShell, fixtureShells[1]);
   assert.ok(persisted.blockedCommands.includes('node'));
   assert.equal(persisted.mterm.configWriteEnabled, false);
   assert.ok(!(await restarted.list()).tools.some((tool) => tool.name === 'set_config_value'));
@@ -512,6 +590,18 @@ try {
       clientExtrasOmitted: true,
       unsupportedProbesExplicitlyOmitted: true,
       featureFlagProvider: 'none',
+    },
+    setConfigContract: {
+      preferencesExercised: configContractCases.map(([key]) => key),
+      exactTextOnlySuccess: true,
+      successValueMatchesCommittedEffectiveSnapshot: true,
+      normalizedBooleanStrings: true,
+      singletonAndJsonArrays: true,
+      deduplicatedCanonicalRootsAndMandatoryBlocks: true,
+      rejectedCases: 14,
+      rejectedPolicyAndBackupBytesPreserved: true,
+      rejectedValuesOmittedFromErrors: true,
+      shellPreferencePersistsWithoutShellExecutionClaim: true,
     },
     steps,
     telemetryNetworkGuard: {

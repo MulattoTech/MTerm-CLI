@@ -4,6 +4,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import os from 'node:os';
 import { FileService, fileSchemas } from '../files.js';
+import { privateName } from '../policy.js';
 import { cancelled, fail, safeError } from '../errors.js';
 import {
   JOB_TIMEOUT_MS,
@@ -19,6 +20,8 @@ import {
 export async function remoteRoot(input: string): Promise<string> {
   if (!path.isAbsolute(input)) fail('INVALID_ROOT', 'Select an explicit absolute trusted directory.');
   const root = await fs.realpath(input);
+  if (root.split(path.sep).some(component => privateName(component)))
+    fail('PRIVATE_PATH', 'Credential and repository metadata directories cannot be exposed as remote roots.');
   const home = await fs.realpath(os.homedir());
   if (path.relative(root, path.parse(root).root) === '' || path.relative(root, home) === '')
     fail('INVALID_ROOT', 'Select a specific trusted directory, not a drive root or user home.');

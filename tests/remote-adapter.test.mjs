@@ -73,5 +73,7 @@ test('remote adapter retains path policy, credentials exclusions, response bound
     }
     await assert.rejects(RemoteReadAdapter.create({ root: path.parse(root).root, deviceId }), /specific trusted directory/);
     await assert.rejects(RemoteReadAdapter.create({ root: os.homedir(), deviceId }), /specific trusted directory/);
+    const credentials = path.join(root, '.ssh'); await fs.mkdir(credentials);
+    await assert.rejects(RemoteReadAdapter.create({ root: credentials, deviceId }), e => e.code === 'PRIVATE_PATH');
   } finally { await fs.rm(root, { recursive: true, force: true }); }
 });

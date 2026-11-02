@@ -144,6 +144,9 @@ export class RemoteStateStore {
     const raw = await this.read('config.json');
     if (!raw) fail('REMOTE_UNCONFIGURED', 'Run remote setup with an explicit gateway and trusted directory.');
     const config = validateConfig(raw);
+    const actualRoot = await remoteRoot(config.root);
+    if (path.relative(actualRoot, config.root) !== '')
+      fail('REMOTE_ROOT_CHANGED', 'The enrolled directory now resolves elsewhere. Revoke and configure the intended directory explicitly.');
     if (inside(config.root, this.directory)) fail('STATE_IN_ROOT', 'Remote credential storage cannot be within the exposed root.');
     return config;
   }
@@ -171,7 +174,7 @@ export class RemoteStateStore {
     if (config.deviceId) fail('REMOTE_PAIRED', 'A device is already paired; revoke it explicitly before pairing again.');
     if (!UUID_PATTERN.test(deviceId) || typeof token !== 'string' || !token || token.length > 4096 || /[\x00-\x20\x7f]/.test(token))
       fail('REMOTE_CREDENTIAL', 'Gateway supplied an invalid device credential.');
-    const json = JSON.stringify({ deviceId, token, gateway: config.gateway });
+    const json = JSON.stringify({ deviceId, token, gateway: config.gateway, root: config.root });
     const protectedValue = process.platform === 'win32' ? await dpapi('Protect', Buffer.from(json).toString('base64')) : json;
     await this.write('credential.json', { schemaVersion: 1, protection: process.platform === 'win32' ? 'windows-dpapi-current-user' : 'posix-0600', value: protectedValue });
     await this.write('config.json', { ...config, deviceId });
@@ -184,12 +187,12 @@ export class RemoteStateStore {
     const expected = process.platform === 'win32' ? 'windows-dpapi-current-user' : 'posix-0600';
     if (!raw || raw.schemaVersion !== 1 || raw.protection !== expected || typeof raw.value !== 'string')
       fail('REMOTE_CREDENTIAL', 'Device credential is missing or uses an unsupported protection format.');
-    let value: { deviceId?: string; token?: string; gateway?: string };
+    let value: { deviceId?: string; token?: string; gateway?: string; root?: string };
     try {
       const json = process.platform === 'win32' ? Buffer.from(await dpapi('Unprotect', raw.value), 'base64').toString('utf8') : raw.value;
       value = JSON.parse(json);
     } catch { fail('REMOTE_CREDENTIAL', 'Device credential could not be read by this OS user.'); }
-    if (value.deviceId !== config.deviceId || value.gateway !== config.gateway || !value.token || typeof value.token !== 'string' || value.token.length > 4096)
+    if (value.deviceId !== config.deviceId || value.gateway !== config.gateway || value.root !== config.root || !value.token || typeof value.token !== 'string' || value.token.length > 4096)
       fail('REMOTE_CREDENTIAL', 'Device credential does not match the configured gateway and computer.');
     return { deviceId: config.deviceId, token: value.token };
   }

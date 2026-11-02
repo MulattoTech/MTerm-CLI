@@ -55,3 +55,21 @@ test('concurrent pair saves retain one coherent device/token binding', async () 
     assert.equal((await store.config()).deviceId, credential.deviceId);
   } finally { await fs.rm(temp, { recursive: true, force: true }); }
 });
+
+test('device credential binds its enrolled root and refuses a retargeted root', async () => {
+  const temp = await fs.mkdtemp(path.join(os.tmpdir(), 'mterm-state-binding-'));
+  try {
+    const root = path.join(temp, 'fixture'), other = path.join(temp, 'other');
+    await fs.mkdir(root); await fs.mkdir(other);
+    const store = await RemoteStateStore.open(path.join(temp, 'state'));
+    await store.configure({ schemaVersion: 1, gateway: 'https://gateway.test', root, name: 'Fixture' });
+    await store.savePairing(randomUUID(), 'fixture-bound-secret');
+    const config = await store.config();
+    await fs.writeFile(path.join(store.directory, 'config.json'), JSON.stringify({ ...config, root: await fs.realpath(other) }));
+    await assert.rejects(store.credential(), e => e.code === 'REMOTE_CREDENTIAL');
+    await fs.writeFile(path.join(store.directory, 'config.json'), JSON.stringify(config));
+    await fs.rename(root, path.join(temp, 'old-root'));
+    await fs.symlink(other, root, process.platform === 'win32' ? 'junction' : 'dir');
+    await assert.rejects(store.config(), e => e.code === 'REMOTE_ROOT_CHANGED');
+  } finally { await fs.rm(temp, { recursive: true, force: true }); }
+});

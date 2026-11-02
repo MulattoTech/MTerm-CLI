@@ -456,13 +456,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Verify lifecycle support and pin/test the selected Node line and patch policy.
 
-**Current scope:** Architecture and conflicts retained. Node24 LTS and official SDK pinned for local host; three-upstream bundle compatibility is not established.
+**Current scope:** 2026-11-02 evidence update: Node 24 is pinned for MTerm glue. The actual Windows Node 24.21.0 runtime and SDK 2.3.0 completed the 2026-11-02 live remote smoke; pinned TypeScript also passed. Full lifecycle/patch-policy and three-upstream bundle compatibility review remain open; preserve the existing planned stage pending final review.
 
 **Baseline weight:** 8 h (rough). **Remaining:** 4–14 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `docs/plans/2026-10-04-local-mcp.md`
+**Evidence:** `docs/plans/2026-10-04-local-mcp.md`, `docs/ai/changes/2026-11-02-remote-agent.json`, `docs/validation/2026-11-02-remote-staging-smoke.json`, `package.json`
 
 ## CLI-034 — Determine the Web runtime dependency set
 
@@ -1912,13 +1912,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Show non-secret values and precedence sources, not raw auth.
 
-**Current scope:** Typed local config, safe validation/atomic snapshots, offline doctor and structured setup plan work; full editor/migration/concurrency platform coverage remains.
+**Current scope:** 2026-11-02 evidence update: Local typed config and safe diagnostics remain implemented. Recovered compatibility get_config exposes effective owner-bounded preferences and non-secret capability metadata; per-call snapshots and canonical policy-file exclusion have regression coverage. Final pinned configuration/MCP and cross-platform acceptance remain pending.
 
 **Baseline weight:** 4 h (rough). **Remaining:** 1–3 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/cli.test.mjs`
+**Evidence:** `tests/cli.test.mjs`, `src/compat-config.ts`, `tests/compat-config.test.mjs`, `tests/compat-config-mcp.test.mjs`, `docs/ai/changes/2026-11-02-config-storage-identity.json`
 
 ## CLI-138 — Implement typed config get/set
 
@@ -1926,13 +1926,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Unsupported keys and wrong types are rejected before mutation.
 
-**Current scope:** Typed local config, safe validation/atomic snapshots, offline doctor and structured setup plan work; full editor/migration/concurrency platform coverage remains.
+**Current scope:** 2026-11-02 evidence update: Recovered compatibility set_config_value rejects unsupported keys/types, requires separate --allow-config-write, and cannot widen startup roots/shells or grant file/process capabilities. Concurrent snapshots and canonical policy self-protection have regressions. Full pinned configuration/MCP rerun and platform qualification remain pending.
 
 **Baseline weight:** 4 h (rough). **Remaining:** 1–3 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/cli.test.mjs`
+**Evidence:** `tests/cli.test.mjs`, `src/compat-config.ts`, `tests/compat-config.test.mjs`, `tests/compat-config-mcp.test.mjs`, `docs/ai/changes/2026-11-02-config-storage-identity.json`
 
 ## CLI-139 — Implement safe config editing
 
@@ -1968,13 +1968,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** A failed write/migration does not strand the installed CLI.
 
-**Current scope:** Typed local config, safe validation/atomic snapshots, offline doctor and structured setup plan work; full editor/migration/concurrency platform coverage remains.
+**Current scope:** 2026-11-02 evidence update: Local config uses atomic replacement and backups. Recovered compatibility policy adds bounded cooperative locking, exact previous-byte conflict checks, backups and canonical storage identity with linked-file rejection. New failure/alias regressions are present; final pinned configuration/MCP and crash/platform coverage remain pending.
 
 **Baseline weight:** 8 h (rough). **Remaining:** 1–6 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/cli.test.mjs`
+**Evidence:** `tests/cli.test.mjs`, `src/compat-config.ts`, `tests/compat-config.test.mjs`, `tests/compat-config-mcp.test.mjs`, `docs/ai/changes/2026-11-02-config-storage-identity.json`
 
 ## CLI-142 — Reject prototype-pollution keys
 
@@ -2444,13 +2444,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** A clean install from MTerm-CLI repository root exposes mterm-cli without cloning/installing MTerm-GUI.
 
-**Current scope:** Real production tarball install, official-client MCP file round trip outside checkout, isolated-prefix npm link and actual Windows shim passed. No user-global prefix mutation; other platforms and full three-component bundle remain unverified.
+**Current scope:** 2026-11-02 evidence update: Historical production tarball installation, isolated-prefix npm link and Windows shim checks passed without changing the user-global prefix. The tracked npm bin executable mode was repaired for Linux packaging. Current integration build/package/link reruns and hosted platform qualification are pending; older installed evidence is not a pass for the new remote build.
 
 **Baseline weight:** 8 h (rough). **Remaining:** 1–2 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `scripts/verify-package.mjs`, `tests/cli.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`
+**Evidence:** `scripts/verify-package.mjs`, `tests/cli.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`, `docs/ai/changes/2026-11-02-foundation-portability.json`
 
 ## CLI-176 — Resolve symlinked entry paths
 
@@ -2612,13 +2612,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Run the actual supported artifact on an arm64 macOS environment.
 
-**Current scope:** Workflow job is defined with actual architecture assertions, but no runner steps executed. Platform implementation acceptance stays not_started.
+**Current scope:** 2026-11-02 evidence update: Hosted macOS jobs have executed: the 2026-11-02 audit found real /var versus /private/var canonical-path failures in the feature matrix, superseding earlier billing-only observations. Explicit startup-root alias handling and regression tests are now implemented. Fresh macOS arm64 artifact/matrix acceptance is pending; existing stage is preserved.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 8–32 engineer hours. **ETA:** Unscheduled.
 
-**Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** Hosted CI cannot start: GitHub account payment/spending-limit gate. Owner resolution needed; no billing or protection changes authorized..
+**Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** Fresh hosted OS/architecture and installed-artifact results for the integrated branch are pending. Prior jobs executed and exposed actual canonical-path/bin-mode failures; earlier billing-only observations are historical..
 
-**Evidence:** `docs/validation/2026-10-05-codex-parity-foundation.md`
+**Evidence:** `docs/validation/2026-10-05-codex-parity-foundation.md`, `docs/ai/changes/2026-11-02-foundation-portability.json`, `tests/policy-alias.test.mjs`
 
 ## CLI-188 — Validate macOS x86-64 execution
 
@@ -2626,13 +2626,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Run the actual Intel artifact rather than assuming arm64 results cover it.
 
-**Current scope:** Workflow job is defined with actual architecture assertions, but no runner steps executed. Platform implementation acceptance stays not_started.
+**Current scope:** 2026-11-02 evidence update: Hosted macOS jobs have executed and exposed real canonical-path failures; earlier statements that no runner steps executed are historical. Startup-root alias repair is implemented, but a fresh actual Intel macOS artifact/matrix result remains pending. Preserve the current platform stage until that evidence is reviewed.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 8–32 engineer hours. **ETA:** Unscheduled.
 
-**Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** Hosted CI cannot start: GitHub account payment/spending-limit gate. Owner resolution needed; no billing or protection changes authorized..
+**Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** Fresh hosted OS/architecture and installed-artifact results for the integrated branch are pending. Prior jobs executed and exposed actual canonical-path/bin-mode failures; earlier billing-only observations are historical..
 
-**Evidence:** `docs/validation/2026-10-05-codex-parity-foundation.md`
+**Evidence:** `docs/validation/2026-10-05-codex-parity-foundation.md`, `docs/ai/changes/2026-11-02-foundation-portability.json`, `tests/policy-alias.test.mjs`
 
 ## CLI-189 — Validate Linux x86-64 execution
 
@@ -2640,13 +2640,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Declare and test the supported libc/distribution floor and executable permissions.
 
-**Current scope:** Workflow job is defined with actual architecture assertions, but no runner steps executed. Platform implementation acceptance stays not_started.
+**Current scope:** 2026-11-02 evidence update: The audited prior Ubuntu feature job executed its tests and package/managed-Codex checks, then failed the final clean-tree gate because npm changed the bin executable mode. The bin is now tracked executable and focused Linux policy/gateway tests pass. Fresh supported-platform installation/libc/matrix qualification remains pending; no stage increase is awarded.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 8–32 engineer hours. **ETA:** Unscheduled.
 
-**Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** Hosted CI cannot start: GitHub account payment/spending-limit gate. Owner resolution needed; no billing or protection changes authorized..
+**Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** Fresh hosted OS/architecture and installed-artifact results for the integrated branch are pending. Prior jobs executed and exposed actual canonical-path/bin-mode failures; earlier billing-only observations are historical..
 
-**Evidence:** `docs/validation/2026-10-05-codex-parity-foundation.md`
+**Evidence:** `docs/validation/2026-10-05-codex-parity-foundation.md`, `docs/ai/changes/2026-11-02-foundation-portability.json`, `tests/policy-alias.test.mjs`, `tests/remote-gateway.test.mjs`
 
 ## CLI-190 — Assess Linux arm64 explicitly
 
@@ -2668,13 +2668,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Build/test scripts work on the actual workstation without assuming Unix shell availability.
 
-**Current scope:** Local Windows tests exercise actual SDK wire/lifecycle paths with synthetic roots and no account/model calls. No hosted CI, Unix/macOS or sandbox claim.
+**Current scope:** 2026-11-02 evidence update: Actual isolated Windows Node 24.21.0 compilation and 13 remote test groups, including Windows DPAPI, passed. The real SDK 2.3.0 staging smoke passed 11/11 using two Windows FileService agents. Current 144-test/full/package follow-ups are pending; the latest integration also repairs transient Windows registration replacement safely. No Unix/macOS or OS-sandbox claim is made.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 3–11 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/cli.test.mjs`, `tests/mcp.test.mjs`, `tests/processes.test.mjs`
+**Evidence:** `tests/cli.test.mjs`, `tests/mcp.test.mjs`, `tests/processes.test.mjs`, `docs/ai/changes/2026-11-02-remote-agent.json`, `docs/validation/2026-11-02-remote-staging-smoke.json`, `tests/codex-registration.test.mjs`
 
 ## CLI-192 — Verify actual runner architecture
 
@@ -2752,13 +2752,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Local file/network/process capabilities are separated and no global settings are widened.
 
-**Current scope:** Local Windows tests exercise actual SDK wire/lifecycle paths with synthetic roots and no account/model calls. No hosted CI, Unix/macOS or sandbox claim.
+**Current scope:** 2026-11-02 evidence update: Gateway grants are restricted to mterm:read, each request selects an authorized device, and the agent independently dispatches only bounded FileService reads under its enrolled root. Live mutation, outside-root and cross-device credential denials passed with unchanged fixtures. Local write/exec permissions remain separate; remote write/exec stays disabled.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 3–11 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/cli.test.mjs`, `tests/mcp.test.mjs`, `tests/processes.test.mjs`
+**Evidence:** `tests/cli.test.mjs`, `tests/mcp.test.mjs`, `tests/processes.test.mjs`, `tests/remote-gateway.test.mjs`, `tests/remote-agent.test.mjs`, `tests/remote-adapter.test.mjs`, `tests/remote-state.test.mjs`, `docs/ai/changes/2026-11-02-remote-gateway.json`, `docs/ai/changes/2026-11-02-remote-agent.json`, `docs/validation/2026-11-02-remote-staging-smoke.json`
 
 ## CLI-198 — Keep Codex safety controls intact
 
@@ -2804,17 +2804,17 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 ## CLI-201 — Restrict credential-bearing endpoint origins
 
-![0% not_started](bars/cli-201.svg)
+![65% integrated](bars/cli-201.svg)
 
 **Objective / acceptance:** Arbitrary endpoints/redirects cannot receive auth headers.
 
-**Current scope:** Requirement preserved; no implementation or acceptance evidence in this local candidate.
+**Current scope:** 2026-11-02 evidence update: GatewayTransport enforces configured HTTPS origins and rejects authenticated redirects; pairing approval URLs must match the configured private dashboard origin. Access identity-key retrieval uses Workers-supported manual redirect handling and rejects non-success responses rather than forwarding credentials. Source/negative fixture tests and the 11/11 real staging smoke justify integrated status; complete platform and integration-negative coverage remains pending. This is source/evidence review, not DCP/WEB acceptance credit.
 
-**Baseline weight:** 16 h (rough). **Remaining:** 8–32 engineer hours. **ETA:** Unscheduled.
+**Baseline weight:** 16 h (rough). **Remaining:** 2–6 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** None; no implementation credit.
+**Evidence:** `tests/remote-gateway.test.mjs`, `tests/remote-agent.test.mjs`, `tests/remote-adapter.test.mjs`, `tests/remote-state.test.mjs`, `docs/ai/changes/2026-11-02-remote-gateway.json`, `docs/ai/changes/2026-11-02-remote-agent.json`, `docs/validation/2026-11-02-remote-staging-smoke.json`, `gateway/security.mjs`, `src/remote/agent.ts`, `src/remote/cli.ts`
 
 ## CLI-202 — Reject insecure TLS behavior
 
@@ -2822,13 +2822,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** No insecure TLS flags or certificate-validation disablement are added.
 
-**Current scope:** Local Windows tests exercise actual SDK wire/lifecycle paths with synthetic roots and no account/model calls. No hosted CI, Unix/macOS or sandbox claim.
+**Current scope:** 2026-11-02 evidence update: Remote setup and GatewayTransport require HTTPS, reject credential-bearing gateway URLs and do not disable certificate validation. The deployed HTTPS Worker and real Windows SDK smoke succeeded with signed Access identity checks. Complete TLS-negative and all-platform integration coverage remains pending.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 3–11 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/cli.test.mjs`, `tests/mcp.test.mjs`, `tests/processes.test.mjs`
+**Evidence:** `tests/cli.test.mjs`, `tests/mcp.test.mjs`, `tests/processes.test.mjs`, `tests/remote-gateway.test.mjs`, `tests/remote-agent.test.mjs`, `tests/remote-adapter.test.mjs`, `tests/remote-state.test.mjs`, `docs/ai/changes/2026-11-02-remote-gateway.json`, `docs/ai/changes/2026-11-02-remote-agent.json`, `docs/validation/2026-11-02-remote-staging-smoke.json`, `gateway/security.mjs`
 
 ## CLI-203 — Prevent silent quota evasion
 
@@ -2864,13 +2864,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** No persistent updater/status worker/listener or OS startup registration is installed.
 
-**Current scope:** Local Windows tests exercise actual SDK wire/lifecycle paths with synthetic roots and no account/model calls. No hosted CI, Unix/macOS or sandbox claim.
+**Current scope:** 2026-11-02 evidence update: Normal local use remains daemon-free. Remote mode requires explicit configuration, pairing and a foreground start; no service/task/autostart entry or inbound workstation listener is installed. Live smoke agents stopped during revocation/cleanup. Optional supervision remains unfinished WEB-011 work, not a default capability.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 3–11 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/cli.test.mjs`, `tests/mcp.test.mjs`, `tests/processes.test.mjs`
+**Evidence:** `tests/cli.test.mjs`, `tests/mcp.test.mjs`, `tests/processes.test.mjs`, `docs/ai/changes/2026-11-02-remote-agent.json`, `src/remote/cli.ts`, `docs/validation/2026-11-02-remote-staging-smoke.json`, `docs/REMOTE_MCP.md`
 
 ## CLI-206 — Separate fixture and real credentials
 
@@ -2962,13 +2962,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Commands fail the job on actual errors rather than relying on final echo output.
 
-**Current scope:** Local Windows tests exercise actual SDK wire/lifecycle paths with synthetic roots and no account/model calls. No hosted CI, Unix/macOS or sandbox claim.
+**Current scope:** 2026-11-02 evidence update: Pinned TypeScript compilation, focused Windows remote tests and the actual 11/11 Cloudflare-to-Windows SDK smoke passed. Gateway fixture tests passed 14/14. The final 144-test Windows suite, normal build/check, package gates and hosted CI are still pending at this evidence update; no full-suite success is inferred from the smoke.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 3–11 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/cli.test.mjs`, `tests/mcp.test.mjs`, `tests/processes.test.mjs`
+**Evidence:** `tests/cli.test.mjs`, `tests/mcp.test.mjs`, `tests/processes.test.mjs`, `docs/ai/changes/2026-11-02-remote-gateway.json`, `docs/ai/changes/2026-11-02-remote-agent.json`, `docs/validation/2026-11-02-remote-staging-smoke.json`, `tests/remote-gateway.test.mjs`
 
 ## CLI-213 — Run update failure-injection tests
 
@@ -2990,13 +2990,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** The produced CLI installs and runs outside the developer checkout without GUI dependencies.
 
-**Current scope:** Fresh production tarball, offline npm exec MCP8aliases, isolated prefix link and actual Windows shim all passed. Cross-platform installed proof still pending.
+**Current scope:** 2026-11-02 evidence update: Historical clean production tarball, offline npm-exec compatibility aliases, isolated link and Windows shim evidence remains valid for its recorded revision. Canonical-path/executable-mode repairs and new remote code require fresh installed-package qualification; the current final package/link rerun is pending. The staging harness ran real source modules and is not an npm-install certification.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 1–6 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/cli.test.mjs`, `tests/mcp.test.mjs`, `tests/processes.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`
+**Evidence:** `tests/cli.test.mjs`, `tests/mcp.test.mjs`, `tests/processes.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`, `docs/ai/changes/2026-11-02-foundation-portability.json`, `docs/ai/changes/2026-11-02-remote-agent.json`, `docs/validation/2026-11-02-remote-staging-smoke.json`, `scripts/verify-package.mjs`
 
 ## CLI-215 — Run all claimed OS/architecture jobs
 
@@ -3004,13 +3004,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Missing runners remain visible; a Windows-only local result is not cross-platform acceptance.
 
-**Current scope:** Content/workflow publication is now verified. Current unmerged PR52 and actual account-blocked hosted verification remain distinct from product acceptance.
+**Current scope:** 2026-11-02 evidence update: Current publication permission is verified. Prior feature matrix jobs actually ran and exposed canonical-path failures on Windows/macOS plus Linux executable-mode drift; billing-only blockers are historical. Repairs exist, but the newly integrated branch still needs a fresh hosted OS/architecture matrix. Windows smoke and Linux fixture tests do not substitute for that matrix.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 7–29 engineer hours. **ETA:** Unscheduled.
 
-**Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** Hosted CI cannot start: GitHub account payment/spending-limit gate. Owner resolution needed; no billing or protection changes authorized..
+**Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** Fresh hosted OS/architecture and installed-artifact results for the integrated branch are pending. Prior jobs executed and exposed actual canonical-path/bin-mode failures; earlier billing-only observations are historical..
 
-**Evidence:** `docs/plans/2026-10-04-local-mcp.md`, `docs/validation/2026-10-05-codex-parity-foundation.md`
+**Evidence:** `docs/plans/2026-10-04-local-mcp.md`, `docs/validation/2026-10-05-codex-parity-foundation.md`, `docs/ai/changes/2026-11-02-foundation-portability.json`, `tests/policy-alias.test.mjs`, `docs/validation/2026-11-02-remote-staging-smoke.json`
 
 ## CLI-216 — Inspect real workflow conclusions
 
@@ -3018,13 +3018,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Written, queued, skipped, failed and passed workflows are distinguished.
 
-**Current scope:** Read actual run/job/check annotations: jobs did not start due to account payment/spending-limit gate. Explicitly not code PASS, failure-in-test or skipped-platform success.
+**Current scope:** 2026-11-02 evidence update: Actual inspected results distinguish main fast CI pass (run 39914237235) from feature matrix failure (run 39166671238): real Windows/macOS canonical-path assertions and Linux bin-mode clean-tree failure. Earlier billing-only conclusions are superseded. The current integration PR/hosted result remains pending; no queued or unrun job is counted as pass. Inspected runs: https://github.com/MulattoTech/MTerm-CLI/actions/runs/39914237235, https://github.com/MulattoTech/MTerm-CLI/actions/runs/39166671238.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 1–6 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `docs/plans/2026-10-04-local-mcp.md`, `docs/validation/2026-10-05-codex-parity-foundation.md`
+**Evidence:** `docs/plans/2026-10-04-local-mcp.md`, `docs/validation/2026-10-05-codex-parity-foundation.md`, `docs/ai/changes/2026-11-02-foundation-portability.json`
 
 ## CLI-217 — Keep model tests opt-in
 
@@ -3718,13 +3718,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Every filesystem/cwd path is confined to configured roots with Windows case/canonicalization handled correctly.
 
-**Current scope:** Conservative root/link checks and live-parent tree cleanup work; hostile filesystem races, directory moves, detached descendants and direct Web relay are not guaranteed. Local candidate is partial, not complete RDC relay replacement.
+**Current scope:** 2026-11-02 evidence update: RootPolicy maps only explicitly selected startup aliases to immutable canonical roots and retains component/runtime guards. Compatibility policy storage now shares the canonical identity used by file-tool exclusion. Remote credentials bind the enrolled root; actual Windows SDK reads and live root-escape denial passed. Hostile concurrent local rename races remain outside the guarantee.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 3–11 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`
+**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `docs/ai/changes/2026-11-02-foundation-portability.json`, `docs/ai/changes/2026-11-02-config-storage-identity.json`, `tests/policy-alias.test.mjs`, `tests/remote-state.test.mjs`, `tests/remote-adapter.test.mjs`, `docs/validation/2026-11-02-remote-staging-smoke.json`
 
 ## CLI-267 — Block symlink/reparse root escapes
 
@@ -3732,13 +3732,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Existing and newly created paths cannot traverse an allowed root through symlink/reparse-point indirection.
 
-**Current scope:** Conservative root/link checks and live-parent tree cleanup work; hostile filesystem races, directory moves, detached descendants and direct Web relay are not guaranteed. Local candidate is partial, not complete RDC relay replacement.
+**Current scope:** 2026-11-02 evidence update: Nested/unselected symlinks, junctions and multiply-linked files remain rejected, including overlapping selected aliases. Regressions cover alias retargeting, canonical configuration storage and remote enrolled-root binding. Live outside-root denial passed; native handle-relative defenses and hostile local rename-race certification remain unimplemented.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 3–11 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`
+**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `docs/ai/changes/2026-11-02-foundation-portability.json`, `docs/ai/changes/2026-11-02-config-storage-identity.json`, `tests/policy-alias.test.mjs`, `tests/remote-state.test.mjs`, `tests/remote-adapter.test.mjs`, `docs/validation/2026-11-02-remote-staging-smoke.json`
 
 ## CLI-268 — Implement bounded file read
 
@@ -3998,13 +3998,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Explicit limits prevent unbounded processes, searches, file reads or queued requests.
 
-**Current scope:** Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains.
+**Current scope:** 2026-11-02 evidence update: Existing local limits now extend to remote jobs: four per-device concurrent calls, 20-second deadlines, bounded input/output and retained registry/audit records. Fixture tests cover cancellation, cleanup continuation, malformed/oversized input and replay; the live two-device smoke passed. Deployed rate/concurrency/size and long-duration soak qualification remain pending.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 1–5 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`
+**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`, `docs/ai/changes/2026-11-02-remote-gateway.json`, `docs/ai/changes/2026-11-02-remote-agent.json`, `src/remote/protocol.ts`, `tests/remote-gateway.test.mjs`, `docs/validation/2026-11-02-remote-staging-smoke.json`
 
 ## CLI-287 — Provide stable local-tool error contracts
 
@@ -4026,13 +4026,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Client disconnect/server exit cancels or cleanly resolves owned transient work according to documented policy.
 
-**Current scope:** Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains.
+**Current scope:** 2026-11-02 evidence update: Remote cancellation is scoped to request/device ownership; delivered jobs are not requeued, and request expiry is distinct from revocation. Fixture tests cover cancellation races and clean shutdown. Live device revocation stopped its agent, while final cleanup stopped the second and closed the SDK. Real network-loss/reconnect and in-flight cancellation fault tests remain pending.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 1–5 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`
+**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`, `docs/ai/changes/2026-11-02-remote-gateway.json`, `docs/ai/changes/2026-11-02-remote-agent.json`, `tests/remote-agent.test.mjs`, `tests/remote-gateway.test.mjs`, `docs/validation/2026-11-02-remote-staging-smoke.json`
 
 ## CLI-289 — Default to no public listener
 
@@ -4040,13 +4040,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Today Candidate uses stdio/local-only transport and opens no TCP/HTTP port by default.
 
-**Current scope:** Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains.
+**Current scope:** 2026-11-02 evidence update: Default local MCP remains stdio with no public listener. The optional remote agent opens outbound HTTPS connections only; a separately deployed authenticated Cloudflare Worker supplies the public endpoint. Foreground agents were stopped after the live smoke. This deployed optional gateway does not change the default workstation listening policy.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 1–5 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`
+**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`, `docs/ai/changes/2026-11-02-remote-agent.json`, `src/remote/cli.ts`, `docs/validation/2026-11-02-remote-staging-smoke.json`, `docs/REMOTE_MCP.md`
 
 ## CLI-290 — Require explicit opt-in for any network transport
 
@@ -4054,13 +4054,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Future HTTP/remote transport requires authentication, origin/bind policy and separate review rather than inheriting stdio trust.
 
-**Current scope:** Conservative root/link checks and live-parent tree cleanup work; hostile filesystem races, directory moves, detached descendants and direct Web relay are not guaranteed. Local candidate is partial, not complete RDC relay replacement.
+**Current scope:** 2026-11-02 evidence update: Remote mode now has explicit preview/apply setup, authenticated one-time pairing, protected root/device-bound credentials and foreground start. The gateway independently validates Access identity, OAuth audience/scope and device ownership; the live service-identity SDK path passed. Remote writes/processes and unattended supervision remain unavailable; human-client acceptance is separate.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 3–11 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`
+**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/remote-gateway.test.mjs`, `tests/remote-agent.test.mjs`, `tests/remote-adapter.test.mjs`, `tests/remote-state.test.mjs`, `docs/ai/changes/2026-11-02-remote-gateway.json`, `docs/ai/changes/2026-11-02-remote-agent.json`, `docs/validation/2026-11-02-remote-staging-smoke.json`, `docs/REMOTE_MCP.md`
 
 ## CLI-291 — Implement local-tool doctor/capability report
 
@@ -4068,13 +4068,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** `mterm-cli doctor` clearly reports trusted roots, execution enablement, MCP support and dependencies without secrets.
 
-**Current scope:** Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains.
+**Current scope:** 2026-11-02 evidence update: Local doctor/readiness and remote status expose non-secret configuration, capability and ownership information. Remote status is intentionally an offline local observation; authenticated gateway inventory/presence is separate. Live SDK inventory found the two synthetic Windows devices, but no status command alone proves full remote/human-client readiness.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 1–5 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`
+**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`, `docs/ai/changes/2026-11-02-remote-agent.json`, `src/remote/cli.ts`, `src/cli.ts`, `docs/validation/2026-11-02-remote-staging-smoke.json`
 
 ## CLI-292 — Implement Codex MCP registration guidance/helper
 
@@ -4138,13 +4138,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Outside-root access and process execution without explicit enablement fail without side effects.
 
-**Current scope:** Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains.
+**Current scope:** 2026-11-02 evidence update: Negative tests retain explicit root/write/exec ceilings and add canonical alias/config self-protection plus remote device/root binding. The real staging smoke denied cross-device credentials, mutation and root escape with unchanged fixture contents. Complete private-path, cross-owner, malformed/limit and full-platform negative coverage remains pending.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 1–5 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`
+**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`, `docs/ai/changes/2026-11-02-foundation-portability.json`, `docs/ai/changes/2026-11-02-config-storage-identity.json`, `tests/policy-alias.test.mjs`, `tests/remote-adapter.test.mjs`, `tests/remote-state.test.mjs`, `tests/remote-gateway.test.mjs`, `docs/validation/2026-11-02-remote-staging-smoke.json`
 
 ## CLI-297 — Keep local agent-control startup lightweight
 
@@ -4180,13 +4180,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Direct replacement of Remote Desktop Commander's remote relay remains blocked until an authenticated, reviewed, supported Web-to-local transport is genuinely tested.
 
-**Current scope:** Conservative root/link checks and live-parent tree cleanup work; hostile filesystem races, directory moves, detached descendants and direct Web relay are not guaranteed. Local candidate is partial, not complete RDC relay replacement.
+**Current scope:** 2026-11-02 evidence update: An authenticated read-only Cloudflare relay is deployed and the supported SDK 2.3.0 completed genuine Windows FileService reads through it with exact hashes and revocation/denial checks. The test used a temporary Access service principal and manual PKCE. Owner Google sign-in, human browser consent/callback and ChatGPT connector acceptance remain explicitly unverified; WEB acceptance stays 0/12.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 3–11 engineer hours. **ETA:** Unscheduled.
 
-**Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** Web runtime/session/authenticated relay compatibility not verified; no browser or remote listener deployed..
+**Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** Supported SDK-to-Windows staging reads passed; actual owner Google/Access browser consent and ChatGPT connector interoperability remain unverified. Full WEB acceptance is still 0/12..
 
-**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`
+**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `docs/validation/2026-11-02-remote-staging-smoke.json`, `docs/REMOTE_MCP.md`, `docs/REMOTE_MCP_ROADMAP.md`, `docs/ai/changes/2026-11-02-remote-gateway.json`, `docs/ai/changes/2026-11-02-remote-agent.json`
 
 ## CLI-300 — Certify the Windows Today Candidate honestly
 
@@ -4194,10 +4194,10 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** A dated evidence report lists the exact commands/tools that work on the authorized Windows workstation, test results, known gaps, and whether Remote Desktop Commander is still required for any stated workflow.
 
-**Current scope:** Conservative root/link checks and live-parent tree cleanup work; hostile filesystem races, directory moves, detached descendants and direct Web relay are not guaranteed. Local candidate is partial, not complete RDC relay replacement.
+**Current scope:** 2026-11-02 evidence update: The isolated Windows Node 24.21.0 runtime compiled and passed focused DPAPI/remote tests; the real two-device staging SDK smoke passed 11/11 and cleaned up all synthetic devices, grants and agents. The final 144-test/full/package/hosted gates and human Google/ChatGPT acceptance remain pending. This is a tested read-only remote slice, not full Desktop Commander parity or replacement certification.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 3–11 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`
+**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`, `docs/validation/2026-11-02-remote-staging-smoke.json`, `docs/ai/changes/2026-11-02-remote-agent.json`, `docs/REMOTE_MCP_ROADMAP.md`

@@ -2,10 +2,14 @@
 
 [![Reviewed delivery maturity](docs/roadmap/bars/overall.svg)](docs/ROADMAP.md)
 
-A **working Windows local-MCP preview** plus a thin launcher for an existing Codex installation.
-It replaces a useful subset of RDC-style local files/process operations for local MCP clients.
-It does **not** yet replace the authenticated ChatGPT-Web-to-PC relay, implement the quota/Web
-adapters, or deliver the entire requested cross-platform three-component product.
+MTerm-CLI provides **Windows local MCP tools**, a thin launcher for an existing Codex
+installation, and an **opt-in authenticated remote read-only preview**. The remote preview
+has completed a real MCP SDK round trip through the deployed Cloudflare staging gateway
+to two dedicated Windows filesystem fixtures.
+
+Owner Google/Access sign-in and ChatGPT Web connector acceptance remain unverified.
+Full Desktop Commander parity, remote write/process execution, production rollout,
+quota adapters and the complete cross-platform product remain separate delivery gates.
 
 ## Use the local candidate
 
@@ -69,10 +73,12 @@ not release readiness or fraction of lines written. Web/quota/update/platform bl
 No GUI completion credit is imported. This repo is separate from [MTerm-GUI](https://github.com/MulattoTech/MTerm-GUI).
 
 Start with AGENTS.md, docs/HANDOFF.md, docs/TODAY_CANDIDATE.md and docs/TESTING.md.
-Current parity implementation is published in [PR #52](https://github.com/MulattoTech/MTerm-CLI/pull/52)
-on `feat/codex-parity-foundation-20261005`, not yet merged into main. Reinspection of hosted run
-39166671238 found real canonical-path test failures and an executable-mode drift; older billing
-failures are historical. No full-platform PASS is claimed.
+Compatibility implementation and reconciliation history are recorded in
+[PR #52](https://github.com/MulattoTech/MTerm-CLI/pull/52) and
+[PR #67](https://github.com/MulattoTech/MTerm-CLI/pull/67). Check their current GitHub status
+and the exact tested source commit when choosing a checkout. Earlier hosted run 39166671238
+had canonical-path test failures and executable-mode drift; historical billing or CI outcomes
+do not establish the result for a later commit. No full-platform PASS is claimed here.
 
 ## DesktopCommander-compatible file profile
 
@@ -108,21 +114,82 @@ From a checkout, `Install-MTermCLI.ps1` is the top-level PowerShell entry point.
 .\Install-MTermCLI.ps1 -Mode Sprint -IssueNumber 3
 ```
 
-File writes and process execution remain separately opt-in (`-AllowWrite`, `-AllowExec`). For local Codex, the configured stdio MCP server is started by Codex when needed: a Windows Service or permanent daemon is **not** required. A **remote Cloudflare gateway/device agent** is separate, remains unimplemented and would need explicit authenticated setup.
+File writes and process execution remain separately opt-in (`-AllowWrite`, `-AllowExec`). For local Codex, the configured stdio MCP server is started by Codex when needed: a Windows Service or permanent daemon is **not** required. The remote Cloudflare gateway and foreground device agent require their own explicit setup and authenticated pairing; local flags cannot activate remote writes or execution.
 
 See [automation docs](docs/automation/README.md) and [readiness evidence](docs/validation/2026-10-18-automated-bootstrap.md).
 
-## Remote MCP and automation (separate from local Codex parity)
+## Remote MCP: authenticated read-only staging
+
+| Surface | Staging URL |
+| --- | --- |
+| Streamable HTTP MCP endpoint | [https://mcp-staging.m-techlabs.com/mcp](https://mcp-staging.m-techlabs.com/mcp) |
+| Private dashboard, pairing and client consent | [https://mterm-staging.m-techlabs.com](https://mterm-staging.m-techlabs.com) |
+
+Follow the [remote setup, client connection and rollback guide](docs/REMOTE_MCP.md).
+The sequence is `remote setup` (preview, then `--apply`), `remote pair`, authenticated
+approval, and `remote start`. Choose one narrow trusted directory and keep remote state
+outside it. Windows device credentials use current-user DPAPI. The foreground agent
+connects outbound over HTTPS and opens no inbound workstation port. No service, scheduled
+task or autostart entry is installed. `remote status`, `remote stop` and `remote revoke`
+operate on the selected remote state directory.
+
+```powershell
+node .\bin\mterm-cli.js remote help
+```
+
+The dashboard's Cloudflare Access sign-in is separate from the MCP client's OAuth
+authorization-code/S256-PKCE flow. Each MCP request needs a valid `mterm:read` bearer
+credential. Call `mterm_list_devices`, then supply the exact authorized `deviceId` on
+each filesystem operation.
+
+| Remote tool | Capability |
+| --- | --- |
+| `mterm_list_devices` | Authorized device inventory and presence |
+| `mterm_read_file` | Bounded UTF-8 text reads |
+| `mterm_file_info` | File and directory metadata |
+| `mterm_list_directory` | Bounded directory entries |
+| `mterm_search_files` | Literal filename search |
+| `mterm_search_content` | Literal text search |
+
+The gateway and agent independently enforce read-only access. Supported MCP revisions
+are **2025-11-25, 2025-06-18 and 2025-03-26**; latest-2026 protocol conformance is not
+claimed. Filesystem calls reuse the existing local `FileService`. Existing local command
+defaults and Codex authentication are unchanged by remote implementation or setup.
+
+### Observed acceptance and remaining gates
+
+The 2026-11-02 UTC staging run completed **11 live checks**, including real Access service
+authentication, OAuth/PKCE, two one-time Windows pairings, DPAPI storage, SDK initialization
+and discovery, exact fixture reads, negative authorization checks, and device/grant
+revocation. This used the pinned `@modelcontextprotocol/client` 2.3.0 SDK and a dedicated
+temporary staging service identity. The runner is
+[`scripts/verify-remote-staging.mjs`](scripts/verify-remote-staging.mjs); it records metadata
+and fixture hashes without tokens or raw file contents.
+
+That successful run used source
+[`305c89c88a10f4c9243096e3d1125bde76f17563`](https://github.com/MulattoTech/MTerm-CLI/commit/305c89c88a10f4c9243096e3d1125bde76f17563),
+Worker version `2083411f-68a7-4ec8-9ecc-5c2473ad09b9`, and gateway artifact SHA-256
+`f76e37d77c218bc9c2bc9203346ec98d590e5a69b7fef285bcd16792ae32c0f1`.
+These identify the tested staging artifact, not an assertion about the latest main commit.
+
+Human Google sign-in, human browser consent/callback, ChatGPT connector installation,
+production promotion and full local/remote parity remain unaccepted. Removal of the
+temporary Cloudflare service token, its staging Access policy and its Worker identity
+binding remains a release-closeout item in this snapshot; test fixture device/grant
+revocation is a different cleanup step. See the [security boundary and limits](docs/SECURITY.md)
+and [remote acceptance ledger](docs/REMOTE_MCP_ROADMAP.md).
+
+## Remote research and automation
 
 - [Sanitized owner HAR evidence](docs/research/DESKTOP_COMMANDER_REMOTE_HAR_2026-10-16.md) — credentials intentionally excluded.
-- [WEB-001..012 / epic #53](docs/REMOTE_MCP_ROADMAP.md) — 0/12 accepted, remote Cloudflare gateway NOT IMPLEMENTED.
+- [WEB-001..012 / epic #53](docs/REMOTE_MCP_ROADMAP.md) — implemented staging evidence and remaining issue-level acceptance criteria; a live read does not close the entire remote ledger.
 - [One-command setup and bounded issue workflow](docs/automation/README.md) — preview-first; actual registration/agent calls require explicit flags.
 
 Do not confuse remote Cloudflare/Web readiness with the existing DCP-001..048 local Codex parity gate.
 
-This repository publishes the local MCP candidate on main. Advanced compatibility work is
-in open PR #52 and stacked PR #67; they are not merged. See docs/ORCHESTRATION.md for
-safe parallel development, docs/GITHUB_ORCHESTRATION_SETUP.md for CI and GitHub configuration.
+Use the exact reviewed feature-containing commit and current PR state when selecting a
+candidate. See docs/ORCHESTRATION.md for safe parallel development and
+docs/GITHUB_ORCHESTRATION_SETUP.md for CI and GitHub configuration.
 
 ## AI-orchestrated development
 

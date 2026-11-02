@@ -55,10 +55,9 @@ jobs:
       - name: Install pinned Codex into test-owned prefix
         run: npm install --prefix artifacts/ci-codex --no-audit --no-fund --ignore-scripts --package-lock=false @openai/codex@0.160.1
       - name: Real Codex registration without login or model calls
-        shell: bash
-        run: |
-          set -euo pipefail
-          export PATH="$PWD/artifacts/ci-codex/node_modules/.bin:$PATH"
-          node scripts/verify-managed-codex.mjs
+        run: node scripts/verify-managed-codex.mjs
+        env:
+          MTERM_CODEX_TEST_PREFIX: artifacts/ci-codex
+          MTERM_CODEX_EXPECTED_VERSION: '0.160.1'
       - name: Exact source remains unchanged by tests
         run: git diff --exit-code

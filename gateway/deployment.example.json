@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "description": "Public staging deployment template. This is not wrangler configuration. Supply the reviewed artifact SHA and exact owner allowlist through authorized deployment controls; MCP stays disabled and identities denied by default.",
+  "account_id": "9e18ebcb3c1a920c9ef58a3d61b8d6b6",
+  "zone_id": "8bd58c3aba1973a88d32ae09ccca9595",
+  "script_name": "mterm-gateway-staging",
+  "upload_metadata": {
+    "main_module": "gateway/worker.mjs",
+    "compatibility_date": "2026-11-01",
+    "compatibility_flags": ["enable_request_signal"],
+    "bindings": [
+      { "name": "PUBLIC_ORIGIN", "type": "plain_text", "text": "https://mcp-staging.m-techlabs.com" },
+      { "name": "DASHBOARD_ORIGIN", "type": "plain_text", "text": "https://mterm-staging.m-techlabs.com" },
+      { "name": "ACCESS_ISSUER", "type": "plain_text", "text": "https://broken-breeze-d0bb.cloudflareaccess.com" },
+      { "name": "ACCESS_AUDIENCE", "type": "plain_text", "text": "9533396534dbc90c78bae02791ecdd0fab21f775876ed7164ed3b57bf54e1563" },
+      { "name": "ALLOWED_EMAILS", "type": "plain_text", "text": "" },
+      { "name": "ENVIRONMENT", "type": "plain_text", "text": "staging" },
+      { "name": "MCP_ENABLED", "type": "plain_text", "text": "false" },
+      { "name": "BUILD_SHA", "type": "plain_text", "text": "REQUIRED_FROM_VERIFIED_ARTIFACT_MANIFEST" },
+      { "name": "REGISTRY", "type": "durable_object_namespace", "class_name": "MTermRegistry" }
+    ],
+    "observability": { "enabled": false, "redact_query_string": true },
+    "logpush": false
+  },
+  "initial_migration_only": {
+    "new_tag": "v1",
+    "new_sqlite_classes": ["MTermRegistry"]
+  },
+  "existing_registry": {
+    "class_name": "MTermRegistry",
+    "namespace_id": "b66edc2d536e474093e1a18d0e88a24d",
+    "storage": "SQLite",
+    "migration_tag": "v1",
+    "instruction": "Preserve this namespace for the existing staging Worker. Omit migrations on ordinary subsequent uploads; never recreate or delete the registry as rollback."
+  },
+  "subdomain_settings": { "enabled": false, "previews_enabled": false },
+  "custom_domains": [
+    {
+      "hostname": "mcp-staging.m-techlabs.com",
+      "zone_id": "8bd58c3aba1973a88d32ae09ccca9595",
+      "service": "mterm-gateway-staging",
+      "environment": "production"
+    },
+    {
+      "hostname": "mterm-staging.m-techlabs.com",
+      "zone_id": "8bd58c3aba1973a88d32ae09ccca9595",
+      "service": "mterm-gateway-staging",
+      "environment": "production"
+    }
+  ],
+  "custom_domain_instruction": "Inspect ownership/conflicts before creating a missing hostname. The API environment value production selects this staging Worker's default slot; it does not promote MTerm to production.",
+  "access": {
+    "dashboard_application_id": "598ab343-fa9c-40d7-8308-b1fa24b55d81",
+    "existing_google_identity_provider_id": "7ce61789-b506-4480-bf8d-7138a1765165",
+    "owner_allow_policy_id": "278aac2d-13d9-424f-845b-dd7c27d43662",
+    "owner_identity": "REQUIRED_OWNER_ALLOWLIST_SUPPLIED_OUTSIDE_GIT",
+    "instruction": "Keep the dashboard behind its existing exact-owner Access policy. The Worker independently validates signed Access JWT issuer/audience/expiry and its nonempty ALLOWED_EMAILS allowlist. Never use a wildcard or bypass policy."
+  },
+  "temporary_test_identity": {
+    "normal_binding_present": false,
+    "instruction": "STAGING_SERVICE_ID is not a normal deployment binding. A separately authorized staging-only service identity may be used for acceptance and must be removed with its temporary policy/token after final proof."
+  },
+  "first_recorded_good_smoke": {
+    "worker_version_id": "2083411f-68a7-4ec8-9ecc-5c2473ad09b9",
+    "source_commit": "305c89c88a10f4c9243096e3d1125bde76f17563",
+    "artifact_sha256": "f76e37d77c218bc9c2bc9203346ec98d590e5a69b7fef285bcd16792ae32c0f1",
+    "instruction": "Recovery reference, not an assertion of the current deployment. Review old binding values before rollback and keep temporary acceptance identities removed."
+  }
+}

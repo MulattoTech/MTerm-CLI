@@ -2,7 +2,7 @@
 
 ![Weighted delivery maturity](roadmap/bars/overall.svg)
 
-**28.87% reviewed weighted delivery maturity** across 300 requirements; 0 complete and 45 blocked. Not release readiness.
+**29.12% reviewed weighted delivery maturity** across 300 requirements; 0 complete and 45 blocked. Not release readiness.
 
 [Every feature and evidence](roadmap/FEATURES.md) · [Offline searchable dashboard](roadmap/index.html) · [Metric contract](roadmap/METRICS.md)
 
@@ -25,7 +25,7 @@ No GUI progress is inherited. Baseline weights are rough engineering estimates, 
 | Transactional updater | ![0%](roadmap/bars/area-13.svg) | 18 |
 | Install and runtime distribution | ![65.87%](roadmap/bars/area-14.svg) | 12 |
 | Platform support and native terminal behavior | ![32.5%](roadmap/bars/area-15.svg) | 10 |
-| Security and privacy gates | ![39%](roadmap/bars/area-16.svg) | 10 |
+| Security and privacy gates | ![45.5%](roadmap/bars/area-16.svg) | 10 |
 | Automated testing and CI | ![54.58%](roadmap/bars/area-17.svg) | 12 |
 | CLI roadmap, progress bars and governance | ![55%](roadmap/bars/area-18.svg) | 18 |
 | AI attribution and recovery | ![65%](roadmap/bars/area-19.svg) | 8 |

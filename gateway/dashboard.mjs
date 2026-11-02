@@ -1,7 +1,73 @@
 // SPDX-License-Identifier: MIT
 // AI-Change: 2026-11-02-remote-gateway (OpenAI / GPT-6 Astra Pro; self-reported)
 import { html, randomToken, escapeHtml } from './security.mjs';
-const styles = `:root{color-scheme:dark;font:15px system-ui,-apple-system,Segoe UI,sans-serif;background:#0b1220;color:#edf3fe}*{box-sizing:border-box}body{margin:0}a{color:#8ebcff;text-decoration:none}a:hover{text-decoration:underline}header{border-bottom:1px solid #27334a;padding:18px max(24px,calc((100vw - 1160px)/2));display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{font-size:20px;font-weight:700;color:#f0f6ff}.brand span{color:#69a9ff}main{max-width:1160px;margin:auto;padding:36px 24px 64px}h1{font-size:clamp(26px,4vw,38px);letter-spacing:-.03em;margin:0 0 12px}h2{font-size:20px;margin:0}h3{margin:0;font-size:17px}p{line-height:1.65;color:#b1bfd5}button,input{font:inherit}button{border:1px solid #426189;background:#193b69;color:#eef5ff;border-radius:9px;padding:10px 15px;cursor:pointer}button:hover{background:#244d80}button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #78b8ff;outline-offset:3px}button:disabled{opacity:.5;cursor:not-allowed}button.secondary{background:#182237;border-color:#34445f}button.danger{background:#432329;border-color:#934553;color:#ffd9dd}input{display:block;width:100%;padding:12px;border-radius:8px;border:1px solid #3c4c68;background:#0d1729;color:#f4f7ff;margin:8px 0 14px}label{font-size:14px;color:#c4cfe1}.row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}.muted,small{color:#9babc5}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}.panel{padding:22px;border:1px solid #2c3952;background:#111d30;border-radius:14px;margin-top:20px}.card{padding:20px;border:1px solid #30415c;background:#122038;border-radius:12px}.badge{display:inline-flex;align-items:center;gap:6px;padding:5px 10px;border-radius:50px;background:#1b3555;color:#b9d6ff;font-size:12px;font-weight:600}.online{color:#a7e5c5;background:#1a3e33}.offline,.revoked{color:#c4cbda;background:#2d3443}.reconnecting{color:#ffe0a4;background:#463b22}.error{border:1px solid #ab5260;background:#3d202b;color:#ffdae0;padding:14px;border-radius:10px;margin-top:18px;white-space:pre-wrap}.hidden{display:none}.spaced{margin-top:18px}.statusbar{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0}.endpoint{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.endpoint code{overflow-wrap:anywhere;flex:1;min-width:180px;background:#091322;padding:13px;border:1px solid #2c4363;border-radius:8px;color:#c4dcff}code{font-size:13px}ul{padding-left:20px;line-height:1.8;color:#b8c6db}.activity{list-style:none;padding:0;margin:15px 0 0}.activity li{padding:10px 0;border-top:1px solid #26344b;font-size:13px;overflow-wrap:anywhere}.empty{padding:26px;text-align:center;border:1px dashed #3b506e;border-radius:10px;color:#b1bfd5}.topgap{margin-top:34px}.consent{max-width:620px;margin:8vh auto}.consent form{display:flex;gap:12px;margin-top:25px}.footer{font-size:12px;color:#879bb9;margin-top:32px}.stat{font-size:32px;color:#f2f6ff;font-weight:700;margin:12px 0 3px}.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}@media(max-width:600px){header{padding:16px 20px}main{padding:26px 18px}.panel{padding:18px}.card{padding:16px}.endpoint button{width:100%}}`;
+const styles = `:root{color-scheme:dark;font:15px system-ui,-apple-system,Segoe UI,sans-serif;background:#0b1220;color:#edf3fe}
+*{box-sizing:border-box}
+html,body{width:100%;min-width:0}
+body{margin:0;overflow-wrap:anywhere}
+a{color:#8ebcff;text-decoration:none;overflow-wrap:anywhere}
+a:hover{text-decoration:underline}
+header{border-bottom:1px solid #27334a;padding:18px max(24px,calc((100vw - 1160px)/2));display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+header>a{min-width:0;max-width:100%}
+.brand{font-size:20px;font-weight:700;color:#f0f6ff}
+.brand span{color:#69a9ff}
+main{width:100%;min-width:0;max-width:1160px;margin:auto;padding:36px 24px 64px}
+h1{font-size:clamp(26px,4vw,38px);letter-spacing:-.03em;margin:0 0 12px}
+h2{font-size:20px;margin:0}
+h3{margin:0;font-size:17px}
+p{line-height:1.65;color:#b1bfd5}
+button,input{font:inherit;min-width:0;max-width:100%}
+button{border:1px solid #426189;background:#193b69;color:#eef5ff;border-radius:9px;padding:10px 15px;cursor:pointer;white-space:normal;overflow-wrap:anywhere}
+button:hover{background:#244d80}
+button:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid #78b8ff;outline-offset:3px}
+button:disabled{opacity:.5;cursor:not-allowed}
+button.secondary{background:#182237;border-color:#34445f}
+button.danger{background:#432329;border-color:#934553;color:#ffd9dd}
+input{display:block;width:100%;padding:12px;border-radius:8px;border:1px solid #3c4c68;background:#0d1729;color:#f4f7ff;margin:8px 0 14px}
+label{font-size:14px;color:#c4cfe1}
+.row{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;min-width:0}
+.row>*{min-width:0;max-width:100%}
+.row>div{flex:1 1 240px}
+.muted,small{color:#9babc5}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;min-width:0;width:100%}
+.grid>*{min-width:0}
+.panel{padding:22px;border:1px solid #2c3952;background:#111d30;border-radius:14px;margin-top:20px;min-width:0;max-width:100%}
+.card{padding:20px;border:1px solid #30415c;background:#122038;border-radius:12px;min-width:0;max-width:100%}
+.badge{display:inline-flex;align-items:center;flex-wrap:wrap;gap:6px;padding:5px 10px;border-radius:50px;background:#1b3555;color:#b9d6ff;font-size:12px;font-weight:600;min-width:0;max-width:100%;white-space:normal;overflow-wrap:anywhere}
+.online{color:#a7e5c5;background:#1a3e33}
+.offline,.revoked{color:#c4cbda;background:#2d3443}
+.reconnecting{color:#ffe0a4;background:#463b22}
+.error{border:1px solid #ab5260;background:#3d202b;color:#ffdae0;padding:14px;border-radius:10px;margin-top:18px;white-space:pre-wrap}
+.hidden{display:none}
+.spaced{margin-top:18px}
+.statusbar{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0;min-width:0}
+.statusbar>*{min-width:0;max-width:100%}
+.endpoint{display:flex;gap:10px;align-items:center;flex-wrap:wrap;min-width:0;max-width:100%}
+.endpoint code{overflow-wrap:anywhere;flex:1 1 180px;min-width:0;max-width:100%;white-space:normal;background:#091322;padding:13px;border:1px solid #2c4363;border-radius:8px;color:#c4dcff}
+code{font-size:13px;overflow-wrap:anywhere}
+ul{padding-left:20px;line-height:1.8;color:#b8c6db}
+.activity{list-style:none;padding:0;margin:15px 0 0}
+.activity li{padding:10px 0;border-top:1px solid #26344b;font-size:13px;overflow-wrap:anywhere}
+.empty{padding:26px;text-align:center;border:1px dashed #3b506e;border-radius:10px;color:#b1bfd5}
+.topgap{margin-top:34px}
+.consent{max-width:620px;margin:8vh auto}
+.consent form{display:flex;gap:12px;margin-top:25px;flex-wrap:wrap}
+.footer{font-size:12px;color:#879bb9;margin-top:32px}
+.stat{font-size:32px;color:#f2f6ff;font-weight:700;margin:12px 0 3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+@media(max-width:600px){
+  header{padding:16px 20px;align-items:flex-start;gap:10px}
+  header .brand{flex-basis:100%}
+  main{padding:26px 18px}
+  .row{gap:12px}
+  .grid{grid-template-columns:minmax(0,1fr)}
+  .panel{padding:18px}
+  .panel>.row{align-items:flex-start}
+  .panel>.row>h2{flex-basis:100%}
+  .card{padding:16px}
+  .endpoint{display:grid;grid-template-columns:minmax(0,1fr);align-items:stretch}
+  .endpoint button{width:100%}
+}`;
 function shell(title, nonce, contents, script = '') {
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escapeHtml(title)}</title><style nonce="${nonce}">${styles}</style></head><body><header><a class="brand" href="/">M<span>Term</span> <small>by M-TechLabs</small></a><a href="https://m-techlabs.com">M-TechLabs home ↗</a></header>${contents}${script ? `<script nonce="${nonce}">${script}</script>` : ''}</body></html>`;
 }

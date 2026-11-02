@@ -11,6 +11,59 @@ import { StdioClientTransport } from '@modelcontextprotocol/client/stdio';
 import { resolveCodex } from '../dist/codex.js';
 const exec = promisify(execFile),
   root = path.resolve('.');
+
+// CI must select the pinned test-owned native binary, never a user/global wrapper
+// discovered through PATH or APPDATA. This selection belongs to verification only.
+async function selectTestCodex() {
+  const requestedPrefix = process.env.MTERM_CODEX_TEST_PREFIX;
+  const expectedVersion = process.env.MTERM_CODEX_EXPECTED_VERSION;
+  const ci = process.env.GITHUB_ACTIONS === 'true' ||
+    !!process.env.CI && !['false', '0'].includes(process.env.CI);
+  if (!requestedPrefix && !expectedVersion) {
+    assert.ok(!ci, 'CI requires MTERM_CODEX_TEST_PREFIX and MTERM_CODEX_EXPECTED_VERSION');
+    return undefined;
+  }
+  assert.ok(requestedPrefix && expectedVersion, 'Provide both Codex test prefix and expected version');
+  assert.match(expectedVersion, /^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?$/);
+  const contains = (parent, candidate) => {
+    const relative = path.relative(parent, candidate);
+    return relative !== '' && !path.isAbsolute(relative) && relative !== '..' &&
+      !relative.startsWith('..' + path.sep);
+  };
+  const artifacts = await fs.realpath(path.join(root, 'artifacts'));
+  const prefix = await fs.realpath(path.resolve(root, requestedPrefix));
+  assert.ok(contains(artifacts, prefix), 'Codex test prefix must be inside this checkout artifacts directory');
+  const packageRoot = async (name) => {
+    const directory = await fs.realpath(path.join(prefix, 'node_modules', ...name.split('/')));
+    assert.ok(contains(prefix, directory), 'Codex fixture package escapes its test prefix');
+    const manifest = JSON.parse(await fs.readFile(path.join(directory, 'package.json'), 'utf8'));
+    assert.equal(manifest.name, name, 'Unexpected Codex fixture package');
+    assert.equal(manifest.version, expectedVersion, 'Codex fixture package version differs from the pin');
+    return directory;
+  };
+  await packageRoot('@openai/codex');
+  const platformPackage = '@openai/codex-' + process.platform + '-' + process.arch;
+  const nativeRoot = await packageRoot(platformPackage);
+  const vendor = await fs.realpath(path.join(nativeRoot, 'vendor'));
+  assert.ok(contains(nativeRoot, vendor), 'Codex vendor directory escapes its platform package');
+  const executableName = process.platform === 'win32' ? 'codex.exe' : 'codex';
+  const candidates = [];
+  for (const triple of await fs.readdir(vendor, { withFileTypes: true })) {
+    if (!triple.isDirectory() || triple.isSymbolicLink()) continue;
+    try {
+      const executable = await fs.realpath(path.join(vendor, triple.name, 'bin', executableName));
+      assert.ok(contains(nativeRoot, executable), 'Codex native executable escapes its platform package');
+      if ((await fs.stat(executable)).isFile()) candidates.push(executable);
+    } catch (error) {
+      if (!['ENOENT', 'ENOTDIR'].includes(error.code)) throw error;
+    }
+  }
+  assert.equal(candidates.length, 1, 'Expected exactly one test-owned platform-native Codex executable');
+  process.env.MTERM_CODEX_EXECUTABLE = candidates[0];
+  return { prefix, executable: candidates[0], expectedVersion };
+}
+
+const testCodex = await selectTestCodex();
 await fs.mkdir(path.join(root, 'artifacts'), { recursive: true });
 const evidence = await fs.mkdtemp(path.join(root, 'artifacts', 'managed-codex-'));
 const home = path.join(evidence, 'home'),
@@ -23,6 +76,7 @@ const config = path.join(home, 'config.toml');
 await fs.writeFile(config, original);
 const env = { ...process.env, CODEX_HOME: home, MTERM_CONFIG_PATH: path.join(evidence, 'mterm.json') };
 const codex = await resolveCodex();
+if (testCodex) assert.equal(await fs.realpath(codex.command), testCodex.executable);
 const codexRun = async (args) =>
   exec(codex.command, [...codex.prefix, ...args], {
     env,
@@ -46,6 +100,9 @@ const mterm = async (args) =>
     ).stdout,
   );
 const version = (await codexRun(['--version'])).stdout.trim();
+if (testCodex)
+  assert.equal(/^codex(?:-cli)? (\S+)$/.exec(version)?.[1], testCodex.expectedVersion,
+    'Native Codex --version differs from the test pin');
 const args = [
   'setup',
   'codex',
@@ -117,6 +174,12 @@ assert.ok(list.some((x) => x.name === 'after_setup'));
 assert.ok(!list.some((x) => x.name === 'mterm-local'));
 const report = {
   codexVersion: version,
+  codexExpectedVersion: testCodex?.expectedVersion ?? null,
+  testOwnedCodex: !!testCodex,
+  codexTestPrefix: testCodex ? path.relative(root, testCodex.prefix).split(path.sep).join('/') : null,
+  codexNativeExecutable: testCodex
+    ? path.relative(testCodex.prefix, testCodex.executable).split(path.sep).join('/')
+    : null,
   node: process.version,
   platform: process.platform,
   arch: process.arch,

@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "scope": "Actual native Windows focused original16 RED and final18 GREEN before qualification of the committed candidate. Full/installed/fresh evidence is separate.",
+  "observedBy": "Integration owner through RDC process26020; actual exit0",
+  "originalReport": {
+    "path": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\directory-contract-20261102\\artifacts\\directory-native-focused-5PpUX4\\result.json",
+    "sha256": "68b6e21b6526d0f7079d83abc3bd8b8e8f0f286990f22bffbb6574a70509fb4f"
+  },
+  "helperSha256": "7fb9c4bfdaf51c277ca68365bea925c3059caa1bfebe33e2440da40464546f7b",
+  "startedAtUtc": "2026-11-02T15:09:42.868Z",
+  "completedAtUtc": "2026-11-02T15:09:56.743Z",
+  "node": "v24.21.0",
+  "platform": "win32",
+  "arch": "x64",
+  "base": "7d55c6a2c498a02ce0191ce3f0a1a4a109c042ea",
+  "runtimeBefore": {
+    "rawSha256": "6b625cd73bb77d4f947e8c354a4c879d35f7e566cd17928f24e5f838a8680782",
+    "normalizedSha256": "6b625cd73bb77d4f947e8c354a4c879d35f7e566cd17928f24e5f838a8680782"
+  },
+  "steps": [
+    {
+      "name": "locked-install",
+      "command": [
+        "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+        "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+        "ci",
+        "--ignore-scripts",
+        "--no-audit",
+        "--no-fund",
+        "--prefer-offline",
+        "--no-progress"
+      ],
+      "startedAtUtc": "2026-11-02T15:09:44.630Z",
+      "completedAtUtc": "2026-11-02T15:09:51.234Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "log": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\directory-contract-20261102\\artifacts\\directory-native-focused-5PpUX4\\locked-install.log",
+      "logSha256": "f4bb85469bd06a3ea6c9f5efa74ae833bfea7e229718ee313a5c60e73151c16d"
+    },
+    {
+      "name": "red-build-code",
+      "command": [
+        "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+        "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "build:code"
+      ],
+      "startedAtUtc": "2026-11-02T15:09:51.237Z",
+      "completedAtUtc": "2026-11-02T15:09:51.639Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "log": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\directory-contract-20261102\\artifacts\\directory-native-focused-5PpUX4\\red-build-code.log",
+      "logSha256": "9a9214dd92f21ea05ec920f34a2d1b1e5699936c060ba52eba85b89808758cb9"
+    },
+    {
+      "name": "focused-red",
+      "command": [
+        "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/compat-directory-listing.test.mjs"
+      ],
+      "startedAtUtc": "2026-11-02T15:09:51.639Z",
+      "completedAtUtc": "2026-11-02T15:09:53.133Z",
+      "exitCode": 1,
+      "signal": null,
+      "error": null,
+      "log": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\directory-contract-20261102\\artifacts\\directory-native-focused-5PpUX4\\focused-red.log",
+      "logSha256": "f471f1d5b6450cff2782743919f7d37711f68ceab907fab97e48203e95efd554"
+    },
+    {
+      "name": "green-build-code",
+      "command": [
+        "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+        "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "build:code"
+      ],
+      "startedAtUtc": "2026-11-02T15:09:53.136Z",
+      "completedAtUtc": "2026-11-02T15:09:53.486Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "log": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\directory-contract-20261102\\artifacts\\directory-native-focused-5PpUX4\\green-build-code.log",
+      "logSha256": "9a9214dd92f21ea05ec920f34a2d1b1e5699936c060ba52eba85b89808758cb9"
+    },
+    {
+      "name": "focused-green",
+      "command": [
+        "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/compat-directory-listing.test.mjs"
+      ],
+      "startedAtUtc": "2026-11-02T15:09:53.487Z",
+      "completedAtUtc": "2026-11-02T15:09:54.904Z",
+      "exitCode": 0,
+      "signal": null,
+      "error": null,
+      "log": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\directory-contract-20261102\\artifacts\\directory-native-focused-5PpUX4\\focused-green.log",
+      "logSha256": "10039bfdbf83aef060c0daaaf80124aeee66fc93a1d593830e3db56080a84974"
+    }
+  ],
+  "red": {
+    "counts": {
+      "tests": 16,
+      "pass": 3,
+      "fail": 13,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "testSha256": "d97078667600b32383fa8fd253efbb3079c367b76befa6df18b83e8a6ffbc7f0",
+    "runtimeRawSha256": "6b625cd73bb77d4f947e8c354a4c879d35f7e566cd17928f24e5f838a8680782",
+    "runtimeNormalizedSha256": "6b625cd73bb77d4f947e8c354a4c879d35f7e566cd17928f24e5f838a8680782"
+  },
+  "green": {
+    "counts": {
+      "tests": 18,
+      "pass": 18,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "files": [
+      {
+        "path": "src/desktop-commander-files.ts",
+        "sha256": "3cd606ebbf5404da939c238d6173721d4656d1ee28fd4982ba259b826ec062de"
+      },
+      {
+        "path": "tests/compat-directory-listing.test.mjs",
+        "sha256": "1a141cc647965d4365e5828ea114c0b8b44585d27bddc2e927714747345c3d49"
+      },
+      {
+        "path": "scripts/verify-compatibility-installed.mjs",
+        "sha256": "7465e2dfc138d0f5da27596400ac0ede67348821c98afc8c1591f0666b047adc"
+      }
+    ]
+  },
+  "ok": true,
+  "preservationVerified": true,
+  "checkpoint": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\checkpoints\\directory-contract-start-EERq7q",
+  "checkpointManifestSha256": "7c4be45fbcc3da4775a27caa2c5c5a41d3e6147eeaed9ac99c19c1948d69ee21",
+  "modelCalls": 0,
+  "actualCodexAgentToolInvocation": false,
+  "preservationScope": "Primary HEAD/branch/status and all11 original file hashes plus7 protected checkout identities/statuses compare equal before/after. Full private observations are retained in the additive checkpoint.",
+  "localOwnerObservation": {
+    "scope": "Local status only; networkChecked:false. No new dashboard/client/Cloudflare management proof.",
+    "before": {
+      "observedAtUtc": "2026-11-02T15:09:44.357Z",
+      "paired": true,
+      "permissions": "read-only",
+      "autostart": false,
+      "observedStatus": "online",
+      "networkChecked": false,
+      "runtime": {
+        "pid": 38384,
+        "startedAt": "2026-11-02T04:06:30.929Z",
+        "at": "2026-11-02T15:09:42.902Z",
+        "state": "online",
+        "activeRequests": 0
+      }
+    },
+    "after": {
+      "observedAtUtc": "2026-11-02T15:09:56.742Z",
+      "paired": true,
+      "permissions": "read-only",
+      "autostart": false,
+      "observedStatus": "online",
+      "networkChecked": false,
+      "runtime": {
+        "pid": 38384,
+        "startedAt": "2026-11-02T04:06:30.929Z",
+        "at": "2026-11-02T15:09:55.354Z",
+        "state": "online",
+        "activeRequests": 0
+      }
+    }
+  }
+}

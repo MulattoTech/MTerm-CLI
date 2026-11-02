@@ -1,18 +1,32 @@
-# Verification commands and evidence — directory continuation
+# Verification commands and evidence — directory contract
 
-The new [DCP-022 report](validation/2026-11-02-directory-contract.md) and
-[development receipt](validation/2026-11-02-directory-contract-development.json)
-separate the ordinary scratch runner's pre-assertion failure from meaningful
-direct RED/GREEN. Final focused source tests passed 18/18 with no skips or
-cancellations. The original 16-case fixture remains recoverable; the added two
-fixtures independently test real directory-handle closure during `opendir`.
+The [directory report](validation/2026-11-02-directory-contract.md) separates
+supplementary scratch direct-service RED/GREEN from real Windows and installed
+evidence. Original native RED was 16 cases, 3 passed/13 assertion failures;
+final GREEN passed 18/18 with no skips or cancellations. The original fixture
+and two separate review-found handle failures remain preserved.
 
-Native delivery still requires the normal reviewed build/check, full wrapper,
-self-host, normal prepack, actual installed compatibility/configuration,
-source/installed synthetic Codex and fresh committed-source gates. The installed
-compatibility harness now checks six directory scenario groups and independently
-observes both owned process exits. Exact-head hosted checks remain separate.
-No pending gate is represented as a pass in this preparation.
+At exact candidate `6eed7f0dc9ccfd704b78c39f8d0f31e5eaf3648a`, native Node
+24.21.0 passed the actual `node scripts/orchestration/verify.mjs --full` wrapper:
+normal reviewed build/check with 205/205 tests, portable package and source-entry
+Codex. Separate self-host, normal prepack with 205/205 tests, six explicit installed
+directory groups and installed-entry Codex exited 0. Native Codex 0.160.1 parsed
+synthetic registration and the SDK used the parsed command twice per entry.
+Actual model-driven agent invocation remains false and model calls zero.
+
+The [Windows receipt](validation/2026-11-02-directory-contract-windows.json) and
+[fresh receipt](validation/2026-11-02-directory-contract-fresh.json) preserve
+actual exits, clocks, hashes, package accounting, original source identity and
+bounded cleanup observations. Fresh committed extraction began without dist or
+node_modules and passed locked install, normal build/prepack, package and explicit
+six-group directory proof. Repeated suite runs are not distinct coverage.
+
+[Hosted implementation](validation/2026-11-02-directory-contract-hosted.json)
+passed 9/9 on attempt 1: Windows 205/205; Linux and both macOS architectures
+193 passed with 12 named Windows-only skips. Every job passed the 18 directory
+regressions. The package parent log omits the child directory summary; the
+separate native probes retain its explicit JSON. Final-head and merged-main
+checks must be observed separately. No checker or acceptance rule is weakened.
 
 ## Prior completed configuration evidence
 

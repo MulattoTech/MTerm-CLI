@@ -1,29 +1,43 @@
-# MTerm-CLI continuation — bounded directory contract
+# MTerm-CLI continuation — qualified bounded directory contract
 
-Execute from current GitHub/local state. This preparation follows verified PR #74
-merged main `7d55c6a2c498a02ce0191ce3f0a1a4a109c042ea`. Do not repeat its completed
-setter-output slice, successful gates or owner pairing. The next source work is
-DCP-022 on `feat/dcp-022-directory-contract-20261102`, in the separate ordinary
-scratch clone `mterm-parity-20261102` and Windows clone
-`C:\Tools\Dev\MTerm-CLI\artifacts\worktrees\directory-contract-20261102`.
+Execute from current GitHub/local state. PR #74 is already delivered at merged
+main `7d55c6a2c498a02ce0191ce3f0a1a4a109c042ea`; do not repeat its setter work.
+Current directory implementation `6eed7f0dc9ccfd704b78c39f8d0f31e5eaf3648a`, tree
+`e01840a4ab07d80c085e1ebfabf75928b7b90fcf`, is in PR #75 on
+`feat/dcp-022-directory-contract-20261102`. The isolated Windows delivery clone
+is `C:\Tools\Dev\MTerm-CLI\artifacts\worktrees\directory-contract-20261102`;
+the ordinary source clone is `mterm-parity-20261102`.
 
-Read `docs/validation/2026-11-02-directory-contract.md`, its development/static
-review/issue-audit receipts and `2026-11-02-directory-connection-recheck.json`.
-Final source tests pass 18/18 in supplementary scratch direct-service mode after
-an original 16-case RED (3 pass/13 fail) and a separate two-case handle-cleanup
-RED. Native Windows, installed/fresh/hosted and final delivery results must be
-observed before acceptance/publication claims; they are pending in this source
-preparation. Inspect retained logs and active processes before repeating a gate.
+Read `docs/validation/2026-11-02-directory-contract.md`, the focused/native/fresh/
+hosted review receipts and the new `2026-11-02-directory-connection-followup.json`.
+Native focused 18/18, full Windows 205/205 with zero skips, actual full wrapper,
+self-host, normal prepack, source/installed Codex and six explicit installed
+directory groups passed. Fresh committed extraction passed locked install,
+reviewed build, normal prepack and actual package plus six directory groups.
+All nine implementation checks passed with no retry. The source files remain
+the exact reviewed hashes; no model call or real user Codex config change occurred.
 
-Preserve all original dirty files, protected checkouts and the existing running
-owner agent. Read-only owner root `C:\Tools\Dev\MTerm-RemoteWorkspace` is already
-approved. Browser originating context is unavailable; the management/plugin
-read batch did not return a result. Do not retry the non-retryable creation or
-denied browser host, use a service identity as client consent, pair again, enable
-autostart or remote write/execute, promote production, alter real authentication,
-or make model/paid calls. Full DCP/WEB acceptance remains 0/48 and 0/12; maturity
-29.12% is unchanged. Configuration and listing intentional-difference decisions
-remain explicit and cannot be invented.
+This record precedes final documentation-head checks, expected-head merge/main
+and recovery. Inspect later final receipts and the downloadable continuation
+before repeating completed gates. Preserve the task-owned GREEN stash
+`4a2cf7cc1f0a15d6ae9ea1d6ee5224c1fbb609ea`, original RED, all old recovery records,
+the eleven dirty primary files, protected checkouts and running owner process.
+
+Primary-session Brave and Cloudflare reads succeeded after the earlier subagent
+observation failed. The dashboard showed one online read-only owner, zero client
+authorizations and staging build `b90432a1bc138d59305692a9f74f110a475d0881`.
+Management confirmed version `af4fd06e-c4a3-4545-ad22-31d0ae956215` at 100% and
+the owner-only dashboard Access policy. Actual client consent/discovery/read is
+still unperformed. Use only a legitimately available or repaired supported client
+path; do not retry non-retryable plugin creation or the denied ChatGPT host.
+
+The root `C:\Tools\Dev\MTerm-RemoteWorkspace` is already approved. Do not pair
+again, restart/update the running owner's checkout, enable autostart or remote
+write/execute, promote production, change real auth or make model/paid calls.
+Owner rulings on DCP-009 omissions/privacy, DCP-010 effective-output/coercion and
+DCP-022 bounded ordering/error/resource differences remain explicit requirements.
+All 300 protected catalog fields and issue states remain unchanged: DCP 0/48,
+WEB 0/12, maturity 29.12%.
 
 ## Previous continuation context — historical
 

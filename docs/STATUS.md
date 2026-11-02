@@ -1,17 +1,21 @@
-# MTerm-CLI status — directory contract continuation
+# MTerm-CLI status — qualified directory contract
 
-Current source work is the bounded DCP-022 directory-listing correction described
-in [the contract report](validation/2026-11-02-directory-contract.md). It retains
-owner policy and work/output bounds while improving deterministic selection,
-trailing count warnings, partial-error output and cancellation cleanup. The final
-focused direct-service development suite passed 18/18 after two separately
-recorded RED campaigns. Native/installed/fresh/hosted qualification is pending
-at this preparation; static review is not a replacement for those gates.
+The bounded DCP-022 listing correction at `6eed7f0` is carried by
+[PR #75](https://github.com/MulattoTech/MTerm-CLI/pull/75). It passed native
+focused 18/18, full Windows 205/205, actual installed six-group directory proof,
+normal package/self-host/prepack, source and installed synthetic Codex, fresh
+committed extraction and all nine implementation hosted checks without retries.
+See the [contract report](validation/2026-11-02-directory-contract.md).
+Final documentation checks, normal merge/main and recovery remain separate.
+
+Fresh Brave dashboard and Cloudflare management observations confirm the existing
+read-only owner and recorded staging deployment. The dashboard has zero client
+authorizations; actual ChatGPT consent/discovery/read is still unperformed.
+No pairing, owner restart, deployment, auth or capability change occurred.
 
 [PR #74 final delivery](https://github.com/MulattoTech/MTerm-CLI/pull/74#issuecomment-6578358474)
-is complete on main `7d55c6a`; do not repeat its setter implementation or owner
-pairing. Actual ChatGPT connection remains unobserved. Acceptance remains DCP
-0/48, WEB 0/12, broad maturity 29.12%; no stage, weight or requirement scope changed.
+is complete. Do not repeat its successful setter work or owner pairing.
+Acceptance remains DCP 0/48, WEB 0/12 and broad maturity 29.12%.
 
 ## Previous status observations
 

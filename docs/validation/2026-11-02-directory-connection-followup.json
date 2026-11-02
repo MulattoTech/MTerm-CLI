@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-11-02 15:22:52 UTC",
+  "scope": "Additive primary-session read-only connection and deployment evidence; later than the preserved subagent observation. No client consent or deployment change.",
+  "previousReceipt": {
+    "path": "docs/validation/2026-11-02-directory-connection-recheck.json",
+    "sha256": "af0cac0b1f7afcafb2aba437b609550f7cd7c5a03c6f2e96b7b49bed717c8ede",
+    "resolution": "Earlier subagent browser bootstrap and read-only batch failed to return usable context/results. Primary-session calls later completed; the earlier receipt remains unchanged."
+  },
+  "cloudflare": {
+    "accountDiscoveryCompleted": true,
+    "selectedAccountCount": 1,
+    "identityValuesOmitted": true,
+    "management": {
+      "observedAt": "2026-11-02T15:17:16.961Z",
+      "results": [
+        {
+          "label": "deployments",
+          "success": true,
+          "errors": [],
+          "result_info": {
+            "page": 1,
+            "per_page": 1,
+            "count": 1,
+            "total_count": 9,
+            "total_pages": 9
+          },
+          "items": [
+            {
+              "id": "5a0ff21c-6341-4e73-b4af-169e98b76db2",
+              "created_on": "2026-11-02T01:35:34.597039Z",
+              "strategy": "percentage",
+              "source": "api",
+              "versions": [
+                {
+                  "version_id": "af4fd06e-c4a3-4545-ad22-31d0ae956215",
+                  "percentage": 100
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "label": "versions",
+          "success": true,
+          "errors": null,
+          "result_info": {
+            "page": 1,
+            "per_page": 1,
+            "count": 1,
+            "total_count": 8
+          },
+          "items": [
+            {
+              "id": "af4fd06e-c4a3-4545-ad22-31d0ae956215",
+              "number": 8,
+              "metadata": {
+                "created_on": "2026-11-02T01:35:34.597039Z",
+                "source": "api"
+              },
+              "annotations": {
+                "workers/message": "Reapply identical artifact97a0457b78e1 with owner-only settings after successful recorded-version rollback drill",
+                "workers/triggered_by": "upload"
+              }
+            }
+          ]
+        },
+        {
+          "label": "dashboardAccess",
+          "success": true,
+          "errors": [],
+          "result_info": {
+            "page": 1,
+            "per_page": 50,
+            "count": 1,
+            "total_count": 1,
+            "total_pages": 1
+          },
+          "items": [
+            {
+              "id": "598ab343-fa9c-40d7-8308-b1fa24b55d81",
+              "name": "MTerm Staging — Private Device Management",
+              "type": "self_hosted",
+              "domain": "mterm-staging.m-techlabs.com",
+              "session_duration": "1h"
+            }
+          ]
+        },
+        {
+          "label": "mcpAccess",
+          "success": true,
+          "errors": [],
+          "result_info": {
+            "page": 1,
+            "per_page": 50,
+            "count": 0,
+            "total_count": 0,
+            "total_pages": 0
+          },
+          "items": []
+        }
+      ]
+    },
+    "access": {
+      "observedAt": "2026-11-02T15:17:58.821Z",
+      "results": [
+        {
+          "label": "dashboardPolicies",
+          "success": true,
+          "errors": [],
+          "result_info": {
+            "page": 1,
+            "per_page": 100,
+            "count": 1,
+            "total_count": 1,
+            "total_pages": 1
+          },
+          "items": [
+            {
+              "id": "278aac2d-13d9-424f-845b-dd7c27d43662",
+              "name": "MTerm owner sign-in",
+              "decision": "allow",
+              "precedence": 1,
+              "session_duration": "1h",
+              "include": [
+                {
+                  "types": [
+                    "email"
+                  ],
+                  "expectedOwnerEmail": true
+                }
+              ],
+              "excludeTypes": [],
+              "requireTypes": [],
+              "identityValuesRedacted": true
+            }
+          ]
+        },
+        {
+          "label": "relevantAccessApps",
+          "success": true,
+          "errors": [],
+          "result_info": {
+            "page": 1,
+            "per_page": 1000,
+            "count": 13,
+            "total_count": 13,
+            "total_pages": 1
+          },
+          "items": [
+            {
+              "id": "598ab343-fa9c-40d7-8308-b1fa24b55d81",
+              "name": "MTerm Staging — Private Device Management",
+              "type": "self_hosted",
+              "domain": "mterm-staging.m-techlabs.com"
+            },
+            {
+              "id": "b1a2621b-3375-488e-97f2-2627808ee68a",
+              "name": "M-TechLabs Owner Hub",
+              "type": "self_hosted",
+              "domain": "m-techlabs.com"
+            }
+          ]
+        }
+      ]
+    },
+    "interpretation": "Latest deployment serves Worker version af4fd06e-c4a3-4545-ad22-31d0ae956215 at100%. Dashboard Access app has one allow policy with one email include matching the expected owner and no exclude/require rules. No exact MCP-host app matched; this is not a claim that every possible routing or Access rule is absent."
+  },
+  "browser": {
+    "family": "Brave",
+    "connectionVerified": true,
+    "authenticatedDashboardObserved": true,
+    "url": "https://mterm-staging.m-techlabs.com",
+    "snapshotApproximateUtc": "2026-11-02T15:20Z",
+    "snapshotTimeBasis": "Page showed Updated9:20:10AM and latest owner heartbeat9:20:09AM. Exact tool start/end not retained; recordedAtUtc is receipt preparation time.",
+    "identityVerifiedVisible": true,
+    "readEnabled": true,
+    "writingEnabled": false,
+    "executionEnabled": false,
+    "computers": 1,
+    "ownerOnline": true,
+    "ownerPlatform": "win32",
+    "ownerPermissions": "read-only",
+    "availableDeviceTools": 5,
+    "clientAuthorizations": 0,
+    "activeRequests": 0,
+    "build": "b90432a1bc138d59305692a9f74f110a475d0881",
+    "lifecycleMutations": 0
+  },
+  "pluginDiscovery": {
+    "searchQuery": "MTerm",
+    "searchMatches": 0,
+    "personalListingCompleted": true,
+    "eligiblePersonalPluginsReturned": 3,
+    "mtermNameOrDescriptionMatches": 0,
+    "nextCursor": null,
+    "invalidArgumentObservation": "Explicit limit100 was rejected as INVALID_ARGUMENT; one corrected read with default arguments completed. This was not a create call.",
+    "exposedMtermToolMatches": [],
+    "limitations": "Search and eligible USER-plugin listing are bounded scope checks. Absence does not prove no plugin exists in every scope or that the historical deleted-release HTTP409 has been repaired."
+  },
+  "actualClientAcceptance": {
+    "consent": false,
+    "discovery": false,
+    "mtermListDevices": false,
+    "selectedDeviceRead": false,
+    "outsideRootDenial": false,
+    "lifecycle": false,
+    "modelCalls": 0
+  },
+  "unchanged": {
+    "pairedOwnerReenrolled": false,
+    "remoteWriteOrExecutionEnabled": false,
+    "autostartEnabled": false,
+    "deploymentMutated": false,
+    "accessPolicyMutated": false,
+    "deniedHostRetried": false,
+    "nonRetryablePluginCreationRetried": false
+  },
+  "nextSupportedClientAction": "Use a legitimately available or repaired MTerm client/plugin flow or the owner's normal client flow. Do not retry the historical nonretryable create operation or navigate the denied ChatGPT host. Actual consent/discovery/read remains unperformed."
+}

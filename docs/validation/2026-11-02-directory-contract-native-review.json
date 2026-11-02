@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUtc": "2026-11-02T15:25:15.041179Z",
+  "reviewer": "connection_audit",
+  "scope": "Read-only consistency and static-helper review of native Windows and fresh committed-source qualification evidence for exact candidate. No qualification reruns or external tool calls.",
+  "implementation": "6eed7f0dc9ccfd704b78c39f8d0f31e5eaf3648a",
+  "tree": "e01840a4ab07d80c085e1ebfabf75928b7b90fcf",
+  "inputs": [
+    {
+      "path": "artifacts/directory-native-qualification.mjs",
+      "sha256": "dab3948fb30798b843bc54ffd5642b91c0e678c7cb358f00f6546270c63f4aca"
+    },
+    {
+      "path": "artifacts/directory-native-qualification-result.json",
+      "sha256": "cbb6921294a97a065d4264fd7383ab73174fc50814f40bc75964b6d4861436ba"
+    },
+    {
+      "path": "docs/validation/2026-11-02-directory-contract-windows.json",
+      "sha256": "3fcec57f03786cf93b667c6cbffbaadc9d071867c7090d329d3f5cc304e04711"
+    },
+    {
+      "path": "docs/validation/2026-11-02-directory-contract-fresh.json",
+      "sha256": "638822e88b0b149d5c0ac90b99b12a48a883bf39ae41e4d137d3d0c5664fb0a9"
+    }
+  ],
+  "sourceHashesNormalizedLF": {
+    "src/desktop-commander-files.ts": "3cd606ebbf5404da939c238d6173721d4656d1ee28fd4982ba259b826ec062de",
+    "tests/compat-directory-listing.test.mjs": "1a141cc647965d4365e5828ea114c0b8b44585d27bddc2e927714747345c3d49",
+    "scripts/verify-compatibility-installed.mjs": "7465e2dfc138d0f5da27596400ac0ede67348821c98afc8c1591f0666b047adc"
+  },
+  "blockingFindings": [],
+  "conclusion": "No blocker found in reviewed evidence. Continue final documentation-head, hosted CI and normal publication/merge gates without changing immutable qualification claims.",
+  "confirmed": [
+    "Public Windows source object and non-fresh gate array equal the corresponding original-report objects exactly; public fresh object and fresh gate array likewise equal the original-report projections.",
+    "Both public receipts identify the original report hash, helper hash, implementation, tree and all three source hashes correctly.",
+    "Retained raw commit bytes have the stated length and SHA256, reconstruct the candidate Git object ID, contain the stated tree and exactly equal the available local Git commit object.",
+    "All three reviewed source files in the candidate Git object match the recorded normalized-LF SHA256 values.",
+    "All 17 actual helper gate records have exitCode 0, no reported signal or error, and chronologically ordered start/completion times.",
+    "Full orchestration, source normal prepack and fresh normal prepack separately report 205 tests, 205 passed, zero failed, cancelled, skipped or todo.",
+    "Source and fresh installed npm-exec directory probes each report the six intended scenarios, eight compatibility aliases, independent owned process exit verification and directory fixture cleanup.",
+    "Native Codex reports distinguish source entry from installed entry and preserve actualCodexAgentToolInvocation false, modelCalls 0 and realUserConfigChanged false.",
+    "Fresh extraction records initially absent dist and node_modules, exact committed archive identity, independent locked install/build/package checks and matching normal-prepack archive SHA256 across source and fresh runs.",
+    "Helper requires exact source identity and clean candidate before qualification, retains the three focused-GREEN changes in a task-owned stash and enforces protected state equality after all gates."
+  ],
+  "counts": [
+    {
+      "gate": "full-orchestration",
+      "counts": {
+        "tests": 205,
+        "pass": 205,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "gate": "normal-prepack",
+      "counts": {
+        "tests": 205,
+        "pass": 205,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    {
+      "gate": "fresh-normal-prepack",
+      "counts": {
+        "tests": 205,
+        "pass": 205,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    }
+  ],
+  "processObservationProvenance": "Parent captured PID 62116 actual exit 0 and 156.43-second runtime; these observations are correctly retained in both public receipts, not independently re-observed by this reviewer.",
+  "limits": [
+    "This reviewer inspected retrieved original/public JSON and helper source. Windows raw TAP/stdout/stderr logs and preservation snapshot files are referenced and hashed by the helper but were not independently retrieved or opened during this review.",
+    "preservationVerified true is supported here by the helper strict before/after equality assertion and successful report, not an independent second observation of the original Windows state.",
+    "Raw commit object identity verification does not claim a new cryptographic signature verification.",
+    "Native Codex exercises synthetic registration and registered commands through the SDK; it does not establish a model-driven agent invocation or real remote-client acceptance.",
+    "Fresh-source evidence is an extraction of the exact committed archive, not a Git checkout or an additional self-host/Codex qualification.",
+    "Existing configuration network instrumentation is not an operating-system network sandbox.",
+    "Final documentation-head checks, hosted CI, merge/main, final recovery and fresh root-context connection observations remain separate delivery evidence."
+  ],
+  "immutableEarlierReviewsUnchanged": true
+}

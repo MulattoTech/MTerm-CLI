@@ -1,0 +1,81 @@
+{
+  "change_id": "2026-11-02-remote-staging-closeout",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "identity_basis": "session-declared; self-reported",
+  "updated_at_utc": "2026-11-02T01:31:00Z",
+  "base_commit": "b90432a1bc138d59305692a9f74f110a475d0881",
+  "summary": "Record completed staged SDK/Windows acceptance, four-platform and pinned-Codex gates, owner-only cleanup, preserved primary source and the remaining owner/parity work. Documentation and deployment-template changes only; deployed executable modules remain the previously tested immutable artifact.",
+  "files_modified": [
+    "README.md",
+    "docs/HANDOFF.md",
+    "docs/REMOTE_MCP.md",
+    "docs/REMOTE_MCP_ROADMAP.md",
+    "docs/SECURITY.md",
+    "docs/TESTING.md",
+    "docs/TODAY_CANDIDATE.md",
+    "docs/deployment/MTERM_STAGING.md",
+    "docs/execution/NEXT_PARITY_PROMPT.md",
+    "docs/roadmap/progress.json",
+    "docs/roadmap/remote-web-progress.json",
+    "gateway/deployment.example.json"
+  ],
+  "files_created": [
+    "docs/validation/2026-11-02-code-ci.json",
+    "docs/validation/2026-11-02-primary-preservation.json",
+    "docs/validation/2026-11-02-remote-sprint.md",
+    "docs/validation/2026-11-02-remote-staging-smoke-final.json",
+    "docs/validation/2026-11-02-staging-boundary-final.json"
+  ],
+  "decisions": [
+    "Retain executable source b90432a and the exact six-module artifact97a0457b78e113c058ae8da3d3a6a54fcd93c2b35d1dd1781316c41001ac10a6 rather than rebuilding deployment from later documentation commits.",
+    "Remove the temporary Access service policy/token and Worker binding after successful final smoke; preserve exact-owner policy, registry, TLS/auth and read-only scope.",
+    "Record current Worker4b726ec9-4389-4ba8-ada3-5758a3889c27 as the owner-only recovery version. Its settings-only change preserves the smoke-tested code/artifact.",
+    "Reference PR69 for final documentation checks, merge SHA and additive recovery checkpoint, avoiding a stale hardcoded draft/merge claim in self-referential source records.",
+    "Keep owner Google/consent/ChatGPT, production promotion, broad client/scale/fault certification and all full DCP/WEB acceptance open.",
+    "Preserve the entire300-item scope, weights, stages and estimates in this closeout; correct stale billing-only notes using observed successful hosted runs."
+  ],
+  "tests": [
+    {
+      "command": "Node24.21.0: scripts/orchestration/verify.mjs --full and git diff --exit-code at b90432a",
+      "result": "PASS actual Windows55.35s: reviewed build/parity/typecheck/format;149/149 tests with0skips at32,829ms; real packed install/offline npm exec/isolated npm link/8aliases; native test-owned Codex0.160.1 parsing/idempotent setup/twoMCPsessions/removal/backup/shutdown; unchanged tracked source."
+    },
+    {
+      "command": "GitHub PR matrix41372073094,fast41372073095,pushmatrix41372068412 at b90432a",
+      "result": "PASS all four supported OS/architecture jobs. Windows149passed0skipped; Ubuntu/macOSARM/macOSIntel each137passed12platformskips; zero failures. Every package/native-Codex/source-unchanged step passed."
+    },
+    {
+      "command": "Final actual deployed gateway -> Windows agents through official MCP SDK2.3.0",
+      "result": "11/11PASS. Exact live report ending2026-11-02T01:24:29.669Z includes OAuth/pair/realread/isolation/negative/revocation. All syntheticdevice/grant/agent/localfixture cleanup flags true; human Google/ChatGPT flags false."
+    },
+    {
+      "command": "Post-cleanup cloud settings and real endpoint verification at2026-11-02T01:26:05.666Z",
+      "result": "PASS: only original owner Access policy, no test binding, service token and policy deleted, sameDO namespace, MCPenabled/read-only, Workers.dev/previewsfalse. Health/discovery200,anonymousMCP401,dashboard302,deletedserviceidentity302."
+    },
+    {
+      "command": "SHA-256 and Git state recheck of initial primary/worktree checkpoint",
+      "result": "PASS11/11 unpublished files byte-identical; primaryHEAD/status unchanged; twoexistingvalidworktreesheads/statusunchanged; originalbundle/manifesthashes unchanged."
+    },
+    {
+      "command": "Evidence/template JSON parsing, whitespace, roadmap review/render/check and parity baseline",
+      "result": "Run for this documentation closeout; no new completion credit. Exact final documentation-head hosted results and normal merge are verified through PR69 before release closeout."
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "ids": "CLI-003 and previously selected integration evidence rows",
+      "assessment": "Refresh evidence, platform and blocker/notes only. All300 stages/weights/remaining-hours/acceptance text preserved from b90432a. Maturity remains29.12%; no additional stage credit."
+    },
+    {
+      "ids": "DCP-001..048;WEB-001..012",
+      "assessment": "Full acceptance remains0/48 and0/12. Per-WEB stage/evidence/remainingwork/blockers/dependencies/engineeringhours/unscheduledETA/issue/commit/PR retained."
+    }
+  ],
+  "limitations": [
+    "Human browser identity/consent/callback and ChatGPT/Claude connector use remain unverified.",
+    "No owner filesystem root or persistent agent remains paired from acceptance; owner must complete normal pairing for deliberate use.",
+    "No remote write/process activation, OS autostart or production promotion.",
+    "Path checks are not a handle-anchored OS sandbox; native process/tree and broader parity/scale/fault work remains open."
+  ],
+  "next_unverified_action": "Observe exact final documentation-head CI, mark PR69 ready and merge normally, verify main ancestry and main CI, record final additive checkpoint, then hand off the human owner/client flow and remaining parity backlog."
+}

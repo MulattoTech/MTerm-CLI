@@ -78,7 +78,7 @@ Compatibility implementation and reconciliation history are recorded in
 [PR #67](https://github.com/MulattoTech/MTerm-CLI/pull/67). Check their current GitHub status
 and the exact tested source commit when choosing a checkout. Earlier hosted run 39166671238
 had canonical-path test failures and executable-mode drift; historical billing or CI outcomes
-do not establish the result for a later commit. No full-platform PASS is claimed here.
+do not establish the result for a later commit. The final candidate results are recorded below.
 
 ## DesktopCommander-compatible file profile
 
@@ -158,26 +158,46 @@ defaults and Codex authentication are unchanged by remote implementation or setu
 
 ### Observed acceptance and remaining gates
 
-The 2026-11-02 UTC staging run completed **11 live checks**, including real Access service
-authentication, OAuth/PKCE, two one-time Windows pairings, DPAPI storage, SDK initialization
-and discovery, exact fixture reads, negative authorization checks, and device/grant
-revocation. This used the pinned `@modelcontextprotocol/client` 2.3.0 SDK and a dedicated
-temporary staging service identity. The runner is
-[`scripts/verify-remote-staging.mjs`](scripts/verify-remote-staging.mjs); it records metadata
-and fixture hashes without tokens or raw file contents.
+The [final live Windows report](docs/validation/2026-11-02-remote-staging-smoke-final.json)
+records **11/11 checks passed**, finishing at **2026-11-02 01:24:29 UTC**
+(2026-11-01 19:24:29 Central). It used the pinned MCP client SDK 2.3.0, real Cloudflare
+Access service authentication, OAuth/PKCE, two dedicated Windows device pairings,
+current-user DPAPI, SDK initialization/discovery, exact fixture reads, negative
+access tests and device/grant revocation. All recorded fixture cleanup checks passed.
 
-That successful run used source
-[`305c89c88a10f4c9243096e3d1125bde76f17563`](https://github.com/MulattoTech/MTerm-CLI/commit/305c89c88a10f4c9243096e3d1125bde76f17563),
-Worker version `2083411f-68a7-4ec8-9ecc-5c2473ad09b9`, and gateway artifact SHA-256
-`f76e37d77c218bc9c2bc9203346ec98d590e5a69b7fef285bcd16792ae32c0f1`.
-These identify the tested staging artifact, not an assertion about the latest main commit.
+| Final staging identity | Value |
+| --- | --- |
+| Tested code | [b90432a1bc138d59305692a9f74f110a475d0881](https://github.com/MulattoTech/MTerm-CLI/commit/b90432a1bc138d59305692a9f74f110a475d0881) |
+| Immutable Windows-built artifact SHA-256 | `97a0457b78e113c058ae8da3d3a6a54fcd93c2b35d1dd1781316c41001ac10a6` |
+| Worker version used by the final live smoke | `f643872f-5fbb-44be-9e3d-a6f8f3f32aab` |
+| Current owner-only Worker / safe recovery version | `4b726ec9-4389-4ba8-ada3-5758a3889c27` |
+| Current deployment | `dcccecfe-353c-4c45-8691-a508bc6d8ee6` |
 
-Human Google sign-in, human browser consent/callback, ChatGPT connector installation,
-production promotion and full local/remote parity remain unaccepted. Removal of the
-temporary Cloudflare service token, its staging Access policy and its Worker identity
-binding remains a release-closeout item in this snapshot; test fixture device/grant
-revocation is a different cleanup step. See the [security boundary and limits](docs/SECURITY.md)
-and [remote acceptance ledger](docs/REMOTE_MCP_ROADMAP.md).
+The current version serves the same tested artifact with the temporary
+`STAGING_SERVICE_ID` binding removed. The temporary Cloudflare service token and
+its Access service-auth policy were deleted; only the original owner allow policy
+remains. MCP is enabled and read-only. Workers.dev and preview URLs are disabled.
+No smoke-test agent or actual owner-paired agent remains running.
+
+Full Windows verification, the native Codex probe and the four-platform CI matrix
+passed for the tested code. PR #69 evidence includes the
+[matrix run](https://github.com/MulattoTech/MTerm-CLI/actions/runs/41372073094),
+[fast run](https://github.com/MulattoTech/MTerm-CLI/actions/runs/41372073095), and
+[push run](https://github.com/MulattoTech/MTerm-CLI/actions/runs/41372068412).
+Use the [final sprint record](docs/validation/2026-11-02-remote-sprint.md) as the
+authority for final Git merge status, checkpoints and release verification.
+
+The earlier smoke on source `305c89c`, Worker `2083411f-68a7-4ec8-9ecc-5c2473ad09b9`
+and artifact `f76e37d77c218bc9c2bc9203346ec98d590e5a69b7fef285bcd16792ae32c0f1`
+is historical evidence. It is superseded by the final identities above.
+
+Human Google/Access sign-in, human browser consent/callback and ChatGPT connector
+installation remain unverified. Production promotion, remote writes/process execution
+and full local/remote parity remain separate gates. The
+[staging runner](scripts/verify-remote-staging.mjs) records metadata and hashes without
+credentials or raw file contents. See the [security boundary](docs/SECURITY.md),
+[deployment and recovery guide](docs/deployment/MTERM_STAGING.md), and
+[remote acceptance ledger](docs/REMOTE_MCP_ROADMAP.md).
 
 ## Remote research and automation
 
@@ -193,4 +213,4 @@ docs/GITHUB_ORCHESTRATION_SETUP.md for CI and GitHub configuration.
 
 ## AI-orchestrated development
 
-MTerm-CLI uses Orchestrator.inc with Codex workers in isolated worktrees. Start with [orchestration operations](docs/ORCHESTRATION.md) and [GitHub setup](docs/GITHUB_ORCHESTRATION_SETUP.md). Standard worker verification: node scripts/orchestration/verify.mjs --quick. Codex hook/CI portability blockers currently prevent an unattended fleet certification.
+MTerm-CLI uses Orchestrator.inc with Codex workers in isolated worktrees. Start with [orchestration operations](docs/ORCHESTRATION.md) and [GitHub setup](docs/GITHUB_ORCHESTRATION_SETUP.md). Standard worker verification: node scripts/orchestration/verify.mjs --quick. Passing Codex and CI checks do not by themselves certify unattended fleet operation; follow the documented ownership and isolation controls.

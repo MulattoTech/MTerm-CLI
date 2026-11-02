@@ -191,29 +191,46 @@ filesystem or process operation is enabled.
 
 ### What the staging tests establish
 
-The 2026-11-02 UTC live smoke run passed 11 checks using a dedicated Cloudflare Access
-service identity, the deployed gateway, the pinned MCP client SDK 2.3.0 and two dedicated
-Windows fixture roots. It exercised real PKCE authorization, one-time pairing, DPAPI,
-SDK initialization/discovery, exact filesystem reads, cross-device and mutation denial,
-root containment, and device/grant revocation. The tested source was
-[`305c89c88a10f4c9243096e3d1125bde76f17563`](https://github.com/MulattoTech/MTerm-CLI/commit/305c89c88a10f4c9243096e3d1125bde76f17563),
-Worker version `2083411f-68a7-4ec8-9ecc-5c2473ad09b9`, artifact SHA-256
-`f76e37d77c218bc9c2bc9203346ec98d590e5a69b7fef285bcd16792ae32c0f1`.
-The [staging runner](../scripts/verify-remote-staging.mjs) takes temporary service
-credentials through stdin and writes metadata evidence without raw content or credentials.
-Fourteen gateway test groups additionally exercise signed identities, revocation epochs,
-expiry cleanup, cancellation and fault behavior with a synthetic storage fixture.
+The [final live report](validation/2026-11-02-remote-staging-smoke-final.json) passed
+**11/11 checks** on Windows, finishing at 2026-11-02 01:24:29 UTC
+(2026-11-01 19:24:29 Central). A dedicated Cloudflare Access service identity, the
+actual deployed gateway, MCP SDK 2.3.0 and two Windows fixture roots exercised PKCE,
+one-time pairing, DPAPI, SDK initialization/discovery, exact filesystem reads,
+cross-device and mutation denial, root containment, and device/grant revocation.
+All recorded cleanup checks passed: test grants/devices revoked, agents stopped,
+SDK closed and only created local fixtures removed.
 
-The service identity is accepted only when the environment is explicitly `staging` and
-the signed Access claim matches its configured service client ID and service-token shape.
-It does not authenticate a human or establish ChatGPT account/connector support. Human
-Google/Access sign-in, consent/callback, ChatGPT connection and real-client acceptance
-remain unverified. Production promotion, remote write/execute activation and full DCP/WEB
-acceptance remain separate gates.
+The tested code was [b90432a1bc138d59305692a9f74f110a475d0881](https://github.com/MulattoTech/MTerm-CLI/commit/b90432a1bc138d59305692a9f74f110a475d0881),
+with Windows-built immutable artifact SHA-256
+`97a0457b78e113c058ae8da3d3a6a54fcd93c2b35d1dd1781316c41001ac10a6`.
+The final smoke used Worker version `f643872f-5fbb-44be-9e3d-a6f8f3f32aab`.
+The current owner-only version `4b726ec9-4389-4ba8-ada3-5758a3889c27`, deployment
+`dcccecfe-353c-4c45-8691-a508bc6d8ee6`, serves that same artifact after removal
+of the temporary testing identity binding. The earlier `305c89c` / `2083411f`
+smoke is historical evidence, not the current recovery target.
 
-**Temporary test identity cleanup is pending in this snapshot.** Revoke the test Cloudflare
-service token, remove its dedicated Access service-auth policy and clear the Worker's
-`STAGING_SERVICE_ID` binding after validation, then verify that the old service credentials
-are denied while owner authorization and public discovery retain their intended behavior.
-Revoking smoke-test devices/grants and removing local fixtures does not by itself remove
-this Cloudflare test identity. Do not carry a testing identity into production.
+Fourteen gateway groups additionally exercise signed identity, revocation epochs,
+expiry cleanup, cancellation and storage-fault behavior with synthetic fixtures.
+Full Windows gates, native Codex verification and four-platform CI passed for the
+tested code. These results certify their recorded checks, not stronger OS isolation,
+production scale or full parity. The [final sprint record](validation/2026-11-02-remote-sprint.md)
+is authoritative for final Git merge/checkpoint state and the linked CI evidence.
+
+**Temporary Cloudflare testing identity cleanup is complete.** Its service token
+and dedicated Access service-auth policy were deleted, and `STAGING_SERVICE_ID`
+is absent from the current Worker's bindings. The original owner allow policy
+remains; Workers.dev and preview URLs are disabled. The SQLite registry was preserved.
+MCP remains enabled with only read-only tools. No test agent or owner-paired agent
+is left running.
+
+Future separately authorized staging tests may temporarily configure an exact
+service client ID. The verifier accepts that identity only in an explicitly staging
+environment with the expected signed Access service-token claims. Remove the new
+binding, policy and token after testing; fixture cleanup alone does not remove those
+Cloudflare resources. Do not deploy a testing identity to production.
+
+Service-principal acceptance is distinct from human authorization. Owner Google/Access
+sign-in, browser consent/callback and ChatGPT connector use remain unverified. The
+owner must pair the intended computer and complete the supported client's consent.
+Production promotion, remote write/execute activation and full DCP/WEB acceptance
+remain separate gates.

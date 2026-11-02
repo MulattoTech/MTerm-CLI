@@ -67,12 +67,14 @@
       "blocker": null,
       "evidence": [
         "docs/plans/2026-10-04-local-mcp.md",
-        "docs/validation/2026-10-05-codex-parity-foundation.md"
+        "docs/validation/2026-10-05-codex-parity-foundation.md",
+        "docs/validation/2026-11-02-remote-sprint.md",
+        "docs/validation/2026-11-02-code-ci.json"
       ],
-      "notes": "RDC write/rename, GitHub content/workflow writes, normal pushes and PR creation reverified. Actual hosted jobs are blocked by account billing/spending limits; merge/tag unperformed.",
-      "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
+      "notes": "Branch/content/workflow writes, normal pushes and PR #69 creation verified. Exact b90432a fast and all four platform workflows passed; current CI is not blocked by billing. Final normal merge/main verification is recorded in PR #69. Tags remain untested. Existing stage and weight retained.",
+      "platforms": "Windows, Ubuntu, macOS ARM64 and macOS Intel hosted jobs passed on Node24.21.0",
       "dependencies": [],
-      "reviewer": "2026-10-05-codex-parity-foundation"
+      "reviewer": "2026-11-02-remote-staging-closeout"
     },
     {
       "id": "CLI-004",
@@ -694,9 +696,11 @@
         "docs/plans/2026-10-04-local-mcp.md",
         "docs/ai/changes/2026-11-02-remote-agent.json",
         "docs/validation/2026-11-02-remote-staging-smoke.json",
-        "package.json"
+        "package.json",
+        "docs/validation/2026-11-02-remote-sprint.md",
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
       ],
-      "notes": "2026-11-02 evidence update: Node 24 is pinned for MTerm glue. The actual Windows Node 24.21.0 runtime and SDK 2.3.0 completed the 2026-11-02 live remote smoke; pinned TypeScript also passed. Full lifecycle/patch-policy and three-upstream bundle compatibility review remain open; preserve the existing planned stage pending final review.",
+      "notes": "Final 2026-11-02 evidence at b90432a: Node 24.21.0 and SDK 2.3.0 are pinned and exercised; lifecycle/patch policy and the full three-upstream bundle remain separate. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
       "reviewer": "2026-10-04-local-mcp"
@@ -2856,9 +2860,11 @@
         "src/compat-config.ts",
         "tests/compat-config.test.mjs",
         "tests/compat-config-mcp.test.mjs",
-        "docs/ai/changes/2026-11-02-config-storage-identity.json"
+        "docs/ai/changes/2026-11-02-config-storage-identity.json",
+        "docs/validation/2026-11-02-remote-sprint.md",
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
       ],
-      "notes": "2026-11-02 evidence update: Local typed config and safe diagnostics remain implemented. Recovered compatibility get_config exposes effective owner-bounded preferences and non-secret capability metadata; per-call snapshots and canonical policy-file exclusion have regression coverage. Final pinned configuration/MCP and cross-platform acceptance remain pending.",
+      "notes": "Final 2026-11-02 evidence at b90432a: Effective compatibility preferences remain owner-bounded and non-secret; canonical policy-file exclusions passed native Windows 8.3 regressions. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
       "reviewer": "2026-10-04-local-mcp"
@@ -2882,9 +2888,11 @@
         "src/compat-config.ts",
         "tests/compat-config.test.mjs",
         "tests/compat-config-mcp.test.mjs",
-        "docs/ai/changes/2026-11-02-config-storage-identity.json"
+        "docs/ai/changes/2026-11-02-config-storage-identity.json",
+        "docs/validation/2026-11-02-remote-sprint.md",
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
       ],
-      "notes": "2026-11-02 evidence update: Recovered compatibility set_config_value rejects unsupported keys/types, requires separate --allow-config-write, and cannot widen startup roots/shells or grant file/process capabilities. Concurrent snapshots and canonical policy self-protection have regressions. Full pinned configuration/MCP rerun and platform qualification remain pending.",
+      "notes": "Final 2026-11-02 evidence at b90432a: Typed get/set, separate config-write capability, immutable root/shell ceilings and per-call snapshots are implemented and tested; no parity issue acceptance is implied. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
       "reviewer": "2026-10-04-local-mcp"
@@ -2951,9 +2959,11 @@
         "src/compat-config.ts",
         "tests/compat-config.test.mjs",
         "tests/compat-config-mcp.test.mjs",
-        "docs/ai/changes/2026-11-02-config-storage-identity.json"
+        "docs/ai/changes/2026-11-02-config-storage-identity.json",
+        "docs/validation/2026-11-02-remote-sprint.md",
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
       ],
-      "notes": "2026-11-02 evidence update: Local config uses atomic replacement and backups. Recovered compatibility policy adds bounded cooperative locking, exact previous-byte conflict checks, backups and canonical storage identity with linked-file rejection. New failure/alias regressions are present; final pinned configuration/MCP and crash/platform coverage remain pending.",
+      "notes": "Final 2026-11-02 evidence at b90432a: Atomic bounded config writes, backups, locking/conflict handling and canonical storage guards passed the recorded regression suite; hostile local filesystem races remain outside the guarantee. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
       "reviewer": "2026-10-04-local-mcp"
@@ -3664,9 +3674,11 @@
         "scripts/verify-package.mjs",
         "tests/cli.test.mjs",
         "docs/validation/2026-10-05-codex-parity-foundation.md",
-        "docs/ai/changes/2026-11-02-foundation-portability.json"
+        "docs/ai/changes/2026-11-02-foundation-portability.json",
+        "docs/validation/2026-11-02-remote-sprint.md",
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
       ],
-      "notes": "2026-11-02 evidence update: Historical production tarball installation, isolated-prefix npm link and Windows shim checks passed without changing the user-global prefix. The tracked npm bin executable mode was repaired for Linux packaging. Current integration build/package/link reruns and hosted platform qualification are pending; older installed evidence is not a pass for the new remote build.",
+      "notes": "Final 2026-11-02 evidence at b90432a: Packed installation and isolated-prefix npm link passed without changing the user-global prefix; the npm bin executable mode is fixed. No GUI runtime dependency is introduced. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
       "reviewer": "2026-10-05-codex-parity-foundation"
@@ -3935,13 +3947,15 @@
       ],
       "estimateBasis": "Initial rough engineering range; not a schedule or measured AI runtime. Security/upstream/platform uncertainty can increase this estimate.",
       "eta": "Unscheduled",
-      "blocker": "Fresh hosted OS/architecture and installed-artifact results for the integrated branch are pending. Prior jobs executed and exposed actual canonical-path/bin-mode failures; earlier billing-only observations are historical.",
+      "blocker": "The exact b90432a hosted platform matrix passed. Explicit requirement/stage acceptance review remains pending; final documentation checks are recorded in PR #69.",
       "evidence": [
         "docs/validation/2026-10-05-codex-parity-foundation.md",
         "docs/ai/changes/2026-11-02-foundation-portability.json",
-        "tests/policy-alias.test.mjs"
+        "tests/policy-alias.test.mjs",
+        "docs/validation/2026-11-02-remote-sprint.md",
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
       ],
-      "notes": "2026-11-02 evidence update: Hosted macOS jobs have executed: the 2026-11-02 audit found real /var versus /private/var canonical-path failures in the feature matrix, superseding earlier billing-only observations. Explicit startup-root alias handling and regression tests are now implemented. Fresh macOS arm64 artifact/matrix acceptance is pending; existing stage is preserved.",
+      "notes": "Final 2026-11-02 evidence at b90432a: Actual macOS14 arm64 matrix execution, including build/check/package/native-Codex steps, passed. Preserve the existing stage until explicit acceptance review; billing-only historical blockers no longer describe current CI. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
       "reviewer": "2026-10-05-codex-parity-foundation"
@@ -3959,13 +3973,15 @@
       ],
       "estimateBasis": "Initial rough engineering range; not a schedule or measured AI runtime. Security/upstream/platform uncertainty can increase this estimate.",
       "eta": "Unscheduled",
-      "blocker": "Fresh hosted OS/architecture and installed-artifact results for the integrated branch are pending. Prior jobs executed and exposed actual canonical-path/bin-mode failures; earlier billing-only observations are historical.",
+      "blocker": "The exact b90432a hosted platform matrix passed. Explicit requirement/stage acceptance review remains pending; final documentation checks are recorded in PR #69.",
       "evidence": [
         "docs/validation/2026-10-05-codex-parity-foundation.md",
         "docs/ai/changes/2026-11-02-foundation-portability.json",
-        "tests/policy-alias.test.mjs"
+        "tests/policy-alias.test.mjs",
+        "docs/validation/2026-11-02-remote-sprint.md",
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
       ],
-      "notes": "2026-11-02 evidence update: Hosted macOS jobs have executed and exposed real canonical-path failures; earlier statements that no runner steps executed are historical. Startup-root alias repair is implemented, but a fresh actual Intel macOS artifact/matrix result remains pending. Preserve the current platform stage until that evidence is reviewed.",
+      "notes": "Final 2026-11-02 evidence at b90432a: Actual macOS15-intel x64 matrix execution, including build/check/package/native-Codex steps, passed. Preserve the existing stage until explicit acceptance review. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
       "reviewer": "2026-10-05-codex-parity-foundation"
@@ -3983,14 +3999,16 @@
       ],
       "estimateBasis": "Initial rough engineering range; not a schedule or measured AI runtime. Security/upstream/platform uncertainty can increase this estimate.",
       "eta": "Unscheduled",
-      "blocker": "Fresh hosted OS/architecture and installed-artifact results for the integrated branch are pending. Prior jobs executed and exposed actual canonical-path/bin-mode failures; earlier billing-only observations are historical.",
+      "blocker": "The exact b90432a hosted platform matrix passed. Explicit requirement/stage acceptance review remains pending; final documentation checks are recorded in PR #69.",
       "evidence": [
         "docs/validation/2026-10-05-codex-parity-foundation.md",
         "docs/ai/changes/2026-11-02-foundation-portability.json",
         "tests/policy-alias.test.mjs",
-        "tests/remote-gateway.test.mjs"
+        "tests/remote-gateway.test.mjs",
+        "docs/validation/2026-11-02-remote-sprint.md",
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
       ],
-      "notes": "2026-11-02 evidence update: The audited prior Ubuntu feature job executed its tests and package/managed-Codex checks, then failed the final clean-tree gate because npm changed the bin executable mode. The bin is now tracked executable and focused Linux policy/gateway tests pass. Fresh supported-platform installation/libc/matrix qualification remains pending; no stage increase is awarded.",
+      "notes": "Final 2026-11-02 evidence at b90432a: Actual Ubuntu24.04 x64 matrix passed, including clean-tree/package/native-Codex gates after the bin-mode repair. Wider distribution/libc-floor certification remains distinct. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
       "reviewer": "2026-10-05-codex-parity-foundation"
@@ -4035,9 +4053,11 @@
         "tests/processes.test.mjs",
         "docs/ai/changes/2026-11-02-remote-agent.json",
         "docs/validation/2026-11-02-remote-staging-smoke.json",
-        "tests/codex-registration.test.mjs"
+        "tests/codex-registration.test.mjs",
+        "docs/validation/2026-11-02-remote-sprint.md",
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
       ],
-      "notes": "2026-11-02 evidence update: Actual isolated Windows Node 24.21.0 compilation and 13 remote test groups, including Windows DPAPI, passed. The real SDK 2.3.0 staging smoke passed 11/11 using two Windows FileService agents. Current 144-test/full/package follow-ups are pending; the latest integration also repairs transient Windows registration replacement safely. No Unix/macOS or OS-sandbox claim is made.",
+      "notes": "Final 2026-11-02 evidence at b90432a: The existing isolated Windows orchestration passed in 55.35s. Windows tests were 149/149 with no skips in 32,829ms; native 8.3 security cases and real DPAPI ran. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
       "reviewer": "2026-10-04-local-mcp"
@@ -4182,9 +4202,11 @@
         "tests/remote-state.test.mjs",
         "docs/ai/changes/2026-11-02-remote-gateway.json",
         "docs/ai/changes/2026-11-02-remote-agent.json",
-        "docs/validation/2026-11-02-remote-staging-smoke.json"
+        "docs/validation/2026-11-02-remote-staging-smoke.json",
+        "docs/validation/2026-11-02-remote-sprint.md",
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
       ],
-      "notes": "2026-11-02 evidence update: Gateway grants are restricted to mterm:read, each request selects an authorized device, and the agent independently dispatches only bounded FileService reads under its enrolled root. Live mutation, outside-root and cross-device credential denials passed with unchanged fixtures. Local write/exec permissions remain separate; remote write/exec stays disabled.",
+      "notes": "Final 2026-11-02 evidence at b90432a: Local capabilities remain separate; gateway and device independently enforce read-only scope, device identity and trusted roots. Live mutation/root-escape/cross-device denials passed. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
       "reviewer": "2026-10-04-local-mcp"
@@ -4281,9 +4303,11 @@
         "docs/validation/2026-11-02-remote-staging-smoke.json",
         "gateway/security.mjs",
         "src/remote/agent.ts",
-        "src/remote/cli.ts"
+        "src/remote/cli.ts",
+        "docs/validation/2026-11-02-remote-sprint.md",
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
       ],
-      "notes": "2026-11-02 evidence update: GatewayTransport enforces configured HTTPS origins and rejects authenticated redirects; pairing approval URLs must match the configured private dashboard origin. Access identity-key retrieval uses Workers-supported manual redirect handling and rejects non-success responses rather than forwarding credentials. Source/negative fixture tests and the 11/11 real staging smoke justify integrated status; complete platform and integration-negative coverage remains pending. This is source/evidence review, not DCP/WEB acceptance credit.",
+      "notes": "Final 2026-11-02 evidence at b90432a: GatewayTransport fixes credential-bearing requests to approved HTTPS origins and refuses redirects; Access key retrieval uses manual redirect handling. Final local/live/hosted evidence supports the already-reviewed integrated stage; no extra credit is added. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
       "reviewer": "2026-10-04-local-mcp"
@@ -4313,9 +4337,11 @@
         "docs/ai/changes/2026-11-02-remote-gateway.json",
         "docs/ai/changes/2026-11-02-remote-agent.json",
         "docs/validation/2026-11-02-remote-staging-smoke.json",
-        "gateway/security.mjs"
+        "gateway/security.mjs",
+        "docs/validation/2026-11-02-remote-sprint.md",
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
       ],
-      "notes": "2026-11-02 evidence update: Remote setup and GatewayTransport require HTTPS, reject credential-bearing gateway URLs and do not disable certificate validation. The deployed HTTPS Worker and real Windows SDK smoke succeeded with signed Access identity checks. Complete TLS-negative and all-platform integration coverage remains pending.",
+      "notes": "Final 2026-11-02 evidence at b90432a: HTTPS and signed Access identity checks remain enforced without insecure TLS flags. Final actual staging and all four hosted platform gates passed; broader adversarial TLS coverage is separate. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
       "reviewer": "2026-10-04-local-mcp"
@@ -4381,9 +4407,11 @@
         "docs/ai/changes/2026-11-02-remote-agent.json",
         "src/remote/cli.ts",
         "docs/validation/2026-11-02-remote-staging-smoke.json",
-        "docs/REMOTE_MCP.md"
+        "docs/REMOTE_MCP.md",
+        "docs/validation/2026-11-02-remote-sprint.md",
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
       ],
-      "notes": "2026-11-02 evidence update: Normal local use remains daemon-free. Remote mode requires explicit configuration, pairing and a foreground start; no service/task/autostart entry or inbound workstation listener is installed. Live smoke agents stopped during revocation/cleanup. Optional supervision remains unfinished WEB-011 work, not a default capability.",
+      "notes": "Final 2026-11-02 evidence at b90432a: Default operation remains daemon-free. The optional agent is explicitly configured/paired and foreground-only; no service/task/autostart is installed. All live fixture agents stopped during cleanup. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
       "reviewer": "2026-10-04-local-mcp"
@@ -4551,9 +4579,11 @@
         "docs/ai/changes/2026-11-02-remote-gateway.json",
         "docs/ai/changes/2026-11-02-remote-agent.json",
         "docs/validation/2026-11-02-remote-staging-smoke.json",
-        "tests/remote-gateway.test.mjs"
+        "tests/remote-gateway.test.mjs",
+        "docs/validation/2026-11-02-remote-sprint.md",
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
       ],
-      "notes": "2026-11-02 evidence update: Pinned TypeScript compilation, focused Windows remote tests and the actual 11/11 Cloudflare-to-Windows SDK smoke passed. Gateway fixture tests passed 14/14. The final 144-test Windows suite, normal build/check, package gates and hosted CI are still pending at this evidence update; no full-suite success is inferred from the smoke.",
+      "notes": "Final 2026-11-02 evidence at b90432a: Final reviewed build, typecheck, formatting, parity and 149 deterministic tests passed in the existing Windows full verifier; exact PR/push matrix and fast CI passed. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
       "reviewer": "2026-10-04-local-mcp"
@@ -4600,9 +4630,11 @@
         "docs/ai/changes/2026-11-02-foundation-portability.json",
         "docs/ai/changes/2026-11-02-remote-agent.json",
         "docs/validation/2026-11-02-remote-staging-smoke.json",
-        "scripts/verify-package.mjs"
+        "scripts/verify-package.mjs",
+        "docs/validation/2026-11-02-remote-sprint.md",
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
       ],
-      "notes": "2026-11-02 evidence update: Historical clean production tarball, offline npm-exec compatibility aliases, isolated link and Windows shim evidence remains valid for its recorded revision. Canonical-path/executable-mode repairs and new remote code require fresh installed-package qualification; the current final package/link rerun is pending. The staging harness ran real source modules and is not an npm-install certification.",
+      "notes": "Final 2026-11-02 evidence at b90432a: Final clean packed install, offline npm execution, compatibility aliases and isolated npm link passed. Pinned test-owned native Codex 0.160.1 managed verification also passed; the initial npm-alias manifest mismatch was repaired in verification code. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
       "reviewer": "2026-10-05-codex-parity-foundation"
@@ -4620,15 +4652,17 @@
       ],
       "estimateBasis": "Initial rough engineering range; not a schedule or measured AI runtime. Security/upstream/platform uncertainty can increase this estimate.",
       "eta": "Unscheduled",
-      "blocker": "Fresh hosted OS/architecture and installed-artifact results for the integrated branch are pending. Prior jobs executed and exposed actual canonical-path/bin-mode failures; earlier billing-only observations are historical.",
+      "blocker": "The exact b90432a hosted platform matrix passed. Explicit requirement/stage acceptance review remains pending; final documentation checks are recorded in PR #69.",
       "evidence": [
         "docs/plans/2026-10-04-local-mcp.md",
         "docs/validation/2026-10-05-codex-parity-foundation.md",
         "docs/ai/changes/2026-11-02-foundation-portability.json",
         "tests/policy-alias.test.mjs",
-        "docs/validation/2026-11-02-remote-staging-smoke.json"
+        "docs/validation/2026-11-02-remote-staging-smoke.json",
+        "docs/validation/2026-11-02-remote-sprint.md",
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
       ],
-      "notes": "2026-11-02 evidence update: Current publication permission is verified. Prior feature matrix jobs actually ran and exposed canonical-path failures on Windows/macOS plus Linux executable-mode drift; billing-only blockers are historical. Repairs exist, but the newly integrated branch still needs a fresh hosted OS/architecture matrix. Windows smoke and Linux fixture tests do not substitute for that matrix.",
+      "notes": "Final 2026-11-02 evidence at b90432a: All four exact b90432a PR matrix jobs passed: Windows2022 x64, Ubuntu24.04 x64, macOS14 arm64 and macOS15-intel x64. No queue/skip is counted as a pass. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
       "reviewer": "2026-10-05-codex-parity-foundation"
@@ -4650,9 +4684,11 @@
       "evidence": [
         "docs/plans/2026-10-04-local-mcp.md",
         "docs/validation/2026-10-05-codex-parity-foundation.md",
-        "docs/ai/changes/2026-11-02-foundation-portability.json"
+        "docs/ai/changes/2026-11-02-foundation-portability.json",
+        "docs/validation/2026-11-02-remote-sprint.md",
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
       ],
-      "notes": "2026-11-02 evidence update: Actual inspected results distinguish main fast CI pass (run 39914237235) from feature matrix failure (run 39166671238): real Windows/macOS canonical-path assertions and Linux bin-mode clean-tree failure. Earlier billing-only conclusions are superseded. The current integration PR/hosted result remains pending; no queued or unrun job is counted as pass. Inspected runs: https://github.com/MulattoTech/MTerm-CLI/actions/runs/39914237235, https://github.com/MulattoTech/MTerm-CLI/actions/runs/39166671238.",
+      "notes": "Final 2026-11-02 evidence at b90432a: Observed final PR matrix 41372073094, fast 41372073095 and push matrix 41372068412 all passed. Earlier billing and actual path/bin-mode failures remain historical, superseded by this exact-build evidence. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
       "reviewer": "2026-10-05-codex-parity-foundation"
@@ -5808,9 +5844,11 @@
         "tests/policy-alias.test.mjs",
         "tests/remote-state.test.mjs",
         "tests/remote-adapter.test.mjs",
-        "docs/validation/2026-11-02-remote-staging-smoke.json"
+        "docs/validation/2026-11-02-remote-staging-smoke.json",
+        "docs/validation/2026-11-02-remote-sprint.md",
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
       ],
-      "notes": "2026-11-02 evidence update: RootPolicy maps only explicitly selected startup aliases to immutable canonical roots and retains component/runtime guards. Compatibility policy storage now shares the canonical identity used by file-tool exclusion. Remote credentials bind the enrolled root; actual Windows SDK reads and live root-escape denial passed. Hostile concurrent local rename races remain outside the guarantee.",
+      "notes": "Final 2026-11-02 evidence at b90432a: Canonical roots and final existing/missing targets are revalidated; policy self-protection shares canonical filesystem identity. Native Windows 8.3 and live root-escape regressions passed. Hostile local rename races remain excluded. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [
         "CLI-033",
@@ -5841,9 +5879,11 @@
         "tests/policy-alias.test.mjs",
         "tests/remote-state.test.mjs",
         "tests/remote-adapter.test.mjs",
-        "docs/validation/2026-11-02-remote-staging-smoke.json"
+        "docs/validation/2026-11-02-remote-staging-smoke.json",
+        "docs/validation/2026-11-02-remote-sprint.md",
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
       ],
-      "notes": "2026-11-02 evidence update: Nested/unselected symlinks, junctions and multiply-linked files remain rejected, including overlapping selected aliases. Regressions cover alias retargeting, canonical configuration storage and remote enrolled-root binding. Live outside-root denial passed; native handle-relative defenses and hostile local rename-race certification remain unimplemented.",
+      "notes": "Final 2026-11-02 evidence at b90432a: Nested links, junctions and multiply-linked files remain denied. Canonical private-name and missing-leaf checks passed native 8.3 regressions; no handle-anchored OS sandbox is claimed. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [
         "CLI-033",
@@ -6398,9 +6438,11 @@
         "docs/ai/changes/2026-11-02-remote-agent.json",
         "src/remote/protocol.ts",
         "tests/remote-gateway.test.mjs",
-        "docs/validation/2026-11-02-remote-staging-smoke.json"
+        "docs/validation/2026-11-02-remote-staging-smoke.json",
+        "docs/validation/2026-11-02-remote-sprint.md",
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
       ],
-      "notes": "2026-11-02 evidence update: Existing local limits now extend to remote jobs: four per-device concurrent calls, 20-second deadlines, bounded input/output and retained registry/audit records. Fixture tests cover cancellation, cleanup continuation, malformed/oversized input and replay; the live two-device smoke passed. Deployed rate/concurrency/size and long-duration soak qualification remain pending.",
+      "notes": "Final 2026-11-02 evidence at b90432a: Remote concurrency/deadline/output/retention bounds have fixture coverage and a passing final two-device live slice. Deployed rate/concurrency stress and long-duration soak remain separate. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [
         "CLI-033",
@@ -6461,9 +6503,11 @@
         "docs/ai/changes/2026-11-02-remote-agent.json",
         "tests/remote-agent.test.mjs",
         "tests/remote-gateway.test.mjs",
-        "docs/validation/2026-11-02-remote-staging-smoke.json"
+        "docs/validation/2026-11-02-remote-staging-smoke.json",
+        "docs/validation/2026-11-02-remote-sprint.md",
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
       ],
-      "notes": "2026-11-02 evidence update: Remote cancellation is scoped to request/device ownership; delivered jobs are not requeued, and request expiry is distinct from revocation. Fixture tests cover cancellation races and clean shutdown. Live device revocation stopped its agent, while final cleanup stopped the second and closed the SDK. Real network-loss/reconnect and in-flight cancellation fault tests remain pending.",
+      "notes": "Final 2026-11-02 evidence at b90432a: Scoped cancellation/no-redelivery have fixture coverage. Live device revocation stopped the selected agent and final cleanup closed remaining agents/SDK. Network-loss/reconnect and in-flight cancellation fault injection remain incomplete. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [
         "CLI-033",
@@ -6494,9 +6538,11 @@
         "docs/ai/changes/2026-11-02-remote-agent.json",
         "src/remote/cli.ts",
         "docs/validation/2026-11-02-remote-staging-smoke.json",
-        "docs/REMOTE_MCP.md"
+        "docs/REMOTE_MCP.md",
+        "docs/validation/2026-11-02-remote-sprint.md",
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
       ],
-      "notes": "2026-11-02 evidence update: Default local MCP remains stdio with no public listener. The optional remote agent opens outbound HTTPS connections only; a separately deployed authenticated Cloudflare Worker supplies the public endpoint. Foreground agents were stopped after the live smoke. This deployed optional gateway does not change the default workstation listening policy.",
+      "notes": "Final 2026-11-02 evidence at b90432a: Default workstation use remains stdio/no listener; optional remote agents connect outbound to the authenticated Worker. No inbound workstation service or autostart was installed. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [
         "CLI-033",
@@ -6529,9 +6575,11 @@
         "docs/ai/changes/2026-11-02-remote-gateway.json",
         "docs/ai/changes/2026-11-02-remote-agent.json",
         "docs/validation/2026-11-02-remote-staging-smoke.json",
-        "docs/REMOTE_MCP.md"
+        "docs/REMOTE_MCP.md",
+        "docs/validation/2026-11-02-remote-sprint.md",
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
       ],
-      "notes": "2026-11-02 evidence update: Remote mode now has explicit preview/apply setup, authenticated one-time pairing, protected root/device-bound credentials and foreground start. The gateway independently validates Access identity, OAuth audience/scope and device ownership; the live service-identity SDK path passed. Remote writes/processes and unattended supervision remain unavailable; human-client acceptance is separate.",
+      "notes": "Final 2026-11-02 evidence at b90432a: Remote setup/pair/start stays explicit and root/device-bound. Final live and hosted evidence passed; write/exec and unattended service capability remain unavailable. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [
         "CLI-033",
@@ -6562,9 +6610,11 @@
         "docs/ai/changes/2026-11-02-remote-agent.json",
         "src/remote/cli.ts",
         "src/cli.ts",
-        "docs/validation/2026-11-02-remote-staging-smoke.json"
+        "docs/validation/2026-11-02-remote-staging-smoke.json",
+        "docs/validation/2026-11-02-remote-sprint.md",
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
       ],
-      "notes": "2026-11-02 evidence update: Local doctor/readiness and remote status expose non-secret configuration, capability and ownership information. Remote status is intentionally an offline local observation; authenticated gateway inventory/presence is separate. Live SDK inventory found the two synthetic Windows devices, but no status command alone proves full remote/human-client readiness.",
+      "notes": "Final 2026-11-02 evidence at b90432a: Doctor/remote status remain non-secret local observations, distinct from live gateway inventory. Real SDK inventory and two-device reads passed; no command alone certifies human-client readiness. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [
         "CLI-033",
@@ -6717,9 +6767,11 @@
         "tests/remote-adapter.test.mjs",
         "tests/remote-state.test.mjs",
         "tests/remote-gateway.test.mjs",
-        "docs/validation/2026-11-02-remote-staging-smoke.json"
+        "docs/validation/2026-11-02-remote-staging-smoke.json",
+        "docs/validation/2026-11-02-remote-sprint.md",
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
       ],
-      "notes": "2026-11-02 evidence update: Negative tests retain explicit root/write/exec ceilings and add canonical alias/config self-protection plus remote device/root binding. The real staging smoke denied cross-device credentials, mutation and root escape with unchanged fixture contents. Complete private-path, cross-owner, malformed/limit and full-platform negative coverage remains pending.",
+      "notes": "Final 2026-11-02 evidence at b90432a: Canonical/config/remote scope negatives passed, including real 8.3, root escape, mutation and cross-device denial. Cross-owner, rate/size and extended network-fault acceptance remain open. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [
         "CLI-033",
@@ -6796,7 +6848,7 @@
       ],
       "estimateBasis": "Initial rough engineering range; not a schedule or measured AI runtime. Security/upstream/platform uncertainty can increase this estimate.",
       "eta": "Unscheduled",
-      "blocker": "Supported SDK-to-Windows staging reads passed; actual owner Google/Access browser consent and ChatGPT connector interoperability remain unverified. Full WEB acceptance is still 0/12.",
+      "blocker": "Final supported SDK-to-Windows smoke passed; owner Google/Access browser consent and ChatGPT interoperability remain unverified. WEB acceptance remains0/12.",
       "evidence": [
         "tests/files.test.mjs",
         "tests/processes.test.mjs",
@@ -6805,9 +6857,11 @@
         "docs/REMOTE_MCP.md",
         "docs/REMOTE_MCP_ROADMAP.md",
         "docs/ai/changes/2026-11-02-remote-gateway.json",
-        "docs/ai/changes/2026-11-02-remote-agent.json"
+        "docs/ai/changes/2026-11-02-remote-agent.json",
+        "docs/validation/2026-11-02-remote-sprint.md",
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
       ],
-      "notes": "2026-11-02 evidence update: An authenticated read-only Cloudflare relay is deployed and the supported SDK 2.3.0 completed genuine Windows FileService reads through it with exact hashes and revocation/denial checks. The test used a temporary Access service principal and manual PKCE. Owner Google sign-in, human browser consent/callback and ChatGPT connector acceptance remain explicitly unverified; WEB acceptance stays 0/12.",
+      "notes": "Final 2026-11-02 evidence at b90432a: The final immutable read-only Cloudflare gateway and real SDK-to-Windows FileService reads passed 11/11 with full cleanup. Owner Google login, human consent/callback and ChatGPT connector acceptance remain explicitly unverified; WEB acceptance stays 0/12. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [
         "CLI-033",
@@ -6836,9 +6890,11 @@
         "docs/validation/2026-10-05-codex-parity-foundation.md",
         "docs/validation/2026-11-02-remote-staging-smoke.json",
         "docs/ai/changes/2026-11-02-remote-agent.json",
-        "docs/REMOTE_MCP_ROADMAP.md"
+        "docs/REMOTE_MCP_ROADMAP.md",
+        "docs/validation/2026-11-02-remote-sprint.md",
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
       ],
-      "notes": "2026-11-02 evidence update: The isolated Windows Node 24.21.0 runtime compiled and passed focused DPAPI/remote tests; the real two-device staging SDK smoke passed 11/11 and cleaned up all synthetic devices, grants and agents. The final 144-test/full/package/hosted gates and human Google/ChatGPT acceptance remain pending. This is a tested read-only remote slice, not full Desktop Commander parity or replacement certification.",
+      "notes": "Final 2026-11-02 evidence at b90432a: Actual Windows full/package/native-Codex and all four hosted platform gates passed, plus the final 11/11 live remote slice. This does not certify full Desktop Commander parity, service/update lifecycle or human Google/ChatGPT replacement. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [
         "CLI-033",

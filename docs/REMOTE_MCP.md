@@ -37,12 +37,19 @@ uncommitted work when reconciling Git branches. The package is a private preview
 these instructions do not imply npm publication or a globally installed command.
 
 ```powershell
-Set-Location 'C:\Tools\Dev\MTerm-CLI'
+Set-Location 'C:\Tools\Dev\MTerm-CLI\artifacts\worktrees\remote-mcp-20261102'
+$env:PATH = 'C:\Tools\Dev\MTerm-CLI\artifacts\toolchain\node-v24.21.0-win-x64;' + $env:PATH
 npm ci --ignore-scripts --no-audit --no-fund
 npm run build
 npm run check
 node .\bin\mterm-cli.js remote help
 ```
+
+The paths above select this sprint's verified isolated Windows clone and existing
+pinned runtime. The original `C:\Tools\Dev\MTerm-CLI` still contains preserved
+unpublished work and was not switched to the new branch. On another computer,
+use a clean checkout of the verified main/PR commit and an installed supported
+Node runtime; do not run the example against an older or dirty checkout.
 
 The existing `node scripts/orchestration/post-create.mjs` installs locked
 dependencies and compiles an isolated development worktree; its `--dry-run` mode

@@ -1,38 +1,40 @@
 # MTerm-CLI handoff — 2026-11-02 remote MCP staging
 
-The private read-only remote preview has completed a real Windows-to-Cloudflare
-MCP smoke test. **Staging MCP is currently paused (`MCP_ENABLED=false`) while final
-qualification and deployment are completed.** Human Google sign-in and a human
-ChatGPT connector session remain unverified. This is not a production release or
-a complete RDC replacement.
+**The read-only staging service is enabled and its final deployment passed 11/11
+live checks.** The [final sprint report](validation/2026-11-02-remote-sprint.md)
+and [PR #69](https://github.com/MulattoTech/MTerm-CLI/pull/69) are authoritative for
+the final merge/main SHA, document checks and recovery checkpoint. Human Google
+sign-in and ChatGPT connector acceptance remain unverified; no persistent owner
+agent is paired. Production has not been promoted.
 
 ## Current state — 2026-11-02
 
 | Area | Observed result |
 | --- | --- |
-| Source | PR #52 and stacked PR #67 source, main baseline `335cf59455aa3d382081b46a5d91b41556a61057`, and all eleven recovered unpublished files are integrated on `feat/remote-mcp-readonly-20261102`. Final PR/merge/main status remains pending. |
-| Real deployed smoke | **11/11 passed** at source `305c89c88a10f4c9243096e3d1125bde76f17563`, using Windows Node 24.21.0 and official MCP SDK 2.3.0. Two independent DPAPI-protected agents served real fixture-file reads through Cloudflare. |
-| Identity and cleanup | The smoke used a temporary Access service principal with S256 PKCE and a consent exchange. Both synthetic devices and grants were revoked, agents stopped, SDK closed, and only created local fixtures removed. Human Google/ChatGPT acceptance and final temporary infrastructure-access cleanup remain separate pending checks. |
+| Source | Validated code `b90432a1bc138d59305692a9f74f110a475d0881` integrates PR #52/#67 source, verified main and all eleven recovered unpublished files. Consult the final report and PR for later documentation/merge commits. |
+| Final deployed smoke | **11/11 PASS** at that code checkpoint, Windows Node 24.21.0 and official MCP SDK 2.3.0. Two real DPAPI agents served independent fixture reads through Cloudflare. Final run ended 2026-11-02 01:24:29 UTC. |
+| Identity and cleanup | Temporary Access service-principal proof exercised S256 PKCE and consent exchange. Temporary service policy, token and Worker binding were deleted; owner-only access remains. All fixture agents/devices/grants were cleaned. Human Google/ChatGPT acceptance remains separate. |
 | Windows RED | The earlier full run passed 143/144 groups and exposed one real canonical-leaf/Windows 8.3 guard defect. It was not waived. |
-| Windows GREEN | The repaired tree passed **33/33 focused tests** and then **149/149 full tests**, with no skips or cancellations; full duration 33,685 ms on Node 24.21.0. Five native 8.3 cases ran. |
+| Windows GREEN | Final full workflow **PASS in 55.35 seconds**, including **149/149 tests**, no skips/cancellations, 32,829 ms. Earlier focused qualification passed 33/33 including five native 8.3 cases. |
 | Fix provenance | Canonical-leaf worker fix `28ff573c407a588489abe9545cdaf18a8af7b6b3` is integrated as `bbf1d0e9b75cf153243a4722ad1ab91392445540`; Windows fixture quoting/format is committed as `14971ac`. The Windows-tested bytes match that combination. Codex bounded rename repair is `2cb2f07`. |
-| Package gate | **PASS**, 10.57 seconds on the same repaired source: real pack/install, offline exec, isolated npm link, actual MCP read/write and all eight compatibility aliases. Archive 54,173 bytes; unpacked payload 212,719 bytes; production dependencies 14,160,089 bytes. No global install or model call. |
-| Remaining gates | Final reviewed HEAD, normal build/check, managed Codex verification, new staged artifact, PR/hosted platform CI, permitted merge/main verification and infrastructure cleanup are pending. |
+| Package and Codex | **PASS**: archive 55,636 bytes; unpacked payload 216,577 bytes; installed production footprint 14,163,947 bytes. Actual pack/install/link and eight aliases passed. Native Codex 0.160.1 parsed isolated registration and launched two MCP sessions; no user config or model calls. |
+| Hosted CI | All four PR matrix jobs in `41372073094`, fast run `41372073095`, and push matrix `41372068412` **PASS**. Final-document checks and merge status are recorded by the final report/PR. |
+| Enabled staging | Worker version `4b726ec9-4389-4ba8-ada3-5758a3889c27`; artifact SHA-256 `97a0457b78e113c058ae8da3d3a6a54fcd93c2b35d1dd1781316c41001ac10a6`; `MCP_ENABLED=true`, owner-only access. |
 
 The current isolated Windows clone is
 `C:\Tools\Dev\MTerm-CLI\artifacts\worktrees\remote-mcp-20261102`.
-Its full-suite log is `artifacts/full-tests-canonical-green-20261102.log`.
-Package evidence is `artifacts/package-gate-canonical-20261102.log` and
-`artifacts/package-verify-8SfTVE/result.json`.
-Codex 0.160.1 was installed in that clone's `artifacts/ci-codex`; its managed
-registration gate is still pending. Do not rerun an active gate without first
-checking its retained output and exit status.
+Retained logs and the final exact-source results are indexed in the final sprint
+report. Earlier `full-tests-canonical-green-20261102.log` and package logs remain
+historical checkpoints. Codex 0.160.1 in `artifacts/ci-codex` passed managed
+registration. Do not repeat completed gates or redeploy unchanged code merely to
+resume this handoff.
 
 Use [REMOTE_MCP.md](REMOTE_MCP.md) for owner commands,
-[the live smoke report](validation/2026-11-02-remote-staging-smoke.json) for exact
+[the final live report](validation/2026-11-02-remote-staging-smoke-final.json) for exact
 claims, and [deployment/MTERM_STAGING.md](deployment/MTERM_STAGING.md) for resource
-IDs, pause and rollback. The smoke source precedes the final alias repair; it does
-not certify an untested later deployment. The MCP endpoint is
+IDs, pause and rollback. Final run ID:
+`2026-11-02T01-23-39-600Z-a0b41954-29c8-4163-b93f-a04a5c64b6a6`.
+The earlier `305c89c` smoke remains historical evidence. The MCP endpoint is
 <https://mcp-staging.m-techlabs.com/mcp>; private approval uses
 <https://mterm-staging.m-techlabs.com>.
 
@@ -49,6 +51,8 @@ at 262,144 bytes and frames at 300,000 bytes.
 The original `C:\Tools\Dev\MTerm-CLI` checkout remains untouched. Its eight
 modified and three new files were recovered through an isolated branch. Do not
 reset, clean or use the primary checkout as a disposable verification runner.
+The [preservation report](validation/2026-11-02-primary-preservation.json) confirms
+the primary eleven files and two other worktrees remained checksum-unchanged.
 
 ```text
 C:\Tools\Dev\MTerm-CLI\artifacts\checkpoints\remote-sprint-2026-11-02T00-11-45-504Z
@@ -58,11 +62,11 @@ manifest SHA-256:
 0a5ab4011bad9b94b8d1d08b41a87d00d4ac18188ccfefca9ed4cd102d619c60
 ```
 
-Next: collect the remaining existing gate results, finalize exact-head evidence
-and roadmap review, deploy only the qualified artifact, confirm staged cleanup,
-then publish and inspect the real PR/CI/merge state. Keep MCP paused until the
-qualified replacement is ready. Do not infer main changed or human authorization
-completed. [execution/NEXT_PARITY_PROMPT.md](execution/NEXT_PARITY_PROMPT.md) is
+Next: consult the final report/PR for delivery and checkpoint status, then help the
+owner complete Google sign-in, explicit pairing and ChatGPT consent. Keep state
+outside a small selected root and start the agent in the foreground. Continue
+unaccepted parity issues without repeating completed deployment work.
+[execution/NEXT_PARITY_PROMPT.md](execution/NEXT_PARITY_PROMPT.md) is
 the self-contained continuation; [TESTING.md](TESTING.md) lists the gates.
 
 ## Historical foundation — 2026-10-05
@@ -115,7 +119,8 @@ iterations only, never a substitute for final build/check/prepack. Package lock/
 GitHub content/workflow writes and normal pushes are verified now; earlier safety-denial notes are
 historical. Reinspection on 2026-11-02 of run 39166671238 found real canonical-path test failures
 on Windows/macOS and bin executable-mode drift on Linux. Do not change billing, protections or
-credentials. Final PR/merge and new hosted results remain pending; no full-platform support claim.
+credentials. The final code matrix now passes on all four runners; consult the final
+report/PR for merge status. That result does not close full product/platform acceptance.
 
 ## Remaining Codex parity work
 
@@ -159,7 +164,8 @@ The isolated `fix/remote-foundation-20261102` branch combines PR #67 head
 Both PR histories, automation modules, and orchestration guidance are retained.
 No feature acceptance credit is awarded by reconciliation. The original Windows
 checkout and its unpublished changes remain untouched; recovery and CI repairs
-were integrated as separate commits, with final delivery still pending.
+were integrated as separate commits. Final delivery and recovery-checkpoint state
+are recorded in the final sprint report and PR #69.
 
 ### Recovered configuration work
 
@@ -176,5 +182,6 @@ Focused tests reproduced the startup-root alias failure before the fix and pass 
 The repair only maps owner-selected root spellings to fixed canonical roots and retains nested
 link/private-component denial. Cwd/npm assertions now compare real filesystem paths; the npm
 bin is tracked executable to avoid package/link mode drift. The later canonical-leaf repair
-and actual Windows 149/149 and package results are recorded above; hosted matrix and
-final reviewed-head validation remain pending. See the foundation-portability change record for historical evidence.
+and final Windows, package, managed Codex and hosted matrix results are recorded
+above. See the foundation-portability change record for historical evidence and
+the final sprint report/PR for delivery status.

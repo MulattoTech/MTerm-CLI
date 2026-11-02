@@ -123,6 +123,37 @@ contains `hostname`, `zone_id`, `service:"mterm-gateway-staging"`, and the API's
 default slot `environment:"production"`. That slot name does not change the product's
 `ENVIRONMENT=staging`. Reuse an already correctly owned domain; stop for a conflict.
 
+## Final verified staging state
+
+| Evidence identity | Value |
+| --- | --- |
+| Tested source | `b90432a1bc138d59305692a9f74f110a475d0881` |
+| Immutable Windows-built artifact SHA-256 | `97a0457b78e113c058ae8da3d3a6a54fcd93c2b35d1dd1781316c41001ac10a6` |
+| Final smoke Worker version | `f643872f-5fbb-44be-9e3d-a6f8f3f32aab` |
+| Current owner-only version / preferred safe recovery target | `4b726ec9-4389-4ba8-ada3-5758a3889c27` |
+| Current deployment | `dcccecfe-353c-4c45-8691-a508bc6d8ee6` |
+| Final live SDK-to-Windows checks | 11/11 PASS; finished 2026-11-02 01:24:29 UTC / 2026-11-01 19:24:29 Central |
+| Current MCP mode | Enabled; read-only |
+| Temporary test identity | Service token and dedicated Access policy deleted; `STAGING_SERVICE_ID` removed |
+| Dashboard authorization | Original owner allow policy only |
+| Workers.dev / preview URLs | Disabled / disabled |
+| Registry | Existing SQLite namespace `b66edc2d536e474093e1a18d0e88a24d` preserved |
+
+The [final live smoke report](../validation/2026-11-02-remote-staging-smoke-final.json)
+records all fixture cleanup checks as true. No test agent or actual owner-paired agent
+remains running. The owner-only version uses the same tested artifact with the
+acceptance-only identity binding removed. Template defaults remain deliberately
+disabled/empty; they are not a snapshot of the live owner's bindings.
+
+Full Windows gates, the native Codex probe and four-platform CI passed for the tested
+code. PR #69's matrix/fast runs are
+[41372073094](https://github.com/MulattoTech/MTerm-CLI/actions/runs/41372073094) and
+[41372073095](https://github.com/MulattoTech/MTerm-CLI/actions/runs/41372073095);
+the push run is [41372068412](https://github.com/MulattoTech/MTerm-CLI/actions/runs/41372068412).
+The [final sprint record](../validation/2026-11-02-remote-sprint.md) is authoritative
+for final Git merge/checkpoint status. Human Google/Access sign-in, browser consent
+and ChatGPT connector use remain unverified. This is not production promotion.
+
 ## First recorded complete staging smoke
 
 | Evidence identity | Value |
@@ -131,10 +162,9 @@ default slot `environment:"production"`. That slot name does not change the prod
 | Source commit | `305c89c88a10f4c9243096e3d1125bde76f17563` |
 | Artifact SHA-256 | `f76e37d77c218bc9c2bc9203346ec98d590e5a69b7fef285bcd16792ae32c0f1` |
 
-This is a recovery reference from the first complete staging smoke, not an assertion
-that it remains the current deployment. The final validation report records the
-later release candidate, current version, exact tests, temporary-identity cleanup,
-and remaining owner actions. Manual PKCE/compatible-SDK proof is distinct from a
+This is historical evidence from the first complete staging smoke. Prefer the
+post-cleanup owner-only recovery version recorded above; the older version may
+restore obsolete bindings. Manual PKCE/compatible-SDK proof is distinct from a
 human completing Google/Access sign-in and connecting ChatGPT Web.
 
 ## Immediate pause: disable new MCP calls while preserving bindings
@@ -205,13 +235,17 @@ values; the earlier pause is not a guarantee that an old version stays disabled.
 After rollback, reapply the pause above and remove any temporary test identity
 through the authorized controls before restarting or re-enabling client access.
 
+The preferred recorded target below is the post-cleanup owner-only version, using
+the final verified artifact. Inspect its availability and current compatibility
+before applying it; preserve the existing Durable Object and Access resources.
+
 In the same PowerShell session as the pause commands:
 
 ```powershell
 $MTermRollbackBody = @{
     strategy = 'percentage'
     versions = @(@{
-        version_id = '2083411f-68a7-4ec8-9ecc-5c2473ad09b9'
+        version_id = '4b726ec9-4389-4ba8-ada3-5758a3889c27'
         percentage = 100
     })
 } | ConvertTo-Json -Depth 8 -Compress

@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-11-02T01:26:05.666Z",
+  "temporaryServiceTokenDeleted": true,
+  "temporaryAccessPolicyDeleted": true,
+  "temporaryWorkerBindingAbsent": true,
+  "ownerAccessPolicyOnly": true,
+  "workersDevAndPreviewsDisabled": true,
+  "results": [
+    {
+      "name": "health",
+      "status": 200,
+      "passed": true,
+      "health": {
+        "service": "mterm-remote",
+        "mode": "read-only",
+        "enabled": true,
+        "environment": "staging",
+        "build": "b90432a1bc138d59305692a9f74f110a475d0881"
+      }
+    },
+    {
+      "name": "resource-discovery",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "oauth-discovery",
+      "status": 200,
+      "passed": true
+    },
+    {
+      "name": "anonymous-mcp",
+      "status": 401,
+      "passed": true
+    },
+    {
+      "name": "anonymous-dashboard",
+      "status": 302,
+      "passed": true
+    },
+    {
+      "name": "deleted-service-identity",
+      "status": 302,
+      "passed": true
+    }
+  ],
+  "passed": true
+}

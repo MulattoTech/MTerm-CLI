@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 // AI-Change: 2026-10-05-codex-parity-foundation (OpenAI / GPT-6 Astra Pro; self-reported)
+// Modified: 2026-11-02-directory-contract; bounded deterministic listing and honest partial diagnostics.
 // Original bounded adapter. Pinned upstream behavioral references and limitations: docs/parity/.
+import type { Dirent } from 'node:fs';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import os from 'node:os';
@@ -8,7 +10,7 @@ import { z } from 'zod';
 import type { CompatibilityPreferences } from './compat-config.js';
 import { FileService } from './files.js';
 import { privateName } from './policy.js';
-import { cancelled, fail, safeError } from './errors.js';
+import { cancelled, fail, safeError, ToolError } from './errors.js';
 const pathname = z.string().min(1).max(4096);
 const origin = z.enum(['ui', 'llm']).optional();
 export const desktopFileSchemas = {
@@ -184,39 +186,119 @@ export class DesktopCommanderFiles {
     });
   }
   async listDirectory(input: unknown, signal?: AbortSignal): Promise<DesktopTextResult> {
+    cancelled(signal);
     const a = desktopFileSchemas.list.parse(input);
     if (a.origin === 'ui') fail('UNSUPPORTED_FORMAT', 'UI previews are not implemented.');
+    // Root validation remains a tool failure, never a successful diagnostic row.
     const base = await this.files.policy.resolve(this.absolute(a.path));
+    cancelled(signal);
     const result: string[] = [];
     let visited = 0,
       usedBytes = 0;
+    let stopReason: 'entry' | 'time' | undefined;
     const until = performance.now() + 5000;
+    // This deadline is cooperative between awaits; it cannot interrupt an OS read.
+    const expired = () => {
+      if (performance.now() < until) return false;
+      stopReason ??= 'time';
+      return true;
+    };
     const push = (text: string) => {
-      usedBytes += Buffer.byteLength(text);
+      usedBytes += Buffer.byteLength(text) + (result.length ? 1 : 0);
       if (usedBytes > 262144) fail('RESPONSE_LIMIT', 'Directory output exceeded byte budget.');
       result.push(text);
     };
+    const operationalError = (error: unknown): string => {
+      cancelled(signal);
+      if (error instanceof ToolError) throw error;
+      const code = (error as NodeJS.ErrnoException)?.code;
+      if (typeof code !== 'string' || !/^E[A-Z0-9]+$/.test(code)) throw error;
+      return code;
+    };
     const visit = async (dir: string, depth: number): Promise<void> => {
       cancelled(signal);
-      if (depth >= a.depth) return;
-      const stream = await fs.opendir(dir);
+      if (depth >= a.depth || stopReason || expired()) return;
+      const cap = depth === 0 ? 1000 : 100;
       const entries: Array<{ name: string; directory: boolean; link: boolean }> = [];
-      for await (const e of stream) {
+      let eligibleCount = 0,
+        complete = false;
+      let readError: string | undefined;
+      let stream: Awaited<ReturnType<typeof fs.opendir>> | undefined;
+      try {
+        stream = await fs.opendir(dir);
+      } catch (error) {
         cancelled(signal);
-        if (++visited > 4000 || performance.now() > until) {
-          push('[WARNING] Directory traversal limit reached.');
-          return;
-        }
-        if (privateName(e.name)) continue;
-        if (entries.length === (depth === 0 ? 1000 : 100)) {
-          push('[WARNING] ' + path.relative(base, dir) + ': additional entries omitted by bounded listing.');
-          break;
-        }
-        entries.push({ name: e.name, directory: e.isDirectory(), link: e.isSymbolicLink() });
+        if (depth === 0) throw error;
+        readError = operationalError(error);
       }
-      entries.sort((x, y) => x.name.localeCompare(y.name));
+      if (stream) {
+        const iterator = stream[Symbol.asyncIterator]();
+        let started = false;
+        try {
+          while (true) {
+            cancelled(signal);
+            if (expired()) break;
+            // No 4001st entry or EOF lookahead: a total is unknown until EOF was observed.
+            if (visited >= 4000) {
+              stopReason ??= 'entry';
+              break;
+            }
+            let next: IteratorResult<Dirent>;
+            try {
+              started = true;
+              next = await iterator.next();
+            } catch (error) {
+              readError = operationalError(error);
+              break;
+            }
+            cancelled(signal);
+            if (next.done) {
+              complete = true;
+              expired();
+              break;
+            }
+            visited++;
+            if (expired()) break;
+            const e = next.value;
+            if (privateName(e.name)) continue;
+            eligibleCount++;
+            // Retain only the lexical prefix, independent of OS enumeration order.
+            // Private names consume the work budget but never enter counts or output.
+            let low = 0,
+              high = entries.length;
+            while (low < high) {
+              const middle = (low + high) >>> 1;
+              if (entries[middle]!.name < e.name) low = middle + 1;
+              else high = middle;
+            }
+            if (low < cap) {
+              if (entries.length === cap) entries.pop();
+              entries.splice(low, 0, {
+                name: e.name,
+                directory: e.isDirectory(),
+                link: e.isSymbolicLink(),
+              });
+            }
+          }
+        } finally {
+          try {
+            // Returning an unstarted async generator does not execute its finally.
+            if (started) await iterator.return?.();
+            else await stream.close();
+          } catch (error) {
+            readError = operationalError(error);
+            complete = false;
+          }
+        }
+      }
+      cancelled(signal);
+      let emittedAll = !expired();
       for (const e of entries) {
         cancelled(signal);
+        if (expired()) {
+          emittedAll = false;
+          break;
+        }
         const child = path.join(dir, e.name),
           rel = path.relative(base, child).split(path.sep).join('/');
         if (e.link) {
@@ -225,15 +307,47 @@ export class DesktopCommanderFiles {
         }
         try {
           await this.files.policy.resolve(child);
-        } catch {
+        } catch (error) {
+          cancelled(signal);
+          if (error instanceof ToolError && error.code === 'CANCELLED') throw error;
+          if (expired()) {
+            emittedAll = false;
+            break;
+          }
           push('[DENIED] ' + rel);
           continue;
         }
+        cancelled(signal);
+        if (expired()) {
+          emittedAll = false;
+          break;
+        }
         push((e.directory ? '[DIR] ' : '[FILE] ') + rel);
-        if (e.directory) await visit(child, depth + 1);
+        if (e.directory && !stopReason) await visit(child, depth + 1);
       }
+      const label = path.relative(base, dir).split(path.sep).join('/') || path.basename(base) || base;
+      if (readError) {
+        push(
+          readError === 'ENOENT'
+            ? `[NOT_FOUND] ${label} — path does not exist`
+            : ['EACCES', 'EPERM', 'ETIMEDOUT'].includes(readError)
+              ? `[DENIED] ${label} — not accessible (permission denied, cloud-only file, or Full Disk Access not granted)`
+              : `[DENIED] ${label}`,
+        );
+      }
+      if (!complete || !emittedAll)
+        push(`[WARNING] ${label}: listing incomplete; additional entries may be omitted.`);
+      else if (eligibleCount > cap)
+        push(
+          `[WARNING] ${label}: ${eligibleCount - cap} items hidden (showing first ${cap} of ${eligibleCount} total)`,
+        );
     };
     await visit(base, 0);
+    cancelled(signal);
+    if (stopReason)
+      push(
+        `[WARNING] Directory traversal stopped at the ${stopReason === 'entry' ? '4000-entry' : '5-second'} limit; listing is incomplete.`,
+      );
     return reply(result.join('\n'));
   }
   async moveFile(input: unknown, signal?: AbortSignal): Promise<DesktopTextResult> {

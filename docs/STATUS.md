@@ -1,4 +1,23 @@
-# MTerm-CLI status — 2026-11-02 UTC
+# MTerm-CLI status — qualified directory contract
+
+The bounded DCP-022 listing correction at `6eed7f0` is carried by
+[PR #75](https://github.com/MulattoTech/MTerm-CLI/pull/75). It passed native
+focused 18/18, full Windows 205/205, actual installed six-group directory proof,
+normal package/self-host/prepack, source and installed synthetic Codex, fresh
+committed extraction and all nine implementation hosted checks without retries.
+See the [contract report](validation/2026-11-02-directory-contract.md).
+Final documentation checks, normal merge/main and recovery remain separate.
+
+Fresh Brave dashboard and Cloudflare management observations confirm the existing
+read-only owner and recorded staging deployment. The dashboard has zero client
+authorizations; actual ChatGPT consent/discovery/read is still unperformed.
+No pairing, owner restart, deployment, auth or capability change occurred.
+
+[PR #74 final delivery](https://github.com/MulattoTech/MTerm-CLI/pull/74#issuecomment-6578358474)
+is complete. Do not repeat its successful setter work or owner pairing.
+Acceptance remains DCP 0/48, WEB 0/12 and broad maturity 29.12%.
+
+## Previous status observations
 
 **DesktopCommander Codex acceptance remains 0/48, NOT PASS.** The 300-item
 weighted maturity ledger is a separate measurement. Neither passing CI nor a

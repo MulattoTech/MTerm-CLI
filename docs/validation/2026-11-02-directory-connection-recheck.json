@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-02T13:52:59Z",
+  "scope": "Read-only supported client path and deployment recheck; additive observation only",
+  "baseline": {
+    "source": "Pasted text(20261102-133753).txt",
+    "historicalMain": "7d55c6a2c498a02ce0191ce3f0a1a4a109c042ea",
+    "historicalGatewaySource": "b90432a1bc138d59305692a9f74f110a475d0881",
+    "historicalWorkerVersion": "af4fd06e-c4a3-4545-ad22-31d0ae956215",
+    "historicalValuesFreshlyVerified": false
+  },
+  "browser": {
+    "skillRead": "browser:control-browser",
+    "bootstrapAttempted": true,
+    "result": "error",
+    "errorCode": "UNKNOWN",
+    "message": "Browser access requires the originating browser context. Open ChatGPT in the browser with the connected extension and try again.",
+    "originatingBrowserConnected": false,
+    "browserFamilyVerified": false,
+    "tabsListed": false,
+    "navigationAttempted": false,
+    "authenticatedDashboardObserved": false,
+    "deniedChatGptHostRetried": false,
+    "cloudBrowserFallbackAttempted": false
+  },
+  "toolDiscovery": {
+    "scope": "Currently exposed ALL_TOOLS names and descriptions",
+    "mtermMatches": 0,
+    "establishesGlobalPluginAbsence": false
+  },
+  "cloudflare": {
+    "openApiRead": "success",
+    "discoveredReadEndpoints": [
+      "/accounts",
+      "/accounts/{account_id}/workers/scripts/{script_name}/deployments",
+      "/accounts/{account_id}/workers/scripts/{script_name}/versions",
+      "/accounts/{account_id}/access/apps",
+      "/accounts/{account_id}/access/apps/{app_id}/policies"
+    ],
+    "accountDiscoveryCall": "mcp__codex_apps__cloudflare_execute: GET /accounts, per_page=50; projected account ID and name only",
+    "accountDiscoveryResult": "unobserved; combined read-only batch interrupted after 766.6 seconds",
+    "runningCellId": null,
+    "remoteCallId": null,
+    "workerDeploymentReadAttempted": false,
+    "accessPolicyReadAttempted": false,
+    "freshWorkerIdentityVerified": false,
+    "freshAccessPolicyVerified": false,
+    "retryAttempted": false
+  },
+  "pluginDiscovery": {
+    "skillRead": "plugin-management:plugin-management",
+    "search": {
+      "tool": "mcp__codex_apps__plugin_management_search_plugins",
+      "arguments": {"query": "MTerm", "limit": 10},
+      "result": "unobserved; combined read-only batch interrupted"
+    },
+    "personalListing": {
+      "tool": "mcp__codex_apps__plugin_creator_list_owned_personal_plugins",
+      "arguments": {"limit": 50},
+      "result": "unobserved; combined read-only batch interrupted"
+    },
+    "previousNonretryableCreationRetried": false,
+    "creationRepairEstablished": false,
+    "pluginInstallationEstablished": false
+  },
+  "clientEvidence": {
+    "actualConsent": false,
+    "actualToolDiscovery": false,
+    "mtermListDevicesInvoked": false,
+    "selectedDeviceRead": false,
+    "outsideRootDenial": false,
+    "authorizedLifecycleObserved": false,
+    "ownerOnlineStatusFreshlyVerified": false
+  },
+  "mutations": {
+    "remote": false,
+    "ownerEnrollment": false,
+    "authOrPermissions": false,
+    "deployment": false,
+    "credentialsExported": false,
+    "browserStateExported": false
+  },
+  "conclusion": "No functioning supported client path was established in this recheck. Current management-plane identity and policy remain unverified. Historical paired/online observations remain historical; actual client connection acceptance is still unperformed."
+}

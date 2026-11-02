@@ -1,4 +1,45 @@
-# MTerm-CLI: finish verified DCP-010 delivery and supported client connection
+# MTerm-CLI continuation — qualified bounded directory contract
+
+Execute from current GitHub/local state. PR #74 is already delivered at merged
+main `7d55c6a2c498a02ce0191ce3f0a1a4a109c042ea`; do not repeat its setter work.
+Current directory implementation `6eed7f0dc9ccfd704b78c39f8d0f31e5eaf3648a`, tree
+`e01840a4ab07d80c085e1ebfabf75928b7b90fcf`, is in PR #75 on
+`feat/dcp-022-directory-contract-20261102`. The isolated Windows delivery clone
+is `C:\Tools\Dev\MTerm-CLI\artifacts\worktrees\directory-contract-20261102`;
+the ordinary source clone is `mterm-parity-20261102`.
+
+Read `docs/validation/2026-11-02-directory-contract.md`, the focused/native/fresh/
+hosted review receipts and the new `2026-11-02-directory-connection-followup.json`.
+Native focused 18/18, full Windows 205/205 with zero skips, actual full wrapper,
+self-host, normal prepack, source/installed Codex and six explicit installed
+directory groups passed. Fresh committed extraction passed locked install,
+reviewed build, normal prepack and actual package plus six directory groups.
+All nine implementation checks passed with no retry. The source files remain
+the exact reviewed hashes; no model call or real user Codex config change occurred.
+
+This record precedes final documentation-head checks, expected-head merge/main
+and recovery. Inspect later final receipts and the downloadable continuation
+before repeating completed gates. Preserve the task-owned GREEN stash
+`4a2cf7cc1f0a15d6ae9ea1d6ee5224c1fbb609ea`, original RED, all old recovery records,
+the eleven dirty primary files, protected checkouts and running owner process.
+
+Primary-session Brave and Cloudflare reads succeeded after the earlier subagent
+observation failed. The dashboard showed one online read-only owner, zero client
+authorizations and staging build `b90432a1bc138d59305692a9f74f110a475d0881`.
+Management confirmed version `af4fd06e-c4a3-4545-ad22-31d0ae956215` at 100% and
+the owner-only dashboard Access policy. Actual client consent/discovery/read is
+still unperformed. Use only a legitimately available or repaired supported client
+path; do not retry non-retryable plugin creation or the denied ChatGPT host.
+
+The root `C:\Tools\Dev\MTerm-RemoteWorkspace` is already approved. Do not pair
+again, restart/update the running owner's checkout, enable autostart or remote
+write/execute, promote production, change real auth or make model/paid calls.
+Owner rulings on DCP-009 omissions/privacy, DCP-010 effective-output/coercion and
+DCP-022 bounded ordering/error/resource differences remain explicit requirements.
+All 300 protected catalog fields and issue states remain unchanged: DCP 0/48,
+WEB 0/12, maturity 29.12%.
+
+## Previous continuation context — historical
 
 **Continuation date: 2026-11-02. Execute the work.** Re-read current GitHub, local
 state, retained logs and deployed identity before mutation. This is a checkpoint,

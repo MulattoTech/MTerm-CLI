@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "assembledAtUtc": "2026-11-02T14:02:58.350085+00:00",
+  "baseCommit": "7d55c6a2c498a02ce0191ce3f0a1a4a109c042ea",
+  "scope": "Supplementary scratch Linux Node24.22.1 direct-service RED/GREEN and independent-review repair. No nativeWindows, installedMCP, Codex, model-call or release acceptance inferred.",
+  "stages": [
+    {
+      "startedAt": "2026-11-02T13:48:42.016745+00:00",
+      "finishedAt": "2026-11-02T13:48:42.896091+00:00",
+      "exitCode": 1,
+      "nodeVersion": "v24.22.1",
+      "sourceHashes": {
+        "src/desktop-commander-files.ts": "6b625cd73bb77d4f947e8c354a4c879d35f7e566cd17928f24e5f838a8680782",
+        "tests/compat-directory-listing.test.mjs": "d97078667600b32383fa8fd253efbb3079c367b76befa6df18b83e8a6ffbc7f0"
+      },
+      "logSha256": "38306b0924916a3294ca988395598731663bf75d7df896958ff03e11f37b0a0f",
+      "retainedRecord": "artifacts/directory-contract-local-red/result.json",
+      "recordSha256": "b1cee0482f7757a14ef47c587f0ac0d079fe0a915231d9b4da46d0e5d4b3029a"
+    },
+    {
+      "recordedAt": "2026-11-02T13:52:24.762786+00:00",
+      "command": [
+        "node",
+        "--test",
+        "--test-isolation=none",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/compat-directory-listing.test.mjs"
+      ],
+      "observedExitCode": 1,
+      "tests": 16,
+      "passed": 3,
+      "failed": 13,
+      "skipped": 0,
+      "cancelled": 0,
+      "platform": "Linux scratch",
+      "nodeVersion": "v24.22.1",
+      "scope": "Supplementary direct-service RED; not native Windows or standard isolated runner proof.",
+      "logSha256": "485ff5f790e8d57f522be686e6b7338364348c0437c798ce6f0a0d034150cc16",
+      "testSha256": "d97078667600b32383fa8fd253efbb3079c367b76befa6df18b83e8a6ffbc7f0",
+      "runtimeSha256": "6b625cd73bb77d4f947e8c354a4c879d35f7e566cd17928f24e5f838a8680782",
+      "retainedRecord": "artifacts/directory-contract-local-red/direct-result.json",
+      "recordSha256": "dce623fe358daa016e7680d6619b839839906025cd406c344c4c467787444cbe"
+    },
+    {
+      "startedAt": "2026-11-02T13:56:41.835355+00:00",
+      "finishedAt": "2026-11-02T13:56:42.926454+00:00",
+      "command": [
+        "node",
+        "--test",
+        "--test-isolation=none",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/compat-directory-listing.test.mjs"
+      ],
+      "observedExitCode": 0,
+      "platform": "Linux scratch",
+      "nodeVersion": "v24.22.1",
+      "scope": "Supplementary direct-service GREEN; not native Windows or standard isolated runner proof.",
+      "logSha256": "d1a93e9092271e4a26b1e4aa19764110ef04954b3fd76136d1af906d6f73f164",
+      "testSha256": "d97078667600b32383fa8fd253efbb3079c367b76befa6df18b83e8a6ffbc7f0",
+      "runtimeSha256": "0c0c0b25d09f40532048579fb157bf6d3bbe3b327a8712b2a1a9028377bbabc5",
+      "installedVerifierSha256": "a98081ccd35d0b3697312f2b543aed2a9015b5e97de81e3213705a189d855478",
+      "retainedRecord": "artifacts/directory-contract-local-green/direct-result.json",
+      "recordSha256": "c0a20a29c781c95d19629ed087ab88dcaadbc2224333a6fa26adc25dad624cf1"
+    },
+    {
+      "startedAt": "2026-11-02T13:58:58.028478+00:00",
+      "finishedAt": "2026-11-02T13:58:58.321532+00:00",
+      "command": [
+        "node",
+        "--test",
+        "--test-isolation=none",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "--test-name-pattern=during opendir",
+        "tests/compat-directory-listing.test.mjs"
+      ],
+      "observedExitCode": 1,
+      "counts": {
+        "tests": 2,
+        "pass": 0,
+        "fail": 2,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "platform": "Linux scratch",
+      "nodeVersion": "v24.22.1",
+      "scope": "Two review-found real-directory-handle fixtures, before cleanup fix; supplementary direct-service RED.",
+      "logSha256": "5310a1e1e580ccb43c3c96ff0f0cd3ab659b5935ea8519ebf28a27173dc563dc",
+      "testSha256": "1a141cc647965d4365e5828ea114c0b8b44585d27bddc2e927714747345c3d49",
+      "runtimeSha256": "0c0c0b25d09f40532048579fb157bf6d3bbe3b327a8712b2a1a9028377bbabc5",
+      "retainedRecord": "artifacts/directory-contract-review-red/direct-result.json",
+      "recordSha256": "d9362c685643014b19913c6e852173c91070c4db417cf84db7c05ce343d1646e"
+    },
+    {
+      "startedAt": "2026-11-02T13:59:21.742256+00:00",
+      "finishedAt": "2026-11-02T13:59:22.930747+00:00",
+      "command": [
+        "node",
+        "--test",
+        "--test-isolation=none",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/compat-directory-listing.test.mjs"
+      ],
+      "observedExitCode": 0,
+      "counts": {
+        "tests": 18,
+        "pass": 18,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "platform": "Linux scratch",
+      "nodeVersion": "v24.22.1",
+      "scope": "18-case supplementary direct-service GREEN after independent handle-cleanup review; not native Windows or standard isolated runner proof.",
+      "logSha256": "93b8a6bae4f9df7e8dcd2b47ba01518f25b77a15c4b473552dff54425db52528",
+      "testSha256": "1a141cc647965d4365e5828ea114c0b8b44585d27bddc2e927714747345c3d49",
+      "runtimeSha256": "3cd606ebbf5404da939c238d6173721d4656d1ee28fd4982ba259b826ec062de",
+      "installedVerifierSha256": "7465e2dfc138d0f5da27596400ac0ede67348821c98afc8c1591f0666b047adc",
+      "retainedRecord": "artifacts/directory-contract-review-green/direct-result.json",
+      "recordSha256": "facdaaaeb22e46f39f46d757d06d74e8dee456f8b27a5b17d0d9700d93f54cb3"
+    }
+  ],
+  "limits": [
+    "Ordinary test isolation failed before assertions; direct no-isolation tests are explicitly identified.",
+    "Original16-contract RED and separate2-handle-review RED used different runtime/test byte identities.",
+    "Exact original directRED start/end were not captured; recordedAt is not substituted for execution time."
+  ]
+}

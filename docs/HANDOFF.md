@@ -1,4 +1,41 @@
-# MTerm-CLI handoff — 2026-11-02 configuration continuation
+# MTerm-CLI handoff — qualified directory contract
+
+## Current DCP-022 delivery
+
+Implementation `6eed7f0dc9ccfd704b78c39f8d0f31e5eaf3648a` is in
+[PR #75](https://github.com/MulattoTech/MTerm-CLI/pull/75), based on verified main
+`7d55c6a2c498a02ce0191ce3f0a1a4a109c042ea`. Read the
+[directory report](validation/2026-11-02-directory-contract.md) and exact native,
+fresh and hosted receipts before repeating any gate. Native focused RED was
+3 passes/13 failures; final GREEN passed 18/18. Full Windows qualification passed
+205/205 with no skips, the actual full wrapper, self-host, normal prepack,
+source/installed native Codex and six explicit installed directory groups.
+Fresh committed-source extraction passed locked install/build/prepack/package
+with 205/205 tests and the same six directory groups. All nine implementation
+checks passed on attempt 1. No model call occurred.
+
+Final documentation-head review/build/checks, expected-head merge, main checks
+and additive recovery remain next at this preparation. Keep the task-owned
+Windows GREEN stash `4a2cf7cc1f0a15d6ae9ea1d6ee5224c1fbb609ea` and all original
+evidence. Final delivery receipts or the downloadable continuation supersede
+these preparation fields once those actions are actually observed.
+
+The [primary-session connection follow-up](validation/2026-11-02-directory-connection-followup.json)
+resolved the earlier browser/management observation gap: Brave's authenticated
+dashboard showed one online read-only owner, zero client authorizations and build
+`b90432a1bc138d59305692a9f74f110a475d0881`. Cloudflare confirmed the historical
+Worker version still receives 100% and the dashboard policy remains owner-only.
+Actual ChatGPT consent/discovery/read remains unperformed. No denied-host or
+non-retryable creation retry occurred; do not pair or approve the root again.
+
+PR #74 is already delivered. Preserve the dirty primary, protected checkouts and
+running `config-qualification-20261102` owner agent. DCP acceptance remains 0/48,
+WEB 0/12 and maturity 29.12%; all protected catalog fields remain unchanged.
+Configuration and listing intentional differences still need precise owner
+contract rulings. Source/installed Codex parsing and SDK rounds are not actual
+model-driven agent tool invocation.
+
+## Prior configuration handoff — historical preparation
 
 ## Current DCP-010 setter contract qualification
 

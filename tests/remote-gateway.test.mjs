@@ -97,6 +97,12 @@ test('Access JWT signature, audience, expiry and allowlist are enforced independ
   assert.equal((await f.req('/api/dashboard', { jwt: await f.identity('owner@example.test', { aud: 'audience-one' }), host: dashboard })).status, 200);
   for (const aud of ['wrong', 'audience-one.evil', ['wrong'], 1, null])
     assert.equal((await f.req('/api/dashboard', { jwt: await f.identity('owner@example.test', { aud }), host: dashboard })).status, 401);
+  const request = new Request(dashboard, { headers: { 'cf-access-jwt-assertion': valid } });
+  await assert.rejects(verifyAccess(request, f.env, async (url, options) => {
+    assert.equal(options.redirect, 'manual');
+    assert.equal(String(url), issuer + '/cdn-cgi/access/certs');
+    return new Response(null, { status: 302, headers: { location: 'https://attacker.invalid/keys' } });
+  }), error => error.status === 503 && error.code === 'identity_keys_unavailable');
 });
 test('PKCE code is single use and tokens are resource-bound', async () => {
   const f = await fixture(), auth = await f.oauth();

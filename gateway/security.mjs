@@ -94,7 +94,9 @@ export async function verifyAccess(request, env, fetcher = fetch) {
     const audienceMatches = typeof c.aud === 'string' ? c.aud === env.ACCESS_AUDIENCE
       : Array.isArray(c.aud) && c.aud.every(a => typeof a === 'string') && c.aud.includes(env.ACCESS_AUDIENCE);
     requireValue(c.type === 'app' && c.iss === iss && audienceMatches && Number.isFinite(c.exp) && c.exp > now && (!c.nbf || c.nbf <= now + 5) && Number.isFinite(c.iat) && c.iat <= now + 5, 401, 'invalid_identity');
-    const response = await fetcher(iss + '/cdn-cgi/access/certs', { signal: AbortSignal.timeout(5000), redirect: 'error' });
+    // Workers supports manual/follow, but rejects redirect:error at construction.
+    // Manual mode plus the success check below rejects redirects without following.
+    const response = await fetcher(iss + '/cdn-cgi/access/certs', { signal: AbortSignal.timeout(5000), redirect: 'manual' });
     requireValue(response.ok, 503, 'identity_keys_unavailable');
     const keys = JSON.parse(await boundedText(response, 32768));
     requireValue(Array.isArray(keys.keys) && keys.keys.length <= 20, 503, 'identity_keys_unavailable');

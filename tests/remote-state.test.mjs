@@ -7,6 +7,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { randomUUID } from 'node:crypto';
 import { RemoteStateStore } from '../dist/remote/state.js';
+import { remoteMain } from '../dist/remote/cli.js';
 
 test('remote state separates public config from protected credentials and round-trips local protection', async () => {
   const temp = await fs.mkdtemp(path.join(os.tmpdir(), 'mterm-state-'));
@@ -72,4 +73,23 @@ test('device credential binds its enrolled root and refuses a retargeted root', 
     await fs.symlink(other, root, process.platform === 'win32' ? 'junction' : 'dir');
     await assert.rejects(store.config(), e => e.code === 'REMOTE_ROOT_CHANGED');
   } finally { await fs.rm(temp, { recursive: true, force: true }); }
+});
+
+test('idempotent remote setup reports an existing pairing accurately', async () => {
+  const temp = await fs.mkdtemp(path.join(os.tmpdir(), 'mterm-state-setup-'));
+  const originalLog = console.log, messages = [];
+  try {
+    const root = path.join(temp, 'fixture'), state = path.join(temp, 'state'); await fs.mkdir(root);
+    const args = ['setup', '--gateway', 'https://gateway.test', '--dashboard', 'https://dashboard.test', '--root', root, '--name', 'Fixture', '--state-dir', state, '--apply'];
+    console.log = value => messages.push(value);
+    assert.equal(await remoteMain(args), 0);
+    const store = await RemoteStateStore.open(state), deviceId = randomUUID();
+    await store.savePairing(deviceId, 'fixture-setup-token');
+    assert.equal(await remoteMain(args), 0);
+    const report = JSON.parse(messages.at(-1));
+    assert.equal(report.paired, true);
+    assert.equal(report.deviceId, deviceId);
+    assert.equal(report.next, 'mterm-cli remote start');
+    assert.ok(!JSON.stringify(messages).includes('fixture-setup-token'));
+  } finally { console.log = originalLog; await fs.rm(temp, { recursive: true, force: true }); }
 });

@@ -7,7 +7,7 @@ import { setTimeout as delay } from 'node:timers/promises';
 import { fail, plain } from '../errors.js';
 import { RemoteReadAdapter, remoteRoot } from './adapter.js';
 import { GatewayTransport, normalizeGateway, RemoteAgent } from './agent.js';
-import { defaultRemoteStateDirectory, RemoteStateStore } from './state.js';
+import { defaultRemoteStateDirectory, RemoteStateStore, type RemoteConfig } from './state.js';
 import { READ_TOOLS, UUID_PATTERN, WIRE_VERSION } from './protocol.js';
 
 export const REMOTE_HELP = `MTerm remote — opt-in outbound read-only agent
@@ -130,10 +130,10 @@ export async function remoteMain(args: string[]): Promise<number> {
   if (command === 'setup') {
     if (!opts.gateway || !opts.root) fail('USAGE', 'Remote setup requires --gateway HTTPS_ORIGIN and --root ABSOLUTE_PATH.');
     const gateway = normalizeGateway(opts.gateway), root = await remoteRoot(opts.root);
-    const config = { schemaVersion: 1 as const, gateway, dashboard: normalizeGateway(opts.dashboard ?? gateway), root, name: plain(opts.name ?? os.hostname()).slice(0, 80) };
+    let config: RemoteConfig = { schemaVersion: 1, gateway, dashboard: normalizeGateway(opts.dashboard ?? gateway), root, name: plain(opts.name ?? os.hostname()).slice(0, 80) };
     if (!config.name.trim()) fail('USAGE', 'Device name must be nonempty.');
-    if (opts.apply) await (await RemoteStateStore.open(opts.state)).configure(config);
-    console.log(JSON.stringify({ ...config, stateDirectory: opts.state, applied: opts.apply, paired: false, permissions: 'read-only', autostart: false, next: opts.apply ? 'mterm-cli remote pair' : 'Repeat with --apply to save this configuration.' }, null, 2));
+    if (opts.apply) config = await (await RemoteStateStore.open(opts.state)).configure(config);
+    console.log(JSON.stringify({ ...config, stateDirectory: opts.state, applied: opts.apply, paired: !!config.deviceId, permissions: 'read-only', autostart: false, next: opts.apply ? config.deviceId ? 'mterm-cli remote start' : 'mterm-cli remote pair' : 'Repeat with --apply to save this configuration.' }, null, 2));
     return 0;
   }
   const store = await RemoteStateStore.open(opts.state, false);

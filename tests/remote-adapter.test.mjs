@@ -6,7 +6,7 @@ import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
 import { randomUUID } from 'node:crypto';
-import { RemoteReadAdapter } from '../dist/remote/adapter.js';
+import { RemoteReadAdapter, remoteRoot } from '../dist/remote/adapter.js';
 import { READ_TOOLS, WIRE_VERSION } from '../dist/remote/protocol.js';
 
 const deviceId = randomUUID();
@@ -33,6 +33,14 @@ test('remote adapter reads actual scoped content and advertises only five immuta
     assert.ok(READ_TOOLS.every(t => t.annotations.readOnlyHint && !t.annotations.destructiveHint));
     const info = await adapter.execute(request('mterm_file_info', { path: 'sample.txt' }));
     assert.equal(info.result.structuredContent.file, true);
+  } finally { await fs.rm(root, { recursive: true, force: true }); }
+});
+
+test('remote setup root validation rejects a regular file before configuration or pairing', async () => {
+  const root = await fs.mkdtemp(path.join(os.tmpdir(), 'mterm-remote-root-'));
+  try {
+    const file = path.join(root, 'file.txt'); await fs.writeFile(file, 'fixture');
+    await assert.rejects(remoteRoot(file), e => e.code === 'INVALID_ROOT');
   } finally { await fs.rm(root, { recursive: true, force: true }); }
 });
 

@@ -9,7 +9,7 @@
   },
   "scope": "Remote WEB-001..012 acceptance; independent of local DCP-001..048 and broad CLI-300 maturity",
   "sourceHead": "b90432a1bc138d59305692a9f74f110a475d0881",
-  "sourceLineage": "Reviewed integration b90432a with final Windows/package/pinned-native-Codex gates and all four hosted platforms passing; Final publication and documentation checks are recorded in PR #69.",
+  "sourceLineage": "Reviewed executable integration b90432a passed final Windows/package/pinned-native-Codex and four-platform gates. PR #69 integration 169eb9b81964c4710072fe677d7dbab4d3184b79 passed all nine final checks: four-platform PR matrix 41373587011, four-platform push matrix 41373582738 and fast run 41373586955. Merged main 997a005db94f96484710ca8238fbe642da592a9c passed four-platform matrix 41374054611 and fast run 41374054610. These are completed PR #69 closeout results, not a prediction for this metadata correction.",
   "githubEpic": "https://github.com/MulattoTech/MTerm-CLI/issues/53",
   "acceptance": {
     "accepted": 0,
@@ -199,11 +199,17 @@
       "level": "final Windows orchestration and exact hosted CI",
       "status": "passed",
       "refs": [
-        "docs/validation/2026-11-02-remote-sprint.md"
+        "docs/validation/2026-11-02-remote-sprint.md",
+        "https://github.com/MulattoTech/MTerm-CLI/pull/69",
+        "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41373587011",
+        "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41373582738",
+        "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41373586955",
+        "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41374054611",
+        "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41374054610"
       ],
       "sourceCommit": "b90432a1bc138d59305692a9f74f110a475d0881",
-      "observation": "Windows existing full orchestration passed in 55.35s: reviewed build/typecheck/format/parity, 149/149 tests without skips (32,829 ms), package/isolated-link and test-owned native Codex 0.160.1 managed verification; tracked diff clean. PR matrix 41372073094 passed all four platforms, fast 41372073095 passed, push matrix 41372068412 passed. Final publication and documentation checks are recorded in PR #69.",
-      "limits": "These are exact-build gates, not additional CLI stage credit or WEB issue acceptance. Final documentation checks are recorded in PR #69."
+      "observation": "Windows existing full orchestration passed in 55.35s: reviewed build/typecheck/format/parity, 149/149 tests without skips (32,829 ms), package/isolated-link and test-owned native Codex 0.160.1 managed verification; tracked diff clean. PR matrix 41372073094 passed all four platforms, fast 41372073095 passed, push matrix 41372068412 passed. PR #69 integration 169eb9b81964c4710072fe677d7dbab4d3184b79 passed all nine final checks: four-platform PR matrix 41373587011, four-platform push matrix 41373582738 and fast run 41373586955. Merged main 997a005db94f96484710ca8238fbe642da592a9c passed four-platform matrix 41374054611 and fast run 41374054610. These are completed PR #69 closeout results, not a prediction for this metadata correction.",
+      "limits": "Completed exact-head PR #69 and merged-main gates; no additional CLI stage credit or WEB issue acceptance. This metadata correction has no claimed future CI result."
     },
     {
       "id": "DEPLOYMENT-CONFIG",
@@ -211,10 +217,11 @@
       "status": "documented",
       "refs": [
         "gateway/deployment.example.json",
-        "docs/deployment/MTERM_STAGING.md"
+        "docs/deployment/MTERM_STAGING.md",
+        "docs/validation/2026-11-02-rollback-drill.json"
       ],
-      "observation": "Public template and staging instructions specify initial-only SQLite migration, preserved registry namespace, required nonsecret bindings, Access owner-policy/environment inventory, immutable artifact/module checks and current owner-only recovery identity. This attachment is complete.",
-      "limits": "The template is not Wrangler configuration or an automated deployment script. Repeatable dry-run automation and platform secret-binding lifecycle validation remain open. Live pause/restore drill observations have not yet been supplied."
+      "observation": "Public template and staging instructions specify initial-only SQLite migration, preserved registry namespace, required nonsecret bindings, Access owner-policy/environment inventory, immutable artifact/module checks and current owner-only recovery identity. This attachment is complete. The recorded live pause and owner-only recorded-version restore passed; the identical immutable artifact reupload handled Cloudflare settings code 10214 while preserving the registry and read-only permissions.",
+      "limits": "The template is not Wrangler configuration or an automated deployment script. Repeatable application/dry-run automation, platform secret-binding lifecycle and incompatible or future storage migration rollback remain unverified. The recorded drill had no active fixture devices or grants."
     }
   ],
   "pendingEvidence": [
@@ -263,16 +270,16 @@
     {
       "id": "PENDING-DEPLOYMENT-STAMP",
       "status": "recorded_followups_pending",
-      "result": "Artifact/source/version/deployment identities and reproducible nonsecret migration/binding/Access/environment configuration are recorded. Automation/dry-run and platform secret-binding lifecycle remain open. Live pause/recorded-version restore drill is in progress; no success is claimed.",
-      "evidenceRef": "docs/deployment/MTERM_STAGING.md",
-      "required": "Evaluate the reported pause/restore drill when available; complete repeatable deployment/dry-run automation and platform secret-binding lifecycle qualification."
+      "result": "Artifact/source/version/deployment identities and reproducible nonsecret migration/binding/Access/environment configuration are recorded. The recorded live pause and owner-only recorded-version restore passed; the identical immutable artifact reupload handled Cloudflare settings code 10214 while preserving the registry and read-only permissions. Automation/dry-run, platform secret-binding lifecycle and incompatible or future storage migration rollback remain open.",
+      "evidenceRef": "docs/validation/2026-11-02-rollback-drill.json",
+      "required": "Complete repeatable deployment/application/dry-run automation, platform secret-binding lifecycle and qualification for incompatible or future storage migration rollback; retain the completed scoped pause/restore evidence."
     },
     {
       "id": "PENDING-FINAL-GATES",
-      "status": "passed_documentation_ci_pending",
-      "result": "Final b90432a Windows full orchestration, 149/149 tests, package/isolated-link, native Codex 0.160.1, all four PR matrix platforms, fast and push matrix passed. Final publication and documentation checks are recorded in PR #69.",
-      "evidenceRef": "docs/validation/2026-11-02-remote-sprint.md",
-      "required": "Verify final documentation commit CI; retain remaining human/feature-specific acceptance gates."
+      "status": "passed",
+      "result": "Final b90432a Windows full orchestration, 149/149 tests, package/isolated-link, native Codex 0.160.1 and four-platform code gates passed. PR #69 integration 169eb9b81964c4710072fe677d7dbab4d3184b79 passed all nine final checks: four-platform PR matrix 41373587011, four-platform push matrix 41373582738 and fast run 41373586955. Merged main 997a005db94f96484710ca8238fbe642da592a9c passed four-platform matrix 41374054611 and fast run 41374054610. These are completed PR #69 closeout results, not a prediction for this metadata correction.",
+      "evidenceRef": "https://github.com/MulattoTech/MTerm-CLI/pull/69",
+      "required": "Retain the completed exact-head PR #69/main gate evidence; remaining human and feature-specific acceptance is independent. Future changes require their own checks."
     }
   ],
   "items": [
@@ -311,7 +318,9 @@
         "number": 54,
         "url": "https://github.com/MulattoTech/MTerm-CLI/issues/54",
         "state": "open",
-        "assignees": [],
+        "assignees": [
+          "MulattoTech"
+        ],
         "criteriaUpdatedAt": "2026-10-17T03:47:35Z",
         "criteriaReviewedAt": "2026-11-02T00:53:15Z"
       },
@@ -419,7 +428,9 @@
         "number": 55,
         "url": "https://github.com/MulattoTech/MTerm-CLI/issues/55",
         "state": "open",
-        "assignees": [],
+        "assignees": [
+          "MulattoTech"
+        ],
         "criteriaUpdatedAt": "2026-10-17T03:47:37Z",
         "criteriaReviewedAt": "2026-11-02T00:53:15Z"
       },
@@ -529,7 +540,9 @@
         "number": 56,
         "url": "https://github.com/MulattoTech/MTerm-CLI/issues/56",
         "state": "open",
-        "assignees": [],
+        "assignees": [
+          "MulattoTech"
+        ],
         "criteriaUpdatedAt": "2026-10-17T03:47:39Z",
         "criteriaReviewedAt": "2026-11-02T00:53:15Z"
       },
@@ -649,7 +662,9 @@
         "number": 57,
         "url": "https://github.com/MulattoTech/MTerm-CLI/issues/57",
         "state": "open",
-        "assignees": [],
+        "assignees": [
+          "MulattoTech"
+        ],
         "criteriaUpdatedAt": "2026-10-17T03:47:41Z",
         "criteriaReviewedAt": "2026-11-02T00:53:15Z"
       },
@@ -774,7 +789,9 @@
         "number": 58,
         "url": "https://github.com/MulattoTech/MTerm-CLI/issues/58",
         "state": "open",
-        "assignees": [],
+        "assignees": [
+          "MulattoTech"
+        ],
         "criteriaUpdatedAt": "2026-10-17T03:48:02Z",
         "criteriaReviewedAt": "2026-11-02T00:53:15Z"
       },
@@ -886,7 +903,9 @@
         "number": 59,
         "url": "https://github.com/MulattoTech/MTerm-CLI/issues/59",
         "state": "open",
-        "assignees": [],
+        "assignees": [
+          "MulattoTech"
+        ],
         "criteriaUpdatedAt": "2026-10-17T03:48:04Z",
         "criteriaReviewedAt": "2026-11-02T00:53:15Z"
       },
@@ -1010,7 +1029,9 @@
         "number": 60,
         "url": "https://github.com/MulattoTech/MTerm-CLI/issues/60",
         "state": "open",
-        "assignees": [],
+        "assignees": [
+          "MulattoTech"
+        ],
         "criteriaUpdatedAt": "2026-10-17T03:48:06Z",
         "criteriaReviewedAt": "2026-11-02T00:53:15Z"
       },
@@ -1107,7 +1128,9 @@
         "number": 61,
         "url": "https://github.com/MulattoTech/MTerm-CLI/issues/61",
         "state": "open",
-        "assignees": [],
+        "assignees": [
+          "MulattoTech"
+        ],
         "criteriaUpdatedAt": "2026-10-17T03:48:08Z",
         "criteriaReviewedAt": "2026-11-02T00:53:15Z"
       },
@@ -1235,7 +1258,9 @@
         "number": 62,
         "url": "https://github.com/MulattoTech/MTerm-CLI/issues/62",
         "state": "open",
-        "assignees": [],
+        "assignees": [
+          "MulattoTech"
+        ],
         "criteriaUpdatedAt": "2026-10-17T03:48:32Z",
         "criteriaReviewedAt": "2026-11-02T00:53:15Z"
       },
@@ -1366,7 +1391,9 @@
         "number": 63,
         "url": "https://github.com/MulattoTech/MTerm-CLI/issues/63",
         "state": "open",
-        "assignees": [],
+        "assignees": [
+          "MulattoTech"
+        ],
         "criteriaUpdatedAt": "2026-10-17T03:48:34Z",
         "criteriaReviewedAt": "2026-11-02T00:53:15Z"
       },
@@ -1494,7 +1521,9 @@
         "number": 64,
         "url": "https://github.com/MulattoTech/MTerm-CLI/issues/64",
         "state": "open",
-        "assignees": [],
+        "assignees": [
+          "MulattoTech"
+        ],
         "criteriaUpdatedAt": "2026-10-17T03:48:36Z",
         "criteriaReviewedAt": "2026-11-02T00:53:15Z"
       },
@@ -1639,7 +1668,9 @@
         "number": 65,
         "url": "https://github.com/MulattoTech/MTerm-CLI/issues/65",
         "state": "open",
-        "assignees": [],
+        "assignees": [
+          "MulattoTech"
+        ],
         "criteriaUpdatedAt": "2026-10-17T03:48:37Z",
         "criteriaReviewedAt": "2026-11-02T00:53:15Z"
       },
@@ -1761,7 +1792,7 @@
     "url": "https://github.com/MulattoTech/MTerm-CLI/pull/69",
     "status": "source_candidate_ci_passed; see GitHub for final publication state",
     "testedCommit": "b90432a1bc138d59305692a9f74f110a475d0881",
-    "finalDocumentationCi": "See PR #69 checks for the final documentation commit"
+    "finalDocumentationCi": "PR #69 integration 169eb9b81964c4710072fe677d7dbab4d3184b79 passed all nine final checks: four-platform PR matrix 41373587011, four-platform push matrix 41373582738 and fast run 41373586955. Merged main 997a005db94f96484710ca8238fbe642da592a9c passed four-platform matrix 41374054611 and fast run 41374054610. These are completed PR #69 closeout results, not a prediction for this metadata correction."
   },
   "historicalStaging": [
     {
@@ -1830,7 +1861,7 @@
       "runId": 41372068412,
       "status": "passed"
     },
-    "finalDocumentationCi": "See PR #69 checks for the final documentation commit"
+    "finalDocumentationCi": "PR #69 integration 169eb9b81964c4710072fe677d7dbab4d3184b79 passed all nine final checks: four-platform PR matrix 41373587011, four-platform push matrix 41373582738 and fast run 41373586955. Merged main 997a005db94f96484710ca8238fbe642da592a9c passed four-platform matrix 41374054611 and fast run 41374054610. These are completed PR #69 closeout results, not a prediction for this metadata correction."
   },
   "integrationOwner": "MulattoTech",
   "issueOwnership": {

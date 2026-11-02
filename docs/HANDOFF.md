@@ -1,4 +1,32 @@
-# MTerm-CLI handoff — 2026-11-02 configuration continuation
+# MTerm-CLI handoff — 2026-11-02 directory continuation
+
+## Current DCP-022 implementation checkpoint
+
+Continue from the ordinary isolated `feat/dcp-022-directory-contract-20261102`
+branch based on verified main `7d55c6a2c498a02ce0191ce3f0a1a4a109c042ea`.
+PR #74 is already merged and its final receipt resolves historical pending fields.
+The [directory contract report](validation/2026-11-02-directory-contract.md)
+records the new bounded listing correction, intentional differences and exact
+source identities. The original 16-case direct RED was 3 passes/13 failures;
+first GREEN was 16/16. Independent review found an unstarted-directory-handle
+leak, reproduced it with two real-handle failures, and the final direct suite
+passed 18/18. Independent static review has no remaining blocker.
+
+This preparation has not yet qualified native Windows, the actual installed
+package, fresh committed extraction or hosted checks. Record those results only
+after observation. The new installed verifier includes six directory scenario
+groups and independent npm/product process-exit checks. No model call or real
+Codex configuration change is authorized by the tests.
+
+The [connection recheck](validation/2026-11-02-directory-connection-recheck.json)
+found no functioning originating Browser context and no completed management
+read. It did not establish a repaired plugin path or actual client consent/read.
+Preserve the existing owner enrollment and the running `config-qualification-20261102`
+checkout. The approved root does not need approval or pairing again. All 48 DCP
+and 12 WEB issues remain unaccepted; maturity stays 29.12%. Exact owner decisions
+on configuration/privacy/effective-output differences remain unresolved.
+
+## Prior configuration handoff — historical preparation
 
 ## Current DCP-010 setter contract qualification
 

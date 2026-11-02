@@ -1,4 +1,31 @@
-# MTerm-CLI: finish verified DCP-010 delivery and supported client connection
+# MTerm-CLI continuation — bounded directory contract
+
+Execute from current GitHub/local state. This preparation follows verified PR #74
+merged main `7d55c6a2c498a02ce0191ce3f0a1a4a109c042ea`. Do not repeat its completed
+setter-output slice, successful gates or owner pairing. The next source work is
+DCP-022 on `feat/dcp-022-directory-contract-20261102`, in the separate ordinary
+scratch clone `mterm-parity-20261102` and Windows clone
+`C:\Tools\Dev\MTerm-CLI\artifacts\worktrees\directory-contract-20261102`.
+
+Read `docs/validation/2026-11-02-directory-contract.md`, its development/static
+review/issue-audit receipts and `2026-11-02-directory-connection-recheck.json`.
+Final source tests pass 18/18 in supplementary scratch direct-service mode after
+an original 16-case RED (3 pass/13 fail) and a separate two-case handle-cleanup
+RED. Native Windows, installed/fresh/hosted and final delivery results must be
+observed before acceptance/publication claims; they are pending in this source
+preparation. Inspect retained logs and active processes before repeating a gate.
+
+Preserve all original dirty files, protected checkouts and the existing running
+owner agent. Read-only owner root `C:\Tools\Dev\MTerm-RemoteWorkspace` is already
+approved. Browser originating context is unavailable; the management/plugin
+read batch did not return a result. Do not retry the non-retryable creation or
+denied browser host, use a service identity as client consent, pair again, enable
+autostart or remote write/execute, promote production, alter real authentication,
+or make model/paid calls. Full DCP/WEB acceptance remains 0/48 and 0/12; maturity
+29.12% is unchanged. Configuration and listing intentional-difference decisions
+remain explicit and cannot be invented.
+
+## Previous continuation context — historical
 
 **Continuation date: 2026-11-02. Execute the work.** Re-read current GitHub, local
 state, retained logs and deployed identity before mutation. This is a checkpoint,

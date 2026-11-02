@@ -1,4 +1,19 @@
-# MTerm-CLI status — 2026-11-02 UTC
+# MTerm-CLI status — directory contract continuation
+
+Current source work is the bounded DCP-022 directory-listing correction described
+in [the contract report](validation/2026-11-02-directory-contract.md). It retains
+owner policy and work/output bounds while improving deterministic selection,
+trailing count warnings, partial-error output and cancellation cleanup. The final
+focused direct-service development suite passed 18/18 after two separately
+recorded RED campaigns. Native/installed/fresh/hosted qualification is pending
+at this preparation; static review is not a replacement for those gates.
+
+[PR #74 final delivery](https://github.com/MulattoTech/MTerm-CLI/pull/74#issuecomment-6578358474)
+is complete on main `7d55c6a`; do not repeat its setter implementation or owner
+pairing. Actual ChatGPT connection remains unobserved. Acceptance remains DCP
+0/48, WEB 0/12, broad maturity 29.12%; no stage, weight or requirement scope changed.
+
+## Previous status observations
 
 **DesktopCommander Codex acceptance remains 0/48, NOT PASS.** The 300-item
 weighted maturity ledger is a separate measurement. Neither passing CI nor a

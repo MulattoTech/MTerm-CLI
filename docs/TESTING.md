@@ -1,4 +1,20 @@
-# Verification commands and evidence — 2026-11-02
+# Verification commands and evidence — directory continuation
+
+The new [DCP-022 report](validation/2026-11-02-directory-contract.md) and
+[development receipt](validation/2026-11-02-directory-contract-development.json)
+separate the ordinary scratch runner's pre-assertion failure from meaningful
+direct RED/GREEN. Final focused source tests passed 18/18 with no skips or
+cancellations. The original 16-case fixture remains recoverable; the added two
+fixtures independently test real directory-handle closure during `opendir`.
+
+Native delivery still requires the normal reviewed build/check, full wrapper,
+self-host, normal prepack, actual installed compatibility/configuration,
+source/installed synthetic Codex and fresh committed-source gates. The installed
+compatibility harness now checks six directory scenario groups and independently
+observes both owned process exits. Exact-head hosted checks remain separate.
+No pending gate is represented as a pass in this preparation.
+
+## Prior completed configuration evidence
 
 ## Current DCP-010 contract qualification
 

@@ -1,0 +1,354 @@
+{
+  "change_id": "2026-11-02-directory-contract",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "identity_basis": "session-declared; self-reported",
+  "started_at_utc": null,
+  "first_recorded_development_check_at_utc": "2026-11-02T13:48:42.016745+00:00",
+  "updated_at_utc": "2026-11-02T14:11:46.926659+00:00",
+  "timing_basis": "Initial task start was not recorded. The isolated-runner attempt has start/end timestamps; the first direct RED has recordedAt only. Later GREEN and review RED/GREEN have actual captured start/end timestamps.",
+  "base_sha": "7d55c6a2c498a02ce0191ce3f0a1a4a109c042ea",
+  "base_tree": "654d299b8bbfa9a041ea21882b115200b62da300",
+  "branch": "feat/dcp-022-directory-contract-20261102",
+  "primary_issue": 24,
+  "upstream_commit": "c774c3b505de990219637ecdc9a830c8772fae9d",
+  "summary": "Correct bounded list_directory membership, trailing eligible-only truncation metadata, partial operational diagnostics, response-byte accounting and cleanup/cancellation; add direct RED/GREEN and installed qualification fixtures while preserving existing authority and acceptance state.",
+  "files_modified": [
+    "src/desktop-commander-files.ts",
+    "scripts/verify-compatibility-installed.mjs",
+    "docs/roadmap/progress.json",
+    "docs/roadmap/desktop-commander-parity.json",
+    "docs/HANDOFF.md",
+    "docs/STATUS.md",
+    "docs/TESTING.md",
+    "docs/execution/NEXT_PARITY_PROMPT.md",
+    "docs/roadmap/review.json",
+    "docs/roadmap/FEATURES.md",
+    "docs/roadmap/index.html"
+  ],
+  "files_created": [
+    "tests/compat-directory-listing.test.mjs",
+    "docs/validation/2026-11-02-directory-contract.md",
+    "docs/validation/2026-11-02-directory-contract-issue-audit.json",
+    "docs/validation/2026-11-02-directory-connection-recheck.json",
+    "docs/ai/changes/2026-11-02-directory-contract.json",
+    "docs/validation/2026-11-02-directory-contract-development.json",
+    "docs/validation/2026-11-02-directory-contract-review.json",
+    "docs/validation/2026-11-02-directory-contract-documentation-review.json"
+  ],
+  "requirements": [
+    "DCP-022",
+    "DCP-010",
+    "CLI-266",
+    "CLI-267",
+    "CLI-270",
+    "CLI-286",
+    "CLI-287",
+    "CLI-288",
+    "CLI-294",
+    "CLI-296",
+    "CLI-300"
+  ],
+  "decisions": [
+    "Continue in isolated ordinary clones from directly verified merged main7d55c6a. Preserve the original dirty primary, protected checkouts, owner enrollment, running foreground owner agent and real auth/configuration. No deployment or pairing is needed for this source slice.",
+    "Read the pinned manifest/schema and exact filesystem handler without executing upstream bootstrap, telemetry, server or probes. The bounded selection/traversal algorithm is original; diagnostic wording and behavioral references derive from MIT upstream with its retained LICENSE and attribution.",
+    "Keep integer depth0..16/default2, top-level1000 and nested100 retained entries, global4000 consumed dirents, cooperative five-second traversal deadline after root validation and262144-byte response. Count UTF-8 newline separators in the response bound. Do not loosen roots, private/link policy or write/execute authority.",
+    "Use bounded lexical-prefix selection independent of enumeration order for fully inspected directories. Private names consume traversal work but are excluded from retained names and eligible totals. Do not take a4001st dirent or EOF lookahead; a total is exact only after actual EOF and completed emission.",
+    "Preserve bounded partial entries on nested operational opens and midstream errno failures. Emit safe pinned diagnostic categories plus explicit incomplete markers, with one global warning on work/time stop. Keep root validation/open rejection as a tool failure. Never convert cancellation or arbitrary ToolError into an operational read success.",
+    "Establish meaningful16-case direct-service RED before source changes. Keep the ordinary isolated scratch file-level failure separate; it is not behavior RED. Root authorized implementation from the direct RED while native Windows retains original source/test bytes for its own ordered baseline RED.",
+    "Independent review found that iterator.return on an unstarted async generator cannot close the already acquired fs.Dir. Add two real-handle cases, observe both failing before the fix, then explicitly close unstarted handles while retaining normal iterator cleanup. Preserve the exact original16-case file and intermediate runtime snapshot.",
+    "Extend the existing real npm-exec package harness with six directory scenarios and positive original npm/server PID capture, independent exit observation, drained stderr without retained bodies, aggregate cleanup failures and owned-fixture retention on unconfirmed exit. Existing40-second subprocess bound remains; tool requests use10-second timeouts.",
+    "Correct two installed-harness review findings before its first native execution: use get_config.structuredContent.config.systemInfo.processInfo.pid and require a positive original npm transport PID. No installed-success claim follows from syntax checks.",
+    "Resolve only the live DCP010 historical delivery-pending observation from directly audited PR74 final receipt. Preserve immutable prior AI/validation records and all48 issue states. The full setter contract and acceptance of intentional differences remain open.",
+    "Append evidence/notes/reviewer only to the nine relevant CLI rows and observation/evidence/review timestamps only to DCP010/022. Preserve all300 protected fields, all48 states, WEB bytes, seed, release checks, weights, estimates, acceptance, 29.12 percent maturity, DCP0/48 and WEB0/12.",
+    "Record the current failed originating-browser bootstrap and interrupted read-only Cloudflare/plugin observation as current evidence limits. Do not retry prior nonretryable plugin creation, bypass a denied host, or infer fresh owner/deployment/client state from historical receipts."
+  ],
+  "tests": [
+    {
+      "command": "node --test --test-reporter=tap --test-concurrency=1 tests/compat-directory-listing.test.mjs (scratch baseline)",
+      "result": "UNQUALIFIED isolated-runner environment observation: exit1 at file level with no individual assertion output,13:48:42.016745..13:48:42.896091UTC. This is not product RED. Exact metadata and log hashes are retained separately."
+    },
+    {
+      "command": "node --test --test-isolation=none --test-reporter=tap --test-concurrency=1 tests/compat-directory-listing.test.mjs (original16 cases, original runtime)",
+      "result": "Meaningful supplementary Linux direct-service RED:16 tests,3 passed/13 failed,0 skipped/cancelled,actual exit1. Original test/runtime hashes and log identity are recorded below. Exact run start/end were not captured; recordedAt is not substituted for execution time."
+    },
+    {
+      "command": "node --test --test-isolation=none --test-reporter=tap --test-concurrency=1 tests/compat-directory-listing.test.mjs (unchanged16 cases, first implementation)",
+      "result": "PASS16/16,0 skipped/cancelled,actual exit0 at13:56:41.835355..13:56:42.926454UTC. This precedes the independent handle-cleanup finding and is not the final source."
+    },
+    {
+      "command": "node --test --test-isolation=none --test-reporter=tap --test-concurrency=1 --test-name-pattern=during opendir tests/compat-directory-listing.test.mjs",
+      "result": "Meaningful review RED:2/2 real-Dir tests failed on missing ERR_DIR_CLOSED rejection against intermediate runtime0c0c0b,13:58:58.028478..13:58:58.321532UTC. Neither iterator began. The original16-case file and pre-cleanup runtime snapshot remain retained."
+    },
+    {
+      "command": "node --test --test-isolation=none --test-reporter=tap --test-concurrency=1 tests/compat-directory-listing.test.mjs (final18 cases)",
+      "result": "PASS18/18,0 failures/skips/cancellations,actual exit0 at13:59:21.742256..13:59:22.930747UTC on Linux Node24.22.1. Supplemental direct-service qualification only; final source/test/verifier hashes are recorded below."
+    },
+    {
+      "command": "npm run build:code; node --check scripts/verify-compatibility-installed.mjs; targeted Prettier checks; git diff --check",
+      "result": "PASS development compilation, installed-verifier syntax, owned-source formatting and whitespace checks. Dependencies are an independent copy after exact package.json/lock/shrinkwrap equality; no mutable sharing or fresh locked-install claim."
+    },
+    {
+      "command": "Read-only independent runtime/test/installed-verifier review",
+      "result": "PASS exact-hash independent static review: no remaining blocking findings after the real-handle cleanup, structured-envelope PID lookup and positive launcher PID fixes. Receipt docs/validation/2026-11-02-directory-contract-review.json has SHA-256 0f61f69dcf5941477c9833f7cbaea00f5ac4bc99df0ba73f39c49e8653d81ee8. Source review is not runtime or installed acceptance."
+    },
+    {
+      "command": "Native Windows focused baseline RED/final GREEN, actual full workflow, package/self-host/prepack and source/installed native Codex registration",
+      "result": "PENDING for these candidate bytes. Original16-case native RED must run against original runtime before final18-case GREEN transfer. Existing historical Codex parser plus SDK calls do not prove actual agent invocation."
+    },
+    {
+      "command": "Fresh committed extraction, exact locked install and installed proof; hosted exact-head matrix; normal merge/main and additive recovery",
+      "result": "PENDING. No future commit/PR/head identity or result is predicted."
+    },
+    {
+      "command": "Protected-field comparison against verified main7d55c6a; JSON parse and local evidence-path existence",
+      "result": "PASS before handoff: all300 CLI rows preserve every field except permitted evidence/notes/reviewer in nine rows; all48 DCP rows preserve all protected fields and open states, with only DCP010/022 observation/evidence/timestamp edits. WEB and requirement-seed bytes match base. No roadmap review/render or generated artifacts were run by this worker."
+    },
+    {
+      "command": "node scripts/roadmap.mjs --review --change 2026-11-02-directory-contract; node scripts/roadmap.mjs --render; node scripts/roadmap.mjs --check; npm run build",
+      "result": "PASS integration-owner explicit source/catalog review, generated artifacts and normal reviewed build with parity-pin check and TypeScript compilation; final shell exit0. Metrics remain300 items,29.12 percent,4068 baseline weight,0 complete. Native/full/installed/fresh/hosted gates remain pending."
+    }
+  ],
+  "direct_evidence": {
+    "isolated_runner": {
+      "startedAt": "2026-11-02T13:48:42.016745+00:00",
+      "finishedAt": "2026-11-02T13:48:42.896091+00:00",
+      "exitCode": 1,
+      "nodeVersion": "v24.22.1",
+      "sourceHashes": {
+        "src/desktop-commander-files.ts": "6b625cd73bb77d4f947e8c354a4c879d35f7e566cd17928f24e5f838a8680782",
+        "tests/compat-directory-listing.test.mjs": "d97078667600b32383fa8fd253efbb3079c367b76befa6df18b83e8a6ffbc7f0"
+      },
+      "logSha256": "38306b0924916a3294ca988395598731663bf75d7df896958ff03e11f37b0a0f"
+    },
+    "initial_16_red": {
+      "recordedAt": "2026-11-02T13:52:24.762786+00:00",
+      "command": [
+        "node",
+        "--test",
+        "--test-isolation=none",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/compat-directory-listing.test.mjs"
+      ],
+      "observedExitCode": 1,
+      "tests": 16,
+      "passed": 3,
+      "failed": 13,
+      "skipped": 0,
+      "cancelled": 0,
+      "platform": "Linux scratch",
+      "nodeVersion": "v24.22.1",
+      "scope": "Supplementary direct-service RED; not native Windows or standard isolated runner proof.",
+      "logSha256": "485ff5f790e8d57f522be686e6b7338364348c0437c798ce6f0a0d034150cc16",
+      "testSha256": "d97078667600b32383fa8fd253efbb3079c367b76befa6df18b83e8a6ffbc7f0",
+      "runtimeSha256": "6b625cd73bb77d4f947e8c354a4c879d35f7e566cd17928f24e5f838a8680782"
+    },
+    "initial_16_green": {
+      "startedAt": "2026-11-02T13:56:41.835355+00:00",
+      "finishedAt": "2026-11-02T13:56:42.926454+00:00",
+      "command": [
+        "node",
+        "--test",
+        "--test-isolation=none",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/compat-directory-listing.test.mjs"
+      ],
+      "observedExitCode": 0,
+      "platform": "Linux scratch",
+      "nodeVersion": "v24.22.1",
+      "scope": "Supplementary direct-service GREEN; not native Windows or standard isolated runner proof.",
+      "logSha256": "d1a93e9092271e4a26b1e4aa19764110ef04954b3fd76136d1af906d6f73f164",
+      "testSha256": "d97078667600b32383fa8fd253efbb3079c367b76befa6df18b83e8a6ffbc7f0",
+      "runtimeSha256": "0c0c0b25d09f40532048579fb157bf6d3bbe3b327a8712b2a1a9028377bbabc5",
+      "installedVerifierSha256": "a98081ccd35d0b3697312f2b543aed2a9015b5e97de81e3213705a189d855478",
+      "counts": {
+        "tests": 16,
+        "pass": 16,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      }
+    },
+    "review_2_red": {
+      "startedAt": "2026-11-02T13:58:58.028478+00:00",
+      "finishedAt": "2026-11-02T13:58:58.321532+00:00",
+      "command": [
+        "node",
+        "--test",
+        "--test-isolation=none",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "--test-name-pattern=during opendir",
+        "tests/compat-directory-listing.test.mjs"
+      ],
+      "observedExitCode": 1,
+      "counts": {
+        "tests": 2,
+        "pass": 0,
+        "fail": 2,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "platform": "Linux scratch",
+      "nodeVersion": "v24.22.1",
+      "scope": "Two review-found real-directory-handle fixtures, before cleanup fix; supplementary direct-service RED.",
+      "logSha256": "5310a1e1e580ccb43c3c96ff0f0cd3ab659b5935ea8519ebf28a27173dc563dc",
+      "testSha256": "1a141cc647965d4365e5828ea114c0b8b44585d27bddc2e927714747345c3d49",
+      "runtimeSha256": "0c0c0b25d09f40532048579fb157bf6d3bbe3b327a8712b2a1a9028377bbabc5"
+    },
+    "final_18_green": {
+      "startedAt": "2026-11-02T13:59:21.742256+00:00",
+      "finishedAt": "2026-11-02T13:59:22.930747+00:00",
+      "command": [
+        "node",
+        "--test",
+        "--test-isolation=none",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/compat-directory-listing.test.mjs"
+      ],
+      "observedExitCode": 0,
+      "counts": {
+        "tests": 18,
+        "pass": 18,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "platform": "Linux scratch",
+      "nodeVersion": "v24.22.1",
+      "scope": "18-case supplementary direct-service GREEN after independent handle-cleanup review; not native Windows or standard isolated runner proof.",
+      "logSha256": "93b8a6bae4f9df7e8dcd2b47ba01518f25b77a15c4b473552dff54425db52528",
+      "testSha256": "1a141cc647965d4365e5828ea114c0b8b44585d27bddc2e927714747345c3d49",
+      "runtimeSha256": "3cd606ebbf5404da939c238d6173721d4656d1ee28fd4982ba259b826ec062de",
+      "installedVerifierSha256": "7465e2dfc138d0f5da27596400ac0ede67348821c98afc8c1591f0666b047adc"
+    },
+    "original_16_fixture_path": "artifacts/directory-contract-local-red/compat-directory-listing.original.mjs",
+    "intermediate_runtime_path": "artifacts/directory-contract-review-red/desktop-commander-files.before-cleanup.ts",
+    "scope": "Scratch direct-service evidence. Artifacts are retained locally for recovery; this committed record preserves command/count/hash identities. Native, installed, full and hosted evidence is separate."
+  },
+  "source_sha256": {
+    "src/desktop-commander-files.ts": "3cd606ebbf5404da939c238d6173721d4656d1ee28fd4982ba259b826ec062de",
+    "tests/compat-directory-listing.test.mjs": "1a141cc647965d4365e5828ea114c0b8b44585d27bddc2e927714747345c3d49",
+    "scripts/verify-compatibility-installed.mjs": "7465e2dfc138d0f5da27596400ac0ede67348821c98afc8c1591f0666b047adc"
+  },
+  "reference_source": {
+    "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/c774c3b505de990219637ecdc9a830c8772fae9d/src/tools/filesystem.ts",
+    "sha256": "f3802e7439a44aea69f96757cfe5dd70e5aa739888c1aba0da6b185d66c38a0b",
+    "license": "MIT; original retained at docs/parity/upstream/LICENSE",
+    "execution": "Not executed; original bounded adapter with derivative diagnostic wording."
+  },
+  "review_revision_history": {
+    "initial_installed_verifier_sha256": "64489e294dae8d1ba2c2efc00f7e7992687ea9217dd18a5eff17758144e2dc01",
+    "envelope_corrected_verifier_sha256": "a98081ccd35d0b3697312f2b543aed2a9015b5e97de81e3213705a189d855478",
+    "final_verifier_sha256": "7465e2dfc138d0f5da27596400ac0ede67348821c98afc8c1591f0666b047adc",
+    "original_16_test_sha256": "d97078667600b32383fa8fd253efbb3079c367b76befa6df18b83e8a6ffbc7f0",
+    "final_18_test_sha256": "1a141cc647965d4365e5828ea114c0b8b44585d27bddc2e927714747345c3d49"
+  },
+  "roadmap_updates": [
+    {
+      "ids": "CLI-266,CLI-267,CLI-270,CLI-286,CLI-287,CLI-288,CLI-294,CLI-296,CLI-300",
+      "assessment": "Evidence/notes/reviewer only. Supplementary direct-service tests and authored installed scenarios do not change stages, acceptance, weights, dependencies, estimates, ETA, platforms or blockers. Native/full/installed/fresh/hosted gates remain pending."
+    },
+    {
+      "ids": "DCP-022",
+      "assessment": "Record bounded candidate behavior, intentional differences,16-case RED/GREEN and two-case cleanup RED followed by18-case GREEN. Issue24 remains open; no acceptanceReview or closure is asserted."
+    },
+    {
+      "ids": "DCP-010",
+      "assessment": "Resolve historical final-head/merge/main/recovery pending text from directly audited PR74 final receipt, preserving its own complete setter-contract and intentional-difference acceptance requirements. Immutable historical records remain unchanged."
+    },
+    {
+      "ids": "WEB-001..012; CLI-001..300; DCP-001..048",
+      "assessment": "WEB bytes and all protected catalog fields/states remain unchanged. DCP0/48, WEB0/12, broad maturity29.12 percent and baseline weight4068 remain."
+    }
+  ],
+  "limitations": [
+    "Current direct Linux evidence does not substitute for native Windows, the standard isolated runner, installed MCP transport, fresh extraction or hosted matrix. Those delivery gates remain pending.",
+    "The deadline begins after root validation and is cooperative between awaited work, including enumeration, policy checks and emission. It cannot interrupt a blocked filesystem syscall. Enumeration is not an atomic directory snapshot.",
+    "Stable lexical selection intentionally differs from pinned filesystem enumeration order. Retained top-level/global/time/output caps, strict depth/UI schema, slash-normalized display, private exclusion and root open errors require explicit acceptance of the bounded contract.",
+    "Exactly4000 consumed entries without observed EOF has an unknown total. Incomplete scans never claim exact hidden counts. Private names are excluded from output/counts but consume the fixed work budget.",
+    "DCP009 still needs the owner acceptance-contract ruling on documented omitted probes and privacy/owner restrictions, or the exact required truthful bounded replacement fields. DCP010 still needs acceptance of its effective-output/coercion differences. These are contract decisions, not model-call authorization.",
+    "No owner acceptance ruling, actual ChatGPT consent/tool discovery/file read or actual Codex-agent tool invocation is invented. Model calls remain0; real user auth/config, owner enrollment, deployment, permissions and autostart are unchanged.",
+    "The current connection receipt establishes no originating browser context and no completed management/plugin observation. Historical paired/online or deployment state is not fresh proof. No denied-host workaround or nonretryable creation retry was attempted.",
+    "The listing harness drains stderr without retaining bodies and verifies captured launcher/server PIDs, not an arbitrary process tree. Network-canary observations belong to the separate existing configuration verifier; this listing harness adds no network instrumentation claim."
+  ],
+  "previous_delivery_receipt": {
+    "url": "https://github.com/MulattoTech/MTerm-CLI/pull/74#issuecomment-6578358474",
+    "comment_created_at_utc": "2026-11-02T13:27:36Z",
+    "observation_receipt": "docs/validation/2026-11-02-directory-contract-issue-audit.json",
+    "final_head": "b565b95041a9f53be01ae656040d9b29236b0d73",
+    "merged_main": "7d55c6a2c498a02ce0191ce3f0a1a4a109c042ea",
+    "identical_tree": "654d299b8bbfa9a041ea21882b115200b62da300",
+    "merged_at_utc": "2026-11-02T13:20:13Z",
+    "final_head_checks": "9/9 passed, no retries",
+    "main_checks": "5/5 passed, no retries; last completion13:22:29UTC; re-observed13:22:47.995UTC",
+    "recovery_completed_at_utc": "2026-11-02T13:24:39.401Z",
+    "scope": "Historical delivered DCP010 slice only; does not qualify new directory bytes."
+  },
+  "checkpoint": {
+    "observedAt": "2026-11-02T13:44:43.532471+00:00",
+    "head": "7d55c6a2c498a02ce0191ce3f0a1a4a109c042ea",
+    "tree": "654d299b8bbfa9a041ea21882b115200b62da300",
+    "source": "isolated ordinary clone of preserved prior delivery clone; GitHub current main independently observed equal",
+    "status": "",
+    "files": [
+      {
+        "file": "all-refs.bundle",
+        "bytes": 1159503,
+        "sha256": "1446b9ce56da377d4941843d8044cbaf9ef2d2acc190df83f7c5f8e5019021dd"
+      },
+      {
+        "file": "main-source.tar",
+        "bytes": 3409920,
+        "sha256": "1c45e448c1b9a68ab3acfc6b5c0dda832cf30b7fdc09107db8936c09d6a52c06"
+      }
+    ],
+    "limits": "No ignored protected state, credentials, browser state or runtime data copied."
+  },
+  "connection_observation": {
+    "path": "docs/validation/2026-11-02-directory-connection-recheck.json",
+    "sha256": "af0cac0b1f7afcafb2aba437b609550f7cd7c5a03c6f2e96b7b49bed717c8ede",
+    "observed_at_utc": "2026-11-02T13:52:59Z",
+    "supported_client_connected": false,
+    "fresh_owner_status_verified": false,
+    "fresh_management_identity_or_policy_verified": false,
+    "owner_contract_ruling": "Unresolved; none invented."
+  },
+  "issue_audit": {
+    "path": "docs/validation/2026-11-02-directory-contract-issue-audit.json",
+    "sha256": "9a7dbff2dc6dee7803cdd663f8a5b464b14ff4a35e2bb8e30c07e6d196a1e94a",
+    "observed_at_utc": "2026-11-02T13:41:39Z",
+    "bodies_read": 48,
+    "comments_read": 23,
+    "open": 48,
+    "mismatches": 0
+  },
+  "qualification": {
+    "native_focused": "pending",
+    "native_full": "pending",
+    "installed_package": "pending",
+    "fresh_committed_extraction": "pending",
+    "hosted_exact_head": "pending",
+    "normal_merge_main": "pending",
+    "final_recovery": "pending",
+    "actual_codex_agent_tool_invocation": false,
+    "actual_chatgpt_client_acceptance": false,
+    "model_calls": 0
+  },
+  "next_unverified_action": "Complete ordered native baseline RED/final GREEN and qualify the exact committed candidate through native/full/installed/fresh/hosted gates. The reviewed candidate may be published as a draft while checks run; no merge until required proof. Keep DCP022 open until its bounded differences and actual applicable client contract are accepted.",
+  "independent_review": {
+    "path": "docs/validation/2026-11-02-directory-contract-review.json",
+    "sha256": "0f61f69dcf5941477c9833f7cbaea00f5ac4bc99df0ba73f39c49e8653d81ee8",
+    "remaining_blocking_findings": 0,
+    "scope": "Static source, test, verifier and provisional report review; no native or installed runtime claim."
+  },
+  "documentation_review": {
+    "path": "docs/validation/2026-11-02-directory-contract-documentation-review.json",
+    "sha256": "5973010fe690963c0ed3eadcfa3f31ae5afdafc089f55bd5360031b18ae89c80",
+    "scope": "Independent pre-native, pre-publication documentation review; exact inspected hashes are a preparation snapshot before this generated-artifact bookkeeping refresh.",
+    "remaining_blocking_findings": 0
+  }
+}

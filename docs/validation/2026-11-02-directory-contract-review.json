@@ -1,0 +1,113 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "2026-11-02-directory-contract-independent-source-review",
+  "reviewedAt": "2026-11-02T14:01:15Z",
+  "reviewer": {
+    "provider": "OpenAI",
+    "model": "GPT-6 Astra Pro",
+    "agent": "connection_audit",
+    "identityBasis": "Session-declared; self-reported independent worker review"
+  },
+  "repository": "MulattoTech/MTerm-CLI",
+  "baseCommit": "7d55c6a2c498a02ce0191ce3f0a1a4a109c042ea",
+  "reviewedCommit": null,
+  "reviewIdentity": "Exact working-tree file SHA-256 values; no committed-head or merge approval is implied",
+  "scope": "Read-only static review of bounded list_directory implementation, focused fixtures, actual packed-package verifier, pinned handler and provisional contract report",
+  "files": [
+    {
+      "path": "src/desktop-commander-files.ts",
+      "sha256": "3cd606ebbf5404da939c238d6173721d4656d1ee28fd4982ba259b826ec062de"
+    },
+    {
+      "path": "tests/compat-directory-listing.test.mjs",
+      "sha256": "1a141cc647965d4365e5828ea114c0b8b44585d27bddc2e927714747345c3d49"
+    },
+    {
+      "path": "scripts/verify-compatibility-installed.mjs",
+      "sha256": "7465e2dfc138d0f5da27596400ac0ede67348821c98afc8c1591f0666b047adc"
+    }
+  ],
+  "provisionalReportAtReview": {
+    "path": "docs/validation/2026-11-02-directory-contract.md",
+    "sha256": "bb7941b41bcdcf4e9653833bc88ccdb64c1ef841d84826073454732bc6895137",
+    "finalDeliveryDocumentationReviewed": false
+  },
+  "upstream": {
+    "version": "0.2.52",
+    "commit": "c774c3b505de990219637ecdc9a830c8772fae9d",
+    "path": "src/tools/filesystem.ts",
+    "sha256": "f3802e7439a44aea69f96757cfe5dd70e5aa739888c1aba0da6b185d66c38a0b",
+    "executed": false
+  },
+  "findings": [
+    {
+      "id": "REVIEW-001",
+      "severity": "blocking-before-fix",
+      "area": "Installed verifier configuration envelope",
+      "finding": "The provisional verifier read systemInfo directly from structuredContent; get_config returns structuredContent.config and prefixes its text representation. This would fail before directory scenarios and leave product PID unidentified.",
+      "resolution": "Verifier now asserts the structured envelope and reads structuredContent.config.systemInfo.processInfo.pid. It also asserts a positive captured npm transport PID.",
+      "status": "resolved-by-static-reinspection",
+      "qualification": "Found before installed verifier execution; no product runtime defect or observed native test failure is claimed."
+    },
+    {
+      "id": "REVIEW-002",
+      "severity": "blocking-before-fix",
+      "area": "Directory handle ownership before first iterator read",
+      "affectedRuntimeSha256": "0c0c0b25d09f40532048579fb157bf6d3bbe3b327a8712b2a1a9028377bbabc5",
+      "finding": "Cancellation or deadline expiry during successful opendir could call return on an unstarted async generator; Node's Dir iterator finally-close had not been entered, leaving the acquired handle open.",
+      "resolution": "Runtime records whether iterator.next began. Its finally returns the started iterator or explicitly closes the unstarted acquired stream. Two real-Dir fixtures require zero next calls and ERR_DIR_CLOSED after cancellation/deadline.",
+      "status": "resolved-by-static-reinspection-and-retained-log-review",
+      "qualification": "Reviewer inspected local Node internal/fs/dir source and retained worker RED/GREEN logs; reviewer did not execute tests."
+    },
+    {
+      "id": "REVIEW-003",
+      "severity": "nonblocking-documentation-clarification",
+      "area": "Root operational error description",
+      "finding": "The implementation throws root validation/schema/open errors but converts operational iterator or close errors after root opening into partial diagnostics. The provisional report describes nested operational errors and a broad root-failure distinction.",
+      "recommendation": "Describe root mid-stream operational failures precisely, separately from root policy/schema/open failures, or explicitly choose a narrower contract before claiming full acceptance.",
+      "status": "resolved-by-documentation-reinspection",
+      "resolution": "The revised paragraph and intentional-difference table expressly distinguish root policy/schema/open failures from incomplete results after operational read/close interruption of an already-open root or nested directory.",
+      "securityAssessment": "ToolError and cancellation remain failures; no policy bypass was found."
+    }
+  ],
+  "staticChecks": {
+    "boundedRetainedEntries": "At most 1000 root and 100 nested candidates per visit; global iterator inspection stops at 4000 without an EOF lookahead.",
+    "selection": "Code-unit lexical prefix is independent of enumeration order for completed enumeration; interrupted scans make no complete-membership promise.",
+    "counts": "Private names are excluded before eligible counts; exact totals require observed EOF and complete emission.",
+    "deadline": "Cooperative checks surround enumeration and post-policy emission; pending OS operations are not preempted.",
+    "byteBudget": "Every emitted text line includes its UTF-8 bytes plus any preceding newline in the 262144-byte budget.",
+    "errors": "Known operational codes map to fixed diagnostics; raw filesystem messages are not printed. Root authorization, private paths, link policy and cancellation remain enforced.",
+    "cleanup": "Started iterators are returned; unstarted acquired directory streams are explicitly closed. Installed verifier independently checks captured npm and product PID exit before deleting only its owned directory fixture.",
+    "installedCalls": "Real MCP SDK calls and exact text/envelope assertions cover six directory scenario groups through the actual tarball/npm-exec path; no fabricated response path was added.",
+    "unrelatedScope": "No changes to policy roots, owner enrollment, credentials, deployment, model invocation, protocol transport or process execution were found in the reviewed runtime diff."
+  },
+  "retainedEvidenceInspected": [
+    {
+      "path": "artifacts/directory-contract-review-red/unstarted-handle.log",
+      "sha256": "5310a1e1e580ccb43c3c96ff0f0cd3ab659b5935ea8519ebf28a27173dc563dc",
+      "observedResult": "Two targeted fixtures failed at the real-handle ERR_DIR_CLOSED assertion before the cleanup repair.",
+      "runtimeSha256": "0c0c0b25d09f40532048579fb157bf6d3bbe3b327a8712b2a1a9028377bbabc5"
+    },
+    {
+      "path": "artifacts/directory-contract-review-green/focused-no-isolation.log",
+      "sha256": "93b8a6bae4f9df7e8dcd2b47ba01518f25b77a15c4b473552dff54425db52528",
+      "observedResult": "18 tests passed, zero failures/cancellations/skips after repair.",
+      "runtimeSha256": "3cd606ebbf5404da939c238d6173721d4656d1ee28fd4982ba259b826ec062de"
+    }
+  ],
+  "evidenceLimits": [
+    "Retained logs use supplementary Linux scratch direct-service test isolation mode; they are not native Windows, a standard isolated full suite or installed acceptance.",
+    "No test or paid/model call was executed by this reviewer.",
+    "Native Windows, normal reviewed build/check/package/prepack, fresh committed extraction, hosted checks and merge verification remain integration-owner gates at this review time.",
+    "The stricter caps, privacy, ordering, display, root and schema differences remain intentional contract decisions requiring acceptance.",
+    "No DCP or WEB acceptance, maturity increase, actual model-driven invocation or ChatGPT client connection is certified by this static review."
+  ],
+  "conclusion": {
+    "remainingBlockingSourceTestHarnessFindings": 0,
+    "unresolvedDocumentationClarifications": 0,
+    "fullParityAccepted": false,
+    "nativeQualificationCertified": false,
+    "mergeCertified": false,
+    "reviewerChangedProjectFiles": false
+  }
+}

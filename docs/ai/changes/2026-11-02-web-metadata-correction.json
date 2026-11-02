@@ -1,0 +1,61 @@
+{
+  "change_id": "2026-11-02-web-metadata-correction",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "identity_basis": "session-declared; self-reported",
+  "updated_at_utc": "2026-11-02T01:59:34Z",
+  "base_commit": "997a005db94f96484710ca8238fbe642da592a9c",
+  "branch": "docs/remote-closeout-metadata-20261102",
+  "summary": "Correct stale remote issue ownership, completed deployment/rollback and final PR69/main gate metadata; refresh the date of the already completed November 2 catalog review and regenerate its views without changing acceptance.",
+  "files_modified": [
+    "docs/REMOTE_MCP_ROADMAP.md",
+    "docs/roadmap/remote-web-progress.json",
+    "docs/roadmap/progress.json",
+    "docs/roadmap/review.json",
+    "docs/roadmap/summary.json"
+  ],
+  "files_created": [
+    "docs/ai/changes/2026-11-02-web-metadata-correction.json"
+  ],
+  "decisions": [
+    "Use the integration owner verified live assignment: all twelve WEB issues are open with sole assignee MulattoTech. Preserve every stored issue acceptance-criteria snapshot and timestamp.",
+    "Record the already committed rollback drill as scoped PASS, including observed Cloudflare code 10214 and identical-artifact recovery. Keep deployment automation/dry-run, platform secret-binding lifecycle and future incompatible migration rollback open.",
+    "Record only completed integration169eb9b and merged-main997a005 checks from PR69 closeout. Make no CI or merge prediction for this metadata branch.",
+    "Refresh progress.json reviewedAt to November 2 because that catalog review already credited CLI-201. Preserve every one of the 300 item objects, all weights/stages/estimates/counts, the 48-item DCP ledger and all WEB stages/acceptance/statuses; the explicitly stale PENDING-FINAL-GATES evidence status changes to passed.",
+    "No implementation, tests, deployment, local agent, GitHub issue, real Codex configuration or credential changes are performed by this patch."
+  ],
+  "tests": [
+    {
+      "command": "Baseline-versus-edited JSON invariants and stale-evidence assertions",
+      "result": "PASS: all 300 CLI item objects unchanged; all 12 WEB rows unchanged except sole-assignee arrays; acceptance snapshots, stages, issue states, estimates and counts preserved; DCP ledger byte-identical. Only the requested PENDING-FINAL-GATES evidence status changed. Stale pending-drill/CI assertions are absent."
+    },
+    {
+      "command": "node scripts/roadmap.mjs --review --change 2026-11-02-web-metadata-correction; --render; --check",
+      "result": "PASS: explicit review, render and check completed. Generated summary changes only asOf; maturity29.12%, baseline weight4068, 300items, 0complete, 45blocked, 127not-started remain identical."
+    },
+    {
+      "command": "node scripts/parity-baseline.mjs --check and git diff --check",
+      "result": "PASS: pinned DesktopCommander0.2.52 / c774c3b505de990219637ecdc9a830c8772fae9d, 26tools, seven snapshot files; DCP0/48 NOT PASS. git diff --check passed."
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "ids": "CLI-001..300",
+      "assessment": "Review-date metadata only. Every existing item object remains identical to main997a005, including prior CLI-201 credit. No new acceptance review or progress credit."
+    },
+    {
+      "ids": "WEB-001..012",
+      "assessment": "Correct twelve nested assignee arrays and stale shared evidence text only. All requirement stages, acceptance contracts, issue states, counts, remaining work and estimates are preserved; acceptance remains 0/12."
+    },
+    {
+      "ids": "DCP-001..048",
+      "assessment": "Ledger unchanged; full acceptance remains 0/48."
+    }
+  ],
+  "limitations": [
+    "No new runtime, deployment, human Google/ChatGPT or full feature acceptance is asserted.",
+    "CI identifiers and live assignment come from verified PR69 closeout supplied by the integration owner; this task makes no external service calls.",
+    "The new documentation branch requires its own publication and checks; prior green CI is not a result for this patch."
+  ],
+  "next_unverified_action": "Publish this bounded metadata correction through the integration owner and observe its own checks before any merge."
+}

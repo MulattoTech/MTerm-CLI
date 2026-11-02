@@ -1,7 +1,7 @@
 # MTerm-CLI handoff — 2026-11-02 configuration continuation
 
-The current continuation starts from verified main `059413ffa4fb3b18c8e15af907744a40e0b874a7`
-(PR #70, after the #69 integration). See [STATUS.md](STATUS.md), the
+The current continuation includes dependency main `932c310914d8af822c5b1611ac85c5e79c2c5097`
+(PR #71, after the #69 integration and #70 metadata). See [STATUS.md](STATUS.md), the
 [configuration reliability report](validation/2026-11-02-config-retry.md), and the
 [current 48-issue audit](validation/2026-11-02-config-issue-audit.json).
 All DCP issues remain open; implementation evidence does not close full contracts.
@@ -32,6 +32,27 @@ and [PR #69](https://github.com/MulattoTech/MTerm-CLI/pull/69) are authoritative
 the final merge/main SHA, document checks and recovery checkpoint. Human Google
 sign-in and ChatGPT connector acceptance remain unverified; no persistent owner
 agent is paired. Production has not been promoted.
+
+## Configuration qualification continuation — 2026-11-02
+
+The separate DCP-016 / #18 candidate adds installed configuration verification,
+package-gate integration and synthetic managed-Codex configuration discovery.
+Its [standalone native Windows probe](validation/2026-11-02-config-installed-qualification.md)
+passed seven scenarios through two concurrent packed MCP children and a restart.
+Ten network canaries were intercepted, no product attempt was observed, every
+captured child/fixture process had an independently observed exit, and cleanup
+completed. The evidence identifies the actual package/module hashes from the
+separate DCP-010 candidate, rather than attributing it to this branch's base SHA.
+
+The revised native Windows workflow subsequently passed **164/164 tests**, the
+normal package gate and the source-entry managed-Codex gate. Separate normal
+prepack, self-host and explicit installed-entry Codex also passed. New exact-head
+hosted checks and fresh committed archive extraction remain pending at this checkpoint.
+The earlier green remote release remains separate. No DCP/WEB issue closes, and
+broad stages/weights remain unchanged. The integration owner must resolve the
+closeout fields in the new report and
+[continuation prompt](execution/NEXT_PARITY_PROMPT.md), then regenerate source
+review after any further fingerprinted documentation change.
 
 ## Current state — 2026-11-02
 

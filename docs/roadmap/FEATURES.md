@@ -2990,13 +2990,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** The produced CLI installs and runs outside the developer checkout without GUI dependencies.
 
-**Current scope:** Final 2026-11-02 evidence at b90432a: Final clean packed install, offline npm execution, compatibility aliases and isolated npm link passed. Pinned test-owned native Codex 0.160.1 managed verification also passed; the initial npm-alias manifest mismatch was repaired in verification code. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.
+**Current scope:** Final 2026-11-02 evidence at b90432a: Final clean packed install, offline npm execution, compatibility aliases and isolated npm link passed. Pinned test-owned native Codex 0.160.1 managed verification also passed; the initial npm-alias manifest mismatch was repaired in verification code. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit. DCP-016 qualification checkpoint (2026-11-02): An artifacts-only native Windows installed configuration probe passed seven scenarios. The revised normal Windows package gate subsequently passed; exact-head hosted platform qualification remains pending.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 1–6 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/cli.test.mjs`, `tests/mcp.test.mjs`, `tests/processes.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`, `docs/ai/changes/2026-11-02-foundation-portability.json`, `docs/ai/changes/2026-11-02-remote-agent.json`, `docs/validation/2026-11-02-remote-staging-smoke.json`, `scripts/verify-package.mjs`, `docs/validation/2026-11-02-remote-sprint.md`, `docs/validation/2026-11-02-remote-staging-smoke-final.json`
+**Evidence:** `tests/cli.test.mjs`, `tests/mcp.test.mjs`, `tests/processes.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`, `docs/ai/changes/2026-11-02-foundation-portability.json`, `docs/ai/changes/2026-11-02-remote-agent.json`, `docs/validation/2026-11-02-remote-staging-smoke.json`, `scripts/verify-package.mjs`, `docs/validation/2026-11-02-remote-sprint.md`, `docs/validation/2026-11-02-remote-staging-smoke-final.json`, `docs/validation/2026-11-02-config-installed-qualification.md`, `docs/validation/2026-11-02-config-installed-windows.json`, `scripts/verify-configuration-installed.mjs`
 
 ## CLI-215 — Run all claimed OS/architecture jobs
 
@@ -3634,13 +3634,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Packaged/link-installed artifacts pass the same representative command contracts.
 
-**Current scope:** Real production tarball install, official-client MCP file round trip outside checkout, isolated-prefix npm link and actual Windows shim passed. No user-global prefix mutation; other platforms and full three-component bundle remain unverified.
+**Current scope:** Real production tarball install, official-client MCP file round trip outside checkout, isolated-prefix npm link and actual Windows shim passed. No user-global prefix mutation; other platforms and full three-component bundle remain unverified. DCP-016 qualification checkpoint (2026-11-02): The new qualifier checks the physical installed entry and manifest, then exercises two installed MCP children plus a restart. Actual native Windows standalone evidence is retained; the integrated Windows gate subsequently passed, while exact-head hosted gates remain pending.
 
 **Baseline weight:** 8 h (rough). **Remaining:** 1–2 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `scripts/verify-package.mjs`, `tests/cli.test.mjs`
+**Evidence:** `scripts/verify-package.mjs`, `tests/cli.test.mjs`, `docs/validation/2026-11-02-config-installed-qualification.md`, `docs/validation/2026-11-02-config-installed-windows.json`, `scripts/verify-configuration-installed.mjs`
 
 ## CLI-261 — Expose performance regressions honestly
 
@@ -3718,13 +3718,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Every filesystem/cwd path is confined to configured roots with Windows case/canonicalization handled correctly.
 
-**Current scope:** Final 2026-11-02 evidence at b90432a: Canonical roots and final existing/missing targets are revalidated; policy self-protection shares canonical filesystem identity. Native Windows 8.3 and live root-escape regressions passed. Hostile local rename races remain excluded. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.
+**Current scope:** Final 2026-11-02 evidence at b90432a: Canonical roots and final existing/missing targets are revalidated; policy self-protection shares canonical filesystem identity. Native Windows 8.3 and live root-escape regressions passed. Hostile local rename races remain excluded. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit. DCP-016 qualification checkpoint (2026-11-02): Installed Windows calls observed narrowed and empty roots and rejected an attempt beyond startup authority. This is per-call configuration qualification, not stronger OS filesystem containment.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 3–11 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `docs/ai/changes/2026-11-02-foundation-portability.json`, `docs/ai/changes/2026-11-02-config-storage-identity.json`, `tests/policy-alias.test.mjs`, `tests/remote-state.test.mjs`, `tests/remote-adapter.test.mjs`, `docs/validation/2026-11-02-remote-staging-smoke.json`, `docs/validation/2026-11-02-remote-sprint.md`, `docs/validation/2026-11-02-remote-staging-smoke-final.json`
+**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `docs/ai/changes/2026-11-02-foundation-portability.json`, `docs/ai/changes/2026-11-02-config-storage-identity.json`, `tests/policy-alias.test.mjs`, `tests/remote-state.test.mjs`, `tests/remote-adapter.test.mjs`, `docs/validation/2026-11-02-remote-staging-smoke.json`, `docs/validation/2026-11-02-remote-sprint.md`, `docs/validation/2026-11-02-remote-staging-smoke-final.json`, `docs/validation/2026-11-02-config-installed-qualification.md`, `docs/validation/2026-11-02-config-installed-windows.json`, `scripts/verify-configuration-installed.mjs`
 
 ## CLI-267 — Block symlink/reparse root escapes
 
@@ -3746,13 +3746,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Read supports useful ranges/metadata while enforcing maximum bytes and UTF-8/binary diagnostics.
 
-**Current scope:** Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains.
+**Current scope:** Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains. DCP-016 qualification checkpoint (2026-11-02): Installed native, compatible and multi-file reads observed a changed default from another running MCP process. Format/large-file/full-platform acceptance remains separate.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 1–5 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`
+**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`, `docs/validation/2026-11-02-config-installed-qualification.md`, `docs/validation/2026-11-02-config-installed-windows.json`, `scripts/verify-configuration-installed.mjs`
 
 ## CLI-269 — Implement atomic bounded file write/create
 
@@ -3760,13 +3760,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Writes use owned temporary staging/replace semantics and never truncate a target on validation failure.
 
-**Current scope:** Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains.
+**Current scope:** Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains. DCP-016 qualification checkpoint (2026-11-02): Installed compatible append/rewrite bytes stayed exact while runtime warning thresholds changed. This does not expand filesystem race or format guarantees.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 1–5 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`
+**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`, `docs/validation/2026-11-02-config-installed-qualification.md`, `docs/validation/2026-11-02-config-installed-windows.json`, `scripts/verify-configuration-installed.mjs`
 
 ## CLI-270 — Implement directory listing
 
@@ -4082,13 +4082,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** A supported, reversible setup path registers MTerm's MCP server with Codex without overwriting unrelated Codex configuration.
 
-**Current scope:** Managed --apply setup/removal, exact ownership and backup conflict handling passed on source and real installed artifact with Codex0.160.1, unrelated config preserved; no actual agent model call.
+**Current scope:** Managed --apply setup/removal, exact ownership and backup conflict handling passed on source and real installed artifact with Codex0.160.1, unrelated config preserved; no actual agent model call. DCP-016 qualification checkpoint (2026-11-02): The revised managed-Codex verifier defines synthetic two-root configuration discovery, mutation and restart-read proof; its revised source-entry and explicit installed-entry Windows gates passed with test-owned Codex 0.160.1. No actual Codex agent/model invocation is claimed.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 1–5 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`
+**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`, `docs/validation/2026-11-02-config-installed-qualification.md`, `docs/validation/2026-11-02-config-installed-windows.json`, `scripts/verify-configuration-installed.mjs`
 
 ## CLI-293 — Smoke-test MCP initialize and tool listing through stdio
 
@@ -4138,13 +4138,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Outside-root access and process execution without explicit enablement fail without side effects.
 
-**Current scope:** Final 2026-11-02 evidence at b90432a: Canonical/config/remote scope negatives passed, including real 8.3, root escape, mutation and cross-device denial. Cross-owner, rate/size and extended network-fault acceptance remain open. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.
+**Current scope:** Final 2026-11-02 evidence at b90432a: Canonical/config/remote scope negatives passed, including real 8.3, root escape, mutation and cross-device denial. Cross-owner, rate/size and extended network-fault acceptance remain open. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit. DCP-016 qualification checkpoint (2026-11-02): The installed Windows probe rejected invalid limits, owner-ceiling escalation and work under corrupt policy while retaining owned stop. Previous bytes and bounded lock/temp cleanup were checked.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 1–5 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`, `docs/ai/changes/2026-11-02-foundation-portability.json`, `docs/ai/changes/2026-11-02-config-storage-identity.json`, `tests/policy-alias.test.mjs`, `tests/remote-adapter.test.mjs`, `tests/remote-state.test.mjs`, `tests/remote-gateway.test.mjs`, `docs/validation/2026-11-02-remote-staging-smoke.json`, `docs/validation/2026-11-02-remote-sprint.md`, `docs/validation/2026-11-02-remote-staging-smoke-final.json`
+**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`, `docs/ai/changes/2026-11-02-foundation-portability.json`, `docs/ai/changes/2026-11-02-config-storage-identity.json`, `tests/policy-alias.test.mjs`, `tests/remote-adapter.test.mjs`, `tests/remote-state.test.mjs`, `tests/remote-gateway.test.mjs`, `docs/validation/2026-11-02-remote-staging-smoke.json`, `docs/validation/2026-11-02-remote-sprint.md`, `docs/validation/2026-11-02-remote-staging-smoke-final.json`, `docs/validation/2026-11-02-config-installed-qualification.md`, `docs/validation/2026-11-02-config-installed-windows.json`, `scripts/verify-configuration-installed.mjs`
 
 ## CLI-297 — Keep local agent-control startup lightweight
 
@@ -4152,13 +4152,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** `--help`, doctor and MCP startup do not initialize browser/Electron/Web-provider/quota clients.
 
-**Current scope:** Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains.
+**Current scope:** Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains. DCP-016 qualification checkpoint (2026-11-02): Ten positive canaries verified the Node network instrumentation; no product transport attempt was observed for either telemetry preference. This is scoped API instrumentation, not an OS network sandbox.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 1–5 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`
+**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`, `docs/validation/2026-11-02-config-installed-qualification.md`, `docs/validation/2026-11-02-config-installed-windows.json`, `scripts/verify-configuration-installed.mjs`
 
 ## CLI-298 — Define GUI/local-tool compatibility contract
 
@@ -4194,10 +4194,10 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** A dated evidence report lists the exact commands/tools that work on the authorized Windows workstation, test results, known gaps, and whether Remote Desktop Commander is still required for any stated workflow.
 
-**Current scope:** Final 2026-11-02 evidence at b90432a: Actual Windows full/package/native-Codex and all four hosted platform gates passed, plus the final 11/11 live remote slice. This does not certify full Desktop Commander parity, service/update lifecycle or human Google/ChatGPT replacement. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.
+**Current scope:** Final 2026-11-02 evidence at b90432a: Actual Windows full/package/native-Codex and all four hosted platform gates passed, plus the final 11/11 live remote slice. This does not certify full Desktop Commander parity, service/update lifecycle or human Google/ChatGPT replacement. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit. DCP-016 qualification checkpoint (2026-11-02): Seven standalone installed configuration scenarios passed on native Windows Node 24.21.0; independent PID exit observations and fixture cleanup passed. The revised Windows workflow passed 164/164 tests and normal package, self-host, normal prepack and source/installed managed-Codex gates. DCP remains 0/48; exact-head hosted gates remain pending.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 3–11 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`, `docs/validation/2026-11-02-remote-staging-smoke.json`, `docs/ai/changes/2026-11-02-remote-agent.json`, `docs/REMOTE_MCP_ROADMAP.md`, `docs/validation/2026-11-02-remote-sprint.md`, `docs/validation/2026-11-02-remote-staging-smoke-final.json`
+**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`, `docs/validation/2026-11-02-remote-staging-smoke.json`, `docs/ai/changes/2026-11-02-remote-agent.json`, `docs/REMOTE_MCP_ROADMAP.md`, `docs/validation/2026-11-02-remote-sprint.md`, `docs/validation/2026-11-02-remote-staging-smoke-final.json`, `docs/validation/2026-11-02-config-installed-qualification.md`, `docs/validation/2026-11-02-config-installed-windows.json`, `scripts/verify-configuration-installed.mjs`

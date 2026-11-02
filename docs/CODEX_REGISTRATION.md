@@ -23,6 +23,34 @@ launches the MCP executable parsed from the actual Codex configuration. Test-own
 under artifacts. `MTERM_VERIFY_BIN` selects a freshly installed artifact for the same verification.
 
 Optional `--compat-desktop-commander` is saved in the generated command and verified by installed
-registration tests. It enables only the eight implemented text/file aliases; it does not silently
-claim complete DesktopCommander compatibility or remove native MTerm tools. Changing a saved scope
+registration tests. It enables the eight implemented text/file aliases and `get_config`;
+`set_config_value` additionally requires `--allow-config-write`. These additions do not claim
+complete DesktopCommander compatibility or remove native MTerm tools. Changing a saved scope
 or profile requires deliberate removal/reconfiguration; a repeated setup never widens it silently.
+
+## Compatibility configuration in a managed registration
+
+Repeated `--root` options select explicit owner roots. `--compat-config <absolute-file>`
+selects a dedicated compatibility policy; `--allow-config-write` grants permission to change
+its supported preferences. File-write permission alone does not grant that capability.
+The options are saved in the owned Codex command and survive an idempotent setup preview/apply.
+Use a dedicated policy path and synthetic `CODEX_HOME` for tests; never test against real auth.
+
+Preferences cannot expand the startup root/shell ceilings or enable file-write/process
+capabilities. Empty `allowedDirectories` denies new file work. Each newly admitted call reads
+a bounded policy snapshot, so another running process sees later changes without a restart.
+Already admitted operations retain their own snapshot, and owned cleanup remains available
+when malformed policy denies new work. Configuration locking coordinates MTerm writers;
+it does not make unrelated filesystem writers transactional.
+
+The revised verifier registers two synthetic roots and an explicit synthetic policy path,
+discovers both configuration tools, changes a read default and checks it after restarting the
+registered command. Its child exit check independently observes the captured PID's exit;
+the SDK clearing its PID field alone is insufficient. The report continues to distinguish
+actual Codex TOML parsing plus SDK-invoked registered commands from model-driven tool calls:
+`actualCodexAgentToolInvocation` remains `false`.
+
+[Installed configuration evidence](validation/2026-11-02-config-installed-qualification.md)
+records a passing standalone Windows package probe and the later passing revised source-entry
+and installed-entry managed-Codex gates. Both native runs used test-owned Codex 0.160.1;
+actual model-driven invocation remains unverified.

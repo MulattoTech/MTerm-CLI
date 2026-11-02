@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "reviewedAt": "2026-11-02T03:07:05.180902+00:00",
+  "reviewedAt": "2026-11-02T03:29:17Z",
   "upstream": {
     "repository": "wonderwhy-er/DesktopCommanderMCP",
     "version": "0.2.52",
@@ -226,10 +226,12 @@
       "title": "Dynamic cross-process config reload without server restart",
       "state": "open",
       "url": "https://github.com/MulattoTech/MTerm-CLI/issues/18",
-      "implementationObservation": "Preserved unpublished owner-bounded compatibility configuration recovered with tests. Snapshot reload, multi-root ceilings, blocked executable names, limits and telemetry preference implemented; full platform/security/installed contract acceptance pending.",
-      "lastReviewedAt": "2026-11-02T00:18:44.138456+00:00",
+      "implementationObservation": "Preserved unpublished owner-bounded compatibility configuration recovered with tests. Snapshot reload, multi-root ceilings, blocked executable names, limits and telemetry preference implemented; full platform/security/installed contract acceptance pending. Qualification checkpoint (2026-11-02): Standalone native Windows installed probe passed seven scenarios with two concurrent MCP processes and a restart: live limits/roots/blocks, distinct-key writes, corruption denial and owned cleanup. The revised integrated Windows workflow subsequently passed 164/164 tests, normal package, self-host, normal prepack and source/installed managed-Codex gates. New exact-head hosted platform checks remain pending; full issue acceptance is not awarded.",
+      "lastReviewedAt": "2026-11-02T03:29:17Z",
       "evidence": [
-        "docs/ai/changes/2026-11-02-foundation-portability.json"
+        "docs/ai/changes/2026-11-02-foundation-portability.json",
+        "docs/validation/2026-11-02-config-installed-qualification.md",
+        "docs/validation/2026-11-02-config-installed-windows.json"
       ]
     },
     {

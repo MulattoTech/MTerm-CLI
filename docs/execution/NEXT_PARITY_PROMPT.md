@@ -1,3 +1,25 @@
+## Current DCP-017 UTF-16LE read candidate — 2026-11-02
+
+The bounded [UTF-16LE read contract](../validation/2026-11-02-utf16le-read.md) starts from merged
+main `dd3f052e1d270c6ca305e43e14180bb5f7579de6` on
+`fix/dcp-017-utf16le-20261102t211227`. Explicit BOM-marked UTF-16LE compatibility
+reads preserve strict decoding, root policy, raw/aggregate/serialized limits and
+UTF-8-only native/write/edit paths. Native original-source RED was 3 passes and
+27 failures; unchanged focused scratch GREEN passed 30 new cases plus 14 retained
+batch cases. Separate shared-storage regressions passed 64/64; independent review
+found no blocker. Eight installed read groups passed as supplementary scratch proof.
+
+Committed native full/prepack/Codex, fresh extraction, hosted final-head, merge/main
+and recovery gates remain pending at this preparation. DCP 0/48, WEB 0/12 and
+maturity 29.12% remain unchanged; #19 stays open. PR #78 is already delivered.
+Preserve primary dirty files, old worktrees and the existing read-only owner; no
+pairing, deployment, real-auth or model call is needed. Historical records follow.
+
+Resume the earliest missing gate for this same scope after reading its immutable
+native checkpoint and live GitHub state. Reconcile in-flight commands before any
+repeat. Do not restart owner enrollment, overwrite the dirty primary, or classify
+source/SDK/dashboards as actual model-driven client acceptance.
+
 ## DCP-025 observed qualification — 2026-11-02T20:13:07.672246+00:00
 
 [PR #78](https://github.com/MulattoTech/MTerm-CLI/pull/78) qualified candidate

@@ -4,6 +4,7 @@
 // Modified: 2026-11-02-file-info-contract; bounded metadata rendering and fail-closed cancellation/policy.
 // Modified: 2026-11-02-aggregate-output; account for every returned batch text byte.
 // Modified: 2026-11-02-edit-line-endings; normalize exact edits and bound output construction.
+// Modified: 2026-11-02-utf16le-read; read-only BOM-marked UTF-16LE compatibility.
 // Original bounded adapter. Pinned upstream behavioral references and limitations: docs/parity/.
 import type { Dirent } from 'node:fs';
 import fs from 'node:fs/promises';
@@ -105,11 +106,11 @@ export class DesktopCommanderFiles {
       );
     const full = this.absolute(a.path);
     this.textOnly(full);
-    const document = await this.files.read({ path: full });
+    const text = await this.files.readCompatibilityText({ path: full }, signal);
     cancelled(signal);
-    const lines = document.text === '' ? [] : document.text.split(/\r\n|\n|\r/);
-    if (lines.length && /[\r\n]$/.test(document.text)) lines.pop();
-    const total = countLines(document.text);
+    const lines = text === '' ? [] : text.split(/\r\n|\n|\r/);
+    if (lines.length && /[\r\n]$/.test(text)) lines.pop();
+    const total = countLines(text);
     const selected =
       a.offset < 0
         ? lines.slice(-Math.min(lines.length, Math.abs(a.offset)))

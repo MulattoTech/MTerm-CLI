@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 1,
+  "reviewKind": "independent exact-source, tests and installed-harness security review",
+  "reviewer": "/root/contract_inventory (OpenAI GPT-6 Astra Pro)",
+  "reviewedAtUtc": "2026-11-02T21:16:44.843535+00:00",
+  "baseCommit": "dd3f052e1d270c6ca305e43e14180bb5f7579de6",
+  "reviewedCandidate": "working-tree source identified by exact hashes; native and hosted gates remain separate",
+  "decision": "PASS for bounded source/contract/security review; no blocking finding",
+  "findings": [],
+  "sourceHashes": [
+    {
+      "path": "src/files.ts",
+      "bytes": 13921,
+      "sha256": "7c1f5170df70c0333834df9ea20b90d3a9a44216b9712a95ffdf3087fc6c4180"
+    },
+    {
+      "path": "src/desktop-commander-files.ts",
+      "bytes": 19598,
+      "sha256": "94ea1c75df5d90c690a091e0c585dd25cd52590555c511774944f5e2ba3b77ea"
+    },
+    {
+      "path": "tests/compat-read-utf16.test.mjs",
+      "bytes": 16006,
+      "sha256": "68c3fee765b7e16a2a1fa9aa3a865795b2ad757da960e7474bc9d264ecb4e0c7"
+    },
+    {
+      "path": "tests/compat-multiple-files.test.mjs",
+      "bytes": 12395,
+      "sha256": "d093e2e8b89a6ad8357b55ea3426a499f6b9d82b53480f2a63697c2c2b5f6869"
+    },
+    {
+      "path": "scripts/verify-compatibility-installed.mjs",
+      "bytes": 37796,
+      "sha256": "ca044bca56b2adbe57cc9ab59581e531c3749f2dd1e215887f425d9dbfc59fc0"
+    },
+    {
+      "path": "src/mcp.ts",
+      "bytes": 16991,
+      "sha256": "54ea5248a41f48ee39c14cb9df2b1bf380c42a74c6b4c4cce1aadbd9c17f1f5b"
+    }
+  ],
+  "verifiedProperties": [
+    "Only the existing compatibility read_file path switches to explicit FileService.readCompatibilityText; read_multiple_files reuses that path.",
+    "No exposed native read/tool schema, write/edit encoding, metadata decoder, policy resolver, limits, dependencies or workflow behavior changes.",
+    "Exactly FF FE strips only initial marker; fatal UTF-16LE decoder preserves second/interior BOM and valid Unicode; malformed code units raise INVALID_UTF16 and decoded NUL raises BINARY_FILE.",
+    "Non-marker bytes pass through unchanged strict UTF-8 helper; valid BOM-less bytes are interpreted as UTF-8 rather than guessed.",
+    "Shared descriptor reader preserves O_NOFOLLOW where supported, regular-file/hardlink validation, raw max-plus-one allocation and growth refusal; post-open cancellation remains within try/finally.",
+    "Pinned CRLF/LF/CR pagination, LF-only total counting, negative-tail length ignoring and zero/beyond-EOF semantics remain byte-for-byte in adapter logic.",
+    "Existing multi-file mocks retarget their call boundary without weakening assertions; original new 30-case fixture matches the retained RED fixture exactly.",
+    "Installed harness checks eight UTF-16 groups through actual npm-exec MCP and preserves all prior directory/metadata/batch/edit groups, readonly restart and owned process cleanup.",
+    "524288-byte limit is JSON.stringify(handler result) before outer isError/RPC fields; it is not the size of the final wire message. Raw file limit262144 and aggregate returned text limit262144 remain distinct."
+  ],
+  "focusedEvidence": {
+    "originalRed": {
+      "total": 30,
+      "passed": 3,
+      "failed": 27,
+      "skipped": 0,
+      "cancelled": 0,
+      "exitCode": 1,
+      "classification": "genuine rejected-success behavior plus error/cancellation assertion mismatches; not runner/import failure"
+    },
+    "implementerGreen": {
+      "total": 44,
+      "passed": 44,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "exitCode": 0
+    },
+    "independentReviewerGreen": {
+      "total": 44,
+      "passed": 44,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "exitCode": 0,
+      "sourceUnchangedDuringRun": true,
+      "runtime": "Linux Node24.22.1; --test-isolation=none for scratch"
+    },
+    "newFixtureSha256": "68c3fee765b7e16a2a1fa9aa3a865795b2ad757da960e7474bc9d264ecb4e0c7",
+    "originalFixtureMatches": true
+  },
+  "installedEvidence": {
+    "originalRedAttempt3": {
+      "exitCode": 1,
+      "classification": "product assertion at BOM-only successful read; actual INVALID_UTF8 envelope replaces expected success"
+    },
+    "green": {
+      "exitCode": 0,
+      "utf16Groups": 8,
+      "directoryGroups": 6,
+      "metadataGroups": 8,
+      "batchGroups": 6,
+      "editGroups": 6,
+      "ownedProcessExitsVerified": true,
+      "fixtureCleanupVerified": true,
+      "capturedChildStderrBytes": 198,
+      "stderrLimit": "observed npm warning bytes; do not claim zero captured child stderr"
+    },
+    "harnessSha256": "ca044bca56b2adbe57cc9ab59581e531c3749f2dd1e215887f425d9dbfc59fc0",
+    "retainedEarlierFailures": [
+      "Read-only default npm cache packaging error: observer/infrastructure, then scoped task cache preparation.",
+      "Attempt1: same fixture npmrc selected for user and global config; infrastructure failure before product calls.",
+      "Attempt2: newly created UTF16 mutation fixture contaminated existing exact directory-listing test; verifier defect, not product RED.",
+      "One-line deletion of only the test-owned write-guard fixture after byte-preservation assertions removes interference. Current corrected harness is identical for product RED attempt3 and GREEN."
+    ],
+    "limits": [
+      "Scratch --ignore-scripts packing/install is preparation and supplementary installed MCP evidence, not the normal native prepack/release gate.",
+      "SDK invocation is not model-driven Codex or ChatGPT proof.",
+      "No new paid/model/auth/owner operations in review."
+    ]
+  },
+  "evidenceHashes": [
+    {
+      "path": "local/utf16-red.json",
+      "bytes": 1005,
+      "sha256": "9ebc19eda3325be82df1a7d53f29dd9b5fbc3092afda206265fd65f069f9f33e"
+    },
+    {
+      "path": "local/utf16-red.stdout.log",
+      "bytes": 58696,
+      "sha256": "744e43715a3817969a7b25c56750ea24f0d24b3fc3116d4ca53b5e09987ea485"
+    },
+    {
+      "path": "local/utf16-red.stderr.log",
+      "bytes": 180,
+      "sha256": "630e4c380211293e26cfb8a3689c3bf23a7484cf43f7b8739f385b7d9e4f1c94"
+    },
+    {
+      "path": "local/original-red-utf16-fixture.test.mjs",
+      "bytes": 16006,
+      "sha256": "68c3fee765b7e16a2a1fa9aa3a865795b2ad757da960e7474bc9d264ecb4e0c7"
+    },
+    {
+      "path": "local/utf16-green.json",
+      "bytes": 1207,
+      "sha256": "42af21011b11e829891c821f9cb58614fa3e5ea8d67ff83ebd4e64aed1b5ebdb"
+    },
+    {
+      "path": "local/utf16-green.stdout.log",
+      "bytes": 4163,
+      "sha256": "3f46dd092212d766dcd2fc4047afa435bad076b9bcbd859986f56512dfd45149"
+    },
+    {
+      "path": "local/utf16-green.stderr.log",
+      "bytes": 179,
+      "sha256": "2a72ce8ac2074acb91b2005f675878f8449beb6a58e0a07534ccaca6948cea3c"
+    },
+    {
+      "path": "reviews/utf16-reviewer-focused.json",
+      "bytes": 1525,
+      "sha256": "fa4ded2b31a69e8950ffc66b878388440a6c146b386259a32012da8b60277a78"
+    },
+    {
+      "path": "reviews/utf16-reviewer-focused.stdout.log",
+      "bytes": 4170,
+      "sha256": "4be09d4d71070efe197ac28a9ec402a2f1f436c5a1e904ca71d0cf282ebe9e45"
+    },
+    {
+      "path": "reviews/utf16-reviewer-focused.stderr.log",
+      "bytes": 179,
+      "sha256": "2a72ce8ac2074acb91b2005f675878f8449beb6a58e0a07534ccaca6948cea3c"
+    },
+    {
+      "path": "local/installed-red/preparation.json",
+      "bytes": 894,
+      "sha256": "0b9d51cdf911fb37561cf3a1511401842047fb8245499fd4b0c1197f327ad5b2"
+    },
+    {
+      "path": "local/installed-red/result.json",
+      "bytes": 1966,
+      "sha256": "b2e2bfea64f0cc481d8c1f09369ce38336acfbf78c4ad28052f9f16bc5795e6b"
+    },
+    {
+      "path": "local/installed-red-2/result.json",
+      "bytes": 4086,
+      "sha256": "3ba83cd7c4184444084fc7d5a5272e6d33eae31acfcc10fa6b0cabc8a2cce402"
+    },
+    {
+      "path": "local/installed-red-2/original-verifier.mjs",
+      "bytes": 37759,
+      "sha256": "31de1d2154a27220d3a83f60646a3edf4e82e646d21dcb7879e9e707041094f0"
+    },
+    {
+      "path": "local/installed-red-2/installed-utf16-probe.stderr.log",
+      "bytes": 944,
+      "sha256": "d5a79b7b342a259ea288cd84c4693c8fc9df510904ef4fc4820bd0cd2b115886"
+    },
+    {
+      "path": "local/installed-red-3/result.json",
+      "bytes": 4084,
+      "sha256": "fc0422bce11e5cecfdb0793391277edbe6c776a7ba6aca272b448ce0a8d6ca40"
+    },
+    {
+      "path": "local/installed-red-3/installed-utf16-probe.stderr.log",
+      "bytes": 1137,
+      "sha256": "ade38c21641c0deaade2b8ed900af8629ecfb7f6b3142eade15013cea47f07f8"
+    },
+    {
+      "path": "local/installed-green/result.json",
+      "bytes": 6992,
+      "sha256": "fdab9555633536191742a855ef30fde90705deba40000e5a53c273db724518c3"
+    },
+    {
+      "path": "local/installed-green/installed-utf16-probe.stdout.log",
+      "bytes": 2319,
+      "sha256": "aad28ea863b8a14a0b3d4081fb2910482fcb360e2bb62d38ea56550489b25d55"
+    }
+  ],
+  "remainingGates": [
+    "native Windows full wrapper/self-host/normal prepack/package and installed Codex",
+    "fresh committed-source verification",
+    "exact candidate/final hosted matrix",
+    "independent final-head documentation review",
+    "normal expected-head merge and exact-main workflow checks",
+    "final preservation and recovery archive verification"
+  ],
+  "acceptance": {
+    "dcpAccepted": 0,
+    "dcpTotal": 48,
+    "webAccepted": 0,
+    "webTotal": 12,
+    "maturityPercent": 29.12,
+    "issue19": "OPEN; incomplete full scope and client acceptance"
+  },
+  "reviewLimitations": [
+    "Pathname policy remains cooperative and is not a handle-relative OS sandbox.",
+    "Cancellation checks cannot interrupt an already executing OS read.",
+    "No independently rerun native, hosted or actual client gate is implied."
+  ]
+}

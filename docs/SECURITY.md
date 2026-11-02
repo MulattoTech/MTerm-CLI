@@ -19,6 +19,15 @@ fsynced and atomically replaced; failed checks preserve original bytes. No gener
 No-overwrite move currently supports regular files only via link/unlink. Interrupted movement can
 leave both names. Parent directories must already exist except for explicit one-level mkdir.
 
+Compatibility `read_file` and `read_multiple_files` additionally admit explicit
+BOM-marked UTF-16LE through a separate read-only decoder. The raw-file ceiling
+includes the BOM; decoded NUL and malformed UTF-16 fail closed, including outside
+the requested page. Native reads, metadata and write/edit encodings remain UTF-8.
+UTF-8 expansion still consumes the existing aggregate text and serialized adapter
+result budgets. Descriptor reads check cancellation between awaits and close in
+`finally`; they cannot interrupt an OS read already in progress. See the
+[bounded contract](validation/2026-11-02-utf16le-read.md) for exact scope.
+
 ## Remaining local race risks
 
 Node path checking and replacement are separate OS operations. An adversarial local process able

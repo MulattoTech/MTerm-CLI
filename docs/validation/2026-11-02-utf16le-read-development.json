@@ -1,0 +1,419 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-11-02T21:19:58.192720+00:00",
+  "phase": "IMPLEMENT_AND_REVIEW",
+  "baseSha": "dd3f052e1d270c6ca305e43e14180bb5f7579de6",
+  "baseTree": "54def6b4748694a2962dd86a37e9bfde6261c940",
+  "branch": "fix/dcp-017-utf16le-20261102t211227",
+  "requirement": "DCP-017",
+  "issue": 19,
+  "upstream": {
+    "version": "0.2.52",
+    "commit": "c774c3b505de990219637ecdc9a830c8772fae9d",
+    "source": "docs/parity/upstream/src/utils/files/text.ts",
+    "sha256": "6b603846026daede265afbe604200f32c7e968adb19f4661ae23401096dd2672"
+  },
+  "originalFixture": {
+    "archiveRelativePath": "local/original-red-utf16-fixture.test.mjs",
+    "repoPath": "tests/compat-read-utf16.test.mjs",
+    "bytes": 16006,
+    "sha256": "68c3fee765b7e16a2a1fa9aa3a865795b2ad757da960e7474bc9d264ecb4e0c7",
+    "unchangedBetweenRedAndGreen": true
+  },
+  "localCampaigns": [
+    {
+      "name": "originalRed",
+      "runtime": "Linux Node 24.22.1; supplementary scratch direct-service evidence",
+      "command": [
+        "node",
+        "--test",
+        "--test-isolation=none",
+        "tests/compat-read-utf16.test.mjs"
+      ],
+      "startedAtUtc": "2026-11-02T21:14:14.009447+00:00",
+      "completedAtUtc": "2026-11-02T21:14:14.397716+00:00",
+      "exitCode": 1,
+      "counts": {
+        "tests": 30,
+        "pass": 3,
+        "fail": 27,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "sourceFiles": {
+        "tests/compat-read-utf16.test.mjs": {
+          "bytes": 16006,
+          "sha256": "68c3fee765b7e16a2a1fa9aa3a865795b2ad757da960e7474bc9d264ecb4e0c7"
+        },
+        "src/files.ts": {
+          "bytes": 12741,
+          "sha256": "7561018127fff0dd2d1ccb5c07152fd32c0689ae7de8f7bd961542442a332091"
+        },
+        "src/desktop-commander-files.ts": {
+          "bytes": 19530,
+          "sha256": "570946f9b68db88159f868a77f8846a99baf7d4bfda52d8dc5a4e6cd80da3215"
+        }
+      },
+      "rawLogs": [
+        {
+          "archiveRelativePath": "local/utf16-red.stdout.log",
+          "bytes": 58696,
+          "sha256": "744e43715a3817969a7b25c56750ea24f0d24b3fc3116d4ca53b5e09987ea485"
+        },
+        {
+          "archiveRelativePath": "local/utf16-red.stderr.log",
+          "bytes": 180,
+          "sha256": "630e4c380211293e26cfb8a3689c3bf23a7484cf43f7b8739f385b7d9e4f1c94"
+        }
+      ]
+    },
+    {
+      "name": "focusedGreen",
+      "runtime": "Linux Node 24.22.1; supplementary scratch direct-service evidence",
+      "command": [
+        "node",
+        "--test",
+        "--test-isolation=none",
+        "tests/compat-read-utf16.test.mjs",
+        "tests/compat-multiple-files.test.mjs"
+      ],
+      "startedAtUtc": "2026-11-02T21:14:54.897753+00:00",
+      "completedAtUtc": "2026-11-02T21:14:55.515286+00:00",
+      "exitCode": 0,
+      "counts": {
+        "tests": 44,
+        "pass": 44,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "sourceFiles": {
+        "src/files.ts": {
+          "bytes": 13921,
+          "sha256": "7c1f5170df70c0333834df9ea20b90d3a9a44216b9712a95ffdf3087fc6c4180"
+        },
+        "src/desktop-commander-files.ts": {
+          "bytes": 19598,
+          "sha256": "94ea1c75df5d90c690a091e0c585dd25cd52590555c511774944f5e2ba3b77ea"
+        },
+        "tests/compat-read-utf16.test.mjs": {
+          "bytes": 16006,
+          "sha256": "68c3fee765b7e16a2a1fa9aa3a865795b2ad757da960e7474bc9d264ecb4e0c7"
+        },
+        "tests/compat-multiple-files.test.mjs": {
+          "bytes": 12395,
+          "sha256": "d093e2e8b89a6ad8357b55ea3426a499f6b9d82b53480f2a63697c2c2b5f6869"
+        }
+      },
+      "rawLogs": [
+        {
+          "archiveRelativePath": "local/utf16-green.stdout.log",
+          "bytes": 4163,
+          "sha256": "3f46dd092212d766dcd2fc4047afa435bad076b9bcbd859986f56512dfd45149"
+        },
+        {
+          "archiveRelativePath": "local/utf16-green.stderr.log",
+          "bytes": 179,
+          "sha256": "2a72ce8ac2074acb91b2005f675878f8449beb6a58e0a07534ccaca6948cea3c"
+        }
+      ]
+    },
+    {
+      "name": "sharedStorageRegressions",
+      "runtime": "Linux Node 24.22.1; supplementary scratch direct-service evidence",
+      "command": [
+        "node",
+        "--test",
+        "--test-isolation=none",
+        "tests/files.test.mjs",
+        "tests/compat-edit-block.test.mjs",
+        "tests/compat-file-info.test.mjs"
+      ],
+      "startedAtUtc": "2026-11-02T21:15:19.691985+00:00",
+      "completedAtUtc": "2026-11-02T21:15:20.259949+00:00",
+      "exitCode": 0,
+      "counts": {
+        "tests": 64,
+        "pass": 64,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "sourceFiles": {
+        "src/files.ts": "7c1f5170df70c0333834df9ea20b90d3a9a44216b9712a95ffdf3087fc6c4180",
+        "src/desktop-commander-files.ts": "94ea1c75df5d90c690a091e0c585dd25cd52590555c511774944f5e2ba3b77ea"
+      },
+      "rawLogs": [
+        {
+          "archiveRelativePath": "local/utf16-regression.stdout.log",
+          "bytes": 6020,
+          "sha256": "6e2106cf293a5a920e951ebb93f9ac56cfce777e87f0c97b63cadf7422cee2e7"
+        },
+        {
+          "archiveRelativePath": "local/utf16-regression.stderr.log",
+          "bytes": 179,
+          "sha256": "2a72ce8ac2074acb91b2005f675878f8449beb6a58e0a07534ccaca6948cea3c"
+        }
+      ]
+    }
+  ],
+  "nativeOriginalRed": {
+    "receipt": {
+      "schemaVersion": 1,
+      "mode": "red",
+      "runId": "20261102T211227Z-dcp017",
+      "root": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\20261102T211227Z-dcp017",
+      "startedAtUtc": "2026-11-02T21:16:31.072Z",
+      "node": "v24.21.0",
+      "platform": "win32",
+      "arch": "x64",
+      "pid": 54404,
+      "commands": [
+        {
+          "name": "compile",
+          "exe": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+          "args": [
+            "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+            "run",
+            "build:code"
+          ],
+          "cwd": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\20261102T211227Z-dcp017",
+          "startedAtUtc": "2026-11-02T21:16:31.181Z",
+          "completedAtUtc": "2026-11-02T21:16:31.719Z",
+          "pid": 68232,
+          "exitCode": 0,
+          "signal": null,
+          "error": null,
+          "stdout": {
+            "path": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\checkpoints\\mterm-web-pro-loop\\20261102T211227Z-dcp017\\qualification\\red\\compile.stdout.log",
+            "bytes": 64,
+            "sha256": "9a9214dd92f21ea05ec920f34a2d1b1e5699936c060ba52eba85b89808758cb9"
+          },
+          "stderr": {
+            "path": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\checkpoints\\mterm-web-pro-loop\\20261102T211227Z-dcp017\\qualification\\red\\compile.stderr.log",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        },
+        {
+          "name": "focused",
+          "exe": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+          "args": [
+            "--test",
+            "--test-reporter=tap",
+            "--test-concurrency=1",
+            "tests/compat-read-utf16.test.mjs"
+          ],
+          "cwd": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\worktrees\\20261102T211227Z-dcp017",
+          "startedAtUtc": "2026-11-02T21:16:31.727Z",
+          "completedAtUtc": "2026-11-02T21:16:32.169Z",
+          "pid": 8800,
+          "exitCode": 1,
+          "signal": null,
+          "error": null,
+          "stdout": {
+            "path": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\checkpoints\\mterm-web-pro-loop\\20261102T211227Z-dcp017\\qualification\\red\\focused.stdout.log",
+            "bytes": 327508,
+            "sha256": "d74b5cdd61def49547773bf5d87dd5bedc2cd0fd4968216f7c830c2359998db7"
+          },
+          "stderr": {
+            "path": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\checkpoints\\mterm-web-pro-loop\\20261102T211227Z-dcp017\\qualification\\red\\focused.stderr.log",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        }
+      ],
+      "modelCalls": 0,
+      "actualCodexAgentToolInvocation": false,
+      "realUserConfigChanged": false,
+      "sourceSha": "dd3f052e1d270c6ca305e43e14180bb5f7579de6",
+      "sourceTree": "54def6b4748694a2962dd86a37e9bfde6261c940",
+      "sourceHashes": {
+        "src/files.ts": {
+          "bytes": 12741,
+          "sha256": "7561018127fff0dd2d1ccb5c07152fd32c0689ae7de8f7bd961542442a332091",
+          "normalizedSha256": "7561018127fff0dd2d1ccb5c07152fd32c0689ae7de8f7bd961542442a332091"
+        },
+        "src/desktop-commander-files.ts": {
+          "bytes": 19530,
+          "sha256": "570946f9b68db88159f868a77f8846a99baf7d4bfda52d8dc5a4e6cd80da3215",
+          "normalizedSha256": "570946f9b68db88159f868a77f8846a99baf7d4bfda52d8dc5a4e6cd80da3215"
+        },
+        "tests/compat-read-utf16.test.mjs": {
+          "bytes": 16006,
+          "sha256": "68c3fee765b7e16a2a1fa9aa3a865795b2ad757da960e7474bc9d264ecb4e0c7",
+          "normalizedSha256": "68c3fee765b7e16a2a1fa9aa3a865795b2ad757da960e7474bc9d264ecb4e0c7"
+        },
+        "scripts/verify-compatibility-installed.mjs": {
+          "bytes": 28664,
+          "sha256": "d36fb8d1236d808a81fa25e1056370120b537a0709e884b00a677230f46394be",
+          "normalizedSha256": "d36fb8d1236d808a81fa25e1056370120b537a0709e884b00a677230f46394be"
+        },
+        "package-lock.json": {
+          "bytes": 19974,
+          "sha256": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec",
+          "normalizedSha256": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec"
+        },
+        "npm-shrinkwrap.json": {
+          "bytes": 19974,
+          "sha256": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec",
+          "normalizedSha256": "8a95c58722d8f2f163219c02a0a2caaf81605e883974694aff2db11a4e8278ec"
+        }
+      },
+      "counts": {
+        "tests": 30,
+        "pass": 3,
+        "fail": 27,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "ok": true,
+      "completedAtUtc": "2026-11-02T21:16:32.180Z"
+    },
+    "receiptTransferNote": "This field preserves parsed native receipt semantics. Raw native logs retain the hashes reported by the native driver; local JSON reserialization is not claimed byte-identical to the original result.json until archive verification.",
+    "classification": "Original runtime product RED: valid-read refusals and explicit decoding/cancellation mismatches; not runner/import failure."
+  },
+  "independentSourceReview": {
+    "repoPath": "docs/validation/2026-11-02-utf16le-read-source-review.json",
+    "bytes": 9683,
+    "sha256": "5cd3a42d82588f042f0fa00a10c420f68287c21c5d6a98d1e12daa429a46f1f4",
+    "decision": "PASS for bounded source/contract/security review; no blocking finding",
+    "independentFocusedCounts": {
+      "total": 44,
+      "passed": 44,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "exitCode": 0,
+      "sourceUnchangedDuringRun": true,
+      "runtime": "Linux Node24.22.1; --test-isolation=none for scratch"
+    }
+  },
+  "supplementaryInstalled": {
+    "runtime": "Linux Node 24.22.1",
+    "packaging": "npm pack --ignore-scripts and task-owned installation; normal prepack/native qualification remains pending",
+    "startedAtUtc": "2026-11-02T21:16:01.392358+00:00",
+    "completedAtUtc": "2026-11-02T21:16:05.448798+00:00",
+    "probeExitCode": 0,
+    "tarball": {
+      "bytes": 60206,
+      "sha256": "5d00633ec3b8f04cd17721659f07b765db3b72f4a268989dd76a0a1450af9749"
+    },
+    "harnessSha256": "ca044bca56b2adbe57cc9ab59581e531c3749f2dd1e215887f425d9dbfc59fc0",
+    "probe": {
+      "npmExecMcp": true,
+      "compatibilityAliasesExercised": 8,
+      "directoryListing": {
+        "scenarios": [
+          "zero-depth",
+          "one-level-depth",
+          "default-depth-stable-exact-visible-overflow",
+          "link-not-traversed",
+          "root-private-link-missing-denials",
+          "schema-depth-denial"
+        ],
+        "passed": 6
+      },
+      "fileInfo": {
+        "scenarios": [
+          "text-stat-order-dates-empty-LF-CRLF-CR-BOM-Unicode",
+          "directory-handler-discriminator-no-lines",
+          "unchanged-inclusive-262144-byte-ceiling",
+          "binary-invalid-utf8-oversize-safe-omissions",
+          "unsupported-formats-stat-only",
+          "outside-private-link-hardlink-missing-denials",
+          "schema-path-denial",
+          "read-only-installed-restart-independent-capabilities"
+        ],
+        "passed": 8,
+        "readOnlyRestart": true
+      },
+      "multipleFiles": {
+        "scenarios": [
+          "ordered-summary-successes-duplicates-and-safe-partial-error",
+          "published-schema-and-one-to-twenty-path-boundaries",
+          "inclusive-full-text-byte-ceiling-and-one-byte-overflow",
+          "error-summary-and-separator-budget-in-both-orders",
+          "private-outside-format-hardlink-and-symlink-denials-no-mutation",
+          "read-only-installed-restart-capability-separation"
+        ],
+        "passed": 6,
+        "maxTextBytes": 262144,
+        "readOnlyRestart": true
+      },
+      "editBlock": {
+        "scenarios": [
+          "write-enabled-schema-discovery",
+          "CRLF-LF-CR-native-default-first-style-and-literal-byte-fidelity",
+          "normalized-exact-count-mismatch-and-schema-no-write",
+          "inclusive-UTF8-byte-limit-after-newline-expansion",
+          "private-and-outside-root-denials-preserve-bytes",
+          "read-only-restart-omits-edit-and-mutation-capabilities"
+        ],
+        "passed": 6,
+        "readOnlyRestart": true
+      },
+      "utf16Read": {
+        "scenarios": [
+          "native-UTF8-read-and-compatibility-write-edit-refusals-preserve-bytes",
+          "read-only-installed-restart-schema-and-capability-separation",
+          "exact-BOM-empty-Unicode-CRLF-CR-offset-tail-envelopes",
+          "malformed-surrogate-NUL-and-unsupported-encoding-refusals",
+          "inclusive-raw-byte-ceiling-counts-BOM-and-permits-bounded-UTF8-expansion",
+          "expanded-UTF8-aggregate-text-exact-byte-boundary",
+          "serialized-adapter-result-exact-byte-boundary-after-JSON-escaping",
+          "UTF16-root-private-hardlink-and-symlink-denials-preserve-bytes"
+        ],
+        "passed": 8,
+        "rawFileBytes": 262144,
+        "aggregateTextBytes": 262144,
+        "serializedAdapterResultBytes": 524288,
+        "readOnlyRestart": true,
+        "writesRemainUTF8": true
+      },
+      "ownedProcessExitsVerified": true,
+      "directoryFixtureCleanupVerified": true,
+      "multipleFileFixtureCleanupVerified": true,
+      "stderrCapturedBytes": 198,
+      "fullParity": false,
+      "modelCalls": 0
+    },
+    "originalCorrectedHarnessRed": {
+      "exitCode": 1,
+      "classification": "product assertion at BOM-only successful read; actual INVALID_UTF8 envelope replaces expected success"
+    },
+    "retainedEarlierFailures": [
+      "Read-only default npm cache packaging error: observer/infrastructure, then scoped task cache preparation.",
+      "Attempt1: same fixture npmrc selected for user and global config; infrastructure failure before product calls.",
+      "Attempt2: newly created UTF16 mutation fixture contaminated existing exact directory-listing test; verifier defect, not product RED.",
+      "One-line deletion of only the test-owned write-guard fixture after byte-preservation assertions removes interference. Current corrected harness is identical for product RED attempt3 and GREEN."
+    ]
+  },
+  "limits": {
+    "rawFileBytesIncludingBom": 262144,
+    "aggregateReturnedTextUtf8Bytes": 262144,
+    "serializedAdapterResultBytes": 524288,
+    "serializationScope": "JSON.stringify(handler result) before additional MCP isError/RPC fields; not final wire-message byte size",
+    "standaloneReadTextCapAdded": false
+  },
+  "requiredGatesPending": [
+    "committed native Windows full wrapper/self-host/normal prepack/package",
+    "source and installed native Codex registration/parser with modelCalls0",
+    "fresh exact-commit source extraction/locked install/build/prepack/installed package",
+    "exact candidate and final-head hosted matrix",
+    "independent final-head review",
+    "normal expected-head merge and actual merged-main checks",
+    "final preservation and additive recovery/downloads"
+  ],
+  "actualCodexAgentToolInvocation": false,
+  "actualChatGPTToolInvocation": false,
+  "modelCalls": 0,
+  "acceptance": {
+    "dcpAccepted": 0,
+    "dcpTotal": 48,
+    "webAccepted": 0,
+    "webTotal": 12,
+    "maturityPercent": 29.12,
+    "issue19": "OPEN"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "baseSha": "458e0bd72b94f34fbc74662a0cfd570bdb42bdcb",
+  "scope": "DPAPI bounds candidate only; no acceptance credit",
+  "beforeReceipt": {
+    "path": "evidence/dpapi/local/protected-ledgers-before.json",
+    "bytes": 736242,
+    "sha256": "e039259c263d52f83b01b12b1e473bff2eb21fea335b1be83f076bb1475ac1ff"
+  },
+  "progress": {
+    "allowedIds": [
+      "CLI-191",
+      "CLI-195",
+      "CLI-200",
+      "CLI-206",
+      "CLI-215",
+      "CLI-239",
+      "CLI-300"
+    ],
+    "allowedFields": [
+      "evidence",
+      "notes",
+      "reviewer"
+    ],
+    "allOtherValuesEqual": true,
+    "protectedBeforeSha256": "4362f5e39e6c94b4f3a0e0dfb97f37003b6b355e84f35a39cacb94c70cd91e24",
+    "protectedAfterSha256": "4362f5e39e6c94b4f3a0e0dfb97f37003b6b355e84f35a39cacb94c70cd91e24",
+    "items": 300
+  },
+  "web": {
+    "allowedEvidenceAddition": "WINDOWS-DPAPI-BOUNDS-20261102",
+    "allowedItem": "WEB-003",
+    "allowedItemFields": [
+      "evidence",
+      "implemented"
+    ],
+    "allOtherValuesEqual": true,
+    "protectedBeforeSha256": "3c5b347b018ff82b058181b4e251fc42fe1258681823bb0558bf15872172e901",
+    "protectedAfterSha256": "3c5b347b018ff82b058181b4e251fc42fe1258681823bb0558bf15872172e901",
+    "deployedSourceAndStagingIdentitiesUnchanged": true
+  },
+  "byteIdenticalFiles": [
+    {
+      "path": "docs/roadmap/desktop-commander-parity.json",
+      "sha256": "781233f18e0b7ab7bc563823f355f41fb8a5fe03b4c83174ac5405a7a55e1cb1",
+      "byteIdentical": true
+    },
+    {
+      "path": "docs/roadmap/requirements-seed.json",
+      "sha256": "af0e40402e186c4223e7e513f64230dd3740b9f882e99ecb4f6229ba81cf103c",
+      "byteIdentical": true
+    }
+  ],
+  "acceptance": {
+    "dcp": {
+      "accepted": 0,
+      "total": 48
+    },
+    "web": {
+      "accepted": 0,
+      "total": 12
+    },
+    "maturityPercent": 29.12
+  },
+  "protectedFields": "All stages, weights, criteria, acceptance, estimates, dependencies, platforms, blockers, owner rulings, deployed/staging identity and release gates remain equal.",
+  "canonicalization": "UTF8 JSON sorted keys with compact separators and literal nonASCII; source seed and DCP also compared as raw bytes."
+}

@@ -2,6 +2,7 @@
 // AI-Change: 2026-10-04-local-mcp
 // Modified: 2026-11-02-config-installed-qualification; qualify shared runtime preferences from the installed package.
 // Modified: 2026-11-02-file-info-contract; retain installed compatibility scenario and cleanup evidence.
+// Modified: 2026-11-02-windows-dpapi-bounds; bind synthetic remote-state checks to the installed package.
 // Fresh pack/install/link and official MCP round trip; only test-owned prefix/home/cache are used.
 import fs from 'node:fs/promises';
 import { resolveNpmEntry } from './npm-runtime.mjs';
@@ -10,6 +11,7 @@ import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { performance } from 'node:perf_hooks';
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { Client } from '@modelcontextprotocol/client';
 import { StdioClientTransport } from '@modelcontextprotocol/client/stdio';
 const exec = promisify(execFile);
@@ -50,6 +52,26 @@ assert.equal(
   await fs.readFile(path.join(root, 'package-lock.json'), 'utf8'),
   await fs.readFile(path.join(root, 'npm-shrinkwrap.json'), 'utf8'),
   'Runtime shrinkwrap must match source lock',
+);
+// Snapshot public compiled inputs before packing; the verifier must import these exact installed bytes.
+const remoteSourceFiles = [];
+for (const name of (await fs.readdir(path.join(root, 'dist', 'remote')))
+  .filter((p) => p.endsWith('.js'))
+  .sort()) {
+  const file = path.join(root, 'dist', 'remote', name);
+  assert.ok((await fs.lstat(file)).isFile(), 'Remote runtime inputs must be regular files');
+  const bytes = await fs.readFile(file);
+  remoteSourceFiles.push({
+    path: 'dist/remote/' + name,
+    bytes: bytes.length,
+    sha256: createHash('sha256').update(bytes).digest('hex'),
+  });
+}
+assert.ok(remoteSourceFiles.some((f) => f.path === 'dist/remote/state.js'));
+const remoteSourceSnapshot = path.join(output, 'remote-source-snapshot.json');
+await fs.writeFile(
+  remoteSourceSnapshot,
+  JSON.stringify({ schemaVersion: 1, files: remoteSourceFiles }, null, 2) + '\n',
 );
 const packs = JSON.parse(
   (await npmRun(['pack', '--ignore-scripts', '--json', '--pack-destination', output])).stdout,
@@ -147,6 +169,31 @@ assert.equal(configuration.ok, true);
 assert.equal(configuration.concurrentMcpProcesses, 2);
 assert.equal(configuration.shutdownVerified, true);
 assert.equal(configuration.telemetryNetworkGuard.observedProductAttempts, 0);
+const remoteState = JSON.parse(
+  (
+    await exec(
+      process.execPath,
+      [
+        path.join(root, 'scripts/verify-remote-state-installed.mjs'),
+        installed,
+        prefix,
+        output,
+        pack.version,
+        remoteSourceSnapshot,
+      ],
+      { cwd: home, env, timeout: 90000, maxBuffer: 1048576, windowsHide: true },
+    )
+  ).stdout,
+);
+assert.equal(remoteState.ok, true);
+assert.deepEqual(remoteState.moduleBindings, remoteSourceFiles);
+assert.equal(remoteState.syntheticCredentialRoundtrip, true);
+assert.equal(remoteState.windowsDpapiExercised, process.platform === 'win32');
+assert.equal(remoteState.ownedProcessExitsVerified, process.platform === 'win32' ? true : null);
+assert.equal(remoteState.fixtureCleanupVerified, true);
+assert.equal(remoteState.syntheticOnly, true);
+assert.equal(remoteState.actualRemoteEnrollment, false);
+assert.equal(remoteState.modelCalls, 0);
 // CLI --prefix changes npm's local package root; environment prefix selects an isolated global link destination.
 env.npm_config_prefix = linkPrefix;
 assert.equal((await npmRun(['prefix', '--global'])).stdout.trim(), linkPrefix);
@@ -208,6 +255,7 @@ const report = {
   npmExecMcpCompatibilityTools: compatibility.compatibilityAliasesExercised,
   installedCompatibility: compatibility,
   installedConfiguration: configuration,
+  installedRemoteState: remoteState,
   fullDesktopCommanderParity: false,
   fromOutsideCheckout: true,
   helpExternalLaunchSamplesMs: timings.map((x) => Math.round(x * 100) / 100),

@@ -148,6 +148,23 @@ root. POSIX credentials use owner-only files/directories; that is not encrypted 
 storage. Remote commands never read browser cookies or Codex authentication to manufacture
 an identity. Pairing credentials must not be copied into a repository or exposed root.
 
+The Windows protection helper has a fixed 30-second operation timer and a five-second
+cleanup grace. Its CurrentUser scope, fixed entropy, stdin-only secret transport and
+inclusive 32 KiB stdout limit remain. Success requires zero-code close with no prior
+failure. Deadline, output overflow or child/stream failure latches a generic failure
+before requesting termination once through the owned ChildProcess. Exit/close is
+observed before treating termination as confirmed; a kill return value is insufficient.
+Synchronous spawn/stdin throws are sanitized, with no retry or plaintext fallback.
+
+If termination remains unconfirmed at grace exhaustion, only owned streams are disposed
+and the owned child is unreferenced; this does not claim OS termination. A savePairing
+Protect failure then retains state.lock via a module-private error marker, preserving
+config/credential bytes and requiring deliberate local inspection. There is no automatic
+stale-lock removal, and late events cannot silently release admission. credential()
+Unprotect is read-only and has no mutation lock to retain; its generic error boundary
+remains. These are event-loop timer budgets, not a hard wall-clock or OS termination
+guarantee. No numeric-PID fallback or unrelated-process signal is used.
+
 The registry stores opaque OAuth/device credentials and pairing/authorization secrets
 as hashes, not raw bearer values. Authorization codes expire after one minute; access
 tokens expire after one hour; grants and refresh credentials expire after seven days.

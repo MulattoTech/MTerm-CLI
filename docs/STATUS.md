@@ -1,3 +1,25 @@
+# Current editing iteration — 2026-11-02
+
+The DCP-025 / issue #27 candidate starts from verified merged main
+`99c3c9e7d23d76a3207b903554f552f59cebf236` on
+`fix/dcp-025-edit-eol-20261102`. It normalizes exact search/replacement to the
+file's first newline, preserves untouched bytes, observes post-read cancellation
+and refuses oversized output before allocation. Native original-source RED was
+7 passes/23 assertion failures; unchanged final GREEN passed 30/30. Independent
+source review resolved its allocation finding. Read the new contract and receipts
+before repeating work. Full committed/native/installed/fresh/hosted delivery gates
+remain subsequent observations at this preparation.
+
+PR #77 is already delivered (main checks5/5); older pending fields below are
+historical. DCP0/48, WEB0/12 and maturity29.12% remain unchanged. Preserve the dirty
+primary and running owner clone. No pairing, deployment, model or real-auth call
+is needed. Actual client acceptance and full edit/fuzzy/Office/preview semantics
+remain separate. Historical records below retain their original timestamps.
+
+[Current contract and qualification](validation/2026-11-02-edit-line-endings.md)
+
+## Preserved prior records
+
 # Aggregate-output qualification observed — PR #77, 2026-11-02
 
 Implementation `c510908017d7937173189d483fd2697645d42748` repairs the complete

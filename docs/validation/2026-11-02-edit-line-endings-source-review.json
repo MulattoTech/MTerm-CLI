@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "reviewer": {
+    "provider": "OpenAI",
+    "model": "GPT-6 Astra Pro",
+    "agent": "/root/live_issue_audit",
+    "independence": "Did not author or modify runtime, tests or installed harness. Earlier read-only live/upstream audit recommended newline slice."
+  },
+  "observedAt": "2026-11-02T19:55:46.078203+00:00",
+  "base": "99c3c9e7d23d76a3207b903554f552f59cebf236",
+  "branch": "fix/dcp-025-edit-eol-20261102",
+  "scope": "Initial static/source/direct-service review of DCP025 newline normalization before allocation guard; does not certify native/installed/hosted/client acceptance.",
+  "initialHashes": [
+    {
+      "path": "src/desktop-commander-files.ts",
+      "bytes": 19136,
+      "sha256": "cc1dbe7dfdb5c7b664115748e8574d57b9c96aaf2040e930e54b3e7a992ba5b0"
+    },
+    {
+      "path": "scripts/verify-compatibility-installed.mjs",
+      "bytes": 28062,
+      "sha256": "df7c3a2b06f5cf5197e5106828246f88ffe9c33d66dbd43ff5b1b9adf7a38806"
+    },
+    {
+      "path": "tests/compat-edit-block.test.mjs",
+      "bytes": 12948,
+      "sha256": "0c029cfab29b7b4f5ca27290d0eb6d877790007e02d28d552109b37747e76269"
+    },
+    {
+      "path": "dist/desktop-commander-files.js",
+      "bytes": 19910,
+      "sha256": "4f790bec66a1c13eb41cbe5b0b7db4862b0fdc76550ff0f00bce566c2b1d573b"
+    }
+  ],
+  "endOfReviewHashes": [
+    {
+      "path": "src/desktop-commander-files.ts",
+      "bytes": 19530,
+      "sha256": "570946f9b68db88159f868a77f8846a99baf7d4bfda52d8dc5a4e6cd80da3215"
+    },
+    {
+      "path": "scripts/verify-compatibility-installed.mjs",
+      "bytes": 28071,
+      "sha256": "1435527928e3472535c9b5fe276b22536f05de8b3623ba381da470b13a0a0e95"
+    },
+    {
+      "path": "tests/compat-edit-block.test.mjs",
+      "bytes": 13904,
+      "sha256": "81afa22554c1a4d2857f32c28fbbffc358bfec2c8b2527190f447c8acf26858b"
+    },
+    {
+      "path": "dist/desktop-commander-files.js",
+      "bytes": 20357,
+      "sha256": "ea38a10cc72168d23c780451578dffdac3b8a86a841304776da88e8d2d50783f"
+    }
+  ],
+  "upstream": {
+    "repository": "wonderwhy-er/DesktopCommanderMCP",
+    "pin": "c774c3b505de990219637ecdc9a830c8772fae9d",
+    "version": "0.2.52",
+    "files": [
+      {
+        "path": "src/tools/edit.ts",
+        "sha256": "e39442d1478c3ef0d3e18a0da085a7c734ba00aa06495d89d8a8e8e1af12f5b6"
+      },
+      {
+        "path": "src/utils/lineEndingHandler.ts",
+        "sha256": "181f79d6ee9cdcc76f35ee9128f3a91a1dda268ba5ad67e19f2db4cfbed5f1a0"
+      }
+    ],
+    "license": "Existing upstream MIT notice retained; new runtime authored independently."
+  },
+  "findings": [
+    {
+      "id": "EDIT-REVIEW-001",
+      "severity": "blocking",
+      "status": "open_at_initial_review",
+      "title": "Unbounded repeated replacement construction before FileService byte gate",
+      "detail": "Up to10000 matches times a newline-normalized replacement of524288 UTF16 units can request billions of units before FileService enforces262144 bytes. Observed RangeError rather than bounded FILE_TOO_LARGE. Potential smaller huge joins can allocate far beyond the file ceiling.",
+      "reproduction": {
+        "command": [
+          "node",
+          "--max-old-space-size=64",
+          "../audit/review-allocation-probe.mjs"
+        ],
+        "exitCode": 0,
+        "productResult": {
+          "node": "v24.22.1",
+          "maxStringLength": 536870888,
+          "projectedUnits": 5242880002,
+          "error": {
+            "name": "RangeError",
+            "code": null,
+            "message": "Invalid string length"
+          },
+          "originalBytesPreserved": true,
+          "stagingFiles": [],
+          "correctPolicyError": false
+        },
+        "note": "Probe exit0 means observation completed, not a passed product expectation. The corresponding30th regression then failed."
+      },
+      "recommendation": "Reject projected UTF16 result length greater than this.files.maxBytes before split/join. This is a safe lower bound on UTF8 bytes; retain existing FileService byte check for bounded constructed strings. Avoid naive UTF8 subtraction because JS half-surrogate search/replacement can change pairing across boundaries.",
+      "regression": "Known projected output above buffer.constants.MAX_STRING_LENGTH yields safe immediate RangeError in unguarded join; require FILE_TOO_LARGE, preserved source bytes and no staging."
+    }
+  ],
+  "reviewedProperties": [
+    "First-newline regex prioritizes CRLF and uses os.EOL only when no delimiter exists, matching pinned helper on supported platforms.",
+    "Only search and replacement normalized; original file and unmatched mixed delimiters remain byte-exact.",
+    "String replacement remains literal through split/join; dollar metacharacters are not interpreted.",
+    "Normalized search remains nonempty; existing nonoverlapping count and10000-match work bound preserved explicitly.",
+    "Added cancellation check after asynchronous read correctly gives cancellation precedence over no-match or success.",
+    "Shared FileService versioned atomic write, policy/root/private/link checks and separate write permission remain.",
+    "No new dependencies, network telemetry, credentials, authority expansion or format claims.",
+    "Direct fixtures cover CRLF/LF/CR, first-style mixed data, native fallback, BOM/Unicode/literal bytes, counts, no-match, schema, exact byte limits, write capability, policy, links, conflicts, and cancellation.",
+    "Installed harness has real child-tool discovery, normalized edit persisted bytes, errors, exact262144-byte/one-over cases, private/outside denials and read-only restart. Actual packed run is not claimed by this static review.",
+    "Full DCP025 remains open: fuzzy/Office matching, overlap semantics, success-preview and wider contract/client evidence remain separate."
+  ],
+  "commands": [
+    {
+      "command": [
+        "git",
+        "diff",
+        "--",
+        "src/desktop-commander-files.ts",
+        "scripts/verify-compatibility-installed.mjs"
+      ],
+      "exitCode": 0,
+      "purpose": "Inspect runtime and installed harness changes"
+    },
+    {
+      "command": [
+        "node",
+        "--test",
+        "tests/compat-edit-block.test.mjs"
+      ],
+      "exitCode": 0,
+      "reported": "Only wrapper1/1; not interpreted as29 per-case proof",
+      "log": "audit/review-focused-initial.log"
+    },
+    {
+      "command": [
+        "node",
+        "--test",
+        "--test-isolation=none",
+        "--test-reporter=tap",
+        "tests/compat-edit-block.test.mjs"
+      ],
+      "exitCode": 1,
+      "reported": {
+        "tests": 30,
+        "passed": 29,
+        "failed": 1,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "note": "Root added30th allocation case before this run. Only that new allocation assertion failed; original29 passed.",
+      "log": "audit/review-focused-isolation-none.log"
+    }
+  ],
+  "conclusion": "Changes require allocation preflight guard and a follow-up independent review before approval. No other blocking issue found in this bounded scope.",
+  "claims": {
+    "nativeWindowsVerified": false,
+    "installedPackageRunByReviewer": false,
+    "hostedVerified": false,
+    "actualCodexAgentInvocation": false,
+    "actualChatGPTInvocation": false,
+    "acceptanceAwarded": false
+  }
+}

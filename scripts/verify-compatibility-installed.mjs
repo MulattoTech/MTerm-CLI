@@ -3,6 +3,7 @@
 // Modified: 2026-11-02-directory-contract; verify packed directory contracts and owned exits.
 // Modified: 2026-11-02-file-info-contract; qualify actual metadata envelopes and read-only restart.
 // Modified: 2026-11-02-aggregate-output; qualify complete UTF-8 batch budgets in a read-only package.
+// Modified: 2026-11-02-edit-line-endings; qualify normalized exact edits and byte-preserving refusals.
 // Invoked by verify-package with its isolated npm cache, tarball and workspace.
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -18,6 +19,7 @@ const listingRoot = await fs.mkdtemp(path.join(scope, 'directory-contract-'));
 const directoryScenarios = [];
 const fileInfoScenarios = [];
 const multipleFileScenarios = [];
+const editScenarios = [];
 let npmPid;
 let productPid;
 let stderrBytes = 0;
@@ -65,7 +67,8 @@ try {
   npmPid = transport.pid;
   await connected;
   assert.ok(Number.isInteger(npmPid) && npmPid > 0, 'Original npm transport process identity required');
-  const names = (await client.listTools(undefined, requestOptions)).tools.map((x) => x.name);
+  const listedTools = (await client.listTools(undefined, requestOptions)).tools;
+  const names = listedTools.map((x) => x.name);
   for (const name of [
     'read_file',
     'read_multiple_files',
@@ -156,6 +159,90 @@ try {
   const moved = path.join(scope, 'nested', 'compatibility.txt');
   await call('move_file', { source: file, destination: moved });
   await call('edit_block', { file_path: moved, old_string: 'second', new_string: 'changed' });
+  const editTool = listedTools.find((tool) => tool.name === 'edit_block');
+  assert.equal(editTool.annotations.readOnlyHint, false);
+  assert.equal(editTool.inputSchema.properties.old_string.minLength, 1);
+  assert.equal(editTool.inputSchema.properties.expected_replacements.default, 1);
+  editScenarios.push('write-enabled-schema-discovery');
+  const editRoot = path.join(listingRoot, 'edits');
+  await fs.mkdir(editRoot);
+  const nativeEol = process.platform === 'win32' ? '\r\n' : '\n';
+  for (const [index, [before, search, replacement, after]] of [
+    ['prefix\r\none\r\ntwo\r\nsuffix\r\n', 'one\ntwo', 'new\nlines', 'prefix\r\nnew\r\nlines\r\nsuffix\r\n'],
+    ['one\ntwo\n', 'one\r\ntwo', 'new\rline', 'new\nline\n'],
+    ['one\rtwo\r', 'one\ntwo', 'new\r\nline', 'new\rline\r'],
+    ['only', 'only', 'new\rline\nlast', `new${nativeEol}line${nativeEol}last`],
+    [
+      '\uFEFFα\r\n\tone\r\ntwo\r\nuntouched\nlast\r',
+      '\tone\ntwo',
+      "\t😀 $&\n$1 $` $'",
+      "\uFEFFα\r\n\t😀 $&\r\n$1 $` $'\r\nuntouched\nlast\r",
+    ],
+  ].entries()) {
+    const target = path.join(editRoot, `newline-${index}.txt`);
+    await fs.writeFile(target, before);
+    const result = await call('edit_block', {
+      file_path: target,
+      old_string: search,
+      new_string: replacement,
+    });
+    assert.deepEqual(result.content, [{ type: 'text', text: `Successfully applied 1 edit to ${target}` }]);
+    assert.equal(result.structuredContent, undefined);
+    assert.deepEqual(await fs.readFile(target), Buffer.from(after));
+  }
+  editScenarios.push('CRLF-LF-CR-native-default-first-style-and-literal-byte-fidelity');
+  const editTarget = path.join(editRoot, 'refusal.txt');
+  const rejectEdit = async (args, code) => {
+    const before = await fs.readFile(editTarget);
+    const result = await client.callTool({ name: 'edit_block', arguments: args }, requestOptions);
+    assert.equal(result.isError, true);
+    const data = result.structuredContent ?? JSON.parse(result.content[0].text);
+    assert.equal(data.error.code, code);
+    assert.ok(Buffer.byteLength(JSON.stringify(result)) < 8192);
+    assert.doesNotMatch(JSON.stringify(result), /EDIT-PRIVATE-SENTINEL/);
+    assert.deepEqual(await fs.readFile(editTarget), before);
+  };
+  await fs.writeFile(editTarget, 'one\r\ntwo\r\none\r\ntwo\r\n');
+  await rejectEdit(
+    { file_path: editTarget, old_string: 'one\ntwo', new_string: 'changed' },
+    'REPLACEMENT_COUNT',
+  );
+  await call('edit_block', {
+    file_path: editTarget,
+    old_string: 'one\ntwo',
+    new_string: 'new\nlines',
+    expected_replacements: 2,
+  });
+  assert.equal(await fs.readFile(editTarget, 'utf8'), 'new\r\nlines\r\nnew\r\nlines\r\n');
+  await rejectEdit(
+    { file_path: editTarget, old_string: 'absent', new_string: 'changed' },
+    'REPLACEMENT_COUNT',
+  );
+  await rejectEdit({ file_path: editTarget, old_string: '', new_string: 'changed' }, 'INVALID_ARGUMENT');
+  editScenarios.push('normalized-exact-count-mismatch-and-schema-no-write');
+  await fs.writeFile(editTarget, 'x\r\n');
+  await call('edit_block', { file_path: editTarget, old_string: 'x', new_string: 'α'.repeat(131070) + '\n' });
+  assert.equal((await fs.stat(editTarget)).size, 262144);
+  await fs.writeFile(editTarget, 'x\r\n');
+  await rejectEdit(
+    { file_path: editTarget, old_string: 'x', new_string: 'α'.repeat(131070) + '\nx' },
+    'FILE_TOO_LARGE',
+  );
+  assert.deepEqual(
+    (await fs.readdir(editRoot)).filter((name) => name.startsWith('.mterm-')),
+    [],
+  );
+  editScenarios.push('inclusive-UTF8-byte-limit-after-newline-expansion');
+  const privateEdit = path.join(editRoot, '.env');
+  await fs.writeFile(privateEdit, 'EDIT-PRIVATE-SENTINEL');
+  for (const [target, code] of [
+    [privateEdit, 'PRIVATE_PATH'],
+    [path.join(path.dirname(scope), 'edit-outside.txt'), 'OUTSIDE_ROOT'],
+  ]) {
+    await rejectEdit({ file_path: target, old_string: 'EDIT-PRIVATE-SENTINEL', new_string: 'changed' }, code);
+  }
+  assert.equal(await fs.readFile(privateEdit, 'utf8'), 'EDIT-PRIVATE-SENTINEL');
+  editScenarios.push('private-and-outside-root-denials-preserve-bytes');
   const info = await call('get_file_info', { path: moved });
   assert.match(info.content[0].text, /lineCount: 2/);
   const metadataRoot = path.join(listingRoot, 'metadata');
@@ -397,6 +484,7 @@ try {
   assert.equal(capabilities.isError, false);
   for (const key of ['writeEnabled', 'executionEnabled', 'configWriteEnabled'])
     assert.equal(capabilities.structuredContent?.[key], false, key);
+  editScenarios.push('read-only-restart-omits-edit-and-mutation-capabilities');
   const result = await readOnlyClient.callTool(
     {
       name: 'get_file_info',
@@ -569,6 +657,7 @@ console.log(
       maxTextBytes: 262144,
       readOnlyRestart: true,
     },
+    editBlock: { scenarios: editScenarios, passed: editScenarios.length, readOnlyRestart: true },
     ownedProcessExitsVerified: true,
     directoryFixtureCleanupVerified: true,
     multipleFileFixtureCleanupVerified: true,

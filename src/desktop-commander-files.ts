@@ -3,6 +3,7 @@
 // Modified: 2026-11-02-directory-contract; bounded deterministic listing and honest partial diagnostics.
 // Modified: 2026-11-02-file-info-contract; bounded metadata rendering and fail-closed cancellation/policy.
 // Modified: 2026-11-02-aggregate-output; account for every returned batch text byte.
+// Modified: 2026-11-02-edit-line-endings; normalize exact edits and bound output construction.
 // Original bounded adapter. Pinned upstream behavioral references and limitations: docs/parity/.
 import type { Dirent } from 'node:fs';
 import fs from 'node:fs/promises';
@@ -428,11 +429,17 @@ export class DesktopCommanderFiles {
       this.textOnly(full);
       if (a.origin === 'ui') fail('UNSUPPORTED_FORMAT', 'UI edits are not supported.');
       const before = await this.files.read({ path: full });
+      cancelled(signal);
+      // The pinned edit contract uses the first newline, not the majority style.
+      // Normalize only the request: mixed endings outside each match remain intact.
+      const lineEnding = before.text.match(/\r\n|\r|\n/)?.[0] ?? os.EOL;
+      const search = a.old_string.replace(/\r\n|\r|\n/g, lineEnding);
+      const replacement = a.new_string.replace(/\r\n|\r|\n/g, lineEnding);
       let count = 0,
         at = 0;
-      while ((at = before.text.indexOf(a.old_string, at)) !== -1) {
+      while ((at = before.text.indexOf(search, at)) !== -1) {
         count++;
-        at += a.old_string.length;
+        at += search.length;
         if (count > 10000) fail('MATCH_LIMIT', 'Too many replacement matches.');
       }
       if (count !== a.expected_replacements)
@@ -440,7 +447,12 @@ export class DesktopCommanderFiles {
           'REPLACEMENT_COUNT',
           `Expected ${a.expected_replacements} exact matches but found ${count}. No changes made; fuzzy diagnostics remain unimplemented.`,
         );
-      const text = before.text.split(a.old_string).join(a.new_string);
+      // UTF-16 units are a lower bound on UTF-8 bytes. Refuse necessarily large
+      // results before join can allocate them; FileService enforces exact bytes.
+      // A byte-delta estimate is unsafe when a request splits a surrogate pair.
+      if (before.text.length + count * (replacement.length - search.length) > this.files.maxBytes)
+        fail('FILE_TOO_LARGE', 'Write exceeds configured byte limit.');
+      const text = before.text.split(search).join(replacement);
       await this.files.write({ path: full, text, expectedVersion: before.version }, signal);
       return reply(`Successfully applied ${count} edit${count === 1 ? '' : 's'} to ${a.file_path}`);
     });

@@ -40,17 +40,26 @@ async function selectTestCodex() {
     contains(artifacts, prefix),
     'Codex test prefix must be inside this checkout artifacts directory',
   );
-  const packageRoot = async (name) => {
+  const packageRoot = async (name, manifestName = name, manifestVersion = expectedVersion) => {
     const directory = await fs.realpath(path.join(prefix, 'node_modules', ...name.split('/')));
     assert.ok(contains(prefix, directory), 'Codex fixture package escapes its test prefix');
     const manifest = JSON.parse(await fs.readFile(path.join(directory, 'package.json'), 'utf8'));
-    assert.equal(manifest.name, name, 'Unexpected Codex fixture package');
-    assert.equal(manifest.version, expectedVersion, 'Codex fixture package version differs from the pin');
-    return directory;
+    assert.equal(manifest.name, manifestName, 'Unexpected Codex fixture package');
+    assert.equal(manifest.version, manifestVersion, 'Codex fixture package version differs from the pin');
+    return { directory, manifest };
   };
-  await packageRoot('@openai/codex');
+  const wrapper = await packageRoot('@openai/codex');
   const platformPackage = '@openai/codex-' + process.platform + '-' + process.arch;
-  const nativeRoot = await packageRoot(platformPackage);
+  const platformVersion = expectedVersion + '-' + process.platform + '-' + process.arch;
+  assert.equal(
+    wrapper.manifest.optionalDependencies?.[platformPackage],
+    'npm:@openai/codex@' + platformVersion,
+    'Codex platform dependency must be the exact pinned official npm alias',
+  );
+  const nativePackage = await packageRoot(platformPackage, '@openai/codex', platformVersion);
+  assert.deepEqual(nativePackage.manifest.os, [process.platform]);
+  assert.deepEqual(nativePackage.manifest.cpu, [process.arch]);
+  const nativeRoot = nativePackage.directory;
   const vendor = await fs.realpath(path.join(nativeRoot, 'vendor'));
   assert.ok(contains(nativeRoot, vendor), 'Codex vendor directory escapes its platform package');
   const executableName = process.platform === 'win32' ? 'codex.exe' : 'codex';

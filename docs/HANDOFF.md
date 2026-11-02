@@ -35,7 +35,7 @@ agent is paired. Production has not been promoted.
 
 ## Configuration qualification continuation — 2026-11-02
 
-The separate DCP-016 / #18 candidate adds installed configuration verification,
+The separate DCP-016 / #18 qualification change adds installed configuration verification,
 package-gate integration and synthetic managed-Codex configuration discovery.
 Its [standalone native Windows probe](validation/2026-11-02-config-installed-qualification.md)
 passed seven scenarios through two concurrent packed MCP children and a restart.
@@ -46,15 +46,18 @@ separate DCP-010 candidate, rather than attributing it to this branch's base SHA
 
 The revised native Windows workflow subsequently passed **164/164 tests**, the
 normal package gate and the source-entry managed-Codex gate. Separate normal
-prepack, self-host and explicit installed-entry Codex also passed. New exact-head
-hosted checks and fresh committed archive extraction remain pending at this checkpoint.
-The earlier green remote release remains separate. No DCP/WEB issue closes, and
-broad stages/weights remain unchanged. The integration owner must resolve the
-closeout fields in the new report and
-[continuation prompt](execution/NEXT_PARITY_PROMPT.md), then regenerate source
-review after any further fingerprinted documentation change.
+prepack, self-host and explicit installed-entry Codex also passed. Implementation
+`def85d256fe558ef26e0cdf7d0218ce250682150` then passed all nine hosted checks and
+fresh committed source extraction, including normal prepack and installed package
+validation. [PR #72](https://github.com/MulattoTech/MTerm-CLI/pull/72) records final
+documentation delivery, exact-head merge/main checks and the recovery manifest.
+See the [delivery evidence](validation/2026-11-02-config-delivery.json) and
+[continuation prompt](execution/NEXT_PARITY_PROMPT.md). The dedicated ordinary
+qualification clone is `C:\Tools\Dev\MTerm-CLI\artifacts\worktrees\config-qualification-20261102`.
+The earlier remote release remains separate. No DCP/WEB issue closes; broad
+stages and weights remain unchanged.
 
-## Current state — 2026-11-02
+## Historical remote release checkpoint — 2026-11-02 01:24 UTC
 
 | Area | Observed result |
 | --- | --- |
@@ -68,7 +71,7 @@ review after any further fingerprinted documentation change.
 | Hosted CI | All four PR matrix jobs in `41372073094`, fast run `41372073095`, and push matrix `41372068412` **PASS**. Final-document checks and merge status are recorded by the final report/PR. |
 | Enabled staging | Worker version `af4fd06e-c4a3-4545-ad22-31d0ae956215`; artifact SHA-256 `97a0457b78e113c058ae8da3d3a6a54fcd93c2b35d1dd1781316c41001ac10a6`; `MCP_ENABLED=true`, owner-only access. |
 
-The current isolated Windows clone is
+The earlier remote verification clone is
 `C:\Tools\Dev\MTerm-CLI\artifacts\worktrees\remote-mcp-20261102`.
 Retained logs and the final exact-source results are indexed in the final sprint
 report. Earlier `full-tests-canonical-green-20261102.log` and package logs remain

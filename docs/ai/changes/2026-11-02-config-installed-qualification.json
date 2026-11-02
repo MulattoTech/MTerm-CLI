@@ -3,7 +3,7 @@
   "provider": "OpenAI",
   "model": "GPT-6 Astra Pro",
   "identity_basis": "session-declared; self-reported",
-  "updated_at_utc": "2026-11-02T03:30:54Z",
+  "updated_at_utc": "2026-11-02T03:37:18.307991+00:00",
   "base_sha": "932c310914d8af822c5b1611ac85c5e79c2c5097",
   "initial_worker_base_sha": "059413ffa4fb3b18c8e15af907744a40e0b874a7",
   "branch": "feat/dcp-016-installed-config-20261102",
@@ -21,14 +21,16 @@
     "docs/roadmap/review.json",
     "docs/roadmap/FEATURES.md",
     "docs/roadmap/index.html",
-    "docs/roadmap/summary.json"
+    "docs/roadmap/summary.json",
+    "docs/STATUS.md"
   ],
   "files_created": [
     "scripts/verify-configuration-installed.mjs",
     "tests/configuration-verifier.test.mjs",
     "docs/validation/2026-11-02-config-installed-qualification.md",
     "docs/validation/2026-11-02-config-installed-windows.json",
-    "docs/ai/changes/2026-11-02-config-installed-qualification.json"
+    "docs/ai/changes/2026-11-02-config-installed-qualification.json",
+    "docs/validation/2026-11-02-config-delivery.json"
   ],
   "requirements": [
     "DCP-016",
@@ -66,17 +68,25 @@
     },
     {
       "command": "Revised integrated normal build/check/package/managed-Codex and exact-head hosted matrix",
-      "result": "PASS native Windows: full workflow 57,444 ms with 164/164 tests, 0 skips and 31,150.2471 ms test duration; normal package plus source-entry managed-Codex passed. Separate self-host 1,383 ms, normal prepack 37,346 ms and explicit installed-entry Codex 2,137 ms also passed. All detailed supplied native result objects are retained in the sanitized observation. New exact-head hosted checks and fresh committed archive extraction remain pending."
+      "result": "PASS native Windows: full workflow 57,444 ms with 164/164 tests, 0 skips and 31,150.2471 ms test duration; normal package plus source-entry managed-Codex passed. Separate self-host 1,383 ms, normal prepack 37,346 ms and explicit installed-entry Codex 2,137 ms also passed. All detailed supplied native result objects are retained in the sanitized observation. All nine implementation-head checks and fresh committed archive extraction subsequently passed; exact evidence is recorded separately in config-delivery.json."
     },
     {
       "command": "Explicit roadmap review/render/check, parity check and baseline invariants",
       "result": "PASS after normal integration of main 932c310: explicit review/render/check, pinned parity check, diff whitespace check and structural comparison of all 300 requirements/48 gaps. Every dependency row note/evidence and DCP-010 runtime/documentation file was retained. All stages, weights, acceptance fields and counts are unchanged."
+    },
+    {
+      "command": "Fresh git archive of def85d2: exact npm ci, reviewed build, normal npm pack including prepack, installed package verifier",
+      "result": "PASS all four steps, respectively4062/1796/36200/12134ms. Initial extraction contained neither dist nor node_modules. Archive SHA256fa9b8d470afbd6e70f81232841c879a8ac680a9d3e4b0411914c0f12bef78d9e."
+    },
+    {
+      "command": "Exact def85d2 hosted checks",
+      "result": "PASS all9: PR matrix41383776637,fast41383776656,pushmatrix41383709723. Final documentation head requires its own gates; final merge/main is recorded in PR72 delivery comment."
     }
   ],
   "roadmap_updates": [
     {
       "ids": "CLI-214,CLI-260,CLI-266,CLI-268,CLI-269,CLI-292,CLI-296,CLI-297,CLI-300",
-      "assessment": "Append bounded standalone installed evidence and the revised-gate limitations. Every stage, baseline weight, acceptance text, dependency, remaining estimate and ETA remains unchanged; maturity remains 29.12%."
+      "assessment": "Append scoped standalone/integrated Windows evidence, all-four-platform implementation checks and fresh extraction results. All stages, baseline weights, acceptance text, dependencies, remaining estimates and ETA stay unchanged; maturity29.12%."
     },
     {
       "ids": "DCP-016; DCP-001..048",
@@ -88,13 +98,13 @@
     }
   ],
   "limitations": [
-    "New exact-head hosted checks and fresh committed archive extraction remain pending until the integration owner records actual results.",
+    "Final documentation-head and post-merge checks are independently recorded by PR72; implementation checks are not substituted for them.",
     "Scratch child-process probes did not establish reliable individual-case execution; file-level wrapper success is explicitly not counted.",
     "The telemetry guard observes instrumented standard Node APIs in MCP children only. It does not certify native addons, arbitrary descendant networking or an OS sandbox.",
     "Per-call reload does not revoke work already admitted under an earlier snapshot. Cooperative locks and path checks retain their documented non-cooperating-writer/hostile-filesystem limitations.",
     "No paid model call, human Google login, ChatGPT connector consent, full pinned schema/default/shell/format contract or full DCP acceptance is asserted."
   ],
-  "next_unverified_action": "Publish the reviewed qualification change, verify its exact-head hosted checks and fresh committed archive extraction, resolve final PR/main/checkpoint metadata, and refresh review after any source-fingerprinted documentation edits.",
+  "next_unverified_action": "Continue DCP009/get_config complete metadata/output contracts in one isolated issue branch; owner root selection/pairing/ChatGPT consent and actual Codex model-driven invocation remain unperformed.",
   "dependency": {
     "pull_request": 71,
     "source_sha": "297877435c4b3358ac53414af28edd11504e35ed",
@@ -102,5 +112,7 @@
     "integration": "Normal merge; retain the independent DCP-010 runtime source and all associated documentation/evidence."
   },
   "native_source_fingerprint": "020a7a45b1e00aab91df26932ff2b4feb7166cacc9ed132940a6c2e7aed749a1",
-  "native_evidence_observed_at_utc": "2026-11-02T03:29:34.871Z"
+  "native_evidence_observed_at_utc": "2026-11-02T03:29:34.871Z",
+  "qualified_implementation_head": "def85d256fe558ef26e0cdf7d0218ce250682150",
+  "pull_request": 72
 }

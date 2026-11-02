@@ -6,7 +6,7 @@ merged implementation closes a full parity requirement.
 
 ## Verified starting point for the configuration sprint
 
-Current main was verified at `059413ffa4fb3b18c8e15af907744a40e0b874a7`, after
+Starting main was verified at `059413ffa4fb3b18c8e15af907744a40e0b874a7`, after
 PRs #69 and #70. PR #52 is merged; PR #67 is closed with its source incorporated.
 All seven published product branches were ancestors of that main. There was no
 additional unique product branch to merge. Access-check branches remain excluded.
@@ -17,11 +17,17 @@ failure notes are historical, not current blockers. See the
 [baseline CI record](validation/2026-11-02-config-baseline-ci.json) and
 [48-issue audit](validation/2026-11-02-config-issue-audit.json).
 
-The configuration continuation is qualifying the recovered implementation and
-repairing bounded Windows config-file replacement. Its own source, tests and
-delivery results are recorded in
-[the configuration reliability report](validation/2026-11-02-config-retry.md).
-The older passing main does not certify later changes.
+The configuration continuation delivered the bounded Windows replacement repair
+through [PR #71](https://github.com/MulattoTech/MTerm-CLI/pull/71), source `2978774`,
+and installed configuration qualification through
+[PR #72](https://github.com/MulattoTech/MTerm-CLI/pull/72), implementation `def85d2`.
+The latter passed 164/164 native Windows tests, normal package/prepack, self-host,
+isolated source/installed Codex registration, all nine implementation hosted
+checks and a fresh committed extraction. Its final documentation head and merged
+main checks are recorded in PR #72's delivery comment. See the
+[reliability report](validation/2026-11-02-config-retry.md),
+[qualification report](validation/2026-11-02-config-installed-qualification.md) and
+[delivery record](validation/2026-11-02-config-delivery.json).
 
 ## Implemented scope and remaining contracts
 

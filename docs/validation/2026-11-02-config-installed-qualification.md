@@ -144,8 +144,10 @@ installed result is retained under `artifacts/managed-codex-4MeAZP`. Both report
 The native run's source fingerprint was
 `020a7a45b1e00aab91df26932ff2b4feb7166cacc9ed132940a6c2e7aed749a1`.
 Later documentation integration requires its own refreshed fingerprint; it does
-not change the four tested verifier files. New exact-head hosted checks and a
-fresh committed archive extraction remain pending at this worker checkpoint.
+not change the four tested verifier files. All nine checks on implementation
+`def85d256fe558ef26e0cdf7d0218ce250682150` subsequently passed, as did a fresh
+committed source extraction. Exact check URLs and extraction outcomes are retained
+in [the delivery record](2026-11-02-config-delivery.json).
 
 Scratch subprocess probes did not supply reliable child-process test evidence;
 their file-level wrapper results are not counted. Development compilation and
@@ -153,9 +155,10 @@ formatting were used to prepare the candidate. No source-runtime behavior change
 in this DCP-016 slice, so there is no claimed new product RED/GREEN repair here.
 The new assertions turn missing installed coverage into an executable gate.
 
-Full DCP-016 acceptance additionally requires the applicable committed installed
-and Codex-client evidence, exact pinned-contract review and explicit platform
-qualification. Owner-selected ceilings, empty-root denial, no telemetry
+Full DCP-016 acceptance still requires the complete pinned-contract and applicable
+actual Codex-client acceptance decision. The installed/native-registration matrix
+now passes on Windows, Linux and both macOS architectures; it does not establish
+model-driven invocation or silently waive intentional contract differences. Owner-selected ceilings, empty-root denial, no telemetry
 transport, per-call snapshots and cooperative-writer limits remain intentional
 documented boundaries. This probe does not complete unrelated shell, format,
 search, process, history or telemetry contracts.
@@ -163,25 +166,33 @@ search, process, history or telemetry contracts.
 Broad maturity remains **29.12%**, with **0/48 DCP** and **0/12 WEB** accepted.
 No stage, baseline weight, issue state or acceptance decision changes.
 
-## Integration-owner closeout
+## Published implementation, extraction and delivery
 
-Resolve these fields from actual final state before publishing this handoff:
+[PR #71](https://github.com/MulattoTech/MTerm-CLI/pull/71) delivered DCP-010 source
+`297877435c4b3358ac53414af28edd11504e35ed`, merged as
+`932c310914d8af822c5b1611ac85c5e79c2c5097`. Its nine branch/PR checks and five
+post-merge main checks passed. Those remain dependency evidence.
 
-| Field | Current status |
-| --- | --- |
-| DCP-010 dependency PR / delivered source | [PR #71](https://github.com/MulattoTech/MTerm-CLI/pull/71), source `297877435c4b3358ac53414af28edd11504e35ed`, main merge `932c310914d8af822c5b1611ac85c5e79c2c5097` |
-| DCP-016 implementation commit / PR | `PENDING_ROOT_CLOSEOUT` |
-| Revised normal Windows package / managed-Codex / full gate | PASS: 164/164 tests, normal package, self-host, normal prepack and source/installed managed-Codex |
-| Exact-head hosted checks | `PENDING_ROOT_CLOSEOUT` |
-| Final main SHA and additive checkpoint | `PENDING_ROOT_CLOSEOUT` |
+[PR #72](https://github.com/MulattoTech/MTerm-CLI/pull/72) publishes DCP-016
+implementation `def85d256fe558ef26e0cdf7d0218ce250682150` and its delivery documents.
+All nine checks passed at that implementation: PR matrix `41383776637`, fast
+`41383776656`, push matrix `41383709723`.
 
-PR #71 merged after all nine checks succeeded on its exact head. Its PR matrix
-`41382703553`, fast run `41382703583` and push matrix `41382566783` belong to the
-DCP-010 source; they do not certify the DCP-016 verifier changes.
-All five checks on merged dependency main `932c310` also passed: matrix
-`41382914828` and fast run `41382914744`. Those results are retained with the
-native observation and remain dependency evidence.
+A new `git archive` extraction of that commit began with neither dist nor
+node_modules. Exact dependency install passed in 4,062 ms; reviewed build in
+1,796 ms; normal npm pack including prepack in 36,200 ms; and the installed
+package gate, including all configuration scenarios, in 12,134 ms. The source
+archive SHA-256 is
+`fa9b8d470afbd6e70f81232841c879a8ac680a9d3e4b0411914c0f12bef78d9e`.
+Evidence: `artifacts/config-qualification-validation/fresh-source-result.json`.
 
-Regenerate the review fingerprint against the combined source tree after any
-integration or source-fingerprinted documentation change. A worker fingerprint
-must not be copied over a different source set as approval.
+The final documentation revision requires its own exact-head hosted checks and
+expected-head merge. PR #72's delivery comment records the resolved final head,
+merge/main checks and additive recovery manifest. A document cannot contain its
+own future merge hash; use that external record and re-fetch current main before
+continuing. The downloadable prompt carries the final observed release record.
+
+Review/render is refreshed for this documentation change. The four executable
+verifier files remain byte-identical to the native, extracted and hosted-tested
+implementation. No acceptance count, stage, baseline weight or deployed Worker
+changes in delivery closeout.

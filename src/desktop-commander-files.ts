@@ -2,6 +2,7 @@
 // AI-Change: 2026-10-05-codex-parity-foundation (OpenAI / GPT-6 Astra Pro; self-reported)
 // Modified: 2026-11-02-directory-contract; bounded deterministic listing and honest partial diagnostics.
 // Modified: 2026-11-02-file-info-contract; bounded metadata rendering and fail-closed cancellation/policy.
+// Modified: 2026-11-02-aggregate-output; account for every returned batch text byte.
 // Original bounded adapter. Pinned upstream behavioral references and limitations: docs/parity/.
 import type { Dirent } from 'node:fs';
 import fs from 'node:fs/promises';
@@ -125,20 +126,25 @@ export class DesktopCommanderFiles {
     let bytes = 0;
     for (const name of a.paths) {
       cancelled(signal);
+      let summary: string;
+      let block: string | undefined;
       try {
         const r = await this.readFile({ path: name }, signal);
-        const block = '\n--- ' + name + ' contents: ---\n' + r.content[0]!.text;
-        bytes += Buffer.byteLength(block);
-        if (bytes > 262144)
-          fail('RESPONSE_LIMIT', 'Batch exceeds byte budget; request fewer or smaller files.');
-        summaries.push(name + ': text/plain (text)');
-        chunks.push(block);
+        block = '\n--- ' + name + ' contents: ---\n' + r.content[0]!.text;
+        summary = name + ': text/plain (text)';
       } catch (e) {
         cancelled(signal);
         const safe = safeError(e);
         if (safe.code === 'RESPONSE_LIMIT') throw e;
-        summaries.push(name + ': Error - ' + safe.code + ' ' + safe.message);
+        summary = name + ': Error - ' + safe.code + ' ' + safe.message;
       }
+      // Bound all returned UTF-8 text, including summary separators and error rows.
+      // Admission stays outside the per-file catch: overflow rejects the whole batch.
+      bytes += Buffer.byteLength(summary) + (summaries.length ? 1 : 0) + Buffer.byteLength(block ?? '');
+      if (bytes > 262144)
+        fail('RESPONSE_LIMIT', 'Batch exceeds byte budget; request fewer or smaller files.');
+      summaries.push(summary);
+      if (block !== undefined) chunks.push(block);
     }
     return {
       content: [

@@ -1,0 +1,82 @@
+{
+  "change_id": "2026-11-02-aggregate-output",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "identity_basis": "session-declared; self-reported",
+  "started_at_utc": null,
+  "first_recorded_development_check_at_utc": "2026-11-02T18:47:36.516742+00:00",
+  "updated_at_utc": "2026-11-02T18:50:32.604650+00:00",
+  "base_sha": "7e5f8287532765f11f055cb89d0312e1c1b236bd",
+  "base_tree": "a88361f42b20e0cddd99ac16ce123ebf706a3ae1",
+  "branch": "fix/dcp-019-aggregate-output-20261102",
+  "primary_issue": 21,
+  "integration_owner": "Root assistant; separate implementation, independent review and native qualification agents",
+  "upstream_commit": "c774c3b505de990219637ecdc9a830c8772fae9d",
+  "summary": "Enforce existing aggregate text-byte bound over every returned batch summary and content item.",
+  "files_modified": [
+    "src/desktop-commander-files.ts",
+    "tests/compat-multiple-files.test.mjs",
+    "scripts/verify-compatibility-installed.mjs",
+    "docs/roadmap/progress.json",
+    "docs/roadmap/desktop-commander-parity.json",
+    "docs/HANDOFF.md",
+    "docs/STATUS.md",
+    "docs/TESTING.md",
+    "docs/execution/NEXT_PARITY_PROMPT.md"
+  ],
+  "requirements": [
+    "DCP-019",
+    "CLI-260",
+    "CLI-266",
+    "CLI-267",
+    "CLI-268",
+    "CLI-286",
+    "CLI-287",
+    "CLI-288",
+    "CLI-296",
+    "CLI-300"
+  ],
+  "decisions": [
+    "Keep original FileService, safe per-file errors, schemas, order/duplicates and capability boundaries.",
+    "UTF8 content[].text bytes include every row/header and separator; JSON serialization retains separate existing host bound.",
+    "Overflow fails whole call, is outside per-file catch, returns no truncated success and stops later reads.",
+    "No protected acceptance/stage/weight/scope fields change; actual-client acceptance and owner rulings remain separate.",
+    "Preserve original RED including initial fixture defect; final corrected RED/GREEN use identical fixture bytes."
+  ],
+  "tests": [
+    {
+      "command": "node --test --test-isolation=none --test-reporter=tap --test-concurrency=1 tests/compat-multiple-files.test.mjs",
+      "result": "Corrected RED14:7pass7assertion failures exit1; samefixture GREEN14/14 exit0; supplementary Linux direct-service only.",
+      "evidence": "docs/validation/2026-11-02-aggregate-output-development.json"
+    },
+    {
+      "command": "Independent source/test/installed-harness review and focused rerun",
+      "result": "No blocking findings; independent14/14; native/installed/hosted execution remains pending.",
+      "evidence": "docs/validation/2026-11-02-aggregate-output-source-review.json"
+    }
+  ],
+  "source_sha256": {
+    "src/desktop-commander-files.ts": "63c2540ee3a453dff7e109f184fc1822fcbc9236bcb34b790d105aa26b5f359b",
+    "tests/compat-multiple-files.test.mjs": "ebdab58524f16255dbc73b9cc051a88400dedf318f9b56bf9764dfe450f2c3c6",
+    "scripts/verify-compatibility-installed.mjs": "e93c5b4c3a22f44a6e9b9f780ec59efd7044493006c2ff92efa14fb541cc73e1"
+  },
+  "limitations": [
+    "Image/Office/UTF16/large-file and actual-client parity remain incomplete.",
+    "MTerm text-byte bound is an intentional resource restriction, not an upstream limit.",
+    "Cooperative cancellation and filesystem path checks do not prove OS sandbox isolation.",
+    "No paid/model/auth/owner lifecycle/deployment changes."
+  ],
+  "roadmap_updates": [
+    {
+      "ids": "CLI-260,CLI-266,CLI-267,CLI-268,CLI-286,CLI-287,CLI-288,CLI-296,CLI-300",
+      "assessment": "Evidence/notes/reviewer only. All stages, weights, acceptance texts, remaining estimates, dependencies, platforms and blockers remain unchanged."
+    },
+    {
+      "ids": "DCP-019",
+      "assessment": "Implementation observations and evidence only; issue remains open; no acceptance or release-check change."
+    }
+  ],
+  "next_unverified_action": "Native original RED, focused GREEN, full-wrapper/selfhost/prepack/installed/Codex/fresh and exact-head hosted qualification, normal merge/main and recovery.",
+  "model_calls": 0,
+  "actualCodexAgentToolInvocation": false
+}

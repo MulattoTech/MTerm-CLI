@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-11-02T18:48:48.830831+00:00",
+  "baseSha": "7e5f8287532765f11f055cb89d0312e1c1b236bd",
+  "upstream": {
+    "version": "0.2.52",
+    "commit": "c774c3b505de990219637ecdc9a830c8772fae9d",
+    "source": "docs/parity/upstream/src/handlers/filesystem-handlers.ts",
+    "schema": "docs/parity/upstream/src/tools/schemas.ts",
+    "license": "MIT; upstream notices unchanged"
+  },
+  "scope": "DCP-019 bounded aggregate text-byte correction",
+  "contract": {
+    "inclusiveTextByteLimit": 262144,
+    "counted": "All content[].text UTF-8 bytes: joined summary rows and LF separators, success headers, read-status output and file text; error summary rows count too.",
+    "excludes": "JSON serialization overhead is independently bounded by the existing 524288-byte MCP host ceiling.",
+    "overflow": "Whole-call RESPONSE_LIMIT, same safe message, no truncated partial success; no later file reads after overflow.",
+    "preserved": "Summary first, successful content items afterward; original order/duplicates; safe per-file errors; schema1..20 and pathname1..4096; existing FileService and owner policy; read-only support; cooperative cancellation."
+  },
+  "qualification": {
+    "platform": "linux x64",
+    "node": "v24.22.1",
+    "scope": "Supplementary direct-service tests with --test-isolation=none; not normal isolated-runner, native Windows, installed MCP, Codex or actual-client qualification.",
+    "initialRun": {
+      "total": 14,
+      "passed": 6,
+      "failed": 8,
+      "genuineAggregateFailures": 7,
+      "fixtureExpectationFailures": 1,
+      "description": "A 4096-character relative name resolves beyond policy input length. Expected OUTSIDE_ROOT was wrong; production correctly emits INVALID_PATH. Initial bytes/log retained."
+    },
+    "correctedRed": {
+      "total": 14,
+      "passed": 7,
+      "failed": 7,
+      "exitCode": 1,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "green": {
+      "total": 14,
+      "passed": 14,
+      "failed": 0,
+      "exitCode": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "sameTestBytesBetweenCorrectedRedAndGreen": true,
+    "records": {
+      "red-build": {
+        "start": "2026-11-02T18:47:36.516742+00:00",
+        "end": "2026-11-02T18:47:37.027554+00:00",
+        "exitCode": 0,
+        "command": "npm run build:code"
+      },
+      "red": {
+        "start": "2026-11-02T18:47:43.533327+00:00",
+        "end": "2026-11-02T18:47:43.807022+00:00",
+        "exitCode": 1,
+        "command": "node --test --test-isolation=none --test-reporter=tap --test-concurrency=1 tests/compat-multiple-files.test.mjs",
+        "sourceSha256": "f111c97949db5b10a6e1a0dc05bf3a65a6163198f2b13ce5cdcdb4fd94489008",
+        "testSha256": "9c7df8d40e8880aca472729913ed3eb569d93845f3cba62bfbaa55b301e64cb9",
+        "logSha256": "bd60cd7c7a879719d867911deeb635464260126d8f4a32ade44c4d8a3ebe825d"
+      },
+      "corrected-red": {
+        "start": "2026-11-02T18:47:59.204210+00:00",
+        "end": "2026-11-02T18:47:59.436575+00:00",
+        "exitCode": 1,
+        "command": "node --test --test-isolation=none --test-reporter=tap --test-concurrency=1 tests/compat-multiple-files.test.mjs",
+        "sourceSha256": "f111c97949db5b10a6e1a0dc05bf3a65a6163198f2b13ce5cdcdb4fd94489008",
+        "testSha256": "ebdab58524f16255dbc73b9cc051a88400dedf318f9b56bf9764dfe450f2c3c6",
+        "logSha256": "fbedd94fa36a3f4e039ae9dd427dd3296ea435be2b91e3ceb12560f046a58975",
+        "originalFixtureCorrection": "Only the long-relative-path policy expectation changed from OUTSIDE_ROOT to INVALID_PATH; initial run retained separately."
+      },
+      "green-build": {
+        "start": "2026-11-02T18:48:15.365781+00:00",
+        "end": "2026-11-02T18:48:15.825774+00:00",
+        "exitCode": 0,
+        "command": "npm run build:code",
+        "sourceSha256": "63c2540ee3a453dff7e109f184fc1822fcbc9236bcb34b790d105aa26b5f359b",
+        "testSha256": "ebdab58524f16255dbc73b9cc051a88400dedf318f9b56bf9764dfe450f2c3c6",
+        "logSha256": "1a8f10b76acb95615a3c1ca0672ae076e3587fcf65dbfe5d5ac60b7fa94fc59f"
+      },
+      "green": {
+        "start": "2026-11-02T18:48:15.826125+00:00",
+        "end": "2026-11-02T18:48:16.107240+00:00",
+        "exitCode": 0,
+        "command": "node --test --test-isolation=none --test-reporter=tap --test-concurrency=1 tests/compat-multiple-files.test.mjs",
+        "sourceSha256": "63c2540ee3a453dff7e109f184fc1822fcbc9236bcb34b790d105aa26b5f359b",
+        "testSha256": "ebdab58524f16255dbc73b9cc051a88400dedf318f9b56bf9764dfe450f2c3c6",
+        "logSha256": "396cd0084dbcdb6d46e773aa9033465c882515421f7cefef10eba1e29656a83c"
+      }
+    }
+  },
+  "acceptance": "No DCP/WEB closures or maturity changes; image/Office/UTF16/large-file and actual-client acceptance remain outside this slice.",
+  "modelCalls": 0,
+  "modifiedFiles": [
+    "src/desktop-commander-files.ts",
+    "tests/compat-multiple-files.test.mjs"
+  ]
+}

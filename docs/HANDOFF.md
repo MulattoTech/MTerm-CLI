@@ -1,3 +1,22 @@
+# Current aggregate-output iteration — 2026-11-02
+
+The bounded DCP-019 / issue #21 change starts from verified main
+`7e5f8287532765f11f055cb89d0312e1c1b236bd` on
+`fix/dcp-019-aggregate-output-20261102`. Read the
+[contract and qualification record](validation/2026-11-02-aggregate-output.md) before repeating work.
+It counts every returned UTF-8 summary/content byte against the existing
+262,144-byte budget. Corrected direct-service RED was 7 passes/7 assertion
+failures; unchanged GREEN passed 14/14. Independent source review found no
+blocker. Native, installed, fresh, hosted and final delivery gates remain
+separately observed work at this preparation.
+
+PR #73/#74/#75/#76 are already delivered; their earlier pending fields below
+are historical preparation. Preserve the unpublished primary checkout and
+running config-qualification owner agent. No pairing, deployment, real auth or
+model call is needed. DCP 0/48, WEB 0/12 and maturity 29.12% stay unchanged.
+
+## Preserved earlier record
+
 # File metadata continuation — 2026-11-02
 
 ## DCP-024 qualification observed — PR #76, 2026-11-02

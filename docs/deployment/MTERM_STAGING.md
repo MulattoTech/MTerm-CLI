@@ -140,8 +140,11 @@ default slot `environment:"production"`. That slot name does not change the prod
 | Registry | Existing SQLite namespace `b66edc2d536e474093e1a18d0e88a24d` preserved |
 
 The [final live smoke report](../validation/2026-11-02-remote-staging-smoke-final.json)
-records all fixture cleanup checks as true. No test agent or actual owner-paired agent
-remains running. The owner-only version uses the same tested artifact with the
+records all fixture cleanup checks as true. At that historical 01:24 UTC checkpoint,
+no test agent or actual owner-paired agent remained running. The later
+[owner connection record](../validation/2026-11-02-owner-connection.md) documents
+an authorized owner pairing and foreground online/stop/reconnect sequence without
+redeployment or autostart. The owner-only version uses the same tested artifact with the
 acceptance-only identity binding removed. Template defaults remain deliberately
 disabled/empty; they are not a snapshot of the live owner's bindings.
 
@@ -151,8 +154,9 @@ code. PR #69's matrix/fast runs are
 [41372073095](https://github.com/MulattoTech/MTerm-CLI/actions/runs/41372073095);
 the push run is [41372068412](https://github.com/MulattoTech/MTerm-CLI/actions/runs/41372068412).
 The [final sprint record](../validation/2026-11-02-remote-sprint.md) is authoritative
-for final Git merge/checkpoint status. Human Google/Access sign-in, browser consent
-and ChatGPT connector use remain unverified. This is not production promotion.
+for that sprint's final Git merge/checkpoint status. Existing authenticated owner
+dashboard access and pairing are now observed. Fresh Google/Access login, client
+consent and ChatGPT tool use remain unverified. This is not production promotion.
 
 ## First recorded complete staging smoke
 

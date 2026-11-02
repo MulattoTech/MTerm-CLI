@@ -1,0 +1,371 @@
+{
+  "schemaVersion": 1,
+  "observedAtUtc": "2026-11-02T12:02:49Z",
+  "repository": "MulattoTech/MTerm-CLI",
+  "pullRequest": 73,
+  "implementationHead": "535d99e20b52a30ba9a24b6d2205d8e6687f6ca6",
+  "initialAttempt": {
+    "runId": 41388126481,
+    "attempt": 1,
+    "jobId": 125093389299,
+    "conclusion": "failure",
+    "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41388126481/job/125093389299",
+    "failedStep": "Verify packed install and isolated npm link",
+    "observedFailure": "The test-owned npm tarball installation exceeded the package verifier's 120-second command deadline. The child was terminated with code:null, killed:true, signal:SIGTERM, empty stdout/stderr. Its underlying stall cause is not established.",
+    "tests": {
+      "total": 175,
+      "passed": 163,
+      "failed": 0,
+      "skipped": 12,
+      "durationMs": 16464.010125
+    },
+    "subsequentCodexSteps": "skipped",
+    "decodedLog": "pr73-macos-arm-attempt-1.log",
+    "decodedLogSha256": "edee32f2edb9e6aa5329b05cfd025dc2a732985e588f8ce28a2ea4fa41d9de38",
+    "decodedLogBytes": 43376
+  },
+  "retryAttempt": {
+    "authorizedBy": "Integration owner initiated one supported rerun_workflow_job after reviewing the original failure; this audit performed only read operations.",
+    "runId": 41388126481,
+    "attempt": 2,
+    "jobId": 125262922093,
+    "head": "535d99e20b52a30ba9a24b6d2205d8e6687f6ca6",
+    "runConclusion": "success",
+    "jobConclusion": "success",
+    "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41388126481/job/125262922093",
+    "startedAt": "2026-11-02T11:59:54Z",
+    "completedAt": "2026-11-02T12:00:47Z",
+    "tests": {
+      "total": 175,
+      "passed": 163,
+      "failed": 0,
+      "cancelled": 0,
+      "skipped": 12,
+      "durationMs": 17781.046666
+    },
+    "steps": [
+      {
+        "name": "Set up job",
+        "status": "completed",
+        "conclusion": "success",
+        "startedAt": "2026-11-02T11:59:54Z",
+        "completedAt": "2026-11-02T11:59:55Z"
+      },
+      {
+        "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+        "status": "completed",
+        "conclusion": "success",
+        "startedAt": "2026-11-02T11:59:55Z",
+        "completedAt": "2026-11-02T11:59:57Z"
+      },
+      {
+        "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+        "status": "completed",
+        "conclusion": "success",
+        "startedAt": "2026-11-02T11:59:57Z",
+        "completedAt": "2026-11-02T12:00:04Z"
+      },
+      {
+        "name": "Verify actual runtime architecture",
+        "status": "completed",
+        "conclusion": "success",
+        "startedAt": "2026-11-02T12:00:04Z",
+        "completedAt": "2026-11-02T12:00:04Z"
+      },
+      {
+        "name": "Reproducible dependencies without lifecycle side effects",
+        "status": "completed",
+        "conclusion": "success",
+        "startedAt": "2026-11-02T12:00:04Z",
+        "completedAt": "2026-11-02T12:00:06Z"
+      },
+      {
+        "name": "Reviewed source and pinned parity baseline",
+        "status": "completed",
+        "conclusion": "success",
+        "startedAt": "2026-11-02T12:00:06Z",
+        "completedAt": "2026-11-02T12:00:07Z"
+      },
+      {
+        "name": "Typecheck formatting and deterministic tests",
+        "status": "completed",
+        "conclusion": "success",
+        "startedAt": "2026-11-02T12:00:07Z",
+        "completedAt": "2026-11-02T12:00:28Z"
+      },
+      {
+        "name": "Verify packed install and isolated npm link",
+        "status": "completed",
+        "conclusion": "success",
+        "startedAt": "2026-11-02T12:00:28Z",
+        "completedAt": "2026-11-02T12:00:34Z"
+      },
+      {
+        "name": "Install pinned Codex into test-owned prefix",
+        "status": "completed",
+        "conclusion": "success",
+        "startedAt": "2026-11-02T12:00:34Z",
+        "completedAt": "2026-11-02T12:00:40Z"
+      },
+      {
+        "name": "Real Codex registration without login or model calls",
+        "status": "completed",
+        "conclusion": "success",
+        "startedAt": "2026-11-02T12:00:40Z",
+        "completedAt": "2026-11-02T12:00:41Z"
+      },
+      {
+        "name": "Exact source remains unchanged by tests",
+        "status": "completed",
+        "conclusion": "success",
+        "startedAt": "2026-11-02T12:00:41Z",
+        "completedAt": "2026-11-02T12:00:41Z"
+      },
+      {
+        "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+        "status": "completed",
+        "conclusion": "success",
+        "startedAt": "2026-11-02T12:00:41Z",
+        "completedAt": "2026-11-02T12:00:42Z"
+      },
+      {
+        "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+        "status": "completed",
+        "conclusion": "success",
+        "startedAt": "2026-11-02T12:00:42Z",
+        "completedAt": "2026-11-02T12:00:43Z"
+      },
+      {
+        "name": "Complete job",
+        "status": "completed",
+        "conclusion": "success",
+        "startedAt": "2026-11-02T12:00:43Z",
+        "completedAt": "2026-11-02T12:00:43Z"
+      }
+    ],
+    "package": {
+      "packageVersion": "0.0.1-preview.1",
+      "archiveBytes": 57848,
+      "packageUnpackedBytes": 224214,
+      "installedProductionBytes": 14170023,
+      "productionFiles": 989,
+      "packagedMcpRoundTrip": true,
+      "ownedPrefixNpmLink": true,
+      "offlineNpmExecFromTarball": true,
+      "npmExecMcpCompatibilityTools": 8,
+      "installedConfiguration": {
+        "ok": true,
+        "packageVersion": "0.0.1-preview.1",
+        "node": "v24.21.0",
+        "platform": "darwin",
+        "architecture": "arm64",
+        "installedEntryUnderOwnedPrefix": true,
+        "installedEntrySha256": "1376dfb68527a2fef2444be718a0011c53333c90f416eb377a8bde43e5dcc5b0",
+        "installedConfigModuleSha256": "f6f412a83d13a1aab24398f1d54ca1c301e093c6de1511f2097e0d43b720cc32",
+        "concurrentMcpProcesses": 2,
+        "restartedMcpProcesses": 1,
+        "compatibilityToolsDiscovered": [
+          "get_config",
+          "set_config_value"
+        ],
+        "getConfigMetadata": {
+          "textMatchesStructuredConfig": true,
+          "processIdentityMatchesOwnedChild": true,
+          "boundedMemoryAndRuntimeFields": true,
+          "orderedPreferenceTypes": true,
+          "clientExtrasOmitted": true,
+          "unsupportedProbesExplicitlyOmitted": true,
+          "featureFlagProvider": "none"
+        },
+        "steps": [
+          "two-installed-processes-discovery-and-owner-roots",
+          "get-config-envelope-memory-process-metadata-and-omissions",
+          "cross-process-read-defaults-and-write-warning-byte-fidelity",
+          "three-concurrent-distinct-key-writes-without-lost-updates",
+          "runtime-root-narrowing-empty-denial-and-owner-ceiling-preservation",
+          "telemetry-preference-has-no-observed-node-network-transport",
+          "malformed-policy-denial-and-owned-process-cleanup",
+          "restart-persistence-without-inheriting-config-write-authority"
+        ],
+        "telemetryNetworkGuard": {
+          "interceptedCanaryAttempts": 10,
+          "canaryApis": [
+            "net.Socket.connect",
+            "tls.connect",
+            "http.get",
+            "https.request",
+            "http2.connect",
+            "dgram.Socket.send",
+            "dns.lookup",
+            "dns.promises.lookup",
+            "fetch",
+            "WebSocket"
+          ],
+          "observedProductAttempts": 0,
+          "maximumRetainedAttemptsPerChild": 128,
+          "preferenceValuesExercised": [
+            true,
+            false
+          ],
+          "scope": "Instrumented standard Node network APIs in the three MCP children; not an OS sandbox or a descendant-process network monitor."
+        },
+        "actualCodexAgentToolInvocation": false,
+        "processExitProof": "Bounded signal-0 polling observed ESRCH for each captured MCP PID and owned fixture process; no numeric-PID termination fallback.",
+        "fullConfigurationParity": false,
+        "modelCalls": 0,
+        "realUserConfigChanged": false,
+        "evidence": "/Users/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-6g6Xzr/configuration-e5zgbg",
+        "shutdownVerified": true,
+        "ownedFixtureCleanup": true,
+        "stderrCapturedBytes": [
+          0,
+          0,
+          0
+        ]
+      },
+      "fullDesktopCommanderParity": false,
+      "fromOutsideCheckout": true,
+      "helpExternalLaunchSamplesMs": [
+        37.88,
+        40.9,
+        43.8,
+        43.71,
+        34.34
+      ],
+      "helpMedianMs": 40.89624999999978,
+      "nodeVersion": "v24.21.0",
+      "nodePrerequisiteBytes": 122129232,
+      "nodeBundled": false,
+      "codexBundled": false,
+      "webBundled": false,
+      "quotaAdapterBundled": false,
+      "fullThreeComponentUnder50MB": "NOT VERIFIED; this is a dependency-reuse local host, not that bundle",
+      "modelCalls": 0,
+      "userGlobalPrefixModified": false,
+      "evidence": "/Users/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-6g6Xzr"
+    },
+    "managedCodex": {
+      "codexVersion": "codex-cli 0.160.1",
+      "codexExpectedVersion": "0.160.1",
+      "testOwnedCodex": true,
+      "codexTestPrefix": "artifacts/ci-codex",
+      "codexNativeExecutable": "node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex",
+      "node": "v24.21.0",
+      "platform": "darwin",
+      "arch": "arm64",
+      "setupApplied": true,
+      "setupIdempotent": true,
+      "configurationParsedByCodex": true,
+      "registeredCommandMcpRounds": 2,
+      "compatibilityProfilePersisted": true,
+      "configurationToolsDiscovered": [
+        "get_config",
+        "set_config_value"
+      ],
+      "syntheticConfigurationPathVerified": true,
+      "multipleRootsParsedByCodex": true,
+      "configurationPersistsAcrossRegisteredCommandRestarts": true,
+      "configuredReadLimitExercised": true,
+      "shutdownVerified": true,
+      "shutdownEvidence": "The original MCP process IDs returned ESRCH to bounded signal-0 polling after SDK close.",
+      "removalPreservesUnrelatedBytes": true,
+      "backupsRetained": true,
+      "actualCodexAgentToolInvocation": false,
+      "realUserConfigChanged": false,
+      "modelCalls": 0,
+      "installedEntry": false,
+      "evidence": "/Users/runner/work/MTerm-CLI/MTerm-CLI/artifacts/managed-codex-bd1lSc"
+    },
+    "decodedLog": "pr73-macos-arm-attempt-2.log",
+    "decodedLogSha256": "f641727bed4be09f941370f3dcb374d112919b5228c4b38d9468cb29194045ed",
+    "decodedLogBytes": 51424
+  },
+  "latestChecks": {
+    "head": "535d99e20b52a30ba9a24b6d2205d8e6687f6ca6",
+    "total": 9,
+    "success": 9,
+    "checks": [
+      {
+        "id": 125262959352,
+        "name": "windows-2022 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "head": "535d99e20b52a30ba9a24b6d2205d8e6687f6ca6",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41388126481/job/125262959352"
+      },
+      {
+        "id": 125262923957,
+        "name": "macos-15-intel / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "head": "535d99e20b52a30ba9a24b6d2205d8e6687f6ca6",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41388126481/job/125262923957"
+      },
+      {
+        "id": 125262923594,
+        "name": "ubuntu-24.04 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "head": "535d99e20b52a30ba9a24b6d2205d8e6687f6ca6",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41388126481/job/125262923594"
+      },
+      {
+        "id": 125262922093,
+        "name": "macos-14 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "head": "535d99e20b52a30ba9a24b6d2205d8e6687f6ca6",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41388126481/job/125262922093"
+      },
+      {
+        "id": 125093489949,
+        "name": "windows-2022 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "head": "535d99e20b52a30ba9a24b6d2205d8e6687f6ca6",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41388159750/job/125093489949"
+      },
+      {
+        "id": 125093489875,
+        "name": "macos-14 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "head": "535d99e20b52a30ba9a24b6d2205d8e6687f6ca6",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41388159750/job/125093489875"
+      },
+      {
+        "id": 125093489771,
+        "name": "macos-15-intel / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "head": "535d99e20b52a30ba9a24b6d2205d8e6687f6ca6",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41388159750/job/125093489771"
+      },
+      {
+        "id": 125093489665,
+        "name": "CI / fast",
+        "status": "completed",
+        "conclusion": "success",
+        "head": "535d99e20b52a30ba9a24b6d2205d8e6687f6ca6",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41388159762/job/125093489665"
+      },
+      {
+        "id": 125093489650,
+        "name": "ubuntu-24.04 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "head": "535d99e20b52a30ba9a24b6d2205d8e6687f6ca6",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/41388159750/job/125093489650"
+      }
+    ]
+  },
+  "boundaries": [
+    "The initial failure remains a recorded failed attempt; the retry success does not erase it or establish why npm stalled.",
+    "The attempt-2 jobs listing carries the three originally successful push-platform jobs with their original execution timestamps. Only the macOS ARM job was newly executed.",
+    "The hosted package gate executed actual installed MCP metadata/configuration scenarios. The hosted managed-Codex proof separately used a source entry (installedEntry:false), native Codex parsing and SDK-launched registered commands.",
+    "No actual Codex model-driven tool invocation, real user configuration change or model call was made. Full configuration/26-tool/48-issue acceptance remains open.",
+    "The forthcoming documentation revision requires its own exact-head checks."
+  ],
+  "previousIssueAudit": "dcp-issue-audit-535d99e-20261102.json",
+  "noFurtherRetriesPerformed": true
+}

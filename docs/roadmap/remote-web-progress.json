@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "ledger": "remote-web-12",
-  "reviewedAt": "2026-11-02T01:26:54Z",
+  "reviewedAt": "2026-11-02T04:33:38.608Z",
   "reviewer": {
     "provider": "OpenAI",
     "model": "GPT-6 Astra Pro",
@@ -36,7 +36,7 @@
     "deployedSourceCommit": "b90432a1bc138d59305692a9f74f110a475d0881",
     "artifactSha256": "97a0457b78e113c058ae8da3d3a6a54fcd93c2b35d1dd1781316c41001ac10a6",
     "deploymentRecord": "docs/validation/2026-11-02-remote-sprint.md",
-    "identityAcceptance": "Temporary Cloudflare Access service identity verified; owner Google/Access browser sign-in, human consent/callback and ChatGPT explicitly unverified",
+    "identityAcceptance": "Historical service-principal SDK proof retained. Later owner-authorized pairing via an existing authenticated dashboard session, foreground online, graceful stop/offline and same-enrollment reconnect observed. Fresh Google login, client consent/callback and ChatGPT tools remain unverified; plugin creation409 and browser host restriction are recorded.",
     "capabilities": "Read-only; no remote write/exec; foreground agent; no inbound workstation listener or autostart",
     "deploymentStampSource": "Integration-owner verified deployment; final smoke build matches b90432a. Current Worker version follows removal of the temporary validation binding.",
     "liveSmokeRunId": "2026-11-02T01-23-39-600Z-a0b41954-29c8-4163-b93f-a04a5c64b6a6",
@@ -57,7 +57,19 @@
     "ownerPolicyOnly": true,
     "workersDevEnabled": false,
     "mcpEnabled": true,
-    "rollbackDrill": "docs/validation/2026-11-02-rollback-drill.json"
+    "rollbackDrill": "docs/validation/2026-11-02-rollback-drill.json",
+    "ownerConnection": {
+      "observedAt": "2026-11-02T04:26:07Z",
+      "evidenceRef": "docs/validation/2026-11-02-owner-connection.json",
+      "paired": true,
+      "foregroundOnline": true,
+      "readOnly": true,
+      "autostart": false,
+      "activeClientAuthorizations": 0,
+      "actualClientToolDiscovery": false,
+      "actualClientFileRead": false,
+      "ownerRevokeNotPerformed": true
+    }
   },
   "evidence": [
     {
@@ -222,6 +234,17 @@
       ],
       "observation": "Public template and staging instructions specify initial-only SQLite migration, preserved registry namespace, required nonsecret bindings, Access owner-policy/environment inventory, immutable artifact/module checks and current owner-only recovery identity. This attachment is complete. The recorded live pause and owner-only recorded-version restore passed; the identical immutable artifact reupload handled Cloudflare settings code 10214 while preserving the registry and read-only permissions.",
       "limits": "The template is not Wrangler configuration or an automated deployment script. Repeatable application/dry-run automation, platform secret-binding lifecycle and incompatible or future storage migration rollback remain unverified. The recorded drill had no active fixture devices or grants."
+    },
+    {
+      "id": "OWNER-CONNECTION-20261102",
+      "level": "owner-authorized actual dashboard and foreground agent",
+      "status": "passed_scoped_client_blocked",
+      "refs": [
+        "docs/validation/2026-11-02-owner-connection.md",
+        "docs/validation/2026-11-02-owner-connection.json"
+      ],
+      "observation": "Approved narrow root paired via existing authenticated dashboard; online, graceful stop/offline and same-enrollment reconnect observed. Last state paired/online, no autostart. No client grant or ChatGPT tool read; fresh Google login not performed.",
+      "limits": "Plugin creation returned non-retryable409 Scoped plugin release was deleted; browser host gate denied ChatGPT navigation. No bypass, no created plugin, no owner revocation or full acceptance."
     }
   ],
   "pendingEvidence": [
@@ -235,7 +258,7 @@
     {
       "id": "PENDING-LIVE-PAIR",
       "status": "passed_scoped",
-      "result": "Two Windows devices paired; wrong pair/device codes and pairing replay rejected; real DPAPI round trips passed. Live expiry/crash and human approval remain open.",
+      "result": "Historical two-device Windows service-principal pairing, wrong pair/device-code denial, consumed replay and DPAPI round trips passed. Later owner-authorized browser pairing through an existing authenticated session is observed. Live expiry/crash and complete deployed log/state privacy review remain open.",
       "evidenceRef": "docs/validation/2026-11-02-remote-staging-smoke-final.json",
       "required": "Real isolated Windows pairing, protected credential persistence, mismatch/expired/replayed code denial and no credential leakage."
     },
@@ -256,15 +279,15 @@
     {
       "id": "PENDING-HUMAN-GOOGLE",
       "status": "explicitly_unverified",
-      "result": null,
-      "evidenceRef": null,
+      "result": "Existing authenticated owner dashboard access and owner-authorized pairing are observed. Fresh Google/Access login was not performed and remains explicitly unverified.",
+      "evidenceRef": "docs/validation/2026-11-02-owner-connection.json",
       "required": "Owner-performed Google/Access sign-in and dashboard/consent interaction. Access redirect or service credentials are not proof."
     },
     {
       "id": "PENDING-HUMAN-CHATGPT",
-      "status": "explicitly_unverified",
-      "result": null,
-      "evidenceRef": null,
+      "status": "blocked_unverified",
+      "result": "No client authorization, discovery or file read. Plugin creation returned non-retryable409 Scoped plugin release was deleted; browser host restrictions did not grant ChatGPT access. Neither was bypassed.",
+      "evidenceRef": "docs/validation/2026-11-02-owner-connection.json",
       "required": "Owner's supported ChatGPT connector registration, consent and real tool call. SDK evidence is recorded separately."
     },
     {
@@ -501,7 +524,8 @@
         "LIVE-SMOKE",
         "WINDOWS-ALIAS-CHECKPOINT",
         "LIVE-SMOKE-FINAL",
-        "FINAL-GATES"
+        "FINAL-GATES",
+        "OWNER-CONNECTION-20261102"
       ],
       "implemented": "Five-minute, single-use pairing and protected state are implemented. Two real Windows devices completed staging pairing and DPAPI round trips; wrong displayed codes, wrong device codes and consumed pairing replay were rejected.",
       "remainingWork": [
@@ -521,13 +545,13 @@
           "eta": "Unscheduled"
         },
         {
-          "description": "Finish the owner-visible browser code-match flow and sanitized pairing log/state privacy review.",
+          "description": "Complete remaining owner-visible code-match/privacy acceptance and sanitized pairing log/state review, retaining the observed owner-authorized browser enrollment as scoped evidence.",
           "dependencies": [
             "WEB-007 human dashboard session",
             "WEB-012 secret-sentinel review"
           ],
           "blockers": [
-            "The smoke used authenticated service-identity API approval; human approval and complete deployed log/state inspection are unverified."
+            "Owner-authorized browser pairing is now observed through an existing authenticated session. Complete deployed log/state privacy review and expiry/crash paths remain unverified."
           ],
           "remainingHours": [
             2,
@@ -557,7 +581,7 @@
       ],
       "blockers": [
         "Consumed replay and code mismatches passed; expiry/crash/persistence-failure coverage in the real runtime remains pending.",
-        "The smoke used authenticated service-identity API approval; human approval and complete deployed log/state inspection are unverified."
+        "Owner-authorized browser pairing is now observed through an existing authenticated session. Complete deployed log/state privacy review and expiry/crash paths remain unverified."
       ],
       "remainingHours": [
         5,
@@ -609,6 +633,14 @@
           ],
           "runId": "2026-11-02T00-56-44-313Z-8cdbd4f8-8e08-4517-97f1-9683573132be",
           "acceptedRequirement": false
+        },
+        {
+          "description": "Owner-authorized real device enrollment through existing authenticated dashboard, after explicit narrow-root approval; no device identifier or credential in public evidence.",
+          "evidence": [
+            "OWNER-CONNECTION-20261102"
+          ],
+          "observedAt": "2026-11-02T04:26:07Z",
+          "acceptedRequirement": false
         }
       ]
     },
@@ -623,7 +655,8 @@
         "LIVE-SMOKE",
         "WINDOWS-ALIAS-CHECKPOINT",
         "LIVE-SMOKE-FINAL",
-        "FINAL-GATES"
+        "FINAL-GATES",
+        "OWNER-CONNECTION-20261102"
       ],
       "implemented": "Foreground outbound polling carried actual Windows FileService results through Cloudflare. Both agents reached online state; device A stopped on revocation and device B stopped during owned cleanup. Backoff, cancellation and no-redelivery also have local transport tests.",
       "remainingWork": [
@@ -735,6 +768,14 @@
           ],
           "runId": "2026-11-02T00-56-44-313Z-8cdbd4f8-8e08-4517-97f1-9683573132be",
           "acceptedRequirement": false
+        },
+        {
+          "description": "Real owner foreground agent online, graceful stop with observed exit, dashboard offline, and same-pairing reconnect; no service/autostart or network-fault/crash certification.",
+          "evidence": [
+            "OWNER-CONNECTION-20261102"
+          ],
+          "observedAt": "2026-11-02T04:26:07Z",
+          "acceptedRequirement": false
         }
       ]
     },
@@ -749,7 +790,8 @@
         "AGENT-SOURCE",
         "LIVE-SMOKE",
         "LIVE-SMOKE-FINAL",
-        "FINAL-GATES"
+        "FINAL-GATES",
+        "OWNER-CONNECTION-20261102"
       ],
       "implemented": "Owner-scoped inventory, capabilities and heartbeat-derived presence are implemented. The live SDK listed exactly two paired Windows devices, routed independent reads, and observed that revoking one did not disable the other.",
       "remainingWork": [
@@ -846,6 +888,14 @@
             "LIVE-SMOKE"
           ],
           "runId": "2026-11-02T00-56-44-313Z-8cdbd4f8-8e08-4517-97f1-9683573132be",
+          "acceptedRequirement": false
+        },
+        {
+          "description": "Authenticated dashboard showed the real paired owner device online, then offline after graceful stop, then online after reconnect; client authorizations stayed zero.",
+          "evidence": [
+            "OWNER-CONNECTION-20261102"
+          ],
+          "observedAt": "2026-11-02T04:26:07Z",
           "acceptedRequirement": false
         }
       ]
@@ -988,19 +1038,20 @@
         "OWNER-GUIDE",
         "LIVE-SMOKE",
         "LIVE-SMOKE-FINAL",
-        "FINAL-GATES"
+        "FINAL-GATES",
+        "OWNER-CONNECTION-20261102"
       ],
-      "implemented": "Dashboard and consent UI code covers pairing, presence, read-only permissions, grants, cancellation, audit and revoke controls. Live Access service authentication and management API approval work; unauthenticated browsers redirect to Access. No human UI or connector session was exercised.",
+      "implemented": "Dashboard and consent UI code covers pairing, presence, read-only permissions, grants, cancellation, audit and revoke controls. Live Access service authentication and management API approval work; unauthenticated browsers redirect to Access. Later existing authenticated owner dashboard interaction and pairing were observed; no connector session or fresh Google login was exercised.",
       "remainingWork": [
         {
-          "description": "Complete owner Google/Access sign-in, device verification and the desired client's consent/connector setup; record each actual client's result independently.",
+          "description": "Retain observed existing-session owner dashboard/device pairing and complete fresh Google/Access login plus desired-client consent/connector setup; record each actual client result independently.",
           "dependencies": [
             "Owner-approved identity/account availability",
             "WEB-002 authorization",
             "WEB-003 pairing"
           ],
           "blockers": [
-            "A 302 Access redirect does not prove Google sign-in; human sign-in and ChatGPT connection are unverified."
+            "Existing authenticated dashboard and owner-authorized pairing are observed. Fresh Google login and actual ChatGPT consent/tool use remain unverified; plugin creation409 and browser host restrictions block this session."
           ],
           "remainingHours": [
             3,
@@ -1047,7 +1098,7 @@
         "WEB-006 revoke behavior"
       ],
       "blockers": [
-        "A 302 Access redirect does not prove Google sign-in; human sign-in and ChatGPT connection are unverified.",
+        "Existing authenticated dashboard and owner-authorized pairing are observed. Fresh Google login and actual ChatGPT consent/tool use remain unverified; plugin creation409 and browser host restrictions block this session.",
         "Desktop/mobile visual QA passed, including a 390px viewport/document without overflow; full accessibility and human/client onboarding acceptance remain open."
       ],
       "remainingHours": [
@@ -1087,6 +1138,14 @@
             "LIVE-SMOKE"
           ],
           "runId": "2026-11-02T00-56-44-313Z-8cdbd4f8-8e08-4517-97f1-9683573132be",
+          "acceptedRequirement": false
+        },
+        {
+          "description": "Existing authenticated dashboard used for owner-authorized pairing. Plugin creation blocked by non-retryable409 and ChatGPT navigation blocked by host policy; no client consent/discovery/read.",
+          "evidence": [
+            "OWNER-CONNECTION-20261102"
+          ],
+          "observedAt": "2026-11-02T04:26:07Z",
           "acceptedRequirement": false
         }
       ]
@@ -1330,7 +1389,7 @@
       },
       "completedWork": [
         {
-          "description": "Actual HTTPS\u2192gateway\u2192two Windows agents\u2192FileService\u2192SDK reads matched exact hashes without storing raw file contents; specified denial and revocation checks passed.",
+          "description": "Actual HTTPS→gateway→two Windows agents→FileService→SDK reads matched exact hashes without storing raw file contents; specified denial and revocation checks passed.",
           "evidence": [
             "LIVE-SMOKE"
           ],

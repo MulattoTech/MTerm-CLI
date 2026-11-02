@@ -1,6 +1,50 @@
 # MTerm-CLI handoff — 2026-11-02 configuration continuation
 
-The current continuation includes dependency main `932c310914d8af822c5b1611ac85c5e79c2c5097`
+## DCP-009 qualification and current owner connection
+
+The independent `feat/dcp-009-config-metadata-20261102` implementation is
+`535d99e20b52a30ba9a24b6d2205d8e6687f6ca6`, based on verified main
+`c408e286c437bec1c8c88fbbae29d89a9f8f90c8`, and is carried by
+[PR #73](https://github.com/MulattoTech/MTerm-CLI/pull/73). It adds bounded local
+OS/process/memory metadata and pinned preference entry ordering to `get_config`,
+without probing Python, mounts, containers or environment metadata. Client
+identity selects only bounded name/version fields; owner capability ceilings
+remain unchanged. See the [contract and RED/GREEN report](validation/2026-11-02-config-metadata.md).
+Direct scratch metadata tests passed 11/11 after an observed 1-pass/10-fail RED;
+the native Windows suite subsequently passed **175/175 with zero skips**. Reviewed
+build/check, self-host, real package, normal prepack, source and installed native
+Codex gates all passed, as did a fresh committed source extraction. The four
+full-orchestration component commands were executed individually with actual exit
+results. The installed verifier checks eight scenarios on real MCP children.
+
+The [delivery record](validation/2026-11-02-config-metadata-delivery.json) records
+9/9 latest implementation hosted checks passing at unchanged `535d99e`. The initial
+push macOS ARM64 npm-install timeout remains recorded with cause unestablished;
+one supported rerun passed its tests, package and native-Codex gates at 12:00:47 UTC.
+Only that failed platform job was rerun. PR #73 is the authority for final
+documentation head, merge/main and checkpoint results. Native Codex parsing plus
+SDK calls does not establish a model-driven tool invocation. All DCP issues remain
+open and broad stages/weights unchanged.
+
+The owner has approved the prepared `C:\Tools\Dev\MTerm-RemoteWorkspace` root.
+Real owner-authorized pairing through an existing authenticated dashboard, online
+foreground presence, graceful stop/offline observation and same-enrollment
+reconnect are now observed. Read-only/no-autostart remain, and the enrollment was
+not revoked. A separate 12:00:53.619 UTC local-status recheck again observed the
+same enrollment online from `config-qualification-20261102` at `c408e286`. Preserve
+that running checkout and inspect current process/state before any new start or
+pairing.
+
+ChatGPT is still disconnected: no client authorization, tool discovery or read.
+Plugin creation returned non-retryable HTTP 409 `Scoped plugin release was deleted.`;
+the browser host gate denied ChatGPT navigation. These were not bypassed. Fresh
+Google login was not performed. Preserve the prepared plugin package and use the
+[owner connection report](validation/2026-11-02-owner-connection.md) and
+[continuation prompt](execution/NEXT_PARITY_PROMPT.md) for the next supported step.
+
+## Earlier configuration sprint checkpoints (historical)
+
+The preceding continuation included dependency main `932c310914d8af822c5b1611ac85c5e79c2c5097`
 (PR #71, after the #69 integration and #70 metadata). See [STATUS.md](STATUS.md), the
 [configuration reliability report](validation/2026-11-02-config-retry.md), and the
 [current 48-issue audit](validation/2026-11-02-config-issue-audit.json).
@@ -12,17 +56,11 @@ The primary checkout and its eleven modified/new files are preserved. The additi
 pre-change checkpoint is `artifacts/checkpoints/config-sprint-start-20261102` under
 the primary checkout. The report records bundle/source/manifest hashes.
 
-The private staging Worker remains on `af4fd06e-c4a3-4545-ad22-31d0ae956215`, serving
-the unchanged tested `b90432a` artifact. Existing authorized Brave access opened the
-real dashboard and displayed zero computers and zero client authorizations. Fresh
-Google login and actual client consent/tool use remain untested.
-
-A narrow owner setup preview was prepared at `C:\Tools\Dev\MTerm-RemoteWorkspace`
-with one harmless `connection-check.txt`. Preview reports `applied:false`,
-`paired:false`, `permissions:read-only`, `autostart:false`; no protected state was
-created. The owner must select that directory (or another explicit narrow root)
-before `--apply`, approve the displayed pairing, and complete ChatGPT consent.
-Do not start a polling pairing request until the owner is ready for its five-minute window.
+The private staging Worker retained `af4fd06e-c4a3-4545-ad22-31d0ae956215` and the
+unchanged tested `b90432a` artifact. The earlier zero-computer dashboard and
+`applied:false`/`paired:false` preview were the starting point for the now-observed
+owner pairing above; they are not the current owner state. Client authorizations
+still numbered zero at the later owner checkpoint.
 
 ## Previous completed remote staging sprint
 
@@ -30,8 +68,9 @@ Do not start a polling pairing request until the owner is ready for its five-min
 live checks.** The [final sprint report](validation/2026-11-02-remote-sprint.md)
 and [PR #69](https://github.com/MulattoTech/MTerm-CLI/pull/69) are authoritative for
 the final merge/main SHA, document checks and recovery checkpoint. Human Google
-sign-in and ChatGPT connector acceptance remain unverified; no persistent owner
-agent is paired. Production has not been promoted.
+sign-in and ChatGPT connector acceptance were unverified at that historical
+closeout, and no owner was paired then. The later owner checkpoint above supersedes
+only the pairing/lifecycle observation. Production has not been promoted.
 
 ## Configuration qualification continuation — 2026-11-02
 
@@ -112,10 +151,10 @@ manifest SHA-256:
 0a5ab4011bad9b94b8d1d08b41a87d00d4ac18188ccfefca9ed4cd102d619c60
 ```
 
-Next: consult the final report/PR for delivery and checkpoint status, then help the
-owner complete Google sign-in, explicit pairing and ChatGPT consent. Keep state
-outside a small selected root and start the agent in the foreground. Continue
-unaccepted parity issues without repeating completed deployment work.
+For that historical release, consult its report/PR for delivery and checkpoint
+status. Current owner pairing is recorded above; client consent/tool use remains
+pending under the documented plugin/browser restrictions. Continue unaccepted
+parity issues without repeating completed setup, pairing or deployment work.
 [execution/NEXT_PARITY_PROMPT.md](execution/NEXT_PARITY_PROMPT.md) is
 the self-contained continuation; [TESTING.md](TESTING.md) lists the gates.
 

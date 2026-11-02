@@ -1,192 +1,275 @@
-# MTerm-CLI: continue Codex parity and complete owner pairing
+# MTerm-CLI: continue verified Codex parity and finish client connection
 
-**Continuation date: 2026-11-02. Execute the work.** Re-read current source, PRs,
-retained logs and deployed state before changing anything. This is a checkpoint,
-not authority to overwrite newer work or to rerun every completed gate.
+**Continuation date: 2026-11-02. Execute the work.** Re-read current GitHub, local
+state, retained logs and deployed identity before mutation. This is a checkpoint,
+not authority to overwrite newer work, repeat owner pairing or rerun every gate.
 
-Repository: <https://github.com/MulattoTech/MTerm-CLI>. The independent long-term
-acceptance target remains **100% DesktopCommanderMCP parity as consumed by Codex,
-then 100% — PASS**. Broad product maturity and remote WEB acceptance are separate.
+Repository: <https://github.com/MulattoTech/MTerm-CLI>. The long-term target remains
+**100% DesktopCommanderMCP parity as consumed by Codex, then 100% — PASS**. The
+300-item maturity ledger, 48 DCP issues and 12 remote WEB issues are independent.
 
-## Verified delivery and authoritative current state
+## Current implementation and delivery authority
 
-The configuration implementation is published through [PR #72](https://github.com/MulattoTech/MTerm-CLI/pull/72).
-Its tested implementation is `def85d256fe558ef26e0cdf7d0218ce250682150`.
-The later delivery documentation does not change the four tested verifier files.
-Read that PR's current state and delivery comment for the final documentation
-head, merge/main SHA, post-merge checks and final recovery manifest. This avoids
-pretending a document can contain the hash of its own future merge commit.
-Always resolve the latest main before choosing a work base.
+[PR #73](https://github.com/MulattoTech/MTerm-CLI/pull/73) carries DCP-009 metadata
+implementation **`535d99e20b52a30ba9a24b6d2205d8e6687f6ca6`**, based on verified main
+`c408e286c437bec1c8c88fbbae29d89a9f8f90c8`. Subsequent closeout documentation leaves
+`src/compat-config.ts`, its metadata test and the installed verifier unchanged.
+Read PR #73's current state, exact-head checks and final delivery comment before
+selecting a new base. Final documentation head, merge/main and final recovery
+hashes must come from observed Git/PR state; they are not predicted here.
 
-| Item | Verified evidence |
+| Evidence at `535d99e` | Observed result |
 | --- | --- |
-| Dependency main | `932c310914d8af822c5b1611ac85c5e79c2c5097` |
-| DCP-010 / #12 repair | [PR #71](https://github.com/MulattoTech/MTerm-CLI/pull/71) merged; source `297877435c4b3358ac53414af28edd11504e35ed` |
-| DCP-016 / #18 qualification | [PR #72](https://github.com/MulattoTech/MTerm-CLI/pull/72); tested implementation `def85d256fe558ef26e0cdf7d0218ce250682150` |
-| Windows gates | 164/164 tests, zero skips; normal package, self-host, normal prepack, source and installed native-Codex checks PASS |
-| Implementation hosted gates | All nine checks PASS: PR matrix `41383776637`, fast `41383776656`, push matrix `41383709723` |
-| Fresh committed extraction | Clean npm ci, reviewed build, normal prepack and installed package PASS from `def85d2` |
-| Fresh source archive SHA-256 | `fa9b8d470afbd6e70f81232841c879a8ac680a9d3e4b0411914c0f12bef78d9e` |
-| Delivery and final checkpoint | Resolve the exact final head/main and additive bundle/source/manifest hashes from PR #72's delivery comment and the downloadable continuation's release record |
+| Focused development | Meaningful RED: 1 pass / 10 failures; GREEN: 11/11 metadata cases |
+| Native Windows | Node 24.21.0 x64; 175/175 tests, zero skips/cancellations |
+| Seven native gates | Reviewed build, normal check, self-host, package, source-entry Codex, normal prepack and installed-entry Codex passed |
+| Full orchestration coverage | All four component commands ran individually with captured exits; do not infer an unobserved wrapper invocation |
+| Installed configuration | Eight scenarios, two concurrent MCP children and a restart; actual child identity/envelope/metadata/order/omissions checked |
+| Network and cleanup | Ten positive network canaries intercepted, zero product attempts observed through instrumented Node APIs; independent process exits and owned cleanup passed |
+| Native Codex | Test-owned 0.160.1 parsed synthetic registration; SDK exercised the parsed source and installed commands twice each |
+| Model invocation | `actualCodexAgentToolInvocation:false`; model calls zero |
+| Fresh committed source | No initial dist/node_modules; locked install, reviewed build, normal prepack and installed package passed |
+| Fresh archive SHA-256 | `7e2c015a34fb10cafe53b8df713c48824541acaac59cb6e6f5f6446803f4afae` |
+| Package accounting | 57,843 archive bytes; 224,214 unpacked package bytes; 14,171,584 installed production bytes, excluding external Node/Codex |
 
-Read `docs/validation/2026-11-02-config-delivery.json` for the exact implementation
-check URLs, timestamps and extraction results. The final documentation revision
-must pass its own hosted checks before expected-head merge. A passing prior head
-is never substituted for a failed or unverified current head.
+At 12:02:49 UTC, latest implementation hosted checks were **9/9 passed**. PR matrix
+[41388159750](https://github.com/MulattoTech/MTerm-CLI/actions/runs/41388159750)
+passed Windows 2022 x64, Ubuntu 24.04 x64, macOS 14 ARM64 and macOS 15 Intel; fast
+[41388159762](https://github.com/MulattoTech/MTerm-CLI/actions/runs/41388159762) passed.
+Push matrix [41388126481](https://github.com/MulattoTech/MTerm-CLI/actions/runs/41388126481)
+initially had one failed macOS ARM64 job
+[125093389299](https://github.com/MulattoTech/MTerm-CLI/actions/runs/41388126481/job/125093389299):
+npm tarball install timed out after 120 seconds, SIGTERM, empty output. Its tests
+passed 163 with 12 platform skips and zero failures; the PR's same-platform job
+passed. The install-timeout cause is unestablished; preserve that failed attempt
+and do not call it a confirmed service outage.
 
-The dependency main includes PR #69, metadata PR #70 and the DCP-010 repair in
-PR #71. All nine checks on the exact PR #71 head succeeded: PR matrix
-`41382703553`, fast run `41382703583` and push matrix `41382566783`. They apply to
-that repair and do not certify the newer DCP-016 changes. All five merged-main
-checks also passed (matrix `41382914828`, fast `41382914744`). PR #52 is marked merged;
-PR #67 was closed as incorporated, and both source heads are ancestors of that
-main. The read-only GitHub audit found no unique product commits on the other
-published non-access-check branches. Recheck before selecting a new base.
+One supported rerun, attempt 2 macOS ARM64
+[job 125262922093](https://github.com/MulattoTech/MTerm-CLI/actions/runs/41388126481/job/125262922093),
+ran 11:59:54–12:00:47 UTC and passed at unchanged `535d99e`: 163 tests passed,
+12 platform skips, no failures, all eight installed configuration scenarios and
+native Codex 0.160.1 parsing plus SDK calls. The hosted managed-Codex gate used the
+source entry (`installedEntry:false`); the package gate separately exercised the
+installed MCP process. Only macOS ARM64 was rerun; the other three push platforms
+retain their original successful execution times. No model invocation occurred.
+At the separate 12:00 UTC repository check, main remained `c408e286` and PR #73
+remained open/draft at `535d99e`. Observe later final-head/merge results directly.
 
-## Newly established evidence
+Read these committed records:
 
-Read `docs/validation/2026-11-02-config-installed-qualification.md` and its
-sanitized native JSON. A standalone copy of the new DCP-016 verifier passed on
-Windows Node 24.21.0 against an actual packed DCP-010 candidate installation:
+- `docs/validation/2026-11-02-config-metadata.md`: exact implementation contract,
+  pinned sources, RED/GREEN, intentional differences and qualification.
+- `docs/validation/2026-11-02-config-metadata-delivery.json`: source/check/record
+  identities, native results, extraction and pending final delivery gates.
+- `docs/validation/2026-11-02-config-metadata-windows.json` and
+  `docs/validation/2026-11-02-config-metadata-fresh.json`: integration-owner
+  observations with retained Windows evidence paths.
+- `docs/validation/2026-11-02-config-metadata-hosted-retry.json`: exact initial
+  failure, supported successful retry and nine latest checks; SHA-256
+  `6dec037731b0ddf389bf64920dd91d0353e356067d3c4615e64762a52c5aa4a2`.
+- `docs/validation/2026-11-02-owner-connection.md` and its JSON: real owner pairing
+  and exact client-connection blockers.
+- `docs/validation/2026-11-02-config-metadata-issue-audit.json`: read-only audit of
+  all 48 issues and 21 comments at 04:29:19 UTC, with zero identity/state mismatches.
+  Its exact SHA-256 is `1e4bc682a23dd803ccaa8e2778c1c3b3a32026f5022d937fb9533beb33bf9c14`.
+  Dated October billing comments remain historical. The repo now refreshes scoped
+  DCP-011/014/015 evidence and DCP-020 configured advisory warnings without closure.
 
-- Two concurrent installed MCP children shared synthetic settings across two
-  explicit roots; a third process verified restart persistence.
-- Dynamic native, compatible and multi-file read limits; write-warning thresholds;
-  exact Unicode append/rewrite bytes; and three concurrent distinct-key write
-  rounds passed.
-- Root narrowing, empty-root denial, owner-ceiling enforcement, invalid-setting
-  byte preservation, command blocking, corrupt-policy denial and owned cleanup
-  passed.
-- Ten positive network canaries were intercepted. No product attempt was observed
-  through the instrumented Node network APIs. This is not an OS sandbox or a
-  descendant-process network certificate.
-- Every captured MCP/fixture PID returned ESRCH during bounded signal-zero polling.
-  A cleared SDK PID alone is not exit evidence. Fixture cleanup completed; all
-  three stderr counts were zero.
-- No real user config/authentication changed, no model call occurred, and
-  `actualCodexAgentToolInvocation` remained false.
+The initial native enrichment reader expected TAP prefixes while Node emitted
+spec output; the test count was recovered from the unchanged log. An ad-hoc fresh
+extraction wrapper also encountered a PowerShell-stdin encoding parse failure
+before executing product commands. These were observation-wrapper repairs, not
+product source/test changes. Keep genuine product failures separate.
 
-The original probe copied only the standalone verifier into artifacts. The later
-integrated native Windows workflow passed 164/164 tests, normal package verification
-and the revised source-entry managed-Codex gate. Separate normal prepack, self-host
-and explicit installed-entry Codex then passed; see the report for retained paths.
-All nine implementation-head hosted checks and a fresh committed extraction then
-passed. The extraction began without dist or node_modules, installed exact locks,
-ran the reviewed build and normal prepack, and exercised the installed package.
-The tested product module SHA-256 was
-`18e20ed25d20124e2530e8a236133d49317fdf9116531df2c4de4fc455225c50`;
-use retained package/report identities to reconcile it with the delivered commit.
+Earlier deliveries are retained: PR #71 repaired bounded Windows config rename
+retries; PR #72 qualified shared configuration through installed MCP and synthetic
+managed-Codex registration. Their implementation/main checks passed and are
+recorded in `2026-11-02-config-delivery.json`. PR #52 is merged and PR #67's source
+was incorporated. Do not recreate those implementations from stale prompts.
 
-The DCP-016 source adds `scripts/verify-configuration-installed.mjs`, calls it from
-`verify-package.mjs`, extends `verify-managed-codex.mjs` with synthetic configuration
-discovery/persistence, and adds negative verifier input tests. It does not change
-runtime permissions or implement the separate DCP-010 replacement repair.
+## What DCP-009 now implements and still does not prove
 
-## Preserved remote release
+`get_config` preserves its text/structured envelope and original system aliases.
+It adds the five pinned memory strings from one measurement, OS name/flags/path
+separator, Node version, actual process PID/architecture/platform/runtime versions,
+generic example paths, empty no-provider flags, and the six preference entries in
+pinned order. Client metadata selects only bounded name/version; rejected identity
+is explicitly omitted. Real installed checks exercise those contracts.
 
-The earlier remote implementation and deployment gates are complete. Do not
-recreate the relay, temporary service identity or fixture devices to resume work.
-The final remote report and PR #69 retain detailed evidence and recovery commands.
+The response explicitly omits `docker`, `pythonInfo`, `isDXT`, `nodeInfo.path`,
+`nodeInfo.npmVersion` and `examplePaths.accessible`. No Python subprocess, mount
+scan, environment inventory, credential path or vendor experiment/analytics
+service was imported. Absence is not a false claim that Python or containers do
+not exist. `platformName` has no container suffix. `systemInfo.defaultShell`
+reports the owner-approved preference, rather than upstream's static OS hint;
+`availableShells` and editability remain limited by owner capabilities.
 
-| Resource or checkpoint | Recorded identity |
+DCP-009 stays open until its complete published contract and intentional safety
+and privacy differences receive the required acceptance review. Do not fabricate
+upstream fields to close it. Actual Codex parser/SDK proof establishes registration
+and the registered server's behavior; it does not establish model-driven tool use,
+all 26 tools or all 48 issues.
+
+## The owner is already paired; the client is not connected
+
+The user explicitly approved `C:\Tools\Dev\MTerm-RemoteWorkspace` and the necessary
+continuation. The last observed state at 2026-11-02 04:26:07 UTC was:
+
+| Owner state | Observation |
+| --- | --- |
+| Root | `C:\Tools\Dev\MTerm-RemoteWorkspace`, containing harmless connection fixture |
+| Protected state | `%LOCALAPPDATA%\MTerm-CLI\remote-staging`, outside the exposed root |
+| Display name | `MulattoTechBox staging` |
+| Pairing and agent | Real owner-authorized pairing; foreground online |
+| Lifecycle | Graceful stop and actual exit, dashboard offline, then same-enrollment reconnect passed |
+| Permissions | Read-only; autostart false; no remote write/execute |
+| Browser identity | Existing authenticated dashboard session; fresh Google login not performed |
+| Client acceptance | Zero authorizations; no actual ChatGPT discovery/read |
+| Revocation | Real owner enrollment deliberately not revoked |
+
+At **12:00:53.619 UTC**, a later local-status check again observed the same
+enrollment paired and online. The foreground agent runs from
+`C:\Tools\Dev\MTerm-CLI\artifacts\worktrees\config-qualification-20261102`
+at `c408e286c437bec1c8c88fbbae29d89a9f8f90c8`. Preserve that running checkout;
+do not update its files beneath the owner agent. The original 04:26 JSON remains
+unchanged; the delivery record separately identifies this later observation.
+
+**Do not repeat setup/pairing or start another agent on the assumption that the
+old preview is current.** Inspect local state and the task-owned foreground
+process first. Existing enrollment is intended to survive a normal stop/restart.
+Do not steal locks, expose credentials, revoke the owner device as a synthetic
+cleanup, add autostart or promote production.
+
+Connection encountered two explicit blockers:
+
+1. Plugin creation returned backend HTTP 409, `Scoped plugin release was deleted.`,
+   marked non-retryable. The postcheck found no created plugin.
+2. The browser host restrictions gate did not grant navigation to
+   `https://chatgpt.com`. No retry or workaround was attempted.
+
+Preserve the prepared `MTerm-Staging-Plugin-0.1.0.zip`, SHA-256
+`1cba80851f09e4c912698dd707a3be82848fafacb9373498263e9181dd14e4e0`.
+It targets `https://mcp-staging.m-techlabs.com/mcp` with OAuth dynamic client
+registration, S256 PKCE and `mterm:read`. It is a reviewable package, not proof of
+plugin installation or consent. Resume only through supported access or the
+owner's normal client flow; do not retry a non-retryable creation, substitute a
+service identity, export browser state or route around host restrictions.
+
+When the supported client is authorized, observe real tool discovery,
+`mterm_list_devices`, one harmless selected-device read, outside-root denial and
+authorized lifecycle behavior. Record actual client evidence separately from
+historical SDK tests. A paired online dashboard row alone is not a remote file
+read or complete WEB acceptance. Fresh Google login, actual client consent,
+ChatGPT tool calls and owner revocation remain unperformed.
+
+## Preserved remote deployment
+
+The earlier remote implementation/deployment gates remain complete for their
+recorded scope. Do not recreate the relay, temporary Access service identity or
+synthetic devices to resume this work.
+
+| Resource | Recorded identity |
 | --- | --- |
 | MCP endpoint | `https://mcp-staging.m-techlabs.com/mcp` |
 | Private dashboard | `https://mterm-staging.m-techlabs.com` |
 | Worker | `mterm-gateway-staging` |
-| Current recorded Worker version | `af4fd06e-c4a3-4545-ad22-31d0ae956215` |
-| Deployed product source | `b90432a1bc138d59305692a9f74f110a475d0881` |
+| Recorded owner-only Worker version | `af4fd06e-c4a3-4545-ad22-31d0ae956215` |
+| Deployed source | `b90432a1bc138d59305692a9f74f110a475d0881` |
 | Gateway artifact SHA-256 | `97a0457b78e113c058ae8da3d3a6a54fcd93c2b35d1dd1781316c41001ac10a6` |
-| Existing state | Enabled staging, owner-only access, read-only tools; no production promotion |
+| Mode | Enabled staging, read-only, owner-only policy; no production promotion |
 
-The earlier smoke passed 11/11 using the official SDK, a temporary Access service
-principal and two real Windows fixture agents. Temporary grants/devices/agents,
-policy/token/binding were removed. Human Google sign-in, browser consent/callback
-and ChatGPT connector acceptance remain distinct from that proof. An existing
-owner Brave session was reported able to view the dashboard with zero devices
-and zero grants during this continuation; that observation does not certify a
-fresh Google login or connector consent. No owner pairing was applied at the
-worker checkpoint. Reconcile any later owner work before creating new state.
+The earlier 11/11 live smoke used a temporary service identity, official SDK and
+two Windows fixtures. Its grants/devices/agents/policy/token/binding were cleaned.
+That historical cleanup predates the real owner enrollment above. This local
+metadata work and owner pairing do not change the deployed gateway source.
+`docs/REMOTE_MCP.md`, `docs/deployment/MTERM_STAGING.md`, and
+`docs/validation/2026-11-02-remote-sprint.md` retain exact management/recovery
+procedures. Do not redeploy unchanged bytes for local parity qualification.
 
-Read `docs/REMOTE_MCP.md`, `docs/deployment/MTERM_STAGING.md` and
-`docs/validation/2026-11-02-remote-sprint.md` for exact setup, pause and rollback.
-Do not redeploy unchanged gateway bytes for this local verification-only change.
+## First actions and preservation
 
-## First actions and source preservation
+Discover the currently available tools and use the authorized workstation for
+Windows work. Scratch is not Windows. Remote process creation is not completion:
+inspect the retained log and actual exit code. Avoid repeating stalled child
+connections or launching duplicate long gates. Never kill unrelated processes.
 
-Discover the available Remote Desktop Commander, GitHub, Cloudflare and Browser
-schemas. Scratch is not the authorized Windows workstation. RDC may return while
-a process is still running: inspect its owned PID, retained log and actual exit
-code before starting another gate. Do not repeat stalled child connections or
-kill unrelated tasks.
-
-Read current `AGENTS.md`, `CONTRIBUTING.md`, `docs/execution/READ_FIRST.md`,
+Read `AGENTS.md`, `CONTRIBUTING.md`, `docs/execution/READ_FIRST.md`,
 `docs/execution/MASTER_IMPLEMENTATION_PROMPT.md`, `docs/HANDOFF.md`, `docs/SECURITY.md`,
 `docs/TESTING.md`, `docs/ORCHESTRATION.md`, `docs/CODEX_REGISTRATION.md`,
-`docs/parity/README.md`, `docs/roadmap/METRICS.md`, the DCP ledger and the latest
-change/validation records. Preserve the primary checkout and existing AO/MJobs
-processes. Do not start a fleet or automatic issue intake before the Codex/AO hook
-pilot is verified.
+`docs/parity/README.md`, `docs/roadmap/METRICS.md` and both parity ledgers before
+changes. Treat current observed code/PR state as authority over old handoff hashes.
 
-- Primary Windows checkout: `C:\Tools\Dev\MTerm-CLI`. Its eight modified and three
-  new source files were preserved and recovered in the preceding integration.
-  Never reset, clean or overwrite that checkout.
-- Existing ordinary verification clones include
-  `C:\Tools\Dev\MTerm-CLI\artifacts\worktrees\remote-mcp-20261102` and
-  `C:\Tools\Dev\MTerm-CLI\artifacts\worktrees\config-retry-20261102` and
-  `C:\Tools\Dev\MTerm-CLI\artifacts\worktrees\config-qualification-20261102`.
-  Inspect actual branches, dirty state and task-owned processes; these names do
-  not prove they are clean or currently appropriate for a new task.
-- The qualification worker clone was
-  `/workspace/scratch/2c8f320f622d/mterm-config-qualification`, branch
-  `feat/dcp-016-installed-config-20261102`, initial base `059413f`, with dependency
-  main `932c310` integrated normally. Review fingerprints apply only to their
-  exact source set and must be regenerated after integration or relevant edits.
-- Keep MTerm-GUI and the archived original MTerm repository untouched. Never merge
-  `access-check/*` or recovery-only refs into product history.
+- Preserve `C:\Tools\Dev\MTerm-CLI`, including the original eight modified and
+  three new files. Do not reset, clean or overwrite the primary checkout.
+- This qualification used the ordinary clone
+  `C:\Tools\Dev\MTerm-CLI\artifacts\worktrees\config-metadata-20261102`.
+  The source worker clone is
+  `/workspace/scratch/2c8f320f622d/mterm-dcp009-20261102`.
+- Earlier `remote-mcp-20261102`, `config-retry-20261102` and
+  `config-qualification-20261102` ordinary clones remain separate. Inspect dirty
+  state and task ownership; historical names do not authorize overwriting them.
+- Preserve MTerm-GUI, the archived original MTerm, AO worktrees and MJobs processes.
+  Do not start a fleet or automatic issue intake before the Codex/AO hook pilot
+  is independently verified. Exclude access-check/recovery-only branches from
+  product merges.
 
-The preceding complete recovery checkpoint is
-`C:\Tools\Dev\MTerm-CLI\artifacts\checkpoints\remote-sprint-release-metadata-2026-11-02T02-08-00-863Z`.
-Bundle SHA-256:
-`07b2800a964dc1e87e23cdd1d5190dd49d74f852dca9f5364ba221965476a5bf`;
-manifest SHA-256:
-`2c075a95eb8bb8a8c83cda07be1579e3234e216e23a8a6d9b3e2b098532f391c`;
-source ZIP SHA-256:
-`589aa0bdd10e490c9d44d8fe92d761065458b88bb359fcaf4807c60590d2cab1`.
-Create a new additive source/history checkpoint before substantial changes.
+The DCP-009 source worker's pre-change checkpoint is
+`artifacts/checkpoints/dcp009-start-20261102/`: bundle SHA-256
+`53ba810ece63c7c097046f4e142a7973db14f530121b207211debb216b3a7873` and source tar
+`c79ab89424407dee2b9c7836cdbf28d7a9b88cc35118438a99896d7b008bbadc`.
+Its implementation transfer bundle is SHA-256
+`119c42f7ba4decc64c605eb154f01aeb773b8c6fd920e0827b761ec87916c61e`.
+Use PR #73's final delivery comment for the newer integration-owner checkpoint;
+do not invent future bundle or merge hashes. Make additive checkpoints before
+substantial changes and retain all older recovery material.
 
-## Immediate engineering sequence
+## Next engineering sequence
 
-1. Reconcile PRs #71/#72, current main, its actual checks and the final checkpoint.
-   Preserve every delivered or still-unmerged source change. Completed configuration
-   gates above need repetition only for changed source or a concrete remaining risk.
-2. Read all 48 live DCP issues and compare them with the ledger. Keep one issue,
-   worker, isolated clone and reviewable PR per acceptance gap. Do not close an
-   issue for a similarly named native tool or a shared foundation pass.
-3. Start the next concrete configuration contract gap with DCP-009 / #11:
-   inspect the pinned `get_config` handler/schema and compare response fields,
-   types, defaults and available system metadata. Write a meaningful failing
-   contract fixture, implement bounded accurate metadata/output, then repeat
-   through the packed installed server. Do not invent feature-flag values or
-   import vendor analytics to fill missing metadata.
-4. Keep the remaining dependencies explicit. DCP-012/#14 and DCP-013/#15 need
-   compatible shell execution and a reviewed shell-command blocklist contract;
-   storing a shell preference is not execution. DCP-014/#16 also depends on the
-   still-missing compatible process read/interact line-limit behavior. DCP-016/#18
-   has strong installed reload evidence but still needs its complete contract and
-   applicable actual Codex-client acceptance decision.
-5. Preserve intentional owner constraints: empty roots deny, preferences cannot
-   raise capability ceilings, mandatory command blocks remain, and no upstream
-   telemetry is added. The pinned single-read schema supplies length=1000 even
-   when the preference changes; MTerm intentionally uses its live default. The
-   write threshold is advisory, not a hard failure. Record these differences.
+1. Resolve the exact current PR #73/source/check state and any still-unmerged
+   documentation. The implementation's supported retry passed; final documentation
+   and merged-main checks still require their own observed results. Preserve the
+   original timeout and unmerged changes, and use an ordinary isolated clone for
+   the next issue.
+2. Re-read all 48 live DCP issues and current evidence. Keep one independently
+   closeable issue/owner/branch/PR per gap. Configuration already works through
+   installed MCP; do not replace it with new dictionary-returning scaffolding.
+3. Reconcile DCP-009's explicit field/privacy differences with the pinned handler
+   and acceptance contract. The useful metadata slice is implemented; a repeat
+   of its existing tests does not complete missing Python/container fields or
+   actual Codex-client acceptance. Add only a concrete remaining gap with a
+   meaningful failing fixture, or record the precise required owner ruling.
+4. Continue a bounded configuration contract such as DCP-010/#12's exact
+   `set_config_value` success/output and normalization/error behavior across the
+   six preferences. Read the pinned handler/schema and current implementation
+   first, write RED before a behavior change, preserve prior bytes on rejection,
+   then prove it through the existing installed harness. Do not broaden coercion
+   or echo raw values merely because upstream does so.
+5. Preserve the larger dependencies: DCP-012/#14 and DCP-013/#15 need reviewed
+   compatible shell execution/blocklist behavior; storing a shell preference is
+   not execution. DCP-014/#16 also needs compatible process line-limit semantics.
+   DCP-011/#13 and DCP-016/#18 have strong multi-root/reload evidence but still
+   require their full contract and applicable actual Codex-client acceptance.
+6. Complete file/editing ranges, encodings, formats, directory/cross-device moves
+   and diagnostics; then asynchronous search, process/terminal behavior, local
+   usage/history/prompts, and complete package/Codex/platform/license/security
+   qualification through the existing services.
 
-Keep CODEX_HOME synthetic. A real model/API call or auth experiment still requires
-explicit owner authorization. Native Codex parsing plus SDK execution does not
-prove that a Codex model invoked a tool. Inspect actual new hosted failures without
-bypassing freshness, protections, permissions or tests.
+Owner ceilings remain immutable to model-editable preferences. Empty roots deny
+access; mandatory command blocks remain; telemetry gains no network transport.
+The pinned single-read schema uses a default length of 1000 while MTerm uses its
+live preference. The write threshold is advisory. Keep intentional differences
+visible and issues open until the required acceptance decision/evidence exists.
+Cooperative locks/path checks are not OS-wide transactions or a native sandbox.
 
-Use `build:code` only during deliberate development. Normal gates must run after
-review rather than bypassing freshness. From the chosen isolated Windows clone:
+Keep CODEX_HOME synthetic. A real model/API call or authentication experiment
+requires explicit authorization for that operation. No tool-discovery claim can
+be extrapolated to all26 contracts or all48 requirements.
+
+## Gates and closing the next slice
+
+Use `build:code` for deliberate RED/GREEN only. After explicit source/catalog
+review, run normal gates from the chosen ordinary Windows clone with the pinned
+local Node/Codex toolchain:
 
 ```powershell
 $MTermNodeBin = 'C:\Tools\Dev\MTerm-CLI\artifacts\toolchain\node-v24.21.0-win-x64'
@@ -197,67 +280,24 @@ node scripts/orchestration/verify.mjs --full
 node scripts/verify-self-host.mjs
 ```
 
-Retain logs and actual exit codes. The self-host verifier still requires an
-ordinary clone while linked Git metadata outside the root is unsupported (#66).
-Normal `npm pack` must retain prepack. Validate a clean source extraction and
-matching lock/shrinkwrap; ignored build output is not source reproducibility.
+Record actual exits and source identities. Equivalent individually executed
+component commands must be identified as such. Do not waive failed checks,
+remove prepack, disable freshness or call file-level scratch test wrappers full
+acceptance. Verify the packed installed artifact and a fresh committed extraction.
+Self-host still requires an ordinary clone while linked Git metadata outside the
+root remains unsupported (#66).
 
-## Owner-only continuation
+Pinned target: DesktopCommanderMCP **0.2.52**, commit
+`c774c3b505de990219637ecdc9a830c8772fae9d`, **26 published tools**. All **48 DCP
+issues remain open**, **WEB acceptance remains 0/12**, and broad maturity remains
+**29.12%**, with all stages/weights unchanged. A complete parity PASS requires
+accepted issues, installed/Codex lifecycle, supported platforms and verified
+merged source, not a green subset or a paired device.
 
-The existing Brave dashboard session already showed the verified owner identity,
-zero devices and zero authorizations. Use that normal session; the human completes
-any required login and consent. The prepared preview is:
-
-- Root: `C:\Tools\Dev\MTerm-RemoteWorkspace`, containing only `connection-check.txt`.
-- Gateway: `https://mcp-staging.m-techlabs.com`.
-- Dashboard: `https://mterm-staging.m-techlabs.com`.
-- Protected state: `%LOCALAPPDATA%\MTerm-CLI\remote-staging`, outside the shared root.
-- Name: `MulattoTechBox staging`; read-only, autostart false.
-- Preview only: applied=false, paired=false; protected owner state was not created.
-
-The attached owner handoff explicitly reserves folder approval, pairing and client
-consent for the human. Ask for that concrete root selection before applying the
-prepared setup. Start pairing only when the owner is ready for the five-minute
-window, then run the agent in its own foreground terminal. Do not substitute a
-service identity, export cookies/tokens, enable autostart, remote write/exec or
-promote production.
-
-The owner then connects the MCP URL in ChatGPT and completes consent. Observe real
-tool discovery, device inventory, one selected-device read, outside-root denial and
-stop/revoke behavior. Record browser/client evidence separately from the historical
-SDK/service-principal smoke. If human input is unavailable, finish independent
-engineering work and present the exact prepared owner action.
-
-## Remaining parity and acceptance rules
-
-Pinned target: `wonderwhy-er/DesktopCommanderMCP` 0.2.52,
-`c774c3b505de990219637ecdc9a830c8772fae9d`, 26 published tools.
-Epic #2 indexes DCP-001 through DCP-048, issues #3 through #50. At this checkpoint,
-all 48 remain open; remote WEB acceptance is 0/12. The 300-item broad maturity is
-29.12%, with unchanged stages and baseline weights. None is interchangeable with
-complete Codex parity.
-
-After configuration, complete the existing file/editing adapter's ranges, encodings,
-formats, directory/cross-device moves, metadata and diagnostics; then asynchronous
-search sessions/options; owned process/terminal contracts; local usage/history/
-prompts; and full package/Codex/platform/license/security qualification. Use existing
-services and audited bounded fixtures. Never execute upstream bootstrap merely to
-inspect a handler, add upstream telemetry or send private history to a vendor.
-
-Owner startup ceilings remain distinct from model-editable preferences. An empty
-root list must never grant whole-machine access. Where an intentional safety
-boundary differs from pinned behavior, record the difference and obtain a precise
-owner ruling when required. Keep the affected issue open instead of manufacturing
-acceptance. Cooperative filesystem locks are not OS-wide transactions.
-
-For each change: observe meaningful RED where behavior changes, implement, run
-focused/full and installed tests, record actual provider/model/UTC/base/paths/tests/
-limitations plus `roadmap_updates`, explicitly review/render, then publish coherent
-commits and inspect their exact checks. No force-push, reset/clean, source deletion,
-release-tag invention, real Codex auth changes or paid model prompts. Merge normally
-with expected-head protection after acceptable verification.
-
-Before ending, checkpoint source/history with hashes, record actual local/remote/
-PR/main identities and unresolved differences, update this prompt with observed
-closeout results, and provide a downloadable copy. Continue through the next
-verified dependency instead of rebuilding the already functioning remote preview.
+For each source change, record actual provider/model/UTC/base/paths/tests/limits
+and `roadmap_updates`, review/render explicitly, publish coherent tested commits,
+and inspect exact-head checks. No force-push, reset/clean, credential export,
+protection changes, fabricated tags or paid prompts. Merge normally with expected
+head protection after acceptable verification. Before ending, retain a hashed
+checkpoint, actual local/remote/PR/main identities and unresolved differences,
+update this prompt, and provide its downloadable copy.

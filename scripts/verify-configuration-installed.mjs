@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-02-config-metadata; inspect the installed get_config metadata and response contract.
 // AI-Change: 2026-11-02-config-installed-qualification
 // Installed-package proof only. Every policy, process and network canary is fixture-owned.
 import fs from 'node:fs/promises';
@@ -162,6 +163,7 @@ const plain = (result) =>
 const clients = [];
 const steps = [];
 const fixtureProcesses = [];
+const clientMetadataSentinel = 'MTERM_GET_CONFIG_PRIVATE_EXTRA_SENTINEL';
 async function connect({ allowConfigWrite = true } = {}) {
   const index = clients.length;
   const audit = path.join(evidence, `network-child-${index}.ndjson`);
@@ -189,7 +191,11 @@ async function connect({ allowConfigWrite = true } = {}) {
     env: { ...env, MTERM_NETWORK_AUDIT_FILE: audit },
     stderr: 'pipe',
   });
-  const client = new Client({ name: 'mterm-installed-config-fixture', version: '1.0.0' });
+  const client = new Client({
+    name: 'mterm-installed-config-fixture',
+    version: '1.0.0',
+    title: clientMetadataSentinel,
+  });
   const connection = { client, transport, audit, pid: null, stderrBytes: 0, stderrTail: '', closed: false };
   clients.push(connection);
   // Register cleanup before connecting so startup/initialization failures cannot leak a child.
@@ -227,7 +233,86 @@ async function denied(connection, name, args, code) {
   if (code) assert.equal(result.structuredContent?.error?.code, code);
   return result;
 }
-const get = async (connection) => (await call(connection, 'get_config')).structuredContent.config;
+const get = async (connection) => {
+  const result = await call(connection, 'get_config');
+  const { config, entries, uiHints } = result.structuredContent;
+  assert.deepEqual(result.content, [
+    { type: 'text', text: 'Current configuration:\n' + JSON.stringify(config, null, 2) },
+  ]);
+  assert.deepEqual(config.currentClient, { name: 'mterm-installed-config-fixture', version: '1.0.0' });
+  assert.equal(config.mterm.clientInfoStatus, 'available');
+  assert.ok(!JSON.stringify(result).includes(clientMetadataSentinel));
+  assert.ok(Buffer.byteLength(JSON.stringify(result)) <= 524288, 'Installed MCP response byte cap');
+  assert.deepEqual(config.featureFlags, {});
+  assert.equal(config.mterm.featureFlagsSource, 'none');
+  const info = config.systemInfo;
+  assert.deepEqual(info.processInfo, {
+    pid: connection.pid,
+    arch: process.arch,
+    platform: process.platform,
+    versions: process.versions,
+  });
+  assert.deepEqual(info.nodeInfo, { version: process.version.slice(1) });
+  assert.equal(info.platform, process.platform);
+  assert.equal(info.architecture, process.arch);
+  assert.equal(info.nodeVersion, process.version);
+  assert.equal(typeof info.release, 'string');
+  assert.equal(info.isWindows, process.platform === 'win32');
+  assert.equal(info.isMacOS, process.platform === 'darwin');
+  assert.equal(info.isLinux, process.platform === 'linux');
+  assert.equal(
+    info.platformName,
+    info.isWindows ? 'Windows' : info.isMacOS ? 'macOS' : info.isLinux ? 'Linux' : 'Unix',
+  );
+  assert.equal(info.pathSeparator, info.isWindows ? '\\' : '/');
+  assert.equal(info.defaultShell, config.defaultShell);
+  assert.deepEqual(
+    info.examplePaths,
+    info.isWindows
+      ? { home: 'C:\\Users\\username', temp: 'C:\\Temp', absolute: 'C:\\path\\to\\file.txt' }
+      : {
+          home: info.isMacOS ? '/Users/username' : '/home/username',
+          temp: '/tmp',
+          absolute: '/path/to/file.txt',
+        },
+  );
+  assert.deepEqual(Object.keys(info.memory).sort(), [
+    'arrayBuffers',
+    'external',
+    'heapTotal',
+    'heapUsed',
+    'rss',
+  ]);
+  for (const value of Object.values(info.memory)) assert.match(value, /^\d+\.\d{2} MB$/);
+  assert.ok(Buffer.byteLength(JSON.stringify(info)) < 8192, 'Process metadata remains bounded');
+  assert.deepEqual(config.mterm.omittedSystemInfo, [
+    'docker',
+    'pythonInfo',
+    'isDXT',
+    'nodeInfo.path',
+    'nodeInfo.npmVersion',
+    'examplePaths.accessible',
+  ]);
+  for (const key of ['docker', 'pythonInfo', 'isDXT']) assert.ok(!(key in info));
+  assert.deepEqual(uiHints.availableShells, config.mterm.allowedShells);
+  assert.deepEqual(
+    entries,
+    [
+      ['blockedCommands', 'array'],
+      ['allowedDirectories', 'array'],
+      ['defaultShell', 'string'],
+      ['telemetryEnabled', 'boolean'],
+      ['fileReadLineLimit', 'number'],
+      ['fileWriteLineLimit', 'number'],
+    ].map(([key, valueType]) => ({
+      key,
+      value: config[key],
+      valueType,
+      editable: config.mterm.configWriteEnabled,
+    })),
+  );
+  return config;
+};
 const set = (connection, key, value) => call(connection, 'set_config_value', { key, value });
 async function noWriteDebris() {
   const names = await fs.readdir(path.dirname(configurationFile));
@@ -258,6 +343,7 @@ try {
     for (const root of roots) await call(connection, 'read_file', { path: path.join(root, 'fixture.txt') });
   }
   steps.push('two-installed-processes-discovery-and-owner-roots');
+  steps.push('get-config-envelope-memory-process-metadata-and-omissions');
 
   await set(a, 'fileReadLineLimit', 1);
   assert.equal((await get(b)).fileReadLineLimit, 1);
@@ -418,6 +504,15 @@ try {
     concurrentMcpProcesses: 2,
     restartedMcpProcesses: 1,
     compatibilityToolsDiscovered: ['get_config', 'set_config_value'],
+    getConfigMetadata: {
+      textMatchesStructuredConfig: true,
+      processIdentityMatchesOwnedChild: true,
+      boundedMemoryAndRuntimeFields: true,
+      orderedPreferenceTypes: true,
+      clientExtrasOmitted: true,
+      unsupportedProbesExplicitlyOmitted: true,
+      featureFlagProvider: 'none',
+    },
     steps,
     telemetryNetworkGuard: {
       interceptedCanaryAttempts: canaryAttempts.length,

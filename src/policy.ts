@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-02-foundation-portability; bind explicitly selected aliases to immutable canonical roots.
 // Modified: 2026-10-06-config-parity; multiple immutable roots and per-request scope guard.
 // Modified: 2026-10-05-codex-parity-foundation; shared prevalidation for nested paths.
 // AI-Change: 2026-10-04-local-mcp (OpenAI / GPT-6 Astra Pro; self-reported)
@@ -34,20 +35,25 @@ export function privateName(name: string): boolean {
 export class RootPolicy {
   private accessGuard?: (target: string) => void;
   readonly root: string;
-  private constructor(readonly roots: readonly string[]) { this.root = roots[0]!; }
+  private constructor(
+    readonly roots: readonly string[],
+    private readonly aliases: readonly Readonly<{ selected: string; canonical: string }>[],
+  ) { this.root = roots[0]!; }
   static async create(input: string | readonly string[]): Promise<RootPolicy> {
     const requested = typeof input === 'string' ? [input] : input;
     if (!Array.isArray(requested) || requested.length < 1 || requested.length > 16)
       fail('INVALID_ROOT', 'Choose between one and sixteen explicit trusted directories.');
     const roots: string[] = [];
+    const aliases: Readonly<{ selected: string; canonical: string }>[] = [];
     for (const root of requested) {
       if (typeof root !== 'string' || !root || !path.isAbsolute(root))
         fail('INVALID_ROOT', 'Choose explicit absolute trusted directories.');
       const real = await fs.realpath(root);
       if (!(await fs.lstat(real)).isDirectory()) fail('INVALID_ROOT', 'Trusted root must be a directory.');
       if (!roots.some(r => path.relative(r, real) === '')) roots.push(real);
+      aliases.push(Object.freeze({ selected: path.resolve(root), canonical: real }));
     }
-    return new RootPolicy(Object.freeze(roots));
+    return new RootPolicy(Object.freeze(roots), Object.freeze(aliases.sort((a, b) => a.selected.length - b.selected.length)));
   }
   setAccessGuard(guard: (target: string) => void): void { this.accessGuard = guard; }
   private contains(root: string, candidate: string): boolean {
@@ -69,7 +75,14 @@ export class RootPolicy {
       fail('INVALID_PATH', 'Invalid path.');
     if (/^[/\\]{2}/.test(input) || /^[A-Za-z]:[^/\\]/.test(input))
       fail('INVALID_PATH', 'UNC/device/drive-relative paths are not supported.');
-    const target = path.resolve(this.root, input);
+    let target = path.resolve(this.root, input);
+    if (!this.roots.some(root => this.contains(root, target))) {
+      // Only startup-selected aliases may be translated, never arbitrary realpaths.
+      // Prefer the outermost selected alias so nested links/private names still undergo
+      // the same component checks. A path already in a canonical root is not remapped.
+      const alias = this.aliases.find(item => this.contains(item.selected, target));
+      if (alias) target = path.resolve(alias.canonical, path.relative(alias.selected, target));
+    }
     if (!this.inside(target)) fail('OUTSIDE_ROOT', 'Requested path is outside the trusted root.');
     const rel = path.relative(this.anchor(target), target);
     const parts = rel ? rel.split(path.sep) : [];

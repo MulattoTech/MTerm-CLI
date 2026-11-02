@@ -13,13 +13,13 @@ test('npm resolver recognizes Windows adjacent and Unix lib installation layouts
   const win = path.join(root, 'windows', 'node_modules', 'npm', 'bin', 'npm-cli.js');
   await fs.mkdir(path.dirname(win), { recursive: true });
   await fs.writeFile(win, 'fixture');
-  assert.equal(await mod.resolveNpmEntry({ execPath: path.join(root, 'windows', 'node.exe'), env: {} }), win);
+  assert.equal(await mod.resolveNpmEntry({ execPath: path.join(root, 'windows', 'node.exe'), env: {} }), await fs.realpath(win));
   const unix = path.join(root, 'unix', 'lib', 'node_modules', 'npm', 'bin', 'npm-cli.js');
   await fs.mkdir(path.dirname(unix), { recursive: true });
   await fs.writeFile(unix, 'fixture');
   assert.equal(
     await mod.resolveNpmEntry({ execPath: path.join(root, 'unix', 'bin', 'node'), env: {} }),
-    unix,
+    await fs.realpath(unix),
   );
 });
 test('npm resolver gives actionable absence and respects an explicit existing npm_execpath', async (t) => {
@@ -34,6 +34,6 @@ test('npm resolver gives actionable absence and respects an explicit existing np
   await fs.writeFile(file, 'fixture');
   assert.equal(
     await mod.resolveNpmEntry({ execPath: path.join(root, 'none', 'node'), env: { npm_execpath: file } }),
-    file,
+    await fs.realpath(file),
   );
 });

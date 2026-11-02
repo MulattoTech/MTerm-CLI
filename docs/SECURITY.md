@@ -4,7 +4,7 @@ This is an opt-in local tool host, not a remote relay or OS sandbox.
 
 ## Trust model
 
-The human chooses one explicit trusted directory when launching the server. Stdio inherits the
+The human chooses explicit trusted directories when launching the server (up to sixteen). Stdio inherits the
 local client's trust. No TCP listener, public endpoint, autostart daemon or automatic model call
 exists. File mutation and process execution require separate startup flags; clients cannot toggle
 them through a tool request. Disabled tool names are absent from tools/list.
@@ -52,6 +52,22 @@ worktree metadata is currently unsupported. No Git write, fetch, push or network
 
 ## Publication boundary
 
-A GitHub content-write probe was denied by platform safety checks. No alternate credential,
-RDC push, API path, permission change or other bypass was used. Local development and local Git
-checkpoints are separate from remote publication. No hosted CI, release tag or full certification.
+Earlier publication denials are historical observations, not current access proof. Verify the
+current operation and never bypass an active denial with another credential or route. Hosted main
+fast CI has passed; the feature matrix has actual portability failures recorded in the foundation
+change record. Local checkpoints are separate from remote publication and full certification.
+
+## Recovered compatibility preferences and canonical root aliases
+
+The opt-in Desktop Commander profile may expose get_config and, only with the separate
+--allow-config-write flag, set_config_value. Mutable preferences cannot expand startup root or
+shell ceilings, grant execution/write capabilities, or remove mandatory executable blocks.
+Empty allowedDirectories denies all new file work. Each admitted call uses its own bounded
+configuration snapshot; active cleanup stays available when new work is denied. Telemetry
+preferences do not enable a network transport.
+
+Only root spellings explicitly selected at startup are mapped to their fixed canonical roots.
+Mapping preserves component validation and runtime narrowing. Nested symlinks/junctions remain
+rejected, including overlapping root aliases; retargeting the original alias cannot redirect
+the stored canonical authority. These checks do not resolve the local concurrent-writer race
+limitations described above.

@@ -63,7 +63,7 @@ test('Codex passthrough owns flags after delimiter and preserves exit and cwd', 
   );
   assert.equal(r.code, 7);
   const data = JSON.parse(r.stdout);
-  assert.equal(data.cwd, dir);
+  assert.equal(await fs.realpath(data.cwd), await fs.realpath(dir));
   assert.deepEqual(data.args, ['--help', 'space value', '文']);
 });
 test('missing configured Codex fails without hidden installation or fallback', async (t) => {

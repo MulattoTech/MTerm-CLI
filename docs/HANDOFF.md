@@ -98,3 +98,11 @@ from the verified Windows backup. It adds owner-bounded compatibility preference
 multiple roots and per-request config snapshots. Runtime qualification is pending;
 DCP-009..016 and all other parity issues remain open. Original file attribution is
 retained and SHA-256 values are recorded in the recovery change record.
+
+### Portability repair candidate
+
+Focused tests reproduced the startup-root alias failure before the fix and pass afterward.
+The repair only maps owner-selected root spellings to fixed canonical roots and retains nested
+link/private-component denial. Cwd/npm assertions now compare real filesystem paths; the npm
+bin is tracked executable to avoid package/link mode drift. Full Windows and hosted matrix
+validation are pending. See the foundation-portability change record for exact evidence.

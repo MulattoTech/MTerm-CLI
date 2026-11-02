@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-02-config-storage-identity; canonical policy storage and file-tool exclusion share one identity.
 // AI-Change: 2026-10-06-config-parity (OpenAI / GPT-6 Astra Pro; self-reported)
 // Runtime preferences are bounded by immutable owner-selected startup capabilities.
 import fs from 'node:fs/promises';
@@ -47,6 +48,61 @@ const equivalent=(a:string,b:string)=>process.platform==='win32'?a.toLowerCase()
 const inside=(root:string,p:string)=> {const rel=path.relative(root,p);return !rel||(!path.isAbsolute(rel)&&rel!=='..'&&!rel.startsWith('..'+path.sep));};
 export const commandName=(value:string)=>value.trim().replace(/\\/g,'/').split('/').at(-1)!.toLowerCase().replace(/\.(exe|com|cmd|bat|ps1)$/i,'');
 
+/** Bind storage and its private-path guard to the same filesystem identity.
+ * Only startup-selected root aliases may skip their alias prefix. Every remaining
+ * existing parent is checked before canonicalization; nested/unselected links stay denied.
+ * Missing parents are not created here and are checked again by safeParents at write time. */
+export async function canonicalCompatibilityFile(file: string, ceiling: RootPolicy): Promise<string> {
+  let target = path.resolve(file);
+  try {
+    target = ceiling.lexical(target);
+  } catch (error) {
+    const code = (error as { code?: string })?.code;
+    // The policy file may intentionally live outside exposed roots or in a private
+    // directory. That does not authorize links in its storage path.
+    if (code !== 'OUTSIDE_ROOT' && code !== 'PRIVATE_PATH') throw error;
+  }
+  const parent = path.dirname(target);
+  let current = path.parse(parent).root;
+  const components = path.relative(current, parent).split(path.sep).filter(Boolean);
+  for (let i = 0; i < components.length; i++) {
+    const candidate = path.join(current, components[i]!);
+    let stat;
+    try {
+      stat = await fs.lstat(candidate);
+    } catch (error) {
+      if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw error;
+      current = path.join(current, ...components.slice(i));
+      break;
+    }
+    if (!stat.isDirectory() || stat.isSymbolicLink())
+      fail('CONFIG_UNSAFE', 'Configuration parent is linked or not a directory.');
+    // This also normalizes Windows 8.3 parent names without following a symlink.
+    current = await fs.realpath(candidate);
+  }
+  const candidate = path.join(current, path.basename(target));
+  let selected;
+  try {
+    selected = await fs.lstat(candidate);
+  } catch (error) {
+    if ((error as NodeJS.ErrnoException).code === 'ENOENT') return candidate;
+    throw error;
+  }
+  if (!selected.isFile() || selected.isSymbolicLink() || selected.nlink > 1)
+    fail('CONFIG_UNSAFE', 'Configuration must be a single-link regular file.');
+  const canonical = await fs.realpath(candidate);
+  // Windows can alias the filename itself. Resolve only an already checked regular
+  // file, and refuse a changed leaf or any resolution that changes its parent.
+  const canonicalStat = await fs.lstat(canonical);
+  const checked = await fs.lstat(candidate);
+  if (!equivalent(path.dirname(canonical), current) || !checked.isFile() || checked.isSymbolicLink()
+      || checked.nlink > 1 || !canonicalStat.isFile() || canonicalStat.isSymbolicLink()
+      || canonicalStat.nlink > 1 || selected.dev !== checked.dev || selected.ino !== checked.ino
+      || selected.dev !== canonicalStat.dev || selected.ino !== canonicalStat.ino)
+    fail('CONFIG_UNSAFE', 'Configuration storage identity changed during startup.');
+  return canonical;
+}
+
 /** No watcher daemon or eventual-cache window: each MCP operation loads a bounded snapshot.
  * AsyncLocalStorage prevents concurrent requests from changing another request's policy mid-flight.
  * A restriction affects newly admitted work; it cannot undo previously executed OS operations. */
@@ -65,7 +121,8 @@ export class CompatibilityConfig {
     const shells=Object.freeze([...(options.allowedShells?.length?options.allowedShells:[process.platform==='win32'?'powershell.exe':process.platform==='darwin'?'/bin/zsh':'/bin/sh'])]);
     if(shells.length>16||shells.some(s=>!text.safeParse(s).success))fail('CONFIG_INVALID','Invalid owner shell list.');
     const minimum=Object.freeze([...new Set([...MINIMUM_BLOCKED,...(options.blockedCommands??[])].map(commandName))]);
-    const service=new CompatibilityConfig(ceiling,path.resolve(file),options.allowConfigWrite===true,shells,minimum);
+    const storageFile = await canonicalCompatibilityFile(file, ceiling);
+    const service=new CompatibilityConfig(ceiling,storageFile,options.allowConfigWrite===true,shells,minimum);
     await service.read(); // Invalid on-disk policy never silently falls back to a permissive default.
     return service;
   }

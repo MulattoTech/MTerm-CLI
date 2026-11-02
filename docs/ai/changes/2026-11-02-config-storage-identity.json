@@ -1,0 +1,60 @@
+{
+  "change_id": "2026-11-02-config-storage-identity",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "identity_basis": "session-declared, self-reported",
+  "started_at_utc": "2026-11-02T00:49:28Z",
+  "base_sha": "69809e2b067540efc1082e938203762ad4d0a1e0",
+  "summary": "Bind compatibility policy storage and file-tool self-protection to one canonical filesystem identity, including explicitly selected root aliases and existing Windows short filenames.",
+  "files": [
+    "src/compat-config.ts",
+    "tests/compat-config.test.mjs",
+    "docs/ai/changes/2026-11-02-config-storage-identity.json"
+  ],
+  "requirements": [
+    "CLI-266",
+    "CLI-267",
+    "CLI-296",
+    "DCP-009",
+    "DCP-010",
+    "DCP-011",
+    "DCP-016"
+  ],
+  "decisions": [
+    "Only startup-selected root aliases may be translated through the trusted RootPolicy; no arbitrary symlink expansion is introduced.",
+    "Check every remaining existing storage parent before canonicalizing it, preserving nested and unselected symlink rejection. Missing parents are neither created nor trusted until normal write-time validation.",
+    "Canonicalize an existing regular-file leaf as well as its parents, so Windows 8.3 aliases cannot evade policy and sidecar exclusion. Refuse linked, multiply linked, redirected or changed storage identities.",
+    "Retargeting an explicitly selected root alias after startup cannot redirect the stored policy path.",
+    "Support macOS native temporary-directory aliases only through explicit startup-root selection, while retaining the ordinary parent checks elsewhere.",
+    "Limit this worker's change to the assigned source, test and provenance files; the integration owner performs aggregate formatting, roadmap review/render and platform qualification."
+  ],
+  "tests": [
+    {
+      "command": "Compare pre-fix path.resolve storage binding with real RootPolicy canonical request identity for an explicitly selected alias",
+      "result": "RED identity assertion reproduced: the two paths differ, so the old equivalent-path exclusion cannot match. This is a focused identity proof, not a full pre-fix configuration exploit on Linux, whose old parent guard rejects symlink aliases."
+    },
+    {
+      "command": "Native Node24 TypeScript transform of the exact production helper; exercise it with real RootPolicy and temporary filesystem fixtures",
+      "result": "GREEN 10 filesystem assertions: selected alias, matching guard identity, nested and unselected parent denial, fixed identity after retarget, no external state, existing regular-file identity, symbolic-link denial, hardlink denial and unchanged bytes."
+    },
+    {
+      "command": "node --check tests/compat-config.test.mjs; native TypeScript transform of src/compat-config.ts",
+      "result": "PASS syntax checks. Native transformation is not pinned TypeScript typechecking."
+    },
+    {
+      "command": "Added five full CompatibilityConfig regressions, including Windows 8.3 filename protection when the filesystem supplies an alias",
+      "result": "Pending the integration owner's locked dependency runner. Scratch lacks pinned zod and cannot run the full configuration suite. Windows alias test reports a skip if 8.3 filenames are disabled."
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "ids": "CLI-266,CLI-267,CLI-296; DCP-009,DCP-010,DCP-011,DCP-016",
+      "assessment": "No stages, weights or acceptance counts change. This is a security correction to recovered, incompletely qualified source. The integration owner must review/render the combined source fingerprint after cherry-picking."
+    }
+  ],
+  "limitations": [
+    "Full pinned TypeScript, formatter, CompatibilityConfig/MCP suites and Windows/macOS tests remain pending; no remote tool or original workstation checkout was touched by this follow-up.",
+    "Startup identity checks do not create an operating-system sandbox or promise immunity to hostile concurrent filesystem mutation."
+  ],
+  "next_unverified_action": "Cherry-pick into the integration branch, run locked formatter/compiler and the complete config/MCP tests on the isolated Windows clone, review/render the aggregate roadmap, then verify hosted macOS/Windows/Linux gates."
+}

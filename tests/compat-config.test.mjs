@@ -5,6 +5,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import os from 'node:os';
 import path from 'node:path';
+import { spawnSync } from 'node:child_process';
 const mod = await import('../dist/compat-config.js').catch(() => ({}));
 const policyMod = await import('../dist/policy.js');
 async function fixture(t, extra = {}) {
@@ -125,4 +126,94 @@ test('cancelled config mutations never commit or silently consume a pending lock
 test('command block preferences trim spelling and expose the normalized effective token',async(t)=>{
   const f=await fixture(t);await f.config.set('blockedCommands',[' NODE.EXE ']);
   await f.config.run(async()=>assert.throws(()=>f.config.checkExecutable(process.execPath),/blocked/i));
+});
+
+test('owner-selected config aliases retain one canonical storage identity and remain private', async (t) => {
+  const f = await fixture(t);
+  const alias = path.join(f.home, 'owner-root-alias');
+  await fs.symlink(f.roots[0], alias, process.platform === 'win32' ? 'junction' : 'dir');
+  const selectedFile = path.join(alias, 'policy', 'preferences.json');
+  const canonicalFile = path.join(f.roots[0], 'policy', 'preferences.json');
+  const config = await mod.CompatibilityConfig.create({ roots: [alias], file: selectedFile, allowConfigWrite: true });
+  assert.equal(config.file, canonicalFile);
+  await config.set('fileReadLineLimit', 7);
+  const before = await fs.readFile(canonicalFile);
+  const readonly = await mod.CompatibilityConfig.create({ roots: [alias], file: selectedFile });
+  const policy = await policyMod.RootPolicy.create([alias]);
+  readonly.bindPolicy(policy);
+  for (const base of [selectedFile, canonicalFile]) {
+    for (const suffix of ['', '.previous', '.lock', '.mterm-fixture.tmp']) {
+      await readonly.run(() => assert.rejects(policy.resolve(base + suffix, true), /outside|private|policy/i));
+    }
+  }
+  await assert.rejects(readonly.set('fileReadLineLimit', 8), /disabled|explicit/i);
+  assert.deepEqual(await fs.readFile(canonicalFile), before);
+});
+
+test('canonical config storage supports the explicitly selected native temporary root spelling', async (t) => {
+  const selected = await fs.mkdtemp(path.join(os.tmpdir(), 'mterm-native-config-alias-'));
+  t.after(() => fs.rm(selected, { recursive: true, force: true }));
+  const canonical = await fs.realpath(selected);
+  const config = await mod.CompatibilityConfig.create({ roots: [selected], file: path.join(selected, 'settings', 'policy.json'), allowConfigWrite: true });
+  assert.equal(config.file, path.join(canonical, 'settings', 'policy.json'));
+  await config.set('fileReadLineLimit', 11);
+  assert.equal((await config.read()).fileReadLineLimit, 11);
+});
+
+test('config storage still refuses nested and unselected parent links without creating state', async (t) => {
+  const f = await fixture(t);
+  const outside = path.join(f.home, 'outside-storage');
+  const nested = path.join(f.roots[0], 'linked-parent');
+  const unselected = path.join(f.home, 'unselected-alias');
+  await fs.mkdir(outside);
+  await fs.symlink(outside, nested, process.platform === 'win32' ? 'junction' : 'dir');
+  await fs.symlink(f.roots[0], unselected, process.platform === 'win32' ? 'junction' : 'dir');
+  for (const file of [path.join(nested, 'policy.json'), path.join(unselected, 'policy.json')]) {
+    await assert.rejects(mod.CompatibilityConfig.create({ roots: f.roots, file, allowConfigWrite: true }), /linked|unsafe/i);
+  }
+  assert.deepEqual(await fs.readdir(outside), []);
+  if (process.platform !== 'win32') {
+    const externalFile = path.join(outside, 'policy.json');
+    const linkedFile = path.join(f.roots[0], 'linked-policy.json');
+    await fs.writeFile(externalFile, '{"schemaVersion":1}');
+    await fs.symlink(externalFile, linkedFile);
+    await assert.rejects(mod.CompatibilityConfig.create({ roots: f.roots, file: linkedFile }), /single-link|unsafe/i);
+    assert.equal(await fs.readFile(externalFile, 'utf8'), '{"schemaVersion":1}');
+  }
+});
+
+test('retargeting the selected alias cannot redirect compatibility policy storage', async (t) => {
+  const f = await fixture(t);
+  const alias = path.join(f.home, 'fixed-policy-root');
+  await fs.symlink(f.roots[0], alias, process.platform === 'win32' ? 'junction' : 'dir');
+  const config = await mod.CompatibilityConfig.create({ roots: [alias], file: path.join(alias, 'policy.json'), allowConfigWrite: true });
+  await config.set('fileReadLineLimit', 5);
+  await fs.unlink(alias);
+  await fs.symlink(f.roots[1], alias, process.platform === 'win32' ? 'junction' : 'dir');
+  await config.set('fileReadLineLimit', 9);
+  assert.equal((await config.read()).fileReadLineLimit, 9);
+  assert.equal(JSON.parse(await fs.readFile(path.join(f.roots[0], 'policy.json'), 'utf8')).fileReadLineLimit, 9);
+  assert.deepEqual(await fs.readdir(f.roots[1]), []);
+});
+
+test('Windows short filenames cannot expose existing compatibility policy storage', { skip: process.platform !== 'win32' }, async (t) => {
+  const f = await fixture(t);
+  const file = path.join(f.roots[0], 'owner-compatibility-settings.json');
+  await fs.writeFile(file, JSON.stringify({ schemaVersion: 1, fileReadLineLimit: 7 }));
+  const result = spawnSync('cmd.exe', ['/d', '/c', 'for %F in ("' + file + '") do @echo %~sF'], { encoding: 'utf8', windowsHide: true });
+  assert.equal(result.status, 0, result.stderr);
+  const shortFile = result.stdout.trim();
+  if (path.basename(shortFile).toLowerCase() === path.basename(file).toLowerCase()) {
+    t.skip('The test filesystem does not create Windows 8.3 filename aliases.');
+    return;
+  }
+  assert.equal(await fs.realpath(shortFile), await fs.realpath(file));
+  const config = await mod.CompatibilityConfig.create({ roots: f.roots, file: shortFile });
+  assert.equal(config.file, await fs.realpath(file));
+  const policy = await policyMod.RootPolicy.create(f.roots);
+  config.bindPolicy(policy);
+  for (const p of [file, shortFile]) {
+    await config.run(() => assert.rejects(policy.resolve(p), /private|policy/i));
+  }
+  assert.equal((await config.read()).fileReadLineLimit, 7);
 });

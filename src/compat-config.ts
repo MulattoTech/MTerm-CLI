@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-02-config-metadata; bounded local metadata with explicit omitted probes.
 // Modified: 2026-11-02-config-rename-retry; bounded Windows retries revalidate snapshots and staging ownership.
 // Modified: 2026-11-02-config-storage-identity; canonical policy storage and file-tool exclusion share one identity.
 // AI-Change: 2026-10-06-config-parity (OpenAI / GPT-6 Astra Pro; self-reported)
@@ -484,12 +485,61 @@ export class CompatibilityConfig {
     return result;
   }
   describe(client?: { name: string; version: string }) {
+    const preferences = this.current();
+    const platform = process.platform;
+    const isWindows = platform === 'win32';
+    const isMacOS = platform === 'darwin';
+    const isLinux = platform === 'linux';
+    // The protocol client object can include arbitrary metadata beyond its identity.
+    // Omit those fields and invalid identities without echoing rejected raw values.
+    const currentClient =
+      client &&
+      [client.name, client.version].every(
+        (v) => typeof v === 'string' && v.length > 0 && v.length <= 256 && !/[\x00-\x1f\x7f]/.test(v),
+      )
+        ? { name: client.name, version: client.version }
+        : null;
+    // Match the pinned handler's binary MiB calculation and historical " MB" suffix.
+    // One measurement feeds both representations. No Python, filesystem or vendor probe.
+    const memoryUsage = process.memoryUsage();
+    const memoryValue = (bytes: number) => `${(bytes / 1024 / 1024).toFixed(2)} MB`;
     const config = {
-      ...this.current(),
+      ...preferences,
       version: '0.0.1-preview.1',
-      currentClient: client ?? null,
+      currentClient,
+      featureFlags: {},
       systemInfo: {
-        platform: process.platform,
+        platform,
+        platformName: isWindows ? 'Windows' : isMacOS ? 'macOS' : isLinux ? 'Linux' : 'Unix',
+        // This is the effective owner-approved preference, not shell availability.
+        defaultShell: preferences.defaultShell,
+        pathSeparator: isWindows ? '\\' : '/',
+        isWindows,
+        isMacOS,
+        isLinux,
+        nodeInfo: { version: process.version.slice(1) },
+        processInfo: {
+          pid: process.pid,
+          arch: process.arch,
+          platform,
+          versions: { ...process.versions },
+        },
+        // These are illustrative paths, never discovered home or mounted directories.
+        examplePaths: isWindows
+          ? { home: 'C:\\Users\\username', temp: 'C:\\Temp', absolute: 'C:\\path\\to\\file.txt' }
+          : {
+              home: isMacOS ? '/Users/username' : '/home/username',
+              temp: '/tmp',
+              absolute: '/path/to/file.txt',
+            },
+        memory: {
+          rss: memoryValue(memoryUsage.rss),
+          heapTotal: memoryValue(memoryUsage.heapTotal),
+          heapUsed: memoryValue(memoryUsage.heapUsed),
+          external: memoryValue(memoryUsage.external),
+          arrayBuffers: memoryValue(memoryUsage.arrayBuffers),
+        },
+        // Preserve the original MTerm aliases for existing consumers.
         architecture: process.arch,
         nodeVersion: process.version,
         release: os.release(),
@@ -505,6 +555,16 @@ export class CompatibilityConfig {
         emptyRoots: 'deny all',
         shellCommandTools: false,
         osSandbox: false,
+        clientInfoStatus: client == null ? 'unavailable' : currentClient ? 'available' : 'omitted-invalid',
+        featureFlagsSource: 'none',
+        omittedSystemInfo: [
+          'docker',
+          'pythonInfo',
+          'isDXT',
+          'nodeInfo.path',
+          'nodeInfo.npmVersion',
+          'examplePaths.accessible',
+        ],
       },
     };
     return {
@@ -514,23 +574,24 @@ export class CompatibilityConfig {
       structuredContent: {
         config,
         uiHints: { availableShells: this.shells },
-        entries: Object.entries(config)
-          .filter(([k]) =>
-            [
-              'blockedCommands',
-              'defaultShell',
-              'allowedDirectories',
-              'fileReadLineLimit',
-              'fileWriteLineLimit',
-              'telemetryEnabled',
-            ].includes(k),
-          )
-          .map(([key, value]) => ({
+        entries: (
+          [
+            'blockedCommands',
+            'allowedDirectories',
+            'defaultShell',
+            'telemetryEnabled',
+            'fileReadLineLimit',
+            'fileWriteLineLimit',
+          ] as const
+        ).map((key) => {
+          const value = config[key];
+          return {
             key,
             value,
             valueType: Array.isArray(value) ? 'array' : typeof value,
             editable: this.allowConfigWrite,
-          })),
+          };
+        }),
       },
     };
   }

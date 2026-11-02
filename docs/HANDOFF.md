@@ -1,5 +1,19 @@
 # MTerm-CLI handoff — 2026-11-02 configuration continuation
 
+## DCP-009 metadata candidate
+
+The independent `feat/dcp-009-config-metadata-20261102` candidate starts from
+verified main `c408e286c437bec1c8c88fbbae29d89a9f8f90c8`. It adds bounded local
+OS/process/memory metadata and pinned preference entry ordering to `get_config`,
+without probing Python, mounts, containers or environment metadata. Client
+identity selects only bounded name/version fields; owner capability ceilings
+remain unchanged. See the [contract and RED/GREEN report](validation/2026-11-02-config-metadata.md).
+Direct scratch metadata tests passed 11/11 after an observed 1-pass/10-fail RED;
+existing config/retry cases also passed with the native Windows-only case skipped
+on Linux. The installed verifier now checks this contract on real MCP children.
+Native Windows/full/package/hosted validation for this candidate is pending the
+integration owner. All DCP issues remain open and broad stages/weights unchanged.
+
 The current continuation includes dependency main `932c310914d8af822c5b1611ac85c5e79c2c5097`
 (PR #71, after the #69 integration and #70 metadata). See [STATUS.md](STATUS.md), the
 [configuration reliability report](validation/2026-11-02-config-retry.md), and the

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baseline": "cli-300-initial-effort-v1",
-  "reviewedAt": "2026-11-02T03:29:17Z",
+  "reviewedAt": "2026-11-02T04:06:38.171Z",
   "sourceSeedSha256": "09a5f76c7d5f83add8383b3cec3d02fb3fd41c9b2c4c80fbd482ffae29f457a2",
   "scope": "Full 300-item desired product, not just this Windows local MCP preview",
   "weightBasis": "Initial bands: ordinary acceptance8h; narrow UI/entry4h; Web40h; auth/update24h; platform/security/local tools16h. These rough baseline bands are frozen on first review.",
@@ -2665,7 +2665,7 @@
       "id": "CLI-128",
       "section": "Cache ownership and performance",
       "title": "Bind cache to the selected account/source",
-      "acceptance": "Switching accounts cannot display a previous account\u2019s quota.",
+      "acceptance": "Switching accounts cannot display a previous account’s quota.",
       "stage": "not_started",
       "weight": 8,
       "remainingHours": [
@@ -2862,9 +2862,13 @@
         "tests/compat-config-mcp.test.mjs",
         "docs/ai/changes/2026-11-02-config-storage-identity.json",
         "docs/validation/2026-11-02-remote-sprint.md",
-        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json",
+        "tests/compat-config-metadata.test.mjs",
+        "scripts/verify-configuration-installed.mjs",
+        "docs/validation/2026-11-02-config-metadata.md",
+        "docs/ai/changes/2026-11-02-config-metadata.json"
       ],
-      "notes": "Final 2026-11-02 evidence at b90432a: Effective compatibility preferences remain owner-bounded and non-secret; canonical policy-file exclusions passed native Windows 8.3 regressions. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
+      "notes": "Final 2026-11-02 evidence at b90432a: Effective compatibility preferences remain owner-bounded and non-secret; canonical policy-file exclusions passed native Windows 8.3 regressions. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit. DCP-009 metadata candidate from c408e28: direct Linux Node24.22.1 tests pass 11/11 after observed RED; OS/process/memory metadata is truthful, bounded and omits invasive probes. Native/full/installed/hosted qualification for this candidate remains pending. Stage and weight unchanged.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
       "reviewer": "2026-10-04-local-mcp"
@@ -5141,7 +5145,7 @@
       "id": "CLI-236",
       "section": "CLI roadmap, progress bars and governance",
       "title": "Retain complete cross-repository source-project traceability",
-      "acceptance": "GUI lineage and the CLI\u2019s three upstream licenses/features remain documented independently.",
+      "acceptance": "GUI lineage and the CLI’s three upstream licenses/features remain documented independently.",
       "stage": "planned",
       "weight": 8,
       "remainingHours": [
@@ -5319,7 +5323,7 @@
       "id": "CLI-244",
       "section": "AI attribution and recovery",
       "title": "Leave vendor-neutral handoff instructions",
-      "acceptance": "Another AI company\u2019s model can discover the current source of truth and next task from the repo.",
+      "acceptance": "Another AI company’s model can discover the current source of truth and next task from the repo.",
       "stage": "integrated",
       "weight": 8,
       "remainingHours": [
@@ -5711,7 +5715,7 @@
       "id": "CLI-261",
       "section": "Footprint and latency verification",
       "title": "Expose performance regressions honestly",
-      "acceptance": "Measured regressions remain visible; no \u201cnever slows down\u201d or unlike CLI/GUI comparison claims.",
+      "acceptance": "Measured regressions remain visible; no “never slows down” or unlike CLI/GUI comparison claims.",
       "stage": "implementation",
       "weight": 8,
       "remainingHours": [
@@ -6345,9 +6349,14 @@
         "tests/processes.test.mjs",
         "tests/mcp.test.mjs",
         "tests/git.test.mjs",
-        "tests/cli.test.mjs"
+        "tests/cli.test.mjs",
+        "src/compat-config.ts",
+        "tests/compat-config-metadata.test.mjs",
+        "scripts/verify-configuration-installed.mjs",
+        "docs/validation/2026-11-02-config-metadata.md",
+        "docs/ai/changes/2026-11-02-config-metadata.json"
       ],
-      "notes": "Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains.",
+      "notes": "Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains. DCP-009 metadata candidate from c408e28: direct Linux Node24.22.1 tests pass 11/11 after observed RED; OS/process/memory metadata is truthful, bounded and omits invasive probes. Native/full/installed/hosted qualification for this candidate remains pending. Stage and weight unchanged.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [
         "CLI-033",

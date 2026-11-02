@@ -31,6 +31,12 @@ main checks are recorded in PR #72's delivery comment. See the
 
 ## Implemented scope and remaining contracts
 
+The DCP-009 candidate adds process/OS/memory metadata and pinned entry ordering
+with a focused 11/11 direct-test result. It explicitly omits Python/container and
+environment probes and retains owner authority. Candidate native, installed and
+hosted gates remain pending; [the scoped report](validation/2026-11-02-config-metadata.md)
+records the precise differences and evidence. This adds no acceptance credit.
+
 Local native file/search/process/Git services, reversible managed Codex
 registration, eight optional text/file compatibility aliases and the recovered
 get_config/set_config_value implementation are present. Configuration changes

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "reviewedAt": "2026-11-02T03:29:17Z",
+  "reviewedAt": "2026-11-02T04:06:38.171Z",
   "upstream": {
     "repository": "wonderwhy-er/DesktopCommanderMCP",
     "version": "0.2.52",
@@ -141,10 +141,15 @@
       "title": "Implement get_config MCP parity",
       "state": "open",
       "url": "https://github.com/MulattoTech/MTerm-CLI/issues/11",
-      "implementationObservation": "Preserved unpublished owner-bounded compatibility configuration recovered with tests. Snapshot reload, multi-root ceilings, blocked executable names, limits and telemetry preference implemented; full platform/security/installed contract acceptance pending.",
-      "lastReviewedAt": "2026-11-02T00:18:44.138456+00:00",
+      "implementationObservation": "Preserved unpublished owner-bounded compatibility configuration recovered with tests. Snapshot reload, multi-root ceilings, blocked executable names, limits and telemetry preference implemented; full platform/security/installed contract acceptance pending. DCP-009 candidate adds pinned five-field memory formatting, truthful OS/Node/process metadata, generic example paths, empty no-provider flags, bounded client identity and six-entry ordering. Explicit omitted Python/container/env/path fields and owner-bounded shell/editability differences keep full acceptance open. Direct RED/GREEN and config/retry regressions passed in scratch; native/full/installed/hosted candidate gates remain pending.",
+      "lastReviewedAt": "2026-11-02T04:06:38.171Z",
       "evidence": [
-        "docs/ai/changes/2026-11-02-foundation-portability.json"
+        "docs/ai/changes/2026-11-02-foundation-portability.json",
+        "src/compat-config.ts",
+        "tests/compat-config-metadata.test.mjs",
+        "scripts/verify-configuration-installed.mjs",
+        "docs/validation/2026-11-02-config-metadata.md",
+        "docs/ai/changes/2026-11-02-config-metadata.json"
       ]
     },
     {

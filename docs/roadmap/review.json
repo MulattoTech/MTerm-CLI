@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "changeId": "2026-11-02-config-installed-qualification",
-  "reviewedAt": "2026-11-02T03:40:33.937Z",
-  "sourceFingerprint": "84863b403080f96b9e15fb4721cb2726ba03d86c70f2bb9b52ed92118e102e83",
+  "changeId": "2026-11-02-config-metadata",
+  "reviewedAt": "2026-11-02T04:06:38.270Z",
+  "sourceFingerprint": "52cd35642a45918fa2f15bb20ef7c0db57d984fcba10f2be4e8e4733819bb24d",
   "sourceFiles": {
     ".github/CODEOWNERS": "c777b0028194e52d38f1485a4732d08709943142a777b65a50e1d8968c95bbd8",
     ".github/ISSUE_TEMPLATE/agent_task.yml": "1e78199bd8a5af4d8923002f9a716411da3c52e42dae8f15145a4cca9038c7b1",
@@ -33,7 +33,7 @@
     "docs/parity/upstream/src/index.ts": "854a91a41cf355c18c7d2caf857db2881a3622a0a54e4849d6bc62682907cd6a",
     "docs/parity/upstream/src/tools/schemas.ts": "d33547e24df350a1162ef25a92414a09eca709abe292d7a0b00ea0eb55237b7f",
     "docs/parity/upstream/src/utils/files/text.ts": "6b603846026daede265afbe604200f32c7e968adb19f4661ae23401096dd2672",
-    "docs/roadmap/desktop-commander-parity.json": "ef48b61e631f0224c9e7043960a5d452ff295bc1682162e518af92589bc425c1",
+    "docs/roadmap/desktop-commander-parity.json": "b65f1b6e4eff84d8b1b0a5236ef6fe3995ca13a6495310be928687ce2c9b2b79",
     "docs/validation/2026-10-05-codex-parity-foundation.md": "54fb38a415650be355cdc37e7a379027807e264f052997ca5b26cdbffea7787b",
     "gateway/app.mjs": "ebddfdb2290005d8909356326e3de96080185a4a7aa4df98dec2064679a3164a",
     "gateway/dashboard.mjs": "37de2f57ba8f6dfcd1c3331ab8cb994aea419dcfc673c5e3e6f6ef6df208c240",
@@ -55,7 +55,7 @@
     "scripts/roadmap.mjs": "92bbc92f823898130e74ae2f0595c8aa7dc1507240a688990462adbe0e31906f",
     "scripts/verify-codex-setup.mjs": "8347fa8e11d6275dd39fda61affcc10481541705b2aaa82e157291aef022cc6a",
     "scripts/verify-compatibility-installed.mjs": "7cb09b5b7fda21ad390ecf0cd2dcdf2205e2a93a4573387adb1ac9a18cac409a",
-    "scripts/verify-configuration-installed.mjs": "d9e1ad6169ee24e5800b8c9e3c7e0d95202eb90d8ea28e304f9c6b2e8038d642",
+    "scripts/verify-configuration-installed.mjs": "8753e31da16faa4627a3032b0fd31c2cb1ec0a9c19781f5ea26a4d1d7fc94205",
     "scripts/verify-managed-codex.mjs": "499663c6a9616f4005f96e4ea85df74173b9dd74164e169d481403404dc5fd07",
     "scripts/verify-package.mjs": "9335f06fe1687e31ecb72136f248863549e0da4fcf5fa89527171ab0d1c861a5",
     "scripts/verify-remote-staging.mjs": "73b2a600f0281c4e35f08814f81b9c743758cf83f645b4e7483cddca252ca54d",
@@ -63,7 +63,7 @@
     "src/cli.ts": "9efa7b67b84d0df7119c2fc6ba99aa379b0939870825a8609e7790faa2eec0b6",
     "src/codex-registration.ts": "04f963fb691f9138567cdd77a1cf86eb3c38884d9e4ece0216274e9956508e2d",
     "src/codex.ts": "4e05a2810959e16fdc867538602bcebf9304b3da51049f14a0208001ec45d403",
-    "src/compat-config.ts": "c0311d75e9380df1c7b0b751b5a47a608738e221986da332186926fb6b85024f",
+    "src/compat-config.ts": "73d3f109bd4ce67a83e9ba7c5eb55e70eaa45f4cab63d96165a365b4698c9af9",
     "src/config.ts": "6f86d5c56ac07a5d4decf3a5bdab03cd7e595486bd18752e32c3564087f26fae",
     "src/desktop-commander-files.ts": "6b625cd73bb77d4f947e8c354a4c879d35f7e566cd17928f24e5f838a8680782",
     "src/errors.ts": "cb846f81c0cdfacf741991bda5c2be5ba25835ad57edd86d6fba6ee0baf3020f",
@@ -82,6 +82,7 @@
     "tests/cli.test.mjs": "5a5b6f96a581f1c7c5e6fba72966405f32ebe62b9bdd683254b5665e06bdf852",
     "tests/codex-registration.test.mjs": "599aad16f86d8e28042893faa0d09869a706f76489ae20690878435fe04fc4bf",
     "tests/compat-config-mcp.test.mjs": "42660b01bf950c19cb3da674ddf76a2ea9241ece1b00fd6a6bced3c0ba3cd1fe",
+    "tests/compat-config-metadata.test.mjs": "339185ac2c71168277537721b3582561232e565c70735e6742ed913d8057ecf1",
     "tests/compat-config-retry.test.mjs": "b10e5bba9b39156e527aabc5031cdbeb1ba5700ed44b7cb5ffed9cc3def4c797",
     "tests/compat-config.test.mjs": "59ddd2440c67c145612e49ef3737b65eb42f02b512e2b194b4cdb029939807cb",
     "tests/configuration-verifier.test.mjs": "54794df76784790cb5b8dd3f62debec188f1d8f50570b2798a2d1410f7715127",
@@ -102,7 +103,7 @@
     "tsconfig.json": "fec3c51cf36536da44ee036dfe6ad70c708c7a8e4c33911c2e496832e312593d",
     "versions.json": "1999f8b98b57bd73f0de389c657b1af42baa01334d3f5ec19230144f6d617bf7"
   },
-  "catalogFingerprint": "5163ab8c1a968f1c6428d1d1e4052cfbc0c2b5296f427544b26c914530a23d94",
+  "catalogFingerprint": "895565d78b66e49a93164ae5e8a540aa53f65d53a6fa8157f0852ca9d61b30f6",
   "weightFingerprint": "3bbcd6acde44c38922429b79939480398048ae2f710640e68fd41705220fff7c",
   "assessment": "Explicit source/catalog review; rendering does not infer progress"
 }

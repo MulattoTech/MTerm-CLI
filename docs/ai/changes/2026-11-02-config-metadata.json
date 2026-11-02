@@ -1,0 +1,108 @@
+{
+  "change_id": "2026-11-02-config-metadata",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "identity_basis": "session-declared; self-reported",
+  "started_at_utc": "2026-11-02T03:58:30Z",
+  "updated_at_utc": "2026-11-02T04:07:41.012Z",
+  "base_sha": "c408e286c437bec1c8c88fbbae29d89a9f8f90c8",
+  "branch": "feat/dcp-009-config-metadata-20261102",
+  "primary_issue": 11,
+  "upstream_commit": "c774c3b505de990219637ecdc9a830c8772fae9d",
+  "summary": "Add bounded truthful local get_config metadata and pinned preference entry ordering, while explicitly omitting invasive probes and preserving runtime owner capabilities.",
+  "files_modified": [
+    "src/compat-config.ts",
+    "scripts/verify-configuration-installed.mjs",
+    "docs/HANDOFF.md",
+    "docs/STATUS.md",
+    "docs/roadmap/progress.json",
+    "docs/roadmap/desktop-commander-parity.json",
+    "docs/roadmap/review.json",
+    "docs/roadmap/FEATURES.md",
+    "docs/roadmap/index.html",
+    "docs/roadmap/summary.json"
+  ],
+  "files_created": [
+    "tests/compat-config-metadata.test.mjs",
+    "docs/validation/2026-11-02-config-metadata.md",
+    "docs/ai/changes/2026-11-02-config-metadata.json"
+  ],
+  "requirements": [
+    "DCP-009",
+    "CLI-137",
+    "CLI-282"
+  ],
+  "decisions": [
+    "Use a new ordinary clone/branch from current verified main. Do not modify existing scratch clones, Windows checkouts, real owner state or staging deployment.",
+    "Read exact pinned handler, field definitions, schema and system helper without executing the upstream bootstrap, feature flag service, telemetry or Python detector. Preserve the approved baseline snapshots and hashes.",
+    "Retain the existing response envelope and original MTerm system aliases. Sample process memory once and reuse it for text and structured output, with all five pinned binary MB-formatted values.",
+    "Report current process/Node/OS metadata and literal illustrative paths; report effective owner-selected defaultShell rather than invent shell availability. Keep shell hints and editability under owner capabilities.",
+    "Return empty featureFlags with an explicit absent-provider statement. Name unsupported Python/container/env/path metadata as omitted instead of fabricating negative probe results.",
+    "Observe a regression for SDK client extra-field reflection, then select only exact bounded non-control name/version. Invalid or oversized identity is null with an explicit status, never raw rejected data.",
+    "Extend the real installed verifier with response equality, captured child PID, runtime metadata, memory formats, six-entry order/types, omitted probes and initialization title-sentinel assertions on each successful get_config call including restart.",
+    "Retain all stages, weights, acceptance texts, dependencies, estimates, issue states, runtime capabilities and pinned defaults; do not convert this slice into full DCP-009 acceptance."
+  ],
+  "tests": [
+    {
+      "command": "Baseline npm run build:code; node tests/compat-config-metadata.test.mjs",
+      "result": "RED observed before runtime edits: 11 tests, 1 passed, 10 failed, zero skips/cancellations. Failures include absent metadata and actual sentinel client extras in output. Log SHA25684de620e91267436c2dc15e83d87a725af129693ecf4d107aa6ddd48d18c0683."
+    },
+    {
+      "command": "Revised npm run build:code; node tests/compat-config-metadata.test.mjs",
+      "result": "PASS 11/11, zero skips/cancellations, Linux x64 Node24.22.1. Four platform mapping subcases are mocked field tests, not native-platform proof. Log SHA25633e11d9ccac8d9d25aeee80e4fa037535aecd79f9708a5d8ddf3e974a0ba95c6."
+    },
+    {
+      "command": "node tests/compat-config.test.mjs",
+      "result": "PASS 19, zero failures, one native-Windows-only skip on Linux. Log SHA2562cb2bc3e395dafae9f88595c4d7f8dbe1d2c9479841d0b2e8fffb9feb0fba045."
+    },
+    {
+      "command": "node tests/compat-config-retry.test.mjs",
+      "result": "PASS 13/13, no skips. Log SHA2561f176a545943fa72299951f5e11ab4117fdb5c711be7d727e3f086ec824dabfa."
+    },
+    {
+      "command": "npm run typecheck; npm run format:check; npm run parity:check; node --check scripts/verify-configuration-installed.mjs; git diff --check",
+      "result": "PASS. Pinned 26-tool snapshot valid; all 48 gaps remain open and pass=false. Installed syntax is not installed execution evidence."
+    },
+    {
+      "command": "Independent read-only review by separate session agent",
+      "result": "No blocking correctness, privacy or platform finding in source, focused test or installed verifier. Reviewer independently checked all three retained upstream source hashes and exact scoped field contracts; native gate still required."
+    },
+    {
+      "command": "Normal roadmap-reviewed build and invariant check",
+      "result": "PASS explicit roadmap review/render/check, normal npm run build and structural comparison to immutable base c408e28. All 300 rows retain stages/weights/acceptance/dependencies/estimates and all48 states remain open; maturity29.12%,closed0,passfalse. The comparison used direct Git-exported JSON after scratch Node spawnSync reported EPERM; no subprocess evidence was inferred from that failure."
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "ids": "CLI-137,CLI-282",
+      "assessment": "Append exact scoped get_config metadata evidence and current test limits. Preserve both stages, baseline weights, acceptance, dependencies, estimates, platform scope and ETA; no maturity credit."
+    },
+    {
+      "ids": "DCP-009; DCP-001..048",
+      "assessment": "Update only DCP-009 implementation observation and evidence. All 48 gaps remain open; closed0/open48/passfalse. No acceptanceReview or closure assertion."
+    },
+    {
+      "ids": "WEB-001..012",
+      "assessment": "No WEB source, ledger, hosted deployment, browser/auth or human-client acceptance change."
+    }
+  ],
+  "limitations": [
+    "Native Windows, full workflow, real packed installed behavior, installed-entry Codex and exact-head hosted tests remain pending for this candidate, delegated to the integration owner.",
+    "The scratch environment previously failed child-process protocol execution; direct in-process test results are reported without claiming full subprocess or installed evidence.",
+    "Pinned Python/container/mount/DXT/npm/executable-path fields are intentionally absent. OS name has no container suffix, shell metadata is the effective owner preference, editability and availableShells remain bounded by owner authority.",
+    "Client name/version remain untrusted identifiers. Selecting fields and enforcing size/ASCII-control limits is not universal secret detection.",
+    "Unit probe guards cover selected local APIs; installed network guard execution is pending and is not an OS-wide sandbox.",
+    "No paid model call, actual Codex agent tool invocation, real user auth/config, browser use, Cloudflare write, publication or acceptance closure occurred in this worker."
+  ],
+  "checkpoint": {
+    "directory": "artifacts/checkpoints/dcp009-start-20261102",
+    "git_bundle_sha256": "53ba810ece63c7c097046f4e142a7973db14f530121b207211debb216b3a7873",
+    "source_tar_sha256": "c79ab89424407dee2b9c7836cdbf28d7a9b88cc35118438a99896d7b008bbadc"
+  },
+  "source_sha256": {
+    "src/compat-config.ts": "73d3f109bd4ce67a83e9ba7c5eb55e70eaa45f4cab63d96165a365b4698c9af9",
+    "tests/compat-config-metadata.test.mjs": "339185ac2c71168277537721b3582561232e565c70735e6742ed913d8057ecf1",
+    "scripts/verify-configuration-installed.mjs": "8753e31da16faa4627a3032b0fd31c2cb1ec0a9c19781f5ea26a4d1d7fc94205"
+  },
+  "next_unverified_action": "Transfer the coherent reviewed local commit to the integration owner for actual Windows focused/full/normal-package/installed/hosted qualification. Keep issue11 and all48 open."
+}

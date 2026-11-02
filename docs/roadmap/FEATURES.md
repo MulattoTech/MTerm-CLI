@@ -1912,13 +1912,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Show non-secret values and precedence sources, not raw auth.
 
-**Current scope:** Final 2026-11-02 evidence at b90432a: Effective compatibility preferences remain owner-bounded and non-secret; canonical policy-file exclusions passed native Windows 8.3 regressions. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.
+**Current scope:** Final 2026-11-02 evidence at b90432a: Effective compatibility preferences remain owner-bounded and non-secret; canonical policy-file exclusions passed native Windows 8.3 regressions. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit. DCP-009 metadata candidate from c408e28: direct Linux Node24.22.1 tests pass 11/11 after observed RED; OS/process/memory metadata is truthful, bounded and omits invasive probes. Native/full/installed/hosted qualification for this candidate remains pending. Stage and weight unchanged.
 
 **Baseline weight:** 4 h (rough). **Remaining:** 1–3 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/cli.test.mjs`, `src/compat-config.ts`, `tests/compat-config.test.mjs`, `tests/compat-config-mcp.test.mjs`, `docs/ai/changes/2026-11-02-config-storage-identity.json`, `docs/validation/2026-11-02-remote-sprint.md`, `docs/validation/2026-11-02-remote-staging-smoke-final.json`
+**Evidence:** `tests/cli.test.mjs`, `src/compat-config.ts`, `tests/compat-config.test.mjs`, `tests/compat-config-mcp.test.mjs`, `docs/ai/changes/2026-11-02-config-storage-identity.json`, `docs/validation/2026-11-02-remote-sprint.md`, `docs/validation/2026-11-02-remote-staging-smoke-final.json`, `tests/compat-config-metadata.test.mjs`, `scripts/verify-configuration-installed.mjs`, `docs/validation/2026-11-02-config-metadata.md`, `docs/ai/changes/2026-11-02-config-metadata.json`
 
 ## CLI-138 — Implement typed config get/set
 
@@ -3942,13 +3942,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** OS/architecture/runtime/host information is available without exposing credentials or private user data.
 
-**Current scope:** Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains.
+**Current scope:** Windows local MCP tools exercised through the official SDK. Versioned file saves, bounded literal search/process output and separate write/exec grants. Final all-platform/security/soak acceptance remains. DCP-009 metadata candidate from c408e28: direct Linux Node24.22.1 tests pass 11/11 after observed RED; OS/process/memory metadata is truthful, bounded and omits invasive probes. Native/full/installed/hosted qualification for this candidate remains pending. Stage and weight unchanged.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 1–5 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`
+**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/git.test.mjs`, `tests/cli.test.mjs`, `src/compat-config.ts`, `tests/compat-config-metadata.test.mjs`, `scripts/verify-configuration-installed.mjs`, `docs/validation/2026-11-02-config-metadata.md`, `docs/ai/changes/2026-11-02-config-metadata.json`
 
 ## CLI-283 — Implement read-only Git status
 

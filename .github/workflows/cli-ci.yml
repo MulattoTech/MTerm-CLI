@@ -26,7 +26,8 @@ jobs:
           - os: ubuntu-24.04
             platform: linux
             arch: x64
-          - os: macos-14
+          # macos-14 retired 2026-11-02; preserve the explicit ARM64 lane on a supported image.
+          - os: macos-15
             platform: darwin
             arch: arm64
           - os: macos-15-intel

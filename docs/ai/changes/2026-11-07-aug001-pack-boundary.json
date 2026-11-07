@@ -3,7 +3,7 @@
   "provider": "OpenAI",
   "model": "GPT-6 Astra Pro",
   "identity_basis": "Self-reported ChatGPT Web implementation and independent read-only reviewer; not provider attestation",
-  "updated_at_utc": "2026-11-07T20:00:15.185Z",
+  "updated_at_utc": "2026-11-07T20:06:54.210Z",
   "base_sha": "d5fcc2f665b2b4f7d033ffd32b7c22ca9d7a4015",
   "branch": "feat/aug-001-tool-pack-boundary-20261107",
   "primary_issue": "AUG-001 / #82; parent #81",
@@ -42,7 +42,10 @@
     "docs/roadmap/progress.json",
     "docs/roadmap/review.json",
     "docs/roadmap/FEATURES.md",
-    "docs/roadmap/index.html"
+    "docs/roadmap/index.html",
+    ".github/workflows/cli-ci.yml",
+    "docs/validation/2026-11-07-aug001-ci-before.json",
+    "docs/validation/2026-11-07-aug001-comparison.json"
   ],
   "decisions": [
     "Reuse existing ProcessService and root checks; explicit unsandboxed permission and exact allowlist; no remote exposure.",
@@ -50,7 +53,8 @@
     "Pins cover declared bytes only; licenseVerified:false, osSandbox:false.",
     "Default core path remains lazy; managed Codex setup refuses unsupported pack flags.",
     "Observed live Zod advisory required exact patch pin; production audit failed before and returned zero after.",
-    "All 117/152 mappings preserved with pending rights and acceptance visible; no stage credit."
+    "All 117/152 mappings preserved with pending rights and acceptance visible; no stage credit.",
+    "Retain first-head hosted failures. Replace retired macos-14 ARM runner with supported macos-15, keeping architecture assertion and all gates. Flush fixture stdout/stderr before exit; do not weaken overflow assertion or change production host."
   ],
   "tests": [
     {
@@ -81,6 +85,11 @@
       "name": "Normal prepack and final installed qualification",
       "result": "prepack0; native335/335; installed16/16; four production license files retained; measured core under50m; self-host0; isolated native Codex0.160.1 registration0; see receipt",
       "evidence": "docs/validation/2026-11-07-aug001-receipts.json"
+    },
+    {
+      "name": "first-head hosted qualification",
+      "result": "27635c6: Windows, Ubuntu and fast passed; macos-14 cancelled before steps; macos-15-intel failed strict overflow fixture because immediate exit could truncate its async stdout. Corrected-head qualification required.",
+      "evidence": "docs/validation/2026-11-07-aug001-ci-before.json"
     }
   ],
   "roadmap_updates": [
@@ -106,12 +115,13 @@
     "src/cli.ts": "9b92f615cfb544c52dbb8c5861900568abeab9cb36017d6270d93d86cd4d4b63",
     "src/mcp.ts": "f082fb021413057c83fd9ac27006de21602f404a88807424e354bb22f4d89a9a",
     "src/tool-packs.ts": "2e2b992895675e1157430c45aea31abc8495b2188d9631dd0924e89b9472c68e",
-    "tests/tool-packs.test.mjs": "a7c2c2de95ca7b9c1e8104a223f108fe12872a300266fff5cf57ad4f9461adfb",
+    "tests/tool-packs.test.mjs": "a4b804f9780bc14598247275ed2271fbadb54913a8c0d2e1dd0e92d6cde8d9bb",
     "scripts/verify-package.mjs": "9092546e0a545e741c6a91d20a471f6e2e7a7ab1d89f5f6492a99b54c6749d0a",
     "package.json": "ecc56a118accabe88a1ed9a25d2f13f174f90f972928152398eea4dc522f9383",
     "package-lock.json": "5793891fa2aba95a706744e8c60724dfab21a315a20ec4ba347db35acb0d0ff5",
     "npm-shrinkwrap.json": "5793891fa2aba95a706744e8c60724dfab21a315a20ec4ba347db35acb0d0ff5",
     "versions.json": "4462cc3a2c026633499ae55285f1a018641e01ede2715bfab0909efac5bdbfc7",
-    "THIRD_PARTY.md": "a6f206b9dd559371b87145d3a4bbcc187cc91318c6b26f9a40374e827947ec23"
+    "THIRD_PARTY.md": "a6f206b9dd559371b87145d3a4bbcc187cc91318c6b26f9a40374e827947ec23",
+    ".github/workflows/cli-ci.yml": "18ca0485a81c1d4a60271302ce6d3c505e1b7a5a5e38d8d11ce9aafca51cf465"
   }
 }

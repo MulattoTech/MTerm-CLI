@@ -31,16 +31,24 @@ lines.once('line', line => {
   const request = JSON.parse(line);
   fs.writeFileSync('pid.txt', String(process.pid));
   if (request.arguments.text === 'hang') { setInterval(() => {}, 1000); return; }
-  if (request.arguments.text === 'overflow') { process.stdout.write('x'.repeat(100000)); process.exit(0); }
-  if (request.arguments.text === 'badjson') { console.log('bad'); process.exit(0); }
-  if (request.arguments.text === 'nonzero') { console.error('private-backend-diagnostic'); process.exit(3); }
+  if (request.arguments.text === 'overflow') {
+    process.stdout.write('x'.repeat(100000), () => process.exit(0));
+    return;
+  }
+  if (request.arguments.text === 'badjson') {
+    process.stdout.write('bad\\n', () => process.exit(0));
+    return;
+  }
+  if (request.arguments.text === 'nonzero') {
+    process.stderr.write('private-backend-diagnostic\\n', () => process.exit(3));
+    return;
+  }
   const response = {protocol:'mterm-pack-stdio/1', id:request.id, pack:request.pack,
     version:request.version, result:{text:request.arguments.text}};
   if (request.arguments.text === 'badid') response.id = 'wrong';
   if (request.arguments.text === 'badversion') response.version = '2.0.0';
   if (request.arguments.text === 'badschema') response.result.text = 42;
-  console.log(JSON.stringify(response));
-  process.exit(0);
+  process.stdout.write(JSON.stringify(response)+'\\n', () => process.exit(0));
 });
 `;
 async function fixture(t, mutate = () => {}) {

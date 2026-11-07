@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "asOf": "2026-11-07T23:07:28.925Z",
+  "asOf": "2026-11-07T23:38:44.000Z",
   "repository": "MulattoTech/MTerm-CLI",
   "epic": 81,
-  "baseSha": "560b3713bb9aea36578b8b7b576f4beda0775a6d",
+  "baseSha": "89d93c59a9c819314ef569a2250a4606f03ec792",
   "counts": {
     "total": 117,
     "claimed": 1,
     "accepted": 0,
-    "merged": 1
+    "merged": 2
   },
   "originalMetrics": {
     "cliMaturityPercent": 29.12,
@@ -98,11 +98,11 @@
         "modelcontextprotocol/typescript-sdk",
         "github/github-mcp-server"
       ],
-      "status": "in_progress",
+      "status": "merged_partial",
       "owner": "ChatGPT Web / GPT-6 Astra Pro",
       "branch": "feat/aug-002-provenance-gate-20261107",
       "pr": 200,
-      "mergeSha": null,
+      "mergeSha": "89d93c59a9c819314ef569a2250a4606f03ec792",
       "accepted": false,
       "testPlan": "common contract + original issue acceptance at issue URL",
       "platformScope": [
@@ -111,7 +111,7 @@
         "darwin-arm64",
         "darwin-x64"
       ],
-      "automatedTests": "Integrated Windows: 353/353 native, 18/18 installed provenance/security, 16/16 optional packs; complete 86-file SDK pins, nine bundled notices, actual MCP cycles, schema and selected audits passed. Exact final-head hosted checks pending.",
+      "automatedTests": "Final head c98aebf: 9/9 checks; merged main 89d93c5: 5/5 checks. Windows 353 pass; Linux/macOS 341 pass plus 12 existing Windows-only skips. All four platforms passed 18 installed provenance/security tests and 86 SDK file pins.",
       "actualClient": "Real local CLI qualification; model-driven client use not applicable to the offline inspection command and not claimed.",
       "blocker": "Full generic vendor update, bundled-file SPDX/admission and patch replay remain unaccepted. No owner review required.",
       "declaredIssueDependencies": [],
@@ -554,18 +554,24 @@
         "Kyne0328/rel-ai",
         "modelcontextprotocol/inspector"
       ],
-      "status": "proposed",
-      "owner": null,
-      "branch": null,
+      "status": "in_progress",
+      "owner": "ChatGPT Web / GPT-6 Astra Pro",
+      "branch": "feat/aug-013-evidence-matrix-20261107",
       "pr": null,
       "mergeSha": null,
       "accepted": false,
       "testPlan": "common contract + original issue acceptance at issue URL",
-      "platformScope": "not yet selected; retain unsupported environments as explicit blockers",
-      "automatedTests": "not run",
-      "actualClient": "not verified",
-      "blocker": "Not implemented or accepted; exact upstream rights, platform scope and declared prerequisite acceptance need qualification.",
-      "declaredIssueDependencies": []
+      "platformScope": [
+        "win32-x64",
+        "linux-x64",
+        "darwin-arm64",
+        "darwin-x64"
+      ],
+      "automatedTests": "Baseline matrix absent; freshness RED 5 pass/1 fail. Focused native Windows 26/26 passed at 23:38:07 UTC. Full exact-commit/package/hosted/independent qualification pending.",
+      "actualClient": "Development-only local checker; no model or remote client call required or claimed.",
+      "blocker": "Most capability-specific execution receipts and full independent acceptance remain unverified. No recurring manual owner gate.",
+      "declaredIssueDependencies": [],
+      "ownerAuthorization": "docs/OWNER_AUTHORIZATION.md"
     },
     {
       "id": "AUG-014",
@@ -6540,62 +6546,21 @@
   },
   "nextCandidatesAfterPilot": [
     {
-      "issue": 85,
-      "reason": "Provenance gate can be designed from current sources without adopting an unreviewed executable pack.",
+      "issue": 83,
+      "reason": "Extend the merged AUG-001 ABI with versioned client-visible catalog discovery.",
       "acceptancePrerequisites": {
         "cli": [
           {
-            "id": "CLI-151",
-            "stage": "not_started",
-            "dependencies": [],
-            "blocker": null
-          },
-          {
-            "id": "CLI-152",
-            "stage": "implementation",
-            "dependencies": [],
-            "blocker": null
-          },
-          {
-            "id": "CLI-153",
-            "stage": "not_started",
-            "dependencies": [],
-            "blocker": null
-          }
-        ],
-        "issues": [],
-        "assessment": "Local reversible implementation candidate after pilot review; full prerequisite acceptance has not been established."
-      }
-    },
-    {
-      "issue": 94,
-      "reason": "Evidence matrix can extend the preserved CLI/DCP/WEB ledgers without enabling mutation.",
-      "acceptancePrerequisites": {
-        "cli": [
-          {
-            "id": "CLI-222",
-            "stage": "integrated",
-            "dependencies": [],
-            "blocker": null
-          },
-          {
-            "id": "CLI-231",
+            "id": "CLI-265",
             "stage": "validated",
-            "dependencies": [],
+            "dependencies": [
+              "CLI-033",
+              "CLI-264"
+            ],
             "blocker": null
-          }
-        ],
-        "issues": [],
-        "assessment": "Local reversible implementation candidate after pilot review; full prerequisite acceptance has not been established."
-      }
-    },
-    {
-      "issue": 95,
-      "reason": "Fail-closed startup tests can extend current default behavior; take accepted pack ABI into account after pilot review.",
-      "acceptancePrerequisites": {
-        "cli": [
+          },
           {
-            "id": "CLI-289",
+            "id": "CLI-287",
             "stage": "validated",
             "dependencies": [
               "CLI-033",
@@ -6604,25 +6569,61 @@
             "blocker": null
           }
         ],
-        "issues": [
+        "issues": [],
+        "assessment": "Scoped implementation candidate, not completed prerequisite or capability acceptance."
+      }
+    },
+    {
+      "issue": 92,
+      "reason": "Extend existing bounded process and concurrency implementations with scoped resource budgets.",
+      "acceptancePrerequisites": {
+        "cli": [
           {
-            "issue": 2,
-            "url": "https://github.com/MulattoTech/MTerm-CLI/issues/2",
-            "title": "[PARITY EPIC] DesktopCommanderMCP 0.2.52 Codex-facing 100% parity / PASS gate",
-            "githubState": "open",
-            "issueUpdatedAt": "2026-10-05T21:27:31Z",
-            "acceptance": "Not independently qualified by this expansion checkpoint; an issue state is not acceptance evidence."
+            "id": "CLI-259",
+            "stage": "implementation",
+            "dependencies": [],
+            "blocker": null
           },
           {
-            "issue": 53,
-            "url": "https://github.com/MulattoTech/MTerm-CLI/issues/53",
-            "title": "[WEB-EPIC] Authenticated MTechLabs Cloudflare remote MCP and device portal",
-            "githubState": "open",
-            "issueUpdatedAt": "2026-11-02T01:36:37Z",
-            "acceptance": "Not independently qualified by this expansion checkpoint; an issue state is not acceptance evidence."
+            "id": "CLI-286",
+            "stage": "validated",
+            "dependencies": [
+              "CLI-033",
+              "CLI-264"
+            ],
+            "blocker": null
           }
         ],
-        "assessment": "Local reversible implementation candidate after pilot review; full prerequisite acceptance has not been established."
+        "issues": [],
+        "assessment": "Scoped implementation candidate, not completed prerequisite or capability acceptance."
+      }
+    },
+    {
+      "issue": 84,
+      "reason": "Evaluate an actual OS sandbox boundary while preserving existing trusted-root and execution controls.",
+      "acceptancePrerequisites": {
+        "cli": [
+          {
+            "id": "CLI-267",
+            "stage": "integrated",
+            "dependencies": [
+              "CLI-033",
+              "CLI-264"
+            ],
+            "blocker": null
+          },
+          {
+            "id": "CLI-276",
+            "stage": "validated",
+            "dependencies": [
+              "CLI-033",
+              "CLI-264"
+            ],
+            "blocker": null
+          }
+        ],
+        "issues": [],
+        "assessment": "Scoped implementation candidate, not completed prerequisite or capability acceptance."
       }
     }
   ],

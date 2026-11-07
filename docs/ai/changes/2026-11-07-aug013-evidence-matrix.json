@@ -1,0 +1,87 @@
+{
+  "change_id": "2026-11-07-aug013-evidence-matrix",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "started_at": "2026-11-07T23:28:00Z",
+  "updated_at": "2026-11-07T23:49:35.398Z",
+  "base_sha": "89d93c59a9c819314ef569a2250a4606f03ec792",
+  "issues": [
+    94,
+    81
+  ],
+  "requirements": [
+    "CLI-222",
+    "CLI-231",
+    "CLI-233",
+    "CLI-262"
+  ],
+  "files": [
+    "scripts/expansion-matrix.mjs",
+    "scripts/review-source.mjs",
+    "scripts/roadmap.mjs",
+    "tests/expansion-matrix.test.mjs",
+    "tests/roadmap.test.mjs",
+    "docs/expansion/evidence.json",
+    "docs/expansion/queue.json",
+    "docs/expansion/MATRIX.md",
+    "docs/expansion/README.md",
+    "docs/HANDOFF.md",
+    "docs/roadmap/progress.json",
+    "docs/validation/2026-11-07-aug013-development.json"
+  ],
+  "decisions": [
+    "Use one implementation owner and one independent read-only peer under standing owner authorization.",
+    "Keep all152 sources and117 capabilities; preserve unknown pins, no-copy restrictions and original mappings.",
+    "Record evidence separately from acceptance. Full source fingerprint covers inputs; subject, scope and evidence digests bind reviewed behavior without self-reference.",
+    "Resolve independent-review findings: bound all source hashing; bind original issue/test/dependency scope; bind execution receipts to independent review.",
+    "Keep checker out of installed runtime; package manifests, locks, launcher and runtime source unchanged."
+  ],
+  "tests": [
+    {
+      "command": "node --test tests/expansion-matrix.test.mjs on baseline",
+      "result": "RED18fail, captured before implementation"
+    },
+    {
+      "command": "node --test tests/roadmap.test.mjs on baseline",
+      "result": "RED5pass1fail reproduces missing expansion freshness"
+    },
+    {
+      "command": "review regression suite before fixes",
+      "result": "Native27:25pass2fail; supplementary Linux receipt-replacement RED27:26pass1fail after first fixes"
+    },
+    {
+      "command": "node --test --test-reporter=tap tests/expansion-matrix.test.mjs tests/roadmap.test.mjs",
+      "result": "Reviewed Windows Node24.21.0 focused27/27pass at23:47:46Z, no skips/failures"
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "id": "CLI-222",
+      "stage_change": false,
+      "reason": "Add executable evidence; original acceptance, stage, weights, estimates, blockers and scope remain unchanged."
+    },
+    {
+      "id": "CLI-231",
+      "stage_change": false,
+      "reason": "Add executable evidence; original acceptance, stage, weights, estimates, blockers and scope remain unchanged."
+    },
+    {
+      "id": "CLI-233",
+      "stage_change": false,
+      "reason": "Add executable evidence; original acceptance, stage, weights, estimates, blockers and scope remain unchanged."
+    },
+    {
+      "id": "CLI-262",
+      "stage_change": false,
+      "reason": "Add executable evidence; original acceptance, stage, weights, estimates, blockers and scope remain unchanged."
+    }
+  ],
+  "limitations": [
+    "Most capability-specific observations and independent acceptance remain absent; all AUG accepted flags remainfalse.",
+    "No authenticated reviewer identity, OS sandbox or hard OS-read interruption is claimed.",
+    "Committed native/packaged/hosted and final independent gates remain next.",
+    "No model request, real-user auth/config change, production deployment or protection change."
+  ],
+  "checkpoint": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG013-20261107\\artifacts\\aug013",
+  "next_unverified_action": "Commit candidate, qualify normal native/prepack and package boundary, then exact-head hosted checks and independent final review."
+}

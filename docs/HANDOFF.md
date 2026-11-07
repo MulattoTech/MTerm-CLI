@@ -1,10 +1,10 @@
 # AUG-002 current continuation — 2026-11-07
 
-PR #199 is merged at560b3713bb9aea36578b8b7b576f4beda0775a6d with tested treec1749e116d3ec05aee83b7bda189c9b15c43f0da; final-head9/9 and merged-main5/5 checks passed. Owner standing authorization is recorded; no further human review is required for qualified MTerm delivery.
+PR #199 is merged at560b3713bb9aea36578b8b7b576f4beda0775a6d, with9/9 final-head and5/5 main checks. Standing owner authorization removes recurring manual review. Preserve the primary dirty checkout and all unrelated worktrees.
 
-The sole implementation pilot now owns AUG-002/#85 on feat/aug-002-provenance-gate-20261107 in H:\MTechLabs\Dev\MTerm-CLI-AUG002-20261107. Read docs/PROVENANCE.md and docs/validation/2026-11-07-aug002-provenance.md. Source/test, notice, SPDX and installed qualification are in progress. SDK bundled attribution is retained, with full generalized admission/embedded-file SBOM acceptance still pending. Preserve all other worktrees. Next action is final native/installed/security/license qualification, independent final diff review, exact-head hosted checks, issue-linked PR and normal merge/main verification. No Codex model lane.
+[Draft PR #200](https://github.com/MulattoTech/MTerm-CLI/pull/200) owns AUG-002/#85 in the sole active clone H:\MTechLabs\Dev\MTerm-CLI-AUG002-20261107, branch feat/aug-002-provenance-gate-20261107. Its artifact commit8e6f2336d995b5c1cb5ff044071ed186cce03567 retains the reviewed SDK security rebuild and must remain in main ancestry through a normal merge. The MTerm dependency and both locks now use that immutable URL. Integrated local gates passed: 353/353 native, 18/18 installed provenance/security, 16/16 optional packs, all 86 SDK file pins, schema validation and selected advisory audits. Final independent verdict, exact-head hosted checks and normal merge/main verification are next. Read docs/PROVENANCE.md, vendor/modelcontextprotocol-server/README.md and docs/validation/2026-11-07-aug002-provenance.md.
 
-Latest PR receipts supersede preparation statuses. AUG0/117 accepted; CLI29.12% maturity and0/300complete; DCP0/48; WEB0/12. Historical segments follow.
+The original12-advisory bundled audit is preserved. The replacement selected-component audit reports0findings; four fresh Windows builds match exactly. Complete generic admission/embedded-file SPDX acceptance is still pending. AUG0/117, CLI29.12% maturity and0/300complete, DCP0/48 and WEB0/12 remain unchanged. No Codex model lane or manual owner action. Later exact-head PR/main receipts supersede this preparation.
 
 ---
 

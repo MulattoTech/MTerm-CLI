@@ -365,6 +365,11 @@ test('the retained real npm11.19 incomplete SBOM is rejected', async (t) => {
   const original = await fs.readFile(
     path.join(repo, 'tests/fixtures/provenance/npm-11.19-incomplete.spdx.json'),
   );
+  assert.equal(
+    sha(original),
+    'c2620436b3c3a9c452de3d658d31cd71f7f56b2ab44ce4e1471905fc1439d866',
+    'Preserve original captured npm stdout bytes',
+  );
   await put(f.root, 'npm.spdx.json', original);
   f.manifest.sbom = await pin(f.root, 'npm.spdx.json');
   await save(f);

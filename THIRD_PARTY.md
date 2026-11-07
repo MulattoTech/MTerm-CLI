@@ -2,7 +2,7 @@
 
 MTerm-owned code is MIT. Dependencies retain their own notices and are not re-licensed by MTerm.
 
-- @modelcontextprotocol/server 2.3.0: package declaration Apache-2.0; retained root license includes the Apache/MIT transition and documentation notice; runtime. Integrity is recorded in the npm lock/shrinkwrap and versions.json.
+- @modelcontextprotocol/server 2.3.0-mterm.1: package declaration Apache-2.0; retained root license includes the Apache/MIT transition and documentation notice; runtime. Integrity is recorded in the npm lock/shrinkwrap and versions.json.
 - @modelcontextprotocol/core 2.3.0: same SDK mixed root notice; transitive runtime dependency.
 - @modelcontextprotocol/client 2.3.0: same SDK mixed root notice; development only. Integrity is recorded in the npm lock/shrinkwrap and versions.json.
 - zod 4.6.7: MIT; runtime. Integrity is recorded in the npm lock/shrinkwrap and versions.json.
@@ -29,12 +29,12 @@ They are never executed by the drift detector.
 
 ## SDK embedded-component notices — 2026-11-07
 
-The runtime SDK server2.3.0 source pin is `a202a3621fcb97918e09fa45d0f9efd2dbdee19b`.
-Its npm package separately installs core2.3.0 and Zod, and also embeds the eight components below in JavaScript, declarations or source maps. These complete notices supplement the original SDK LICENSE retained in each installed SDK package. They do not relicense any dependency.
+The MTerm security rebuild of server 2.3.0-mterm.1 derives from upstream SDK 2.3.0. Its upstream source pin is `a202a3621fcb97918e09fa45d0f9efd2dbdee19b`.
+Its npm package separately installs core 2.3.0 and Zod, and also embeds the eight components below in JavaScript, declarations or source maps. These complete notices supplement the original SDK LICENSE retained in each installed SDK package. They do not relicense any dependency.
 
-The independent artifact review matched114 unique nonempty external source-map payloads to integrity-verified tarballs and17 static JSON modules in both Ajv bundle formats. Sixteen JSON modules derive from JSON Schema meta-schemas. Their published Ajv variants are not asserted to equal every current historical draft branch. We select JSON Schema's BSD-3-Clause option, as clarified at the pinned license commit and [official upstream discussion](https://github.com/json-schema-org/json-schema-spec/issues/1160#issuecomment-1123583441).
+The upstream artifact review matched 114 unique nonempty external source-map payloads to integrity-verified tarballs and 17 static JSON modules in both Ajv bundle formats. The replacement artifact's input checks and exact file hashes are recorded alongside its build recipe. Sixteen JSON modules derive from JSON Schema meta-schemas. Their published Ajv variants are not asserted to equal every current historical draft branch. We select JSON Schema's BSD-3-Clause option, as clarified at the pinned license commit and [official upstream discussion](https://github.com/json-schema-org/json-schema-spec/issues/1160#issuecomment-1123583441).
 
-`@cfworker/json-schema` omits LICENSE in its tarball; its complete text below comes from the official repository at the actual npm gitHead. License text is retained with LF line endings; raw upstream/tarball hashes remain separately recorded in `docs/provenance/sdk-bundled-review.json`. No implementation from these projects is newly vendored here.
+`@cfworker/json-schema` omits LICENSE in its tarball; its complete text below comes from the official repository at the actual npm gitHead. License text is retained with LF line endings; raw upstream/tarball hashes remain separately recorded in `docs/provenance/sdk-bundled-review.json`. The retained SDK archive contains these bundled components; the MTerm license does not supersede their licenses.
 
 This notice-retention repair is separate from full artifact admission, a complete embedded-component SPDX graph, and reproducible-build acceptance. The provenance qualification keeps those broader claims pending.
 
@@ -158,17 +158,15 @@ SOFTWARE.
 ```
 <!-- MTERM-LICENSE sdk-4 END -->
 
-### fast-uri 3.1.0
+### fast-uri 3.1.9
 
-License selection: BSD-3-Clause. Upstream: [repository](https://github.com/fastify/fast-uri), commit `2d08e68f4068320aa3f9da93a6f150e57af50c42`; [complete source license](https://raw.githubusercontent.com/fastify/fast-uri/2d08e68f4068320aa3f9da93a6f150e57af50c42/LICENSE).
+License selection: BSD-3-Clause. Upstream: [repository](https://github.com/fastify/fast-uri), commit `0def70338a0fa2f12a10c83ae8eafc2139ae9a07`; [complete source license](https://raw.githubusercontent.com/fastify/fast-uri/0def70338a0fa2f12a10c83ae8eafc2139ae9a07/LICENSE).
 
 <!-- MTERM-LICENSE sdk-5 BEGIN -->
 ```text
 Copyright (c) 2011-2021, Gary Court until https://github.com/garycourt/uri-js/commit/a1acf730b4bba3f1097c9f52e7d9d3aba8cdcaae
-Copyright (c) 2021-present The Fastify team
+Copyright (c) 2021-present The Fastify team <https://github.com/fastify/fastify#team>
 All rights reserved.
-
-The Fastify team members are listed at https://github.com/fastify/fastify#team.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are met:

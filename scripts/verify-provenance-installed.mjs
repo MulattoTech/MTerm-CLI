@@ -34,7 +34,13 @@ for (const name of ['cli.js', 'provenance.js', 'files.js', 'policy.js', 'errors.
 }
 const acceptance = await exec(
   process.execPath,
-  ['--test', '--test-reporter=tap', '--test-concurrency=1', path.join(repo, 'tests/provenance.test.mjs')],
+  [
+    '--test',
+    '--test-reporter=tap',
+    '--test-concurrency=1',
+    path.join(repo, 'tests/provenance.test.mjs'),
+    path.join(repo, 'tests/bundled-runtime.test.mjs'),
+  ],
   {
     cwd: output,
     env: { ...process.env, MTERM_VERIFY_BIN: entry },
@@ -45,7 +51,7 @@ const acceptance = await exec(
 );
 await fs.writeFile(path.join(output, 'provenance-tests.tap'), acceptance.stdout);
 const testCount = Number(acceptance.stdout.match(/^# tests (\d+)$/m)?.[1]);
-assert.ok(testCount >= 17);
+assert.ok(testCount >= 18);
 for (const field of ['fail', 'skipped', 'cancelled'])
   assert.match(acceptance.stdout, new RegExp('^# ' + field + ' 0$', 'm'));
 
@@ -242,7 +248,7 @@ for (const [location, locked] of Object.entries(lock.packages)) {
           ? 'https://github.com/modelcontextprotocol/typescript-sdk'
           : 'https://github.com/colinhacks/zod',
       commit: own ? sourceCommit : reviewed.sourceCommit,
-      version: metadata.version,
+      version: sdk ? '2.3.0 with MTerm server 2.3.0-mterm.1 rebuild' : metadata.version,
       license: sdk ? 'Apache-2.0 AND MIT' : 'MIT',
       copyright: 'See retained pinned LICENSE file(s).',
       licenseFiles: [],
@@ -262,7 +268,10 @@ for (const [location, locked] of Object.entries(lock.packages)) {
 production.sources = [...sourceMap.values()];
 sourceMap.get('mcp-sdk').notices = {
   status: 'retained',
-  files: [await pin(prefix, rootLocation + '/THIRD_PARTY.md', 'utf8-lf')],
+  files: [
+    await pin(prefix, rootLocation + '/THIRD_PARTY.md', 'utf8-lf'),
+    await pin(prefix, 'node_modules/@modelcontextprotocol/server/NOTICE-MTERM.md'),
+  ],
 };
 const runtimeReport = await runManifest(prefix, 'runtime-provenance.json', production, 2);
 assert.equal(runtimeReport.eligible, false);
@@ -293,6 +302,8 @@ console.log(
     productionRedistributionEligible: false,
     retainedBundledNotices: 9,
     reviewedSdkArtifactPins: bundledReview.serverArtifactPins.length,
+    sdkArtifactCommit: '8e6f2336d995b5c1cb5ff044071ed186cce03567',
+    embeddedFastUri: '3.1.9',
     blockedSources: runtimeReport.blockers,
     spdxSemanticChecks: true,
     fullSpdxSchemaValidatedHere: false,

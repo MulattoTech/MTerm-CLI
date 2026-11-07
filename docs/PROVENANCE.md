@@ -67,3 +67,9 @@ Independent SPDX JSON-schema qualification uses the official SPDX 2.3 schema at 
 ## Remaining acceptance
 
 This slice supplies an offline evidence verifier, bounded closure checks, metadata SPDX generation, and installed qualification. It does not complete the vendor initialization/update strategy (CLI-151), all upstream notices across the 152-source expansion (CLI-152), or patch application/replay and end-to-end regression provenance (CLI-153). Full AUG-002 acceptance remains open until the broader integration and rights contract is verified. No existing CLI stage or AUG/DCP/WEB count is promoted from this slice alone.
+
+## Retained SDK security rebuild
+
+PR #200 replaces the affected embedded fast-uri with version 3.1.9 in a MTerm-maintained server 2.3.0-mterm.1 rebuild. [The retained recipe and provenance](../vendor/modelcontextprotocol-server/README.md) bind the original source, four-file patch, all nine notices, 86 installed file hashes, and the exact archive at commit 8e6f2336d995b5c1cb5ff044071ed186cce03567. Package-lock and shipped shrinkwrap use its immutable HTTPS URL and SHA-512 integrity. The installed helper runs the affected-version regression alongside the provenance acceptance suite and verifies every SDK file against that reviewed archive. The actual separately installed graph remains four packages and five edges.
+
+Four fresh Windows builds produced identical archive bytes after normalizing dependency dictionary order; export-condition order is preserved. The independent review also checked 72 original SDK source payloads, 114 embedded external payloads and 17 JSON modules in each Ajv format. The separate bundled-component audit returns zero advisories for those exact versions. These observations do not complete the generalized bundled-file SPDX/admission contract or establish cross-host reproducible builds; the runtime review continues to report that wider contract as pending.

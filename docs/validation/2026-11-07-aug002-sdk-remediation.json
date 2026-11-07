@@ -1,0 +1,123 @@
+{
+  "utc": "2026-11-07T22:59:39.721Z",
+  "artifactCommit": "8e6f2336d995b5c1cb5ff044071ed186cce03567",
+  "archive": {
+    "path": "vendor/modelcontextprotocol-server/server-2.3.0-mterm.1.tgz",
+    "bytes": 1572731,
+    "sha256": "fe2a319a6c282893d657479a67c821a62addd947e4277964b8db653762c77692",
+    "integrity": "sha512-RNlauLPhVz8rUV8EvE1jsPmzBtb84j1HIBFGaTyANRbSHjwEBjl0th5idsfHRcGLT5TWZVfFFzlZhk/zJWXY4w==",
+    "regularFiles": 86,
+    "unpackedBytes": 6682356
+  },
+  "build": {
+    "schemaVersion": 1,
+    "utc": "2026-11-07T22:53:20.782Z",
+    "sourceCommit": "a202a3621fcb97918e09fa45d0f9efd2dbdee19b",
+    "sourcePatchSha256": "7783730d37d00a3b8dc759e144dee6fa2d3ffb0c73b4bb48bf90151fe4234435",
+    "noticeSha256": "0336be6025aab6192f21c9741a414461a308739b112612c3abb8f40c3b766a5f",
+    "licenseSha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a",
+    "node": "v24.21.0",
+    "npm": "11.19.0",
+    "pnpm": "10.26.1",
+    "pnpmIntegrity": "sha512-ZkB0q8Nn0skyT9wYA3CXzgqPEmA0Fg9wmSjp6fldmHFDRwROXDFk1lvV2mxZxr42KxB1Rikqjuy3mZGW5c5Y+g==",
+    "rebuildScriptSha256": "d85d3b0b985c5c5e3bfeade59ffe13a07c42520656cf0ed4822623af98bb4edd",
+    "platform": "win32",
+    "arch": "x64",
+    "checkoutAutoCrlf": false,
+    "checkoutEol": "lf",
+    "frozenLockfile": true,
+    "installLifecycleScripts": false,
+    "finalPackaging": "pnpm pack; sort only dependency dictionary keys; npm 11.19.0 pack --ignore-scripts",
+    "exportConditionOrderPreserved": true,
+    "buildScripts": [
+      "@modelcontextprotocol/core build",
+      "@modelcontextprotocol/server prepack/build"
+    ],
+    "modelCalls": 0
+  },
+  "reproducibility": {
+    "scope": "Recorded Windows x64 Node/npm/pnpm toolchain; no cross-host claim",
+    "byteIdenticalFreshBuilds": [
+      {
+        "receipt": "sdk-canonical-build1/result.json",
+        "utc": "2026-11-07T22:50:31.792Z",
+        "sha256": "fe2a319a6c282893d657479a67c821a62addd947e4277964b8db653762c77692"
+      },
+      {
+        "receipt": "sdk-canonical-build2/result.json",
+        "utc": "2026-11-07T22:50:36.426Z",
+        "sha256": "fe2a319a6c282893d657479a67c821a62addd947e4277964b8db653762c77692"
+      },
+      {
+        "receipt": "sdk-final-recipe/result.json",
+        "utc": "2026-11-07T22:51:54.413Z",
+        "sha256": "fe2a319a6c282893d657479a67c821a62addd947e4277964b8db653762c77692"
+      },
+      {
+        "receipt": "sdk-qualified-recipe/result.json",
+        "utc": "2026-11-07T22:53:20.782Z",
+        "sha256": "fe2a319a6c282893d657479a67c821a62addd947e4277964b8db653762c77692"
+      }
+    ],
+    "priorNondeterminism": "pnpm workspace devDependencies key order; fixed by dependency-only metadata normalization and npm repack",
+    "exportConditionOrderPreserved": true,
+    "canonicalPackPreservedAllStagedFileBytes": true
+  },
+  "independentPayloadReview": {
+    "reviewer": "OpenAI / GPT-6 Astra Pro read-only peer; self-reported",
+    "reviewedAt": "2026-11-07T22:50:25Z",
+    "sdkSourcePayloadsMatchedGit": 72,
+    "sourceInventorySha256": "550b8885828fc120002bbb5a69dd6e55f7ceb486a0f47982b98a69acb2f7fabc",
+    "staticJsonModulesPerFormat": 17,
+    "staticJsonComparisons": 34,
+    "fastUriTarballPayloadComparisons": 6,
+    "ajvCjsSha256": "dad41b547a2f4970fc2bb7a6cb19ed1486876b6202a6ee2fd96d42567f09c628",
+    "ajvEsmSha256": "2457cc867f0baead280ad8196b5e2023c295deaff74f5ccd870999d6663306c3",
+    "scope": "Verified unchanged LF payloads; final whole-product acceptance is not implied"
+  },
+  "security": {
+    "utc": "2026-11-07T22:40:31.5875963Z",
+    "producer": "npm 11.19.0 audit --omit=dev --json",
+    "declaredEmbeddedNpmComponents": 8,
+    "report": {
+      "auditReportVersion": 2,
+      "vulnerabilities": {},
+      "metadata": {
+        "vulnerabilities": {
+          "info": 0,
+          "low": 0,
+          "moderate": 0,
+          "high": 0,
+          "critical": 0,
+          "total": 0
+        },
+        "dependencies": {
+          "prod": 10,
+          "dev": 0,
+          "optional": 0,
+          "peer": 0,
+          "peerOptional": 0,
+          "total": 9
+        }
+      }
+    },
+    "scope": "Selected embedded component versions and their registry dependency graph; separate from full application vulnerability analysis"
+  },
+  "rawCapture": {
+    "path": "tests/fixtures/provenance/npm-11.19-incomplete.spdx.json",
+    "sha256": "c2620436b3c3a9c452de3d658d31cd71f7f56b2ab44ce4e1471905fc1439d866",
+    "gitAttributes": "-text"
+  },
+  "fixedFocusedTests": {
+    "tests": 18,
+    "pass": 18,
+    "fail": 0,
+    "skip": 0,
+    "cancel": 0,
+    "receipt": "artifacts/aug002/sdk-green.json"
+  },
+  "runtimeQualifiedAtThisPreparation": false,
+  "fullProductPass": false,
+  "modelCalls": 0,
+  "ownerActionRequired": false
+}

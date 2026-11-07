@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-07-aug002-provenance; qualify pinned attribution and exact production closure.
 // Modified: 2026-11-07-aug001-pack-boundary; qualify optional packs through the exact installed runtime.
 // AI-Change: 2026-10-04-local-mcp
 // Modified: 2026-11-02-config-installed-qualification; qualify shared runtime preferences from the installed package.
@@ -235,6 +236,22 @@ const installedOptionalPacks = {
   realClientConsent: false,
   log: path.join(output, 'optional-pack-tests.tap'),
 };
+const sourceCommit = (
+  await exec('git', ['rev-parse', 'HEAD'], { cwd: root, timeout: 10000, windowsHide: true })
+).stdout.trim();
+const installedProvenance = JSON.parse(
+  (
+    await exec(
+      process.execPath,
+      [path.join(root, 'scripts/verify-provenance-installed.mjs'), installed, prefix, output, sourceCommit],
+      { cwd: home, env, timeout: 90000, maxBuffer: 2097152, windowsHide: true },
+    )
+  ).stdout,
+);
+assert.equal(installedProvenance.ok, true);
+assert.equal(installedProvenance.productionRedistributionEligible, false);
+assert.equal(installedProvenance.productionPackages, 4);
+assert.equal(installedProvenance.productionEdges, 5);
 // CLI --prefix changes npm's local package root; environment prefix selects an isolated global link destination.
 env.npm_config_prefix = linkPrefix;
 assert.equal((await npmRun(['prefix', '--global'])).stdout.trim(), linkPrefix);
@@ -346,6 +363,8 @@ const report = {
   installedConfiguration: configuration,
   installedRemoteState: remoteState,
   installedOptionalPacks,
+  installedProvenance,
+  fullTransitiveLicenseClearance: false,
   fullDesktopCommanderParity: false,
   fromOutsideCheckout: true,
   helpExternalLaunchSamplesMs: timings.map((x) => Math.round(x * 100) / 100),

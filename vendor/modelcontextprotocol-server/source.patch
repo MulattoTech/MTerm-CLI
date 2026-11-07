@@ -1,0 +1,130 @@
+diff --git a/package.json b/package.json
+index 3072a5b..66b0831 100644
+--- a/package.json
++++ b/package.json
+@@ -89,6 +89,7 @@
+         "zod": "catalog:runtimeShared"
+     },
+     "resolutions": {
+-        "strip-ansi": "6.0.1"
++        "strip-ansi": "6.0.1",
++        "fast-uri": "3.1.9"
+     }
+ }
+diff --git a/packages/server/package.json b/packages/server/package.json
+index 8064178..3043295 100644
+--- a/packages/server/package.json
++++ b/packages/server/package.json
+@@ -1,6 +1,6 @@
+ {
+     "name": "@modelcontextprotocol/server",
+-    "version": "2.3.0",
++    "version": "2.3.0-mterm.1",
+     "description": "Model Context Protocol implementation for TypeScript - Server package",
+     "license": "Apache-2.0",
+     "author": "Anthropic, PBC (https://anthropic.com)",
+@@ -119,7 +119,9 @@
+         }
+     },
+     "files": [
+-        "dist"
++        "dist",
++        "LICENSE",
++        "NOTICE-MTERM.md"
+     ],
+     "scripts": {
+         "typecheck": "tsgo -p tsconfig.json --noEmit",
+@@ -157,5 +159,13 @@
+         "typescript": "catalog:devTools",
+         "typescript-eslint": "catalog:devTools",
+         "vitest": "catalog:devTools"
++    },
++    "private": true,
++    "mtermPatch": {
++        "upstreamVersion": "2.3.0",
++        "upstreamCommit": "a202a3621fcb97918e09fa45d0f9efd2dbdee19b",
++        "embeddedFastUri": "3.1.9",
++        "modifiedAt": "2026-11-07",
++        "officialUpstreamRelease": false
+     }
+ }
+diff --git a/packages/server/tsdown.config.ts b/packages/server/tsdown.config.ts
+index 88004cf..fb55a24 100644
+--- a/packages/server/tsdown.config.ts
++++ b/packages/server/tsdown.config.ts
+@@ -1,6 +1,8 @@
++// MTerm security rebuild, modified 2026-11-07; retained upstream source with the explicit build banner below.
+ import { defineConfig } from 'tsdown';
+ 
+ export default defineConfig({
++    banner: '/*! Modified build by MulattoTech/MTerm-CLI, 2026-11-07: SDK 2.3.0 rebuilt with fast-uri 3.1.9. Not an official upstream release. See LICENSE and NOTICE-MTERM.md. */',
+     failOnWarn: 'ci-only',
+     entry: [
+         'src/index.ts',
+diff --git a/pnpm-lock.yaml b/pnpm-lock.yaml
+index 7c3cf72..067fcc3 100644
+--- a/pnpm-lock.yaml
++++ b/pnpm-lock.yaml
+@@ -138,6 +138,7 @@ catalogs:
+ 
+ overrides:
+   strip-ansi: 6.0.1
++  fast-uri: 3.1.9
+ 
+ importers:
+ 
+@@ -5055,8 +5056,8 @@ packages:
+   fast-safe-stringify@2.1.1:
+     resolution: {integrity: sha512-W+KJc2dmILlPplD/H4K9l9LcAHAfPtP6BY84uVLXQ6Evcz9Lcg33Y2z1IVblT6xdY54PXYVHEv+0Wpq8Io6zkA==}
+ 
+-  fast-uri@3.1.0:
+-    resolution: {integrity: sha512-iPeeDKJSWf4IEOasVVrknXpaBV0IApz/gp7S2bb7Z4Lljbl2MGJRqInZiUrQwV16cpzw/D3S5j5Julj/gT52AA==}
++  fast-uri@3.1.9:
++    resolution: {integrity: sha512-hS/0Wt3Ya043oKXs0sIxrMpKQITXhMLIrVAKKXi4gozGC9v7YRWVnXIZzjNPTO02M9BdxLCWqK1yRXgNziVyJQ==}
+ 
+   fastify@5.8.4:
+     resolution: {integrity: sha512-sa42J1xylbBAYUWALSBoyXKPDUvM3OoNOibIefA+Oha57FryXKKCZarA1iDntOCWp3O35voZLuDg2mdODXtPzQ==}
+@@ -7663,7 +7664,7 @@ snapshots:
+     dependencies:
+       ajv: 8.18.0
+       ajv-formats: 3.0.1(ajv@8.18.0)
+-      fast-uri: 3.1.0
++      fast-uri: 3.1.9
+ 
+   '@fastify/error@4.2.0': {}
+ 
+@@ -8783,14 +8784,14 @@ snapshots:
+   ajv@8.18.0:
+     dependencies:
+       fast-deep-equal: 3.1.3
+-      fast-uri: 3.1.0
++      fast-uri: 3.1.9
+       json-schema-traverse: 1.0.0
+       require-from-string: 2.0.2
+ 
+   ajv@8.20.0:
+     dependencies:
+       fast-deep-equal: 3.1.3
+-      fast-uri: 3.1.0
++      fast-uri: 3.1.9
+       json-schema-traverse: 1.0.0
+       require-from-string: 2.0.2
+ 
+@@ -9732,7 +9733,7 @@ snapshots:
+       '@fastify/merge-json-schemas': 0.2.1
+       ajv: 8.18.0
+       ajv-formats: 3.0.1(ajv@8.18.0)
+-      fast-uri: 3.1.0
++      fast-uri: 3.1.9
+       json-schema-ref-resolver: 3.0.0
+       rfdc: 1.4.1
+ 
+@@ -9744,7 +9745,7 @@ snapshots:
+ 
+   fast-safe-stringify@2.1.1: {}
+ 
+-  fast-uri@3.1.0: {}
++  fast-uri@3.1.9: {}
+ 
+   fastify@5.8.4:
+     dependencies:

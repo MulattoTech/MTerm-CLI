@@ -1,0 +1,72 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "mterm-cli@0.0.1-preview.1",
+  "documentNamespace": "http://spdx.org/spdxdocs/mterm-cli-0.0.1-preview.1-607367ea-90e8-4a9f-a537-481a3d175f7e",
+  "creationInfo": {
+    "created": "2026-11-07T21:27:35.451Z",
+    "creators": [
+      "Tool: npm/cli-11.19.0"
+    ]
+  },
+  "documentDescribes": [
+    "SPDXRef-Package-mterm-cli-0.0.1-preview.1"
+  ],
+  "packages": [
+    {
+      "name": "mterm-cli",
+      "SPDXID": "SPDXRef-Package-mterm-cli-0.0.1-preview.1",
+      "versionInfo": "0.0.1-preview.1",
+      "packageFileName": "",
+      "description": "Scoped local MCP workstation tools and a thin Codex launcher",
+      "primaryPackagePurpose": "LIBRARY",
+      "downloadLocation": "NOASSERTION",
+      "filesAnalyzed": false,
+      "homepage": "NOASSERTION",
+      "licenseDeclared": "MIT",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:npm/mterm-cli@0.0.1-preview.1"
+        }
+      ]
+    },
+    {
+      "name": "@modelcontextprotocol/server",
+      "SPDXID": "SPDXRef-Package-modelcontextprotocol.server-2.3.0",
+      "versionInfo": "2.3.0",
+      "packageFileName": "node_modules/@modelcontextprotocol/server",
+      "downloadLocation": "https://registry.npmjs.org/@modelcontextprotocol/server/-/server-2.3.0.tgz",
+      "filesAnalyzed": false,
+      "homepage": "NOASSERTION",
+      "licenseDeclared": "Apache-2.0",
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:npm/%40modelcontextprotocol/server@2.3.0"
+        }
+      ],
+      "checksums": [
+        {
+          "algorithm": "SHA512",
+          "checksumValue": "fba6f42ddb102e61ecbd2ec9eac409e30793a73527eb57d4d49292fb7db5ffe2320d8a075b9091d9382a72ce86800010be57ac0a8eb25f7c6db609b1f971ad27"
+        }
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relatedSpdxElement": "SPDXRef-Package-mterm-cli-0.0.1-preview.1",
+      "relationshipType": "DESCRIBES"
+    },
+    {
+      "spdxElementId": "SPDXRef-Package-modelcontextprotocol.server-2.3.0",
+      "relatedSpdxElement": "SPDXRef-Package-mterm-cli-0.0.1-preview.1",
+      "relationshipType": "DEPENDENCY_OF"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "change_id": "2026-11-07-sdk-security-rebuild",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "identity_basis": "Self-reported ChatGPT Web primary executor and independent read-only peer",
+  "updated_at_utc": "2026-11-07T22:55:00Z",
+  "base_sha": "7b138f40512e22ff366daa37dcec081b6512dde3",
+  "primary_issue": "AUG-002/#85; expansion #81; PR #200",
+  "summary": "Retain the exact SDK security rebuild and its automated recipe as an immutable dependency artifact. Integration is a subsequent commit in the same PR.",
+  "files_modified": [
+    "vendor/modelcontextprotocol-server/"
+  ],
+  "decisions": [
+    "Existing published SDK embeds affected fast-uri; rebuild exact upstream2.3.0 with3.1.9.",
+    "Keep exact original SDK LICENSE and nine complete component notices; generated modification banners.",
+    "Use pinned Node/npm/pnpm, frozen upstream lock, no install hooks; canonical dependency-key order, preserving exports.",
+    "Preserve artifact commit through normal merge so immutable URL remains reachable.",
+    "No manual owner approval or model usage."
+  ],
+  "tests": [
+    {
+      "name": "Independent source/license review",
+      "result": "No blocker;72SDKsources matched Git,114externalpayloads matched installed pinned inputs,34staticJSON comparisons,9fulllicense texts,48modifiedoutput banners."
+    },
+    {
+      "name": "Fresh canonical rebuilds",
+      "result": "Four byte-identical outputs; final guarded recipe d85d3b0b985c5c5e3bfeade59ffe13a07c42520656cf0ed4822623af98bb4edd. Archive fe2a319a6c282893d657479a67c821a62addd947e4277964b8db653762c77692."
+    },
+    {
+      "name": "Bundled dependency security",
+      "result": "New exact8component inventory audit0findings; old12advisory failure retained separately."
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "ids": "CLI-151,CLI-152,CLI-153,CLI-300",
+      "assessment": "No acceptance/stage/weight/estimate/dependency/blocker changes. Integrated evidence and source fingerprint review follow in the same PR."
+    }
+  ],
+  "model_calls": 0,
+  "limitations": [
+    "This commit publishes a reviewed build artifact, not a completed MTerm runtime qualification.",
+    "Cross-host archive-byte reproduction and full bundled-file SPDX/admission are not claimed."
+  ],
+  "next_unverified_action": "Consume immutable artifact URL; synchronize locks, pins, installed guard and source review; run native/installed/hosted gates before normal PR merge."
+}

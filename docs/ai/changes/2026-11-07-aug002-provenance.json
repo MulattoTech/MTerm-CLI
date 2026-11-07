@@ -1,0 +1,89 @@
+{
+  "change_id": "2026-11-07-aug002-provenance",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "identity_basis": "Self-reported ChatGPT Web executor and independent read-only peer",
+  "updated_at_utc": "2026-11-07T23:14:16.067Z",
+  "base_sha": "560b3713bb9aea36578b8b7b576f4beda0775a6d",
+  "branch": "feat/aug-002-provenance-gate-20261107",
+  "primary_issue": "AUG-002/#85; expansion #81",
+  "summary": "Bounded offline provenance verifier, exact package closure and SPDX; complete selected SDK notices plus a pinned security rebuild of its affected embedded URI dependency.",
+  "files_modified": [
+    "src/provenance.ts",
+    "src/cli.ts",
+    "tests/provenance.test.mjs",
+    "tests/fixtures/provenance/",
+    "scripts/verify-package.mjs",
+    "scripts/verify-provenance-installed.mjs",
+    "scripts/roadmap.mjs",
+    "versions.json",
+    "THIRD_PARTY.md",
+    "docs/PROVENANCE.md",
+    "docs/provenance/sdk-bundled-review.json",
+    "docs/HANDOFF.md",
+    "docs/expansion/README.md",
+    "docs/expansion/queue.json",
+    "docs/roadmap/progress.json",
+    ".gitattributes",
+    "package.json",
+    "package-lock.json",
+    "npm-shrinkwrap.json",
+    "tests/bundled-runtime.test.mjs",
+    "vendor/modelcontextprotocol-server/",
+    "docs/expansion/sources.json"
+  ],
+  "decisions": [
+    "No additional runtime package count or provenance helper/model/network execution; the existing SDK dependency is replaced with the reviewed immutable archive.",
+    "Existing file-service1MiB cap and root policy retained.",
+    "Trusted pinned local review distinct from authenticated upstream rights, runtime integrity and pack admission.",
+    "Known incomplete npm SBOM retained/rejected; no producer result silently repaired.",
+    "Owner authorization covers delivery; rights and tests remain technical evidence.",
+    "Full notices retained for eight embedded npm components and JSON Schema origin.",
+    "Preserve raw npm producer failure bytes with -text and an exact capture hash regression.",
+    "Fingerprint vendor inputs and .gitattributes; do not award acceptance for the artifact alone.",
+    "Reconcile the SDK source-catalog row with the actual retained rebuild; preserve all other source rows, mappings and zero full-source acceptance counts."
+  ],
+  "tests": [
+    {
+      "name": "Original CLI RED",
+      "result": "0pass14fail; captured before implementation at2026-11-07T21:48:14.9579760Z."
+    },
+    {
+      "name": "Independent artifact rights review",
+      "result": "114nonempty embedded payloads matched exact integrity-verified tarballs;17staticJSON modules matched both bundle formats; full9source notices fetched at pinned official commits."
+    },
+    {
+      "name": "Historical diagnostic qualification",
+      "result": "Commit7b138:352native +17installed provenance, schema check and9hostedchecks passed. Original bundled audit12advisories correctly blocked distribution."
+    },
+    {
+      "name": "Fixed dependency regression",
+      "result": "Actual SDK test failed on3.1.0, then18/18 focused tests passed on immutableURL2.3.0-mterm.1 with3.1.9 at2026-11-07T22:57:46.8959866Z."
+    },
+    {
+      "name": "Rebuild and source/license evidence",
+      "result": "Four fresh canonical outputs byte-identical; final recipe/patch/notice reviewed independently.72originalSDK,114externalpayloads,34JSONcomparisons,9notices,48banners and86files pinned."
+    },
+    {
+      "name": "Replacement bundled audit",
+      "result": "Selected8component audit exited0 with0findings; oldfailedreceipt retained. Final native/installed/head gates still pending."
+    },
+    {
+      "name": "Integrated local qualification",
+      "result": "All seven stages exited 0 at 2026-11-07T23:03:20.314Z. Native 353/353; installed provenance/security 18/18; optional packs 16/16; all 86 SDK file pins; original SDK and nine bundled license texts. Actual installed core 14,476,966 bytes. Both actual SPDX documents passed official schema checks. Production and selected bundled audits report zero findings."
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "ids": "CLI-151,CLI-152,CLI-153,CLI-300",
+      "assessment": "Evidence/notes/reviewer only. Protected acceptance/stage/weight/estimate/dependency/blocker fields unchanged."
+    }
+  ],
+  "model_calls": 0,
+  "limitations": [
+    "Selected local evidence verification is not upstream legal authentication or complete runtime admission.",
+    "Cancellation/deadline cooperative around bounded I/O.",
+    "General vendor update, embedded-file SPDX and patch replay remain open."
+  ],
+  "next_unverified_action": "Final independent fingerprint verdict; commit and exact-head hosted checks; normal merge retaining artifact commit and main verification."
+}

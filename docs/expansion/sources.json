@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "asOf": "2026-11-07T19:50:07Z",
+  "asOf": "2026-11-07T23:14:16.067Z",
   "epic": 81,
   "count": 152,
   "fullyIntegrated": 0,
   "fullyLicenseApproved": 0,
   "reviewer": "OpenAI / GPT-6 Astra Pro; read-only independent review; self-reported",
-  "scope": "Cataloguing is not integration or rights approval. No upstream implementation from these 152 projects was copied for AUG-001. Three initial reviews; 149 pending.",
+  "scope": "The 152-source catalog is not blanket integration or rights approval. AUG-002 retains one reviewed SDK security-rebuild archive with exact source, licenses, dependency and installed-file evidence. Other source rows retain their own pending restrictions; full-source acceptance counts remain zero.",
   "sources": [
     {
       "repository": "rebel0789/codexpro",
@@ -639,7 +639,7 @@
       "repository": "vinci0007/CF_GPTCodingMCP_Auto",
       "url": "https://github.com/vinci0007/CF_GPTCodingMCP_Auto",
       "epicLicenseClaim": "No detected license",
-      "epicReuseRule": "reference only \u2014 NO code copying",
+      "epicReuseRule": "reference only — NO code copying",
       "issues": [
         124
       ],
@@ -657,7 +657,7 @@
       "repository": "a252937166/LocalPilot",
       "url": "https://github.com/a252937166/LocalPilot",
       "epicLicenseClaim": "No detected license",
-      "epicReuseRule": "reference only \u2014 NO code copying",
+      "epicReuseRule": "reference only — NO code copying",
       "issues": [
         145
       ],
@@ -675,7 +675,7 @@
       "repository": "AetherRadar/web-mcp-gateway",
       "url": "https://github.com/AetherRadar/web-mcp-gateway",
       "epicLicenseClaim": "No detected license",
-      "epicReuseRule": "reference only \u2014 NO code copying",
+      "epicReuseRule": "reference only — NO code copying",
       "issues": [
         145
       ],
@@ -693,7 +693,7 @@
       "repository": "WIKKIwk/chatgpt-codex-desktop-mcp",
       "url": "https://github.com/WIKKIwk/chatgpt-codex-desktop-mcp",
       "epicLicenseClaim": "No detected license",
-      "epicReuseRule": "reference only \u2014 NO code copying",
+      "epicReuseRule": "reference only — NO code copying",
       "issues": [
         124
       ],
@@ -1482,7 +1482,7 @@
       "repository": "susuky/webcodex-harness",
       "url": "https://github.com/susuky/webcodex-harness",
       "epicLicenseClaim": "No detected license",
-      "epicReuseRule": "reference only \u2014 NO code copying",
+      "epicReuseRule": "reference only — NO code copying",
       "issues": [
         137
       ],
@@ -1525,15 +1525,30 @@
         83,
         187
       ],
-      "sourceSha": null,
-      "observedLicenses": null,
-      "inspectedPaths": [],
-      "version": null,
-      "reviewStatus": "not-reviewed",
-      "reuseStatus": "no-code-copied",
-      "localImportedPaths": [],
-      "dependencyLicenseReview": "pending",
-      "blocker": "Exact source pin, actual license/NOTICE and dependency inspection required before ingestion."
+      "sourceSha": "a202a3621fcb97918e09fa45d0f9efd2dbdee19b",
+      "observedLicenses": "Retained SDK Apache-2.0/MIT transition and documentation notices; selected embedded MIT/BSD notices recorded separately",
+      "inspectedPaths": [
+        "LICENSE",
+        "package.json",
+        "pnpm-lock.yaml",
+        "packages/server/package.json",
+        "packages/server/tsdown.config.ts",
+        "packages/core-internal/src/validators/ajvProvider.ts"
+      ],
+      "version": "2.3.0; MTerm server rebuild 2.3.0-mterm.1",
+      "reviewStatus": "selected-runtime-artifact-reviewed",
+      "reuseStatus": "retained-security-rebuild",
+      "localImportedPaths": [
+        "vendor/modelcontextprotocol-server/"
+      ],
+      "dependencyLicenseReview": "Selected runtime and eight embedded npm component notices reviewed; generalized bundled-file admission remains pending",
+      "blocker": "Full repository/expansion integration and generic bundled-file SPDX/admission are not accepted; selected shipped artifact rights, pins and tests are recorded in linked evidence.",
+      "reviewedArtifactCommit": "8e6f2336d995b5c1cb5ff044071ed186cce03567",
+      "evidencePaths": [
+        "docs/provenance/sdk-bundled-review.json",
+        "vendor/modelcontextprotocol-server/provenance.json",
+        "docs/validation/2026-11-07-aug002-integrated.json"
+      ]
     },
     {
       "repository": "modelcontextprotocol/python-sdk",
@@ -1699,7 +1714,7 @@
       "repository": "desktop-commander/remote-desktop-commander",
       "url": "https://github.com/desktop-commander/remote-desktop-commander",
       "epicLicenseClaim": "Proprietary; reference-only",
-      "epicReuseRule": "reference only \u2014 NO code copying",
+      "epicReuseRule": "reference only — NO code copying",
       "issues": [
         143
       ],
@@ -2644,7 +2659,7 @@
       "repository": "chongdashu/unreal-mcp",
       "url": "https://github.com/chongdashu/unreal-mcp",
       "epicLicenseClaim": "No detected license",
-      "epicReuseRule": "reference only \u2014 NO code copying",
+      "epicReuseRule": "reference only — NO code copying",
       "issues": [
         181
       ],

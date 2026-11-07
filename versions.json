@@ -12,14 +12,39 @@
   "packages": [
     {
       "name": "@modelcontextprotocol/server",
-      "version": "2.3.0",
+      "version": "2.3.0-mterm.1",
       "license": "Apache-2.0",
-      "integrity": "sha512-+6b0LdsQLmHsvS7J6sQJ4weTpzUn61fU1JKS+321/+IyDYoHW5CR2Tgqcs6GgAAQvlesCo6yX3xttgmx+XGtJw==",
+      "integrity": "sha512-RNlauLPhVz8rUV8EvE1jsPmzBtb84j1HIBFGaTyANRbSHjwEBjl0th5idsfHRcGLT5TWZVfFFzlZhk/zJWXY4w==",
       "repository": {
         "type": "git",
         "url": "git+https://github.com/modelcontextprotocol/typescript-sdk.git"
       },
-      "runtime": true
+      "runtime": true,
+      "sourceCommit": "a202a3621fcb97918e09fa45d0f9efd2dbdee19b",
+      "sourceLicenseSha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a",
+      "sourceLicenseScope": "Retained Apache-2.0 and legacy MIT transition text; package.json declaration is narrower than the complete notice.",
+      "distribution": "MTerm-maintained security rebuild; not an official upstream release",
+      "artifact": {
+        "url": "https://raw.githubusercontent.com/MulattoTech/MTerm-CLI/8e6f2336d995b5c1cb5ff044071ed186cce03567/vendor/modelcontextprotocol-server/server-2.3.0-mterm.1.tgz",
+        "commit": "8e6f2336d995b5c1cb5ff044071ed186cce03567",
+        "sha256": "fe2a319a6c282893d657479a67c821a62addd947e4277964b8db653762c77692",
+        "sourcePatchSha256": "7783730d37d00a3b8dc759e144dee6fa2d3ffb0c73b4bb48bf90151fe4234435",
+        "provenance": "vendor/modelcontextprotocol-server/provenance.json"
+      }
+    },
+    {
+      "name": "@modelcontextprotocol/core",
+      "version": "2.3.0",
+      "license": "Apache-2.0",
+      "integrity": "sha512-09BHFaNVBe5pB2AhzCfLj0cqmsKLERvZQ4FblzP90UMGLaXVqdZPByFjURwsUYCmxonUW2yAwgTTvle+8O2/8w==",
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/modelcontextprotocol/typescript-sdk.git"
+      },
+      "runtime": true,
+      "sourceCommit": "a202a3621fcb97918e09fa45d0f9efd2dbdee19b",
+      "sourceLicenseSha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a",
+      "sourceLicenseScope": "Retained Apache-2.0 and legacy MIT transition text; package.json declaration is narrower than the complete notice."
     },
     {
       "name": "@modelcontextprotocol/client",
@@ -30,7 +55,10 @@
         "type": "git",
         "url": "git+https://github.com/modelcontextprotocol/typescript-sdk.git"
       },
-      "runtime": false
+      "runtime": false,
+      "sourceCommit": "a202a3621fcb97918e09fa45d0f9efd2dbdee19b",
+      "sourceLicenseSha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a",
+      "sourceLicenseScope": "Retained Apache-2.0 and legacy MIT transition text; package.json declaration is narrower than the complete notice."
     },
     {
       "name": "zod",
@@ -42,7 +70,8 @@
         "url": "git+https://github.com/colinhacks/zod.git"
       },
       "runtime": true,
-      "sourceCommit": "b500a2ee95134f81d74da7911d7378dd2853d042"
+      "sourceCommit": "b500a2ee95134f81d74da7911d7378dd2853d042",
+      "sourceLicenseSha256": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8"
     },
     {
       "name": "typescript",
@@ -106,5 +135,11 @@
       "bundled": false,
       "blocker": "Credential/refresh/API compatibility not implemented; no live usage endpoint accessed"
     }
-  ]
+  ],
+  "provenance": {
+    "runtimeDependencyClosure": 4,
+    "bundledSdkReview": "pending",
+    "verifier": "MTerm-Provenance-1",
+    "scope": "Installed package metadata and selected file/license evidence, distinct from complete bundled-code rights clearance."
+  }
 }

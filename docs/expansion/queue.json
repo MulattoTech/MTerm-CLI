@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "asOf": "2026-11-07T21:22:52.007Z",
+  "asOf": "2026-11-07T23:07:28.925Z",
   "repository": "MulattoTech/MTerm-CLI",
   "epic": 81,
-  "baseSha": "d5fcc2f665b2b4f7d033ffd32b7c22ca9d7a4015",
+  "baseSha": "560b3713bb9aea36578b8b7b576f4beda0775a6d",
   "counts": {
     "total": 117,
     "claimed": 1,
     "accepted": 0,
-    "merged": 0
+    "merged": 1
   },
   "originalMetrics": {
     "cliMaturityPercent": 29.12,
@@ -55,11 +55,11 @@
         "xyTom/coding-tools-mcp",
         "mcp-use/mcp-use"
       ],
-      "status": "in_progress",
+      "status": "merged_partial",
       "owner": "ChatGPT Web / GPT-6 Astra Pro",
       "branch": "feat/aug-001-tool-pack-boundary-20261107",
       "pr": 199,
-      "mergeSha": null,
+      "mergeSha": "560b3713bb9aea36578b8b7b576f4beda0775a6d",
       "accepted": false,
       "testPlan": "common contract + original issue acceptance at issue URL",
       "platformScope": [
@@ -68,9 +68,9 @@
         "darwin-arm64",
         "darwin-x64"
       ],
-      "automatedTests": "e1453c57c0f289cd5c63a24ba243a1bd3a4013bd: all five PR checks and four push jobs passed; Windows335/335; Linux/macOS323 pass plus12 existing Windows-specific skips; installed16/16 each. Subsequent authorization head requires its own gates.",
+      "automatedTests": "Final head311fdcaca68e69277482ff029ffc374efd7b4a01:9/9 checks; merged main560b371:5/5; identical tested tree. Windows335/335; other platforms323pass/12existing Windows-only skips; installed16/16 each.",
       "actualClient": "not verified",
-      "blocker": "Full AUG-001 scope, broader CLI-038 bundle and actual-client acceptance remain unverified. Owner approved normal merge; final-head automated qualification remains required.",
+      "blocker": "Full AUG-001 scope, CLI-038 full bundle and actual client acceptance remain unverified; normal merge complete.",
       "declaredIssueDependencies": [],
       "ownerAuthorization": "PR199 and subsequent qualified delivery approved by owner on 2026-11-07; docs/OWNER_AUTHORIZATION.md"
     },
@@ -98,18 +98,24 @@
         "modelcontextprotocol/typescript-sdk",
         "github/github-mcp-server"
       ],
-      "status": "proposed",
-      "owner": null,
-      "branch": null,
-      "pr": null,
+      "status": "in_progress",
+      "owner": "ChatGPT Web / GPT-6 Astra Pro",
+      "branch": "feat/aug-002-provenance-gate-20261107",
+      "pr": 200,
       "mergeSha": null,
       "accepted": false,
       "testPlan": "common contract + original issue acceptance at issue URL",
-      "platformScope": "not yet selected; retain unsupported environments as explicit blockers",
-      "automatedTests": "not run",
-      "actualClient": "not verified",
-      "blocker": "Not implemented or accepted; exact upstream rights, platform scope and declared prerequisite acceptance need qualification.",
-      "declaredIssueDependencies": []
+      "platformScope": [
+        "win32-x64",
+        "linux-x64",
+        "darwin-arm64",
+        "darwin-x64"
+      ],
+      "automatedTests": "Integrated Windows: 353/353 native, 18/18 installed provenance/security, 16/16 optional packs; complete 86-file SDK pins, nine bundled notices, actual MCP cycles, schema and selected audits passed. Exact final-head hosted checks pending.",
+      "actualClient": "Real local CLI qualification; model-driven client use not applicable to the offline inspection command and not claimed.",
+      "blocker": "Full generic vendor update, bundled-file SPDX/admission and patch replay remain unaccepted. No owner review required.",
+      "declaredIssueDependencies": [],
+      "ownerAuthorization": "docs/OWNER_AUTHORIZATION.md; no recurring manual gate"
     },
     {
       "id": "AUG-003",

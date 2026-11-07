@@ -3,7 +3,7 @@
   "provider": "OpenAI",
   "model": "GPT-6 Astra Pro",
   "identity_basis": "Self-reported ChatGPT Web implementation and independent read-only reviewer; not provider attestation",
-  "updated_at_utc": "2026-11-07T20:06:54.210Z",
+  "updated_at_utc": "2026-11-07T20:17:08.789Z",
   "base_sha": "d5fcc2f665b2b4f7d033ffd32b7c22ca9d7a4015",
   "branch": "feat/aug-001-tool-pack-boundary-20261107",
   "primary_issue": "AUG-001 / #82; parent #81",
@@ -45,7 +45,9 @@
     "docs/roadmap/index.html",
     ".github/workflows/cli-ci.yml",
     "docs/validation/2026-11-07-aug001-ci-before.json",
-    "docs/validation/2026-11-07-aug001-comparison.json"
+    "docs/validation/2026-11-07-aug001-comparison.json",
+    "docs/validation/2026-11-07-aug001-correction.json",
+    "docs/validation/2026-11-07-aug001-ci-24feccc.json"
   ],
   "decisions": [
     "Reuse existing ProcessService and root checks; explicit unsandboxed permission and exact allowlist; no remote exposure.",
@@ -54,7 +56,8 @@
     "Default core path remains lazy; managed Codex setup refuses unsupported pack flags.",
     "Observed live Zod advisory required exact patch pin; production audit failed before and returned zero after.",
     "All 117/152 mappings preserved with pending rights and acceptance visible; no stage credit.",
-    "Retain first-head hosted failures. Replace retired macos-14 ARM runner with supported macos-15, keeping architecture assertion and all gates. Flush fixture stdout/stderr before exit; do not weaken overflow assertion or change production host."
+    "Retain first-head hosted failures. Replace retired macos-14 ARM runner with supported macos-15, keeping architecture assertion and all gates. Flush fixture stdout/stderr before exit; do not weaken overflow assertion or change production host.",
+    "Final read-only review caught omitted explicit GitHub issue dependencies. Re-audit all 117 bodies, preserve 37 issue edges and live external issue states, and distinguish overlap, implementation readiness and acceptance."
   ],
   "tests": [
     {
@@ -78,10 +81,6 @@
       "result": "No confirmed blocker in initial five files; documented limitations and added transport cancellation test"
     },
     {
-      "name": "full candidate qualification",
-      "result": "pending; see later receipt and PR exact-head checks"
-    },
-    {
       "name": "Normal prepack and final installed qualification",
       "result": "prepack0; native335/335; installed16/16; four production license files retained; measured core under50m; self-host0; isolated native Codex0.160.1 registration0; see receipt",
       "evidence": "docs/validation/2026-11-07-aug001-receipts.json"
@@ -90,6 +89,16 @@
       "name": "first-head hosted qualification",
       "result": "27635c6: Windows, Ubuntu and fast passed; macos-14 cancelled before steps; macos-15-intel failed strict overflow fixture because immediate exit could truncate its async stdout. Corrected-head qualification required.",
       "evidence": "docs/validation/2026-11-07-aug001-ci-before.json"
+    },
+    {
+      "name": "Corrected exact-head hosted platform qualification",
+      "testedCommit": "24feccc5823ef25cc002976811ae4b9c789426b7",
+      "result": "Fast and all four platform lanes passed; Windows 335/335; Linux/macOS 323 pass plus 12 existing Windows-only skips; installed pack suite 16/16 with no skips on every lane; production module bytes match.",
+      "evidence": "docs/validation/2026-11-07-aug001-ci-24feccc.json"
+    },
+    {
+      "name": "Dependency ledger audit",
+      "result": "All 117 captured issue body hashes matched; 37 explicit issue edges across 23 AUG issues, 20 live external issue snapshots; 200 nodes/385 unique edges, acyclic; no acceptance advancement."
     }
   ],
   "roadmap_updates": [
@@ -105,7 +114,7 @@
     "Human execution-policy review required before merge.",
     "Full CLI038 bundle, third-party rights and real client acceptance remain open."
   ],
-  "next_unverified_action": "Publish issue-linked draft PR, observe exact-head hosted platform gates, then obtain human execution-policy review before merge.",
+  "next_unverified_action": "Verify the final documentation-corrected PR head, then obtain the human execution-policy review required by docs/ORCHESTRATION.md before merge.",
   "model_calls": 0,
   "actualCodexAgentToolInvocation": false,
   "actualChatGPTToolInvocation": false,

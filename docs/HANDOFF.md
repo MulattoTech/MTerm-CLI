@@ -1,3 +1,20 @@
+# AUG expansion pilot — 2026-11-07
+
+Read [the current expansion checkpoint](expansion/README.md), [pack ABI contract](OPTIONAL_PACKS.md)
+and [qualification report](validation/2026-11-07-aug001.md) before resuming. One isolated
+ordinary clone owns AUG-001/#82 on `feat/aug-001-tool-pack-boundary-20261107`, from
+main `d5fcc2f665b2b4f7d033ffd32b7c22ca9d7a4015`. All 117 issue bodies and 152-source
+mappings are reconciled in the machine-readable expansion queue. Original dirty work
+is preserved; PR52 merged and PR67 was incorporated through merged PR69.
+
+The optional local pack slice and exact Zod advisory remediation are under qualification.
+Only synthetic local fixtures and SDK clients were used; no model requests or actual
+user-auth/cloud changes. Human execution-policy review remains a merge gate. Keep
+AUG 0/117, CLI maturity 29.12%, DCP 0/48 and WEB 0/12 separate from test counts.
+Latest exact-head PR comments/receipts supersede preparation statuses below.
+
+---
+
 ## Windows DPAPI bounds follow-up — 2026-11-02T21:55:56.070535+00:00
 
 PR #79 merged as `458e0bd72b94f34fbc74662a0cfd570bdb42bdcb` with the qualified

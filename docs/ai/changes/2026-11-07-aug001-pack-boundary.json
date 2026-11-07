@@ -1,0 +1,117 @@
+{
+  "change_id": "2026-11-07-aug001-pack-boundary",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "identity_basis": "Self-reported ChatGPT Web implementation and independent read-only reviewer; not provider attestation",
+  "updated_at_utc": "2026-11-07T20:00:15.185Z",
+  "base_sha": "d5fcc2f665b2b4f7d033ffd32b7c22ca9d7a4015",
+  "branch": "feat/aug-001-tool-pack-boundary-20261107",
+  "primary_issue": "AUG-001 / #82; parent #81",
+  "requirements": [
+    "CLI-036",
+    "CLI-038",
+    "CLI-151",
+    "CLI-152",
+    "CLI-153",
+    "CLI-262",
+    "CLI-265",
+    "CLI-267",
+    "CLI-276",
+    "CLI-287",
+    "CLI-300"
+  ],
+  "summary": "Explicit pinned local Node pack ABI, preview-first registration, bounded owned sidecar invocation, and exact Zod 4.6.7 advisory remediation. No third-party pack implementation imported.",
+  "files_modified": [
+    "src/tool-packs.ts",
+    "src/cli.ts",
+    "src/mcp.ts",
+    "tests/tool-packs.test.mjs",
+    "scripts/verify-package.mjs",
+    "package.json",
+    "package-lock.json",
+    "npm-shrinkwrap.json",
+    "versions.json",
+    "THIRD_PARTY.md",
+    "docs/OPTIONAL_PACKS.md",
+    "docs/SECURITY.md",
+    "docs/HANDOFF.md",
+    "docs/expansion/README.md",
+    "docs/expansion/queue.json",
+    "docs/expansion/sources.json",
+    "docs/validation/2026-11-07-aug001.md",
+    "docs/roadmap/progress.json",
+    "docs/roadmap/review.json",
+    "docs/roadmap/FEATURES.md",
+    "docs/roadmap/index.html"
+  ],
+  "decisions": [
+    "Reuse existing ProcessService and root checks; explicit unsandboxed permission and exact allowlist; no remote exposure.",
+    "Register local files only; no download/extraction/dependency install.",
+    "Pins cover declared bytes only; licenseVerified:false, osSandbox:false.",
+    "Default core path remains lazy; managed Codex setup refuses unsupported pack flags.",
+    "Observed live Zod advisory required exact patch pin; production audit failed before and returned zero after.",
+    "All 117/152 mappings preserved with pending rights and acceptance visible; no stage credit."
+  ],
+  "tests": [
+    {
+      "name": "baseline native Windows",
+      "result": "319/319 passed; build/install exit0"
+    },
+    {
+      "name": "RED before behavior",
+      "result": "actual CLI/MCP tests exit1 against baseline; original hash in report"
+    },
+    {
+      "name": "focused expanded GREEN",
+      "result": "16/16,0fail/skip/cancel; actual MCP abort and owned process cleanup"
+    },
+    {
+      "name": "npm audit omit dev",
+      "result": "before1high; after Zod4.6.7 zero advisories"
+    },
+    {
+      "name": "independent code review",
+      "result": "No confirmed blocker in initial five files; documented limitations and added transport cancellation test"
+    },
+    {
+      "name": "full candidate qualification",
+      "result": "pending; see later receipt and PR exact-head checks"
+    },
+    {
+      "name": "Normal prepack and final installed qualification",
+      "result": "prepack0; native335/335; installed16/16; four production license files retained; measured core under50m; self-host0; isolated native Codex0.160.1 registration0; see receipt",
+      "evidence": "docs/validation/2026-11-07-aug001-receipts.json"
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "ids": "CLI-036,CLI-038,CLI-151,CLI-152,CLI-153,CLI-262,CLI-265,CLI-267,CLI-276,CLI-287,CLI-300",
+      "assessment": "Evidence/notes/reviewer only, plus review timestamp; stages, acceptance, weights, estimates, dependencies, blockers and platforms unchanged."
+    }
+  ],
+  "limitations": [
+    "Trusted owner-reviewed code only; no OS sandbox or import-closure enforcement.",
+    "Shared process output is visible to execution-authorized clients.",
+    "Known local pathname races and detached-descendant cleanup limitations remain.",
+    "Human execution-policy review required before merge.",
+    "Full CLI038 bundle, third-party rights and real client acceptance remain open."
+  ],
+  "next_unverified_action": "Publish issue-linked draft PR, observe exact-head hosted platform gates, then obtain human execution-policy review before merge.",
+  "model_calls": 0,
+  "actualCodexAgentToolInvocation": false,
+  "actualChatGPTToolInvocation": false,
+  "realUserAuthOrEnrollmentTouched": false,
+  "baseline_completed_at_utc": "2026-11-07T19:27:23.5101641Z",
+  "source_sha256": {
+    "src/cli.ts": "9b92f615cfb544c52dbb8c5861900568abeab9cb36017d6270d93d86cd4d4b63",
+    "src/mcp.ts": "f082fb021413057c83fd9ac27006de21602f404a88807424e354bb22f4d89a9a",
+    "src/tool-packs.ts": "2e2b992895675e1157430c45aea31abc8495b2188d9631dd0924e89b9472c68e",
+    "tests/tool-packs.test.mjs": "a7c2c2de95ca7b9c1e8104a223f108fe12872a300266fff5cf57ad4f9461adfb",
+    "scripts/verify-package.mjs": "9092546e0a545e741c6a91d20a471f6e2e7a7ab1d89f5f6492a99b54c6749d0a",
+    "package.json": "ecc56a118accabe88a1ed9a25d2f13f174f90f972928152398eea4dc522f9383",
+    "package-lock.json": "5793891fa2aba95a706744e8c60724dfab21a315a20ec4ba347db35acb0d0ff5",
+    "npm-shrinkwrap.json": "5793891fa2aba95a706744e8c60724dfab21a315a20ec4ba347db35acb0d0ff5",
+    "versions.json": "4462cc3a2c026633499ae55285f1a018641e01ede2715bfab0909efac5bdbfc7",
+    "THIRD_PARTY.md": "a6f206b9dd559371b87145d3a4bbcc187cc91318c6b26f9a40374e827947ec23"
+  }
+}

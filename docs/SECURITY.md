@@ -275,3 +275,27 @@ remain unverified; plugin creation and automated ChatGPT browser access encounte
 explicit blockers recorded in the owner checkpoint.
 Production promotion, remote write/execute activation and full DCP/WEB acceptance
 remain separate gates.
+
+
+## Explicit optional packs — 2026-11-07
+
+The [ABI 1 local pack boundary](OPTIONAL_PACKS.md) loads only when an owner supplies
+`--pack-registry`. Each pack also requires `--allow-exec` and exact `--allow-pack ID`.
+Registration is preview-first, changes only local metadata with explicit `--apply`,
+and never starts a pack. Native help/status and missing-pack recovery remain independent.
+The execution grant also enables existing general process tools; the pack allowlist
+is not confinement of that authority.
+
+Manifest and declared UTF-8 payload files are hash-pinned and checked before a call.
+Those pins do not cover undeclared imports, all transitive code, or local path races.
+An approved Node sidecar can access the OS user's files, network and process APIs.
+No OS sandbox, third-party license approval, remote write/exec or model lane is granted.
+Bounded protocol I/O, strict schemas, cancellation/deadlines and owned cleanup use the
+existing process runner. Raw pack error responses omit backend stderr, but an authorized
+process client can inspect shared owned-session output. See the contract for exact
+limits and the existing descendant-containment limitations.
+
+Qualification found GHSA-mrhx-c7xc-m3w5 in the prior Zod 4.6.5 production pin. This
+change advances it to exact 4.6.7 and adds a bounded constrained-array regression.
+The subsequent production advisory audit returned zero findings; that database result
+is not an exhaustive vulnerability certification.

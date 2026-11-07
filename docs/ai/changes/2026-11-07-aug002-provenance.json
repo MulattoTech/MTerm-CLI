@@ -3,7 +3,7 @@
   "provider": "OpenAI",
   "model": "GPT-6 Astra Pro",
   "identity_basis": "Self-reported ChatGPT Web executor and independent read-only peer",
-  "updated_at_utc": "2026-11-07T23:07:28.925Z",
+  "updated_at_utc": "2026-11-07T23:14:16.067Z",
   "base_sha": "560b3713bb9aea36578b8b7b576f4beda0775a6d",
   "branch": "feat/aug-002-provenance-gate-20261107",
   "primary_issue": "AUG-002/#85; expansion #81",
@@ -29,7 +29,8 @@
     "package-lock.json",
     "npm-shrinkwrap.json",
     "tests/bundled-runtime.test.mjs",
-    "vendor/modelcontextprotocol-server/"
+    "vendor/modelcontextprotocol-server/",
+    "docs/expansion/sources.json"
   ],
   "decisions": [
     "No additional runtime package count or provenance helper/model/network execution; the existing SDK dependency is replaced with the reviewed immutable archive.",
@@ -39,7 +40,8 @@
     "Owner authorization covers delivery; rights and tests remain technical evidence.",
     "Full notices retained for eight embedded npm components and JSON Schema origin.",
     "Preserve raw npm producer failure bytes with -text and an exact capture hash regression.",
-    "Fingerprint vendor inputs and .gitattributes; do not award acceptance for the artifact alone."
+    "Fingerprint vendor inputs and .gitattributes; do not award acceptance for the artifact alone.",
+    "Reconcile the SDK source-catalog row with the actual retained rebuild; preserve all other source rows, mappings and zero full-source acceptance counts."
   ],
   "tests": [
     {

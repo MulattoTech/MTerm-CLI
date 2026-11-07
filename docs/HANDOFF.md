@@ -1,3 +1,13 @@
+# AUG-002 current continuation — 2026-11-07
+
+PR #199 is merged at560b3713bb9aea36578b8b7b576f4beda0775a6d with tested treec1749e116d3ec05aee83b7bda189c9b15c43f0da; final-head9/9 and merged-main5/5 checks passed. Owner standing authorization is recorded; no further human review is required for qualified MTerm delivery.
+
+The sole implementation pilot now owns AUG-002/#85 on feat/aug-002-provenance-gate-20261107 in H:\MTechLabs\Dev\MTerm-CLI-AUG002-20261107. Read docs/PROVENANCE.md and docs/validation/2026-11-07-aug002-provenance.md. Source/test, notice, SPDX and installed qualification are in progress. SDK bundled attribution is retained, with full generalized admission/embedded-file SBOM acceptance still pending. Preserve all other worktrees. Next action is final native/installed/security/license qualification, independent final diff review, exact-head hosted checks, issue-linked PR and normal merge/main verification. No Codex model lane.
+
+Latest PR receipts supersede preparation statuses. AUG0/117 accepted; CLI29.12% maturity and0/300complete; DCP0/48; WEB0/12. Historical segments follow.
+
+---
+
 # Standing authorization update — 2026-11-07
 
 The owner explicitly approved PR #199 and requested autonomous MTerm-CLI delivery with no recurring manual review. Read [OWNER_AUTHORIZATION.md](OWNER_AUTHORIZATION.md), follow independent review and automated gates, merge qualified work and continue the queue. Do not treat historical pending-human notes below as a current blocker. No Codex model usage is enabled.

@@ -2,7 +2,13 @@
 
 Repository: `MulattoTech/MTerm-CLI`. Parent: [#81](https://github.com/MulattoTech/MTerm-CLI/issues/81). Base: `d5fcc2f665b2b4f7d033ffd32b7c22ca9d7a4015`. This is a resumable implementation checkpoint, not full product acceptance.
 
-## Current transaction
+## Current AUG-002 segment
+
+PR #199 merged at560b3713bb9aea36578b8b7b576f4beda0775a6d after9/9 final-head checks and independent review;5/5 main checks and identical tree verified. AUG-001 remains partially delivered/open for broader acceptance. The single active pilot now implements [AUG-002/#85](https://github.com/MulattoTech/MTerm-CLI/issues/85), branch feat/aug-002-provenance-gate-20261107, normal clone H:\MTechLabs\Dev\MTerm-CLI-AUG002-20261107. [Contract](../PROVENANCE.md) and [evidence](../validation/2026-11-07-aug002-provenance.md). No recurring human approval gate.
+
+Current counts:1 merged issue slice,1 active pilot,0/117 accepted. The initial source/test/licensing work needs final-head native, installed, independent and hosted qualification. Next candidates after this delivery are #94 evidence matrix, #83 pack discovery using the merged ABI, and #95 fail-closed startup; full #95 acceptance is blocked by still-open #2/#53. Recheck CLI dependencies and live ownership; these are scoped implementation candidates, not blanket prerequisite acceptance. Latest PR comments supersede the historical AUG-001 preparation below.
+
+## Historical AUG-001 transaction
 
 - One implementation owner: ChatGPT Web / OpenAI GPT-6 Astra Pro, self-reported. One independent read-only reviewer; no model CLI worker started.
 - Issue: [AUG-001 / #82](https://github.com/MulattoTech/MTerm-CLI/issues/82). Branch: `feat/aug-001-tool-pack-boundary-20261107`.

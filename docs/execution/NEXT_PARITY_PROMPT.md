@@ -1,3 +1,5 @@
+> Current operating authority (2026-11-07): [standing owner authorization](../OWNER_AUTHORIZATION.md) supersedes repeated manual-review/owner-action requirements in this historical prompt. The authorized executor performs covered MTerm-CLI work and qualified normal merges without another confirmation. Technical acceptance, actual access and the original model-cost restriction still apply.
+
 ## Windows DPAPI bounds follow-up — 2026-11-02T21:55:56.070535+00:00
 
 PR #79 merged as `458e0bd72b94f34fbc74662a0cfd570bdb42bdcb` with the qualified

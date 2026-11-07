@@ -1,0 +1,60 @@
+{
+  "change_id": "2026-11-07-owner-authorization",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "identity_basis": "Self-reported ChatGPT Web executor and independent read-only peer",
+  "updated_at_utc": "2026-11-07T21:22:52.014Z",
+  "base_sha": "e1453c57c0f289cd5c63a24ba243a1bd3a4013bd",
+  "branch": "feat/aug-001-tool-pack-boundary-20261107",
+  "primary_issue": "AUG-001/#82 and expansion #81; explicit owner instruction",
+  "summary": "Implement standing owner authorization and remove recurring project human-review gates; retain technical checks and runtime authorization.",
+  "files_modified": [
+    "docs/OWNER_AUTHORIZATION.md",
+    "AGENTS.md",
+    "docs/ORCHESTRATION.md",
+    "docs/GITHUB_ORCHESTRATION_SETUP.md",
+    ".github/pull_request_template.md",
+    ".github/CODEOWNERS",
+    "docs/HANDOFF.md",
+    "docs/expansion/README.md",
+    "docs/OPTIONAL_PACKS.md",
+    "docs/SECURITY.md",
+    "docs/execution/READ_FIRST.md",
+    "docs/execution/MASTER_IMPLEMENTATION_PROMPT.md",
+    "docs/execution/NEXT_PARITY_PROMPT.md",
+    "scripts/roadmap.mjs",
+    "docs/expansion/queue.json",
+    "docs/validation/2026-11-07-owner-authorization.md",
+    "docs/roadmap/progress.json"
+  ],
+  "decisions": [
+    "Owner instruction is explicit authority; no invented permission or self-approval.",
+    "No product runtime permissions changed; other clients still require their actual grants.",
+    "No forced publication, private credential use, or model-consuming lane.",
+    "Historical evidence stays historical; current handoff and queue reflect the new authorization.",
+    "Canonical authorization and operating guides are source-fingerprinted."
+  ],
+  "tests": [
+    {
+      "name": "Live repository reconciliation",
+      "result": "PR199 e1453 open/draft/mergeable; main d5fcc; no protection/rulesets; pilot clean; primary11 dirty paths preserved."
+    },
+    {
+      "name": "Normal quick local qualification",
+      "result": "Build/typecheck/format/parity/review gates and 335/335 tests passed without skips/failures/cancellations; no runtime/dependency diff.",
+      "sourceFingerprint": "703f36e4307e11739f370e879554cb18ffc38b238a141fe9a3ee365d98dbd42f",
+      "completedUtc": "2026-11-07T21:24:27.0127874Z"
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "ids": "CLI-003,CLI-300",
+      "assessment": "Evidence/notes/reviewer only; protected acceptance/stage/weight/estimate/dependency/blocker fields unchanged."
+    }
+  ],
+  "model_calls": 0,
+  "limitations": [
+    "Standing owner approval does not make technical acceptance or unavailable external authentication pass."
+  ],
+  "next_unverified_action": "Review, render/check, qualify exact new head, normal expected-head merge PR199 and verify merge/main; continue #85."
+}

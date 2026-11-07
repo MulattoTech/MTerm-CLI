@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-07-aug001-pack-boundary; lazy opt-in pack discovery through the owned process runner.
 // Modified: 2026-11-02-config-contract; set success reports its committed effective preference value.
 // Modified: 2026-11-02-file-info-contract; forward cooperative metadata cancellation.
 // Modified: 2026-10-05-codex-parity-foundation; opt-in bounded DesktopCommander file aliases.
@@ -26,6 +27,8 @@ export interface HostOptions {
   allowWrite?: boolean;
   allowExec?: boolean;
   compatDesktopCommander?: boolean;
+  packRegistry?: string;
+  allowPacks?: readonly string[];
 }
 export async function runMcp(options: HostOptions): Promise<void> {
   const roots = options.roots ?? [options.root];
@@ -45,6 +48,15 @@ export async function runMcp(options: HostOptions): Promise<void> {
     jobs.setExecutionGuard((command) => configuration.checkExecutable(command));
     git.setExecutionGuard((command) => configuration.checkExecutable(command));
   }
+  const packs = options.packRegistry
+    ? await (
+        await import('./tool-packs.js')
+      ).PackCatalog.create({
+        registry: options.packRegistry,
+        allowPacks: options.allowPacks ?? [],
+        jobs,
+      })
+    : undefined;
   const cleanupTools = new Set(['mterm_stop_process', 'mterm_read_process_output', 'mterm_list_sessions']);
   let active = 0;
   const audit: Array<{ at: string; tool: string; outcome: string; durationMs: number }> = [];
@@ -96,7 +108,7 @@ export async function runMcp(options: HostOptions): Promise<void> {
             annotations: {
               readOnlyHint: readOnly,
               destructiveHint: !readOnly,
-              openWorldHint: name === 'mterm_start_process',
+              openWorldHint: name === 'mterm_start_process' || name.startsWith('mterm_pack_'),
             },
           },
           async (args, ctx) => {
@@ -156,6 +168,10 @@ export async function runMcp(options: HostOptions): Promise<void> {
           },
         );
       }
+      for (const tool of packs?.tools ?? [])
+        add(tool.name, tool.description, tool.inputSchema, false, (args, signal) =>
+          tool.invoke(args, signal),
+        );
       if (options.compatDesktopCommander && configuration) {
         const compat = DesktopCommanderFiles.using(files, () => configuration.current());
         add(
@@ -287,6 +303,7 @@ export async function runMcp(options: HostOptions): Promise<void> {
             textFileAliases: options.compatDesktopCommander ? (files.allowWrite ? 8 : 4) : 0,
           },
           osSandbox: false,
+          optionalPacks: packs?.describe() ?? { configured: false, osSandbox: false },
           limits: {
             fileBytes: files.maxBytes,
             activeJobs: 8,

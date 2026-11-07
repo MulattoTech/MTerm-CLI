@@ -18,4 +18,4 @@ No private auth/profile/log material, unverified hosted CI claim or bypass of de
 - [ ] Regression RED before GREEN, scoped tests and cross-platform limits documented
 - [ ] Run node scripts/orchestration/verify.mjs --quick on submitted head
 - [ ] Hosted check name/run/commit verified; CI fail/unknown is not accepted PASS
-- [ ] Sensitive source changed? Human review required; no premature auto-merge
+- [ ] Sensitive source reviewed independently; standing owner authorization recorded; exact-head gates pass before normal expected-head merge

@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-07-aug001-pack-boundary; qualify optional packs through the exact installed runtime.
 // AI-Change: 2026-10-04-local-mcp
 // Modified: 2026-11-02-config-installed-qualification; qualify shared runtime preferences from the installed package.
 // Modified: 2026-11-02-file-info-contract; retain installed compatibility scenario and cleanup evidence.
@@ -194,6 +195,46 @@ assert.equal(remoteState.fixtureCleanupVerified, true);
 assert.equal(remoteState.syntheticOnly, true);
 assert.equal(remoteState.actualRemoteEnrollment, false);
 assert.equal(remoteState.modelCalls, 0);
+const packBindings = [];
+for (const name of ['cli.js', 'mcp.js', 'tool-packs.js']) {
+  const source = await fs.readFile(path.join(root, 'dist', name));
+  const installedBytes = await fs.readFile(path.resolve(path.dirname(installed), '../dist', name));
+  assert.deepEqual(installedBytes, source, 'Installed pack boundary differs from compiled source');
+  packBindings.push({
+    path: 'dist/' + name,
+    sha256: createHash('sha256').update(installedBytes).digest('hex'),
+  });
+}
+const packAcceptance = await exec(
+  process.execPath,
+  ['--test', '--test-reporter=tap', '--test-concurrency=1', path.join(root, 'tests/tool-packs.test.mjs')],
+  {
+    cwd: home,
+    env: { ...env, MTERM_VERIFY_BIN: installed },
+    timeout: 90000,
+    maxBuffer: 2097152,
+    windowsHide: true,
+  },
+);
+await fs.writeFile(path.join(output, 'optional-pack-tests.tap'), packAcceptance.stdout);
+const packTestCount = Number(packAcceptance.stdout.match(/^# tests (\d+)$/m)?.[1]);
+assert.ok(packTestCount >= 16, 'Installed optional-pack acceptance did not run');
+assert.match(packAcceptance.stdout, /^# fail 0$/m);
+assert.match(packAcceptance.stdout, /^# skipped 0$/m);
+assert.match(packAcceptance.stdout, /^# cancelled 0$/m);
+const installedOptionalPacks = {
+  ok: true,
+  tests: packTestCount,
+  failed: 0,
+  skipped: 0,
+  cancelled: 0,
+  moduleBindings: packBindings,
+  syntheticOnly: true,
+  modelCalls: 0,
+  osSandbox: false,
+  realClientConsent: false,
+  log: path.join(output, 'optional-pack-tests.tap'),
+};
 // CLI --prefix changes npm's local package root; environment prefix selects an isolated global link destination.
 env.npm_config_prefix = linkPrefix;
 assert.equal((await npmRun(['prefix', '--global'])).stdout.trim(), linkPrefix);
@@ -234,6 +275,52 @@ async function measure(dir) {
   }
 }
 await measure(path.join(prefix, 'node_modules'));
+assert.ok(productionBytes < 50000000, 'Installed standalone core exceeds 50,000,000 bytes');
+const reviewedLicenses = {
+  'mterm-cli': 'MIT',
+  '@modelcontextprotocol/core': 'Apache-2.0',
+  '@modelcontextprotocol/server': 'Apache-2.0',
+  zod: 'MIT',
+};
+const installedLock = JSON.parse(await fs.readFile(path.join(prefix, 'package-lock.json'), 'utf8'));
+const productionLicenseEvidence = [];
+for (const [location, locked] of Object.entries(installedLock.packages)) {
+  if (!location) continue;
+  assert.ok(location.startsWith('node_modules/') && !location.split('/').includes('..'));
+  const directory = path.join(prefix, location);
+  const metadata = JSON.parse(await fs.readFile(path.join(directory, 'package.json'), 'utf8'));
+  assert.ok(Object.hasOwn(reviewedLicenses, metadata.name), 'Unreviewed production package');
+  assert.equal(metadata.license, reviewedLicenses[metadata.name], 'Unreviewed production package license');
+  assert.equal(metadata.version, locked.version);
+  const sourceDirectory =
+    metadata.name === 'mterm-cli' ? root : path.join(root, 'node_modules', metadata.name);
+  const notices = (await fs.readdir(sourceDirectory)).filter((name) =>
+    /^(licen[cs]e|notice|copying)(?:\.|$)/i.test(name),
+  );
+  assert.ok(
+    notices.some((name) => /^licen[cs]e(?:\.|$)/i.test(name)),
+    'Missing production license',
+  );
+  const files = [];
+  for (const name of notices) {
+    const source = await fs.readFile(path.join(sourceDirectory, name));
+    const installedNotice = await fs.readFile(path.join(directory, name));
+    assert.deepEqual(installedNotice, source, 'Installed license/notice differs from reviewed package');
+    files.push({ path: name, sha256: createHash('sha256').update(installedNotice).digest('hex') });
+  }
+  productionLicenseEvidence.push({
+    name: metadata.name,
+    version: metadata.version,
+    license: metadata.license,
+    integrity: locked.integrity ?? null,
+    files,
+  });
+}
+assert.equal(
+  productionLicenseEvidence.length,
+  4,
+  'Production dependency set changed; review its rights and footprint',
+);
 for (const name of ['electron', '@modelcontextprotocol/client', 'typescript', 'prettier', '@types/node'])
   assert.equal(
     await fs
@@ -248,6 +335,8 @@ const report = {
   archiveBytes: pack.size,
   packageUnpackedBytes: pack.unpackedSize,
   installedProductionBytes: productionBytes,
+  installedStandaloneCoreUnder50MB: true,
+  productionLicenseEvidence,
   productionFiles,
   packagedMcpRoundTrip: true,
   ownedPrefixNpmLink: true,
@@ -256,6 +345,7 @@ const report = {
   installedCompatibility: compatibility,
   installedConfiguration: configuration,
   installedRemoteState: remoteState,
+  installedOptionalPacks,
   fullDesktopCommanderParity: false,
   fromOutsideCheckout: true,
   helpExternalLaunchSamplesMs: timings.map((x) => Math.round(x * 100) / 100),

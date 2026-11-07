@@ -1,0 +1,585 @@
+{
+  "schemaVersion": 1,
+  "utc": "2026-11-07T20:00:15.185Z",
+  "baseSha": "d5fcc2f665b2b4f7d033ffd32b7c22ca9d7a4015",
+  "branch": "feat/aug-001-tool-pack-boundary-20261107",
+  "testedSourceFingerprint": "138eb22f1b224989f0a7e5419eb757e5fed2d6a5edd9bd7fe76ce019fda8b040",
+  "finalReviewFingerprint": "138eb22f1b224989f0a7e5419eb757e5fed2d6a5edd9bd7fe76ce019fda8b040",
+  "postTestDocumentationChange": "Trim trailing blank line in HANDOFF; production and test source unchanged.",
+  "sourceHashes": {
+    "src/cli.ts": "9b92f615cfb544c52dbb8c5861900568abeab9cb36017d6270d93d86cd4d4b63",
+    "src/mcp.ts": "f082fb021413057c83fd9ac27006de21602f404a88807424e354bb22f4d89a9a",
+    "src/tool-packs.ts": "2e2b992895675e1157430c45aea31abc8495b2188d9631dd0924e89b9472c68e",
+    "tests/tool-packs.test.mjs": "a7c2c2de95ca7b9c1e8104a223f108fe12872a300266fff5cf57ad4f9461adfb",
+    "scripts/verify-package.mjs": "9092546e0a545e741c6a91d20a471f6e2e7a7ab1d89f5f6492a99b54c6749d0a",
+    "package.json": "ecc56a118accabe88a1ed9a25d2f13f174f90f972928152398eea4dc522f9383",
+    "package-lock.json": "5793891fa2aba95a706744e8c60724dfab21a315a20ec4ba347db35acb0d0ff5",
+    "npm-shrinkwrap.json": "5793891fa2aba95a706744e8c60724dfab21a315a20ec4ba347db35acb0d0ff5",
+    "versions.json": "4462cc3a2c026633499ae55285f1a018641e01ede2715bfab0909efac5bdbfc7",
+    "THIRD_PARTY.md": "a6f206b9dd559371b87145d3a4bbcc187cc91318c6b26f9a40374e827947ec23"
+  },
+  "baseline": {
+    "utc": "2026-11-07T19:27:23.5101641Z",
+    "sha": "d5fcc2f665b2b4f7d033ffd32b7c22ca9d7a4015",
+    "node": "v24.21.0",
+    "installExit": 0,
+    "buildExit": 0,
+    "testExit": 0
+  },
+  "red": {
+    "utc": "2026-11-07T19:37:40.2455442Z",
+    "base": "d5fcc2f665b2b4f7d033ffd32b7c22ca9d7a4015",
+    "node": "v24.21.0",
+    "exit": 1,
+    "stage": "RED-before-behavior-change",
+    "testFileSha256": "fb75895215602339ac45d190b836787cc395728ce16da4bef49c8a35750b44ad"
+  },
+  "redTotals": {
+    "tests": 12,
+    "pass": 1,
+    "fail": 11,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "quick": {
+    "utc": "2026-11-07T19:53:45.4275456Z",
+    "exit": 0,
+    "mode": "quick",
+    "node": "v24.21.0",
+    "sourceFingerprint": "b5509715e1e97c0e75f954449aa5f2428235b9a49fb9ec786bab838e2a5ac92c"
+  },
+  "nativeTests": {
+    "tests": 335,
+    "pass": 335,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "prepack": {
+    "utc": "2026-11-07T19:57:50.1792502Z",
+    "selfHostExit": 0,
+    "prepackExit": 0,
+    "sourceFingerprint": "138eb22f1b224989f0a7e5419eb757e5fed2d6a5edd9bd7fe76ce019fda8b040"
+  },
+  "finalPackage": {
+    "utc": "2026-11-07T19:58:12.2952940Z",
+    "installedExit": 0,
+    "sourceFingerprint": "138eb22f1b224989f0a7e5419eb757e5fed2d6a5edd9bd7fe76ce019fda8b040"
+  },
+  "installedPackage": {
+    "packageVersion": "0.0.1-preview.1",
+    "archiveBytes": 67541,
+    "packageUnpackedBytes": 264294,
+    "installedProductionBytes": 14220297,
+    "installedStandaloneCoreUnder50MB": true,
+    "productionLicenseEvidence": [
+      {
+        "name": "@modelcontextprotocol/core",
+        "version": "2.3.0",
+        "license": "Apache-2.0",
+        "integrity": "sha512-09BHFaNVBe5pB2AhzCfLj0cqmsKLERvZQ4FblzP90UMGLaXVqdZPByFjURwsUYCmxonUW2yAwgTTvle+8O2/8w==",
+        "files": [
+          {
+            "path": "LICENSE",
+            "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+          }
+        ]
+      },
+      {
+        "name": "@modelcontextprotocol/server",
+        "version": "2.3.0",
+        "license": "Apache-2.0",
+        "integrity": "sha512-+6b0LdsQLmHsvS7J6sQJ4weTpzUn61fU1JKS+321/+IyDYoHW5CR2Tgqcs6GgAAQvlesCo6yX3xttgmx+XGtJw==",
+        "files": [
+          {
+            "path": "LICENSE",
+            "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+          }
+        ]
+      },
+      {
+        "name": "mterm-cli",
+        "version": "0.0.1-preview.1",
+        "license": "MIT",
+        "integrity": "sha512-ufng2txUpzcJzfiAxgwW9U4wzSPvYcfjIPuYGbBSYjUa21DLwQDmgz2lH5S8BYdr172t7Vi4s0EBUzzIiort6Q==",
+        "files": [
+          {
+            "path": "LICENSE",
+            "sha256": "057801cf89de394d84ca2f5797e31619cb5fd66e6f4b7da7058db7887633ba37"
+          }
+        ]
+      },
+      {
+        "name": "zod",
+        "version": "4.6.7",
+        "license": "MIT",
+        "integrity": "sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==",
+        "files": [
+          {
+            "path": "LICENSE",
+            "sha256": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8"
+          }
+        ]
+      }
+    ],
+    "productionFiles": 994,
+    "packagedMcpRoundTrip": true,
+    "ownedPrefixNpmLink": true,
+    "offlineNpmExecFromTarball": true,
+    "npmExecMcpCompatibilityTools": 8,
+    "installedCompatibility": {
+      "npmExecMcp": true,
+      "compatibilityAliasesExercised": 8,
+      "directoryListing": {
+        "scenarios": [
+          "zero-depth",
+          "one-level-depth",
+          "default-depth-stable-exact-visible-overflow",
+          "link-not-traversed",
+          "root-private-link-missing-denials",
+          "schema-depth-denial"
+        ],
+        "passed": 6
+      },
+      "fileInfo": {
+        "scenarios": [
+          "text-stat-order-dates-empty-LF-CRLF-CR-BOM-Unicode",
+          "directory-handler-discriminator-no-lines",
+          "unchanged-inclusive-262144-byte-ceiling",
+          "binary-invalid-utf8-oversize-safe-omissions",
+          "unsupported-formats-stat-only",
+          "outside-private-link-hardlink-missing-denials",
+          "schema-path-denial",
+          "read-only-installed-restart-independent-capabilities"
+        ],
+        "passed": 8,
+        "readOnlyRestart": true
+      },
+      "multipleFiles": {
+        "scenarios": [
+          "ordered-summary-successes-duplicates-and-safe-partial-error",
+          "published-schema-and-one-to-twenty-path-boundaries",
+          "inclusive-full-text-byte-ceiling-and-one-byte-overflow",
+          "error-summary-and-separator-budget-in-both-orders",
+          "private-outside-format-hardlink-and-symlink-denials-no-mutation",
+          "read-only-installed-restart-capability-separation"
+        ],
+        "passed": 6,
+        "maxTextBytes": 262144,
+        "readOnlyRestart": true
+      },
+      "editBlock": {
+        "scenarios": [
+          "write-enabled-schema-discovery",
+          "CRLF-LF-CR-native-default-first-style-and-literal-byte-fidelity",
+          "normalized-exact-count-mismatch-and-schema-no-write",
+          "inclusive-UTF8-byte-limit-after-newline-expansion",
+          "private-and-outside-root-denials-preserve-bytes",
+          "read-only-restart-omits-edit-and-mutation-capabilities"
+        ],
+        "passed": 6,
+        "readOnlyRestart": true
+      },
+      "utf16Read": {
+        "scenarios": [
+          "native-UTF8-read-and-compatibility-write-edit-refusals-preserve-bytes",
+          "read-only-installed-restart-schema-and-capability-separation",
+          "exact-BOM-empty-Unicode-CRLF-CR-offset-tail-envelopes",
+          "malformed-surrogate-NUL-and-unsupported-encoding-refusals",
+          "inclusive-raw-byte-ceiling-counts-BOM-and-permits-bounded-UTF8-expansion",
+          "expanded-UTF8-aggregate-text-exact-byte-boundary",
+          "serialized-adapter-result-exact-byte-boundary-after-JSON-escaping",
+          "UTF16-root-private-hardlink-and-symlink-denials-preserve-bytes"
+        ],
+        "passed": 8,
+        "rawFileBytes": 262144,
+        "aggregateTextBytes": 262144,
+        "serializedAdapterResultBytes": 524288,
+        "readOnlyRestart": true,
+        "writesRemainUTF8": true
+      },
+      "ownedProcessExitsVerified": true,
+      "directoryFixtureCleanupVerified": true,
+      "multipleFileFixtureCleanupVerified": true,
+      "stderrCapturedBytes": 0,
+      "fullParity": false,
+      "modelCalls": 0
+    },
+    "installedConfiguration": {
+      "ok": true,
+      "packageVersion": "0.0.1-preview.1",
+      "node": "v24.21.0",
+      "platform": "win32",
+      "architecture": "x64",
+      "installedEntryUnderOwnedPrefix": true,
+      "installedEntrySha256": "1376dfb68527a2fef2444be718a0011c53333c90f416eb377a8bde43e5dcc5b0",
+      "installedConfigModuleSha256": "f6f412a83d13a1aab24398f1d54ca1c301e093c6de1511f2097e0d43b720cc32",
+      "concurrentMcpProcesses": 2,
+      "restartedMcpProcesses": 1,
+      "compatibilityToolsDiscovered": [
+        "get_config",
+        "set_config_value"
+      ],
+      "getConfigMetadata": {
+        "textMatchesStructuredConfig": true,
+        "processIdentityMatchesOwnedChild": true,
+        "boundedMemoryAndRuntimeFields": true,
+        "orderedPreferenceTypes": true,
+        "clientExtrasOmitted": true,
+        "unsupportedProbesExplicitlyOmitted": true,
+        "featureFlagProvider": "none"
+      },
+      "setConfigContract": {
+        "preferencesExercised": [
+          "blockedCommands",
+          "allowedDirectories",
+          "defaultShell",
+          "fileReadLineLimit",
+          "fileWriteLineLimit",
+          "telemetryEnabled"
+        ],
+        "exactTextOnlySuccess": true,
+        "successValueMatchesCommittedEffectiveSnapshot": true,
+        "normalizedBooleanStrings": true,
+        "singletonAndJsonArrays": true,
+        "deduplicatedCanonicalRootsAndMandatoryBlocks": true,
+        "rejectedCases": 14,
+        "rejectedPolicyAndBackupBytesPreserved": true,
+        "rejectedValuesOmittedFromErrors": true,
+        "shellPreferencePersistsWithoutShellExecutionClaim": true
+      },
+      "steps": [
+        "two-installed-processes-discovery-and-owner-roots",
+        "get-config-envelope-memory-process-metadata-and-omissions",
+        "six-setting-success-output-and-normalized-effective-values",
+        "six-setting-rejections-preserve-policy-backup-and-safe-error-output",
+        "cross-process-read-defaults-and-write-warning-byte-fidelity",
+        "three-concurrent-distinct-key-writes-without-lost-updates",
+        "runtime-root-narrowing-empty-denial-and-owner-ceiling-preservation",
+        "telemetry-preference-has-no-observed-node-network-transport",
+        "malformed-policy-denial-and-owned-process-cleanup",
+        "restart-persistence-without-inheriting-config-write-authority"
+      ],
+      "telemetryNetworkGuard": {
+        "interceptedCanaryAttempts": 10,
+        "canaryApis": [
+          "net.Socket.connect",
+          "tls.connect",
+          "http.get",
+          "https.request",
+          "http2.connect",
+          "dgram.Socket.send",
+          "dns.lookup",
+          "dns.promises.lookup",
+          "fetch",
+          "WebSocket"
+        ],
+        "observedProductAttempts": 0,
+        "maximumRetainedAttemptsPerChild": 128,
+        "preferenceValuesExercised": [
+          true,
+          false
+        ],
+        "scope": "Instrumented standard Node network APIs in the three MCP children; not an OS sandbox or a descendant-process network monitor."
+      },
+      "actualCodexAgentToolInvocation": false,
+      "processExitProof": "Bounded signal-0 polling observed ESRCH for each captured MCP PID and owned fixture process; no numeric-PID termination fallback.",
+      "fullConfigurationParity": false,
+      "modelCalls": 0,
+      "realUserConfigChanged": false,
+      "evidence": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG001-20261107\\artifacts\\package-verify-fi7D2P\\configuration-GWxsUz",
+      "shutdownVerified": true,
+      "ownedFixtureCleanup": true,
+      "stderrCapturedBytes": [
+        0,
+        0,
+        0
+      ]
+    },
+    "installedRemoteState": {
+      "ok": true,
+      "packageVersion": "0.0.1-preview.1",
+      "installedModule": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG001-20261107\\artifacts\\package-verify-fi7D2P\\install\\node_modules\\mterm-cli\\dist\\remote\\state.js",
+      "sourceSnapshotSHA256": "dc2d4353dff982f692c7afd09e5f1a1f22e36fa013bcb44a97aea028325128ed",
+      "moduleBindings": [
+        {
+          "path": "dist/remote/adapter.js",
+          "bytes": 6001,
+          "sha256": "d24f7c484cae8537652730fbe473ae631895b673d72c2b8cae3b2f0abb1faca4"
+        },
+        {
+          "path": "dist/remote/agent.js",
+          "bytes": 10112,
+          "sha256": "e19c1c28bf04f83a201f9aefce7533c7f37fa2cebad3c49c65a7fa5efb693b9f"
+        },
+        {
+          "path": "dist/remote/cli.js",
+          "bytes": 10586,
+          "sha256": "b27236e2aeb8ba8add5e781e775c5f6745ce126ed6e5e69e2a07f331c7e9ef6f"
+        },
+        {
+          "path": "dist/remote/protocol.js",
+          "bytes": 2552,
+          "sha256": "7d7f108e735b4c0ea05d1ead7a567497f451c05c75d8a4de6e7d4bed4a4444a1"
+        },
+        {
+          "path": "dist/remote/state.js",
+          "bytes": 17059,
+          "sha256": "27981330f53530327218149e85eb8461da4cfa871dd41cb705c8763e28465f5e"
+        }
+      ],
+      "syntheticOnly": true,
+      "actualRemoteEnrollment": false,
+      "realUserStateAccessed": false,
+      "windowsDpapiExercised": true,
+      "protectionFailurePreservesState": true,
+      "unprotectFailurePreservesState": true,
+      "platform": "win32",
+      "protection": "windows-dpapi-current-user",
+      "syntheticCredentialRoundtrip": true,
+      "spawnedProtectionChildren": 2,
+      "ownedProcessExitsVerified": true,
+      "childObservations": [
+        {
+          "phase": "protect-spawn-failure",
+          "pid": null,
+          "spawnObserved": false,
+          "exitObserved": false,
+          "exitCode": null,
+          "closeObserved": true,
+          "closeCode": -4058,
+          "errorCode": "ENOENT",
+          "closedWhenOperationSettled": true
+        },
+        {
+          "phase": "protect-roundtrip",
+          "pid": 54116,
+          "spawnObserved": true,
+          "exitObserved": true,
+          "exitCode": 0,
+          "closeObserved": true,
+          "closeCode": 0,
+          "errorCode": null,
+          "closedWhenOperationSettled": true
+        },
+        {
+          "phase": "unprotect-roundtrip",
+          "pid": 62124,
+          "spawnObserved": true,
+          "exitObserved": true,
+          "exitCode": 0,
+          "closeObserved": true,
+          "closeCode": 0,
+          "errorCode": null,
+          "closedWhenOperationSettled": true
+        },
+        {
+          "phase": "unprotect-spawn-failure",
+          "pid": null,
+          "spawnObserved": false,
+          "exitObserved": false,
+          "exitCode": null,
+          "closeObserved": true,
+          "closeCode": -4058,
+          "errorCode": "ENOENT",
+          "closedWhenOperationSettled": false
+        }
+      ],
+      "fixtureCleanupVerified": true,
+      "modelCalls": 0
+    },
+    "installedOptionalPacks": {
+      "ok": true,
+      "tests": 16,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "moduleBindings": [
+        {
+          "path": "dist/cli.js",
+          "sha256": "d43b4d55e18b90d951138510cb9fa8be0dffdfeca80d511b509731ef74145b56"
+        },
+        {
+          "path": "dist/mcp.js",
+          "sha256": "cda6fe0d184c3c85f413c4f13fe9ea948b1f962ef5dcd22953c3d5fdcca7a35a"
+        },
+        {
+          "path": "dist/tool-packs.js",
+          "sha256": "eb7147c3efbce2503db3d212a0f3ab48e032f0ad95874c8d0a9b60becf8025e1"
+        }
+      ],
+      "syntheticOnly": true,
+      "modelCalls": 0,
+      "osSandbox": false,
+      "realClientConsent": false,
+      "log": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG001-20261107\\artifacts\\package-verify-fi7D2P\\optional-pack-tests.tap"
+    },
+    "fullDesktopCommanderParity": false,
+    "fromOutsideCheckout": true,
+    "helpExternalLaunchSamplesMs": [
+      37.11,
+      31.36,
+      58.35,
+      34.97,
+      38.5
+    ],
+    "helpMedianMs": 37.105899999999565,
+    "nodeVersion": "v24.21.0",
+    "nodePrerequisiteBytes": 93580104,
+    "nodeBundled": false,
+    "codexBundled": false,
+    "webBundled": false,
+    "quotaAdapterBundled": false,
+    "fullThreeComponentUnder50MB": "NOT VERIFIED; this is a dependency-reuse local host, not that bundle",
+    "modelCalls": 0,
+    "userGlobalPrefixModified": false,
+    "evidence": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG001-20261107\\artifacts\\package-verify-fi7D2P"
+  },
+  "managedCodex": {
+    "utc": "2026-11-07T19:55:18.5947402Z",
+    "packageExit": 0,
+    "managedCodexExit": 0,
+    "modelRequests": 0
+  },
+  "selfHost": {
+    "actualRepositoryRead": true,
+    "actualGitStatus": true,
+    "typecheckExecutedThroughMtermMcp": true,
+    "typecheckExit": 0,
+    "toolCount": 15,
+    "rootWritesEnabled": false,
+    "executionExplicitlyEnabled": true,
+    "modelsInvoked": 0,
+    "webRelay": false,
+    "node": "v24.21.0"
+  },
+  "protectedLedgers": {
+    "protectedCliRows": 300,
+    "changedStages": 0,
+    "seedUnchanged": true,
+    "dcpUnchanged": true,
+    "webUnchanged": true
+  },
+  "security": {
+    "before": {
+      "auditReportVersion": 2,
+      "vulnerabilities": {
+        "zod": {
+          "name": "zod",
+          "severity": "high",
+          "isDirect": true,
+          "via": [
+            {
+              "source": 1243066,
+              "name": "zod",
+              "dependency": "zod",
+              "title": "Zod can exhaust memory while validating oversized constrained collections",
+              "url": "https://github.com/advisories/GHSA-mrhx-c7xc-m3w5",
+              "severity": "high",
+              "cwe": [
+                "CWE-770"
+              ],
+              "cvss": {
+                "score": 7.5,
+                "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+              },
+              "range": "<4.6.6"
+            }
+          ],
+          "effects": [],
+          "range": "<4.6.6",
+          "nodes": [
+            "node_modules/zod"
+          ],
+          "fixAvailable": {
+            "name": "zod",
+            "version": "4.6.7",
+            "isSemVerMajor": false
+          }
+        }
+      },
+      "metadata": {
+        "vulnerabilities": {
+          "info": 0,
+          "low": 0,
+          "moderate": 0,
+          "high": 1,
+          "critical": 0,
+          "total": 1
+        },
+        "dependencies": {
+          "prod": 4,
+          "dev": 35,
+          "optional": 20,
+          "peer": 0,
+          "peerOptional": 0,
+          "total": 38
+        }
+      }
+    },
+    "productionAfter": {
+      "auditReportVersion": 2,
+      "vulnerabilities": {},
+      "metadata": {
+        "vulnerabilities": {
+          "info": 0,
+          "low": 0,
+          "moderate": 0,
+          "high": 0,
+          "critical": 0,
+          "total": 0
+        },
+        "dependencies": {
+          "prod": 4,
+          "dev": 35,
+          "optional": 20,
+          "peer": 0,
+          "peerOptional": 0,
+          "total": 38
+        }
+      }
+    },
+    "allAfter": {
+      "auditReportVersion": 2,
+      "vulnerabilities": {},
+      "metadata": {
+        "vulnerabilities": {
+          "info": 0,
+          "low": 0,
+          "moderate": 0,
+          "high": 0,
+          "critical": 0,
+          "total": 0
+        },
+        "dependencies": {
+          "prod": 4,
+          "dev": 35,
+          "optional": 20,
+          "peer": 0,
+          "peerOptional": 0,
+          "total": 38
+        }
+      }
+    },
+    "changedFileSecretPatternScan": {
+      "files": 23,
+      "matches": 0,
+      "scope": "Changed text only; five common credential patterns, not comprehensive secret detection."
+    }
+  },
+  "review": {
+    "independentReadOnly": "No confirmed blocker in initial and bounded follow-up reviews; known limitations documented. Reviewer did not execute tests.",
+    "humanExecutionReview": "pending"
+  },
+  "actualClientAcceptance": {
+    "chatgptMterm": false,
+    "codexModelToolCall": false,
+    "cloudflareMutation": false
+  },
+  "limitations": [
+    "Trusted local sidecars execute as OS user; no sandbox/import-closure enforcement.",
+    "License checks bind installed production notices; they do not approve 152 upstream sources.",
+    "CLI038 full-component bundle remains unverified.",
+    "Actual client consent and whole-product acceptance remain open."
+  ]
+}

@@ -4,7 +4,7 @@ MTerm-owned code is MIT. Dependencies retain their own notices and are not re-li
 
 - @modelcontextprotocol/server 2.3.0: Apache-2.0; runtime. Integrity is recorded in the npm lock/shrinkwrap and versions.json.
 - @modelcontextprotocol/client 2.3.0: Apache-2.0; development only. Integrity is recorded in the npm lock/shrinkwrap and versions.json.
-- zod 4.6.5: MIT; runtime. Integrity is recorded in the npm lock/shrinkwrap and versions.json.
+- zod 4.6.7: MIT; runtime. Integrity is recorded in the npm lock/shrinkwrap and versions.json.
 - typescript 7.0.2: Apache-2.0; development only. Integrity is recorded in the npm lock/shrinkwrap and versions.json.
 - @types/node 26.6.4: MIT; development only. Integrity is recorded in the npm lock/shrinkwrap and versions.json.
 - prettier 3.9.9: MIT; development only. Integrity is recorded in the npm lock/shrinkwrap and versions.json.

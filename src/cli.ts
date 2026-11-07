@@ -1,20 +1,29 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-07-aug001-pack-boundary; explicit local pack registration and execution grants.
 // AI-Change: 2026-10-04-local-mcp (OpenAI / GPT-6 Astra Pro; self-reported)
 import path from 'node:path';
 import { safeError, fail } from './errors.js';
 export const VERSION = '0.0.1-preview.1';
 export function parseHost(args: string[]) {
   const roots: string[] = [],
-    allowedShells: string[] = [];
+    allowedShells: string[] = [],
+    allowPacks: string[] = [];
   let stdio = false,
     allowWrite = false,
     allowExec = false,
     compatDesktopCommander = false,
     allowConfigWrite = false;
   let compatConfig: string | undefined;
+  let packRegistry: string | undefined;
   for (let i = 0; i < args.length; i++) {
     const option = args[i];
-    if (option === '--root' || option === '--compat-config' || option === '--allow-shell') {
+    if (
+      option === '--root' ||
+      option === '--compat-config' ||
+      option === '--allow-shell' ||
+      option === '--pack-registry' ||
+      option === '--allow-pack'
+    ) {
       const value = args[++i];
       if (!value || value.startsWith('--')) fail('USAGE', option + ' requires a value.');
       if (option === '--root') roots.push(path.resolve(value));
@@ -22,6 +31,14 @@ export function parseHost(args: string[]) {
         if (compatConfig || !path.isAbsolute(value))
           fail('USAGE', '--compat-config requires one absolute file path.');
         compatConfig = path.resolve(value);
+      } else if (option === '--pack-registry') {
+        if (packRegistry || !path.isAbsolute(value))
+          fail('USAGE', '--pack-registry requires one absolute file path.');
+        packRegistry = path.resolve(value);
+      } else if (option === '--allow-pack') {
+        if (value.length > 24 || !/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/.test(value) || allowPacks.includes(value))
+          fail('USAGE', '--allow-pack requires a distinct supported pack ID.');
+        allowPacks.push(value);
       } else allowedShells.push(value);
     } else if (option === '--stdio') stdio = true;
     else if (option === '--allow-write') allowWrite = true;
@@ -36,6 +53,8 @@ export function parseHost(args: string[]) {
   if (!compatDesktopCommander && (compatConfig || allowConfigWrite || allowedShells.length))
     fail('USAGE', 'Compatibility configuration options require --compat-desktop-commander.');
   if (allowedShells.length > 16) fail('USAGE', 'At most sixteen owner-selected shells are supported.');
+  if (allowPacks.length > 16 || (allowPacks.length && !packRegistry))
+    fail('USAGE', 'At most sixteen --allow-pack grants require an explicit --pack-registry.');
   return {
     root: roots[0]!,
     roots,
@@ -45,11 +64,13 @@ export function parseHost(args: string[]) {
     compatConfig,
     allowConfigWrite,
     allowedShells,
+    packRegistry,
+    allowPacks,
   };
 }
 
 function help() {
-  return `MTerm-CLI ${VERSION} — workstation preview\n\n  mterm-cli                         Launch existing Codex, unchanged TUI\n  mterm-cli -- <codex arguments>     Explicit pass-through, no injected flags\n  mterm-cli mcp --stdio --root PATH [--root OTHER] [--allow-write] [--allow-exec]\n  mterm-cli remote help              Configure and pair an outbound read-only agent\n  mterm-cli doctor --json [--root PATH]\n  mterm-cli setup codex --root PATH [--allow-write] [--allow-exec] [--apply]\n  mterm-cli remove codex [--name NAME] [--apply]\n  mterm-cli config [show|get KEY|set KEY VALUE|path] [--json]\n  mterm-cli status [--json|--line]    Quota integration not implemented yet\n  mterm-cli update                   Managed updater not implemented yet\n\nOptional --compat-desktop-commander exposes eight implemented text/file aliases, not full26-tool parity.\nCompatibility options: --compat-desktop-commander [--compat-config ABSOLUTE_FILE] [--allow-config-write] [--allow-shell EXECUTABLE].\nMCP defaults to read-only. Execution is separate and runs as your OS user, not a sandbox.\nRemote access requires explicit setup, authenticated pairing and foreground remote start.\nDefault local commands open no listener, start no daemon and make no quota request or automatic installation.\nsetup previews by default; --apply performs explicit backed-up registration. remove codex --apply removes only the exact owned block.\n`;
+  return `MTerm-CLI ${VERSION} — workstation preview\n\n  mterm-cli                         Launch existing Codex, unchanged TUI\n  mterm-cli -- <codex arguments>     Explicit pass-through, no injected flags\n  mterm-cli mcp --stdio --root PATH [--root OTHER] [--allow-write] [--allow-exec]\n  mterm-cli packs help               Inspect and register optional local packs\n  mterm-cli remote help              Configure and pair an outbound read-only agent\n  mterm-cli doctor --json [--root PATH]\n  mterm-cli setup codex --root PATH [--allow-write] [--allow-exec] [--apply]\n  mterm-cli remove codex [--name NAME] [--apply]\n  mterm-cli config [show|get KEY|set KEY VALUE|path] [--json]\n  mterm-cli status [--json|--line]    Quota integration not implemented yet\n  mterm-cli update                   Managed updater not implemented yet\n\nOptional --compat-desktop-commander exposes eight implemented text/file aliases, not full26-tool parity.\nCompatibility options: --compat-desktop-commander [--compat-config ABSOLUTE_FILE] [--allow-config-write] [--allow-shell EXECUTABLE].\nOptional pack execution: --pack-registry ABS_FILE --allow-exec --allow-pack ID (repeat per pack).\nMCP defaults to read-only. Execution is separate and runs as your OS user, not a sandbox.\nRemote access requires explicit setup, authenticated pairing and foreground remote start.\nDefault local commands open no listener, start no daemon and make no quota request or automatic installation.\nsetup previews by default; --apply performs explicit backed-up registration. remove codex --apply removes only the exact owned block.\n`;
 }
 async function doctor(args: string[]) {
   const { settings } = await import('./config.js');
@@ -129,6 +150,7 @@ export async function main(args: string[]): Promise<number> {
     return 0;
   }
   if (args[0] === 'remote') return (await import('./remote/cli.js')).remoteMain(args.slice(1));
+  if (args[0] === 'packs') return (await import('./tool-packs.js')).packsMain(args.slice(1));
   if (args[0] === 'doctor') return doctor(args.slice(1));
   if (args[0] === 'tools') {
     const opts = parseHost(['--stdio', ...args.slice(1)]);
@@ -195,6 +217,11 @@ export async function main(args: string[]): Promise<number> {
       return 0;
     }
     const opts = parseHost(['--stdio', ...host]);
+    if (opts.packRegistry)
+      fail(
+        'USAGE',
+        'Managed Codex registration does not yet preserve optional-pack grants. Use explicit stdio arguments.',
+      );
     const plan = await registration.planCodexRegistration({ ...opts, name });
     if (apply) console.log(JSON.stringify(await registration.applyCodexRegistration(plan), null, 2));
     else

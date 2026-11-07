@@ -1,3 +1,7 @@
+# Standing authorization update — 2026-11-07
+
+The owner explicitly approved PR #199 and requested autonomous MTerm-CLI delivery with no recurring manual review. Read [OWNER_AUTHORIZATION.md](OWNER_AUTHORIZATION.md), follow independent review and automated gates, merge qualified work and continue the queue. Do not treat historical pending-human notes below as a current blocker. No Codex model usage is enabled.
+
 # AUG expansion pilot — 2026-11-07
 
 Read [the current expansion checkpoint](expansion/README.md), [pack ABI contract](OPTIONAL_PACKS.md)
@@ -9,7 +13,7 @@ is preserved; PR52 merged and PR67 was incorporated through merged PR69.
 
 The optional local pack slice and exact Zod advisory remediation are under qualification.
 Only synthetic local fixtures and SDK clients were used; no model requests or actual
-user-auth/cloud changes. Human execution-policy review remains a merge gate. Keep
+user-auth/cloud changes. Owner authorization now covers this execution-policy change and normal merge; see OWNER_AUTHORIZATION.md. Final-head automated qualification remains required. Keep
 AUG 0/117, CLI maturity 29.12%, DCP 0/48 and WEB 0/12 separate from test counts.
 Latest exact-head PR comments/receipts supersede preparation statuses below.
 

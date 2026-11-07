@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "asOf": "2026-11-07T20:17:08.779Z",
+  "asOf": "2026-11-07T21:22:52.007Z",
   "repository": "MulattoTech/MTerm-CLI",
   "epic": 81,
   "baseSha": "d5fcc2f665b2b4f7d033ffd32b7c22ca9d7a4015",
@@ -27,7 +27,7 @@
     "fresh installed package and actual MCP initialize/list/call",
     "supported OS CI at exact head",
     "licenses/NOTICE/SBOM and production vulnerability audit",
-    "independent code review plus human review when policy requires",
+    "independent technical review plus recorded standing owner authorization",
     "real authorized client integration where applicable"
   ],
   "issues": [
@@ -68,10 +68,11 @@
         "darwin-arm64",
         "darwin-x64"
       ],
-      "automatedTests": "First head Windows/Ubuntu/fast green; macOS runner migration and fixture flush correction under qualification. No platform acceptance from cancellation/failure.",
+      "automatedTests": "e1453c57c0f289cd5c63a24ba243a1bd3a4013bd: all five PR checks and four push jobs passed; Windows335/335; Linux/macOS323 pass plus12 existing Windows-specific skips; installed16/16 each. Subsequent authorization head requires its own gates.",
       "actualClient": "not verified",
-      "blocker": "Human execution-policy review, exact-head hosted/installed gates and broader CLI-038/full-client acceptance remain open.",
-      "declaredIssueDependencies": []
+      "blocker": "Full AUG-001 scope, broader CLI-038 bundle and actual-client acceptance remain unverified. Owner approved normal merge; final-head automated qualification remains required.",
+      "declaredIssueDependencies": [],
+      "ownerAuthorization": "PR199 and subsequent qualified delivery approved by owner on 2026-11-07; docs/OWNER_AUTHORIZATION.md"
     },
     {
       "id": "AUG-002",
@@ -6790,5 +6791,13 @@
       "issueUpdatedAt": "2026-10-17T04:04:08Z",
       "acceptance": "Not independently qualified by this expansion checkpoint; an issue state is not acceptance evidence."
     }
-  ]
+  ],
+  "ownerAuthorization": {
+    "record": "docs/OWNER_AUTHORIZATION.md",
+    "effectiveDate": "2026-11-07",
+    "pr199Approved": true,
+    "standingApproval": true,
+    "recurringManualReview": false,
+    "codexModelLaneAuthorized": false
+  }
 }

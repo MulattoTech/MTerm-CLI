@@ -299,3 +299,7 @@ Qualification found GHSA-mrhx-c7xc-m3w5 in the prior Zod 4.6.5 production pin. T
 change advances it to exact 4.6.7 and adds a bounded constrained-array regression.
 The subsequent production advisory audit returned zero findings; that database result
 is not an exhaustive vulnerability certification.
+
+## Project workflow authorization — 2026-11-07
+
+The owner delegates project implementation, configuration and qualified delivery through [OWNER_AUTHORIZATION.md](OWNER_AUTHORIZATION.md), with no repeated manual review. This is an authorization for the executor to act through legitimate owner access. It does not grant another MCP client new capabilities, disable root/identity checks, relax token/consent validation or make an untested integration accepted. The executor may select the required scoped grants and apply flags on the owner's behalf; independent review and technical security/rights evidence remain mandatory.

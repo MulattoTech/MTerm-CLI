@@ -1,3 +1,5 @@
+> Current operating authority (2026-11-07): [standing owner authorization](../OWNER_AUTHORIZATION.md) supersedes repeated manual-review/owner-action requirements in this historical prompt. The authorized executor performs covered MTerm-CLI work and qualified normal merges without another confirmation. Technical acceptance, actual access and the original model-cost restriction still apply.
+
 # MTerm GUI/CLI Two-Repository Split — Master Execution Prompt
 
 **Intended executor:** a ChatGPT Web GPT-6 Astra Pro reasoning conversation with Remote Desktop Commander and GitHub connected.

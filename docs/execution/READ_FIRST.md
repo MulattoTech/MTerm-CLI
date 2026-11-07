@@ -1,3 +1,5 @@
+> Current operating authority (2026-11-07): [standing owner authorization](../OWNER_AUTHORIZATION.md) supersedes repeated manual-review/owner-action requirements in this historical prompt. The authorized executor performs covered MTerm-CLI work and qualified normal merges without another confirmation. Technical acceptance, actual access and the original model-cost restriction still apply.
+
 # MTerm GUI/CLI implementation prompt — read first
 
 Prepared 25 September 2026 for Dylan's next ChatGPT Web reasoning session.

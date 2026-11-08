@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-// Modified: 2026-11-08-aug003-pack-catalog; real-client catalog, selection, refresh and spawn-boundary regressions.
+// Modified: 2026-11-08-aug005-lifecycle-observation; retain uninstall precondition failures before revocation assertions.
 // AI-Change: 2026-11-07-aug001-pack-boundary (OpenAI / GPT-6 Astra Pro; self-reported)
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -805,10 +805,27 @@ test('payload tampering and unregistration deny previously discovered tool calls
   const { client } = await connect(t, f, allowed);
   await fs.appendFile(path.join(f.root, 'worker.mjs'), '\n// altered');
   const invoke = () => client.callTool({ name: 'mterm_pack_fixture__echo', arguments: { text: 'hello' } });
-  assert.equal(value(await invoke()).error.code, 'PACK_INTEGRITY');
+  const tampered = await invoke();
+  assert.equal(tampered.isError, true, JSON.stringify(tampered));
+  assert.equal(value(tampered).error?.code, 'PACK_INTEGRITY');
   await fs.writeFile(path.join(f.root, 'worker.mjs'), worker);
-  await cli(['packs', 'uninstall', '--id', 'fixture', '--registry', f.registry, '--apply']);
-  assert.equal(value(await invoke()).error.code, 'PACK_UNREGISTERED');
+  const uninstalled = await cli([
+    'packs',
+    'uninstall',
+    '--id',
+    'fixture',
+    '--registry',
+    f.registry,
+    '--apply',
+  ]);
+  assert.equal(uninstalled.code, 0, JSON.stringify(uninstalled));
+  const removal = JSON.parse(uninstalled.stdout);
+  assert.equal(removal.applied, true);
+  assert.equal(removal.changed, true);
+  assert.deepEqual(removal.packs, []);
+  const revoked = await invoke();
+  assert.equal(revoked.isError, true, JSON.stringify(revoked));
+  assert.equal(value(revoked).error?.code, 'PACK_UNREGISTERED');
   assert.equal(await fs.stat(path.join(f.root, 'pid.txt')).catch(() => null), null);
 });
 

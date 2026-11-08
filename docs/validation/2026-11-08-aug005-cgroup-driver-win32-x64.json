@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "kind": "mterm-expansion-execution",
+  "capability": "AUG-005",
+  "platform": "win32-x64",
+  "subject": {
+    "testedCommit": "4eeedaed2cccd07412e80fa8e8d174469667b7fe",
+    "subjectFingerprint": "9b5103001393707c986ebb157bb377b15ceb9b0afc20767d1103eaa0adb3de91",
+    "backend": {
+      "name": "MTerm-CLI isolated-execution product host gate (no daemon contact)",
+      "version": "0.0.1-preview.1"
+    },
+    "runtime": {
+      "name": "node",
+      "version": "v24.21.0"
+    }
+  },
+  "observedAt": "2026-11-08T05:26:58Z",
+  "command": "npm run check",
+  "exitCode": 0,
+  "cases": {
+    "unsupported_platform": {
+      "status": "passed",
+      "fixtureId": "fixture-1",
+      "fixtureSha256": "668a5bbd1220506891320ec33dc8ad6e6d768904a3006d11ab6f843ce75d3258"
+    }
+  },
+  "actualCheckout": "50b0991eed529596ff89a5fe704b7593400a5d17",
+  "actualCheckoutHasSameTree": true,
+  "qualification": {
+    "path": "docs/validation/2026-11-08-aug005-cgroup-driver-qualification.json",
+    "sha256": "134e3257f2ef58ace73a9c846f1be67055beb7808025301980f8000284fa3810"
+  },
+  "limitations": [
+    "Qualification is scoped to observed native Linux x64, Docker29.9.3/containerd2.4.2/runc1.5.2, cgroupfs/v2, the pinned image and enforced isolated-only profile. Systemd remains explicitly unsupported.",
+    "The c9 kernel evidence proves a memory-cgroup OOM for that owned occurrence; exact deletion/watcher/publication ordering and causes of earlier failures remain unproven. New passing observations do not erase them.",
+    "Windows/macOS/ARM/WSL/Desktop containment, restart recovery, independent post-crash supervision, cross-host quotas, arbitrary pack/native executable isolation and actual ChatGPT connector invocation remain unaccepted.",
+    "Pinned signed runtime packages and eight source LICENSE/NOTICE files are checked. Full runtime/image/transitive redistribution rights remain unaccepted; external runtimes/images are not bundled.",
+    "Original native registration EPERM and c9 pack TypeError remain preserved. The new successful uninstall precondition and qualified runs do not establish the original failure cause.",
+    "No full capability acceptance, three-component size acceptance, resource/prompts support or model invocation is claimed."
+  ],
+  "acceptedCapability": false,
+  "modelCalls": 0,
+  "hosted": {
+    "runId": 42450611322,
+    "jobId": 128638809886,
+    "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42450611322/job/128638809886",
+    "event": "pull_request",
+    "sourceFingerprint": "dfef7ae3428eb7bd7fe4431700ce933ee0daf84e15044fbfc0fd9e6ea6805b62",
+    "tests": 466,
+    "passed": 466,
+    "failed": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "skipScope": "none",
+    "installedPackTests": 29,
+    "installedProtocolTests": 31,
+    "installedResourceTests": 24,
+    "installedProvenanceTests": 18,
+    "installedProductionBytes": 14572881
+  },
+  "caseEvidence": {
+    "unsupported_platform": "native isolation host qualification denies Windows, macOS, WSL and non-x64 without backend contact"
+  }
+}

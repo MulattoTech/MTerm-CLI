@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 // AI-Change: 2026-11-08-aug005-container-isolation (OpenAI / GPT-6 Astra Pro; self-reported)
+// Modified: 2026-11-08-aug005-lifecycle-observation; fail closed on unqualified cgroup-driver attribution.
 // Internal Engine transport/lifecycle. Product callers use createNativeIsolation's host gate.
 // Synthetic local-socket tests exercise this layer without representing a real container backend.
 import fs from 'node:fs/promises';
@@ -155,6 +156,8 @@ export class EngineIsolation {
       configured: true,
       enabled: true,
       mode: 'native-linux-docker-javascript',
+      requiredCgroupDriver: 'cgroupfs',
+      requiredCgroupVersion: '2',
       scope: 'host-instance',
       instanceId: this.ownerId,
       imageId: this.limits.imageId,
@@ -219,6 +222,11 @@ export class EngineIsolation {
         'ISOLATION_UNSUPPORTED',
         'The local Engine does not meet the native Linux isolation backend requirements.',
       );
+    if (info.CgroupDriver !== 'cgroupfs')
+      fail(
+        'ISOLATION_UNSUPPORTED',
+        'This isolation profile requires the cgroupfs driver on cgroup v2 for qualified memory-limit reporting.',
+      );
     const image = expect(
       await this.api.request('GET', '/images/' + this.limits.imageId + '/json', undefined, signal),
     );
@@ -253,6 +261,7 @@ export class EngineIsolation {
       operatingSystem: bound(info.OperatingSystem),
       architecture: info.Architecture,
       cgroupVersion: info.CgroupVersion,
+      cgroupDriver: info.CgroupDriver,
       seccomp: 'builtin',
       containerd: { version: containerd!.Version, commit: bound(containerd!.Details?.GitCommit) },
       runc: { version: runc!.Version, commit: bound(runc!.Details?.GitCommit) },

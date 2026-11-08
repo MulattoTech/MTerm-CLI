@@ -1,0 +1,94 @@
+{
+  "change_id": "2026-11-08-aug012-resource-budgets",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "started_at": "2026-11-08T00:48:00Z",
+  "updated_at": "2026-11-08T01:15:59.211Z",
+  "base_sha": "d6eb0fa8a3df8a22abdec587f405e1105f78acb8",
+  "issues": [
+    92,
+    81
+  ],
+  "requirements": [
+    "CLI-259",
+    "CLI-286"
+  ],
+  "files": [
+    "src/resource-budget-policy.ts",
+    "src/resource-budgets.ts",
+    "src/processes.ts",
+    "src/mcp.ts",
+    "src/cli.ts",
+    "src/tool-packs.ts",
+    "tests/resource-budgets.test.mjs",
+    "scripts/verify-package.mjs",
+    "docs/parity/RESOURCE_BUDGETS.md",
+    "docs/expansion/evidence.json",
+    "docs/expansion/queue.json",
+    "docs/roadmap/progress.json",
+    "docs/HANDOFF.md",
+    "README.md",
+    "docs/validation/2026-11-08-aug012-development.json"
+  ],
+  "decisions": [
+    "One implementation owner plus one independent read-only peer, under standing owner authorization; no model API/CLI requests.",
+    "Keep four normal operations and reserve two bounded owned-control slots; immediate overload rejection, no unbounded bypass or scheduler queue.",
+    "Use one immutable owner budget, strict narrowing job inputs, pending admission accounting and the existing ProcessService; no second launcher.",
+    "Use real Node statfs bigint available-to-user capacity; approved existing candidates only and one conservative host reservation pool.",
+    "Independent peer found owned-write/release ABA; retain physical pending work and invalidate observations after any owned completion before debit/spawn.",
+    "Track successful spawn explicitly: a later error cannot make a live job unowned or release its capacity.",
+    "Create the optional catalog within the effective compatibility startup snapshot; keep per-request guards on later calls.",
+    "Managed setup rejects budgets it cannot preserve; tools reports effective limits. The core launcher file and dependency graph remain unchanged.",
+    "Preserve all original300 protected roadmap fields, source mappings/DAG and all full acceptance flags."
+  ],
+  "tests": [
+    {
+      "command": "baseline",
+      "result": "{\"kind\":\"baseline\",\"result\":\"Pinned Node24.21.0 install/build passed in isolated clone; primary dirty worktree preserved.\"}"
+    },
+    {
+      "command": "initial-red",
+      "result": "{\"kind\":\"initial-red\",\"result\":\"Initial20 and expanded22 tests failed before product changes; first pack fixture omitted required:[] and used the wrong install response field. Earlier failures retained.\"}"
+    },
+    {
+      "command": "saturation-diagnostic",
+      "result": "{\"kind\":\"saturation-diagnostic\",\"result\":\"After fixing manifest/response assumptions, compatibility startup unexpectedly omitted approved pack tools. Separate fixtures then reproduced actual BUSY under four normal calls and OUTSIDE_ROOT during compatibility catalog startup.\"}"
+    },
+    {
+      "command": "baseline-final-red",
+      "result": "{\"kind\":\"baseline-final-red\",\"tests\":23,\"pass\":0,\"fail\":23,\"cancelled\":0,\"skipped\":0,\"log\":\"artifacts/aug012/red-final.log\",\"fixture\":\"artifacts/aug012/red-final-fixture.mjs\"}"
+    },
+    {
+      "command": "first-focused",
+      "result": "{\"kind\":\"first-focused\",\"tests\":69,\"pass\":69,\"fail\":0,\"cancelled\":0,\"skipped\":0,\"log\":\"artifacts/aug012/focused-first.log\"}"
+    },
+    {
+      "command": "independent-review-regression",
+      "result": "{\"kind\":\"independent-review-regression\",\"tests\":1,\"pass\":0,\"fail\":1,\"cancelled\":0,\"skipped\":0,\"log\":\"artifacts/aug012/red-release-epoch.log\",\"reason\":\"A real owned child left600 fixturebytes, released its reservation, and pending B incorrectly reused an earlier modeled1000-byte observation. Independent peer identified the race; root reproduced before fixing.\"}"
+    },
+    {
+      "command": "release-epoch-focused",
+      "result": "{\"kind\":\"release-epoch-focused\",\"tests\":70,\"pass\":70,\"fail\":0,\"cancelled\":0,\"skipped\":0,\"log\":\"artifacts/aug012/focused-epoch.log\",\"completedAt\":\"2026-11-08T01:14:11.8821345Z\"}"
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "id": "CLI-259",
+      "stage_change": false,
+      "reason": "Append scoped bounded-job/resource evidence without changing protected fields or full acceptance."
+    },
+    {
+      "id": "CLI-286",
+      "stage_change": false,
+      "reason": "Append scoped bounded-job/resource evidence without changing protected fields or full acceptance."
+    }
+  ],
+  "limitations": [
+    "Native process/SDK and disk success/denial are real; unsupported/permission/invalid statistics and post-spawn errors are controlled injections, explicitly labeled.",
+    "Disk estimates and a conservative host pool reject observed/declared overcommit; a completion epoch prevents reuse after owned writes and release. No hard disk-write quota or hostile-writer isolation is claimed.",
+    "Admission deadlines are cooperative; physical filesystem work retains its slot until settlement. Parent-job and retained-output bounds do not measure descendant CPU/RSS.",
+    "Full native/prepack/installed/hosted qualification and immutable source/receipt review remain next."
+  ],
+  "checkpoint": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG012-20261108\\artifacts\\aug012",
+  "next_unverified_action": "Freeze source, obtain independent immutable review, run normal native/prepack/installed/audit/license and exact-head four-platform CI, then normal expected-head merge and main verification."
+}

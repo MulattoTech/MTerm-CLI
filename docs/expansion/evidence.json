@@ -593,6 +593,31 @@
         }
       },
       "acceptanceReview": null
+    },
+    "AUG-012": {
+      "scope": "Per-host bounded work and pending starts, recoverable owned cleanup, per-job retained-output/runtime ceilings, declared disk admission and explicit approved-directory placement",
+      "limitations": [
+        "Native process/SDK and disk success/denial are real; unsupported/permission/invalid statistics and post-spawn errors are controlled injections, explicitly labeled.",
+        "Disk estimates and a conservative host pool reject observed/declared overcommit; a completion epoch prevents reuse after owned writes and release. No hard disk-write quota or hostile-writer isolation is claimed.",
+        "Admission deadlines are cooperative; physical filesystem work retains its slot until settlement. Parent-job and retained-output bounds do not measure descendant CPU/RSS.",
+        "Full native/prepack/installed/hosted qualification and immutable source/receipt review remain next."
+      ],
+      "fixtures": [
+        {
+          "id": "fixture-1",
+          "path": "tests/resource-budgets.test.mjs",
+          "sha256": "a1e74ee8613953fee2fd7e8d02b90496af723bf2503f611264bf1a7d58d4b705"
+        }
+      ],
+      "references": [
+        {
+          "kind": "historical-qualification",
+          "path": "docs/validation/2026-11-08-aug012-development.json",
+          "sha256": "f1c29199dc410e3346790e11a69c8ef2ee4364e1a34fb333b267db9ffca3e976"
+        }
+      ],
+      "platforms": {},
+      "acceptanceReview": null
     }
   }
 }

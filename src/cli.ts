@@ -1,8 +1,10 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-08-aug012-resource-budgets; explicit immutable startup budgets and no silent registration downgrade.
 // Modified: 2026-11-07-aug001-pack-boundary; explicit local pack registration and execution grants.
 // AI-Change: 2026-10-04-local-mcp (OpenAI / GPT-6 Astra Pro; self-reported)
 import path from 'node:path';
 import { safeError, fail } from './errors.js';
+import { parseProcessBudget, type ProcessBudget } from './resource-budget-policy.js';
 export const VERSION = '0.0.1-preview.1';
 export function parseHost(args: string[]) {
   const roots: string[] = [],
@@ -15,6 +17,7 @@ export function parseHost(args: string[]) {
     allowConfigWrite = false;
   let compatConfig: string | undefined;
   let packRegistry: string | undefined;
+  let processBudget: ProcessBudget | undefined;
   for (let i = 0; i < args.length; i++) {
     const option = args[i];
     if (
@@ -22,7 +25,8 @@ export function parseHost(args: string[]) {
       option === '--compat-config' ||
       option === '--allow-shell' ||
       option === '--pack-registry' ||
-      option === '--allow-pack'
+      option === '--allow-pack' ||
+      option === '--process-budget'
     ) {
       const value = args[++i];
       if (!value || value.startsWith('--')) fail('USAGE', option + ' requires a value.');
@@ -39,6 +43,16 @@ export function parseHost(args: string[]) {
         if (value.length > 24 || !/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/.test(value) || allowPacks.includes(value))
           fail('USAGE', '--allow-pack requires a distinct supported pack ID.');
         allowPacks.push(value);
+      } else if (option === '--process-budget') {
+        if (processBudget || Buffer.byteLength(value) > 1024)
+          fail('USAGE', '--process-budget requires one JSON object of at most 1024 UTF-8 bytes.');
+        let parsed: unknown;
+        try {
+          parsed = JSON.parse(value);
+        } catch {
+          fail('USAGE', '--process-budget requires valid JSON.');
+        }
+        processBudget = parseProcessBudget(parsed);
       } else allowedShells.push(value);
     } else if (option === '--stdio') stdio = true;
     else if (option === '--allow-write') allowWrite = true;
@@ -66,6 +80,7 @@ export function parseHost(args: string[]) {
     allowedShells,
     packRegistry,
     allowPacks,
+    processBudget,
   };
 }
 
@@ -132,7 +147,10 @@ async function doctor(args: string[]) {
 }
 export async function main(args: string[]): Promise<number> {
   if (args[0] === '--help' || args[0] === 'help') {
-    console.log(help());
+    console.log(
+      help() +
+        '\nProcess admission: --process-budget JSON sets immutable owner limits for this stdio host. See docs/parity/RESOURCE_BUDGETS.md. No hard CPU/GPU/RAM/disk-write or cross-host quota.\n',
+    );
     return 0;
   }
   if (args[0] === '--version' || args[0] === 'version') {
@@ -165,6 +183,7 @@ export async function main(args: string[]): Promise<number> {
           configWriteEnabled: opts.allowConfigWrite,
           writeEnabled: opts.allowWrite,
           executionEnabled: opts.allowExec,
+          processBudget: opts.processBudget ?? parseProcessBudget(),
           transport: 'stdio',
           networkListener: false,
           note: 'Full exact tool list is available through MCP tools/list.',
@@ -218,6 +237,11 @@ export async function main(args: string[]): Promise<number> {
       return 0;
     }
     const opts = parseHost(['--stdio', ...host]);
+    if (opts.processBudget)
+      fail(
+        'USAGE',
+        'Managed Codex registration does not yet preserve process budgets. Use explicit stdio arguments.',
+      );
     if (opts.packRegistry)
       fail(
         'USAGE',

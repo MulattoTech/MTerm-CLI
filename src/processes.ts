@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-08-aug012-resource-budgets; bounded admission, declared disk reservations and per-job limits.
 // Modified: 2026-11-08-aug003-pack-catalog; internal final spawn guard for revocable pack calls.
 // AI-Change: 2026-10-04-local-mcp (OpenAI / GPT-6 Astra Pro; self-reported)
 import fs from 'node:fs/promises';
@@ -9,14 +10,25 @@ import { randomUUID } from 'node:crypto';
 import { StringDecoder } from 'node:string_decoder';
 import { z } from 'zod';
 import { RootPolicy } from './policy.js';
-import { fail, ToolError } from './errors.js';
+import { fail, ToolError, cancelled } from './errors.js';
+import {
+  byteEstimate,
+  parseProcessBudget,
+  observeDisk,
+  chooseDisk,
+  type ProcessBudget,
+  type DiskObservation,
+} from './resource-budgets.js';
 const execFileAsync = promisify(execFile);
 export const processSchemas = {
   start: z.strictObject({
     command: z.string().min(1).max(4096),
     args: z.array(z.string().max(8192)).max(128).default([]),
-    cwd: z.string().min(1).max(4096).default('.'),
-    timeoutMs: z.number().int().min(100).max(3600000).default(300000),
+    cwd: z.string().min(1).max(4096).optional(),
+    timeoutMs: z.number().int().min(100).max(3600000).optional(),
+    maxOutputBytes: z.number().int().min(1024).max(1048576).optional(),
+    scratchBytes: byteEstimate.optional(),
+    placement: z.strictObject({ candidates: z.array(z.string().min(1).max(4096)).min(1).max(16) }).optional(),
   }),
   output: z.strictObject({
     sessionId: z.string().min(1).max(100),
@@ -37,6 +49,10 @@ type Session = {
   exitCode: number | null;
   signal: string | null;
   timedOut: boolean;
+  spawned: boolean;
+  maxOutputBytes: number;
+  timeoutMs: number;
+  scratchBytes: string;
   events: OutputEvent[];
   bytes: number;
   seq: number;
@@ -80,28 +96,41 @@ export class ProcessService {
   }
   private closed = false;
   private starting = 0;
+  private reservedScratch = 0n;
+  private diskReleaseEpoch = 0n;
+  private readonly instanceId = randomUUID();
   private constructor(
     readonly policy: RootPolicy,
     readonly allowExec: boolean,
-    readonly maxSessions: number,
-    readonly maxOutputBytes: number,
+    readonly budgets: ProcessBudget,
   ) {}
+  get maxSessions() {
+    return this.budgets.maxSessions;
+  }
+  get maxOutputBytes() {
+    return this.budgets.maxOutputBytes;
+  }
   static async create(
     root: string | readonly string[],
-    options: { allowExec?: boolean; maxSessions?: number; maxOutputBytes?: number } = {},
+    options: { allowExec?: boolean; maxSessions?: number; maxOutputBytes?: number; budgets?: unknown } = {},
   ) {
-    const count = options.maxSessions ?? 8,
-      bytes = options.maxOutputBytes ?? 262144;
-    if (
-      !Number.isInteger(count) ||
-      count < 1 ||
-      count > 8 ||
-      !Number.isInteger(bytes) ||
-      bytes < 1024 ||
-      bytes > 1048576
-    )
-      fail('INVALID_ARGUMENT', 'Invalid process limits.');
-    return new ProcessService(await RootPolicy.create(root), options.allowExec === true, count, bytes);
+    const owner = parseProcessBudget(options.budgets);
+    const legacy = parseProcessBudget({
+      ...(options.maxSessions === undefined ? {} : { maxSessions: options.maxSessions }),
+      ...(options.maxOutputBytes === undefined ? {} : { maxOutputBytes: options.maxOutputBytes }),
+    });
+    const budgets = parseProcessBudget({
+      ...owner,
+      maxSessions:
+        options.maxSessions === undefined
+          ? owner.maxSessions
+          : Math.min(owner.maxSessions, legacy.maxSessions),
+      maxOutputBytes:
+        options.maxOutputBytes === undefined
+          ? owner.maxOutputBytes
+          : Math.min(owner.maxOutputBytes, legacy.maxOutputBytes),
+    });
+    return new ProcessService(await RootPolicy.create(root), options.allowExec === true, budgets);
   }
   private active(s: Session) {
     return s.state === 'starting' || s.state === 'running';
@@ -114,8 +143,8 @@ export class ProcessService {
   private append(s: Session, stream: 'stdout' | 'stderr', text: string) {
     if (!text) return;
     let b = Buffer.from(text);
-    if (b.length > this.maxOutputBytes) {
-      let cut = b.length - this.maxOutputBytes;
+    if (b.length > s.maxOutputBytes) {
+      let cut = b.length - s.maxOutputBytes;
       while (cut < b.length && (b[cut]! & 0xc0) === 0x80) cut++;
       b = b.subarray(cut);
       s.dropped = s.seq++;
@@ -129,14 +158,14 @@ export class ProcessService {
       s.events.push({ seq: s.seq++, stream, text: part.toString('utf8') });
       s.bytes += part.length;
       offset = end;
-      while (s.bytes > this.maxOutputBytes || s.events.length > 512) {
+      while (s.bytes > s.maxOutputBytes || s.events.length > 512) {
         const e = s.events.shift()!;
         s.bytes -= Buffer.byteLength(e.text);
         s.dropped = e.seq;
       }
     }
   }
-  async start(input: unknown, beforeSpawn?: () => void) {
+  async start(input: unknown, beforeSpawn?: () => void, signal?: AbortSignal) {
     if (this.closed) fail('HOST_CLOSED', 'Host is shutting down.');
     if (!this.allowExec) fail('EXEC_DISABLED', 'Execution requires explicit --allow-exec.');
     const a = processSchemas.start.parse(input);
@@ -145,89 +174,203 @@ export class ProcessService {
         'INVALID_COMMAND',
         'Choose an absolute executable; scripts require an explicitly selected interpreter and argument array.',
       );
-    this.executionGuard?.(a.command);
-    const cwd = await this.policy.resolve(a.cwd);
-    if (!(await fs.stat(cwd)).isDirectory())
-      fail('NOT_DIRECTORY', 'Process cwd must be a trusted directory.');
-    const command = await fs.realpath(a.command);
-    if (!(await fs.stat(command)).isFile()) fail('INVALID_COMMAND', 'Executable must be a file.');
-    this.executionGuard?.(command);
-    if (this.closed) fail('HOST_CLOSED', 'Host is shutting down.');
-    if ([...this.sessions.values()].filter((s) => this.active(s)).length >= this.maxSessions)
-      fail('SESSION_LIMIT', 'Active process limit reached.');
-    while (this.sessions.size >= 32) {
-      const victim = [...this.sessions.values()].find((s) => !this.active(s));
-      if (!victim) fail('SESSION_LIMIT', 'Session retention limit reached.');
-      this.sessions.delete(victim.id);
-    }
-    // Internal per-invocation guard: no await may separate it from the actual spawn.
-    // The shared compatibility guard above remains independently enforced.
-    beforeSpawn?.();
-    const child = spawn(command, a.args, {
-      cwd,
-      env: childEnvironment(),
-      shell: false,
-      windowsHide: true,
-      detached: process.platform !== 'win32',
-      stdio: ['pipe', 'pipe', 'pipe'],
-    });
-    let finish!: () => void;
-    const done = new Promise<void>((r) => {
-      finish = r;
-    });
-    const s: Session = {
-      id: randomUUID(),
-      child,
-      command: path.basename(command),
-      cwd: this.policy.relative(cwd),
-      state: 'starting',
-      startedAt: new Date().toISOString(),
-      exitCode: null,
-      signal: null,
-      timedOut: false,
-      events: [],
-      bytes: 0,
-      seq: 1,
-      dropped: 0,
-      done,
-      finish,
-      treeCleanup: 'not-requested',
+    if (a.placement && a.cwd !== undefined)
+      fail('INVALID_ARGUMENT', 'Choose either an explicit cwd or explicit placement candidates.');
+    const disk = this.budgets.disk;
+    if (!disk && (a.scratchBytes !== undefined || a.placement))
+      fail('DISK_BUDGET_DISABLED', 'Scratch estimates and placement require an owner disk policy.');
+    const timeoutMs = a.timeoutMs ?? Math.min(300000, this.budgets.maxRuntimeMs);
+    const maxOutputBytes = a.maxOutputBytes ?? this.maxOutputBytes;
+    const scratch = BigInt(a.scratchBytes ?? disk?.maxJobScratchBytes ?? '0');
+    if (
+      timeoutMs > this.budgets.maxRuntimeMs ||
+      maxOutputBytes > this.maxOutputBytes ||
+      (disk && scratch > BigInt(disk.maxJobScratchBytes))
+    )
+      fail('BUDGET_EXCEEDED', 'A per-job request exceeds the immutable owner ceiling.');
+    const deadline = performance.now() + this.budgets.admissionTimeoutMs;
+    const check = () => {
+      cancelled(signal);
+      if (this.closed) fail('HOST_CLOSED', 'Host is shutting down.');
+      if (performance.now() >= deadline)
+        fail('ADMISSION_TIMEOUT', 'Job admission exceeded its cooperative deadline.');
     };
-    this.sessions.set(s.id, s);
-    const out = new StringDecoder('utf8'),
-      err = new StringDecoder('utf8');
-    child.stdout.on('data', (b: Buffer) => this.append(s, 'stdout', out.write(b)));
-    child.stderr.on('data', (b: Buffer) => this.append(s, 'stderr', err.write(b)));
-    child.stdin.on('error', () => {});
-    child.on('close', (code, signal) => {
-      this.append(s, 'stdout', out.end());
-      this.append(s, 'stderr', err.end());
-      if (s.state !== 'failed') s.state = 'exited';
-      s.exitCode = code;
-      s.signal = signal;
-      clearTimeout(s.timer);
-      finish();
-    });
-    child.on('error', () => {
-      s.state = 'failed';
-      clearTimeout(s.timer);
-      finish();
-    });
-    await new Promise<void>((resolve, reject) => {
-      child.once('spawn', () => {
-        s.state = 'running';
-        resolve();
+    check();
+    if (this.starting >= this.budgets.maxPendingStarts)
+      fail('START_LIMIT', 'Pending start admission is full; jobs are not queued.');
+    this.starting++;
+    try {
+      this.executionGuard?.(a.command);
+      const candidates: string[] = [];
+      for (const input of a.placement?.candidates ?? [a.cwd ?? '.']) {
+        const candidate = await this.policy.resolve(input);
+        check();
+        const stat = await fs.stat(candidate);
+        check();
+        if (!stat.isDirectory()) fail('NOT_DIRECTORY', 'Process cwd must be a trusted directory.');
+        if (!candidates.some((prior) => path.relative(prior, candidate) === '')) candidates.push(candidate);
+      }
+      const command = await fs.realpath(a.command);
+      check();
+      const executable = await fs.stat(command);
+      check();
+      if (!executable.isFile()) fail('INVALID_COMMAND', 'Executable must be a file.');
+      const observations: DiskObservation[] = [];
+      const diskEpoch = this.diskReleaseEpoch;
+      if (disk) for (const candidate of candidates) observations.push(await observeDisk(candidate, check));
+      let selected = disk ? chooseDisk(observations, disk, scratch, this.reservedScratch) : undefined;
+      let cwd = selected?.path ?? candidates[0]!;
+      // Revalidate current request scope and canonical directory after the asynchronous probe.
+      cwd = await this.policy.resolve(cwd);
+      check();
+      if (!(await fs.stat(cwd)).isDirectory())
+        fail('NOT_DIRECTORY', 'Process cwd must be a trusted directory.');
+      check();
+      this.executionGuard?.(command);
+      this.policy.lexical(cwd);
+      if ([...this.sessions.values()].filter((s) => this.active(s)).length >= this.maxSessions)
+        fail('SESSION_LIMIT', 'Active process limit reached.');
+      if (disk) {
+        selected = chooseDisk(observations, disk, scratch, this.reservedScratch);
+        // Only this already revalidated directory may be used; no asynchronous re-placement.
+        if (path.relative(selected.path, cwd) !== '')
+          fail('DISK_HEADROOM', 'Placement changed during admission.');
+      }
+      while (this.sessions.size >= 32) {
+        const victim = [...this.sessions.values()].find((s) => !this.active(s));
+        if (!victim) fail('SESSION_LIMIT', 'Session retention limit reached.');
+        this.sessions.delete(victim.id);
+      }
+      // No await between the final budget/pack/compatibility guards, debit, and spawn.
+      beforeSpawn?.();
+      check();
+      if (disk && diskEpoch !== this.diskReleaseEpoch)
+        fail(
+          'DISK_OBSERVATION_STALE',
+          'An owned job completed after disk observation; retry with a fresh admission.',
+        );
+      this.reservedScratch += scratch;
+      let reserved = true;
+      const release = () => {
+        if (!reserved) return;
+        reserved = false;
+        this.reservedScratch -= scratch;
+        // Completed jobs may leave written files behind even when their reservation is now zero.
+        if (disk) this.diskReleaseEpoch++;
+      };
+      let child: ChildProcessWithoutNullStreams;
+      try {
+        child = spawn(command, a.args, {
+          cwd,
+          env: childEnvironment(),
+          shell: false,
+          windowsHide: true,
+          detached: process.platform !== 'win32',
+          stdio: ['pipe', 'pipe', 'pipe'],
+        });
+      } catch {
+        release();
+        fail('SPAWN_FAILED', 'The selected executable could not be started.');
+      }
+      let finish!: () => void;
+      const done = new Promise<void>((r) => {
+        finish = r;
       });
-      child.once('error', () =>
-        reject(new ToolError('SPAWN_FAILED', 'The selected executable could not be started.')),
-      );
-    });
-    s.timer = setTimeout(() => {
-      s.timedOut = true;
-      void this.stop({ sessionId: s.id }).catch(() => {});
-    }, a.timeoutMs);
-    s.timer.unref();
-    return { sessionId: s.id, pid: child.pid, command: s.command, cwd: s.cwd, state: s.state };
+      const s: Session = {
+        id: randomUUID(),
+        child,
+        command: path.basename(command),
+        cwd: this.policy.relative(cwd),
+        state: 'starting',
+        startedAt: new Date().toISOString(),
+        exitCode: null,
+        signal: null,
+        timedOut: false,
+        spawned: false,
+        maxOutputBytes,
+        timeoutMs,
+        scratchBytes: scratch.toString(),
+        events: [],
+        bytes: 0,
+        seq: 1,
+        dropped: 0,
+        done,
+        finish,
+        treeCleanup: 'not-requested',
+      };
+      this.sessions.set(s.id, s);
+      const out = new StringDecoder('utf8'),
+        err = new StringDecoder('utf8');
+      child.stdout.on('data', (b: Buffer) => this.append(s, 'stdout', out.write(b)));
+      child.stderr.on('data', (b: Buffer) => this.append(s, 'stderr', err.write(b)));
+      child.stdin.on('error', () => {});
+      child.on('close', (code, signal) => {
+        this.append(s, 'stdout', out.end());
+        this.append(s, 'stderr', err.end());
+        if (s.state !== 'failed') s.state = 'exited';
+        s.exitCode = code;
+        s.signal = signal;
+        clearTimeout(s.timer);
+        release();
+        finish();
+      });
+      child.on('error', () => {
+        // A failed kill/message after spawn is not evidence that the owned child has closed.
+        if (s.spawned) return;
+        s.state = 'failed';
+        clearTimeout(s.timer);
+        release();
+        finish();
+      });
+      await new Promise<void>((resolve, reject) => {
+        const failed = () =>
+          reject(new ToolError('SPAWN_FAILED', 'The selected executable could not be started.'));
+        child.once('error', failed);
+        child.once('spawn', () => {
+          s.spawned = true;
+          s.state = 'running';
+          child.removeListener('error', failed);
+          resolve();
+        });
+      });
+      try {
+        check();
+      } catch (error) {
+        await this.stop({ sessionId: s.id });
+        throw error;
+      }
+      s.timer = setTimeout(() => {
+        s.timedOut = true;
+        void this.stop({ sessionId: s.id }).catch(() => {});
+      }, timeoutMs);
+      s.timer.unref();
+      return {
+        sessionId: s.id,
+        pid: child.pid,
+        command: s.command,
+        cwd: s.cwd,
+        state: s.state,
+        budget: {
+          timeoutMs,
+          maxOutputBytes,
+          scratchBytes: scratch.toString(),
+          disk: selected
+            ? {
+                backend: 'node:fs.statfs',
+                availableToUser: true,
+                observedAt: selected.observedAt,
+                totalBytes: selected.total.toString(),
+                availableBytes: selected.available.toString(),
+                requiredFreeBytes: selected.requiredFree.toString(),
+                candidatesObserved: observations.length,
+                reservationScope: 'host-instance-conservative-all-candidates',
+              }
+            : null,
+        },
+      };
+    } finally {
+      this.starting--;
+    }
   }
   output(input: unknown) {
     const a = processSchemas.output.parse(input);
@@ -337,6 +480,7 @@ export class ProcessService {
   }
   list() {
     return {
+      resources: this.resourceStatus(),
       sessions: [...this.sessions.values()].map((s) => ({
         sessionId: s.id,
         pid: s.child.pid,
@@ -348,7 +492,40 @@ export class ProcessService {
         exitCode: s.exitCode,
         signal: s.signal,
         timedOut: s.timedOut,
+        budget: { timeoutMs: s.timeoutMs, maxOutputBytes: s.maxOutputBytes, scratchBytes: s.scratchBytes },
       })),
+    };
+  }
+  resourceStatus() {
+    const sessions = [...this.sessions.values()];
+    return {
+      schemaVersion: 1,
+      instanceId: this.instanceId,
+      scope: 'host-instance',
+      backend: { node: process.version, platform: process.platform, arch: process.arch },
+      limits: this.budgets,
+      maxQueuedJobs: 0,
+      retainedSessionLimit: 32,
+      outputEventLimit: 512,
+      defaults: {
+        timeoutMs: Math.min(300000, this.budgets.maxRuntimeMs),
+        maxOutputBytes: this.maxOutputBytes,
+        scratchBytes: this.budgets.disk?.maxJobScratchBytes ?? '0',
+      },
+      usage: {
+        pendingStarts: this.starting,
+        activeJobs: sessions.filter((s) => this.active(s)).length,
+        retainedSessions: sessions.length,
+        retainedOutputBytes: sessions.reduce((n, s) => n + s.bytes, 0),
+        reservedScratchBytes: this.reservedScratch.toString(),
+      },
+      disk: {
+        enabled: !!this.budgets.disk,
+        reservationScope: 'host-instance-conservative-all-candidates',
+        estimateOnly: true,
+        freshProbeOnStatus: false,
+      },
+      hardEnforcement: { cpu: false, gpu: false, ram: false, diskWrites: false, crossHost: false },
     };
   }
   async close() {

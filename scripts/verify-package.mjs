@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-08-aug012-resource-budgets; exercise all resource fixtures against exact installed admission modules.
 // Modified: 2026-11-08-aug003-pack-catalog; bind the installed final spawn guard and require all catalog fixtures.
 // Modified: 2026-11-07-aug002-provenance; qualify pinned attribution and exact production closure.
 // Modified: 2026-11-07-aug001-pack-boundary; qualify optional packs through the exact installed runtime.
@@ -198,7 +199,15 @@ assert.equal(remoteState.syntheticOnly, true);
 assert.equal(remoteState.actualRemoteEnrollment, false);
 assert.equal(remoteState.modelCalls, 0);
 const packBindings = [];
-for (const name of ['cli.js', 'mcp.js', 'tool-packs.js', 'processes.js']) {
+for (const name of [
+  'cli.js',
+  'mcp.js',
+  'tool-packs.js',
+  'processes.js',
+  'resource-budgets.js',
+  'resource-budget-policy.js',
+  'policy.js',
+]) {
   const source = await fs.readFile(path.join(root, 'dist', name));
   const installedBytes = await fs.readFile(path.resolve(path.dirname(installed), '../dist', name));
   assert.deepEqual(installedBytes, source, 'Installed pack boundary differs from compiled source');
@@ -236,6 +245,53 @@ const installedOptionalPacks = {
   osSandbox: false,
   realClientConsent: false,
   log: path.join(output, 'optional-pack-tests.tap'),
+};
+const budgetAcceptance = await exec(
+  process.execPath,
+  [
+    '--test',
+    '--test-reporter=tap',
+    '--test-concurrency=1',
+    path.join(root, 'tests/resource-budgets.test.mjs'),
+  ],
+  {
+    cwd: home,
+    env: { ...env, MTERM_VERIFY_BIN: installed },
+    timeout: 90000,
+    maxBuffer: 2097152,
+    windowsHide: true,
+  },
+).then(
+  (result) => ({ ...result, exit: 0 }),
+  (error) => ({
+    stdout: error.stdout ?? '',
+    stderr: error.stderr ?? '',
+    exit: error.code ?? 'unknown',
+  }),
+);
+const budgetLog = path.join(output, 'resource-budget-tests.tap');
+await fs.writeFile(budgetLog, budgetAcceptance.stdout + budgetAcceptance.stderr);
+assert.equal(budgetAcceptance.exit, 0, 'Installed resource-budget acceptance failed; see retained log');
+const budgetTestCount = Number(budgetAcceptance.stdout.match(/^# tests (\d+)$/m)?.[1]);
+assert.ok(budgetTestCount >= 24, 'Installed resource-budget acceptance did not run');
+assert.match(budgetAcceptance.stdout, /^# fail 0$/m);
+assert.match(budgetAcceptance.stdout, /^# skipped 0$/m);
+assert.match(budgetAcceptance.stdout, /^# cancelled 0$/m);
+const installedResourceBudgets = {
+  ok: true,
+  tests: budgetTestCount,
+  failed: 0,
+  skipped: 0,
+  cancelled: 0,
+  moduleBindings: packBindings,
+  scope: 'host-instance',
+  realStatfsAndOwnedProcesses: true,
+  injectedBackendFailuresLabeled: true,
+  syntheticOnly: true,
+  modelCalls: 0,
+  crossHostEnforcement: false,
+  hardCpuGpuRamOrDiskWriteQuotas: false,
+  log: budgetLog,
 };
 const sourceCommit = (
   await exec('git', ['rev-parse', 'HEAD'], { cwd: root, timeout: 10000, windowsHide: true })
@@ -364,6 +420,7 @@ const report = {
   installedConfiguration: configuration,
   installedRemoteState: remoteState,
   installedOptionalPacks,
+  installedResourceBudgets,
   installedProvenance,
   fullTransitiveLicenseClearance: false,
   fullDesktopCommanderParity: false,

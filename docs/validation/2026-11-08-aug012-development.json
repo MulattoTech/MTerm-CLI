@@ -1,0 +1,241 @@
+{
+  "schemaVersion": 1,
+  "capability": "AUG-012",
+  "issue": 92,
+  "baseSha": "d6eb0fa8a3df8a22abdec587f405e1105f78acb8",
+  "recordedAt": "2026-11-08T01:15:59.211Z",
+  "scope": "Development working-tree observations; not immutable-head or complete capability acceptance",
+  "runtime": {
+    "platform": "win32",
+    "architecture": "x64",
+    "node": "v24.21.0"
+  },
+  "attempts": [
+    {
+      "kind": "baseline",
+      "result": "Pinned Node24.21.0 install/build passed in isolated clone; primary dirty worktree preserved."
+    },
+    {
+      "kind": "initial-red",
+      "result": "Initial20 and expanded22 tests failed before product changes; first pack fixture omitted required:[] and used the wrong install response field. Earlier failures retained."
+    },
+    {
+      "kind": "saturation-diagnostic",
+      "result": "After fixing manifest/response assumptions, compatibility startup unexpectedly omitted approved pack tools. Separate fixtures then reproduced actual BUSY under four normal calls and OUTSIDE_ROOT during compatibility catalog startup."
+    },
+    {
+      "kind": "baseline-final-red",
+      "tests": 23,
+      "pass": 0,
+      "fail": 23,
+      "cancelled": 0,
+      "skipped": 0,
+      "log": "artifacts/aug012/red-final.log",
+      "fixture": "artifacts/aug012/red-final-fixture.mjs"
+    },
+    {
+      "kind": "first-focused",
+      "tests": 69,
+      "pass": 69,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "log": "artifacts/aug012/focused-first.log"
+    },
+    {
+      "kind": "independent-review-regression",
+      "tests": 1,
+      "pass": 0,
+      "fail": 1,
+      "cancelled": 0,
+      "skipped": 0,
+      "log": "artifacts/aug012/red-release-epoch.log",
+      "reason": "A real owned child left600 fixturebytes, released its reservation, and pending B incorrectly reused an earlier modeled1000-byte observation. Independent peer identified the race; root reproduced before fixing."
+    },
+    {
+      "kind": "release-epoch-focused",
+      "tests": 70,
+      "pass": 70,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "log": "artifacts/aug012/focused-epoch.log",
+      "completedAt": "2026-11-08T01:14:11.8821345Z"
+    }
+  ],
+  "fixture": {
+    "path": "tests/resource-budgets.test.mjs",
+    "sha256": "a1e74ee8613953fee2fd7e8d02b90496af723bf2503f611264bf1a7d58d4b705",
+    "hashMode": "strict-utf8-crlf-to-lf"
+  },
+  "retainedLogs": [
+    {
+      "path": "artifacts/aug012/baseline.json",
+      "sha256": "32ce8ff05abcde46a175487c09fb228e699009aab2db138e3b141a5748eafa70",
+      "bytes": 179
+    },
+    {
+      "path": "artifacts/aug012/baseline-install.log",
+      "sha256": "1582a56c9ce63a707d7c21db294b38376194dea7aaed98bdd1bf7a60b7793a47",
+      "bytes": 147
+    },
+    {
+      "path": "artifacts/aug012/baseline-build.log",
+      "sha256": "0fa2b16c11d98fc8f86c665a958f1e81a6dcf5cacd183212f47a9ae8aade8944",
+      "bytes": 826
+    },
+    {
+      "path": "artifacts/aug012/red.log",
+      "sha256": "abbfad08b71e95c6d9425d68a2572c6064b639b20eed0286d98e742a356b6040",
+      "bytes": 20895
+    },
+    {
+      "path": "artifacts/aug012/red.json",
+      "sha256": "125eead9d69e8b29fc0c0c109e9a098981e89b861da1ac6a76f908211fbfa7fc",
+      "bytes": 147
+    },
+    {
+      "path": "artifacts/aug012/red-complete.log",
+      "sha256": "7eaaf3b7d8d6ccc1da8232eb72fa91f47caa3cfc98dd560043b647ba14e9facd",
+      "bytes": 23124
+    },
+    {
+      "path": "artifacts/aug012/red-complete.json",
+      "sha256": "fb3be39df23b234d8741321df5db1bd0ee450af516a5b9ebbd0763a46607fd80",
+      "bytes": 147
+    },
+    {
+      "path": "artifacts/aug012/red-corrected.log",
+      "sha256": "45081a7c10911d76c0aba145bec4da2a1edb137abb41acf55cfd6da2b3beecba",
+      "bytes": 22102
+    },
+    {
+      "path": "artifacts/aug012/red-corrected.json",
+      "sha256": "6c8920666557e8f22cb6d1bf05044ae4ed90810d6d7179116aa466e363002838",
+      "bytes": 147
+    },
+    {
+      "path": "artifacts/aug012/red-corrected-fixture.mjs",
+      "sha256": "23cb242aecf481c5dbbb07d5970c83a5bfa3fc72e3317354f5b457c87da02ffe",
+      "bytes": 29504
+    },
+    {
+      "path": "artifacts/aug012/red-saturation.log",
+      "sha256": "bd1486e4594ba4047bf77d521132b46645bdf70cb4792730f918ce93c6607a12",
+      "bytes": 1110
+    },
+    {
+      "path": "artifacts/aug012/red-saturation.json",
+      "sha256": "08ce1619bba03710186febac3c2976f2687cf6ffa4990c7666a6de7adad270f4",
+      "bytes": 69
+    },
+    {
+      "path": "artifacts/aug012/red-saturation-fixture.mjs",
+      "sha256": "6d96a7e74efa66e2085a813fe75a20fc728943647ff6dddfc4762986b4844d8e",
+      "bytes": 29657
+    },
+    {
+      "path": "artifacts/aug012/red-saturation-diagnostic.log",
+      "sha256": "e974fe611a2bde0478d87eaeb54fd5bb2919a2991c5093aefeb6fa61e9070139",
+      "bytes": 1457
+    },
+    {
+      "path": "artifacts/aug012/red-final.log",
+      "sha256": "14fcfe1224c1706eec501ab70c09afc6c4f7c78e8ed63cb8587b9c8f3a69c783",
+      "bytes": 23623
+    },
+    {
+      "path": "artifacts/aug012/red-final.json",
+      "sha256": "b8ed23bd6cf5b84998945440ef03ee04065ccef2fe7b81a89dc63dbd26885406",
+      "bytes": 147
+    },
+    {
+      "path": "artifacts/aug012/red-final-fixture.mjs",
+      "sha256": "aa77e72de5ca101075c683840fd0998b8e5a5e85220a88c61b3f1518ad1d194c",
+      "bytes": 30329
+    },
+    {
+      "path": "artifacts/aug012/development-build.log",
+      "sha256": "b04b8612ad06f4368cb2d208a70c1a143aa9e8c7923229477b88258c0112649a",
+      "bytes": 68
+    },
+    {
+      "path": "artifacts/aug012/development-build.json",
+      "sha256": "2e4411fa3dd6d64906c3ec92ef7e098ff353ee63ab3612867b71c91bd75bc2a2",
+      "bytes": 69
+    },
+    {
+      "path": "artifacts/aug012/focused-first.log",
+      "sha256": "eeb52a05e5d70e5dc2d502355ed1623853d44f7e43a2b76aa9e2947d0c7e78e1",
+      "bytes": 7259
+    },
+    {
+      "path": "artifacts/aug012/focused-first.json",
+      "sha256": "db3c62e53e1d3b40702f1971b11f32d94b94d50c17deb11fa5816e3778cc0fbe",
+      "bytes": 69
+    },
+    {
+      "path": "artifacts/aug012/format.log",
+      "sha256": "4443dafda4bf723d4c048dc9f2004d90fc816a27c561c54f20b637cd64d04de5",
+      "bytes": 218
+    },
+    {
+      "path": "artifacts/aug012/red-release-epoch.log",
+      "sha256": "b7c042c4c4ab167b5bf171a43c7058448af9366166cadb04418dfd7d6190f6e1",
+      "bytes": 1048
+    },
+    {
+      "path": "artifacts/aug012/red-release-epoch.json",
+      "sha256": "480a92b529d62eb591ce047ca5dc727a4c4a49b624afdc7396035ce9965e3463",
+      "bytes": 69
+    },
+    {
+      "path": "artifacts/aug012/red-release-epoch-fixture.mjs",
+      "sha256": "d467cd8010c5f40952b351ed2f55c0636d3776143a0005f4720b457cf300a9d1",
+      "bytes": 32367
+    },
+    {
+      "path": "artifacts/aug012/pre-release-epoch-processes.ts",
+      "sha256": "88513fd1a85c4ffc3c4192eec2b9b419742ab2b1d9b7c46914f1a288cfd1976d",
+      "bytes": 19502
+    },
+    {
+      "path": "artifacts/aug012/pre-release-epoch-processes.js",
+      "sha256": "ce9db348bec3f71e70b305096c77cd27579661c561bde94c0a42d45c9ee65fda",
+      "bytes": 20325
+    },
+    {
+      "path": "artifacts/aug012/format-epoch.log",
+      "sha256": "779050e7ad5778a4f979a224d89378f618221711dc9eea917e9f696e4fdeccce",
+      "bytes": 96
+    },
+    {
+      "path": "artifacts/aug012/development-build-epoch.log",
+      "sha256": "b04b8612ad06f4368cb2d208a70c1a143aa9e8c7923229477b88258c0112649a",
+      "bytes": 68
+    },
+    {
+      "path": "artifacts/aug012/focused-epoch.log",
+      "sha256": "d9c717624750e53f793d673306a0a76cda2fc234f3c649fe9303a3996bb8bc98",
+      "bytes": 7389
+    },
+    {
+      "path": "artifacts/aug012/focused-epoch.json",
+      "sha256": "90a7bbc95fafc1b23f4b57134a84b38bf80a6946365fdbd5171ab92b0700feaa",
+      "bytes": 69
+    }
+  ],
+  "modelCalls": 0,
+  "acceptanceAwarded": false,
+  "actualChatGPTIntegration": false,
+  "osSandbox": false,
+  "hardCpuGpuRamOrDiskWriteQuotas": false,
+  "crossHostEnforcement": false,
+  "fullTransitiveLicenseClearance": false,
+  "limitations": [
+    "Native process/SDK and disk success/denial are real; unsupported/permission/invalid statistics and post-spawn errors are controlled injections, explicitly labeled.",
+    "Disk estimates and a conservative host pool reject observed/declared overcommit; a completion epoch prevents reuse after owned writes and release. No hard disk-write quota or hostile-writer isolation is claimed.",
+    "Admission deadlines are cooperative; physical filesystem work retains its slot until settlement. Parent-job and retained-output bounds do not measure descendant CPU/RSS.",
+    "Full native/prepack/installed/hosted qualification and immutable source/receipt review remain next."
+  ]
+}

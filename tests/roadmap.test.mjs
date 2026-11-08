@@ -127,3 +127,73 @@ test('text fingerprints survive Git LF checkout while binary and real edits stay
     mod.sourceDigest(Buffer.from('a\nb'), 'test.bin'),
   );
 });
+
+// AI-Change: 2026-11-07-aug013-evidence-matrix
+test('all expansion inputs invalidate reviewed metrics while report generation awards no approval', async (t) => {
+  const root = await fs.mkdtemp(path.join(os.tmpdir(), 'mterm-expansion-freshness-'));
+  t.after(() => fs.rm(root, { recursive: true, force: true }));
+  const save = async (relative, value) => {
+    const target = path.join(root, relative);
+    await fs.mkdir(path.dirname(target), { recursive: true });
+    await fs.writeFile(target, typeof value === 'string' ? value : JSON.stringify(value, null, 2) + '\n');
+  };
+  await save('src/a.ts', 'export const a=1;\n');
+  await save('tests/x.test.mjs', 'test fixture\n');
+  await save('docs/roadmap/progress.json', {
+    schemaVersion: 1,
+    baseline: 'fixture',
+    reviewedAt: '2026-11-07T00:00:00Z',
+    items: [row('CLI-001', 'planned')],
+  });
+  await save('docs/roadmap/desktop-commander-parity.json', {
+    closedGapCount: 0,
+    gaps: [{ id: 'DCP-001' }],
+    pass: false,
+    upstream: {
+      repository: 'fixture/upstream',
+      version: 'fixture',
+      commit: 'fixture',
+      publishedToolCount: 1,
+    },
+    epic: { issue: 1, url: 'https://example.invalid/issues/1' },
+  });
+  await save('docs/ai/changes/expansion-fixture.json', {
+    change_id: 'expansion-fixture',
+    provider: 'fixture',
+    model: 'fixture',
+    tests: [{ result: 'synthetic fixture only' }],
+    roadmap_updates: [{ id: 'CLI-001', note: 'unchanged' }],
+  });
+  const ledgers = {
+    sources: JSON.parse(
+      await fs.readFile(new URL('../docs/expansion/sources.json', import.meta.url), 'utf8'),
+    ),
+    queue: JSON.parse(await fs.readFile(new URL('../docs/expansion/queue.json', import.meta.url), 'utf8')),
+    evidence: { schemaVersion: 1, hashMode: 'sha256-utf8-lf', capabilities: {} },
+  };
+  for (const name of Object.keys(ledgers)) await save('docs/expansion/' + name + '.json', ledgers[name]);
+  for (const name of Object.keys(ledgers)) {
+    await mod.review(root, 'expansion-fixture');
+    await mod.render(root);
+    await mod.check(root);
+    if (name === 'sources') ledgers.sources.sources[0].blocker += ' Freshness fixture.';
+    if (name === 'queue') ledgers.queue.issues[0].blocker += ' Freshness fixture.';
+    if (name === 'evidence')
+      ledgers.evidence.capabilities['AUG-013'] = {
+        scope: 'Synthetic freshness fixture',
+        limitations: ['No execution claimed'],
+        fixtures: [],
+        references: [],
+        platforms: {},
+        acceptanceReview: null,
+      };
+    await save('docs/expansion/' + name + '.json', ledgers[name]);
+    await assert.rejects(mod.check(root), /stale/i);
+    await assert.rejects(mod.render(root), /stale/i);
+  }
+  await mod.review(root, 'expansion-fixture');
+  await mod.render(root);
+  await mod.check(root);
+  const review = JSON.parse(await fs.readFile(path.join(root, 'docs/roadmap/review.json'), 'utf8'));
+  for (const name of Object.keys(ledgers)) assert.ok(review.sourceFiles['docs/expansion/' + name + '.json']);
+});

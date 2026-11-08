@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-source-review",
+  "head": "af992a389e418651b59c02b7acb297ca3bcdebf3",
+  "reviewer": "/root/standing_authorization_review",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "observedAt": "2026-11-07T23:53:59Z",
+  "verdict": "No blocking findings in scoped code review",
+  "sourceFingerprint": "7dac791483bf81bb42c1277aaff256f4ebb83c222564623ed706ce555ea3919e",
+  "manifestFiles": 135,
+  "manifestBytes": 3266752,
+  "mismatches": 0,
+  "evidencePins": 9,
+  "protectedFieldsUnchanged": true,
+  "fullAcceptanceAwarded": false,
+  "limits": "Independent read-only review of immutable Git objects; no test execution by reviewer. Native/package/hosted gates separately observed.",
+  "resolvedFindings": [
+    "Bounded rooted source traversal and binary-safe file reads, including the standalone CLI freshness path.",
+    "Acceptance scope binds original issue body, test plans and declared prerequisites.",
+    "Independent review binds normalized required-platform subjects and exact execution receipt pins."
+  ],
+  "fileHashes": {
+    "scripts/expansion-matrix.mjs": "0c1869f91480c633e56ec1b37b2fede5010f562d199d66910a88ee6ce381004c",
+    "scripts/review-source.mjs": "eaa726652bf57de3a1e5c1dc834f695afa4e80499b3bf89f989f359384dcac33",
+    "scripts/roadmap.mjs": "ca0fe5cde3a8278ca62391ee7daef5e1f23d9ebc2a9f3fab54cdb4b965d03672",
+    "tests/expansion-matrix.test.mjs": "4d922b627fb9b5331b63cc8f9fe6b64fbb60735779aa1cb3953d2c48b2ddc8a3",
+    "tests/roadmap.test.mjs": "16f8640897aaef65806df6e6aa90b5b3ee10c49d77281be190307d92548c81b8",
+    "docs/expansion/MATRIX.md": "7918d93f8090ebefafe88cc8a2541aeb6486ff1a2c8b3071b29400496aa73647"
+  },
+  "technicalReviewOnly": true,
+  "recurringOwnerApprovalRequired": false
+}

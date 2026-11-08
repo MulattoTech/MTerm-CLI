@@ -1,0 +1,219 @@
+{
+  "schemaVersion": 1,
+  "kind": "exact-commit-qualification",
+  "capability": "AUG-013",
+  "issue": 94,
+  "testedCommit": "af992a389e418651b59c02b7acb297ca3bcdebf3",
+  "sourceFingerprint": "7dac791483bf81bb42c1277aaff256f4ebb83c222564623ed706ce555ea3919e",
+  "subjectFingerprint": "5ce608452244374b6e4d0339e786f072fbd8c2f11ccf4a3da6e63bc85d700eec",
+  "platform": "win32-x64",
+  "node": "v24.21.0",
+  "startedAt": "2026-11-07T23:55:12.213Z",
+  "completedAt": "2026-11-07T23:56:46.246Z",
+  "result": "passed",
+  "cleanStart": true,
+  "cleanEnd": true,
+  "nativeSuite": {
+    "tests": 375,
+    "passed": 375,
+    "failed": 0,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "stages": [
+    {
+      "name": "reviewed-build",
+      "exitCode": 0,
+      "startedAt": "2026-11-07T23:55:12.214Z",
+      "completedAt": "2026-11-07T23:55:13.684Z",
+      "log": {
+        "path": "artifacts/aug013/qualified-attempt2/reviewed-build.log",
+        "sha256": "e88e6133625427b3e6b7c5148fdcedda65ce86a1d5f8a7c409bbe102e9784ad3",
+        "bytes": 786
+      }
+    },
+    {
+      "name": "normal-prepack",
+      "exitCode": 0,
+      "startedAt": "2026-11-07T23:55:13.685Z",
+      "completedAt": "2026-11-07T23:56:14.111Z",
+      "log": {
+        "path": "artifacts/aug013/qualified-attempt2/normal-prepack.log",
+        "sha256": "9848b3604a3847258f9b27eee694696cdeaed560b95386f8568cf8b2089143c3",
+        "bytes": 41194
+      }
+    },
+    {
+      "name": "self-host",
+      "exitCode": 0,
+      "startedAt": "2026-11-07T23:56:14.113Z",
+      "completedAt": "2026-11-07T23:56:15.084Z",
+      "log": {
+        "path": "artifacts/aug013/qualified-attempt2/self-host.log",
+        "sha256": "a38e3215a05a401ae8d110826c15f2fc3c8cc6fd77ca564d863d87cfb0b116d9",
+        "bytes": 280
+      }
+    },
+    {
+      "name": "installed-package",
+      "exitCode": 0,
+      "startedAt": "2026-11-07T23:56:15.085Z",
+      "completedAt": "2026-11-07T23:56:45.123Z",
+      "log": {
+        "path": "artifacts/aug013/qualified-attempt2/installed-package.log",
+        "sha256": "1c66c04088e2e335bd8a60074bcdfce721b79b080cfae91ed46c502e5bed6b0d",
+        "bytes": 14441
+      }
+    },
+    {
+      "name": "production-audit",
+      "exitCode": 0,
+      "startedAt": "2026-11-07T23:56:45.124Z",
+      "completedAt": "2026-11-07T23:56:45.705Z",
+      "log": {
+        "path": "artifacts/aug013/qualified-attempt2/production-audit.log",
+        "sha256": "9142ba6d614f3a1ebd7a0943779af271e80f4d93df8fd47a82a69e957396ebae",
+        "bytes": 361
+      }
+    }
+  ],
+  "package": {
+    "result": "artifacts/package-verify-HRw84k/result.json",
+    "installedProductionBytes": 14476966,
+    "productionFiles": 997,
+    "packagedMcpRoundTrip": true,
+    "fromOutsideCheckout": true,
+    "optionalPacks": {
+      "tests": 16,
+      "failed": 0,
+      "skipped": 0,
+      "syntheticOnly": true
+    },
+    "provenance": {
+      "tests": 18,
+      "failed": 0,
+      "skipped": 0,
+      "referenceFilesVerified": 7,
+      "productionPackages": 4,
+      "productionEdges": 5,
+      "retainedBundledNotices": 9,
+      "reviewedSdkArtifactPins": 86,
+      "sdkArtifactCommit": "8e6f2336d995b5c1cb5ff044071ed186cce03567",
+      "embeddedFastUri": "3.1.9",
+      "productionRedistributionEligible": false,
+      "fullSpdxSchemaValidatedHere": false
+    },
+    "productionLicenseEvidence": [
+      {
+        "name": "@modelcontextprotocol/core",
+        "version": "2.3.0",
+        "license": "Apache-2.0",
+        "integrity": "sha512-09BHFaNVBe5pB2AhzCfLj0cqmsKLERvZQ4FblzP90UMGLaXVqdZPByFjURwsUYCmxonUW2yAwgTTvle+8O2/8w==",
+        "files": [
+          {
+            "path": "LICENSE",
+            "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+          }
+        ]
+      },
+      {
+        "name": "@modelcontextprotocol/server",
+        "version": "2.3.0-mterm.1",
+        "license": "Apache-2.0",
+        "integrity": "sha512-RNlauLPhVz8rUV8EvE1jsPmzBtb84j1HIBFGaTyANRbSHjwEBjl0th5idsfHRcGLT5TWZVfFFzlZhk/zJWXY4w==",
+        "files": [
+          {
+            "path": "LICENSE",
+            "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+          }
+        ]
+      },
+      {
+        "name": "mterm-cli",
+        "version": "0.0.1-preview.1",
+        "license": "MIT",
+        "integrity": "sha512-PMYpvYkjK5tKSnsHb9IB20uF7Xe47BG+yd2MCaLafse2rBslVzd6RUBf9quHp/ou1B5c/gpCW9xgnFsmB6GrMA==",
+        "files": [
+          {
+            "path": "LICENSE",
+            "sha256": "057801cf89de394d84ca2f5797e31619cb5fd66e6f4b7da7058db7887633ba37"
+          }
+        ]
+      },
+      {
+        "name": "zod",
+        "version": "4.6.7",
+        "license": "MIT",
+        "integrity": "sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==",
+        "files": [
+          {
+            "path": "LICENSE",
+            "sha256": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8"
+          }
+        ]
+      }
+    ]
+  },
+  "runtimeBoundary": {
+    "packageCount": 4,
+    "fileCount": 993,
+    "payloadBytes": 14473316,
+    "allRuntimePackageFilesIdentical": true,
+    "priorQualifiedRoot": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG002-20261107\\artifacts\\package-verify-7TCrGA\\install\\node_modules",
+    "excludedInstallBookkeeping": [
+      "node_modules/.package-lock.json"
+    ],
+    "matrixPayloadAdded": false,
+    "inventorySha256": "7f12978d832d6d523f003892df652aacd81177e24f77b84f28e7cc1f28fa765b"
+  },
+  "productionAdvisoryAudit": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "scope": "Ordinary production dependency advisory audit; selected SDK payload is unchanged from reviewed PR200, not a new exhaustive bundled audit"
+  },
+  "hosted": {
+    "head": "af992a389e418651b59c02b7acb297ca3bcdebf3",
+    "checksPassed": 9,
+    "receiptPaths": [
+      "docs/validation/2026-11-07-aug013-win32-x64.json",
+      "docs/validation/2026-11-07-aug013-linux-x64.json",
+      "docs/validation/2026-11-07-aug013-darwin-arm64.json",
+      "docs/validation/2026-11-07-aug013-darwin-x64.json"
+    ],
+    "platformRun": 42427076376,
+    "prRun": 42427117269
+  },
+  "independentReview": "docs/validation/2026-11-07-aug013-source-review.json",
+  "priorFailure": {
+    "receipt": "artifacts/aug013/qualification.json",
+    "startedAt": "2026-11-07T23:52:50.100Z",
+    "completedAt": "2026-11-07T23:53:12.520Z",
+    "stage": "normal-prepack",
+    "exitCode": 1,
+    "tests": 173,
+    "passed": 53,
+    "failed": 120,
+    "reason": "Fresh clone had not yet run the required build; test imports failed with missing dist modules. Corrected runner order uses reviewed build before prepack; product source was unchanged.",
+    "log": {
+      "path": "artifacts/aug013/normal-prepack.log",
+      "sha256": "5a601bf31124afcbd4eb0076bd3be1e2f0d1ad77b0d50be499cf9c3b41f3231a",
+      "bytes": 181216
+    }
+  },
+  "modelCalls": 0,
+  "acceptanceAwarded": false,
+  "fullTransitiveLicenseClearance": false,
+  "fullAUGAcceptance": false,
+  "limitations": [
+    "Ledger consistency and bounded checker scenarios do not accept all 117 capabilities.",
+    "Independent identity and execution claims are self-reported; actual logs, exact-head checks and source review remain separate evidence.",
+    "Twenty structured checker cases are observed across four platforms; most capability-specific observations remain unrun.",
+    "Final metadata head checks and normal merge/main verification remain subsequent observations."
+  ]
+}

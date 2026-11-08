@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "kind": "mterm-expansion-execution",
+  "capability": "AUG-013",
+  "platform": "darwin-x64",
+  "subject": {
+    "testedCommit": "af992a389e418651b59c02b7acb297ca3bcdebf3",
+    "subjectFingerprint": "5ce608452244374b6e4d0339e786f072fbd8c2f11ccf4a3da6e63bc85d700eec",
+    "backend": {
+      "name": "MTerm-CLI development evidence matrix",
+      "version": "0.0.1-preview.1 / schema 1"
+    },
+    "runtime": {
+      "name": "node",
+      "version": "v24.21.0"
+    }
+  },
+  "observedAt": "2026-11-07T23:53:10.879Z",
+  "command": "npm run check",
+  "exitCode": 0,
+  "cases": {
+    "success": {
+      "status": "passed",
+      "fixtureId": "fixture-1",
+      "fixtureSha256": "4d922b627fb9b5331b63cc8f9fe6b64fbb60735779aa1cb3953d2c48b2ddc8a3"
+    },
+    "permission_denied": {
+      "status": "passed",
+      "fixtureId": "fixture-1",
+      "fixtureSha256": "4d922b627fb9b5331b63cc8f9fe6b64fbb60735779aa1cb3953d2c48b2ddc8a3"
+    },
+    "cancelled": {
+      "status": "passed",
+      "fixtureId": "fixture-1",
+      "fixtureSha256": "4d922b627fb9b5331b63cc8f9fe6b64fbb60735779aa1cb3953d2c48b2ddc8a3"
+    },
+    "deadline": {
+      "status": "passed",
+      "fixtureId": "fixture-1",
+      "fixtureSha256": "4d922b627fb9b5331b63cc8f9fe6b64fbb60735779aa1cb3953d2c48b2ddc8a3"
+    },
+    "unsupported_platform": {
+      "status": "passed",
+      "fixtureId": "fixture-1",
+      "fixtureSha256": "4d922b627fb9b5331b63cc8f9fe6b64fbb60735779aa1cb3953d2c48b2ddc8a3"
+    }
+  },
+  "limitations": [
+    "These observations cover the development matrix checker; they do not establish the 117 displayed capabilities or full AUG-013 acceptance.",
+    "Cancellation uses the actual reader with an AbortSignal. Deadline testing advances a monotonic test clock after a real file read; no hard OS-read interruption is claimed.",
+    "Unsupported-platform testing supplies a refused host identifier; it does not qualify another OS.",
+    "External execution and reviewer identity remain self-reported; retained GitHub logs and checks are separately inspectable."
+  ],
+  "caseEvidence": {
+    "success": "actual expansion identities and reciprocal graph remain complete without acceptance credit",
+    "permission_denied": "outside-root evidence and ambiguous paths are denied without exposing outside bytes",
+    "cancelled": "pre-abort and cancellation after a real read stop further reads",
+    "deadline": "deadline expires around actual file I/O without fabricating a scenario result",
+    "unsupported_platform": "unsupported host is rejected before reading and malformed limits are rejected"
+  },
+  "hosted": {
+    "runId": 42427076376,
+    "jobId": 128567532118,
+    "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42427076376/job/128567532118",
+    "event": "push",
+    "sourceFingerprint": "7dac791483bf81bb42c1277aaff256f4ebb83c222564623ed706ce555ea3919e",
+    "tests": 375,
+    "passed": 363,
+    "failed": 0,
+    "skipped": 12,
+    "skipScope": "12 existing Windows-only tests; all matrix cases passed"
+  }
+}

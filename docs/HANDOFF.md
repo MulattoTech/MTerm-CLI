@@ -1,3 +1,21 @@
+# AUG-013 exact-code qualification — 2026-11-07
+
+[Draft PR #201](https://github.com/MulattoTech/MTerm-CLI/pull/201) code af992a389e418651b59c02b7acb297ca3bcdebf3 passed native 375/375, normal prepack, self-host, installed verification, advisory audit and 9/9 hosted checks. Independent review resolved three real findings and approved all 135 source pins. All 993 runtime files across four packages match PR200; installed core remains 14,476,966 bytes. The first native prepack attempt omitted the initial build and failed on missing dist imports; that original failure is retained.
+
+[Qualification and limits](validation/2026-11-07-aug013-qualification.json) and four platform receipts now bind 20 scoped matrix scenarios. Most other capability observations remain unrun. AUG 0/117, CLI 29.12% maturity and 0/300 complete, DCP 0/48, WEB 0/12 remain unchanged. Final metadata-head receipt review, hosted checks, expected-head merge and main verification are next. No manual owner action or model usage is required. Preserve the isolated clone, primary dirty checkout and all failed/successful receipts.
+
+---
+
+# AUG-013 current continuation — 2026-11-07
+
+PR #200 is merged at89d93c59a9c819314ef569a2250a4606f03ec792; final head9/9 and main5/5 passed, with identical reviewed tree and retained artifact ancestry. PR199 is also delivered. Standing owner authorization covers routine qualified delivery; no manual owner review is pending.
+
+The sole implementation clone H:\MTechLabs\Dev\MTerm-CLI-AUG013-20261107 owns #94 on feat/aug-013-evidence-matrix-20261107. Read [the matrix contract](expansion/MATRIX.md), development receipt and expansion queue. Focused native27/27 passed after real baseline and review-regression failures. Exact committed full/package/hosted and independent qualification remain next. Preserve the primary dirty checkout and completed evidence.
+
+All original metrics remain:152sources,117capabilities,397reciprocal mappings;AUG0/117,CLI29.12% maturity and0/300complete,DCP0/48,WEB0/12. Unknown observations stay unrun. No runtime dependency or model use is added. Next scoped candidates are #83 then #92, subject to refreshed dependencies. Later PR receipts supersede this preparation.
+
+---
+
 # AUG-002 current continuation — 2026-11-07
 
 PR #199 is merged at560b3713bb9aea36578b8b7b576f4beda0775a6d, with9/9 final-head and5/5 main checks. Standing owner authorization removes recurring manual review. Preserve the primary dirty checkout and all unrelated worktrees.

@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 1,
+  "kind": "development-checkpoint",
+  "capability": "AUG-013",
+  "issue": 94,
+  "baseSha": "89d93c59a9c819314ef569a2250a4606f03ec792",
+  "utc": "2026-11-07T23:49:35.398Z",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "observations": {
+    "initialRed": {
+      "utc": "2026-11-07T23:32:12.7150092Z",
+      "testExitCode": 1,
+      "phase": "RED",
+      "baseSha": "89d93c59a9c819314ef569a2250a4606f03ec792",
+      "testSha256": "2db9fdb0f5b38637c5535c451dd3e1b7f7b282aecf162ce6004d7cc408f235fa",
+      "tests": 18,
+      "passed": 0,
+      "failed": 18
+    },
+    "freshnessRed": {
+      "baseSha": "89d93c59a9c819314ef569a2250a4606f03ec792",
+      "testExitCode": 1,
+      "phase": "freshness RED",
+      "testSha256": "4c5b0d6e5218088105af025ff7a1aa1576c5b78807fd17f4d017564f7eb5405f",
+      "utc": "2026-11-07T23:32:49.2707830Z",
+      "tests": 6,
+      "passed": 5,
+      "failed": 1
+    },
+    "reviewFindingsRed": {
+      "phase": "review findings RED",
+      "testExitCode": 1,
+      "utc": "2026-11-07T23:44:24.8300469Z",
+      "tests": 27,
+      "passed": 25,
+      "failed": 2
+    },
+    "receiptReplacementRed": {
+      "phase": "receipt replacement RED after source and scope fixes",
+      "utc": "2026-11-07T23:46:44.148199+00:00",
+      "node": "v24.22.1",
+      "platform": "linux-x64",
+      "tests": 27,
+      "passed": 26,
+      "failed": 1,
+      "sourceState": "supplementary scratch copy, not the Windows delivery clone",
+      "files": {
+        "scripts/expansion-matrix.mjs": "14480c7f334d168c0918dac74104acf661dd3323c10ee66eeb640664a3cf54c5",
+        "scripts/review-source.mjs": "2fb79cd780055af209ccba860aa2a8f99dd26a41e85e94ed436156687fb659af",
+        "tests/expansion-matrix.test.mjs": "692ebec708b3f5bfc3c587d2db703b4e3a4b35e34b5a37d609883a43147d60cb",
+        "artifacts/receipt-rebinding-red.log": "984c92638fca608c874d9fe535fbeeff18a9ef39695338d8f65e18036b3e9561"
+      }
+    },
+    "focusedReviewedNative": {
+      "node": "v24.21.0",
+      "utc": "2026-11-07T23:47:46.8799660Z",
+      "phase": "reviewed focused native",
+      "testExitCode": 0,
+      "platform": "win32-x64",
+      "tests": 27,
+      "passed": 27,
+      "failed": 0
+    }
+  },
+  "logs": {
+    "red": {
+      "path": "artifacts/aug013/red.log",
+      "sha256": "5d82d4ad04ed624ff6f293c99f3f9d11fe5ee0d4cdaff0fb62c87032abffa888",
+      "bytes": 23167
+    },
+    "freshness-red": {
+      "path": "artifacts/aug013/freshness-red.log",
+      "sha256": "ca37ed7e44a8a7296799aa42d011e0e280ad83df0d61f999e69fcb50c4db0ed5",
+      "bytes": 2014
+    },
+    "review-findings-red": {
+      "path": "artifacts/aug013/review-findings-red.log",
+      "sha256": "0e2b17262787efcc0124107144b20db3444d8290ed5ababae84beaee2d05a43b",
+      "bytes": 7586
+    },
+    "receipt-rebinding-red": {
+      "path": "artifacts/aug013/receipt-rebinding-red.log",
+      "sha256": "984c92638fca608c874d9fe535fbeeff18a9ef39695338d8f65e18036b3e9561",
+      "bytes": 6647
+    },
+    "focused-reviewed-native": {
+      "path": "artifacts/aug013/focused-reviewed-native.log",
+      "sha256": "bf77978e7f2e2a6f1ea96744881960c11d5a0b335bfe06e67109e493e5ceb90b",
+      "bytes": 6281
+    }
+  },
+  "sourceState": "Working tree; not yet exact committed-head qualification",
+  "acceptanceAwarded": false,
+  "modelCalls": 0,
+  "limitations": [
+    "Focused development evidence only; committed full/package/hosted/independent gates remain next.",
+    "Local raw logs are retained in the isolated clone; this checkpoint is not a per-scenario acceptance receipt."
+  ]
+}

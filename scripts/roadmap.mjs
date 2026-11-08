@@ -5,6 +5,10 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
+// AI-Change: 2026-11-07-aug013-evidence-matrix
+import { sourceFingerprint, subjectFingerprint } from './review-source.mjs';
+import { inspectMatrix } from './expansion-matrix.mjs';
+export { sourceDigest } from './review-source.mjs';
 export const STAGES = Object.freeze({
   not_started: 0,
   planned: 10,
@@ -83,81 +87,6 @@ export function renderHtml(c, summary) {
       '',
     )}</select><p id="count"></p><table><thead><tr><th>ID</th><th>Feature and acceptance</th><th>Progress</th><th>Remaining / ETA</th></tr></thead><tbody id="rows"></tbody></table><script id="catalog" type="application/json">${data}</script><script>const items=JSON.parse(document.getElementById('catalog').textContent);const rows=document.getElementById('rows');function draw(){const q=document.getElementById('search').value.toLowerCase();const f=document.getElementById('filter').value;const selected=items.filter(x=>(f==='all'||f==='blocked'&&x.blocker||x.stage===f)&&[x.id,x.title,x.section,x.acceptance,x.notes,x.blocker].join(' ').toLowerCase().includes(q));rows.replaceChildren();for(const x of selected){const tr=document.createElement('tr');tr.className=x.blocker?'blocked':x.stage;for(let i=0;i<4;i++)tr.appendChild(document.createElement('td'));tr.children[0].textContent=x.id;tr.children[1].textContent=x.title;const detail=document.createElement('small');detail.textContent=x.acceptance+' — '+x.notes+(x.blocker?' BLOCKED: '+x.blocker:'');tr.children[1].appendChild(detail);const bar=document.createElement('progress');bar.max=100;bar.value=x.percent;bar.setAttribute('aria-label',x.id+' '+x.percent+'%');tr.children[2].appendChild(bar);const state=document.createElement('small');state.textContent=x.percent+'% '+x.stage;tr.children[2].appendChild(state);tr.children[3].textContent=x.remainingHours.join('–')+' h · '+x.eta;rows.appendChild(tr);}document.getElementById('count').textContent=selected.length+' of '+items.length+' visible';}document.getElementById('search').addEventListener('input',draw);document.getElementById('filter').addEventListener('change',draw);draw();</script></html>\n`;
 }
-const roots = [
-  'src',
-  'bin',
-  'scripts',
-  'tests',
-  'gateway',
-  '.github',
-  'docs/parity',
-  'docs/provenance',
-  'vendor',
-];
-const singles = [
-  'package.json',
-  'package-lock.json',
-  'npm-shrinkwrap.json',
-  'tsconfig.json',
-  '.prettierrc.json',
-  '.gitattributes',
-  'Start-MTerm-CLI.ps1',
-  'AGENTS.md',
-  'CONTRIBUTING.md',
-  'CLAUDE.md',
-  'GEMINI.md',
-  'versions.json',
-  'THIRD_PARTY.md',
-  'docs/PROVENANCE.md',
-  'docs/SECURITY.md',
-  'docs/OWNER_AUTHORIZATION.md',
-  'docs/ORCHESTRATION.md',
-  'docs/GITHUB_ORCHESTRATION_SETUP.md',
-  'docs/CODEX_REGISTRATION.md',
-  'docs/execution/NEXT_PARITY_PROMPT.md',
-  'docs/validation/2026-10-05-codex-parity-foundation.md',
-  'docs/ARCHITECTURE.md',
-  'docs/TODAY_CANDIDATE.md',
-  'docs/roadmap/desktop-commander-parity.json',
-  'docs/DESKTOP_COMMANDER_CODEX_PARITY.md',
-  'docs/execution/DESKTOP_COMMANDER_100_PASS_PROMPT.md',
-];
-// Git normalizes known text to LF; hash equivalent CRLF checkouts identically.
-// Binary files remain byte-exact. Content edits still require explicit metric review.
-export function sourceDigest(bytes, relativePath) {
-  if (/\.(?:md|txt|json|mjs|cjs|js|ts|tsx|yaml|yml|toml|ps1|sh|css|html|svg)$/.test(relativePath)) {
-    const text = new TextDecoder('utf-8', { fatal: true, ignoreBOM: true }).decode(bytes);
-    return digest(text.replace(/\r\n/g, '\n'));
-  }
-  return digest(bytes);
-}
-async function sourceFingerprint(root) {
-  const files = [];
-  async function walk(relative) {
-    let entries;
-    try {
-      entries = await fs.readdir(path.join(root, relative), { withFileTypes: true });
-    } catch (e) {
-      if (e.code === 'ENOENT') return;
-      throw e;
-    }
-    for (const e of entries) {
-      if (e.isSymbolicLink()) throw Error('Symlink in reviewed source');
-      const rel = relative + '/' + e.name;
-      if (e.isDirectory()) await walk(rel);
-      else files.push(rel);
-    }
-  }
-  for (const d of roots) await walk(d);
-  for (const f of singles)
-    try {
-      await fs.access(path.join(root, f));
-      files.push(f);
-    } catch {}
-  const manifest = {};
-  for (const f of files.sort()) manifest[f] = sourceDigest(await fs.readFile(path.join(root, f)), f);
-  return { hash: digest(json(manifest)), files: manifest };
-}
 async function load(root) {
   const c = validateCatalog(
     JSON.parse(await fs.readFile(path.join(root, 'docs/roadmap/progress.json'), 'utf8')),
@@ -185,9 +114,12 @@ async function load(root) {
 }
 async function state(root) {
   const c = await load(root);
+  const source = await sourceFingerprint(root);
+  const hasExpansion = Object.keys(source.files).some((name) => name.startsWith('docs/expansion/'));
+  if (hasExpansion) await inspectMatrix(root, { subjectFingerprint: subjectFingerprint(source.files) });
   return {
     c,
-    source: await sourceFingerprint(root),
+    source,
     catalog: digest(json(c)),
     weights: digest(json(c.items.map((x) => [x.id, x.weight]))),
   };

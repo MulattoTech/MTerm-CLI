@@ -3102,13 +3102,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** 0/10/40/65/85/100 stage semantics have explicit acceptance criteria.
 
-**Current scope:** All300 IDs retained in reviewed catalog. Local SVG/Markdown/JSON/offline HTML plus explicit review and stale-source/output tests; hosted publication/browser-matrix validation pending.
+**Current scope:** All300 IDs retained in reviewed catalog. Local SVG/Markdown/JSON/offline HTML plus explicit review and stale-source/output tests; hosted publication/browser-matrix validation pending. 2026-11-07 AUG-013: development-only matrix validates the fixed graph, exact evidence bindings and explicit unknown platform/scenario cells. All three expansion inputs invalidate stale review; source hashing is bounded and link-denying. Focused native27/27 passed after reproduced review findings. Committed qualification remains separate. No stage, weight, acceptance, estimate or blocker credit. Qualified code af992a3: native 375/375, four hosted platforms and all 27 matrix/roadmap tests, installed/runtime boundary and advisory checks passed; 993 runtime files remain identical. Twenty scoped checker observations are recorded, with no capability acceptance or stage credit.
 
 **Baseline weight:** 8 h (rough). **Remaining:** 1–6 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `scripts/roadmap.mjs`, `tests/roadmap.test.mjs`
+**Evidence:** `scripts/roadmap.mjs`, `tests/roadmap.test.mjs`, `scripts/expansion-matrix.mjs`, `scripts/review-source.mjs`, `tests/expansion-matrix.test.mjs`, `docs/expansion/MATRIX.md`, `docs/validation/2026-11-07-aug013-development.json`, `docs/validation/2026-11-07-aug013-qualification.json`, `docs/validation/2026-11-07-aug013-source-review.json`
 
 ## CLI-223 — Freeze baseline weights per task
 
@@ -3228,13 +3228,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Changing CLI source, pins or reviewed settings invalidates stale assessments.
 
-**Current scope:** Reproduced prior clean Git checkout CRLF/LF mismatch and fixed normalized text fingerprints; binary and real source/catalog drift remain detected.
+**Current scope:** Reproduced prior clean Git checkout CRLF/LF mismatch and fixed normalized text fingerprints; binary and real source/catalog drift remain detected. 2026-11-07 AUG-013: development-only matrix validates the fixed graph, exact evidence bindings and explicit unknown platform/scenario cells. All three expansion inputs invalidate stale review; source hashing is bounded and link-denying. Focused native27/27 passed after reproduced review findings. Committed qualification remains separate. No stage, weight, acceptance, estimate or blocker credit. Qualified code af992a3: native 375/375, four hosted platforms and all 27 matrix/roadmap tests, installed/runtime boundary and advisory checks passed; 993 runtime files remain identical. Twenty scoped checker observations are recorded, with no capability acceptance or stage credit.
 
 **Baseline weight:** 8 h (rough). **Remaining:** 1–6 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `scripts/roadmap.mjs`, `tests/roadmap.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`
+**Evidence:** `scripts/roadmap.mjs`, `tests/roadmap.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`, `scripts/expansion-matrix.mjs`, `scripts/review-source.mjs`, `tests/expansion-matrix.test.mjs`, `docs/expansion/MATRIX.md`, `docs/validation/2026-11-07-aug013-development.json`, `docs/validation/2026-11-07-aug013-qualification.json`, `docs/validation/2026-11-07-aug013-source-review.json`
 
 ## CLI-232 — Test exported GUI fingerprint coverage
 
@@ -3256,13 +3256,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Build/package/CI publication checks reject stale reviews rather than silently regenerating credit.
 
-**Current scope:** Normal build/check now enforce both roadmap review and pinned-parity integrity. Forged PASS/closure without evidence is rejected; generated credit is still explicit review.
+**Current scope:** Normal build/check now enforce both roadmap review and pinned-parity integrity. Forged PASS/closure without evidence is rejected; generated credit is still explicit review. 2026-11-07 AUG-013: development-only matrix validates the fixed graph, exact evidence bindings and explicit unknown platform/scenario cells. All three expansion inputs invalidate stale review; source hashing is bounded and link-denying. Focused native27/27 passed after reproduced review findings. Committed qualification remains separate. No stage, weight, acceptance, estimate or blocker credit. Qualified code af992a3: native 375/375, four hosted platforms and all 27 matrix/roadmap tests, installed/runtime boundary and advisory checks passed; 993 runtime files remain identical. Twenty scoped checker observations are recorded, with no capability acceptance or stage credit.
 
 **Baseline weight:** 8 h (rough). **Remaining:** 1–6 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `scripts/roadmap.mjs`, `tests/roadmap.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`
+**Evidence:** `scripts/roadmap.mjs`, `tests/roadmap.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`, `scripts/expansion-matrix.mjs`, `scripts/review-source.mjs`, `tests/expansion-matrix.test.mjs`, `docs/expansion/MATRIX.md`, `docs/validation/2026-11-07-aug013-development.json`, `docs/validation/2026-11-07-aug013-qualification.json`, `docs/validation/2026-11-07-aug013-source-review.json`
 
 ## CLI-234 — Update contributor entry points in both repositories
 
@@ -3662,13 +3662,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Build/test/progress generation dependencies are excluded from installed CLI operation where possible.
 
-**Current scope:** Real production tarball install, official-client MCP file round trip outside checkout, isolated-prefix npm link and actual Windows shim passed. No user-global prefix mutation; other platforms and full three-component bundle remain unverified. 2026-11-07 AUG-001: pinned optional local-pack slice and Zod advisory remediation under qualification; stage, acceptance, weights, estimates and existing blockers unchanged. See dated report for exact evidence and limitations.
+**Current scope:** Real production tarball install, official-client MCP file round trip outside checkout, isolated-prefix npm link and actual Windows shim passed. No user-global prefix mutation; other platforms and full three-component bundle remain unverified. 2026-11-07 AUG-001: pinned optional local-pack slice and Zod advisory remediation under qualification; stage, acceptance, weights, estimates and existing blockers unchanged. See dated report for exact evidence and limitations. 2026-11-07 AUG-013: development-only matrix validates the fixed graph, exact evidence bindings and explicit unknown platform/scenario cells. All three expansion inputs invalidate stale review; source hashing is bounded and link-denying. Focused native27/27 passed after reproduced review findings. Committed qualification remains separate. No stage, weight, acceptance, estimate or blocker credit. Qualified code af992a3: native 375/375, four hosted platforms and all 27 matrix/roadmap tests, installed/runtime boundary and advisory checks passed; 993 runtime files remain identical. Twenty scoped checker observations are recorded, with no capability acceptance or stage credit.
 
 **Baseline weight:** 8 h (rough). **Remaining:** 1–2 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `scripts/verify-package.mjs`, `tests/cli.test.mjs`, `docs/validation/2026-11-07-aug001.md`
+**Evidence:** `scripts/verify-package.mjs`, `tests/cli.test.mjs`, `docs/validation/2026-11-07-aug001.md`, `scripts/expansion-matrix.mjs`, `scripts/review-source.mjs`, `tests/expansion-matrix.test.mjs`, `tests/roadmap.test.mjs`, `docs/expansion/MATRIX.md`, `docs/validation/2026-11-07-aug013-development.json`, `docs/validation/2026-11-07-aug013-qualification.json`, `docs/validation/2026-11-07-aug013-source-review.json`
 
 ## CLI-263 — Define the Today Candidate replacement milestone
 

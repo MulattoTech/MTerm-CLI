@@ -293,6 +293,102 @@ const installedResourceBudgets = {
   hardCpuGpuRamOrDiskWriteQuotas: false,
   log: budgetLog,
 };
+const isolationBindings = [];
+for (const name of [
+  'cli.js',
+  'mcp.js',
+  'processes.js',
+  'policy.js',
+  'resource-budget-policy.js',
+  'resource-budgets.js',
+  'isolation-policy.js',
+  'isolation-http.js',
+  'isolation-engine.js',
+  'isolation.js',
+  'errors.js',
+]) {
+  const source = await fs.readFile(path.join(root, 'dist', name));
+  const bytes = await fs.readFile(path.resolve(path.dirname(installed), '../dist', name));
+  assert.deepEqual(bytes, source, 'Installed isolation boundary differs from compiled source');
+  isolationBindings.push({ path: 'dist/' + name, sha256: createHash('sha256').update(bytes).digest('hex') });
+}
+const isolationAcceptance = await exec(
+  process.execPath,
+  ['--test', '--test-reporter=tap', '--test-concurrency=1', path.join(root, 'tests/isolation.test.mjs')],
+  {
+    cwd: home,
+    env: { ...env, MTERM_VERIFY_BIN: installed },
+    timeout: 90000,
+    maxBuffer: 4194304,
+    windowsHide: true,
+  },
+).then(
+  (r) => ({ ...r, exit: 0 }),
+  (e) => ({ stdout: e.stdout ?? '', stderr: e.stderr ?? '', exit: e.code ?? 'unknown' }),
+);
+const isolationLog = path.join(output, 'isolation-protocol-tests.tap');
+await fs.writeFile(isolationLog, isolationAcceptance.stdout + isolationAcceptance.stderr);
+if (process.env.MTERM_ISOLATION_REQUIRE_LIVE === '1') {
+  const retained = path.join(root, 'artifacts/aug005/ci-evidence');
+  await fs.mkdir(retained, { recursive: true });
+  await fs.copyFile(isolationLog, path.join(retained, 'installed-isolation-protocol.tap'));
+  await fs.writeFile(
+    path.join(retained, 'installed-isolation-protocol.json'),
+    JSON.stringify(
+      {
+        exitCode: isolationAcceptance.exit,
+        tests: Number(isolationAcceptance.stdout.match(/^# tests (\d+)$/m)?.[1]) || null,
+        moduleBindings: isolationBindings,
+        sha256: createHash('sha256')
+          .update(isolationAcceptance.stdout + isolationAcceptance.stderr)
+          .digest('hex'),
+        syntheticOnly: true,
+        modelCalls: 0,
+      },
+      null,
+      2,
+    ),
+  );
+}
+assert.equal(
+  isolationAcceptance.exit,
+  0,
+  'Installed isolation protocol/denial tests failed; see retained log',
+);
+const isolationTestCount = Number(isolationAcceptance.stdout.match(/^# tests (\d+)$/m)?.[1]);
+assert.ok(isolationTestCount >= 28);
+for (const field of ['fail', 'skipped', 'cancelled'])
+  assert.match(isolationAcceptance.stdout, new RegExp('^# ' + field + ' 0$', 'm'));
+let isolationLive = null;
+if (process.env.MTERM_ISOLATION_REQUIRE_LIVE === '1') {
+  const liveOutput = path.join(root, 'artifacts/aug005/ci-evidence/installed');
+  const executed = await exec(
+    process.execPath,
+    [path.join(root, 'scripts/verify-isolation-live.mjs'), installed, liveOutput],
+    {
+      cwd: home,
+      env: { ...env, MTERM_ISOLATION_REQUIRE_LIVE: '1' },
+      timeout: 300000,
+      maxBuffer: 4194304,
+      windowsHide: true,
+    },
+  );
+  isolationLive = JSON.parse(executed.stdout);
+  assert.equal(isolationLive.passed, true);
+  assert.equal(isolationLive.installedPackage, true);
+  assert.equal(isolationLive.fromOutsideCheckout, true);
+}
+const installedIsolation = {
+  ok: true,
+  protocolTests: isolationTestCount,
+  moduleBindings: isolationBindings,
+  protocolIsSynthetic: true,
+  actualUnsupportedHostDenial: process.platform !== 'linux' || process.arch !== 'x64',
+  live: isolationLive,
+  fullRuntimeImageRedistributionEligible: false,
+  modelCalls: 0,
+  log: isolationLog,
+};
 const sourceCommit = (
   await exec('git', ['rev-parse', 'HEAD'], { cwd: root, timeout: 10000, windowsHide: true })
 ).stdout.trim();
@@ -421,6 +517,7 @@ const report = {
   installedRemoteState: remoteState,
   installedOptionalPacks,
   installedResourceBudgets,
+  installedIsolation,
   installedProvenance,
   fullTransitiveLicenseClearance: false,
   fullDesktopCommanderParity: false,

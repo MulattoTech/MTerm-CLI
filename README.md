@@ -222,3 +222,7 @@ When an explicitly approved pack registry is configured, the stdio host exposes 
 ## Process and drive admission
 
 The local stdio host keeps a bounded owned-control lane available under normal-work overload. Optional immutable process budgets narrow job/runtime/output limits and add declared scratch admission and explicit placement within trusted directories. These controls are per host; hard CPU/GPU/RAM/disk-write and cross-host quotas remain unsupported. See the [resource contract](docs/parity/RESOURCE_BUDGETS.md) and [AUG-012/#92](https://github.com/MulattoTech/MTerm-CLI/issues/92). The launcher file and dependency versions are unchanged; full capability acceptance remains open.
+
+## Explicit isolated JavaScript execution
+
+A separately granted native Linux x64 tool runs JavaScript in an owner-selected local Docker image with no host mounts or network, a read-only root, bounded workspace and kernel resource limits. It requires --allow-isolated-exec and an immutable --isolation-policy; native execution and packs retain their existing authority. Unsupported platforms fail closed. See the [isolation contract](docs/parity/ISOLATION.md) for backend floors, ownership and recovery limits, and [AUG-005/#84](https://github.com/MulattoTech/MTerm-CLI/issues/84) for qualification. The product does not install or pull a runtime/image; complete capability acceptance remains open.

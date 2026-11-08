@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "kind": "mterm-expansion-execution",
+  "capability": "AUG-005",
+  "platform": "linux-x64",
+  "subject": {
+    "testedCommit": "e8264f74cd02df465a66a6ed81bf38034a01ad00",
+    "subjectFingerprint": "5b622498446e052eca2d265099f70d0907d37c829f2f76f14f358889a0edcd03",
+    "backend": {
+      "name": "Docker Engine native Linux / classic image store",
+      "version": "29.9.3"
+    },
+    "runtime": {
+      "name": "node",
+      "version": "v24.21.0"
+    }
+  },
+  "observedAt": "2026-11-08T02:51:28.517Z",
+  "command": "node scripts/verify-isolation-live.mjs; mandatory live node scripts/verify-package.mjs; npm run check",
+  "exitCode": 0,
+  "cases": {
+    "success": {
+      "status": "passed",
+      "fixtureId": "fixture-2",
+      "fixtureSha256": "4b3dc3d2c0222c30cac12eb5a1e642a08676b354fb1063c48c8f3068bc6c32c7"
+    },
+    "permission_denied": {
+      "status": "passed",
+      "fixtureId": "fixture-2",
+      "fixtureSha256": "4b3dc3d2c0222c30cac12eb5a1e642a08676b354fb1063c48c8f3068bc6c32c7"
+    },
+    "cancelled": {
+      "status": "passed",
+      "fixtureId": "fixture-2",
+      "fixtureSha256": "4b3dc3d2c0222c30cac12eb5a1e642a08676b354fb1063c48c8f3068bc6c32c7"
+    },
+    "deadline": {
+      "status": "passed",
+      "fixtureId": "fixture-2",
+      "fixtureSha256": "4b3dc3d2c0222c30cac12eb5a1e642a08676b354fb1063c48c8f3068bc6c32c7"
+    },
+    "unsupported_platform": {
+      "status": "passed",
+      "fixtureId": "fixture-1",
+      "fixtureSha256": "f531c207f20742296e845bc20f4cec5210dec9cb910e8e94413ec6e3bb891c99"
+    }
+  },
+  "caseEvidence": {
+    "success": "Real source and installed ISO-LIVE-01..09: immediate stdout/stderr, fixed nonroot identity/environment, denied host/symlink/shell escape, isolated network and observed/enforced cgroup/tmpfs/memory/PID/CPU limits.",
+    "permission_denied": "Real source and installed ISO-LIVE-11: chmod000 on owned Unix socket prevents a connection; profile/host-write denials also exercised. No synthetic Docker success is used as containment evidence.",
+    "cancelled": "Real source and installed ISO-LIVE-10/12: owned stop and actual official SDK request cancellation reach zero active/shared jobs and independent Docker owner-label absence.",
+    "deadline": "Real source and installed ISO-LIVE-10: observes the fresh job running before timeout, then confirms owned removal. Host-supervised cooperative deadline, not post-crash hard wall-clock guarantee.",
+    "unsupported_platform": "Synthetic unsupported Engine/version/capability inputs fail closed in fixture-1 on this real Linux host. This negative protocol observation grants no additional host/backend support."
+  },
+  "limitations": [
+    "Native Linux x64 with the observed classic-image-store backend only is live-qualified. Windows/macOS/ARM/WSL/Desktop are unsupported; denial does not establish containment.",
+    "The first same-head Windows native attempt failed one existing private registration rename; subsequent focused and full reruns passed without code/settings changes. Cause unproven; original failure preserved.",
+    "Cooperative host-supervised deadlines; broker/daemon loss may leave a container bounded by kernel controls. Restart recovery and independent hard wall-clock supervision remain open.",
+    "No general native executable/pack isolation, GPU limit, remote execution or actual ChatGPT connector invocation is qualified.",
+    "Signed packages and eight pinned LICENSE/NOTICE files do not establish full runtime/image/transitive redistribution clearance. Runtime binaries/images are not included in MTerm npm package.",
+    "Final metadata-head checks/review, expected-head merge and post-merge main checks are subsequent observations."
+  ],
+  "hosted": {
+    "runId": 42440186747,
+    "jobId": 128607550037,
+    "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42440186747/job/128607550037",
+    "event": "push",
+    "sourceFingerprint": "4295464af73165035408b8dd87d25c3d9a59abab77cfec1bfa07c0a35f137321",
+    "tests": 440,
+    "passed": 428,
+    "failed": 0,
+    "skipped": 12,
+    "isolationCasesPassed": 28,
+    "installedIsolationTests": 28,
+    "installedResourceTests": 24,
+    "installedPackTests": 29,
+    "installedProvenanceTests": 18,
+    "installedProductionBytes": 14570809,
+    "moduleBindings": [
+      {
+        "path": "dist/cli.js",
+        "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad"
+      },
+      {
+        "path": "dist/mcp.js",
+        "sha256": "d472b529ac7fbd667ef1f519259d395d3402fae6748123a49bbffa1462c5bc69"
+      },
+      {
+        "path": "dist/processes.js",
+        "sha256": "714f2ddc34e3e664d75f8f1bc2338e2f4691bf2de8d01ecedc1e07743acefcf5"
+      },
+      {
+        "path": "dist/policy.js",
+        "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+      },
+      {
+        "path": "dist/resource-budget-policy.js",
+        "sha256": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac"
+      },
+      {
+        "path": "dist/resource-budgets.js",
+        "sha256": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64"
+      },
+      {
+        "path": "dist/isolation-policy.js",
+        "sha256": "3b9c4a56d75e9660c6b8ed0cb9bfc32aa8441fabe6eddcd33a10d43458a26de9"
+      },
+      {
+        "path": "dist/isolation-http.js",
+        "sha256": "0fad31e0d688f663c3c37e2316863b6ec4ff30d67abca5a6a5a728420de265d5"
+      },
+      {
+        "path": "dist/isolation-engine.js",
+        "sha256": "130b4532dd7eac02bcd0d02d261cb5e34fb9f5bb67c80b7619469917ffaaca33"
+      },
+      {
+        "path": "dist/isolation.js",
+        "sha256": "4efc7b035ce22195fdace01e8249866db934aea8d55049d6c3300563ebac6120"
+      },
+      {
+        "path": "dist/errors.js",
+        "sha256": "26fa1c3341396a1f9eda45debe86dc2295cb997b9dd7e525e70ac17ef2c910a9"
+      }
+    ],
+    "rawJobCompletionTimestamp": "2026-11-08T02:51:28.5177030Z",
+    "log": {
+      "path": "artifacts/aug005/hosted-e8264f7-linux-x64.log",
+      "bytes": 110290,
+      "sha256": "016a2ee24508173a6083157bc4b512e58d187aeaa80cf88bdde14618a144e11d"
+    }
+  },
+  "realContainment": {
+    "path": "docs/validation/2026-11-08-aug005-live-qualification.json",
+    "sha256": "8a0bf7f846af6bde258dc934082e4e059d0a4b65e92def9984498e761b4593f3",
+    "sourceTests": 12,
+    "installedTests": 12
+  },
+  "modelCalls": 0,
+  "acceptanceAwarded": false
+}

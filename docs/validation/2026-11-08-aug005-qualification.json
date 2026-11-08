@@ -1,0 +1,627 @@
+{
+  "schemaVersion": 1,
+  "kind": "scoped-isolation-qualification",
+  "capability": "AUG-005",
+  "testedCommit": "e8264f74cd02df465a66a6ed81bf38034a01ad00",
+  "sourceFingerprint": "4295464af73165035408b8dd87d25c3d9a59abab77cfec1bfa07c0a35f137321",
+  "subjectFingerprint": "5b622498446e052eca2d265099f70d0907d37c829f2f76f14f358889a0edcd03",
+  "platform": "win32-x64",
+  "node": "v24.21.0",
+  "startedAt": "2026-11-08T02:55:24.115Z",
+  "cleanStart": true,
+  "attempt": 2,
+  "developmentAttempts": "docs/validation/2026-11-08-aug005-development.json",
+  "previousAttempt": "artifacts/aug005/qualification-code-e8264f7/qualification.json",
+  "retryReason": "One existing private-registration journal EPERM rename in440test full run; unchanged isolated case then passed1/1 and both hosted Windows lanes passed440. Cause unproven; no code/test/security setting changed, first failure retained.",
+  "stages": [
+    {
+      "name": "reviewed-build",
+      "executable": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+      "args": [
+        "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "build"
+      ],
+      "startedAt": "2026-11-08T02:55:24.116Z",
+      "log": "artifacts/aug005/qualification-code-e8264f7-attempt2/reviewed-build.log",
+      "exitCode": 0,
+      "completedAt": "2026-11-08T02:55:25.662Z"
+    },
+    {
+      "name": "normal-prepack",
+      "executable": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+      "args": [
+        "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+        "pack",
+        "--json",
+        "--pack-destination",
+        "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG005-20261108\\artifacts\\aug005\\qualification-code-e8264f7-attempt2"
+      ],
+      "startedAt": "2026-11-08T02:55:25.663Z",
+      "log": "artifacts/aug005/qualification-code-e8264f7-attempt2/normal-prepack.log",
+      "exitCode": 0,
+      "completedAt": "2026-11-08T02:56:43.877Z"
+    },
+    {
+      "name": "self-host",
+      "executable": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+      "args": [
+        "scripts/verify-self-host.mjs"
+      ],
+      "startedAt": "2026-11-08T02:56:43.877Z",
+      "log": "artifacts/aug005/qualification-code-e8264f7-attempt2/self-host.log",
+      "exitCode": 0,
+      "completedAt": "2026-11-08T02:56:44.875Z"
+    },
+    {
+      "name": "installed-package",
+      "executable": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+      "args": [
+        "scripts/verify-package.mjs"
+      ],
+      "startedAt": "2026-11-08T02:56:44.876Z",
+      "log": "artifacts/aug005/qualification-code-e8264f7-attempt2/installed-package.log",
+      "exitCode": 0,
+      "completedAt": "2026-11-08T02:57:33.133Z"
+    },
+    {
+      "name": "production-audit",
+      "executable": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+      "args": [
+        "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+        "audit",
+        "--omit=dev",
+        "--json"
+      ],
+      "startedAt": "2026-11-08T02:57:33.134Z",
+      "log": "artifacts/aug005/qualification-code-e8264f7-attempt2/production-audit.log",
+      "exitCode": 0,
+      "completedAt": "2026-11-08T02:57:33.709Z"
+    }
+  ],
+  "modelCalls": 0,
+  "acceptanceAwarded": false,
+  "package": {
+    "result": "artifacts/package-verify-vR2VcN/result.json",
+    "installedProductionBytes": 14572370,
+    "productionFiles": 1009,
+    "packagedMcpRoundTrip": true,
+    "installedOptionalPacks": {
+      "ok": true,
+      "tests": 29,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "moduleBindings": [
+        {
+          "path": "dist/cli.js",
+          "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad"
+        },
+        {
+          "path": "dist/mcp.js",
+          "sha256": "d472b529ac7fbd667ef1f519259d395d3402fae6748123a49bbffa1462c5bc69"
+        },
+        {
+          "path": "dist/tool-packs.js",
+          "sha256": "7f7792c1090b6868e1719b223d4f553efe19e537ff1c8be3014323122c52f12f"
+        },
+        {
+          "path": "dist/processes.js",
+          "sha256": "714f2ddc34e3e664d75f8f1bc2338e2f4691bf2de8d01ecedc1e07743acefcf5"
+        },
+        {
+          "path": "dist/resource-budgets.js",
+          "sha256": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64"
+        },
+        {
+          "path": "dist/resource-budget-policy.js",
+          "sha256": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac"
+        },
+        {
+          "path": "dist/policy.js",
+          "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+        }
+      ],
+      "syntheticOnly": true,
+      "modelCalls": 0,
+      "osSandbox": false,
+      "realClientConsent": false,
+      "log": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG005-20261108\\artifacts\\package-verify-vR2VcN\\optional-pack-tests.tap"
+    },
+    "installedProvenance": {
+      "ok": true,
+      "tests": 18,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "moduleBindings": [
+        {
+          "path": "dist/cli.js",
+          "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad"
+        },
+        {
+          "path": "dist/provenance.js",
+          "sha256": "ad842f4e4ebb14152575632773a7e460a194f7dadedd595ea9b77309f28e2902"
+        },
+        {
+          "path": "dist/files.js",
+          "sha256": "753adb8c88d5ea10d93549237f821c5bd9340d9c532611f0318e90af4e85d29e"
+        },
+        {
+          "path": "dist/policy.js",
+          "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+        },
+        {
+          "path": "dist/errors.js",
+          "sha256": "26fa1c3341396a1f9eda45debe86dc2295cb997b9dd7e525e70ac17ef2c910a9"
+        }
+      ],
+      "fromOutsideCheckout": true,
+      "referenceFilesVerified": 7,
+      "productionPackages": 4,
+      "productionEdges": 5,
+      "productionRedistributionEligible": false,
+      "retainedBundledNotices": 9,
+      "reviewedSdkArtifactPins": 86,
+      "sdkArtifactCommit": "8e6f2336d995b5c1cb5ff044071ed186cce03567",
+      "embeddedFastUri": "3.1.9",
+      "blockedSources": [
+        {
+          "code": "TRANSITIVE_REVIEW_PENDING",
+          "source": "mcp-sdk",
+          "message": "Separately installed dependency closure does not establish bundled-code license clearance."
+        }
+      ],
+      "spdxSemanticChecks": true,
+      "fullSpdxSchemaValidatedHere": false,
+      "modelCalls": 0,
+      "referenceReport": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG005-20261108\\artifacts\\package-verify-vR2VcN\\reference-provenance.report.json",
+      "runtimeReport": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG005-20261108\\artifacts\\package-verify-vR2VcN\\runtime-provenance.report.json"
+    },
+    "installedResourceBudgets": {
+      "ok": true,
+      "tests": 24,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "moduleBindings": [
+        {
+          "path": "dist/cli.js",
+          "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad"
+        },
+        {
+          "path": "dist/mcp.js",
+          "sha256": "d472b529ac7fbd667ef1f519259d395d3402fae6748123a49bbffa1462c5bc69"
+        },
+        {
+          "path": "dist/tool-packs.js",
+          "sha256": "7f7792c1090b6868e1719b223d4f553efe19e537ff1c8be3014323122c52f12f"
+        },
+        {
+          "path": "dist/processes.js",
+          "sha256": "714f2ddc34e3e664d75f8f1bc2338e2f4691bf2de8d01ecedc1e07743acefcf5"
+        },
+        {
+          "path": "dist/resource-budgets.js",
+          "sha256": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64"
+        },
+        {
+          "path": "dist/resource-budget-policy.js",
+          "sha256": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac"
+        },
+        {
+          "path": "dist/policy.js",
+          "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+        }
+      ],
+      "scope": "host-instance",
+      "realStatfsAndOwnedProcesses": true,
+      "injectedBackendFailuresLabeled": true,
+      "syntheticOnly": true,
+      "modelCalls": 0,
+      "crossHostEnforcement": false,
+      "hardCpuGpuRamOrDiskWriteQuotas": false,
+      "log": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG005-20261108\\artifacts\\package-verify-vR2VcN\\resource-budget-tests.tap"
+    },
+    "installedIsolation": {
+      "ok": true,
+      "protocolTests": 28,
+      "moduleBindings": [
+        {
+          "path": "dist/cli.js",
+          "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad"
+        },
+        {
+          "path": "dist/mcp.js",
+          "sha256": "d472b529ac7fbd667ef1f519259d395d3402fae6748123a49bbffa1462c5bc69"
+        },
+        {
+          "path": "dist/processes.js",
+          "sha256": "714f2ddc34e3e664d75f8f1bc2338e2f4691bf2de8d01ecedc1e07743acefcf5"
+        },
+        {
+          "path": "dist/policy.js",
+          "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+        },
+        {
+          "path": "dist/resource-budget-policy.js",
+          "sha256": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac"
+        },
+        {
+          "path": "dist/resource-budgets.js",
+          "sha256": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64"
+        },
+        {
+          "path": "dist/isolation-policy.js",
+          "sha256": "3b9c4a56d75e9660c6b8ed0cb9bfc32aa8441fabe6eddcd33a10d43458a26de9"
+        },
+        {
+          "path": "dist/isolation-http.js",
+          "sha256": "0fad31e0d688f663c3c37e2316863b6ec4ff30d67abca5a6a5a728420de265d5"
+        },
+        {
+          "path": "dist/isolation-engine.js",
+          "sha256": "130b4532dd7eac02bcd0d02d261cb5e34fb9f5bb67c80b7619469917ffaaca33"
+        },
+        {
+          "path": "dist/isolation.js",
+          "sha256": "4efc7b035ce22195fdace01e8249866db934aea8d55049d6c3300563ebac6120"
+        },
+        {
+          "path": "dist/errors.js",
+          "sha256": "26fa1c3341396a1f9eda45debe86dc2295cb997b9dd7e525e70ac17ef2c910a9"
+        }
+      ],
+      "protocolIsSynthetic": true,
+      "actualUnsupportedHostDenial": true,
+      "live": null,
+      "fullRuntimeImageRedistributionEligible": false,
+      "modelCalls": 0,
+      "log": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG005-20261108\\artifacts\\package-verify-vR2VcN\\isolation-protocol-tests.tap"
+    },
+    "fullTransitiveLicenseClearance": false
+  },
+  "runtimeBoundary": {
+    "packageCount": 4,
+    "fileCount": 1005,
+    "payloadBytes": 14568720,
+    "allRuntimePackageFilesIdentical": false,
+    "launcherIdentical": true,
+    "dependencyPackagesIdentical": true,
+    "changedFiles": [
+      "mterm-cli/README.md",
+      "mterm-cli/dist/cli.d.ts",
+      "mterm-cli/dist/cli.js",
+      "mterm-cli/dist/mcp.d.ts",
+      "mterm-cli/dist/mcp.js",
+      "mterm-cli/dist/processes.d.ts",
+      "mterm-cli/dist/processes.js",
+      "mterm-cli/dist/isolation-engine.d.ts",
+      "mterm-cli/dist/isolation-engine.js",
+      "mterm-cli/dist/isolation-http.d.ts",
+      "mterm-cli/dist/isolation-http.js",
+      "mterm-cli/dist/isolation-policy.d.ts",
+      "mterm-cli/dist/isolation-policy.js",
+      "mterm-cli/dist/isolation.d.ts",
+      "mterm-cli/dist/isolation.js"
+    ],
+    "perPackage": [
+      {
+        "package": "mterm-cli",
+        "beforeBytes": 368894,
+        "afterBytes": 420552,
+        "changedFiles": [
+          "mterm-cli/README.md",
+          "mterm-cli/dist/cli.d.ts",
+          "mterm-cli/dist/cli.js",
+          "mterm-cli/dist/mcp.d.ts",
+          "mterm-cli/dist/mcp.js",
+          "mterm-cli/dist/processes.d.ts",
+          "mterm-cli/dist/processes.js",
+          "mterm-cli/dist/isolation-engine.d.ts",
+          "mterm-cli/dist/isolation-engine.js",
+          "mterm-cli/dist/isolation-http.d.ts",
+          "mterm-cli/dist/isolation-http.js",
+          "mterm-cli/dist/isolation-policy.d.ts",
+          "mterm-cli/dist/isolation-policy.js",
+          "mterm-cli/dist/isolation.d.ts",
+          "mterm-cli/dist/isolation.js"
+        ]
+      },
+      {
+        "package": "@modelcontextprotocol/core",
+        "beforeBytes": 1316868,
+        "afterBytes": 1316868,
+        "changedFiles": []
+      },
+      {
+        "package": "@modelcontextprotocol/server",
+        "beforeBytes": 6682356,
+        "afterBytes": 6682356,
+        "changedFiles": []
+      },
+      {
+        "package": "zod",
+        "beforeBytes": 6148944,
+        "afterBytes": 6148944,
+        "changedFiles": []
+      }
+    ],
+    "priorQualifiedRoot": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG012-20261108\\artifacts\\package-verify-JoT4UK\\install\\node_modules",
+    "excludedInstallBookkeeping": [
+      "node_modules/.package-lock.json"
+    ],
+    "isolationRuntimePayloadAdded": true,
+    "inventorySha256": "2d5282bb24eda903f59bc42a9d66b42d347b10f51ba753d5264772f07623cc41"
+  },
+  "nativeSuite": {
+    "tests": 440,
+    "passed": 440,
+    "failed": 0,
+    "skipped": 0
+  },
+  "productionAdvisoryAudit": {
+    "info": 0,
+    "low": 0,
+    "moderate": 0,
+    "high": 0,
+    "critical": 0,
+    "total": 0
+  },
+  "cleanEnd": true,
+  "completedAt": "2026-11-08T02:57:34.269Z",
+  "result": "passed",
+  "issue": 84,
+  "pr": 204,
+  "recordedAt": "2026-11-08T03:02:15.612Z",
+  "nativeAttemptHistory": {
+    "path": "docs/validation/2026-11-08-aug005-native-attempts.json",
+    "sha256": "3ec7cacf15c69aa58e586281ecc3ca5428b2eacfaa946ca639c5fb04c341d874"
+  },
+  "liveQualification": {
+    "path": "docs/validation/2026-11-08-aug005-live-qualification.json",
+    "sha256": "8a0bf7f846af6bde258dc934082e4e059d0a4b65e92def9984498e761b4593f3",
+    "sourceTests": 12,
+    "installedTests": 12,
+    "events": [
+      "push",
+      "pull_request"
+    ],
+    "actualImageStore": "classic-config"
+  },
+  "hosted": {
+    "codeHead": "e8264f74cd02df465a66a6ed81bf38034a01ad00",
+    "checks": [
+      {
+        "id": 128607560701,
+        "name": "windows-2022 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42440190195/job/128607560701",
+        "completedAt": "2026-11-08T02:52:28Z"
+      },
+      {
+        "id": 128607560680,
+        "name": "macos-15-intel / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42440190195/job/128607560680",
+        "completedAt": "2026-11-08T02:55:11Z"
+      },
+      {
+        "id": 128607560605,
+        "name": "macos-15 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42440190195/job/128607560605",
+        "completedAt": "2026-11-08T02:52:07Z"
+      },
+      {
+        "id": 128607560592,
+        "name": "ubuntu-24.04 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42440190195/job/128607560592",
+        "completedAt": "2026-11-08T02:52:07Z"
+      },
+      {
+        "id": 128607560463,
+        "name": "Native Linux isolation / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42440190195/job/128607560463",
+        "completedAt": "2026-11-08T02:51:38Z"
+      },
+      {
+        "id": 128607560275,
+        "name": "CI / fast",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42440190168/job/128607560275",
+        "completedAt": "2026-11-08T02:51:15Z"
+      },
+      {
+        "id": 128607550198,
+        "name": "macos-15 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42440186747/job/128607550198",
+        "completedAt": "2026-11-08T02:52:24Z"
+      },
+      {
+        "id": 128607550188,
+        "name": "macos-15-intel / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42440186747/job/128607550188",
+        "completedAt": "2026-11-08T02:53:39Z"
+      },
+      {
+        "id": 128607550142,
+        "name": "windows-2022 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42440186747/job/128607550142",
+        "completedAt": "2026-11-08T02:52:45Z"
+      },
+      {
+        "id": 128607550096,
+        "name": "Native Linux isolation / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42440186747/job/128607550096",
+        "completedAt": "2026-11-08T02:51:29Z"
+      },
+      {
+        "id": 128607550037,
+        "name": "ubuntu-24.04 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42440186747/job/128607550037",
+        "completedAt": "2026-11-08T02:51:31Z"
+      }
+    ],
+    "ordinaryPlatforms": [
+      {
+        "platform": "win32-x64",
+        "head": "e8264f74cd02df465a66a6ed81bf38034a01ad00",
+        "runId": 42440186747,
+        "jobId": 128607550142,
+        "counts": {
+          "tests": 440,
+          "pass": 440,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        },
+        "isolationCasesPassed": 28,
+        "installedIsolationProtocol": 28,
+        "actualUnsupportedHostDenial": true,
+        "installedProductionBytes": 14572370,
+        "log": "artifacts/aug005/hosted-e8264f7-win32-x64.log"
+      },
+      {
+        "platform": "linux-x64",
+        "head": "e8264f74cd02df465a66a6ed81bf38034a01ad00",
+        "runId": 42440186747,
+        "jobId": 128607550037,
+        "counts": {
+          "tests": 440,
+          "pass": 428,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 12
+        },
+        "isolationCasesPassed": 28,
+        "installedIsolationProtocol": 28,
+        "actualUnsupportedHostDenial": false,
+        "installedProductionBytes": 14570809,
+        "log": "artifacts/aug005/hosted-e8264f7-linux-x64.log"
+      },
+      {
+        "platform": "darwin-arm64",
+        "head": "e8264f74cd02df465a66a6ed81bf38034a01ad00",
+        "runId": 42440186747,
+        "jobId": 128607550198,
+        "counts": {
+          "tests": 440,
+          "pass": 428,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 12
+        },
+        "isolationCasesPassed": 28,
+        "installedIsolationProtocol": 28,
+        "actualUnsupportedHostDenial": true,
+        "installedProductionBytes": 14570809,
+        "log": "artifacts/aug005/hosted-e8264f7-darwin-arm64.log"
+      },
+      {
+        "platform": "darwin-x64",
+        "head": "e8264f74cd02df465a66a6ed81bf38034a01ad00",
+        "runId": 42440186747,
+        "jobId": 128607550188,
+        "counts": {
+          "tests": 440,
+          "pass": 428,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 12
+        },
+        "isolationCasesPassed": 28,
+        "installedIsolationProtocol": 28,
+        "actualUnsupportedHostDenial": true,
+        "installedProductionBytes": 14570809,
+        "log": "artifacts/aug005/hosted-e8264f7-darwin-x64.log"
+      }
+    ]
+  },
+  "independentReview": {
+    "path": "docs/validation/2026-11-08-aug005-source-review.json",
+    "sha256": "794b687f4b5557fc7528cad56e040d04fa75789137287cbd60941982e6454b86",
+    "source": "approved",
+    "live": "approved",
+    "native": "approved-with-disclosed-prior-failure"
+  },
+  "rawPins": [
+    {
+      "path": "artifacts/aug005/qualification-code-e8264f7-attempt2/qualification.json",
+      "bytes": 13455,
+      "sha256": "a37d1ed65137b19c7d540d7046959f3fb734986e691bca51627536010a4b6f90"
+    },
+    {
+      "path": "artifacts/aug005/hosted-e8264f7-checks.json",
+      "bytes": 3224,
+      "sha256": "d71f824ccc3973d64fdaa801c5f93f2702cc51456eba65ea8f57507b154b6d0d"
+    },
+    {
+      "path": "artifacts/aug005/hosted-e8264f7-platform-results.json",
+      "bytes": 79459,
+      "sha256": "0c02058101e5d7be6d3e7861c0285fc8c93e60b5b6de4e87c28c4b4eedaa90b2"
+    },
+    {
+      "path": "artifacts/aug005/qualification-code-e8264f7-attempt2/reviewed-build.log",
+      "bytes": 786,
+      "sha256": "e88e6133625427b3e6b7c5148fdcedda65ce86a1d5f8a7c409bbe102e9784ad3"
+    },
+    {
+      "path": "artifacts/aug005/qualification-code-e8264f7-attempt2/normal-prepack.log",
+      "bytes": 49384,
+      "sha256": "a49186e9568c4c0401adc00666e49ad985b7a96d1072ad38382a48a87a5cf238"
+    },
+    {
+      "path": "artifacts/aug005/qualification-code-e8264f7-attempt2/self-host.log",
+      "bytes": 280,
+      "sha256": "a38e3215a05a401ae8d110826c15f2fc3c8cc6fd77ca564d863d87cfb0b116d9"
+    },
+    {
+      "path": "artifacts/aug005/qualification-code-e8264f7-attempt2/installed-package.log",
+      "bytes": 18456,
+      "sha256": "0c5f866f62bb1151c4f68d69db7d5ade6fbf4b086a0572860f73318ebe398f55"
+    },
+    {
+      "path": "artifacts/aug005/qualification-code-e8264f7-attempt2/production-audit.log",
+      "bytes": 361,
+      "sha256": "9142ba6d614f3a1ebd7a0943779af271e80f4d93df8fd47a82a69e957396ebae"
+    },
+    {
+      "path": "artifacts/package-verify-vR2VcN/result.json",
+      "bytes": 18455,
+      "sha256": "c2efdc68fa413410687c675176b53d56a5be9bf07249a0a2fc8b4e39be5a5007"
+    },
+    {
+      "path": "artifacts/aug005/qualification-code-e8264f7-attempt2/runtime-payload-inventory.json",
+      "bytes": 155591,
+      "sha256": "e681cc4df63a68fe7ab743b7a68ea69a987c63dcdf24cec1c8c064764251a6f8"
+    }
+  ],
+  "fullAUGAcceptance": false,
+  "limitations": [
+    "Native Linux x64 with the observed classic-image-store backend only is live-qualified. Windows/macOS/ARM/WSL/Desktop are unsupported; denial does not establish containment.",
+    "The first same-head Windows native attempt failed one existing private registration rename; subsequent focused and full reruns passed without code/settings changes. Cause unproven; original failure preserved.",
+    "Cooperative host-supervised deadlines; broker/daemon loss may leave a container bounded by kernel controls. Restart recovery and independent hard wall-clock supervision remain open.",
+    "No general native executable/pack isolation, GPU limit, remote execution or actual ChatGPT connector invocation is qualified.",
+    "Signed packages and eight pinned LICENSE/NOTICE files do not establish full runtime/image/transitive redistribution clearance. Runtime binaries/images are not included in MTerm npm package.",
+    "Final metadata-head checks/review, expected-head merge and post-merge main checks are subsequent observations."
+  ]
+}

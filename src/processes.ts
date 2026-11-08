@@ -90,6 +90,24 @@ export function childEnvironment(): NodeJS.ProcessEnv {
  * race-free detached descendant containment needs a future native Job Object helper. */
 export class ProcessService {
   readonly sessions = new Map<string, Session>();
+  private isolatedActive = 0;
+  /** Internal shared lease: a container retains this charge until confirmed removal. */
+  reserveIsolated(): () => void {
+    if (this.closed) fail('HOST_CLOSED', 'Host is shutting down.');
+    if (
+      this.isolatedActive + [...this.sessions.values()].filter((s) => this.active(s)).length >=
+      this.maxSessions
+    )
+      fail('SESSION_LIMIT', 'Active process limit reached.');
+    this.isolatedActive++;
+    let held = true;
+    return () => {
+      if (held) {
+        held = false;
+        this.isolatedActive--;
+      }
+    };
+  }
   private executionGuard?: (command: string) => void;
   setExecutionGuard(guard: (command: string) => void) {
     this.executionGuard = guard;
@@ -228,7 +246,10 @@ export class ProcessService {
       check();
       this.executionGuard?.(command);
       this.policy.lexical(cwd);
-      if ([...this.sessions.values()].filter((s) => this.active(s)).length >= this.maxSessions)
+      if (
+        this.isolatedActive + [...this.sessions.values()].filter((s) => this.active(s)).length >=
+        this.maxSessions
+      )
         fail('SESSION_LIMIT', 'Active process limit reached.');
       if (disk) {
         selected = chooseDisk(observations, disk, scratch, this.reservedScratch);
@@ -514,7 +535,7 @@ export class ProcessService {
       },
       usage: {
         pendingStarts: this.starting,
-        activeJobs: sessions.filter((s) => this.active(s)).length,
+        activeJobs: this.isolatedActive + sessions.filter((s) => this.active(s)).length,
         retainedSessions: sessions.length,
         retainedOutputBytes: sessions.reduce((n, s) => n + s.bytes, 0),
         reservedScratchBytes: this.reservedScratch.toString(),

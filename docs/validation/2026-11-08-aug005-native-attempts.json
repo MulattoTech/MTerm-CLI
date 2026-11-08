@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "capability": "AUG-005",
+  "issue": 84,
+  "pr": 204,
+  "testedCommit": "e8264f74cd02df465a66a6ed81bf38034a01ad00",
+  "recordedAt": "2026-11-08T03:02:15.612Z",
+  "attempts": [
+    {
+      "attempt": 1,
+      "result": "failed",
+      "tests": 440,
+      "passed": 439,
+      "failed": 1,
+      "startedAt": "2026-11-08T02:52:20.127Z",
+      "completedAt": "2026-11-08T02:53:39.574Z",
+      "reason": "Actual EPERM during an unchanged private registration journal replacement after bounded retries; cause unproven.",
+      "receipt": {
+        "path": "artifacts/aug005/qualification-code-e8264f7/qualification.json",
+        "bytes": 1925,
+        "sha256": "c3be17bad2e1d9a3431719c4f06134f1eb5fe3d79383e4a62b19abfc0df72c37"
+      },
+      "log": {
+        "path": "artifacts/aug005/qualification-code-e8264f7/normal-prepack.log",
+        "bytes": 45373,
+        "sha256": "d42cd5a4ed2cb75cad58cdbe562a5d22aaaae5ab34c889c896295f7bcaf5a933"
+      },
+      "registrationSourceAndTestUnchangedFromMergedBase": true
+    },
+    {
+      "kind": "focused-diagnostic",
+      "result": "passed",
+      "tests": 1,
+      "passed": 1,
+      "failed": 0,
+      "log": {
+        "path": "artifacts/aug005/registration-rename-diagnostic.log",
+        "bytes": 339,
+        "sha256": "552dc6f880be77edb4afd370ff12f57f429a754dec8bd7e6a2318e34d0485b3d"
+      },
+      "timestamp": {
+        "at": "2026-11-08T02:54:48.8879369Z",
+        "exitCode": 0
+      },
+      "sourceOrTestChange": false
+    },
+    {
+      "attempt": 2,
+      "result": "passed",
+      "tests": 440,
+      "passed": 440,
+      "failed": 0,
+      "startedAt": "2026-11-08T02:55:24.115Z",
+      "completedAt": "2026-11-08T02:57:34.269Z",
+      "receipt": {
+        "path": "artifacts/aug005/qualification-code-e8264f7-attempt2/qualification.json",
+        "bytes": 13455,
+        "sha256": "a37d1ed65137b19c7d540d7046959f3fb734986e691bca51627536010a4b6f90"
+      },
+      "sourceOrTestChange": false,
+      "cleanStart": true,
+      "cleanEnd": true
+    }
+  ],
+  "originalFailureRetained": true,
+  "causeProven": false,
+  "fixedClaimSupported": false,
+  "modelCalls": 0,
+  "acceptanceAwarded": false
+}

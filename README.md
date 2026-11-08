@@ -7,9 +7,16 @@ installation, and an **opt-in authenticated remote read-only preview**. The remo
 has completed a real MCP SDK round trip through the deployed Cloudflare staging gateway
 to two dedicated Windows filesystem fixtures.
 
-Owner Google/Access sign-in and ChatGPT Web connector acceptance remain unverified.
+For this repository's **six-tool staging gateway**, owner Google/Access sign-in
+and ChatGPT Web connector acceptance remain unverified.
 Full Desktop Commander parity, remote write/process execution, production rollout,
 quota adapters and the complete cross-platform product remain separate delivery gates.
+
+For the owner's separate ChatGPT **MTerm-CLI** account plugin, its OAuth/App dependency,
+the 53-tool hosted bridge observation, the single-production-plugin policy, and the
+development-to-release workflow, see [ChatGPT connector operations](docs/deployment/CHATGPT_CONNECTOR.md).
+That hosted bridge is not the six-tool staging gateway implemented by this repository;
+neither one's verification awards acceptance to the other.
 
 ## Use the local candidate
 

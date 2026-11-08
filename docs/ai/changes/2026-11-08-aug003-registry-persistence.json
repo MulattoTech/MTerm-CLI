@@ -1,0 +1,80 @@
+{
+  "change_id": "2026-11-08-aug003-registry-persistence",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "attribution": "self-reported",
+  "started_at": "2026-11-08T06:27:08Z",
+  "updated_at": "2026-11-08T06:54:45.630Z",
+  "base_sha": "a7c047c76825562a3f51b100a8cc9b92151ee1f5",
+  "issues": [
+    83,
+    81,
+    93
+  ],
+  "requirements": [
+    "CLI-269",
+    "CLI-287"
+  ],
+  "files": [
+    "src/files.ts",
+    "src/tool-packs.ts",
+    "tests/file-write-retry.test.mjs",
+    "tests/pack-registry-outcomes.test.mjs",
+    "scripts/verify-package.mjs",
+    "docs/SECURITY.md",
+    "docs/parity/PACK_CATALOG.md",
+    "docs/HANDOFF.md",
+    "docs/expansion/queue.json",
+    "docs/expansion/evidence.json",
+    "docs/roadmap/progress.json",
+    "docs/validation/2026-11-08-aug003-registry-development.json",
+    "docs/validation/2026-11-08-aug005-merged-main.json"
+  ],
+  "decisions": [
+    "Five total Windows attempts only for EPERM/EBUSY at exact rename or owned unlink operations; delays 25/50/100/200 ms. Never repeat registry transforms or delete destinations.",
+    "Before replacement validate parents, owned staging identity/contents and the final destination version/identity. Revalidate every retry; preserve cancellation and no-overwrite hard-link creation.",
+    "Only a dedicated FileWriteCleanupError class establishes a committed creation when stage cleanup fails. Registry retains commit state and separate lock cleanup failures with bounded sanitized fields.",
+    "Close acquired lock even if identity inspection fails; do not delete unknown/replaced/linked locks or stages. Preserve first staging write/sync error if close also fails.",
+    "One implementation owner and one read-only peer, standing owner authorization; no model-consuming execution."
+  ],
+  "tests": [
+    {
+      "command": "Initial34-case regressions",
+      "result": "RED6pass28fail then GREEN34/34; retained."
+    },
+    {
+      "command": "Independent review causal regressions",
+      "result": "RED0/7 before source correction; retained."
+    },
+    {
+      "command": "Final unchanged41 fixtures",
+      "result": "Immutable a7 baseline RED6pass35fail; corrected GREEN41/41, no skips/cancellations."
+    },
+    {
+      "command": "Native exact3ca qualification",
+      "result": "Prior507/508 failed; all11hosted passed; separate diagnostic no cause claim; no acceptance retry."
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "id": "CLI-269",
+      "stage_change": false,
+      "reason": "Add scoped persistence/error-contract development evidence; preserve all protected fields and full acceptance."
+    },
+    {
+      "id": "CLI-287",
+      "stage_change": false,
+      "reason": "Add scoped persistence/error-contract development evidence; preserve all protected fields and full acceptance."
+    }
+  ],
+  "limitations": [
+    "Original 3ca uninstall EPERM, earlier4985 journal EPERM and prior failures remain unexplained; later successful tests do not identify their causes.",
+    "retained means owned cleanup was not confirmed; external interference may have moved or removed the pathname.",
+    "Committed means link/rename completion was observed; it is not proof of directory-fsync durability or unchanged state after return.",
+    "Pathname checks are not an atomic filesystem compare-and-swap or hostile-local-writer sandbox; cancellation cannot interrupt OS I/O.",
+    "Fault-injection tests use real temporary files and selected OS-branch substitutions; no actual native lock-conflict reproduction is claimed.",
+    "Full third-party/runtime/image/transitive rights, actual supported-client integrations, complete AUG/DCP/WEB acceptance remain open."
+  ],
+  "checkpoint": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG003-Registry-20261108\\artifacts\\aug003-registry\\checkpoint.json",
+  "next_unverified_action": "Independent final source/metadata review, exact committed normal qualification, six hosted checks, actual artifacts, normal merge and main gates; then ordinarily integrate into PR206."
+}

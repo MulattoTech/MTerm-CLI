@@ -50,3 +50,30 @@ See [development attempts](../validation/2026-11-08-aug003-development.json). Th
 The initial development compile error and first focused 44-pass/2-failure run remain retained. The two focused failures were corrected test-harness assumptions: the pinned SDK's notification registration takes a method string, and the race fixture needed enough initial budget to reach real executable validation. No product-source change was needed for those two fixture corrections.
 
 Immutable code review, normal prepack, clean installed-package verification, security/license checks and all four hosted platforms remain required. No AUG acceptance or roadmap stage is awarded by this document.
+
+## Explicit registry mutation outcomes — 2026-11-08
+
+Catalog operations remain nonmutating. The separate install/uninstall CLI commands
+still require explicit --apply and never execute a pack merely to change registration.
+Their existing success JSON is unchanged.
+
+Once an apply acquires its lock, failures distinguish the primary read/transform/write
+phase, confirmed commit state and lock cleanup. A completed registry write followed
+by failed lock cleanup returns PACK_REGISTRY_CLEANUP with commit=committed. A no-change
+operation reports commit=unchanged. A failed operation retains its primary safe code
+and separately describes cleanup failures. File creation that completed its hard link
+but could not safely remove its stage reports FILE_WRITE_CLEANUP; its confirmed commit
+survives registry error handling. These are failures requiring inspection of the exact
+owned state before another apply, not permission to repeat the whole mutation.
+
+The public CLI shows bounded sanitized codes/messages; internal error metadata does
+not add a new MCP tool or expose raw paths, stack traces, commands or error bodies.
+retained means cleanup was not confirmed, not proof a pathname remains after external
+interference. Windows retries are limited to five exact rename/owned-unlink attempts
+for EPERM/EBUSY, with fresh ownership/version checks and no destination deletion.
+The cooperative lock and pathname checks do not eliminate hostile local races.
+
+See [persistence development evidence](../validation/2026-11-08-aug003-registry-development.json).
+The final 41 fixtures produce 6 passes/35 failures against immutable a7c047c and 41/41
+against the correction. Exact committed, installed, platform, security/license and
+client qualification remain separate; the original 3ca uninstall EPERM cause is unknown.

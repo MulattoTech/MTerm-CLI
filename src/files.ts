@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-08-aug003-registry-persistence; bounded guarded replacement and owned staging checks.
 // Modified: 2026-10-05-codex-parity-foundation; preserve UTF-8 BOM and add guarded mkdirTree.
 // Modified: 2026-11-02-utf16le-read; explicit bounded compatibility decoding and read cancellation.
 // AI-Change: 2026-10-04-local-mcp (OpenAI / GPT-6 Astra Pro; self-reported)
@@ -8,7 +9,7 @@ import path from 'node:path';
 import { createHash, randomUUID } from 'node:crypto';
 import { z } from 'zod';
 import { RootPolicy, ignored, privateName } from './policy.js';
-import { fail, cancelled } from './errors.js';
+import { fail, cancelled, safeError, ToolError } from './errors.js';
 const pathname = z.string().min(1).max(4096);
 const version = z.union([z.literal('missing'), z.string().regex(/^[a-f0-9]{64}$/)]);
 export const fileSchemas = {
@@ -33,6 +34,33 @@ export const fileSchemas = {
   }),
 };
 const sha = (b: Buffer) => createHash('sha256').update(b).digest('hex');
+function fileFailure(error: unknown) {
+  const code = (error as NodeJS.ErrnoException)?.code;
+  if (code === 'EBUSY' || code === 'EIO' || code === 'ENOSPC' || code === 'EMFILE' || code === 'ENFILE')
+    return { code, message: 'Operating-system file operation failed (' + code + ').' };
+  return safeError(error);
+}
+/** A successful no-overwrite creation whose owned staging cleanup was not confirmed. */
+export class FileWriteCleanupError extends ToolError {
+  readonly fileWriteOutcome;
+  constructor(phase: 'stage-check' | 'stage-unlink', error: unknown) {
+    const safe = fileFailure(error);
+    super(
+      'FILE_WRITE_CLEANUP',
+      'File creation committed; cleanup failed at ' +
+        phase +
+        ' (' +
+        safe.code +
+        '); commit=committed; stage=retained.',
+    );
+    this.fileWriteOutcome = Object.freeze({
+      commit: 'committed' as const,
+      phase,
+      stage: 'retained' as const,
+      cleanupCode: safe.code,
+    });
+  }
+}
 export class FileService {
   private queue: Promise<unknown> = Promise.resolve();
   private constructor(
@@ -58,7 +86,7 @@ export class FileService {
     this.queue = result.catch(() => {});
     return result;
   }
-  private async bytes(full: string, signal?: AbortSignal): Promise<Buffer> {
+  private async bytes(full: string, signal?: AbortSignal, maxLinks = 1): Promise<Buffer> {
     cancelled(signal);
     const handle = await fs.open(
       full,
@@ -69,7 +97,7 @@ export class FileService {
       const st = await handle.stat();
       cancelled(signal);
       if (!st.isFile()) fail('NOT_FILE', 'Expected a regular file.');
-      if (st.nlink > 1) fail('LINK_REJECTED', 'Multiply-linked files are refused.');
+      if (st.nlink > maxLinks) fail('LINK_REJECTED', 'Multiply-linked files are refused.');
       if (st.size > this.maxBytes) fail('FILE_TOO_LARGE', 'File exceeds configured byte limit.');
       const b = Buffer.alloc(this.maxBytes + 1);
       let total = 0;
@@ -148,46 +176,216 @@ export class FileService {
       const b = Buffer.from(a.text, 'utf8');
       if (b.length > this.maxBytes) fail('FILE_TOO_LARGE', 'Write exceeds configured byte limit.');
       const full = await this.policy.resolve(a.path, true);
+      const parentPath = path.dirname(full);
+      const parent = await fs.lstat(parentPath);
+      if (!parent.isDirectory() || parent.isSymbolicLink())
+        fail('LINK_REJECTED', 'Write parent must be an unlinked directory.');
+      const checkParent = async () => {
+        const checked = await this.policy.resolve(parentPath);
+        const current = await fs.lstat(parentPath);
+        if (
+          path.relative(parentPath, checked) !== '' ||
+          path.relative(parentPath, await fs.realpath(parentPath)) !== '' ||
+          !current.isDirectory() ||
+          current.isSymbolicLink() ||
+          current.dev !== parent.dev ||
+          current.ino !== parent.ino
+        )
+          fail('CONFLICT', 'Write parent identity changed.');
+      };
+      await checkParent();
       let old: Buffer | undefined;
+      let previous: Awaited<ReturnType<typeof fs.stat>> | undefined;
       let mode = 0o600;
       try {
-        old = await this.bytes(full);
-        mode = (await fs.stat(full)).mode & 0o777;
+        old = await this.bytes(full, signal);
+        previous = await fs.lstat(full);
+        if (!previous.isFile() || previous.isSymbolicLink() || previous.nlink !== 1)
+          fail('LINK_REJECTED', 'Write destination must be a single-link regular file.');
+        mode = previous.mode & 0o777;
       } catch (e) {
         if ((e as NodeJS.ErrnoException).code !== 'ENOENT') throw e;
+        old = undefined;
+        previous = undefined;
       }
       if ((old === undefined ? 'missing' : sha(old)) !== a.expectedVersion)
         fail('CONFLICT', 'File changed or already exists; read it again before saving.');
-      const temp = path.join(path.dirname(full), '.mterm-' + randomUUID() + '.tmp');
+      const temp = path.join(parentPath, '.mterm-' + randomUUID() + '.tmp');
       let owned = false;
+      let created = false;
+      let stageClosed = false;
+      let staged: Awaited<ReturnType<typeof fs.stat>> | undefined;
+      const checkStage = async (links: number, activeSignal?: AbortSignal) => {
+        const current = await fs.lstat(temp);
+        if (
+          !staged ||
+          !current.isFile() ||
+          current.isSymbolicLink() ||
+          current.nlink !== links ||
+          current.dev !== staged.dev ||
+          current.ino !== staged.ino ||
+          current.mode !== staged.mode ||
+          current.size !== b.length
+        )
+          fail('STAGING_CHANGED', 'Write staging identity or contents changed.');
+        if (!(await this.bytes(temp, activeSignal, links)).equals(b))
+          fail('STAGING_CHANGED', 'Write staging contents changed.');
+        const after = await fs.lstat(temp);
+        if (
+          !after.isFile() ||
+          after.isSymbolicLink() ||
+          after.nlink !== links ||
+          after.dev !== current.dev ||
+          after.ino !== current.ino ||
+          after.mode !== current.mode ||
+          after.size !== current.size ||
+          after.mtimeMs !== current.mtimeMs
+        )
+          fail('STAGING_CHANGED', 'Write staging identity changed while checking.');
+      };
+      const checkDestination = async () => {
+        const resolved = await this.policy.resolve(a.path, true);
+        if (path.relative(full, resolved) !== '') fail('CONFLICT', 'Write destination resolution changed.');
+        if (!previous) return;
+        const check = async () => {
+          const current = await fs.lstat(full).catch((error) => {
+            if ((error as NodeJS.ErrnoException).code === 'ENOENT')
+              fail('CONFLICT', 'Destination disappeared during write.');
+            throw error;
+          });
+          if (!current.isFile() || current.isSymbolicLink() || current.nlink !== 1)
+            fail('LINK_REJECTED', 'Write destination is no longer a single-link regular file.');
+          if (current.dev !== previous.dev || current.ino !== previous.ino || current.mode !== previous.mode)
+            fail('CONFLICT', 'Destination identity or permissions changed during write.');
+        };
+        await check();
+        if (sha(await this.bytes(full, signal)) !== a.expectedVersion)
+          fail('CONFLICT', 'Destination changed during write.');
+        await check();
+      };
       try {
         const h = await fs.open(temp, 'wx', mode);
         owned = true;
+        let stageFailure: unknown;
+        let failed = false;
+        let stagePhase = 'stage-identity';
         try {
+          staged = await h.stat();
+          stagePhase = 'stage-write';
           await h.writeFile(b);
+          stagePhase = 'stage-sync';
           await h.sync();
+        } catch (error) {
+          failed = true;
+          stageFailure = error;
+          throw error;
         } finally {
-          await h.close();
-        }
-        cancelled(signal);
-        await this.policy.resolve(a.path, true);
-        if (old === undefined) {
           try {
-            await fs.link(temp, full);
-          } catch (e) {
-            if ((e as NodeJS.ErrnoException).code === 'EEXIST')
-              fail('CONFLICT', 'Destination appeared during create.');
-            throw e;
+            await h.close();
+            stageClosed = true;
+          } catch (error) {
+            const secondary = fileFailure(error);
+            if (failed) {
+              const primary = fileFailure(stageFailure);
+              throw Object.assign(
+                new ToolError(
+                  primary.code,
+                  'File ' +
+                    stagePhase +
+                    ' failed (' +
+                    primary.code +
+                    '); stage-close also failed (' +
+                    secondary.code +
+                    '); commit=not_confirmed. ' +
+                    primary.message,
+                ),
+                { fileStageCleanup: Object.freeze({ phase: 'stage-close', code: secondary.code }) },
+              );
+            }
+            throw new ToolError(
+              secondary.code,
+              'File stage-close failed (' + secondary.code + '); commit=not_confirmed.',
+            );
           }
-        } else {
-          if (sha(await this.bytes(full)) !== a.expectedVersion)
-            fail('CONFLICT', 'Destination changed during write.');
-          await fs.rename(temp, full);
-          owned = false;
+        }
+        // Retry only the exact Windows replacement operation. All authority,
+        // version and owned-stage checks run again; the destination is never deleted.
+        const attempts = process.platform === 'win32' ? 5 : 1;
+        for (let attempt = 0; attempt < attempts; attempt++) {
+          cancelled(signal);
+          await checkParent();
+          await checkStage(1, signal);
+          await checkDestination();
+          cancelled(signal);
+          if (old === undefined) {
+            try {
+              await fs.link(temp, full);
+              created = true;
+            } catch (e) {
+              if ((e as NodeJS.ErrnoException).code === 'EEXIST')
+                fail('CONFLICT', 'Destination appeared during create.');
+              throw e;
+            }
+            break;
+          }
+          try {
+            await fs.rename(temp, full);
+            owned = false;
+            break;
+          } catch (error) {
+            const code = (error as NodeJS.ErrnoException).code;
+            if (attempt === attempts - 1 || (code !== 'EPERM' && code !== 'EBUSY')) {
+              if (code === 'EPERM' || code === 'EBUSY')
+                fail(code, 'File replacement failed after ' + (attempt + 1) + ' attempt(s).');
+              throw error;
+            }
+            await new Promise((resolve) => setTimeout(resolve, 25 * 2 ** attempt));
+          }
         }
         return { path: this.policy.relative(full), bytes: b.length, version: sha(b) };
       } finally {
-        if (owned) await fs.unlink(temp).catch(() => {});
+        if (owned && staged && stageClosed) {
+          let cleanupFailure: unknown;
+          let cleanupPhase: 'stage-check' | 'stage-unlink' = 'stage-check';
+          const attempts = process.platform === 'win32' ? 5 : 1;
+          for (let attempt = 0; attempt < attempts; attempt++) {
+            try {
+              await checkParent();
+              await checkStage(created ? 2 : 1);
+              if (created) {
+                const destination = await fs.lstat(full);
+                if (
+                  !destination.isFile() ||
+                  destination.isSymbolicLink() ||
+                  destination.nlink !== 2 ||
+                  destination.dev !== staged.dev ||
+                  destination.ino !== staged.ino
+                )
+                  fail('STAGING_CHANGED', 'Created destination no longer shares the owned stage.');
+              }
+            } catch (error) {
+              cleanupPhase = 'stage-check';
+              cleanupFailure = error;
+              break;
+            }
+            try {
+              await fs.unlink(temp);
+              owned = false;
+              break;
+            } catch (error) {
+              const code = (error as NodeJS.ErrnoException).code;
+              if (attempt === attempts - 1 || (code !== 'EPERM' && code !== 'EBUSY')) {
+                cleanupPhase = 'stage-unlink';
+                cleanupFailure = error;
+                break;
+              }
+              await new Promise((resolve) => setTimeout(resolve, 25 * 2 ** attempt));
+            }
+          }
+          // A completed hard link is a confirmed creation even when cleanup fails.
+          // Before commit, retain the first failure; never delete unverifiable stages.
+          if (created && cleanupFailure) throw new FileWriteCleanupError(cleanupPhase, cleanupFailure);
+        }
       }
     });
   }

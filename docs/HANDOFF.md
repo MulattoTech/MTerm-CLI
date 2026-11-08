@@ -1,3 +1,19 @@
+# Registry persistence correction under review — 2026-11-08T06:54:45.630Z
+
+Qualified main is a7c047c (PR207), with 6/6 final and 6/6 main checks and the identical reviewed tree. [Merged-main receipt](validation/2026-11-08-aug005-merged-main.json).
+
+PR206 is preserved clean at 3ca8987, ordinary integration of 4985 and qualified a7. Its 11 hosted checks passed; native 507/508 failed on uninstall EPERM. The operation/cause is unknown. A single separate 142-event diagnostic passed without EPERM and earns no acceptance credit. Both successful real Linux artifacts and the failed native log are preserved in [the development record](validation/2026-11-08-aug003-registry-development.json). No failed qualification was rerun; native package/audit/parser were not started after failure.
+
+The new #83 corrective branch fix/aug-003-registry-persistence-20261108 is owned in H:\MTechLabs\Dev\MTerm-CLI-AUG003-Registry-20261108. Generic writes now guard bounded Windows rename retries, retain no-overwrite creation, report committed creation with failed stage cleanup, and preserve primary staging errors. Registry mutation outcomes retain commit state independently of owned lock cleanup. Every retry rechecks authority and ownership; no destination deletion or complete-operation retry.
+
+Initial RED 6/34 to GREEN 34/34 was expanded by independent review: seven causal failures cover creation cleanup, final destination-check ordering, and write/sync-plus-close errors. The final 41 fixtures are unchanged across immutable-main RED 6 pass/35 fail and corrected GREEN 41/41. The package verifier now requires 41 cases against actual installed modules with nine source bindings. Independent scoped source-publication review is clear; this remains development evidence. Exact committed native/installed/security/license/hosted and independent final metadata review remain next.
+
+Requirements CLI-269 and CLI-287 retain all stages, acceptance, weights, estimates, dependencies and blockers. AUG 0/117, CLI 0/300 complete, DCP 0/48, WEB 0/12. Existing matrix observations remain tied to their original subjects. Actual ChatGPT integration and full rights are unaccepted.
+
+One implementation owner and one read-only peer; standing authorization applies, no manual approval pending, no Codex/model requests. Preserve primary dirty checkout, PR206 and unrelated work. After qualification, normal expected-head merge and main checks, integrate ordinarily into PR206 and resume #93. Checkpoint: artifacts/aug003-registry/checkpoint.json.
+
+---
+
 # PR207 cgroupfs qualification recorded; final metadata gates next — 2026-11-08T05:45:17.750Z
 
 Main remains dd941 (PR205); parked PR206 remains4985. Implementation4eeedae/tree5fd2485 has6/6hosted checks and native466/466. The actual hosted checkout50b0991 has the identical tree. Actual Linux source12/12 and installed12/12 passed;16memory probes retained exit137, raw OOMKilled true at terminal and cleanup, owned OOM events and confirmed removal. All38backend observations are cgroupfs/v2; all144cleanup steps pass. [Immutable qualification](validation/2026-11-08-aug005-cgroup-driver-qualification.json) and [independent review](validation/2026-11-08-aug005-cgroup-driver-review.json) bind45artifact members, native logs, four platform logs,14installed modules and licensing evidence.

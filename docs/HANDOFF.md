@@ -1,3 +1,15 @@
+# AUG-005 reporting repair qualified — 2026-11-08T03:33:01.392Z
+
+PR #205 code a589fc1fa16709ec28b229f3f34b83194ae5d588 passed all six applicable checks and independent review. The [qualification](validation/2026-11-08-aug005-diagnostic-qualification.json) records 12/12 source and 12/12 actual installed tests, 16 memory probes with exit 137 and oomKilled:true, and 144 successful cleanup steps. The actual PR checkout, 91cbccac63d99823b73bed97b22d65d75521d5db, has the reviewed tree 304e31d44b07f19fad29e2f9af3852ef00ae9987.
+
+Native Windows and hosted Windows passed 445/445. Linux and both macOS hosts passed 433, with 12 existing Windows-only skips. Each installed package passed 28 isolation protocol, 24 resource, 29 pack and 18 provenance cases. All 11 compiled boundary modules, the launcher, dependencies and runtime footprint are unchanged. Full rights and actual client acceptance remain open.
+
+The repair preserves failed-job observations and every cleanup error. The original main649142e memory failure remains preserved and unexplained. Later successful probes do not establish a product OOM fix. The original failed main run was not retried, and the OOM assertion was not relaxed. Four changed live-test matrix entries are now qualified against this exact fixture: 68 passed, 2,272 unrun, zero accepted. Full acceptance remains AUG0/117, CLI29.12% maturity with zero complete, DCP0/48 and WEB0/12.
+
+Next: independent final metadata review, six checks on the final head, normal expected-head merge, and six main checks. After main passes, resume #93 with the CLI-157 and CLI-165 prerequisites while keeping the unresolved #84 observation visible. Preserve the original dirty checkout and unrelated workloads. One implementation owner and one read-only peer remain active; zero model requests. Standing owner authorization covers this work without another manual approval.
+
+---
+
 # Failed main gate and diagnostic repair — 2026-11-08T03:21:49.428Z
 
 PR204 merged normally as649142ea222b67f31f2165910a3a66b80bc7847d after11/11 final checks and independent review; merge tree matches. Main is5/6, not green: mandatory Linux source ISO-LIVE-07 exited nonzero with oomKilled:false, other11 scenarios passed, installed live skipped. The original [failed main receipt](validation/2026-11-08-aug005-main-failure.json) preserves the actual artifact, TAP, receipt and evidence gap. Cause remains unresolved; no containment or cleanup failure is inferred from missing observations.

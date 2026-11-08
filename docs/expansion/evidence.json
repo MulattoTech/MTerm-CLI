@@ -870,7 +870,7 @@
         "No general native executable/pack isolation, GPU limit, remote execution or actual ChatGPT connector invocation is qualified.",
         "Signed packages and eight pinned LICENSE/NOTICE files do not establish full runtime/image/transitive redistribution clearance. Runtime binaries/images are not included in MTerm npm package.",
         "Final metadata-head checks/review, expected-head merge and post-merge main checks are subsequent observations.",
-        "Main649142e failed the real memory-exhaustion OOM assertion after all11 final-head checks passed. Original failure is preserved; cause unresolved. Changed reporter/live fixture is under diagnostic qualification, with no new acceptance credit."
+        "The original main649142e OOM assertion failure remains unexplained and preserved; successful new observations do not prove its cause or a product fix."
       ],
       "fixtures": [
         {
@@ -924,6 +924,16 @@
           "kind": "historical-qualification",
           "path": "docs/validation/2026-11-08-aug005-diagnostic-native.json",
           "sha256": "09b758a5967951ccbe15f2b811927aa48b2b97b4162e02baf15b0b5a0b9f578a"
+        },
+        {
+          "kind": "historical-qualification",
+          "path": "docs/validation/2026-11-08-aug005-diagnostic-qualification.json",
+          "sha256": "08d6b61c068e0fad2ac02c1c21ec89dfa4afe2ccbd4f5ea4b3bf680c5e2220d2"
+        },
+        {
+          "kind": "historical-qualification",
+          "path": "docs/validation/2026-11-08-aug005-diagnostic-review.json",
+          "sha256": "4a117e5749aed210657ad6eb082af592d8433df6381299be4c6b692b2f99086b"
         }
       ],
       "platforms": {
@@ -955,10 +965,10 @@
         },
         "linux-x64": {
           "support": "supported",
-          "reason": "Earlier qualified real Linux evidence remains preserved in historical references; the live fixture changed after a failed main OOM assertion and its four live scenario bindings await exact-head requalification. Existing synthetic unsupported-backend denial remains separately labeled.",
+          "reason": "Exact diagnostic source and actual installed suite passed12/12 each, with16strictOOMprobes and144cleanup steps. Original main OOM cause remains unresolved. Unsupported-backend observation is explicitly synthetic.",
           "subject": {
-            "testedCommit": "e8264f74cd02df465a66a6ed81bf38034a01ad00",
-            "subjectFingerprint": "5b622498446e052eca2d265099f70d0907d37c829f2f76f14f358889a0edcd03",
+            "testedCommit": "a589fc1fa16709ec28b229f3f34b83194ae5d588",
+            "subjectFingerprint": "7b7f9fc748656907a3dcf00b72b3777d978119ad51a8ce569c19de2e6982c8df",
             "backend": {
               "name": "Docker Engine native Linux / classic image store",
               "version": "29.9.3"
@@ -970,31 +980,43 @@
           },
           "cases": {
             "success": {
-              "status": "not_run",
-              "fixtureId": null,
-              "receipt": null
+              "status": "passed",
+              "fixtureId": "fixture-2",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug005-diagnostic-linux-x64.json",
+                "sha256": "c80bd531b27bc7511ab8e04c7d5c31908d7ddc8efd3066464df31ff5f60e64f5"
+              }
             },
             "permission_denied": {
-              "status": "not_run",
-              "fixtureId": null,
-              "receipt": null
+              "status": "passed",
+              "fixtureId": "fixture-2",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug005-diagnostic-linux-x64.json",
+                "sha256": "c80bd531b27bc7511ab8e04c7d5c31908d7ddc8efd3066464df31ff5f60e64f5"
+              }
             },
             "cancelled": {
-              "status": "not_run",
-              "fixtureId": null,
-              "receipt": null
+              "status": "passed",
+              "fixtureId": "fixture-2",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug005-diagnostic-linux-x64.json",
+                "sha256": "c80bd531b27bc7511ab8e04c7d5c31908d7ddc8efd3066464df31ff5f60e64f5"
+              }
             },
             "deadline": {
-              "status": "not_run",
-              "fixtureId": null,
-              "receipt": null
+              "status": "passed",
+              "fixtureId": "fixture-2",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug005-diagnostic-linux-x64.json",
+                "sha256": "c80bd531b27bc7511ab8e04c7d5c31908d7ddc8efd3066464df31ff5f60e64f5"
+              }
             },
             "unsupported_platform": {
               "status": "passed",
               "fixtureId": "fixture-1",
               "receipt": {
-                "path": "docs/validation/2026-11-08-aug005-linux-x64.json",
-                "sha256": "7739035c6ea43cc79b191e937462721110f9b62ff7562a71334b60e300834d29"
+                "path": "docs/validation/2026-11-08-aug005-diagnostic-linux-x64.json",
+                "sha256": "c80bd531b27bc7511ab8e04c7d5c31908d7ddc8efd3066464df31ff5f60e64f5"
               }
             }
           }

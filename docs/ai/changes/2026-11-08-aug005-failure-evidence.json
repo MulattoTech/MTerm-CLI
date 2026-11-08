@@ -3,7 +3,7 @@
   "provider": "OpenAI",
   "model": "GPT-6 Astra Pro",
   "started_at": "2026-11-08T03:12:00Z",
-  "updated_at": "2026-11-08T03:25:14.904Z",
+  "updated_at": "2026-11-08T03:31:53.950Z",
   "base_sha": "649142ea222b67f31f2165910a3a66b80bc7847d",
   "issues": [
     84,
@@ -22,7 +22,10 @@
     "docs/roadmap/progress.json",
     "docs/expansion/queue.json",
     "docs/HANDOFF.md",
-    "docs/validation/2026-11-08-aug005-diagnostic-native.json"
+    "docs/validation/2026-11-08-aug005-diagnostic-native.json",
+    "docs/validation/2026-11-08-aug005-diagnostic-qualification.json",
+    "docs/validation/2026-11-08-aug005-diagnostic-review.json",
+    "docs/validation/2026-11-08-aug005-diagnostic-linux-x64.json"
   ],
   "decisions": [
     "Repair the failed main gate before the next dependency issue; one owner and one independent read-only peer under standing authorization.",
@@ -51,6 +54,10 @@
     {
       "command": "npm run check on reviewed diagnostic working tree",
       "result": "445/445 passed, no skips/cancellations, exit0. Original spec-reporter count-parser nulls retained; actual raw log parsed without rerun. No product or model request change."
+    },
+    {
+      "command": "Exacta589 hosted qualification and independent review",
+      "result": "Allsix applicable checks pass. Native/Windows445; otherhosts433+12existing skips. Real source12/installed12;16strictmemoryprobes/144cleanupsteps; installed28protocol,24resource,29pack,18provenance. All11compiled boundary bindings unchanged from qualified product. Artifact42members,8notices and signed metadata independently verified. Original main cause unresolved; no OOMproductfix claim."
     }
   ],
   "roadmap_updates": [
@@ -66,10 +73,9 @@
     }
   ],
   "limitations": [
-    "Original OOM cause is unresolved; missing old exit/stderr prevents a causal conclusion.",
-    "Diagnostic hosted source/installed runs are pending; reporter tests are not containment proof.",
+    "Original main OOM cause remains unresolved; newpassingobservations do not explain the priorfailure.",
     "Full AUG/CLI/DCP/WEB acceptance, actual ChatGPT client integration and full runtime/image rights remain unaccepted."
   ],
   "checkpoint": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG005-20261108\\artifacts\\aug005",
-  "next_unverified_action": "Publish issue-linked diagnostic repair through normal PR; inspect exact actual source/installed failure or pass evidence and independently review the causal correction before qualified merge/main."
+  "next_unverified_action": "Final metadata pin review andsix exact checks, normal guarded merge andsix mainchecks; then #93 CLI-157/165 prerequisites."
 }

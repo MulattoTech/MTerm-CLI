@@ -4,7 +4,7 @@
   "model": "GPT-6 Astra Pro",
   "attribution": "self-reported",
   "started_at": "2026-11-08T06:27:08Z",
-  "updated_at": "2026-11-08T07:15:33.665Z",
+  "updated_at": "2026-11-08T07:30:41.500Z",
   "base_sha": "a7c047c76825562a3f51b100a8cc9b92151ee1f5",
   "issues": [
     83,
@@ -29,7 +29,8 @@
     "docs/roadmap/progress.json",
     "docs/validation/2026-11-08-aug003-registry-development.json",
     "docs/validation/2026-11-08-aug005-merged-main.json",
-    "docs/validation/2026-11-08-aug003-registry-portability.json"
+    "docs/validation/2026-11-08-aug003-registry-portability.json",
+    "docs/validation/2026-11-08-aug003-registry-qualification.json"
   ],
   "decisions": [
     "Five total Windows attempts only for EPERM/EBUSY at exact rename or owned unlink operations; delays 25/50/100/200 ms. Never repeat registry transforms or delete destinations.",
@@ -37,7 +38,8 @@
     "Only a dedicated FileWriteCleanupError class establishes a committed creation when stage cleanup fails. Registry retains commit state and separate lock cleanup failures with bounded sanitized fields.",
     "Close acquired lock even if identity inspection fails; do not delete unknown/replaced/linked locks or stages. Preserve first staging write/sync error if close also fails.",
     "One implementation owner and one read-only peer, standing owner authorization; no model-consuming execution.",
-    "Only final registry-creation fixture changes: native host manifest/admission and actual owned hard link, then synthetic Windows cleanup branch on exact captured stage. No architecture mock, production guard change, skip or weakened assertion."
+    "Only final registry-creation fixture changes: native host manifest/admission and actual owned hard link, then synthetic Windows cleanup branch on exact captured stage. No architecture mock, production guard change, skip or weakened assertion.",
+    "Record exact corrected-fixture qualification and retain the failed cb3 head without rerun. Preserve protected roadmap fields and all original matrix observation subjects."
   ],
   "tests": [
     {
@@ -63,6 +65,10 @@
     {
       "command": "Fixture-only portability causal check",
       "result": "Same reviewed candidate RED0/1 on immutable a7, GREEN41/41 on cb3; no production change. New exact head required."
+    },
+    {
+      "command": "Exact6f70e5c qualification",
+      "result": "Native507/507; allsixhosted; installed41persistence/29pack/24resource/31protocol/18provenance; audit0; fourpackageLICENSEs and isolatedparsermodel0; actualsource12+installed12,16strictOOM/144cleanup/38cgroupfs-v2,45artifactmembers."
     }
   ],
   "roadmap_updates": [
@@ -86,5 +92,5 @@
     "Full third-party/runtime/image/transitive rights, actual supported-client integrations, complete AUG/DCP/WEB acceptance remain open."
   ],
   "checkpoint": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG003-Registry-20261108\\artifacts\\aug003-registry\\checkpoint.json",
-  "next_unverified_action": "Commit fixture correction with independently reviewed metadata; qualify exact new head on native Windows and all six hosted checks before normal merge and main gates. Then ordinarily integrate into PR206."
+  "next_unverified_action": "Independent final evidence/metadata review, six final-head checks, normal expected-head merge and six main checks; then ordinary integration into preserved PR206."
 }

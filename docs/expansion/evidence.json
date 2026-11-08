@@ -862,15 +862,14 @@
       "acceptanceReview": null
     },
     "AUG-005": {
-      "scope": "Explicit separately granted native Linux x64 Docker JavaScript with owner-fixed backend/image, no host mounts/network and inspected kernel limits",
+      "scope": "Explicit owner-granted native Linux x64 container JavaScript; real source/installed classic-store qualification with no host mounts/network, inspected resource profile and owned cleanup",
       "limitations": [
-        "Real local IPC/SDK/native capacity tests plus explicitly synthetic Engine responses are development evidence, not Linux kernel containment acceptance.",
-        "Native Linux x64 only; Windows/macOS/ARM/WSL/Desktop denied. Owner workstation runtime was inspected only; no container/workload/runtime change was made.",
-        "Dedicated mandatory source and actual installed live CI must pass filesystem/symlink/shell/child, network, cgroup/seccomp/resource, timeout/output/cancel/permission and independent cleanup cases.",
-        "Deadlines are host-supervised and cooperative. Broker/daemon loss may leave a bounded running container; automatic journal recovery and independent hard wall-clock supervision remain unimplemented.",
-        "Kernel/runtime/image and daemon administrators remain trusted. Identity checks detect observed replacement, not malicious administrator or ABA-proof identity.",
-        "No generic executable or pack isolation, GPU quota, remote backend or actual ChatGPT connector acceptance.",
-        "No runtime/image binaries are bundled. Source notices and signed packages are separate from complete image/transitive redistribution clearance, which remains false."
+        "Native Linux x64 with the observed classic-image-store backend only is live-qualified. Windows/macOS/ARM/WSL/Desktop are unsupported; denial does not establish containment.",
+        "The first same-head Windows native attempt failed one existing private registration rename; subsequent focused and full reruns passed without code/settings changes. Cause unproven; original failure preserved.",
+        "Cooperative host-supervised deadlines; broker/daemon loss may leave a container bounded by kernel controls. Restart recovery and independent hard wall-clock supervision remain open.",
+        "No general native executable/pack isolation, GPU limit, remote execution or actual ChatGPT connector invocation is qualified.",
+        "Signed packages and eight pinned LICENSE/NOTICE files do not establish full runtime/image/transitive redistribution clearance. Runtime binaries/images are not included in MTerm npm package.",
+        "Final metadata-head checks/review, expected-head merge and post-merge main checks are subsequent observations."
       ],
       "fixtures": [
         {
@@ -894,9 +893,166 @@
           "kind": "historical-qualification",
           "path": "docs/validation/2026-11-08-aug005-bootstrap-attempts.json",
           "sha256": "dada91e51dd910beedb068a6952d4430264aac0ca18fc2616ef2160089d313d1"
+        },
+        {
+          "kind": "historical-qualification",
+          "path": "docs/validation/2026-11-08-aug005-native-attempts.json",
+          "sha256": "3ec7cacf15c69aa58e586281ecc3ca5428b2eacfaa946ca639c5fb04c341d874"
+        },
+        {
+          "kind": "historical-qualification",
+          "path": "docs/validation/2026-11-08-aug005-live-qualification.json",
+          "sha256": "8a0bf7f846af6bde258dc934082e4e059d0a4b65e92def9984498e761b4593f3"
+        },
+        {
+          "kind": "historical-qualification",
+          "path": "docs/validation/2026-11-08-aug005-source-review.json",
+          "sha256": "794b687f4b5557fc7528cad56e040d04fa75789137287cbd60941982e6454b86"
+        },
+        {
+          "kind": "historical-qualification",
+          "path": "docs/validation/2026-11-08-aug005-qualification.json",
+          "sha256": "0a9cb1b55f589f36c6723f2a517f40db7813ece0dfa4087145eafa9daf244935"
         }
       ],
-      "platforms": {},
+      "platforms": {
+        "win32-x64": {
+          "support": "unsupported",
+          "reason": "Production isolation factory denies this host before backend contact. Only actual denial is observed; the other four cases remain not_run.",
+          "subject": {
+            "testedCommit": "e8264f74cd02df465a66a6ed81bf38034a01ad00",
+            "subjectFingerprint": "5b622498446e052eca2d265099f70d0907d37c829f2f76f14f358889a0edcd03",
+            "backend": {
+              "name": "MTerm-CLI isolated-execution product host gate (no daemon contact)",
+              "version": "0.0.1-preview.1"
+            },
+            "runtime": {
+              "name": "node",
+              "version": "v24.21.0"
+            }
+          },
+          "cases": {
+            "unsupported_platform": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug005-win32-x64.json",
+                "sha256": "5884b9d25079a083211183476f4f00d429eba19c75a21c9c5b606f0f00fa10d2"
+              }
+            }
+          }
+        },
+        "linux-x64": {
+          "support": "supported",
+          "reason": "Only scoped native Linux x64 containment on the recorded backend/image is qualified; synthetic unsupported-backend denial remains separately labeled.",
+          "subject": {
+            "testedCommit": "e8264f74cd02df465a66a6ed81bf38034a01ad00",
+            "subjectFingerprint": "5b622498446e052eca2d265099f70d0907d37c829f2f76f14f358889a0edcd03",
+            "backend": {
+              "name": "Docker Engine native Linux / classic image store",
+              "version": "29.9.3"
+            },
+            "runtime": {
+              "name": "node",
+              "version": "v24.21.0"
+            }
+          },
+          "cases": {
+            "success": {
+              "status": "passed",
+              "fixtureId": "fixture-2",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug005-linux-x64.json",
+                "sha256": "7739035c6ea43cc79b191e937462721110f9b62ff7562a71334b60e300834d29"
+              }
+            },
+            "permission_denied": {
+              "status": "passed",
+              "fixtureId": "fixture-2",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug005-linux-x64.json",
+                "sha256": "7739035c6ea43cc79b191e937462721110f9b62ff7562a71334b60e300834d29"
+              }
+            },
+            "cancelled": {
+              "status": "passed",
+              "fixtureId": "fixture-2",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug005-linux-x64.json",
+                "sha256": "7739035c6ea43cc79b191e937462721110f9b62ff7562a71334b60e300834d29"
+              }
+            },
+            "deadline": {
+              "status": "passed",
+              "fixtureId": "fixture-2",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug005-linux-x64.json",
+                "sha256": "7739035c6ea43cc79b191e937462721110f9b62ff7562a71334b60e300834d29"
+              }
+            },
+            "unsupported_platform": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug005-linux-x64.json",
+                "sha256": "7739035c6ea43cc79b191e937462721110f9b62ff7562a71334b60e300834d29"
+              }
+            }
+          }
+        },
+        "darwin-arm64": {
+          "support": "unsupported",
+          "reason": "Production isolation factory denies this host before backend contact. Only actual denial is observed; the other four cases remain not_run.",
+          "subject": {
+            "testedCommit": "e8264f74cd02df465a66a6ed81bf38034a01ad00",
+            "subjectFingerprint": "5b622498446e052eca2d265099f70d0907d37c829f2f76f14f358889a0edcd03",
+            "backend": {
+              "name": "MTerm-CLI isolated-execution product host gate (no daemon contact)",
+              "version": "0.0.1-preview.1"
+            },
+            "runtime": {
+              "name": "node",
+              "version": "v24.21.0"
+            }
+          },
+          "cases": {
+            "unsupported_platform": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug005-darwin-arm64.json",
+                "sha256": "07f9ab94806707d7809f47284cdee477afa49f38ec10efc6a1ec1b989cd73414"
+              }
+            }
+          }
+        },
+        "darwin-x64": {
+          "support": "unsupported",
+          "reason": "Production isolation factory denies this host before backend contact. Only actual denial is observed; the other four cases remain not_run.",
+          "subject": {
+            "testedCommit": "e8264f74cd02df465a66a6ed81bf38034a01ad00",
+            "subjectFingerprint": "5b622498446e052eca2d265099f70d0907d37c829f2f76f14f358889a0edcd03",
+            "backend": {
+              "name": "MTerm-CLI isolated-execution product host gate (no daemon contact)",
+              "version": "0.0.1-preview.1"
+            },
+            "runtime": {
+              "name": "node",
+              "version": "v24.21.0"
+            }
+          },
+          "cases": {
+            "unsupported_platform": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug005-darwin-x64.json",
+                "sha256": "261a6e58f575b2c17dcf66d1a98d92ee8dc065d6ca6070df77be974abd982331"
+              }
+            }
+          }
+        }
+      },
       "acceptanceReview": null
     }
   }

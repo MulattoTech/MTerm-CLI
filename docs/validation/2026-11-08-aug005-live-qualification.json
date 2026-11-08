@@ -1,0 +1,2986 @@
+{
+  "schemaVersion": 1,
+  "kind": "scoped-native-linux-live-qualification",
+  "capability": "AUG-005",
+  "issue": 84,
+  "pr": 204,
+  "testedCommit": "e8264f74cd02df465a66a6ed81bf38034a01ad00",
+  "sourceFingerprint": "4295464af73165035408b8dd87d25c3d9a59abab77cfec1bfa07c0a35f137321",
+  "subjectFingerprint": "5b622498446e052eca2d265099f70d0907d37c829f2f76f14f358889a0edcd03",
+  "recordedAt": "2026-11-08T03:02:15.612Z",
+  "scope": "Twelve actual source and twelve installed Linux x64 container scenarios; complete capability and image rights unaccepted",
+  "runs": [
+    {
+      "event": "push",
+      "runId": 42440186747,
+      "jobId": 128607550096,
+      "artifactId": 13601161753,
+      "testedCommit": "e8264f74cd02df465a66a6ed81bf38034a01ad00",
+      "tree": "67aa33b5caa473c72300851c5a3eb9bafd0dc216",
+      "artifact": {
+        "path": "artifacts/aug005/hosted-e8264f7-push.zip",
+        "bytes": 230498,
+        "sha256": "6654b7c688817300f2967e8e93bec7efd798b66b0f335f89a76a47ab89f04783",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42440186747/artifacts/13601161753"
+      },
+      "bootstrap": {
+        "schemaVersion": 1,
+        "startedAt": "2026-11-08T02:50:22.661Z",
+        "node": "v24.21.0",
+        "platform": "linux",
+        "arch": "x64",
+        "kernel": "7.0.0-1017-azure",
+        "runnerImage": "20261101.360.1",
+        "runnerOS": "ubuntu24",
+        "sourceCommit": "e8264f74cd02df465a66a6ed81bf38034a01ad00",
+        "packagePins": [
+          {
+            "name": "docker-ce",
+            "version": "5:29.9.3-1~ubuntu.24.04~noble",
+            "filename": "dists/noble/pool/stable/amd64/docker-ce_29.9.3-1~ubuntu.24.04~noble_amd64.deb",
+            "downloadedFile": "docker-ce_5%3a29.9.3-1~ubuntu.24.04~noble_amd64.deb",
+            "sha256": "c546181f0bc5f1d19085d764a3219aa86069468dbee4743fae420ee8a31809a4",
+            "bytes": 24586336
+          },
+          {
+            "name": "docker-ce-cli",
+            "version": "5:29.9.3-1~ubuntu.24.04~noble",
+            "filename": "dists/noble/pool/stable/amd64/docker-ce-cli_29.9.3-1~ubuntu.24.04~noble_amd64.deb",
+            "downloadedFile": "docker-ce-cli_5%3a29.9.3-1~ubuntu.24.04~noble_amd64.deb",
+            "sha256": "24f78a893cece8d345c4e90b5163907c047b996b747265f873743e8b0b0546d4",
+            "bytes": 17584604
+          },
+          {
+            "name": "containerd.io",
+            "version": "2.4.2-3~ubuntu.24.04~noble",
+            "filename": "dists/noble/pool/stable/amd64/containerd.io_2.4.2-3~ubuntu.24.04~noble_amd64.deb",
+            "downloadedFile": "containerd.io_2.4.2-3~ubuntu.24.04~noble_amd64.deb",
+            "sha256": "f811ab57d1f4bb0cce19df7d526da8c711d8ebea0447cc83da1999188e664122",
+            "bytes": 23271468
+          }
+        ],
+        "licenses": [
+          {
+            "name": "engine",
+            "repository": "moby/moby",
+            "commit": "70efc0e31da3a115fc87574d1b786fa2b867c346",
+            "filename": "LICENSE",
+            "url": "https://raw.githubusercontent.com/moby/moby/70efc0e31da3a115fc87574d1b786fa2b867c346/LICENSE",
+            "bytes": 10765,
+            "sha256": "7c87873291f289713ac5df48b1f2010eb6963752bbd6b530416ab99fc37914a8"
+          },
+          {
+            "name": "engine",
+            "repository": "moby/moby",
+            "commit": "70efc0e31da3a115fc87574d1b786fa2b867c346",
+            "filename": "NOTICE",
+            "url": "https://raw.githubusercontent.com/moby/moby/70efc0e31da3a115fc87574d1b786fa2b867c346/NOTICE",
+            "bytes": 1030,
+            "sha256": "a249c4197359eee43031d16cecb172326f92ee7b6701af99dfe5c3e5b3d5eca9"
+          },
+          {
+            "name": "cli",
+            "repository": "docker/cli",
+            "commit": "5457199aa57c45e990c59c89cab5f02b817238d7",
+            "filename": "LICENSE",
+            "url": "https://raw.githubusercontent.com/docker/cli/5457199aa57c45e990c59c89cab5f02b817238d7/LICENSE",
+            "bytes": 10765,
+            "sha256": "2d81ea060825006fc8f3fe28aa5dc0ffeb80faf325b612c955229157b8c10dc0"
+          },
+          {
+            "name": "cli",
+            "repository": "docker/cli",
+            "commit": "5457199aa57c45e990c59c89cab5f02b817238d7",
+            "filename": "NOTICE",
+            "url": "https://raw.githubusercontent.com/docker/cli/5457199aa57c45e990c59c89cab5f02b817238d7/NOTICE",
+            "bytes": 635,
+            "sha256": "a8c869fbda819afb8d80e0ac19bac52e766bc6c19cb38cf94f52d64c4be2aab6"
+          },
+          {
+            "name": "containerd",
+            "repository": "containerd/containerd",
+            "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51",
+            "filename": "LICENSE",
+            "url": "https://raw.githubusercontent.com/containerd/containerd/b7a25261e029d68978bbf290df0a62fc819b3c51/LICENSE",
+            "bytes": 10765,
+            "sha256": "4bbe3b885e8cd1907ab4cf9a41e862e74e24b5422297a4f2fe524e6a30ada2b4"
+          },
+          {
+            "name": "containerd",
+            "repository": "containerd/containerd",
+            "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51",
+            "filename": "NOTICE",
+            "url": "https://raw.githubusercontent.com/containerd/containerd/b7a25261e029d68978bbf290df0a62fc819b3c51/NOTICE",
+            "bytes": 519,
+            "sha256": "03f0b4bcaecfdb491ef5a7d320e2c2adf886c732d34e3fff87d52dbaec64d8c3"
+          },
+          {
+            "name": "runc",
+            "repository": "opencontainers/runc",
+            "commit": "29dd3dc2b13b4123162e5fe132504bb4b15569f1",
+            "filename": "LICENSE",
+            "url": "https://raw.githubusercontent.com/opencontainers/runc/29dd3dc2b13b4123162e5fe132504bb4b15569f1/LICENSE",
+            "bytes": 10758,
+            "sha256": "552a739c3b25792263f731542238b92f6f8d07e9a488eae27e6c4690038a8243"
+          },
+          {
+            "name": "runc",
+            "repository": "opencontainers/runc",
+            "commit": "29dd3dc2b13b4123162e5fe132504bb4b15569f1",
+            "filename": "NOTICE",
+            "url": "https://raw.githubusercontent.com/opencontainers/runc/29dd3dc2b13b4123162e5fe132504bb4b15569f1/NOTICE",
+            "bytes": 515,
+            "sha256": "e94a9789f41c5c3d6f74212571e6f44367de88269f1ce9c32f26c1b67eec6e7f"
+          }
+        ],
+        "runtimeBinaries": [
+          {
+            "file": "/usr/bin/docker",
+            "bytes": 47325518,
+            "sha256": "4965a5e468369284e157b20ef9d9da2c7c1cd772d41d56ed822fb48d3898f382"
+          },
+          {
+            "file": "/usr/bin/dockerd",
+            "bytes": 112617776,
+            "sha256": "1a1128e84fea111e7560147380b69833d13d1f1009044d0061206037f1657a5b"
+          },
+          {
+            "file": "/usr/bin/containerd",
+            "bytes": 44299016,
+            "sha256": "fc185d75979d92a4f8de99b76293dca7fe81142e9c5fd01d7da59f786f0fc8d1"
+          },
+          {
+            "file": "/usr/bin/runc",
+            "bytes": 9719248,
+            "sha256": "1248fee8f9a0dc5382f888990d669e2bd225045869b9246f848a1681161abc96"
+          },
+          {
+            "file": "/usr/bin/containerd-shim-runc-v2",
+            "bytes": 8483416,
+            "sha256": "ca4c4b5919655332666dda634338b826d73a12cdd3b6633627e95d1ab4bc138a"
+          }
+        ],
+        "image": {
+          "manifest": "docker.io/library/node@sha256:c0a93797ee78814ae6d32fcca2561fdbbe423149c3f5389aad32d86e9fd85bd4",
+          "configId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73",
+          "id": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73",
+          "idRepresentation": "classic-config",
+          "repoDigests": [
+            "node@sha256:c0a93797ee78814ae6d32fcca2561fdbbe423149c3f5389aad32d86e9fd85bd4"
+          ],
+          "os": "linux",
+          "architecture": "amd64",
+          "size": 230367122,
+          "created": "2026-11-05T07:42:05.274158867Z",
+          "environmentKeys": [
+            "PATH",
+            "NODE_VERSION",
+            "YARN_VERSION"
+          ],
+          "fullRedistributionEligible": false,
+          "buildRecipe": {
+            "url": "https://raw.githubusercontent.com/nodejs/docker-node/e994dfe115899a82684caa7533380aa7d439aae1/24/bookworm-slim/Dockerfile",
+            "sha256": "b9337735f3a1bac3fb9501495448f8dc0ae58eacd8513fe757dd7da7bf4208da"
+          }
+        },
+        "modelCalls": 0,
+        "runtimeRedistributedWithMTerm": false,
+        "fullRuntimeImageRedistributionEligible": false,
+        "repositoryKey": {
+          "url": "https://download.docker.com/linux/ubuntu/gpg",
+          "fingerprint": "9DC858229FC7DD38854AE2D88D81803C0EBFCD88",
+          "sha256": "1500c1f56fa9e26b9b8f42452a553675796ade0807cdce11975eb98170b3a570"
+        },
+        "signedIndex": {
+          "inReleaseSha256": "6ac25b6892e468c29d0822d6422efe16a63ad6155d1186c85006e0e92f486362",
+          "packagesSha256": "6bf01d98eab0b25b52273e91cb306527a9c769c3c7072e5bd68179855cedb48f",
+          "bytes": 495027,
+          "freshIsolatedLists": true,
+          "signatureVerifiedByApt": true,
+          "signatureVerifiedByGpgv": true,
+          "signingKeyFingerprint": "D3306A018370199E527AE7997EA0A9C3F273FCD8",
+          "primaryKeyFingerprint": "9DC858229FC7DD38854AE2D88D81803C0EBFCD88"
+        },
+        "engine": {
+          "Platform": {
+            "Name": "Docker Engine - Community"
+          },
+          "Version": "29.9.3",
+          "ApiVersion": "1.56",
+          "MinAPIVersion": "1.40",
+          "Os": "linux",
+          "Arch": "amd64",
+          "Components": [
+            {
+              "Name": "Engine",
+              "Version": "29.9.3",
+              "Details": {
+                "ApiVersion": "1.56",
+                "Arch": "amd64",
+                "BuildTime": "Tue Nov  3 21:41:31 2026",
+                "Experimental": "false",
+                "GitCommit": "70efc0e",
+                "GoVersion": "go1.26.10",
+                "KernelVersion": "7.0.0-1017-azure",
+                "MinAPIVersion": "1.40",
+                "Module": "github.com/moby/moby/v2",
+                "ModuleVersion": "v2.0.0+unknown",
+                "Os": "linux"
+              }
+            },
+            {
+              "Name": "containerd",
+              "Version": "v2.4.2",
+              "Details": {
+                "GitCommit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              }
+            },
+            {
+              "Name": "runc",
+              "Version": "1.5.2",
+              "Details": {
+                "GitCommit": "v1.5.2-0-g29dd3dc2"
+              }
+            },
+            {
+              "Name": "docker-init",
+              "Version": "0.19.0",
+              "Details": {
+                "GitCommit": "de40ad0"
+              }
+            }
+          ],
+          "GitCommit": "70efc0e",
+          "GoVersion": "go1.26.10",
+          "KernelVersion": "7.0.0-1017-azure",
+          "BuildTime": "2026-11-03T21:41:31.000000000+00:00"
+        },
+        "capabilities": {
+          "ServerVersion": "29.9.3",
+          "OSType": "linux",
+          "Architecture": "x86_64",
+          "KernelVersion": "7.0.0-1017-azure",
+          "OperatingSystem": "Ubuntu 24.04.5 LTS",
+          "Driver": "overlay2",
+          "CgroupVersion": "2",
+          "CgroupDriver": "systemd",
+          "MemoryLimit": true,
+          "SwapLimit": true,
+          "CpuCfsPeriod": true,
+          "CpuCfsQuota": true,
+          "PidsLimit": true,
+          "SecurityOptions": [
+            "name=apparmor,profile=default",
+            "name=seccomp,profile=builtin",
+            "name=cgroupns"
+          ],
+          "Runtimes": {
+            "io.containerd.runc.v2": {
+              "path": "runc",
+              "status": {
+                "org.opencontainers.runtime-spec.features": "{\"ociVersionMin\":\"1.0.0\",\"ociVersionMax\":\"1.3.0\",\"hooks\":[\"prestart\",\"createRuntime\",\"createContainer\",\"startContainer\",\"poststart\",\"poststop\"],\"mountOptions\":[\"async\",\"atime\",\"bind\",\"defaults\",\"dev\",\"diratime\",\"dirsync\",\"exec\",\"iversion\",\"lazytime\",\"loud\",\"mand\",\"noatime\",\"nodev\",\"nodiratime\",\"noexec\",\"noiversion\",\"nolazytime\",\"nomand\",\"norelatime\",\"nostrictatime\",\"nosuid\",\"nosymfollow\",\"private\",\"ratime\",\"rbind\",\"rdev\",\"rdiratime\",\"relatime\",\"remount\",\"rexec\",\"rnoatime\",\"rnodev\",\"rnodiratime\",\"rnoexec\",\"rnorelatime\",\"rnostrictatime\",\"rnosuid\",\"rnosymfollow\",\"ro\",\"rprivate\",\"rrelatime\",\"rro\",\"rrw\",\"rshared\",\"rslave\",\"rstrictatime\",\"rsuid\",\"rsymfollow\",\"runbindable\",\"rw\",\"shared\",\"silent\",\"slave\",\"strictatime\",\"suid\",\"symfollow\",\"sync\",\"tmpcopyup\",\"unbindable\"],\"linux\":{\"namespaces\":[\"cgroup\",\"ipc\",\"mount\",\"network\",\"pid\",\"time\",\"user\",\"uts\"],\"capabilities\":[\"CAP_CHOWN\",\"CAP_DAC_OVERRIDE\",\"CAP_DAC_READ_SEARCH\",\"CAP_FOWNER\",\"CAP_FSETID\",\"CAP_KILL\",\"CAP_SETGID\",\"CAP_SETUID\",\"CAP_SETPCAP\",\"CAP_LINUX_IMMUTABLE\",\"CAP_NET_BIND_SERVICE\",\"CAP_NET_BROADCAST\",\"CAP_NET_ADMIN\",\"CAP_NET_RAW\",\"CAP_IPC_LOCK\",\"CAP_IPC_OWNER\",\"CAP_SYS_MODULE\",\"CAP_SYS_RAWIO\",\"CAP_SYS_CHROOT\",\"CAP_SYS_PTRACE\",\"CAP_SYS_PACCT\",\"CAP_SYS_ADMIN\",\"CAP_SYS_BOOT\",\"CAP_SYS_NICE\",\"CAP_SYS_RESOURCE\",\"CAP_SYS_TIME\",\"CAP_SYS_TTY_CONFIG\",\"CAP_MKNOD\",\"CAP_LEASE\",\"CAP_AUDIT_WRITE\",\"CAP_AUDIT_CONTROL\",\"CAP_SETFCAP\",\"CAP_MAC_OVERRIDE\",\"CAP_MAC_ADMIN\",\"CAP_SYSLOG\",\"CAP_WAKE_ALARM\",\"CAP_BLOCK_SUSPEND\",\"CAP_AUDIT_READ\",\"CAP_PERFMON\",\"CAP_BPF\",\"CAP_CHECKPOINT_RESTORE\"],\"cgroup\":{\"v1\":true,\"v2\":true,\"systemd\":true,\"systemdUser\":true,\"rdma\":true},\"seccomp\":{\"enabled\":true,\"actions\":[\"SCMP_ACT_ALLOW\",\"SCMP_ACT_ERRNO\",\"SCMP_ACT_KILL\",\"SCMP_ACT_KILL_PROCESS\",\"SCMP_ACT_KILL_THREAD\",\"SCMP_ACT_LOG\",\"SCMP_ACT_NOTIFY\",\"SCMP_ACT_TRACE\",\"SCMP_ACT_TRAP\"],\"operators\":[\"SCMP_CMP_EQ\",\"SCMP_CMP_GE\",\"SCMP_CMP_GT\",\"SCMP_CMP_LE\",\"SCMP_CMP_LT\",\"SCMP_CMP_MASKED_EQ\",\"SCMP_CMP_NE\"],\"archs\":[\"SCMP_ARCH_AARCH64\",\"SCMP_ARCH_ARM\",\"SCMP_ARCH_LOONGARCH64\",\"SCMP_ARCH_MIPS\",\"SCMP_ARCH_MIPS64\",\"SCMP_ARCH_MIPS64N32\",\"SCMP_ARCH_MIPSEL\",\"SCMP_ARCH_MIPSEL64\",\"SCMP_ARCH_MIPSEL64N32\",\"SCMP_ARCH_PPC\",\"SCMP_ARCH_PPC64\",\"SCMP_ARCH_PPC64LE\",\"SCMP_ARCH_RISCV64\",\"SCMP_ARCH_S390\",\"SCMP_ARCH_S390X\",\"SCMP_ARCH_X32\",\"SCMP_ARCH_X86\",\"SCMP_ARCH_X86_64\"],\"knownFlags\":[\"SECCOMP_FILTER_FLAG_TSYNC\",\"SECCOMP_FILTER_FLAG_SPEC_ALLOW\",\"SECCOMP_FILTER_FLAG_LOG\",\"SECCOMP_FILTER_FLAG_WAIT_KILLABLE_RECV\"],\"supportedFlags\":[\"SECCOMP_FILTER_FLAG_TSYNC\",\"SECCOMP_FILTER_FLAG_SPEC_ALLOW\",\"SECCOMP_FILTER_FLAG_LOG\"]},\"apparmor\":{\"enabled\":true},\"selinux\":{\"enabled\":true},\"intelRdt\":{\"enabled\":true,\"schemata\":true,\"monitoring\":true},\"memoryPolicy\":{\"modes\":[\"MPOL_BIND\",\"MPOL_DEFAULT\",\"MPOL_INTERLEAVE\",\"MPOL_LOCAL\",\"MPOL_PREFERRED\",\"MPOL_PREFERRED_MANY\",\"MPOL_WEIGHTED_INTERLEAVE\"],\"flags\":[\"MPOL_F_NUMA_BALANCING\",\"MPOL_F_RELATIVE_NODES\",\"MPOL_F_STATIC_NODES\"]},\"mountExtensions\":{\"idmap\":{\"enabled\":true}},\"netDevices\":{\"enabled\":true}},\"annotations\":{\"io.github.seccomp.libseccomp.version\":\"2.5.5\",\"org.opencontainers.runc.checkpoint.enabled\":\"true\",\"org.opencontainers.runc.commit\":\"v1.5.2-0-g29dd3dc2\",\"org.opencontainers.runc.version\":\"1.5.2\"},\"potentiallyUnsafeConfigAnnotations\":[\"bundle\",\"org.systemd.property.\",\"org.criu.config\"]}"
+              }
+            },
+            "runc": {
+              "path": "runc",
+              "status": {
+                "org.opencontainers.runtime-spec.features": "{\"ociVersionMin\":\"1.0.0\",\"ociVersionMax\":\"1.3.0\",\"hooks\":[\"prestart\",\"createRuntime\",\"createContainer\",\"startContainer\",\"poststart\",\"poststop\"],\"mountOptions\":[\"async\",\"atime\",\"bind\",\"defaults\",\"dev\",\"diratime\",\"dirsync\",\"exec\",\"iversion\",\"lazytime\",\"loud\",\"mand\",\"noatime\",\"nodev\",\"nodiratime\",\"noexec\",\"noiversion\",\"nolazytime\",\"nomand\",\"norelatime\",\"nostrictatime\",\"nosuid\",\"nosymfollow\",\"private\",\"ratime\",\"rbind\",\"rdev\",\"rdiratime\",\"relatime\",\"remount\",\"rexec\",\"rnoatime\",\"rnodev\",\"rnodiratime\",\"rnoexec\",\"rnorelatime\",\"rnostrictatime\",\"rnosuid\",\"rnosymfollow\",\"ro\",\"rprivate\",\"rrelatime\",\"rro\",\"rrw\",\"rshared\",\"rslave\",\"rstrictatime\",\"rsuid\",\"rsymfollow\",\"runbindable\",\"rw\",\"shared\",\"silent\",\"slave\",\"strictatime\",\"suid\",\"symfollow\",\"sync\",\"tmpcopyup\",\"unbindable\"],\"linux\":{\"namespaces\":[\"cgroup\",\"ipc\",\"mount\",\"network\",\"pid\",\"time\",\"user\",\"uts\"],\"capabilities\":[\"CAP_CHOWN\",\"CAP_DAC_OVERRIDE\",\"CAP_DAC_READ_SEARCH\",\"CAP_FOWNER\",\"CAP_FSETID\",\"CAP_KILL\",\"CAP_SETGID\",\"CAP_SETUID\",\"CAP_SETPCAP\",\"CAP_LINUX_IMMUTABLE\",\"CAP_NET_BIND_SERVICE\",\"CAP_NET_BROADCAST\",\"CAP_NET_ADMIN\",\"CAP_NET_RAW\",\"CAP_IPC_LOCK\",\"CAP_IPC_OWNER\",\"CAP_SYS_MODULE\",\"CAP_SYS_RAWIO\",\"CAP_SYS_CHROOT\",\"CAP_SYS_PTRACE\",\"CAP_SYS_PACCT\",\"CAP_SYS_ADMIN\",\"CAP_SYS_BOOT\",\"CAP_SYS_NICE\",\"CAP_SYS_RESOURCE\",\"CAP_SYS_TIME\",\"CAP_SYS_TTY_CONFIG\",\"CAP_MKNOD\",\"CAP_LEASE\",\"CAP_AUDIT_WRITE\",\"CAP_AUDIT_CONTROL\",\"CAP_SETFCAP\",\"CAP_MAC_OVERRIDE\",\"CAP_MAC_ADMIN\",\"CAP_SYSLOG\",\"CAP_WAKE_ALARM\",\"CAP_BLOCK_SUSPEND\",\"CAP_AUDIT_READ\",\"CAP_PERFMON\",\"CAP_BPF\",\"CAP_CHECKPOINT_RESTORE\"],\"cgroup\":{\"v1\":true,\"v2\":true,\"systemd\":true,\"systemdUser\":true,\"rdma\":true},\"seccomp\":{\"enabled\":true,\"actions\":[\"SCMP_ACT_ALLOW\",\"SCMP_ACT_ERRNO\",\"SCMP_ACT_KILL\",\"SCMP_ACT_KILL_PROCESS\",\"SCMP_ACT_KILL_THREAD\",\"SCMP_ACT_LOG\",\"SCMP_ACT_NOTIFY\",\"SCMP_ACT_TRACE\",\"SCMP_ACT_TRAP\"],\"operators\":[\"SCMP_CMP_EQ\",\"SCMP_CMP_GE\",\"SCMP_CMP_GT\",\"SCMP_CMP_LE\",\"SCMP_CMP_LT\",\"SCMP_CMP_MASKED_EQ\",\"SCMP_CMP_NE\"],\"archs\":[\"SCMP_ARCH_AARCH64\",\"SCMP_ARCH_ARM\",\"SCMP_ARCH_LOONGARCH64\",\"SCMP_ARCH_MIPS\",\"SCMP_ARCH_MIPS64\",\"SCMP_ARCH_MIPS64N32\",\"SCMP_ARCH_MIPSEL\",\"SCMP_ARCH_MIPSEL64\",\"SCMP_ARCH_MIPSEL64N32\",\"SCMP_ARCH_PPC\",\"SCMP_ARCH_PPC64\",\"SCMP_ARCH_PPC64LE\",\"SCMP_ARCH_RISCV64\",\"SCMP_ARCH_S390\",\"SCMP_ARCH_S390X\",\"SCMP_ARCH_X32\",\"SCMP_ARCH_X86\",\"SCMP_ARCH_X86_64\"],\"knownFlags\":[\"SECCOMP_FILTER_FLAG_TSYNC\",\"SECCOMP_FILTER_FLAG_SPEC_ALLOW\",\"SECCOMP_FILTER_FLAG_LOG\",\"SECCOMP_FILTER_FLAG_WAIT_KILLABLE_RECV\"],\"supportedFlags\":[\"SECCOMP_FILTER_FLAG_TSYNC\",\"SECCOMP_FILTER_FLAG_SPEC_ALLOW\",\"SECCOMP_FILTER_FLAG_LOG\"]},\"apparmor\":{\"enabled\":true},\"selinux\":{\"enabled\":true},\"intelRdt\":{\"enabled\":true,\"schemata\":true,\"monitoring\":true},\"memoryPolicy\":{\"modes\":[\"MPOL_BIND\",\"MPOL_DEFAULT\",\"MPOL_INTERLEAVE\",\"MPOL_LOCAL\",\"MPOL_PREFERRED\",\"MPOL_PREFERRED_MANY\",\"MPOL_WEIGHTED_INTERLEAVE\"],\"flags\":[\"MPOL_F_NUMA_BALANCING\",\"MPOL_F_RELATIVE_NODES\",\"MPOL_F_STATIC_NODES\"]},\"mountExtensions\":{\"idmap\":{\"enabled\":true}},\"netDevices\":{\"enabled\":true}},\"annotations\":{\"io.github.seccomp.libseccomp.version\":\"2.5.5\",\"org.opencontainers.runc.checkpoint.enabled\":\"true\",\"org.opencontainers.runc.commit\":\"v1.5.2-0-g29dd3dc2\",\"org.opencontainers.runc.version\":\"1.5.2\"},\"potentiallyUnsafeConfigAnnotations\":[\"bundle\",\"org.systemd.property.\",\"org.criu.config\"]}"
+              }
+            }
+          },
+          "DefaultRuntime": "runc"
+        },
+        "passed": true,
+        "finishedAt": "2026-11-08T02:50:45.323Z"
+      },
+      "source": {
+        "schemaVersion": 1,
+        "startedAt": "2026-11-08T02:50:45.523Z",
+        "finishedAt": "2026-11-08T02:50:53.079Z",
+        "sourceCommit": "e8264f74cd02df465a66a6ed81bf38034a01ad00",
+        "entry": "/home/runner/work/MTerm-CLI/MTerm-CLI/bin/mterm-cli.js",
+        "fixtureSha256": "4b3dc3d2c0222c30cac12eb5a1e642a08676b354fb1063c48c8f3068bc6c32c7",
+        "node": "v24.21.0",
+        "kernel": "7.0.0-1017-azure",
+        "platform": "linux",
+        "arch": "x64",
+        "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73",
+        "guestNode": "v24.22.2",
+        "syntheticOnly": false,
+        "modelCalls": 0,
+        "fullImageRedistributionEligible": false,
+        "acceptedCapability": false,
+        "scenarios": [
+          {
+            "id": "ISO-LIVE-01",
+            "title": "real immediate capture and fixed guest identity",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:50:45.551Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "node": "v24.22.2",
+              "platform": "linux",
+              "arch": "x64",
+              "uid": 65534,
+              "gid": 65534,
+              "cwd": "/work",
+              "env": {
+                "PATH": "/usr/local/bin:/usr/bin:/bin",
+                "HOSTNAME": "04371759a8b0",
+                "HOME": "/work",
+                "TMPDIR": "/work"
+              }
+            }
+          },
+          {
+            "id": "ISO-LIVE-02",
+            "title": "host sentinel, private paths, symlinks and read-only root remain inaccessible",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:50:45.760Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "host": {
+                "read": false,
+                "code": "ENOENT"
+              },
+              "link": {
+                "read": false,
+                "code": "ENOENT"
+              },
+              "proc": {
+                "read": false,
+                "code": "ENOENT"
+              },
+              "socket": false,
+              "rootWrite": "EROFS"
+            }
+          },
+          {
+            "id": "ISO-LIVE-03",
+            "title": "shells and detached descendants stay inside the owned container",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:50:45.924Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "uid": "65534",
+              "exit": 1,
+              "detachedPid": 17,
+              "containerRemovedWithDescendants": true
+            }
+          },
+          {
+            "id": "ISO-LIVE-04",
+            "title": "network namespace denies host TCP, external TCP and DNS",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:50:46.101Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "interfaces": [
+                "lo"
+              ],
+              "host": "ECONNREFUSED",
+              "external": "ENETUNREACH",
+              "lookup": "ECONNREFUSED"
+            }
+          },
+          {
+            "id": "ISO-LIVE-05",
+            "title": "kernel cgroups, seccomp, capabilities and privilege flags match the fixed profile",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:50:46.257Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "status": [
+                "CapEff:\t0000000000000000",
+                "NoNewPrivs:\t1",
+                "Seccomp:\t2"
+              ],
+              "memory": "134217728",
+              "swap": "0",
+              "cpu": "50000 100000",
+              "pids": "32",
+              "workspace": "4096",
+              "mounts": [
+                "425 407 0:64 / /work rw,nosuid,nodev,noexec,relatime - tmpfs tmpfs rw,size=16384k,mode=700,uid=65534,gid=65534,inode64"
+              ]
+            }
+          },
+          {
+            "id": "ISO-LIVE-06",
+            "title": "actual tmpfs exhaustion is bounded and contained",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:50:46.415Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "bytes": 16777216,
+              "error": "ENOSPC"
+            }
+          },
+          {
+            "id": "ISO-LIVE-07",
+            "title": "actual memory exhaustion is killed by the container limit",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:50:46.587Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "exitCode": 137,
+              "oomKilled": true
+            }
+          },
+          {
+            "id": "ISO-LIVE-08",
+            "title": "actual child-process ceiling refuses additional descendants",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:50:46.897Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "count": 24,
+              "error": "EAGAIN"
+            }
+          },
+          {
+            "id": "ISO-LIVE-09",
+            "title": "actual CPU quota throttles a bounded busy loop",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:50:47.114Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "wallMs": 1815.9995549999999,
+              "cpuMs": 915.186,
+              "throttled": 19
+            }
+          },
+          {
+            "id": "ISO-LIVE-10",
+            "title": "real timeout, output overflow and owned stop confirm removal",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:50:52.282Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "timeout": true,
+              "outputLimit": true,
+              "stop": true
+            }
+          },
+          {
+            "id": "ISO-LIVE-11",
+            "title": "real local IPC permissions deny access without a container",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": null,
+            "observation": {
+              "permissionDenied": true,
+              "connections": 0
+            }
+          },
+          {
+            "id": "ISO-LIVE-12",
+            "title": "actual SDK isolated-only grant and cancellation preserve native denial and cleanup controls",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": null,
+            "observation": {
+              "actualSdkRoundTrip": true,
+              "nativeExecutionDenied": true,
+              "cancellation": true,
+              "cleanupVerified": true,
+              "backend": {
+                "observedAt": "2026-11-08T02:50:52.868Z",
+                "apiVersion": "1.45",
+                "engineVersion": "29.9.3",
+                "engineCommit": "70efc0e",
+                "kernel": "7.0.0-1017-azure",
+                "operatingSystem": "Ubuntu 24.04.5 LTS",
+                "architecture": "x86_64",
+                "cgroupVersion": "2",
+                "seccomp": "builtin",
+                "containerd": {
+                  "version": "v2.4.2",
+                  "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                },
+                "runc": {
+                  "version": "1.5.2",
+                  "commit": "v1.5.2-0-g29dd3dc2"
+                },
+                "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+              }
+            }
+          }
+        ],
+        "passed": true,
+        "moduleBindings": [
+          {
+            "path": "dist/cli.js",
+            "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad",
+            "bytes": 16233
+          },
+          {
+            "path": "dist/mcp.js",
+            "sha256": "d472b529ac7fbd667ef1f519259d395d3402fae6748123a49bbffa1462c5bc69",
+            "bytes": 20091
+          },
+          {
+            "path": "dist/processes.js",
+            "sha256": "714f2ddc34e3e664d75f8f1bc2338e2f4691bf2de8d01ecedc1e07743acefcf5",
+            "bytes": 22436
+          },
+          {
+            "path": "dist/policy.js",
+            "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d",
+            "bytes": 6796
+          },
+          {
+            "path": "dist/resource-budget-policy.js",
+            "sha256": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac",
+            "bytes": 2454
+          },
+          {
+            "path": "dist/resource-budgets.js",
+            "sha256": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64",
+            "bytes": 4115
+          },
+          {
+            "path": "dist/isolation-policy.js",
+            "sha256": "3b9c4a56d75e9660c6b8ed0cb9bfc32aa8441fabe6eddcd33a10d43458a26de9",
+            "bytes": 2838
+          },
+          {
+            "path": "dist/isolation-http.js",
+            "sha256": "0fad31e0d688f663c3c37e2316863b6ec4ff30d67abca5a6a5a728420de265d5",
+            "bytes": 11344
+          },
+          {
+            "path": "dist/isolation-engine.js",
+            "sha256": "130b4532dd7eac02bcd0d02d261cb5e34fb9f5bb67c80b7619469917ffaaca33",
+            "bytes": 26260
+          },
+          {
+            "path": "dist/isolation.js",
+            "sha256": "4efc7b035ce22195fdace01e8249866db934aea8d55049d6c3300563ebac6120",
+            "bytes": 1506
+          },
+          {
+            "path": "dist/errors.js",
+            "sha256": "26fa1c3341396a1f9eda45debe86dc2295cb997b9dd7e525e70ac17ef2c910a9",
+            "bytes": 1727
+          }
+        ],
+        "fromOutsideCheckout": true,
+        "installedPackage": false,
+        "fullRuntimeImageRedistributionEligible": false,
+        "tapSha256": "15b22f402c351043ab52377834f14486c877f6aa2b196926be159e7c446cf6f0"
+      },
+      "installed": {
+        "schemaVersion": 1,
+        "startedAt": "2026-11-08T02:51:13.242Z",
+        "finishedAt": "2026-11-08T02:51:20.964Z",
+        "sourceCommit": "e8264f74cd02df465a66a6ed81bf38034a01ad00",
+        "entry": "/home/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-tNvDEx/install/node_modules/mterm-cli/bin/mterm-cli.js",
+        "fixtureSha256": "4b3dc3d2c0222c30cac12eb5a1e642a08676b354fb1063c48c8f3068bc6c32c7",
+        "node": "v24.21.0",
+        "kernel": "7.0.0-1017-azure",
+        "platform": "linux",
+        "arch": "x64",
+        "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73",
+        "guestNode": "v24.22.2",
+        "syntheticOnly": false,
+        "modelCalls": 0,
+        "fullImageRedistributionEligible": false,
+        "acceptedCapability": false,
+        "scenarios": [
+          {
+            "id": "ISO-LIVE-01",
+            "title": "real immediate capture and fixed guest identity",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:51:13.272Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "node": "v24.22.2",
+              "platform": "linux",
+              "arch": "x64",
+              "uid": 65534,
+              "gid": 65534,
+              "cwd": "/work",
+              "env": {
+                "PATH": "/usr/local/bin:/usr/bin:/bin",
+                "HOSTNAME": "9c1e057c53d5",
+                "HOME": "/work",
+                "TMPDIR": "/work"
+              }
+            }
+          },
+          {
+            "id": "ISO-LIVE-02",
+            "title": "host sentinel, private paths, symlinks and read-only root remain inaccessible",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:51:13.694Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "host": {
+                "read": false,
+                "code": "ENOENT"
+              },
+              "link": {
+                "read": false,
+                "code": "ENOENT"
+              },
+              "proc": {
+                "read": false,
+                "code": "ENOENT"
+              },
+              "socket": false,
+              "rootWrite": "EROFS"
+            }
+          },
+          {
+            "id": "ISO-LIVE-03",
+            "title": "shells and detached descendants stay inside the owned container",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:51:13.863Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "uid": "65534",
+              "exit": 1,
+              "detachedPid": 17,
+              "containerRemovedWithDescendants": true
+            }
+          },
+          {
+            "id": "ISO-LIVE-04",
+            "title": "network namespace denies host TCP, external TCP and DNS",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:51:14.031Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "interfaces": [
+                "lo"
+              ],
+              "host": "ECONNREFUSED",
+              "external": "ENETUNREACH",
+              "lookup": "ECONNREFUSED"
+            }
+          },
+          {
+            "id": "ISO-LIVE-05",
+            "title": "kernel cgroups, seccomp, capabilities and privilege flags match the fixed profile",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:51:14.183Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "status": [
+                "CapEff:\t0000000000000000",
+                "NoNewPrivs:\t1",
+                "Seccomp:\t2"
+              ],
+              "memory": "134217728",
+              "swap": "0",
+              "cpu": "50000 100000",
+              "pids": "32",
+              "workspace": "4096",
+              "mounts": [
+                "425 407 0:64 / /work rw,nosuid,nodev,noexec,relatime - tmpfs tmpfs rw,size=16384k,mode=700,uid=65534,gid=65534,inode64"
+              ]
+            }
+          },
+          {
+            "id": "ISO-LIVE-06",
+            "title": "actual tmpfs exhaustion is bounded and contained",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:51:14.351Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "bytes": 16777216,
+              "error": "ENOSPC"
+            }
+          },
+          {
+            "id": "ISO-LIVE-07",
+            "title": "actual memory exhaustion is killed by the container limit",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:51:14.580Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "exitCode": 137,
+              "oomKilled": true
+            }
+          },
+          {
+            "id": "ISO-LIVE-08",
+            "title": "actual child-process ceiling refuses additional descendants",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:51:14.897Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "count": 24,
+              "error": "EAGAIN"
+            }
+          },
+          {
+            "id": "ISO-LIVE-09",
+            "title": "actual CPU quota throttles a bounded busy loop",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:51:15.066Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "wallMs": 1836.592037,
+              "cpuMs": 912.249,
+              "throttled": 19
+            }
+          },
+          {
+            "id": "ISO-LIVE-10",
+            "title": "real timeout, output overflow and owned stop confirm removal",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:51:20.281Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "timeout": true,
+              "outputLimit": true,
+              "stop": true
+            }
+          },
+          {
+            "id": "ISO-LIVE-11",
+            "title": "real local IPC permissions deny access without a container",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": null,
+            "observation": {
+              "permissionDenied": true,
+              "connections": 0
+            }
+          },
+          {
+            "id": "ISO-LIVE-12",
+            "title": "actual SDK isolated-only grant and cancellation preserve native denial and cleanup controls",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": null,
+            "observation": {
+              "actualSdkRoundTrip": true,
+              "nativeExecutionDenied": true,
+              "cancellation": true,
+              "cleanupVerified": true,
+              "backend": {
+                "observedAt": "2026-11-08T02:51:20.755Z",
+                "apiVersion": "1.45",
+                "engineVersion": "29.9.3",
+                "engineCommit": "70efc0e",
+                "kernel": "7.0.0-1017-azure",
+                "operatingSystem": "Ubuntu 24.04.5 LTS",
+                "architecture": "x86_64",
+                "cgroupVersion": "2",
+                "seccomp": "builtin",
+                "containerd": {
+                  "version": "v2.4.2",
+                  "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                },
+                "runc": {
+                  "version": "1.5.2",
+                  "commit": "v1.5.2-0-g29dd3dc2"
+                },
+                "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+              }
+            }
+          }
+        ],
+        "passed": true,
+        "moduleBindings": [
+          {
+            "path": "dist/cli.js",
+            "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad",
+            "bytes": 16233
+          },
+          {
+            "path": "dist/mcp.js",
+            "sha256": "d472b529ac7fbd667ef1f519259d395d3402fae6748123a49bbffa1462c5bc69",
+            "bytes": 20091
+          },
+          {
+            "path": "dist/processes.js",
+            "sha256": "714f2ddc34e3e664d75f8f1bc2338e2f4691bf2de8d01ecedc1e07743acefcf5",
+            "bytes": 22436
+          },
+          {
+            "path": "dist/policy.js",
+            "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d",
+            "bytes": 6796
+          },
+          {
+            "path": "dist/resource-budget-policy.js",
+            "sha256": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac",
+            "bytes": 2454
+          },
+          {
+            "path": "dist/resource-budgets.js",
+            "sha256": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64",
+            "bytes": 4115
+          },
+          {
+            "path": "dist/isolation-policy.js",
+            "sha256": "3b9c4a56d75e9660c6b8ed0cb9bfc32aa8441fabe6eddcd33a10d43458a26de9",
+            "bytes": 2838
+          },
+          {
+            "path": "dist/isolation-http.js",
+            "sha256": "0fad31e0d688f663c3c37e2316863b6ec4ff30d67abca5a6a5a728420de265d5",
+            "bytes": 11344
+          },
+          {
+            "path": "dist/isolation-engine.js",
+            "sha256": "130b4532dd7eac02bcd0d02d261cb5e34fb9f5bb67c80b7619469917ffaaca33",
+            "bytes": 26260
+          },
+          {
+            "path": "dist/isolation.js",
+            "sha256": "4efc7b035ce22195fdace01e8249866db934aea8d55049d6c3300563ebac6120",
+            "bytes": 1506
+          },
+          {
+            "path": "dist/errors.js",
+            "sha256": "26fa1c3341396a1f9eda45debe86dc2295cb997b9dd7e525e70ac17ef2c910a9",
+            "bytes": 1727
+          }
+        ],
+        "fromOutsideCheckout": true,
+        "installedPackage": true,
+        "fullRuntimeImageRedistributionEligible": false,
+        "tapSha256": "f65218ad43d6d5290573a0d1ca13ca5c7738df52ccb08eb53fc4f05bdfb693ff"
+      },
+      "rawFiles": [
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/001-docker.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/002-gpg.log",
+          "bytes": 564,
+          "sha256": "2aedfbea9a2f18276907dc72262cf937c56bebc012fd11e27935a0c2625c007b"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/003-gpg.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/004-sudo.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/005-sudo.log",
+          "bytes": 215,
+          "sha256": "3c9eaa979fd4f2ad8c1ebaf887447133143f32d4c768d54d56715b039e9cf782"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/006-gpgv.log",
+          "bytes": 537,
+          "sha256": "10e1846c320ba176888087f704597ef2c66b01f0d5f7ff20053868563007a90f"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/007-apt-helper.log",
+          "bytes": 495027,
+          "sha256": "6bf01d98eab0b25b52273e91cb306527a9c769c3c7072e5bd68179855cedb48f"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/008-apt-get.log",
+          "bytes": 156,
+          "sha256": "8c850e8f12ee8fbb75af4763e74ac72bb977f0d2b12e5ed6342f2b7e5ec7ba1d"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/009-apt-get.log",
+          "bytes": 160,
+          "sha256": "fe4bcf3f385eb2d5533af8355e138cd12815d089704b1f6c92143da2d66887be"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/010-apt-get.log",
+          "bytes": 157,
+          "sha256": "615674e9449a38757ee29ec6b95e4b82c5cc120c1cefd9c4334bb851f26863a8"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/011-sudo.log",
+          "bytes": 2277,
+          "sha256": "f9bbe4e901099a587374ff25401ed15f1dd8760e9c28f21d3cce377f721353e5"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/012-sudo.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/013-sudo.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/014-dpkg-query.log",
+          "bytes": 29,
+          "sha256": "f93044ee4d47e5af160e854f9d7eddb733c869d2280d8a4ba36cbe55f8efdaab"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/015-dpkg-query.log",
+          "bytes": 29,
+          "sha256": "f93044ee4d47e5af160e854f9d7eddb733c869d2280d8a4ba36cbe55f8efdaab"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/016-dpkg-query.log",
+          "bytes": 26,
+          "sha256": "87a3059394e98b31d8e424e7e96998818fbbcb9ac861b9ebe01091c684a99b7f"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/017-docker.log",
+          "bytes": 880,
+          "sha256": "58041e9f63e4c510f59d2cbf063636fbe85cc41ffc70caef464e33dfb4ea3e58"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/018-docker.log",
+          "bytes": 78,
+          "sha256": "4cb552460198d896f6a2e9bc42eb48724a5678212f5d391f8bf469b75b09f149"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/019-docker.log",
+          "bytes": 1040,
+          "sha256": "0431cd274331e0a838448cfa6e43ec1aca36a41863e14ec566921fcc7af0df68"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/020-docker.log",
+          "bytes": 78,
+          "sha256": "4cb552460198d896f6a2e9bc42eb48724a5678212f5d391f8bf469b75b09f149"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/021-docker.log",
+          "bytes": 1835,
+          "sha256": "04f88cdea05f19ab38848c9318919aaaea8299c7313285e8ef243730af559606"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/bootstrap.json",
+          "bytes": 16813,
+          "sha256": "478d8ca9854a11a813b34058ce9fe4b90142ef9f15ea5f2ce592b88840ea0652"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/cli-LICENSE",
+          "bytes": 10765,
+          "sha256": "2d81ea060825006fc8f3fe28aa5dc0ffeb80faf325b612c955229157b8c10dc0"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/cli-NOTICE",
+          "bytes": 635,
+          "sha256": "a8c869fbda819afb8d80e0ac19bac52e766bc6c19cb38cf94f52d64c4be2aab6"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/containerd-LICENSE",
+          "bytes": 10765,
+          "sha256": "4bbe3b885e8cd1907ab4cf9a41e862e74e24b5422297a4f2fe524e6a30ada2b4"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/containerd-NOTICE",
+          "bytes": 519,
+          "sha256": "03f0b4bcaecfdb491ef5a7d320e2c2adf886c732d34e3fff87d52dbaec64d8c3"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/docker-archive-key.asc",
+          "bytes": 3817,
+          "sha256": "1500c1f56fa9e26b9b8f42452a553675796ade0807cdce11975eb98170b3a570"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/docker-noble-amd64-Packages",
+          "bytes": 495027,
+          "sha256": "6bf01d98eab0b25b52273e91cb306527a9c769c3c7072e5bd68179855cedb48f"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/docker-noble-InRelease",
+          "bytes": 48475,
+          "sha256": "6ac25b6892e468c29d0822d6422efe16a63ad6155d1186c85006e0e92f486362"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/engine-LICENSE",
+          "bytes": 10765,
+          "sha256": "7c87873291f289713ac5df48b1f2010eb6963752bbd6b530416ab99fc37914a8"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/engine-NOTICE",
+          "bytes": 1030,
+          "sha256": "a249c4197359eee43031d16cecb172326f92ee7b6701af99dfe5c3e5b3d5eca9"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/installed/live-receipt.json",
+          "bytes": 12599,
+          "sha256": "0c8f683500893390ad6e079b0a2c2b128a388ddf9ed935b0a24d3fe1041ad637"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/installed/live-tests.tap",
+          "bytes": 2772,
+          "sha256": "f65218ad43d6d5290573a0d1ca13ca5c7738df52ccb08eb53fc4f05bdfb693ff"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/installed/result.json",
+          "bytes": 14516,
+          "sha256": "2c2afd8534816137b19220e2d5f82c0ef7195f88b469873cb63340536e43f33c"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/installed-isolation-protocol.json",
+          "bytes": 1646,
+          "sha256": "a072d3ec381e16fb473c8fc869cdd96ec3d7f0fd4cd937114004a20b8bc32602"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/installed-isolation-protocol.tap",
+          "bytes": 7000,
+          "sha256": "f54dd559ece1d22351981e5ad2caea43ecbd2650cb82e5cf805d80365cab54cc"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/node-image-Dockerfile",
+          "bytes": 5010,
+          "sha256": "b9337735f3a1bac3fb9501495448f8dc0ae58eacd8513fe757dd7da7bf4208da"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/runc-LICENSE",
+          "bytes": 10758,
+          "sha256": "552a739c3b25792263f731542238b92f6f8d07e9a488eae27e6c4690038a8243"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/runc-NOTICE",
+          "bytes": 515,
+          "sha256": "e94a9789f41c5c3d6f74212571e6f44367de88269f1ce9c32f26c1b67eec6e7f"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/source/live-receipt.json",
+          "bytes": 12543,
+          "sha256": "b95c9a43e13f544027dca09a6d9552d4a8c7d5579c97ea0ef17773388a36f9c0"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/source/live-tests.tap",
+          "bytes": 2775,
+          "sha256": "15b22f402c351043ab52377834f14486c877f6aa2b196926be159e7c446cf6f0"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-push/source/result.json",
+          "bytes": 14461,
+          "sha256": "5e71f04ba5e4289405f7424ad915295710a458880af8021b8289328e26300ca3"
+        }
+      ],
+      "installedProtocol": {
+        "exitCode": 0,
+        "tests": 28,
+        "moduleBindings": [
+          {
+            "path": "dist/cli.js",
+            "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad"
+          },
+          {
+            "path": "dist/mcp.js",
+            "sha256": "d472b529ac7fbd667ef1f519259d395d3402fae6748123a49bbffa1462c5bc69"
+          },
+          {
+            "path": "dist/processes.js",
+            "sha256": "714f2ddc34e3e664d75f8f1bc2338e2f4691bf2de8d01ecedc1e07743acefcf5"
+          },
+          {
+            "path": "dist/policy.js",
+            "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+          },
+          {
+            "path": "dist/resource-budget-policy.js",
+            "sha256": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac"
+          },
+          {
+            "path": "dist/resource-budgets.js",
+            "sha256": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64"
+          },
+          {
+            "path": "dist/isolation-policy.js",
+            "sha256": "3b9c4a56d75e9660c6b8ed0cb9bfc32aa8441fabe6eddcd33a10d43458a26de9"
+          },
+          {
+            "path": "dist/isolation-http.js",
+            "sha256": "0fad31e0d688f663c3c37e2316863b6ec4ff30d67abca5a6a5a728420de265d5"
+          },
+          {
+            "path": "dist/isolation-engine.js",
+            "sha256": "130b4532dd7eac02bcd0d02d261cb5e34fb9f5bb67c80b7619469917ffaaca33"
+          },
+          {
+            "path": "dist/isolation.js",
+            "sha256": "4efc7b035ce22195fdace01e8249866db934aea8d55049d6c3300563ebac6120"
+          },
+          {
+            "path": "dist/errors.js",
+            "sha256": "26fa1c3341396a1f9eda45debe86dc2295cb997b9dd7e525e70ac17ef2c910a9"
+          }
+        ],
+        "sha256": "f54dd559ece1d22351981e5ad2caea43ecbd2650cb82e5cf805d80365cab54cc",
+        "syntheticOnly": true,
+        "modelCalls": 0
+      }
+    },
+    {
+      "event": "pull_request",
+      "runId": 42440190195,
+      "jobId": 128607560463,
+      "artifactId": 13601785595,
+      "testedCommit": "45366cf1d23fca50c5fc08ca1c6da8ba069d6317",
+      "tree": "67aa33b5caa473c72300851c5a3eb9bafd0dc216",
+      "artifact": {
+        "path": "artifacts/aug005/hosted-e8264f7-pr.zip",
+        "bytes": 230479,
+        "sha256": "5ad8a2e4c73742e4b1fc1f07ad5ce2d07f79b47e8a39a0f36cbffa2a730bfed0",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42440190195/artifacts/13601785595"
+      },
+      "bootstrap": {
+        "schemaVersion": 1,
+        "startedAt": "2026-11-08T02:50:27.550Z",
+        "node": "v24.21.0",
+        "platform": "linux",
+        "arch": "x64",
+        "kernel": "7.0.0-1017-azure",
+        "runnerImage": "20261101.360.1",
+        "runnerOS": "ubuntu24",
+        "sourceCommit": "45366cf1d23fca50c5fc08ca1c6da8ba069d6317",
+        "packagePins": [
+          {
+            "name": "docker-ce",
+            "version": "5:29.9.3-1~ubuntu.24.04~noble",
+            "filename": "dists/noble/pool/stable/amd64/docker-ce_29.9.3-1~ubuntu.24.04~noble_amd64.deb",
+            "downloadedFile": "docker-ce_5%3a29.9.3-1~ubuntu.24.04~noble_amd64.deb",
+            "sha256": "c546181f0bc5f1d19085d764a3219aa86069468dbee4743fae420ee8a31809a4",
+            "bytes": 24586336
+          },
+          {
+            "name": "docker-ce-cli",
+            "version": "5:29.9.3-1~ubuntu.24.04~noble",
+            "filename": "dists/noble/pool/stable/amd64/docker-ce-cli_29.9.3-1~ubuntu.24.04~noble_amd64.deb",
+            "downloadedFile": "docker-ce-cli_5%3a29.9.3-1~ubuntu.24.04~noble_amd64.deb",
+            "sha256": "24f78a893cece8d345c4e90b5163907c047b996b747265f873743e8b0b0546d4",
+            "bytes": 17584604
+          },
+          {
+            "name": "containerd.io",
+            "version": "2.4.2-3~ubuntu.24.04~noble",
+            "filename": "dists/noble/pool/stable/amd64/containerd.io_2.4.2-3~ubuntu.24.04~noble_amd64.deb",
+            "downloadedFile": "containerd.io_2.4.2-3~ubuntu.24.04~noble_amd64.deb",
+            "sha256": "f811ab57d1f4bb0cce19df7d526da8c711d8ebea0447cc83da1999188e664122",
+            "bytes": 23271468
+          }
+        ],
+        "licenses": [
+          {
+            "name": "engine",
+            "repository": "moby/moby",
+            "commit": "70efc0e31da3a115fc87574d1b786fa2b867c346",
+            "filename": "LICENSE",
+            "url": "https://raw.githubusercontent.com/moby/moby/70efc0e31da3a115fc87574d1b786fa2b867c346/LICENSE",
+            "bytes": 10765,
+            "sha256": "7c87873291f289713ac5df48b1f2010eb6963752bbd6b530416ab99fc37914a8"
+          },
+          {
+            "name": "engine",
+            "repository": "moby/moby",
+            "commit": "70efc0e31da3a115fc87574d1b786fa2b867c346",
+            "filename": "NOTICE",
+            "url": "https://raw.githubusercontent.com/moby/moby/70efc0e31da3a115fc87574d1b786fa2b867c346/NOTICE",
+            "bytes": 1030,
+            "sha256": "a249c4197359eee43031d16cecb172326f92ee7b6701af99dfe5c3e5b3d5eca9"
+          },
+          {
+            "name": "cli",
+            "repository": "docker/cli",
+            "commit": "5457199aa57c45e990c59c89cab5f02b817238d7",
+            "filename": "LICENSE",
+            "url": "https://raw.githubusercontent.com/docker/cli/5457199aa57c45e990c59c89cab5f02b817238d7/LICENSE",
+            "bytes": 10765,
+            "sha256": "2d81ea060825006fc8f3fe28aa5dc0ffeb80faf325b612c955229157b8c10dc0"
+          },
+          {
+            "name": "cli",
+            "repository": "docker/cli",
+            "commit": "5457199aa57c45e990c59c89cab5f02b817238d7",
+            "filename": "NOTICE",
+            "url": "https://raw.githubusercontent.com/docker/cli/5457199aa57c45e990c59c89cab5f02b817238d7/NOTICE",
+            "bytes": 635,
+            "sha256": "a8c869fbda819afb8d80e0ac19bac52e766bc6c19cb38cf94f52d64c4be2aab6"
+          },
+          {
+            "name": "containerd",
+            "repository": "containerd/containerd",
+            "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51",
+            "filename": "LICENSE",
+            "url": "https://raw.githubusercontent.com/containerd/containerd/b7a25261e029d68978bbf290df0a62fc819b3c51/LICENSE",
+            "bytes": 10765,
+            "sha256": "4bbe3b885e8cd1907ab4cf9a41e862e74e24b5422297a4f2fe524e6a30ada2b4"
+          },
+          {
+            "name": "containerd",
+            "repository": "containerd/containerd",
+            "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51",
+            "filename": "NOTICE",
+            "url": "https://raw.githubusercontent.com/containerd/containerd/b7a25261e029d68978bbf290df0a62fc819b3c51/NOTICE",
+            "bytes": 519,
+            "sha256": "03f0b4bcaecfdb491ef5a7d320e2c2adf886c732d34e3fff87d52dbaec64d8c3"
+          },
+          {
+            "name": "runc",
+            "repository": "opencontainers/runc",
+            "commit": "29dd3dc2b13b4123162e5fe132504bb4b15569f1",
+            "filename": "LICENSE",
+            "url": "https://raw.githubusercontent.com/opencontainers/runc/29dd3dc2b13b4123162e5fe132504bb4b15569f1/LICENSE",
+            "bytes": 10758,
+            "sha256": "552a739c3b25792263f731542238b92f6f8d07e9a488eae27e6c4690038a8243"
+          },
+          {
+            "name": "runc",
+            "repository": "opencontainers/runc",
+            "commit": "29dd3dc2b13b4123162e5fe132504bb4b15569f1",
+            "filename": "NOTICE",
+            "url": "https://raw.githubusercontent.com/opencontainers/runc/29dd3dc2b13b4123162e5fe132504bb4b15569f1/NOTICE",
+            "bytes": 515,
+            "sha256": "e94a9789f41c5c3d6f74212571e6f44367de88269f1ce9c32f26c1b67eec6e7f"
+          }
+        ],
+        "runtimeBinaries": [
+          {
+            "file": "/usr/bin/docker",
+            "bytes": 47325518,
+            "sha256": "4965a5e468369284e157b20ef9d9da2c7c1cd772d41d56ed822fb48d3898f382"
+          },
+          {
+            "file": "/usr/bin/dockerd",
+            "bytes": 112617776,
+            "sha256": "1a1128e84fea111e7560147380b69833d13d1f1009044d0061206037f1657a5b"
+          },
+          {
+            "file": "/usr/bin/containerd",
+            "bytes": 44299016,
+            "sha256": "fc185d75979d92a4f8de99b76293dca7fe81142e9c5fd01d7da59f786f0fc8d1"
+          },
+          {
+            "file": "/usr/bin/runc",
+            "bytes": 9719248,
+            "sha256": "1248fee8f9a0dc5382f888990d669e2bd225045869b9246f848a1681161abc96"
+          },
+          {
+            "file": "/usr/bin/containerd-shim-runc-v2",
+            "bytes": 8483416,
+            "sha256": "ca4c4b5919655332666dda634338b826d73a12cdd3b6633627e95d1ab4bc138a"
+          }
+        ],
+        "image": {
+          "manifest": "docker.io/library/node@sha256:c0a93797ee78814ae6d32fcca2561fdbbe423149c3f5389aad32d86e9fd85bd4",
+          "configId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73",
+          "id": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73",
+          "idRepresentation": "classic-config",
+          "repoDigests": [
+            "node@sha256:c0a93797ee78814ae6d32fcca2561fdbbe423149c3f5389aad32d86e9fd85bd4"
+          ],
+          "os": "linux",
+          "architecture": "amd64",
+          "size": 230367122,
+          "created": "2026-11-05T07:42:05.274158867Z",
+          "environmentKeys": [
+            "PATH",
+            "NODE_VERSION",
+            "YARN_VERSION"
+          ],
+          "fullRedistributionEligible": false,
+          "buildRecipe": {
+            "url": "https://raw.githubusercontent.com/nodejs/docker-node/e994dfe115899a82684caa7533380aa7d439aae1/24/bookworm-slim/Dockerfile",
+            "sha256": "b9337735f3a1bac3fb9501495448f8dc0ae58eacd8513fe757dd7da7bf4208da"
+          }
+        },
+        "modelCalls": 0,
+        "runtimeRedistributedWithMTerm": false,
+        "fullRuntimeImageRedistributionEligible": false,
+        "repositoryKey": {
+          "url": "https://download.docker.com/linux/ubuntu/gpg",
+          "fingerprint": "9DC858229FC7DD38854AE2D88D81803C0EBFCD88",
+          "sha256": "1500c1f56fa9e26b9b8f42452a553675796ade0807cdce11975eb98170b3a570"
+        },
+        "signedIndex": {
+          "inReleaseSha256": "6ac25b6892e468c29d0822d6422efe16a63ad6155d1186c85006e0e92f486362",
+          "packagesSha256": "6bf01d98eab0b25b52273e91cb306527a9c769c3c7072e5bd68179855cedb48f",
+          "bytes": 495027,
+          "freshIsolatedLists": true,
+          "signatureVerifiedByApt": true,
+          "signatureVerifiedByGpgv": true,
+          "signingKeyFingerprint": "D3306A018370199E527AE7997EA0A9C3F273FCD8",
+          "primaryKeyFingerprint": "9DC858229FC7DD38854AE2D88D81803C0EBFCD88"
+        },
+        "engine": {
+          "Platform": {
+            "Name": "Docker Engine - Community"
+          },
+          "Version": "29.9.3",
+          "ApiVersion": "1.56",
+          "MinAPIVersion": "1.40",
+          "Os": "linux",
+          "Arch": "amd64",
+          "Components": [
+            {
+              "Name": "Engine",
+              "Version": "29.9.3",
+              "Details": {
+                "ApiVersion": "1.56",
+                "Arch": "amd64",
+                "BuildTime": "Tue Nov  3 21:41:31 2026",
+                "Experimental": "false",
+                "GitCommit": "70efc0e",
+                "GoVersion": "go1.26.10",
+                "KernelVersion": "7.0.0-1017-azure",
+                "MinAPIVersion": "1.40",
+                "Module": "github.com/moby/moby/v2",
+                "ModuleVersion": "v2.0.0+unknown",
+                "Os": "linux"
+              }
+            },
+            {
+              "Name": "containerd",
+              "Version": "v2.4.2",
+              "Details": {
+                "GitCommit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              }
+            },
+            {
+              "Name": "runc",
+              "Version": "1.5.2",
+              "Details": {
+                "GitCommit": "v1.5.2-0-g29dd3dc2"
+              }
+            },
+            {
+              "Name": "docker-init",
+              "Version": "0.19.0",
+              "Details": {
+                "GitCommit": "de40ad0"
+              }
+            }
+          ],
+          "GitCommit": "70efc0e",
+          "GoVersion": "go1.26.10",
+          "KernelVersion": "7.0.0-1017-azure",
+          "BuildTime": "2026-11-03T21:41:31.000000000+00:00"
+        },
+        "capabilities": {
+          "ServerVersion": "29.9.3",
+          "OSType": "linux",
+          "Architecture": "x86_64",
+          "KernelVersion": "7.0.0-1017-azure",
+          "OperatingSystem": "Ubuntu 24.04.5 LTS",
+          "Driver": "overlay2",
+          "CgroupVersion": "2",
+          "CgroupDriver": "systemd",
+          "MemoryLimit": true,
+          "SwapLimit": true,
+          "CpuCfsPeriod": true,
+          "CpuCfsQuota": true,
+          "PidsLimit": true,
+          "SecurityOptions": [
+            "name=apparmor,profile=default",
+            "name=seccomp,profile=builtin",
+            "name=cgroupns"
+          ],
+          "Runtimes": {
+            "io.containerd.runc.v2": {
+              "path": "runc",
+              "status": {
+                "org.opencontainers.runtime-spec.features": "{\"ociVersionMin\":\"1.0.0\",\"ociVersionMax\":\"1.3.0\",\"hooks\":[\"prestart\",\"createRuntime\",\"createContainer\",\"startContainer\",\"poststart\",\"poststop\"],\"mountOptions\":[\"async\",\"atime\",\"bind\",\"defaults\",\"dev\",\"diratime\",\"dirsync\",\"exec\",\"iversion\",\"lazytime\",\"loud\",\"mand\",\"noatime\",\"nodev\",\"nodiratime\",\"noexec\",\"noiversion\",\"nolazytime\",\"nomand\",\"norelatime\",\"nostrictatime\",\"nosuid\",\"nosymfollow\",\"private\",\"ratime\",\"rbind\",\"rdev\",\"rdiratime\",\"relatime\",\"remount\",\"rexec\",\"rnoatime\",\"rnodev\",\"rnodiratime\",\"rnoexec\",\"rnorelatime\",\"rnostrictatime\",\"rnosuid\",\"rnosymfollow\",\"ro\",\"rprivate\",\"rrelatime\",\"rro\",\"rrw\",\"rshared\",\"rslave\",\"rstrictatime\",\"rsuid\",\"rsymfollow\",\"runbindable\",\"rw\",\"shared\",\"silent\",\"slave\",\"strictatime\",\"suid\",\"symfollow\",\"sync\",\"tmpcopyup\",\"unbindable\"],\"linux\":{\"namespaces\":[\"cgroup\",\"ipc\",\"mount\",\"network\",\"pid\",\"time\",\"user\",\"uts\"],\"capabilities\":[\"CAP_CHOWN\",\"CAP_DAC_OVERRIDE\",\"CAP_DAC_READ_SEARCH\",\"CAP_FOWNER\",\"CAP_FSETID\",\"CAP_KILL\",\"CAP_SETGID\",\"CAP_SETUID\",\"CAP_SETPCAP\",\"CAP_LINUX_IMMUTABLE\",\"CAP_NET_BIND_SERVICE\",\"CAP_NET_BROADCAST\",\"CAP_NET_ADMIN\",\"CAP_NET_RAW\",\"CAP_IPC_LOCK\",\"CAP_IPC_OWNER\",\"CAP_SYS_MODULE\",\"CAP_SYS_RAWIO\",\"CAP_SYS_CHROOT\",\"CAP_SYS_PTRACE\",\"CAP_SYS_PACCT\",\"CAP_SYS_ADMIN\",\"CAP_SYS_BOOT\",\"CAP_SYS_NICE\",\"CAP_SYS_RESOURCE\",\"CAP_SYS_TIME\",\"CAP_SYS_TTY_CONFIG\",\"CAP_MKNOD\",\"CAP_LEASE\",\"CAP_AUDIT_WRITE\",\"CAP_AUDIT_CONTROL\",\"CAP_SETFCAP\",\"CAP_MAC_OVERRIDE\",\"CAP_MAC_ADMIN\",\"CAP_SYSLOG\",\"CAP_WAKE_ALARM\",\"CAP_BLOCK_SUSPEND\",\"CAP_AUDIT_READ\",\"CAP_PERFMON\",\"CAP_BPF\",\"CAP_CHECKPOINT_RESTORE\"],\"cgroup\":{\"v1\":true,\"v2\":true,\"systemd\":true,\"systemdUser\":true,\"rdma\":true},\"seccomp\":{\"enabled\":true,\"actions\":[\"SCMP_ACT_ALLOW\",\"SCMP_ACT_ERRNO\",\"SCMP_ACT_KILL\",\"SCMP_ACT_KILL_PROCESS\",\"SCMP_ACT_KILL_THREAD\",\"SCMP_ACT_LOG\",\"SCMP_ACT_NOTIFY\",\"SCMP_ACT_TRACE\",\"SCMP_ACT_TRAP\"],\"operators\":[\"SCMP_CMP_EQ\",\"SCMP_CMP_GE\",\"SCMP_CMP_GT\",\"SCMP_CMP_LE\",\"SCMP_CMP_LT\",\"SCMP_CMP_MASKED_EQ\",\"SCMP_CMP_NE\"],\"archs\":[\"SCMP_ARCH_AARCH64\",\"SCMP_ARCH_ARM\",\"SCMP_ARCH_LOONGARCH64\",\"SCMP_ARCH_MIPS\",\"SCMP_ARCH_MIPS64\",\"SCMP_ARCH_MIPS64N32\",\"SCMP_ARCH_MIPSEL\",\"SCMP_ARCH_MIPSEL64\",\"SCMP_ARCH_MIPSEL64N32\",\"SCMP_ARCH_PPC\",\"SCMP_ARCH_PPC64\",\"SCMP_ARCH_PPC64LE\",\"SCMP_ARCH_RISCV64\",\"SCMP_ARCH_S390\",\"SCMP_ARCH_S390X\",\"SCMP_ARCH_X32\",\"SCMP_ARCH_X86\",\"SCMP_ARCH_X86_64\"],\"knownFlags\":[\"SECCOMP_FILTER_FLAG_TSYNC\",\"SECCOMP_FILTER_FLAG_SPEC_ALLOW\",\"SECCOMP_FILTER_FLAG_LOG\",\"SECCOMP_FILTER_FLAG_WAIT_KILLABLE_RECV\"],\"supportedFlags\":[\"SECCOMP_FILTER_FLAG_TSYNC\",\"SECCOMP_FILTER_FLAG_SPEC_ALLOW\",\"SECCOMP_FILTER_FLAG_LOG\"]},\"apparmor\":{\"enabled\":true},\"selinux\":{\"enabled\":true},\"intelRdt\":{\"enabled\":true,\"schemata\":true,\"monitoring\":true},\"memoryPolicy\":{\"modes\":[\"MPOL_BIND\",\"MPOL_DEFAULT\",\"MPOL_INTERLEAVE\",\"MPOL_LOCAL\",\"MPOL_PREFERRED\",\"MPOL_PREFERRED_MANY\",\"MPOL_WEIGHTED_INTERLEAVE\"],\"flags\":[\"MPOL_F_NUMA_BALANCING\",\"MPOL_F_RELATIVE_NODES\",\"MPOL_F_STATIC_NODES\"]},\"mountExtensions\":{\"idmap\":{\"enabled\":true}},\"netDevices\":{\"enabled\":true}},\"annotations\":{\"io.github.seccomp.libseccomp.version\":\"2.5.5\",\"org.opencontainers.runc.checkpoint.enabled\":\"true\",\"org.opencontainers.runc.commit\":\"v1.5.2-0-g29dd3dc2\",\"org.opencontainers.runc.version\":\"1.5.2\"},\"potentiallyUnsafeConfigAnnotations\":[\"bundle\",\"org.systemd.property.\",\"org.criu.config\"]}"
+              }
+            },
+            "runc": {
+              "path": "runc",
+              "status": {
+                "org.opencontainers.runtime-spec.features": "{\"ociVersionMin\":\"1.0.0\",\"ociVersionMax\":\"1.3.0\",\"hooks\":[\"prestart\",\"createRuntime\",\"createContainer\",\"startContainer\",\"poststart\",\"poststop\"],\"mountOptions\":[\"async\",\"atime\",\"bind\",\"defaults\",\"dev\",\"diratime\",\"dirsync\",\"exec\",\"iversion\",\"lazytime\",\"loud\",\"mand\",\"noatime\",\"nodev\",\"nodiratime\",\"noexec\",\"noiversion\",\"nolazytime\",\"nomand\",\"norelatime\",\"nostrictatime\",\"nosuid\",\"nosymfollow\",\"private\",\"ratime\",\"rbind\",\"rdev\",\"rdiratime\",\"relatime\",\"remount\",\"rexec\",\"rnoatime\",\"rnodev\",\"rnodiratime\",\"rnoexec\",\"rnorelatime\",\"rnostrictatime\",\"rnosuid\",\"rnosymfollow\",\"ro\",\"rprivate\",\"rrelatime\",\"rro\",\"rrw\",\"rshared\",\"rslave\",\"rstrictatime\",\"rsuid\",\"rsymfollow\",\"runbindable\",\"rw\",\"shared\",\"silent\",\"slave\",\"strictatime\",\"suid\",\"symfollow\",\"sync\",\"tmpcopyup\",\"unbindable\"],\"linux\":{\"namespaces\":[\"cgroup\",\"ipc\",\"mount\",\"network\",\"pid\",\"time\",\"user\",\"uts\"],\"capabilities\":[\"CAP_CHOWN\",\"CAP_DAC_OVERRIDE\",\"CAP_DAC_READ_SEARCH\",\"CAP_FOWNER\",\"CAP_FSETID\",\"CAP_KILL\",\"CAP_SETGID\",\"CAP_SETUID\",\"CAP_SETPCAP\",\"CAP_LINUX_IMMUTABLE\",\"CAP_NET_BIND_SERVICE\",\"CAP_NET_BROADCAST\",\"CAP_NET_ADMIN\",\"CAP_NET_RAW\",\"CAP_IPC_LOCK\",\"CAP_IPC_OWNER\",\"CAP_SYS_MODULE\",\"CAP_SYS_RAWIO\",\"CAP_SYS_CHROOT\",\"CAP_SYS_PTRACE\",\"CAP_SYS_PACCT\",\"CAP_SYS_ADMIN\",\"CAP_SYS_BOOT\",\"CAP_SYS_NICE\",\"CAP_SYS_RESOURCE\",\"CAP_SYS_TIME\",\"CAP_SYS_TTY_CONFIG\",\"CAP_MKNOD\",\"CAP_LEASE\",\"CAP_AUDIT_WRITE\",\"CAP_AUDIT_CONTROL\",\"CAP_SETFCAP\",\"CAP_MAC_OVERRIDE\",\"CAP_MAC_ADMIN\",\"CAP_SYSLOG\",\"CAP_WAKE_ALARM\",\"CAP_BLOCK_SUSPEND\",\"CAP_AUDIT_READ\",\"CAP_PERFMON\",\"CAP_BPF\",\"CAP_CHECKPOINT_RESTORE\"],\"cgroup\":{\"v1\":true,\"v2\":true,\"systemd\":true,\"systemdUser\":true,\"rdma\":true},\"seccomp\":{\"enabled\":true,\"actions\":[\"SCMP_ACT_ALLOW\",\"SCMP_ACT_ERRNO\",\"SCMP_ACT_KILL\",\"SCMP_ACT_KILL_PROCESS\",\"SCMP_ACT_KILL_THREAD\",\"SCMP_ACT_LOG\",\"SCMP_ACT_NOTIFY\",\"SCMP_ACT_TRACE\",\"SCMP_ACT_TRAP\"],\"operators\":[\"SCMP_CMP_EQ\",\"SCMP_CMP_GE\",\"SCMP_CMP_GT\",\"SCMP_CMP_LE\",\"SCMP_CMP_LT\",\"SCMP_CMP_MASKED_EQ\",\"SCMP_CMP_NE\"],\"archs\":[\"SCMP_ARCH_AARCH64\",\"SCMP_ARCH_ARM\",\"SCMP_ARCH_LOONGARCH64\",\"SCMP_ARCH_MIPS\",\"SCMP_ARCH_MIPS64\",\"SCMP_ARCH_MIPS64N32\",\"SCMP_ARCH_MIPSEL\",\"SCMP_ARCH_MIPSEL64\",\"SCMP_ARCH_MIPSEL64N32\",\"SCMP_ARCH_PPC\",\"SCMP_ARCH_PPC64\",\"SCMP_ARCH_PPC64LE\",\"SCMP_ARCH_RISCV64\",\"SCMP_ARCH_S390\",\"SCMP_ARCH_S390X\",\"SCMP_ARCH_X32\",\"SCMP_ARCH_X86\",\"SCMP_ARCH_X86_64\"],\"knownFlags\":[\"SECCOMP_FILTER_FLAG_TSYNC\",\"SECCOMP_FILTER_FLAG_SPEC_ALLOW\",\"SECCOMP_FILTER_FLAG_LOG\",\"SECCOMP_FILTER_FLAG_WAIT_KILLABLE_RECV\"],\"supportedFlags\":[\"SECCOMP_FILTER_FLAG_TSYNC\",\"SECCOMP_FILTER_FLAG_SPEC_ALLOW\",\"SECCOMP_FILTER_FLAG_LOG\"]},\"apparmor\":{\"enabled\":true},\"selinux\":{\"enabled\":true},\"intelRdt\":{\"enabled\":true,\"schemata\":true,\"monitoring\":true},\"memoryPolicy\":{\"modes\":[\"MPOL_BIND\",\"MPOL_DEFAULT\",\"MPOL_INTERLEAVE\",\"MPOL_LOCAL\",\"MPOL_PREFERRED\",\"MPOL_PREFERRED_MANY\",\"MPOL_WEIGHTED_INTERLEAVE\"],\"flags\":[\"MPOL_F_NUMA_BALANCING\",\"MPOL_F_RELATIVE_NODES\",\"MPOL_F_STATIC_NODES\"]},\"mountExtensions\":{\"idmap\":{\"enabled\":true}},\"netDevices\":{\"enabled\":true}},\"annotations\":{\"io.github.seccomp.libseccomp.version\":\"2.5.5\",\"org.opencontainers.runc.checkpoint.enabled\":\"true\",\"org.opencontainers.runc.commit\":\"v1.5.2-0-g29dd3dc2\",\"org.opencontainers.runc.version\":\"1.5.2\"},\"potentiallyUnsafeConfigAnnotations\":[\"bundle\",\"org.systemd.property.\",\"org.criu.config\"]}"
+              }
+            }
+          },
+          "DefaultRuntime": "runc"
+        },
+        "passed": true,
+        "finishedAt": "2026-11-08T02:50:46.041Z"
+      },
+      "source": {
+        "schemaVersion": 1,
+        "startedAt": "2026-11-08T02:50:46.322Z",
+        "finishedAt": "2026-11-08T02:50:54.081Z",
+        "sourceCommit": "45366cf1d23fca50c5fc08ca1c6da8ba069d6317",
+        "entry": "/home/runner/work/MTerm-CLI/MTerm-CLI/bin/mterm-cli.js",
+        "fixtureSha256": "4b3dc3d2c0222c30cac12eb5a1e642a08676b354fb1063c48c8f3068bc6c32c7",
+        "node": "v24.21.0",
+        "kernel": "7.0.0-1017-azure",
+        "platform": "linux",
+        "arch": "x64",
+        "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73",
+        "guestNode": "v24.22.2",
+        "syntheticOnly": false,
+        "modelCalls": 0,
+        "fullImageRedistributionEligible": false,
+        "acceptedCapability": false,
+        "scenarios": [
+          {
+            "id": "ISO-LIVE-01",
+            "title": "real immediate capture and fixed guest identity",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:50:46.359Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "node": "v24.22.2",
+              "platform": "linux",
+              "arch": "x64",
+              "uid": 65534,
+              "gid": 65534,
+              "cwd": "/work",
+              "env": {
+                "PATH": "/usr/local/bin:/usr/bin:/bin",
+                "HOSTNAME": "879ffd02b9dd",
+                "HOME": "/work",
+                "TMPDIR": "/work"
+              }
+            }
+          },
+          {
+            "id": "ISO-LIVE-02",
+            "title": "host sentinel, private paths, symlinks and read-only root remain inaccessible",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:50:46.581Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "host": {
+                "read": false,
+                "code": "ENOENT"
+              },
+              "link": {
+                "read": false,
+                "code": "ENOENT"
+              },
+              "proc": {
+                "read": false,
+                "code": "ENOENT"
+              },
+              "socket": false,
+              "rootWrite": "EROFS"
+            }
+          },
+          {
+            "id": "ISO-LIVE-03",
+            "title": "shells and detached descendants stay inside the owned container",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:50:46.813Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "uid": "65534",
+              "exit": 1,
+              "detachedPid": 17,
+              "containerRemovedWithDescendants": true
+            }
+          },
+          {
+            "id": "ISO-LIVE-04",
+            "title": "network namespace denies host TCP, external TCP and DNS",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:50:47.019Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "interfaces": [
+                "lo"
+              ],
+              "host": "ECONNREFUSED",
+              "external": "ENETUNREACH",
+              "lookup": "ECONNREFUSED"
+            }
+          },
+          {
+            "id": "ISO-LIVE-05",
+            "title": "kernel cgroups, seccomp, capabilities and privilege flags match the fixed profile",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:50:47.203Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "status": [
+                "CapEff:\t0000000000000000",
+                "NoNewPrivs:\t1",
+                "Seccomp:\t2"
+              ],
+              "memory": "134217728",
+              "swap": "0",
+              "cpu": "50000 100000",
+              "pids": "32",
+              "workspace": "4096",
+              "mounts": [
+                "417 407 0:64 / /work rw,nosuid,nodev,noexec,relatime - tmpfs tmpfs rw,size=16384k,mode=700,uid=65534,gid=65534,inode64"
+              ]
+            }
+          },
+          {
+            "id": "ISO-LIVE-06",
+            "title": "actual tmpfs exhaustion is bounded and contained",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:50:47.378Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "bytes": 16777216,
+              "error": "ENOSPC"
+            }
+          },
+          {
+            "id": "ISO-LIVE-07",
+            "title": "actual memory exhaustion is killed by the container limit",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:50:47.581Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "exitCode": 137,
+              "oomKilled": true
+            }
+          },
+          {
+            "id": "ISO-LIVE-08",
+            "title": "actual child-process ceiling refuses additional descendants",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:50:47.864Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "count": 24,
+              "error": "EAGAIN"
+            }
+          },
+          {
+            "id": "ISO-LIVE-09",
+            "title": "actual CPU quota throttles a bounded busy loop",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:50:48.080Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "wallMs": 1818.873274,
+              "cpuMs": 901.658,
+              "throttled": 19
+            }
+          },
+          {
+            "id": "ISO-LIVE-10",
+            "title": "real timeout, output overflow and owned stop confirm removal",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:50:53.275Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "timeout": true,
+              "outputLimit": true,
+              "stop": true
+            }
+          },
+          {
+            "id": "ISO-LIVE-11",
+            "title": "real local IPC permissions deny access without a container",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": null,
+            "observation": {
+              "permissionDenied": true,
+              "connections": 0
+            }
+          },
+          {
+            "id": "ISO-LIVE-12",
+            "title": "actual SDK isolated-only grant and cancellation preserve native denial and cleanup controls",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": null,
+            "observation": {
+              "actualSdkRoundTrip": true,
+              "nativeExecutionDenied": true,
+              "cancellation": true,
+              "cleanupVerified": true,
+              "backend": {
+                "observedAt": "2026-11-08T02:50:53.865Z",
+                "apiVersion": "1.45",
+                "engineVersion": "29.9.3",
+                "engineCommit": "70efc0e",
+                "kernel": "7.0.0-1017-azure",
+                "operatingSystem": "Ubuntu 24.04.5 LTS",
+                "architecture": "x86_64",
+                "cgroupVersion": "2",
+                "seccomp": "builtin",
+                "containerd": {
+                  "version": "v2.4.2",
+                  "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                },
+                "runc": {
+                  "version": "1.5.2",
+                  "commit": "v1.5.2-0-g29dd3dc2"
+                },
+                "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+              }
+            }
+          }
+        ],
+        "passed": true,
+        "moduleBindings": [
+          {
+            "path": "dist/cli.js",
+            "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad",
+            "bytes": 16233
+          },
+          {
+            "path": "dist/mcp.js",
+            "sha256": "d472b529ac7fbd667ef1f519259d395d3402fae6748123a49bbffa1462c5bc69",
+            "bytes": 20091
+          },
+          {
+            "path": "dist/processes.js",
+            "sha256": "714f2ddc34e3e664d75f8f1bc2338e2f4691bf2de8d01ecedc1e07743acefcf5",
+            "bytes": 22436
+          },
+          {
+            "path": "dist/policy.js",
+            "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d",
+            "bytes": 6796
+          },
+          {
+            "path": "dist/resource-budget-policy.js",
+            "sha256": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac",
+            "bytes": 2454
+          },
+          {
+            "path": "dist/resource-budgets.js",
+            "sha256": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64",
+            "bytes": 4115
+          },
+          {
+            "path": "dist/isolation-policy.js",
+            "sha256": "3b9c4a56d75e9660c6b8ed0cb9bfc32aa8441fabe6eddcd33a10d43458a26de9",
+            "bytes": 2838
+          },
+          {
+            "path": "dist/isolation-http.js",
+            "sha256": "0fad31e0d688f663c3c37e2316863b6ec4ff30d67abca5a6a5a728420de265d5",
+            "bytes": 11344
+          },
+          {
+            "path": "dist/isolation-engine.js",
+            "sha256": "130b4532dd7eac02bcd0d02d261cb5e34fb9f5bb67c80b7619469917ffaaca33",
+            "bytes": 26260
+          },
+          {
+            "path": "dist/isolation.js",
+            "sha256": "4efc7b035ce22195fdace01e8249866db934aea8d55049d6c3300563ebac6120",
+            "bytes": 1506
+          },
+          {
+            "path": "dist/errors.js",
+            "sha256": "26fa1c3341396a1f9eda45debe86dc2295cb997b9dd7e525e70ac17ef2c910a9",
+            "bytes": 1727
+          }
+        ],
+        "fromOutsideCheckout": true,
+        "installedPackage": false,
+        "fullRuntimeImageRedistributionEligible": false,
+        "tapSha256": "cfbee81d6982d8413cd95029e56fb3c34558c47dd4929bc2a7e5f2f749bd9e23"
+      },
+      "installed": {
+        "schemaVersion": 1,
+        "startedAt": "2026-11-08T02:51:19.557Z",
+        "finishedAt": "2026-11-08T02:51:27.354Z",
+        "sourceCommit": "45366cf1d23fca50c5fc08ca1c6da8ba069d6317",
+        "entry": "/home/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-76CACq/install/node_modules/mterm-cli/bin/mterm-cli.js",
+        "fixtureSha256": "4b3dc3d2c0222c30cac12eb5a1e642a08676b354fb1063c48c8f3068bc6c32c7",
+        "node": "v24.21.0",
+        "kernel": "7.0.0-1017-azure",
+        "platform": "linux",
+        "arch": "x64",
+        "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73",
+        "guestNode": "v24.22.2",
+        "syntheticOnly": false,
+        "modelCalls": 0,
+        "fullImageRedistributionEligible": false,
+        "acceptedCapability": false,
+        "scenarios": [
+          {
+            "id": "ISO-LIVE-01",
+            "title": "real immediate capture and fixed guest identity",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:51:19.599Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "node": "v24.22.2",
+              "platform": "linux",
+              "arch": "x64",
+              "uid": 65534,
+              "gid": 65534,
+              "cwd": "/work",
+              "env": {
+                "PATH": "/usr/local/bin:/usr/bin:/bin",
+                "HOSTNAME": "a8459daa9755",
+                "HOME": "/work",
+                "TMPDIR": "/work"
+              }
+            }
+          },
+          {
+            "id": "ISO-LIVE-02",
+            "title": "host sentinel, private paths, symlinks and read-only root remain inaccessible",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:51:19.833Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "host": {
+                "read": false,
+                "code": "ENOENT"
+              },
+              "link": {
+                "read": false,
+                "code": "ENOENT"
+              },
+              "proc": {
+                "read": false,
+                "code": "ENOENT"
+              },
+              "socket": false,
+              "rootWrite": "EROFS"
+            }
+          },
+          {
+            "id": "ISO-LIVE-03",
+            "title": "shells and detached descendants stay inside the owned container",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:51:20.011Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "uid": "65534",
+              "exit": 1,
+              "detachedPid": 17,
+              "containerRemovedWithDescendants": true
+            }
+          },
+          {
+            "id": "ISO-LIVE-04",
+            "title": "network namespace denies host TCP, external TCP and DNS",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:51:20.209Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "interfaces": [
+                "lo"
+              ],
+              "host": "ECONNREFUSED",
+              "external": "ENETUNREACH",
+              "lookup": "ECONNREFUSED"
+            }
+          },
+          {
+            "id": "ISO-LIVE-05",
+            "title": "kernel cgroups, seccomp, capabilities and privilege flags match the fixed profile",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:51:20.396Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "status": [
+                "CapEff:\t0000000000000000",
+                "NoNewPrivs:\t1",
+                "Seccomp:\t2"
+              ],
+              "memory": "134217728",
+              "swap": "0",
+              "cpu": "50000 100000",
+              "pids": "32",
+              "workspace": "4096",
+              "mounts": [
+                "417 407 0:64 / /work rw,nosuid,nodev,noexec,relatime - tmpfs tmpfs rw,size=16384k,mode=700,uid=65534,gid=65534,inode64"
+              ]
+            }
+          },
+          {
+            "id": "ISO-LIVE-06",
+            "title": "actual tmpfs exhaustion is bounded and contained",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:51:20.582Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "bytes": 16777216,
+              "error": "ENOSPC"
+            }
+          },
+          {
+            "id": "ISO-LIVE-07",
+            "title": "actual memory exhaustion is killed by the container limit",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:51:20.800Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "exitCode": 137,
+              "oomKilled": true
+            }
+          },
+          {
+            "id": "ISO-LIVE-08",
+            "title": "actual child-process ceiling refuses additional descendants",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:51:21.100Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "count": 24,
+              "error": "EAGAIN"
+            }
+          },
+          {
+            "id": "ISO-LIVE-09",
+            "title": "actual CPU quota throttles a bounded busy loop",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:51:21.296Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "wallMs": 1800.082903,
+              "cpuMs": 907.09,
+              "throttled": 18
+            }
+          },
+          {
+            "id": "ISO-LIVE-10",
+            "title": "real timeout, output overflow and owned stop confirm removal",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T02:51:26.517Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            },
+            "observation": {
+              "timeout": true,
+              "outputLimit": true,
+              "stop": true
+            }
+          },
+          {
+            "id": "ISO-LIVE-11",
+            "title": "real local IPC permissions deny access without a container",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": null,
+            "observation": {
+              "permissionDenied": true,
+              "connections": 0
+            }
+          },
+          {
+            "id": "ISO-LIVE-12",
+            "title": "actual SDK isolated-only grant and cancellation preserve native denial and cleanup controls",
+            "passed": true,
+            "cleanupVerified": true,
+            "backend": null,
+            "observation": {
+              "actualSdkRoundTrip": true,
+              "nativeExecutionDenied": true,
+              "cancellation": true,
+              "cleanupVerified": true,
+              "backend": {
+                "observedAt": "2026-11-08T02:51:27.139Z",
+                "apiVersion": "1.45",
+                "engineVersion": "29.9.3",
+                "engineCommit": "70efc0e",
+                "kernel": "7.0.0-1017-azure",
+                "operatingSystem": "Ubuntu 24.04.5 LTS",
+                "architecture": "x86_64",
+                "cgroupVersion": "2",
+                "seccomp": "builtin",
+                "containerd": {
+                  "version": "v2.4.2",
+                  "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                },
+                "runc": {
+                  "version": "1.5.2",
+                  "commit": "v1.5.2-0-g29dd3dc2"
+                },
+                "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+              }
+            }
+          }
+        ],
+        "passed": true,
+        "moduleBindings": [
+          {
+            "path": "dist/cli.js",
+            "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad",
+            "bytes": 16233
+          },
+          {
+            "path": "dist/mcp.js",
+            "sha256": "d472b529ac7fbd667ef1f519259d395d3402fae6748123a49bbffa1462c5bc69",
+            "bytes": 20091
+          },
+          {
+            "path": "dist/processes.js",
+            "sha256": "714f2ddc34e3e664d75f8f1bc2338e2f4691bf2de8d01ecedc1e07743acefcf5",
+            "bytes": 22436
+          },
+          {
+            "path": "dist/policy.js",
+            "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d",
+            "bytes": 6796
+          },
+          {
+            "path": "dist/resource-budget-policy.js",
+            "sha256": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac",
+            "bytes": 2454
+          },
+          {
+            "path": "dist/resource-budgets.js",
+            "sha256": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64",
+            "bytes": 4115
+          },
+          {
+            "path": "dist/isolation-policy.js",
+            "sha256": "3b9c4a56d75e9660c6b8ed0cb9bfc32aa8441fabe6eddcd33a10d43458a26de9",
+            "bytes": 2838
+          },
+          {
+            "path": "dist/isolation-http.js",
+            "sha256": "0fad31e0d688f663c3c37e2316863b6ec4ff30d67abca5a6a5a728420de265d5",
+            "bytes": 11344
+          },
+          {
+            "path": "dist/isolation-engine.js",
+            "sha256": "130b4532dd7eac02bcd0d02d261cb5e34fb9f5bb67c80b7619469917ffaaca33",
+            "bytes": 26260
+          },
+          {
+            "path": "dist/isolation.js",
+            "sha256": "4efc7b035ce22195fdace01e8249866db934aea8d55049d6c3300563ebac6120",
+            "bytes": 1506
+          },
+          {
+            "path": "dist/errors.js",
+            "sha256": "26fa1c3341396a1f9eda45debe86dc2295cb997b9dd7e525e70ac17ef2c910a9",
+            "bytes": 1727
+          }
+        ],
+        "fromOutsideCheckout": true,
+        "installedPackage": true,
+        "fullRuntimeImageRedistributionEligible": false,
+        "tapSha256": "4a1086b7c2ff67da3a59c603188ef2af606d68230258cda5ad21250c4c5328f8"
+      },
+      "rawFiles": [
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/001-docker.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/002-gpg.log",
+          "bytes": 564,
+          "sha256": "2aedfbea9a2f18276907dc72262cf937c56bebc012fd11e27935a0c2625c007b"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/003-gpg.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/004-sudo.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/005-sudo.log",
+          "bytes": 215,
+          "sha256": "d135733b8ace6b12c7b26a0b53146200f60d25a955d8999ca89eb4632f1d741c"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/006-gpgv.log",
+          "bytes": 537,
+          "sha256": "10e1846c320ba176888087f704597ef2c66b01f0d5f7ff20053868563007a90f"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/007-apt-helper.log",
+          "bytes": 495027,
+          "sha256": "6bf01d98eab0b25b52273e91cb306527a9c769c3c7072e5bd68179855cedb48f"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/008-apt-get.log",
+          "bytes": 155,
+          "sha256": "2424dc95030e641ebae8ddf56d4961bd47af274f39f24aa9fdb6a671c767db93"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/009-apt-get.log",
+          "bytes": 159,
+          "sha256": "384c44da45f6f0c5283f754ccd6fb6578233a8b76410d4a8d30e7919639994ce"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/010-apt-get.log",
+          "bytes": 156,
+          "sha256": "c05732b51c3bd674fc7cee65ba2c902184595ada67ec69a758ed5867af0e74b1"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/011-sudo.log",
+          "bytes": 2276,
+          "sha256": "ad0c133ecd30dd559b37a1953d7f0f5da462edea0de297914c85f5058111b72a"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/012-sudo.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/013-sudo.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/014-dpkg-query.log",
+          "bytes": 29,
+          "sha256": "f93044ee4d47e5af160e854f9d7eddb733c869d2280d8a4ba36cbe55f8efdaab"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/015-dpkg-query.log",
+          "bytes": 29,
+          "sha256": "f93044ee4d47e5af160e854f9d7eddb733c869d2280d8a4ba36cbe55f8efdaab"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/016-dpkg-query.log",
+          "bytes": 26,
+          "sha256": "87a3059394e98b31d8e424e7e96998818fbbcb9ac861b9ebe01091c684a99b7f"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/017-docker.log",
+          "bytes": 880,
+          "sha256": "58041e9f63e4c510f59d2cbf063636fbe85cc41ffc70caef464e33dfb4ea3e58"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/018-docker.log",
+          "bytes": 78,
+          "sha256": "4cb552460198d896f6a2e9bc42eb48724a5678212f5d391f8bf469b75b09f149"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/019-docker.log",
+          "bytes": 1040,
+          "sha256": "4d78d64ea9840eae87578a73b9b9e368118c25a6b47d8b6bf5e470720e50319b"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/020-docker.log",
+          "bytes": 78,
+          "sha256": "4cb552460198d896f6a2e9bc42eb48724a5678212f5d391f8bf469b75b09f149"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/021-docker.log",
+          "bytes": 1835,
+          "sha256": "04f88cdea05f19ab38848c9318919aaaea8299c7313285e8ef243730af559606"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/bootstrap.json",
+          "bytes": 16813,
+          "sha256": "83e46d0e67caeeb2aa664d5ed7906e3e2bc16db3d6b22640aece6ed7ec4805cc"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/cli-LICENSE",
+          "bytes": 10765,
+          "sha256": "2d81ea060825006fc8f3fe28aa5dc0ffeb80faf325b612c955229157b8c10dc0"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/cli-NOTICE",
+          "bytes": 635,
+          "sha256": "a8c869fbda819afb8d80e0ac19bac52e766bc6c19cb38cf94f52d64c4be2aab6"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/containerd-LICENSE",
+          "bytes": 10765,
+          "sha256": "4bbe3b885e8cd1907ab4cf9a41e862e74e24b5422297a4f2fe524e6a30ada2b4"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/containerd-NOTICE",
+          "bytes": 519,
+          "sha256": "03f0b4bcaecfdb491ef5a7d320e2c2adf886c732d34e3fff87d52dbaec64d8c3"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/docker-archive-key.asc",
+          "bytes": 3817,
+          "sha256": "1500c1f56fa9e26b9b8f42452a553675796ade0807cdce11975eb98170b3a570"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/docker-noble-amd64-Packages",
+          "bytes": 495027,
+          "sha256": "6bf01d98eab0b25b52273e91cb306527a9c769c3c7072e5bd68179855cedb48f"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/docker-noble-InRelease",
+          "bytes": 48475,
+          "sha256": "6ac25b6892e468c29d0822d6422efe16a63ad6155d1186c85006e0e92f486362"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/engine-LICENSE",
+          "bytes": 10765,
+          "sha256": "7c87873291f289713ac5df48b1f2010eb6963752bbd6b530416ab99fc37914a8"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/engine-NOTICE",
+          "bytes": 1030,
+          "sha256": "a249c4197359eee43031d16cecb172326f92ee7b6701af99dfe5c3e5b3d5eca9"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/installed/live-receipt.json",
+          "bytes": 12598,
+          "sha256": "e65266c704326aead7d3f96ae02460b14eaf2cdf84cbaf712a30eb67ffb396bd"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/installed/live-tests.tap",
+          "bytes": 2772,
+          "sha256": "4a1086b7c2ff67da3a59c603188ef2af606d68230258cda5ad21250c4c5328f8"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/installed/result.json",
+          "bytes": 14515,
+          "sha256": "3bee1d4ce24dc054c3032dca7b0f822ed23f520f0a965093b4b17d97f239e344"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/installed-isolation-protocol.json",
+          "bytes": 1646,
+          "sha256": "3cfbacd698842c0d63f403ec22a9656b298fdb66f04d0ba05dc2e0eefb09fbd3"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/installed-isolation-protocol.tap",
+          "bytes": 7000,
+          "sha256": "3318bdf066372771097b3a53aa0f1c5d3d03cfc5b195f7567e0d8a71518fadbe"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/node-image-Dockerfile",
+          "bytes": 5010,
+          "sha256": "b9337735f3a1bac3fb9501495448f8dc0ae58eacd8513fe757dd7da7bf4208da"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/runc-LICENSE",
+          "bytes": 10758,
+          "sha256": "552a739c3b25792263f731542238b92f6f8d07e9a488eae27e6c4690038a8243"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/runc-NOTICE",
+          "bytes": 515,
+          "sha256": "e94a9789f41c5c3d6f74212571e6f44367de88269f1ce9c32f26c1b67eec6e7f"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/source/live-receipt.json",
+          "bytes": 12536,
+          "sha256": "82545613a54088227f7aa1f8d3186a852cca2968b59d939e8053a4079a152eac"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/source/live-tests.tap",
+          "bytes": 2773,
+          "sha256": "cfbee81d6982d8413cd95029e56fb3c34558c47dd4929bc2a7e5f2f749bd9e23"
+        },
+        {
+          "path": "artifacts/aug005/hosted-e8264f7-pr/source/result.json",
+          "bytes": 14454,
+          "sha256": "65b197f93790a00e64776e763d903e46e3ff05ae73c9644e22182af5c28bdf01"
+        }
+      ],
+      "installedProtocol": {
+        "exitCode": 0,
+        "tests": 28,
+        "moduleBindings": [
+          {
+            "path": "dist/cli.js",
+            "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad"
+          },
+          {
+            "path": "dist/mcp.js",
+            "sha256": "d472b529ac7fbd667ef1f519259d395d3402fae6748123a49bbffa1462c5bc69"
+          },
+          {
+            "path": "dist/processes.js",
+            "sha256": "714f2ddc34e3e664d75f8f1bc2338e2f4691bf2de8d01ecedc1e07743acefcf5"
+          },
+          {
+            "path": "dist/policy.js",
+            "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+          },
+          {
+            "path": "dist/resource-budget-policy.js",
+            "sha256": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac"
+          },
+          {
+            "path": "dist/resource-budgets.js",
+            "sha256": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64"
+          },
+          {
+            "path": "dist/isolation-policy.js",
+            "sha256": "3b9c4a56d75e9660c6b8ed0cb9bfc32aa8441fabe6eddcd33a10d43458a26de9"
+          },
+          {
+            "path": "dist/isolation-http.js",
+            "sha256": "0fad31e0d688f663c3c37e2316863b6ec4ff30d67abca5a6a5a728420de265d5"
+          },
+          {
+            "path": "dist/isolation-engine.js",
+            "sha256": "130b4532dd7eac02bcd0d02d261cb5e34fb9f5bb67c80b7619469917ffaaca33"
+          },
+          {
+            "path": "dist/isolation.js",
+            "sha256": "4efc7b035ce22195fdace01e8249866db934aea8d55049d6c3300563ebac6120"
+          },
+          {
+            "path": "dist/errors.js",
+            "sha256": "26fa1c3341396a1f9eda45debe86dc2295cb997b9dd7e525e70ac17ef2c910a9"
+          }
+        ],
+        "sha256": "3318bdf066372771097b3a53aa0f1c5d3d03cfc5b195f7567e0d8a71518fadbe",
+        "syntheticOnly": true,
+        "modelCalls": 0
+      }
+    }
+  ],
+  "actualImageStore": "classic-config",
+  "containerdStoreLiveQualified": false,
+  "modelCalls": 0,
+  "fullRuntimeImageRedistributionEligible": false,
+  "actualChatGPTIntegration": false,
+  "acceptanceAwarded": false
+}

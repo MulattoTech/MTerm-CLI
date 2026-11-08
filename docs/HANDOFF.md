@@ -1,3 +1,13 @@
+# Current delivery checkpoint — AUG-005 / PR204 — 2026-11-08T03:02:15.612Z
+
+Codee8264f74cd02df465a66a6ed81bf38034a01ad00 passed all11 hosted checks and independently reviewed source/rights/evidence gates. Native attempt1 retained439/440 with one existing private registration EPERM; unchanged focused1/1 and one disclosed full attempt2 passed440/440, installed28isolation/24resource/29pack/18provenance and audit0. Cause of the earlier OS denial is unproven, not declared fixed.
+
+Real Linux source12/12 and actual installed12/12 passed in both push and PR jobs. Fresh signed Docker29.9.3/containerd2.4.2/runc1.5.2 metadata, eight source LICENSE/NOTICE files, pinned Node24.22.2 image and all owned cleanup are recorded in [live qualification](validation/2026-11-08-aug005-live-qualification.json). The first failed APT artifact is unchanged; its invalid signature-success boolean is explicitly superseded. See [full qualification](validation/2026-11-08-aug005-qualification.json), [native attempts](validation/2026-11-08-aug005-native-attempts.json) and [independent review](validation/2026-11-08-aug005-source-review.json).
+
+Next: final immutable metadata review, final11 checks, normal expected-head merge,6 main checks, then refresh dependency order. Owner authorization already covers this work. The original dirty checkout and unrelated Docker workloads remain preserved; no Codex/model requests. Eight scoped observations add no capability acceptance. AUG0/117; CLI29.12% maturity/0complete; DCP0/48; WEB0/12 remain unchanged. Only native Linux x64 with the observed classic image store is live-qualified; other product platforms, crash recovery, hard wall-clock supervision, actual ChatGPT connector use and full image rights remain open.
+
+---
+
 # AUG-005 immutable qualification checkpoint — 2026-11-08T02:49:37.492Z
 
 DraftPR204 at ba47675 passed native440/440 and five native stages including actual installed package/audit0. Ordinary9hosted checks passed. Both mandatory Linux jobs failed before installing a runtime: APT returned0 after a missing-key warning and reused a stale runner index. The old receipt signatureVerifiedByApt:true is invalid; [superseding failure record](validation/2026-11-08-aug005-bootstrap-attempts.json) preserves it and its raw artifact. Fix requires a new empty readable APT scope and independent pinned-key gpgv verification. Version floor, acceptance flags and automated gates stay unchanged. Live containment remains unverified; continue PR204 qualification without an owner approval pause.

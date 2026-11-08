@@ -3,7 +3,7 @@
   "provider": "OpenAI",
   "model": "GPT-6 Astra Pro",
   "started_at": "2026-11-08T01:43:45Z",
-  "updated_at": "2026-11-08T02:49:37.492Z",
+  "updated_at": "2026-11-08T03:02:15.612Z",
   "base_sha": "d7b7c4fb19867f7c5f9727598442c29c12d43709",
   "issues": [
     84,
@@ -35,7 +35,15 @@
     "docs/expansion/queue.json",
     "docs/roadmap/progress.json",
     "docs/validation/2026-11-08-aug005-development.json",
-    "docs/validation/2026-11-08-aug005-bootstrap-attempts.json"
+    "docs/validation/2026-11-08-aug005-bootstrap-attempts.json",
+    "docs/validation/2026-11-08-aug005-native-attempts.json",
+    "docs/validation/2026-11-08-aug005-live-qualification.json",
+    "docs/validation/2026-11-08-aug005-source-review.json",
+    "docs/validation/2026-11-08-aug005-qualification.json",
+    "docs/validation/2026-11-08-aug005-win32-x64.json",
+    "docs/validation/2026-11-08-aug005-linux-x64.json",
+    "docs/validation/2026-11-08-aug005-darwin-arm64.json",
+    "docs/validation/2026-11-08-aug005-darwin-x64.json"
   ],
   "decisions": [
     "One owner plus one independent read-only peer; standing owner authorization covers implementation and qualified delivery; zero model API/CLI requests.",
@@ -92,6 +100,18 @@
     {
       "command": "Exactba47675 native and hosted",
       "result": "Full native440/440; five build/prepack/self-host/installed/audit stages passed, audit0; installed28isolation protocol,24resource,29pack,18provenance. Ordinary9hostedchecks succeeded; both dedicatedLinuxjobsfailed before runtime install due stale APT cache after signature failure. Old signature success boolean invalid; retained unchanged with superseding failure record."
+    },
+    {
+      "command": "Exacte8264f7 native qualification attempts",
+      "result": "Attempt1:439/440, real existing Windows private-registration EPERM after bounded retries; source/test unchanged. Focused diagnostic1/1. One disclosed unchanged full attempt2:440/440, allfive stages, installed28isolation+24resource+29pack+18provenance and audit0. Failure retained; cause unproven."
+    },
+    {
+      "command": "Exacte8264f7 hosted platform and live gates",
+      "result": "11/11 checks passed. All28 new protocol cases pass on four hosts. Push exacte826 and PR syntheticmerge45366cf share tree67aa33b but retain separate identities. Real source12/12 and actual installed12/12 pass in both jobs, all cleanup confirmed; classic image store observed."
+    },
+    {
+      "command": "Independent source/security/rights/evidence review",
+      "result": "149source entries,35committed pins,31development raw files,5failure/native pins; latest native5logs/4installed TAPs/14module bindings and1005actual runtime files verified. Both42file live artifacts,4live TAPs,2protocol TAPs,11live module bindings, fresh signed indexes and8official LICENSE/NOTICE files verified. No full runtime/image rights or capability acceptance."
     }
   ],
   "roadmap_updates": [
@@ -107,14 +127,13 @@
     }
   ],
   "limitations": [
-    "Real local IPC/SDK/native capacity tests plus explicitly synthetic Engine responses are development evidence, not Linux kernel containment acceptance.",
-    "Native Linux x64 only; Windows/macOS/ARM/WSL/Desktop denied. Owner workstation runtime was inspected only; no container/workload/runtime change was made.",
-    "Dedicated mandatory source and actual installed live CI must pass filesystem/symlink/shell/child, network, cgroup/seccomp/resource, timeout/output/cancel/permission and independent cleanup cases.",
-    "Deadlines are host-supervised and cooperative. Broker/daemon loss may leave a bounded running container; automatic journal recovery and independent hard wall-clock supervision remain unimplemented.",
-    "Kernel/runtime/image and daemon administrators remain trusted. Identity checks detect observed replacement, not malicious administrator or ABA-proof identity.",
-    "No generic executable or pack isolation, GPU quota, remote backend or actual ChatGPT connector acceptance.",
-    "No runtime/image binaries are bundled. Source notices and signed packages are separate from complete image/transitive redistribution clearance, which remains false."
+    "Native Linux x64 with the observed classic-image-store backend only is live-qualified. Windows/macOS/ARM/WSL/Desktop are unsupported; denial does not establish containment.",
+    "The first same-head Windows native attempt failed one existing private registration rename; subsequent focused and full reruns passed without code/settings changes. Cause unproven; original failure preserved.",
+    "Cooperative host-supervised deadlines; broker/daemon loss may leave a container bounded by kernel controls. Restart recovery and independent hard wall-clock supervision remain open.",
+    "No general native executable/pack isolation, GPU limit, remote execution or actual ChatGPT connector invocation is qualified.",
+    "Signed packages and eight pinned LICENSE/NOTICE files do not establish full runtime/image/transitive redistribution clearance. Runtime binaries/images are not included in MTerm npm package.",
+    "Final metadata-head checks/review, expected-head merge and post-merge main checks are subsequent observations."
   ],
   "checkpoint": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG005-20261108\\artifacts\\aug005",
-  "next_unverified_action": "Freeze source, open draft issue-linked PR, pass exact native/package/security/license and mandatory source/installed Linux live CI, obtain independent immutable review, then normal expected-head merge and main verification."
+  "next_unverified_action": "Freeze and independently review final immutable metadata; pass final11 checks; normal expected-head merge and6 main checks; reconcile current epic81 dependencies and implement the next ready P0 or its missing prerequisite."
 }

@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-08-aug003-pack-catalog; real-client catalog, selection, refresh and spawn-boundary regressions.
 // AI-Change: 2026-11-07-aug001-pack-boundary (OpenAI / GPT-6 Astra Pro; self-reported)
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -132,6 +133,466 @@ async function connect(t, f, flags = []) {
   return { client, transport };
 }
 const allowed = ['--allow-exec', '--allow-pack', 'fixture'];
+
+const catalogValue = async (client, args = {}) =>
+  value(await client.callTool({ name: 'mterm_tools_catalog', arguments: args }));
+const packSelection = (f, enabled) => ({
+  id: f.manifest.id,
+  version: f.manifest.version,
+  manifestSha256: f.pin,
+  enabled,
+});
+async function directCatalog(f, options = {}) {
+  const { PackCatalog } = await import(moduleUrl('tool-packs.js'));
+  const { ProcessService } = await import(moduleUrl('processes.js'));
+  const jobs = await ProcessService.create(f.root, { allowExec: true });
+  f.cleanup.push(() => jobs.close());
+  const catalog = await PackCatalog.create({
+    registry: f.registry,
+    allowPacks: ['fixture'],
+    jobs,
+    ...options,
+  });
+  return { catalog, jobs };
+}
+
+test('catalog discovery advertises exact version, both schemas and no payload execution', async (t) => {
+  const f = await fixture(t);
+  await install(f);
+  const before = await fs.readFile(f.registry);
+  const { client } = await connect(t, f, allowed);
+  const summary = await catalogValue(client);
+  assert.match(summary.revision, /^[a-f0-9]{64}$/);
+  assert.equal(summary.scope, 'stdio-connection');
+  assert.equal(summary.authenticatedClientIdentity, false);
+  assert.equal(summary.resources.supported, false);
+  assert.equal(summary.prompts.supported, false);
+  assert.equal(summary.packs[0].selected, true);
+  assert.equal(summary.packs[0].manifestSha256, f.pin);
+  assert.ok(!JSON.stringify(summary).includes('inputSchema'));
+  const detail = await catalogValue(client, {
+    expectedRevision: summary.revision,
+    id: 'fixture',
+    version: '1.0.0',
+    manifestSha256: f.pin,
+  });
+  const listed = (await client.listTools()).tools.find((x) => x.name === 'mterm_pack_fixture__echo');
+  assert.deepEqual(detail.pack.tools[0].inputSchema, listed.inputSchema);
+  assert.deepEqual(detail.pack.tools[0].outputSchema, listed.outputSchema);
+  assert.equal(listed.outputSchema.properties.text.type, 'string');
+  assert.deepEqual(listed._meta['io.github.MulattoTech.MTerm-CLI/pack'], {
+    id: 'fixture',
+    version: '1.0.0',
+    manifestSha256: f.pin,
+    sourceCommit: f.manifest.source.commit,
+    abiVersion: 1,
+    protocol: 'mterm-pack-stdio/1',
+  });
+  assert.equal(await fs.stat(path.join(f.root, 'pid.txt')).catch(() => null), null);
+  assert.deepEqual(await fs.readFile(f.registry), before);
+});
+
+test('catalog effective schema defaults match discovery and reject oversized values before execution', async (t) => {
+  const f = await fixture(t, (m) => {
+    m.tools[0].inputSchema = object(
+      { text: { type: 'string' }, items: { type: 'array', items: { type: 'boolean' } } },
+      ['text'],
+    );
+    m.tools[0].outputSchema = object({ text: { type: 'string' } });
+  });
+  await install(f);
+  const { client } = await connect(t, f, allowed);
+  const summary = await catalogValue(client);
+  const detail = await catalogValue(client, {
+    expectedRevision: summary.revision,
+    id: 'fixture',
+    version: '1.0.0',
+    manifestSha256: f.pin,
+  });
+  const listed = (await client.listTools()).tools.find((x) => x.name === 'mterm_pack_fixture__echo');
+  assert.deepEqual(detail.pack.tools[0].inputSchema, listed.inputSchema);
+  assert.deepEqual(detail.pack.tools[0].outputSchema, listed.outputSchema);
+  assert.equal(listed.inputSchema.properties.text.maxLength, 4096);
+  assert.equal(listed.inputSchema.properties.items.maxItems, 64);
+  for (const args of [{ text: 'x'.repeat(4097) }, { text: 'denied', items: Array(65).fill(true) }]) {
+    const result = await client.callTool({ name: 'mterm_pack_fixture__echo', arguments: args });
+    assert.equal(result.isError, true);
+  }
+  assert.equal(await fs.stat(path.join(f.root, 'pid.txt')).catch(() => null), null);
+  const boundary = await client.callTool({
+    name: 'mterm_pack_fixture__echo',
+    arguments: { text: 'x'.repeat(4096), items: Array(64).fill(true) },
+  });
+  assert.equal(boundary.isError, false);
+  assert.equal(value(boundary).text.length, 4096);
+});
+
+test('catalog selection isolates two real clients and emits actual list-change notifications', async (t) => {
+  const f = await fixture(t);
+  await install(f);
+  const first = await connect(t, f, allowed);
+  const second = await connect(t, f, allowed);
+  let notifications = 0;
+  first.client.setNotificationHandler('notifications/tools/list_changed', () => {
+    notifications++;
+  });
+  const original = await catalogValue(first.client);
+  const changed = value(
+    await first.client.callTool({
+      name: 'mterm_tools_select',
+      arguments: {
+        expectedRevision: original.revision,
+        selections: [packSelection(f, false)],
+      },
+    }),
+  );
+  assert.equal(changed.packs[0].selected, false);
+  assert.notEqual(changed.revision, original.revision);
+  assert.ok(!(await first.client.listTools()).tools.some((x) => x.name === 'mterm_pack_fixture__echo'));
+  await assert.rejects(
+    first.client.callTool({ name: 'mterm_pack_fixture__echo', arguments: { text: 'denied' } }),
+    /disabled|not found/i,
+  );
+  assert.ok((await second.client.listTools()).tools.some((x) => x.name === 'mterm_pack_fixture__echo'));
+  assert.equal((await catalogValue(second.client)).packs[0].selected, true);
+  assert.equal(await fs.stat(path.join(f.root, 'pid.txt')).catch(() => null), null);
+  assert.ok(notifications >= 1, 'the connected client must receive tools/list_changed');
+  const enabled = value(
+    await first.client.callTool({
+      name: 'mterm_tools_select',
+      arguments: {
+        expectedRevision: changed.revision,
+        selections: [packSelection(f, true)],
+      },
+    }),
+  );
+  assert.equal(enabled.packs[0].selected, true);
+  const result = await first.client.callTool({
+    name: 'mterm_pack_fixture__echo',
+    arguments: { text: 'restored' },
+  });
+  assert.equal(result.isError, false);
+  assert.deepEqual(value(result), { text: 'restored' });
+});
+
+test('catalog selection rejects stale, wrong-version, duplicate and unapproved entries atomically', async (t) => {
+  const f = await fixture(t);
+  await install(f);
+  const { catalog, jobs } = await directCatalog(f);
+  const before = catalog.catalog();
+  for (const [selections, revision, code] of [
+    [[packSelection(f, false)], '0'.repeat(64), 'PACK_CATALOG_STALE'],
+    [[{ ...packSelection(f, true), version: '2.0.0' }], before.revision, 'PACK_VERSION'],
+    [[{ ...packSelection(f, true), manifestSha256: '0'.repeat(64) }], before.revision, 'PACK_VERSION'],
+    [[packSelection(f, false), packSelection(f, true)], before.revision, 'PACK_SELECTION'],
+    [[packSelection(f, false), { ...packSelection(f, true), id: 'other' }], before.revision, 'PACK_DENIED'],
+  ]) {
+    assert.throws(
+      () => catalog.select({ expectedRevision: revision, selections }),
+      (e) => e.code === code,
+    );
+    assert.deepEqual(catalog.catalog(), before);
+  }
+  assert.equal(jobs.list().sessions.length, 0);
+  const { client } = await connect(t, f, ['--allow-pack', 'fixture']);
+  const denied = await catalogValue(client);
+  const response = await client.callTool({
+    name: 'mterm_tools_select',
+    arguments: {
+      expectedRevision: denied.revision,
+      selections: [packSelection(f, true)],
+    },
+  });
+  assert.equal(response.isError, true);
+  assert.equal(value(response).error.code, 'PACK_DENIED');
+});
+
+test('catalog immutable owner ceiling is unaffected by caller allow-list mutation', async (t) => {
+  const f = await fixture(t);
+  await install(f);
+  const allowPacks = [];
+  const { catalog } = await directCatalog(f, { allowPacks });
+  allowPacks.push('fixture');
+  const before = catalog.catalog();
+  await catalog.refresh({ expectedRevision: before.revision, timeoutMs: 3000 });
+  const current = catalog.catalog();
+  assert.throws(
+    () => catalog.select({ expectedRevision: current.revision, selections: [packSelection(f, true)] }),
+    (e) => e.code === 'PACK_DENIED',
+  );
+  assert.equal(catalog.tools.length, 0);
+  assert.equal(await fs.stat(path.join(f.root, 'pid.txt')).catch(() => null), null);
+});
+
+test('catalog refresh discovers new versions without granting tools and original pins require explicit reselection', async (t) => {
+  const f = await fixture(t);
+  await install(f);
+  const initialRegistry = await fs.readFile(f.registry, 'utf8');
+  const initialManifest = await fs.readFile(f.file, 'utf8');
+  const { client } = await connect(t, f, allowed);
+  const before = await catalogValue(client);
+  const upgraded = { ...f.manifest, version: '2.0.0' };
+  const nextText = JSON.stringify(upgraded),
+    nextPin = hash(nextText);
+  await fs.writeFile(f.file, nextText);
+  await fs.writeFile(
+    f.registry,
+    JSON.stringify({
+      schemaVersion: 1,
+      packs: [
+        {
+          id: 'fixture',
+          version: '2.0.0',
+          manifestPath: f.file,
+          manifestSha256: nextPin,
+        },
+      ],
+    }),
+  );
+  const refresh = value(
+    await client.callTool({ name: 'mterm_tools_refresh', arguments: { expectedRevision: before.revision } }),
+  );
+  assert.equal(refresh.packs[0].version, '2.0.0');
+  assert.equal(refresh.packs[0].ownerApproved, false);
+  assert.equal(refresh.packs[0].selected, false);
+  assert.equal(refresh.packs[0].error.code, 'PACK_CEILING');
+  assert.ok(!(await client.listTools()).tools.some((x) => x.name === 'mterm_pack_fixture__echo'));
+  const refused = await client.callTool({
+    name: 'mterm_tools_select',
+    arguments: {
+      expectedRevision: refresh.revision,
+      selections: [{ ...packSelection(f, true), version: '2.0.0', manifestSha256: nextPin }],
+    },
+  });
+  assert.equal(value(refused).error.code, 'PACK_DENIED');
+  await fs.writeFile(f.file, initialManifest);
+  await fs.writeFile(f.registry, initialRegistry);
+  const restored = value(
+    await client.callTool({ name: 'mterm_tools_refresh', arguments: { expectedRevision: refresh.revision } }),
+  );
+  assert.equal(restored.packs[0].ownerApproved, true);
+  assert.equal(restored.packs[0].selected, false);
+  assert.equal(await fs.stat(path.join(f.root, 'pid.txt')).catch(() => null), null);
+  assert.ok((await client.listTools()).tools.some((x) => x.name === 'mterm_read_file'));
+});
+
+test('catalog failed refresh preserves prior revision and selections and leaves native tools usable', async (t) => {
+  const f = await fixture(t);
+  await install(f);
+  const registry = await fs.readFile(f.registry),
+    manifest = await fs.readFile(f.file);
+  const { client } = await connect(t, f, allowed);
+  const before = await catalogValue(client);
+  for (const [file, bytes, code] of [
+    [f.registry, '{broken', 'PACK_REGISTRY'],
+    [f.file, Buffer.concat([manifest, Buffer.from(' ')]), 'PACK_PIN'],
+  ]) {
+    await fs.writeFile(file, bytes);
+    const result = await client.callTool({
+      name: 'mterm_tools_refresh',
+      arguments: { expectedRevision: before.revision },
+    });
+    assert.equal(result.isError, true);
+    assert.equal(value(result).error.code, code);
+    assert.deepEqual(await catalogValue(client), before);
+    assert.ok((await client.listTools()).tools.some((x) => x.name === 'mterm_read_file'));
+    await fs.writeFile(f.registry, registry);
+    await fs.writeFile(f.file, manifest);
+  }
+  assert.equal(await fs.stat(path.join(f.root, 'pid.txt')).catch(() => null), null);
+});
+
+test('catalog reports incompatible ABI and unsupported platform without starting payload', async (t) => {
+  for (const [mutate, code] of [
+    [
+      (m) => {
+        m.abiVersion = 2;
+      },
+      'PACK_ABI',
+    ],
+    [
+      (m) => {
+        m.platforms = ['freebsd-x64'];
+      },
+      'PACK_PLATFORM',
+    ],
+  ]) {
+    const f = await fixture(t, mutate);
+    await fs.writeFile(
+      f.registry,
+      JSON.stringify({
+        schemaVersion: 1,
+        packs: [
+          {
+            id: 'fixture',
+            version: '1.0.0',
+            manifestPath: f.file,
+            manifestSha256: f.pin,
+          },
+        ],
+      }),
+    );
+    const { client } = await connect(t, f, allowed);
+    const summary = await catalogValue(client);
+    assert.equal(summary.packs[0].compatible, false);
+    assert.equal(summary.packs[0].error.code, code);
+    assert.equal(summary.packs[0].selected, false);
+    assert.equal(await fs.stat(path.join(f.root, 'pid.txt')).catch(() => null), null);
+    await client.ping();
+  }
+});
+
+test('catalog cancellation after actual I/O preserves the committed snapshot and stops further reads', async (t) => {
+  const f = await fixture(t);
+  await install(f);
+  const { catalog } = await directCatalog(f);
+  const before = catalog.catalog();
+  const { FileService } = await import(moduleUrl('files.js'));
+  const read = FileService.prototype.read;
+  const controller = new AbortController();
+  let reads = 0;
+  t.mock.method(FileService.prototype, 'read', async function (...args) {
+    const result = await read.apply(this, args);
+    reads++;
+    controller.abort();
+    return result;
+  });
+  await assert.rejects(
+    catalog.refresh({ expectedRevision: before.revision, timeoutMs: 3000 }, controller.signal),
+    (e) => e.code === 'CANCELLED',
+  );
+  assert.equal(reads, 1);
+  assert.deepEqual(catalog.catalog(), before);
+});
+
+test('catalog deadline around actual I/O preserves the committed snapshot', async (t) => {
+  const f = await fixture(t);
+  await install(f);
+  const { catalog } = await directCatalog(f);
+  const before = catalog.catalog();
+  const { FileService } = await import(moduleUrl('files.js'));
+  const read = FileService.prototype.read;
+  let reads = 0;
+  t.mock.method(FileService.prototype, 'read', async function (...args) {
+    const result = await read.apply(this, args);
+    reads++;
+    await sleep(80);
+    return result;
+  });
+  await assert.rejects(
+    catalog.refresh({ expectedRevision: before.revision, timeoutMs: 50 }),
+    (e) => e.code === 'PACK_CATALOG_TIMEOUT',
+  );
+  assert.equal(reads, 1);
+  assert.deepEqual(catalog.catalog(), before);
+});
+
+test('catalog refresh cannot overwrite a selection committed while validation awaits', async (t) => {
+  const f = await fixture(t);
+  await install(f);
+  const { catalog } = await directCatalog(f);
+  const before = catalog.catalog();
+  const { FileService } = await import(moduleUrl('files.js'));
+  const read = FileService.prototype.read;
+  let changed;
+  t.mock.method(FileService.prototype, 'read', async function (...args) {
+    const result = await read.apply(this, args);
+    if (!changed)
+      changed = catalog.select({ expectedRevision: before.revision, selections: [packSelection(f, false)] });
+    return result;
+  });
+  await assert.rejects(
+    catalog.refresh({ expectedRevision: before.revision, timeoutMs: 3000 }),
+    (e) => e.code === 'PACK_CATALOG_STALE',
+  );
+  assert.equal(catalog.catalog().revision, changed.revision);
+  assert.equal(catalog.catalog().packs[0].selected, false);
+});
+
+test('catalog revocation cancellation and deadline are checked after process validation and before spawn', async (t) => {
+  for (const action of ['revoke', 'cancel', 'deadline']) {
+    const f = await fixture(t, (m) => {
+      if (action === 'deadline') m.tools[0].timeoutMs = 500;
+    });
+    await install(f);
+    const { catalog, jobs } = await directCatalog(f);
+    const controller = new AbortController();
+    const command = await fs.realpath(process.execPath),
+      stat = fs.stat;
+    let reached = false;
+    const mock = t.mock.method(fs, 'stat', async function (file, ...args) {
+      const result = await stat.call(this, file, ...args);
+      if (String(file) === command && !reached) {
+        reached = true;
+        if (action === 'revoke')
+          catalog.select({
+            expectedRevision: catalog.catalog().revision,
+            selections: [packSelection(f, false)],
+          });
+        if (action === 'cancel') controller.abort();
+        if (action === 'deadline') await sleep(650);
+      }
+      return result;
+    });
+    const code = { revoke: 'PACK_DESELECTED', cancel: 'CANCELLED', deadline: 'PACK_TIMEOUT' }[action];
+    try {
+      await assert.rejects(
+        catalog.tools[0].invoke({ text: 'must-not-start' }, controller.signal),
+        (e) => e.code === code,
+      );
+    } finally {
+      mock.mock.restore();
+    }
+    assert.equal(reached, true, 'the real process validation read must complete before the state change');
+    assert.equal(jobs.list().sessions.length, 0);
+    assert.equal(await fs.stat(path.join(f.root, 'pid.txt')).catch(() => null), null);
+  }
+});
+
+test('catalog summaries omit schemas for all 16 packs while exact-version details stay bounded', async (t) => {
+  const f = await fixture(t);
+  const entries = [],
+    flags = ['--allow-exec'];
+  for (let i = 0; i < 16; i++) {
+    const id = 'fixture-' + i;
+    const manifest = {
+      ...f.manifest,
+      id,
+      tools: Array.from({ length: 16 }, (_, n) => ({ ...f.manifest.tools[0], name: 'echo_' + n })),
+    };
+    const text = JSON.stringify(manifest),
+      file = path.join(f.root, id + '.json');
+    await fs.writeFile(file, text);
+    entries.push({ id, version: '1.0.0', manifestPath: file, manifestSha256: hash(text) });
+    flags.push('--allow-pack', id);
+  }
+  await fs.writeFile(f.registry, JSON.stringify({ schemaVersion: 1, packs: entries }));
+  const { client } = await connect(t, f, flags);
+  const summary = await catalogValue(client);
+  assert.equal(summary.packs.length, 16);
+  assert.ok(summary.packs.every((p) => p.selected));
+  assert.ok(!JSON.stringify(summary).includes('inputSchema'));
+  assert.ok(Buffer.byteLength(JSON.stringify(summary)) < 65536);
+  const detail = await catalogValue(client, {
+    expectedRevision: summary.revision,
+    id: entries[0].id,
+    version: entries[0].version,
+    manifestSha256: entries[0].manifestSha256,
+  });
+  assert.equal(detail.pack.tools.length, 16);
+  assert.ok(Buffer.byteLength(JSON.stringify(detail)) < 131072);
+  const wrong = await client.callTool({
+    name: 'mterm_tools_catalog',
+    arguments: {
+      expectedRevision: summary.revision,
+      id: entries[0].id,
+      version: '9.0.0',
+      manifestSha256: entries[0].manifestSha256,
+    },
+  });
+  assert.equal(value(wrong).error.code, 'PACK_VERSION');
+  assert.equal(await fs.stat(path.join(f.root, 'pid.txt')).catch(() => null), null);
+});
 
 test('pack install previews, pins and persists; uninstall is reversible and leaves payload intact', async (t) => {
   const f = await fixture(t);

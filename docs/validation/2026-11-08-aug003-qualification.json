@@ -1,0 +1,311 @@
+{
+  "schemaVersion": 1,
+  "kind": "exact-commit-qualification",
+  "capability": "AUG-003",
+  "issue": 83,
+  "testedCommit": "d42d87e03f456e78262cdaff66e2bf8925606064",
+  "sourceFingerprint": "e3c9d2e78a27a75d4f3d8c2edecf18d0b623f46c4403d06854abd8c1eff3c723",
+  "subjectFingerprint": "c29f0e5b83743d7ac18c7d5f63cc8880f4d855aebd1e5e0f3e4fd9aafe418218",
+  "platform": "win32-x64",
+  "node": "v24.21.0",
+  "startedAt": "2026-11-08T00:27:14.691Z",
+  "completedAt": "2026-11-08T00:29:05.003Z",
+  "result": "passed",
+  "cleanStart": true,
+  "cleanEnd": true,
+  "nativeSuite": {
+    "tests": 388,
+    "passed": 388,
+    "failed": 0,
+    "skipped": 0
+  },
+  "stages": [
+    {
+      "name": "reviewed-build",
+      "exitCode": 0,
+      "startedAt": "2026-11-08T00:27:14.693Z",
+      "completedAt": "2026-11-08T00:27:16.227Z",
+      "log": {
+        "path": "artifacts/aug003/qualification-code/reviewed-build.log",
+        "sha256": "e88e6133625427b3e6b7c5148fdcedda65ce86a1d5f8a7c409bbe102e9784ad3",
+        "bytes": 786
+      }
+    },
+    {
+      "name": "normal-prepack",
+      "exitCode": 0,
+      "startedAt": "2026-11-08T00:27:16.228Z",
+      "completedAt": "2026-11-08T00:28:25.395Z",
+      "log": {
+        "path": "artifacts/aug003/qualification-code/normal-prepack.log",
+        "sha256": "3a1d7d38f68167a4af97723091f41af41ba25c151ac617693df0ef9d77128c8f",
+        "bytes": 42579
+      }
+    },
+    {
+      "name": "self-host",
+      "exitCode": 0,
+      "startedAt": "2026-11-08T00:28:25.396Z",
+      "completedAt": "2026-11-08T00:28:26.454Z",
+      "log": {
+        "path": "artifacts/aug003/qualification-code/self-host.log",
+        "sha256": "a38e3215a05a401ae8d110826c15f2fc3c8cc6fd77ca564d863d87cfb0b116d9",
+        "bytes": 280
+      }
+    },
+    {
+      "name": "installed-package",
+      "exitCode": 0,
+      "startedAt": "2026-11-08T00:28:26.455Z",
+      "completedAt": "2026-11-08T00:29:03.716Z",
+      "log": {
+        "path": "artifacts/aug003/qualification-code/installed-package.log",
+        "sha256": "b2024b0603dc46ed395ac1eb674fbd03340a43cbc377dcd677e9e3a0bed2703d",
+        "bytes": 14581
+      }
+    },
+    {
+      "name": "production-audit",
+      "exitCode": 0,
+      "startedAt": "2026-11-08T00:29:03.717Z",
+      "completedAt": "2026-11-08T00:29:04.341Z",
+      "log": {
+        "path": "artifacts/aug003/qualification-code/production-audit.log",
+        "sha256": "9142ba6d614f3a1ebd7a0943779af271e80f4d93df8fd47a82a69e957396ebae",
+        "bytes": 361
+      }
+    }
+  ],
+  "package": {
+    "result": "artifacts/package-verify-Fvm0KP/result.json",
+    "installedProductionBytes": 14496913,
+    "productionFiles": 997,
+    "packagedMcpRoundTrip": true,
+    "fromOutsideCheckout": true,
+    "optionalPacks": {
+      "ok": true,
+      "tests": 29,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "moduleBindings": [
+        {
+          "path": "dist/cli.js",
+          "sha256": "618cadb3258a5a8ccae7bda639c193ea0aa50ee3e1163f977376538ae3fe697d"
+        },
+        {
+          "path": "dist/mcp.js",
+          "sha256": "8ea0669b54a12a793c27e554a77e9249711cb81d03cdf39e1e21684676459d49"
+        },
+        {
+          "path": "dist/tool-packs.js",
+          "sha256": "8fbbc4dc580d84d84a0dc60de7523f67d501b78694700004ab70d117b573a29b"
+        },
+        {
+          "path": "dist/processes.js",
+          "sha256": "789876a1611dea3f454204ef5a3d177cb09d83cb55392202be0d6c4639408fc4"
+        }
+      ],
+      "syntheticOnly": true,
+      "modelCalls": 0,
+      "osSandbox": false,
+      "realClientConsent": false,
+      "log": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG003-20261108\\artifacts\\package-verify-Fvm0KP\\optional-pack-tests.tap"
+    },
+    "provenance": {
+      "ok": true,
+      "tests": 18,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "moduleBindings": [
+        {
+          "path": "dist/cli.js",
+          "sha256": "618cadb3258a5a8ccae7bda639c193ea0aa50ee3e1163f977376538ae3fe697d"
+        },
+        {
+          "path": "dist/provenance.js",
+          "sha256": "ad842f4e4ebb14152575632773a7e460a194f7dadedd595ea9b77309f28e2902"
+        },
+        {
+          "path": "dist/files.js",
+          "sha256": "753adb8c88d5ea10d93549237f821c5bd9340d9c532611f0318e90af4e85d29e"
+        },
+        {
+          "path": "dist/policy.js",
+          "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+        },
+        {
+          "path": "dist/errors.js",
+          "sha256": "26fa1c3341396a1f9eda45debe86dc2295cb997b9dd7e525e70ac17ef2c910a9"
+        }
+      ],
+      "fromOutsideCheckout": true,
+      "referenceFilesVerified": 7,
+      "productionPackages": 4,
+      "productionEdges": 5,
+      "productionRedistributionEligible": false,
+      "retainedBundledNotices": 9,
+      "reviewedSdkArtifactPins": 86,
+      "sdkArtifactCommit": "8e6f2336d995b5c1cb5ff044071ed186cce03567",
+      "embeddedFastUri": "3.1.9",
+      "blockedSources": [
+        {
+          "code": "TRANSITIVE_REVIEW_PENDING",
+          "source": "mcp-sdk",
+          "message": "Separately installed dependency closure does not establish bundled-code license clearance."
+        }
+      ],
+      "spdxSemanticChecks": true,
+      "fullSpdxSchemaValidatedHere": false,
+      "modelCalls": 0,
+      "referenceReport": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG003-20261108\\artifacts\\package-verify-Fvm0KP\\reference-provenance.report.json",
+      "runtimeReport": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG003-20261108\\artifacts\\package-verify-Fvm0KP\\runtime-provenance.report.json"
+    },
+    "productionLicenseEvidence": [
+      {
+        "name": "@modelcontextprotocol/core",
+        "version": "2.3.0",
+        "license": "Apache-2.0",
+        "integrity": "sha512-09BHFaNVBe5pB2AhzCfLj0cqmsKLERvZQ4FblzP90UMGLaXVqdZPByFjURwsUYCmxonUW2yAwgTTvle+8O2/8w==",
+        "files": [
+          {
+            "path": "LICENSE",
+            "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+          }
+        ]
+      },
+      {
+        "name": "@modelcontextprotocol/server",
+        "version": "2.3.0-mterm.1",
+        "license": "Apache-2.0",
+        "integrity": "sha512-RNlauLPhVz8rUV8EvE1jsPmzBtb84j1HIBFGaTyANRbSHjwEBjl0th5idsfHRcGLT5TWZVfFFzlZhk/zJWXY4w==",
+        "files": [
+          {
+            "path": "LICENSE",
+            "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+          }
+        ]
+      },
+      {
+        "name": "mterm-cli",
+        "version": "0.0.1-preview.1",
+        "license": "MIT",
+        "integrity": "sha512-+BG5W18RJK6w+3i1LfTqTlnc30pQ6+svQGDrrqqPo6DPa/zGxqX3WmLHYWpRh0ulMgKW22UB9Z65frK1XinLfg==",
+        "files": [
+          {
+            "path": "LICENSE",
+            "sha256": "057801cf89de394d84ca2f5797e31619cb5fd66e6f4b7da7058db7887633ba37"
+          }
+        ]
+      },
+      {
+        "name": "zod",
+        "version": "4.6.7",
+        "license": "MIT",
+        "integrity": "sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==",
+        "files": [
+          {
+            "path": "LICENSE",
+            "sha256": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8"
+          }
+        ]
+      }
+    ],
+    "fullTransitiveLicenseClearance": false,
+    "fullSpdxSchemaValidatedHere": false
+  },
+  "runtimeBoundary": {
+    "packageCount": 4,
+    "fileCount": 993,
+    "payloadBytes": 14493263,
+    "allRuntimePackageFilesIdentical": false,
+    "launcherIdentical": true,
+    "dependencyPackagesIdentical": true,
+    "changedFiles": [
+      "mterm-cli/README.md",
+      "mterm-cli/dist/mcp.js",
+      "mterm-cli/dist/processes.d.ts",
+      "mterm-cli/dist/processes.js",
+      "mterm-cli/dist/tool-packs.d.ts",
+      "mterm-cli/dist/tool-packs.js"
+    ],
+    "perPackage": [
+      {
+        "package": "mterm-cli",
+        "beforeBytes": 325148,
+        "afterBytes": 345095,
+        "changedFiles": [
+          "mterm-cli/README.md",
+          "mterm-cli/dist/mcp.js",
+          "mterm-cli/dist/processes.d.ts",
+          "mterm-cli/dist/processes.js",
+          "mterm-cli/dist/tool-packs.d.ts",
+          "mterm-cli/dist/tool-packs.js"
+        ]
+      },
+      {
+        "package": "@modelcontextprotocol/core",
+        "beforeBytes": 1316868,
+        "afterBytes": 1316868,
+        "changedFiles": []
+      },
+      {
+        "package": "@modelcontextprotocol/server",
+        "beforeBytes": 6682356,
+        "afterBytes": 6682356,
+        "changedFiles": []
+      },
+      {
+        "package": "zod",
+        "beforeBytes": 6148944,
+        "afterBytes": 6148944,
+        "changedFiles": []
+      }
+    ],
+    "priorQualifiedRoot": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG013-20261107\\artifacts\\package-verify-HRw84k\\install\\node_modules",
+    "excludedInstallBookkeeping": [
+      "node_modules/.package-lock.json"
+    ],
+    "catalogRuntimePayloadAdded": true,
+    "inventorySha256": "9284194c4cde37de9c8c3c40c421f8207266ac5677d0e8d317380c8aad17cb58",
+    "addedMTermPackageBytes": 19947,
+    "priorInstalledProductionBytes": 14476966,
+    "currentInstalledProductionBytes": 14496913
+  },
+  "productionAdvisoryAudit": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "scope": "Ordinary production dependency advisory audit. All three reviewed dependency package payloads, including bundled SDK files and notices, remain byte-identical to PR201; no new exhaustive bundled audit or full transitive admission is claimed."
+  },
+  "hosted": {
+    "head": "d42d87e03f456e78262cdaff66e2bf8925606064",
+    "checksPassed": 9,
+    "pushRun": 42429738943,
+    "prRun": 42429766745,
+    "fastRun": 42429766708,
+    "receiptPaths": [
+      "docs/validation/2026-11-08-aug003-win32-x64.json",
+      "docs/validation/2026-11-08-aug003-linux-x64.json",
+      "docs/validation/2026-11-08-aug003-darwin-arm64.json",
+      "docs/validation/2026-11-08-aug003-darwin-x64.json"
+    ]
+  },
+  "independentReview": "docs/validation/2026-11-08-aug003-source-review.json",
+  "developmentAttempts": "docs/validation/2026-11-08-aug003-development.json",
+  "modelCalls": 0,
+  "acceptanceAwarded": false,
+  "fullAUGAcceptance": false,
+  "limitations": [
+    "ABI1 resources/prompts and shared remote-client authorization remain unsupported.",
+    "Official SDK clients and synthetic packs are real local integration tests; actual ChatGPT-to-MTerm app invocation is not available or claimed.",
+    "The checker records scoped version-bound observations without awarding capability acceptance.",
+    "Final metadata-head checks, expected-head merge and main verification remain subsequent observations."
+  ]
+}

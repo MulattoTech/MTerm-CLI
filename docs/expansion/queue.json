@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "asOf": "2026-11-08T00:03:16.947Z",
+  "asOf": "2026-11-08T00:33:54.321Z",
   "repository": "MulattoTech/MTerm-CLI",
   "epic": 81,
-  "baseSha": "89d93c59a9c819314ef569a2250a4606f03ec792",
+  "baseSha": "519cbff241be2a36bc180f91198e0492ec5ba1cc",
   "counts": {
     "total": 117,
     "claimed": 1,
     "accepted": 0,
-    "merged": 2
+    "merged": 3
   },
   "originalMetrics": {
     "cliMaturityPercent": 29.12,
@@ -140,18 +140,24 @@
         "modelcontextprotocol/registry",
         "mcp-use/mcp-use"
       ],
-      "status": "proposed",
-      "owner": null,
-      "branch": null,
-      "pr": null,
+      "status": "in_progress",
+      "owner": "ChatGPT Web / GPT-6 Astra Pro",
+      "branch": "feat/aug-003-pack-catalog-20261108",
+      "pr": 202,
       "mergeSha": null,
       "accepted": false,
       "testPlan": "common contract + original issue acceptance at issue URL",
-      "platformScope": "not yet selected; retain unsupported environments as explicit blockers",
-      "automatedTests": "not run",
-      "actualClient": "not verified",
-      "blocker": "Not implemented or accepted; exact upstream rights, platform scope and declared prerequisite acceptance need qualification.",
-      "declaredIssueDependencies": []
+      "platformScope": [
+        "win32-x64",
+        "linux-x64",
+        "darwin-arm64",
+        "darwin-x64"
+      ],
+      "automatedTests": "Code d42d87e: native388/388, normal prepack/self-host/installed checks,29pack+18provenance tests, audit0 and9/9 hosted checks. Other hosts376pass+12existing skips; all13 catalog cases pass on four hosts. Final metadata-head checks and merge/main remain next.",
+      "actualClient": "Two real official SDK stdio clients with isolated selection and notification tests; synthetic local pack payload. Real ChatGPT-to-MTerm app integration remains unverified.",
+      "blocker": "Full AUG003 resources/prompts, broader client/platform/source-license acceptance remain open. Scoped ABI1 code qualification passed; final metadata delivery remains. No owner review is pending.",
+      "declaredIssueDependencies": [],
+      "ownerAuthorization": "docs/OWNER_AUTHORIZATION.md"
     },
     {
       "id": "AUG-004",
@@ -554,11 +560,11 @@
         "Kyne0328/rel-ai",
         "modelcontextprotocol/inspector"
       ],
-      "status": "in_progress",
+      "status": "merged_partial",
       "owner": "ChatGPT Web / GPT-6 Astra Pro",
       "branch": "feat/aug-013-evidence-matrix-20261107",
       "pr": 201,
-      "mergeSha": null,
+      "mergeSha": "519cbff241be2a36bc180f91198e0492ec5ba1cc",
       "accepted": false,
       "testPlan": "common contract + original issue acceptance at issue URL",
       "platformScope": [
@@ -567,9 +573,9 @@
         "darwin-arm64",
         "darwin-x64"
       ],
-      "automatedTests": "Code head af992a3: native375/375, full prepack/self-host/installed qualification, production audit0 and9/9 hosted checks. Other three platforms363pass/12existing Windows-only skips. All27 matrix/roadmap tests passed on all four. Runtime993files across4packages unchanged. Final metadata-head checks and merge/main remain next.",
+      "automatedTests": "Final c6d715f: 9/9 hosted checks and independent immutable receipt/source review. Normal merge519cbff has the identical tested tree and5/5 main checks. Native375/375; other hosts363pass+12existing skips. All27 matrix/roadmap cases passed on four hosts;993runtime files unchanged.",
       "actualClient": "Development-only local checker; no model or remote client call required or claimed.",
-      "blocker": "Full AUG-013 capability-specific coverage/acceptance is open. Scoped checker is qualified; final metadata delivery remains. No recurring manual owner review.",
+      "blocker": "Full AUG-013 capability-specific coverage and acceptance remain open. Scoped checker delivery is merged and verified; no owner review is pending.",
       "declaredIssueDependencies": [],
       "ownerAuthorization": "docs/OWNER_AUTHORIZATION.md"
     },
@@ -6545,34 +6551,6 @@
     }
   },
   "nextCandidatesAfterPilot": [
-    {
-      "issue": 83,
-      "reason": "Extend the merged AUG-001 ABI with versioned client-visible catalog discovery.",
-      "acceptancePrerequisites": {
-        "cli": [
-          {
-            "id": "CLI-265",
-            "stage": "validated",
-            "dependencies": [
-              "CLI-033",
-              "CLI-264"
-            ],
-            "blocker": null
-          },
-          {
-            "id": "CLI-287",
-            "stage": "validated",
-            "dependencies": [
-              "CLI-033",
-              "CLI-264"
-            ],
-            "blocker": null
-          }
-        ],
-        "issues": [],
-        "assessment": "Scoped implementation candidate, not completed prerequisite or capability acceptance."
-      }
-    },
     {
       "issue": 92,
       "reason": "Extend existing bounded process and concurrency implementations with scoped resource budgets.",

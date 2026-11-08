@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "asOf": "2026-11-08T06:54:45.630Z",
+  "asOf": "2026-11-08T07:15:33.665Z",
   "repository": "MulattoTech/MTerm-CLI",
   "epic": 81,
   "baseSha": "d7b7c4fb19867f7c5f9727598442c29c12d43709",
@@ -162,15 +162,16 @@
         "issue": 83,
         "branch": "fix/aug-003-registry-persistence-20261108",
         "base": "a7c047c76825562a3f51b100a8cc9b92151ee1f5",
-        "pr": null,
-        "status": "development_review",
+        "pr": 208,
+        "status": "fixture_portability_review",
         "requirements": [
           "CLI-269",
           "CLI-287"
         ],
-        "evidence": "docs/validation/2026-11-08-aug003-registry-development.json",
+        "evidence": "docs/validation/2026-11-08-aug003-registry-portability.json",
         "accepted": false,
-        "tests": "Final41 RED6pass35fail on immutable main; corrected41/41. Full exact committed qualification pending."
+        "tests": "cb3 native507/507, installed41/41, security/parser passed, hosted5/6; macARM fixture admission failure retained. Corrected fixture RED0/1 on old baseline, GREEN41/41 on current code; new exact-head gates pending.",
+        "head": "cb3aedff01e16e771d563fab8630cfaf5b9f3079"
       }
     },
     {

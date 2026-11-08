@@ -4,7 +4,7 @@
   "model": "GPT-6 Astra Pro",
   "attribution": "self-reported",
   "started_at": "2026-11-08T06:27:08Z",
-  "updated_at": "2026-11-08T06:54:45.630Z",
+  "updated_at": "2026-11-08T07:15:33.665Z",
   "base_sha": "a7c047c76825562a3f51b100a8cc9b92151ee1f5",
   "issues": [
     83,
@@ -28,14 +28,16 @@
     "docs/expansion/evidence.json",
     "docs/roadmap/progress.json",
     "docs/validation/2026-11-08-aug003-registry-development.json",
-    "docs/validation/2026-11-08-aug005-merged-main.json"
+    "docs/validation/2026-11-08-aug005-merged-main.json",
+    "docs/validation/2026-11-08-aug003-registry-portability.json"
   ],
   "decisions": [
     "Five total Windows attempts only for EPERM/EBUSY at exact rename or owned unlink operations; delays 25/50/100/200 ms. Never repeat registry transforms or delete destinations.",
     "Before replacement validate parents, owned staging identity/contents and the final destination version/identity. Revalidate every retry; preserve cancellation and no-overwrite hard-link creation.",
     "Only a dedicated FileWriteCleanupError class establishes a committed creation when stage cleanup fails. Registry retains commit state and separate lock cleanup failures with bounded sanitized fields.",
     "Close acquired lock even if identity inspection fails; do not delete unknown/replaced/linked locks or stages. Preserve first staging write/sync error if close also fails.",
-    "One implementation owner and one read-only peer, standing owner authorization; no model-consuming execution."
+    "One implementation owner and one read-only peer, standing owner authorization; no model-consuming execution.",
+    "Only final registry-creation fixture changes: native host manifest/admission and actual owned hard link, then synthetic Windows cleanup branch on exact captured stage. No architecture mock, production guard change, skip or weakened assertion."
   ],
   "tests": [
     {
@@ -53,6 +55,14 @@
     {
       "command": "Native exact3ca qualification",
       "result": "Prior507/508 failed; all11hosted passed; separate diagnostic no cause claim; no acceptance retry."
+    },
+    {
+      "command": "cb3 immutable full qualification",
+      "result": "Native507/507; actual installed registry41/41 and all package gates passed; production audit0; parsermodel0; hosted5/6, macARM1 fixture failure retained."
+    },
+    {
+      "command": "Fixture-only portability causal check",
+      "result": "Same reviewed candidate RED0/1 on immutable a7, GREEN41/41 on cb3; no production change. New exact head required."
     }
   ],
   "roadmap_updates": [
@@ -76,5 +86,5 @@
     "Full third-party/runtime/image/transitive rights, actual supported-client integrations, complete AUG/DCP/WEB acceptance remain open."
   ],
   "checkpoint": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG003-Registry-20261108\\artifacts\\aug003-registry\\checkpoint.json",
-  "next_unverified_action": "Independent final source/metadata review, exact committed normal qualification, six hosted checks, actual artifacts, normal merge and main gates; then ordinarily integrate into PR206."
+  "next_unverified_action": "Commit fixture correction with independently reviewed metadata; qualify exact new head on native Windows and all six hosted checks before normal merge and main gates. Then ordinarily integrate into PR206."
 }

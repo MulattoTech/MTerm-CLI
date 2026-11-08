@@ -77,3 +77,10 @@ See [persistence development evidence](../validation/2026-11-08-aug003-registry-
 The final 41 fixtures produce 6 passes/35 failures against immutable a7c047c and 41/41
 against the correction. Exact committed, installed, platform, security/license and
 client qualification remain separate; the original 3ca uninstall EPERM cause is unknown.
+
+PR208 cb3 qualified native 507/507 and actual installed persistence 41/41, but its
+macOS ARM64 job failed because the fixture synthesized an unsupported host tuple.
+The production admission guard correctly denied it. The fixture now performs native
+admission and real creation before substituting the Windows cleanup branch, without
+architecture changes, skips or relaxed assertions. The failed head remains unqualified;
+see [retained failure and portability evidence](../validation/2026-11-08-aug003-registry-portability.json).

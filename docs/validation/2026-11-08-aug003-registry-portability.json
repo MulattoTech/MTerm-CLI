@@ -1,0 +1,1055 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-11-08T07:15:33.665Z",
+  "change": "2026-11-08-aug003-registry-persistence",
+  "repository": "MulattoTech/MTerm-CLI",
+  "issues": [
+    83,
+    81,
+    93
+  ],
+  "pr": 208,
+  "head": "cb3aedff01e16e771d563fab8630cfaf5b9f3079",
+  "tree": "5523cd28deed90be38966c3607554105043f9b95",
+  "sourceFingerprint": "1ddca0a5ce059da77e6cbdc17ee564db10f871ae7d56e58b74f4b2e7588fad7e",
+  "subjectFingerprint": "20b4fc7564f5c0ee91d83a635b04bd19ffb84f2fc52a261cb62bd2090ae3682b",
+  "qualified": false,
+  "accepted": false,
+  "modelCalls": 0,
+  "priorDevelopment": {
+    "path": "docs/validation/2026-11-08-aug003-registry-development.json",
+    "sha256": "461010ebd6c25af9a06b704b5c1259658f6c99b31af5f2488201eb5d374a8ea8"
+  },
+  "priorQualification": {
+    "native": {
+      "schemaVersion": 1,
+      "head": "cb3aedff01e16e771d563fab8630cfaf5b9f3079",
+      "tree": "5523cd28deed90be38966c3607554105043f9b95",
+      "startedAt": "2026-11-08T07:02:20.041Z",
+      "node": "v24.21.0",
+      "platform": "win32",
+      "arch": "x64",
+      "steps": [
+        {
+          "name": "quick",
+          "args": [
+            "scripts/orchestration/verify.mjs",
+            "--quick"
+          ],
+          "startedAt": "2026-11-08T07:02:20.042Z",
+          "finishedAt": "2026-11-08T07:03:45.634Z",
+          "durationMs": 85592,
+          "exitCode": 0,
+          "log": "artifacts/aug003-registry/implementation-native-quick.log",
+          "logSha256": "f1ccf44441ce6cbfaeaaa31045ff037799276ae907c1a7ddd7cfe21684bee515",
+          "tests": {
+            "tests": 507,
+            "pass": 507,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        }
+      ],
+      "modelCalls": 0,
+      "finishedAt": "2026-11-08T07:03:45.635Z"
+    },
+    "packageSecurity": {
+      "schemaVersion": 1,
+      "head": "cb3aedff01e16e771d563fab8630cfaf5b9f3079",
+      "tree": "5523cd28deed90be38966c3607554105043f9b95",
+      "startedAt": "2026-11-08T07:04:24.468Z",
+      "node": "v24.21.0",
+      "platform": "win32",
+      "arch": "x64",
+      "steps": [
+        {
+          "name": "package",
+          "args": [
+            "scripts/verify-package.mjs"
+          ],
+          "startedAt": "2026-11-08T07:04:24.470Z",
+          "finishedAt": "2026-11-08T07:05:18.046Z",
+          "durationMs": 53576,
+          "exitCode": 0,
+          "log": "artifacts/aug003-registry/implementation-native-package.log",
+          "logSha256": "90f54e90a7ab5d632236f0e5fa1bffb3bac53a8b666e86640cf3390dce025632"
+        },
+        {
+          "name": "production-audit",
+          "args": [
+            "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+            "audit",
+            "--omit=dev",
+            "--json"
+          ],
+          "startedAt": "2026-11-08T07:05:18.047Z",
+          "finishedAt": "2026-11-08T07:05:18.795Z",
+          "durationMs": 748,
+          "exitCode": 0,
+          "log": "artifacts/aug003-registry/implementation-native-production-audit.log",
+          "logSha256": "9142ba6d614f3a1ebd7a0943779af271e80f4d93df8fd47a82a69e957396ebae",
+          "vulnerabilities": {
+            "info": 0,
+            "low": 0,
+            "moderate": 0,
+            "high": 0,
+            "critical": 0,
+            "total": 0
+          }
+        },
+        {
+          "name": "synthetic-codex-install",
+          "args": [
+            "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+            "install",
+            "--prefix",
+            "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG003-Registry-20261108\\artifacts\\aug003-registry\\codex-registry-fixture",
+            "--no-audit",
+            "--no-fund",
+            "--ignore-scripts",
+            "--package-lock=false",
+            "@openai/codex@0.160.1"
+          ],
+          "startedAt": "2026-11-08T07:05:18.795Z",
+          "finishedAt": "2026-11-08T07:05:22.216Z",
+          "durationMs": 3421,
+          "exitCode": 0,
+          "log": "artifacts/aug003-registry/implementation-native-synthetic-codex-install.log",
+          "logSha256": "bf14b7a2bc076990244fa3239536925868dfe5ad05089c7d459b5fa482abfc72"
+        },
+        {
+          "name": "synthetic-codex-parser",
+          "args": [
+            "scripts/verify-managed-codex.mjs"
+          ],
+          "startedAt": "2026-11-08T07:05:22.216Z",
+          "finishedAt": "2026-11-08T07:05:23.964Z",
+          "durationMs": 1748,
+          "exitCode": 0,
+          "log": "artifacts/aug003-registry/implementation-native-synthetic-codex-parser.log",
+          "logSha256": "1832208b3bedaae56da0e6cb5ace209b663464d3004c401e186b08dae0d1303f"
+        }
+      ],
+      "modelCalls": 0,
+      "finishedAt": "2026-11-08T07:05:23.964Z"
+    },
+    "packageVerification": {
+      "schemaVersion": 1,
+      "at": "2026-11-08T07:14:29.018Z",
+      "head": "cb3aedff01e16e771d563fab8630cfaf5b9f3079",
+      "result": {
+        "path": "artifacts/package-verify-WmSfFr/result.json",
+        "bytes": 21255,
+        "sha256": "0c0391b19bd876a92ae50c4864c22e7ed386107b4d44102368057f41ff07b590"
+      },
+      "installed": {
+        "files": 1009,
+        "bytes": 14587983,
+        "entirePrefixFiles": 1012,
+        "entirePrefixBytes": 14595507
+      },
+      "baseline": {
+        "path": "H:/MTechLabs/Dev/MTerm-CLI-AUG005-Lifecycle-20261108/artifacts/package-verify-wPgflj",
+        "files": 1009,
+        "bytes": 14572881
+      },
+      "dependencyFilesUnchanged": 947,
+      "launcherFilesUnchanged": 1,
+      "moduleBindings": [
+        {
+          "path": "dist/remote/adapter.js",
+          "sha256": "d24f7c484cae8537652730fbe473ae631895b673d72c2b8cae3b2f0abb1faca4"
+        },
+        {
+          "path": "dist/remote/agent.js",
+          "sha256": "e19c1c28bf04f83a201f9aefce7533c7f37fa2cebad3c49c65a7fa5efb693b9f"
+        },
+        {
+          "path": "dist/remote/cli.js",
+          "sha256": "b27236e2aeb8ba8add5e781e775c5f6745ce126ed6e5e69e2a07f331c7e9ef6f"
+        },
+        {
+          "path": "dist/remote/protocol.js",
+          "sha256": "7d7f108e735b4c0ea05d1ead7a567497f451c05c75d8a4de6e7d4bed4a4444a1"
+        },
+        {
+          "path": "dist/remote/state.js",
+          "sha256": "27981330f53530327218149e85eb8461da4cfa871dd41cb705c8763e28465f5e"
+        },
+        {
+          "path": "dist/cli.js",
+          "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad"
+        },
+        {
+          "path": "dist/mcp.js",
+          "sha256": "d472b529ac7fbd667ef1f519259d395d3402fae6748123a49bbffa1462c5bc69"
+        },
+        {
+          "path": "dist/tool-packs.js",
+          "sha256": "e8b2903c6427183f896b800cfd4d777bcf5b8673ff02213d6163c05388a7b383"
+        },
+        {
+          "path": "dist/files.js",
+          "sha256": "2f7c9ec95d086eb711bc805ac35d35d0059fe3ac71d693f33e44e6f860e79191"
+        },
+        {
+          "path": "dist/errors.js",
+          "sha256": "26fa1c3341396a1f9eda45debe86dc2295cb997b9dd7e525e70ac17ef2c910a9"
+        },
+        {
+          "path": "dist/processes.js",
+          "sha256": "714f2ddc34e3e664d75f8f1bc2338e2f4691bf2de8d01ecedc1e07743acefcf5"
+        },
+        {
+          "path": "dist/resource-budgets.js",
+          "sha256": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64"
+        },
+        {
+          "path": "dist/resource-budget-policy.js",
+          "sha256": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac"
+        },
+        {
+          "path": "dist/policy.js",
+          "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+        },
+        {
+          "path": "dist/isolation-policy.js",
+          "sha256": "3b9c4a56d75e9660c6b8ed0cb9bfc32aa8441fabe6eddcd33a10d43458a26de9"
+        },
+        {
+          "path": "dist/isolation-http.js",
+          "sha256": "0fad31e0d688f663c3c37e2316863b6ec4ff30d67abca5a6a5a728420de265d5"
+        },
+        {
+          "path": "dist/isolation-engine.js",
+          "sha256": "91873b8e77def703cb31d9f021f3293faf32aa71f3f84c49d633e8c67ca4b392"
+        },
+        {
+          "path": "dist/isolation.js",
+          "sha256": "4efc7b035ce22195fdace01e8249866db934aea8d55049d6c3300563ebac6120"
+        },
+        {
+          "path": "dist/provenance.js",
+          "sha256": "ad842f4e4ebb14152575632773a7e460a194f7dadedd595ea9b77309f28e2902"
+        }
+      ],
+      "registryFixtureBindings": [
+        {
+          "path": "tests/file-write-retry.test.mjs",
+          "sha256": "d054fae7d7147577a8d62c9e366ae5366435f76b67fd5e0619334fe70613c16e"
+        },
+        {
+          "path": "tests/pack-registry-outcomes.test.mjs",
+          "sha256": "2cebd3f2adbb3649f75b566da1e8718b830e64abdc308850e0c57cf5bf7aacbc"
+        }
+      ],
+      "registryTap": {
+        "path": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG003-Registry-20261108\\artifacts\\package-verify-WmSfFr\\registry-persistence-tests.tap",
+        "bytes": 8706,
+        "sha256": "b4dd1e29e811cfdbbb361343c0c99c3a36d44b1f0b5cdd24839f049baf45cf43"
+      },
+      "licensePins": [
+        {
+          "package": "@modelcontextprotocol/core",
+          "path": "artifacts/package-verify-WmSfFr/install/node_modules/@modelcontextprotocol/core/LICENSE",
+          "bytes": 12227,
+          "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+        },
+        {
+          "package": "@modelcontextprotocol/server",
+          "path": "artifacts/package-verify-WmSfFr/install/node_modules/@modelcontextprotocol/server/LICENSE",
+          "bytes": 12227,
+          "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+        },
+        {
+          "package": "mterm-cli",
+          "path": "artifacts/package-verify-WmSfFr/install/node_modules/mterm-cli/LICENSE",
+          "bytes": 1181,
+          "sha256": "057801cf89de394d84ca2f5797e31619cb5fd66e6f4b7da7058db7887633ba37"
+        },
+        {
+          "package": "zod",
+          "path": "artifacts/package-verify-WmSfFr/install/node_modules/zod/LICENSE",
+          "bytes": 1072,
+          "sha256": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8"
+        }
+      ],
+      "changes": [
+        {
+          "path": "node_modules/.package-lock.json",
+          "oldBytes": 2089,
+          "bytes": 2089,
+          "delta": 0,
+          "oldSha256": "c2232dfc40fec6c8015bd9d679b9d6d7e1fe31d7314ba1ceecda007f546e01d7",
+          "sha256": "99705f67ba7e167b2439e339179da742abb63b50daa1a3e4ca0e8cb1775501cb"
+        },
+        {
+          "path": "node_modules/mterm-cli/dist/files.d.ts",
+          "oldBytes": 3211,
+          "bytes": 3660,
+          "delta": 449,
+          "oldSha256": "02b0e9cf002150a220c5e53d32137f66d3df26d80a3ff73428388ec83d6a7bd7",
+          "sha256": "626934fdcc5a6e1b74ee1197613016dfee5ebb3dc83cdea4e1a79f73470b3fbf"
+        },
+        {
+          "path": "node_modules/mterm-cli/dist/files.js",
+          "oldBytes": 15577,
+          "bytes": 25273,
+          "delta": 9696,
+          "oldSha256": "753adb8c88d5ea10d93549237f821c5bd9340d9c532611f0318e90af4e85d29e",
+          "sha256": "2f7c9ec95d086eb711bc805ac35d35d0059fe3ac71d693f33e44e6f860e79191"
+        },
+        {
+          "path": "node_modules/mterm-cli/dist/tool-packs.js",
+          "oldBytes": 33746,
+          "bytes": 38703,
+          "delta": 4957,
+          "oldSha256": "7f7792c1090b6868e1719b223d4f553efe19e537ff1c8be3014323122c52f12f",
+          "sha256": "e8b2903c6427183f896b800cfd4d777bcf5b8673ff02213d6163c05388a7b383"
+        },
+        {
+          "path": "package-lock.json",
+          "oldBytes": 2199,
+          "bytes": 2199,
+          "delta": 0,
+          "oldSha256": "2f4bebe71a91974bbe4267375c1bae7180043cccf2e14a444d9940512a4375db",
+          "sha256": "c7322e1dbac1d25cf6b5d7c7a0ddc78f48aac37bf9b1696aa0031fee814142f5"
+        },
+        {
+          "path": "runtime-provenance.json",
+          "oldBytes": 5240,
+          "bytes": 5240,
+          "delta": 0,
+          "oldSha256": "57c48b0298c123f8c8f625de317731a03aec0d3f192add5a51fb87bba13b3cdc",
+          "sha256": "335aea9acef3f639ee1f5b722ceac9197a92f1f0b59adca6563e53d56dfccb11"
+        }
+      ],
+      "packageGates": {
+        "packs": 29,
+        "registryPersistence": 41,
+        "resourceBudgets": 24,
+        "isolationProtocol": 31,
+        "provenance": 18,
+        "fullTransitiveRights": false,
+        "actualChatGPTIntegration": false,
+        "modelCalls": 0
+      }
+    },
+    "hostedChecks": [
+      {
+        "id": 128658407731,
+        "name": "macos-15 / Node 24",
+        "head": "cb3aedff01e16e771d563fab8630cfaf5b9f3079",
+        "status": "completed",
+        "conclusion": "failure",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42457118523/job/128658407731",
+        "completedAt": "2026-11-08T07:03:36Z"
+      },
+      {
+        "id": 128658407608,
+        "name": "ubuntu-24.04 / Node 24",
+        "head": "cb3aedff01e16e771d563fab8630cfaf5b9f3079",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42457118523/job/128658407608",
+        "completedAt": "2026-11-08T07:04:17Z"
+      },
+      {
+        "id": 128658407508,
+        "name": "macos-15-intel / Node 24",
+        "head": "cb3aedff01e16e771d563fab8630cfaf5b9f3079",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42457118523/job/128658407508",
+        "completedAt": "2026-11-08T07:07:10Z"
+      },
+      {
+        "id": 128658407383,
+        "name": "windows-2022 / Node 24",
+        "head": "cb3aedff01e16e771d563fab8630cfaf5b9f3079",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42457118523/job/128658407383",
+        "completedAt": "2026-11-08T07:05:32Z"
+      },
+      {
+        "id": 128658407309,
+        "name": "Native Linux isolation / Node 24",
+        "head": "cb3aedff01e16e771d563fab8630cfaf5b9f3079",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42457118523/job/128658407309",
+        "completedAt": "2026-11-08T07:03:40Z"
+      },
+      {
+        "id": 128658405056,
+        "name": "CI / fast",
+        "head": "cb3aedff01e16e771d563fab8630cfaf5b9f3079",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42457118611/job/128658405056",
+        "completedAt": "2026-11-08T07:03:32Z"
+      }
+    ],
+    "linuxLive": {
+      "summary": {
+        "artifactId": 13607624381,
+        "bytes": 250745,
+        "sha256": "3d8c692c2df28c7c2699d75642085bf8543c45f74305f91e160be3042c693f79",
+        "members": 45,
+        "actualCheckout": "ff6466c8ac69664487e59306ccf1ed15e512c413",
+        "source": {
+          "counts": {
+            "tests": 12,
+            "pass": 12,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          },
+          "moduleBindings": 11,
+          "fromOutsideCheckout": true,
+          "installedPackage": false,
+          "startedAt": "2026-11-08T07:02:50.893Z",
+          "finishedAt": "2026-11-08T07:02:59.800Z"
+        },
+        "installed": {
+          "counts": {
+            "tests": 12,
+            "pass": 12,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          },
+          "moduleBindings": 11,
+          "fromOutsideCheckout": true,
+          "installedPackage": true,
+          "startedAt": "2026-11-08T07:03:22.626Z",
+          "finishedAt": "2026-11-08T07:03:31.886Z"
+        },
+        "memoryProbes": 16,
+        "cleanupSteps": 144,
+        "backendObservations": 38,
+        "driver": "cgroupfs",
+        "cgroupVersion": "2",
+        "installedProtocol": 31,
+        "runtimeLicenseNoticeFiles": 8,
+        "runtimePinsUnchanged": true,
+        "imagePinUnchanged": true,
+        "compiledBindingsUnchanged": true,
+        "modelCalls": 0,
+        "acceptedCapability": false
+      },
+      "probes": [
+        {
+          "scope": "source",
+          "probe": 1,
+          "container": "e0491d3b67e4b976987351bc1c41cf9d9aa9fe7305fe06b029ecba9c765fed13",
+          "exitCode": 137,
+          "terminalOomKilled": true,
+          "cleanupOomKilled": true,
+          "ownedOomEvent": true,
+          "cleanup": "removed"
+        },
+        {
+          "scope": "source",
+          "probe": 2,
+          "container": "fea028e07ba030ef5e4d79daaea4ca60f49e438c5f7588e7d1fc6f87ba3bb83e",
+          "exitCode": 137,
+          "terminalOomKilled": true,
+          "cleanupOomKilled": true,
+          "ownedOomEvent": true,
+          "cleanup": "removed"
+        },
+        {
+          "scope": "source",
+          "probe": 3,
+          "container": "09f825ae92b5dd76d6482a13d853901bc60d85947eb3c2cfbc4da8fb00366582",
+          "exitCode": 137,
+          "terminalOomKilled": true,
+          "cleanupOomKilled": true,
+          "ownedOomEvent": true,
+          "cleanup": "removed"
+        },
+        {
+          "scope": "source",
+          "probe": 4,
+          "container": "c6fab1e2d6abf821fa724578b29210ced33542fc7f4a58873f778a4530efd9f3",
+          "exitCode": 137,
+          "terminalOomKilled": true,
+          "cleanupOomKilled": true,
+          "ownedOomEvent": true,
+          "cleanup": "removed"
+        },
+        {
+          "scope": "source",
+          "probe": 5,
+          "container": "0b681f2ef399b83bde365d0d4e9aa2e26a2403a06abd95dce7f183228f93cc42",
+          "exitCode": 137,
+          "terminalOomKilled": true,
+          "cleanupOomKilled": true,
+          "ownedOomEvent": true,
+          "cleanup": "removed"
+        },
+        {
+          "scope": "source",
+          "probe": 6,
+          "container": "ce297bea1afae71545c0a2c9930cbe2eafaf58e5bd24dfe6dc040d65d89382a6",
+          "exitCode": 137,
+          "terminalOomKilled": true,
+          "cleanupOomKilled": true,
+          "ownedOomEvent": true,
+          "cleanup": "removed"
+        },
+        {
+          "scope": "source",
+          "probe": 7,
+          "container": "94d7921ecd44903445bdf12041e6b0b9e2ec4ef4101897fa6d219003344a64ef",
+          "exitCode": 137,
+          "terminalOomKilled": true,
+          "cleanupOomKilled": true,
+          "ownedOomEvent": true,
+          "cleanup": "removed"
+        },
+        {
+          "scope": "source",
+          "probe": 8,
+          "container": "40a85f22579c2b78bbfe69c4198be82e7926ebb627810aef8c0cf7a43657e9f0",
+          "exitCode": 137,
+          "terminalOomKilled": true,
+          "cleanupOomKilled": true,
+          "ownedOomEvent": true,
+          "cleanup": "removed"
+        },
+        {
+          "scope": "installed",
+          "probe": 1,
+          "container": "b6a6cef339def443d6c9be60a39808c999f7012d6cb2afc049d1c4f155036436",
+          "exitCode": 137,
+          "terminalOomKilled": true,
+          "cleanupOomKilled": true,
+          "ownedOomEvent": true,
+          "cleanup": "removed"
+        },
+        {
+          "scope": "installed",
+          "probe": 2,
+          "container": "ae86348fc845c12ac9d8239af088ede73d0a6a1fceea6245f6137cbdadd2acb7",
+          "exitCode": 137,
+          "terminalOomKilled": true,
+          "cleanupOomKilled": true,
+          "ownedOomEvent": true,
+          "cleanup": "removed"
+        },
+        {
+          "scope": "installed",
+          "probe": 3,
+          "container": "976f1341a68a84aa62d430d1982f37280011e15c03bdf95746b14e107c90341a",
+          "exitCode": 137,
+          "terminalOomKilled": true,
+          "cleanupOomKilled": true,
+          "ownedOomEvent": true,
+          "cleanup": "removed"
+        },
+        {
+          "scope": "installed",
+          "probe": 4,
+          "container": "ae30b1b22726a86cbf3faf67497b6a65e36aa2a4430a78b26fde584d39f31124",
+          "exitCode": 137,
+          "terminalOomKilled": true,
+          "cleanupOomKilled": true,
+          "ownedOomEvent": true,
+          "cleanup": "removed"
+        },
+        {
+          "scope": "installed",
+          "probe": 5,
+          "container": "ce8be9d17fd3f62bca4fae4b18ca45f0ea25e5ca03d296871550944e0ec28a22",
+          "exitCode": 137,
+          "terminalOomKilled": true,
+          "cleanupOomKilled": true,
+          "ownedOomEvent": true,
+          "cleanup": "removed"
+        },
+        {
+          "scope": "installed",
+          "probe": 6,
+          "container": "25a4a01a05eae0136da336d105b18c7456dfe2d6a27c74b89fee896724973f74",
+          "exitCode": 137,
+          "terminalOomKilled": true,
+          "cleanupOomKilled": true,
+          "ownedOomEvent": true,
+          "cleanup": "removed"
+        },
+        {
+          "scope": "installed",
+          "probe": 7,
+          "container": "c08cb6fb070bdf6e62f7c358f158ac8ac065f1faa42cf451993df30bfbc3c6be",
+          "exitCode": 137,
+          "terminalOomKilled": true,
+          "cleanupOomKilled": true,
+          "ownedOomEvent": true,
+          "cleanup": "removed"
+        },
+        {
+          "scope": "installed",
+          "probe": 8,
+          "container": "bbcbf2500f72017a65c938f8e29df4ffe72722c4c3488e31f377ac6aaf5ae767",
+          "exitCode": 137,
+          "terminalOomKilled": true,
+          "cleanupOomKilled": true,
+          "ownedOomEvent": true,
+          "cleanup": "removed"
+        }
+      ],
+      "members": [
+        {
+          "path": "001-docker.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "002-gpg.log",
+          "bytes": 564,
+          "sha256": "2aedfbea9a2f18276907dc72262cf937c56bebc012fd11e27935a0c2625c007b"
+        },
+        {
+          "path": "003-gpg.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "004-sudo.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "005-sudo.log",
+          "bytes": 215,
+          "sha256": "0274425cd28c86b13e253006fdaa96ddf05fb35883932824ec1e291019273889"
+        },
+        {
+          "path": "006-gpgv.log",
+          "bytes": 537,
+          "sha256": "10e1846c320ba176888087f704597ef2c66b01f0d5f7ff20053868563007a90f"
+        },
+        {
+          "path": "007-apt-helper.log",
+          "bytes": 495027,
+          "sha256": "6bf01d98eab0b25b52273e91cb306527a9c769c3c7072e5bd68179855cedb48f"
+        },
+        {
+          "path": "008-apt-get.log",
+          "bytes": 156,
+          "sha256": "4c9ed249723ea6a6a176576c180f7d9097a4ad763bf9b55fb835c0c54a6e2e50"
+        },
+        {
+          "path": "009-apt-get.log",
+          "bytes": 160,
+          "sha256": "8878cfc00f51ae9b2bae707d3bfb5919e72ca92490ee139ddba047c4ff9f42f9"
+        },
+        {
+          "path": "010-apt-get.log",
+          "bytes": 156,
+          "sha256": "b938ca7b7a45cc3991c62cf7a659f4db878e5946fa7d7e1b61b1237f33e0eba7"
+        },
+        {
+          "path": "011-sudo.log",
+          "bytes": 2277,
+          "sha256": "5047ae887abf635b73f2fc55a0d1979b5fef930e05387626a8b5822f3d484757"
+        },
+        {
+          "path": "012-dockerd.log",
+          "bytes": 53,
+          "sha256": "ef2856de21c6ef2f045c4a46eb67327d4080349e533ef2ec2e19103f8e6234b7"
+        },
+        {
+          "path": "013-sudo.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "014-sudo.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "015-sudo.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "016-sudo.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "018-dpkg-query.log",
+          "bytes": 29,
+          "sha256": "f93044ee4d47e5af160e854f9d7eddb733c869d2280d8a4ba36cbe55f8efdaab"
+        },
+        {
+          "path": "017-dpkg-query.log",
+          "bytes": 29,
+          "sha256": "f93044ee4d47e5af160e854f9d7eddb733c869d2280d8a4ba36cbe55f8efdaab"
+        },
+        {
+          "path": "019-dpkg-query.log",
+          "bytes": 26,
+          "sha256": "87a3059394e98b31d8e424e7e96998818fbbcb9ac861b9ebe01091c684a99b7f"
+        },
+        {
+          "path": "020-docker.log",
+          "bytes": 880,
+          "sha256": "58041e9f63e4c510f59d2cbf063636fbe85cc41ffc70caef464e33dfb4ea3e58"
+        },
+        {
+          "path": "022-docker.log",
+          "bytes": 1073,
+          "sha256": "d7545ac03c6f67eeac1e1b7be521c98a066195eaf02f5d570bde1d00e9d3871a"
+        },
+        {
+          "path": "021-docker.log",
+          "bytes": 53,
+          "sha256": "ef2856de21c6ef2f045c4a46eb67327d4080349e533ef2ec2e19103f8e6234b7"
+        },
+        {
+          "path": "023-docker.log",
+          "bytes": 53,
+          "sha256": "ef2856de21c6ef2f045c4a46eb67327d4080349e533ef2ec2e19103f8e6234b7"
+        },
+        {
+          "path": "024-docker.log",
+          "bytes": 1835,
+          "sha256": "04f88cdea05f19ab38848c9318919aaaea8299c7313285e8ef243730af559606"
+        },
+        {
+          "path": "bootstrap.json",
+          "bytes": 17365,
+          "sha256": "d93bf96da60602d8c46853b8e18832587d5251e39176839eba3e7f03fb809f81"
+        },
+        {
+          "path": "cli-LICENSE",
+          "bytes": 10765,
+          "sha256": "2d81ea060825006fc8f3fe28aa5dc0ffeb80faf325b612c955229157b8c10dc0"
+        },
+        {
+          "path": "cli-NOTICE",
+          "bytes": 635,
+          "sha256": "a8c869fbda819afb8d80e0ac19bac52e766bc6c19cb38cf94f52d64c4be2aab6"
+        },
+        {
+          "path": "containerd-LICENSE",
+          "bytes": 10765,
+          "sha256": "4bbe3b885e8cd1907ab4cf9a41e862e74e24b5422297a4f2fe524e6a30ada2b4"
+        },
+        {
+          "path": "containerd-NOTICE",
+          "bytes": 519,
+          "sha256": "03f0b4bcaecfdb491ef5a7d320e2c2adf886c732d34e3fff87d52dbaec64d8c3"
+        },
+        {
+          "path": "docker-archive-key.asc",
+          "bytes": 3817,
+          "sha256": "1500c1f56fa9e26b9b8f42452a553675796ade0807cdce11975eb98170b3a570"
+        },
+        {
+          "path": "docker-noble-InRelease",
+          "bytes": 48475,
+          "sha256": "6ac25b6892e468c29d0822d6422efe16a63ad6155d1186c85006e0e92f486362"
+        },
+        {
+          "path": "docker-noble-amd64-Packages",
+          "bytes": 495027,
+          "sha256": "6bf01d98eab0b25b52273e91cb306527a9c769c3c7072e5bd68179855cedb48f"
+        },
+        {
+          "path": "engine-LICENSE",
+          "bytes": 10765,
+          "sha256": "7c87873291f289713ac5df48b1f2010eb6963752bbd6b530416ab99fc37914a8"
+        },
+        {
+          "path": "installed/live-receipt.json",
+          "bytes": 131837,
+          "sha256": "289f847548ab64f7ca18f481cfec3a32a3674be8bbde0f42174af293bfeee608"
+        },
+        {
+          "path": "engine-NOTICE",
+          "bytes": 1030,
+          "sha256": "a249c4197359eee43031d16cecb172326f92ee7b6701af99dfe5c3e5b3d5eca9"
+        },
+        {
+          "path": "installed/live-tests.tap",
+          "bytes": 2775,
+          "sha256": "bdd09d61efdb739dc4281cb2c9ee58bcf0117a9ada58c831bc902009b63e25e1"
+        },
+        {
+          "path": "installed-isolation-protocol.json",
+          "bytes": 1646,
+          "sha256": "3a7d6f986bf556ca569db2fea3e5cd96855ec7037ce5eda34a9bfe708e32d8cc"
+        },
+        {
+          "path": "installed/result.json",
+          "bytes": 133754,
+          "sha256": "b184eddd04579fb5bbfb9b9ecf42f1ce1fad1bad7811125808ad141e39da5604"
+        },
+        {
+          "path": "installed-isolation-protocol.tap",
+          "bytes": 7674,
+          "sha256": "d10a9d9b95d0f69b1ba01e38d92b7b0eee719a1bffa4ba4ba4a58747eb718afe"
+        },
+        {
+          "path": "node-image-Dockerfile",
+          "bytes": 5010,
+          "sha256": "b9337735f3a1bac3fb9501495448f8dc0ae58eacd8513fe757dd7da7bf4208da"
+        },
+        {
+          "path": "runc-LICENSE",
+          "bytes": 10758,
+          "sha256": "552a739c3b25792263f731542238b92f6f8d07e9a488eae27e6c4690038a8243"
+        },
+        {
+          "path": "runc-NOTICE",
+          "bytes": 515,
+          "sha256": "e94a9789f41c5c3d6f74212571e6f44367de88269f1ce9c32f26c1b67eec6e7f"
+        },
+        {
+          "path": "source/live-receipt.json",
+          "bytes": 131772,
+          "sha256": "4231ef0bb6f4d5c520cca257baa4ea1a1d0ebe631e038873ad1995b9a4800c02"
+        },
+        {
+          "path": "source/live-tests.tap",
+          "bytes": 2774,
+          "sha256": "47d25a0810bf96684c83d23f38bad33ca218955bb617b94d292ade6233212a37"
+        },
+        {
+          "path": "source/result.json",
+          "bytes": 133690,
+          "sha256": "d7cf93410126eca72360999f6eccbc75d2086d9a474f68e7f687678dd8f2d15b"
+        }
+      ]
+    },
+    "failedMacArm": {
+      "jobId": 128658407731,
+      "runId": 42457118523,
+      "counts": {
+        "tests": 507,
+        "pass": 494,
+        "fail": 1,
+        "cancelled": 0,
+        "skipped": 12
+      },
+      "actual": "PACK_PLATFORM",
+      "expected": "FILE_WRITE_CLEANUP",
+      "test": "registry initial creation retains confirmed commit when file staging cleanup fails",
+      "reason": "Fixture entered synthetic win32 platform before admission while retaining actual arm64 architecture; production correctly rejected unsupported win32-arm64. Package and parser steps skipped on that job.",
+      "noRerun": true
+    }
+  },
+  "development": {
+    "schemaVersion": 1,
+    "at": "2026-11-08T07:09:01.013Z",
+    "head": "cb3aedff01e16e771d563fab8630cfaf5b9f3079",
+    "original": {
+      "path": "tests/pack-registry-outcomes.test.mjs",
+      "sha256": "2cebd3f2adbb3649f75b566da1e8718b830e64abdc308850e0c57cf5bf7aacbc"
+    },
+    "candidate": {
+      "path": "artifacts/aug003-registry/portable-registry-outcomes.test.mjs",
+      "sha256": "5bb96fdbc68c0e31c7dd1cdeb8254efa3833094450915d3ea9b7e77d6b9f3203"
+    },
+    "scope": "Only final initial-registry fixture; actual native admission and real link precede synthetic Windows stage-unlink policy; no architecture mock, skip, production change or assertion relaxation",
+    "steps": [
+      {
+        "name": "portable-baseline-red",
+        "startedAt": "2026-11-08T07:09:01.015Z",
+        "finishedAt": "2026-11-08T07:09:01.278Z",
+        "args": [
+          "--test",
+          "--test-reporter=tap",
+          "--test-name-pattern=^registry initial creation",
+          "artifacts/aug003-registry/portable-registry-outcomes.test.mjs"
+        ],
+        "bin": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG003-Registry-20261108\\artifacts\\aug003-registry\\baseline-a7c047c\\bin\\mterm-cli.js",
+        "exitCode": 1,
+        "log": "artifacts/aug003-registry/portable-baseline-red.log",
+        "bytes": 1080,
+        "sha256": "383f44ec03e037cb1c0c9d3eda2ee38847816b87c71beb998ccffd0720de17b6",
+        "counts": {
+          "tests": 1,
+          "pass": 0,
+          "fail": 1,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      },
+      {
+        "name": "portable-green",
+        "startedAt": "2026-11-08T07:09:01.279Z",
+        "finishedAt": "2026-11-08T07:09:05.693Z",
+        "args": [
+          "--test",
+          "--test-reporter=tap",
+          "--test-concurrency=1",
+          "tests/file-write-retry.test.mjs",
+          "artifacts/aug003-registry/portable-registry-outcomes.test.mjs"
+        ],
+        "bin": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG003-Registry-20261108\\bin\\mterm-cli.js",
+        "exitCode": 0,
+        "log": "artifacts/aug003-registry/portable-green.log",
+        "bytes": 8704,
+        "sha256": "e06b7b16f913a060d7e10fbef83c3a285a04ec1169a516bd3cf0314f1ec592e1",
+        "counts": {
+          "tests": 41,
+          "pass": 41,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0
+        }
+      }
+    ],
+    "modelCalls": 0
+  },
+  "independentReview": {
+    "reviewer": "/root/standing_authorization_review",
+    "status": "clear for fixture-only application and new exact-head qualification",
+    "candidateSha256": "5bb96fdbc68c0e31c7dd1cdeb8254efa3833094450915d3ea9b7e77d6b9f3203",
+    "readOnly": true,
+    "noTestsRerun": true,
+    "assertionsPreserved": true,
+    "productionChanges": false,
+    "modelCalls": 0
+  },
+  "rawBindings": [
+    {
+      "path": "artifacts/aug003-registry/implementation-commit.json",
+      "bytes": 4995,
+      "sha256": "a396b9aef9217c66527ec0d21cebe99536dd060b35a5b4c7956c00f9c62af8d9"
+    },
+    {
+      "path": "artifacts/aug003-registry/staged-metadata.json",
+      "bytes": 4745,
+      "sha256": "c4eceabab435f94dacebd77f39574c46b7e54f6c69034468c30e303de1c9bb26"
+    },
+    {
+      "path": "artifacts/aug003-registry/independent-implementation-review.json",
+      "bytes": 976,
+      "sha256": "47843c801d6a2e00597469c1bd1d8b7560e07d692b4b10c8ff660183324a1980"
+    },
+    {
+      "path": "artifacts/aug003-registry/implementation-native-quick.json",
+      "bytes": 877,
+      "sha256": "86556c10e124606efa798cc9e6fff7122763e8f832c3e0ba8e9a5b27f72f11d7"
+    },
+    {
+      "path": "artifacts/aug003-registry/implementation-native-quick.log",
+      "bytes": 50115,
+      "sha256": "f1ccf44441ce6cbfaeaaa31045ff037799276ae907c1a7ddd7cfe21684bee515"
+    },
+    {
+      "path": "artifacts/aug003-registry/implementation-native-package-security.json",
+      "bytes": 2687,
+      "sha256": "eac6b7e16be2e7af3fa3b78eaf86c66a9d059434c8f8836c8c2e952a97385334"
+    },
+    {
+      "path": "artifacts/aug003-registry/implementation-native-package.log",
+      "bytes": 21256,
+      "sha256": "90f54e90a7ab5d632236f0e5fa1bffb3bac53a8b666e86640cf3390dce025632"
+    },
+    {
+      "path": "artifacts/aug003-registry/implementation-native-production-audit.log",
+      "bytes": 361,
+      "sha256": "9142ba6d614f3a1ebd7a0943779af271e80f4d93df8fd47a82a69e957396ebae"
+    },
+    {
+      "path": "artifacts/aug003-registry/implementation-native-synthetic-codex-install.log",
+      "bytes": 24,
+      "sha256": "bf14b7a2bc076990244fa3239536925868dfe5ad05089c7d459b5fa482abfc72"
+    },
+    {
+      "path": "artifacts/aug003-registry/implementation-native-synthetic-codex-parser.log",
+      "bytes": 1225,
+      "sha256": "1832208b3bedaae56da0e6cb5ace209b663464d3004c401e186b08dae0d1303f"
+    },
+    {
+      "path": "artifacts/aug003-registry/cb3-macos-arm64-failure.log",
+      "bytes": 85530,
+      "sha256": "169e325aa88dbf5e45c1859c5c6d9c5c71b740be5d1d2d97aafa9026e820c266"
+    },
+    {
+      "path": "artifacts/aug003-registry/cb3aedf-live.zip",
+      "bytes": 250745,
+      "sha256": "3d8c692c2df28c7c2699d75642085bf8543c45f74305f91e160be3042c693f79"
+    },
+    {
+      "path": "artifacts/aug003-registry/cb3aedf-live-job.log",
+      "bytes": 568920,
+      "sha256": "620ab1ed37b0486d0f1be98dbc934e3946efaa7d3b67973572b1e3092742d29c"
+    },
+    {
+      "path": "artifacts/aug003-registry/cb3aedf-live-verification.json",
+      "bytes": 12737,
+      "sha256": "8d40e05f68815252adf66f2a1c574a2ec08832169a91aa9c66a7f68956dad58b"
+    },
+    {
+      "path": "artifacts/aug003-registry/cb3-package-verification.json",
+      "bytes": 186708,
+      "sha256": "66745fe23d0d9f677dfd5f41789e7a9cc47f794fa86039b10bf6ccda2f6d12b1"
+    },
+    {
+      "path": "artifacts/aug003-registry/portability-development.json",
+      "bytes": 2271,
+      "sha256": "8a0174c12f41ea2b7d034e658d557cd4f6b3a4fece4e0661a8ec2eab8a40aab9"
+    },
+    {
+      "path": "artifacts/aug003-registry/portable-baseline-red.log",
+      "bytes": 1080,
+      "sha256": "383f44ec03e037cb1c0c9d3eda2ee38847816b87c71beb998ccffd0720de17b6"
+    },
+    {
+      "path": "artifacts/aug003-registry/portable-green.log",
+      "bytes": 8704,
+      "sha256": "e06b7b16f913a060d7e10fbef83c3a285a04ec1169a516bd3cf0314f1ec592e1"
+    },
+    {
+      "path": "artifacts/aug003-registry/cb3-original-registry-outcomes.test.mjs",
+      "bytes": 17111,
+      "sha256": "2cebd3f2adbb3649f75b566da1e8718b830e64abdc308850e0c57cf5bf7aacbc"
+    },
+    {
+      "path": "artifacts/aug003-registry/portable-registry-outcomes.test.mjs",
+      "bytes": 17742,
+      "sha256": "5bb96fdbc68c0e31c7dd1cdeb8254efa3833094450915d3ea9b7e77d6b9f3203"
+    },
+    {
+      "path": "artifacts/aug003-registry/prepare-portability-fixture.mjs",
+      "bytes": 5186,
+      "sha256": "d768be95d12121b67206c078aefae4c24023c6b5d325b1a41a79f4a934c41349"
+    },
+    {
+      "path": "artifacts/aug003-registry/verify-cb3-package.mjs",
+      "bytes": 4844,
+      "sha256": "3f6a71c0ccd54bb0bb66a1880a82dc68b02bb08db5f4f53da6d4ae1261182837"
+    },
+    {
+      "path": "artifacts/aug003-registry/verify-cb3-package-v2.mjs",
+      "bytes": 5048,
+      "sha256": "cecac798739d259f7f478a4db4f9bf476eda3bb7b70be4f7d14f5204c9e905f4"
+    }
+  ],
+  "correction": "Only final registry-creation fixture changes: native host manifest/admission and actual owned hard link, then synthetic Windows cleanup branch on exact captured stage. No architecture mock, production guard change, skip or weakened assertion.",
+  "helperCorrection": {
+    "artifact": "artifacts/aug003-registry/verify-cb3-package.mjs",
+    "observedError": "1012 !== 1009",
+    "reason": "Read-only inspection initially compared entire install prefix with report node_modules scope. Corrected v2 separately measures 1009 node_modules files and 1012 entire-prefix files. No product test or failed hosted job rerun.",
+    "correctedArtifact": "artifacts/aug003-registry/verify-cb3-package-v2.mjs"
+  },
+  "limitations": [
+    "New fixture requires new exact immutable native/installed/security/license/platform qualification, especially actual macOS ARM64.",
+    "Historical native3ca uninstall EPERM and original4985 journal EPERM causes remain unknown.",
+    "Production license files and runtime evidence are checked but full bundled/transitive/runtime/image redistribution rights and actual ChatGPT client integrations remain unaccepted.",
+    "No requirement stages, weights, estimates, dependencies, blockers or acceptance cells changed."
+  ],
+  "next": "Commit fixture correction with independently reviewed metadata; qualify exact new head on native Windows and all six hosted checks before normal merge and main gates. Then ordinarily integrate into PR206."
+}

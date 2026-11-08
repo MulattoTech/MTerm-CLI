@@ -465,7 +465,7 @@ test('registry initial creation retains confirmed commit when file staging clean
     version: '1.0.0',
     source: { url: 'https://github.com/MulattoTech/MTerm-CLI', commit: 'a'.repeat(40), license: 'MIT' },
     runtime: { kind: 'node-stdio-once', nodeMajor: 24, entry: 'worker.mjs' },
-    platforms: [...new Set([nativePlatform + '-' + process.arch, 'win32-' + process.arch])],
+    platforms: [nativePlatform + '-' + process.arch],
     dependencies: [],
     files: [{ path: 'worker.mjs', sha256: hash(payload) }],
     permissions: ['execute-unsandboxed'],
@@ -484,16 +484,29 @@ test('registry initial creation retains confirmed commit when file staging clean
   await fs.writeFile(manifestFile, bytes);
   await fs.writeFile(path.join(f.root, 'worker.mjs'), payload);
   let links = 0,
-    unlinks = 0;
+    unlinks = 0,
+    stage;
   await withFault(
-    'win32',
+    nativePlatform,
     {
-      link: async (link, ...args) => {
+      link: async (link, source, target) => {
+        if (target !== f.file) return link(source, target);
+        assert.equal(path.dirname(source), f.root);
+        assert.match(path.basename(source), /^\.mterm-[a-f0-9-]+\.tmp$/);
+        assert.equal(process.platform, nativePlatform, 'pack admission uses the actual native host');
         links++;
-        return link(...args);
+        stage = source;
+        const result = await link(source, target);
+        // Only after native admission and the real owned creation, exercise
+        // the Windows cleanup branch. withFault restores the original platform.
+        Object.defineProperty(process, 'platform', {
+          ...Object.getOwnPropertyDescriptor(process, 'platform'),
+          value: 'win32',
+        });
+        return result;
       },
       unlink: async (unlink, file) => {
-        if (path.basename(file).startsWith('.mterm-')) {
+        if (file === stage) {
           unlinks++;
           throw fault('EPERM');
         }

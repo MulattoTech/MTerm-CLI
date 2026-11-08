@@ -1,3 +1,13 @@
+# Registry fixture portability correction — 2026-11-08T07:15:33.665Z
+
+PR208 is draft; committed cb3aedf is unqualified: native507/507, installed41/41, audit0 and synthetic parsermodel0 passed, but hosted5/6 includes a macOS ARM64 fixture-admission failure. The product correctly rejected synthetic win32-arm64. Its complete failed qualification, 45-member real Linux artifact, 19 installed module bindings, four package licenses, eight runtime LICENSE/NOTICE files and exact logs remain pinned in [the portability record](validation/2026-11-08-aug003-registry-portability.json).
+
+Only the last registry-creation fixture changes. It performs actual native admission and a real owned hard link before selecting synthetic Windows cleanup, with exact stage targeting and unconditional restoration. Independent read-only review cleared the candidate: baseline RED0/1 and corrected focused GREEN41/41. No runtime source, platform guard, architecture, skip or original outcome assertion changes. New exact-head qualification remains next.
+
+PR206 stays preserved at 3ca8987 with its failed native507/508 and successful11hosted evidence. Original EPERM causes remain unknown. After qualified PR208 normal merge and main gates, integrate ordinarily into PR206 and resume #93. Standing authorization applies; no manual approval pending; no model requests. All acceptance totals remain AUG0/117, CLI0/300, DCP0/48, WEB0/12; full rights and actual ChatGPT integration remain open.
+
+---
+
 # Registry persistence correction under review — 2026-11-08T06:54:45.630Z
 
 Qualified main is a7c047c (PR207), with 6/6 final and 6/6 main checks and the identical reviewed tree. [Merged-main receipt](validation/2026-11-08-aug005-merged-main.json).

@@ -28,6 +28,40 @@ result budgets. Descriptor reads check cancellation between awaits and close in
 `finally`; they cannot interrupt an OS read already in progress. See the
 [bounded contract](validation/2026-11-02-utf16le-read.md) for exact scope.
 
+## Guarded file and registry persistence — 2026-11-08
+
+Existing-file writes use at most five Windows rename attempts, only for EPERM or
+EBUSY returned by that exact operation, with 25/50/100/200 ms delays. Each attempt
+rechecks the permitted parent identity, the owned staging inode, link count,
+permissions and exact bytes, then the destination identity, permissions and expected
+content version. The final destination check follows staging reads. Cancellation is
+checked before another attempt and immediately before commit. There is no destination
+deletion, copy/delete fallback, permission change or retry of the complete request.
+
+New files retain no-overwrite hard-link creation. Owned stage unlink uses the same
+Windows bound, with fresh parent, stage and destination-inode checks. A successful
+link followed by unconfirmed cleanup returns FILE_WRITE_CLEANUP with commit=committed.
+It does not repeat the creation or claim a clean save. A retained second link can
+make the file unreadable through the normal single-link policy until legitimate
+owned recovery. A failed staging write/sync remains primary if descriptor close
+also fails; an unconfirmed close does not authorize stage deletion.
+
+Explicit optional-pack registry apply holds an exclusive cooperative lock. Its handle
+is closed even when identity inspection fails. Lock unlink retries only Windows
+EPERM/EBUSY, at most five attempts, and validates the parent and original single-link
+lock identity each time. Primary mutation errors and cleanup errors remain separate.
+The CLI keeps its success JSON contract and exposes sanitized error codes/messages
+containing a fixed phase and commit state: not_confirmed, committed or unchanged.
+Bounded structured outcome metadata is internal to the error object, not a new MCP
+capability. Pre-acquisition path failures keep their ordinary sanitized diagnostics.
+
+In these outcomes, retained means cleanup was not confirmed; it does not prove that
+an externally changed pathname still exists. Committed means the link/rename result
+was observed, not directory-fsync durability or unchanged bytes after return. Cleanup
+does not consume the caller's cancelled signal. The existing local pathname race and
+OS-I/O interruption limits still apply. Deterministic injected errors establish these
+branches; they do not identify the historical native EPERM cause.
+
 ## Remaining local race risks
 
 Node path checking and replacement are separate OS operations. An adversarial local process able

@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-08-aug003-registry-persistence; preserve commit and lock-cleanup outcomes.
 // Modified: 2026-11-08-aug012-resource-budgets; share native admission and cancellation, honor the owner runtime ceiling.
 // Modified: 2026-11-08-aug003-pack-catalog; bounded discovery and connection-owned selection.
 // AI-Change: 2026-11-07-aug001-pack-boundary (OpenAI / GPT-6 Astra Pro; self-reported)
@@ -6,10 +7,10 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { createHash, randomUUID } from 'node:crypto';
 import { z } from 'zod';
-import { FileService } from './files.js';
+import { FileService, FileWriteCleanupError } from './files.js';
 import { ProcessService } from './processes.js';
 import { RootPolicy } from './policy.js';
-import { cancelled, fail, safeError } from './errors.js';
+import { cancelled, fail, safeError, ToolError } from './errors.js';
 
 const PROTOCOL = 'mterm-pack-stdio/1';
 const MAX_BYTES = 65536;
@@ -306,39 +307,179 @@ async function readStore(store: Awaited<ReturnType<typeof registryStore>>) {
 export async function readRegistry(file: string): Promise<Registry> {
   return (await readStore(await registryStore(file))).registry;
 }
+type RegistryPhase =
+  | 'lock-parent'
+  | 'lock-acquire'
+  | 'lock-identity'
+  | 'read'
+  | 'transform'
+  | 'write'
+  | 'lock-close'
+  | 'lock-check'
+  | 'lock-unlink';
+type RegistryCommit = 'not_confirmed' | 'committed' | 'unchanged';
+type RegistryCleanup = { phase: RegistryPhase; code: string };
+function registryError(error: unknown) {
+  const code = (error as NodeJS.ErrnoException)?.code;
+  // These OS codes have fixed local diagnostics, never an arbitrary error body.
+  if (code === 'EBUSY' || code === 'EIO' || code === 'ENOSPC' || code === 'EMFILE' || code === 'ENFILE')
+    return { code, message: 'Operating-system file operation failed (' + code + ').' };
+  return safeError(error);
+}
+function registryOutcome(
+  primary: { phase: RegistryPhase; error: ReturnType<typeof safeError> } | undefined,
+  commit: RegistryCommit,
+  lock: 'removed' | 'retained' | 'not_acquired',
+  cleanup: RegistryCleanup[],
+) {
+  const phase = primary?.phase ?? cleanup[0]!.phase;
+  const code = primary?.error.code ?? 'PACK_REGISTRY_CLEANUP';
+  const secondary = cleanup.length
+    ? ' Cleanup failed: ' + cleanup.map((item) => item.phase + ' (' + item.code + ')').join('; ') + '.'
+    : '';
+  const message =
+    'Registry ' +
+    phase +
+    ' failed (' +
+    code +
+    '); commit=' +
+    commit +
+    '; lock=' +
+    lock +
+    '. ' +
+    (primary?.error.message ?? 'The registry outcome must be inspected before another apply.') +
+    secondary;
+  return Object.assign(new ToolError(code, message), {
+    registryOutcome: Object.freeze({
+      phase,
+      commit,
+      lock,
+      cleanup: Object.freeze(cleanup.map((item) => Object.freeze({ ...item }))),
+    }),
+  });
+}
 async function changeRegistry(file: string, apply: boolean, transform: (registry: Registry) => Registry) {
   const store = await registryStore(file, apply);
+  let phase: RegistryPhase = 'read';
+  let commit: RegistryCommit = 'not_confirmed';
   const change = async () => {
+    phase = 'read';
     const old = await readStore(store);
+    phase = 'transform';
     const next = parsed(registrySchema, transform(old.registry), 'PACK_REGISTRY');
     unique(
       next.packs.map((item) => item.id),
       'PACK_REGISTRY',
     );
     const changed = JSON.stringify(next) !== JSON.stringify(old.registry);
-    if (apply && changed)
-      await store.files.write({
-        path: store.file,
-        expectedVersion: old.version,
-        text: JSON.stringify(next, null, 2) + '\n',
-      });
+    if (apply && changed) {
+      phase = 'write';
+      try {
+        await store.files.write({
+          path: store.file,
+          expectedVersion: old.version,
+          text: JSON.stringify(next, null, 2) + '\n',
+        });
+      } catch (error) {
+        if (error instanceof FileWriteCleanupError) commit = 'committed';
+        throw error;
+      }
+      commit = 'committed';
+    } else {
+      commit = 'unchanged';
+    }
     return { schemaVersion: 1, applied: apply, changed, registry: store.file, packs: next.packs };
   };
   if (!apply) return change();
   const lock = await store.files.policy.resolve(store.file + '.lock', true);
-  const handle = await fs.open(lock, 'wx', 0o600).catch((error: NodeJS.ErrnoException) => {
-    if (error.code === 'EEXIST')
+  const parentPath = path.dirname(lock);
+  const parent = await fs.lstat(parentPath);
+  const checkParent = async () => {
+    const checked = await store.files.policy.resolve(parentPath);
+    const current = await fs.lstat(parentPath);
+    if (
+      path.relative(parentPath, checked) !== '' ||
+      path.relative(parentPath, await fs.realpath(parentPath)) !== '' ||
+      !current.isDirectory() ||
+      current.isSymbolicLink() ||
+      current.dev !== parent.dev ||
+      current.ino !== parent.ino
+    )
+      fail('PACK_REGISTRY_LOCK_CHANGED', 'Registry lock parent identity changed.');
+  };
+  await checkParent();
+  const handle = await fs.open(lock, 'wx', 0o600).catch((error) => {
+    if ((error as NodeJS.ErrnoException).code === 'EEXIST')
       fail('PACK_REGISTRY_BUSY', 'Registry is locked; inspect the owning operation before retrying.');
-    throw error;
+    throw registryOutcome({ phase: 'lock-acquire', error: registryError(error) }, commit, 'not_acquired', []);
   });
-  const identity = await handle.stat();
+  let identity: Awaited<ReturnType<typeof handle.stat>> | undefined;
+  let primary: { phase: RegistryPhase; error: ReturnType<typeof safeError> } | undefined;
+  let result: Awaited<ReturnType<typeof change>> | undefined;
+  const cleanup: RegistryCleanup[] = [];
+  let closed = false;
+  let removed = false;
   try {
-    return await change();
-  } finally {
-    await handle.close();
-    const current = await fs.lstat(lock).catch(() => undefined);
-    if (current && current.dev === identity.dev && current.ino === identity.ino) await fs.unlink(lock);
+    phase = 'lock-identity';
+    identity = await handle.stat();
+    result = await change();
+  } catch (error) {
+    primary = { phase, error: registryError(error) };
   }
+  // Even identity inspection failure must close the handle. Missing identity
+  // never authorizes pathname deletion; preserve the primary operation outcome.
+  try {
+    await handle.close();
+    closed = true;
+  } catch (error) {
+    cleanup.push({ phase: 'lock-close', code: registryError(error).code });
+  }
+  if (closed && identity) {
+    const attempts = process.platform === 'win32' ? 5 : 1;
+    for (let attempt = 0; attempt < attempts; attempt++) {
+      try {
+        await checkParent();
+        const checked = await store.files.policy.resolve(lock);
+        const current = await fs.lstat(lock);
+        if (
+          path.relative(lock, checked) !== '' ||
+          !current.isFile() ||
+          current.isSymbolicLink() ||
+          current.nlink !== 1 ||
+          current.dev !== identity.dev ||
+          current.ino !== identity.ino ||
+          current.mode !== identity.mode ||
+          current.size !== identity.size ||
+          current.mtimeMs !== identity.mtimeMs
+        )
+          fail('PACK_REGISTRY_LOCK_CHANGED', 'Registry lock identity changed before cleanup.');
+      } catch (error) {
+        const safe = registryError(error);
+        cleanup.push({
+          phase: 'lock-check',
+          code: ['LINK_REJECTED', 'OUTSIDE_ROOT', 'ENOENT'].includes(safe.code)
+            ? 'PACK_REGISTRY_LOCK_CHANGED'
+            : safe.code,
+        });
+        break;
+      }
+      try {
+        await fs.unlink(lock);
+        removed = true;
+        break;
+      } catch (error) {
+        const code = registryError(error).code;
+        if (attempt === attempts - 1 || (code !== 'EPERM' && code !== 'EBUSY')) {
+          cleanup.push({ phase: 'lock-unlink', code });
+          break;
+        }
+        await new Promise((resolve) => setTimeout(resolve, 25 * 2 ** attempt));
+      }
+    }
+  }
+  if (primary || cleanup.length)
+    throw registryOutcome(primary, commit, removed ? 'removed' : 'retained', cleanup);
+  return result!;
 }
 
 export async function packsMain(args: string[]): Promise<number> {

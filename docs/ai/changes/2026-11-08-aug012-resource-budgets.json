@@ -3,7 +3,7 @@
   "provider": "OpenAI",
   "model": "GPT-6 Astra Pro",
   "started_at": "2026-11-08T00:48:00Z",
-  "updated_at": "2026-11-08T01:15:59.211Z",
+  "updated_at": "2026-11-08T01:29:50.351Z",
   "base_sha": "d6eb0fa8a3df8a22abdec587f405e1105f78acb8",
   "issues": [
     92,
@@ -28,7 +28,13 @@
     "docs/roadmap/progress.json",
     "docs/HANDOFF.md",
     "README.md",
-    "docs/validation/2026-11-08-aug012-development.json"
+    "docs/validation/2026-11-08-aug012-development.json",
+    "docs/validation/2026-11-08-aug012-qualification.json",
+    "docs/validation/2026-11-08-aug012-source-review.json",
+    "docs/validation/2026-11-08-aug012-win32-x64.json",
+    "docs/validation/2026-11-08-aug012-linux-x64.json",
+    "docs/validation/2026-11-08-aug012-darwin-arm64.json",
+    "docs/validation/2026-11-08-aug012-darwin-x64.json"
   ],
   "decisions": [
     "One implementation owner plus one independent read-only peer, under standing owner authorization; no model API/CLI requests.",
@@ -69,6 +75,26 @@
     {
       "command": "release-epoch-focused",
       "result": "{\"kind\":\"release-epoch-focused\",\"tests\":70,\"pass\":70,\"fail\":0,\"cancelled\":0,\"skipped\":0,\"log\":\"artifacts/aug012/focused-epoch.log\",\"completedAt\":\"2026-11-08T01:14:11.8821345Z\"}"
+    },
+    {
+      "command": "Exact146cbad build/prepack/self-host/installed/audit",
+      "result": "Five stages passed, native412/412, installed24resource+29pack+18provenance, audit0 and clean source start/end."
+    },
+    {
+      "command": "Exact146cbad GitHub Actions",
+      "result": "9/9 success; Windows412/412, Linux/macOS ARM/macOS Intel400pass+12existing skips. All24 resource cases pass on every host."
+    },
+    {
+      "command": "Runtime payload inventory versus PR202",
+      "result": "997runtime files; launcher/all3dependency packages unchanged.12MTerm files changed or added,23799additional bytes. Windows installed14520712bytes."
+    },
+    {
+      "command": "Independent immutable source review",
+      "result": "140source entries3392014Gitblobbytes;25committed evidence pins and31raw development pins verified. No remaining blocker; review did not rerun tests."
+    },
+    {
+      "command": "Final receipt schema validation",
+      "result": "Initial binding failed because GitHub job timestamps use seven fractional digits while the unchanged checker accepts millisecond ISO UTC. Normalized observedAt to milliseconds, retained original timestamps in hosted metadata and preserved pre-normalization artifacts; no checker weakening or test-result change."
     }
   ],
   "roadmap_updates": [
@@ -84,11 +110,12 @@
     }
   ],
   "limitations": [
-    "Native process/SDK and disk success/denial are real; unsupported/permission/invalid statistics and post-spawn errors are controlled injections, explicitly labeled.",
-    "Disk estimates and a conservative host pool reject observed/declared overcommit; a completion epoch prevents reuse after owned writes and release. No hard disk-write quota or hostile-writer isolation is claimed.",
-    "Admission deadlines are cooperative; physical filesystem work retains its slot until settlement. Parent-job and retained-output bounds do not measure descendant CPU/RSS.",
-    "Full native/prepack/installed/hosted qualification and immutable source/receipt review remain next."
+    "Per-host owned-parent admission and captured output limits; no hard CPU/GPU/RAM/disk-write quotas or cross-host coordination.",
+    "Real local SDK/filesystem/owned-process integration; negative backend/error injections are labeled. No actual ChatGPT-to-MTerm app invocation is available or claimed.",
+    "Disk observations remain advisory. Physical I/O retains its pending slot; completion epoch invalidates owned-write/release history without claiming hostile-writer isolation.",
+    "Windows descendant cleanup remains best effort; no OS sandbox or race-free detached-process containment.",
+    "Final metadata-head checks/review, expected-head merge and main verification are subsequent observations."
   ],
   "checkpoint": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG012-20261108\\artifacts\\aug012",
-  "next_unverified_action": "Freeze source, obtain independent immutable review, run normal native/prepack/installed/audit/license and exact-head four-platform CI, then normal expected-head merge and main verification."
+  "next_unverified_action": "Review final immutable receipts and pass final-head CI, normal expected-head merge and main checks; then continue dependency-ready AUG005/#84 isolation work."
 }

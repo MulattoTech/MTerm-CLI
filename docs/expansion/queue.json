@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "asOf": "2026-11-08T01:15:59.211Z",
+  "asOf": "2026-11-08T01:29:50.351Z",
   "repository": "MulattoTech/MTerm-CLI",
   "epic": 81,
   "baseSha": "d6eb0fa8a3df8a22abdec587f405e1105f78acb8",
@@ -526,7 +526,7 @@
       "status": "in_progress",
       "owner": "ChatGPT Web / GPT-6 Astra Pro",
       "branch": "feat/aug-012-resource-budgets-20261108",
-      "pr": null,
+      "pr": 203,
       "mergeSha": null,
       "accepted": false,
       "testPlan": "common contract + original issue acceptance at issue URL",
@@ -536,9 +536,9 @@
         "darwin-arm64",
         "darwin-x64"
       ],
-      "automatedTests": "Windows Node24.21.0:23 baseline RED; independent stale-observation regression1RED; corrected focused70/70 including24 resource cases. Immutable full native/installed/hosted qualification next.",
+      "automatedTests": "Code146cbad: native412/412, normal prepack/self-host/installed checks,24resource+29pack+18provenance, audit0 and9/9 hosted checks. Other hosts400pass+12existing skips; all24 resource cases pass on every host. Final metadata-head checks/review and merge/main remain next.",
       "actualClient": "Real official SDK stdio hosts and synthetic owned pack/native child processes; actual ChatGPT-to-MTerm app integration remains unverified.",
-      "blocker": "Per-host admission slice under qualification. Hard CPU/GPU/RAM/disk-write quotas, cross-host authenticated coordination and full issue acceptance remain open.",
+      "blocker": "Per-host admission slice qualified. Hard CPU/GPU/RAM/disk-write quotas, cross-host coordination and full AUG012 acceptance remain open. No owner review is pending.",
       "declaredIssueDependencies": [],
       "ownerAuthorization": "docs/OWNER_AUTHORIZATION.md"
     },
@@ -6557,31 +6557,6 @@
     }
   },
   "nextCandidatesAfterPilot": [
-    {
-      "issue": 92,
-      "reason": "Extend existing bounded process and concurrency implementations with scoped resource budgets.",
-      "acceptancePrerequisites": {
-        "cli": [
-          {
-            "id": "CLI-259",
-            "stage": "implementation",
-            "dependencies": [],
-            "blocker": null
-          },
-          {
-            "id": "CLI-286",
-            "stage": "validated",
-            "dependencies": [
-              "CLI-033",
-              "CLI-264"
-            ],
-            "blocker": null
-          }
-        ],
-        "issues": [],
-        "assessment": "Scoped implementation candidate, not completed prerequisite or capability acceptance."
-      }
-    },
     {
       "issue": 84,
       "reason": "Evaluate an actual OS sandbox boundary while preserving existing trusted-root and execution controls.",

@@ -597,10 +597,9 @@
     "AUG-012": {
       "scope": "Per-host bounded work and pending starts, recoverable owned cleanup, per-job retained-output/runtime ceilings, declared disk admission and explicit approved-directory placement",
       "limitations": [
-        "Native process/SDK and disk success/denial are real; unsupported/permission/invalid statistics and post-spawn errors are controlled injections, explicitly labeled.",
-        "Disk estimates and a conservative host pool reject observed/declared overcommit; a completion epoch prevents reuse after owned writes and release. No hard disk-write quota or hostile-writer isolation is claimed.",
-        "Admission deadlines are cooperative; physical filesystem work retains its slot until settlement. Parent-job and retained-output bounds do not measure descendant CPU/RSS.",
-        "Full native/prepack/installed/hosted qualification and immutable source/receipt review remain next."
+        "Scoped per-host admission/cleanup and disk scenarios qualified on four hosts; hard CPU/GPU/RAM/disk-write quotas, cross-host coordination and full AUG012 acceptance remain open.",
+        "Unsupported, permission and invalid-statistics backend cases are explicit injections; real platform probes/success/denial and owned process/SDK behavior are separately recorded.",
+        "Launcher and all three dependency package payloads are unchanged; full transitive redistribution and actual ChatGPT integration are not granted."
       ],
       "fixtures": [
         {
@@ -614,9 +613,252 @@
           "kind": "historical-qualification",
           "path": "docs/validation/2026-11-08-aug012-development.json",
           "sha256": "f1c29199dc410e3346790e11a69c8ef2ee4364e1a34fb333b267db9ffca3e976"
+        },
+        {
+          "kind": "historical-qualification",
+          "path": "docs/validation/2026-11-08-aug012-qualification.json",
+          "sha256": "1b45cb219c4514d47c293000ec992099d1860ef0952bf0b74cfce107c5b4f74c"
+        },
+        {
+          "kind": "historical-qualification",
+          "path": "docs/validation/2026-11-08-aug012-source-review.json",
+          "sha256": "b547f3d5f1644710a9d743c41beaefce6d82072e1c525f89a193dbefac382cc8"
         }
       ],
-      "platforms": {},
+      "platforms": {
+        "win32-x64": {
+          "support": "supported",
+          "reason": "Scoped per-host admission scenarios executed on this host; injected unsupported backend behavior does not validate an untested OS or award full capability acceptance.",
+          "subject": {
+            "testedCommit": "146cbad563def63bb0c8c3c92fc4d82b916108c0",
+            "subjectFingerprint": "15d050389744f933ba01d66ae0c7cb1adaa878ef47322507b0843828ca502152",
+            "backend": {
+              "name": "MTerm-CLI ProcessService / node:fs.statfs",
+              "version": "0.0.1-preview.1"
+            },
+            "runtime": {
+              "name": "node",
+              "version": "v24.21.0"
+            }
+          },
+          "cases": {
+            "success": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug012-win32-x64.json",
+                "sha256": "b01c23f9806dce1f693cf22b0314ed3ddfe568987a531a9657e9afa3918034ee"
+              }
+            },
+            "permission_denied": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug012-win32-x64.json",
+                "sha256": "b01c23f9806dce1f693cf22b0314ed3ddfe568987a531a9657e9afa3918034ee"
+              }
+            },
+            "cancelled": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug012-win32-x64.json",
+                "sha256": "b01c23f9806dce1f693cf22b0314ed3ddfe568987a531a9657e9afa3918034ee"
+              }
+            },
+            "deadline": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug012-win32-x64.json",
+                "sha256": "b01c23f9806dce1f693cf22b0314ed3ddfe568987a531a9657e9afa3918034ee"
+              }
+            },
+            "unsupported_platform": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug012-win32-x64.json",
+                "sha256": "b01c23f9806dce1f693cf22b0314ed3ddfe568987a531a9657e9afa3918034ee"
+              }
+            }
+          }
+        },
+        "linux-x64": {
+          "support": "supported",
+          "reason": "Scoped per-host admission scenarios executed on this host; injected unsupported backend behavior does not validate an untested OS or award full capability acceptance.",
+          "subject": {
+            "testedCommit": "146cbad563def63bb0c8c3c92fc4d82b916108c0",
+            "subjectFingerprint": "15d050389744f933ba01d66ae0c7cb1adaa878ef47322507b0843828ca502152",
+            "backend": {
+              "name": "MTerm-CLI ProcessService / node:fs.statfs",
+              "version": "0.0.1-preview.1"
+            },
+            "runtime": {
+              "name": "node",
+              "version": "v24.21.0"
+            }
+          },
+          "cases": {
+            "success": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug012-linux-x64.json",
+                "sha256": "62de6a6efa48662fa62989a536414648561f0b797b3a63fd684c30e581084db1"
+              }
+            },
+            "permission_denied": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug012-linux-x64.json",
+                "sha256": "62de6a6efa48662fa62989a536414648561f0b797b3a63fd684c30e581084db1"
+              }
+            },
+            "cancelled": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug012-linux-x64.json",
+                "sha256": "62de6a6efa48662fa62989a536414648561f0b797b3a63fd684c30e581084db1"
+              }
+            },
+            "deadline": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug012-linux-x64.json",
+                "sha256": "62de6a6efa48662fa62989a536414648561f0b797b3a63fd684c30e581084db1"
+              }
+            },
+            "unsupported_platform": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug012-linux-x64.json",
+                "sha256": "62de6a6efa48662fa62989a536414648561f0b797b3a63fd684c30e581084db1"
+              }
+            }
+          }
+        },
+        "darwin-arm64": {
+          "support": "supported",
+          "reason": "Scoped per-host admission scenarios executed on this host; injected unsupported backend behavior does not validate an untested OS or award full capability acceptance.",
+          "subject": {
+            "testedCommit": "146cbad563def63bb0c8c3c92fc4d82b916108c0",
+            "subjectFingerprint": "15d050389744f933ba01d66ae0c7cb1adaa878ef47322507b0843828ca502152",
+            "backend": {
+              "name": "MTerm-CLI ProcessService / node:fs.statfs",
+              "version": "0.0.1-preview.1"
+            },
+            "runtime": {
+              "name": "node",
+              "version": "v24.21.0"
+            }
+          },
+          "cases": {
+            "success": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug012-darwin-arm64.json",
+                "sha256": "ffe23c5d7ecdcd2793b7a4a5b439728a88cb146eb83fb6ed65eb4ef61f938043"
+              }
+            },
+            "permission_denied": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug012-darwin-arm64.json",
+                "sha256": "ffe23c5d7ecdcd2793b7a4a5b439728a88cb146eb83fb6ed65eb4ef61f938043"
+              }
+            },
+            "cancelled": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug012-darwin-arm64.json",
+                "sha256": "ffe23c5d7ecdcd2793b7a4a5b439728a88cb146eb83fb6ed65eb4ef61f938043"
+              }
+            },
+            "deadline": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug012-darwin-arm64.json",
+                "sha256": "ffe23c5d7ecdcd2793b7a4a5b439728a88cb146eb83fb6ed65eb4ef61f938043"
+              }
+            },
+            "unsupported_platform": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug012-darwin-arm64.json",
+                "sha256": "ffe23c5d7ecdcd2793b7a4a5b439728a88cb146eb83fb6ed65eb4ef61f938043"
+              }
+            }
+          }
+        },
+        "darwin-x64": {
+          "support": "supported",
+          "reason": "Scoped per-host admission scenarios executed on this host; injected unsupported backend behavior does not validate an untested OS or award full capability acceptance.",
+          "subject": {
+            "testedCommit": "146cbad563def63bb0c8c3c92fc4d82b916108c0",
+            "subjectFingerprint": "15d050389744f933ba01d66ae0c7cb1adaa878ef47322507b0843828ca502152",
+            "backend": {
+              "name": "MTerm-CLI ProcessService / node:fs.statfs",
+              "version": "0.0.1-preview.1"
+            },
+            "runtime": {
+              "name": "node",
+              "version": "v24.21.0"
+            }
+          },
+          "cases": {
+            "success": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug012-darwin-x64.json",
+                "sha256": "7dbbe5156049805ba93bc5addb477955bf33f71e737097358abd8c6b9f026245"
+              }
+            },
+            "permission_denied": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug012-darwin-x64.json",
+                "sha256": "7dbbe5156049805ba93bc5addb477955bf33f71e737097358abd8c6b9f026245"
+              }
+            },
+            "cancelled": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug012-darwin-x64.json",
+                "sha256": "7dbbe5156049805ba93bc5addb477955bf33f71e737097358abd8c6b9f026245"
+              }
+            },
+            "deadline": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug012-darwin-x64.json",
+                "sha256": "7dbbe5156049805ba93bc5addb477955bf33f71e737097358abd8c6b9f026245"
+              }
+            },
+            "unsupported_platform": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug012-darwin-x64.json",
+                "sha256": "7dbbe5156049805ba93bc5addb477955bf33f71e737097358abd8c6b9f026245"
+              }
+            }
+          }
+        }
+      },
       "acceptanceReview": null
     }
   }

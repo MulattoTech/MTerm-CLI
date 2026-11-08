@@ -1,3 +1,13 @@
+# Current continuation — AUG-011 prerequisite, 2026-11-08T04:02:51.301Z
+
+PR205 is delivered as dd94158365b648bc1fe42259996c686d7de42313 with6/6 final and6/6 main checks; original649 OOM failure remains preserved and unexplained. Main artifact13602373638 SHA2560a05d225d4f1eb60b6e6f3acff5871ae0cb33cebe69c1d1fda3013417864cb8e contains42 members,source12/installed12,16 strict probes and144 cleanup observations.
+
+#93 starts CLI157/165 prerequisites in H:\MTechLabs\Dev\MTerm-CLI-AUG011-20261108, branch feat/aug-011-update-check-20261108. Code af060d499ab2136c6e8e0d7cc68ee3923d0dd353 adds a rooted offline read-only candidate plan with exact raw-byte/provenance binding and registry-version coherence. Native42 cases pass after RED41. See [contract](parity/PACK_UPDATES.md) and [development receipt](validation/2026-11-08-aug011-development.json). Normal build/check, installed-package/audit, independent review and hosted gates remain next.
+
+CLI157 advances to implementation for scoped comparison; CLI165 stays not_started because no execution/extraction guarantee is delivered. No full acceptance; scopes/weights/seed unchanged. Actual ChatGPT connector integration remains unverified; MTerm tools are absent from the exposed registry. One owner/one read-only peer; zero model calls, no recurring owner manual review, original dirty checkout/unrelated workloads preserved.
+
+---
+
 # AUG-005 reporting repair qualified — 2026-11-08T03:33:01.392Z
 
 PR #205 code a589fc1fa16709ec28b229f3f34b83194ae5d588 passed all six applicable checks and independent review. The [qualification](validation/2026-11-08-aug005-diagnostic-qualification.json) records 12/12 source and 12/12 actual installed tests, 16 memory probes with exit 137 and oomKilled:true, and 144 successful cleanup steps. The actual PR checkout, 91cbccac63d99823b73bed97b22d65d75521d5db, has the reviewed tree 304e31d44b07f19fad29e2f9af3852ef00ae9987.

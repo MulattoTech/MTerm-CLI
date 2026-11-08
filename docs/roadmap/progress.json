@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baseline": "cli-300-initial-effort-v1",
-  "reviewedAt": "2026-11-08T03:02:15.612Z",
+  "reviewedAt": "2026-11-08T04:02:51.301Z",
   "sourceSeedSha256": "09a5f76c7d5f83add8383b3cec3d02fb3fd41c9b2c4c80fbd482ffae29f457a2",
   "scope": "Full 300-item desired product, not just this Windows local MCP preview",
   "weightBasis": "Initial bands: ordinary acceptance8h; narrow UI/entry4h; Web40h; auth/update24h; platform/security/local tools16h. These rough baseline bands are frozen on first review.",
@@ -3355,7 +3355,7 @@
       "section": "Transactional updater",
       "title": "Implement non-mutating update check",
       "acceptance": "--check reports available/reviewed differences without changing installed state or auth.",
-      "stage": "not_started",
+      "stage": "implementation",
       "weight": 24,
       "remainingHours": [
         12,
@@ -3364,11 +3364,14 @@
       "estimateBasis": "Initial rough engineering range; not a schedule or measured AI runtime. Security/upstream/platform uncertainty can increase this estimate.",
       "eta": "Unscheduled",
       "blocker": null,
-      "evidence": [],
-      "notes": "Requirement preserved; no implementation or acceptance evidence in this local candidate.",
+      "evidence": [
+        "docs/parity/PACK_UPDATES.md",
+        "docs/validation/2026-11-08-aug011-development.json"
+      ],
+      "notes": "Offline rooted --check compares one owner-pinned ABI1 candidate, current registry/payload and exact provenance coverage without writes/auth changes.42 focused native cases passed; full updater selection, hosted/installed qualification and acceptance remain open.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-11-08-aug011-update-check"
     },
     {
       "id": "CLI-158",
@@ -3524,11 +3527,14 @@
       "estimateBasis": "Initial rough engineering range; not a schedule or measured AI runtime. Security/upstream/platform uncertainty can increase this estimate.",
       "eta": "Unscheduled",
       "blocker": null,
-      "evidence": [],
-      "notes": "Requirement preserved; no implementation or acceptance evidence in this local candidate.",
+      "evidence": [
+        "docs/parity/PACK_UPDATES.md",
+        "docs/validation/2026-11-08-aug011-development.json"
+      ],
+      "notes": "Candidate snapshot/hash/provenance foundation has42 focused cases, but this command executes/extracts nothing. Broad runtime path-to-execution race and arbitrary import closure remain open; no CLI165 acceptance or stage credit.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-11-08-aug011-update-check"
     },
     {
       "id": "CLI-166",

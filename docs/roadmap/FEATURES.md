@@ -2188,17 +2188,17 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 ## CLI-157 — Implement non-mutating update check
 
-![0% not_started](bars/cli-157.svg)
+![40% implementation](bars/cli-157.svg)
 
 **Objective / acceptance:** --check reports available/reviewed differences without changing installed state or auth.
 
-**Current scope:** Requirement preserved; no implementation or acceptance evidence in this local candidate.
+**Current scope:** Offline rooted --check compares one owner-pinned ABI1 candidate, current registry/payload and exact provenance coverage without writes/auth changes.42 focused native cases passed; full updater selection, hosted/installed qualification and acceptance remain open.
 
 **Baseline weight:** 24 h (rough). **Remaining:** 12–48 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** None; no implementation credit.
+**Evidence:** `docs/parity/PACK_UPDATES.md`, `docs/validation/2026-11-08-aug011-development.json`
 
 ## CLI-158 — Display old-to-new changes before apply
 
@@ -2304,13 +2304,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Untrusted or modified binaries/scripts are never executed.
 
-**Current scope:** Requirement preserved; no implementation or acceptance evidence in this local candidate.
+**Current scope:** Candidate snapshot/hash/provenance foundation has42 focused cases, but this command executes/extracts nothing. Broad runtime path-to-execution race and arbitrary import closure remain open; no CLI165 acceptance or stage credit.
 
 **Baseline weight:** 24 h (rough). **Remaining:** 12–48 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** None; no implementation credit.
+**Evidence:** `docs/parity/PACK_UPDATES.md`, `docs/validation/2026-11-08-aug011-development.json`
 
 ## CLI-166 — Reject archive traversal and link escapes
 

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "asOf": "2026-11-08T03:31:53.950Z",
+  "asOf": "2026-11-08T04:02:51.301Z",
   "repository": "MulattoTech/MTerm-CLI",
   "epic": 81,
   "baseSha": "d7b7c4fb19867f7c5f9727598442c29c12d43709",
@@ -226,19 +226,19 @@
         "docker/mcp-gateway",
         "e2b-dev/mcp-server"
       ],
-      "status": "in_progress",
+      "status": "partial_delivery",
       "owner": "ChatGPT Web / GPT-6 Astra Pro",
       "branch": "fix/aug-005-live-oom-evidence-20261108",
       "pr": 205,
-      "mergeSha": "649142ea222b67f31f2165910a3a66b80bc7847d",
+      "mergeSha": "dd94158365b648bc1fe42259996c686d7de42313",
       "accepted": false,
       "testPlan": "common contract + original issue acceptance at issue URL",
       "platformScope": [
         "linux-x64"
       ],
-      "automatedTests": "Exacta589:6/6 configured checks passed; native/Windows445/445, otherhosts433+12existing skips; installed28isolation/24resource/29pack/18provenance. Actual source12/12 and installed12/12 with16memory probes/144cleanup steps. Original main649 OOM cause remains unresolved and recorded; reporting defect repaired, no product change.",
+      "automatedTests": "Exacta589:6/6 configured checks passed; native/Windows445/445, otherhosts433+12existing skips; installed28isolation/24resource/29pack/18provenance. Actual source12/12 and installed12/12 with16memory probes/144cleanup steps. Original main649 OOM cause remains unresolved and recorded; reporting defect repaired, no product change. Final7b5a9a6 and mergeddd941583 both6/6; real main source12/installed12,16 strict OOM probes and144 cleanup observations passed. Original649 failed main unchanged.",
       "actualClient": "Actual official SDK isolated-only calls, native denial, request cancellation and owned cleanup exercised inside live Linux qualification. Actual ChatGPT-to-MTerm connector invocation remains unverified.",
-      "blocker": "Qualified reporting repair needs final metadata review/checks and normal expected-head merge/main verification. Original OOM observation remains unexplained; full capability/rights/client acceptance remains open.",
+      "blocker": "Original649 OOM cause remains unresolved. PR205 reporting repair delivered with main verified; full capability/rights/client acceptance remains open.",
       "declaredIssueDependencies": [],
       "ownerAuthorization": "docs/OWNER_AUTHORIZATION.md"
     },
@@ -489,18 +489,24 @@
         "docker/mcp-gateway",
         "mcp-use/mcp-use"
       ],
-      "status": "proposed",
-      "owner": null,
-      "branch": null,
+      "status": "in_progress",
+      "owner": "ChatGPT Web / GPT-6 Astra Pro",
+      "branch": "feat/aug-011-update-check-20261108",
       "pr": null,
       "mergeSha": null,
       "accepted": false,
       "testPlan": "common contract + original issue acceptance at issue URL",
-      "platformScope": "not yet selected; retain unsupported environments as explicit blockers",
-      "automatedTests": "not run",
-      "actualClient": "not verified",
-      "blocker": "Not implemented or accepted; exact upstream rights, platform scope and declared prerequisite acceptance need qualification.",
-      "declaredIssueDependencies": []
+      "platformScope": [
+        "win32-x64",
+        "linux-x64",
+        "darwin-arm64",
+        "darwin-x64"
+      ],
+      "automatedTests": "Development RED1pass/41fail to GREEN42/42 on Windows. Normal/installed/hosted qualification pending.",
+      "actualClient": "Actual local CLI exercised; actual ChatGPT-to-MTerm connector unavailable and unverified.",
+      "blocker": "Prerequisite comparison only. Transactional installation, notice-retaining staging, concurrency-safe activation, interruption recovery and rollback remain open.",
+      "declaredIssueDependencies": [],
+      "ownerAuthorization": "docs/OWNER_AUTHORIZATION.md"
     },
     {
       "id": "AUG-012",

@@ -408,3 +408,37 @@ test('failed diagnostics cannot mask a false OOM result or make it pass', async 
     assert.equal(diagnostic.failure.code, 'INVALID_DIAGNOSTIC_WINDOW');
   }
 });
+
+test('journal collector filters the exact owned ID and projected fields before its byte budget', async () => {
+  const { readOwnedFailureJournal } = await import('./isolation-live-evidence.mjs');
+  const id = 'a'.repeat(64);
+  let calls = 0;
+  const result = await readOwnedFailureJournal(
+    async (file, args, options) => {
+      calls++;
+      assert.equal(file, '/usr/bin/journalctl');
+      assert.equal(options.timeout, 3000);
+      assert.equal(options.maxBuffer, 65536);
+      if (
+        args[args.indexOf('--grep') + 1] !== id ||
+        !args.includes('--output-fields=MESSAGE,__REALTIME_TIMESTAMP')
+      )
+        throw Object.assign(new Error('Broad journal output exceeds the observed subprocess byte ceiling'), {
+          code: 'ERR_CHILD_PROCESS_STDIO_MAXBUFFER',
+        });
+      return {
+        stdout:
+          JSON.stringify({
+            MESSAGE: 'Memory cgroup out of memory: /docker/' + id,
+            __REALTIME_TIMESTAMP: '1794112504000000',
+          }) + '\n',
+        stderr: '',
+      };
+    },
+    { containerId: id, since: '2026-11-08T04:35:03.802Z', until: '2026-11-08T04:35:04.115Z' },
+  );
+  assert.equal(result.status, 'available');
+  assert.equal(result.records.length, 1);
+  assert.equal(result.historyComplete, false);
+  assert.equal(calls, 1);
+});

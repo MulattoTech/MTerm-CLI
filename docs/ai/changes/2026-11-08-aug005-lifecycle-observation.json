@@ -3,7 +3,7 @@
   "provider": "OpenAI",
   "model": "GPT-6 Astra Pro",
   "started_at": "2026-11-08T04:12:00Z",
-  "updated_at": "2026-11-08T04:29:38.148Z",
+  "updated_at": "2026-11-08T04:43:03.921Z",
   "base_sha": "dd94158365b648bc1fe42259996c686d7de42313",
   "issues": [
     84,
@@ -23,13 +23,15 @@
     "docs/expansion/evidence.json",
     "docs/expansion/queue.json",
     "docs/roadmap/progress.json",
-    "docs/HANDOFF.md"
+    "docs/HANDOFF.md",
+    "docs/validation/2026-11-08-aug005-lifecycle-failure.json"
   ],
   "decisions": [
     "Standing owner authorization; one implementation owner plus independent read-only peer; no Codex/model lane.",
     "Causal fixture correction preserves product timers, IPC and cleanup; false transient-state polling is removed.",
     "Original wait/terminal/cleanup values and errors remain authoritative; bounded readonly history is secondary and incomplete.",
-    "Preserve all previous failures and receipts; no blind reruns, cause inference, source/runtime change or acceptance award."
+    "Preserve all previous failures and receipts; no blind reruns, cause inference, source/runtime change or acceptance award.",
+    "The newly captured raw false OOM state and event history remain a failure. Narrow journal query before its unchanged byte ceiling; do not substitute later observations or infer a killing cause."
   ],
   "tests": [
     {
@@ -59,6 +61,14 @@
     {
       "command": "artifacts/aug005-lifecycle/green-primary-error-preservation.log",
       "result": "{\"tests\":13,\"pass\":13,\"fail\":0,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "730dfb4 qualification",
+      "result": "Normalnative454/454,package/licenses,audit0,isolatedparser and5hostedchecks pass; mandatoryLinux failed probe5OOMfalse,installedskipped. Allfailureevidence retained."
+    },
+    {
+      "command": "journal prefilter development",
+      "result": "ScopedRED0/1 to fullhelperGREEN14/14, no changedruntime orlimits."
     }
   ],
   "roadmap_updates": [
@@ -79,5 +89,5 @@
     "Full rights, hostile-load/restart guarantees, platform isolation and actual ChatGPT client acceptance remain open."
   ],
   "checkpoint": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG005-Lifecycle-20261108\\artifacts\\aug005-lifecycle",
-  "next_unverified_action": "Independent source review and exact committed native/installed/hosted actual Linux qualification."
+  "next_unverified_action": "Independent new source/pin review, new committed gates and actual source/installed Linux qualification; no blind retry."
 }

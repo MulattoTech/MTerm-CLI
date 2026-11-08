@@ -257,6 +257,10 @@ export async function readOwnedFailureJournal(exec, options) {
       [
         '--no-pager',
         '--output=json',
+        // Select the exact owned subject before stdout buffering, not after broad journal materialization.
+        '--output-fields=MESSAGE,__REALTIME_TIMESTAMP',
+        '--grep',
+        options.containerId,
         '--since',
         options.since,
         '--until',

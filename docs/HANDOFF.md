@@ -1,3 +1,11 @@
+# PR207 failed live gate retained; bounded journal correction — 2026-11-08T04:43:03.921Z
+
+At730dfb4, native454/454,package/license,audit0,isolated parser andfive hostedchecks pass; mandatory actual Linux fails. Probe5 has rawbooleanfalse in both terminal and cleanup inspection,exit137,emptyoutput,confirmedremoval. Exact-ID Docker history has create/start/die/destroy withoutoom, but is incomplete. All12scenario/72stepcleanups pass. Journal subprocess buffer overflow was retained without stream identity; exact-ID filtering and field projection now happen inside journalctl before buffering. RED0/1 to helperGREEN14/14. Product,limits,strictOOMassertion and all prior failures remain unchanged. [Failure/correction record](validation/2026-11-08-aug005-lifecycle-failure.json).
+
+PR207 remains draft; original killing cause and native registrationEPERM cause unresolved. Ignored registration observer separatelypassed1/1 withone real rename andno open modulehandles; it does not explain priorfailures. New exact-head native/hosted/source/installed live gates are next. No failedoldrun was retried. PR206 at4985 stays parked. Standing authorization applies; oneowner/onepeer,zero model calls. AUG0/117,CLI0complete,DCP0/48,WEB0/12; matrix60passed/2280unrun/0accepted. Preserve dirty primary work and all checkpoints.
+
+---
+
 # AUG-005 causal lifecycle correction under qualification — 2026-11-08T04:29:38.148Z
 
 Main remains dd94158365b648bc1fe42259996c686d7de42313 (PR205), verified6/6. PR206 at4985db7f885cab5edc466e80cbbf9ce540aaaaa3 remains draft and blocked by actual Linux OOM attribution, hosted synthetic phase polling and native registration rename failures. All original artifacts/logs are retained; no failed run retried. See [development and failure record](validation/2026-11-08-aug005-lifecycle-development.json).

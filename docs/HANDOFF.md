@@ -1,3 +1,16 @@
+# ChatGPT account-plugin operations checkpoint — 2026-11-08 UTC
+
+See [ChatGPT connector operations](deployment/CHATGPT_CONNECTOR.md) for the
+owner's separate 53-tool App verification, original private plugin v0.2.2
+binding, and failed duplicate-wrapper cleanup. The original plugin is still
+installed, but its connected App grant needs normal OAuth again; do not claim
+the single-plugin end-to-end test passed. Keep the 53-tool owner service
+distinct from this repository's read-only staging gateway. GitHub PR-based
+development remains the DEV lane; no second production-capable DEV plugin,
+Codex/model lane, runtime deployment or roadmap acceptance change is implied.
+
+---
+
 # PR206 integration resumed on qualified PR208 main — 2026-11-08T08:37:54.922Z
 
 PR199 and PR208 are already merged. Current main is `ad1571b94c70fb8a0f4542302f5d40c6d80a97d7`; its tree matches the reviewed PR208 head and all six main checks passed. This ordinary merge combines that main with preserved PR206 head `3ca898791a9178fb4e94dcdaaf3ead7df7a543bf`.

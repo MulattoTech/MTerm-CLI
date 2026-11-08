@@ -1,0 +1,61 @@
+{
+  "change_id": "2026-11-08-chatgpt-connector-operations",
+  "provider": "OpenAI",
+  "model": "unknown",
+  "identity_basis": "ChatGPT connected-tools session; exact model variant unverified",
+  "updated_at_utc": "2026-11-08T19:42:58Z",
+  "base_sha": "00e1c9ef587db3419ce3801bf1271fcf68358fd1",
+  "branch": "chore/chatgpt-plugin-source-20261108",
+  "primary_issue": "OPS/#209: canonical ChatGPT OAuth lifecycle; one plugin and safe DEV-to-production improvement workflow",
+  "summary": "Document the verified owner MCP App integration separately from this repository's staging gateway, a failed wrapper-uninstall authorization boundary, and a branch/PR staging-first release process. No runtime source or acceptance stage changes.",
+  "files_modified": [
+    "README.md",
+    "docs/HANDOFF.md"
+  ],
+  "files_created": [
+    "docs/deployment/CHATGPT_CONNECTOR.md",
+    "docs/ai/changes/2026-11-08-chatgpt-connector-operations.json"
+  ],
+  "decisions": [
+    "Retain one canonical installed MTerm-CLI plugin; do not create a second DEV plugin sharing the owner App or endpoint.",
+    "The 53-tool owner bridge and this repository's six-tool staging gateway are separate products until exact source linkage is verified.",
+    "Document that uninstalling the duplicate wrapper revoked the shared OAuth grant; do not claim a passing single-plugin post-cleanup test.",
+    "No secrets, private App IDs, token values or account-specific plugin binding manifests are committed to this public repository.",
+    "Preserve all 300 CLI requirement stages and separate WEB/DCP/AUG scopes; operational evidence alone does not award acceptance."
+  ],
+  "tests": [
+    {
+      "name": "Owner MCP App live read-only smoke before duplicate wrapper uninstall",
+      "result": "PASS: 53 tools enumerated; get_file_info returned approved package.json metadata, system_inventory returned Windows host information, and SymPy evaluation returned 21. Calls were attributed to the owner App, not to this repository's six-tool staging gateway."
+    },
+    {
+      "name": "Original private plugin package readback",
+      "result": "PASS: Plugin Creator readback showed v0.2.2, retained recovery skill and MCP files, and an App dependency. ChatGPT UI displayed Apps 1 Connected before wrapper removal."
+    },
+    {
+      "name": "Wrapper uninstall and fresh account state",
+      "result": "FAIL: The duplicate wrapper uninstalled, but a fresh original-plugin page showed Connect and the prior tool namespace returned -32001 Unknown tool. OAuth needs completion; no single-plugin PASS claimed."
+    },
+    {
+      "name": "Node 24.22.1 repository development gates in isolated scratch clone",
+      "result": "npm ci --ignore-scripts succeeded (19 packages); npm run build:code succeeded. npm test failed in this Linux execution environment: isolation.test.mjs could not create AF_UNIX test sockets (listen EPERM). This is a host restriction, not evidence of a source fix."
+    },
+    {
+      "name": "Documentation JSON and whitespace validation",
+      "result": "jq empty on this change record and git diff --check both exited zero."
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "ids": "CLI-066,CLI-067",
+      "assessment": "Reviewed the separate client/connector observations. Existing stages, maturity, weights, estimates, dependencies and blockers remain unchanged; final original-plugin live verification is pending."
+    }
+  ],
+  "codex_model_calls": 0,
+  "limitations": [
+    "Fresh OAuth callback and original-plugin tool call are not verified after duplicate wrapper uninstall.",
+    "The publicly documented CLI staging gateway is not the separately hosted 53-tool owner bridge.",
+    "No release was deployed by this GitHub documentation change."
+  ],
+  "next_unverified_action": "Complete owner OAuth for the original plugin, verify a fresh file-metadata call, identify the 53-tool bridge's owning source, then qualify and reconcile release artifacts."
+}

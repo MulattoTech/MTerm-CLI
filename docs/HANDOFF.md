@@ -1,3 +1,23 @@
+# AUG-012 exact-code qualification — 2026-11-08 UTC
+
+[PR #203](https://github.com/MulattoTech/MTerm-CLI/pull/203) code146cbad563def63bb0c8c3c92fc4d82b916108c0 passed native412/412, normal prepack, self-host, real installed24resource+29pack+18provenance, productionaudit0 and9/9 hosted checks. Other hosts passed400 with12existing Windows-only skips; all24 new resource cases passed on every platform. Independent review approved140source entries and verified25evidence/31development pins after finding and reproducing the now-fixed stale disk-observation race.
+
+[Qualification](validation/2026-11-08-aug012-qualification.json), [source review](validation/2026-11-08-aug012-source-review.json), [contract](parity/RESOURCE_BUDGETS.md) and four platform receipts preserve exact versions/hashes and limits. Runtime adds23799MTerm bytes across12changed/new files;997runtime files total. Launcher/all3dependencies are identical to PR202. Windows installed14520712bytes, Linux/macOS14519151bytes. The matrix records60passed scoped scenarios,2280unrun and0accepted capabilities.
+
+Final metadata-head checks/review, normal merge and main verification remain next. Then continue AUG005/#84 with its existing CLI267/276 boundaries. Read-only reconnaissance found Docker Desktop4.98.0/Engine29.9.2 Linux amd64 on the authorized Windows device; no container, daemon, model or isolation workload was started by that probe. Keep hard CPU/GPU/RAM/disk-write, cross-host and actual ChatGPT integration acceptance open until implemented and exercised. No owner manual review is pending. AUG0/117, CLI29.12%/0complete, DCP0/48 and WEB0/12 remain unchanged.
+
+---
+
+# Current continuation — AUG-012, 2026-11-08 UTC
+
+PR202 is delivered at d6eb0fa8a3df8a22abdec587f405e1105f78acb8, with9/9 final checks, independent immutable review, matching merge tree and5/5 main checks. PR199/200/201 are also delivered. Epic81 checkpoint6715286912 supersedes older pending text below.
+
+The sole implementation owner now works on AUG-012/#92 in H:\MTechLabs\Dev\MTerm-CLI-AUG012-20261108, branch feat/aug-012-resource-budgets-20261108. The primary dirty checkout remains preserved. Twenty-three cases failed against merged baseline; independent review added a reproduced stale disk-observation regression. Corrected native focused70/70 includes24 resource cases. See [contract](parity/RESOURCE_BUDGETS.md) and [retained development record](validation/2026-11-08-aug012-development.json).
+
+Full immutable native/installed/security/license/platform qualification and independent source/receipt review remain next. Hard CPU/GPU/RAM/disk-write quotas, cross-host coordination and actual ChatGPT app integration remain unaccepted. AUG0/117, CLI29.12% maturity/0complete, DCP0/48 and WEB0/12 are unchanged. Routine qualified delivery needs no recurring owner review. No Codex/model calls were made.
+
+---
+
 # AUG-003 exact-code qualification — 2026-11-08 UTC
 
 [PR #202](https://github.com/MulattoTech/MTerm-CLI/pull/202) code d42d87e03f456e78262cdaff66e2bf8925606064 passed native388/388, normal prepack, self-host, real installed29pack+18provenance checks, advisoryaudit0 and9/9 hosted checks. Other hosts passed376 with12existing Windows-only skips; all13 new catalog cases passed on every platform. Independent review approved136sourceentries and the actual spawn/selection/schema/refresh boundaries.

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baseline": "cli-300-initial-effort-v1",
-  "reviewedAt": "2026-11-08T00:33:54.321Z",
+  "reviewedAt": "2026-11-08T01:29:50.351Z",
   "sourceSeedSha256": "09a5f76c7d5f83add8383b3cec3d02fb3fd41c9b2c4c80fbd482ffae29f457a2",
   "scope": "Full 300-item desired product, not just this Windows local MCP preview",
   "weightBasis": "Initial bands: ordinary acceptance8h; narrow UI/entry4h; Web40h; auth/update24h; platform/security/local tools16h. These rough baseline bands are frozen on first review.",
@@ -5780,12 +5780,21 @@
       "evidence": [
         "tests/cli.test.mjs",
         "tests/processes.test.mjs",
-        "package.json"
+        "package.json",
+        "tests/resource-budgets.test.mjs",
+        "docs/parity/RESOURCE_BUDGETS.md",
+        "docs/validation/2026-11-08-aug012-development.json",
+        "docs/validation/2026-11-08-aug012-qualification.json",
+        "docs/validation/2026-11-08-aug012-source-review.json",
+        "docs/validation/2026-11-08-aug012-win32-x64.json",
+        "docs/validation/2026-11-08-aug012-linux-x64.json",
+        "docs/validation/2026-11-08-aug012-darwin-arm64.json",
+        "docs/validation/2026-11-08-aug012-darwin-x64.json"
       ],
-      "notes": "Help is lazy, process queues bounded and packed-install verification prepared. Quota-line latency and full-platform bundled footprint are not implemented.",
+      "notes": "Help is lazy, process queues bounded and packed-install verification prepared. Quota-line latency and full-platform bundled footprint are not implemented. 2026-11-08 AUG-012: per-host normal/control lanes, pending admissions, narrowed job runtime/output, declared disk reservations and explicit placement are under qualification. Native focused70/70, including a reproduced and fixed owned-writer completion race. No stage/acceptance/weight/estimate/blocker change. Exact146cbad qualification: native412/412, actual installed24resource+29pack+18provenance, productionaudit0 and9/9 hosted checks. Other hosts400pass+12existing Windows-only skips; all24 new cases pass. Runtime adds23799 MTerm bytes; launcher/dependency payloads unchanged. Independent review passed140 source entries,25 evidence pins and31 development pins. Full acceptance and final metadata delivery remain separate.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "2026-11-08-aug012-resource-budgets"
     },
     {
       "id": "CLI-260",
@@ -6833,15 +6842,24 @@
         "docs/validation/2026-11-02-utf16le-read.md",
         "docs/validation/2026-11-02-utf16le-read-development.json",
         "docs/validation/2026-11-02-utf16le-read-source-review.json",
-        "tests/compat-read-utf16.test.mjs"
+        "tests/compat-read-utf16.test.mjs",
+        "tests/resource-budgets.test.mjs",
+        "docs/parity/RESOURCE_BUDGETS.md",
+        "docs/validation/2026-11-08-aug012-development.json",
+        "docs/validation/2026-11-08-aug012-qualification.json",
+        "docs/validation/2026-11-08-aug012-source-review.json",
+        "docs/validation/2026-11-08-aug012-win32-x64.json",
+        "docs/validation/2026-11-08-aug012-linux-x64.json",
+        "docs/validation/2026-11-08-aug012-darwin-arm64.json",
+        "docs/validation/2026-11-08-aug012-darwin-x64.json"
       ],
-      "notes": "Final 2026-11-02 evidence at b90432a: Remote concurrency/deadline/output/retention bounds have fixture coverage and a passing final two-device live slice. Deployed rate/concurrency stress and long-duration soak remain separate. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit. DCP-022 bounded directory continuation (2026-11-02): Direct fixtures enforce the unchanged 1000 top-level/100 nested retained-entry caps, at most 4000 consumed dirents with no 4001st EOF lookahead, a cooperative five-second traversal deadline including emission/policy awaits, and 262144 UTF-8 response bytes including newline separators. Partial totals remain unknown until EOF; one global limit warning is emitted. A pending OS operation is not interrupted by the cooperative deadline. Later exact-candidate evidence at 6eed7f0 passed native focused 18/18, full Windows 205/205, installed six-group directory proof, source/installed synthetic Codex, fresh committed extraction and 9/9 hosted checks without retries. Full acceptance, intentional-difference rulings and actual supported-client invocation remain open. No stage, weight, acceptance or estimate credit is added. DCP-019 aggregate-output preparation: complete UTF-8 response accounting retains existing owner bounds; unchanged focused RED7/7 to GREEN14/14 and independent review. Native/installed/fresh/hosted qualification remains separate; no stage or acceptance credit. Qualification observed at c510908: native original RED 7 passes/7 assertion failures then unchanged GREEN 14/14; actual full wrapper, normal prepack and fresh prepack each 242/242 with no skips. Self-host, native/fresh packed MCP (6 aggregate, 8 metadata, 6 directory groups), source/installed synthetic Codex 0.160.1 and exact fresh archive passed. Implementation hosted checks passed 5/5 on attempt 1. Final documentation/head, merge/main and recovery remain subsequent observations; no stage or acceptance credit. DCP-025 bounded newline editing: first-delimiter normalization of request search/replacement, post-read cancellation and bounded output allocation; native unchanged final30 RED7pass23fail to GREEN30/30. Full committed/native/installed/fresh/hosted qualification remains separate at preparation; no stage or acceptance credit. DCP-025 qualification at5723f5d: actual Windows full/prepack272/272, six installed edit groups, source+installed synthetic Codex and fresh committed build/prepack/package passed; five hosted checks attempt1 passed. Earlier SDK-envelope verifier failure retained. Final-head/delivery/client gates remain separate; no stage credit. DCP-017 BOM-marked UTF-16LE read preparation: native original-source RED30 had3passes/27failures; unchanged focused scratch GREEN30+batch14 passed44/44, shared storage/edit/metadata64/64 and independent review passed. Supplementary installed MCP passed8 new read groups with strict malformed/binary, policy, exact raw/aggregate/serialized bounds and unchanged-write checks. Full committed native/fresh/hosted/final delivery/client gates remain pending; no stage or acceptance credit.",
+      "notes": "Final 2026-11-02 evidence at b90432a: Remote concurrency/deadline/output/retention bounds have fixture coverage and a passing final two-device live slice. Deployed rate/concurrency stress and long-duration soak remain separate. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit. DCP-022 bounded directory continuation (2026-11-02): Direct fixtures enforce the unchanged 1000 top-level/100 nested retained-entry caps, at most 4000 consumed dirents with no 4001st EOF lookahead, a cooperative five-second traversal deadline including emission/policy awaits, and 262144 UTF-8 response bytes including newline separators. Partial totals remain unknown until EOF; one global limit warning is emitted. A pending OS operation is not interrupted by the cooperative deadline. Later exact-candidate evidence at 6eed7f0 passed native focused 18/18, full Windows 205/205, installed six-group directory proof, source/installed synthetic Codex, fresh committed extraction and 9/9 hosted checks without retries. Full acceptance, intentional-difference rulings and actual supported-client invocation remain open. No stage, weight, acceptance or estimate credit is added. DCP-019 aggregate-output preparation: complete UTF-8 response accounting retains existing owner bounds; unchanged focused RED7/7 to GREEN14/14 and independent review. Native/installed/fresh/hosted qualification remains separate; no stage or acceptance credit. Qualification observed at c510908: native original RED 7 passes/7 assertion failures then unchanged GREEN 14/14; actual full wrapper, normal prepack and fresh prepack each 242/242 with no skips. Self-host, native/fresh packed MCP (6 aggregate, 8 metadata, 6 directory groups), source/installed synthetic Codex 0.160.1 and exact fresh archive passed. Implementation hosted checks passed 5/5 on attempt 1. Final documentation/head, merge/main and recovery remain subsequent observations; no stage or acceptance credit. DCP-025 bounded newline editing: first-delimiter normalization of request search/replacement, post-read cancellation and bounded output allocation; native unchanged final30 RED7pass23fail to GREEN30/30. Full committed/native/installed/fresh/hosted qualification remains separate at preparation; no stage or acceptance credit. DCP-025 qualification at5723f5d: actual Windows full/prepack272/272, six installed edit groups, source+installed synthetic Codex and fresh committed build/prepack/package passed; five hosted checks attempt1 passed. Earlier SDK-envelope verifier failure retained. Final-head/delivery/client gates remain separate; no stage credit. DCP-017 BOM-marked UTF-16LE read preparation: native original-source RED30 had3passes/27failures; unchanged focused scratch GREEN30+batch14 passed44/44, shared storage/edit/metadata64/64 and independent review passed. Supplementary installed MCP passed8 new read groups with strict malformed/binary, policy, exact raw/aggregate/serialized bounds and unchanged-write checks. Full committed native/fresh/hosted/final delivery/client gates remain pending; no stage or acceptance credit. 2026-11-08 AUG-012: per-host normal/control lanes, pending admissions, narrowed job runtime/output, declared disk reservations and explicit placement are under qualification. Native focused70/70, including a reproduced and fixed owned-writer completion race. No stage/acceptance/weight/estimate/blocker change. Exact146cbad qualification: native412/412, actual installed24resource+29pack+18provenance, productionaudit0 and9/9 hosted checks. Other hosts400pass+12existing Windows-only skips; all24 new cases pass. Runtime adds23799 MTerm bytes; launcher/dependency payloads unchanged. Independent review passed140 source entries,25 evidence pins and31 development pins. Full acceptance and final metadata delivery remain separate.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [
         "CLI-033",
         "CLI-264"
       ],
-      "reviewer": "OpenAI GPT-6 Astra Pro; source review and candidate evidence assessment; 2026-11-02T21:19:58.192720+00:00"
+      "reviewer": "2026-11-08-aug012-resource-budgets"
     },
     {
       "id": "CLI-287",

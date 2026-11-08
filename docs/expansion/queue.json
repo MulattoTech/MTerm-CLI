@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "asOf": "2026-11-08T00:33:54.321Z",
+  "asOf": "2026-11-08T01:29:50.351Z",
   "repository": "MulattoTech/MTerm-CLI",
   "epic": 81,
-  "baseSha": "519cbff241be2a36bc180f91198e0492ec5ba1cc",
+  "baseSha": "d6eb0fa8a3df8a22abdec587f405e1105f78acb8",
   "counts": {
     "total": 117,
     "claimed": 1,
     "accepted": 0,
-    "merged": 3
+    "merged": 4
   },
   "originalMetrics": {
     "cliMaturityPercent": 29.12,
@@ -140,11 +140,11 @@
         "modelcontextprotocol/registry",
         "mcp-use/mcp-use"
       ],
-      "status": "in_progress",
+      "status": "merged_partial",
       "owner": "ChatGPT Web / GPT-6 Astra Pro",
       "branch": "feat/aug-003-pack-catalog-20261108",
       "pr": 202,
-      "mergeSha": null,
+      "mergeSha": "d6eb0fa8a3df8a22abdec587f405e1105f78acb8",
       "accepted": false,
       "testPlan": "common contract + original issue acceptance at issue URL",
       "platformScope": [
@@ -153,9 +153,9 @@
         "darwin-arm64",
         "darwin-x64"
       ],
-      "automatedTests": "Code d42d87e: native388/388, normal prepack/self-host/installed checks,29pack+18provenance tests, audit0 and9/9 hosted checks. Other hosts376pass+12existing skips; all13 catalog cases pass on four hosts. Final metadata-head checks and merge/main remain next.",
+      "automatedTests": "Final3628672:9/9 checks and immutable independent review. Normal merge d6eb0fa shares tested tree380f84d and passed5/5 main checks. Native388/388; other hosts376pass+12existing skips. Installed29pack+18provenance on each host.",
       "actualClient": "Two real official SDK stdio clients with isolated selection and notification tests; synthetic local pack payload. Real ChatGPT-to-MTerm app integration remains unverified.",
-      "blocker": "Full AUG003 resources/prompts, broader client/platform/source-license acceptance remain open. Scoped ABI1 code qualification passed; final metadata delivery remains. No owner review is pending.",
+      "blocker": "Scoped ABI1 tools catalog/selection/refresh delivered; resources/prompts and actual client/full platform/licensing acceptance remain open. No owner review is pending.",
       "declaredIssueDependencies": [],
       "ownerAuthorization": "docs/OWNER_AUTHORIZATION.md"
     },
@@ -523,18 +523,24 @@
         "Kyne0328/rel-ai",
         "headroomlabs-ai/headroom"
       ],
-      "status": "proposed",
-      "owner": null,
-      "branch": null,
-      "pr": null,
+      "status": "in_progress",
+      "owner": "ChatGPT Web / GPT-6 Astra Pro",
+      "branch": "feat/aug-012-resource-budgets-20261108",
+      "pr": 203,
       "mergeSha": null,
       "accepted": false,
       "testPlan": "common contract + original issue acceptance at issue URL",
-      "platformScope": "not yet selected; retain unsupported environments as explicit blockers",
-      "automatedTests": "not run",
-      "actualClient": "not verified",
-      "blocker": "Not implemented or accepted; exact upstream rights, platform scope and declared prerequisite acceptance need qualification.",
-      "declaredIssueDependencies": []
+      "platformScope": [
+        "win32-x64",
+        "linux-x64",
+        "darwin-arm64",
+        "darwin-x64"
+      ],
+      "automatedTests": "Code146cbad: native412/412, normal prepack/self-host/installed checks,24resource+29pack+18provenance, audit0 and9/9 hosted checks. Other hosts400pass+12existing skips; all24 resource cases pass on every host. Final metadata-head checks/review and merge/main remain next.",
+      "actualClient": "Real official SDK stdio hosts and synthetic owned pack/native child processes; actual ChatGPT-to-MTerm app integration remains unverified.",
+      "blocker": "Per-host admission slice qualified. Hard CPU/GPU/RAM/disk-write quotas, cross-host coordination and full AUG012 acceptance remain open. No owner review is pending.",
+      "declaredIssueDependencies": [],
+      "ownerAuthorization": "docs/OWNER_AUTHORIZATION.md"
     },
     {
       "id": "AUG-013",
@@ -6551,31 +6557,6 @@
     }
   },
   "nextCandidatesAfterPilot": [
-    {
-      "issue": 92,
-      "reason": "Extend existing bounded process and concurrency implementations with scoped resource budgets.",
-      "acceptancePrerequisites": {
-        "cli": [
-          {
-            "id": "CLI-259",
-            "stage": "implementation",
-            "dependencies": [],
-            "blocker": null
-          },
-          {
-            "id": "CLI-286",
-            "stage": "validated",
-            "dependencies": [
-              "CLI-033",
-              "CLI-264"
-            ],
-            "blocker": null
-          }
-        ],
-        "issues": [],
-        "assessment": "Scoped implementation candidate, not completed prerequisite or capability acceptance."
-      }
-    },
     {
       "issue": 84,
       "reason": "Evaluate an actual OS sandbox boundary while preserving existing trusted-root and execution controls.",

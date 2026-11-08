@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-08-aug012-resource-budgets; bounded owned-control lane and immutable process admission.
 // Modified: 2026-11-08-aug003-pack-catalog; connection-local pack selection and effective output schemas.
 // Modified: 2026-11-07-aug001-pack-boundary; lazy opt-in pack discovery through the owned process runner.
 // Modified: 2026-11-02-config-contract; set success reports its committed effective preference value.
@@ -17,6 +18,7 @@ import {
   type DesktopTextResult,
 } from './desktop-commander-files.js';
 import { ProcessService, processSchemas } from './processes.js';
+import { WorkAdmission } from './resource-budgets.js';
 import { GitService, gitSchemas } from './git.js';
 import { safeError, fail, cancelled } from './errors.js';
 export interface HostOptions {
@@ -30,6 +32,7 @@ export interface HostOptions {
   compatDesktopCommander?: boolean;
   packRegistry?: string;
   allowPacks?: readonly string[];
+  processBudget?: unknown;
 }
 export async function runMcp(options: HostOptions): Promise<void> {
   const roots = options.roots ?? [options.root];
@@ -42,24 +45,27 @@ export async function runMcp(options: HostOptions): Promise<void> {
       })
     : undefined;
   const files = await FileService.create(roots, { allowWrite: options.allowWrite, maxBytes: 262144 });
-  const jobs = await ProcessService.create(roots, { allowExec: options.allowExec });
+  const jobs = await ProcessService.create(roots, {
+    allowExec: options.allowExec,
+    budgets: options.processBudget,
+  });
   const git = await GitService.create(roots);
   if (configuration) {
     for (const policy of [files.policy, jobs.policy, git.policy]) configuration.bindPolicy(policy);
     jobs.setExecutionGuard((command) => configuration.checkExecutable(command));
     git.setExecutionGuard((command) => configuration.checkExecutable(command));
   }
+  const createPacks = async () =>
+    (await import('./tool-packs.js')).PackCatalog.create({
+      registry: options.packRegistry!,
+      allowPacks: options.allowPacks ?? [],
+      jobs,
+    });
   const packs = options.packRegistry
-    ? await (
-        await import('./tool-packs.js')
-      ).PackCatalog.create({
-        registry: options.packRegistry,
-        allowPacks: options.allowPacks ?? [],
-        jobs,
-      })
+    ? await (configuration ? configuration.run(createPacks) : createPacks())
     : undefined;
   const cleanupTools = new Set(['mterm_stop_process', 'mterm_read_process_output', 'mterm_list_sessions']);
-  let active = 0;
+  const admission = new WorkAdmission();
   const audit: Array<{ at: string; tool: string; outcome: string; durationMs: number }> = [];
   class OwnedTransport extends StdioServerTransport {
     private closing?: Promise<void>;
@@ -116,11 +122,9 @@ export async function runMcp(options: HostOptions): Promise<void> {
           },
           async (args, ctx) => {
             const began = performance.now();
-            let counted = false;
+            let release: (() => void) | undefined;
             try {
-              if (active >= 4) fail('BUSY', 'At most four tool operations may be in flight.');
-              active++;
-              counted = true;
+              release = admission.enter(cleanupTools.has(name));
               cancelled(ctx.mcpReq.signal);
               const execute = () => handler(args, ctx.mcpReq.signal);
               // Owned cleanup/status remains available even when a malformed policy denies new work.
@@ -165,7 +169,7 @@ export async function runMcp(options: HostOptions): Promise<void> {
                 isError: true,
               };
             } finally {
-              if (counted) active--;
+              release?.();
               while (audit.length > 256) audit.shift();
             }
           },
@@ -355,12 +359,15 @@ export async function runMcp(options: HostOptions): Promise<void> {
           },
           osSandbox: false,
           optionalPacks: packs?.describe() ?? { configured: false, osSandbox: false },
+          resources: { ...jobs.resourceStatus(), work: admission.status() },
           limits: {
             fileBytes: files.maxBytes,
-            activeJobs: 8,
+            activeJobs: jobs.maxSessions,
             retainedJobs: 32,
-            jobOutputBytes: 262144,
+            jobOutputBytes: jobs.maxOutputBytes,
             toolConcurrency: 4,
+            ownedControlConcurrency: 2,
+            totalToolConcurrency: 6,
             stdioFrameBytes: 2097152,
           },
         }),
@@ -434,10 +441,10 @@ export async function runMcp(options: HostOptions): Promise<void> {
       if (jobs.allowExec) {
         add(
           'mterm_start_process',
-          'Start an explicitly selected absolute executable with structured args. OS-user execution, not a sandbox or terminal emulator.',
+          'Start an approved executable within per-host admission and owner ceilings. Optional scratch/placement uses a declared disk estimate, not a hard write quota. OS-user execution.',
           processSchemas.start,
           false,
-          (a) => jobs.start(a),
+          (a, signal) => jobs.start(a, undefined, signal),
         );
         add(
           'mterm_read_process_output',
@@ -460,8 +467,15 @@ export async function runMcp(options: HostOptions): Promise<void> {
           false,
           (a) => jobs.stop(a),
         );
-        add('mterm_list_sessions', 'List this host instance’s owned sessions only.', empty, true, () =>
-          jobs.list(),
+        add(
+          'mterm_list_sessions',
+          'List owned sessions and in-memory host budget counters. No fresh disk probe or cross-host quota.',
+          empty,
+          true,
+          () => {
+            const state = jobs.list();
+            return { ...state, resources: { ...state.resources, work: admission.status() } };
+          },
         );
       }
       add(

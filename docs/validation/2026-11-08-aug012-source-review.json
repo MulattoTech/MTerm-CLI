@@ -1,0 +1,89 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-source-review",
+  "capability": "AUG-012",
+  "issue": 92,
+  "reviewedCommit": "146cbad563def63bb0c8c3c92fc4d82b916108c0",
+  "reviewedTree": "8c6485e9e34cb8e4e6ff31ce886a4b62bc0b12b2",
+  "reviewedAt": "2026-11-08T01:24:15Z",
+  "sourceFingerprint": "c42d4a46324a933b673898f572b742d20f9bebca916c6fb7e9eae0ba5d9d757c",
+  "subjectFingerprint": "15d050389744f933ba01d66ae0c7cb1adaa878ef47322507b0843828ca502152",
+  "reviewer": {
+    "provider": "OpenAI",
+    "model": "GPT-6 Astra Pro",
+    "role": "independent read-only peer",
+    "task": "/root/standing_authorization_review",
+    "identityAuthenticated": false
+  },
+  "implementationOwner": {
+    "provider": "OpenAI",
+    "model": "GPT-6 Astra Pro",
+    "task": "/root"
+  },
+  "verdict": "no remaining blocking code, security or metadata finding for scoped per-host admission",
+  "reviewedSources": 140,
+  "sourceBytes": 3392014,
+  "sourceMismatches": 0,
+  "evidencePinsVerified": 25,
+  "developmentLogPinsVerified": 31,
+  "reviewedFiles": [
+    {
+      "path": "src/resource-budget-policy.ts",
+      "sha256": "60f9dec5576045bdeea577926d073755e8af9ba08ca0c4a8b641bae544a1b42d"
+    },
+    {
+      "path": "src/resource-budgets.ts",
+      "sha256": "99749978faf00a7a811118dff7722d6c167d97075a78ee85d40372d7c9f49996"
+    },
+    {
+      "path": "src/processes.ts",
+      "sha256": "6b99b6aa5e2f6f8d775574d8b39f995d147ecdd6c91e821b8a5758d98f7239a9"
+    },
+    {
+      "path": "src/mcp.ts",
+      "sha256": "67fe0c1feb95c217e74ed92cd7ca71d8f96a46675a3c859ce59b25658f17c209"
+    },
+    {
+      "path": "src/cli.ts",
+      "sha256": "ad3f69b8e5cb906208fc7861edb2a446b11596387e4f82f2249ab24d1534a814"
+    },
+    {
+      "path": "src/tool-packs.ts",
+      "sha256": "f26e662a1d4fb4b78646e04af881ac10c4905a8eab5801d043bc710e412c24bf"
+    },
+    {
+      "path": "tests/resource-budgets.test.mjs",
+      "sha256": "a1e74ee8613953fee2fd7e8d02b90496af723bf2503f611264bf1a7d58d4b705"
+    },
+    {
+      "path": "scripts/verify-package.mjs",
+      "sha256": "dc1ea6b254ee292ac418516702b69b55c364733fdf2cfca511458833b2b2515d"
+    },
+    {
+      "path": "docs/parity/RESOURCE_BUDGETS.md",
+      "sha256": "1654e9e72e7551eefd5402cdac7fd197fa5b936b488ee459f1458e9655110fb0"
+    }
+  ],
+  "securityFindingsResolved": [
+    "Four normal calls cannot starve the separately bounded owned-control lane.",
+    "Native cancellation reaches pending start admission and the final no-await debit/spawn sequence.",
+    "Generic post-spawn child errors retain live ownership and reservations; only actual closure or genuine spawn failure releases.",
+    "Independent peer identified stale disk observation after owned write/release; root reproduced RED and added a release epoch checked before debit/spawn.",
+    "Compatibility pack startup runs within the existing effective request snapshot, without weakening path or execution guards.",
+    "Managed registration refuses a budget it cannot preserve; no silent policy downgrade."
+  ],
+  "invariantsVerified": [
+    "Strict frozen owner policy; bounded canonical decimal inputs before BigInt; owner-dependent defaults reflect omitted fields.",
+    "Pending physical I/O retains its slot until settlement; scoped existing-directory placement and conservative shared reservations.",
+    "All 300 protected roadmap fields and 117-issue dependency/source mappings unchanged.",
+    "Historical AUG001/AUG002/AUG003/AUG013 evidence unchanged; no capability acceptance awarded.",
+    "Launcher, package/lock/vendor/dependency paths unchanged; contract included in reviewed source roots."
+  ],
+  "execution": "Read-only immutable source/pin inspection and retained development log verification. Reviewer did not execute tests or independently credit later qualification in this source-review verdict.",
+  "modelCalls": 0,
+  "acceptanceAwarded": false,
+  "limitations": [
+    "Final immutable receipt/metadata review remains a separate gate.",
+    "Hard CPU/GPU/RAM/disk-write quotas, cross-host coordination, hostile-writer and detached-descendant isolation, full third-party redistribution and actual ChatGPT integration remain unaccepted."
+  ]
+}

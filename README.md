@@ -218,3 +218,7 @@ MTerm-CLI uses Orchestrator.inc with Codex workers in isolated worktrees. Start 
 ## Optional local pack catalog
 
 When an explicitly approved pack registry is configured, the stdio host exposes bounded exact-version schema discovery, per-connection pack selection and explicit refresh. Selection cannot exceed the host’s startup execution permissions; new versions never become enabled silently. ABI1 remains tools-only. See the [catalog contract and limitations](docs/parity/PACK_CATALOG.md). The launcher and dependency versions are unchanged; qualification evidence is tracked under [AUG-003/#83](https://github.com/MulattoTech/MTerm-CLI/issues/83).
+
+## Process and drive admission
+
+The local stdio host keeps a bounded owned-control lane available under normal-work overload. Optional immutable process budgets narrow job/runtime/output limits and add declared scratch admission and explicit placement within trusted directories. These controls are per host; hard CPU/GPU/RAM/disk-write and cross-host quotas remain unsupported. See the [resource contract](docs/parity/RESOURCE_BUDGETS.md) and [AUG-012/#92](https://github.com/MulattoTech/MTerm-CLI/issues/92). The launcher file and dependency versions are unchanged; full capability acceptance remains open.

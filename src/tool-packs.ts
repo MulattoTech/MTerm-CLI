@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-08-aug012-resource-budgets; share native admission and cancellation, honor the owner runtime ceiling.
 // Modified: 2026-11-08-aug003-pack-catalog; bounded discovery and connection-owned selection.
 // AI-Change: 2026-11-07-aug001-pack-boundary (OpenAI / GPT-6 Astra Pro; self-reported)
 import fs from 'node:fs/promises';
@@ -809,9 +810,10 @@ export class PackCatalog {
         command: process.execPath,
         args: [checked.entry],
         cwd: checked.root,
-        timeoutMs: remaining,
+        timeoutMs: Math.min(remaining, jobs.budgets.maxRuntimeMs),
       },
       guard,
+      signal,
     );
     let stdout = '',
       bytes = 0,

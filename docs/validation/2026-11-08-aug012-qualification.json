@@ -1,0 +1,410 @@
+{
+  "schemaVersion": 1,
+  "kind": "exact-commit-qualification",
+  "capability": "AUG-012",
+  "issue": 92,
+  "testedCommit": "146cbad563def63bb0c8c3c92fc4d82b916108c0",
+  "sourceFingerprint": "c42d4a46324a933b673898f572b742d20f9bebca916c6fb7e9eae0ba5d9d757c",
+  "subjectFingerprint": "15d050389744f933ba01d66ae0c7cb1adaa878ef47322507b0843828ca502152",
+  "platform": "win32-x64",
+  "node": "v24.21.0",
+  "startedAt": "2026-11-08T01:18:48.318Z",
+  "completedAt": "2026-11-08T01:20:51.129Z",
+  "result": "passed",
+  "cleanStart": true,
+  "cleanEnd": true,
+  "nativeSuite": {
+    "tests": 412,
+    "passed": 412,
+    "failed": 0,
+    "skipped": 0
+  },
+  "stages": [
+    {
+      "name": "reviewed-build",
+      "executable": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+      "args": [
+        "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+        "run",
+        "build"
+      ],
+      "startedAt": "2026-11-08T01:18:48.320Z",
+      "log": {
+        "path": "artifacts/aug012/qualification-code/reviewed-build.log",
+        "sha256": "e88e6133625427b3e6b7c5148fdcedda65ce86a1d5f8a7c409bbe102e9784ad3",
+        "bytes": 786
+      },
+      "exitCode": 0,
+      "completedAt": "2026-11-08T01:18:49.897Z"
+    },
+    {
+      "name": "normal-prepack",
+      "executable": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+      "args": [
+        "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+        "pack",
+        "--json",
+        "--pack-destination",
+        "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG012-20261108\\artifacts\\aug012\\qualification-code"
+      ],
+      "startedAt": "2026-11-08T01:18:49.898Z",
+      "log": {
+        "path": "artifacts/aug012/qualification-code/normal-prepack.log",
+        "sha256": "ad659e156573b7d2ab9879dc506076b4d4aa52655274bb80368b796e3987b50e",
+        "bytes": 45665
+      },
+      "exitCode": 0,
+      "completedAt": "2026-11-08T01:20:05.169Z"
+    },
+    {
+      "name": "self-host",
+      "executable": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+      "args": [
+        "scripts/verify-self-host.mjs"
+      ],
+      "startedAt": "2026-11-08T01:20:05.170Z",
+      "log": {
+        "path": "artifacts/aug012/qualification-code/self-host.log",
+        "sha256": "a38e3215a05a401ae8d110826c15f2fc3c8cc6fd77ca564d863d87cfb0b116d9",
+        "bytes": 280
+      },
+      "exitCode": 0,
+      "completedAt": "2026-11-08T01:20:06.067Z"
+    },
+    {
+      "name": "installed-package",
+      "executable": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+      "args": [
+        "scripts/verify-package.mjs"
+      ],
+      "startedAt": "2026-11-08T01:20:06.068Z",
+      "log": {
+        "path": "artifacts/aug012/qualification-code/installed-package.log",
+        "sha256": "a92c7ccda0453dd9d1a452d9b32b209446d2764634b0e22efb8a24809572112e",
+        "bytes": 16513
+      },
+      "exitCode": 0,
+      "completedAt": "2026-11-08T01:20:49.802Z"
+    },
+    {
+      "name": "production-audit",
+      "executable": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+      "args": [
+        "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+        "audit",
+        "--omit=dev",
+        "--json"
+      ],
+      "startedAt": "2026-11-08T01:20:49.802Z",
+      "log": {
+        "path": "artifacts/aug012/qualification-code/production-audit.log",
+        "sha256": "9142ba6d614f3a1ebd7a0943779af271e80f4d93df8fd47a82a69e957396ebae",
+        "bytes": 361
+      },
+      "exitCode": 0,
+      "completedAt": "2026-11-08T01:20:50.412Z"
+    }
+  ],
+  "package": {
+    "result": "artifacts/package-verify-JoT4UK/result.json",
+    "installedProductionBytes": 14520712,
+    "productionFiles": 1001,
+    "packagedMcpRoundTrip": true,
+    "fromOutsideCheckout": true,
+    "resources": {
+      "ok": true,
+      "tests": 24,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "moduleBindings": [
+        {
+          "path": "dist/cli.js",
+          "sha256": "0b8a8985fcec7cafcbd334ebe359c8be97d61132462b539c5b466bc7be8983a6"
+        },
+        {
+          "path": "dist/mcp.js",
+          "sha256": "6d1571e479985e4a80107df5ccc012e721eb3ca0cd8e861f48de7263667fa69e"
+        },
+        {
+          "path": "dist/tool-packs.js",
+          "sha256": "7f7792c1090b6868e1719b223d4f553efe19e537ff1c8be3014323122c52f12f"
+        },
+        {
+          "path": "dist/processes.js",
+          "sha256": "47a9a240cc575defe42ef44437c0278c9cdfc7abc1603cd2cca937a02918d598"
+        },
+        {
+          "path": "dist/resource-budgets.js",
+          "sha256": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64"
+        },
+        {
+          "path": "dist/resource-budget-policy.js",
+          "sha256": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac"
+        },
+        {
+          "path": "dist/policy.js",
+          "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+        }
+      ],
+      "scope": "host-instance",
+      "realStatfsAndOwnedProcesses": true,
+      "injectedBackendFailuresLabeled": true,
+      "syntheticOnly": true,
+      "modelCalls": 0,
+      "crossHostEnforcement": false,
+      "hardCpuGpuRamOrDiskWriteQuotas": false,
+      "log": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG012-20261108\\artifacts\\package-verify-JoT4UK\\resource-budget-tests.tap"
+    },
+    "optionalPacks": {
+      "ok": true,
+      "tests": 29,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "moduleBindings": [
+        {
+          "path": "dist/cli.js",
+          "sha256": "0b8a8985fcec7cafcbd334ebe359c8be97d61132462b539c5b466bc7be8983a6"
+        },
+        {
+          "path": "dist/mcp.js",
+          "sha256": "6d1571e479985e4a80107df5ccc012e721eb3ca0cd8e861f48de7263667fa69e"
+        },
+        {
+          "path": "dist/tool-packs.js",
+          "sha256": "7f7792c1090b6868e1719b223d4f553efe19e537ff1c8be3014323122c52f12f"
+        },
+        {
+          "path": "dist/processes.js",
+          "sha256": "47a9a240cc575defe42ef44437c0278c9cdfc7abc1603cd2cca937a02918d598"
+        },
+        {
+          "path": "dist/resource-budgets.js",
+          "sha256": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64"
+        },
+        {
+          "path": "dist/resource-budget-policy.js",
+          "sha256": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac"
+        },
+        {
+          "path": "dist/policy.js",
+          "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+        }
+      ],
+      "syntheticOnly": true,
+      "modelCalls": 0,
+      "osSandbox": false,
+      "realClientConsent": false,
+      "log": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG012-20261108\\artifacts\\package-verify-JoT4UK\\optional-pack-tests.tap"
+    },
+    "provenance": {
+      "ok": true,
+      "tests": 18,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "moduleBindings": [
+        {
+          "path": "dist/cli.js",
+          "sha256": "0b8a8985fcec7cafcbd334ebe359c8be97d61132462b539c5b466bc7be8983a6"
+        },
+        {
+          "path": "dist/provenance.js",
+          "sha256": "ad842f4e4ebb14152575632773a7e460a194f7dadedd595ea9b77309f28e2902"
+        },
+        {
+          "path": "dist/files.js",
+          "sha256": "753adb8c88d5ea10d93549237f821c5bd9340d9c532611f0318e90af4e85d29e"
+        },
+        {
+          "path": "dist/policy.js",
+          "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+        },
+        {
+          "path": "dist/errors.js",
+          "sha256": "26fa1c3341396a1f9eda45debe86dc2295cb997b9dd7e525e70ac17ef2c910a9"
+        }
+      ],
+      "fromOutsideCheckout": true,
+      "referenceFilesVerified": 7,
+      "productionPackages": 4,
+      "productionEdges": 5,
+      "productionRedistributionEligible": false,
+      "retainedBundledNotices": 9,
+      "reviewedSdkArtifactPins": 86,
+      "sdkArtifactCommit": "8e6f2336d995b5c1cb5ff044071ed186cce03567",
+      "embeddedFastUri": "3.1.9",
+      "blockedSources": [
+        {
+          "code": "TRANSITIVE_REVIEW_PENDING",
+          "source": "mcp-sdk",
+          "message": "Separately installed dependency closure does not establish bundled-code license clearance."
+        }
+      ],
+      "spdxSemanticChecks": true,
+      "fullSpdxSchemaValidatedHere": false,
+      "modelCalls": 0,
+      "referenceReport": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG012-20261108\\artifacts\\package-verify-JoT4UK\\reference-provenance.report.json",
+      "runtimeReport": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG012-20261108\\artifacts\\package-verify-JoT4UK\\runtime-provenance.report.json"
+    },
+    "productionLicenseEvidence": [
+      {
+        "name": "@modelcontextprotocol/core",
+        "version": "2.3.0",
+        "license": "Apache-2.0",
+        "integrity": "sha512-09BHFaNVBe5pB2AhzCfLj0cqmsKLERvZQ4FblzP90UMGLaXVqdZPByFjURwsUYCmxonUW2yAwgTTvle+8O2/8w==",
+        "files": [
+          {
+            "path": "LICENSE",
+            "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+          }
+        ]
+      },
+      {
+        "name": "@modelcontextprotocol/server",
+        "version": "2.3.0-mterm.1",
+        "license": "Apache-2.0",
+        "integrity": "sha512-RNlauLPhVz8rUV8EvE1jsPmzBtb84j1HIBFGaTyANRbSHjwEBjl0th5idsfHRcGLT5TWZVfFFzlZhk/zJWXY4w==",
+        "files": [
+          {
+            "path": "LICENSE",
+            "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+          }
+        ]
+      },
+      {
+        "name": "mterm-cli",
+        "version": "0.0.1-preview.1",
+        "license": "MIT",
+        "integrity": "sha512-qPH5AVJ6CEcRFBIG4gsNGpBRZWqmUilb6hGOTH/nflYDHoEkk4SijfQvhNVnjIsj9OShqUtD+NAtWg1U/7044g==",
+        "files": [
+          {
+            "path": "LICENSE",
+            "sha256": "057801cf89de394d84ca2f5797e31619cb5fd66e6f4b7da7058db7887633ba37"
+          }
+        ]
+      },
+      {
+        "name": "zod",
+        "version": "4.6.7",
+        "license": "MIT",
+        "integrity": "sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==",
+        "files": [
+          {
+            "path": "LICENSE",
+            "sha256": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8"
+          }
+        ]
+      }
+    ],
+    "fullTransitiveLicenseClearance": false,
+    "fullSpdxSchemaValidatedHere": false
+  },
+  "runtimeBoundary": {
+    "packageCount": 4,
+    "fileCount": 997,
+    "payloadBytes": 14517062,
+    "allRuntimePackageFilesIdentical": false,
+    "launcherIdentical": true,
+    "dependencyPackagesIdentical": true,
+    "changedFiles": [
+      "mterm-cli/README.md",
+      "mterm-cli/dist/cli.d.ts",
+      "mterm-cli/dist/cli.js",
+      "mterm-cli/dist/mcp.d.ts",
+      "mterm-cli/dist/mcp.js",
+      "mterm-cli/dist/processes.d.ts",
+      "mterm-cli/dist/processes.js",
+      "mterm-cli/dist/tool-packs.js",
+      "mterm-cli/dist/resource-budget-policy.d.ts",
+      "mterm-cli/dist/resource-budget-policy.js",
+      "mterm-cli/dist/resource-budgets.d.ts",
+      "mterm-cli/dist/resource-budgets.js"
+    ],
+    "perPackage": [
+      {
+        "package": "mterm-cli",
+        "beforeBytes": 345095,
+        "afterBytes": 368894,
+        "changedFiles": [
+          "mterm-cli/README.md",
+          "mterm-cli/dist/cli.d.ts",
+          "mterm-cli/dist/cli.js",
+          "mterm-cli/dist/mcp.d.ts",
+          "mterm-cli/dist/mcp.js",
+          "mterm-cli/dist/processes.d.ts",
+          "mterm-cli/dist/processes.js",
+          "mterm-cli/dist/tool-packs.js",
+          "mterm-cli/dist/resource-budget-policy.d.ts",
+          "mterm-cli/dist/resource-budget-policy.js",
+          "mterm-cli/dist/resource-budgets.d.ts",
+          "mterm-cli/dist/resource-budgets.js"
+        ]
+      },
+      {
+        "package": "@modelcontextprotocol/core",
+        "beforeBytes": 1316868,
+        "afterBytes": 1316868,
+        "changedFiles": []
+      },
+      {
+        "package": "@modelcontextprotocol/server",
+        "beforeBytes": 6682356,
+        "afterBytes": 6682356,
+        "changedFiles": []
+      },
+      {
+        "package": "zod",
+        "beforeBytes": 6148944,
+        "afterBytes": 6148944,
+        "changedFiles": []
+      }
+    ],
+    "priorQualifiedRoot": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG003-20261108\\artifacts\\package-verify-Fvm0KP\\install\\node_modules",
+    "excludedInstallBookkeeping": [
+      "node_modules/.package-lock.json"
+    ],
+    "resourceBudgetRuntimePayloadAdded": true,
+    "inventorySha256": "0b33139c7008cacda59ebec563b27c95b3925636a822fcd531fd72e5e65d8ce1",
+    "addedMTermPackageBytes": 23799,
+    "priorInstalledProductionBytes": 14496913,
+    "currentInstalledProductionBytes": 14520712
+  },
+  "productionAdvisoryAudit": {
+    "vulnerabilities": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "scope": "Ordinary production dependency audit; all three reviewed dependency payloads including the SDK bundle/notices are byte-identical to PR202. No new exhaustive bundled audit or full transitive redistribution admission is implied."
+  },
+  "hosted": {
+    "head": "146cbad563def63bb0c8c3c92fc4d82b916108c0",
+    "checksPassed": 9,
+    "pushRun": 42433626041,
+    "prRun": 42433700468,
+    "fastRun": 42433700444,
+    "receiptPaths": [
+      "docs/validation/2026-11-08-aug012-win32-x64.json",
+      "docs/validation/2026-11-08-aug012-linux-x64.json",
+      "docs/validation/2026-11-08-aug012-darwin-arm64.json",
+      "docs/validation/2026-11-08-aug012-darwin-x64.json"
+    ]
+  },
+  "independentReview": "docs/validation/2026-11-08-aug012-source-review.json",
+  "developmentAttempts": "docs/validation/2026-11-08-aug012-development.json",
+  "modelCalls": 0,
+  "acceptanceAwarded": false,
+  "fullAUGAcceptance": false,
+  "limitations": [
+    "Per-host owned-parent admission and captured output limits; no hard CPU/GPU/RAM/disk-write quotas or cross-host coordination.",
+    "Real local SDK/filesystem/owned-process integration; negative backend/error injections are labeled. No actual ChatGPT-to-MTerm app invocation is available or claimed.",
+    "Disk observations remain advisory. Physical I/O retains its pending slot; completion epoch invalidates owned-write/release history without claiming hostile-writer isolation.",
+    "Windows descendant cleanup remains best effort; no OS sandbox or race-free detached-process containment.",
+    "Final metadata-head checks/review, expected-head merge and main verification are subsequent observations."
+  ]
+}

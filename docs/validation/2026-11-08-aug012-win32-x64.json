@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "kind": "mterm-expansion-execution",
+  "capability": "AUG-012",
+  "platform": "win32-x64",
+  "subject": {
+    "testedCommit": "146cbad563def63bb0c8c3c92fc4d82b916108c0",
+    "subjectFingerprint": "15d050389744f933ba01d66ae0c7cb1adaa878ef47322507b0843828ca502152",
+    "backend": {
+      "name": "MTerm-CLI ProcessService / node:fs.statfs",
+      "version": "0.0.1-preview.1"
+    },
+    "runtime": {
+      "name": "node",
+      "version": "v24.21.0"
+    }
+  },
+  "observedAt": "2026-11-08T01:20:39.247Z",
+  "command": "npm run check",
+  "exitCode": 0,
+  "cases": {
+    "success": {
+      "status": "passed",
+      "fixtureId": "fixture-1",
+      "fixtureSha256": "a1e74ee8613953fee2fd7e8d02b90496af723bf2503f611264bf1a7d58d4b705"
+    },
+    "permission_denied": {
+      "status": "passed",
+      "fixtureId": "fixture-1",
+      "fixtureSha256": "a1e74ee8613953fee2fd7e8d02b90496af723bf2503f611264bf1a7d58d4b705"
+    },
+    "cancelled": {
+      "status": "passed",
+      "fixtureId": "fixture-1",
+      "fixtureSha256": "a1e74ee8613953fee2fd7e8d02b90496af723bf2503f611264bf1a7d58d4b705"
+    },
+    "deadline": {
+      "status": "passed",
+      "fixtureId": "fixture-1",
+      "fixtureSha256": "a1e74ee8613953fee2fd7e8d02b90496af723bf2503f611264bf1a7d58d4b705"
+    },
+    "unsupported_platform": {
+      "status": "passed",
+      "fixtureId": "fixture-1",
+      "fixtureSha256": "a1e74ee8613953fee2fd7e8d02b90496af723bf2503f611264bf1a7d58d4b705"
+    }
+  },
+  "limitations": [
+    "Per-instance admission, owned parent jobs and captured-output limits; no hard CPU/GPU/RAM/disk-write quota or cross-host coordination.",
+    "Real local processes, SDK clients and filesystem success/denial. Unsupported/permission/invalid-statistics and post-spawn errors are controlled negative injections, not proof of untested OS support.",
+    "Disk observations are advisory. A conservative reservation pool and owned-completion epoch reject declared overcommit/stale observations; no hostile-writer or kernel-level filesystem isolation.",
+    "Native cancellation/deadlines are cooperative and retain physical pending I/O until settlement. No actual ChatGPT app integration or external model request.",
+    "Full AUG012 capability acceptance remains false;12 existing Windows-only suite skips on non-Windows do not skip any new resource scenario."
+  ],
+  "caseEvidence": {
+    "success": "real filesystem capacity admits a declared job and above-total floor denies before spawn without deleting data; two real SDK hosts expose independent immutable budgets and installed native disk admission",
+    "permission_denied": "placement rejects outside, private, linked and non-directory candidates before probing them; explicit per-job ceiling denial; injected EACCES backend denial is labeled separately",
+    "cancelled": "cancelled statfs retains its physical pending slot until settlement and cannot spawn late; actual MCP cancellation during delayed real statfs cannot launch a native child after client abort",
+    "deadline": "cooperative admission deadline after real statfs fails closed with no late child, with an asserted completed probe",
+    "unsupported_platform": "injected ENOSYS/ENOTSUP failures are distinct and fail closed; this is unsupported-backend behavior on a real supported host, not acceptance of any untested operating system"
+  },
+  "hosted": {
+    "runId": 42433626041,
+    "jobId": 128587680736,
+    "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42433626041/job/128587680736",
+    "event": "push",
+    "sourceFingerprint": "c42d4a46324a933b673898f572b742d20f9bebca916c6fb7e9eae0ba5d9d757c",
+    "tests": 412,
+    "passed": 412,
+    "failed": 0,
+    "skipped": 0,
+    "skipScope": "No skips",
+    "resourceCasesPassed": 24,
+    "installedResourceTests": 24,
+    "installedPackTests": 29,
+    "installedProvenanceTests": 18,
+    "installedProductionBytes": 14520712,
+    "resourceModuleBindings": [
+      {
+        "path": "dist/cli.js",
+        "sha256": "0b8a8985fcec7cafcbd334ebe359c8be97d61132462b539c5b466bc7be8983a6"
+      },
+      {
+        "path": "dist/mcp.js",
+        "sha256": "6d1571e479985e4a80107df5ccc012e721eb3ca0cd8e861f48de7263667fa69e"
+      },
+      {
+        "path": "dist/tool-packs.js",
+        "sha256": "7f7792c1090b6868e1719b223d4f553efe19e537ff1c8be3014323122c52f12f"
+      },
+      {
+        "path": "dist/processes.js",
+        "sha256": "47a9a240cc575defe42ef44437c0278c9cdfc7abc1603cd2cca937a02918d598"
+      },
+      {
+        "path": "dist/resource-budgets.js",
+        "sha256": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64"
+      },
+      {
+        "path": "dist/resource-budget-policy.js",
+        "sha256": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac"
+      },
+      {
+        "path": "dist/policy.js",
+        "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+      }
+    ],
+    "rawJobCompletionTimestamp": "2026-11-08T01:20:39.2475497Z"
+  },
+  "modelCalls": 0,
+  "acceptanceAwarded": false
+}

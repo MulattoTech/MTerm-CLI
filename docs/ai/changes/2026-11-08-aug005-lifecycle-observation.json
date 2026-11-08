@@ -3,15 +3,18 @@
   "provider": "OpenAI",
   "model": "GPT-6 Astra Pro",
   "started_at": "2026-11-08T04:12:00Z",
-  "updated_at": "2026-11-08T04:43:03.921Z",
+  "updated_at": "2026-11-08T05:20:48.604Z",
   "base_sha": "dd94158365b648bc1fe42259996c686d7de42313",
   "issues": [
     84,
+    83,
     81
   ],
   "requirements": [
+    "CLI-265",
     "CLI-267",
-    "CLI-276"
+    "CLI-276",
+    "CLI-287"
   ],
   "files": [
     "tests/isolation.test.mjs",
@@ -24,14 +27,25 @@
     "docs/expansion/queue.json",
     "docs/roadmap/progress.json",
     "docs/HANDOFF.md",
-    "docs/validation/2026-11-08-aug005-lifecycle-failure.json"
+    "docs/validation/2026-11-08-aug005-lifecycle-failure.json",
+    "src/isolation-engine.ts",
+    "scripts/prepare-isolation-ci.mjs",
+    "scripts/isolation-ci-config.mjs",
+    "scripts/isolation-ci-runner.mjs",
+    "tests/isolation-ci-config.test.mjs",
+    "tests/tool-packs.test.mjs",
+    "docs/parity/ISOLATION.md",
+    "docs/validation/2026-11-08-aug005-cgroup-driver-development.json"
   ],
   "decisions": [
     "Standing owner authorization; one implementation owner plus independent read-only peer; no Codex/model lane.",
     "Causal fixture correction preserves product timers, IPC and cleanup; false transient-state polling is removed.",
     "Original wait/terminal/cleanup values and errors remain authoritative; bounded readonly history is secondary and incomplete.",
-    "Preserve all previous failures and receipts; no blind reruns, cause inference, source/runtime change or acceptance award.",
-    "The newly captured raw false OOM state and event history remain a failure. Narrow journal query before its unchanged byte ceiling; do not substitute later observations or infer a killing cause."
+    "Initial diagnostic-only phases preserved product/runtime behavior. The later pinned-source evidence now justifies an explicit narrower driver admission rule, with unchanged assertions and preserved failures.",
+    "The newly captured raw false OOM state and event history remain a failure. Narrow journal query before its unchanged byte ceiling; do not substitute later observations or infer a killing cause.",
+    "The exact pinned upstream documents unreliable systemd OOM attribution. Reject unqualified drivers before new work; preserve owned cleanup. cgroupfs is only a candidate until actual unchanged source/installed gates pass.",
+    "The disposable runner alone receives a guarded explicit driver setting. Reject lossy/ambiguous JSON and invalid UTF8; retain private prior bytes and public hashes. Never reconfigure owner workloads.",
+    "Pack test preconditions expose the actual uninstall result; no original pack revocation or EPERM cause is invented."
   ],
   "tests": [
     {
@@ -69,25 +83,79 @@
     {
       "command": "journal prefilter development",
       "result": "ScopedRED0/1 to fullhelperGREEN14/14, no changedruntime orlimits."
+    },
+    {
+      "command": "c9 exact qualification",
+      "result": "Hosted5/6 and native454/455 failed; kernelownedmemcgOOM confirmed despite Dockerfalse. All72cleanups passed; source/installed gate not cleared."
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/pack-precondition-focused.log",
+      "result": "{\"tests\":1,\"pass\":1,\"fail\":0,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/red-cgroup-driver.log",
+      "result": "{\"tests\":3,\"pass\":0,\"fail\":3,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/green-cgroup-driver.log",
+      "result": "{\"tests\":3,\"pass\":3,\"fail\":0,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/green-driver-protocol.log",
+      "result": "{\"tests\":31,\"pass\":31,\"fail\":0,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/red-ci-driver-config.log",
+      "result": "{\"tests\":4,\"pass\":0,\"fail\":4,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/green-ci-driver-config.log",
+      "result": "{\"tests\":4,\"pass\":4,\"fail\":0,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/red-ci-config-preservation.log",
+      "result": "{\"tests\":7,\"pass\":3,\"fail\":4,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/green-ci-config-preservation.log",
+      "result": "{\"tests\":7,\"pass\":7,\"fail\":0,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/red-ci-private-failure.log",
+      "result": "{\"tests\":2,\"pass\":1,\"fail\":1,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/green-ci-private-failure.log",
+      "result": "{\"tests\":9,\"pass\":9,\"fail\":0,\"cancelled\":0,\"skipped\":0}"
     }
   ],
   "roadmap_updates": [
     {
+      "id": "CLI-265",
+      "stage_change": false,
+      "reason": "Narrower driver admission, independent cleanup and stronger fixture/config diagnostics. Existing300 requirement stages, acceptance, scope, weights, dependencies and estimates unchanged."
+    },
+    {
       "id": "CLI-267",
       "stage_change": false,
-      "reason": "Test lifecycle correction and diagnostics only; protected requirement fields and complete acceptance remain unchanged."
+      "reason": "Narrower driver admission, independent cleanup and stronger fixture/config diagnostics. Existing300 requirement stages, acceptance, scope, weights, dependencies and estimates unchanged."
     },
     {
       "id": "CLI-276",
       "stage_change": false,
-      "reason": "Test lifecycle correction and diagnostics only; protected requirement fields and complete acceptance remain unchanged."
+      "reason": "Narrower driver admission, independent cleanup and stronger fixture/config diagnostics. Existing300 requirement stages, acceptance, scope, weights, dependencies and estimates unchanged."
+    },
+    {
+      "id": "CLI-287",
+      "stage_change": false,
+      "reason": "Narrower driver admission, independent cleanup and stronger fixture/config diagnostics. Existing300 requirement stages, acceptance, scope, weights, dependencies and estimates unchanged."
     }
   ],
   "limitations": [
-    "Actual repeated OOM and native rename causes remain unresolved.",
-    "Exact committed gates pending; all changed fixture platform observations are unrun.",
-    "Full rights, hostile-load/restart guarantees, platform isolation and actual ChatGPT client acceptance remain open."
+    "Current cgroupfs candidate has no actual live or installed qualification yet.",
+    "Systemd attribution limitation is documented upstream; exact c9 ordering and earlier failure causes remain unresolved. NativeEPERM and pack failure causes remain unknown.",
+    "Full runtime/image/transitive rights, other-platform isolation, crash supervision and actual ChatGPT integration remain open."
   ],
   "checkpoint": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG005-Lifecycle-20261108\\artifacts\\aug005-lifecycle",
-  "next_unverified_action": "Independent new source/pin review, new committed gates and actual source/installed Linux qualification; no blind retry."
+  "next_unverified_action": "Independent exact source/pin review; normal exact new-head native/package/audit/license/hosted/source+installed gates. Preserve all failures; no old failed-job retry."
 }

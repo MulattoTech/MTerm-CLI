@@ -357,7 +357,7 @@ assert.equal(
   'Installed isolation protocol/denial tests failed; see retained log',
 );
 const isolationTestCount = Number(isolationAcceptance.stdout.match(/^# tests (\d+)$/m)?.[1]);
-assert.ok(isolationTestCount >= 29);
+assert.ok(isolationTestCount >= 31);
 for (const field of ['fail', 'skipped', 'cancelled'])
   assert.match(isolationAcceptance.stdout, new RegExp('^# ' + field + ' 0$', 'm'));
 let isolationLive = null;

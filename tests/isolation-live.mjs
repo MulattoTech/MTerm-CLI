@@ -142,6 +142,10 @@ function scenario(id, title, body) {
             'capture-backend',
             async () => {
               record.backend = service?.status().backend ?? null;
+              if (record.backend) {
+                assert.equal(record.backend.cgroupVersion, '2');
+                assert.equal(record.backend.cgroupDriver, 'cgroupfs');
+              }
             },
           ],
           [

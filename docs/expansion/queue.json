@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "asOf": "2026-11-08T04:43:03.921Z",
+  "asOf": "2026-11-08T05:20:48.604Z",
   "repository": "MulattoTech/MTerm-CLI",
   "epic": 81,
   "baseSha": "d7b7c4fb19867f7c5f9727598442c29c12d43709",
@@ -153,7 +153,7 @@
         "darwin-arm64",
         "darwin-x64"
       ],
-      "automatedTests": "Final3628672:9/9 checks and immutable independent review. Normal merge d6eb0fa shares tested tree380f84d and passed5/5 main checks. Native388/388; other hosts376pass+12existing skips. Installed29pack+18provenance on each host.",
+      "automatedTests": "Final3628672:9/9 checks and immutable independent review. Normal merge d6eb0fa shares tested tree380f84d and passed5/5 main checks. Native388/388; other hosts376pass+12existing skips. Installed29pack+18provenance on each host. PR207 changes the revocation fixture to verify uninstall preconditions; previous platform observations are historical until the exact new fixture qualifies. Original c9 native failure remains preserved.",
       "actualClient": "Two real official SDK stdio clients with isolated selection and notification tests; synthetic local pack payload. Real ChatGPT-to-MTerm app integration remains unverified.",
       "blocker": "Scoped ABI1 tools catalog/selection/refresh delivered; resources/prompts and actual client/full platform/licensing acceptance remain open. No owner review is pending.",
       "declaredIssueDependencies": [],
@@ -236,9 +236,9 @@
       "platformScope": [
         "linux-x64"
       ],
-      "automatedTests": "At730dfb4: native454/454,package/license,audit0 and isolated parser pass; hosted5/6 with real Linux probe5OOMfalse. Both raw terminal/cleanup false;12scenario/72stepcleanups pass. Journal subprocess buffer overflow retained (stream not recorded); corrected prefilter RED0/1 to GREEN14/14, new head gates pending.",
+      "automatedTests": "c9 preserved5/6hosted and454/455native. Exact owned kernel memcgOOM with Dockerfalse; all72cleanupsteps pass. Driver RED0/3→GREEN3/3; fullprotocol31/31. CIpreservation RED3/7→GREEN7/7; private child failure RED1/2→fullCI9/9. Pack diagnostic focused1/1. New committed cgroupfs source/installed/platform/native/package/security/license gates pending.",
       "actualClient": "Historical PR205 live Linux qualification exercised actual official SDK isolated-only calls, native denial, request cancellation and owned cleanup. This changed fixture awaits exact qualification. Actual ChatGPT-to-MTerm connector invocation remains unverified.",
-      "blocker": "PR207 remains draft. Repeated OOM attribution cause unresolved; correct failed journal evidence collection without rerun-to-pass or weakened checks. PR206 stays held; nativeEPERMcause also unresolved.",
+      "blocker": "cgroupfs/v2 is an unqualified candidate until real gates pass; systemd is now explicitly denied. Original attribution ordering, nativeEPERM and pack failure causes remain unresolved. PR206 stays parked; full rights/platform/client acceptance remains open.",
       "declaredIssueDependencies": [],
       "ownerAuthorization": "docs/OWNER_AUTHORIZATION.md"
     },

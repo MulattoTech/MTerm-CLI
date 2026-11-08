@@ -8,6 +8,8 @@ import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
+import { cgroupfsDaemonConfig, decodeDaemonConfig } from './isolation-ci-config.mjs';
+import { createCiCommandRunner } from './isolation-ci-runner.mjs';
 const exec = promisify(execFile);
 assert.equal(process.env.GITHUB_ACTIONS, 'true');
 assert.equal(process.env.RUNNER_ENVIRONMENT, 'github-hosted');
@@ -45,38 +47,8 @@ const report = {
   runtimeRedistributedWithMTerm: false,
   fullRuntimeImageRedistributionEligible: false,
 };
-let step = 0;
 const sha = (bytes) => createHash('sha256').update(bytes).digest('hex');
-async function run(command, args, options = {}) {
-  const { retain = true, ...execution } = options;
-  const name =
-    String(++step).padStart(3, '0') + '-' + path.basename(command).replace(/[^a-zA-Z0-9-]/g, '-') + '.log';
-  let result;
-  try {
-    result = await exec(command, args, {
-      timeout: 180000,
-      maxBuffer: 16777216,
-      cwd: root,
-      env: { ...process.env, DEBIAN_FRONTEND: 'noninteractive' },
-      ...execution,
-    });
-  } catch (error) {
-    await fs.writeFile(
-      path.join(evidence, name),
-      retain
-        ? (error.stdout ?? '') + (error.stderr ?? '')
-        : 'Raw daemon response omitted; operation failed.\n',
-    );
-    throw error;
-  }
-  await fs.writeFile(
-    path.join(evidence, name),
-    retain
-      ? result.stdout + result.stderr
-      : 'Raw daemon inventory omitted; selected fields are retained in bootstrap.json.\n',
-  );
-  return result.stdout;
-}
+const run = createCiCommandRunner(root, evidence);
 async function download(url, file) {
   const response = await fetch(url, { signal: AbortSignal.timeout(30000) });
   assert.equal(response.ok, true, 'Pinned source unavailable: ' + url);
@@ -280,6 +252,99 @@ try {
     '--allow-downgrades',
     ...debs,
   ]);
+  // This mutation is confined to the guarded disposable GitHub runner above.
+  // Pinned containerd's own critest.sh documents lost systemd OOM attribution.
+  // Qualify an explicit cgroupfs/v2 candidate; do not relax the live OOM gate.
+  const daemonDirectory = '/etc/docker',
+    daemonFile = path.join(daemonDirectory, 'daemon.json');
+  assert.equal(await fs.realpath(daemonDirectory), daemonDirectory);
+  const daemonParent = await fs.lstat(daemonDirectory);
+  assert.ok(daemonParent.isDirectory() && !daemonParent.isSymbolicLink());
+  assert.equal(daemonParent.uid, 0);
+  assert.equal(daemonParent.mode & 0o022, 0);
+  const daemonStat = await fs.lstat(daemonFile).catch((error) => {
+    if (error.code !== 'ENOENT') throw error;
+    return null;
+  });
+  if (daemonStat) {
+    assert.ok(daemonStat.isFile() && !daemonStat.isSymbolicLink());
+    assert.equal(daemonStat.nlink, 1);
+    assert.equal(daemonStat.uid, 0);
+    assert.equal(daemonStat.gid, 0);
+    assert.equal(daemonStat.mode & 0o7022, 0);
+    assert.ok(daemonStat.size <= 65536);
+  }
+  const beforeDaemon = daemonStat ? await fs.readFile(daemonFile) : Buffer.from('{}\n');
+  const candidateDaemon = cgroupfsDaemonConfig(decodeDaemonConfig(beforeDaemon));
+  const candidateFile = path.join(privateRoot, 'daemon-cgroupfs.json');
+  await fs.writeFile(path.join(privateRoot, 'daemon-before.json'), beforeDaemon, { mode: 0o600, flag: 'wx' });
+  await fs.writeFile(candidateFile, candidateDaemon, { mode: 0o600, flag: 'wx' });
+  await run('/usr/bin/dockerd', ['--validate', '--config-file', candidateFile], { retain: false });
+  assert.equal(
+    (
+      await run('/usr/bin/sudo', [
+        '-n',
+        '/usr/bin/docker',
+        ...docker,
+        'container',
+        'ls',
+        '--all',
+        '--format',
+        '{{.ID}}',
+      ])
+    ).trim(),
+    '',
+    'Refuse driver configuration while any container exists',
+  );
+  const currentDaemon = await fs.lstat(daemonFile).catch((error) => {
+    if (error.code !== 'ENOENT') throw error;
+    return null;
+  });
+  if (daemonStat) {
+    assert.ok(currentDaemon?.isFile() && !currentDaemon.isSymbolicLink());
+    for (const key of ['dev', 'ino', 'nlink', 'uid', 'gid', 'mode', 'size', 'mtimeMs', 'ctimeMs'])
+      assert.equal(currentDaemon[key], daemonStat[key], 'Daemon configuration changed during preparation');
+    assert.ok(
+      (await fs.readFile(daemonFile)).equals(beforeDaemon),
+      'Daemon configuration bytes changed during preparation',
+    );
+  } else assert.equal(currentDaemon, null);
+  const daemonMode = (daemonStat ? daemonStat.mode & 0o777 : 0o644).toString(8);
+  await run('/usr/bin/sudo', [
+    '-n',
+    '/usr/bin/install',
+    '-o',
+    'root',
+    '-g',
+    'root',
+    '-m',
+    daemonMode,
+    '--',
+    candidateFile,
+    daemonFile,
+  ]);
+  const appliedDaemon = await fs.lstat(daemonFile);
+  assert.ok(appliedDaemon.isFile() && !appliedDaemon.isSymbolicLink());
+  assert.equal(appliedDaemon.nlink, 1);
+  assert.equal(appliedDaemon.uid, 0);
+  assert.equal(appliedDaemon.gid, 0);
+  assert.equal(appliedDaemon.mode & 0o777, Number.parseInt(daemonMode, 8));
+  assert.ok(
+    (await fs.readFile(daemonFile)).equals(Buffer.from(candidateDaemon)),
+    'Applied daemon configuration bytes differ from the selected candidate',
+  );
+  report.cgroupDriverConfiguration = {
+    scope: 'disposable-github-hosted-runner',
+    requiredDriver: 'cgroupfs',
+    requiredVersion: '2',
+    previousFileExisted: daemonStat !== null,
+    beforeSha256: sha(beforeDaemon),
+    afterSha256: sha(Buffer.from(candidateDaemon)),
+    retainedPrivateBackup: true,
+    qualified: false,
+    reason:
+      'Pinned systemd OOM attribution is unreliable; unchanged actual source and installed gates must qualify this candidate.',
+  };
   await run('/usr/bin/sudo', ['-n', '/usr/bin/systemctl', 'restart', 'docker']);
   // A narrow grant to the ordinary ephemeral runner, never chmod666 or a workstation change.
   await run('/usr/bin/sudo', [
@@ -329,6 +394,7 @@ try {
     ].map((k) => [k, rawInfo[k]]),
   );
   assert.equal(info.CgroupVersion, '2');
+  assert.equal(info.CgroupDriver, 'cgroupfs');
   assert.ok(info.SecurityOptions.includes('name=seccomp,profile=builtin'));
   for (const field of ['MemoryLimit', 'SwapLimit', 'CpuCfsPeriod', 'CpuCfsQuota', 'PidsLimit'])
     assert.equal(info[field], true);

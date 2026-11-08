@@ -331,14 +331,14 @@
     "AUG-003": {
       "scope": "ABI1 tools-only bounded catalog, effective schema discovery, connection-local selection and explicit refresh under the immutable startup ceiling",
       "limitations": [
-        "Scoped tools-only catalog and selection scenarios are qualified on four hosts; resources/prompts, shared remote clients and full AUG003 acceptance remain open.",
+        "Previous scoped ABI1 catalog observations remain historical. The changed fixture requires new platform qualification; resources/prompts, shared remote clients and full AUG003 acceptance remain open.",
         "All three dependency package payloads and launcher bytes are unchanged; full transitive redistribution admission is not granted."
       ],
       "fixtures": [
         {
           "id": "fixture-1",
           "path": "tests/tool-packs.test.mjs",
-          "sha256": "9ba9e812b4dad28d140ff1d4f0a864d357abdbd1415fa641e8cd2db40bc43a83"
+          "sha256": "2a8abba2082e5f646d6168b98b44c88bac1a1d71cbcab6873c136cb4a83a27f4"
         }
       ],
       "references": [
@@ -356,240 +356,57 @@
           "kind": "historical-qualification",
           "path": "docs/validation/2026-11-08-aug003-source-review.json",
           "sha256": "878bc5f30d4f0a1b3309fcd35cb120f6e4877b9fe3e54100c8e5c377356e79dc"
+        },
+        {
+          "kind": "historical-qualification",
+          "path": "docs/validation/2026-11-08-aug003-win32-x64.json",
+          "sha256": "5eb14f41918288556b62a6af56a4a6f5fcebac01f08bccad7db6cee76de632ac"
+        },
+        {
+          "kind": "historical-qualification",
+          "path": "docs/validation/2026-11-08-aug003-linux-x64.json",
+          "sha256": "6410d1f06e130988647ba7bd0be4fc0fb2e1f92225b71669ab8bb80b5dc0cff0"
+        },
+        {
+          "kind": "historical-qualification",
+          "path": "docs/validation/2026-11-08-aug003-darwin-arm64.json",
+          "sha256": "9a707a6287b75ae2318cba95a2a1fcbf8f58b2e6f38016f7dda8bbbefa04a530"
+        },
+        {
+          "kind": "historical-qualification",
+          "path": "docs/validation/2026-11-08-aug003-darwin-x64.json",
+          "sha256": "5e8aa27754a9251edb069a0a8e78f788de019ac001484b2ce11a14ac24e99c85"
+        },
+        {
+          "kind": "historical-qualification",
+          "path": "docs/validation/2026-11-08-aug005-cgroup-driver-development.json",
+          "sha256": "266ade572f0afc76e9cce7ee27d55082d4157c643ad0ae7075770ba8e1b69d01"
         }
       ],
       "platforms": {
         "win32-x64": {
-          "support": "supported",
-          "reason": "Scoped ABI1 catalog scenarios executed on this host; full capability and third-party backend acceptance are not implied.",
-          "subject": {
-            "testedCommit": "d42d87e03f456e78262cdaff66e2bf8925606064",
-            "subjectFingerprint": "c29f0e5b83743d7ac18c7d5f63cc8880f4d855aebd1e5e0f3e4fd9aafe418218",
-            "backend": {
-              "name": "MTerm-CLI local optional-pack catalog",
-              "version": "0.0.1-preview.1 / ABI 1"
-            },
-            "runtime": {
-              "name": "node",
-              "version": "v24.21.0"
-            }
-          },
-          "cases": {
-            "success": {
-              "status": "passed",
-              "fixtureId": "fixture-1",
-              "receipt": {
-                "path": "docs/validation/2026-11-08-aug003-win32-x64.json",
-                "sha256": "5eb14f41918288556b62a6af56a4a6f5fcebac01f08bccad7db6cee76de632ac"
-              }
-            },
-            "permission_denied": {
-              "status": "passed",
-              "fixtureId": "fixture-1",
-              "receipt": {
-                "path": "docs/validation/2026-11-08-aug003-win32-x64.json",
-                "sha256": "5eb14f41918288556b62a6af56a4a6f5fcebac01f08bccad7db6cee76de632ac"
-              }
-            },
-            "cancelled": {
-              "status": "passed",
-              "fixtureId": "fixture-1",
-              "receipt": {
-                "path": "docs/validation/2026-11-08-aug003-win32-x64.json",
-                "sha256": "5eb14f41918288556b62a6af56a4a6f5fcebac01f08bccad7db6cee76de632ac"
-              }
-            },
-            "deadline": {
-              "status": "passed",
-              "fixtureId": "fixture-1",
-              "receipt": {
-                "path": "docs/validation/2026-11-08-aug003-win32-x64.json",
-                "sha256": "5eb14f41918288556b62a6af56a4a6f5fcebac01f08bccad7db6cee76de632ac"
-              }
-            },
-            "unsupported_platform": {
-              "status": "passed",
-              "fixtureId": "fixture-1",
-              "receipt": {
-                "path": "docs/validation/2026-11-08-aug003-win32-x64.json",
-                "sha256": "5eb14f41918288556b62a6af56a4a6f5fcebac01f08bccad7db6cee76de632ac"
-              }
-            }
-          }
+          "support": "unknown",
+          "reason": "Changed uninstall-precondition diagnostics require new exact-fixture platform observations; prior catalog qualifications are retained historically.",
+          "subject": null,
+          "cases": {}
         },
         "linux-x64": {
-          "support": "supported",
-          "reason": "Scoped ABI1 catalog scenarios executed on this host; full capability and third-party backend acceptance are not implied.",
-          "subject": {
-            "testedCommit": "d42d87e03f456e78262cdaff66e2bf8925606064",
-            "subjectFingerprint": "c29f0e5b83743d7ac18c7d5f63cc8880f4d855aebd1e5e0f3e4fd9aafe418218",
-            "backend": {
-              "name": "MTerm-CLI local optional-pack catalog",
-              "version": "0.0.1-preview.1 / ABI 1"
-            },
-            "runtime": {
-              "name": "node",
-              "version": "v24.21.0"
-            }
-          },
-          "cases": {
-            "success": {
-              "status": "passed",
-              "fixtureId": "fixture-1",
-              "receipt": {
-                "path": "docs/validation/2026-11-08-aug003-linux-x64.json",
-                "sha256": "6410d1f06e130988647ba7bd0be4fc0fb2e1f92225b71669ab8bb80b5dc0cff0"
-              }
-            },
-            "permission_denied": {
-              "status": "passed",
-              "fixtureId": "fixture-1",
-              "receipt": {
-                "path": "docs/validation/2026-11-08-aug003-linux-x64.json",
-                "sha256": "6410d1f06e130988647ba7bd0be4fc0fb2e1f92225b71669ab8bb80b5dc0cff0"
-              }
-            },
-            "cancelled": {
-              "status": "passed",
-              "fixtureId": "fixture-1",
-              "receipt": {
-                "path": "docs/validation/2026-11-08-aug003-linux-x64.json",
-                "sha256": "6410d1f06e130988647ba7bd0be4fc0fb2e1f92225b71669ab8bb80b5dc0cff0"
-              }
-            },
-            "deadline": {
-              "status": "passed",
-              "fixtureId": "fixture-1",
-              "receipt": {
-                "path": "docs/validation/2026-11-08-aug003-linux-x64.json",
-                "sha256": "6410d1f06e130988647ba7bd0be4fc0fb2e1f92225b71669ab8bb80b5dc0cff0"
-              }
-            },
-            "unsupported_platform": {
-              "status": "passed",
-              "fixtureId": "fixture-1",
-              "receipt": {
-                "path": "docs/validation/2026-11-08-aug003-linux-x64.json",
-                "sha256": "6410d1f06e130988647ba7bd0be4fc0fb2e1f92225b71669ab8bb80b5dc0cff0"
-              }
-            }
-          }
+          "support": "unknown",
+          "reason": "Changed uninstall-precondition diagnostics require new exact-fixture platform observations; prior catalog qualifications are retained historically.",
+          "subject": null,
+          "cases": {}
         },
         "darwin-arm64": {
-          "support": "supported",
-          "reason": "Scoped ABI1 catalog scenarios executed on this host; full capability and third-party backend acceptance are not implied.",
-          "subject": {
-            "testedCommit": "d42d87e03f456e78262cdaff66e2bf8925606064",
-            "subjectFingerprint": "c29f0e5b83743d7ac18c7d5f63cc8880f4d855aebd1e5e0f3e4fd9aafe418218",
-            "backend": {
-              "name": "MTerm-CLI local optional-pack catalog",
-              "version": "0.0.1-preview.1 / ABI 1"
-            },
-            "runtime": {
-              "name": "node",
-              "version": "v24.21.0"
-            }
-          },
-          "cases": {
-            "success": {
-              "status": "passed",
-              "fixtureId": "fixture-1",
-              "receipt": {
-                "path": "docs/validation/2026-11-08-aug003-darwin-arm64.json",
-                "sha256": "9a707a6287b75ae2318cba95a2a1fcbf8f58b2e6f38016f7dda8bbbefa04a530"
-              }
-            },
-            "permission_denied": {
-              "status": "passed",
-              "fixtureId": "fixture-1",
-              "receipt": {
-                "path": "docs/validation/2026-11-08-aug003-darwin-arm64.json",
-                "sha256": "9a707a6287b75ae2318cba95a2a1fcbf8f58b2e6f38016f7dda8bbbefa04a530"
-              }
-            },
-            "cancelled": {
-              "status": "passed",
-              "fixtureId": "fixture-1",
-              "receipt": {
-                "path": "docs/validation/2026-11-08-aug003-darwin-arm64.json",
-                "sha256": "9a707a6287b75ae2318cba95a2a1fcbf8f58b2e6f38016f7dda8bbbefa04a530"
-              }
-            },
-            "deadline": {
-              "status": "passed",
-              "fixtureId": "fixture-1",
-              "receipt": {
-                "path": "docs/validation/2026-11-08-aug003-darwin-arm64.json",
-                "sha256": "9a707a6287b75ae2318cba95a2a1fcbf8f58b2e6f38016f7dda8bbbefa04a530"
-              }
-            },
-            "unsupported_platform": {
-              "status": "passed",
-              "fixtureId": "fixture-1",
-              "receipt": {
-                "path": "docs/validation/2026-11-08-aug003-darwin-arm64.json",
-                "sha256": "9a707a6287b75ae2318cba95a2a1fcbf8f58b2e6f38016f7dda8bbbefa04a530"
-              }
-            }
-          }
+          "support": "unknown",
+          "reason": "Changed uninstall-precondition diagnostics require new exact-fixture platform observations; prior catalog qualifications are retained historically.",
+          "subject": null,
+          "cases": {}
         },
         "darwin-x64": {
-          "support": "supported",
-          "reason": "Scoped ABI1 catalog scenarios executed on this host; full capability and third-party backend acceptance are not implied.",
-          "subject": {
-            "testedCommit": "d42d87e03f456e78262cdaff66e2bf8925606064",
-            "subjectFingerprint": "c29f0e5b83743d7ac18c7d5f63cc8880f4d855aebd1e5e0f3e4fd9aafe418218",
-            "backend": {
-              "name": "MTerm-CLI local optional-pack catalog",
-              "version": "0.0.1-preview.1 / ABI 1"
-            },
-            "runtime": {
-              "name": "node",
-              "version": "v24.21.0"
-            }
-          },
-          "cases": {
-            "success": {
-              "status": "passed",
-              "fixtureId": "fixture-1",
-              "receipt": {
-                "path": "docs/validation/2026-11-08-aug003-darwin-x64.json",
-                "sha256": "5e8aa27754a9251edb069a0a8e78f788de019ac001484b2ce11a14ac24e99c85"
-              }
-            },
-            "permission_denied": {
-              "status": "passed",
-              "fixtureId": "fixture-1",
-              "receipt": {
-                "path": "docs/validation/2026-11-08-aug003-darwin-x64.json",
-                "sha256": "5e8aa27754a9251edb069a0a8e78f788de019ac001484b2ce11a14ac24e99c85"
-              }
-            },
-            "cancelled": {
-              "status": "passed",
-              "fixtureId": "fixture-1",
-              "receipt": {
-                "path": "docs/validation/2026-11-08-aug003-darwin-x64.json",
-                "sha256": "5e8aa27754a9251edb069a0a8e78f788de019ac001484b2ce11a14ac24e99c85"
-              }
-            },
-            "deadline": {
-              "status": "passed",
-              "fixtureId": "fixture-1",
-              "receipt": {
-                "path": "docs/validation/2026-11-08-aug003-darwin-x64.json",
-                "sha256": "5e8aa27754a9251edb069a0a8e78f788de019ac001484b2ce11a14ac24e99c85"
-              }
-            },
-            "unsupported_platform": {
-              "status": "passed",
-              "fixtureId": "fixture-1",
-              "receipt": {
-                "path": "docs/validation/2026-11-08-aug003-darwin-x64.json",
-                "sha256": "5e8aa27754a9251edb069a0a8e78f788de019ac001484b2ce11a14ac24e99c85"
-              }
-            }
-          }
+          "support": "unknown",
+          "reason": "Changed uninstall-precondition diagnostics require new exact-fixture platform observations; prior catalog qualifications are retained historically.",
+          "subject": null,
+          "cases": {}
         }
       },
       "acceptanceReview": null
@@ -862,28 +679,25 @@
       "acceptanceReview": null
     },
     "AUG-005": {
-      "scope": "Separate native Linux x64 container grant; causal synthetic lifecycle correction and passive owned OOM diagnostics pending exact-head live qualification",
+      "scope": "Separate native Linux x64 container grant with exact cgroupfs/v2 admission; real source/installed candidate qualification pending",
       "limitations": [
-        "Previous PR205 source and installed observations qualified native Linux x64 with the observed classic-image-store backend only. This changed fixture is not yet live-qualified. Windows/macOS/ARM/WSL/Desktop are unsupported; denial does not establish containment.",
-        "The first same-head Windows native attempt failed one existing private registration rename; subsequent focused and full reruns passed without code/settings changes. Cause unproven; original failure preserved.",
-        "Cooperative host-supervised deadlines; broker/daemon loss may leave a container bounded by kernel controls. Restart recovery and independent hard wall-clock supervision remain open.",
+        "Current cgroupfs/v2 candidate requires new exact source and installed live qualification. Systemd is unqualified and rejected; historical passes do not erase its repeated attribution failures.",
+        "The c9 owned kernel record proves a memory-cgroup OOM in that occurrence. Exact attribution/deletion ordering and earlier failure causes remain unresolved.",
+        "Original native registration EPERM and c9 pack-test failure remain preserved; added pack preconditions improve diagnostics without establishing the original cause.",
+        "Windows/macOS/ARM/WSL/Desktop remain unsupported. Cooperative host deadlines, restart recovery, independent post-crash supervision and cross-host quotas remain open.",
         "No general native executable/pack isolation, GPU limit, remote execution or actual ChatGPT connector invocation is qualified.",
-        "Signed packages and eight pinned LICENSE/NOTICE files do not establish full runtime/image/transitive redistribution clearance. Runtime binaries/images are not included in MTerm npm package.",
-        "Final metadata-head checks/review, expected-head merge and post-merge main checks are subsequent observations.",
-        "The original main649142e OOM assertion failure remains unexplained and preserved; successful new observations do not prove its cause or a product fix.",
-        "PR206 head4985 reproduced actual exit137/OOMKilled:false and a native registration EPERM; both remain unresolved. Synthetic transient-state polling was causally reproduced and corrected without changing the product deadline. New source/installed/platform observations are pending.",
-        "PR207 code730dfb4 again failed real OOM attribution; raw terminal and cleanup fields were both boolean false. Bounded journal capture overflow is corrected by exact-ID filtering before buffering, with no assertion or product change. New live qualification remains pending."
+        "Signed runtime packages and source LICENSE/NOTICE pins do not establish full runtime/image/transitive redistribution clearance; external runtimes/images are not bundled."
       ],
       "fixtures": [
         {
           "id": "fixture-1",
           "path": "tests/isolation.test.mjs",
-          "sha256": "862b5ae82c71543c1a4c5b96ae518569a26295be22b25489cfde9d11ee56974e"
+          "sha256": "668a5bbd1220506891320ec33dc8ad6e6d768904a3006d11ab6f843ce75d3258"
         },
         {
           "id": "fixture-2",
           "path": "tests/isolation-live.mjs",
-          "sha256": "86b107456d018eef680157329cdb82909535ebc41b5f45e90bc252168e51f559"
+          "sha256": "217361d3662142e22077b63e146d5e826e93da57e12050939981ea927e4e100b"
         }
       ],
       "references": [
@@ -966,30 +780,35 @@
           "kind": "historical-qualification",
           "path": "docs/validation/2026-11-08-aug005-lifecycle-failure.json",
           "sha256": "40329c24916d23890891462d20b6127bcc576b087ae410d2b1e75b55bd88b558"
+        },
+        {
+          "kind": "historical-qualification",
+          "path": "docs/validation/2026-11-08-aug005-cgroup-driver-development.json",
+          "sha256": "266ade572f0afc76e9cce7ee27d55082d4157c643ad0ae7075770ba8e1b69d01"
         }
       ],
       "platforms": {
         "win32-x64": {
           "support": "unsupported",
-          "reason": "Product still refuses this host before daemon contact. Changed fixture has not yet been requalified here; prior denial evidence is historical.",
+          "reason": "The changed fail-closed cgroupfs/v2 candidate and fixture require exact source/installed/platform qualification. Previous systemd observations remain historical.",
           "subject": null,
           "cases": {}
         },
         "linux-x64": {
           "support": "unknown",
-          "reason": "Changed causal fixture and passive diagnostic reporter require new exact source/installed live qualification; all previous observations remain historical.",
+          "reason": "The changed fail-closed cgroupfs/v2 candidate and fixture require exact source/installed/platform qualification. Previous systemd observations remain historical.",
           "subject": null,
           "cases": {}
         },
         "darwin-arm64": {
           "support": "unsupported",
-          "reason": "Product still refuses this host before daemon contact. Changed fixture has not yet been requalified here; prior denial evidence is historical.",
+          "reason": "The changed fail-closed cgroupfs/v2 candidate and fixture require exact source/installed/platform qualification. Previous systemd observations remain historical.",
           "subject": null,
           "cases": {}
         },
         "darwin-x64": {
           "support": "unsupported",
-          "reason": "Product still refuses this host before daemon contact. Changed fixture has not yet been requalified here; prior denial evidence is historical.",
+          "reason": "The changed fail-closed cgroupfs/v2 candidate and fixture require exact source/installed/platform qualification. Previous systemd observations remain historical.",
           "subject": null,
           "cases": {}
         }

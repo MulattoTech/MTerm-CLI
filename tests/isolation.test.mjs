@@ -87,7 +87,7 @@ async function fakeEngine(t, hooks = {}) {
       KernelVersion: '6.8.0-fixture',
       OperatingSystem: 'Ubuntu 24.04 synthetic fixture',
       CgroupVersion: '2',
-      CgroupDriver: 'systemd',
+      CgroupDriver: 'cgroupfs',
       MemoryLimit: true,
       SwapLimit: true,
       CpuCfsPeriod: true,
@@ -317,6 +317,9 @@ test('synthetic Engine success captures immediate stdout/stderr and removes the 
   assert.equal(result.stdout, 'IMMEDIATE\n');
   assert.equal(result.stderr, 'ERR\n');
   assert.equal(result.exitCode, 0);
+  assert.equal(result.backend.cgroupDriver, 'cgroupfs');
+  assert.equal(service.status().backend.cgroupDriver, 'cgroupfs');
+  assert.equal(service.status().requiredCgroupDriver, 'cgroupfs');
   assert.equal(result.cleanup, 'removed');
   assert.equal(f.state.starts, 1);
   assert.equal(f.state.deletes, 1);
@@ -376,6 +379,32 @@ test('synthetic Engine request cannot select image, endpoint, mounts, environmen
     await assert.rejects(service.run({ code: '0', ...extra }));
   await assert.rejects(service.run({ code: '🧪'.repeat(16385) }));
   assert.equal(f.state.created, false);
+});
+test('synthetic Engine rejects unqualified cgroup drivers before create and start', async (t) => {
+  for (const driver of [
+    'systemd',
+    undefined,
+    null,
+    '',
+    'unknown',
+    'Cgroupfs',
+    'cgroupfs ',
+    2,
+    true,
+    [],
+    {},
+  ]) {
+    const f = await fakeEngine(t);
+    if (driver === undefined) delete f.state.info.CgroupDriver;
+    else f.state.info.CgroupDriver = driver;
+    const { service, jobs } = await runner(t, f);
+    await assert.rejects(service.run({ code: '0' }), code('ISOLATION_UNSUPPORTED'));
+    assert.equal(f.state.created, false);
+    assert.equal(f.state.starts, 0);
+    assert.equal(f.state.deletes, 0);
+    assert.ok(!f.requests.some((r) => r.path.includes('/containers/')));
+    assert.equal(jobs.resourceStatus().usage.activeJobs, 0);
+  }
 });
 test('synthetic Engine rejects image volumes and stale/unqualified backends before create', async (t) => {
   for (const mutate of [
@@ -805,6 +834,26 @@ test('synthetic Engine lost start response removes only confirmed owned identity
   await assert.rejects(service.run({ code: '0' }));
   assert.equal(f.state.starts, 1);
   assert.equal(f.state.removed, true);
+  assert.equal(jobs.resourceStatus().usage.activeJobs, 0);
+});
+test('synthetic Engine changed cgroup driver blocks new admission without blocking owned cleanup', async (t) => {
+  const f = await fakeEngine(t, {
+    start: ({ state, res, json }) => {
+      state.info.CgroupDriver = 'systemd';
+      json(res, 204);
+      setTimeout(() => state.complete(), 15);
+    },
+  });
+  const { service, jobs } = await runner(t, f);
+  const completed = await service.run({ code: '0' });
+  assert.equal(completed.cleanup, 'removed');
+  assert.equal(f.state.removed, true);
+  assert.equal(f.state.deletes, 1);
+  assert.equal(jobs.resourceStatus().usage.activeJobs, 0);
+  await assert.rejects(service.run({ code: '0' }), code('ISOLATION_UNSUPPORTED'));
+  assert.equal(f.requests.filter((r) => r.path === '/v1.45/containers/create').length, 1);
+  assert.equal(f.state.starts, 1);
+  assert.equal(f.state.deletes, 1);
   assert.equal(jobs.resourceStatus().usage.activeJobs, 0);
 });
 test('synthetic Engine cleanup denial quarantines accounting and recovery is explicit and owned', async (t) => {

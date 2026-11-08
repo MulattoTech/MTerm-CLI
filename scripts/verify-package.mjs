@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-08-aug011-update-check; qualify nonmutating update comparisons from the actual packed installation.
 // Modified: 2026-11-08-aug012-resource-budgets; exercise all resource fixtures against exact installed admission modules.
 // Modified: 2026-11-08-aug003-pack-catalog; bind the installed final spawn guard and require all catalog fixtures.
 // Modified: 2026-11-07-aug002-provenance; qualify pinned attribution and exact production closure.
@@ -245,6 +246,68 @@ const installedOptionalPacks = {
   osSandbox: false,
   realClientConsent: false,
   log: path.join(output, 'optional-pack-tests.tap'),
+};
+const updateBindings = [];
+for (const name of [
+  'cli.js',
+  'pack-updates.js',
+  'tool-packs.js',
+  'provenance.js',
+  'files.js',
+  'policy.js',
+  'errors.js',
+]) {
+  const source = await fs.readFile(path.join(root, 'dist', name));
+  const installedBytes = await fs.readFile(path.resolve(path.dirname(installed), '../dist', name));
+  assert.deepEqual(installedBytes, source, 'Installed update checker differs from compiled source');
+  updateBindings.push({
+    path: 'dist/' + name,
+    sha256: createHash('sha256').update(installedBytes).digest('hex'),
+  });
+}
+const updateAcceptance = await exec(
+  process.execPath,
+  ['--test', '--test-reporter=tap', '--test-concurrency=1', path.join(root, 'tests/pack-updates.test.mjs')],
+  {
+    cwd: home,
+    env: { ...env, MTERM_VERIFY_BIN: installed },
+    timeout: 90000,
+    maxBuffer: 2097152,
+    windowsHide: true,
+  },
+).then(
+  (result) => ({ ...result, exit: 0 }),
+  (error) => ({ stdout: error.stdout ?? '', stderr: error.stderr ?? '', exit: error.code ?? 'unknown' }),
+);
+const updateLog = path.join(output, 'pack-update-check-tests.tap');
+await fs.writeFile(updateLog, updateAcceptance.stdout + updateAcceptance.stderr);
+assert.equal(updateAcceptance.exit, 0, 'Installed update-check acceptance failed; see retained log');
+const updateTestCount = Number(updateAcceptance.stdout.match(/^# tests (\d+)$/m)?.[1]);
+assert.ok(updateTestCount >= 42, 'Installed update-check acceptance did not run');
+for (const field of ['fail', 'skipped', 'cancelled'])
+  assert.match(updateAcceptance.stdout, new RegExp('^# ' + field + ' 0$', 'm'));
+const installedPackUpdateCheck = {
+  ok: true,
+  tests: updateTestCount,
+  failed: 0,
+  skipped: 0,
+  cancelled: 0,
+  moduleBindings: updateBindings,
+  fixtureSha256: createHash('sha256')
+    .update(await fs.readFile(path.join(root, 'tests/pack-updates.test.mjs')))
+    .digest('hex'),
+  logSha256: createHash('sha256')
+    .update(updateAcceptance.stdout + updateAcceptance.stderr)
+    .digest('hex'),
+  readOnly: true,
+  fromOutsideCheckout: true,
+  modelCalls: 0,
+  payloadExecution: false,
+  syntheticReviewOnly: true,
+  injectedPermissionFailureLabeled: true,
+  transactionalInstallVerified: false,
+  fullCli165Acceptance: false,
+  log: updateLog,
 };
 const budgetAcceptance = await exec(
   process.execPath,
@@ -516,6 +579,7 @@ const report = {
   installedConfiguration: configuration,
   installedRemoteState: remoteState,
   installedOptionalPacks,
+  installedPackUpdateCheck,
   installedResourceBudgets,
   installedIsolation,
   installedProvenance,

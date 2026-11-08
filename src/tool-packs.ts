@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-08-aug011-update-check; retain immutable verified payload snapshots and expose a read-only registry version.
 // Modified: 2026-11-08-aug012-resource-budgets; share native admission and cancellation, honor the owner runtime ceiling.
 // Modified: 2026-11-08-aug003-pack-catalog; bounded discovery and connection-owned selection.
 // AI-Change: 2026-11-07-aug001-pack-boundary (OpenAI / GPT-6 Astra Pro; self-reported)
@@ -213,7 +214,7 @@ function catalogBudget(signal?: AbortSignal, deadline = Infinity) {
     );
 }
 
-export async function inspectPack(
+export async function capturePack(
   input: { manifestPath: string; manifestSha256: string },
   owner?: RootPolicy,
   signal?: AbortSignal,
@@ -263,6 +264,13 @@ export async function inspectPack(
     objectSchema(tool.inputSchema);
     objectSchema(tool.outputSchema);
   }
+  const payloadSnapshots: Readonly<{
+    path: string;
+    fullPath: string;
+    sha256: string;
+    bytes: number;
+    text: string;
+  }>[] = [];
   for (const item of manifest.files) {
     catalogBudget(signal, deadline);
     const target = path.resolve(files.policy.root, item.path);
@@ -272,6 +280,22 @@ export async function inspectPack(
     catalogBudget(signal, deadline);
     if (payload.version !== item.sha256)
       fail('PACK_INTEGRITY', 'A declared payload file does not match its SHA-256.');
+    // Full fatal UTF-8 reads preserve BOM/CRLF. Capture these verified bytes, never a second pathname read.
+    const bytes = Buffer.from(payload.text, 'utf8');
+    if (
+      bytes.length !== payload.bytes ||
+      createHash('sha256').update(bytes).digest('hex') !== payload.version
+    )
+      fail('PACK_INTEGRITY', 'The captured payload does not preserve the verified raw bytes.');
+    payloadSnapshots.push(
+      Object.freeze({
+        path: item.path,
+        fullPath: path.resolve(files.policy.root, payload.path),
+        sha256: payload.version,
+        bytes: payload.bytes,
+        text: payload.text,
+      }),
+    );
   }
   const result = {
     manifest,
@@ -281,7 +305,16 @@ export async function inspectPack(
     root: files.policy.root,
   };
   catalogBudget(signal, deadline);
-  return result;
+  return { checked: result, payload: Object.freeze(payloadSnapshots) };
+}
+
+export async function inspectPack(
+  input: { manifestPath: string; manifestSha256: string },
+  owner?: RootPolicy,
+  signal?: AbortSignal,
+  deadline = Infinity,
+) {
+  return (await capturePack(input, owner, signal, deadline)).checked;
 }
 
 async function registryStore(file: string, write = false) {
@@ -303,8 +336,13 @@ async function readStore(store: Awaited<ReturnType<typeof registryStore>>) {
     return { registry: { schemaVersion: 1, packs: [] } as Registry, version: 'missing' };
   }
 }
+export async function readRegistrySnapshot(file: string, owner?: RootPolicy) {
+  const selected = owner ? await owner.resolve(absolute(file), true) : file;
+  const store = await registryStore(selected);
+  return { path: store.file, ...(await readStore(store)) };
+}
 export async function readRegistry(file: string): Promise<Registry> {
-  return (await readStore(await registryStore(file))).registry;
+  return (await readRegistrySnapshot(file)).registry;
 }
 async function changeRegistry(file: string, apply: boolean, transform: (registry: Registry) => Registry) {
   const store = await registryStore(file, apply);
@@ -342,9 +380,10 @@ async function changeRegistry(file: string, apply: boolean, transform: (registry
 }
 
 export async function packsMain(args: string[]): Promise<number> {
+  if (args[0] === 'update') return (await import('./pack-updates.js')).packUpdateMain(args.slice(1));
   if (args[0] === 'help' || args[0] === '--help' || args.length === 0) {
     console.log(
-      'Optional local packs (ABI 1)\n  packs inspect --manifest ABS_FILE --sha256 SHA256\n  packs install --manifest ABS_FILE --sha256 SHA256 --registry ABS_FILE [--apply]\n  packs uninstall --id ID --registry ABS_FILE [--apply]\n  packs list --registry ABS_FILE\nInstall/uninstall preview by default; --apply changes only local registration. No download, dependency installation or execution.\nMCP execution additionally requires --pack-registry ABS_FILE --allow-exec --allow-pack ID; runs as your OS user without an OS sandbox.',
+      'Optional local packs (ABI 1)\n  packs inspect --manifest ABS_FILE --sha256 SHA256\n  packs install --manifest ABS_FILE --sha256 SHA256 --registry ABS_FILE [--apply]\n  packs uninstall --id ID --registry ABS_FILE [--apply]\n  packs list --registry ABS_FILE\n  packs update --check --root ABS_DIR --manifest ABS_FILE --sha256 SHA256 --registry ABS_FILE --provenance ABS_FILE --provenance-sha256 SHA256\nUpdate checks compare selected local snapshots without installation or activation.\nInstall/uninstall preview by default; --apply changes only local registration. No download, dependency installation or execution.\nMCP execution additionally requires --pack-registry ABS_FILE --allow-exec --allow-pack ID; runs as your OS user without an OS sandbox.',
     );
     return 0;
   }

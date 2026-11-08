@@ -1,0 +1,92 @@
+{
+  "change_id": "2026-11-08-aug003-pack-catalog",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "started_at": "2026-11-08T00:12:00Z",
+  "updated_at": "2026-11-08T00:24:11.493Z",
+  "base_sha": "519cbff241be2a36bc180f91198e0492ec5ba1cc",
+  "issues": [
+    83,
+    81
+  ],
+  "requirements": [
+    "CLI-265",
+    "CLI-287"
+  ],
+  "files": [
+    "src/tool-packs.ts",
+    "src/mcp.ts",
+    "src/processes.ts",
+    "tests/tool-packs.test.mjs",
+    "scripts/verify-package.mjs",
+    "docs/expansion/PACK_CATALOG.md",
+    "docs/expansion/evidence.json",
+    "docs/expansion/queue.json",
+    "docs/roadmap/progress.json",
+    "docs/HANDOFF.md",
+    "README.md",
+    "docs/validation/fixtures/2026-11-07-aug001-tool-packs.test.mjs",
+    "docs/validation/2026-11-08-aug003-development.json"
+  ],
+  "decisions": [
+    "One implementation owner and one read-only peer; routine qualified delivery follows standing owner authorization.",
+    "Immutable exact startup registration ceiling, connection-owned mask and optimistic revision. New versions/IDs are metadata-only until an explicitly selected host restart.",
+    "Expose effective input/output schemas and namespaced pinned metadata through the existing approved SDK; no upstream implementation copying or dependency change.",
+    "Build refresh state before publication, recheck cancellation/deadline/revision after I/O, preserve current snapshot on failure.",
+    "Independent peer identified the await gap in ProcessService.start; a per-invocation synchronous final spawn guard preserves the shared compatibility guard.",
+    "Freeze original AUG001 test bytes as a pinned historical fixture before extending the live test suite.",
+    "Keep original300IDs, stages, acceptance, weights, estimates, blockers and all AUG accepted flags unchanged."
+  ],
+  "tests": [
+    {
+      "command": "baseline",
+      "result": "{\"kind\":\"baseline\",\"result\":\"Pinned Node24.21.0 clean install/build passed; primary dirty worktree preserved\"}"
+    },
+    {
+      "command": "initial-red",
+      "result": "{\"kind\":\"initial-red\",\"tests\":12,\"passed\":0,\"failed\":12,\"log\":\"artifacts/aug003/red.log\"}"
+    },
+    {
+      "command": "schema-default-red",
+      "result": "{\"kind\":\"schema-default-red\",\"tests\":1,\"passed\":0,\"failed\":1,\"log\":\"artifacts/aug003/schema-defaults-red.log\"}"
+    },
+    {
+      "command": "initial-build",
+      "result": "{\"kind\":\"initial-build\",\"result\":\"TypeScript type annotation selected the registry overload of z.toJSONSchema; explicit effective-schema helper fixed the compile type. Failed and passing build logs retained.\"}"
+    },
+    {
+      "command": "first-focused",
+      "result": "{\"kind\":\"first-focused\",\"tests\":46,\"passed\":44,\"failed\":2,\"log\":\"artifacts/aug003/focused-first.log\",\"reason\":\"Fixture assumptions: SDK2.3 notification handler uses a method string; 100ms deadline expired before intended process validation read.\"}"
+    },
+    {
+      "command": "corrected-fixture-red",
+      "result": "{\"kind\":\"corrected-fixture-red\",\"runtimeCommit\":\"c6d715f43cd08c07a8206de3a42b9dd0152e3488\",\"tests\":13,\"passed\":0,\"failed\":13,\"log\":\"artifacts/aug003/red-final-fixtures.log\"}"
+    },
+    {
+      "command": "corrected-focused",
+      "result": "{\"kind\":\"corrected-focused\",\"tests\":46,\"passed\":46,\"failed\":0,\"skipped\":0,\"cancelled\":0,\"completedAt\":\"2026-11-08T00:20:38.0805725Z\",\"log\":\"artifacts/aug003/focused-corrected.log\"}"
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "id": "CLI-265",
+      "stage_change": false,
+      "reason": "Add scoped catalog/error-contract evidence; all protected roadmap fields and full acceptance remain unchanged."
+    },
+    {
+      "id": "CLI-287",
+      "stage_change": false,
+      "reason": "Add scoped catalog/error-contract evidence; all protected roadmap fields and full acceptance remain unchanged."
+    }
+  ],
+  "limitations": [
+    "Synthetic local pack fixtures and real official stdio clients; no paid engine call or real-user credentials/configuration.",
+    "Unsupported-platform scenario intentionally refuses a manifest platform; it is not validation of that unsupported operating system.",
+    "Cancellation/deadline scenarios wrap real I/O; no kernel I/O interruption or hostile concurrent-writer containment is claimed.",
+    "Full native/prepack/installed/hosted and immutable independent review remain next.",
+    "No ABI1 resource/prompt execution or remote shared-client authority; no OS sandbox.",
+    "No Codex/model request, user config/auth change or protection bypass."
+  ],
+  "checkpoint": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG003-20261108\\artifacts\\aug003",
+  "next_unverified_action": "Commit the reviewed source checkpoint, obtain immutable peer approval, run full native/prepack/installed/security/license qualification and exact-head hosted matrix, then normal merge/main verification."
+}

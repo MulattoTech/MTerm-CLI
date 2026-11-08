@@ -1,8 +1,9 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-08-aug003-pack-catalog; bounded discovery and connection-owned selection.
 // AI-Change: 2026-11-07-aug001-pack-boundary (OpenAI / GPT-6 Astra Pro; self-reported)
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { randomUUID } from 'node:crypto';
+import { createHash, randomUUID } from 'node:crypto';
 import { z } from 'zod';
 import { FileService } from './files.js';
 import { ProcessService } from './processes.js';
@@ -202,18 +203,30 @@ function objectSchema(value: unknown): z.ZodObject {
   return schema;
 }
 
+function catalogBudget(signal?: AbortSignal, deadline = Infinity) {
+  cancelled(signal);
+  if (performance.now() >= deadline)
+    fail(
+      'PACK_CATALOG_TIMEOUT',
+      'Catalog validation exceeded its deadline; the previous snapshot is unchanged.',
+    );
+}
+
 export async function inspectPack(
   input: { manifestPath: string; manifestSha256: string },
   owner?: RootPolicy,
   signal?: AbortSignal,
+  deadline = Infinity,
 ) {
-  cancelled(signal);
+  catalogBudget(signal, deadline);
   parsed(digest, input.manifestSha256, 'PACK_PIN');
   const selected = absolute(input.manifestPath);
   const file = owner ? await owner.resolve(selected) : selected;
+  catalogBudget(signal, deadline);
   const files = await FileService.create(path.dirname(file), { maxBytes: MAX_BYTES });
+  catalogBudget(signal, deadline);
   const read = await files.read({ path: file });
-  cancelled(signal);
+  catalogBudget(signal, deadline);
   if (read.version !== input.manifestSha256)
     fail('PACK_PIN', 'Manifest does not match the owner-selected SHA-256.');
   const manifest = parsed(manifestSchema, json(read.text, 'PACK_MANIFEST'), 'PACK_MANIFEST');
@@ -250,21 +263,24 @@ export async function inspectPack(
     objectSchema(tool.outputSchema);
   }
   for (const item of manifest.files) {
-    cancelled(signal);
+    catalogBudget(signal, deadline);
     const target = path.resolve(files.policy.root, item.path);
     if (owner) await owner.resolve(target);
+    catalogBudget(signal, deadline);
     const payload = await files.read({ path: target });
-    cancelled(signal);
+    catalogBudget(signal, deadline);
     if (payload.version !== item.sha256)
       fail('PACK_INTEGRITY', 'A declared payload file does not match its SHA-256.');
   }
-  return {
+  const result = {
     manifest,
     manifestPath: await files.policy.resolve(file),
     manifestSha256: read.version,
     entry: await files.policy.resolve(manifest.runtime.entry),
     root: files.policy.root,
   };
+  catalogBudget(signal, deadline);
+  return result;
 }
 
 async function registryStore(file: string, write = false) {
@@ -392,70 +408,352 @@ export async function packsMain(args: string[]): Promise<number> {
 }
 
 type PackTool = {
+  packId: string;
   name: string;
   description: string;
   inputSchema: z.ZodObject;
+  outputSchema: z.ZodObject;
+  metadata: Record<string, unknown>;
   invoke: (args: unknown, signal?: AbortSignal) => Promise<Record<string, unknown>>;
 };
 type CatalogOptions = { registry: string; allowPacks: readonly string[]; jobs: ProcessService };
+const catalogSchemas = {
+  catalog: z.strictObject({
+    id: packId.optional(),
+    version: version.optional(),
+    manifestSha256: digest.optional(),
+    expectedRevision: digest.optional(),
+  }),
+  select: z.strictObject({
+    expectedRevision: digest,
+    selections: z
+      .array(z.strictObject({ id: packId, version, manifestSha256: digest, enabled: z.boolean() }))
+      .min(1)
+      .max(16),
+  }),
+  refresh: z.strictObject({
+    expectedRevision: digest,
+    timeoutMs: z.number().int().min(1).max(30000).default(3000),
+  }),
+};
+type CheckedPack = Awaited<ReturnType<typeof inspectPack>>;
+function effectiveSchema(schema: z.ZodObject, io: 'input' | 'output') {
+  return z.toJSONSchema(schema, { io });
+}
+type CompiledTool = {
+  tool: Manifest['tools'][number];
+  input: z.ZodObject;
+  output: z.ZodObject;
+  definition: {
+    name: string;
+    description: string;
+    inputSchema: ReturnType<typeof effectiveSchema>;
+    outputSchema: ReturnType<typeof effectiveSchema>;
+  };
+};
+type CatalogEntry = {
+  registration: Registration;
+  ownerApproved: boolean;
+  checked?: CheckedPack;
+  compiled?: CompiledTool[];
+  error?: ReturnType<typeof safeError>;
+};
+type Snapshot = {
+  entries: CatalogEntry[];
+  diagnostics: Array<{ id?: string; error: ReturnType<typeof safeError> }>;
+};
+const sameRegistration = (a: Registration, b: Registration) =>
+  a.id === b.id &&
+  a.version === b.version &&
+  a.manifestPath === b.manifestPath &&
+  a.manifestSha256 === b.manifestSha256;
+function compiledTools(item: Registration, checked: CheckedPack): CompiledTool[] {
+  const compiled = checked.manifest.tools.map((tool) => {
+    const input = objectSchema(tool.inputSchema),
+      output = objectSchema(tool.outputSchema);
+    return {
+      tool,
+      input,
+      output,
+      definition: {
+        name: `mterm_pack_${item.id}__${tool.name}`,
+        description: `Owner-approved unsandboxed pack ${item.id}@${item.version}: ${tool.description}`,
+        inputSchema: effectiveSchema(input, 'input'),
+        outputSchema: effectiveSchema(output, 'output'),
+      },
+    };
+  });
+  if (Buffer.byteLength(JSON.stringify(compiled.map((tool) => tool.definition))) > 262144)
+    fail('PACK_CATALOG_LIMIT', 'Effective schemas for one pack exceed 256 KiB; reduce the manifest.');
+  return compiled;
+}
 export class PackCatalog {
-  readonly tools: PackTool[] = [];
-  private readonly diagnostics: Array<{ id?: string; error: { code: string; message: string } }> = [];
-  private readonly admitted: Array<{
-    id: string;
-    version: string;
-    manifestSha256: string;
-    source: Manifest['source'];
-  }> = [];
-  private constructor(private readonly options: CatalogOptions) {}
+  readonly schemas = catalogSchemas;
+  private readonly registeredTools: PackTool[] = [];
+  private readonly ceiling = new Map<string, Registration>();
+  private readonly allowedPacks: Set<string>;
+  private readonly instance = randomUUID();
+  private generation = 0;
+  private revision = '';
+  private selected = new Set<string>();
+  private snapshot: Snapshot = { entries: [], diagnostics: [] };
+  private constructor(private readonly options: CatalogOptions) {
+    this.allowedPacks = new Set(options.allowPacks);
+  }
+  get tools(): readonly PackTool[] {
+    return this.registeredTools;
+  }
   static async create(options: CatalogOptions): Promise<PackCatalog> {
     const catalog = new PackCatalog(options);
     try {
-      await options.jobs.policy.resolve(absolute(options.registry), true);
-      const registry = await readRegistry(options.registry);
-      for (const item of registry.packs) {
-        try {
-          if (!options.jobs.allowExec || !options.allowPacks.includes(item.id))
-            fail('PACK_DENIED', 'Pack requires --allow-exec and an exact --allow-pack ID.');
-          const checked = await inspectPack(item, options.jobs.policy);
-          if (checked.manifest.id !== item.id || checked.manifest.version !== item.version)
-            fail('PACK_REGISTRY', 'Registry identity does not match the pinned manifest.');
-          for (const tool of checked.manifest.tools) {
-            const inputSchema = objectSchema(tool.inputSchema),
-              outputSchema = objectSchema(tool.outputSchema);
-            catalog.tools.push({
-              name: `mterm_pack_${item.id}__${tool.name}`,
-              description: `Owner-approved unsandboxed pack ${item.id}@${item.version}: ${tool.description}`,
-              inputSchema,
-              invoke: (args, signal) => catalog.invoke(item, tool, inputSchema, outputSchema, args, signal),
-            });
-          }
-          catalog.admitted.push({
-            id: item.id,
-            version: item.version,
-            manifestSha256: item.manifestSha256,
-            source: checked.manifest.source,
+      catalog.snapshot = await catalog.readSnapshot(true, undefined, performance.now() + 3000);
+      for (const entry of catalog.snapshot.entries) {
+        if (!entry.ownerApproved || !entry.checked || !entry.compiled) continue;
+        const item = entry.registration;
+        catalog.ceiling.set(item.id, { ...item });
+        catalog.selected.add(item.id);
+        for (const compiled of entry.compiled) {
+          catalog.registeredTools.push({
+            packId: item.id,
+            name: compiled.definition.name,
+            description: compiled.definition.description,
+            inputSchema: compiled.input,
+            outputSchema: compiled.output,
+            metadata: {
+              'io.github.MulattoTech.MTerm-CLI/pack': {
+                id: item.id,
+                version: item.version,
+                manifestSha256: item.manifestSha256,
+                sourceCommit: entry.checked.manifest.source.commit,
+                abiVersion: 1,
+                protocol: PROTOCOL,
+              },
+            },
+            invoke: (args, signal) =>
+              catalog.invoke(item, compiled.tool, compiled.input, compiled.output, args, signal),
           });
-        } catch (error) {
-          catalog.diagnostics.push({ id: item.id, error: safeError(error) });
         }
       }
     } catch (error) {
-      catalog.diagnostics.push({ error: safeError(error) });
+      catalog.snapshot = { entries: [], diagnostics: [{ error: safeError(error) }] };
     }
+    catalog.advance();
     return catalog;
   }
-  describe() {
+  private async readSnapshot(
+    initial: boolean,
+    signal: AbortSignal | undefined,
+    deadline: number,
+  ): Promise<Snapshot> {
+    const check = () => catalogBudget(signal, deadline);
+    check();
+    await this.options.jobs.policy.resolve(absolute(this.options.registry), true);
+    check();
+    const store = await registryStore(this.options.registry);
+    check();
+    const first = await readStore(store);
+    check();
+    const entries: CatalogEntry[] = [];
+    let schemaBytes = 0;
+    for (const item of first.registry.packs) {
+      check();
+      const entry: CatalogEntry = { registration: item, ownerApproved: false };
+      const approved = this.ceiling.get(item.id);
+      // Refresh observes unapproved registrations as metadata only. No payload reads or new grants.
+      if (!initial && (!approved || !sameRegistration(approved, item))) {
+        entry.error = {
+          code: 'PACK_CEILING',
+          message:
+            'This exact registration was not admitted at startup. Review its pin and restart an explicitly approved host to enable it.',
+        };
+        entries.push(entry);
+        continue;
+      }
+      try {
+        if (!this.options.jobs.allowExec || !this.allowedPacks.has(item.id))
+          fail('PACK_DENIED', 'Pack requires --allow-exec and an exact --allow-pack ID.');
+        const checked = await inspectPack(item, this.options.jobs.policy, signal, deadline);
+        check();
+        if (checked.manifest.id !== item.id || checked.manifest.version !== item.version)
+          fail('PACK_REGISTRY', 'Registry identity does not match the pinned manifest.');
+        const compiled = compiledTools(item, checked);
+        const bytes = Buffer.byteLength(JSON.stringify(compiled.map((tool) => tool.definition)));
+        if (schemaBytes + bytes > 1048576)
+          fail('PACK_CATALOG_LIMIT', 'Combined effective pack schemas exceed 1 MiB; select fewer packs.');
+        schemaBytes += bytes;
+        entry.checked = checked;
+        entry.compiled = compiled;
+        entry.ownerApproved = true;
+      } catch (error) {
+        check();
+        if (!initial) throw error;
+        entry.error = safeError(error);
+      }
+      entries.push(entry);
+    }
+    const last = await readStore(store);
+    check();
+    if (first.version !== last.version)
+      fail('PACK_REGISTRY_CHANGED', 'Registry changed during discovery; retry an explicit refresh.');
+    return { entries, diagnostics: [] };
+  }
+  private advance() {
+    this.revision = createHash('sha256')
+      .update(
+        JSON.stringify({
+          instance: this.instance,
+          generation: ++this.generation,
+          registrations: this.snapshot.entries.map((entry) => entry.registration),
+          selected: [...this.selected].sort(),
+        }),
+      )
+      .digest('hex');
+  }
+  private current(expected: string) {
+    if (expected !== this.revision)
+      fail(
+        'PACK_CATALOG_STALE',
+        'Catalog revision changed. Read mterm_tools_catalog and retry with its current revision.',
+      );
+  }
+  isSelected(id: string): boolean {
+    return (
+      this.selected.has(id) &&
+      this.snapshot.entries.some((entry) => entry.registration.id === id && entry.ownerApproved)
+    );
+  }
+  private summary() {
     return {
-      configured: true,
+      schemaVersion: 1,
+      revision: this.revision,
+      scope: 'stdio-connection',
+      authenticatedClientIdentity: false,
       abiVersion: 1,
       protocol: PROTOCOL,
       osSandbox: false,
       licenseVerified: false,
-      discovery: 'startup-snapshot; registration and pins rechecked before each call',
-      admitted: this.admitted,
-      diagnostics: this.diagnostics,
+      discovery:
+        'explicit-refresh; startup execution ceiling; registration and pins rechecked before each call',
+      resources: { supported: false, reason: 'ABI 1 is tools-only', entries: [] },
+      prompts: { supported: false, reason: 'ABI 1 is tools-only', entries: [] },
+      limits: {
+        packs: 16,
+        toolsPerPack: 16,
+        manifestBytes: MAX_BYTES,
+        detailSchemaBytes: 262144,
+        combinedSchemaBytes: 1048576,
+        refreshTimeoutMs: 30000,
+      },
+      packs: this.snapshot.entries.map((entry) => ({
+        id: entry.registration.id,
+        version: entry.registration.version,
+        manifestSha256: entry.registration.manifestSha256,
+        compatible: !!entry.checked,
+        ownerApproved: entry.ownerApproved,
+        selected: this.isSelected(entry.registration.id),
+        ...(entry.checked
+          ? { source: entry.checked.manifest.source, platforms: entry.checked.manifest.platforms }
+          : {}),
+        toolNames: entry.compiled?.map((tool) => tool.definition.name) ?? [],
+        ...(entry.error ? { error: entry.error } : {}),
+      })),
+      diagnostics: [
+        ...this.snapshot.diagnostics,
+        ...this.snapshot.entries
+          .filter((entry) => entry.error)
+          .map((entry) => ({ id: entry.registration.id, error: entry.error! })),
+      ],
     };
+  }
+  catalog(input: unknown = {}, signal?: AbortSignal) {
+    cancelled(signal);
+    const a = catalogSchemas.catalog.parse(input);
+    if (a.expectedRevision) this.current(a.expectedRevision);
+    const summary = this.summary();
+    if (a.id === undefined) {
+      if (a.version !== undefined || a.manifestSha256 !== undefined)
+        fail('PACK_CATALOG_QUERY', 'Exact detail requires ID, version, manifestSha256 and expectedRevision.');
+      return structuredClone(summary);
+    }
+    if (!a.version || !a.manifestSha256 || !a.expectedRevision)
+      fail('PACK_CATALOG_QUERY', 'Exact detail requires ID, version, manifestSha256 and expectedRevision.');
+    const entry = this.snapshot.entries.find((item) => item.registration.id === a.id);
+    if (
+      !entry ||
+      entry.registration.version !== a.version ||
+      entry.registration.manifestSha256 !== a.manifestSha256
+    )
+      fail(
+        'PACK_VERSION',
+        'The requested exact version/pin is absent from this snapshot; read the catalog again.',
+      );
+    const result = {
+      ...summary,
+      pack: {
+        ...summary.packs.find((item) => item.id === a.id)!,
+        tools: entry.compiled?.map((tool) => tool.definition) ?? [],
+        resources: [],
+        prompts: [],
+      },
+    };
+    if (Buffer.byteLength(JSON.stringify(result)) > 393216)
+      fail('PACK_CATALOG_LIMIT', 'Detail response exceeds 384 KiB; reduce manifest schema size.');
+    return structuredClone(result);
+  }
+  select(input: unknown, signal?: AbortSignal) {
+    cancelled(signal);
+    const a = catalogSchemas.select.parse(input);
+    this.current(a.expectedRevision);
+    unique(
+      a.selections.map((item) => item.id),
+      'PACK_SELECTION',
+    );
+    for (const item of a.selections) {
+      const approved = this.ceiling.get(item.id);
+      const current = this.snapshot.entries.find((entry) => entry.registration.id === item.id);
+      if (!approved || !current?.ownerApproved || !this.options.jobs.allowExec)
+        fail(
+          'PACK_DENIED',
+          'Selection cannot extend the owner-approved startup ceiling; use an explicitly approved host.',
+        );
+      if (approved.version !== item.version || approved.manifestSha256 !== item.manifestSha256)
+        fail('PACK_VERSION', 'Selection requires the exact catalog version and manifest SHA-256.');
+    }
+    cancelled(signal);
+    for (const item of a.selections) {
+      if (item.enabled) this.selected.add(item.id);
+      else this.selected.delete(item.id);
+    }
+    this.advance();
+    return this.catalog();
+  }
+  async refresh(input: unknown, signal?: AbortSignal) {
+    const a = catalogSchemas.refresh.parse(input);
+    cancelled(signal);
+    this.current(a.expectedRevision);
+    const deadline = performance.now() + a.timeoutMs;
+    const next = await this.readSnapshot(false, signal, deadline);
+    catalogBudget(signal, deadline);
+    this.current(a.expectedRevision);
+    // Nothing awaits between the final revision/budget checks and the state commit.
+    this.selected = new Set(
+      [...this.selected].filter((id) =>
+        next.entries.some((entry) => entry.registration.id === id && entry.ownerApproved),
+      ),
+    );
+    this.snapshot = next;
+    this.advance();
+    return this.catalog();
+  }
+  describe() {
+    const summary = this.summary();
+    return structuredClone({
+      ...summary,
+      configured: true,
+      admitted: summary.packs
+        .filter((entry) => entry.ownerApproved)
+        .map(({ id, version, manifestSha256, source }) => ({ id, version, manifestSha256, source })),
+    });
   }
   private async invoke(
     item: Registration,
@@ -468,14 +766,27 @@ export class PackCatalog {
     cancelled(signal);
     const deadline = performance.now() + tool.timeoutMs;
     const arguments_ = input.parse(args);
-    if (!this.options.jobs.allowExec || !this.options.allowPacks.includes(item.id))
+    if (!this.options.jobs.allowExec || !this.allowedPacks.has(item.id))
       fail('PACK_DENIED', 'Pack execution is not approved.');
+    const guard = () => {
+      cancelled(signal);
+      if (!this.isSelected(item.id))
+        fail(
+          'PACK_DESELECTED',
+          'This connection has deselected or lost this exact pack; inspect its catalog.',
+        );
+      if (performance.now() >= deadline) fail('PACK_TIMEOUT', 'Pack validation exceeded its time budget.');
+    };
+    guard();
     await this.options.jobs.policy.resolve(this.options.registry);
     const registered = (await readRegistry(this.options.registry)).packs.find(
       (entry) => entry.id === item.id,
     );
     if (!registered || JSON.stringify(registered) !== JSON.stringify(item))
-      fail('PACK_UNREGISTERED', 'Pack registration changed; restart the host to rediscover tools.');
+      fail(
+        'PACK_UNREGISTERED',
+        'Pack registration changed; explicitly refresh the catalog. New versions require an approved host restart.',
+      );
     const checked = await inspectPack(item, this.options.jobs.policy, signal);
     const id = randomUUID();
     const request =
@@ -493,12 +804,15 @@ export class PackCatalog {
     if (remaining < 100) fail('PACK_TIMEOUT', 'Pack validation exceeded its time budget.');
     cancelled(signal);
     const jobs = this.options.jobs;
-    const session = await jobs.start({
-      command: process.execPath,
-      args: [checked.entry],
-      cwd: checked.root,
-      timeoutMs: remaining,
-    });
+    const session = await jobs.start(
+      {
+        command: process.execPath,
+        args: [checked.entry],
+        cwd: checked.root,
+        timeoutMs: remaining,
+      },
+      guard,
+    );
     let stdout = '',
       bytes = 0,
       cursor = 0;

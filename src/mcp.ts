@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-08-aug003-pack-catalog; connection-local pack selection and effective output schemas.
 // Modified: 2026-11-07-aug001-pack-boundary; lazy opt-in pack discovery through the owned process runner.
 // Modified: 2026-11-02-config-contract; set success reports its committed effective preference value.
 // Modified: 2026-11-02-file-info-contract; forward cooperative metadata cancellation.
@@ -99,12 +100,14 @@ export async function runMcp(options: HostOptions): Promise<void> {
         readOnly: boolean,
         handler: (args: unknown, signal: AbortSignal) => unknown | Promise<unknown>,
         rawText = false,
+        contract?: { outputSchema: z.ZodObject; _meta: Record<string, unknown> },
       ) {
-        server.registerTool(
+        return server.registerTool(
           name,
           {
             description,
             inputSchema: schema,
+            ...contract,
             annotations: {
               readOnlyHint: readOnly,
               destructiveHint: !readOnly,
@@ -168,10 +171,58 @@ export async function runMcp(options: HostOptions): Promise<void> {
           },
         );
       }
-      for (const tool of packs?.tools ?? [])
-        add(tool.name, tool.description, tool.inputSchema, false, (args, signal) =>
-          tool.invoke(args, signal),
+      const packHandles = (packs?.tools ?? []).map((tool) => ({
+        id: tool.packId,
+        handle: add(
+          tool.name,
+          tool.description,
+          tool.inputSchema,
+          false,
+          (args, signal) => tool.invoke(args, signal),
+          false,
+          { outputSchema: tool.outputSchema, _meta: tool.metadata },
+        ),
+      }));
+      const synchronizePacks = () => {
+        for (const { id, handle } of packHandles) {
+          const enabled = packs!.isSelected(id);
+          if (handle.enabled !== enabled) {
+            if (enabled) handle.enable();
+            else handle.disable();
+          }
+        }
+      };
+      if (packs) {
+        add(
+          'mterm_tools_catalog',
+          'Read optional-pack versions, pins, limits and selection. Exact one-pack detail includes effective tool schemas; ABI 1 has no resources/prompts.',
+          packs.schemas.catalog,
+          true,
+          (args, signal) => packs.catalog(args, signal),
         );
+        add(
+          'mterm_tools_select',
+          'Change only this stdio connection’s selection beneath its owner-approved startup ceiling. Requires exact versions/pins and current revision; running jobs continue.',
+          packs.schemas.select,
+          false,
+          (args, signal) => {
+            const result = packs.select(args, signal);
+            synchronizePacks();
+            return result;
+          },
+        );
+        add(
+          'mterm_tools_refresh',
+          'Explicitly refresh bounded local pack metadata. New IDs/versions are never granted; failure preserves the prior snapshot and selection. No payload execution or persistent writes.',
+          packs.schemas.refresh,
+          true,
+          async (args, signal) => {
+            const result = await packs.refresh(args, signal);
+            synchronizePacks();
+            return result;
+          },
+        );
+      }
       if (options.compatDesktopCommander && configuration) {
         const compat = DesktopCommanderFiles.using(files, () => configuration.current());
         add(

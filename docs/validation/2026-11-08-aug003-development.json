@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "capability": "AUG-003",
+  "issue": 83,
+  "baseSha": "519cbff241be2a36bc180f91198e0492ec5ba1cc",
+  "recordedAt": "2026-11-08T00:24:11.493Z",
+  "scope": "Development working-tree observations; not immutable-head/full acceptance",
+  "runtime": {
+    "platform": "win32",
+    "architecture": "x64",
+    "node": "v24.21.0"
+  },
+  "attempts": [
+    {
+      "kind": "baseline",
+      "result": "Pinned Node24.21.0 clean install/build passed; primary dirty worktree preserved"
+    },
+    {
+      "kind": "initial-red",
+      "tests": 12,
+      "passed": 0,
+      "failed": 12,
+      "log": "artifacts/aug003/red.log"
+    },
+    {
+      "kind": "schema-default-red",
+      "tests": 1,
+      "passed": 0,
+      "failed": 1,
+      "log": "artifacts/aug003/schema-defaults-red.log"
+    },
+    {
+      "kind": "initial-build",
+      "result": "TypeScript type annotation selected the registry overload of z.toJSONSchema; explicit effective-schema helper fixed the compile type. Failed and passing build logs retained."
+    },
+    {
+      "kind": "first-focused",
+      "tests": 46,
+      "passed": 44,
+      "failed": 2,
+      "log": "artifacts/aug003/focused-first.log",
+      "reason": "Fixture assumptions: SDK2.3 notification handler uses a method string; 100ms deadline expired before intended process validation read."
+    },
+    {
+      "kind": "corrected-fixture-red",
+      "runtimeCommit": "c6d715f43cd08c07a8206de3a42b9dd0152e3488",
+      "tests": 13,
+      "passed": 0,
+      "failed": 13,
+      "log": "artifacts/aug003/red-final-fixtures.log"
+    },
+    {
+      "kind": "corrected-focused",
+      "tests": 46,
+      "passed": 46,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "completedAt": "2026-11-08T00:20:38.0805725Z",
+      "log": "artifacts/aug003/focused-corrected.log"
+    }
+  ],
+  "fixture": {
+    "path": "tests/tool-packs.test.mjs",
+    "sha256": "9ba9e812b4dad28d140ff1d4f0a864d357abdbd1415fa641e8cd2db40bc43a83",
+    "hashMode": "strict-utf8-crlf-to-lf"
+  },
+  "fixtureNote": "The final test file adds an attribution comment after the corrected run; test behavior is unchanged. Exact-head qualification remains subsequent.",
+  "retainedLogs": [
+    {
+      "path": "artifacts/aug003/red.log",
+      "sha256": "ff3084700b0ea2079178708f480623bb4acf677e413b6ffded4307bdad86a6d6",
+      "bytes": 13822
+    },
+    {
+      "path": "artifacts/aug003/red.json",
+      "sha256": "5ee3c82825040ff67c3d9480958a2fba1f26b5acac7b3c329a63aeff1d4862ec",
+      "bytes": 363
+    },
+    {
+      "path": "artifacts/aug003/schema-defaults-red.log",
+      "sha256": "bccc422113b5be688afbe33e66b06a9ae50af08b8879ad4086adf0f3de709cb3",
+      "bytes": 1746
+    },
+    {
+      "path": "artifacts/aug003/schema-defaults-red.json",
+      "sha256": "cfd3c50acf593ba669c999f28b9474e83c9edd2f54c212758ea41230afb29a34",
+      "bytes": 281
+    },
+    {
+      "path": "artifacts/aug003/development-build.log",
+      "sha256": "89e41480d9a4ad70849b130b77e6c24021cf66a6667c00bc91cfef6e99a4b1f5",
+      "bytes": 1109
+    },
+    {
+      "path": "artifacts/aug003/development-build-2.log",
+      "sha256": "b04b8612ad06f4368cb2d208a70c1a143aa9e8c7923229477b88258c0112649a",
+      "bytes": 68
+    },
+    {
+      "path": "artifacts/aug003/focused-first.log",
+      "sha256": "df9f131dba5ae985e0a21b0acd26d664c0b53a90cb5101cc1a140e004cd36b67",
+      "bytes": 12051
+    },
+    {
+      "path": "artifacts/aug003/focused-first.json",
+      "sha256": "010011f600f90aa78c69df504b4e197222fc3831bf9126547ce4c2e2e96c8d07",
+      "bytes": 284
+    },
+    {
+      "path": "artifacts/aug003/red-final-fixtures.log",
+      "sha256": "b29d9608b650d0cb81850fd3b47dd826919ca531a84c79b2ff130e3d82bf6473",
+      "bytes": 15977
+    },
+    {
+      "path": "artifacts/aug003/focused-corrected.log",
+      "sha256": "03d67b37cbb4d4a1289612022e49b14fa161309536bfd880f656ffce386c9cba",
+      "bytes": 10601
+    },
+    {
+      "path": "artifacts/aug003/focused-corrected.json",
+      "sha256": "c3a6e23b9dcb39feea242d943428443e2402af20773908dee861fcf6b2ca3cc5",
+      "bytes": 354
+    }
+  ],
+  "modelCalls": 0,
+  "actualChatGPTIntegration": false,
+  "resourcesSupported": false,
+  "promptsSupported": false,
+  "osSandbox": false,
+  "fullTransitiveLicenseClearance": false,
+  "acceptanceAwarded": false,
+  "limitations": [
+    "Synthetic local pack fixtures and real official stdio clients; no paid engine call or real-user credentials/configuration.",
+    "Unsupported-platform scenario intentionally refuses a manifest platform; it is not validation of that unsupported operating system.",
+    "Cancellation/deadline scenarios wrap real I/O; no kernel I/O interruption or hostile concurrent-writer containment is claimed.",
+    "Full native/prepack/installed/hosted and immutable independent review remain next."
+  ]
+}

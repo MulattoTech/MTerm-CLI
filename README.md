@@ -214,3 +214,7 @@ docs/GITHUB_ORCHESTRATION_SETUP.md for CI and GitHub configuration.
 ## AI-orchestrated development
 
 MTerm-CLI uses Orchestrator.inc with Codex workers in isolated worktrees. Start with [orchestration operations](docs/ORCHESTRATION.md) and [GitHub setup](docs/GITHUB_ORCHESTRATION_SETUP.md). Standard worker verification: node scripts/orchestration/verify.mjs --quick. Passing Codex and CI checks do not by themselves certify unattended fleet operation; follow the documented ownership and isolation controls.
+
+## Optional local pack catalog
+
+When an explicitly approved pack registry is configured, the stdio host exposes bounded exact-version schema discovery, per-connection pack selection and explicit refresh. Selection cannot exceed the host’s startup execution permissions; new versions never become enabled silently. ABI1 remains tools-only. See the [catalog contract and limitations](docs/expansion/PACK_CATALOG.md). The launcher and dependency versions are unchanged; qualification evidence is tracked under [AUG-003/#83](https://github.com/MulattoTech/MTerm-CLI/issues/83).

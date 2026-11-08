@@ -5,12 +5,13 @@
     "AUG-001": {
       "scope": "Merged ABI 1 local optional-pack boundary, recorded as a partial delivery",
       "limitations": [
-        "Full optional-pack/platform/client/footprint acceptance remains open. Historical reports are not automatically converted into structured scenario receipts."
+        "Full optional-pack/platform/client/footprint acceptance remains open. Historical reports are not automatically converted into structured scenario receipts.",
+        "Original AUG-001 fixture bytes are preserved under docs/validation/fixtures so subsequent catalog tests do not rewrite historical qualification."
       ],
       "fixtures": [
         {
           "id": "fixture-1",
-          "path": "tests/tool-packs.test.mjs",
+          "path": "docs/validation/fixtures/2026-11-07-aug001-tool-packs.test.mjs",
           "sha256": "a4b804f9780bc14598247275ed2271fbadb54913a8c0d2e1dd0e92d6cde8d9bb"
         }
       ],
@@ -325,6 +326,29 @@
           }
         }
       },
+      "acceptanceReview": null
+    },
+    "AUG-003": {
+      "scope": "ABI1 tools-only bounded catalog, effective schema discovery, connection-local selection and explicit refresh under the immutable startup ceiling",
+      "limitations": [
+        "Resources/prompts and shared remote-client authorization are not implemented.",
+        "Full platform/client/licensing acceptance remains open; development results do not populate exact-commit scenario cells."
+      ],
+      "fixtures": [
+        {
+          "id": "fixture-1",
+          "path": "tests/tool-packs.test.mjs",
+          "sha256": "9ba9e812b4dad28d140ff1d4f0a864d357abdbd1415fa641e8cd2db40bc43a83"
+        }
+      ],
+      "references": [
+        {
+          "kind": "historical-qualification",
+          "path": "docs/validation/2026-11-08-aug003-development.json",
+          "sha256": "12e5172268ac11fa139e9fefcb44045f6e64489b3bc83d48ba56fc00cbee61fc"
+        }
+      ],
+      "platforms": {},
       "acceptanceReview": null
     }
   }

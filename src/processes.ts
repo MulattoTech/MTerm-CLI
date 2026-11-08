@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-08-aug003-pack-catalog; internal final spawn guard for revocable pack calls.
 // AI-Change: 2026-10-04-local-mcp (OpenAI / GPT-6 Astra Pro; self-reported)
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -135,7 +136,7 @@ export class ProcessService {
       }
     }
   }
-  async start(input: unknown) {
+  async start(input: unknown, beforeSpawn?: () => void) {
     if (this.closed) fail('HOST_CLOSED', 'Host is shutting down.');
     if (!this.allowExec) fail('EXEC_DISABLED', 'Execution requires explicit --allow-exec.');
     const a = processSchemas.start.parse(input);
@@ -159,6 +160,9 @@ export class ProcessService {
       if (!victim) fail('SESSION_LIMIT', 'Session retention limit reached.');
       this.sessions.delete(victim.id);
     }
+    // Internal per-invocation guard: no await may separate it from the actual spawn.
+    // The shared compatibility guard above remains independently enforced.
+    beforeSpawn?.();
     const child = spawn(command, a.args, {
       cwd,
       env: childEnvironment(),

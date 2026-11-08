@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-08-aug003-pack-catalog; bind the installed final spawn guard and require all catalog fixtures.
 // Modified: 2026-11-07-aug002-provenance; qualify pinned attribution and exact production closure.
 // Modified: 2026-11-07-aug001-pack-boundary; qualify optional packs through the exact installed runtime.
 // AI-Change: 2026-10-04-local-mcp
@@ -197,7 +198,7 @@ assert.equal(remoteState.syntheticOnly, true);
 assert.equal(remoteState.actualRemoteEnrollment, false);
 assert.equal(remoteState.modelCalls, 0);
 const packBindings = [];
-for (const name of ['cli.js', 'mcp.js', 'tool-packs.js']) {
+for (const name of ['cli.js', 'mcp.js', 'tool-packs.js', 'processes.js']) {
   const source = await fs.readFile(path.join(root, 'dist', name));
   const installedBytes = await fs.readFile(path.resolve(path.dirname(installed), '../dist', name));
   assert.deepEqual(installedBytes, source, 'Installed pack boundary differs from compiled source');
@@ -219,7 +220,7 @@ const packAcceptance = await exec(
 );
 await fs.writeFile(path.join(output, 'optional-pack-tests.tap'), packAcceptance.stdout);
 const packTestCount = Number(packAcceptance.stdout.match(/^# tests (\d+)$/m)?.[1]);
-assert.ok(packTestCount >= 16, 'Installed optional-pack acceptance did not run');
+assert.ok(packTestCount >= 29, 'Installed optional-pack acceptance did not run');
 assert.match(packAcceptance.stdout, /^# fail 0$/m);
 assert.match(packAcceptance.stdout, /^# skipped 0$/m);
 assert.match(packAcceptance.stdout, /^# cancelled 0$/m);

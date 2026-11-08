@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "kind": "mterm-expansion-execution",
+  "capability": "AUG-003",
+  "platform": "darwin-arm64",
+  "subject": {
+    "testedCommit": "4eeedaed2cccd07412e80fa8e8d174469667b7fe",
+    "subjectFingerprint": "9b5103001393707c986ebb157bb377b15ceb9b0afc20767d1103eaa0adb3de91",
+    "backend": {
+      "name": "MTerm-CLI local optional-pack catalog",
+      "version": "0.0.1-preview.1 / ABI 1"
+    },
+    "runtime": {
+      "name": "node",
+      "version": "v24.21.0"
+    }
+  },
+  "observedAt": "2026-11-08T05:26:07Z",
+  "command": "npm run check",
+  "exitCode": 0,
+  "cases": {
+    "success": {
+      "status": "passed",
+      "fixtureId": "fixture-1",
+      "fixtureSha256": "2a8abba2082e5f646d6168b98b44c88bac1a1d71cbcab6873c136cb4a83a27f4"
+    },
+    "permission_denied": {
+      "status": "passed",
+      "fixtureId": "fixture-1",
+      "fixtureSha256": "2a8abba2082e5f646d6168b98b44c88bac1a1d71cbcab6873c136cb4a83a27f4"
+    },
+    "cancelled": {
+      "status": "passed",
+      "fixtureId": "fixture-1",
+      "fixtureSha256": "2a8abba2082e5f646d6168b98b44c88bac1a1d71cbcab6873c136cb4a83a27f4"
+    },
+    "deadline": {
+      "status": "passed",
+      "fixtureId": "fixture-1",
+      "fixtureSha256": "2a8abba2082e5f646d6168b98b44c88bac1a1d71cbcab6873c136cb4a83a27f4"
+    },
+    "unsupported_platform": {
+      "status": "passed",
+      "fixtureId": "fixture-1",
+      "fixtureSha256": "2a8abba2082e5f646d6168b98b44c88bac1a1d71cbcab6873c136cb4a83a27f4"
+    }
+  },
+  "actualCheckout": "50b0991eed529596ff89a5fe704b7593400a5d17",
+  "actualCheckoutHasSameTree": true,
+  "qualification": {
+    "path": "docs/validation/2026-11-08-aug005-cgroup-driver-qualification.json",
+    "sha256": "134e3257f2ef58ace73a9c846f1be67055beb7808025301980f8000284fa3810"
+  },
+  "limitations": [
+    "Scoped ABI1 tools-only catalog, selection and refresh; resources/prompts and full AUG003 acceptance remain open.",
+    "Synthetic local packs use real official SDK stdio clients; no actual ChatGPT connector invocation or model call is claimed.",
+    "Cancellation/deadline cases wrap actual filesystem work; deadline delays a completed read, unsupported manifest platform is supplied. No kernel interruption, authenticated shared remote identity or OS sandbox is claimed."
+  ],
+  "acceptedCapability": false,
+  "modelCalls": 0,
+  "caseEvidence": {
+    "success": "catalog discovery advertises exact version, both schemas and no payload execution",
+    "permission_denied": "catalog selection rejects stale, wrong-version, duplicate and unapproved entries atomically",
+    "cancelled": "catalog cancellation after actual I/O preserves the committed snapshot and stops further reads",
+    "deadline": "catalog deadline around actual I/O preserves the committed snapshot",
+    "unsupported_platform": "catalog reports incompatible ABI and unsupported platform without starting payload"
+  },
+  "hosted": {
+    "runId": 42450611322,
+    "jobId": 128638809947,
+    "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42450611322/job/128638809947",
+    "event": "pull_request",
+    "sourceFingerprint": "dfef7ae3428eb7bd7fe4431700ce933ee0daf84e15044fbfc0fd9e6ea6805b62",
+    "tests": 466,
+    "passed": 454,
+    "failed": 0,
+    "cancelled": 0,
+    "skipped": 12,
+    "skipScope": "12 existing Windows-only checks",
+    "installedPackTests": 29,
+    "installedProtocolTests": 31,
+    "installedResourceTests": 24,
+    "installedProvenanceTests": 18,
+    "installedProductionBytes": 14571320
+  }
+}

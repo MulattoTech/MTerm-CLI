@@ -1,3 +1,17 @@
+# PR207 cgroupfs qualification recorded; final metadata gates next — 2026-11-08T05:45:17.750Z
+
+Main remains dd941 (PR205); parked PR206 remains4985. Implementation4eeedae/tree5fd2485 has6/6hosted checks and native466/466. The actual hosted checkout50b0991 has the identical tree. Actual Linux source12/12 and installed12/12 passed;16memory probes retained exit137, raw OOMKilled true at terminal and cleanup, owned OOM events and confirmed removal. All38backend observations are cgroupfs/v2; all144cleanup steps pass. [Immutable qualification](validation/2026-11-08-aug005-cgroup-driver-qualification.json) and [independent review](validation/2026-11-08-aug005-cgroup-driver-review.json) bind45artifact members, native logs, four platform logs,14installed modules and licensing evidence.
+
+The product now denies new work for unqualified drivers; previously owned cleanup remains independent. The guarded disposable GitHub runner explicitly selects cgroupfs with strict private config preservation. Runtime/image pins, resource limits and strict assertions are unchanged. Earlier730/c9/systemd failures, c9 pack TypeError and native registration EPERM remain immutable; their unobserved causes are not declared fixed. Bootstrap qualified=false is retained as a pre-test observation; qualification comes from the later actual suites.
+
+Native package29pack/24resource/31protocol/18provenance, actual SDK roundtrip/npm exec/owned-prefix link, four packageLICENSE files and productionaudit0 pass. Eight pinned runtime LICENSE/NOTICE files and signed package chain are checked, without full runtime/image/transitive redistribution acceptance. All947dependency files are byte-identical; product payload +511bytes. Four packagepayloads1005files/14569231bytes; entireinstalledprefix1009files/14572881bytes. Isolated synthetic Codex parser/config only, zero model calls; no agent invocation.
+
+Fresh exact-fixture observations restore matrix68passed/2272unrun/0accepted. AUG0/117; CLI29.12%maturity/0of300complete; DCP0/48; WEB0/12. No protected requirement or117issue scope/dependency changes. Actual ChatGPT connector invocation, broad platform/restart guarantees and full rights remain open.
+
+Continue in H:\MTechLabs\Dev\MTerm-CLI-AUG005-Lifecycle-20261108 onfix/aug-005-lifecycle-observation-20261108. Independent finalmetadata/pin review, six final-head gates, expected-head ordinary merge, tree identity and six main gates are next; then ordinarily integrate into parkedPR206 and resume #93. Standing owner authorization applies; no manual approval pending. Preserve primary dirty checkout, unrelated workloads and all historical failures.
+
+---
+
 # PR207 driver admission correction; original failures preserved — 2026-11-08T05:20:48.604Z
 
 Main remains dd941 (PR205); PR206 at4985 remains draft and parked. Current committed PR207 c9f7bcd is5/6hosted and454/455native. Exact owned kernel memcgOOM proves the failed probe was memory-killed, while both raw Docker OOM fields are false. All12scenario/72stepcleanups pass; installed live skipped. The separate native pack TypeError lacks the ignored uninstall outcome. Neither original run was retried. [Failure and candidate development](validation/2026-11-08-aug005-cgroup-driver-development.json) pins both failures and all36artifact members.

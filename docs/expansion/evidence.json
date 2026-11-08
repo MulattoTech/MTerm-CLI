@@ -331,7 +331,7 @@
     "AUG-003": {
       "scope": "ABI1 tools-only bounded catalog, effective schema discovery, connection-local selection and explicit refresh under the immutable startup ceiling",
       "limitations": [
-        "Previous scoped ABI1 catalog observations remain historical. The changed fixture requires new platform qualification; resources/prompts, shared remote clients and full AUG003 acceptance remain open.",
+        "The changed exact fixture has fresh scoped ABI1 catalog observations on all four hosts. Resources/prompts, shared remote clients and full AUG003 acceptance remain open.",
         "All three dependency package payloads and launcher bytes are unchanged; full transitive redistribution admission is not granted."
       ],
       "fixtures": [
@@ -381,32 +381,250 @@
           "kind": "historical-qualification",
           "path": "docs/validation/2026-11-08-aug005-cgroup-driver-development.json",
           "sha256": "266ade572f0afc76e9cce7ee27d55082d4157c643ad0ae7075770ba8e1b69d01"
+        },
+        {
+          "kind": "historical-qualification",
+          "path": "docs/validation/2026-11-08-aug005-cgroup-driver-qualification.json",
+          "sha256": "134e3257f2ef58ace73a9c846f1be67055beb7808025301980f8000284fa3810"
+        },
+        {
+          "kind": "historical-qualification",
+          "path": "docs/validation/2026-11-08-aug005-cgroup-driver-review.json",
+          "sha256": "afd84ce0b0a9289b04b6393a387210e4b2180f2928dda1ddc184f7dec6ac2055"
         }
       ],
       "platforms": {
         "win32-x64": {
-          "support": "unknown",
-          "reason": "Changed uninstall-precondition diagnostics require new exact-fixture platform observations; prior catalog qualifications are retained historically.",
-          "subject": null,
-          "cases": {}
+          "support": "supported",
+          "reason": "All five scoped catalog observations passed on the exact fixture; full capability acceptance remains open.",
+          "subject": {
+            "testedCommit": "4eeedaed2cccd07412e80fa8e8d174469667b7fe",
+            "subjectFingerprint": "9b5103001393707c986ebb157bb377b15ceb9b0afc20767d1103eaa0adb3de91",
+            "backend": {
+              "name": "MTerm-CLI local optional-pack catalog",
+              "version": "0.0.1-preview.1 / ABI 1"
+            },
+            "runtime": {
+              "name": "node",
+              "version": "v24.21.0"
+            }
+          },
+          "cases": {
+            "success": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-cgroup-driver-win32-x64.json",
+                "sha256": "f3f807c2258bb48a81880a9a9066b282717dadb092969cca9a2035545bc4a25d"
+              }
+            },
+            "permission_denied": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-cgroup-driver-win32-x64.json",
+                "sha256": "f3f807c2258bb48a81880a9a9066b282717dadb092969cca9a2035545bc4a25d"
+              }
+            },
+            "cancelled": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-cgroup-driver-win32-x64.json",
+                "sha256": "f3f807c2258bb48a81880a9a9066b282717dadb092969cca9a2035545bc4a25d"
+              }
+            },
+            "deadline": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-cgroup-driver-win32-x64.json",
+                "sha256": "f3f807c2258bb48a81880a9a9066b282717dadb092969cca9a2035545bc4a25d"
+              }
+            },
+            "unsupported_platform": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-cgroup-driver-win32-x64.json",
+                "sha256": "f3f807c2258bb48a81880a9a9066b282717dadb092969cca9a2035545bc4a25d"
+              }
+            }
+          }
         },
         "linux-x64": {
-          "support": "unknown",
-          "reason": "Changed uninstall-precondition diagnostics require new exact-fixture platform observations; prior catalog qualifications are retained historically.",
-          "subject": null,
-          "cases": {}
+          "support": "supported",
+          "reason": "All five scoped catalog observations passed on the exact fixture; full capability acceptance remains open.",
+          "subject": {
+            "testedCommit": "4eeedaed2cccd07412e80fa8e8d174469667b7fe",
+            "subjectFingerprint": "9b5103001393707c986ebb157bb377b15ceb9b0afc20767d1103eaa0adb3de91",
+            "backend": {
+              "name": "MTerm-CLI local optional-pack catalog",
+              "version": "0.0.1-preview.1 / ABI 1"
+            },
+            "runtime": {
+              "name": "node",
+              "version": "v24.21.0"
+            }
+          },
+          "cases": {
+            "success": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-cgroup-driver-linux-x64.json",
+                "sha256": "808951610334439e01eb1ee4f2bbcedac1878f4521b48b704406ffee77fad834"
+              }
+            },
+            "permission_denied": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-cgroup-driver-linux-x64.json",
+                "sha256": "808951610334439e01eb1ee4f2bbcedac1878f4521b48b704406ffee77fad834"
+              }
+            },
+            "cancelled": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-cgroup-driver-linux-x64.json",
+                "sha256": "808951610334439e01eb1ee4f2bbcedac1878f4521b48b704406ffee77fad834"
+              }
+            },
+            "deadline": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-cgroup-driver-linux-x64.json",
+                "sha256": "808951610334439e01eb1ee4f2bbcedac1878f4521b48b704406ffee77fad834"
+              }
+            },
+            "unsupported_platform": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-cgroup-driver-linux-x64.json",
+                "sha256": "808951610334439e01eb1ee4f2bbcedac1878f4521b48b704406ffee77fad834"
+              }
+            }
+          }
         },
         "darwin-arm64": {
-          "support": "unknown",
-          "reason": "Changed uninstall-precondition diagnostics require new exact-fixture platform observations; prior catalog qualifications are retained historically.",
-          "subject": null,
-          "cases": {}
+          "support": "supported",
+          "reason": "All five scoped catalog observations passed on the exact fixture; full capability acceptance remains open.",
+          "subject": {
+            "testedCommit": "4eeedaed2cccd07412e80fa8e8d174469667b7fe",
+            "subjectFingerprint": "9b5103001393707c986ebb157bb377b15ceb9b0afc20767d1103eaa0adb3de91",
+            "backend": {
+              "name": "MTerm-CLI local optional-pack catalog",
+              "version": "0.0.1-preview.1 / ABI 1"
+            },
+            "runtime": {
+              "name": "node",
+              "version": "v24.21.0"
+            }
+          },
+          "cases": {
+            "success": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-cgroup-driver-darwin-arm64.json",
+                "sha256": "0367598d2e246f17856807eacc650b34ed10278080b9325668b29baced3e584c"
+              }
+            },
+            "permission_denied": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-cgroup-driver-darwin-arm64.json",
+                "sha256": "0367598d2e246f17856807eacc650b34ed10278080b9325668b29baced3e584c"
+              }
+            },
+            "cancelled": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-cgroup-driver-darwin-arm64.json",
+                "sha256": "0367598d2e246f17856807eacc650b34ed10278080b9325668b29baced3e584c"
+              }
+            },
+            "deadline": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-cgroup-driver-darwin-arm64.json",
+                "sha256": "0367598d2e246f17856807eacc650b34ed10278080b9325668b29baced3e584c"
+              }
+            },
+            "unsupported_platform": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-cgroup-driver-darwin-arm64.json",
+                "sha256": "0367598d2e246f17856807eacc650b34ed10278080b9325668b29baced3e584c"
+              }
+            }
+          }
         },
         "darwin-x64": {
-          "support": "unknown",
-          "reason": "Changed uninstall-precondition diagnostics require new exact-fixture platform observations; prior catalog qualifications are retained historically.",
-          "subject": null,
-          "cases": {}
+          "support": "supported",
+          "reason": "All five scoped catalog observations passed on the exact fixture; full capability acceptance remains open.",
+          "subject": {
+            "testedCommit": "4eeedaed2cccd07412e80fa8e8d174469667b7fe",
+            "subjectFingerprint": "9b5103001393707c986ebb157bb377b15ceb9b0afc20767d1103eaa0adb3de91",
+            "backend": {
+              "name": "MTerm-CLI local optional-pack catalog",
+              "version": "0.0.1-preview.1 / ABI 1"
+            },
+            "runtime": {
+              "name": "node",
+              "version": "v24.21.0"
+            }
+          },
+          "cases": {
+            "success": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-cgroup-driver-darwin-x64.json",
+                "sha256": "4ad76adc1fa22dc859497fbde05e9e3e3f2d222321c1553710c54f4991842b71"
+              }
+            },
+            "permission_denied": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-cgroup-driver-darwin-x64.json",
+                "sha256": "4ad76adc1fa22dc859497fbde05e9e3e3f2d222321c1553710c54f4991842b71"
+              }
+            },
+            "cancelled": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-cgroup-driver-darwin-x64.json",
+                "sha256": "4ad76adc1fa22dc859497fbde05e9e3e3f2d222321c1553710c54f4991842b71"
+              }
+            },
+            "deadline": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-cgroup-driver-darwin-x64.json",
+                "sha256": "4ad76adc1fa22dc859497fbde05e9e3e3f2d222321c1553710c54f4991842b71"
+              }
+            },
+            "unsupported_platform": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-cgroup-driver-darwin-x64.json",
+                "sha256": "4ad76adc1fa22dc859497fbde05e9e3e3f2d222321c1553710c54f4991842b71"
+              }
+            }
+          }
         }
       },
       "acceptanceReview": null
@@ -679,14 +897,14 @@
       "acceptanceReview": null
     },
     "AUG-005": {
-      "scope": "Separate native Linux x64 container grant with exact cgroupfs/v2 admission; real source/installed candidate qualification pending",
+      "scope": "Separate isolated-only native Linux x64 container grant; observed pinned cgroupfs/v2 source and installed profile qualified",
       "limitations": [
-        "Current cgroupfs/v2 candidate requires new exact source and installed live qualification. Systemd is unqualified and rejected; historical passes do not erase its repeated attribution failures.",
-        "The c9 owned kernel record proves a memory-cgroup OOM in that occurrence. Exact attribution/deletion ordering and earlier failure causes remain unresolved.",
-        "Original native registration EPERM and c9 pack-test failure remain preserved; added pack preconditions improve diagnostics without establishing the original cause.",
-        "Windows/macOS/ARM/WSL/Desktop remain unsupported. Cooperative host deadlines, restart recovery, independent post-crash supervision and cross-host quotas remain open.",
-        "No general native executable/pack isolation, GPU limit, remote execution or actual ChatGPT connector invocation is qualified.",
-        "Signed runtime packages and source LICENSE/NOTICE pins do not establish full runtime/image/transitive redistribution clearance; external runtimes/images are not bundled."
+        "Qualification is scoped to observed native Linux x64, Docker29.9.3/containerd2.4.2/runc1.5.2, cgroupfs/v2, the pinned image and enforced isolated-only profile. Systemd remains explicitly unsupported.",
+        "The c9 kernel evidence proves a memory-cgroup OOM for that owned occurrence; exact deletion/watcher/publication ordering and causes of earlier failures remain unproven. New passing observations do not erase them.",
+        "Windows/macOS/ARM/WSL/Desktop containment, restart recovery, independent post-crash supervision, cross-host quotas, arbitrary pack/native executable isolation and actual ChatGPT connector invocation remain unaccepted.",
+        "Pinned signed runtime packages and eight source LICENSE/NOTICE files are checked. Full runtime/image/transitive redistribution rights remain unaccepted; external runtimes/images are not bundled.",
+        "Original native registration EPERM and c9 pack TypeError remain preserved. The new successful uninstall precondition and qualified runs do not establish the original failure cause.",
+        "No full capability acceptance, three-component size acceptance, resource/prompts support or model invocation is claimed."
       ],
       "fixtures": [
         {
@@ -785,32 +1003,154 @@
           "kind": "historical-qualification",
           "path": "docs/validation/2026-11-08-aug005-cgroup-driver-development.json",
           "sha256": "266ade572f0afc76e9cce7ee27d55082d4157c643ad0ae7075770ba8e1b69d01"
+        },
+        {
+          "kind": "historical-qualification",
+          "path": "docs/validation/2026-11-08-aug005-cgroup-driver-qualification.json",
+          "sha256": "134e3257f2ef58ace73a9c846f1be67055beb7808025301980f8000284fa3810"
+        },
+        {
+          "kind": "historical-qualification",
+          "path": "docs/validation/2026-11-08-aug005-cgroup-driver-review.json",
+          "sha256": "afd84ce0b0a9289b04b6393a387210e4b2180f2928dda1ddc184f7dec6ac2055"
         }
       ],
       "platforms": {
         "win32-x64": {
           "support": "unsupported",
-          "reason": "The changed fail-closed cgroupfs/v2 candidate and fixture require exact source/installed/platform qualification. Previous systemd observations remain historical.",
-          "subject": null,
-          "cases": {}
+          "reason": "Production host denial is observed before backend contact; the other four containment cases remain not_run.",
+          "subject": {
+            "testedCommit": "4eeedaed2cccd07412e80fa8e8d174469667b7fe",
+            "subjectFingerprint": "9b5103001393707c986ebb157bb377b15ceb9b0afc20767d1103eaa0adb3de91",
+            "backend": {
+              "name": "MTerm-CLI isolated-execution product host gate (no daemon contact)",
+              "version": "0.0.1-preview.1"
+            },
+            "runtime": {
+              "name": "node",
+              "version": "v24.21.0"
+            }
+          },
+          "cases": {
+            "unsupported_platform": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug005-cgroup-driver-win32-x64.json",
+                "sha256": "f09bf7f7d5eb87486db3a2b7bea3a17378685168e7bc3489cf5f80baa5997e22"
+              }
+            }
+          }
         },
         "linux-x64": {
-          "support": "unknown",
-          "reason": "The changed fail-closed cgroupfs/v2 candidate and fixture require exact source/installed/platform qualification. Previous systemd observations remain historical.",
-          "subject": null,
-          "cases": {}
+          "support": "supported",
+          "reason": "Actual source12/12 and installed12/12 passed with16strict raw OOM probes,38cgroupfs/v2 observations and144cleanup steps. Unsupported-backend case is explicitly synthetic.",
+          "subject": {
+            "testedCommit": "4eeedaed2cccd07412e80fa8e8d174469667b7fe",
+            "subjectFingerprint": "9b5103001393707c986ebb157bb377b15ceb9b0afc20767d1103eaa0adb3de91",
+            "backend": {
+              "name": "Docker Engine native Linux / cgroupfs/v2 observed image store",
+              "version": "29.9.3"
+            },
+            "runtime": {
+              "name": "node",
+              "version": "v24.21.0"
+            }
+          },
+          "cases": {
+            "success": {
+              "status": "passed",
+              "fixtureId": "fixture-2",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug005-cgroup-driver-linux-x64.json",
+                "sha256": "9f60b74fb39de7370b1fdc6a9d61bfb22480572446baf03daa2a2fb3c828836f"
+              }
+            },
+            "permission_denied": {
+              "status": "passed",
+              "fixtureId": "fixture-2",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug005-cgroup-driver-linux-x64.json",
+                "sha256": "9f60b74fb39de7370b1fdc6a9d61bfb22480572446baf03daa2a2fb3c828836f"
+              }
+            },
+            "cancelled": {
+              "status": "passed",
+              "fixtureId": "fixture-2",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug005-cgroup-driver-linux-x64.json",
+                "sha256": "9f60b74fb39de7370b1fdc6a9d61bfb22480572446baf03daa2a2fb3c828836f"
+              }
+            },
+            "deadline": {
+              "status": "passed",
+              "fixtureId": "fixture-2",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug005-cgroup-driver-linux-x64.json",
+                "sha256": "9f60b74fb39de7370b1fdc6a9d61bfb22480572446baf03daa2a2fb3c828836f"
+              }
+            },
+            "unsupported_platform": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug005-cgroup-driver-linux-x64.json",
+                "sha256": "9f60b74fb39de7370b1fdc6a9d61bfb22480572446baf03daa2a2fb3c828836f"
+              }
+            }
+          }
         },
         "darwin-arm64": {
           "support": "unsupported",
-          "reason": "The changed fail-closed cgroupfs/v2 candidate and fixture require exact source/installed/platform qualification. Previous systemd observations remain historical.",
-          "subject": null,
-          "cases": {}
+          "reason": "Production host denial is observed before backend contact; the other four containment cases remain not_run.",
+          "subject": {
+            "testedCommit": "4eeedaed2cccd07412e80fa8e8d174469667b7fe",
+            "subjectFingerprint": "9b5103001393707c986ebb157bb377b15ceb9b0afc20767d1103eaa0adb3de91",
+            "backend": {
+              "name": "MTerm-CLI isolated-execution product host gate (no daemon contact)",
+              "version": "0.0.1-preview.1"
+            },
+            "runtime": {
+              "name": "node",
+              "version": "v24.21.0"
+            }
+          },
+          "cases": {
+            "unsupported_platform": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug005-cgroup-driver-darwin-arm64.json",
+                "sha256": "b9abdd99c3d766e97eb84a1860f87f03b5c62707678b83097a5e1694730c6f40"
+              }
+            }
+          }
         },
         "darwin-x64": {
           "support": "unsupported",
-          "reason": "The changed fail-closed cgroupfs/v2 candidate and fixture require exact source/installed/platform qualification. Previous systemd observations remain historical.",
-          "subject": null,
-          "cases": {}
+          "reason": "Production host denial is observed before backend contact; the other four containment cases remain not_run.",
+          "subject": {
+            "testedCommit": "4eeedaed2cccd07412e80fa8e8d174469667b7fe",
+            "subjectFingerprint": "9b5103001393707c986ebb157bb377b15ceb9b0afc20767d1103eaa0adb3de91",
+            "backend": {
+              "name": "MTerm-CLI isolated-execution product host gate (no daemon contact)",
+              "version": "0.0.1-preview.1"
+            },
+            "runtime": {
+              "name": "node",
+              "version": "v24.21.0"
+            }
+          },
+          "cases": {
+            "unsupported_platform": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug005-cgroup-driver-darwin-x64.json",
+                "sha256": "57bbf420c9a649fbd66bb9f2c7065bc463b7321d6a9eae6de0f139d710bb4b10"
+              }
+            }
+          }
         }
       },
       "acceptanceReview": null

@@ -1,3 +1,9 @@
+# Qualified checker observations — 2026-11-07
+
+[PR #201](https://github.com/MulattoTech/MTerm-CLI/pull/201) now retains [exact-code qualification](../validation/2026-11-07-aug013-qualification.json) and four platform execution receipts. The matrix displays 20 observed checker cases and 2,320 unrun capability cases; acceptance remains 0/117. Full code qualification passed; final metadata-head and merge/main gates remain next. These receipts supersede the preparation statuses below without awarding capability acceptance.
+
+---
+
 # Current evidence-matrix continuation — 2026-11-07
 
 PR199 and PR200 are delivered with passing exact-head and main checks. AUG-013/#94 is the sole active implementation. [Run the development-only matrix](MATRIX.md) to inspect all152 sources and117 capabilities without turning unknown execution or rights into acceptance. All three inputs now participate in reviewed-source freshness. Owner authorization covers qualified delivery; technical gates remain. Acceptance stays0/117 and original CLI/DCP/WEB metrics are unchanged.

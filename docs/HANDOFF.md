@@ -1,3 +1,11 @@
+# AUG-013 exact-code qualification — 2026-11-07
+
+[Draft PR #201](https://github.com/MulattoTech/MTerm-CLI/pull/201) code af992a389e418651b59c02b7acb297ca3bcdebf3 passed native 375/375, normal prepack, self-host, installed verification, advisory audit and 9/9 hosted checks. Independent review resolved three real findings and approved all 135 source pins. All 993 runtime files across four packages match PR200; installed core remains 14,476,966 bytes. The first native prepack attempt omitted the initial build and failed on missing dist imports; that original failure is retained.
+
+[Qualification and limits](validation/2026-11-07-aug013-qualification.json) and four platform receipts now bind 20 scoped matrix scenarios. Most other capability observations remain unrun. AUG 0/117, CLI 29.12% maturity and 0/300 complete, DCP 0/48, WEB 0/12 remain unchanged. Final metadata-head receipt review, hosted checks, expected-head merge and main verification are next. No manual owner action or model usage is required. Preserve the isolated clone, primary dirty checkout and all failed/successful receipts.
+
+---
+
 # AUG-013 current continuation — 2026-11-07
 
 PR #200 is merged at89d93c59a9c819314ef569a2250a4606f03ec792; final head9/9 and main5/5 passed, with identical reviewed tree and retained artifact ancestry. PR199 is also delivered. Standing owner authorization covers routine qualified delivery; no manual owner review is pending.

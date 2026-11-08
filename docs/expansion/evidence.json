@@ -59,7 +59,8 @@
     "AUG-013": {
       "scope": "Development-only source/capability graph, pinned evidence, explicit unknowns and reviewed-input freshness",
       "limitations": [
-        "Most capability-specific execution observations remain unrun. Focused development evidence is not yet committed-head platform acceptance."
+        "The recorded observations cover only the development matrix checker and its failure paths. Most other capability-specific observations remain unrun.",
+        "Full AUG-013 and expansion acceptance remain open; independent code review does not assert all original capability criteria are satisfied."
       ],
       "fixtures": [
         {
@@ -78,9 +79,252 @@
           "kind": "historical-qualification",
           "path": "docs/validation/2026-11-07-aug013-development.json",
           "sha256": "8734702da69faa04a6f803b5cad747a03bfbb0732a3f28fe74074ca2b8e493e2"
+        },
+        {
+          "kind": "historical-qualification",
+          "path": "docs/validation/2026-11-07-aug013-qualification.json",
+          "sha256": "ff7d286231bcc43551cc51b19da8bc394541741adf8259635ce9a37293d98092"
+        },
+        {
+          "kind": "historical-qualification",
+          "path": "docs/validation/2026-11-07-aug013-source-review.json",
+          "sha256": "5af998ca606ea50dd01c88d3490dc97d3e42c9adb0815bd665371ffb7a8c4efb"
         }
       ],
-      "platforms": {},
+      "platforms": {
+        "win32-x64": {
+          "support": "supported",
+          "reason": "The scoped development checker ran on this recorded host; no broader capability acceptance is implied.",
+          "subject": {
+            "testedCommit": "af992a389e418651b59c02b7acb297ca3bcdebf3",
+            "subjectFingerprint": "5ce608452244374b6e4d0339e786f072fbd8c2f11ccf4a3da6e63bc85d700eec",
+            "backend": {
+              "name": "MTerm-CLI development evidence matrix",
+              "version": "0.0.1-preview.1 / schema 1"
+            },
+            "runtime": {
+              "name": "node",
+              "version": "v24.21.0"
+            }
+          },
+          "cases": {
+            "success": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-07-aug013-win32-x64.json",
+                "sha256": "0aa37c87c00b379a3cd1ae191cae629db033121510b01e97e4ac81f161a925e1"
+              }
+            },
+            "permission_denied": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-07-aug013-win32-x64.json",
+                "sha256": "0aa37c87c00b379a3cd1ae191cae629db033121510b01e97e4ac81f161a925e1"
+              }
+            },
+            "cancelled": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-07-aug013-win32-x64.json",
+                "sha256": "0aa37c87c00b379a3cd1ae191cae629db033121510b01e97e4ac81f161a925e1"
+              }
+            },
+            "deadline": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-07-aug013-win32-x64.json",
+                "sha256": "0aa37c87c00b379a3cd1ae191cae629db033121510b01e97e4ac81f161a925e1"
+              }
+            },
+            "unsupported_platform": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-07-aug013-win32-x64.json",
+                "sha256": "0aa37c87c00b379a3cd1ae191cae629db033121510b01e97e4ac81f161a925e1"
+              }
+            }
+          }
+        },
+        "linux-x64": {
+          "support": "supported",
+          "reason": "The scoped development checker ran on this recorded host; no broader capability acceptance is implied.",
+          "subject": {
+            "testedCommit": "af992a389e418651b59c02b7acb297ca3bcdebf3",
+            "subjectFingerprint": "5ce608452244374b6e4d0339e786f072fbd8c2f11ccf4a3da6e63bc85d700eec",
+            "backend": {
+              "name": "MTerm-CLI development evidence matrix",
+              "version": "0.0.1-preview.1 / schema 1"
+            },
+            "runtime": {
+              "name": "node",
+              "version": "v24.21.0"
+            }
+          },
+          "cases": {
+            "success": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-07-aug013-linux-x64.json",
+                "sha256": "3cfc8547bff546c94c07971d3fb080524720ef76ecc499a1c60f86b88732bea8"
+              }
+            },
+            "permission_denied": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-07-aug013-linux-x64.json",
+                "sha256": "3cfc8547bff546c94c07971d3fb080524720ef76ecc499a1c60f86b88732bea8"
+              }
+            },
+            "cancelled": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-07-aug013-linux-x64.json",
+                "sha256": "3cfc8547bff546c94c07971d3fb080524720ef76ecc499a1c60f86b88732bea8"
+              }
+            },
+            "deadline": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-07-aug013-linux-x64.json",
+                "sha256": "3cfc8547bff546c94c07971d3fb080524720ef76ecc499a1c60f86b88732bea8"
+              }
+            },
+            "unsupported_platform": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-07-aug013-linux-x64.json",
+                "sha256": "3cfc8547bff546c94c07971d3fb080524720ef76ecc499a1c60f86b88732bea8"
+              }
+            }
+          }
+        },
+        "darwin-arm64": {
+          "support": "supported",
+          "reason": "The scoped development checker ran on this recorded host; no broader capability acceptance is implied.",
+          "subject": {
+            "testedCommit": "af992a389e418651b59c02b7acb297ca3bcdebf3",
+            "subjectFingerprint": "5ce608452244374b6e4d0339e786f072fbd8c2f11ccf4a3da6e63bc85d700eec",
+            "backend": {
+              "name": "MTerm-CLI development evidence matrix",
+              "version": "0.0.1-preview.1 / schema 1"
+            },
+            "runtime": {
+              "name": "node",
+              "version": "v24.21.0"
+            }
+          },
+          "cases": {
+            "success": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-07-aug013-darwin-arm64.json",
+                "sha256": "98e2a148ae694cddea1ec2b3cafe7fc0a7098b301f2fa755b2c23c5346933b34"
+              }
+            },
+            "permission_denied": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-07-aug013-darwin-arm64.json",
+                "sha256": "98e2a148ae694cddea1ec2b3cafe7fc0a7098b301f2fa755b2c23c5346933b34"
+              }
+            },
+            "cancelled": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-07-aug013-darwin-arm64.json",
+                "sha256": "98e2a148ae694cddea1ec2b3cafe7fc0a7098b301f2fa755b2c23c5346933b34"
+              }
+            },
+            "deadline": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-07-aug013-darwin-arm64.json",
+                "sha256": "98e2a148ae694cddea1ec2b3cafe7fc0a7098b301f2fa755b2c23c5346933b34"
+              }
+            },
+            "unsupported_platform": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-07-aug013-darwin-arm64.json",
+                "sha256": "98e2a148ae694cddea1ec2b3cafe7fc0a7098b301f2fa755b2c23c5346933b34"
+              }
+            }
+          }
+        },
+        "darwin-x64": {
+          "support": "supported",
+          "reason": "The scoped development checker ran on this recorded host; no broader capability acceptance is implied.",
+          "subject": {
+            "testedCommit": "af992a389e418651b59c02b7acb297ca3bcdebf3",
+            "subjectFingerprint": "5ce608452244374b6e4d0339e786f072fbd8c2f11ccf4a3da6e63bc85d700eec",
+            "backend": {
+              "name": "MTerm-CLI development evidence matrix",
+              "version": "0.0.1-preview.1 / schema 1"
+            },
+            "runtime": {
+              "name": "node",
+              "version": "v24.21.0"
+            }
+          },
+          "cases": {
+            "success": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-07-aug013-darwin-x64.json",
+                "sha256": "3dd200bacec1998594e28004d7f78c28b7853bd08e0ae4f57eaf5b7d3fc4973f"
+              }
+            },
+            "permission_denied": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-07-aug013-darwin-x64.json",
+                "sha256": "3dd200bacec1998594e28004d7f78c28b7853bd08e0ae4f57eaf5b7d3fc4973f"
+              }
+            },
+            "cancelled": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-07-aug013-darwin-x64.json",
+                "sha256": "3dd200bacec1998594e28004d7f78c28b7853bd08e0ae4f57eaf5b7d3fc4973f"
+              }
+            },
+            "deadline": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-07-aug013-darwin-x64.json",
+                "sha256": "3dd200bacec1998594e28004d7f78c28b7853bd08e0ae4f57eaf5b7d3fc4973f"
+              }
+            },
+            "unsupported_platform": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-07-aug013-darwin-x64.json",
+                "sha256": "3dd200bacec1998594e28004d7f78c28b7853bd08e0ae4f57eaf5b7d3fc4973f"
+              }
+            }
+          }
+        }
+      },
       "acceptanceReview": null
     }
   }

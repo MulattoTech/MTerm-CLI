@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "kind": "mterm-expansion-execution",
+  "capability": "AUG-005",
+  "platform": "linux-x64",
+  "subject": {
+    "testedCommit": "a589fc1fa16709ec28b229f3f34b83194ae5d588",
+    "subjectFingerprint": "7b7f9fc748656907a3dcf00b72b3777d978119ad51a8ce569c19de2e6982c8df",
+    "backend": {
+      "name": "Docker Engine native Linux / classic image store",
+      "version": "29.9.3"
+    },
+    "runtime": {
+      "name": "node",
+      "version": "v24.21.0"
+    }
+  },
+  "observedAt": "2026-11-08T03:27:18.848Z",
+  "command": "node scripts/verify-isolation-live.mjs; node scripts/verify-package.mjs",
+  "exitCode": 0,
+  "cases": {
+    "success": {
+      "status": "passed",
+      "fixtureId": "fixture-2",
+      "fixtureSha256": "be75c9672e343639c89494a0b8e12a14c62437e1db183b9a530f0a240092f433"
+    },
+    "permission_denied": {
+      "status": "passed",
+      "fixtureId": "fixture-2",
+      "fixtureSha256": "be75c9672e343639c89494a0b8e12a14c62437e1db183b9a530f0a240092f433"
+    },
+    "cancelled": {
+      "status": "passed",
+      "fixtureId": "fixture-2",
+      "fixtureSha256": "be75c9672e343639c89494a0b8e12a14c62437e1db183b9a530f0a240092f433"
+    },
+    "deadline": {
+      "status": "passed",
+      "fixtureId": "fixture-2",
+      "fixtureSha256": "be75c9672e343639c89494a0b8e12a14c62437e1db183b9a530f0a240092f433"
+    },
+    "unsupported_platform": {
+      "status": "passed",
+      "fixtureId": "fixture-1",
+      "fixtureSha256": "f531c207f20742296e845bc20f4cec5210dec9cb910e8e94413ec6e3bb891c99"
+    }
+  },
+  "actualCheckout": "91cbccac63d99823b73bed97b22d65d75521d5db",
+  "actualCheckoutHasSameTree": true,
+  "sourceLiveTests": 12,
+  "installedLiveTests": 12,
+  "sequentialMemoryProbes": 16,
+  "cleanupStepsVerified": 144,
+  "installedProtocolTests": 28,
+  "unsupportedBackendIsSynthetic": true,
+  "fixtureHelperSha256": "fd2499815692a05268e8c634acfdff514276f1741b23b3a48c7d17d8666521ec",
+  "qualification": {
+    "path": "docs/validation/2026-11-08-aug005-diagnostic-qualification.json",
+    "sha256": "08d6b61c068e0fad2ac02c1c21ec89dfa4afe2ccbd4f5ea4b3bf680c5e2220d2"
+  },
+  "limitations": [
+    "The original main649142e OOM assertion failure remains unexplained and preserved; successful new observations do not prove its cause or a product fix.",
+    "Observed native Linux x64/classic image store only. Other-platform containment, restart recovery, independent post-crash wall-clock supervision and actual ChatGPT integration remain unaccepted.",
+    "No runtime/dependency/launcher change; full runtime/image/transitive redistribution clearance remains false."
+  ],
+  "acceptedCapability": false
+}

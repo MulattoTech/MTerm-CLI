@@ -1,0 +1,81 @@
+{
+  "change_id": "2026-11-08-aug005-failure-evidence",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "started_at": "2026-11-08T03:12:00Z",
+  "updated_at": "2026-11-08T03:31:53.950Z",
+  "base_sha": "649142ea222b67f31f2165910a3a66b80bc7847d",
+  "issues": [
+    84,
+    81
+  ],
+  "requirements": [
+    "CLI-267",
+    "CLI-276"
+  ],
+  "files": [
+    "tests/isolation-live.mjs",
+    "tests/isolation-live-evidence.mjs",
+    "tests/isolation-evidence.test.mjs",
+    "docs/validation/2026-11-08-aug005-main-failure.json",
+    "docs/expansion/evidence.json",
+    "docs/roadmap/progress.json",
+    "docs/expansion/queue.json",
+    "docs/HANDOFF.md",
+    "docs/validation/2026-11-08-aug005-diagnostic-native.json",
+    "docs/validation/2026-11-08-aug005-diagnostic-qualification.json",
+    "docs/validation/2026-11-08-aug005-diagnostic-review.json",
+    "docs/validation/2026-11-08-aug005-diagnostic-linux-x64.json"
+  ],
+  "decisions": [
+    "Repair the failed main gate before the next dependency issue; one owner and one independent read-only peer under standing authorization.",
+    "Preserve original failed main artifact and successful earlier qualification unchanged; do not infer OOM from exit137 or sleep/retry until a pass.",
+    "Retain the bounded actual job result before assertion; independently attempt and record every cleanup step, preserving original body and all cleanup failures.",
+    "Eight sequential diagnostic memory probes retain the original workload, image, profile and per-job limits. Any failure fails the scenario; only the test harness envelope is180s.",
+    "No product, launcher, workflow, dependency, vendor, NOTICE or runtime configuration changes. Changed live-fixture matrix bindings return to not_run until exact-head evidence exists; previous receipts remain historical."
+  ],
+  "tests": [
+    {
+      "command": "red-failure-evidence",
+      "result": "{\"name\":\"red-failure-evidence\",\"tests\":4,\"pass\":0,\"fail\":4,\"log\":\"artifacts/aug005/red-failure-evidence.log\"}"
+    },
+    {
+      "command": "green-failure-evidence",
+      "result": "{\"name\":\"green-failure-evidence\",\"tests\":4,\"pass\":4,\"fail\":0,\"log\":\"artifacts/aug005/green-failure-evidence.log\"}"
+    },
+    {
+      "command": "red-all-cleanup-evidence",
+      "result": "{\"name\":\"red-all-cleanup-evidence\",\"tests\":1,\"pass\":0,\"fail\":1,\"log\":\"artifacts/aug005/red-all-cleanup-evidence.log\"}"
+    },
+    {
+      "command": "green-all-cleanup-evidence",
+      "result": "{\"name\":\"green-all-cleanup-evidence\",\"tests\":5,\"pass\":5,\"fail\":0,\"log\":\"artifacts/aug005/green-all-cleanup-evidence.log\"}"
+    },
+    {
+      "command": "npm run check on reviewed diagnostic working tree",
+      "result": "445/445 passed, no skips/cancellations, exit0. Original spec-reporter count-parser nulls retained; actual raw log parsed without rerun. No product or model request change."
+    },
+    {
+      "command": "Exacta589 hosted qualification and independent review",
+      "result": "Allsix applicable checks pass. Native/Windows445; otherhosts433+12existing skips. Real source12/installed12;16strictmemoryprobes/144cleanupsteps; installed28protocol,24resource,29pack,18provenance. All11compiled boundary bindings unchanged from qualified product. Artifact42members,8notices and signed metadata independently verified. Original main cause unresolved; no OOMproductfix claim."
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "id": "CLI-267",
+      "stage_change": false,
+      "reason": "Failed main and reporter repair add evidence only. Preserve all protected requirement fields and full acceptance."
+    },
+    {
+      "id": "CLI-276",
+      "stage_change": false,
+      "reason": "Failed main and reporter repair add evidence only. Preserve all protected requirement fields and full acceptance."
+    }
+  ],
+  "limitations": [
+    "Original main OOM cause remains unresolved; newpassingobservations do not explain the priorfailure.",
+    "Full AUG/CLI/DCP/WEB acceptance, actual ChatGPT client integration and full runtime/image rights remain unaccepted."
+  ],
+  "checkpoint": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG005-20261108\\artifacts\\aug005",
+  "next_unverified_action": "Final metadata pin review andsix exact checks, normal guarded merge andsix mainchecks; then #93 CLI-157/165 prerequisites."
+}

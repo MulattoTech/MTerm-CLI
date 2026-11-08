@@ -1,0 +1,5219 @@
+{
+  "schemaVersion": 1,
+  "kind": "scoped-isolation-reporting-repair-qualification",
+  "capability": "AUG-005",
+  "issue": 84,
+  "pr": 205,
+  "recordedAt": "2026-11-08T03:31:53.950Z",
+  "testedHead": "a589fc1fa16709ec28b229f3f34b83194ae5d588",
+  "testedTree": "304e31d44b07f19fad29e2f9af3852ef00ae9987",
+  "actualCheckout": "91cbccac63d99823b73bed97b22d65d75521d5db",
+  "actualCheckoutHasSameTree": true,
+  "sourceFingerprint": "5ce6dbd2d4bdda47ec58ca0e9afce70ea3a929fe88c3abf863bf12d6c0cd1089",
+  "subjectFingerprint": "7b7f9fc748656907a3dcf00b72b3777d978119ad51a8ce569c19de2e6982c8df",
+  "checks": [
+    {
+      "name": "macos-15 / Node 24",
+      "id": 128615070811,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42442687917/job/128615070811"
+    },
+    {
+      "name": "ubuntu-24.04 / Node 24",
+      "id": 128615070683,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42442687917/job/128615070683"
+    },
+    {
+      "name": "Native Linux isolation / Node 24",
+      "id": 128615070649,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42442687917/job/128615070649"
+    },
+    {
+      "name": "macos-15-intel / Node 24",
+      "id": 128615070609,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42442687917/job/128615070609"
+    },
+    {
+      "name": "windows-2022 / Node 24",
+      "id": 128615070607,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42442687917/job/128615070607"
+    },
+    {
+      "name": "CI / fast",
+      "id": 128615069910,
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42442687902/job/128615069910"
+    }
+  ],
+  "applicableCheckCountReason": "Unchanged workflow pushes only main/feat/**; fix/** has the four-platform PR matrix, mandatory live Linux and fast check.",
+  "bootstrap": {
+    "schemaVersion": 1,
+    "startedAt": "2026-11-08T03:26:06.526Z",
+    "node": "v24.21.0",
+    "platform": "linux",
+    "arch": "x64",
+    "kernel": "7.0.0-1017-azure",
+    "runnerImage": "20261101.360.1",
+    "runnerOS": "ubuntu24",
+    "sourceCommit": "91cbccac63d99823b73bed97b22d65d75521d5db",
+    "packagePins": [
+      {
+        "name": "docker-ce",
+        "version": "5:29.9.3-1~ubuntu.24.04~noble",
+        "filename": "dists/noble/pool/stable/amd64/docker-ce_29.9.3-1~ubuntu.24.04~noble_amd64.deb",
+        "downloadedFile": "docker-ce_5%3a29.9.3-1~ubuntu.24.04~noble_amd64.deb",
+        "sha256": "c546181f0bc5f1d19085d764a3219aa86069468dbee4743fae420ee8a31809a4",
+        "bytes": 24586336
+      },
+      {
+        "name": "docker-ce-cli",
+        "version": "5:29.9.3-1~ubuntu.24.04~noble",
+        "filename": "dists/noble/pool/stable/amd64/docker-ce-cli_29.9.3-1~ubuntu.24.04~noble_amd64.deb",
+        "downloadedFile": "docker-ce-cli_5%3a29.9.3-1~ubuntu.24.04~noble_amd64.deb",
+        "sha256": "24f78a893cece8d345c4e90b5163907c047b996b747265f873743e8b0b0546d4",
+        "bytes": 17584604
+      },
+      {
+        "name": "containerd.io",
+        "version": "2.4.2-3~ubuntu.24.04~noble",
+        "filename": "dists/noble/pool/stable/amd64/containerd.io_2.4.2-3~ubuntu.24.04~noble_amd64.deb",
+        "downloadedFile": "containerd.io_2.4.2-3~ubuntu.24.04~noble_amd64.deb",
+        "sha256": "f811ab57d1f4bb0cce19df7d526da8c711d8ebea0447cc83da1999188e664122",
+        "bytes": 23271468
+      }
+    ],
+    "licenses": [
+      {
+        "name": "engine",
+        "repository": "moby/moby",
+        "commit": "70efc0e31da3a115fc87574d1b786fa2b867c346",
+        "filename": "LICENSE",
+        "url": "https://raw.githubusercontent.com/moby/moby/70efc0e31da3a115fc87574d1b786fa2b867c346/LICENSE",
+        "bytes": 10765,
+        "sha256": "7c87873291f289713ac5df48b1f2010eb6963752bbd6b530416ab99fc37914a8"
+      },
+      {
+        "name": "engine",
+        "repository": "moby/moby",
+        "commit": "70efc0e31da3a115fc87574d1b786fa2b867c346",
+        "filename": "NOTICE",
+        "url": "https://raw.githubusercontent.com/moby/moby/70efc0e31da3a115fc87574d1b786fa2b867c346/NOTICE",
+        "bytes": 1030,
+        "sha256": "a249c4197359eee43031d16cecb172326f92ee7b6701af99dfe5c3e5b3d5eca9"
+      },
+      {
+        "name": "cli",
+        "repository": "docker/cli",
+        "commit": "5457199aa57c45e990c59c89cab5f02b817238d7",
+        "filename": "LICENSE",
+        "url": "https://raw.githubusercontent.com/docker/cli/5457199aa57c45e990c59c89cab5f02b817238d7/LICENSE",
+        "bytes": 10765,
+        "sha256": "2d81ea060825006fc8f3fe28aa5dc0ffeb80faf325b612c955229157b8c10dc0"
+      },
+      {
+        "name": "cli",
+        "repository": "docker/cli",
+        "commit": "5457199aa57c45e990c59c89cab5f02b817238d7",
+        "filename": "NOTICE",
+        "url": "https://raw.githubusercontent.com/docker/cli/5457199aa57c45e990c59c89cab5f02b817238d7/NOTICE",
+        "bytes": 635,
+        "sha256": "a8c869fbda819afb8d80e0ac19bac52e766bc6c19cb38cf94f52d64c4be2aab6"
+      },
+      {
+        "name": "containerd",
+        "repository": "containerd/containerd",
+        "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51",
+        "filename": "LICENSE",
+        "url": "https://raw.githubusercontent.com/containerd/containerd/b7a25261e029d68978bbf290df0a62fc819b3c51/LICENSE",
+        "bytes": 10765,
+        "sha256": "4bbe3b885e8cd1907ab4cf9a41e862e74e24b5422297a4f2fe524e6a30ada2b4"
+      },
+      {
+        "name": "containerd",
+        "repository": "containerd/containerd",
+        "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51",
+        "filename": "NOTICE",
+        "url": "https://raw.githubusercontent.com/containerd/containerd/b7a25261e029d68978bbf290df0a62fc819b3c51/NOTICE",
+        "bytes": 519,
+        "sha256": "03f0b4bcaecfdb491ef5a7d320e2c2adf886c732d34e3fff87d52dbaec64d8c3"
+      },
+      {
+        "name": "runc",
+        "repository": "opencontainers/runc",
+        "commit": "29dd3dc2b13b4123162e5fe132504bb4b15569f1",
+        "filename": "LICENSE",
+        "url": "https://raw.githubusercontent.com/opencontainers/runc/29dd3dc2b13b4123162e5fe132504bb4b15569f1/LICENSE",
+        "bytes": 10758,
+        "sha256": "552a739c3b25792263f731542238b92f6f8d07e9a488eae27e6c4690038a8243"
+      },
+      {
+        "name": "runc",
+        "repository": "opencontainers/runc",
+        "commit": "29dd3dc2b13b4123162e5fe132504bb4b15569f1",
+        "filename": "NOTICE",
+        "url": "https://raw.githubusercontent.com/opencontainers/runc/29dd3dc2b13b4123162e5fe132504bb4b15569f1/NOTICE",
+        "bytes": 515,
+        "sha256": "e94a9789f41c5c3d6f74212571e6f44367de88269f1ce9c32f26c1b67eec6e7f"
+      }
+    ],
+    "runtimeBinaries": [
+      {
+        "file": "/usr/bin/docker",
+        "bytes": 47325518,
+        "sha256": "4965a5e468369284e157b20ef9d9da2c7c1cd772d41d56ed822fb48d3898f382"
+      },
+      {
+        "file": "/usr/bin/dockerd",
+        "bytes": 112617776,
+        "sha256": "1a1128e84fea111e7560147380b69833d13d1f1009044d0061206037f1657a5b"
+      },
+      {
+        "file": "/usr/bin/containerd",
+        "bytes": 44299016,
+        "sha256": "fc185d75979d92a4f8de99b76293dca7fe81142e9c5fd01d7da59f786f0fc8d1"
+      },
+      {
+        "file": "/usr/bin/runc",
+        "bytes": 9719248,
+        "sha256": "1248fee8f9a0dc5382f888990d669e2bd225045869b9246f848a1681161abc96"
+      },
+      {
+        "file": "/usr/bin/containerd-shim-runc-v2",
+        "bytes": 8483416,
+        "sha256": "ca4c4b5919655332666dda634338b826d73a12cdd3b6633627e95d1ab4bc138a"
+      }
+    ],
+    "image": {
+      "manifest": "docker.io/library/node@sha256:c0a93797ee78814ae6d32fcca2561fdbbe423149c3f5389aad32d86e9fd85bd4",
+      "configId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73",
+      "id": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73",
+      "idRepresentation": "classic-config",
+      "repoDigests": [
+        "node@sha256:c0a93797ee78814ae6d32fcca2561fdbbe423149c3f5389aad32d86e9fd85bd4"
+      ],
+      "os": "linux",
+      "architecture": "amd64",
+      "size": 230367122,
+      "created": "2026-11-05T07:42:05.274158867Z",
+      "environmentKeys": [
+        "PATH",
+        "NODE_VERSION",
+        "YARN_VERSION"
+      ],
+      "fullRedistributionEligible": false,
+      "buildRecipe": {
+        "url": "https://raw.githubusercontent.com/nodejs/docker-node/e994dfe115899a82684caa7533380aa7d439aae1/24/bookworm-slim/Dockerfile",
+        "sha256": "b9337735f3a1bac3fb9501495448f8dc0ae58eacd8513fe757dd7da7bf4208da"
+      }
+    },
+    "modelCalls": 0,
+    "runtimeRedistributedWithMTerm": false,
+    "fullRuntimeImageRedistributionEligible": false,
+    "repositoryKey": {
+      "url": "https://download.docker.com/linux/ubuntu/gpg",
+      "fingerprint": "9DC858229FC7DD38854AE2D88D81803C0EBFCD88",
+      "sha256": "1500c1f56fa9e26b9b8f42452a553675796ade0807cdce11975eb98170b3a570"
+    },
+    "signedIndex": {
+      "inReleaseSha256": "6ac25b6892e468c29d0822d6422efe16a63ad6155d1186c85006e0e92f486362",
+      "packagesSha256": "6bf01d98eab0b25b52273e91cb306527a9c769c3c7072e5bd68179855cedb48f",
+      "bytes": 495027,
+      "freshIsolatedLists": true,
+      "signatureVerifiedByApt": true,
+      "signatureVerifiedByGpgv": true,
+      "signingKeyFingerprint": "D3306A018370199E527AE7997EA0A9C3F273FCD8",
+      "primaryKeyFingerprint": "9DC858229FC7DD38854AE2D88D81803C0EBFCD88"
+    },
+    "engine": {
+      "Platform": {
+        "Name": "Docker Engine - Community"
+      },
+      "Version": "29.9.3",
+      "ApiVersion": "1.56",
+      "MinAPIVersion": "1.40",
+      "Os": "linux",
+      "Arch": "amd64",
+      "Components": [
+        {
+          "Name": "Engine",
+          "Version": "29.9.3",
+          "Details": {
+            "ApiVersion": "1.56",
+            "Arch": "amd64",
+            "BuildTime": "Tue Nov  3 21:41:31 2026",
+            "Experimental": "false",
+            "GitCommit": "70efc0e",
+            "GoVersion": "go1.26.10",
+            "KernelVersion": "7.0.0-1017-azure",
+            "MinAPIVersion": "1.40",
+            "Module": "github.com/moby/moby/v2",
+            "ModuleVersion": "v2.0.0+unknown",
+            "Os": "linux"
+          }
+        },
+        {
+          "Name": "containerd",
+          "Version": "v2.4.2",
+          "Details": {
+            "GitCommit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+          }
+        },
+        {
+          "Name": "runc",
+          "Version": "1.5.2",
+          "Details": {
+            "GitCommit": "v1.5.2-0-g29dd3dc2"
+          }
+        },
+        {
+          "Name": "docker-init",
+          "Version": "0.19.0",
+          "Details": {
+            "GitCommit": "de40ad0"
+          }
+        }
+      ],
+      "GitCommit": "70efc0e",
+      "GoVersion": "go1.26.10",
+      "KernelVersion": "7.0.0-1017-azure",
+      "BuildTime": "2026-11-03T21:41:31.000000000+00:00"
+    },
+    "capabilities": {
+      "ServerVersion": "29.9.3",
+      "OSType": "linux",
+      "Architecture": "x86_64",
+      "KernelVersion": "7.0.0-1017-azure",
+      "OperatingSystem": "Ubuntu 24.04.5 LTS",
+      "Driver": "overlay2",
+      "CgroupVersion": "2",
+      "CgroupDriver": "systemd",
+      "MemoryLimit": true,
+      "SwapLimit": true,
+      "CpuCfsPeriod": true,
+      "CpuCfsQuota": true,
+      "PidsLimit": true,
+      "SecurityOptions": [
+        "name=apparmor,profile=default",
+        "name=seccomp,profile=builtin",
+        "name=cgroupns"
+      ],
+      "Runtimes": {
+        "io.containerd.runc.v2": {
+          "path": "runc",
+          "status": {
+            "org.opencontainers.runtime-spec.features": "{\"ociVersionMin\":\"1.0.0\",\"ociVersionMax\":\"1.3.0\",\"hooks\":[\"prestart\",\"createRuntime\",\"createContainer\",\"startContainer\",\"poststart\",\"poststop\"],\"mountOptions\":[\"async\",\"atime\",\"bind\",\"defaults\",\"dev\",\"diratime\",\"dirsync\",\"exec\",\"iversion\",\"lazytime\",\"loud\",\"mand\",\"noatime\",\"nodev\",\"nodiratime\",\"noexec\",\"noiversion\",\"nolazytime\",\"nomand\",\"norelatime\",\"nostrictatime\",\"nosuid\",\"nosymfollow\",\"private\",\"ratime\",\"rbind\",\"rdev\",\"rdiratime\",\"relatime\",\"remount\",\"rexec\",\"rnoatime\",\"rnodev\",\"rnodiratime\",\"rnoexec\",\"rnorelatime\",\"rnostrictatime\",\"rnosuid\",\"rnosymfollow\",\"ro\",\"rprivate\",\"rrelatime\",\"rro\",\"rrw\",\"rshared\",\"rslave\",\"rstrictatime\",\"rsuid\",\"rsymfollow\",\"runbindable\",\"rw\",\"shared\",\"silent\",\"slave\",\"strictatime\",\"suid\",\"symfollow\",\"sync\",\"tmpcopyup\",\"unbindable\"],\"linux\":{\"namespaces\":[\"cgroup\",\"ipc\",\"mount\",\"network\",\"pid\",\"time\",\"user\",\"uts\"],\"capabilities\":[\"CAP_CHOWN\",\"CAP_DAC_OVERRIDE\",\"CAP_DAC_READ_SEARCH\",\"CAP_FOWNER\",\"CAP_FSETID\",\"CAP_KILL\",\"CAP_SETGID\",\"CAP_SETUID\",\"CAP_SETPCAP\",\"CAP_LINUX_IMMUTABLE\",\"CAP_NET_BIND_SERVICE\",\"CAP_NET_BROADCAST\",\"CAP_NET_ADMIN\",\"CAP_NET_RAW\",\"CAP_IPC_LOCK\",\"CAP_IPC_OWNER\",\"CAP_SYS_MODULE\",\"CAP_SYS_RAWIO\",\"CAP_SYS_CHROOT\",\"CAP_SYS_PTRACE\",\"CAP_SYS_PACCT\",\"CAP_SYS_ADMIN\",\"CAP_SYS_BOOT\",\"CAP_SYS_NICE\",\"CAP_SYS_RESOURCE\",\"CAP_SYS_TIME\",\"CAP_SYS_TTY_CONFIG\",\"CAP_MKNOD\",\"CAP_LEASE\",\"CAP_AUDIT_WRITE\",\"CAP_AUDIT_CONTROL\",\"CAP_SETFCAP\",\"CAP_MAC_OVERRIDE\",\"CAP_MAC_ADMIN\",\"CAP_SYSLOG\",\"CAP_WAKE_ALARM\",\"CAP_BLOCK_SUSPEND\",\"CAP_AUDIT_READ\",\"CAP_PERFMON\",\"CAP_BPF\",\"CAP_CHECKPOINT_RESTORE\"],\"cgroup\":{\"v1\":true,\"v2\":true,\"systemd\":true,\"systemdUser\":true,\"rdma\":true},\"seccomp\":{\"enabled\":true,\"actions\":[\"SCMP_ACT_ALLOW\",\"SCMP_ACT_ERRNO\",\"SCMP_ACT_KILL\",\"SCMP_ACT_KILL_PROCESS\",\"SCMP_ACT_KILL_THREAD\",\"SCMP_ACT_LOG\",\"SCMP_ACT_NOTIFY\",\"SCMP_ACT_TRACE\",\"SCMP_ACT_TRAP\"],\"operators\":[\"SCMP_CMP_EQ\",\"SCMP_CMP_GE\",\"SCMP_CMP_GT\",\"SCMP_CMP_LE\",\"SCMP_CMP_LT\",\"SCMP_CMP_MASKED_EQ\",\"SCMP_CMP_NE\"],\"archs\":[\"SCMP_ARCH_AARCH64\",\"SCMP_ARCH_ARM\",\"SCMP_ARCH_LOONGARCH64\",\"SCMP_ARCH_MIPS\",\"SCMP_ARCH_MIPS64\",\"SCMP_ARCH_MIPS64N32\",\"SCMP_ARCH_MIPSEL\",\"SCMP_ARCH_MIPSEL64\",\"SCMP_ARCH_MIPSEL64N32\",\"SCMP_ARCH_PPC\",\"SCMP_ARCH_PPC64\",\"SCMP_ARCH_PPC64LE\",\"SCMP_ARCH_RISCV64\",\"SCMP_ARCH_S390\",\"SCMP_ARCH_S390X\",\"SCMP_ARCH_X32\",\"SCMP_ARCH_X86\",\"SCMP_ARCH_X86_64\"],\"knownFlags\":[\"SECCOMP_FILTER_FLAG_TSYNC\",\"SECCOMP_FILTER_FLAG_SPEC_ALLOW\",\"SECCOMP_FILTER_FLAG_LOG\",\"SECCOMP_FILTER_FLAG_WAIT_KILLABLE_RECV\"],\"supportedFlags\":[\"SECCOMP_FILTER_FLAG_TSYNC\",\"SECCOMP_FILTER_FLAG_SPEC_ALLOW\",\"SECCOMP_FILTER_FLAG_LOG\"]},\"apparmor\":{\"enabled\":true},\"selinux\":{\"enabled\":true},\"intelRdt\":{\"enabled\":true,\"schemata\":true,\"monitoring\":true},\"memoryPolicy\":{\"modes\":[\"MPOL_BIND\",\"MPOL_DEFAULT\",\"MPOL_INTERLEAVE\",\"MPOL_LOCAL\",\"MPOL_PREFERRED\",\"MPOL_PREFERRED_MANY\",\"MPOL_WEIGHTED_INTERLEAVE\"],\"flags\":[\"MPOL_F_NUMA_BALANCING\",\"MPOL_F_RELATIVE_NODES\",\"MPOL_F_STATIC_NODES\"]},\"mountExtensions\":{\"idmap\":{\"enabled\":true}},\"netDevices\":{\"enabled\":true}},\"annotations\":{\"io.github.seccomp.libseccomp.version\":\"2.5.5\",\"org.opencontainers.runc.checkpoint.enabled\":\"true\",\"org.opencontainers.runc.commit\":\"v1.5.2-0-g29dd3dc2\",\"org.opencontainers.runc.version\":\"1.5.2\"},\"potentiallyUnsafeConfigAnnotations\":[\"bundle\",\"org.systemd.property.\",\"org.criu.config\"]}"
+          }
+        },
+        "runc": {
+          "path": "runc",
+          "status": {
+            "org.opencontainers.runtime-spec.features": "{\"ociVersionMin\":\"1.0.0\",\"ociVersionMax\":\"1.3.0\",\"hooks\":[\"prestart\",\"createRuntime\",\"createContainer\",\"startContainer\",\"poststart\",\"poststop\"],\"mountOptions\":[\"async\",\"atime\",\"bind\",\"defaults\",\"dev\",\"diratime\",\"dirsync\",\"exec\",\"iversion\",\"lazytime\",\"loud\",\"mand\",\"noatime\",\"nodev\",\"nodiratime\",\"noexec\",\"noiversion\",\"nolazytime\",\"nomand\",\"norelatime\",\"nostrictatime\",\"nosuid\",\"nosymfollow\",\"private\",\"ratime\",\"rbind\",\"rdev\",\"rdiratime\",\"relatime\",\"remount\",\"rexec\",\"rnoatime\",\"rnodev\",\"rnodiratime\",\"rnoexec\",\"rnorelatime\",\"rnostrictatime\",\"rnosuid\",\"rnosymfollow\",\"ro\",\"rprivate\",\"rrelatime\",\"rro\",\"rrw\",\"rshared\",\"rslave\",\"rstrictatime\",\"rsuid\",\"rsymfollow\",\"runbindable\",\"rw\",\"shared\",\"silent\",\"slave\",\"strictatime\",\"suid\",\"symfollow\",\"sync\",\"tmpcopyup\",\"unbindable\"],\"linux\":{\"namespaces\":[\"cgroup\",\"ipc\",\"mount\",\"network\",\"pid\",\"time\",\"user\",\"uts\"],\"capabilities\":[\"CAP_CHOWN\",\"CAP_DAC_OVERRIDE\",\"CAP_DAC_READ_SEARCH\",\"CAP_FOWNER\",\"CAP_FSETID\",\"CAP_KILL\",\"CAP_SETGID\",\"CAP_SETUID\",\"CAP_SETPCAP\",\"CAP_LINUX_IMMUTABLE\",\"CAP_NET_BIND_SERVICE\",\"CAP_NET_BROADCAST\",\"CAP_NET_ADMIN\",\"CAP_NET_RAW\",\"CAP_IPC_LOCK\",\"CAP_IPC_OWNER\",\"CAP_SYS_MODULE\",\"CAP_SYS_RAWIO\",\"CAP_SYS_CHROOT\",\"CAP_SYS_PTRACE\",\"CAP_SYS_PACCT\",\"CAP_SYS_ADMIN\",\"CAP_SYS_BOOT\",\"CAP_SYS_NICE\",\"CAP_SYS_RESOURCE\",\"CAP_SYS_TIME\",\"CAP_SYS_TTY_CONFIG\",\"CAP_MKNOD\",\"CAP_LEASE\",\"CAP_AUDIT_WRITE\",\"CAP_AUDIT_CONTROL\",\"CAP_SETFCAP\",\"CAP_MAC_OVERRIDE\",\"CAP_MAC_ADMIN\",\"CAP_SYSLOG\",\"CAP_WAKE_ALARM\",\"CAP_BLOCK_SUSPEND\",\"CAP_AUDIT_READ\",\"CAP_PERFMON\",\"CAP_BPF\",\"CAP_CHECKPOINT_RESTORE\"],\"cgroup\":{\"v1\":true,\"v2\":true,\"systemd\":true,\"systemdUser\":true,\"rdma\":true},\"seccomp\":{\"enabled\":true,\"actions\":[\"SCMP_ACT_ALLOW\",\"SCMP_ACT_ERRNO\",\"SCMP_ACT_KILL\",\"SCMP_ACT_KILL_PROCESS\",\"SCMP_ACT_KILL_THREAD\",\"SCMP_ACT_LOG\",\"SCMP_ACT_NOTIFY\",\"SCMP_ACT_TRACE\",\"SCMP_ACT_TRAP\"],\"operators\":[\"SCMP_CMP_EQ\",\"SCMP_CMP_GE\",\"SCMP_CMP_GT\",\"SCMP_CMP_LE\",\"SCMP_CMP_LT\",\"SCMP_CMP_MASKED_EQ\",\"SCMP_CMP_NE\"],\"archs\":[\"SCMP_ARCH_AARCH64\",\"SCMP_ARCH_ARM\",\"SCMP_ARCH_LOONGARCH64\",\"SCMP_ARCH_MIPS\",\"SCMP_ARCH_MIPS64\",\"SCMP_ARCH_MIPS64N32\",\"SCMP_ARCH_MIPSEL\",\"SCMP_ARCH_MIPSEL64\",\"SCMP_ARCH_MIPSEL64N32\",\"SCMP_ARCH_PPC\",\"SCMP_ARCH_PPC64\",\"SCMP_ARCH_PPC64LE\",\"SCMP_ARCH_RISCV64\",\"SCMP_ARCH_S390\",\"SCMP_ARCH_S390X\",\"SCMP_ARCH_X32\",\"SCMP_ARCH_X86\",\"SCMP_ARCH_X86_64\"],\"knownFlags\":[\"SECCOMP_FILTER_FLAG_TSYNC\",\"SECCOMP_FILTER_FLAG_SPEC_ALLOW\",\"SECCOMP_FILTER_FLAG_LOG\",\"SECCOMP_FILTER_FLAG_WAIT_KILLABLE_RECV\"],\"supportedFlags\":[\"SECCOMP_FILTER_FLAG_TSYNC\",\"SECCOMP_FILTER_FLAG_SPEC_ALLOW\",\"SECCOMP_FILTER_FLAG_LOG\"]},\"apparmor\":{\"enabled\":true},\"selinux\":{\"enabled\":true},\"intelRdt\":{\"enabled\":true,\"schemata\":true,\"monitoring\":true},\"memoryPolicy\":{\"modes\":[\"MPOL_BIND\",\"MPOL_DEFAULT\",\"MPOL_INTERLEAVE\",\"MPOL_LOCAL\",\"MPOL_PREFERRED\",\"MPOL_PREFERRED_MANY\",\"MPOL_WEIGHTED_INTERLEAVE\"],\"flags\":[\"MPOL_F_NUMA_BALANCING\",\"MPOL_F_RELATIVE_NODES\",\"MPOL_F_STATIC_NODES\"]},\"mountExtensions\":{\"idmap\":{\"enabled\":true}},\"netDevices\":{\"enabled\":true}},\"annotations\":{\"io.github.seccomp.libseccomp.version\":\"2.5.5\",\"org.opencontainers.runc.checkpoint.enabled\":\"true\",\"org.opencontainers.runc.commit\":\"v1.5.2-0-g29dd3dc2\",\"org.opencontainers.runc.version\":\"1.5.2\"},\"potentiallyUnsafeConfigAnnotations\":[\"bundle\",\"org.systemd.property.\",\"org.criu.config\"]}"
+          }
+        }
+      },
+      "DefaultRuntime": "runc"
+    },
+    "passed": true,
+    "finishedAt": "2026-11-08T03:26:26.786Z"
+  },
+  "source": {
+    "schemaVersion": 1,
+    "startedAt": "2026-11-08T03:26:27.098Z",
+    "finishedAt": "2026-11-08T03:26:38.367Z",
+    "sourceCommit": "91cbccac63d99823b73bed97b22d65d75521d5db",
+    "entry": "/home/runner/work/MTerm-CLI/MTerm-CLI/bin/mterm-cli.js",
+    "fixtureSha256": "be75c9672e343639c89494a0b8e12a14c62437e1db183b9a530f0a240092f433",
+    "evidenceHelperSha256": "fd2499815692a05268e8c634acfdff514276f1741b23b3a48c7d17d8666521ec",
+    "node": "v24.21.0",
+    "kernel": "7.0.0-1017-azure",
+    "platform": "linux",
+    "arch": "x64",
+    "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73",
+    "guestNode": "v24.22.2",
+    "syntheticOnly": false,
+    "modelCalls": 0,
+    "fullImageRedistributionEligible": false,
+    "acceptedCapability": false,
+    "scenarios": [
+      {
+        "id": "ISO-LIVE-01",
+        "title": "real immediate capture and fixed guest identity",
+        "passed": true,
+        "cleanupVerified": true,
+        "backend": {
+          "observedAt": "2026-11-08T03:26:27.143Z",
+          "apiVersion": "1.45",
+          "engineVersion": "29.9.3",
+          "engineCommit": "70efc0e",
+          "kernel": "7.0.0-1017-azure",
+          "operatingSystem": "Ubuntu 24.04.5 LTS",
+          "architecture": "x86_64",
+          "cgroupVersion": "2",
+          "seccomp": "builtin",
+          "containerd": {
+            "version": "v2.4.2",
+            "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+          },
+          "runc": {
+            "version": "1.5.2",
+            "commit": "v1.5.2-0-g29dd3dc2"
+          },
+          "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+        },
+        "observation": {
+          "node": "v24.22.2",
+          "platform": "linux",
+          "arch": "x64",
+          "uid": 65534,
+          "gid": 65534,
+          "cwd": "/work",
+          "env": {
+            "PATH": "/usr/local/bin:/usr/bin:/bin",
+            "HOSTNAME": "b89d50fd27b4",
+            "HOME": "/work",
+            "TMPDIR": "/work"
+          }
+        },
+        "cleanup": {
+          "activeJobs": 0,
+          "sharedActiveJobs": 0,
+          "ownedAbsent": true
+        },
+        "failure": null,
+        "cleanupFailure": null,
+        "cleanupSteps": [
+          {
+            "name": "capture-backend",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-isolation",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-capacity",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-owned-absence",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-process-service",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "remove-fixture-root",
+            "status": "passed",
+            "failure": null
+          }
+        ]
+      },
+      {
+        "id": "ISO-LIVE-02",
+        "title": "host sentinel, private paths, symlinks and read-only root remain inaccessible",
+        "passed": true,
+        "cleanupVerified": true,
+        "backend": {
+          "observedAt": "2026-11-08T03:26:27.402Z",
+          "apiVersion": "1.45",
+          "engineVersion": "29.9.3",
+          "engineCommit": "70efc0e",
+          "kernel": "7.0.0-1017-azure",
+          "operatingSystem": "Ubuntu 24.04.5 LTS",
+          "architecture": "x86_64",
+          "cgroupVersion": "2",
+          "seccomp": "builtin",
+          "containerd": {
+            "version": "v2.4.2",
+            "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+          },
+          "runc": {
+            "version": "1.5.2",
+            "commit": "v1.5.2-0-g29dd3dc2"
+          },
+          "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+        },
+        "observation": {
+          "host": {
+            "read": false,
+            "code": "ENOENT"
+          },
+          "link": {
+            "read": false,
+            "code": "ENOENT"
+          },
+          "proc": {
+            "read": false,
+            "code": "ENOENT"
+          },
+          "socket": false,
+          "rootWrite": "EROFS"
+        },
+        "cleanup": {
+          "activeJobs": 0,
+          "sharedActiveJobs": 0,
+          "ownedAbsent": true
+        },
+        "failure": null,
+        "cleanupFailure": null,
+        "cleanupSteps": [
+          {
+            "name": "capture-backend",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-isolation",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-capacity",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-owned-absence",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-process-service",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "remove-fixture-root",
+            "status": "passed",
+            "failure": null
+          }
+        ]
+      },
+      {
+        "id": "ISO-LIVE-03",
+        "title": "shells and detached descendants stay inside the owned container",
+        "passed": true,
+        "cleanupVerified": true,
+        "backend": {
+          "observedAt": "2026-11-08T03:26:27.682Z",
+          "apiVersion": "1.45",
+          "engineVersion": "29.9.3",
+          "engineCommit": "70efc0e",
+          "kernel": "7.0.0-1017-azure",
+          "operatingSystem": "Ubuntu 24.04.5 LTS",
+          "architecture": "x86_64",
+          "cgroupVersion": "2",
+          "seccomp": "builtin",
+          "containerd": {
+            "version": "v2.4.2",
+            "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+          },
+          "runc": {
+            "version": "1.5.2",
+            "commit": "v1.5.2-0-g29dd3dc2"
+          },
+          "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+        },
+        "observation": {
+          "uid": "65534",
+          "exit": 1,
+          "detachedPid": 17,
+          "containerRemovedWithDescendants": true
+        },
+        "cleanup": {
+          "activeJobs": 0,
+          "sharedActiveJobs": 0,
+          "ownedAbsent": true
+        },
+        "failure": null,
+        "cleanupFailure": null,
+        "cleanupSteps": [
+          {
+            "name": "capture-backend",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-isolation",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-capacity",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-owned-absence",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-process-service",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "remove-fixture-root",
+            "status": "passed",
+            "failure": null
+          }
+        ]
+      },
+      {
+        "id": "ISO-LIVE-04",
+        "title": "network namespace denies host TCP, external TCP and DNS",
+        "passed": true,
+        "cleanupVerified": true,
+        "backend": {
+          "observedAt": "2026-11-08T03:26:27.974Z",
+          "apiVersion": "1.45",
+          "engineVersion": "29.9.3",
+          "engineCommit": "70efc0e",
+          "kernel": "7.0.0-1017-azure",
+          "operatingSystem": "Ubuntu 24.04.5 LTS",
+          "architecture": "x86_64",
+          "cgroupVersion": "2",
+          "seccomp": "builtin",
+          "containerd": {
+            "version": "v2.4.2",
+            "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+          },
+          "runc": {
+            "version": "1.5.2",
+            "commit": "v1.5.2-0-g29dd3dc2"
+          },
+          "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+        },
+        "observation": {
+          "interfaces": [
+            "lo"
+          ],
+          "host": "ECONNREFUSED",
+          "external": "ENETUNREACH",
+          "lookup": "ECONNREFUSED"
+        },
+        "cleanup": {
+          "activeJobs": 0,
+          "sharedActiveJobs": 0,
+          "ownedAbsent": true
+        },
+        "failure": null,
+        "cleanupFailure": null,
+        "cleanupSteps": [
+          {
+            "name": "capture-backend",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-isolation",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-capacity",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-owned-absence",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-process-service",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "remove-fixture-root",
+            "status": "passed",
+            "failure": null
+          }
+        ]
+      },
+      {
+        "id": "ISO-LIVE-05",
+        "title": "kernel cgroups, seccomp, capabilities and privilege flags match the fixed profile",
+        "passed": true,
+        "cleanupVerified": true,
+        "backend": {
+          "observedAt": "2026-11-08T03:26:28.240Z",
+          "apiVersion": "1.45",
+          "engineVersion": "29.9.3",
+          "engineCommit": "70efc0e",
+          "kernel": "7.0.0-1017-azure",
+          "operatingSystem": "Ubuntu 24.04.5 LTS",
+          "architecture": "x86_64",
+          "cgroupVersion": "2",
+          "seccomp": "builtin",
+          "containerd": {
+            "version": "v2.4.2",
+            "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+          },
+          "runc": {
+            "version": "1.5.2",
+            "commit": "v1.5.2-0-g29dd3dc2"
+          },
+          "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+        },
+        "observation": {
+          "status": [
+            "CapEff:\t0000000000000000",
+            "NoNewPrivs:\t1",
+            "Seccomp:\t2"
+          ],
+          "memory": "134217728",
+          "swap": "0",
+          "cpu": "50000 100000",
+          "pids": "32",
+          "workspace": "4096",
+          "mounts": [
+            "424 415 0:64 / /work rw,nosuid,nodev,noexec,relatime - tmpfs tmpfs rw,size=16384k,mode=700,uid=65534,gid=65534,inode64"
+          ]
+        },
+        "cleanup": {
+          "activeJobs": 0,
+          "sharedActiveJobs": 0,
+          "ownedAbsent": true
+        },
+        "failure": null,
+        "cleanupFailure": null,
+        "cleanupSteps": [
+          {
+            "name": "capture-backend",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-isolation",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-capacity",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-owned-absence",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-process-service",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "remove-fixture-root",
+            "status": "passed",
+            "failure": null
+          }
+        ]
+      },
+      {
+        "id": "ISO-LIVE-06",
+        "title": "actual tmpfs exhaustion is bounded and contained",
+        "passed": true,
+        "cleanupVerified": true,
+        "backend": {
+          "observedAt": "2026-11-08T03:26:28.510Z",
+          "apiVersion": "1.45",
+          "engineVersion": "29.9.3",
+          "engineCommit": "70efc0e",
+          "kernel": "7.0.0-1017-azure",
+          "operatingSystem": "Ubuntu 24.04.5 LTS",
+          "architecture": "x86_64",
+          "cgroupVersion": "2",
+          "seccomp": "builtin",
+          "containerd": {
+            "version": "v2.4.2",
+            "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+          },
+          "runc": {
+            "version": "1.5.2",
+            "commit": "v1.5.2-0-g29dd3dc2"
+          },
+          "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+        },
+        "observation": {
+          "bytes": 16777216,
+          "error": "ENOSPC"
+        },
+        "cleanup": {
+          "activeJobs": 0,
+          "sharedActiveJobs": 0,
+          "ownedAbsent": true
+        },
+        "failure": null,
+        "cleanupFailure": null,
+        "cleanupSteps": [
+          {
+            "name": "capture-backend",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-isolation",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-capacity",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-owned-absence",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-process-service",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "remove-fixture-root",
+            "status": "passed",
+            "failure": null
+          }
+        ]
+      },
+      {
+        "id": "ISO-LIVE-07",
+        "title": "actual memory exhaustion is killed by the container limit",
+        "passed": true,
+        "cleanupVerified": true,
+        "backend": {
+          "observedAt": "2026-11-08T03:26:31.306Z",
+          "apiVersion": "1.45",
+          "engineVersion": "29.9.3",
+          "engineCommit": "70efc0e",
+          "kernel": "7.0.0-1017-azure",
+          "operatingSystem": "Ubuntu 24.04.5 LTS",
+          "architecture": "x86_64",
+          "cgroupVersion": "2",
+          "seccomp": "builtin",
+          "containerd": {
+            "version": "v2.4.2",
+            "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+          },
+          "runc": {
+            "version": "1.5.2",
+            "commit": "v1.5.2-0-g29dd3dc2"
+          },
+          "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+        },
+        "observation": {
+          "plannedProbes": 8,
+          "probes": [
+            {
+              "probe": 1,
+              "exitCode": 137,
+              "oomKilled": true,
+              "stdout": "",
+              "stderr": "",
+              "outputBytes": 0,
+              "cleanup": "removed",
+              "backend": {
+                "observedAt": "2026-11-08T03:26:28.816Z",
+                "apiVersion": "1.45",
+                "engineVersion": "29.9.3",
+                "engineCommit": "70efc0e",
+                "kernel": "7.0.0-1017-azure",
+                "operatingSystem": "Ubuntu 24.04.5 LTS",
+                "architecture": "x86_64",
+                "cgroupVersion": "2",
+                "seccomp": "builtin",
+                "containerd": {
+                  "version": "v2.4.2",
+                  "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                },
+                "runc": {
+                  "version": "1.5.2",
+                  "commit": "v1.5.2-0-g29dd3dc2"
+                },
+                "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+              }
+            },
+            {
+              "probe": 2,
+              "exitCode": 137,
+              "oomKilled": true,
+              "stdout": "",
+              "stderr": "",
+              "outputBytes": 0,
+              "cleanup": "removed",
+              "backend": {
+                "observedAt": "2026-11-08T03:26:29.172Z",
+                "apiVersion": "1.45",
+                "engineVersion": "29.9.3",
+                "engineCommit": "70efc0e",
+                "kernel": "7.0.0-1017-azure",
+                "operatingSystem": "Ubuntu 24.04.5 LTS",
+                "architecture": "x86_64",
+                "cgroupVersion": "2",
+                "seccomp": "builtin",
+                "containerd": {
+                  "version": "v2.4.2",
+                  "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                },
+                "runc": {
+                  "version": "1.5.2",
+                  "commit": "v1.5.2-0-g29dd3dc2"
+                },
+                "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+              }
+            },
+            {
+              "probe": 3,
+              "exitCode": 137,
+              "oomKilled": true,
+              "stdout": "",
+              "stderr": "",
+              "outputBytes": 0,
+              "cleanup": "removed",
+              "backend": {
+                "observedAt": "2026-11-08T03:26:29.527Z",
+                "apiVersion": "1.45",
+                "engineVersion": "29.9.3",
+                "engineCommit": "70efc0e",
+                "kernel": "7.0.0-1017-azure",
+                "operatingSystem": "Ubuntu 24.04.5 LTS",
+                "architecture": "x86_64",
+                "cgroupVersion": "2",
+                "seccomp": "builtin",
+                "containerd": {
+                  "version": "v2.4.2",
+                  "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                },
+                "runc": {
+                  "version": "1.5.2",
+                  "commit": "v1.5.2-0-g29dd3dc2"
+                },
+                "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+              }
+            },
+            {
+              "probe": 4,
+              "exitCode": 137,
+              "oomKilled": true,
+              "stdout": "",
+              "stderr": "",
+              "outputBytes": 0,
+              "cleanup": "removed",
+              "backend": {
+                "observedAt": "2026-11-08T03:26:29.871Z",
+                "apiVersion": "1.45",
+                "engineVersion": "29.9.3",
+                "engineCommit": "70efc0e",
+                "kernel": "7.0.0-1017-azure",
+                "operatingSystem": "Ubuntu 24.04.5 LTS",
+                "architecture": "x86_64",
+                "cgroupVersion": "2",
+                "seccomp": "builtin",
+                "containerd": {
+                  "version": "v2.4.2",
+                  "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                },
+                "runc": {
+                  "version": "1.5.2",
+                  "commit": "v1.5.2-0-g29dd3dc2"
+                },
+                "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+              }
+            },
+            {
+              "probe": 5,
+              "exitCode": 137,
+              "oomKilled": true,
+              "stdout": "",
+              "stderr": "",
+              "outputBytes": 0,
+              "cleanup": "removed",
+              "backend": {
+                "observedAt": "2026-11-08T03:26:30.250Z",
+                "apiVersion": "1.45",
+                "engineVersion": "29.9.3",
+                "engineCommit": "70efc0e",
+                "kernel": "7.0.0-1017-azure",
+                "operatingSystem": "Ubuntu 24.04.5 LTS",
+                "architecture": "x86_64",
+                "cgroupVersion": "2",
+                "seccomp": "builtin",
+                "containerd": {
+                  "version": "v2.4.2",
+                  "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                },
+                "runc": {
+                  "version": "1.5.2",
+                  "commit": "v1.5.2-0-g29dd3dc2"
+                },
+                "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+              }
+            },
+            {
+              "probe": 6,
+              "exitCode": 137,
+              "oomKilled": true,
+              "stdout": "",
+              "stderr": "",
+              "outputBytes": 0,
+              "cleanup": "removed",
+              "backend": {
+                "observedAt": "2026-11-08T03:26:30.609Z",
+                "apiVersion": "1.45",
+                "engineVersion": "29.9.3",
+                "engineCommit": "70efc0e",
+                "kernel": "7.0.0-1017-azure",
+                "operatingSystem": "Ubuntu 24.04.5 LTS",
+                "architecture": "x86_64",
+                "cgroupVersion": "2",
+                "seccomp": "builtin",
+                "containerd": {
+                  "version": "v2.4.2",
+                  "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                },
+                "runc": {
+                  "version": "1.5.2",
+                  "commit": "v1.5.2-0-g29dd3dc2"
+                },
+                "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+              }
+            },
+            {
+              "probe": 7,
+              "exitCode": 137,
+              "oomKilled": true,
+              "stdout": "",
+              "stderr": "",
+              "outputBytes": 0,
+              "cleanup": "removed",
+              "backend": {
+                "observedAt": "2026-11-08T03:26:30.950Z",
+                "apiVersion": "1.45",
+                "engineVersion": "29.9.3",
+                "engineCommit": "70efc0e",
+                "kernel": "7.0.0-1017-azure",
+                "operatingSystem": "Ubuntu 24.04.5 LTS",
+                "architecture": "x86_64",
+                "cgroupVersion": "2",
+                "seccomp": "builtin",
+                "containerd": {
+                  "version": "v2.4.2",
+                  "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                },
+                "runc": {
+                  "version": "1.5.2",
+                  "commit": "v1.5.2-0-g29dd3dc2"
+                },
+                "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+              }
+            },
+            {
+              "probe": 8,
+              "exitCode": 137,
+              "oomKilled": true,
+              "stdout": "",
+              "stderr": "",
+              "outputBytes": 0,
+              "cleanup": "removed",
+              "backend": {
+                "observedAt": "2026-11-08T03:26:31.306Z",
+                "apiVersion": "1.45",
+                "engineVersion": "29.9.3",
+                "engineCommit": "70efc0e",
+                "kernel": "7.0.0-1017-azure",
+                "operatingSystem": "Ubuntu 24.04.5 LTS",
+                "architecture": "x86_64",
+                "cgroupVersion": "2",
+                "seccomp": "builtin",
+                "containerd": {
+                  "version": "v2.4.2",
+                  "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                },
+                "runc": {
+                  "version": "1.5.2",
+                  "commit": "v1.5.2-0-g29dd3dc2"
+                },
+                "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+              }
+            }
+          ]
+        },
+        "cleanup": {
+          "activeJobs": 0,
+          "sharedActiveJobs": 0,
+          "ownedAbsent": true
+        },
+        "failure": null,
+        "cleanupFailure": null,
+        "cleanupSteps": [
+          {
+            "name": "capture-backend",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-isolation",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-capacity",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-owned-absence",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-process-service",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "remove-fixture-root",
+            "status": "passed",
+            "failure": null
+          }
+        ]
+      },
+      {
+        "id": "ISO-LIVE-08",
+        "title": "actual child-process ceiling refuses additional descendants",
+        "passed": true,
+        "cleanupVerified": true,
+        "backend": {
+          "observedAt": "2026-11-08T03:26:31.741Z",
+          "apiVersion": "1.45",
+          "engineVersion": "29.9.3",
+          "engineCommit": "70efc0e",
+          "kernel": "7.0.0-1017-azure",
+          "operatingSystem": "Ubuntu 24.04.5 LTS",
+          "architecture": "x86_64",
+          "cgroupVersion": "2",
+          "seccomp": "builtin",
+          "containerd": {
+            "version": "v2.4.2",
+            "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+          },
+          "runc": {
+            "version": "1.5.2",
+            "commit": "v1.5.2-0-g29dd3dc2"
+          },
+          "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+        },
+        "observation": {
+          "count": 24,
+          "error": "EAGAIN"
+        },
+        "cleanup": {
+          "activeJobs": 0,
+          "sharedActiveJobs": 0,
+          "ownedAbsent": true
+        },
+        "failure": null,
+        "cleanupFailure": null,
+        "cleanupSteps": [
+          {
+            "name": "capture-backend",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-isolation",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-capacity",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-owned-absence",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-process-service",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "remove-fixture-root",
+            "status": "passed",
+            "failure": null
+          }
+        ]
+      },
+      {
+        "id": "ISO-LIVE-09",
+        "title": "actual CPU quota throttles a bounded busy loop",
+        "passed": true,
+        "cleanupVerified": true,
+        "backend": {
+          "observedAt": "2026-11-08T03:26:32.014Z",
+          "apiVersion": "1.45",
+          "engineVersion": "29.9.3",
+          "engineCommit": "70efc0e",
+          "kernel": "7.0.0-1017-azure",
+          "operatingSystem": "Ubuntu 24.04.5 LTS",
+          "architecture": "x86_64",
+          "cgroupVersion": "2",
+          "seccomp": "builtin",
+          "containerd": {
+            "version": "v2.4.2",
+            "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+          },
+          "runc": {
+            "version": "1.5.2",
+            "commit": "v1.5.2-0-g29dd3dc2"
+          },
+          "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+        },
+        "observation": {
+          "wallMs": 1800.088018,
+          "cpuMs": 900.628,
+          "throttled": 18
+        },
+        "cleanup": {
+          "activeJobs": 0,
+          "sharedActiveJobs": 0,
+          "ownedAbsent": true
+        },
+        "failure": null,
+        "cleanupFailure": null,
+        "cleanupSteps": [
+          {
+            "name": "capture-backend",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-isolation",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-capacity",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-owned-absence",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-process-service",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "remove-fixture-root",
+            "status": "passed",
+            "failure": null
+          }
+        ]
+      },
+      {
+        "id": "ISO-LIVE-10",
+        "title": "real timeout, output overflow and owned stop confirm removal",
+        "passed": true,
+        "cleanupVerified": true,
+        "backend": {
+          "observedAt": "2026-11-08T03:26:37.332Z",
+          "apiVersion": "1.45",
+          "engineVersion": "29.9.3",
+          "engineCommit": "70efc0e",
+          "kernel": "7.0.0-1017-azure",
+          "operatingSystem": "Ubuntu 24.04.5 LTS",
+          "architecture": "x86_64",
+          "cgroupVersion": "2",
+          "seccomp": "builtin",
+          "containerd": {
+            "version": "v2.4.2",
+            "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+          },
+          "runc": {
+            "version": "1.5.2",
+            "commit": "v1.5.2-0-g29dd3dc2"
+          },
+          "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+        },
+        "observation": {
+          "timeout": true,
+          "outputLimit": true,
+          "stop": true
+        },
+        "cleanup": {
+          "activeJobs": 0,
+          "sharedActiveJobs": 0,
+          "ownedAbsent": true
+        },
+        "failure": null,
+        "cleanupFailure": null,
+        "cleanupSteps": [
+          {
+            "name": "capture-backend",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-isolation",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-capacity",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-owned-absence",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-process-service",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "remove-fixture-root",
+            "status": "passed",
+            "failure": null
+          }
+        ]
+      },
+      {
+        "id": "ISO-LIVE-11",
+        "title": "real local IPC permissions deny access without a container",
+        "passed": true,
+        "cleanupVerified": true,
+        "backend": null,
+        "observation": {
+          "permissionDenied": true,
+          "connections": 0
+        },
+        "cleanup": {
+          "activeJobs": 0,
+          "sharedActiveJobs": 0,
+          "ownedAbsent": true
+        },
+        "failure": null,
+        "cleanupFailure": null,
+        "cleanupSteps": [
+          {
+            "name": "capture-backend",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-isolation",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-capacity",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-owned-absence",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-process-service",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "remove-fixture-root",
+            "status": "passed",
+            "failure": null
+          }
+        ]
+      },
+      {
+        "id": "ISO-LIVE-12",
+        "title": "actual SDK isolated-only grant and cancellation preserve native denial and cleanup controls",
+        "passed": true,
+        "cleanupVerified": true,
+        "backend": null,
+        "observation": {
+          "actualSdkRoundTrip": true,
+          "nativeExecutionDenied": true,
+          "cancellation": true,
+          "cleanupVerified": true,
+          "backend": {
+            "observedAt": "2026-11-08T03:26:38.080Z",
+            "apiVersion": "1.45",
+            "engineVersion": "29.9.3",
+            "engineCommit": "70efc0e",
+            "kernel": "7.0.0-1017-azure",
+            "operatingSystem": "Ubuntu 24.04.5 LTS",
+            "architecture": "x86_64",
+            "cgroupVersion": "2",
+            "seccomp": "builtin",
+            "containerd": {
+              "version": "v2.4.2",
+              "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+            },
+            "runc": {
+              "version": "1.5.2",
+              "commit": "v1.5.2-0-g29dd3dc2"
+            },
+            "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+          }
+        },
+        "cleanup": {
+          "activeJobs": 0,
+          "sharedActiveJobs": 0,
+          "ownedAbsent": true
+        },
+        "failure": null,
+        "cleanupFailure": null,
+        "cleanupSteps": [
+          {
+            "name": "capture-backend",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-isolation",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-capacity",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-owned-absence",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-process-service",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "remove-fixture-root",
+            "status": "passed",
+            "failure": null
+          }
+        ]
+      }
+    ],
+    "passed": true,
+    "moduleBindings": [
+      {
+        "path": "dist/cli.js",
+        "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad",
+        "bytes": 16233
+      },
+      {
+        "path": "dist/mcp.js",
+        "sha256": "d472b529ac7fbd667ef1f519259d395d3402fae6748123a49bbffa1462c5bc69",
+        "bytes": 20091
+      },
+      {
+        "path": "dist/processes.js",
+        "sha256": "714f2ddc34e3e664d75f8f1bc2338e2f4691bf2de8d01ecedc1e07743acefcf5",
+        "bytes": 22436
+      },
+      {
+        "path": "dist/policy.js",
+        "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d",
+        "bytes": 6796
+      },
+      {
+        "path": "dist/resource-budget-policy.js",
+        "sha256": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac",
+        "bytes": 2454
+      },
+      {
+        "path": "dist/resource-budgets.js",
+        "sha256": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64",
+        "bytes": 4115
+      },
+      {
+        "path": "dist/isolation-policy.js",
+        "sha256": "3b9c4a56d75e9660c6b8ed0cb9bfc32aa8441fabe6eddcd33a10d43458a26de9",
+        "bytes": 2838
+      },
+      {
+        "path": "dist/isolation-http.js",
+        "sha256": "0fad31e0d688f663c3c37e2316863b6ec4ff30d67abca5a6a5a728420de265d5",
+        "bytes": 11344
+      },
+      {
+        "path": "dist/isolation-engine.js",
+        "sha256": "130b4532dd7eac02bcd0d02d261cb5e34fb9f5bb67c80b7619469917ffaaca33",
+        "bytes": 26260
+      },
+      {
+        "path": "dist/isolation.js",
+        "sha256": "4efc7b035ce22195fdace01e8249866db934aea8d55049d6c3300563ebac6120",
+        "bytes": 1506
+      },
+      {
+        "path": "dist/errors.js",
+        "sha256": "26fa1c3341396a1f9eda45debe86dc2295cb997b9dd7e525e70ac17ef2c910a9",
+        "bytes": 1727
+      }
+    ],
+    "fromOutsideCheckout": true,
+    "installedPackage": false,
+    "fullRuntimeImageRedistributionEligible": false,
+    "tapSha256": "30ebb8cef516429a6eca34a6f9e65da003e175ce6ad49665940a9f020f1ff1ba"
+  },
+  "installed": {
+    "schemaVersion": 1,
+    "startedAt": "2026-11-08T03:27:08.021Z",
+    "finishedAt": "2026-11-08T03:27:18.848Z",
+    "sourceCommit": "91cbccac63d99823b73bed97b22d65d75521d5db",
+    "entry": "/home/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-2H6ouV/install/node_modules/mterm-cli/bin/mterm-cli.js",
+    "fixtureSha256": "be75c9672e343639c89494a0b8e12a14c62437e1db183b9a530f0a240092f433",
+    "evidenceHelperSha256": "fd2499815692a05268e8c634acfdff514276f1741b23b3a48c7d17d8666521ec",
+    "node": "v24.21.0",
+    "kernel": "7.0.0-1017-azure",
+    "platform": "linux",
+    "arch": "x64",
+    "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73",
+    "guestNode": "v24.22.2",
+    "syntheticOnly": false,
+    "modelCalls": 0,
+    "fullImageRedistributionEligible": false,
+    "acceptedCapability": false,
+    "scenarios": [
+      {
+        "id": "ISO-LIVE-01",
+        "title": "real immediate capture and fixed guest identity",
+        "passed": true,
+        "cleanupVerified": true,
+        "backend": {
+          "observedAt": "2026-11-08T03:27:08.071Z",
+          "apiVersion": "1.45",
+          "engineVersion": "29.9.3",
+          "engineCommit": "70efc0e",
+          "kernel": "7.0.0-1017-azure",
+          "operatingSystem": "Ubuntu 24.04.5 LTS",
+          "architecture": "x86_64",
+          "cgroupVersion": "2",
+          "seccomp": "builtin",
+          "containerd": {
+            "version": "v2.4.2",
+            "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+          },
+          "runc": {
+            "version": "1.5.2",
+            "commit": "v1.5.2-0-g29dd3dc2"
+          },
+          "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+        },
+        "observation": {
+          "node": "v24.22.2",
+          "platform": "linux",
+          "arch": "x64",
+          "uid": 65534,
+          "gid": 65534,
+          "cwd": "/work",
+          "env": {
+            "PATH": "/usr/local/bin:/usr/bin:/bin",
+            "HOSTNAME": "ea306f8d4406",
+            "HOME": "/work",
+            "TMPDIR": "/work"
+          }
+        },
+        "cleanup": {
+          "activeJobs": 0,
+          "sharedActiveJobs": 0,
+          "ownedAbsent": true
+        },
+        "failure": null,
+        "cleanupFailure": null,
+        "cleanupSteps": [
+          {
+            "name": "capture-backend",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-isolation",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-capacity",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-owned-absence",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-process-service",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "remove-fixture-root",
+            "status": "passed",
+            "failure": null
+          }
+        ]
+      },
+      {
+        "id": "ISO-LIVE-02",
+        "title": "host sentinel, private paths, symlinks and read-only root remain inaccessible",
+        "passed": true,
+        "cleanupVerified": true,
+        "backend": {
+          "observedAt": "2026-11-08T03:27:08.348Z",
+          "apiVersion": "1.45",
+          "engineVersion": "29.9.3",
+          "engineCommit": "70efc0e",
+          "kernel": "7.0.0-1017-azure",
+          "operatingSystem": "Ubuntu 24.04.5 LTS",
+          "architecture": "x86_64",
+          "cgroupVersion": "2",
+          "seccomp": "builtin",
+          "containerd": {
+            "version": "v2.4.2",
+            "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+          },
+          "runc": {
+            "version": "1.5.2",
+            "commit": "v1.5.2-0-g29dd3dc2"
+          },
+          "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+        },
+        "observation": {
+          "host": {
+            "read": false,
+            "code": "ENOENT"
+          },
+          "link": {
+            "read": false,
+            "code": "ENOENT"
+          },
+          "proc": {
+            "read": false,
+            "code": "ENOENT"
+          },
+          "socket": false,
+          "rootWrite": "EROFS"
+        },
+        "cleanup": {
+          "activeJobs": 0,
+          "sharedActiveJobs": 0,
+          "ownedAbsent": true
+        },
+        "failure": null,
+        "cleanupFailure": null,
+        "cleanupSteps": [
+          {
+            "name": "capture-backend",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-isolation",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-capacity",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-owned-absence",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-process-service",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "remove-fixture-root",
+            "status": "passed",
+            "failure": null
+          }
+        ]
+      },
+      {
+        "id": "ISO-LIVE-03",
+        "title": "shells and detached descendants stay inside the owned container",
+        "passed": true,
+        "cleanupVerified": true,
+        "backend": {
+          "observedAt": "2026-11-08T03:27:08.582Z",
+          "apiVersion": "1.45",
+          "engineVersion": "29.9.3",
+          "engineCommit": "70efc0e",
+          "kernel": "7.0.0-1017-azure",
+          "operatingSystem": "Ubuntu 24.04.5 LTS",
+          "architecture": "x86_64",
+          "cgroupVersion": "2",
+          "seccomp": "builtin",
+          "containerd": {
+            "version": "v2.4.2",
+            "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+          },
+          "runc": {
+            "version": "1.5.2",
+            "commit": "v1.5.2-0-g29dd3dc2"
+          },
+          "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+        },
+        "observation": {
+          "uid": "65534",
+          "exit": 1,
+          "detachedPid": 17,
+          "containerRemovedWithDescendants": true
+        },
+        "cleanup": {
+          "activeJobs": 0,
+          "sharedActiveJobs": 0,
+          "ownedAbsent": true
+        },
+        "failure": null,
+        "cleanupFailure": null,
+        "cleanupSteps": [
+          {
+            "name": "capture-backend",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-isolation",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-capacity",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-owned-absence",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-process-service",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "remove-fixture-root",
+            "status": "passed",
+            "failure": null
+          }
+        ]
+      },
+      {
+        "id": "ISO-LIVE-04",
+        "title": "network namespace denies host TCP, external TCP and DNS",
+        "passed": true,
+        "cleanupVerified": true,
+        "backend": {
+          "observedAt": "2026-11-08T03:27:08.864Z",
+          "apiVersion": "1.45",
+          "engineVersion": "29.9.3",
+          "engineCommit": "70efc0e",
+          "kernel": "7.0.0-1017-azure",
+          "operatingSystem": "Ubuntu 24.04.5 LTS",
+          "architecture": "x86_64",
+          "cgroupVersion": "2",
+          "seccomp": "builtin",
+          "containerd": {
+            "version": "v2.4.2",
+            "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+          },
+          "runc": {
+            "version": "1.5.2",
+            "commit": "v1.5.2-0-g29dd3dc2"
+          },
+          "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+        },
+        "observation": {
+          "interfaces": [
+            "lo"
+          ],
+          "host": "ECONNREFUSED",
+          "external": "ENETUNREACH",
+          "lookup": "ECONNREFUSED"
+        },
+        "cleanup": {
+          "activeJobs": 0,
+          "sharedActiveJobs": 0,
+          "ownedAbsent": true
+        },
+        "failure": null,
+        "cleanupFailure": null,
+        "cleanupSteps": [
+          {
+            "name": "capture-backend",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-isolation",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-capacity",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-owned-absence",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-process-service",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "remove-fixture-root",
+            "status": "passed",
+            "failure": null
+          }
+        ]
+      },
+      {
+        "id": "ISO-LIVE-05",
+        "title": "kernel cgroups, seccomp, capabilities and privilege flags match the fixed profile",
+        "passed": true,
+        "cleanupVerified": true,
+        "backend": {
+          "observedAt": "2026-11-08T03:27:09.097Z",
+          "apiVersion": "1.45",
+          "engineVersion": "29.9.3",
+          "engineCommit": "70efc0e",
+          "kernel": "7.0.0-1017-azure",
+          "operatingSystem": "Ubuntu 24.04.5 LTS",
+          "architecture": "x86_64",
+          "cgroupVersion": "2",
+          "seccomp": "builtin",
+          "containerd": {
+            "version": "v2.4.2",
+            "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+          },
+          "runc": {
+            "version": "1.5.2",
+            "commit": "v1.5.2-0-g29dd3dc2"
+          },
+          "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+        },
+        "observation": {
+          "status": [
+            "CapEff:\t0000000000000000",
+            "NoNewPrivs:\t1",
+            "Seccomp:\t2"
+          ],
+          "memory": "134217728",
+          "swap": "0",
+          "cpu": "50000 100000",
+          "pids": "32",
+          "workspace": "4096",
+          "mounts": [
+            "424 415 0:64 / /work rw,nosuid,nodev,noexec,relatime - tmpfs tmpfs rw,size=16384k,mode=700,uid=65534,gid=65534,inode64"
+          ]
+        },
+        "cleanup": {
+          "activeJobs": 0,
+          "sharedActiveJobs": 0,
+          "ownedAbsent": true
+        },
+        "failure": null,
+        "cleanupFailure": null,
+        "cleanupSteps": [
+          {
+            "name": "capture-backend",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-isolation",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-capacity",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-owned-absence",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-process-service",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "remove-fixture-root",
+            "status": "passed",
+            "failure": null
+          }
+        ]
+      },
+      {
+        "id": "ISO-LIVE-06",
+        "title": "actual tmpfs exhaustion is bounded and contained",
+        "passed": true,
+        "cleanupVerified": true,
+        "backend": {
+          "observedAt": "2026-11-08T03:27:09.354Z",
+          "apiVersion": "1.45",
+          "engineVersion": "29.9.3",
+          "engineCommit": "70efc0e",
+          "kernel": "7.0.0-1017-azure",
+          "operatingSystem": "Ubuntu 24.04.5 LTS",
+          "architecture": "x86_64",
+          "cgroupVersion": "2",
+          "seccomp": "builtin",
+          "containerd": {
+            "version": "v2.4.2",
+            "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+          },
+          "runc": {
+            "version": "1.5.2",
+            "commit": "v1.5.2-0-g29dd3dc2"
+          },
+          "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+        },
+        "observation": {
+          "bytes": 16777216,
+          "error": "ENOSPC"
+        },
+        "cleanup": {
+          "activeJobs": 0,
+          "sharedActiveJobs": 0,
+          "ownedAbsent": true
+        },
+        "failure": null,
+        "cleanupFailure": null,
+        "cleanupSteps": [
+          {
+            "name": "capture-backend",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-isolation",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-capacity",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-owned-absence",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-process-service",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "remove-fixture-root",
+            "status": "passed",
+            "failure": null
+          }
+        ]
+      },
+      {
+        "id": "ISO-LIVE-07",
+        "title": "actual memory exhaustion is killed by the container limit",
+        "passed": true,
+        "cleanupVerified": true,
+        "backend": {
+          "observedAt": "2026-11-08T03:27:11.844Z",
+          "apiVersion": "1.45",
+          "engineVersion": "29.9.3",
+          "engineCommit": "70efc0e",
+          "kernel": "7.0.0-1017-azure",
+          "operatingSystem": "Ubuntu 24.04.5 LTS",
+          "architecture": "x86_64",
+          "cgroupVersion": "2",
+          "seccomp": "builtin",
+          "containerd": {
+            "version": "v2.4.2",
+            "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+          },
+          "runc": {
+            "version": "1.5.2",
+            "commit": "v1.5.2-0-g29dd3dc2"
+          },
+          "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+        },
+        "observation": {
+          "plannedProbes": 8,
+          "probes": [
+            {
+              "probe": 1,
+              "exitCode": 137,
+              "oomKilled": true,
+              "stdout": "",
+              "stderr": "",
+              "outputBytes": 0,
+              "cleanup": "removed",
+              "backend": {
+                "observedAt": "2026-11-08T03:27:09.614Z",
+                "apiVersion": "1.45",
+                "engineVersion": "29.9.3",
+                "engineCommit": "70efc0e",
+                "kernel": "7.0.0-1017-azure",
+                "operatingSystem": "Ubuntu 24.04.5 LTS",
+                "architecture": "x86_64",
+                "cgroupVersion": "2",
+                "seccomp": "builtin",
+                "containerd": {
+                  "version": "v2.4.2",
+                  "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                },
+                "runc": {
+                  "version": "1.5.2",
+                  "commit": "v1.5.2-0-g29dd3dc2"
+                },
+                "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+              }
+            },
+            {
+              "probe": 2,
+              "exitCode": 137,
+              "oomKilled": true,
+              "stdout": "",
+              "stderr": "",
+              "outputBytes": 0,
+              "cleanup": "removed",
+              "backend": {
+                "observedAt": "2026-11-08T03:27:09.936Z",
+                "apiVersion": "1.45",
+                "engineVersion": "29.9.3",
+                "engineCommit": "70efc0e",
+                "kernel": "7.0.0-1017-azure",
+                "operatingSystem": "Ubuntu 24.04.5 LTS",
+                "architecture": "x86_64",
+                "cgroupVersion": "2",
+                "seccomp": "builtin",
+                "containerd": {
+                  "version": "v2.4.2",
+                  "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                },
+                "runc": {
+                  "version": "1.5.2",
+                  "commit": "v1.5.2-0-g29dd3dc2"
+                },
+                "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+              }
+            },
+            {
+              "probe": 3,
+              "exitCode": 137,
+              "oomKilled": true,
+              "stdout": "",
+              "stderr": "",
+              "outputBytes": 0,
+              "cleanup": "removed",
+              "backend": {
+                "observedAt": "2026-11-08T03:27:10.247Z",
+                "apiVersion": "1.45",
+                "engineVersion": "29.9.3",
+                "engineCommit": "70efc0e",
+                "kernel": "7.0.0-1017-azure",
+                "operatingSystem": "Ubuntu 24.04.5 LTS",
+                "architecture": "x86_64",
+                "cgroupVersion": "2",
+                "seccomp": "builtin",
+                "containerd": {
+                  "version": "v2.4.2",
+                  "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                },
+                "runc": {
+                  "version": "1.5.2",
+                  "commit": "v1.5.2-0-g29dd3dc2"
+                },
+                "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+              }
+            },
+            {
+              "probe": 4,
+              "exitCode": 137,
+              "oomKilled": true,
+              "stdout": "",
+              "stderr": "",
+              "outputBytes": 0,
+              "cleanup": "removed",
+              "backend": {
+                "observedAt": "2026-11-08T03:27:10.557Z",
+                "apiVersion": "1.45",
+                "engineVersion": "29.9.3",
+                "engineCommit": "70efc0e",
+                "kernel": "7.0.0-1017-azure",
+                "operatingSystem": "Ubuntu 24.04.5 LTS",
+                "architecture": "x86_64",
+                "cgroupVersion": "2",
+                "seccomp": "builtin",
+                "containerd": {
+                  "version": "v2.4.2",
+                  "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                },
+                "runc": {
+                  "version": "1.5.2",
+                  "commit": "v1.5.2-0-g29dd3dc2"
+                },
+                "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+              }
+            },
+            {
+              "probe": 5,
+              "exitCode": 137,
+              "oomKilled": true,
+              "stdout": "",
+              "stderr": "",
+              "outputBytes": 0,
+              "cleanup": "removed",
+              "backend": {
+                "observedAt": "2026-11-08T03:27:10.883Z",
+                "apiVersion": "1.45",
+                "engineVersion": "29.9.3",
+                "engineCommit": "70efc0e",
+                "kernel": "7.0.0-1017-azure",
+                "operatingSystem": "Ubuntu 24.04.5 LTS",
+                "architecture": "x86_64",
+                "cgroupVersion": "2",
+                "seccomp": "builtin",
+                "containerd": {
+                  "version": "v2.4.2",
+                  "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                },
+                "runc": {
+                  "version": "1.5.2",
+                  "commit": "v1.5.2-0-g29dd3dc2"
+                },
+                "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+              }
+            },
+            {
+              "probe": 6,
+              "exitCode": 137,
+              "oomKilled": true,
+              "stdout": "",
+              "stderr": "",
+              "outputBytes": 0,
+              "cleanup": "removed",
+              "backend": {
+                "observedAt": "2026-11-08T03:27:11.215Z",
+                "apiVersion": "1.45",
+                "engineVersion": "29.9.3",
+                "engineCommit": "70efc0e",
+                "kernel": "7.0.0-1017-azure",
+                "operatingSystem": "Ubuntu 24.04.5 LTS",
+                "architecture": "x86_64",
+                "cgroupVersion": "2",
+                "seccomp": "builtin",
+                "containerd": {
+                  "version": "v2.4.2",
+                  "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                },
+                "runc": {
+                  "version": "1.5.2",
+                  "commit": "v1.5.2-0-g29dd3dc2"
+                },
+                "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+              }
+            },
+            {
+              "probe": 7,
+              "exitCode": 137,
+              "oomKilled": true,
+              "stdout": "",
+              "stderr": "",
+              "outputBytes": 0,
+              "cleanup": "removed",
+              "backend": {
+                "observedAt": "2026-11-08T03:27:11.532Z",
+                "apiVersion": "1.45",
+                "engineVersion": "29.9.3",
+                "engineCommit": "70efc0e",
+                "kernel": "7.0.0-1017-azure",
+                "operatingSystem": "Ubuntu 24.04.5 LTS",
+                "architecture": "x86_64",
+                "cgroupVersion": "2",
+                "seccomp": "builtin",
+                "containerd": {
+                  "version": "v2.4.2",
+                  "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                },
+                "runc": {
+                  "version": "1.5.2",
+                  "commit": "v1.5.2-0-g29dd3dc2"
+                },
+                "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+              }
+            },
+            {
+              "probe": 8,
+              "exitCode": 137,
+              "oomKilled": true,
+              "stdout": "",
+              "stderr": "",
+              "outputBytes": 0,
+              "cleanup": "removed",
+              "backend": {
+                "observedAt": "2026-11-08T03:27:11.844Z",
+                "apiVersion": "1.45",
+                "engineVersion": "29.9.3",
+                "engineCommit": "70efc0e",
+                "kernel": "7.0.0-1017-azure",
+                "operatingSystem": "Ubuntu 24.04.5 LTS",
+                "architecture": "x86_64",
+                "cgroupVersion": "2",
+                "seccomp": "builtin",
+                "containerd": {
+                  "version": "v2.4.2",
+                  "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+                },
+                "runc": {
+                  "version": "1.5.2",
+                  "commit": "v1.5.2-0-g29dd3dc2"
+                },
+                "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+              }
+            }
+          ]
+        },
+        "cleanup": {
+          "activeJobs": 0,
+          "sharedActiveJobs": 0,
+          "ownedAbsent": true
+        },
+        "failure": null,
+        "cleanupFailure": null,
+        "cleanupSteps": [
+          {
+            "name": "capture-backend",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-isolation",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-capacity",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-owned-absence",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-process-service",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "remove-fixture-root",
+            "status": "passed",
+            "failure": null
+          }
+        ]
+      },
+      {
+        "id": "ISO-LIVE-08",
+        "title": "actual child-process ceiling refuses additional descendants",
+        "passed": true,
+        "cleanupVerified": true,
+        "backend": {
+          "observedAt": "2026-11-08T03:27:12.213Z",
+          "apiVersion": "1.45",
+          "engineVersion": "29.9.3",
+          "engineCommit": "70efc0e",
+          "kernel": "7.0.0-1017-azure",
+          "operatingSystem": "Ubuntu 24.04.5 LTS",
+          "architecture": "x86_64",
+          "cgroupVersion": "2",
+          "seccomp": "builtin",
+          "containerd": {
+            "version": "v2.4.2",
+            "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+          },
+          "runc": {
+            "version": "1.5.2",
+            "commit": "v1.5.2-0-g29dd3dc2"
+          },
+          "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+        },
+        "observation": {
+          "count": 24,
+          "error": "EAGAIN"
+        },
+        "cleanup": {
+          "activeJobs": 0,
+          "sharedActiveJobs": 0,
+          "ownedAbsent": true
+        },
+        "failure": null,
+        "cleanupFailure": null,
+        "cleanupSteps": [
+          {
+            "name": "capture-backend",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-isolation",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-capacity",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-owned-absence",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-process-service",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "remove-fixture-root",
+            "status": "passed",
+            "failure": null
+          }
+        ]
+      },
+      {
+        "id": "ISO-LIVE-09",
+        "title": "actual CPU quota throttles a bounded busy loop",
+        "passed": true,
+        "cleanupVerified": true,
+        "backend": {
+          "observedAt": "2026-11-08T03:27:12.503Z",
+          "apiVersion": "1.45",
+          "engineVersion": "29.9.3",
+          "engineCommit": "70efc0e",
+          "kernel": "7.0.0-1017-azure",
+          "operatingSystem": "Ubuntu 24.04.5 LTS",
+          "architecture": "x86_64",
+          "cgroupVersion": "2",
+          "seccomp": "builtin",
+          "containerd": {
+            "version": "v2.4.2",
+            "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+          },
+          "runc": {
+            "version": "1.5.2",
+            "commit": "v1.5.2-0-g29dd3dc2"
+          },
+          "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+        },
+        "observation": {
+          "wallMs": 1800.0910020000001,
+          "cpuMs": 900.524,
+          "throttled": 18
+        },
+        "cleanup": {
+          "activeJobs": 0,
+          "sharedActiveJobs": 0,
+          "ownedAbsent": true
+        },
+        "failure": null,
+        "cleanupFailure": null,
+        "cleanupSteps": [
+          {
+            "name": "capture-backend",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-isolation",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-capacity",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-owned-absence",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-process-service",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "remove-fixture-root",
+            "status": "passed",
+            "failure": null
+          }
+        ]
+      },
+      {
+        "id": "ISO-LIVE-10",
+        "title": "real timeout, output overflow and owned stop confirm removal",
+        "passed": true,
+        "cleanupVerified": true,
+        "backend": {
+          "observedAt": "2026-11-08T03:27:17.803Z",
+          "apiVersion": "1.45",
+          "engineVersion": "29.9.3",
+          "engineCommit": "70efc0e",
+          "kernel": "7.0.0-1017-azure",
+          "operatingSystem": "Ubuntu 24.04.5 LTS",
+          "architecture": "x86_64",
+          "cgroupVersion": "2",
+          "seccomp": "builtin",
+          "containerd": {
+            "version": "v2.4.2",
+            "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+          },
+          "runc": {
+            "version": "1.5.2",
+            "commit": "v1.5.2-0-g29dd3dc2"
+          },
+          "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+        },
+        "observation": {
+          "timeout": true,
+          "outputLimit": true,
+          "stop": true
+        },
+        "cleanup": {
+          "activeJobs": 0,
+          "sharedActiveJobs": 0,
+          "ownedAbsent": true
+        },
+        "failure": null,
+        "cleanupFailure": null,
+        "cleanupSteps": [
+          {
+            "name": "capture-backend",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-isolation",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-capacity",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-owned-absence",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-process-service",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "remove-fixture-root",
+            "status": "passed",
+            "failure": null
+          }
+        ]
+      },
+      {
+        "id": "ISO-LIVE-11",
+        "title": "real local IPC permissions deny access without a container",
+        "passed": true,
+        "cleanupVerified": true,
+        "backend": null,
+        "observation": {
+          "permissionDenied": true,
+          "connections": 0
+        },
+        "cleanup": {
+          "activeJobs": 0,
+          "sharedActiveJobs": 0,
+          "ownedAbsent": true
+        },
+        "failure": null,
+        "cleanupFailure": null,
+        "cleanupSteps": [
+          {
+            "name": "capture-backend",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-isolation",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-capacity",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-owned-absence",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-process-service",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "remove-fixture-root",
+            "status": "passed",
+            "failure": null
+          }
+        ]
+      },
+      {
+        "id": "ISO-LIVE-12",
+        "title": "actual SDK isolated-only grant and cancellation preserve native denial and cleanup controls",
+        "passed": true,
+        "cleanupVerified": true,
+        "backend": null,
+        "observation": {
+          "actualSdkRoundTrip": true,
+          "nativeExecutionDenied": true,
+          "cancellation": true,
+          "cleanupVerified": true,
+          "backend": {
+            "observedAt": "2026-11-08T03:27:18.554Z",
+            "apiVersion": "1.45",
+            "engineVersion": "29.9.3",
+            "engineCommit": "70efc0e",
+            "kernel": "7.0.0-1017-azure",
+            "operatingSystem": "Ubuntu 24.04.5 LTS",
+            "architecture": "x86_64",
+            "cgroupVersion": "2",
+            "seccomp": "builtin",
+            "containerd": {
+              "version": "v2.4.2",
+              "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+            },
+            "runc": {
+              "version": "1.5.2",
+              "commit": "v1.5.2-0-g29dd3dc2"
+            },
+            "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+          }
+        },
+        "cleanup": {
+          "activeJobs": 0,
+          "sharedActiveJobs": 0,
+          "ownedAbsent": true
+        },
+        "failure": null,
+        "cleanupFailure": null,
+        "cleanupSteps": [
+          {
+            "name": "capture-backend",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-isolation",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-capacity",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "observe-owned-absence",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "close-process-service",
+            "status": "passed",
+            "failure": null
+          },
+          {
+            "name": "remove-fixture-root",
+            "status": "passed",
+            "failure": null
+          }
+        ]
+      }
+    ],
+    "passed": true,
+    "moduleBindings": [
+      {
+        "path": "dist/cli.js",
+        "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad",
+        "bytes": 16233
+      },
+      {
+        "path": "dist/mcp.js",
+        "sha256": "d472b529ac7fbd667ef1f519259d395d3402fae6748123a49bbffa1462c5bc69",
+        "bytes": 20091
+      },
+      {
+        "path": "dist/processes.js",
+        "sha256": "714f2ddc34e3e664d75f8f1bc2338e2f4691bf2de8d01ecedc1e07743acefcf5",
+        "bytes": 22436
+      },
+      {
+        "path": "dist/policy.js",
+        "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d",
+        "bytes": 6796
+      },
+      {
+        "path": "dist/resource-budget-policy.js",
+        "sha256": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac",
+        "bytes": 2454
+      },
+      {
+        "path": "dist/resource-budgets.js",
+        "sha256": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64",
+        "bytes": 4115
+      },
+      {
+        "path": "dist/isolation-policy.js",
+        "sha256": "3b9c4a56d75e9660c6b8ed0cb9bfc32aa8441fabe6eddcd33a10d43458a26de9",
+        "bytes": 2838
+      },
+      {
+        "path": "dist/isolation-http.js",
+        "sha256": "0fad31e0d688f663c3c37e2316863b6ec4ff30d67abca5a6a5a728420de265d5",
+        "bytes": 11344
+      },
+      {
+        "path": "dist/isolation-engine.js",
+        "sha256": "130b4532dd7eac02bcd0d02d261cb5e34fb9f5bb67c80b7619469917ffaaca33",
+        "bytes": 26260
+      },
+      {
+        "path": "dist/isolation.js",
+        "sha256": "4efc7b035ce22195fdace01e8249866db934aea8d55049d6c3300563ebac6120",
+        "bytes": 1506
+      },
+      {
+        "path": "dist/errors.js",
+        "sha256": "26fa1c3341396a1f9eda45debe86dc2295cb997b9dd7e525e70ac17ef2c910a9",
+        "bytes": 1727
+      }
+    ],
+    "fromOutsideCheckout": true,
+    "installedPackage": true,
+    "fullRuntimeImageRedistributionEligible": false,
+    "tapSha256": "fae73cd0a47a40ee642d1ff3cbb49b6ba7c43ca12cd81bf219efcfca34f02857"
+  },
+  "installedProtocol": {
+    "exitCode": 0,
+    "tests": 28,
+    "moduleBindings": [
+      {
+        "path": "dist/cli.js",
+        "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad"
+      },
+      {
+        "path": "dist/mcp.js",
+        "sha256": "d472b529ac7fbd667ef1f519259d395d3402fae6748123a49bbffa1462c5bc69"
+      },
+      {
+        "path": "dist/processes.js",
+        "sha256": "714f2ddc34e3e664d75f8f1bc2338e2f4691bf2de8d01ecedc1e07743acefcf5"
+      },
+      {
+        "path": "dist/policy.js",
+        "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+      },
+      {
+        "path": "dist/resource-budget-policy.js",
+        "sha256": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac"
+      },
+      {
+        "path": "dist/resource-budgets.js",
+        "sha256": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64"
+      },
+      {
+        "path": "dist/isolation-policy.js",
+        "sha256": "3b9c4a56d75e9660c6b8ed0cb9bfc32aa8441fabe6eddcd33a10d43458a26de9"
+      },
+      {
+        "path": "dist/isolation-http.js",
+        "sha256": "0fad31e0d688f663c3c37e2316863b6ec4ff30d67abca5a6a5a728420de265d5"
+      },
+      {
+        "path": "dist/isolation-engine.js",
+        "sha256": "130b4532dd7eac02bcd0d02d261cb5e34fb9f5bb67c80b7619469917ffaaca33"
+      },
+      {
+        "path": "dist/isolation.js",
+        "sha256": "4efc7b035ce22195fdace01e8249866db934aea8d55049d6c3300563ebac6120"
+      },
+      {
+        "path": "dist/errors.js",
+        "sha256": "26fa1c3341396a1f9eda45debe86dc2295cb997b9dd7e525e70ac17ef2c910a9"
+      }
+    ],
+    "sha256": "5a424cb0e9f917e0c0929e918847e6cfbb830925bbce1fd0bac42ff1c9ab84b9",
+    "syntheticOnly": true,
+    "modelCalls": 0
+  },
+  "platforms": [
+    {
+      "platform": "win32-x64",
+      "job": 128615070607,
+      "tests": {
+        "tests": [
+          445
+        ],
+        "pass": [
+          445
+        ],
+        "fail": [
+          0
+        ],
+        "skipped": [
+          0
+        ],
+        "cancelled": [
+          0
+        ]
+      },
+      "package": {
+        "packageVersion": "0.0.1-preview.1",
+        "archiveBytes": 105673,
+        "packageUnpackedBytes": 420552,
+        "installedProductionBytes": 14572370,
+        "installedStandaloneCoreUnder50MB": true,
+        "productionLicenseEvidence": [
+          {
+            "name": "@modelcontextprotocol/core",
+            "version": "2.3.0",
+            "license": "Apache-2.0",
+            "integrity": "sha512-09BHFaNVBe5pB2AhzCfLj0cqmsKLERvZQ4FblzP90UMGLaXVqdZPByFjURwsUYCmxonUW2yAwgTTvle+8O2/8w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "@modelcontextprotocol/server",
+            "version": "2.3.0-mterm.1",
+            "license": "Apache-2.0",
+            "integrity": "sha512-RNlauLPhVz8rUV8EvE1jsPmzBtb84j1HIBFGaTyANRbSHjwEBjl0th5idsfHRcGLT5TWZVfFFzlZhk/zJWXY4w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "mterm-cli",
+            "version": "0.0.1-preview.1",
+            "license": "MIT",
+            "integrity": "sha512-mrx2qSd4PZ9vbgU/j4gpHMN7ETTU2DfJqEsxdTmiQT2102iOfU9c/omRM5tluw6usskKnpQGeF3+zD5QFr5gaA==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "057801cf89de394d84ca2f5797e31619cb5fd66e6f4b7da7058db7887633ba37"
+              }
+            ]
+          },
+          {
+            "name": "zod",
+            "version": "4.6.7",
+            "license": "MIT",
+            "integrity": "sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8"
+              }
+            ]
+          }
+        ],
+        "productionFiles": 1009,
+        "packagedMcpRoundTrip": true,
+        "ownedPrefixNpmLink": true,
+        "offlineNpmExecFromTarball": true,
+        "npmExecMcpCompatibilityTools": 8,
+        "installedCompatibility": {
+          "npmExecMcp": true,
+          "compatibilityAliasesExercised": 8,
+          "directoryListing": {
+            "scenarios": [
+              "zero-depth",
+              "one-level-depth",
+              "default-depth-stable-exact-visible-overflow",
+              "link-not-traversed",
+              "root-private-link-missing-denials",
+              "schema-depth-denial"
+            ],
+            "passed": 6
+          },
+          "fileInfo": {
+            "scenarios": [
+              "text-stat-order-dates-empty-LF-CRLF-CR-BOM-Unicode",
+              "directory-handler-discriminator-no-lines",
+              "unchanged-inclusive-262144-byte-ceiling",
+              "binary-invalid-utf8-oversize-safe-omissions",
+              "unsupported-formats-stat-only",
+              "outside-private-link-hardlink-missing-denials",
+              "schema-path-denial",
+              "read-only-installed-restart-independent-capabilities"
+            ],
+            "passed": 8,
+            "readOnlyRestart": true
+          },
+          "multipleFiles": {
+            "scenarios": [
+              "ordered-summary-successes-duplicates-and-safe-partial-error",
+              "published-schema-and-one-to-twenty-path-boundaries",
+              "inclusive-full-text-byte-ceiling-and-one-byte-overflow",
+              "error-summary-and-separator-budget-in-both-orders",
+              "private-outside-format-hardlink-and-symlink-denials-no-mutation",
+              "read-only-installed-restart-capability-separation"
+            ],
+            "passed": 6,
+            "maxTextBytes": 262144,
+            "readOnlyRestart": true
+          },
+          "editBlock": {
+            "scenarios": [
+              "write-enabled-schema-discovery",
+              "CRLF-LF-CR-native-default-first-style-and-literal-byte-fidelity",
+              "normalized-exact-count-mismatch-and-schema-no-write",
+              "inclusive-UTF8-byte-limit-after-newline-expansion",
+              "private-and-outside-root-denials-preserve-bytes",
+              "read-only-restart-omits-edit-and-mutation-capabilities"
+            ],
+            "passed": 6,
+            "readOnlyRestart": true
+          },
+          "utf16Read": {
+            "scenarios": [
+              "native-UTF8-read-and-compatibility-write-edit-refusals-preserve-bytes",
+              "read-only-installed-restart-schema-and-capability-separation",
+              "exact-BOM-empty-Unicode-CRLF-CR-offset-tail-envelopes",
+              "malformed-surrogate-NUL-and-unsupported-encoding-refusals",
+              "inclusive-raw-byte-ceiling-counts-BOM-and-permits-bounded-UTF8-expansion",
+              "expanded-UTF8-aggregate-text-exact-byte-boundary",
+              "serialized-adapter-result-exact-byte-boundary-after-JSON-escaping",
+              "UTF16-root-private-hardlink-and-symlink-denials-preserve-bytes"
+            ],
+            "passed": 8,
+            "rawFileBytes": 262144,
+            "aggregateTextBytes": 262144,
+            "serializedAdapterResultBytes": 524288,
+            "readOnlyRestart": true,
+            "writesRemainUTF8": true
+          },
+          "ownedProcessExitsVerified": true,
+          "directoryFixtureCleanupVerified": true,
+          "multipleFileFixtureCleanupVerified": true,
+          "stderrCapturedBytes": 0,
+          "fullParity": false,
+          "modelCalls": 0
+        },
+        "installedConfiguration": {
+          "ok": true,
+          "packageVersion": "0.0.1-preview.1",
+          "node": "v24.21.0",
+          "platform": "win32",
+          "architecture": "x64",
+          "installedEntryUnderOwnedPrefix": true,
+          "installedEntrySha256": "1376dfb68527a2fef2444be718a0011c53333c90f416eb377a8bde43e5dcc5b0",
+          "installedConfigModuleSha256": "f6f412a83d13a1aab24398f1d54ca1c301e093c6de1511f2097e0d43b720cc32",
+          "concurrentMcpProcesses": 2,
+          "restartedMcpProcesses": 1,
+          "compatibilityToolsDiscovered": [
+            "get_config",
+            "set_config_value"
+          ],
+          "getConfigMetadata": {
+            "textMatchesStructuredConfig": true,
+            "processIdentityMatchesOwnedChild": true,
+            "boundedMemoryAndRuntimeFields": true,
+            "orderedPreferenceTypes": true,
+            "clientExtrasOmitted": true,
+            "unsupportedProbesExplicitlyOmitted": true,
+            "featureFlagProvider": "none"
+          },
+          "setConfigContract": {
+            "preferencesExercised": [
+              "blockedCommands",
+              "allowedDirectories",
+              "defaultShell",
+              "fileReadLineLimit",
+              "fileWriteLineLimit",
+              "telemetryEnabled"
+            ],
+            "exactTextOnlySuccess": true,
+            "successValueMatchesCommittedEffectiveSnapshot": true,
+            "normalizedBooleanStrings": true,
+            "singletonAndJsonArrays": true,
+            "deduplicatedCanonicalRootsAndMandatoryBlocks": true,
+            "rejectedCases": 14,
+            "rejectedPolicyAndBackupBytesPreserved": true,
+            "rejectedValuesOmittedFromErrors": true,
+            "shellPreferencePersistsWithoutShellExecutionClaim": true
+          },
+          "steps": [
+            "two-installed-processes-discovery-and-owner-roots",
+            "get-config-envelope-memory-process-metadata-and-omissions",
+            "six-setting-success-output-and-normalized-effective-values",
+            "six-setting-rejections-preserve-policy-backup-and-safe-error-output",
+            "cross-process-read-defaults-and-write-warning-byte-fidelity",
+            "three-concurrent-distinct-key-writes-without-lost-updates",
+            "runtime-root-narrowing-empty-denial-and-owner-ceiling-preservation",
+            "telemetry-preference-has-no-observed-node-network-transport",
+            "malformed-policy-denial-and-owned-process-cleanup",
+            "restart-persistence-without-inheriting-config-write-authority"
+          ],
+          "telemetryNetworkGuard": {
+            "interceptedCanaryAttempts": 10,
+            "canaryApis": [
+              "net.Socket.connect",
+              "tls.connect",
+              "http.get",
+              "https.request",
+              "http2.connect",
+              "dgram.Socket.send",
+              "dns.lookup",
+              "dns.promises.lookup",
+              "fetch",
+              "WebSocket"
+            ],
+            "observedProductAttempts": 0,
+            "maximumRetainedAttemptsPerChild": 128,
+            "preferenceValuesExercised": [
+              true,
+              false
+            ],
+            "scope": "Instrumented standard Node network APIs in the three MCP children; not an OS sandbox or a descendant-process network monitor."
+          },
+          "actualCodexAgentToolInvocation": false,
+          "processExitProof": "Bounded signal-0 polling observed ESRCH for each captured MCP PID and owned fixture process; no numeric-PID termination fallback.",
+          "fullConfigurationParity": false,
+          "modelCalls": 0,
+          "realUserConfigChanged": false,
+          "evidence": "D:\\a\\MTerm-CLI\\MTerm-CLI\\artifacts\\package-verify-t5VXJi\\configuration-mSUyYR",
+          "shutdownVerified": true,
+          "ownedFixtureCleanup": true,
+          "stderrCapturedBytes": [
+            0,
+            0,
+            0
+          ]
+        },
+        "installedRemoteState": {
+          "ok": true,
+          "packageVersion": "0.0.1-preview.1",
+          "installedModule": "D:\\a\\MTerm-CLI\\MTerm-CLI\\artifacts\\package-verify-t5VXJi\\install\\node_modules\\mterm-cli\\dist\\remote\\state.js",
+          "sourceSnapshotSHA256": "dc2d4353dff982f692c7afd09e5f1a1f22e36fa013bcb44a97aea028325128ed",
+          "moduleBindings": [
+            {
+              "path": "dist/remote/adapter.js",
+              "bytes": 6001,
+              "sha256": "d24f7c484cae8537652730fbe473ae631895b673d72c2b8cae3b2f0abb1faca4"
+            },
+            {
+              "path": "dist/remote/agent.js",
+              "bytes": 10112,
+              "sha256": "e19c1c28bf04f83a201f9aefce7533c7f37fa2cebad3c49c65a7fa5efb693b9f"
+            },
+            {
+              "path": "dist/remote/cli.js",
+              "bytes": 10586,
+              "sha256": "b27236e2aeb8ba8add5e781e775c5f6745ce126ed6e5e69e2a07f331c7e9ef6f"
+            },
+            {
+              "path": "dist/remote/protocol.js",
+              "bytes": 2552,
+              "sha256": "7d7f108e735b4c0ea05d1ead7a567497f451c05c75d8a4de6e7d4bed4a4444a1"
+            },
+            {
+              "path": "dist/remote/state.js",
+              "bytes": 17059,
+              "sha256": "27981330f53530327218149e85eb8461da4cfa871dd41cb705c8763e28465f5e"
+            }
+          ],
+          "syntheticOnly": true,
+          "actualRemoteEnrollment": false,
+          "realUserStateAccessed": false,
+          "windowsDpapiExercised": true,
+          "protectionFailurePreservesState": true,
+          "unprotectFailurePreservesState": true,
+          "platform": "win32",
+          "protection": "windows-dpapi-current-user",
+          "syntheticCredentialRoundtrip": true,
+          "spawnedProtectionChildren": 2,
+          "ownedProcessExitsVerified": true,
+          "childObservations": [
+            {
+              "phase": "protect-spawn-failure",
+              "pid": null,
+              "spawnObserved": false,
+              "exitObserved": false,
+              "exitCode": null,
+              "closeObserved": true,
+              "closeCode": -4058,
+              "errorCode": "ENOENT",
+              "closedWhenOperationSettled": true
+            },
+            {
+              "phase": "protect-roundtrip",
+              "pid": 7364,
+              "spawnObserved": true,
+              "exitObserved": true,
+              "exitCode": 0,
+              "closeObserved": true,
+              "closeCode": 0,
+              "errorCode": null,
+              "closedWhenOperationSettled": true
+            },
+            {
+              "phase": "unprotect-roundtrip",
+              "pid": 7948,
+              "spawnObserved": true,
+              "exitObserved": true,
+              "exitCode": 0,
+              "closeObserved": true,
+              "closeCode": 0,
+              "errorCode": null,
+              "closedWhenOperationSettled": true
+            },
+            {
+              "phase": "unprotect-spawn-failure",
+              "pid": null,
+              "spawnObserved": false,
+              "exitObserved": false,
+              "exitCode": null,
+              "closeObserved": true,
+              "closeCode": -4058,
+              "errorCode": "ENOENT",
+              "closedWhenOperationSettled": false
+            }
+          ],
+          "fixtureCleanupVerified": true,
+          "modelCalls": 0
+        },
+        "installedOptionalPacks": {
+          "ok": true,
+          "tests": 29,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "moduleBindings": [
+            {
+              "path": "dist/cli.js",
+              "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad"
+            },
+            {
+              "path": "dist/mcp.js",
+              "sha256": "d472b529ac7fbd667ef1f519259d395d3402fae6748123a49bbffa1462c5bc69"
+            },
+            {
+              "path": "dist/tool-packs.js",
+              "sha256": "7f7792c1090b6868e1719b223d4f553efe19e537ff1c8be3014323122c52f12f"
+            },
+            {
+              "path": "dist/processes.js",
+              "sha256": "714f2ddc34e3e664d75f8f1bc2338e2f4691bf2de8d01ecedc1e07743acefcf5"
+            },
+            {
+              "path": "dist/resource-budgets.js",
+              "sha256": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64"
+            },
+            {
+              "path": "dist/resource-budget-policy.js",
+              "sha256": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac"
+            },
+            {
+              "path": "dist/policy.js",
+              "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+            }
+          ],
+          "syntheticOnly": true,
+          "modelCalls": 0,
+          "osSandbox": false,
+          "realClientConsent": false,
+          "log": "D:\\a\\MTerm-CLI\\MTerm-CLI\\artifacts\\package-verify-t5VXJi\\optional-pack-tests.tap"
+        },
+        "installedResourceBudgets": {
+          "ok": true,
+          "tests": 24,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "moduleBindings": [
+            {
+              "path": "dist/cli.js",
+              "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad"
+            },
+            {
+              "path": "dist/mcp.js",
+              "sha256": "d472b529ac7fbd667ef1f519259d395d3402fae6748123a49bbffa1462c5bc69"
+            },
+            {
+              "path": "dist/tool-packs.js",
+              "sha256": "7f7792c1090b6868e1719b223d4f553efe19e537ff1c8be3014323122c52f12f"
+            },
+            {
+              "path": "dist/processes.js",
+              "sha256": "714f2ddc34e3e664d75f8f1bc2338e2f4691bf2de8d01ecedc1e07743acefcf5"
+            },
+            {
+              "path": "dist/resource-budgets.js",
+              "sha256": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64"
+            },
+            {
+              "path": "dist/resource-budget-policy.js",
+              "sha256": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac"
+            },
+            {
+              "path": "dist/policy.js",
+              "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+            }
+          ],
+          "scope": "host-instance",
+          "realStatfsAndOwnedProcesses": true,
+          "injectedBackendFailuresLabeled": true,
+          "syntheticOnly": true,
+          "modelCalls": 0,
+          "crossHostEnforcement": false,
+          "hardCpuGpuRamOrDiskWriteQuotas": false,
+          "log": "D:\\a\\MTerm-CLI\\MTerm-CLI\\artifacts\\package-verify-t5VXJi\\resource-budget-tests.tap"
+        },
+        "installedIsolation": {
+          "ok": true,
+          "protocolTests": 28,
+          "moduleBindings": [
+            {
+              "path": "dist/cli.js",
+              "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad"
+            },
+            {
+              "path": "dist/mcp.js",
+              "sha256": "d472b529ac7fbd667ef1f519259d395d3402fae6748123a49bbffa1462c5bc69"
+            },
+            {
+              "path": "dist/processes.js",
+              "sha256": "714f2ddc34e3e664d75f8f1bc2338e2f4691bf2de8d01ecedc1e07743acefcf5"
+            },
+            {
+              "path": "dist/policy.js",
+              "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+            },
+            {
+              "path": "dist/resource-budget-policy.js",
+              "sha256": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac"
+            },
+            {
+              "path": "dist/resource-budgets.js",
+              "sha256": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64"
+            },
+            {
+              "path": "dist/isolation-policy.js",
+              "sha256": "3b9c4a56d75e9660c6b8ed0cb9bfc32aa8441fabe6eddcd33a10d43458a26de9"
+            },
+            {
+              "path": "dist/isolation-http.js",
+              "sha256": "0fad31e0d688f663c3c37e2316863b6ec4ff30d67abca5a6a5a728420de265d5"
+            },
+            {
+              "path": "dist/isolation-engine.js",
+              "sha256": "130b4532dd7eac02bcd0d02d261cb5e34fb9f5bb67c80b7619469917ffaaca33"
+            },
+            {
+              "path": "dist/isolation.js",
+              "sha256": "4efc7b035ce22195fdace01e8249866db934aea8d55049d6c3300563ebac6120"
+            },
+            {
+              "path": "dist/errors.js",
+              "sha256": "26fa1c3341396a1f9eda45debe86dc2295cb997b9dd7e525e70ac17ef2c910a9"
+            }
+          ],
+          "protocolIsSynthetic": true,
+          "actualUnsupportedHostDenial": true,
+          "live": null,
+          "fullRuntimeImageRedistributionEligible": false,
+          "modelCalls": 0,
+          "log": "D:\\a\\MTerm-CLI\\MTerm-CLI\\artifacts\\package-verify-t5VXJi\\isolation-protocol-tests.tap"
+        },
+        "installedProvenance": {
+          "ok": true,
+          "tests": 18,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "moduleBindings": [
+            {
+              "path": "dist/cli.js",
+              "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad"
+            },
+            {
+              "path": "dist/provenance.js",
+              "sha256": "ad842f4e4ebb14152575632773a7e460a194f7dadedd595ea9b77309f28e2902"
+            },
+            {
+              "path": "dist/files.js",
+              "sha256": "753adb8c88d5ea10d93549237f821c5bd9340d9c532611f0318e90af4e85d29e"
+            },
+            {
+              "path": "dist/policy.js",
+              "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+            },
+            {
+              "path": "dist/errors.js",
+              "sha256": "26fa1c3341396a1f9eda45debe86dc2295cb997b9dd7e525e70ac17ef2c910a9"
+            }
+          ],
+          "fromOutsideCheckout": true,
+          "referenceFilesVerified": 7,
+          "productionPackages": 4,
+          "productionEdges": 5,
+          "productionRedistributionEligible": false,
+          "retainedBundledNotices": 9,
+          "reviewedSdkArtifactPins": 86,
+          "sdkArtifactCommit": "8e6f2336d995b5c1cb5ff044071ed186cce03567",
+          "embeddedFastUri": "3.1.9",
+          "blockedSources": [
+            {
+              "code": "TRANSITIVE_REVIEW_PENDING",
+              "source": "mcp-sdk",
+              "message": "Separately installed dependency closure does not establish bundled-code license clearance."
+            }
+          ],
+          "spdxSemanticChecks": true,
+          "fullSpdxSchemaValidatedHere": false,
+          "modelCalls": 0,
+          "referenceReport": "D:\\a\\MTerm-CLI\\MTerm-CLI\\artifacts\\package-verify-t5VXJi\\reference-provenance.report.json",
+          "runtimeReport": "D:\\a\\MTerm-CLI\\MTerm-CLI\\artifacts\\package-verify-t5VXJi\\runtime-provenance.report.json"
+        },
+        "fullTransitiveLicenseClearance": false,
+        "fullDesktopCommanderParity": false,
+        "fromOutsideCheckout": true,
+        "helpExternalLaunchSamplesMs": [
+          52.27,
+          51.33,
+          50.96,
+          51.86,
+          54.44
+        ],
+        "helpMedianMs": 51.86110000000008,
+        "nodeVersion": "v24.21.0",
+        "nodePrerequisiteBytes": 93580104,
+        "nodeBundled": false,
+        "codexBundled": false,
+        "webBundled": false,
+        "quotaAdapterBundled": false,
+        "fullThreeComponentUnder50MB": "NOT VERIFIED; this is a dependency-reuse local host, not that bundle",
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "evidence": "D:\\a\\MTerm-CLI\\MTerm-CLI\\artifacts\\package-verify-t5VXJi"
+      },
+      "codex": {
+        "codexVersion": "codex-cli 0.160.1",
+        "codexExpectedVersion": "0.160.1",
+        "testOwnedCodex": true,
+        "codexTestPrefix": "artifacts/ci-codex",
+        "codexNativeExecutable": "node_modules/@openai/codex-win32-x64/vendor/x86_64-pc-windows-msvc/bin/codex.exe",
+        "node": "v24.21.0",
+        "platform": "win32",
+        "arch": "x64",
+        "setupApplied": true,
+        "setupIdempotent": true,
+        "configurationParsedByCodex": true,
+        "registeredCommandMcpRounds": 2,
+        "compatibilityProfilePersisted": true,
+        "configurationToolsDiscovered": [
+          "get_config",
+          "set_config_value"
+        ],
+        "syntheticConfigurationPathVerified": true,
+        "multipleRootsParsedByCodex": true,
+        "configurationPersistsAcrossRegisteredCommandRestarts": true,
+        "configuredReadLimitExercised": true,
+        "shutdownVerified": true,
+        "shutdownEvidence": "The original MCP process IDs returned ESRCH to bounded signal-0 polling after SDK close.",
+        "removalPreservesUnrelatedBytes": true,
+        "backupsRetained": true,
+        "actualCodexAgentToolInvocation": false,
+        "realUserConfigChanged": false,
+        "modelCalls": 0,
+        "installedEntry": false,
+        "evidence": "D:\\a\\MTerm-CLI\\MTerm-CLI\\artifacts\\managed-codex-FuZWk5"
+      }
+    },
+    {
+      "platform": "linux-x64",
+      "job": 128615070683,
+      "tests": {
+        "tests": [
+          445
+        ],
+        "pass": [
+          433
+        ],
+        "fail": [
+          0
+        ],
+        "skipped": [
+          12
+        ],
+        "cancelled": [
+          0
+        ]
+      },
+      "package": {
+        "packageVersion": "0.0.1-preview.1",
+        "archiveBytes": 105678,
+        "packageUnpackedBytes": 420552,
+        "installedProductionBytes": 14570809,
+        "installedStandaloneCoreUnder50MB": true,
+        "productionLicenseEvidence": [
+          {
+            "name": "@modelcontextprotocol/core",
+            "version": "2.3.0",
+            "license": "Apache-2.0",
+            "integrity": "sha512-09BHFaNVBe5pB2AhzCfLj0cqmsKLERvZQ4FblzP90UMGLaXVqdZPByFjURwsUYCmxonUW2yAwgTTvle+8O2/8w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "@modelcontextprotocol/server",
+            "version": "2.3.0-mterm.1",
+            "license": "Apache-2.0",
+            "integrity": "sha512-RNlauLPhVz8rUV8EvE1jsPmzBtb84j1HIBFGaTyANRbSHjwEBjl0th5idsfHRcGLT5TWZVfFFzlZhk/zJWXY4w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "mterm-cli",
+            "version": "0.0.1-preview.1",
+            "license": "MIT",
+            "integrity": "sha512-KlcB22OTISDYNSilWE8HlM9mj8l/HCaXj/e7QrMMRG+aoCnUu+TBg+YfXcvF0sio9nGn1WNoerZsiYnAB2V2cA==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "057801cf89de394d84ca2f5797e31619cb5fd66e6f4b7da7058db7887633ba37"
+              }
+            ]
+          },
+          {
+            "name": "zod",
+            "version": "4.6.7",
+            "license": "MIT",
+            "integrity": "sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8"
+              }
+            ]
+          }
+        ],
+        "productionFiles": 1006,
+        "packagedMcpRoundTrip": true,
+        "ownedPrefixNpmLink": true,
+        "offlineNpmExecFromTarball": true,
+        "npmExecMcpCompatibilityTools": 8,
+        "installedCompatibility": {
+          "npmExecMcp": true,
+          "compatibilityAliasesExercised": 8,
+          "directoryListing": {
+            "scenarios": [
+              "zero-depth",
+              "one-level-depth",
+              "default-depth-stable-exact-visible-overflow",
+              "link-not-traversed",
+              "root-private-link-missing-denials",
+              "schema-depth-denial"
+            ],
+            "passed": 6
+          },
+          "fileInfo": {
+            "scenarios": [
+              "text-stat-order-dates-empty-LF-CRLF-CR-BOM-Unicode",
+              "directory-handler-discriminator-no-lines",
+              "unchanged-inclusive-262144-byte-ceiling",
+              "binary-invalid-utf8-oversize-safe-omissions",
+              "unsupported-formats-stat-only",
+              "outside-private-link-hardlink-missing-denials",
+              "schema-path-denial",
+              "read-only-installed-restart-independent-capabilities"
+            ],
+            "passed": 8,
+            "readOnlyRestart": true
+          },
+          "multipleFiles": {
+            "scenarios": [
+              "ordered-summary-successes-duplicates-and-safe-partial-error",
+              "published-schema-and-one-to-twenty-path-boundaries",
+              "inclusive-full-text-byte-ceiling-and-one-byte-overflow",
+              "error-summary-and-separator-budget-in-both-orders",
+              "private-outside-format-hardlink-and-symlink-denials-no-mutation",
+              "read-only-installed-restart-capability-separation"
+            ],
+            "passed": 6,
+            "maxTextBytes": 262144,
+            "readOnlyRestart": true
+          },
+          "editBlock": {
+            "scenarios": [
+              "write-enabled-schema-discovery",
+              "CRLF-LF-CR-native-default-first-style-and-literal-byte-fidelity",
+              "normalized-exact-count-mismatch-and-schema-no-write",
+              "inclusive-UTF8-byte-limit-after-newline-expansion",
+              "private-and-outside-root-denials-preserve-bytes",
+              "read-only-restart-omits-edit-and-mutation-capabilities"
+            ],
+            "passed": 6,
+            "readOnlyRestart": true
+          },
+          "utf16Read": {
+            "scenarios": [
+              "native-UTF8-read-and-compatibility-write-edit-refusals-preserve-bytes",
+              "read-only-installed-restart-schema-and-capability-separation",
+              "exact-BOM-empty-Unicode-CRLF-CR-offset-tail-envelopes",
+              "malformed-surrogate-NUL-and-unsupported-encoding-refusals",
+              "inclusive-raw-byte-ceiling-counts-BOM-and-permits-bounded-UTF8-expansion",
+              "expanded-UTF8-aggregate-text-exact-byte-boundary",
+              "serialized-adapter-result-exact-byte-boundary-after-JSON-escaping",
+              "UTF16-root-private-hardlink-and-symlink-denials-preserve-bytes"
+            ],
+            "passed": 8,
+            "rawFileBytes": 262144,
+            "aggregateTextBytes": 262144,
+            "serializedAdapterResultBytes": 524288,
+            "readOnlyRestart": true,
+            "writesRemainUTF8": true
+          },
+          "ownedProcessExitsVerified": true,
+          "directoryFixtureCleanupVerified": true,
+          "multipleFileFixtureCleanupVerified": true,
+          "stderrCapturedBytes": 0,
+          "fullParity": false,
+          "modelCalls": 0
+        },
+        "installedConfiguration": {
+          "ok": true,
+          "packageVersion": "0.0.1-preview.1",
+          "node": "v24.21.0",
+          "platform": "linux",
+          "architecture": "x64",
+          "installedEntryUnderOwnedPrefix": true,
+          "installedEntrySha256": "1376dfb68527a2fef2444be718a0011c53333c90f416eb377a8bde43e5dcc5b0",
+          "installedConfigModuleSha256": "f6f412a83d13a1aab24398f1d54ca1c301e093c6de1511f2097e0d43b720cc32",
+          "concurrentMcpProcesses": 2,
+          "restartedMcpProcesses": 1,
+          "compatibilityToolsDiscovered": [
+            "get_config",
+            "set_config_value"
+          ],
+          "getConfigMetadata": {
+            "textMatchesStructuredConfig": true,
+            "processIdentityMatchesOwnedChild": true,
+            "boundedMemoryAndRuntimeFields": true,
+            "orderedPreferenceTypes": true,
+            "clientExtrasOmitted": true,
+            "unsupportedProbesExplicitlyOmitted": true,
+            "featureFlagProvider": "none"
+          },
+          "setConfigContract": {
+            "preferencesExercised": [
+              "blockedCommands",
+              "allowedDirectories",
+              "defaultShell",
+              "fileReadLineLimit",
+              "fileWriteLineLimit",
+              "telemetryEnabled"
+            ],
+            "exactTextOnlySuccess": true,
+            "successValueMatchesCommittedEffectiveSnapshot": true,
+            "normalizedBooleanStrings": true,
+            "singletonAndJsonArrays": true,
+            "deduplicatedCanonicalRootsAndMandatoryBlocks": true,
+            "rejectedCases": 14,
+            "rejectedPolicyAndBackupBytesPreserved": true,
+            "rejectedValuesOmittedFromErrors": true,
+            "shellPreferencePersistsWithoutShellExecutionClaim": true
+          },
+          "steps": [
+            "two-installed-processes-discovery-and-owner-roots",
+            "get-config-envelope-memory-process-metadata-and-omissions",
+            "six-setting-success-output-and-normalized-effective-values",
+            "six-setting-rejections-preserve-policy-backup-and-safe-error-output",
+            "cross-process-read-defaults-and-write-warning-byte-fidelity",
+            "three-concurrent-distinct-key-writes-without-lost-updates",
+            "runtime-root-narrowing-empty-denial-and-owner-ceiling-preservation",
+            "telemetry-preference-has-no-observed-node-network-transport",
+            "malformed-policy-denial-and-owned-process-cleanup",
+            "restart-persistence-without-inheriting-config-write-authority"
+          ],
+          "telemetryNetworkGuard": {
+            "interceptedCanaryAttempts": 10,
+            "canaryApis": [
+              "net.Socket.connect",
+              "tls.connect",
+              "http.get",
+              "https.request",
+              "http2.connect",
+              "dgram.Socket.send",
+              "dns.lookup",
+              "dns.promises.lookup",
+              "fetch",
+              "WebSocket"
+            ],
+            "observedProductAttempts": 0,
+            "maximumRetainedAttemptsPerChild": 128,
+            "preferenceValuesExercised": [
+              true,
+              false
+            ],
+            "scope": "Instrumented standard Node network APIs in the three MCP children; not an OS sandbox or a descendant-process network monitor."
+          },
+          "actualCodexAgentToolInvocation": false,
+          "processExitProof": "Bounded signal-0 polling observed ESRCH for each captured MCP PID and owned fixture process; no numeric-PID termination fallback.",
+          "fullConfigurationParity": false,
+          "modelCalls": 0,
+          "realUserConfigChanged": false,
+          "evidence": "/home/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-esdgtn/configuration-xQ0lDF",
+          "shutdownVerified": true,
+          "ownedFixtureCleanup": true,
+          "stderrCapturedBytes": [
+            0,
+            0,
+            0
+          ]
+        },
+        "installedRemoteState": {
+          "ok": true,
+          "packageVersion": "0.0.1-preview.1",
+          "installedModule": "/home/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-esdgtn/install/node_modules/mterm-cli/dist/remote/state.js",
+          "sourceSnapshotSHA256": "dc2d4353dff982f692c7afd09e5f1a1f22e36fa013bcb44a97aea028325128ed",
+          "moduleBindings": [
+            {
+              "path": "dist/remote/adapter.js",
+              "bytes": 6001,
+              "sha256": "d24f7c484cae8537652730fbe473ae631895b673d72c2b8cae3b2f0abb1faca4"
+            },
+            {
+              "path": "dist/remote/agent.js",
+              "bytes": 10112,
+              "sha256": "e19c1c28bf04f83a201f9aefce7533c7f37fa2cebad3c49c65a7fa5efb693b9f"
+            },
+            {
+              "path": "dist/remote/cli.js",
+              "bytes": 10586,
+              "sha256": "b27236e2aeb8ba8add5e781e775c5f6745ce126ed6e5e69e2a07f331c7e9ef6f"
+            },
+            {
+              "path": "dist/remote/protocol.js",
+              "bytes": 2552,
+              "sha256": "7d7f108e735b4c0ea05d1ead7a567497f451c05c75d8a4de6e7d4bed4a4444a1"
+            },
+            {
+              "path": "dist/remote/state.js",
+              "bytes": 17059,
+              "sha256": "27981330f53530327218149e85eb8461da4cfa871dd41cb705c8763e28465f5e"
+            }
+          ],
+          "syntheticOnly": true,
+          "actualRemoteEnrollment": false,
+          "realUserStateAccessed": false,
+          "windowsDpapiExercised": false,
+          "protectionFailurePreservesState": null,
+          "unprotectFailurePreservesState": null,
+          "platform": "linux",
+          "protection": "posix-0600",
+          "syntheticCredentialRoundtrip": true,
+          "spawnedProtectionChildren": null,
+          "ownedProcessExitsVerified": null,
+          "childObservations": [],
+          "fixtureCleanupVerified": true,
+          "modelCalls": 0
+        },
+        "installedOptionalPacks": {
+          "ok": true,
+          "tests": 29,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "moduleBindings": [
+            {
+              "path": "dist/cli.js",
+              "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad"
+            },
+            {
+              "path": "dist/mcp.js",
+              "sha256": "d472b529ac7fbd667ef1f519259d395d3402fae6748123a49bbffa1462c5bc69"
+            },
+            {
+              "path": "dist/tool-packs.js",
+              "sha256": "7f7792c1090b6868e1719b223d4f553efe19e537ff1c8be3014323122c52f12f"
+            },
+            {
+              "path": "dist/processes.js",
+              "sha256": "714f2ddc34e3e664d75f8f1bc2338e2f4691bf2de8d01ecedc1e07743acefcf5"
+            },
+            {
+              "path": "dist/resource-budgets.js",
+              "sha256": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64"
+            },
+            {
+              "path": "dist/resource-budget-policy.js",
+              "sha256": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac"
+            },
+            {
+              "path": "dist/policy.js",
+              "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+            }
+          ],
+          "syntheticOnly": true,
+          "modelCalls": 0,
+          "osSandbox": false,
+          "realClientConsent": false,
+          "log": "/home/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-esdgtn/optional-pack-tests.tap"
+        },
+        "installedResourceBudgets": {
+          "ok": true,
+          "tests": 24,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "moduleBindings": [
+            {
+              "path": "dist/cli.js",
+              "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad"
+            },
+            {
+              "path": "dist/mcp.js",
+              "sha256": "d472b529ac7fbd667ef1f519259d395d3402fae6748123a49bbffa1462c5bc69"
+            },
+            {
+              "path": "dist/tool-packs.js",
+              "sha256": "7f7792c1090b6868e1719b223d4f553efe19e537ff1c8be3014323122c52f12f"
+            },
+            {
+              "path": "dist/processes.js",
+              "sha256": "714f2ddc34e3e664d75f8f1bc2338e2f4691bf2de8d01ecedc1e07743acefcf5"
+            },
+            {
+              "path": "dist/resource-budgets.js",
+              "sha256": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64"
+            },
+            {
+              "path": "dist/resource-budget-policy.js",
+              "sha256": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac"
+            },
+            {
+              "path": "dist/policy.js",
+              "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+            }
+          ],
+          "scope": "host-instance",
+          "realStatfsAndOwnedProcesses": true,
+          "injectedBackendFailuresLabeled": true,
+          "syntheticOnly": true,
+          "modelCalls": 0,
+          "crossHostEnforcement": false,
+          "hardCpuGpuRamOrDiskWriteQuotas": false,
+          "log": "/home/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-esdgtn/resource-budget-tests.tap"
+        },
+        "installedIsolation": {
+          "ok": true,
+          "protocolTests": 28,
+          "moduleBindings": [
+            {
+              "path": "dist/cli.js",
+              "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad"
+            },
+            {
+              "path": "dist/mcp.js",
+              "sha256": "d472b529ac7fbd667ef1f519259d395d3402fae6748123a49bbffa1462c5bc69"
+            },
+            {
+              "path": "dist/processes.js",
+              "sha256": "714f2ddc34e3e664d75f8f1bc2338e2f4691bf2de8d01ecedc1e07743acefcf5"
+            },
+            {
+              "path": "dist/policy.js",
+              "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+            },
+            {
+              "path": "dist/resource-budget-policy.js",
+              "sha256": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac"
+            },
+            {
+              "path": "dist/resource-budgets.js",
+              "sha256": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64"
+            },
+            {
+              "path": "dist/isolation-policy.js",
+              "sha256": "3b9c4a56d75e9660c6b8ed0cb9bfc32aa8441fabe6eddcd33a10d43458a26de9"
+            },
+            {
+              "path": "dist/isolation-http.js",
+              "sha256": "0fad31e0d688f663c3c37e2316863b6ec4ff30d67abca5a6a5a728420de265d5"
+            },
+            {
+              "path": "dist/isolation-engine.js",
+              "sha256": "130b4532dd7eac02bcd0d02d261cb5e34fb9f5bb67c80b7619469917ffaaca33"
+            },
+            {
+              "path": "dist/isolation.js",
+              "sha256": "4efc7b035ce22195fdace01e8249866db934aea8d55049d6c3300563ebac6120"
+            },
+            {
+              "path": "dist/errors.js",
+              "sha256": "26fa1c3341396a1f9eda45debe86dc2295cb997b9dd7e525e70ac17ef2c910a9"
+            }
+          ],
+          "protocolIsSynthetic": true,
+          "actualUnsupportedHostDenial": false,
+          "live": null,
+          "fullRuntimeImageRedistributionEligible": false,
+          "modelCalls": 0,
+          "log": "/home/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-esdgtn/isolation-protocol-tests.tap"
+        },
+        "installedProvenance": {
+          "ok": true,
+          "tests": 18,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "moduleBindings": [
+            {
+              "path": "dist/cli.js",
+              "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad"
+            },
+            {
+              "path": "dist/provenance.js",
+              "sha256": "ad842f4e4ebb14152575632773a7e460a194f7dadedd595ea9b77309f28e2902"
+            },
+            {
+              "path": "dist/files.js",
+              "sha256": "753adb8c88d5ea10d93549237f821c5bd9340d9c532611f0318e90af4e85d29e"
+            },
+            {
+              "path": "dist/policy.js",
+              "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+            },
+            {
+              "path": "dist/errors.js",
+              "sha256": "26fa1c3341396a1f9eda45debe86dc2295cb997b9dd7e525e70ac17ef2c910a9"
+            }
+          ],
+          "fromOutsideCheckout": true,
+          "referenceFilesVerified": 7,
+          "productionPackages": 4,
+          "productionEdges": 5,
+          "productionRedistributionEligible": false,
+          "retainedBundledNotices": 9,
+          "reviewedSdkArtifactPins": 86,
+          "sdkArtifactCommit": "8e6f2336d995b5c1cb5ff044071ed186cce03567",
+          "embeddedFastUri": "3.1.9",
+          "blockedSources": [
+            {
+              "code": "TRANSITIVE_REVIEW_PENDING",
+              "source": "mcp-sdk",
+              "message": "Separately installed dependency closure does not establish bundled-code license clearance."
+            }
+          ],
+          "spdxSemanticChecks": true,
+          "fullSpdxSchemaValidatedHere": false,
+          "modelCalls": 0,
+          "referenceReport": "/home/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-esdgtn/reference-provenance.report.json",
+          "runtimeReport": "/home/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-esdgtn/runtime-provenance.report.json"
+        },
+        "fullTransitiveLicenseClearance": false,
+        "fullDesktopCommanderParity": false,
+        "fromOutsideCheckout": true,
+        "helpExternalLaunchSamplesMs": [
+          25.63,
+          26.11,
+          25.29,
+          25.17,
+          27.07
+        ],
+        "helpMedianMs": 25.633057000000008,
+        "nodeVersion": "v24.21.0",
+        "nodePrerequisiteBytes": 126595440,
+        "nodeBundled": false,
+        "codexBundled": false,
+        "webBundled": false,
+        "quotaAdapterBundled": false,
+        "fullThreeComponentUnder50MB": "NOT VERIFIED; this is a dependency-reuse local host, not that bundle",
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "evidence": "/home/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-esdgtn"
+      },
+      "codex": {
+        "codexVersion": "codex-cli 0.160.1",
+        "codexExpectedVersion": "0.160.1",
+        "testOwnedCodex": true,
+        "codexTestPrefix": "artifacts/ci-codex",
+        "codexNativeExecutable": "node_modules/@openai/codex-linux-x64/vendor/x86_64-unknown-linux-musl/bin/codex",
+        "node": "v24.21.0",
+        "platform": "linux",
+        "arch": "x64",
+        "setupApplied": true,
+        "setupIdempotent": true,
+        "configurationParsedByCodex": true,
+        "registeredCommandMcpRounds": 2,
+        "compatibilityProfilePersisted": true,
+        "configurationToolsDiscovered": [
+          "get_config",
+          "set_config_value"
+        ],
+        "syntheticConfigurationPathVerified": true,
+        "multipleRootsParsedByCodex": true,
+        "configurationPersistsAcrossRegisteredCommandRestarts": true,
+        "configuredReadLimitExercised": true,
+        "shutdownVerified": true,
+        "shutdownEvidence": "The original MCP process IDs returned ESRCH to bounded signal-0 polling after SDK close.",
+        "removalPreservesUnrelatedBytes": true,
+        "backupsRetained": true,
+        "actualCodexAgentToolInvocation": false,
+        "realUserConfigChanged": false,
+        "modelCalls": 0,
+        "installedEntry": false,
+        "evidence": "/home/runner/work/MTerm-CLI/MTerm-CLI/artifacts/managed-codex-RMZI6R"
+      }
+    },
+    {
+      "platform": "darwin-arm64",
+      "job": 128615070811,
+      "tests": {
+        "tests": [
+          445
+        ],
+        "pass": [
+          433
+        ],
+        "fail": [
+          0
+        ],
+        "skipped": [
+          12
+        ],
+        "cancelled": [
+          0
+        ]
+      },
+      "package": {
+        "packageVersion": "0.0.1-preview.1",
+        "archiveBytes": 105678,
+        "packageUnpackedBytes": 420552,
+        "installedProductionBytes": 14570809,
+        "installedStandaloneCoreUnder50MB": true,
+        "productionLicenseEvidence": [
+          {
+            "name": "@modelcontextprotocol/core",
+            "version": "2.3.0",
+            "license": "Apache-2.0",
+            "integrity": "sha512-09BHFaNVBe5pB2AhzCfLj0cqmsKLERvZQ4FblzP90UMGLaXVqdZPByFjURwsUYCmxonUW2yAwgTTvle+8O2/8w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "@modelcontextprotocol/server",
+            "version": "2.3.0-mterm.1",
+            "license": "Apache-2.0",
+            "integrity": "sha512-RNlauLPhVz8rUV8EvE1jsPmzBtb84j1HIBFGaTyANRbSHjwEBjl0th5idsfHRcGLT5TWZVfFFzlZhk/zJWXY4w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "mterm-cli",
+            "version": "0.0.1-preview.1",
+            "license": "MIT",
+            "integrity": "sha512-KlcB22OTISDYNSilWE8HlM9mj8l/HCaXj/e7QrMMRG+aoCnUu+TBg+YfXcvF0sio9nGn1WNoerZsiYnAB2V2cA==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "057801cf89de394d84ca2f5797e31619cb5fd66e6f4b7da7058db7887633ba37"
+              }
+            ]
+          },
+          {
+            "name": "zod",
+            "version": "4.6.7",
+            "license": "MIT",
+            "integrity": "sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8"
+              }
+            ]
+          }
+        ],
+        "productionFiles": 1006,
+        "packagedMcpRoundTrip": true,
+        "ownedPrefixNpmLink": true,
+        "offlineNpmExecFromTarball": true,
+        "npmExecMcpCompatibilityTools": 8,
+        "installedCompatibility": {
+          "npmExecMcp": true,
+          "compatibilityAliasesExercised": 8,
+          "directoryListing": {
+            "scenarios": [
+              "zero-depth",
+              "one-level-depth",
+              "default-depth-stable-exact-visible-overflow",
+              "link-not-traversed",
+              "root-private-link-missing-denials",
+              "schema-depth-denial"
+            ],
+            "passed": 6
+          },
+          "fileInfo": {
+            "scenarios": [
+              "text-stat-order-dates-empty-LF-CRLF-CR-BOM-Unicode",
+              "directory-handler-discriminator-no-lines",
+              "unchanged-inclusive-262144-byte-ceiling",
+              "binary-invalid-utf8-oversize-safe-omissions",
+              "unsupported-formats-stat-only",
+              "outside-private-link-hardlink-missing-denials",
+              "schema-path-denial",
+              "read-only-installed-restart-independent-capabilities"
+            ],
+            "passed": 8,
+            "readOnlyRestart": true
+          },
+          "multipleFiles": {
+            "scenarios": [
+              "ordered-summary-successes-duplicates-and-safe-partial-error",
+              "published-schema-and-one-to-twenty-path-boundaries",
+              "inclusive-full-text-byte-ceiling-and-one-byte-overflow",
+              "error-summary-and-separator-budget-in-both-orders",
+              "private-outside-format-hardlink-and-symlink-denials-no-mutation",
+              "read-only-installed-restart-capability-separation"
+            ],
+            "passed": 6,
+            "maxTextBytes": 262144,
+            "readOnlyRestart": true
+          },
+          "editBlock": {
+            "scenarios": [
+              "write-enabled-schema-discovery",
+              "CRLF-LF-CR-native-default-first-style-and-literal-byte-fidelity",
+              "normalized-exact-count-mismatch-and-schema-no-write",
+              "inclusive-UTF8-byte-limit-after-newline-expansion",
+              "private-and-outside-root-denials-preserve-bytes",
+              "read-only-restart-omits-edit-and-mutation-capabilities"
+            ],
+            "passed": 6,
+            "readOnlyRestart": true
+          },
+          "utf16Read": {
+            "scenarios": [
+              "native-UTF8-read-and-compatibility-write-edit-refusals-preserve-bytes",
+              "read-only-installed-restart-schema-and-capability-separation",
+              "exact-BOM-empty-Unicode-CRLF-CR-offset-tail-envelopes",
+              "malformed-surrogate-NUL-and-unsupported-encoding-refusals",
+              "inclusive-raw-byte-ceiling-counts-BOM-and-permits-bounded-UTF8-expansion",
+              "expanded-UTF8-aggregate-text-exact-byte-boundary",
+              "serialized-adapter-result-exact-byte-boundary-after-JSON-escaping",
+              "UTF16-root-private-hardlink-and-symlink-denials-preserve-bytes"
+            ],
+            "passed": 8,
+            "rawFileBytes": 262144,
+            "aggregateTextBytes": 262144,
+            "serializedAdapterResultBytes": 524288,
+            "readOnlyRestart": true,
+            "writesRemainUTF8": true
+          },
+          "ownedProcessExitsVerified": true,
+          "directoryFixtureCleanupVerified": true,
+          "multipleFileFixtureCleanupVerified": true,
+          "stderrCapturedBytes": 0,
+          "fullParity": false,
+          "modelCalls": 0
+        },
+        "installedConfiguration": {
+          "ok": true,
+          "packageVersion": "0.0.1-preview.1",
+          "node": "v24.21.0",
+          "platform": "darwin",
+          "architecture": "arm64",
+          "installedEntryUnderOwnedPrefix": true,
+          "installedEntrySha256": "1376dfb68527a2fef2444be718a0011c53333c90f416eb377a8bde43e5dcc5b0",
+          "installedConfigModuleSha256": "f6f412a83d13a1aab24398f1d54ca1c301e093c6de1511f2097e0d43b720cc32",
+          "concurrentMcpProcesses": 2,
+          "restartedMcpProcesses": 1,
+          "compatibilityToolsDiscovered": [
+            "get_config",
+            "set_config_value"
+          ],
+          "getConfigMetadata": {
+            "textMatchesStructuredConfig": true,
+            "processIdentityMatchesOwnedChild": true,
+            "boundedMemoryAndRuntimeFields": true,
+            "orderedPreferenceTypes": true,
+            "clientExtrasOmitted": true,
+            "unsupportedProbesExplicitlyOmitted": true,
+            "featureFlagProvider": "none"
+          },
+          "setConfigContract": {
+            "preferencesExercised": [
+              "blockedCommands",
+              "allowedDirectories",
+              "defaultShell",
+              "fileReadLineLimit",
+              "fileWriteLineLimit",
+              "telemetryEnabled"
+            ],
+            "exactTextOnlySuccess": true,
+            "successValueMatchesCommittedEffectiveSnapshot": true,
+            "normalizedBooleanStrings": true,
+            "singletonAndJsonArrays": true,
+            "deduplicatedCanonicalRootsAndMandatoryBlocks": true,
+            "rejectedCases": 14,
+            "rejectedPolicyAndBackupBytesPreserved": true,
+            "rejectedValuesOmittedFromErrors": true,
+            "shellPreferencePersistsWithoutShellExecutionClaim": true
+          },
+          "steps": [
+            "two-installed-processes-discovery-and-owner-roots",
+            "get-config-envelope-memory-process-metadata-and-omissions",
+            "six-setting-success-output-and-normalized-effective-values",
+            "six-setting-rejections-preserve-policy-backup-and-safe-error-output",
+            "cross-process-read-defaults-and-write-warning-byte-fidelity",
+            "three-concurrent-distinct-key-writes-without-lost-updates",
+            "runtime-root-narrowing-empty-denial-and-owner-ceiling-preservation",
+            "telemetry-preference-has-no-observed-node-network-transport",
+            "malformed-policy-denial-and-owned-process-cleanup",
+            "restart-persistence-without-inheriting-config-write-authority"
+          ],
+          "telemetryNetworkGuard": {
+            "interceptedCanaryAttempts": 10,
+            "canaryApis": [
+              "net.Socket.connect",
+              "tls.connect",
+              "http.get",
+              "https.request",
+              "http2.connect",
+              "dgram.Socket.send",
+              "dns.lookup",
+              "dns.promises.lookup",
+              "fetch",
+              "WebSocket"
+            ],
+            "observedProductAttempts": 0,
+            "maximumRetainedAttemptsPerChild": 128,
+            "preferenceValuesExercised": [
+              true,
+              false
+            ],
+            "scope": "Instrumented standard Node network APIs in the three MCP children; not an OS sandbox or a descendant-process network monitor."
+          },
+          "actualCodexAgentToolInvocation": false,
+          "processExitProof": "Bounded signal-0 polling observed ESRCH for each captured MCP PID and owned fixture process; no numeric-PID termination fallback.",
+          "fullConfigurationParity": false,
+          "modelCalls": 0,
+          "realUserConfigChanged": false,
+          "evidence": "/Users/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-dHjHzO/configuration-5oB1vq",
+          "shutdownVerified": true,
+          "ownedFixtureCleanup": true,
+          "stderrCapturedBytes": [
+            0,
+            0,
+            0
+          ]
+        },
+        "installedRemoteState": {
+          "ok": true,
+          "packageVersion": "0.0.1-preview.1",
+          "installedModule": "/Users/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-dHjHzO/install/node_modules/mterm-cli/dist/remote/state.js",
+          "sourceSnapshotSHA256": "dc2d4353dff982f692c7afd09e5f1a1f22e36fa013bcb44a97aea028325128ed",
+          "moduleBindings": [
+            {
+              "path": "dist/remote/adapter.js",
+              "bytes": 6001,
+              "sha256": "d24f7c484cae8537652730fbe473ae631895b673d72c2b8cae3b2f0abb1faca4"
+            },
+            {
+              "path": "dist/remote/agent.js",
+              "bytes": 10112,
+              "sha256": "e19c1c28bf04f83a201f9aefce7533c7f37fa2cebad3c49c65a7fa5efb693b9f"
+            },
+            {
+              "path": "dist/remote/cli.js",
+              "bytes": 10586,
+              "sha256": "b27236e2aeb8ba8add5e781e775c5f6745ce126ed6e5e69e2a07f331c7e9ef6f"
+            },
+            {
+              "path": "dist/remote/protocol.js",
+              "bytes": 2552,
+              "sha256": "7d7f108e735b4c0ea05d1ead7a567497f451c05c75d8a4de6e7d4bed4a4444a1"
+            },
+            {
+              "path": "dist/remote/state.js",
+              "bytes": 17059,
+              "sha256": "27981330f53530327218149e85eb8461da4cfa871dd41cb705c8763e28465f5e"
+            }
+          ],
+          "syntheticOnly": true,
+          "actualRemoteEnrollment": false,
+          "realUserStateAccessed": false,
+          "windowsDpapiExercised": false,
+          "protectionFailurePreservesState": null,
+          "unprotectFailurePreservesState": null,
+          "platform": "darwin",
+          "protection": "posix-0600",
+          "syntheticCredentialRoundtrip": true,
+          "spawnedProtectionChildren": null,
+          "ownedProcessExitsVerified": null,
+          "childObservations": [],
+          "fixtureCleanupVerified": true,
+          "modelCalls": 0
+        },
+        "installedOptionalPacks": {
+          "ok": true,
+          "tests": 29,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "moduleBindings": [
+            {
+              "path": "dist/cli.js",
+              "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad"
+            },
+            {
+              "path": "dist/mcp.js",
+              "sha256": "d472b529ac7fbd667ef1f519259d395d3402fae6748123a49bbffa1462c5bc69"
+            },
+            {
+              "path": "dist/tool-packs.js",
+              "sha256": "7f7792c1090b6868e1719b223d4f553efe19e537ff1c8be3014323122c52f12f"
+            },
+            {
+              "path": "dist/processes.js",
+              "sha256": "714f2ddc34e3e664d75f8f1bc2338e2f4691bf2de8d01ecedc1e07743acefcf5"
+            },
+            {
+              "path": "dist/resource-budgets.js",
+              "sha256": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64"
+            },
+            {
+              "path": "dist/resource-budget-policy.js",
+              "sha256": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac"
+            },
+            {
+              "path": "dist/policy.js",
+              "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+            }
+          ],
+          "syntheticOnly": true,
+          "modelCalls": 0,
+          "osSandbox": false,
+          "realClientConsent": false,
+          "log": "/Users/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-dHjHzO/optional-pack-tests.tap"
+        },
+        "installedResourceBudgets": {
+          "ok": true,
+          "tests": 24,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "moduleBindings": [
+            {
+              "path": "dist/cli.js",
+              "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad"
+            },
+            {
+              "path": "dist/mcp.js",
+              "sha256": "d472b529ac7fbd667ef1f519259d395d3402fae6748123a49bbffa1462c5bc69"
+            },
+            {
+              "path": "dist/tool-packs.js",
+              "sha256": "7f7792c1090b6868e1719b223d4f553efe19e537ff1c8be3014323122c52f12f"
+            },
+            {
+              "path": "dist/processes.js",
+              "sha256": "714f2ddc34e3e664d75f8f1bc2338e2f4691bf2de8d01ecedc1e07743acefcf5"
+            },
+            {
+              "path": "dist/resource-budgets.js",
+              "sha256": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64"
+            },
+            {
+              "path": "dist/resource-budget-policy.js",
+              "sha256": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac"
+            },
+            {
+              "path": "dist/policy.js",
+              "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+            }
+          ],
+          "scope": "host-instance",
+          "realStatfsAndOwnedProcesses": true,
+          "injectedBackendFailuresLabeled": true,
+          "syntheticOnly": true,
+          "modelCalls": 0,
+          "crossHostEnforcement": false,
+          "hardCpuGpuRamOrDiskWriteQuotas": false,
+          "log": "/Users/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-dHjHzO/resource-budget-tests.tap"
+        },
+        "installedIsolation": {
+          "ok": true,
+          "protocolTests": 28,
+          "moduleBindings": [
+            {
+              "path": "dist/cli.js",
+              "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad"
+            },
+            {
+              "path": "dist/mcp.js",
+              "sha256": "d472b529ac7fbd667ef1f519259d395d3402fae6748123a49bbffa1462c5bc69"
+            },
+            {
+              "path": "dist/processes.js",
+              "sha256": "714f2ddc34e3e664d75f8f1bc2338e2f4691bf2de8d01ecedc1e07743acefcf5"
+            },
+            {
+              "path": "dist/policy.js",
+              "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+            },
+            {
+              "path": "dist/resource-budget-policy.js",
+              "sha256": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac"
+            },
+            {
+              "path": "dist/resource-budgets.js",
+              "sha256": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64"
+            },
+            {
+              "path": "dist/isolation-policy.js",
+              "sha256": "3b9c4a56d75e9660c6b8ed0cb9bfc32aa8441fabe6eddcd33a10d43458a26de9"
+            },
+            {
+              "path": "dist/isolation-http.js",
+              "sha256": "0fad31e0d688f663c3c37e2316863b6ec4ff30d67abca5a6a5a728420de265d5"
+            },
+            {
+              "path": "dist/isolation-engine.js",
+              "sha256": "130b4532dd7eac02bcd0d02d261cb5e34fb9f5bb67c80b7619469917ffaaca33"
+            },
+            {
+              "path": "dist/isolation.js",
+              "sha256": "4efc7b035ce22195fdace01e8249866db934aea8d55049d6c3300563ebac6120"
+            },
+            {
+              "path": "dist/errors.js",
+              "sha256": "26fa1c3341396a1f9eda45debe86dc2295cb997b9dd7e525e70ac17ef2c910a9"
+            }
+          ],
+          "protocolIsSynthetic": true,
+          "actualUnsupportedHostDenial": true,
+          "live": null,
+          "fullRuntimeImageRedistributionEligible": false,
+          "modelCalls": 0,
+          "log": "/Users/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-dHjHzO/isolation-protocol-tests.tap"
+        },
+        "installedProvenance": {
+          "ok": true,
+          "tests": 18,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "moduleBindings": [
+            {
+              "path": "dist/cli.js",
+              "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad"
+            },
+            {
+              "path": "dist/provenance.js",
+              "sha256": "ad842f4e4ebb14152575632773a7e460a194f7dadedd595ea9b77309f28e2902"
+            },
+            {
+              "path": "dist/files.js",
+              "sha256": "753adb8c88d5ea10d93549237f821c5bd9340d9c532611f0318e90af4e85d29e"
+            },
+            {
+              "path": "dist/policy.js",
+              "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+            },
+            {
+              "path": "dist/errors.js",
+              "sha256": "26fa1c3341396a1f9eda45debe86dc2295cb997b9dd7e525e70ac17ef2c910a9"
+            }
+          ],
+          "fromOutsideCheckout": true,
+          "referenceFilesVerified": 7,
+          "productionPackages": 4,
+          "productionEdges": 5,
+          "productionRedistributionEligible": false,
+          "retainedBundledNotices": 9,
+          "reviewedSdkArtifactPins": 86,
+          "sdkArtifactCommit": "8e6f2336d995b5c1cb5ff044071ed186cce03567",
+          "embeddedFastUri": "3.1.9",
+          "blockedSources": [
+            {
+              "code": "TRANSITIVE_REVIEW_PENDING",
+              "source": "mcp-sdk",
+              "message": "Separately installed dependency closure does not establish bundled-code license clearance."
+            }
+          ],
+          "spdxSemanticChecks": true,
+          "fullSpdxSchemaValidatedHere": false,
+          "modelCalls": 0,
+          "referenceReport": "/Users/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-dHjHzO/reference-provenance.report.json",
+          "runtimeReport": "/Users/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-dHjHzO/runtime-provenance.report.json"
+        },
+        "fullTransitiveLicenseClearance": false,
+        "fullDesktopCommanderParity": false,
+        "fromOutsideCheckout": true,
+        "helpExternalLaunchSamplesMs": [
+          47.75,
+          47.76,
+          44.93,
+          35.53,
+          40.76
+        ],
+        "helpMedianMs": 44.930624999999964,
+        "nodeVersion": "v24.21.0",
+        "nodePrerequisiteBytes": 122129232,
+        "nodeBundled": false,
+        "codexBundled": false,
+        "webBundled": false,
+        "quotaAdapterBundled": false,
+        "fullThreeComponentUnder50MB": "NOT VERIFIED; this is a dependency-reuse local host, not that bundle",
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "evidence": "/Users/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-dHjHzO"
+      },
+      "codex": {
+        "codexVersion": "codex-cli 0.160.1",
+        "codexExpectedVersion": "0.160.1",
+        "testOwnedCodex": true,
+        "codexTestPrefix": "artifacts/ci-codex",
+        "codexNativeExecutable": "node_modules/@openai/codex-darwin-arm64/vendor/aarch64-apple-darwin/bin/codex",
+        "node": "v24.21.0",
+        "platform": "darwin",
+        "arch": "arm64",
+        "setupApplied": true,
+        "setupIdempotent": true,
+        "configurationParsedByCodex": true,
+        "registeredCommandMcpRounds": 2,
+        "compatibilityProfilePersisted": true,
+        "configurationToolsDiscovered": [
+          "get_config",
+          "set_config_value"
+        ],
+        "syntheticConfigurationPathVerified": true,
+        "multipleRootsParsedByCodex": true,
+        "configurationPersistsAcrossRegisteredCommandRestarts": true,
+        "configuredReadLimitExercised": true,
+        "shutdownVerified": true,
+        "shutdownEvidence": "The original MCP process IDs returned ESRCH to bounded signal-0 polling after SDK close.",
+        "removalPreservesUnrelatedBytes": true,
+        "backupsRetained": true,
+        "actualCodexAgentToolInvocation": false,
+        "realUserConfigChanged": false,
+        "modelCalls": 0,
+        "installedEntry": false,
+        "evidence": "/Users/runner/work/MTerm-CLI/MTerm-CLI/artifacts/managed-codex-qC0QEn"
+      }
+    },
+    {
+      "platform": "darwin-x64",
+      "job": 128615070609,
+      "tests": {
+        "tests": [
+          445
+        ],
+        "pass": [
+          433
+        ],
+        "fail": [
+          0
+        ],
+        "skipped": [
+          12
+        ],
+        "cancelled": [
+          0
+        ]
+      },
+      "package": {
+        "packageVersion": "0.0.1-preview.1",
+        "archiveBytes": 105678,
+        "packageUnpackedBytes": 420552,
+        "installedProductionBytes": 14570809,
+        "installedStandaloneCoreUnder50MB": true,
+        "productionLicenseEvidence": [
+          {
+            "name": "@modelcontextprotocol/core",
+            "version": "2.3.0",
+            "license": "Apache-2.0",
+            "integrity": "sha512-09BHFaNVBe5pB2AhzCfLj0cqmsKLERvZQ4FblzP90UMGLaXVqdZPByFjURwsUYCmxonUW2yAwgTTvle+8O2/8w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "@modelcontextprotocol/server",
+            "version": "2.3.0-mterm.1",
+            "license": "Apache-2.0",
+            "integrity": "sha512-RNlauLPhVz8rUV8EvE1jsPmzBtb84j1HIBFGaTyANRbSHjwEBjl0th5idsfHRcGLT5TWZVfFFzlZhk/zJWXY4w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "mterm-cli",
+            "version": "0.0.1-preview.1",
+            "license": "MIT",
+            "integrity": "sha512-KlcB22OTISDYNSilWE8HlM9mj8l/HCaXj/e7QrMMRG+aoCnUu+TBg+YfXcvF0sio9nGn1WNoerZsiYnAB2V2cA==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "057801cf89de394d84ca2f5797e31619cb5fd66e6f4b7da7058db7887633ba37"
+              }
+            ]
+          },
+          {
+            "name": "zod",
+            "version": "4.6.7",
+            "license": "MIT",
+            "integrity": "sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8"
+              }
+            ]
+          }
+        ],
+        "productionFiles": 1006,
+        "packagedMcpRoundTrip": true,
+        "ownedPrefixNpmLink": true,
+        "offlineNpmExecFromTarball": true,
+        "npmExecMcpCompatibilityTools": 8,
+        "installedCompatibility": {
+          "npmExecMcp": true,
+          "compatibilityAliasesExercised": 8,
+          "directoryListing": {
+            "scenarios": [
+              "zero-depth",
+              "one-level-depth",
+              "default-depth-stable-exact-visible-overflow",
+              "link-not-traversed",
+              "root-private-link-missing-denials",
+              "schema-depth-denial"
+            ],
+            "passed": 6
+          },
+          "fileInfo": {
+            "scenarios": [
+              "text-stat-order-dates-empty-LF-CRLF-CR-BOM-Unicode",
+              "directory-handler-discriminator-no-lines",
+              "unchanged-inclusive-262144-byte-ceiling",
+              "binary-invalid-utf8-oversize-safe-omissions",
+              "unsupported-formats-stat-only",
+              "outside-private-link-hardlink-missing-denials",
+              "schema-path-denial",
+              "read-only-installed-restart-independent-capabilities"
+            ],
+            "passed": 8,
+            "readOnlyRestart": true
+          },
+          "multipleFiles": {
+            "scenarios": [
+              "ordered-summary-successes-duplicates-and-safe-partial-error",
+              "published-schema-and-one-to-twenty-path-boundaries",
+              "inclusive-full-text-byte-ceiling-and-one-byte-overflow",
+              "error-summary-and-separator-budget-in-both-orders",
+              "private-outside-format-hardlink-and-symlink-denials-no-mutation",
+              "read-only-installed-restart-capability-separation"
+            ],
+            "passed": 6,
+            "maxTextBytes": 262144,
+            "readOnlyRestart": true
+          },
+          "editBlock": {
+            "scenarios": [
+              "write-enabled-schema-discovery",
+              "CRLF-LF-CR-native-default-first-style-and-literal-byte-fidelity",
+              "normalized-exact-count-mismatch-and-schema-no-write",
+              "inclusive-UTF8-byte-limit-after-newline-expansion",
+              "private-and-outside-root-denials-preserve-bytes",
+              "read-only-restart-omits-edit-and-mutation-capabilities"
+            ],
+            "passed": 6,
+            "readOnlyRestart": true
+          },
+          "utf16Read": {
+            "scenarios": [
+              "native-UTF8-read-and-compatibility-write-edit-refusals-preserve-bytes",
+              "read-only-installed-restart-schema-and-capability-separation",
+              "exact-BOM-empty-Unicode-CRLF-CR-offset-tail-envelopes",
+              "malformed-surrogate-NUL-and-unsupported-encoding-refusals",
+              "inclusive-raw-byte-ceiling-counts-BOM-and-permits-bounded-UTF8-expansion",
+              "expanded-UTF8-aggregate-text-exact-byte-boundary",
+              "serialized-adapter-result-exact-byte-boundary-after-JSON-escaping",
+              "UTF16-root-private-hardlink-and-symlink-denials-preserve-bytes"
+            ],
+            "passed": 8,
+            "rawFileBytes": 262144,
+            "aggregateTextBytes": 262144,
+            "serializedAdapterResultBytes": 524288,
+            "readOnlyRestart": true,
+            "writesRemainUTF8": true
+          },
+          "ownedProcessExitsVerified": true,
+          "directoryFixtureCleanupVerified": true,
+          "multipleFileFixtureCleanupVerified": true,
+          "stderrCapturedBytes": 0,
+          "fullParity": false,
+          "modelCalls": 0
+        },
+        "installedConfiguration": {
+          "ok": true,
+          "packageVersion": "0.0.1-preview.1",
+          "node": "v24.21.0",
+          "platform": "darwin",
+          "architecture": "x64",
+          "installedEntryUnderOwnedPrefix": true,
+          "installedEntrySha256": "1376dfb68527a2fef2444be718a0011c53333c90f416eb377a8bde43e5dcc5b0",
+          "installedConfigModuleSha256": "f6f412a83d13a1aab24398f1d54ca1c301e093c6de1511f2097e0d43b720cc32",
+          "concurrentMcpProcesses": 2,
+          "restartedMcpProcesses": 1,
+          "compatibilityToolsDiscovered": [
+            "get_config",
+            "set_config_value"
+          ],
+          "getConfigMetadata": {
+            "textMatchesStructuredConfig": true,
+            "processIdentityMatchesOwnedChild": true,
+            "boundedMemoryAndRuntimeFields": true,
+            "orderedPreferenceTypes": true,
+            "clientExtrasOmitted": true,
+            "unsupportedProbesExplicitlyOmitted": true,
+            "featureFlagProvider": "none"
+          },
+          "setConfigContract": {
+            "preferencesExercised": [
+              "blockedCommands",
+              "allowedDirectories",
+              "defaultShell",
+              "fileReadLineLimit",
+              "fileWriteLineLimit",
+              "telemetryEnabled"
+            ],
+            "exactTextOnlySuccess": true,
+            "successValueMatchesCommittedEffectiveSnapshot": true,
+            "normalizedBooleanStrings": true,
+            "singletonAndJsonArrays": true,
+            "deduplicatedCanonicalRootsAndMandatoryBlocks": true,
+            "rejectedCases": 14,
+            "rejectedPolicyAndBackupBytesPreserved": true,
+            "rejectedValuesOmittedFromErrors": true,
+            "shellPreferencePersistsWithoutShellExecutionClaim": true
+          },
+          "steps": [
+            "two-installed-processes-discovery-and-owner-roots",
+            "get-config-envelope-memory-process-metadata-and-omissions",
+            "six-setting-success-output-and-normalized-effective-values",
+            "six-setting-rejections-preserve-policy-backup-and-safe-error-output",
+            "cross-process-read-defaults-and-write-warning-byte-fidelity",
+            "three-concurrent-distinct-key-writes-without-lost-updates",
+            "runtime-root-narrowing-empty-denial-and-owner-ceiling-preservation",
+            "telemetry-preference-has-no-observed-node-network-transport",
+            "malformed-policy-denial-and-owned-process-cleanup",
+            "restart-persistence-without-inheriting-config-write-authority"
+          ],
+          "telemetryNetworkGuard": {
+            "interceptedCanaryAttempts": 10,
+            "canaryApis": [
+              "net.Socket.connect",
+              "tls.connect",
+              "http.get",
+              "https.request",
+              "http2.connect",
+              "dgram.Socket.send",
+              "dns.lookup",
+              "dns.promises.lookup",
+              "fetch",
+              "WebSocket"
+            ],
+            "observedProductAttempts": 0,
+            "maximumRetainedAttemptsPerChild": 128,
+            "preferenceValuesExercised": [
+              true,
+              false
+            ],
+            "scope": "Instrumented standard Node network APIs in the three MCP children; not an OS sandbox or a descendant-process network monitor."
+          },
+          "actualCodexAgentToolInvocation": false,
+          "processExitProof": "Bounded signal-0 polling observed ESRCH for each captured MCP PID and owned fixture process; no numeric-PID termination fallback.",
+          "fullConfigurationParity": false,
+          "modelCalls": 0,
+          "realUserConfigChanged": false,
+          "evidence": "/Users/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-orouss/configuration-tPYUdO",
+          "shutdownVerified": true,
+          "ownedFixtureCleanup": true,
+          "stderrCapturedBytes": [
+            0,
+            0,
+            0
+          ]
+        },
+        "installedRemoteState": {
+          "ok": true,
+          "packageVersion": "0.0.1-preview.1",
+          "installedModule": "/Users/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-orouss/install/node_modules/mterm-cli/dist/remote/state.js",
+          "sourceSnapshotSHA256": "dc2d4353dff982f692c7afd09e5f1a1f22e36fa013bcb44a97aea028325128ed",
+          "moduleBindings": [
+            {
+              "path": "dist/remote/adapter.js",
+              "bytes": 6001,
+              "sha256": "d24f7c484cae8537652730fbe473ae631895b673d72c2b8cae3b2f0abb1faca4"
+            },
+            {
+              "path": "dist/remote/agent.js",
+              "bytes": 10112,
+              "sha256": "e19c1c28bf04f83a201f9aefce7533c7f37fa2cebad3c49c65a7fa5efb693b9f"
+            },
+            {
+              "path": "dist/remote/cli.js",
+              "bytes": 10586,
+              "sha256": "b27236e2aeb8ba8add5e781e775c5f6745ce126ed6e5e69e2a07f331c7e9ef6f"
+            },
+            {
+              "path": "dist/remote/protocol.js",
+              "bytes": 2552,
+              "sha256": "7d7f108e735b4c0ea05d1ead7a567497f451c05c75d8a4de6e7d4bed4a4444a1"
+            },
+            {
+              "path": "dist/remote/state.js",
+              "bytes": 17059,
+              "sha256": "27981330f53530327218149e85eb8461da4cfa871dd41cb705c8763e28465f5e"
+            }
+          ],
+          "syntheticOnly": true,
+          "actualRemoteEnrollment": false,
+          "realUserStateAccessed": false,
+          "windowsDpapiExercised": false,
+          "protectionFailurePreservesState": null,
+          "unprotectFailurePreservesState": null,
+          "platform": "darwin",
+          "protection": "posix-0600",
+          "syntheticCredentialRoundtrip": true,
+          "spawnedProtectionChildren": null,
+          "ownedProcessExitsVerified": null,
+          "childObservations": [],
+          "fixtureCleanupVerified": true,
+          "modelCalls": 0
+        },
+        "installedOptionalPacks": {
+          "ok": true,
+          "tests": 29,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "moduleBindings": [
+            {
+              "path": "dist/cli.js",
+              "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad"
+            },
+            {
+              "path": "dist/mcp.js",
+              "sha256": "d472b529ac7fbd667ef1f519259d395d3402fae6748123a49bbffa1462c5bc69"
+            },
+            {
+              "path": "dist/tool-packs.js",
+              "sha256": "7f7792c1090b6868e1719b223d4f553efe19e537ff1c8be3014323122c52f12f"
+            },
+            {
+              "path": "dist/processes.js",
+              "sha256": "714f2ddc34e3e664d75f8f1bc2338e2f4691bf2de8d01ecedc1e07743acefcf5"
+            },
+            {
+              "path": "dist/resource-budgets.js",
+              "sha256": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64"
+            },
+            {
+              "path": "dist/resource-budget-policy.js",
+              "sha256": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac"
+            },
+            {
+              "path": "dist/policy.js",
+              "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+            }
+          ],
+          "syntheticOnly": true,
+          "modelCalls": 0,
+          "osSandbox": false,
+          "realClientConsent": false,
+          "log": "/Users/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-orouss/optional-pack-tests.tap"
+        },
+        "installedResourceBudgets": {
+          "ok": true,
+          "tests": 24,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "moduleBindings": [
+            {
+              "path": "dist/cli.js",
+              "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad"
+            },
+            {
+              "path": "dist/mcp.js",
+              "sha256": "d472b529ac7fbd667ef1f519259d395d3402fae6748123a49bbffa1462c5bc69"
+            },
+            {
+              "path": "dist/tool-packs.js",
+              "sha256": "7f7792c1090b6868e1719b223d4f553efe19e537ff1c8be3014323122c52f12f"
+            },
+            {
+              "path": "dist/processes.js",
+              "sha256": "714f2ddc34e3e664d75f8f1bc2338e2f4691bf2de8d01ecedc1e07743acefcf5"
+            },
+            {
+              "path": "dist/resource-budgets.js",
+              "sha256": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64"
+            },
+            {
+              "path": "dist/resource-budget-policy.js",
+              "sha256": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac"
+            },
+            {
+              "path": "dist/policy.js",
+              "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+            }
+          ],
+          "scope": "host-instance",
+          "realStatfsAndOwnedProcesses": true,
+          "injectedBackendFailuresLabeled": true,
+          "syntheticOnly": true,
+          "modelCalls": 0,
+          "crossHostEnforcement": false,
+          "hardCpuGpuRamOrDiskWriteQuotas": false,
+          "log": "/Users/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-orouss/resource-budget-tests.tap"
+        },
+        "installedIsolation": {
+          "ok": true,
+          "protocolTests": 28,
+          "moduleBindings": [
+            {
+              "path": "dist/cli.js",
+              "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad"
+            },
+            {
+              "path": "dist/mcp.js",
+              "sha256": "d472b529ac7fbd667ef1f519259d395d3402fae6748123a49bbffa1462c5bc69"
+            },
+            {
+              "path": "dist/processes.js",
+              "sha256": "714f2ddc34e3e664d75f8f1bc2338e2f4691bf2de8d01ecedc1e07743acefcf5"
+            },
+            {
+              "path": "dist/policy.js",
+              "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+            },
+            {
+              "path": "dist/resource-budget-policy.js",
+              "sha256": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac"
+            },
+            {
+              "path": "dist/resource-budgets.js",
+              "sha256": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64"
+            },
+            {
+              "path": "dist/isolation-policy.js",
+              "sha256": "3b9c4a56d75e9660c6b8ed0cb9bfc32aa8441fabe6eddcd33a10d43458a26de9"
+            },
+            {
+              "path": "dist/isolation-http.js",
+              "sha256": "0fad31e0d688f663c3c37e2316863b6ec4ff30d67abca5a6a5a728420de265d5"
+            },
+            {
+              "path": "dist/isolation-engine.js",
+              "sha256": "130b4532dd7eac02bcd0d02d261cb5e34fb9f5bb67c80b7619469917ffaaca33"
+            },
+            {
+              "path": "dist/isolation.js",
+              "sha256": "4efc7b035ce22195fdace01e8249866db934aea8d55049d6c3300563ebac6120"
+            },
+            {
+              "path": "dist/errors.js",
+              "sha256": "26fa1c3341396a1f9eda45debe86dc2295cb997b9dd7e525e70ac17ef2c910a9"
+            }
+          ],
+          "protocolIsSynthetic": true,
+          "actualUnsupportedHostDenial": true,
+          "live": null,
+          "fullRuntimeImageRedistributionEligible": false,
+          "modelCalls": 0,
+          "log": "/Users/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-orouss/isolation-protocol-tests.tap"
+        },
+        "installedProvenance": {
+          "ok": true,
+          "tests": 18,
+          "failed": 0,
+          "skipped": 0,
+          "cancelled": 0,
+          "moduleBindings": [
+            {
+              "path": "dist/cli.js",
+              "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad"
+            },
+            {
+              "path": "dist/provenance.js",
+              "sha256": "ad842f4e4ebb14152575632773a7e460a194f7dadedd595ea9b77309f28e2902"
+            },
+            {
+              "path": "dist/files.js",
+              "sha256": "753adb8c88d5ea10d93549237f821c5bd9340d9c532611f0318e90af4e85d29e"
+            },
+            {
+              "path": "dist/policy.js",
+              "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+            },
+            {
+              "path": "dist/errors.js",
+              "sha256": "26fa1c3341396a1f9eda45debe86dc2295cb997b9dd7e525e70ac17ef2c910a9"
+            }
+          ],
+          "fromOutsideCheckout": true,
+          "referenceFilesVerified": 7,
+          "productionPackages": 4,
+          "productionEdges": 5,
+          "productionRedistributionEligible": false,
+          "retainedBundledNotices": 9,
+          "reviewedSdkArtifactPins": 86,
+          "sdkArtifactCommit": "8e6f2336d995b5c1cb5ff044071ed186cce03567",
+          "embeddedFastUri": "3.1.9",
+          "blockedSources": [
+            {
+              "code": "TRANSITIVE_REVIEW_PENDING",
+              "source": "mcp-sdk",
+              "message": "Separately installed dependency closure does not establish bundled-code license clearance."
+            }
+          ],
+          "spdxSemanticChecks": true,
+          "fullSpdxSchemaValidatedHere": false,
+          "modelCalls": 0,
+          "referenceReport": "/Users/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-orouss/reference-provenance.report.json",
+          "runtimeReport": "/Users/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-orouss/runtime-provenance.report.json"
+        },
+        "fullTransitiveLicenseClearance": false,
+        "fullDesktopCommanderParity": false,
+        "fromOutsideCheckout": true,
+        "helpExternalLaunchSamplesMs": [
+          78.78,
+          70.41,
+          67.32,
+          69.8,
+          76.6
+        ],
+        "helpMedianMs": 70.41316199999983,
+        "nodeVersion": "v24.21.0",
+        "nodePrerequisiteBytes": 125270960,
+        "nodeBundled": false,
+        "codexBundled": false,
+        "webBundled": false,
+        "quotaAdapterBundled": false,
+        "fullThreeComponentUnder50MB": "NOT VERIFIED; this is a dependency-reuse local host, not that bundle",
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "evidence": "/Users/runner/work/MTerm-CLI/MTerm-CLI/artifacts/package-verify-orouss"
+      },
+      "codex": {
+        "codexVersion": "codex-cli 0.160.1",
+        "codexExpectedVersion": "0.160.1",
+        "testOwnedCodex": true,
+        "codexTestPrefix": "artifacts/ci-codex",
+        "codexNativeExecutable": "node_modules/@openai/codex-darwin-x64/vendor/x86_64-apple-darwin/bin/codex",
+        "node": "v24.21.0",
+        "platform": "darwin",
+        "arch": "x64",
+        "setupApplied": true,
+        "setupIdempotent": true,
+        "configurationParsedByCodex": true,
+        "registeredCommandMcpRounds": 2,
+        "compatibilityProfilePersisted": true,
+        "configurationToolsDiscovered": [
+          "get_config",
+          "set_config_value"
+        ],
+        "syntheticConfigurationPathVerified": true,
+        "multipleRootsParsedByCodex": true,
+        "configurationPersistsAcrossRegisteredCommandRestarts": true,
+        "configuredReadLimitExercised": true,
+        "shutdownVerified": true,
+        "shutdownEvidence": "The original MCP process IDs returned ESRCH to bounded signal-0 polling after SDK close.",
+        "removalPreservesUnrelatedBytes": true,
+        "backupsRetained": true,
+        "actualCodexAgentToolInvocation": false,
+        "realUserConfigChanged": false,
+        "modelCalls": 0,
+        "installedEntry": false,
+        "evidence": "/Users/runner/work/MTerm-CLI/MTerm-CLI/artifacts/managed-codex-gdZyw0"
+      }
+    }
+  ],
+  "rawPins": [
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/001-docker.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/002-gpg.log",
+      "bytes": 564,
+      "sha256": "2aedfbea9a2f18276907dc72262cf937c56bebc012fd11e27935a0c2625c007b"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/003-gpg.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/004-sudo.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/005-sudo.log",
+      "bytes": 215,
+      "sha256": "a90952a5fb150d873cb1e11806aa0bf36d0f833ce6f24006ad1e59011a8c8b66"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/006-gpgv.log",
+      "bytes": 537,
+      "sha256": "10e1846c320ba176888087f704597ef2c66b01f0d5f7ff20053868563007a90f"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/007-apt-helper.log",
+      "bytes": 495027,
+      "sha256": "6bf01d98eab0b25b52273e91cb306527a9c769c3c7072e5bd68179855cedb48f"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/008-apt-get.log",
+      "bytes": 156,
+      "sha256": "341bc853ddc6e0c7885e90262b334c1c88708c64373b71191ccaa130f39b44a8"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/009-apt-get.log",
+      "bytes": 160,
+      "sha256": "759252ab20cca65f036035e5122ec6346ad0fba700ef40960e108f081cf066cf"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/010-apt-get.log",
+      "bytes": 157,
+      "sha256": "b50b5ae7b5394fcd49b63be5acff8ded462ae1e29779c1dae0833184b8f85954"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/011-sudo.log",
+      "bytes": 2277,
+      "sha256": "cbc440afde48d98901a5d2fd7dded565b17901bd412f1e17bfe60bdbe7916bf2"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/012-sudo.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/013-sudo.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/014-dpkg-query.log",
+      "bytes": 29,
+      "sha256": "f93044ee4d47e5af160e854f9d7eddb733c869d2280d8a4ba36cbe55f8efdaab"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/015-dpkg-query.log",
+      "bytes": 29,
+      "sha256": "f93044ee4d47e5af160e854f9d7eddb733c869d2280d8a4ba36cbe55f8efdaab"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/016-dpkg-query.log",
+      "bytes": 26,
+      "sha256": "87a3059394e98b31d8e424e7e96998818fbbcb9ac861b9ebe01091c684a99b7f"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/017-docker.log",
+      "bytes": 880,
+      "sha256": "58041e9f63e4c510f59d2cbf063636fbe85cc41ffc70caef464e33dfb4ea3e58"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/018-docker.log",
+      "bytes": 78,
+      "sha256": "4cb552460198d896f6a2e9bc42eb48724a5678212f5d391f8bf469b75b09f149"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/019-docker.log",
+      "bytes": 1073,
+      "sha256": "d7545ac03c6f67eeac1e1b7be521c98a066195eaf02f5d570bde1d00e9d3871a"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/020-docker.log",
+      "bytes": 78,
+      "sha256": "4cb552460198d896f6a2e9bc42eb48724a5678212f5d391f8bf469b75b09f149"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/021-docker.log",
+      "bytes": 1835,
+      "sha256": "04f88cdea05f19ab38848c9318919aaaea8299c7313285e8ef243730af559606"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/bootstrap.json",
+      "bytes": 16813,
+      "sha256": "40d8bfdab3e85b0d2b812e610547e938ea2862460e360d8cadb43143e784021d"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/cli-LICENSE",
+      "bytes": 10765,
+      "sha256": "2d81ea060825006fc8f3fe28aa5dc0ffeb80faf325b612c955229157b8c10dc0"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/cli-NOTICE",
+      "bytes": 635,
+      "sha256": "a8c869fbda819afb8d80e0ac19bac52e766bc6c19cb38cf94f52d64c4be2aab6"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/containerd-LICENSE",
+      "bytes": 10765,
+      "sha256": "4bbe3b885e8cd1907ab4cf9a41e862e74e24b5422297a4f2fe524e6a30ada2b4"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/containerd-NOTICE",
+      "bytes": 519,
+      "sha256": "03f0b4bcaecfdb491ef5a7d320e2c2adf886c732d34e3fff87d52dbaec64d8c3"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/docker-archive-key.asc",
+      "bytes": 3817,
+      "sha256": "1500c1f56fa9e26b9b8f42452a553675796ade0807cdce11975eb98170b3a570"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/docker-noble-amd64-Packages",
+      "bytes": 495027,
+      "sha256": "6bf01d98eab0b25b52273e91cb306527a9c769c3c7072e5bd68179855cedb48f"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/docker-noble-InRelease",
+      "bytes": 48475,
+      "sha256": "6ac25b6892e468c29d0822d6422efe16a63ad6155d1186c85006e0e92f486362"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/engine-LICENSE",
+      "bytes": 10765,
+      "sha256": "7c87873291f289713ac5df48b1f2010eb6963752bbd6b530416ab99fc37914a8"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/engine-NOTICE",
+      "bytes": 1030,
+      "sha256": "a249c4197359eee43031d16cecb172326f92ee7b6701af99dfe5c3e5b3d5eca9"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/installed/live-receipt.json",
+      "bytes": 31682,
+      "sha256": "9642c0171f761666a134c584a9da02a1ead52f30dbadc224c8ef28a97718af47"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/installed/live-tests.tap",
+      "bytes": 2775,
+      "sha256": "fae73cd0a47a40ee642d1ff3cbb49b6ba7c43ca12cd81bf219efcfca34f02857"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/installed/result.json",
+      "bytes": 33599,
+      "sha256": "b1444fb9fe388e8e231009ee68eab1894ad1d02f3aabb220a3a4d0116ce78016"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/installed-isolation-protocol.json",
+      "bytes": 1646,
+      "sha256": "e06d352be10356066384ea5773e4b16ccfc429ed36169b249b7f1653d76c7be8"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/installed-isolation-protocol.tap",
+      "bytes": 7002,
+      "sha256": "5a424cb0e9f917e0c0929e918847e6cfbb830925bbce1fd0bac42ff1c9ab84b9"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/node-image-Dockerfile",
+      "bytes": 5010,
+      "sha256": "b9337735f3a1bac3fb9501495448f8dc0ae58eacd8513fe757dd7da7bf4208da"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/runc-LICENSE",
+      "bytes": 10758,
+      "sha256": "552a739c3b25792263f731542238b92f6f8d07e9a488eae27e6c4690038a8243"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/runc-NOTICE",
+      "bytes": 515,
+      "sha256": "e94a9789f41c5c3d6f74212571e6f44367de88269f1ce9c32f26c1b67eec6e7f"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/source/live-receipt.json",
+      "bytes": 31612,
+      "sha256": "bac31a9e4b50c8a13389f3c6c4c7ea9c2f7d8d5e5f41f2dbcc37a263d8c8bfb6"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/source/live-tests.tap",
+      "bytes": 2777,
+      "sha256": "30ebb8cef516429a6eca34a6f9e65da003e175ce6ad49665940a9f020f1ff1ba"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic/source/result.json",
+      "bytes": 33530,
+      "sha256": "11e1476dd841b70f760a53d7cdcb4e4fa02c38b0545f7b3d963096b844d9ae4d"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-diagnostic.zip",
+      "bytes": 233132,
+      "sha256": "1375c510f168963ccbb130bd4f42d352ddf094bb1f9648a34250958829b4cbd9"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-live.log",
+      "bytes": 191794,
+      "sha256": "35585423d677f22fae351c91e9b4c2de4f02efa03bed0321022aca0f964db686"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-platform-results.json",
+      "bytes": 93656,
+      "sha256": "20efdb139a14a8ca919a65645a8270586a446005ebc641233580691718f82392"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-checks.json",
+      "bytes": 30526,
+      "sha256": "eaf9096b481f5599ab4d83459e8b0cfec2a9fb3ce584cfcaa76f6029bf187a54"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-win32-x64.log",
+      "bytes": 114458,
+      "sha256": "b9a79c0d3dbb5388f5ff97132900a7343702e76b317eaeb3a821b8bd031aa53b"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-linux-x64.log",
+      "bytes": 111734,
+      "sha256": "292a447fa9cb84bc5e8d13eadba0db70d5900fb3f3bd13be4a0651fa10eaad0c"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-darwin-arm64.log",
+      "bytes": 111201,
+      "sha256": "1a5d7d650f417088ff8ded4b4492160c89dc1977a8d2760aa2a9b6d89d6ad64a"
+    },
+    {
+      "path": "artifacts/aug005/a589fc1-darwin-x64.log",
+      "bytes": 111209,
+      "sha256": "5af5e821d3cfdbf1a0abfd86fed20b4d50c7b1e5b0c5c23a8d4a485b1df5d54b"
+    }
+  ],
+  "originalMainFailure": {
+    "testedCommit": "649142ea222b67f31f2165910a3a66b80bc7847d",
+    "preservedReport": "docs/validation/2026-11-08-aug005-main-failure.json",
+    "cause": "unresolved",
+    "declaredFixed": false,
+    "mainRetryPerformed": false
+  },
+  "productChanged": false,
+  "compiledBoundaryBindingsUnchanged": 11,
+  "packageUnpackedBytes": 420552,
+  "productPayloadDeltaBytes": 0,
+  "modelCalls": 0,
+  "acceptedCapability": false,
+  "fullRuntimeImageRedistributionEligible": false,
+  "limitations": [
+    "The original main649142e OOM assertion failure remains unexplained and preserved; successful new observations do not prove its cause or a product fix.",
+    "Observed native Linux x64/classic image store only. Other-platform containment, restart recovery, independent post-crash wall-clock supervision and actual ChatGPT integration remain unaccepted.",
+    "No runtime/dependency/launcher change; full runtime/image/transitive redistribution clearance remains false."
+  ],
+  "next": "Final metadata review and six exact-head checks, ordinary expected-head merge and six main checks; continue #93 prerequisites after verified main."
+}

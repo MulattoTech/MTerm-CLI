@@ -23,6 +23,10 @@ const root = process.cwd(),
   privateRoot = path.resolve('artifacts/aug005/ci-private');
 await fs.mkdir(evidence, { recursive: true });
 await fs.mkdir(privateRoot, { recursive: true, mode: 0o700 });
+const config = path.join(privateRoot, 'docker-config');
+await fs.mkdir(config, { mode: 0o700 });
+await fs.writeFile(path.join(config, 'config.json'), '{}\n', { mode: 0o600 });
+const docker = ['--config', config, '--host', 'unix:///var/run/docker.sock'];
 const report = {
   schemaVersion: 1,
   startedAt: new Date().toISOString(),
@@ -83,8 +87,7 @@ async function download(url, file) {
 }
 try {
   const existing = await run('/usr/bin/docker', [
-    '--host',
-    'unix:///var/run/docker.sock',
+    ...docker,
     'container',
     'ls',
     '--all',
@@ -121,28 +124,65 @@ try {
     fingerprint,
     sha256: sha(key),
   };
-  const sources = path.join(privateRoot, 'docker.list');
+  // Public repository metadata must be readable by APT's sandbox user. A new
+  // isolated lists directory prevents silent reuse of a runner's stale indexes.
+  const aptRoot = await fs.mkdtemp(path.join(os.tmpdir(), 'mterm-isolation-apt-'));
+  await fs.chmod(aptRoot, 0o755);
+  const keyring = path.join(aptRoot, 'docker.gpg');
+  await run('/usr/bin/gpg', ['--homedir', gpgHome, '--batch', '--dearmor', '--output', keyring, keyFile]);
+  await fs.chmod(keyring, 0o644);
+  const sources = path.join(aptRoot, 'docker.list'),
+    lists = path.join(aptRoot, 'lists');
+  await fs.mkdir(lists);
+  await fs.chmod(lists, 0o755);
+  assert.deepEqual(await fs.readdir(lists), []);
   await fs.writeFile(
     sources,
-    'deb [arch=amd64 signed-by=' + keyFile + '] https://download.docker.com/linux/ubuntu noble stable\n',
+    'deb [arch=amd64 signed-by=' + keyring + '] https://download.docker.com/linux/ubuntu noble stable\n',
   );
+  await fs.chmod(sources, 0o644);
+  await run('/usr/bin/sudo', ['-n', '-u', '_apt', '/usr/bin/test', '-r', keyring]);
   const apt = [
     '-o',
     'Dir::Etc::sourcelist=' + sources,
     '-o',
     'Dir::Etc::sourceparts=-',
     '-o',
-    'APT::Get::List-Cleanup=0',
+    'Dir::State::lists=' + lists,
+    '-o',
+    'APT::Update::Error-Mode=any',
+    '-o',
+    'Acquire::AllowInsecureRepositories=false',
+    '-o',
+    'Acquire::AllowDowngradeToInsecureRepositories=false',
+    '-o',
+    'APT::Get::AllowUnauthenticated=false',
   ];
   await run('/usr/bin/sudo', ['-n', '/usr/bin/apt-get', ...apt, 'update']);
-  const signedPath = '/var/lib/apt/lists/download.docker.com_linux_ubuntu_dists_noble_InRelease';
+  const signedPath = path.join(lists, 'download.docker.com_linux_ubuntu_dists_noble_InRelease');
   const signed = await fs.readFile(signedPath);
   await fs.writeFile(path.join(evidence, 'docker-noble-InRelease'), signed);
-  const indices = (await fs.readdir('/var/lib/apt/lists')).filter((n) =>
+  const verified = await run('/usr/bin/gpgv', [
+    '--homedir',
+    gpgHome,
+    '--keyring',
+    keyring,
+    '--status-fd',
+    '1',
+    signedPath,
+  ]);
+  const signatures = verified
+    .split('\n')
+    .filter((line) => line.startsWith('[GNUPG:] VALIDSIG '))
+    .map((line) => line.trim().split(/\s+/));
+  assert.equal(signatures.length, 1);
+  assert.equal(signatures[0].at(-1), fingerprint);
+  assert.doesNotMatch(verified, /\[GNUPG:\] (?:REVKEYSIG|EXPKEYSIG|EXPSIG|BADSIG|ERRSIG|NO_PUBKEY) /);
+  const indices = (await fs.readdir(lists)).filter((n) =>
     /^download\.docker\.com_linux_ubuntu_dists_noble_stable_binary-amd64_Packages/.test(n),
   );
   assert.equal(indices.length, 1);
-  const packages = await run('/usr/lib/apt/apt-helper', ['cat-file', '/var/lib/apt/lists/' + indices[0]]);
+  const packages = await run('/usr/lib/apt/apt-helper', ['cat-file', path.join(lists, indices[0])]);
   const releaseSection = signed
     .toString()
     .split('\nSHA256:\n')[1]
@@ -158,7 +198,11 @@ try {
     inReleaseSha256: sha(signed),
     packagesSha256: packageDigest,
     bytes: Number(packageBytes),
+    freshIsolatedLists: true,
     signatureVerifiedByApt: true,
+    signatureVerifiedByGpgv: true,
+    signingKeyFingerprint: signatures[0][2],
+    primaryKeyFingerprint: fingerprint,
   };
   const archive = path.join(privateRoot, 'packages');
   await fs.mkdir(archive);
@@ -225,7 +269,7 @@ try {
     if (state === 'installed') conflicts.push(name);
   }
   if (conflicts.length)
-    await run('/usr/bin/sudo', ['-n', '/usr/bin/apt-get', 'remove', '--yes', ...conflicts]);
+    await run('/usr/bin/sudo', ['-n', '/usr/bin/apt-get', ...apt, 'remove', '--yes', ...conflicts]);
   await run('/usr/bin/sudo', [
     '-n',
     '/usr/bin/apt-get',
@@ -247,10 +291,6 @@ try {
   ]);
   for (const [name, expected] of pins)
     assert.equal((await run('/usr/bin/dpkg-query', ['-W', '-f=${Version}', name])).trim(), expected);
-  const config = path.join(privateRoot, 'docker-config');
-  await fs.mkdir(config, { mode: 0o700 });
-  await fs.writeFile(path.join(config, 'config.json'), '{}\n', { mode: 0o600 });
-  const docker = ['--config', config, '--host', 'unix:///var/run/docker.sock'];
   const version = JSON.parse(
     await run('/usr/bin/docker', [...docker, 'version', '--format', '{{json .Server}}']),
   );

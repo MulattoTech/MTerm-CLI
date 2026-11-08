@@ -175,8 +175,10 @@ permission denial, MCP grants/cancellation and independent owned-container absen
 modules; `verify-package.mjs` requires the same live suite for the actual installed
 package when `MTERM_ISOLATION_REQUIRE_LIVE=1`.
 
-The disposable CI bootstrap verifies the official signing key, signed repository
-index, exact package hashes and installed versions/binary hashes before preparing
+The disposable CI bootstrap uses a new empty APT index scope, a public keyring
+readable by APT, strict update failure handling and independent pinned-key gpgv
+verification. It verifies the signed index, exact package hashes and installed
+versions/binary hashes before preparing
 the fixed image manifest/configuration pair. It records source LICENSE/NOTICE
 files and source/build references. Those checks are not a full image/dependency
 license clearance or a claim that every system vulnerability has been excluded.

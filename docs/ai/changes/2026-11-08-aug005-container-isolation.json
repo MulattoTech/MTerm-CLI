@@ -3,7 +3,7 @@
   "provider": "OpenAI",
   "model": "GPT-6 Astra Pro",
   "started_at": "2026-11-08T01:43:45Z",
-  "updated_at": "2026-11-08T02:43:28.209Z",
+  "updated_at": "2026-11-08T02:49:37.492Z",
   "base_sha": "d7b7c4fb19867f7c5f9727598442c29c12d43709",
   "issues": [
     84,
@@ -34,7 +34,8 @@
     "docs/expansion/evidence.json",
     "docs/expansion/queue.json",
     "docs/roadmap/progress.json",
-    "docs/validation/2026-11-08-aug005-development.json"
+    "docs/validation/2026-11-08-aug005-development.json",
+    "docs/validation/2026-11-08-aug005-bootstrap-attempts.json"
   ],
   "decisions": [
     "One owner plus one independent read-only peer; standing owner authorization covers implementation and qualified delivery; zero model API/CLI requests.",
@@ -44,7 +45,8 @@
     "Record and fsync complete ownership before create; reconcile only owner-bound jobs, recheck original daemon after absence, and quarantine uncertainty without releasing capacity.",
     "Do not use workstation Docker Desktop/WSL for live evidence; native Linux-only and exact signed pinned runtime only in a disposable GitHub-hosted job.",
     "Test source and installed runtime outside checkout, mandatory twelve live cases with no skip/fallback, compiled-byte bindings and selected evidence upload even on failure.",
-    "Preserve launcher/dependencies, original300 roadmap semantics and all full acceptance flags."
+    "Preserve launcher/dependencies, original300 roadmap semantics and all full acceptance flags.",
+    "Use an initially empty task-owned APT lists directory, readable pinned one-primary keyring, Error-Mode=any and explicit no-insecure/no-unauthenticated options. Independently gpgv the exact fetched InRelease before binding its Packages digest/size and recording signature success. Version floor and package/source pins unchanged."
   ],
   "tests": [
     {
@@ -86,6 +88,10 @@
     {
       "command": "Preparation metadata validation",
       "result": "Initial log parser omitted reporter formatting and was corrected against retained raw logs; first roadmap check rejected descriptive platform text instead of the existing linux-x64 enum. Corrected metadata only; validators unchanged. Both failures retained under artifacts/aug005."
+    },
+    {
+      "command": "Exactba47675 native and hosted",
+      "result": "Full native440/440; five build/prepack/self-host/installed/audit stages passed, audit0; installed28isolation protocol,24resource,29pack,18provenance. Ordinary9hostedchecks succeeded; both dedicatedLinuxjobsfailed before runtime install due stale APT cache after signature failure. Old signature success boolean invalid; retained unchanged with superseding failure record."
     }
   ],
   "roadmap_updates": [

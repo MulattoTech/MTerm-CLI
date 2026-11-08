@@ -1,3 +1,9 @@
+# AUG-005 immutable qualification checkpoint — 2026-11-08T02:49:37.492Z
+
+DraftPR204 at ba47675 passed native440/440 and five native stages including actual installed package/audit0. Ordinary9hosted checks passed. Both mandatory Linux jobs failed before installing a runtime: APT returned0 after a missing-key warning and reused a stale runner index. The old receipt signatureVerifiedByApt:true is invalid; [superseding failure record](validation/2026-11-08-aug005-bootstrap-attempts.json) preserves it and its raw artifact. Fix requires a new empty readable APT scope and independent pinned-key gpgv verification. Version floor, acceptance flags and automated gates stay unchanged. Live containment remains unverified; continue PR204 qualification without an owner approval pause.
+
+---
+
 # Current continuation — AUG-005, 2026-11-08 UTC
 
 PR203 is delivered at d7b7c4fb19867f7c5f9727598442c29c12d43709:9/9 final checks, independent immutable review, matching tree and5/5 main checks. PR199–202 are delivered. Epic81 checkpoint6715286912 supersedes older pending text below.

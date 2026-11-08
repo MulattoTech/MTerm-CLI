@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 1,
+  "capability": "AUG-005",
+  "issue": 84,
+  "pr": 204,
+  "recordedAt": "2026-11-08T02:49:37.492Z",
+  "attempts": [
+    {
+      "testedCommit": "ba47675b93017c265e14047d2d3b3447f0d2d4bd",
+      "result": "failed",
+      "phase": "runtime-preparation-before-install",
+      "runId": 42439804938,
+      "jobId": 128606396906,
+      "artifactId": 13601550952,
+      "artifactSha256": "ddc0e06f76ac0cdecfeb13000574c085ca724e089804f1085fdcce34ea677f27",
+      "sourceCheckout": "267980840cf1e68b274df24749becd5e9115fa7a",
+      "signatureVerified": false,
+      "freshIndexVerified": false,
+      "realContainersExecuted": 0,
+      "reason": "APT returned0 after NO_PUBKEY and reused October30 indexes. The old bootstrap.json signatureVerifiedByApt:true is invalid and superseded by this explicit failure record. Artifact is preserved unchanged; package absence was from stale metadata, not verified current availability."
+    }
+  ],
+  "correction": "Use an initially empty task-owned APT lists directory, readable pinned one-primary keyring, Error-Mode=any and explicit no-insecure/no-unauthenticated options. Independently gpgv the exact fetched InRelease before binding its Packages digest/size and recording signature success. Version floor and package/source pins unchanged.",
+  "nativeQualification": {
+    "testedCommit": "ba47675b93017c265e14047d2d3b3447f0d2d4bd",
+    "sourceFingerprint": "42b04cc10600135bf09825e87a77766395a8776cfc7eff4ce6a52c8d9b558f5b",
+    "subjectFingerprint": "3c76d5eb33bb8b76e613d8892d4d820259bd768a099d1135b5adb2f7f3657c25",
+    "nativeSuite": {
+      "tests": 440,
+      "passed": 440,
+      "failed": 0,
+      "skipped": 0
+    },
+    "stages": [
+      {
+        "name": "reviewed-build",
+        "exitCode": 0,
+        "completedAt": "2026-11-08T02:45:07.645Z"
+      },
+      {
+        "name": "normal-prepack",
+        "exitCode": 0,
+        "completedAt": "2026-11-08T02:46:30.286Z"
+      },
+      {
+        "name": "self-host",
+        "exitCode": 0,
+        "completedAt": "2026-11-08T02:46:31.443Z"
+      },
+      {
+        "name": "installed-package",
+        "exitCode": 0,
+        "completedAt": "2026-11-08T02:47:18.763Z"
+      },
+      {
+        "name": "production-audit",
+        "exitCode": 0,
+        "completedAt": "2026-11-08T02:47:19.511Z"
+      }
+    ],
+    "installedIsolation": {
+      "ok": true,
+      "protocolTests": 28,
+      "moduleBindings": [
+        {
+          "path": "dist/cli.js",
+          "sha256": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad"
+        },
+        {
+          "path": "dist/mcp.js",
+          "sha256": "d472b529ac7fbd667ef1f519259d395d3402fae6748123a49bbffa1462c5bc69"
+        },
+        {
+          "path": "dist/processes.js",
+          "sha256": "714f2ddc34e3e664d75f8f1bc2338e2f4691bf2de8d01ecedc1e07743acefcf5"
+        },
+        {
+          "path": "dist/policy.js",
+          "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+        },
+        {
+          "path": "dist/resource-budget-policy.js",
+          "sha256": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac"
+        },
+        {
+          "path": "dist/resource-budgets.js",
+          "sha256": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64"
+        },
+        {
+          "path": "dist/isolation-policy.js",
+          "sha256": "3b9c4a56d75e9660c6b8ed0cb9bfc32aa8441fabe6eddcd33a10d43458a26de9"
+        },
+        {
+          "path": "dist/isolation-http.js",
+          "sha256": "0fad31e0d688f663c3c37e2316863b6ec4ff30d67abca5a6a5a728420de265d5"
+        },
+        {
+          "path": "dist/isolation-engine.js",
+          "sha256": "130b4532dd7eac02bcd0d02d261cb5e34fb9f5bb67c80b7619469917ffaaca33"
+        },
+        {
+          "path": "dist/isolation.js",
+          "sha256": "4efc7b035ce22195fdace01e8249866db934aea8d55049d6c3300563ebac6120"
+        },
+        {
+          "path": "dist/errors.js",
+          "sha256": "26fa1c3341396a1f9eda45debe86dc2295cb997b9dd7e525e70ac17ef2c910a9"
+        }
+      ],
+      "protocolIsSynthetic": true,
+      "actualUnsupportedHostDenial": true,
+      "live": null,
+      "fullRuntimeImageRedistributionEligible": false,
+      "modelCalls": 0,
+      "log": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG005-20261108\\artifacts\\package-verify-h49VII\\isolation-protocol-tests.tap"
+    },
+    "productionAdvisoryAudit": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "cleanStart": true,
+    "cleanEnd": true
+  },
+  "rawPins": [
+    {
+      "path": "artifacts/aug005/hosted-ba47675-linux-failure.log",
+      "bytes": 19046,
+      "sha256": "000200c909d5f29a63999418a4d30803122ee836733c9ab4cdc7891624930f6a"
+    },
+    {
+      "path": "artifacts/aug005/hosted-ba47675-linux-failure.zip",
+      "bytes": 186274,
+      "sha256": "ddc0e06f76ac0cdecfeb13000574c085ca724e089804f1085fdcce34ea677f27"
+    },
+    {
+      "path": "artifacts/aug005/hosted-ba47675-linux-failure/003-sudo.log",
+      "bytes": 909,
+      "sha256": "7018663a38bf9dd2f59854f295330db6d6103cd84e74ccb5ca9a5679fe2f99ec"
+    },
+    {
+      "path": "artifacts/aug005/hosted-ba47675-linux-failure/bootstrap.json",
+      "bytes": 1012,
+      "sha256": "794b3a8e1e296dda8777ea117ba513d562d9862eeb19a83aa0b658d055faaef5"
+    },
+    {
+      "path": "artifacts/aug005/qualification-code-ba47675/qualification.json",
+      "bytes": 13060,
+      "sha256": "966c3d0388bbda528c20dbfff5320188da6c28b7f2466d2a3edca054de81fb68"
+    }
+  ],
+  "modelCalls": 0,
+  "liveContainmentPassed": false,
+  "fullRuntimeImageRedistributionEligible": false,
+  "acceptanceAwarded": false,
+  "nextGate": "Fresh immutable bootstrap and mandatory source/installed live CI; final independent review and qualified merge remain required."
+}

@@ -1,3 +1,15 @@
+# PR206 integration resumed on qualified PR208 main — 2026-11-08T08:37:54.922Z
+
+PR199 and PR208 are already merged. Current main is `ad1571b94c70fb8a0f4542302f5d40c6d80a97d7`; its tree matches the reviewed PR208 head and all six main checks passed. This ordinary merge combines that main with preserved PR206 head `3ca898791a9178fb4e94dcdaaf3ead7df7a543bf`.
+
+The tool-packs source conflict was an attribution header. Both installed verifier blocks are retained without weakened assertions: 42 update-check cases and 41 persistence cases. Combined development tests pass 83/83 on the existing Node 24.21.0 runtime. The initial command selected the workstation default Node 27 and was correctly rejected by Node 24 admission; its failed output is retained separately. [Integration evidence](validation/2026-11-08-aug011-registry-integration.json) records both observations.
+
+All original PR206 artifacts and both parents' validation history are preserved, including the 507/508 native EPERM failure. Its cause remains unknown. All 300 requirement stages and 117 capability scopes/dependencies are unchanged; no new full acceptance is claimed.
+
+Next: complete independent review, commit this ordinary integration, then qualify that exact committed head with native build/check, installed package, production audit, isolated parser and hosted checks. The final GitHub merge must use the reviewed expected head and verify merged-main checks. Standing owner authorization applies; no further manual approval is pending, and no model calls are authorized or made. Continue in the AUG011 checkout; preserve unrelated work.
+
+---
+
 # PR208 persistence qualification recorded — 2026-11-08T07:30:41.500Z
 
 Implementation6f70e5c/tree5f388a5 has native507/507 and allsixhosted gates passed. The actual hosted checkout3bc5335 has the identical tree. Allfourhosts pass installed persistence41/41; Windows507/507 and otherhosts495pass plus12existingWindows-onlyskips. Native package, productionaudit0 and isolated parsermodel0 passed. [Exact qualification](validation/2026-11-08-aug003-registry-qualification.json) binds actual logs, 19installed modules, four packageLICENSEs and corrected fixture bytes.
@@ -33,6 +45,20 @@ Initial RED 6/34 to GREEN 34/34 was expanded by independent review: seven causal
 Requirements CLI-269 and CLI-287 retain all stages, acceptance, weights, estimates, dependencies and blockers. AUG 0/117, CLI 0/300 complete, DCP 0/48, WEB 0/12. Existing matrix observations remain tied to their original subjects. Actual ChatGPT integration and full rights are unaccepted.
 
 One implementation owner and one read-only peer; standing authorization applies, no manual approval pending, no Codex/model requests. Preserve primary dirty checkout, PR206 and unrelated work. After qualification, normal expected-head merge and main checks, integrate ordinarily into PR206 and resume #93. Checkpoint: artifacts/aug003-registry/checkpoint.json.
+
+---
+
+# PR206 ordinary integration of qualified PR207 main — 2026-11-08T06:06:19.784Z
+
+PR207 is normally merged as a7c047c, treebde6453 identical to reviewed finala8417e5, with6/6final and6/6main checks. Main source12/12+installed12/12,16strict rawOOM probes,38cgroupfs/v2 observations,144cleanup steps and31protocol cases passed; [merged-main receipt](validation/2026-11-08-aug005-merged-main.json) preserves the artifact/member pins. All previous failures remain historical, with no blanket cause/fix claim.
+
+PR206 is being ordinarily merged from clean4985 with qualifiedmaina7c047c; commonbasedd941. Its runtime update-check files remain unchanged; qualified isolation files remain unchanged. The verifier keeps42installed update cases/sevenmodules and31isolation cases; only its attribution-header conflict required combined lines. Canonical metadata is reconciled by ID, then reviewed/rendered; no accepted capability is awarded. CLI157 remainsimplementation,CLI165not_started; all other protected300fields,seed and117scope/DAG/sourcecatalog unchanged.
+
+[Integration/failure record](validation/2026-11-08-aug011-integration-development.json) pins original native486/487EPERM, failedpushLinuxprobe5OOMfalse andWindows transient fixture failure. Its originalPR6/6success does not erase push3/5 or nativefailure. New integrated native/build/check/actualpackage/audit/license/parser and11hosted checks are pending. Expected suite union508 onWindows,496plus12existing skips elsewhere must be confirmed by actual output.
+
+Scope remains rooted offline packs update --check. No download, staging, activation, extraction, execution, rollback or global credential/agent changes. Pathname races/import closure/fullCLI165 and real ChatGPT integration remain open. Matrix observations68passed/2272unrun/0accepted remain attributable to their original exact subjects; new qualification must not relabel old receipts. AUG0/117;CLI29.36%maturity/0complete;DCP0/48;WEB0/12. Standing authorization applies; one implementationowner/one independentread-onlypeer; no model requests.
+
+Continue in H:\MTechLabs\Dev\MTerm-CLI-AUG011-20261108, branchfeat/aug-011-update-check-20261108. Complete independent combined source/metadata review and normal merge commit, qualify exact head, record immutable results/final review, then expected-head normal merge/main checks. Preserve primarydirtycheckout, original PR206 artifacts and all168PR207validation files.
 
 ---
 
@@ -79,6 +105,16 @@ The synthetic defect is causally reproduced with one real journal open delayed15
 Exact committed native/installed/platform/live gates are pending. Changed fixture platform observations are reset to unrun, with every prior receipt retained historically. No requirement stage/weight/scope/estimate changes. AUG0/117, CLI0/300complete, DCP0/48, WEB0/12. Current correction is owned in H:\\MTechLabs\\Dev\\MTerm-CLI-AUG005-Lifecycle-20261108, branch fix/aug-005-lifecycle-observation-20261108. PR206 remains parked in its separate AUG011 clone. Preserve primary dirty work and unrelated workloads. One implementation owner/one read-only peer, zero model requests. Standing authorization supplies routine review/merge approval; exact gates and independent review still govern delivery.
 
 Next: finalize independent review and normal qualification, gather real OOM/rename causal evidence, merge qualified corrective work with expected-head protection, verify main, then normally integrate it into PR206 and resume #93. Do not rebase/force away existing work, retry failed old runs, infer OOM from137, or infer a Windows scanner cause from EPERM.
+
+---
+
+# Current continuation — AUG-011 prerequisite, 2026-11-08T04:02:51.301Z
+
+PR205 is delivered as dd94158365b648bc1fe42259996c686d7de42313 with6/6 final and6/6 main checks; original649 OOM failure remains preserved and unexplained. Main artifact13602373638 SHA2560a05d225d4f1eb60b6e6f3acff5871ae0cb33cebe69c1d1fda3013417864cb8e contains42 members,source12/installed12,16 strict probes and144 cleanup observations.
+
+#93 starts CLI157/165 prerequisites in H:\MTechLabs\Dev\MTerm-CLI-AUG011-20261108, branch feat/aug-011-update-check-20261108. Code af060d499ab2136c6e8e0d7cc68ee3923d0dd353 adds a rooted offline read-only candidate plan with exact raw-byte/provenance binding and registry-version coherence. Native42 cases pass after RED41. See [contract](parity/PACK_UPDATES.md) and [development receipt](validation/2026-11-08-aug011-development.json). Normal build/check, installed-package/audit, independent review and hosted gates remain next.
+
+CLI157 advances to implementation for scoped comparison; CLI165 stays not_started because no execution/extraction guarantee is delivered. No full acceptance; scopes/weights/seed unchanged. Actual ChatGPT connector integration remains unverified; MTerm tools are absent from the exposed registry. One owner/one read-only peer; zero model calls, no recurring owner manual review, original dirty checkout/unrelated workloads preserved.
 
 ---
 

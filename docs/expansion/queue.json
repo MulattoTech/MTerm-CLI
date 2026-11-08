@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "asOf": "2026-11-08T07:30:41.500Z",
+  "asOf": "2026-11-08T08:37:54.922Z",
   "repository": "MulattoTech/MTerm-CLI",
   "epic": 81,
   "baseSha": "d7b7c4fb19867f7c5f9727598442c29c12d43709",
@@ -143,8 +143,8 @@
       "status": "merged_partial",
       "owner": "ChatGPT Web / GPT-6 Astra Pro",
       "branch": "feat/aug-003-pack-catalog-20261108",
-      "pr": 202,
-      "mergeSha": "d6eb0fa8a3df8a22abdec587f405e1105f78acb8",
+      "pr": 208,
+      "mergeSha": "ad1571b94c70fb8a0f4542302f5d40c6d80a97d7",
       "accepted": false,
       "testPlan": "common contract + original issue acceptance at issue URL",
       "platformScope": [
@@ -153,7 +153,7 @@
         "darwin-arm64",
         "darwin-x64"
       ],
-      "automatedTests": "Final3628672:9/9 checks and immutable independent review. Normal merge d6eb0fa shares tested tree380f84d and passed5/5 main checks. Native388/388; other hosts376pass+12existing skips. Installed29pack+18provenance on each host. PR207 changes the revocation fixture to verify uninstall preconditions; previous platform observations are historical until the exact new fixture qualifies. Original c9 native failure remains preserved. PR2074eeedae freshly qualifies the changed fixture on all four hosts (Windows466/466; others454pass+12existing skips), all five catalog observations and installed29pack/18provenance. The original c9 native failure remains preserved. A separate registry-persistence correction is under review; earlier passing receipts retain their original subjects.",
+      "automatedTests": "PR208 is merged with the identical reviewed tree and six successful merged-main checks. Its native 507/507 and installed persistence 41/41 qualification remains pinned in the existing receipt. No earlier failed qualification was erased.",
       "actualClient": "Two real official SDK stdio clients with isolated selection and notification tests; synthetic local pack payload. Real ChatGPT-to-MTerm app integration remains unverified.",
       "blocker": "Scoped ABI1 tools catalog/selection/refresh delivered; resources/prompts and actual client/full platform/licensing acceptance remain open. No owner review is pending.",
       "declaredIssueDependencies": [],
@@ -241,19 +241,19 @@
         "docker/mcp-gateway",
         "e2b-dev/mcp-server"
       ],
-      "status": "in_progress",
+      "status": "merged_partial",
       "owner": "ChatGPT Web / GPT-6 Astra Pro",
       "branch": "fix/aug-005-lifecycle-observation-20261108",
       "pr": 207,
-      "mergeSha": null,
+      "mergeSha": "a7c047c76825562a3f51b100a8cc9b92151ee1f5",
       "accepted": false,
       "testPlan": "common contract + original issue acceptance at issue URL",
       "platformScope": [
         "linux-x64"
       ],
-      "automatedTests": "PR207 implementation4eeedae:6/6hosted; native466/466; package29pack/24resource/31protocol/18provenance; audit0; four packageLICENSEs and eight pinned runtimeLICENSE/NOTICEs. Actualsource12/12+installed12/12;16strict rawOOM/owned events,38cgroupfs/v2 observations,144cleanup steps. Final metadata-head and merged-main gates pending. Historical failures retained; no failed-job reruns.",
+      "automatedTests": "PR207 implementation4eeedae native466/466; finala8417e5 sixchecks and mergedmaina7c047c sixchecks allpass. Actualsource12/12+installed12/12 at implementation/final/main; each16strict rawOOM/owned events,38cgroupfs/v2 observations,144cleanup and31protocol. Package29pack/24resource/18provenance, audit0 and source/package license pins passed. No original failed-job reruns.",
       "actualClient": "Actual official SDK isolated-only calls, source and installed from outside checkout, native denial, cancellation and owned cleanup qualified on pinned native Linux x64/cgroupfs/v2. Actual ChatGPT-to-MTerm connector invocation remains unverified.",
-      "blocker": "Full rights, other-platform isolation, restart/crash supervision and real ChatGPT integration remain open. Systemd remains denied; earlier failure causes and exact attribution ordering are unresolved. PR206 resumes after qualified PR207 merge/main checks.",
+      "blocker": "Scoped native Linux x64 pinned cgroupfs/v2 delivery qualified; full rights, other-platform isolation, restart/crash supervision and actual ChatGPT integration remain open. Systemd remains denied; earlier failure causes and exact attribution ordering stay unresolved.",
       "declaredIssueDependencies": [],
       "ownerAuthorization": "docs/OWNER_AUTHORIZATION.md"
     },
@@ -504,18 +504,24 @@
         "docker/mcp-gateway",
         "mcp-use/mcp-use"
       ],
-      "status": "proposed",
-      "owner": null,
-      "branch": null,
-      "pr": null,
+      "status": "in_progress",
+      "owner": "ChatGPT Web / GPT-6 Astra Pro",
+      "branch": "feat/aug-011-update-check-20261108",
+      "pr": 206,
       "mergeSha": null,
       "accepted": false,
       "testPlan": "common contract + original issue acceptance at issue URL",
-      "platformScope": "not yet selected; retain unsupported environments as explicit blockers",
-      "automatedTests": "not run",
-      "actualClient": "not verified",
-      "blocker": "Not implemented or accepted; exact upstream rights, platform scope and declared prerequisite acceptance need qualification.",
-      "declaredIssueDependencies": []
+      "platformScope": [
+        "win32-x64",
+        "linux-x64",
+        "darwin-arm64",
+        "darwin-x64"
+      ],
+      "automatedTests": "Ordinary integration of qualified PR208 main. Combined Node 24 development tests pass 83/83 (42 update checks and 41 persistence cases); exact committed native, package, security and hosted gates remain pending. Original 3ca8987 native 507/508 failure and eleven passing hosted checks remain historical.",
+      "actualClient": "Actual local CLI exercised; actual ChatGPT-to-MTerm connector unavailable and unverified.",
+      "blocker": "Rooted offline update comparison only. Transactional installation, staging/activation, rollback and full CLI-165 import/execution acceptance remain open. The original EPERM cause remains unknown; new integrated delivery requires exact qualification.",
+      "declaredIssueDependencies": [],
+      "ownerAuthorization": "docs/OWNER_AUTHORIZATION.md"
     },
     {
       "id": "AUG-012",

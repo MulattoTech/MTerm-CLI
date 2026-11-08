@@ -1,0 +1,544 @@
+{
+  "schemaVersion": 1,
+  "kind": "ordinary-integration-and-preserved-qualification-failures",
+  "capability": "AUG-011",
+  "issues": [
+    93,
+    84,
+    81
+  ],
+  "pr": 206,
+  "at": "2026-11-08T06:06:19.784Z",
+  "parents": {
+    "previousHead": "4985db7f885cab5edc466e80cbbf9ce540aaaaa3",
+    "qualifiedMain": "a7c047c76825562a3f51b100a8cc9b92151ee1f5",
+    "commonBase": "dd94158365b648bc1fe42259996c686d7de42313"
+  },
+  "candidate": {
+    "committed": false,
+    "subjectFingerprint": "e313544b017e0716587e6a2f604dd0d689668a9b81da5af3f21f028694265fb8",
+    "sourceBindings": [
+      {
+        "path": "src/pack-updates.ts",
+        "bytes": 15020,
+        "sha256": "65c70642995e99d277aeacfc286509d84dac1bb9adcafd6311da1cdebcd377bc"
+      },
+      {
+        "path": "src/tool-packs.ts",
+        "bytes": 35403,
+        "sha256": "afd946e2a83c0c5ce534a105436150ffd52b16508d2d7c2929e0a2b2b39b2e5d"
+      },
+      {
+        "path": "tests/pack-updates.test.mjs",
+        "bytes": 23551,
+        "sha256": "269bf868d6dc2e3de6d4efc3f59fae3ac0cb88e43543094aa66cd9e323b73133"
+      },
+      {
+        "path": "scripts/verify-package.mjs",
+        "bytes": 23095,
+        "sha256": "9a588775a039bdf5251d4e2011d5d211f5cb20576d13f0208aa1ab73d6495aae"
+      },
+      {
+        "path": "docs/parity/PACK_UPDATES.md",
+        "bytes": 6313,
+        "sha256": "82b922d9c8dc5b05bf2d069821981da84803a2f1268c5d349d0c8ec7068197c3"
+      },
+      {
+        "path": "src/isolation-engine.ts",
+        "bytes": 26298,
+        "sha256": "73718518cf7c229d8b2e444ffd48c20c08e80ca880562f0f428fc673a0581a67"
+      },
+      {
+        "path": "tests/isolation.test.mjs",
+        "bytes": 40177,
+        "sha256": "668a5bbd1220506891320ec33dc8ad6e6d768904a3006d11ab6f843ce75d3258"
+      },
+      {
+        "path": "tests/tool-packs.test.mjs",
+        "bytes": 38353,
+        "sha256": "2a8abba2082e5f646d6168b98b44c88bac1a1d71cbcab6873c136cb4a83a27f4"
+      },
+      {
+        "path": "scripts/prepare-isolation-ci.mjs",
+        "bytes": 19695,
+        "sha256": "01255fa4c51d811c06985e16331616bdf440dc34bd0c18a8bf6faf9317b66bf0"
+      },
+      {
+        "path": "scripts/isolation-ci-config.mjs",
+        "bytes": 3905,
+        "sha256": "895ca311b5a8d8ad3eeeb9d9efa0e6664ff083304b7a83526548aa343c38f1f3"
+      },
+      {
+        "path": "scripts/isolation-ci-runner.mjs",
+        "bytes": 1416,
+        "sha256": "88e0238c7a4f5ec8bdfa9b24de0bd882977eac018827e7bb915f904b72bef402"
+      }
+    ],
+    "productScope": "Existing42-case rooted offline update comparison combined with qualified cgroupfs/v2 admission and causal diagnostic fixtures. No new activation, download, extraction or installation behavior.",
+    "verifierResolution": "Only attribution-header conflict; both change headers retained. Keep installed42 update-check suite/seven modules and installed isolation minimum31.",
+    "qualification": "Pending independent combined source review and new committed native/package/security/license/11hosted gates."
+  },
+  "pr207Main": {
+    "path": "docs/validation/2026-11-08-aug005-merged-main.json",
+    "sha256": "6b57b10b74201f1d33a4c916f3aa7c6ff631767a91bfbef61d036eb4b845f848"
+  },
+  "preservedQualification": {
+    "head": "4985db7f885cab5edc466e80cbbf9ce540aaaaa3",
+    "native": {
+      "schemaVersion": 1,
+      "head": "4985db7f885cab5edc466e80cbbf9ce540aaaaa3",
+      "startedAt": "2026-11-08T04:03:47.512Z",
+      "node": "v24.21.0",
+      "platform": "win32-x64",
+      "modelCalls": 0,
+      "gates": [
+        {
+          "name": "build",
+          "command": [
+            "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+            "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+            "run",
+            "build"
+          ],
+          "startedAt": "2026-11-08T04:03:47.512Z",
+          "finishedAt": "2026-11-08T04:03:51.360Z",
+          "exitCode": 0,
+          "log": "artifacts/aug011/native/build.log",
+          "bytes": 786,
+          "sha256": "1c66d4a7f4a88e90c2b4323081193c0d29bf3d580ec5966c6010a61c018d5e73",
+          "tests": null,
+          "passed": null,
+          "failed": null,
+          "skipped": null,
+          "cancelled": null
+        },
+        {
+          "name": "check",
+          "command": [
+            "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+            "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+            "run",
+            "check"
+          ],
+          "startedAt": "2026-11-08T04:03:51.364Z",
+          "finishedAt": "2026-11-08T04:05:39.437Z",
+          "exitCode": 1,
+          "log": "artifacts/aug011/native/check.log",
+          "bytes": 48485,
+          "sha256": "b91dfdae6e0a1f1ba8e4b9662e43dc8ff223789edd24780562b09f24756b11c6",
+          "tests": 487,
+          "passed": 486,
+          "failed": 1,
+          "skipped": 0,
+          "cancelled": 0
+        }
+      ],
+      "status": "failed",
+      "finishedAt": "2026-11-08T04:05:39.438Z"
+    },
+    "hostedChecks": [
+      {
+        "id": 128622967414,
+        "name": "ubuntu-24.04 / Node 24",
+        "head": "4985db7f885cab5edc466e80cbbf9ce540aaaaa3",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42445338812/job/128622967414"
+      },
+      {
+        "id": 128622967366,
+        "name": "macos-15-intel / Node 24",
+        "head": "4985db7f885cab5edc466e80cbbf9ce540aaaaa3",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42445338812/job/128622967366"
+      },
+      {
+        "id": 128622967357,
+        "name": "macos-15 / Node 24",
+        "head": "4985db7f885cab5edc466e80cbbf9ce540aaaaa3",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42445338812/job/128622967357"
+      },
+      {
+        "id": 128622967308,
+        "name": "Native Linux isolation / Node 24",
+        "head": "4985db7f885cab5edc466e80cbbf9ce540aaaaa3",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42445338812/job/128622967308"
+      },
+      {
+        "id": 128622967101,
+        "name": "windows-2022 / Node 24",
+        "head": "4985db7f885cab5edc466e80cbbf9ce540aaaaa3",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42445338812/job/128622967101"
+      },
+      {
+        "id": 128622966486,
+        "name": "CI / fast",
+        "head": "4985db7f885cab5edc466e80cbbf9ce540aaaaa3",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42445338624/job/128622966486"
+      },
+      {
+        "id": 128622884740,
+        "name": "macos-15-intel / Node 24",
+        "head": "4985db7f885cab5edc466e80cbbf9ce540aaaaa3",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42445310066/job/128622884740"
+      },
+      {
+        "id": 128622884641,
+        "name": "macos-15 / Node 24",
+        "head": "4985db7f885cab5edc466e80cbbf9ce540aaaaa3",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42445310066/job/128622884641"
+      },
+      {
+        "id": 128622884638,
+        "name": "windows-2022 / Node 24",
+        "head": "4985db7f885cab5edc466e80cbbf9ce540aaaaa3",
+        "status": "completed",
+        "conclusion": "failure",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42445310066/job/128622884638"
+      },
+      {
+        "id": 128622884574,
+        "name": "ubuntu-24.04 / Node 24",
+        "head": "4985db7f885cab5edc466e80cbbf9ce540aaaaa3",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42445310066/job/128622884574"
+      },
+      {
+        "id": 128622884385,
+        "name": "Native Linux isolation / Node 24",
+        "head": "4985db7f885cab5edc466e80cbbf9ce540aaaaa3",
+        "status": "completed",
+        "conclusion": "failure",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42445310066/job/128622884385"
+      }
+    ],
+    "linux": {
+      "run": 42445310066,
+      "job": 128622884385,
+      "artifactId": 13602994457,
+      "archive": {
+        "path": "artifacts/aug011/4985-push-failed.zip",
+        "bytes": 220106,
+        "sha256": "d395de835c1ac796866053072567b0bbecd2f5e899a477e6053f546d9faf1a32"
+      },
+      "members": [
+        {
+          "path": "001-docker.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "002-gpg.log",
+          "bytes": 564,
+          "sha256": "2aedfbea9a2f18276907dc72262cf937c56bebc012fd11e27935a0c2625c007b"
+        },
+        {
+          "path": "003-gpg.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "004-sudo.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "005-sudo.log",
+          "bytes": 215,
+          "sha256": "13becc80e27dba884f70fa6b568d0feb779397f1ff9c4c57692814de15dff086"
+        },
+        {
+          "path": "006-gpgv.log",
+          "bytes": 537,
+          "sha256": "10e1846c320ba176888087f704597ef2c66b01f0d5f7ff20053868563007a90f"
+        },
+        {
+          "path": "007-apt-helper.log",
+          "bytes": 495027,
+          "sha256": "6bf01d98eab0b25b52273e91cb306527a9c769c3c7072e5bd68179855cedb48f"
+        },
+        {
+          "path": "008-apt-get.log",
+          "bytes": 155,
+          "sha256": "0d5401b4be9cd447f52eb8b8c37578c68454b39c6495b1baf22002a5a6792266"
+        },
+        {
+          "path": "009-apt-get.log",
+          "bytes": 159,
+          "sha256": "49d55078b269df1647891002f9e08bc083135e1ab7b2dbb9f8ee3782fe2a731c"
+        },
+        {
+          "path": "010-apt-get.log",
+          "bytes": 156,
+          "sha256": "ec78f73c5695271d68e8866fec5b7b84307d2572645844439d5b5447da5b2e19"
+        },
+        {
+          "path": "011-sudo.log",
+          "bytes": 2276,
+          "sha256": "53a4712759174323f023897383aa03c97b9ccfdcdde840a570334285999d670c"
+        },
+        {
+          "path": "012-sudo.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "013-sudo.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "014-dpkg-query.log",
+          "bytes": 29,
+          "sha256": "f93044ee4d47e5af160e854f9d7eddb733c869d2280d8a4ba36cbe55f8efdaab"
+        },
+        {
+          "path": "015-dpkg-query.log",
+          "bytes": 29,
+          "sha256": "f93044ee4d47e5af160e854f9d7eddb733c869d2280d8a4ba36cbe55f8efdaab"
+        },
+        {
+          "path": "016-dpkg-query.log",
+          "bytes": 26,
+          "sha256": "87a3059394e98b31d8e424e7e96998818fbbcb9ac861b9ebe01091c684a99b7f"
+        },
+        {
+          "path": "017-docker.log",
+          "bytes": 880,
+          "sha256": "58041e9f63e4c510f59d2cbf063636fbe85cc41ffc70caef464e33dfb4ea3e58"
+        },
+        {
+          "path": "018-docker.log",
+          "bytes": 78,
+          "sha256": "4cb552460198d896f6a2e9bc42eb48724a5678212f5d391f8bf469b75b09f149"
+        },
+        {
+          "path": "019-docker.log",
+          "bytes": 1073,
+          "sha256": "74c40f8544e34a8624dce8690540cca3e2adf46382f423be31181cf0ac084fc9"
+        },
+        {
+          "path": "020-docker.log",
+          "bytes": 78,
+          "sha256": "4cb552460198d896f6a2e9bc42eb48724a5678212f5d391f8bf469b75b09f149"
+        },
+        {
+          "path": "021-docker.log",
+          "bytes": 1835,
+          "sha256": "04f88cdea05f19ab38848c9318919aaaea8299c7313285e8ef243730af559606"
+        },
+        {
+          "path": "bootstrap.json",
+          "bytes": 16813,
+          "sha256": "661ddb79253c5517418834f39d8e3f2fc3690386ceeb259c91a88613038bc87b"
+        },
+        {
+          "path": "cli-LICENSE",
+          "bytes": 10765,
+          "sha256": "2d81ea060825006fc8f3fe28aa5dc0ffeb80faf325b612c955229157b8c10dc0"
+        },
+        {
+          "path": "cli-NOTICE",
+          "bytes": 635,
+          "sha256": "a8c869fbda819afb8d80e0ac19bac52e766bc6c19cb38cf94f52d64c4be2aab6"
+        },
+        {
+          "path": "containerd-LICENSE",
+          "bytes": 10765,
+          "sha256": "4bbe3b885e8cd1907ab4cf9a41e862e74e24b5422297a4f2fe524e6a30ada2b4"
+        },
+        {
+          "path": "containerd-NOTICE",
+          "bytes": 519,
+          "sha256": "03f0b4bcaecfdb491ef5a7d320e2c2adf886c732d34e3fff87d52dbaec64d8c3"
+        },
+        {
+          "path": "docker-archive-key.asc",
+          "bytes": 3817,
+          "sha256": "1500c1f56fa9e26b9b8f42452a553675796ade0807cdce11975eb98170b3a570"
+        },
+        {
+          "path": "docker-noble-amd64-Packages",
+          "bytes": 495027,
+          "sha256": "6bf01d98eab0b25b52273e91cb306527a9c769c3c7072e5bd68179855cedb48f"
+        },
+        {
+          "path": "docker-noble-InRelease",
+          "bytes": 48475,
+          "sha256": "6ac25b6892e468c29d0822d6422efe16a63ad6155d1186c85006e0e92f486362"
+        },
+        {
+          "path": "engine-LICENSE",
+          "bytes": 10765,
+          "sha256": "7c87873291f289713ac5df48b1f2010eb6963752bbd6b530416ab99fc37914a8"
+        },
+        {
+          "path": "engine-NOTICE",
+          "bytes": 1030,
+          "sha256": "a249c4197359eee43031d16cecb172326f92ee7b6701af99dfe5c3e5b3d5eca9"
+        },
+        {
+          "path": "node-image-Dockerfile",
+          "bytes": 5010,
+          "sha256": "b9337735f3a1bac3fb9501495448f8dc0ae58eacd8513fe757dd7da7bf4208da"
+        },
+        {
+          "path": "runc-LICENSE",
+          "bytes": 10758,
+          "sha256": "552a739c3b25792263f731542238b92f6f8d07e9a488eae27e6c4690038a8243"
+        },
+        {
+          "path": "runc-NOTICE",
+          "bytes": 515,
+          "sha256": "e94a9789f41c5c3d6f74212571e6f44367de88269f1ce9c32f26c1b67eec6e7f"
+        },
+        {
+          "path": "source/live-receipt.json",
+          "bytes": 28691,
+          "sha256": "810e4a341d339e14027ea30bcf4edfbf925a16a485a00200fa0c811851b2fa35"
+        },
+        {
+          "path": "source/live-tests.tap",
+          "bytes": 4348,
+          "sha256": "288226ffdf0dfb3a264c627478a308d8ba4fa5ec544c0be63b171bef4f4f318c"
+        }
+      ],
+      "sourceScenarios": {
+        "required": 12,
+        "passed": 11
+      },
+      "cleanup": {
+        "scenarios": 12,
+        "steps": 72
+      },
+      "failedProbe": {
+        "probe": 5,
+        "exitCode": 137,
+        "oomKilled": false,
+        "stdout": "",
+        "stderr": "",
+        "outputBytes": 0,
+        "cleanup": "removed",
+        "backend": {
+          "observedAt": "2026-11-08T04:05:13.147Z",
+          "apiVersion": "1.45",
+          "engineVersion": "29.9.3",
+          "engineCommit": "70efc0e",
+          "kernel": "7.0.0-1017-azure",
+          "operatingSystem": "Ubuntu 24.04.5 LTS",
+          "architecture": "x86_64",
+          "cgroupVersion": "2",
+          "seccomp": "builtin",
+          "containerd": {
+            "version": "v2.4.2",
+            "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+          },
+          "runc": {
+            "version": "1.5.2",
+            "commit": "v1.5.2-0-g29dd3dc2"
+          },
+          "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+        }
+      },
+      "installedLive": "skipped after failed source gate",
+      "cause": "Unresolved. No later run assigns a cause to this earlier failure."
+    },
+    "windows": {
+      "run": 42445310066,
+      "job": 128622884638,
+      "log": {
+        "path": "artifacts/aug011/4985-push-windows-failed.log",
+        "bytes": 81023,
+        "sha256": "3c1af1fdaa98df7c8c09a7db69a664cdf1bce045cbaa6aaa6fd15846fef6f5de"
+      },
+      "failure": "Transient fixture-start polling expired in synthetic Engine timeout/cancellation case. PR207 replaces this with causal deadline/actual wait observations; original failed log remains unchanged."
+    },
+    "registration": {
+      "cause": "Unresolved native private-journal EPERM. A separate bounded observer later saw one first-attempt rename succeed; that does not explain or repair the original occurrence."
+    },
+    "failedJobReruns": 0
+  },
+  "rawPins": [
+    {
+      "path": "artifacts/aug011/native/result.json",
+      "bytes": 1638,
+      "sha256": "271f51b3deb6413616175502d8a04ca20d3f166ea91c31b33cf98c4f7a70d2af"
+    },
+    {
+      "path": "artifacts/aug011/native/build.log",
+      "bytes": 786,
+      "sha256": "1c66d4a7f4a88e90c2b4323081193c0d29bf3d580ec5966c6010a61c018d5e73"
+    },
+    {
+      "path": "artifacts/aug011/native/check.log",
+      "bytes": 48485,
+      "sha256": "b91dfdae6e0a1f1ba8e4b9662e43dc8ff223789edd24780562b09f24756b11c6"
+    },
+    {
+      "path": "artifacts/aug011/4985-push-failed.zip",
+      "bytes": 220106,
+      "sha256": "d395de835c1ac796866053072567b0bbecd2f5e899a477e6053f546d9faf1a32"
+    },
+    {
+      "path": "artifacts/aug011/4985-push-live-failed.log",
+      "bytes": 19508,
+      "sha256": "40e6d5e2a67fed883de7c8eb3e32ee3496bd3d36b7c7854fa6d5c4d8b3fbc4c3"
+    },
+    {
+      "path": "artifacts/aug011/4985-push-windows-failed.log",
+      "bytes": 81023,
+      "sha256": "3c1af1fdaa98df7c8c09a7db69a664cdf1bce045cbaa6aaa6fd15846fef6f5de"
+    },
+    {
+      "path": "artifacts/aug011/source-review.json",
+      "bytes": 1437,
+      "sha256": "52c1dd948aa2ab41f2a8ccc2e2f3260913b3567ba90b77eba9188a4a93a63592"
+    },
+    {
+      "path": "artifacts/aug011/red-update-check.log",
+      "bytes": 124204,
+      "sha256": "f4d3766554234a8d0ecdb589a63122b462820a520bbe5d4b09262d876b426984"
+    },
+    {
+      "path": "artifacts/aug011/green-update-check.log",
+      "bytes": 16948,
+      "sha256": "498d5275f6e7f8172874206ef38ba38c75a2ee42e25b926a53117ee7f1eb21e3"
+    },
+    {
+      "path": "artifacts/aug011/original-4985-checks.json",
+      "bytes": 3363,
+      "sha256": "35de4fcd30ba58e549979d8ce985e7cef3646a73be55b4ed9c0389dde5736c14"
+    }
+  ],
+  "protectedMetadata": {
+    "requirements": 300,
+    "onlyStageDifferenceFromQualifiedMain": "CLI-157: not_started to implementation; inherited from PR206 development",
+    "cli165Stage": "not_started",
+    "sourceCatalogAnd117ScopeDependenciesUnchanged": true,
+    "acceptanceAwarded": false
+  },
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "modelCalls": 0,
+  "limitations": [
+    "Offline nonmutating comparison only. No download/staging/activation/payload execution/rollback or credential/global-agent setup.",
+    "Pathname races, execution/extraction/import closure and fullCLI165 acceptance remain open.",
+    "Synthetic provenance is not authenticated legal authority or third-party redistribution clearance.",
+    "The integrated head has not yet run its required native and hosted gates; original failed observations remain immutable."
+  ],
+  "next": "Independent combined source/metadata review, ordinary merge commit, exact native/package/audit/license/parser and11hosted checks; then immutable qualification/final review and normal delivery."
+}

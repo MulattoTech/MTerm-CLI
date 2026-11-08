@@ -1,0 +1,341 @@
+{
+  "schemaVersion": 1,
+  "kind": "ordinary-integration-development",
+  "capability": "AUG-011",
+  "issues": [
+    93,
+    83,
+    81
+  ],
+  "pr": 206,
+  "recordedAt": "2026-11-08T08:37:54.922Z",
+  "parents": {
+    "previousHead": "3ca898791a9178fb4e94dcdaaf3ead7df7a543bf",
+    "qualifiedMain": "ad1571b94c70fb8a0f4542302f5d40c6d80a97d7"
+  },
+  "main": {
+    "tree": "98b1775227b59e3a98472e61dd2d82c184f52aea",
+    "matchesReviewedHead": "ed711f23a0b8979805eb4ecc2c6395643b77a838",
+    "checks": [
+      {
+        "id": 128667126392,
+        "name": "macos-15-intel / Node 24",
+        "head": "ad1571b94c70fb8a0f4542302f5d40c6d80a97d7",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42460024808/job/128667126392"
+      },
+      {
+        "id": 128667126386,
+        "name": "macos-15 / Node 24",
+        "head": "ad1571b94c70fb8a0f4542302f5d40c6d80a97d7",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42460024808/job/128667126386"
+      },
+      {
+        "id": 128667126376,
+        "name": "windows-2022 / Node 24",
+        "head": "ad1571b94c70fb8a0f4542302f5d40c6d80a97d7",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42460024808/job/128667126376"
+      },
+      {
+        "id": 128667126312,
+        "name": "ubuntu-24.04 / Node 24",
+        "head": "ad1571b94c70fb8a0f4542302f5d40c6d80a97d7",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42460024808/job/128667126312"
+      },
+      {
+        "id": 128667126158,
+        "name": "Native Linux isolation / Node 24",
+        "head": "ad1571b94c70fb8a0f4542302f5d40c6d80a97d7",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42460024808/job/128667126158"
+      },
+      {
+        "id": 128667126122,
+        "name": "CI / fast",
+        "head": "ad1571b94c70fb8a0f4542302f5d40c6d80a97d7",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42460024811/job/128667126122"
+      }
+    ],
+    "qualificationRecord": "docs/validation/2026-11-08-aug003-registry-qualification.json"
+  },
+  "candidate": {
+    "committed": false,
+    "subjectFingerprint": "3325addfa723e1af74a7058b200e7e18de201cfb27426a589aa705c602329ea8",
+    "sourceBindings": [
+      {
+        "path": "scripts/verify-package.mjs",
+        "sha256": "c8d9bd09e09c459a416ba757bab124867d0f64f4c6d7afb02248f93be5ef3263",
+        "hashMode": "Git-normalized UTF-8"
+      },
+      {
+        "path": "src/files.ts",
+        "sha256": "76eafeecc7f64d8b823e9e9441d1120c0dd0d8383617cecb0d9a6e68481c52b0",
+        "hashMode": "Git-normalized UTF-8"
+      },
+      {
+        "path": "src/pack-updates.ts",
+        "sha256": "65c70642995e99d277aeacfc286509d84dac1bb9adcafd6311da1cdebcd377bc",
+        "hashMode": "Git-normalized UTF-8"
+      },
+      {
+        "path": "src/tool-packs.ts",
+        "sha256": "4b4ccb73edc1947bc85082c05a297d8c02a97913f5995d32db8b52fe00c4d3fb",
+        "hashMode": "Git-normalized UTF-8"
+      },
+      {
+        "path": "tests/file-write-retry.test.mjs",
+        "sha256": "d054fae7d7147577a8d62c9e366ae5366435f76b67fd5e0619334fe70613c16e",
+        "hashMode": "Git-normalized UTF-8"
+      },
+      {
+        "path": "tests/pack-registry-outcomes.test.mjs",
+        "sha256": "5bb96fdbc68c0e31c7dd1cdeb8254efa3833094450915d3ea9b7e77d6b9f3203",
+        "hashMode": "Git-normalized UTF-8"
+      },
+      {
+        "path": "tests/pack-updates.test.mjs",
+        "sha256": "269bf868d6dc2e3de6d4efc3f59fae3ac0cb88e43543094aa66cd9e323b73133",
+        "hashMode": "Git-normalized UTF-8"
+      }
+    ],
+    "resolution": "Only the tool-packs attribution header conflicted. Both exact parent verifier blocks are retained: update-check 42 cases/seven modules and registry persistence 41 cases/nine modules. The merged runtime uses both parents without an algorithm conflict.",
+    "focused": {
+      "node": "v24.21.0",
+      "executable": "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node.exe",
+      "startedAt": "2026-11-08T08:36:01.600Z",
+      "head": "3ca898791a9178fb4e94dcdaaf3ead7df7a543bf",
+      "main": "ad1571b94c70fb8a0f4542302f5d40c6d80a97d7",
+      "qualification": false,
+      "modelCalls": 0,
+      "steps": [
+        {
+          "name": "build-code",
+          "args": [
+            "C:\\Tools\\Dev\\MTerm-CLI\\artifacts\\toolchain\\node-v24.21.0-win-x64\\node_modules\\npm\\bin\\npm-cli.js",
+            "run",
+            "build:code"
+          ],
+          "startedAt": "2026-11-08T08:36:01.603Z",
+          "finishedAt": "2026-11-08T08:36:04.136Z",
+          "exitCode": 0,
+          "log": "artifacts/aug011-resume-20261108/node24-build-code.log",
+          "sha256": "9a9214dd92f21ea05ec920f34a2d1b1e5699936c060ba52eba85b89808758cb9"
+        },
+        {
+          "name": "format-check",
+          "args": [
+            "node_modules/prettier/bin/prettier.cjs",
+            "--check",
+            "src/tool-packs.ts",
+            "scripts/verify-package.mjs"
+          ],
+          "startedAt": "2026-11-08T08:36:04.145Z",
+          "finishedAt": "2026-11-08T08:36:07.325Z",
+          "exitCode": 0,
+          "log": "artifacts/aug011-resume-20261108/node24-format-check.log",
+          "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+        },
+        {
+          "name": "combined-regressions",
+          "args": [
+            "--test",
+            "--test-reporter=tap",
+            "--test-concurrency=1",
+            "tests/pack-updates.test.mjs",
+            "tests/file-write-retry.test.mjs",
+            "tests/pack-registry-outcomes.test.mjs"
+          ],
+          "startedAt": "2026-11-08T08:36:07.328Z",
+          "finishedAt": "2026-11-08T08:36:18.397Z",
+          "exitCode": 0,
+          "log": "artifacts/aug011-resume-20261108/node24-combined-regressions.log",
+          "sha256": "4f7a42539edfc2201e4092d5a6ccb7b4c258f75b2db3dd2ee6954c30c7a007c8",
+          "tests": {
+            "tests": 83,
+            "pass": 83,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        }
+      ],
+      "finishedAt": "2026-11-08T08:36:18.397Z"
+    },
+    "qualification": "New exact committed qualification is pending."
+  },
+  "preserved": {
+    "priorValidationRecords": 343,
+    "distinctValidationFiles": 174,
+    "artifactFiles": 178,
+    "originalNative": {
+      "schemaVersion": 1,
+      "head": "3ca898791a9178fb4e94dcdaaf3ead7df7a543bf",
+      "tree": "a83b6513cc2c9b66fd126eaf947f84fc57f356a5",
+      "startedAt": "2026-11-08T06:14:56.871Z",
+      "node": "v24.21.0",
+      "platform": "win32",
+      "arch": "x64",
+      "steps": [
+        {
+          "name": "quick",
+          "args": [
+            "scripts/orchestration/verify.mjs",
+            "--quick"
+          ],
+          "startedAt": "2026-11-08T06:14:56.873Z",
+          "finishedAt": "2026-11-08T06:16:25.203Z",
+          "durationMs": 88330,
+          "exitCode": 1,
+          "log": "artifacts/aug011/integration-native-quick.log",
+          "logSha256": "7684b2b441dc7951d8fa42861945273f89d9984bcf4c832c9d36abdefab89080",
+          "tests": {
+            "tests": 508,
+            "pass": 507,
+            "fail": 1,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        }
+      ],
+      "modelCalls": 0,
+      "finishedAt": "2026-11-08T06:16:25.204Z"
+    },
+    "originalNativeLog": {
+      "path": "artifacts/aug011/integration-native-quick.log",
+      "bytes": 50908,
+      "sha256": "7684b2b441dc7951d8fa42861945273f89d9984bcf4c832c9d36abdefab89080"
+    },
+    "historicalEpermCauseKnown": false,
+    "failedJobReruns": 0
+  },
+  "runnerSelection": {
+    "initial": {
+      "startedAt": "2026-11-08T08:34:33.353Z",
+      "head": "3ca898791a9178fb4e94dcdaaf3ead7df7a543bf",
+      "main": "ad1571b94c70fb8a0f4542302f5d40c6d80a97d7",
+      "qualification": false,
+      "modelCalls": 0,
+      "steps": [
+        {
+          "name": "build-code",
+          "args": [
+            "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js",
+            "run",
+            "build:code"
+          ],
+          "startedAt": "2026-11-08T08:34:33.358Z",
+          "finishedAt": "2026-11-08T08:34:35.447Z",
+          "exitCode": 0,
+          "log": "artifacts/aug011-resume-20261108/build-code.log",
+          "sha256": "4e2c784074787a085eb2c784aeca45a3724f734697e15a555da3220cabd39789"
+        },
+        {
+          "name": "format-check",
+          "args": [
+            "node_modules/prettier/bin/prettier.cjs",
+            "--check",
+            "src/tool-packs.ts",
+            "scripts/verify-package.mjs"
+          ],
+          "startedAt": "2026-11-08T08:34:35.448Z",
+          "finishedAt": "2026-11-08T08:34:36.293Z",
+          "exitCode": 0,
+          "log": "artifacts/aug011-resume-20261108/format-check.log",
+          "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+        },
+        {
+          "name": "combined-regressions",
+          "args": [
+            "--test",
+            "--test-reporter=tap",
+            "--test-concurrency=1",
+            "tests/pack-updates.test.mjs",
+            "tests/file-write-retry.test.mjs",
+            "tests/pack-registry-outcomes.test.mjs"
+          ],
+          "startedAt": "2026-11-08T08:34:36.294Z",
+          "finishedAt": "2026-11-08T08:34:48.274Z",
+          "exitCode": 1,
+          "log": "artifacts/aug011-resume-20261108/combined-regressions.log",
+          "sha256": "989e229cfc37ff6238384bd8e1a0c945e5e572acf08411ddf274d81beec1ab5c",
+          "tests": {
+            "tests": 83,
+            "pass": 48,
+            "fail": 35,
+            "cancelled": 0,
+            "skipped": 0
+          }
+        }
+      ],
+      "finishedAt": "2026-11-08T08:34:48.274Z"
+    },
+    "initialRuntime": "v27.0.0-alpha.0.0.0",
+    "cause": "The first development command resolved workstation default Node 27. The existing Node 24 admission rejected the fixtures. It is not product qualification and does not explain any historical EPERM.",
+    "correctedRuntime": "v24.21.0",
+    "sourceAndAssertionsUnchanged": true
+  },
+  "rawPins": [
+    {
+      "path": "artifacts/aug011-resume-20261108/resolution.json",
+      "bytes": 416,
+      "sha256": "65e45f85ff8cbd0fd09ccfc1b42874f8b3ec5132fe78c4b460249dd4e658b707"
+    },
+    {
+      "path": "artifacts/aug011-resume-20261108/focused.json",
+      "bytes": 1858,
+      "sha256": "48031a9119637cdbaaae7471d95954a75a3e325140d7354672a18bd406d6bbfa"
+    },
+    {
+      "path": "artifacts/aug011-resume-20261108/combined-regressions.log",
+      "bytes": 54223,
+      "sha256": "989e229cfc37ff6238384bd8e1a0c945e5e572acf08411ddf274d81beec1ab5c"
+    },
+    {
+      "path": "artifacts/aug011-resume-20261108/focused-node24.json",
+      "bytes": 2045,
+      "sha256": "04b4fd9ef2982e66a1318e9b344eff875aea3c372d76868424203f94bb537070"
+    },
+    {
+      "path": "artifacts/aug011-resume-20261108/node24-build-code.log",
+      "bytes": 64,
+      "sha256": "9a9214dd92f21ea05ec920f34a2d1b1e5699936c060ba52eba85b89808758cb9"
+    },
+    {
+      "path": "artifacts/aug011-resume-20261108/node24-format-check.log",
+      "bytes": 66,
+      "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+    },
+    {
+      "path": "artifacts/aug011-resume-20261108/node24-combined-regressions.log",
+      "bytes": 16813,
+      "sha256": "4f7a42539edfc2201e4092d5a6ccb7b4c258f75b2db3dd2ee6954c30c7a007c8"
+    }
+  ],
+  "protectedMetadata": {
+    "requirements": 300,
+    "stagesUnchangedFromPreviousHead": true,
+    "capabilityScopes": 117,
+    "scopeDependenciesUnchanged": true,
+    "acceptanceAwarded": false
+  },
+  "authority": "Standing owner authorization; one implementation owner and one independent read-only peer.",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "modelCalls": 0,
+  "limitations": [
+    "Offline comparison only; no transactional installation or automatic activation.",
+    "Original qualification failures remain immutable and their causes are not inferred from later success.",
+    "Full redistribution and actual ChatGPT integration acceptance remain separate."
+  ],
+  "next": "Independent combined source/metadata review; ordinary merge commit; exact native, installed package, production audit, isolated parser and hosted checks; expected-head normal merge after final review."
+}

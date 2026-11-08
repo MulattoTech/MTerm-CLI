@@ -82,3 +82,7 @@ node scripts/verify-package.mjs
 ```
 
 Normal build/check/pack also require the explicit roadmap review workflow. The installed verifier binds compiled CLI/MCP/pack bytes to the installed tarball, runs the same real CLI/SDK acceptance suite from outside the checkout, and records the measured production footprint. See the [dated report](validation/2026-11-07-aug001.md) and [resumable queue](expansion/README.md). Platform pass, owner authorization (including the standing delegation in OWNER_AUTHORIZATION.md), actual-client consent, licensing scope and whole-product acceptance remain separate evidence fields. Routine implementation review/merge does not require another owner action.
+
+## Offline candidate update comparison
+
+Use packs update --check with explicit root, candidate manifest/SHA, registry and provenance manifest/SHA to compare a selected local candidate. The [update-check contract](parity/PACK_UPDATES.md) defines exact raw-byte/provenance coverage, measured deltas, blocked outcomes and conditional previous-registration recovery. This command creates no installation, lock or backup and grants no execution. There is no apply mode in this prerequisite. Ordinary registration commands retain their existing behavior.

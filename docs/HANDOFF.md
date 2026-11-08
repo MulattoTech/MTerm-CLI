@@ -1,3 +1,13 @@
+# AUG-003 exact-code qualification — 2026-11-08 UTC
+
+[PR #202](https://github.com/MulattoTech/MTerm-CLI/pull/202) code d42d87e03f456e78262cdaff66e2bf8925606064 passed native388/388, normal prepack, self-host, real installed29pack+18provenance checks, advisoryaudit0 and9/9 hosted checks. Other hosts passed376 with12existing Windows-only skips; all13 new catalog cases passed on every platform. Independent review approved136sourceentries and the actual spawn/selection/schema/refresh boundaries.
+
+[Qualification](validation/2026-11-08-aug003-qualification.json), [source review](validation/2026-11-08-aug003-source-review.json) and four structured platform receipts retain exact versions/hashes and limitations. The launcher and all3dependency packages are byte-identical to PR201. MTerm adds19947package bytes across6files; Windows installed total14496913bytes. Prior development failures remain retained. The matrix now has40passed scoped scenarios,2300unrun and0accepted capabilities.
+
+Final metadata-head checks/review, normal expected-head merge and main verification are next. Continue AUG012/#92 afterward; its existing4-operation limiter can starve owned cleanup under load and needs a bounded recovery path. Resources/prompts, cross-host quotas and actual ChatGPT app integration remain unaccepted. No owner manual review or model usage is required. AUG0/117, CLI29.12%/0complete, DCP0/48 and WEB0/12 remain unchanged.
+
+---
+
 # Current continuation — AUG-003, 2026-11-08 UTC
 
 PR #201 is delivered at519cbff241be2a36bc180f91198e0492ec5ba1cc:9/9 final-head checks, independent receipt/source review, matching merge tree and5/5 main checks. PR199 and200 are already delivered. The historical pending text below is superseded by this checkpoint and epic81 comment6714919745.

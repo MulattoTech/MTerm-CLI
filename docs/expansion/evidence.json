@@ -331,8 +331,8 @@
     "AUG-003": {
       "scope": "ABI1 tools-only bounded catalog, effective schema discovery, connection-local selection and explicit refresh under the immutable startup ceiling",
       "limitations": [
-        "Resources/prompts and shared remote-client authorization are not implemented.",
-        "Full platform/client/licensing acceptance remains open; development results do not populate exact-commit scenario cells."
+        "Scoped tools-only catalog and selection scenarios are qualified on four hosts; resources/prompts, shared remote clients and full AUG003 acceptance remain open.",
+        "All three dependency package payloads and launcher bytes are unchanged; full transitive redistribution admission is not granted."
       ],
       "fixtures": [
         {
@@ -346,9 +346,252 @@
           "kind": "historical-qualification",
           "path": "docs/validation/2026-11-08-aug003-development.json",
           "sha256": "12e5172268ac11fa139e9fefcb44045f6e64489b3bc83d48ba56fc00cbee61fc"
+        },
+        {
+          "kind": "historical-qualification",
+          "path": "docs/validation/2026-11-08-aug003-qualification.json",
+          "sha256": "34fbe140f81154fe89689ff21071282ffc6bb791f8354af8361b5c0950d1cdd6"
+        },
+        {
+          "kind": "historical-qualification",
+          "path": "docs/validation/2026-11-08-aug003-source-review.json",
+          "sha256": "878bc5f30d4f0a1b3309fcd35cb120f6e4877b9fe3e54100c8e5c377356e79dc"
         }
       ],
-      "platforms": {},
+      "platforms": {
+        "win32-x64": {
+          "support": "supported",
+          "reason": "Scoped ABI1 catalog scenarios executed on this host; full capability and third-party backend acceptance are not implied.",
+          "subject": {
+            "testedCommit": "d42d87e03f456e78262cdaff66e2bf8925606064",
+            "subjectFingerprint": "c29f0e5b83743d7ac18c7d5f63cc8880f4d855aebd1e5e0f3e4fd9aafe418218",
+            "backend": {
+              "name": "MTerm-CLI local optional-pack catalog",
+              "version": "0.0.1-preview.1 / ABI 1"
+            },
+            "runtime": {
+              "name": "node",
+              "version": "v24.21.0"
+            }
+          },
+          "cases": {
+            "success": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-win32-x64.json",
+                "sha256": "5eb14f41918288556b62a6af56a4a6f5fcebac01f08bccad7db6cee76de632ac"
+              }
+            },
+            "permission_denied": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-win32-x64.json",
+                "sha256": "5eb14f41918288556b62a6af56a4a6f5fcebac01f08bccad7db6cee76de632ac"
+              }
+            },
+            "cancelled": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-win32-x64.json",
+                "sha256": "5eb14f41918288556b62a6af56a4a6f5fcebac01f08bccad7db6cee76de632ac"
+              }
+            },
+            "deadline": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-win32-x64.json",
+                "sha256": "5eb14f41918288556b62a6af56a4a6f5fcebac01f08bccad7db6cee76de632ac"
+              }
+            },
+            "unsupported_platform": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-win32-x64.json",
+                "sha256": "5eb14f41918288556b62a6af56a4a6f5fcebac01f08bccad7db6cee76de632ac"
+              }
+            }
+          }
+        },
+        "linux-x64": {
+          "support": "supported",
+          "reason": "Scoped ABI1 catalog scenarios executed on this host; full capability and third-party backend acceptance are not implied.",
+          "subject": {
+            "testedCommit": "d42d87e03f456e78262cdaff66e2bf8925606064",
+            "subjectFingerprint": "c29f0e5b83743d7ac18c7d5f63cc8880f4d855aebd1e5e0f3e4fd9aafe418218",
+            "backend": {
+              "name": "MTerm-CLI local optional-pack catalog",
+              "version": "0.0.1-preview.1 / ABI 1"
+            },
+            "runtime": {
+              "name": "node",
+              "version": "v24.21.0"
+            }
+          },
+          "cases": {
+            "success": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-linux-x64.json",
+                "sha256": "6410d1f06e130988647ba7bd0be4fc0fb2e1f92225b71669ab8bb80b5dc0cff0"
+              }
+            },
+            "permission_denied": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-linux-x64.json",
+                "sha256": "6410d1f06e130988647ba7bd0be4fc0fb2e1f92225b71669ab8bb80b5dc0cff0"
+              }
+            },
+            "cancelled": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-linux-x64.json",
+                "sha256": "6410d1f06e130988647ba7bd0be4fc0fb2e1f92225b71669ab8bb80b5dc0cff0"
+              }
+            },
+            "deadline": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-linux-x64.json",
+                "sha256": "6410d1f06e130988647ba7bd0be4fc0fb2e1f92225b71669ab8bb80b5dc0cff0"
+              }
+            },
+            "unsupported_platform": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-linux-x64.json",
+                "sha256": "6410d1f06e130988647ba7bd0be4fc0fb2e1f92225b71669ab8bb80b5dc0cff0"
+              }
+            }
+          }
+        },
+        "darwin-arm64": {
+          "support": "supported",
+          "reason": "Scoped ABI1 catalog scenarios executed on this host; full capability and third-party backend acceptance are not implied.",
+          "subject": {
+            "testedCommit": "d42d87e03f456e78262cdaff66e2bf8925606064",
+            "subjectFingerprint": "c29f0e5b83743d7ac18c7d5f63cc8880f4d855aebd1e5e0f3e4fd9aafe418218",
+            "backend": {
+              "name": "MTerm-CLI local optional-pack catalog",
+              "version": "0.0.1-preview.1 / ABI 1"
+            },
+            "runtime": {
+              "name": "node",
+              "version": "v24.21.0"
+            }
+          },
+          "cases": {
+            "success": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-darwin-arm64.json",
+                "sha256": "9a707a6287b75ae2318cba95a2a1fcbf8f58b2e6f38016f7dda8bbbefa04a530"
+              }
+            },
+            "permission_denied": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-darwin-arm64.json",
+                "sha256": "9a707a6287b75ae2318cba95a2a1fcbf8f58b2e6f38016f7dda8bbbefa04a530"
+              }
+            },
+            "cancelled": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-darwin-arm64.json",
+                "sha256": "9a707a6287b75ae2318cba95a2a1fcbf8f58b2e6f38016f7dda8bbbefa04a530"
+              }
+            },
+            "deadline": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-darwin-arm64.json",
+                "sha256": "9a707a6287b75ae2318cba95a2a1fcbf8f58b2e6f38016f7dda8bbbefa04a530"
+              }
+            },
+            "unsupported_platform": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-darwin-arm64.json",
+                "sha256": "9a707a6287b75ae2318cba95a2a1fcbf8f58b2e6f38016f7dda8bbbefa04a530"
+              }
+            }
+          }
+        },
+        "darwin-x64": {
+          "support": "supported",
+          "reason": "Scoped ABI1 catalog scenarios executed on this host; full capability and third-party backend acceptance are not implied.",
+          "subject": {
+            "testedCommit": "d42d87e03f456e78262cdaff66e2bf8925606064",
+            "subjectFingerprint": "c29f0e5b83743d7ac18c7d5f63cc8880f4d855aebd1e5e0f3e4fd9aafe418218",
+            "backend": {
+              "name": "MTerm-CLI local optional-pack catalog",
+              "version": "0.0.1-preview.1 / ABI 1"
+            },
+            "runtime": {
+              "name": "node",
+              "version": "v24.21.0"
+            }
+          },
+          "cases": {
+            "success": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-darwin-x64.json",
+                "sha256": "5e8aa27754a9251edb069a0a8e78f788de019ac001484b2ce11a14ac24e99c85"
+              }
+            },
+            "permission_denied": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-darwin-x64.json",
+                "sha256": "5e8aa27754a9251edb069a0a8e78f788de019ac001484b2ce11a14ac24e99c85"
+              }
+            },
+            "cancelled": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-darwin-x64.json",
+                "sha256": "5e8aa27754a9251edb069a0a8e78f788de019ac001484b2ce11a14ac24e99c85"
+              }
+            },
+            "deadline": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-darwin-x64.json",
+                "sha256": "5e8aa27754a9251edb069a0a8e78f788de019ac001484b2ce11a14ac24e99c85"
+              }
+            },
+            "unsupported_platform": {
+              "status": "passed",
+              "fixtureId": "fixture-1",
+              "receipt": {
+                "path": "docs/validation/2026-11-08-aug003-darwin-x64.json",
+                "sha256": "5e8aa27754a9251edb069a0a8e78f788de019ac001484b2ce11a14ac24e99c85"
+              }
+            }
+          }
+        }
+      },
       "acceptanceReview": null
     }
   }

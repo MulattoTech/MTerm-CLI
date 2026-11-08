@@ -1,3 +1,63 @@
+# PR206 ordinary integration of qualified PR207 main — 2026-11-08T06:06:19.784Z
+
+PR207 is normally merged as a7c047c, treebde6453 identical to reviewed finala8417e5, with6/6final and6/6main checks. Main source12/12+installed12/12,16strict rawOOM probes,38cgroupfs/v2 observations,144cleanup steps and31protocol cases passed; [merged-main receipt](validation/2026-11-08-aug005-merged-main.json) preserves the artifact/member pins. All previous failures remain historical, with no blanket cause/fix claim.
+
+PR206 is being ordinarily merged from clean4985 with qualifiedmaina7c047c; commonbasedd941. Its runtime update-check files remain unchanged; qualified isolation files remain unchanged. The verifier keeps42installed update cases/sevenmodules and31isolation cases; only its attribution-header conflict required combined lines. Canonical metadata is reconciled by ID, then reviewed/rendered; no accepted capability is awarded. CLI157 remainsimplementation,CLI165not_started; all other protected300fields,seed and117scope/DAG/sourcecatalog unchanged.
+
+[Integration/failure record](validation/2026-11-08-aug011-integration-development.json) pins original native486/487EPERM, failedpushLinuxprobe5OOMfalse andWindows transient fixture failure. Its originalPR6/6success does not erase push3/5 or nativefailure. New integrated native/build/check/actualpackage/audit/license/parser and11hosted checks are pending. Expected suite union508 onWindows,496plus12existing skips elsewhere must be confirmed by actual output.
+
+Scope remains rooted offline packs update --check. No download, staging, activation, extraction, execution, rollback or global credential/agent changes. Pathname races/import closure/fullCLI165 and real ChatGPT integration remain open. Matrix observations68passed/2272unrun/0accepted remain attributable to their original exact subjects; new qualification must not relabel old receipts. AUG0/117;CLI29.36%maturity/0complete;DCP0/48;WEB0/12. Standing authorization applies; one implementationowner/one independentread-onlypeer; no model requests.
+
+Continue in H:\MTechLabs\Dev\MTerm-CLI-AUG011-20261108, branchfeat/aug-011-update-check-20261108. Complete independent combined source/metadata review and normal merge commit, qualify exact head, record immutable results/final review, then expected-head normal merge/main checks. Preserve primarydirtycheckout, original PR206 artifacts and all168PR207validation files.
+
+---
+
+# PR207 cgroupfs qualification recorded; final metadata gates next — 2026-11-08T05:45:17.750Z
+
+Main remains dd941 (PR205); parked PR206 remains4985. Implementation4eeedae/tree5fd2485 has6/6hosted checks and native466/466. The actual hosted checkout50b0991 has the identical tree. Actual Linux source12/12 and installed12/12 passed;16memory probes retained exit137, raw OOMKilled true at terminal and cleanup, owned OOM events and confirmed removal. All38backend observations are cgroupfs/v2; all144cleanup steps pass. [Immutable qualification](validation/2026-11-08-aug005-cgroup-driver-qualification.json) and [independent review](validation/2026-11-08-aug005-cgroup-driver-review.json) bind45artifact members, native logs, four platform logs,14installed modules and licensing evidence.
+
+The product now denies new work for unqualified drivers; previously owned cleanup remains independent. The guarded disposable GitHub runner explicitly selects cgroupfs with strict private config preservation. Runtime/image pins, resource limits and strict assertions are unchanged. Earlier730/c9/systemd failures, c9 pack TypeError and native registration EPERM remain immutable; their unobserved causes are not declared fixed. Bootstrap qualified=false is retained as a pre-test observation; qualification comes from the later actual suites.
+
+Native package29pack/24resource/31protocol/18provenance, actual SDK roundtrip/npm exec/owned-prefix link, four packageLICENSE files and productionaudit0 pass. Eight pinned runtime LICENSE/NOTICE files and signed package chain are checked, without full runtime/image/transitive redistribution acceptance. All947dependency files are byte-identical; product payload +511bytes. Four packagepayloads1005files/14569231bytes; entireinstalledprefix1009files/14572881bytes. Isolated synthetic Codex parser/config only, zero model calls; no agent invocation.
+
+Fresh exact-fixture observations restore matrix68passed/2272unrun/0accepted. AUG0/117; CLI29.12%maturity/0of300complete; DCP0/48; WEB0/12. No protected requirement or117issue scope/dependency changes. Actual ChatGPT connector invocation, broad platform/restart guarantees and full rights remain open.
+
+Continue in H:\MTechLabs\Dev\MTerm-CLI-AUG005-Lifecycle-20261108 onfix/aug-005-lifecycle-observation-20261108. Independent finalmetadata/pin review, six final-head gates, expected-head ordinary merge, tree identity and six main gates are next; then ordinarily integrate into parkedPR206 and resume #93. Standing owner authorization applies; no manual approval pending. Preserve primary dirty checkout, unrelated workloads and all historical failures.
+
+---
+
+# PR207 driver admission correction; original failures preserved — 2026-11-08T05:20:48.604Z
+
+Main remains dd941 (PR205); PR206 at4985 remains draft and parked. Current committed PR207 c9f7bcd is5/6hosted and454/455native. Exact owned kernel memcgOOM proves the failed probe was memory-killed, while both raw Docker OOM fields are false. All12scenario/72stepcleanups pass; installed live skipped. The separate native pack TypeError lacks the ignored uninstall outcome. Neither original run was retried. [Failure and candidate development](validation/2026-11-08-aug005-cgroup-driver-development.json) pins both failures and all36artifact members.
+
+Pinned containerd documents a systemd scope-GC attribution race; individual deletion ordering remains unobserved. The new product admission requires exact cgroupfs/v2 and reports required/last-observed driver. Already-owned cleanup remains independent. Disposable CI selects the candidate driver only on the guarded empty GitHub runner, with protected config identity, private backup, fatal UTF8, duplicate/numeric/depth/token checks and preserved mode/settings. No image/runtime pin, limit, OOM assertion, workflow or dependency was relaxed. Product code changed; cgroupfs is not live-qualified yet.
+
+Driver regression RED0/3→GREEN3/3; fullprotocol31/31. Independent review found lossy JSON rewriting; RED3/7→GREEN7/7 now rejects ambiguous or rounded config inputs. A separate actual-child RED1/2 exposed private error rethrow; the full CI helper suite now9/9 verifies sanitized private errors and preserved public diagnostics. Pack test verifies uninstall before unchanged denial; focused1/1, original cause unresolved. All source/installed/hosted/native/security/license gates are next at a new exact committed head. Changed AUG003/005 fixture observations reset, with previous receipts preserved. Matrix40passed/2300unrun/0accepted; AUG0/117,CLI29.12%maturity/0complete,DCP0/48,WEB0/12. No protected requirement changes or owner action pending; zero model calls.
+
+Continue in H:\MTechLabs\Dev\MTerm-CLI-AUG005-Lifecycle-20261108, branchfix/aug-005-lifecycle-observation-20261108. Preserve the primary dirty checkout, parkedAUG011 clone and unrelated workloads. After independent review and qualified normal merge/main checks, integrate the correction normally into PR206 and resume #93. Full rights, platform/restart guarantees and actual ChatGPT connector invocation remain open.
+
+---
+
+# PR207 failed live gate retained; bounded journal correction — 2026-11-08T04:43:03.921Z
+
+At730dfb4, native454/454,package/license,audit0,isolated parser andfive hostedchecks pass; mandatory actual Linux fails. Probe5 has rawbooleanfalse in both terminal and cleanup inspection,exit137,emptyoutput,confirmedremoval. Exact-ID Docker history has create/start/die/destroy withoutoom, but is incomplete. All12scenario/72stepcleanups pass. Journal subprocess buffer overflow was retained without stream identity; exact-ID filtering and field projection now happen inside journalctl before buffering. RED0/1 to helperGREEN14/14. Product,limits,strictOOMassertion and all prior failures remain unchanged. [Failure/correction record](validation/2026-11-08-aug005-lifecycle-failure.json).
+
+PR207 remains draft; original killing cause and native registrationEPERM cause unresolved. Ignored registration observer separatelypassed1/1 withone real rename andno open modulehandles; it does not explain priorfailures. New exact-head native/hosted/source/installed live gates are next. No failedoldrun was retried. PR206 at4985 stays parked. Standing authorization applies; oneowner/onepeer,zero model calls. AUG0/117,CLI0complete,DCP0/48,WEB0/12; matrix60passed/2280unrun/0accepted. Preserve dirty primary work and all checkpoints.
+
+---
+
+# AUG-005 causal lifecycle correction under qualification — 2026-11-08T04:29:38.148Z
+
+Main remains dd94158365b648bc1fe42259996c686d7de42313 (PR205), verified6/6. PR206 at4985db7f885cab5edc466e80cbbf9ce540aaaaa3 remains draft and blocked by actual Linux OOM attribution, hosted synthetic phase polling and native registration rename failures. All original artifacts/logs are retained; no failed run retried. See [development and failure record](validation/2026-11-08-aug005-lifecycle-development.json).
+
+The synthetic defect is causally reproduced with one real journal open delayed150ms: old0/1, corrected2/2, full protocol29/29. Tests now latch actual wait and deliver only the owned deadline at the intended phase; separate pre-start expiry creates no container. The installed minimum is29. Passive diagnostics preserve typed original OOM fields and each terminal/cleanup inspection, then collect bounded exact-ID event history after cleanup. Secondary diagnostic failures cannot replace original failures. Evidence helper13/13. Runtime, launcher, dependencies, job/cleanup budgets and strict OOM requirement are unchanged.
+
+Exact committed native/installed/platform/live gates are pending. Changed fixture platform observations are reset to unrun, with every prior receipt retained historically. No requirement stage/weight/scope/estimate changes. AUG0/117, CLI0/300complete, DCP0/48, WEB0/12. Current correction is owned in H:\\MTechLabs\\Dev\\MTerm-CLI-AUG005-Lifecycle-20261108, branch fix/aug-005-lifecycle-observation-20261108. PR206 remains parked in its separate AUG011 clone. Preserve primary dirty work and unrelated workloads. One implementation owner/one read-only peer, zero model requests. Standing authorization supplies routine review/merge approval; exact gates and independent review still govern delivery.
+
+Next: finalize independent review and normal qualification, gather real OOM/rename causal evidence, merge qualified corrective work with expected-head protection, verify main, then normally integrate it into PR206 and resume #93. Do not rebase/force away existing work, retry failed old runs, infer OOM from137, or infer a Windows scanner cause from EPERM.
+
+---
+
 # Current continuation — AUG-011 prerequisite, 2026-11-08T04:02:51.301Z
 
 PR205 is delivered as dd94158365b648bc1fe42259996c686d7de42313 with6/6 final and6/6 main checks; original649 OOM failure remains preserved and unexplained. Main artifact13602373638 SHA2560a05d225d4f1eb60b6e6f3acff5871ae0cb33cebe69c1d1fda3013417864cb8e contains42 members,source12/installed12,16 strict probes and144 cleanup observations.

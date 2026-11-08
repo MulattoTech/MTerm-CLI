@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "asOf": "2026-11-08T04:02:51.301Z",
+  "asOf": "2026-11-08T06:06:19.784Z",
   "repository": "MulattoTech/MTerm-CLI",
   "epic": 81,
   "baseSha": "d7b7c4fb19867f7c5f9727598442c29c12d43709",
@@ -153,7 +153,7 @@
         "darwin-arm64",
         "darwin-x64"
       ],
-      "automatedTests": "Final3628672:9/9 checks and immutable independent review. Normal merge d6eb0fa shares tested tree380f84d and passed5/5 main checks. Native388/388; other hosts376pass+12existing skips. Installed29pack+18provenance on each host.",
+      "automatedTests": "Final3628672:9/9 checks and immutable independent review. Normal merge d6eb0fa shares tested tree380f84d and passed5/5 main checks. Native388/388; other hosts376pass+12existing skips. Installed29pack+18provenance on each host. PR207 changes the revocation fixture to verify uninstall preconditions; previous platform observations are historical until the exact new fixture qualifies. Original c9 native failure remains preserved. PR2074eeedae freshly qualifies the changed fixture on all four hosts (Windows466/466; others454pass+12existing skips), all five catalog observations and installed29pack/18provenance. The original c9 native failure remains preserved.",
       "actualClient": "Two real official SDK stdio clients with isolated selection and notification tests; synthetic local pack payload. Real ChatGPT-to-MTerm app integration remains unverified.",
       "blocker": "Scoped ABI1 tools catalog/selection/refresh delivered; resources/prompts and actual client/full platform/licensing acceptance remain open. No owner review is pending.",
       "declaredIssueDependencies": [],
@@ -226,19 +226,19 @@
         "docker/mcp-gateway",
         "e2b-dev/mcp-server"
       ],
-      "status": "partial_delivery",
+      "status": "merged_partial",
       "owner": "ChatGPT Web / GPT-6 Astra Pro",
-      "branch": "fix/aug-005-live-oom-evidence-20261108",
-      "pr": 205,
-      "mergeSha": "dd94158365b648bc1fe42259996c686d7de42313",
+      "branch": "fix/aug-005-lifecycle-observation-20261108",
+      "pr": 207,
+      "mergeSha": "a7c047c76825562a3f51b100a8cc9b92151ee1f5",
       "accepted": false,
       "testPlan": "common contract + original issue acceptance at issue URL",
       "platformScope": [
         "linux-x64"
       ],
-      "automatedTests": "Exacta589:6/6 configured checks passed; native/Windows445/445, otherhosts433+12existing skips; installed28isolation/24resource/29pack/18provenance. Actual source12/12 and installed12/12 with16memory probes/144cleanup steps. Original main649 OOM cause remains unresolved and recorded; reporting defect repaired, no product change. Final7b5a9a6 and mergeddd941583 both6/6; real main source12/installed12,16 strict OOM probes and144 cleanup observations passed. Original649 failed main unchanged.",
-      "actualClient": "Actual official SDK isolated-only calls, native denial, request cancellation and owned cleanup exercised inside live Linux qualification. Actual ChatGPT-to-MTerm connector invocation remains unverified.",
-      "blocker": "Original649 OOM cause remains unresolved. PR205 reporting repair delivered with main verified; full capability/rights/client acceptance remains open.",
+      "automatedTests": "PR207 implementation4eeedae native466/466; finala8417e5 sixchecks and mergedmaina7c047c sixchecks allpass. Actualsource12/12+installed12/12 at implementation/final/main; each16strict rawOOM/owned events,38cgroupfs/v2 observations,144cleanup and31protocol. Package29pack/24resource/18provenance, audit0 and source/package license pins passed. No original failed-job reruns.",
+      "actualClient": "Actual official SDK isolated-only calls, source and installed from outside checkout, native denial, cancellation and owned cleanup qualified on pinned native Linux x64/cgroupfs/v2. Actual ChatGPT-to-MTerm connector invocation remains unverified.",
+      "blocker": "Scoped native Linux x64 pinned cgroupfs/v2 delivery qualified; full rights, other-platform isolation, restart/crash supervision and actual ChatGPT integration remain open. Systemd remains denied; earlier failure causes and exact attribution ordering stay unresolved.",
       "declaredIssueDependencies": [],
       "ownerAuthorization": "docs/OWNER_AUTHORIZATION.md"
     },
@@ -492,7 +492,7 @@
       "status": "in_progress",
       "owner": "ChatGPT Web / GPT-6 Astra Pro",
       "branch": "feat/aug-011-update-check-20261108",
-      "pr": null,
+      "pr": 206,
       "mergeSha": null,
       "accepted": false,
       "testPlan": "common contract + original issue acceptance at issue URL",
@@ -502,9 +502,9 @@
         "darwin-arm64",
         "darwin-x64"
       ],
-      "automatedTests": "Development RED1pass/41fail to GREEN42/42 on Windows. Normal/installed/hosted qualification pending.",
+      "automatedTests": "Original42/42focused development and independent source review retained. Original4985 native486/487, push3/5 and PR6/6 remain recorded, including failures. Ordinary integration of qualified PR207/maina7c047c is now prepared; new exact integrated native/package/audit/license and11hosted gates remain pending.",
       "actualClient": "Actual local CLI exercised; actual ChatGPT-to-MTerm connector unavailable and unverified.",
-      "blocker": "Prerequisite comparison only. Transactional installation, notice-retaining staging, concurrency-safe activation, interruption recovery and rollback remain open.",
+      "blocker": "Only rooted offline update comparison is implemented. CLI165 execution/extraction/import closure, transactional installation, staging/activation and rollback remain open; original native EPERM cause remains unresolved. New integrated head must qualify before delivery.",
       "declaredIssueDependencies": [],
       "ownerAuthorization": "docs/OWNER_AUTHORIZATION.md"
     },

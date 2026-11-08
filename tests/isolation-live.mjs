@@ -1,8 +1,16 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-08-aug005-lifecycle-observation; observe first terminal state and exact owned event history without replacing results.
 // AI-Change: 2026-11-08-aug005-container-isolation (OpenAI / GPT-6 Astra Pro; self-reported)
 // Mandatory real native-Linux qualification. This file is explicitly invoked, never auto-skipped.
 import test, { after } from 'node:test';
-import { recordScenario, cleanupScenario } from './isolation-live-evidence.mjs';
+import {
+  recordScenario,
+  cleanupScenario,
+  observeOwnedRequests,
+  readOwnedEvents,
+  readOwnedFailureJournal,
+  recordProbe,
+} from './isolation-live-evidence.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import os from 'node:os';
@@ -134,6 +142,10 @@ function scenario(id, title, body) {
             'capture-backend',
             async () => {
               record.backend = service?.status().backend ?? null;
+              if (record.backend) {
+                assert.equal(record.backend.cgroupVersion, '2');
+                assert.equal(record.backend.cgroupDriver, 'cgroupfs');
+              }
             },
           ],
           [
@@ -314,21 +326,59 @@ scenario(
     observe(observation);
     // Bounded sequential diagnostic probes: any failure fails the scenario; no retry-to-pass.
     for (let index = 0; index < observation.plannedProbes; index++) {
-      const r = await service.run({
-        code: 'const retained=[];for(;;)retained.push(Buffer.alloc(4*1024*1024,127));',
-      });
-      observation.probes.push({
+      const observer = observeOwnedRequests(service.api, service.status().instanceId);
+      const since = new Date().toISOString();
+      const probe = {
         probe: index + 1,
-        exitCode: r.exitCode,
-        oomKilled: r.oomKilled,
-        stdout: r.stdout,
-        stderr: r.stderr,
-        outputBytes: r.outputBytes,
-        cleanup: r.cleanup,
-        backend: r.backend,
-      });
+        lifecycle: observer.record,
+        eventHistory: null,
+        failureJournal: null,
+      };
+      observation.probes.push(probe);
+      const r = await recordProbe(
+        probe,
+        async () => {
+          const value = await service.run({
+            code: 'const retained=[];for(;;)retained.push(Buffer.alloc(4*1024*1024,127));',
+          });
+          Object.assign(probe, {
+            exitCode: value.exitCode,
+            oomKilled: value.oomKilled,
+            stdout: value.stdout,
+            stderr: value.stderr,
+            outputBytes: value.outputBytes,
+            cleanup: value.cleanup,
+            backend: value.backend,
+          });
+          return value;
+        },
+        async (value) => {
+          observer.restore();
+          // Collection follows the original result and confirmed product cleanup. It cannot replace them.
+          const until = new Date().toISOString(),
+            containerId = observer.record.containerId;
+          if (containerId) {
+            const window = { containerId, since, until };
+            probe.eventHistory = await readOwnedEvents(exec, { ...window, dockerConfig, socketPath });
+            if (value?.oomKilled !== true) probe.failureJournal = await readOwnedFailureJournal(exec, window);
+          }
+        },
+      );
       assert.notEqual(r.exitCode, 0);
       assert.equal(r.oomKilled, true);
+      assert.equal(
+        probe.diagnosticFailure,
+        null,
+        'Diagnostic collection failed; original outcome remains above',
+      );
+      assert.match(observer.record.containerId, /^[a-f0-9]{64}$/);
+      assert.equal(observer.record.dropped, 0);
+      const terminal = observer.record.requests.filter(
+        (row) => row.kind === 'inspect' && row.state?.Status?.value === 'exited',
+      );
+      assert.ok(terminal.length >= 2, 'Retain both original terminal and cleanup inspections');
+      assert.deepEqual(terminal[0].state.OOMKilled, { present: true, type: 'boolean', value: true });
+      assert.equal(probe.eventHistory.status, 'available', 'Owned event history must be retained');
     }
     return observation;
   },

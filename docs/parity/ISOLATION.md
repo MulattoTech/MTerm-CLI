@@ -14,8 +14,8 @@ endpoint, image, entrypoint, environment, Docker context, mount, device or arbit
 Engine option. The host never reads Docker credentials/configuration or invokes the
 Docker CLI to run a job.
 
-Example for an already prepared native Linux host using Docker's classic image
-store and the qualification image:
+Example for an already prepared native Linux host using cgroup v2 with the
+cgroupfs driver, Docker's classic image store and the qualification image:
 
 ```sh
 mterm-cli mcp --stdio --root ./project \
@@ -53,11 +53,30 @@ those tests do not grant another product platform or establish kernel isolation.
 
 Every admission checks the Engine API and pinned image. The first backend contract
 requires Engine 29.x at least 29.9.3, API compatibility with pinned wire version
-1.45, containerd 2.x at least 2.4.2, runc 1.x at least 1.5.2, Linux amd64, cgroup v2,
-supported memory/swap/CPU/PID controls, an available `runc` runtime and builtin
-seccomp. Missing or unsupported information denies before create. Actual versions,
+1.45, containerd 2.x at least 2.4.2, runc 1.x at least 1.5.2, Linux amd64, cgroup v2
+with the exact `cgroupfs` driver, supported memory/swap/CPU/PID controls, an available
+`runc` runtime and builtin seccomp. Missing or unsupported information denies before create. Actual versions,
 commits, kernel and capability observations are reported rather than inferred from
 the Docker Desktop application version.
+
+The driver restriction follows repeated actual systemd OOM-attribution failures.
+The c9f7bcd receipt identifies a kernel memory-cgroup OOM kill for the exact owned
+container while both Docker inspections report OOMKilled:false. The exact pinned
+[containerd qualification script](https://github.com/containerd/containerd/blob/b7a25261e029d68978bbf290df0a62fc819b3c51/script/critest.sh)
+documents a systemd scope-removal race, and its
+[OOM watcher](https://github.com/containerd/containerd/blob/b7a25261e029d68978bbf290df0a62fc819b3c51/internal/oom/watcher.go)
+can finish without an OOM event if memory.events has disappeared. Our receipt does
+not prove that precise ordering for this occurrence. The systemd driver remains
+unqualified; cgroupfs is a candidate until the unchanged source and installed live
+gates pass. No upstream OOM-status test skip is adopted.
+
+Missing, malformed, unknown and systemd driver values deny before image inspection,
+owned journal creation or container creation/start. Status reports the required
+driver/version. Its backend field is the last successful admission observation,
+with observedAt and the observed driver; querying status does not refresh it.
+Independent cleanup still uses the original daemon ID and owned container identity,
+including when a subsequent driver observation would deny new work. MTerm's product
+runtime does not alter the selected daemon's configuration.
 
 This floor is a conservative qualification policy, not a claim that every older
 version is exploitable through this API. Docker administrators, the selected socket,
@@ -179,7 +198,18 @@ The disposable CI bootstrap uses a new empty APT index scope, a public keyring
 readable by APT, strict update failure handling and independent pinned-key gpgv
 verification. It verifies the signed index, exact package hashes and installed
 versions/binary hashes before preparing
-the fixed image manifest/configuration pair. It records source LICENSE/NOTICE
+the fixed image manifest/configuration pair. The guarded disposable runner selects
+cgroupfs explicitly only after confirming that no containers exist. It requires a
+root-owned regular single-link daemon config, preserves its mode, retains a private
+backup, validates the candidate and checks the actual post-restart driver/version.
+The bounded configuration transform rejects duplicate decoded JSON keys, unsafe or
+noncanonical numeric tokens, invalid UTF-8, BOM-encoded configuration and ambiguous
+driver settings. These are conservative limits of this transformer; Docker itself
+accepts a broader input subset. Other settings retain their decoded values.
+Private command errors and config-comparison failures withhold raw configuration
+from both saved evidence and public job errors. Config hashes are public evidence; raw config backups
+remain private to the disposable runner. This preparation is not a workstation
+installer or a product-side daemon mutation. It records source LICENSE/NOTICE
 files and source/build references. Those checks are not a full image/dependency
 license clearance or a claim that every system vulnerability has been excluded.
 No external runtime/image is bundled into MTerm's npm package; dependency pins,

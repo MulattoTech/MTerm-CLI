@@ -1,0 +1,184 @@
+{
+  "change_id": "2026-11-08-aug005-lifecycle-observation",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "started_at": "2026-11-08T04:12:00Z",
+  "updated_at": "2026-11-08T05:45:17.750Z",
+  "base_sha": "dd94158365b648bc1fe42259996c686d7de42313",
+  "issues": [
+    84,
+    83,
+    81
+  ],
+  "requirements": [
+    "CLI-265",
+    "CLI-267",
+    "CLI-276",
+    "CLI-287"
+  ],
+  "files": [
+    "tests/isolation.test.mjs",
+    "tests/isolation-live.mjs",
+    "tests/isolation-live-evidence.mjs",
+    "tests/isolation-evidence.test.mjs",
+    "scripts/verify-package.mjs",
+    "docs/validation/2026-11-08-aug005-lifecycle-development.json",
+    "docs/expansion/evidence.json",
+    "docs/expansion/queue.json",
+    "docs/roadmap/progress.json",
+    "docs/HANDOFF.md",
+    "docs/validation/2026-11-08-aug005-lifecycle-failure.json",
+    "src/isolation-engine.ts",
+    "scripts/prepare-isolation-ci.mjs",
+    "scripts/isolation-ci-config.mjs",
+    "scripts/isolation-ci-runner.mjs",
+    "tests/isolation-ci-config.test.mjs",
+    "tests/tool-packs.test.mjs",
+    "docs/parity/ISOLATION.md",
+    "docs/validation/2026-11-08-aug005-cgroup-driver-development.json",
+    "docs/validation/2026-11-08-aug005-cgroup-driver-qualification.json",
+    "docs/validation/2026-11-08-aug005-cgroup-driver-review.json",
+    "docs/validation/2026-11-08-aug003-cgroup-driver-win32-x64.json",
+    "docs/validation/2026-11-08-aug005-cgroup-driver-win32-x64.json",
+    "docs/validation/2026-11-08-aug003-cgroup-driver-linux-x64.json",
+    "docs/validation/2026-11-08-aug005-cgroup-driver-linux-x64.json",
+    "docs/validation/2026-11-08-aug003-cgroup-driver-darwin-arm64.json",
+    "docs/validation/2026-11-08-aug005-cgroup-driver-darwin-arm64.json",
+    "docs/validation/2026-11-08-aug003-cgroup-driver-darwin-x64.json",
+    "docs/validation/2026-11-08-aug005-cgroup-driver-darwin-x64.json"
+  ],
+  "decisions": [
+    "Standing owner authorization; one implementation owner plus independent read-only peer; no Codex/model lane.",
+    "Causal fixture correction preserves product timers, IPC and cleanup; false transient-state polling is removed.",
+    "Original wait/terminal/cleanup values and errors remain authoritative; bounded readonly history is secondary and incomplete.",
+    "Initial diagnostic-only phases preserved product/runtime behavior. The later pinned-source evidence now justifies an explicit narrower driver admission rule, with unchanged assertions and preserved failures.",
+    "The newly captured raw false OOM state and event history remain a failure. Narrow journal query before its unchanged byte ceiling; do not substitute later observations or infer a killing cause.",
+    "The exact pinned upstream documents unreliable systemd OOM attribution. Reject unqualified drivers before new work; preserve owned cleanup. cgroupfs is only a candidate until actual unchanged source/installed gates pass.",
+    "The disposable runner alone receives a guarded explicit driver setting. Reject lossy/ambiguous JSON and invalid UTF8; retain private prior bytes and public hashes. Never reconfigure owner workloads.",
+    "Pack test preconditions expose the actual uninstall result; no original pack revocation or EPERM cause is invented.",
+    "Implementation4eeedae passed exact actual source/installed cgroupfs/v2 gates. Keep bootstrap pre-test qualified=false and all previous failures immutable; qualification remains profile-scoped.",
+    "Restore only the28fixture observations supported by the new exact receipts; no capability acceptance or protected roadmap change."
+  ],
+  "tests": [
+    {
+      "command": "artifacts/aug005-lifecycle/red-transient-phase.log",
+      "result": "{\"tests\":1,\"pass\":0,\"fail\":1,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/green-causal-reviewed.log",
+      "result": "{\"tests\":2,\"pass\":2,\"fail\":0,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/green-protocol-reviewed.log",
+      "result": "{\"tests\":29,\"pass\":29,\"fail\":0,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/red-lifecycle-evidence.log",
+      "result": "{\"tests\":11,\"pass\":5,\"fail\":6,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/green-lifecycle-evidence.log",
+      "result": "{\"tests\":11,\"pass\":11,\"fail\":0,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/red-primary-error-preservation.log",
+      "result": "{\"tests\":2,\"pass\":0,\"fail\":2,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/green-primary-error-preservation.log",
+      "result": "{\"tests\":13,\"pass\":13,\"fail\":0,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "730dfb4 qualification",
+      "result": "Normalnative454/454,package/licenses,audit0,isolatedparser and5hostedchecks pass; mandatoryLinux failed probe5OOMfalse,installedskipped. Allfailureevidence retained."
+    },
+    {
+      "command": "journal prefilter development",
+      "result": "ScopedRED0/1 to fullhelperGREEN14/14, no changedruntime orlimits."
+    },
+    {
+      "command": "c9 exact qualification",
+      "result": "Hosted5/6 and native454/455 failed; kernelownedmemcgOOM confirmed despite Dockerfalse. All72cleanups passed; source/installed gate not cleared."
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/pack-precondition-focused.log",
+      "result": "{\"tests\":1,\"pass\":1,\"fail\":0,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/red-cgroup-driver.log",
+      "result": "{\"tests\":3,\"pass\":0,\"fail\":3,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/green-cgroup-driver.log",
+      "result": "{\"tests\":3,\"pass\":3,\"fail\":0,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/green-driver-protocol.log",
+      "result": "{\"tests\":31,\"pass\":31,\"fail\":0,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/red-ci-driver-config.log",
+      "result": "{\"tests\":4,\"pass\":0,\"fail\":4,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/green-ci-driver-config.log",
+      "result": "{\"tests\":4,\"pass\":4,\"fail\":0,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/red-ci-config-preservation.log",
+      "result": "{\"tests\":7,\"pass\":3,\"fail\":4,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/green-ci-config-preservation.log",
+      "result": "{\"tests\":7,\"pass\":7,\"fail\":0,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/red-ci-private-failure.log",
+      "result": "{\"tests\":2,\"pass\":1,\"fail\":1,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/green-ci-private-failure.log",
+      "result": "{\"tests\":9,\"pass\":9,\"fail\":0,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "implementation4eeedae native and hosted qualification",
+      "result": "Native466/466; all6hosted jobs; actualsource12/12+installed12/12,16strict rawOOM+owned events,38cgroupfs/v2 observations,144cleanup; installed29pack/24resource/31protocol/18provenance; audit0; package/runtime licenses; isolated parser modelCalls0."
+    },
+    {
+      "command": "read-only actual package and host evidence verification",
+      "result": "14installedmodules/4packageLICENSE files exact,947dependencyfiles unchanged, product+511B; allfivecatalogcases andhost-denial fixtures onfourhosts. Independent peer found no new blocker."
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "id": "CLI-265",
+      "stage_change": false,
+      "reason": "Narrower driver admission, independent cleanup and stronger fixture/config diagnostics. Existing300 requirement stages, acceptance, scope, weights, dependencies and estimates unchanged."
+    },
+    {
+      "id": "CLI-267",
+      "stage_change": false,
+      "reason": "Narrower driver admission, independent cleanup and stronger fixture/config diagnostics. Existing300 requirement stages, acceptance, scope, weights, dependencies and estimates unchanged."
+    },
+    {
+      "id": "CLI-276",
+      "stage_change": false,
+      "reason": "Narrower driver admission, independent cleanup and stronger fixture/config diagnostics. Existing300 requirement stages, acceptance, scope, weights, dependencies and estimates unchanged."
+    },
+    {
+      "id": "CLI-287",
+      "stage_change": false,
+      "reason": "Narrower driver admission, independent cleanup and stronger fixture/config diagnostics. Existing300 requirement stages, acceptance, scope, weights, dependencies and estimates unchanged."
+    }
+  ],
+  "limitations": [
+    "Qualification is scoped to observed native Linux x64, Docker29.9.3/containerd2.4.2/runc1.5.2, cgroupfs/v2, the pinned image and enforced isolated-only profile. Systemd remains explicitly unsupported.",
+    "The c9 kernel evidence proves a memory-cgroup OOM for that owned occurrence; exact deletion/watcher/publication ordering and causes of earlier failures remain unproven. New passing observations do not erase them.",
+    "Windows/macOS/ARM/WSL/Desktop containment, restart recovery, independent post-crash supervision, cross-host quotas, arbitrary pack/native executable isolation and actual ChatGPT connector invocation remain unaccepted.",
+    "Pinned signed runtime packages and eight source LICENSE/NOTICE files are checked. Full runtime/image/transitive redistribution rights remain unaccepted; external runtimes/images are not bundled.",
+    "Original native registration EPERM and c9 pack TypeError remain preserved. The new successful uninstall precondition and qualified runs do not establish the original failure cause.",
+    "No full capability acceptance, three-component size acceptance, resource/prompts support or model invocation is claimed."
+  ],
+  "checkpoint": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG005-Lifecycle-20261108\\artifacts\\aug005-lifecycle",
+  "next_unverified_action": "Independent final metadata/pin review; six final-head checks, ordinary expected-head merge and six main checks. Then integrate qualified main normally into parkedPR206."
+}

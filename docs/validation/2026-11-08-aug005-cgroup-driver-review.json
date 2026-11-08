@@ -1,0 +1,73 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-read-only-cgroup-driver-source-and-qualification-review",
+  "recordedAt": "2026-11-08T05:45:17.750Z",
+  "reviewer": "ChatGPT independent peer / OpenAI GPT-6 Astra Pro (self-reported)",
+  "testedHead": "4eeedaed2cccd07412e80fa8e8d174469667b7fe",
+  "tree": "5fd2485bded4c546dea62ce537037f79f98c70b0",
+  "sourceFingerprint": "dfef7ae3428eb7bd7fe4431700ce933ee0daf84e15044fbfc0fd9e6ea6805b62",
+  "subjectFingerprint": "9b5103001393707c986ebb157bb377b15ceb9b0afc20767d1103eaa0adb3de91",
+  "sourceEntriesVerified": 154,
+  "protectedRequirementsUnchanged": 300,
+  "issueScopeDependencyRecordsUnchanged": 117,
+  "priorValidationFilesByteIdentical": 157,
+  "blockingFindings": [],
+  "qualification": {
+    "path": "docs/validation/2026-11-08-aug005-cgroup-driver-qualification.json",
+    "sha256": "134e3257f2ef58ace73a9c846f1be67055beb7808025301980f8000284fa3810"
+  },
+  "reviewedAreas": [
+    "Exact cgroupfs/v2 admission before new work; cleanup remains independently owned and verified.",
+    "Conservative bounded UTF8/JSON config transform, root-owned single-link config identity, private backup/candidate, sanitized private command failures and no uploaded config bytes.",
+    "Causal timeout fixtures and bounded exact-container failure diagnostics preserve primary results and strict OOM assertions.",
+    "Actual native/module/license/production audit and source/installed live evidence; hosted platform logs and exact checkout tree."
+  ],
+  "resolvedFindings": [
+    "Duplicate decoded keys and numeric rounding could change unrelated daemon settings: strict token/depth/input bounds and non-lossy token validation now deny ambiguous input.",
+    "Private child failures could rethrow raw stdio/cmd: retain=false now throws a new sanitized error and actual child regression verifies both private and public paths."
+  ],
+  "tests": {
+    "native": 466,
+    "sourceLive": 12,
+    "installedLive": 12,
+    "memoryProbes": 16,
+    "cleanupSteps": 144,
+    "installedProtocol": 31
+  },
+  "liveArtifact": {
+    "id": 13605129007,
+    "bytes": 250773,
+    "sha256": "8d4c6634c53a090782b8d6518247eaa7c04a8a09c585082beda399a635eb824d",
+    "membersVerified": 45,
+    "actualCheckout": "50b0991eed529596ff89a5fe704b7593400a5d17",
+    "treeMatches": true
+  },
+  "compiledLiveBindingsVerified": 11,
+  "distinctNativeInstalledBindingsVerified": 14,
+  "packageLicenseFilesVerified": 4,
+  "runtimeSourceLicenseNoticeFilesVerified": 8,
+  "dependencyFilesByteIdentical": 947,
+  "packagePayload": {
+    "files": 1005,
+    "bytes": 14569231,
+    "deltaBytes": 511
+  },
+  "entireInstalledPrefix": {
+    "files": 1009,
+    "bytes": 14572881
+  },
+  "applicableChecksPassed": 6,
+  "originalFailuresPreserved": true,
+  "systemdAttributionDeclaredFixed": false,
+  "verdict": "No new blocker found at the tested implementation head. Scoped qualification cleared; final immutable metadata review and final-head/merged-main gates remain separate.",
+  "fullRuntimeImageRedistributionEligible": false,
+  "capabilityAccepted": false,
+  "reviewerTestsExecuted": 0,
+  "reviewerContainersStarted": 0,
+  "reviewerMutations": 0,
+  "reviewerModelCalls": 0,
+  "additionalWorkers": 0,
+  "githubApprovalEventCreated": false,
+  "authority": "docs/OWNER_AUTHORIZATION.md",
+  "priorValidationComparison": "The157 files already tracked at c9f7bcd remain byte-identical at reviewed implementation4eeedae; its added development receipt was reviewed separately."
+}

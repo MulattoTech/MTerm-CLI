@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "asOf": "2026-11-08T01:29:50.351Z",
+  "asOf": "2026-11-08T02:43:09.236Z",
   "repository": "MulattoTech/MTerm-CLI",
   "epic": 81,
-  "baseSha": "d6eb0fa8a3df8a22abdec587f405e1105f78acb8",
+  "baseSha": "d7b7c4fb19867f7c5f9727598442c29c12d43709",
   "counts": {
     "total": 117,
     "claimed": 1,
     "accepted": 0,
-    "merged": 4
+    "merged": 5
   },
   "originalMetrics": {
     "cliMaturityPercent": 29.12,
@@ -226,18 +226,21 @@
         "docker/mcp-gateway",
         "e2b-dev/mcp-server"
       ],
-      "status": "proposed",
-      "owner": null,
-      "branch": null,
+      "status": "in_progress",
+      "owner": "ChatGPT Web / GPT-6 Astra Pro",
+      "branch": "feat/aug-005-container-isolation-20261108",
       "pr": null,
       "mergeSha": null,
       "accepted": false,
       "testPlan": "common contract + original issue acceptance at issue URL",
-      "platformScope": "not yet selected; retain unsupported environments as explicit blockers",
-      "automatedTests": "not run",
-      "actualClient": "not verified",
-      "blocker": "Not implemented or accepted; exact upstream rights, platform scope and declared prerequisite acceptance need qualification.",
-      "declaredIssueDependencies": []
+      "platformScope": [
+        "linux-x64"
+      ],
+      "automatedTests": "Development23initialRED; peer regressions retained; corrected focused64/64 includes28isolation cases. Full immutable native/installed/hosted and real source/installed containment gates pending.",
+      "actualClient": "Real official SDK protocol/denial fixtures; actual ChatGPT-to-MTerm app integration unavailable and unverified.",
+      "blocker": "Mandatory native Linux source/installed live qualification, immutable security/rights/evidence review and supported/unsupported platform CI pending. Full AUG005 acceptance remains open.",
+      "declaredIssueDependencies": [],
+      "ownerAuthorization": "docs/OWNER_AUTHORIZATION.md"
     },
     {
       "id": "AUG-006",
@@ -523,11 +526,11 @@
         "Kyne0328/rel-ai",
         "headroomlabs-ai/headroom"
       ],
-      "status": "in_progress",
+      "status": "merged_partial",
       "owner": "ChatGPT Web / GPT-6 Astra Pro",
       "branch": "feat/aug-012-resource-budgets-20261108",
       "pr": 203,
-      "mergeSha": null,
+      "mergeSha": "d7b7c4fb19867f7c5f9727598442c29c12d43709",
       "accepted": false,
       "testPlan": "common contract + original issue acceptance at issue URL",
       "platformScope": [
@@ -536,9 +539,9 @@
         "darwin-arm64",
         "darwin-x64"
       ],
-      "automatedTests": "Code146cbad: native412/412, normal prepack/self-host/installed checks,24resource+29pack+18provenance, audit0 and9/9 hosted checks. Other hosts400pass+12existing skips; all24 resource cases pass on every host. Final metadata-head checks/review and merge/main remain next.",
+      "automatedTests": "Finaled079d0:9/9 checks and independent immutable review. Normal merged7b7c4 shares tested treea067b59 and passed5/5 main. Native412/412; other hosts400pass+12existing skips; installed24resource+29pack+18provenance per host.",
       "actualClient": "Real official SDK stdio hosts and synthetic owned pack/native child processes; actual ChatGPT-to-MTerm app integration remains unverified.",
-      "blocker": "Per-host admission slice qualified. Hard CPU/GPU/RAM/disk-write quotas, cross-host coordination and full AUG012 acceptance remain open. No owner review is pending.",
+      "blocker": "Scoped host-instance admission delivered. Hard CPU/GPU/RAM/disk-write quotas, cross-host coordination and full AUG012/client acceptance remain open; no owner review pending.",
       "declaredIssueDependencies": [],
       "ownerAuthorization": "docs/OWNER_AUTHORIZATION.md"
     },

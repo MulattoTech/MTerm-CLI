@@ -1,3 +1,13 @@
+# Current continuation — AUG-005, 2026-11-08 UTC
+
+PR203 is delivered at d7b7c4fb19867f7c5f9727598442c29c12d43709:9/9 final checks, independent immutable review, matching tree and5/5 main checks. PR199–202 are delivered. Epic81 checkpoint6715286912 supersedes older pending text below.
+
+The sole implementation owner works on #84 in H:\MTechLabs\Dev\MTerm-CLI-AUG005-20261108, branch feat/aug-005-container-isolation-20261108. The primary dirty checkout and unrelated Docker workloads remain preserved. Initial23RED and later regressions/failures are retained; latest focused64/64 includes28isolation cases. The [native Linux isolation contract](parity/ISOLATION.md) and [development receipt](validation/2026-11-08-aug005-development.json) distinguish protocol fixtures from pending real containment.
+
+Next: immutable native/package/audit gates, all platform checks, mandatory source+installed twelve-case Linux live suite, and independent security/rights/evidence review. No full capability acceptance or actual ChatGPT integration is claimed. AUG0/117, CLI29.12% maturity/0complete, DCP0/48 and WEB0/12 remain unchanged. Qualified delivery needs no recurring owner review; no Codex/model request has been made.
+
+---
+
 # AUG-012 exact-code qualification — 2026-11-08 UTC
 
 [PR #203](https://github.com/MulattoTech/MTerm-CLI/pull/203) code146cbad563def63bb0c8c3c92fc4d82b916108c0 passed native412/412, normal prepack, self-host, real installed24resource+29pack+18provenance, productionaudit0 and9/9 hosted checks. Other hosts passed400 with12existing Windows-only skips; all24 new resource cases passed on every platform. Independent review approved140source entries and verified25evidence/31development pins after finding and reproducing the now-fixed stale disk-observation race.

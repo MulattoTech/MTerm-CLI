@@ -33,6 +33,8 @@ export interface HostOptions {
   packRegistry?: string;
   allowPacks?: readonly string[];
   processBudget?: unknown;
+  allowIsolatedExec?: boolean;
+  isolationPolicy?: unknown;
 }
 export async function runMcp(options: HostOptions): Promise<void> {
   const roots = options.roots ?? [options.root];
@@ -50,6 +52,10 @@ export async function runMcp(options: HostOptions): Promise<void> {
     budgets: options.processBudget,
   });
   const git = await GitService.create(roots);
+  const isolationModule = options.allowIsolatedExec ? await import('./isolation.js') : undefined;
+  const isolation = isolationModule
+    ? await isolationModule.createNativeIsolation(options.isolationPolicy, jobs)
+    : undefined;
   if (configuration) {
     for (const policy of [files.policy, jobs.policy, git.policy]) configuration.bindPolicy(policy);
     jobs.setExecutionGuard((command) => configuration.checkExecutable(command));
@@ -64,7 +70,13 @@ export async function runMcp(options: HostOptions): Promise<void> {
   const packs = options.packRegistry
     ? await (configuration ? configuration.run(createPacks) : createPacks())
     : undefined;
-  const cleanupTools = new Set(['mterm_stop_process', 'mterm_read_process_output', 'mterm_list_sessions']);
+  const cleanupTools = new Set([
+    'mterm_stop_process',
+    'mterm_read_process_output',
+    'mterm_list_sessions',
+    'mterm_stop_isolated',
+    'mterm_isolation_status',
+  ]);
   const admission = new WorkAdmission();
   const audit: Array<{ at: string; tool: string; outcome: string; durationMs: number }> = [];
   class OwnedTransport extends StdioServerTransport {
@@ -73,7 +85,9 @@ export async function runMcp(options: HostOptions): Promise<void> {
       return (this.closing ??= Promise.resolve().then(async () => {
         await super.close();
         try {
-          await jobs.close();
+          const outcomes = await Promise.allSettled([jobs.close(), isolation?.close()]);
+          if (outcomes.some((r) => r.status === 'rejected'))
+            fail('CLEANUP_UNCONFIRMED', 'Owned cleanup was not confirmed.');
         } catch {
           process.stderr.write('MTerm cleanup unconfirmed; see owned process status.\n');
           process.exitCode = 1;
@@ -334,6 +348,29 @@ export async function runMcp(options: HostOptions): Promise<void> {
         }
       }
       const empty = z.strictObject({});
+      if (isolation && isolationModule) {
+        add(
+          'mterm_run_isolated',
+          'Run bounded JavaScript in the owner-pinned native Linux container profile. No host mounts or network. The separate native process tools remain unsandboxed. Host/daemon failure can leave owned cleanup unconfirmed.',
+          isolationModule.isolationSchemas.run,
+          false,
+          (args, signal) => isolation.run(args, signal),
+        );
+        add(
+          'mterm_stop_isolated',
+          'Cancel or reconcile only a job owned by this host. Capacity remains charged until exact container removal is verified.',
+          isolationModule.isolationSchemas.job,
+          false,
+          (args) => isolation.stop(args),
+        );
+        add(
+          'mterm_isolation_status',
+          'Read local isolated-job bounds, last backend observation and retained cleanup state. Does not probe or grant a backend.',
+          empty,
+          true,
+          () => isolation.status(),
+        );
+      }
       add(
         'mterm_capabilities',
         'Report actual enabled capabilities and bounds; no model/network calls.',
@@ -349,6 +386,12 @@ export async function runMcp(options: HostOptions): Promise<void> {
           configWriteEnabled: configuration?.allowConfigWrite ?? false,
           writeEnabled: files.allowWrite,
           executionEnabled: jobs.allowExec,
+          executionMode: 'unsandboxed-os-user',
+          isolation: isolation?.status() ?? {
+            configured: !!options.isolationPolicy,
+            enabled: false,
+            backendChecked: false,
+          },
           networkListener: false,
           remoteWebRelay: false,
           desktopCommanderCompatibility: {

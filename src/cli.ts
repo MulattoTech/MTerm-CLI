@@ -5,6 +5,7 @@
 import path from 'node:path';
 import { safeError, fail } from './errors.js';
 import { parseProcessBudget, type ProcessBudget } from './resource-budget-policy.js';
+import { parseIsolationPolicy, type IsolationPolicy } from './isolation-policy.js';
 export const VERSION = '0.0.1-preview.1';
 export function parseHost(args: string[]) {
   const roots: string[] = [],
@@ -13,11 +14,13 @@ export function parseHost(args: string[]) {
   let stdio = false,
     allowWrite = false,
     allowExec = false,
+    allowIsolatedExec = false,
     compatDesktopCommander = false,
     allowConfigWrite = false;
   let compatConfig: string | undefined;
   let packRegistry: string | undefined;
   let processBudget: ProcessBudget | undefined;
+  let isolationPolicy: IsolationPolicy | undefined;
   for (let i = 0; i < args.length; i++) {
     const option = args[i];
     if (
@@ -26,7 +29,8 @@ export function parseHost(args: string[]) {
       option === '--allow-shell' ||
       option === '--pack-registry' ||
       option === '--allow-pack' ||
-      option === '--process-budget'
+      option === '--process-budget' ||
+      option === '--isolation-policy'
     ) {
       const value = args[++i];
       if (!value || value.startsWith('--')) fail('USAGE', option + ' requires a value.');
@@ -43,6 +47,16 @@ export function parseHost(args: string[]) {
         if (value.length > 24 || !/^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$/.test(value) || allowPacks.includes(value))
           fail('USAGE', '--allow-pack requires a distinct supported pack ID.');
         allowPacks.push(value);
+      } else if (option === '--isolation-policy') {
+        if (isolationPolicy || Buffer.byteLength(value) > 2048)
+          fail('USAGE', '--isolation-policy requires one JSON object of at most 2048 UTF-8 bytes.');
+        let parsed: unknown;
+        try {
+          parsed = JSON.parse(value);
+        } catch {
+          fail('USAGE', '--isolation-policy requires valid JSON.');
+        }
+        isolationPolicy = parseIsolationPolicy(parsed);
       } else if (option === '--process-budget') {
         if (processBudget || Buffer.byteLength(value) > 1024)
           fail('USAGE', '--process-budget requires one JSON object of at most 1024 UTF-8 bytes.');
@@ -57,6 +71,7 @@ export function parseHost(args: string[]) {
     } else if (option === '--stdio') stdio = true;
     else if (option === '--allow-write') allowWrite = true;
     else if (option === '--allow-exec') allowExec = true;
+    else if (option === '--allow-isolated-exec') allowIsolatedExec = true;
     else if (option === '--compat-desktop-commander') compatDesktopCommander = true;
     else if (option === '--allow-config-write') allowConfigWrite = true;
     else fail('USAGE', 'Unsupported MCP option.');
@@ -69,11 +84,15 @@ export function parseHost(args: string[]) {
   if (allowedShells.length > 16) fail('USAGE', 'At most sixteen owner-selected shells are supported.');
   if (allowPacks.length > 16 || (allowPacks.length && !packRegistry))
     fail('USAGE', 'At most sixteen --allow-pack grants require an explicit --pack-registry.');
+  if (allowIsolatedExec && !isolationPolicy)
+    fail('USAGE', '--allow-isolated-exec requires an explicit --isolation-policy.');
   return {
     root: roots[0]!,
     roots,
     allowWrite,
     allowExec,
+    allowIsolatedExec,
+    isolationPolicy,
     compatDesktopCommander,
     compatConfig,
     allowConfigWrite,
@@ -149,6 +168,7 @@ export async function main(args: string[]): Promise<number> {
   if (args[0] === '--help' || args[0] === 'help') {
     console.log(
       help() +
+        '\nOptional isolated JavaScript: --allow-isolated-exec --isolation-policy JSON. Qualified native Linux x64 Docker only; no host mounts, network, image pulls or native-process grant. See docs/parity/ISOLATION.md.\n' +
         '\nProcess admission: --process-budget JSON sets immutable owner limits for this stdio host. See docs/parity/RESOURCE_BUDGETS.md. No hard CPU/GPU/RAM/disk-write or cross-host quota.\n',
     );
     return 0;
@@ -183,6 +203,13 @@ export async function main(args: string[]): Promise<number> {
           configWriteEnabled: opts.allowConfigWrite,
           writeEnabled: opts.allowWrite,
           executionEnabled: opts.allowExec,
+          executionMode: 'unsandboxed-os-user',
+          isolation: {
+            configured: !!opts.isolationPolicy,
+            enabled: opts.allowIsolatedExec,
+            policy: opts.isolationPolicy ?? null,
+            backendChecked: false,
+          },
           processBudget: opts.processBudget ?? parseProcessBudget(),
           transport: 'stdio',
           networkListener: false,
@@ -237,6 +264,11 @@ export async function main(args: string[]): Promise<number> {
       return 0;
     }
     const opts = parseHost(['--stdio', ...host]);
+    if (opts.isolationPolicy || opts.allowIsolatedExec)
+      fail(
+        'USAGE',
+        'Managed Codex registration does not yet preserve isolation policy. Use explicit stdio arguments.',
+      );
     if (opts.processBudget)
       fail(
         'USAGE',

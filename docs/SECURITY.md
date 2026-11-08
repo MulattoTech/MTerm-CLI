@@ -303,3 +303,9 @@ is not an exhaustive vulnerability certification.
 ## Project workflow authorization — 2026-11-07
 
 The owner delegates project implementation, configuration and qualified delivery through [OWNER_AUTHORIZATION.md](OWNER_AUTHORIZATION.md), with no repeated manual review. This is an authorization for the executor to act through legitimate owner access. It does not grant another MCP client new capabilities, disable root/identity checks, relax token/consent validation or make an untested integration accepted. The executor may select the required scoped grants and apply flags on the owner's behalf; independent review and technical security/rights evidence remain mandatory.
+
+## Separate native Linux isolation grant — 2026-11-08
+
+The --allow-isolated-exec flag with one fixed owner policy admits only native Linux x64 Docker JavaScript jobs. Clients cannot select a backend, image, mount, environment or privilege option. Runtime/image must already exist; no product image pull or Docker credential/configuration read occurs. Native execution and packs remain unsandboxed under separate grants. See [ISOLATION.md](parity/ISOLATION.md) for the inspected profile and threat boundary.
+
+Ownership is journaled before create, uncertain cleanup keeps its shared capacity charge, and only exact owner-bound containers can be removed. Host-supervised cancellation is not an independent hard wall-clock guarantee after broker/daemon crash; automatic restart recovery remains open. Native Linux live containment, installed-package behavior and signed runtime/source-rights observations are mandatory distinct gates. Source notices and a clean npm advisory audit do not establish full runtime/image redistribution clearance or exhaustive security certification. Routine review/delivery is delegated; automated security and independent review remain required.

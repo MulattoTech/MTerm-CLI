@@ -1,0 +1,286 @@
+{
+  "schemaVersion": 1,
+  "capability": "AUG-005",
+  "issue": 84,
+  "baseSha": "d7b7c4fb19867f7c5f9727598442c29c12d43709",
+  "recordedAt": "2026-11-08T02:43:09.236Z",
+  "scope": "Development working-tree observations; immutable/live qualification pending",
+  "runtime": {
+    "platform": "win32",
+    "architecture": "x64",
+    "node": "v24.21.0"
+  },
+  "attempts": [
+    {
+      "kind": "red-isolation",
+      "tests": 23,
+      "pass": 0,
+      "fail": 23,
+      "cancelled": 0,
+      "skipped": 0,
+      "log": "artifacts/aug005/red-isolation.log",
+      "reason": "23 new cases failed before product changes."
+    },
+    {
+      "kind": "focused-first",
+      "tests": 64,
+      "pass": 64,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "log": "artifacts/aug005/focused-first.log",
+      "reason": "First64 focused cases passed. Synthetic Engine success is protocol evidence only."
+    },
+    {
+      "kind": "red-journal-profile",
+      "tests": 3,
+      "pass": 0,
+      "fail": 3,
+      "cancelled": 0,
+      "skipped": 0,
+      "log": "artifacts/aug005/red-journal-profile.log",
+      "reason": "Independent review reproduced partial/zero-progress journal writes and missing nofile verification:3 failures."
+    },
+    {
+      "kind": "red-attachment-identity",
+      "tests": 3,
+      "pass": 1,
+      "fail": 2,
+      "cancelled": 0,
+      "skipped": 0,
+      "log": "artifacts/aug005/red-attachment-identity.log",
+      "reason": "Real socket EOF and daemon replacement cleanup regressions failed; malformed-head case already passed."
+    },
+    {
+      "kind": "focused-review",
+      "tests": 69,
+      "pass": 68,
+      "fail": 1,
+      "cancelled": 0,
+      "skipped": 0,
+      "log": "artifacts/aug005/focused-review.log",
+      "reason": "68/69 passed; one fixture wrote to an ended stream. Failure retained, no product acceptance assigned."
+    },
+    {
+      "kind": "red-eof-causal",
+      "tests": 1,
+      "pass": 0,
+      "fail": 1,
+      "cancelled": 0,
+      "skipped": 0,
+      "log": "artifacts/aug005/red-eof-causal.log",
+      "reason": "Corrected fixture awaits actual clean capture EOF, proving one failure against retained pre-fix compiled engine."
+    },
+    {
+      "kind": "focused-causal",
+      "tests": 69,
+      "pass": 69,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "log": "artifacts/aug005/focused-causal.log",
+      "reason": "Corrected69/69 focused cases passed."
+    },
+    {
+      "kind": "red-env-representation",
+      "tests": 1,
+      "pass": 0,
+      "fail": 1,
+      "cancelled": 0,
+      "skipped": 0,
+      "log": "artifacts/aug005/red-env-representation.log",
+      "reason": "Faithful Docker inspect retains bare environment removal directives; original comparison fails."
+    },
+    {
+      "kind": "focused-env",
+      "tests": 64,
+      "pass": 64,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "log": "artifacts/aug005/focused-env.log",
+      "reason": "64/64 after exact selected.Env comparison. Command selected isolation/resource/process cases; nonexistent mcp-process filename did not include five mcp.test.mjs cases. Full normal suite remains required."
+    }
+  ],
+  "fixture": {
+    "path": "tests/isolation.test.mjs",
+    "sha256": "f531c207f20742296e845bc20f4cec5210dec9cb910e8e94413ec6e3bb891c99",
+    "hashMode": "strict-utf8-crlf-to-lf"
+  },
+  "liveFixture": {
+    "path": "tests/isolation-live.mjs",
+    "sha256": "4b3dc3d2c0222c30cac12eb5a1e642a08676b354fb1063c48c8f3068bc6c32c7",
+    "executed": false
+  },
+  "retainedLogs": [
+    {
+      "path": "artifacts/aug005/baseline-install.log",
+      "sha256": "9f30ada157b20b5e6508acfe3f2242f0261c807a61d5b6729ae623885902c585",
+      "bytes": 893
+    },
+    {
+      "path": "artifacts/aug005/backend-image-readonly.json",
+      "sha256": "534180c0cc422340ec2f676db3adacc2bc4016a878539b88592e527d405cf5c6",
+      "bytes": 547
+    },
+    {
+      "path": "artifacts/aug005/wsl-version-readonly.log",
+      "sha256": "02d2dc53b8a944a4e504c3a7ed36bbdfbb4da679d532703da123cb6c2e93c700",
+      "bytes": 494
+    },
+    {
+      "path": "artifacts/aug005/red-isolation.log",
+      "sha256": "0042d021a5f36f1e9fa02174cd171e85857e05e7f75241d24d32f264b187fedf",
+      "bytes": 24185
+    },
+    {
+      "path": "artifacts/aug005/red-isolation.json",
+      "sha256": "031726edbaa59efb509a842e58f931dd725dbaf5a76c4dd2074ac2c69bb6bdd0",
+      "bytes": 278
+    },
+    {
+      "path": "artifacts/aug005/red-original-fixture.mjs",
+      "sha256": "b9c3a78e6446b144467c9fc394757d7d670d956094412af6da2fec4ef99b4571",
+      "bytes": 28796
+    },
+    {
+      "path": "artifacts/aug005/build-first.log",
+      "sha256": "b04b8612ad06f4368cb2d208a70c1a143aa9e8c7923229477b88258c0112649a",
+      "bytes": 68
+    },
+    {
+      "path": "artifacts/aug005/focused-first.log",
+      "sha256": "591eeb377d7b4be192a7709b232377c0a98c27ea01ce617428b622d66a528d94",
+      "bytes": 6908
+    },
+    {
+      "path": "artifacts/aug005/focused-first.json",
+      "sha256": "179f6fc96844c8aa8bfdffe61b55b9933b8ef281ec2a3cd7832dfb80ea51bfdc",
+      "bytes": 64
+    },
+    {
+      "path": "artifacts/aug005/pre-review-engine.ts",
+      "sha256": "2f1b06b2f06a1922a36ca9e82b7de9308d85c2caa799c0f9ac8ec0e504292f5c",
+      "bytes": 24016
+    },
+    {
+      "path": "artifacts/aug005/pre-review-engine.js",
+      "sha256": "e54afdf44fbf434af29d6dde6fff80e9c0ed8f68c3b55e0aa99e8f8569316215",
+      "bytes": 24416
+    },
+    {
+      "path": "artifacts/aug005/red-journal-profile.log",
+      "sha256": "d787efa29f4dc0575b9c53a0cc70dae1e5e552d71fe96145e9941c702cd0f944",
+      "bytes": 2230
+    },
+    {
+      "path": "artifacts/aug005/red-journal-profile.json",
+      "sha256": "7bc919d49ba8f48b03c402222bcee2d0223cdf7b3aa708a78440788730ab1ef9",
+      "bytes": 64
+    },
+    {
+      "path": "artifacts/aug005/red-attachment-identity.log",
+      "sha256": "56c0f6d567e7a211fbcd6e6181481175d55413dddead5a6b2f99dd172a787359",
+      "bytes": 2001
+    },
+    {
+      "path": "artifacts/aug005/red-attachment-identity.json",
+      "sha256": "251b92d354852b39d8c5c44e7050e168d0f07806a352a37b2fa0498c2712fb2b",
+      "bytes": 64
+    },
+    {
+      "path": "artifacts/aug005/build-review.log",
+      "sha256": "b04b8612ad06f4368cb2d208a70c1a143aa9e8c7923229477b88258c0112649a",
+      "bytes": 68
+    },
+    {
+      "path": "artifacts/aug005/focused-review.log",
+      "sha256": "fd47e94e087962fd609d1e3e7e8cd86ea97e8c5519020bb53caa08e2c9fa21d8",
+      "bytes": 17687
+    },
+    {
+      "path": "artifacts/aug005/focused-review.json",
+      "sha256": "5840c8893dd150e8ab36c16ce055afeed047f2b2637fd8d846664e6fe8274677",
+      "bytes": 64
+    },
+    {
+      "path": "artifacts/aug005/review-engine-to-restore.js",
+      "sha256": "aea332d94455bba3ca42b0998d1a7c696fe458cac31a043ee3895df36dca9dba",
+      "bytes": 26152
+    },
+    {
+      "path": "artifacts/aug005/red-eof-causal.log",
+      "sha256": "25bc9117ac2ec314792d14dc754997bd96d02d3724c5e38a3b2f0f2d7c2ecfdc",
+      "bytes": 852
+    },
+    {
+      "path": "artifacts/aug005/red-eof-causal.json",
+      "sha256": "f52551e9699b122a3d5aee5aeb0b75340f1bc9c35365d96054e98f673c58f1bd",
+      "bytes": 153
+    },
+    {
+      "path": "artifacts/aug005/focused-causal.log",
+      "sha256": "57eb4268e313dc585ee99d6c3ff3832dc3f21a96e8c027b5958e310cfa83b0cd",
+      "bytes": 17005
+    },
+    {
+      "path": "artifacts/aug005/focused-causal.json",
+      "sha256": "453ea03eb563d6b11ddfa43f89c838e40db9414844eefcd2e91bb8f14df21f04",
+      "bytes": 64
+    },
+    {
+      "path": "artifacts/aug005/pre-env-representation-engine.ts",
+      "sha256": "bf05d084e203ecb8726b6986582365b12c46965f9e34b7de1687c6e1fbb0b229",
+      "bytes": 25765
+    },
+    {
+      "path": "artifacts/aug005/pre-env-representation-engine.js",
+      "sha256": "aea332d94455bba3ca42b0998d1a7c696fe458cac31a043ee3895df36dca9dba",
+      "bytes": 26152
+    },
+    {
+      "path": "artifacts/aug005/red-env-representation.log",
+      "sha256": "281eabbe768dce02347b8874bdad50f284606ffe6a127b4ae5c52e839d1aa98f",
+      "bytes": 1330
+    },
+    {
+      "path": "artifacts/aug005/red-env-representation.json",
+      "sha256": "43fbb70aa16a8c6db67dca6d126524c5b8e440a91fc309143c1977c42430bfc9",
+      "bytes": 64
+    },
+    {
+      "path": "artifacts/aug005/format-integration.log",
+      "sha256": "0dc5f3388e13ced75b159a377d51067d6f127d6ca5834363ab7efc86178f3b26",
+      "bytes": 268
+    },
+    {
+      "path": "artifacts/aug005/build-env.log",
+      "sha256": "b04b8612ad06f4368cb2d208a70c1a143aa9e8c7923229477b88258c0112649a",
+      "bytes": 68
+    },
+    {
+      "path": "artifacts/aug005/focused-env.log",
+      "sha256": "77d3f75564882602ebafa5e109766c323b1cc1e0ff2c3bf3a09c00db76c2c485",
+      "bytes": 15923
+    },
+    {
+      "path": "artifacts/aug005/focused-env.json",
+      "sha256": "711747f0c5a5cc22b169b1b2e0c422be912b054803da76e29725cd99c9fa712d",
+      "bytes": 64
+    }
+  ],
+  "modelCalls": 0,
+  "realContainersExecuted": 0,
+  "acceptanceAwarded": false,
+  "actualChatGPTIntegration": false,
+  "fullTransitiveLicenseClearance": false,
+  "limitations": [
+    "Real local IPC/SDK/native capacity tests plus explicitly synthetic Engine responses are development evidence, not Linux kernel containment acceptance.",
+    "Native Linux x64 only; Windows/macOS/ARM/WSL/Desktop denied. Owner workstation runtime was inspected only; no container/workload/runtime change was made.",
+    "Dedicated mandatory source and actual installed live CI must pass filesystem/symlink/shell/child, network, cgroup/seccomp/resource, timeout/output/cancel/permission and independent cleanup cases.",
+    "Deadlines are host-supervised and cooperative. Broker/daemon loss may leave a bounded running container; automatic journal recovery and independent hard wall-clock supervision remain unimplemented.",
+    "Kernel/runtime/image and daemon administrators remain trusted. Identity checks detect observed replacement, not malicious administrator or ABA-proof identity.",
+    "No generic executable or pack isolation, GPU quota, remote backend or actual ChatGPT connector acceptance.",
+    "No runtime/image binaries are bundled. Source notices and signed packages are separate from complete image/transitive redistribution clearance, which remains false."
+  ]
+}

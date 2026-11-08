@@ -1,0 +1,114 @@
+{
+  "change_id": "2026-11-08-aug005-container-isolation",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "started_at": "2026-11-08T01:43:45Z",
+  "updated_at": "2026-11-08T02:43:28.209Z",
+  "base_sha": "d7b7c4fb19867f7c5f9727598442c29c12d43709",
+  "issues": [
+    84,
+    81
+  ],
+  "requirements": [
+    "CLI-267",
+    "CLI-276"
+  ],
+  "files": [
+    "src/cli.ts",
+    "src/mcp.ts",
+    "src/processes.ts",
+    "src/isolation-policy.ts",
+    "src/isolation-http.ts",
+    "src/isolation-engine.ts",
+    "src/isolation.ts",
+    "tests/isolation.test.mjs",
+    "tests/isolation-live.mjs",
+    "scripts/prepare-isolation-ci.mjs",
+    "scripts/verify-isolation-live.mjs",
+    "scripts/verify-package.mjs",
+    ".github/workflows/cli-ci.yml",
+    "docs/parity/ISOLATION.md",
+    "docs/SECURITY.md",
+    "docs/HANDOFF.md",
+    "README.md",
+    "docs/expansion/evidence.json",
+    "docs/expansion/queue.json",
+    "docs/roadmap/progress.json",
+    "docs/validation/2026-11-08-aug005-development.json"
+  ],
+  "decisions": [
+    "One owner plus one independent read-only peer; standing owner authorization covers implementation and qualified delivery; zero model API/CLI requests.",
+    "Separate execution grant and exact owner-selected local Linux socket/image. Product makes bounded Engine HTTP requests, never Docker CLI/config/credential/pull calls.",
+    "No mounts/network, read-only root and bounded tmpfs, nonroot UID, no capabilities/privilege escalation, builtin seccomp and observed cgroup CPU/memory/swap/PID controls.",
+    "Fixed entrypoint/arguments, exact inspected profile including bare unset environment directives, exact image identity, one nofile limit, bounded attach parser and shared active-job lease.",
+    "Record and fsync complete ownership before create; reconcile only owner-bound jobs, recheck original daemon after absence, and quarantine uncertainty without releasing capacity.",
+    "Do not use workstation Docker Desktop/WSL for live evidence; native Linux-only and exact signed pinned runtime only in a disposable GitHub-hosted job.",
+    "Test source and installed runtime outside checkout, mandatory twelve live cases with no skip/fallback, compiled-byte bindings and selected evidence upload even on failure.",
+    "Preserve launcher/dependencies, original300 roadmap semantics and all full acceptance flags."
+  ],
+  "tests": [
+    {
+      "command": "red-isolation",
+      "result": "{\"kind\":\"red-isolation\",\"tests\":23,\"pass\":0,\"fail\":23,\"cancelled\":0,\"skipped\":0,\"log\":\"artifacts/aug005/red-isolation.log\",\"reason\":\"23 new cases failed before product changes.\"}"
+    },
+    {
+      "command": "focused-first",
+      "result": "{\"kind\":\"focused-first\",\"tests\":64,\"pass\":64,\"fail\":0,\"cancelled\":0,\"skipped\":0,\"log\":\"artifacts/aug005/focused-first.log\",\"reason\":\"First64 focused cases passed. Synthetic Engine success is protocol evidence only.\"}"
+    },
+    {
+      "command": "red-journal-profile",
+      "result": "{\"kind\":\"red-journal-profile\",\"tests\":3,\"pass\":0,\"fail\":3,\"cancelled\":0,\"skipped\":0,\"log\":\"artifacts/aug005/red-journal-profile.log\",\"reason\":\"Independent review reproduced partial/zero-progress journal writes and missing nofile verification:3 failures.\"}"
+    },
+    {
+      "command": "red-attachment-identity",
+      "result": "{\"kind\":\"red-attachment-identity\",\"tests\":3,\"pass\":1,\"fail\":2,\"cancelled\":0,\"skipped\":0,\"log\":\"artifacts/aug005/red-attachment-identity.log\",\"reason\":\"Real socket EOF and daemon replacement cleanup regressions failed; malformed-head case already passed.\"}"
+    },
+    {
+      "command": "focused-review",
+      "result": "{\"kind\":\"focused-review\",\"tests\":69,\"pass\":68,\"fail\":1,\"cancelled\":0,\"skipped\":0,\"log\":\"artifacts/aug005/focused-review.log\",\"reason\":\"68/69 passed; one fixture wrote to an ended stream. Failure retained, no product acceptance assigned.\"}"
+    },
+    {
+      "command": "red-eof-causal",
+      "result": "{\"kind\":\"red-eof-causal\",\"tests\":1,\"pass\":0,\"fail\":1,\"cancelled\":0,\"skipped\":0,\"log\":\"artifacts/aug005/red-eof-causal.log\",\"reason\":\"Corrected fixture awaits actual clean capture EOF, proving one failure against retained pre-fix compiled engine.\"}"
+    },
+    {
+      "command": "focused-causal",
+      "result": "{\"kind\":\"focused-causal\",\"tests\":69,\"pass\":69,\"fail\":0,\"cancelled\":0,\"skipped\":0,\"log\":\"artifacts/aug005/focused-causal.log\",\"reason\":\"Corrected69/69 focused cases passed.\"}"
+    },
+    {
+      "command": "red-env-representation",
+      "result": "{\"kind\":\"red-env-representation\",\"tests\":1,\"pass\":0,\"fail\":1,\"cancelled\":0,\"skipped\":0,\"log\":\"artifacts/aug005/red-env-representation.log\",\"reason\":\"Faithful Docker inspect retains bare environment removal directives; original comparison fails.\"}"
+    },
+    {
+      "command": "focused-env",
+      "result": "{\"kind\":\"focused-env\",\"tests\":64,\"pass\":64,\"fail\":0,\"cancelled\":0,\"skipped\":0,\"log\":\"artifacts/aug005/focused-env.log\",\"reason\":\"64/64 after exact selected.Env comparison. Command selected isolation/resource/process cases; nonexistent mcp-process filename did not include five mcp.test.mjs cases. Full normal suite remains required.\"}"
+    },
+    {
+      "command": "Preparation metadata validation",
+      "result": "Initial log parser omitted reporter formatting and was corrected against retained raw logs; first roadmap check rejected descriptive platform text instead of the existing linux-x64 enum. Corrected metadata only; validators unchanged. Both failures retained under artifacts/aug005."
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "id": "CLI-267",
+      "stage_change": false,
+      "reason": "Add scoped isolation authority/containment evidence without changing protected requirement fields or full acceptance."
+    },
+    {
+      "id": "CLI-276",
+      "stage_change": false,
+      "reason": "Add scoped isolation authority/containment evidence without changing protected requirement fields or full acceptance."
+    }
+  ],
+  "limitations": [
+    "Real local IPC/SDK/native capacity tests plus explicitly synthetic Engine responses are development evidence, not Linux kernel containment acceptance.",
+    "Native Linux x64 only; Windows/macOS/ARM/WSL/Desktop denied. Owner workstation runtime was inspected only; no container/workload/runtime change was made.",
+    "Dedicated mandatory source and actual installed live CI must pass filesystem/symlink/shell/child, network, cgroup/seccomp/resource, timeout/output/cancel/permission and independent cleanup cases.",
+    "Deadlines are host-supervised and cooperative. Broker/daemon loss may leave a bounded running container; automatic journal recovery and independent hard wall-clock supervision remain unimplemented.",
+    "Kernel/runtime/image and daemon administrators remain trusted. Identity checks detect observed replacement, not malicious administrator or ABA-proof identity.",
+    "No generic executable or pack isolation, GPU quota, remote backend or actual ChatGPT connector acceptance.",
+    "No runtime/image binaries are bundled. Source notices and signed packages are separate from complete image/transitive redistribution clearance, which remains false."
+  ],
+  "checkpoint": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG005-20261108\\artifacts\\aug005",
+  "next_unverified_action": "Freeze source, open draft issue-linked PR, pass exact native/package/security/license and mandatory source/installed Linux live CI, obtain independent immutable review, then normal expected-head merge and main verification."
+}

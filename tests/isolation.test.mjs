@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-08-aug005-lifecycle-observation; causal deadline phases replace transient-state polling.
 // AI-Change: 2026-11-08-aug005-container-isolation (OpenAI / GPT-6 Astra Pro; self-reported)
 // The local HTTP fixtures below simulate Engine responses; they do NOT certify container isolation.
 // Real Linux containment and installed-byte qualification run separately in verify-isolation-live.mjs.
@@ -600,21 +601,111 @@ test('synthetic Engine pre-abort and cancellation after create never start denie
   assert.equal(g.state.starts, 0);
   assert.equal(g.state.removed, true);
 });
-test('synthetic Engine timeout and cancellation run independent confirmed cleanup', async (t) => {
-  for (const cancel of [false, true]) {
-    const f = await fakeEngine(t);
-    f.state.hold = true;
-    const { service, jobs } = await runner(t, f, { maxRuntimeMs: 500 });
-    const controller = new AbortController(),
-      run = service.run({ code: '0', timeoutMs: cancel ? 500 : 100 }, controller.signal);
-    const rejected = assert.rejects(run, code(cancel ? 'CANCELLED' : 'ISOLATION_TIMEOUT'));
-    await until(() => f.state.running, Boolean);
-    if (cancel) controller.abort();
-    await rejected;
-    assert.equal(f.state.removed, true);
-    assert.equal(jobs.resourceStatus().usage.activeJobs, 0);
+// Control only the owned job deadline. All filesystem, IPC and cleanup timers stay real.
+function controlledDeadline(t, service, input, signal) {
+  const original = globalThis.setTimeout;
+  let intercepted,
+    trigger,
+    calls = 0;
+  const timer = t.mock.method(globalThis, 'setTimeout', (callback, ms, ...args) => {
+    if (calls++ === 0) {
+      assert.equal(ms, input.timeoutMs, 'First synchronous timer must be the selected job deadline');
+      intercepted = original(() => {}, ms);
+      trigger = () => callback(...args);
+      return intercepted;
+    }
+    return original(callback, ms, ...args);
+  });
+  let run;
+  try {
+    run = service.run(input, signal);
+  } finally {
+    timer.mock.restore();
   }
-});
+  assert.equal(typeof trigger, 'function');
+  t.after(() => clearTimeout(intercepted));
+  return { run, trigger };
+}
+async function observedPhase(phase, run) {
+  await Promise.race([
+    phase,
+    run.then(
+      () => assert.fail('Job completed before the required fixture phase'),
+      (error) => {
+        throw error;
+      },
+    ),
+  ]);
+}
+test(
+  'synthetic Engine timeout and cancellation run independent confirmed cleanup',
+  { timeout: 15000 },
+  async (t) => {
+    for (const cancel of [false, true]) {
+      const waiting = Promise.withResolvers();
+      const f = await fakeEngine(t, {
+        request: ({ u }) => {
+          if (u.pathname.endsWith('/wait')) waiting.resolve();
+          return false;
+        },
+      });
+      f.state.hold = true;
+      const { service, jobs } = await runner(t, f, { maxRuntimeMs: 500 });
+      const controller = new AbortController();
+      const { run, trigger } = controlledDeadline(
+        t,
+        service,
+        { code: '0', timeoutMs: cancel ? 500 : 100 },
+        controller.signal,
+      );
+      const rejected = assert.rejects(run, code(cancel ? 'CANCELLED' : 'ISOLATION_TIMEOUT')).then(
+        () => null,
+        (error) => error,
+      );
+      // An actual wait request follows acknowledged start and the completed running journal.
+      await observedPhase(waiting.promise, run);
+      assert.equal(f.state.starts, 1);
+      assert.equal(f.state.running, true);
+      if (cancel) controller.abort();
+      else trigger();
+      const rejectionFailure = await rejected;
+      if (rejectionFailure) throw rejectionFailure;
+      assert.equal(f.state.removed, true);
+      assert.equal(f.state.deletes, 1);
+      assert.equal(jobs.resourceStatus().usage.activeJobs, 0);
+    }
+  },
+);
+test(
+  'synthetic Engine deadline before admission never creates a container',
+  { timeout: 15000 },
+  async (t) => {
+    const versionRequested = Promise.withResolvers();
+    const f = await fakeEngine(t, {
+      request: ({ u }) => {
+        if (u.pathname.endsWith('/version')) {
+          versionRequested.resolve();
+          return true; // Hold the actual request until the owned deadline aborts it.
+        }
+        return false;
+      },
+    });
+    const { service, jobs } = await runner(t, f, { maxRuntimeMs: 500 });
+    const { run, trigger } = controlledDeadline(t, service, { code: '0', timeoutMs: 100 });
+    const rejected = assert.rejects(run, code('ISOLATION_TIMEOUT')).then(
+      () => null,
+      (error) => error,
+    );
+    await observedPhase(versionRequested.promise, run);
+    trigger();
+    const rejectionFailure = await rejected;
+    if (rejectionFailure) throw rejectionFailure;
+    assert.equal(f.state.created, false);
+    assert.equal(f.state.starts, 0);
+    assert.equal(f.state.deletes, 0);
+    assert.equal(jobs.resourceStatus().usage.activeJobs, 0);
+  },
+);
 test('synthetic Engine writes bounded ownership before create without code or output', async (t) => {
   let service;
   const f = await fakeEngine(t, {

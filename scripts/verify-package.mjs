@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-08-aug005-lifecycle-observation; require both causal deadline phases from the installed runtime.
 // Modified: 2026-11-08-aug012-resource-budgets; exercise all resource fixtures against exact installed admission modules.
 // Modified: 2026-11-08-aug003-pack-catalog; bind the installed final spawn guard and require all catalog fixtures.
 // Modified: 2026-11-07-aug002-provenance; qualify pinned attribution and exact production closure.
@@ -356,7 +357,7 @@ assert.equal(
   'Installed isolation protocol/denial tests failed; see retained log',
 );
 const isolationTestCount = Number(isolationAcceptance.stdout.match(/^# tests (\d+)$/m)?.[1]);
-assert.ok(isolationTestCount >= 28);
+assert.ok(isolationTestCount >= 29);
 for (const field of ['fail', 'skipped', 'cancelled'])
   assert.match(isolationAcceptance.stdout, new RegExp('^# ' + field + ' 0$', 'm'));
 let isolationLive = null;

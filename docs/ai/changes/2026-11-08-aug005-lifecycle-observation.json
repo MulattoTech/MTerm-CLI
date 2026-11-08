@@ -1,0 +1,83 @@
+{
+  "change_id": "2026-11-08-aug005-lifecycle-observation",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "started_at": "2026-11-08T04:12:00Z",
+  "updated_at": "2026-11-08T04:29:38.148Z",
+  "base_sha": "dd94158365b648bc1fe42259996c686d7de42313",
+  "issues": [
+    84,
+    81
+  ],
+  "requirements": [
+    "CLI-267",
+    "CLI-276"
+  ],
+  "files": [
+    "tests/isolation.test.mjs",
+    "tests/isolation-live.mjs",
+    "tests/isolation-live-evidence.mjs",
+    "tests/isolation-evidence.test.mjs",
+    "scripts/verify-package.mjs",
+    "docs/validation/2026-11-08-aug005-lifecycle-development.json",
+    "docs/expansion/evidence.json",
+    "docs/expansion/queue.json",
+    "docs/roadmap/progress.json",
+    "docs/HANDOFF.md"
+  ],
+  "decisions": [
+    "Standing owner authorization; one implementation owner plus independent read-only peer; no Codex/model lane.",
+    "Causal fixture correction preserves product timers, IPC and cleanup; false transient-state polling is removed.",
+    "Original wait/terminal/cleanup values and errors remain authoritative; bounded readonly history is secondary and incomplete.",
+    "Preserve all previous failures and receipts; no blind reruns, cause inference, source/runtime change or acceptance award."
+  ],
+  "tests": [
+    {
+      "command": "artifacts/aug005-lifecycle/red-transient-phase.log",
+      "result": "{\"tests\":1,\"pass\":0,\"fail\":1,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/green-causal-reviewed.log",
+      "result": "{\"tests\":2,\"pass\":2,\"fail\":0,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/green-protocol-reviewed.log",
+      "result": "{\"tests\":29,\"pass\":29,\"fail\":0,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/red-lifecycle-evidence.log",
+      "result": "{\"tests\":11,\"pass\":5,\"fail\":6,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/green-lifecycle-evidence.log",
+      "result": "{\"tests\":11,\"pass\":11,\"fail\":0,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/red-primary-error-preservation.log",
+      "result": "{\"tests\":2,\"pass\":0,\"fail\":2,\"cancelled\":0,\"skipped\":0}"
+    },
+    {
+      "command": "artifacts/aug005-lifecycle/green-primary-error-preservation.log",
+      "result": "{\"tests\":13,\"pass\":13,\"fail\":0,\"cancelled\":0,\"skipped\":0}"
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "id": "CLI-267",
+      "stage_change": false,
+      "reason": "Test lifecycle correction and diagnostics only; protected requirement fields and complete acceptance remain unchanged."
+    },
+    {
+      "id": "CLI-276",
+      "stage_change": false,
+      "reason": "Test lifecycle correction and diagnostics only; protected requirement fields and complete acceptance remain unchanged."
+    }
+  ],
+  "limitations": [
+    "Actual repeated OOM and native rename causes remain unresolved.",
+    "Exact committed gates pending; all changed fixture platform observations are unrun.",
+    "Full rights, hostile-load/restart guarantees, platform isolation and actual ChatGPT client acceptance remain open."
+  ],
+  "checkpoint": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG005-Lifecycle-20261108\\artifacts\\aug005-lifecycle",
+  "next_unverified_action": "Independent source review and exact committed native/installed/hosted actual Linux qualification."
+}

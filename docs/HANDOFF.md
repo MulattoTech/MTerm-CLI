@@ -1,3 +1,15 @@
+# AUG-005 causal lifecycle correction under qualification — 2026-11-08T04:29:38.148Z
+
+Main remains dd94158365b648bc1fe42259996c686d7de42313 (PR205), verified6/6. PR206 at4985db7f885cab5edc466e80cbbf9ce540aaaaa3 remains draft and blocked by actual Linux OOM attribution, hosted synthetic phase polling and native registration rename failures. All original artifacts/logs are retained; no failed run retried. See [development and failure record](validation/2026-11-08-aug005-lifecycle-development.json).
+
+The synthetic defect is causally reproduced with one real journal open delayed150ms: old0/1, corrected2/2, full protocol29/29. Tests now latch actual wait and deliver only the owned deadline at the intended phase; separate pre-start expiry creates no container. The installed minimum is29. Passive diagnostics preserve typed original OOM fields and each terminal/cleanup inspection, then collect bounded exact-ID event history after cleanup. Secondary diagnostic failures cannot replace original failures. Evidence helper13/13. Runtime, launcher, dependencies, job/cleanup budgets and strict OOM requirement are unchanged.
+
+Exact committed native/installed/platform/live gates are pending. Changed fixture platform observations are reset to unrun, with every prior receipt retained historically. No requirement stage/weight/scope/estimate changes. AUG0/117, CLI0/300complete, DCP0/48, WEB0/12. Current correction is owned in H:\\MTechLabs\\Dev\\MTerm-CLI-AUG005-Lifecycle-20261108, branch fix/aug-005-lifecycle-observation-20261108. PR206 remains parked in its separate AUG011 clone. Preserve primary dirty work and unrelated workloads. One implementation owner/one read-only peer, zero model requests. Standing authorization supplies routine review/merge approval; exact gates and independent review still govern delivery.
+
+Next: finalize independent review and normal qualification, gather real OOM/rename causal evidence, merge qualified corrective work with expected-head protection, verify main, then normally integrate it into PR206 and resume #93. Do not rebase/force away existing work, retry failed old runs, infer OOM from137, or infer a Windows scanner cause from EPERM.
+
+---
+
 # AUG-005 reporting repair qualified — 2026-11-08T03:33:01.392Z
 
 PR #205 code a589fc1fa16709ec28b229f3f34b83194ae5d588 passed all six applicable checks and independent review. The [qualification](validation/2026-11-08-aug005-diagnostic-qualification.json) records 12/12 source and 12/12 actual installed tests, 16 memory probes with exit 137 and oomKilled:true, and 144 successful cleanup steps. The actual PR checkout, 91cbccac63d99823b73bed97b22d65d75521d5db, has the reviewed tree 304e31d44b07f19fad29e2f9af3852ef00ae9987.

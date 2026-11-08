@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 1,
+  "kind": "test-only-causal-fixture-and-failure-diagnostics",
+  "capability": "AUG-005",
+  "issues": [
+    84,
+    81
+  ],
+  "recordedAt": "2026-11-08T04:29:38.148Z",
+  "baseCommit": "dd94158365b648bc1fe42259996c686d7de42313",
+  "sourceState": "reviewed development working tree; exact committed qualification pending",
+  "subjectFingerprint": "7eea6dcaabf3d68176913946165f48894f3fa00a193fd40da6655a0e8f49c4dc",
+  "sourceBindings": [
+    {
+      "path": "tests/isolation.test.mjs",
+      "bytes": 38286,
+      "sha256": "862b5ae82c71543c1a4c5b96ae518569a26295be22b25489cfde9d11ee56974e"
+    },
+    {
+      "path": "tests/isolation-live.mjs",
+      "bytes": 22039,
+      "sha256": "86b107456d018eef680157329cdb82909535ebc41b5f45e90bc252168e51f559"
+    },
+    {
+      "path": "tests/isolation-live-evidence.mjs",
+      "bytes": 11110,
+      "sha256": "82c737b15996b3b17052924921e0a81c973e6624fce8c82a22860012d5508d77"
+    },
+    {
+      "path": "tests/isolation-evidence.test.mjs",
+      "bytes": 15524,
+      "sha256": "90bed22605653c183647a9f72e6e44273ebfd6d965170b8eed5299063eecc95b"
+    },
+    {
+      "path": "scripts/verify-package.mjs",
+      "bytes": 20702,
+      "sha256": "eca9aa6f7abfcb772740c3c17f6a8d1e37c022af5cb3aedd79ac589f3008b39e"
+    }
+  ],
+  "rawLogs": [
+    {
+      "path": "artifacts/aug005-lifecycle/red-transient-phase.log",
+      "bytes": 1076,
+      "sha256": "2bb21f307c6be6e31c224836709ebfbf2462befcac3ed59fbd1cbef7906b9964",
+      "summary": {
+        "tests": 1,
+        "pass": 0,
+        "fail": 1,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "path": "artifacts/aug005-lifecycle/green-causal-reviewed.log",
+      "bytes": 625,
+      "sha256": "d3e92b0becf254befcae69840cc81d07748d0e006199616cb2c196ec3dfd0c73",
+      "summary": {
+        "tests": 2,
+        "pass": 2,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "path": "artifacts/aug005-lifecycle/green-protocol-reviewed.log",
+      "bytes": 7160,
+      "sha256": "eb177c8c89845883bcf3a486f3492594650e227b9844f30fa9a9e45d81d4328e",
+      "summary": {
+        "tests": 29,
+        "pass": 29,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "path": "artifacts/aug005-lifecycle/red-lifecycle-evidence.log",
+      "bytes": 5887,
+      "sha256": "8be95414cb1868ae883d4a002b7a2c9effe0f52d7b4a7766f11d0e501d233311",
+      "summary": {
+        "tests": 11,
+        "pass": 5,
+        "fail": 6,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "path": "artifacts/aug005-lifecycle/green-lifecycle-evidence.log",
+      "bytes": 2740,
+      "sha256": "7af8452107f9185eb28c0d02a68b9fb476f3e730cd18a0f3f55beff633054eac",
+      "summary": {
+        "tests": 11,
+        "pass": 11,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "path": "artifacts/aug005-lifecycle/red-primary-error-preservation.log",
+      "bytes": 1548,
+      "sha256": "3a3ac9500e33a71e5a93912143da20cf843787e7187b64014081682e4b391ff0",
+      "summary": {
+        "tests": 2,
+        "pass": 0,
+        "fail": 2,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "path": "artifacts/aug005-lifecycle/green-primary-error-preservation.log",
+      "bytes": 3137,
+      "sha256": "68c45a01b2c100675bcdc496bb18bcc246278affae6f4e3058215c3bbe0de219",
+      "summary": {
+        "tests": 13,
+        "pass": 13,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "path": "artifacts/aug005-lifecycle/live-syntax.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "summary": {}
+    },
+    {
+      "path": "artifacts/aug005-lifecycle/slow-journal.mjs",
+      "bytes": 533,
+      "sha256": "064ab2842d98ccfbc2a7f1706df6dd895afe7020effcb524313b7a619f3bef7e"
+    }
+  ],
+  "causalCorrection": {
+    "original": "A whole-operation100ms deadline was paired with polling transient running state; real delayed journal-open return reproduces missed phase.",
+    "red": {
+      "tests": 1,
+      "pass": 0,
+      "fail": 1,
+      "realJournalOpensDelayed": 1,
+      "delayMs": 150
+    },
+    "green": {
+      "tests": 2,
+      "pass": 2,
+      "fail": 0,
+      "realJournalOpensDelayed": 2,
+      "delayMs": 150
+    },
+    "fullProtocol": {
+      "tests": 29,
+      "pass": 29,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "semantics": "Latch actual wait after acknowledged start and running journal; capture only first synchronous requested job deadline, restore global timer immediately, retain real IPC/cleanup timers. Separate pre-admission case creates nothing; assertion rejections always handled."
+  },
+  "diagnostics": {
+    "evidenceTests": {
+      "tests": 13,
+      "pass": 13,
+      "fail": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "developmentRed": [
+      {
+        "tests": 11,
+        "pass": 5,
+        "fail": 6
+      },
+      {
+        "tests": 2,
+        "pass": 0,
+        "fail": 2
+      }
+    ],
+    "scope": "First actual owned create/start/wait/inspect/remove observations copied before continuation. Exact ID+owner labels; primitive OOM fields distinguish false/missing/malformed. At most64request observations. Readonly event history follows product result/cleanup and is limited to exact ID/window,3000ms/65536bytes/200rows. Failure-only journal remains exact-ID filtered, no sudo. Diagnostic errors never replace the original outcome.",
+    "historyComplete": false,
+    "actualLinuxRun": false
+  },
+  "preservedFailures": [
+    {
+      "head": "4985db7f885cab5edc466e80cbbf9ce540aaaaa3",
+      "kind": "actual-linux-oom-attribution",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42445310066/job/128622884385",
+      "artifactId": 13602994457,
+      "artifactBytes": 220106,
+      "artifactSha256": "d395de835c1ac796866053072567b0bbecd2f5e899a477e6053f546d9faf1a32",
+      "members": 36,
+      "observation": "Probe5 exit137,oomKilled:false,empty stdout/stderr,cleanup removed; probes1-4 true;11/12 scenarios;12scenario/72step cleanup passes; installed live skipped.",
+      "cause": "unresolved; exit137 alone does not prove OOM",
+      "reruns": 0
+    },
+    {
+      "head": "4985db7f885cab5edc466e80cbbf9ce540aaaaa3",
+      "kind": "synthetic-hosted-timeout-fixture",
+      "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42445310066/job/128622884638",
+      "observation": "Timed out polling transient running phase; deterministic causal reproducer and correction above.",
+      "reruns": 0
+    },
+    {
+      "head": "4985db7f885cab5edc466e80cbbf9ce540aaaaa3",
+      "kind": "native-registration-rename",
+      "issue": 12,
+      "rawPath": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG011-20261108\\artifacts\\aug011\\native\\check.log",
+      "rawBytes": 48485,
+      "rawSha256": "b91dfdae6e0a1f1ba8e4b9662e43dc8ff223789edd24780562b09f24756b11c6",
+      "tests": {
+        "tests": 487,
+        "pass": 486,
+        "fail": 1
+      },
+      "observation": "Initial apply fails final private journal rename with EPERM before deliberate block modification; package/audit did not run.",
+      "cause": "unresolved OS denial; no scanner/process/ACL cause established",
+      "reruns": 0
+    }
+  ],
+  "priorDelivery": {
+    "pr": 205,
+    "merge": "dd94158365b648bc1fe42259996c686d7de42313",
+    "headChecks": "6/6passed",
+    "mainChecks": "6/6passed",
+    "original649OomCause": "unresolved"
+  },
+  "runtimeProductChanged": false,
+  "dependenciesChanged": false,
+  "installedPackageQualified": false,
+  "platformQualified": false,
+  "liveQualified": false,
+  "actualChatGPTClientQualified": false,
+  "sourceRights": "MTerm-owned MIT test changes; no new dependency/vendor/runtime bytes. Existing full runtime/image/transitive redistribution clearance remains unaccepted.",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "modelCalls": 0,
+  "acceptanceAwarded": false,
+  "next": "Independent exact-source review, normal build/check/installed/license/advisory gates and hosted actual source/installed Linux; preserve failed first observations."
+}

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "asOf": "2026-11-08T03:02:15.612Z",
+  "asOf": "2026-11-08T03:21:49.428Z",
   "repository": "MulattoTech/MTerm-CLI",
   "epic": 81,
   "baseSha": "d7b7c4fb19867f7c5f9727598442c29c12d43709",
@@ -228,17 +228,17 @@
       ],
       "status": "in_progress",
       "owner": "ChatGPT Web / GPT-6 Astra Pro",
-      "branch": "feat/aug-005-container-isolation-20261108",
+      "branch": "fix/aug-005-live-oom-evidence-20261108",
       "pr": 204,
-      "mergeSha": null,
+      "mergeSha": "649142ea222b67f31f2165910a3a66b80bc7847d",
       "accepted": false,
       "testPlan": "common contract + original issue acceptance at issue URL",
       "platformScope": [
         "linux-x64"
       ],
-      "automatedTests": "Exacte8264f7:11/11 hosted checks; Windows440/440, otherhosts428pass+12existing skips; all28isolation protocol cases and installed28/24resource/29pack/18provenance pass. Native attempt1 retained439/440 EPERM; unchanged diagnostic1/1 and disclosed attempt2 full440/440 plus allfive stages/audit0. Mandatory source12/12 and installed12/12 real Linux containment pass in push and PR jobs.",
+      "automatedTests": "PR204 final11/11 and independent review passed; normal merge649142e main5/6 failed required source ISO-LIVE-07, installed live skipped. Original artifact retained. Reporter regressions originalRED4fail->GREEN4; review RED1fail->GREEN5. Diagnostic live qualification pending.",
       "actualClient": "Actual official SDK isolated-only calls, native denial, request cancellation and owned cleanup exercised inside live Linux qualification. Actual ChatGPT-to-MTerm connector invocation remains unverified.",
-      "blocker": "Scoped source/installed Linux qualification complete. Final metadata-head checks/review and qualified normal merge remain next; full capability acceptance, crash recovery, other platforms and full image rights remain open.",
+      "blocker": "Main real OOM assertion failed with nonzero exit/oomKilled:false; exact cause unresolved because old fixture lost failure observations. Repair retains observations/allcleanup errors and keeps strict containment assertions. Follow-up PR and main verification required before #93.",
       "declaredIssueDependencies": [],
       "ownerAuthorization": "docs/OWNER_AUTHORIZATION.md"
     },

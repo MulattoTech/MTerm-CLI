@@ -1,0 +1,685 @@
+{
+  "schemaVersion": 1,
+  "kind": "preserved-failed-main-and-diagnostic-preparation",
+  "capability": "AUG-005",
+  "issue": 84,
+  "previousPr": 204,
+  "recordedAt": "2026-11-08T03:21:49.428Z",
+  "main": {
+    "testedCommit": "649142ea222b67f31f2165910a3a66b80bc7847d",
+    "tree": "d1f8d9562e0744377de128d5a57a790f2a5627f0",
+    "finalHead": "cbe2af8266b49651ddf9455e553012e3e1062d37",
+    "finalChecksPassed": 11,
+    "mainChecksPassed": 5,
+    "mainChecksFailed": 1,
+    "runId": 42441442201,
+    "jobId": 128611325785,
+    "artifactId": 13601414400,
+    "artifactSha256": "ba1bd8d908ecd6764647af1fb66f04f920136d710fffecd6eca957adb2ee86fb",
+    "sourceScenariosPassed": 11,
+    "sourceScenariosFailed": 1,
+    "tap": {
+      "tests": 13,
+      "passed": 11,
+      "failed": 2,
+      "skipped": 0,
+      "cancelled": 0,
+      "afterHookFailed": true
+    },
+    "installedLive": "not_run",
+    "originalReceipt": {
+      "schemaVersion": 1,
+      "startedAt": "2026-11-08T03:09:02.010Z",
+      "finishedAt": "2026-11-08T03:09:09.714Z",
+      "sourceCommit": "649142ea222b67f31f2165910a3a66b80bc7847d",
+      "entry": "/home/runner/work/MTerm-CLI/MTerm-CLI/bin/mterm-cli.js",
+      "fixtureSha256": "4b3dc3d2c0222c30cac12eb5a1e642a08676b354fb1063c48c8f3068bc6c32c7",
+      "node": "v24.21.0",
+      "kernel": "7.0.0-1017-azure",
+      "platform": "linux",
+      "arch": "x64",
+      "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73",
+      "guestNode": "v24.22.2",
+      "syntheticOnly": false,
+      "modelCalls": 0,
+      "fullImageRedistributionEligible": false,
+      "acceptedCapability": false,
+      "scenarios": [
+        {
+          "id": "ISO-LIVE-01",
+          "title": "real immediate capture and fixed guest identity",
+          "passed": true,
+          "cleanupVerified": true,
+          "backend": {
+            "observedAt": "2026-11-08T03:09:02.041Z",
+            "apiVersion": "1.45",
+            "engineVersion": "29.9.3",
+            "engineCommit": "70efc0e",
+            "kernel": "7.0.0-1017-azure",
+            "operatingSystem": "Ubuntu 24.04.5 LTS",
+            "architecture": "x86_64",
+            "cgroupVersion": "2",
+            "seccomp": "builtin",
+            "containerd": {
+              "version": "v2.4.2",
+              "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+            },
+            "runc": {
+              "version": "1.5.2",
+              "commit": "v1.5.2-0-g29dd3dc2"
+            },
+            "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+          },
+          "observation": {
+            "node": "v24.22.2",
+            "platform": "linux",
+            "arch": "x64",
+            "uid": 65534,
+            "gid": 65534,
+            "cwd": "/work",
+            "env": {
+              "PATH": "/usr/local/bin:/usr/bin:/bin",
+              "HOSTNAME": "c85a19f28602",
+              "HOME": "/work",
+              "TMPDIR": "/work"
+            }
+          }
+        },
+        {
+          "id": "ISO-LIVE-02",
+          "title": "host sentinel, private paths, symlinks and read-only root remain inaccessible",
+          "passed": true,
+          "cleanupVerified": true,
+          "backend": {
+            "observedAt": "2026-11-08T03:09:02.260Z",
+            "apiVersion": "1.45",
+            "engineVersion": "29.9.3",
+            "engineCommit": "70efc0e",
+            "kernel": "7.0.0-1017-azure",
+            "operatingSystem": "Ubuntu 24.04.5 LTS",
+            "architecture": "x86_64",
+            "cgroupVersion": "2",
+            "seccomp": "builtin",
+            "containerd": {
+              "version": "v2.4.2",
+              "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+            },
+            "runc": {
+              "version": "1.5.2",
+              "commit": "v1.5.2-0-g29dd3dc2"
+            },
+            "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+          },
+          "observation": {
+            "host": {
+              "read": false,
+              "code": "ENOENT"
+            },
+            "link": {
+              "read": false,
+              "code": "ENOENT"
+            },
+            "proc": {
+              "read": false,
+              "code": "ENOENT"
+            },
+            "socket": false,
+            "rootWrite": "EROFS"
+          }
+        },
+        {
+          "id": "ISO-LIVE-03",
+          "title": "shells and detached descendants stay inside the owned container",
+          "passed": true,
+          "cleanupVerified": true,
+          "backend": {
+            "observedAt": "2026-11-08T03:09:02.443Z",
+            "apiVersion": "1.45",
+            "engineVersion": "29.9.3",
+            "engineCommit": "70efc0e",
+            "kernel": "7.0.0-1017-azure",
+            "operatingSystem": "Ubuntu 24.04.5 LTS",
+            "architecture": "x86_64",
+            "cgroupVersion": "2",
+            "seccomp": "builtin",
+            "containerd": {
+              "version": "v2.4.2",
+              "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+            },
+            "runc": {
+              "version": "1.5.2",
+              "commit": "v1.5.2-0-g29dd3dc2"
+            },
+            "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+          },
+          "observation": {
+            "uid": "65534",
+            "exit": 1,
+            "detachedPid": 17,
+            "containerRemovedWithDescendants": true
+          }
+        },
+        {
+          "id": "ISO-LIVE-04",
+          "title": "network namespace denies host TCP, external TCP and DNS",
+          "passed": true,
+          "cleanupVerified": true,
+          "backend": {
+            "observedAt": "2026-11-08T03:09:02.645Z",
+            "apiVersion": "1.45",
+            "engineVersion": "29.9.3",
+            "engineCommit": "70efc0e",
+            "kernel": "7.0.0-1017-azure",
+            "operatingSystem": "Ubuntu 24.04.5 LTS",
+            "architecture": "x86_64",
+            "cgroupVersion": "2",
+            "seccomp": "builtin",
+            "containerd": {
+              "version": "v2.4.2",
+              "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+            },
+            "runc": {
+              "version": "1.5.2",
+              "commit": "v1.5.2-0-g29dd3dc2"
+            },
+            "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+          },
+          "observation": {
+            "interfaces": [
+              "lo"
+            ],
+            "host": "ECONNREFUSED",
+            "external": "ENETUNREACH",
+            "lookup": "ECONNREFUSED"
+          }
+        },
+        {
+          "id": "ISO-LIVE-05",
+          "title": "kernel cgroups, seccomp, capabilities and privilege flags match the fixed profile",
+          "passed": true,
+          "cleanupVerified": true,
+          "backend": {
+            "observedAt": "2026-11-08T03:09:02.839Z",
+            "apiVersion": "1.45",
+            "engineVersion": "29.9.3",
+            "engineCommit": "70efc0e",
+            "kernel": "7.0.0-1017-azure",
+            "operatingSystem": "Ubuntu 24.04.5 LTS",
+            "architecture": "x86_64",
+            "cgroupVersion": "2",
+            "seccomp": "builtin",
+            "containerd": {
+              "version": "v2.4.2",
+              "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+            },
+            "runc": {
+              "version": "1.5.2",
+              "commit": "v1.5.2-0-g29dd3dc2"
+            },
+            "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+          },
+          "observation": {
+            "status": [
+              "CapEff:\t0000000000000000",
+              "NoNewPrivs:\t1",
+              "Seccomp:\t2"
+            ],
+            "memory": "134217728",
+            "swap": "0",
+            "cpu": "50000 100000",
+            "pids": "32",
+            "workspace": "4096",
+            "mounts": [
+              "417 408 0:64 / /work rw,nosuid,nodev,noexec,relatime - tmpfs tmpfs rw,size=16384k,mode=700,uid=65534,gid=65534,inode64"
+            ]
+          }
+        },
+        {
+          "id": "ISO-LIVE-06",
+          "title": "actual tmpfs exhaustion is bounded and contained",
+          "passed": true,
+          "cleanupVerified": true,
+          "backend": {
+            "observedAt": "2026-11-08T03:09:03.006Z",
+            "apiVersion": "1.45",
+            "engineVersion": "29.9.3",
+            "engineCommit": "70efc0e",
+            "kernel": "7.0.0-1017-azure",
+            "operatingSystem": "Ubuntu 24.04.5 LTS",
+            "architecture": "x86_64",
+            "cgroupVersion": "2",
+            "seccomp": "builtin",
+            "containerd": {
+              "version": "v2.4.2",
+              "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+            },
+            "runc": {
+              "version": "1.5.2",
+              "commit": "v1.5.2-0-g29dd3dc2"
+            },
+            "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+          },
+          "observation": {
+            "bytes": 16777216,
+            "error": "ENOSPC"
+          }
+        },
+        {
+          "id": "ISO-LIVE-07",
+          "title": "actual memory exhaustion is killed by the container limit",
+          "passed": false,
+          "cleanupVerified": false,
+          "backend": null,
+          "observation": null
+        },
+        {
+          "id": "ISO-LIVE-08",
+          "title": "actual child-process ceiling refuses additional descendants",
+          "passed": true,
+          "cleanupVerified": true,
+          "backend": {
+            "observedAt": "2026-11-08T03:09:03.508Z",
+            "apiVersion": "1.45",
+            "engineVersion": "29.9.3",
+            "engineCommit": "70efc0e",
+            "kernel": "7.0.0-1017-azure",
+            "operatingSystem": "Ubuntu 24.04.5 LTS",
+            "architecture": "x86_64",
+            "cgroupVersion": "2",
+            "seccomp": "builtin",
+            "containerd": {
+              "version": "v2.4.2",
+              "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+            },
+            "runc": {
+              "version": "1.5.2",
+              "commit": "v1.5.2-0-g29dd3dc2"
+            },
+            "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+          },
+          "observation": {
+            "count": 24,
+            "error": "EAGAIN"
+          }
+        },
+        {
+          "id": "ISO-LIVE-09",
+          "title": "actual CPU quota throttles a bounded busy loop",
+          "passed": true,
+          "cleanupVerified": true,
+          "backend": {
+            "observedAt": "2026-11-08T03:09:03.693Z",
+            "apiVersion": "1.45",
+            "engineVersion": "29.9.3",
+            "engineCommit": "70efc0e",
+            "kernel": "7.0.0-1017-azure",
+            "operatingSystem": "Ubuntu 24.04.5 LTS",
+            "architecture": "x86_64",
+            "cgroupVersion": "2",
+            "seccomp": "builtin",
+            "containerd": {
+              "version": "v2.4.2",
+              "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+            },
+            "runc": {
+              "version": "1.5.2",
+              "commit": "v1.5.2-0-g29dd3dc2"
+            },
+            "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+          },
+          "observation": {
+            "wallMs": 1820.576839,
+            "cpuMs": 906.048,
+            "throttled": 19
+          }
+        },
+        {
+          "id": "ISO-LIVE-10",
+          "title": "real timeout, output overflow and owned stop confirm removal",
+          "passed": true,
+          "cleanupVerified": true,
+          "backend": {
+            "observedAt": "2026-11-08T03:09:08.937Z",
+            "apiVersion": "1.45",
+            "engineVersion": "29.9.3",
+            "engineCommit": "70efc0e",
+            "kernel": "7.0.0-1017-azure",
+            "operatingSystem": "Ubuntu 24.04.5 LTS",
+            "architecture": "x86_64",
+            "cgroupVersion": "2",
+            "seccomp": "builtin",
+            "containerd": {
+              "version": "v2.4.2",
+              "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+            },
+            "runc": {
+              "version": "1.5.2",
+              "commit": "v1.5.2-0-g29dd3dc2"
+            },
+            "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+          },
+          "observation": {
+            "timeout": true,
+            "outputLimit": true,
+            "stop": true
+          }
+        },
+        {
+          "id": "ISO-LIVE-11",
+          "title": "real local IPC permissions deny access without a container",
+          "passed": true,
+          "cleanupVerified": true,
+          "backend": null,
+          "observation": {
+            "permissionDenied": true,
+            "connections": 0
+          }
+        },
+        {
+          "id": "ISO-LIVE-12",
+          "title": "actual SDK isolated-only grant and cancellation preserve native denial and cleanup controls",
+          "passed": true,
+          "cleanupVerified": true,
+          "backend": null,
+          "observation": {
+            "actualSdkRoundTrip": true,
+            "nativeExecutionDenied": true,
+            "cancellation": true,
+            "cleanupVerified": true,
+            "backend": {
+              "observedAt": "2026-11-08T03:09:09.477Z",
+              "apiVersion": "1.45",
+              "engineVersion": "29.9.3",
+              "engineCommit": "70efc0e",
+              "kernel": "7.0.0-1017-azure",
+              "operatingSystem": "Ubuntu 24.04.5 LTS",
+              "architecture": "x86_64",
+              "cgroupVersion": "2",
+              "seccomp": "builtin",
+              "containerd": {
+                "version": "v2.4.2",
+                "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51"
+              },
+              "runc": {
+                "version": "1.5.2",
+                "commit": "v1.5.2-0-g29dd3dc2"
+              },
+              "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+            }
+          }
+        }
+      ],
+      "passed": false
+    }
+  },
+  "finding": {
+    "observed": "ISO-LIVE-07 returned nonzero exit and oomKilled:false; the existing fixture discarded the exit code and stderr before recording an assertion failure.",
+    "cause": "unresolved",
+    "containmentFailureProved": false,
+    "delayedOomMetadataProved": false,
+    "failedCleanupProved": false,
+    "failedCleanupIndependentlyRecorded": false
+  },
+  "diagnosticCorrection": {
+    "productChanged": false,
+    "originalMemoryPayloadChanged": false,
+    "oomAssertionRelaxed": false,
+    "perJobLimitsChanged": false,
+    "scenarioEnvelopeMs": 180000,
+    "sequentialMemoryProbes": 8,
+    "retryUntilPass": false,
+    "allProbesMustPass": true,
+    "observationBeforeAssertion": true,
+    "originalBodyFailurePreserved": true,
+    "orderedCleanupStepsAttempted": true,
+    "cleanupFailuresRetainedIndependently": true,
+    "helperBoundInLiveReceipt": true,
+    "hostedDiagnostic": "pending"
+  },
+  "tests": [
+    {
+      "name": "red-failure-evidence",
+      "tests": 4,
+      "pass": 0,
+      "fail": 4,
+      "log": "artifacts/aug005/red-failure-evidence.log"
+    },
+    {
+      "name": "green-failure-evidence",
+      "tests": 4,
+      "pass": 4,
+      "fail": 0,
+      "log": "artifacts/aug005/green-failure-evidence.log"
+    },
+    {
+      "name": "red-all-cleanup-evidence",
+      "tests": 1,
+      "pass": 0,
+      "fail": 1,
+      "log": "artifacts/aug005/red-all-cleanup-evidence.log"
+    },
+    {
+      "name": "green-all-cleanup-evidence",
+      "tests": 5,
+      "pass": 5,
+      "fail": 0,
+      "log": "artifacts/aug005/green-all-cleanup-evidence.log"
+    }
+  ],
+  "rawPins": [
+    {
+      "path": "artifacts/aug005/main-649142e-failed/001-docker.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/002-gpg.log",
+      "bytes": 564,
+      "sha256": "2aedfbea9a2f18276907dc72262cf937c56bebc012fd11e27935a0c2625c007b"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/003-gpg.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/004-sudo.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/005-sudo.log",
+      "bytes": 216,
+      "sha256": "fd18c777bafd6901f96cb8afd70eec644a3d5582c9b8cdd2a5dc028a72f5d3f2"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/006-gpgv.log",
+      "bytes": 537,
+      "sha256": "10e1846c320ba176888087f704597ef2c66b01f0d5f7ff20053868563007a90f"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/007-apt-helper.log",
+      "bytes": 495027,
+      "sha256": "6bf01d98eab0b25b52273e91cb306527a9c769c3c7072e5bd68179855cedb48f"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/008-apt-get.log",
+      "bytes": 156,
+      "sha256": "aafcdb5a33481926aee5ee626a87924f9e015908116b7bae0a1c3405ba9f4b73"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/009-apt-get.log",
+      "bytes": 159,
+      "sha256": "62860de4505dd3fb2554c83f77b982f34c3ccadce45f9de0d632ed1807bd52ea"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/010-apt-get.log",
+      "bytes": 156,
+      "sha256": "60201cce9bdfb14c796a1a2799ca35ba75a53a125137ec7c160ab563964e446a"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/011-sudo.log",
+      "bytes": 2277,
+      "sha256": "ed886ffb23ea43fb97955623557684710f2dbbfcc6cddade4fc58b0a6c4859c2"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/012-sudo.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/013-sudo.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/014-dpkg-query.log",
+      "bytes": 29,
+      "sha256": "f93044ee4d47e5af160e854f9d7eddb733c869d2280d8a4ba36cbe55f8efdaab"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/015-dpkg-query.log",
+      "bytes": 29,
+      "sha256": "f93044ee4d47e5af160e854f9d7eddb733c869d2280d8a4ba36cbe55f8efdaab"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/016-dpkg-query.log",
+      "bytes": 26,
+      "sha256": "87a3059394e98b31d8e424e7e96998818fbbcb9ac861b9ebe01091c684a99b7f"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/017-docker.log",
+      "bytes": 880,
+      "sha256": "58041e9f63e4c510f59d2cbf063636fbe85cc41ffc70caef464e33dfb4ea3e58"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/018-docker.log",
+      "bytes": 78,
+      "sha256": "4cb552460198d896f6a2e9bc42eb48724a5678212f5d391f8bf469b75b09f149"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/019-docker.log",
+      "bytes": 1073,
+      "sha256": "74c40f8544e34a8624dce8690540cca3e2adf46382f423be31181cf0ac084fc9"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/020-docker.log",
+      "bytes": 78,
+      "sha256": "4cb552460198d896f6a2e9bc42eb48724a5678212f5d391f8bf469b75b09f149"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/021-docker.log",
+      "bytes": 1835,
+      "sha256": "04f88cdea05f19ab38848c9318919aaaea8299c7313285e8ef243730af559606"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/bootstrap.json",
+      "bytes": 16813,
+      "sha256": "98f5f2f47fc1e536a5261b66758881f2f94731146e00e1d95a095364abefb518"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/cli-LICENSE",
+      "bytes": 10765,
+      "sha256": "2d81ea060825006fc8f3fe28aa5dc0ffeb80faf325b612c955229157b8c10dc0"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/cli-NOTICE",
+      "bytes": 635,
+      "sha256": "a8c869fbda819afb8d80e0ac19bac52e766bc6c19cb38cf94f52d64c4be2aab6"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/containerd-LICENSE",
+      "bytes": 10765,
+      "sha256": "4bbe3b885e8cd1907ab4cf9a41e862e74e24b5422297a4f2fe524e6a30ada2b4"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/containerd-NOTICE",
+      "bytes": 519,
+      "sha256": "03f0b4bcaecfdb491ef5a7d320e2c2adf886c732d34e3fff87d52dbaec64d8c3"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/docker-archive-key.asc",
+      "bytes": 3817,
+      "sha256": "1500c1f56fa9e26b9b8f42452a553675796ade0807cdce11975eb98170b3a570"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/docker-noble-amd64-Packages",
+      "bytes": 495027,
+      "sha256": "6bf01d98eab0b25b52273e91cb306527a9c769c3c7072e5bd68179855cedb48f"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/docker-noble-InRelease",
+      "bytes": 48475,
+      "sha256": "6ac25b6892e468c29d0822d6422efe16a63ad6155d1186c85006e0e92f486362"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/engine-LICENSE",
+      "bytes": 10765,
+      "sha256": "7c87873291f289713ac5df48b1f2010eb6963752bbd6b530416ab99fc37914a8"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/engine-NOTICE",
+      "bytes": 1030,
+      "sha256": "a249c4197359eee43031d16cecb172326f92ee7b6701af99dfe5c3e5b3d5eca9"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/node-image-Dockerfile",
+      "bytes": 5010,
+      "sha256": "b9337735f3a1bac3fb9501495448f8dc0ae58eacd8513fe757dd7da7bf4208da"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/runc-LICENSE",
+      "bytes": 10758,
+      "sha256": "552a739c3b25792263f731542238b92f6f8d07e9a488eae27e6c4690038a8243"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/runc-NOTICE",
+      "bytes": 515,
+      "sha256": "e94a9789f41c5c3d6f74212571e6f44367de88269f1ce9c32f26c1b67eec6e7f"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/source/live-receipt.json",
+      "bytes": 11825,
+      "sha256": "c7a5f027c58d2d730791f411a1b0d17daf86ac8dd6ab91c502d7ff04b8062df8"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed/source/live-tests.tap",
+      "bytes": 4234,
+      "sha256": "ff6d5c63e3f166268bad63c43d95a29e3756d85bb14577aa2a0cb1099eafbdb7"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-failed.zip",
+      "bytes": 219381,
+      "sha256": "ba1bd8d908ecd6764647af1fb66f04f920136d710fffecd6eca957adb2ee86fb"
+    },
+    {
+      "path": "artifacts/aug005/main-649142e-live-failed.log",
+      "bytes": 19298,
+      "sha256": "c33a4f586908dfecc89081dd873f5d66c84dcca3275feda0dc2e9818a8740630"
+    },
+    {
+      "path": "artifacts/aug005/red-failure-evidence.log",
+      "bytes": 5379,
+      "sha256": "ae11ad12e2d2dac15818b28bffc96f22e2064db2b1782fd1dd271636b41c6b21"
+    },
+    {
+      "path": "artifacts/aug005/green-failure-evidence.log",
+      "bytes": 1064,
+      "sha256": "8a893b5bb0179c9c03841724d9adeb6b25e27046869a59e5c3c5afbdfad488ae"
+    },
+    {
+      "path": "artifacts/aug005/red-all-cleanup-evidence.log",
+      "bytes": 1162,
+      "sha256": "c8e5901888a251772d6c2c715fa8bf02d8760ee05416d4024255135e863a1930"
+    },
+    {
+      "path": "artifacts/aug005/green-all-cleanup-evidence.log",
+      "bytes": 1303,
+      "sha256": "e333e99a9a70cde31af8ffa9837019ff549c05af325936452e05f23b8628a064"
+    }
+  ],
+  "modelCalls": 0,
+  "acceptanceAwarded": false,
+  "fullRuntimeImageRedistributionEligible": false,
+  "nextGate": "Independent source review; exact diagnostic CI with source and installed containment; determine causal memory failure before qualified merge/main."
+}

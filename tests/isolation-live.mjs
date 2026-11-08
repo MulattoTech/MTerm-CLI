@@ -2,6 +2,7 @@
 // AI-Change: 2026-11-08-aug005-container-isolation (OpenAI / GPT-6 Astra Pro; self-reported)
 // Mandatory real native-Linux qualification. This file is explicitly invoked, never auto-skipped.
 import test, { after } from 'node:test';
+import { recordScenario, cleanupScenario } from './isolation-live-evidence.mjs';
 import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import os from 'node:os';
@@ -55,6 +56,9 @@ const receipt = {
   fixtureSha256: createHash('sha256')
     .update(await fs.readFile(new URL(import.meta.url)))
     .digest('hex'),
+  evidenceHelperSha256: createHash('sha256')
+    .update(await fs.readFile(new URL('./isolation-live-evidence.mjs', import.meta.url)))
+    .digest('hex'),
   node: process.version,
   kernel: os.release(),
   platform: process.platform,
@@ -101,27 +105,77 @@ async function ownedAbsent(instanceId) {
   assert.equal(result.stdout.trim(), '', 'An owned container remains after qualification');
 }
 function scenario(id, title, body) {
-  test(id + ' ' + title, { timeout: 60000 }, async () => {
-    const record = { id, title, passed: false, cleanupVerified: false, backend: null, observation: null };
+  // Eight diagnostic jobs retain their individual 8s deadline and 10s cleanup ceiling.
+  const timeout = id === 'ISO-LIVE-07' ? 180000 : 60000;
+  test(id + ' ' + title, { timeout }, async () => {
+    const record = {
+      id,
+      title,
+      passed: false,
+      cleanupVerified: false,
+      backend: null,
+      observation: null,
+      cleanup: { activeJobs: null, sharedActiveJobs: null, ownedAbsent: false },
+    };
     receipt.scenarios.push(record);
     const root = await fs.mkdtemp(path.join(os.tmpdir(), 'mterm-live-isolation-'));
     const jobs = await ProcessService.create(root, { allowExec: false });
-    let service;
-    try {
-      service = await createNativeIsolation(policy, jobs);
-      record.observation = await body({ root, jobs, service });
-      record.backend = service.status().backend;
-      await service.close();
-      assert.equal(service.status().activeJobs, 0);
-      assert.equal(jobs.resourceStatus().usage.activeJobs, 0);
-      await ownedAbsent(service.status().instanceId);
-      record.cleanupVerified = true;
-      record.passed = true;
-    } finally {
-      await service?.close();
-      await jobs.close();
-      await fs.rm(root, { recursive: true, force: true });
-    }
+    let service, instanceId;
+    await recordScenario(
+      record,
+      async (observe) => {
+        service = await createNativeIsolation(policy, jobs);
+        instanceId = service.status().instanceId;
+        return body({ root, jobs, service, observe });
+      },
+      async () =>
+        cleanupScenario(record, [
+          [
+            'capture-backend',
+            async () => {
+              record.backend = service?.status().backend ?? null;
+            },
+          ],
+          [
+            'close-isolation',
+            async () => {
+              await service?.close();
+            },
+          ],
+          [
+            'observe-capacity',
+            async () => {
+              if (service) {
+                record.cleanup.activeJobs = service.status().activeJobs;
+                record.cleanup.sharedActiveJobs = jobs.resourceStatus().usage.activeJobs;
+                assert.equal(record.cleanup.activeJobs, 0);
+                assert.equal(record.cleanup.sharedActiveJobs, 0);
+              }
+            },
+          ],
+          [
+            'observe-owned-absence',
+            async () => {
+              if (service) {
+                await ownedAbsent(instanceId);
+                record.cleanup.ownedAbsent = true;
+              }
+            },
+          ],
+          [
+            'close-process-service',
+            async () => {
+              await jobs.close();
+            },
+          ],
+          [
+            'remove-fixture-root',
+            async () => {
+              await fs.rm(root, { recursive: true, force: true });
+            },
+          ],
+        ]),
+    );
   });
 }
 after(async () => {
@@ -252,14 +306,33 @@ scenario('ISO-LIVE-06', 'actual tmpfs exhaustion is bounded and contained', asyn
   assert.ok(v.bytes <= 16777216 && v.bytes >= 1048576);
   return v;
 });
-scenario('ISO-LIVE-07', 'actual memory exhaustion is killed by the container limit', async ({ service }) => {
-  const r = await service.run({
-    code: 'const retained=[];for(;;)retained.push(Buffer.alloc(4*1024*1024,127));',
-  });
-  assert.notEqual(r.exitCode, 0);
-  assert.equal(r.oomKilled, true);
-  return { exitCode: r.exitCode, oomKilled: r.oomKilled };
-});
+scenario(
+  'ISO-LIVE-07',
+  'actual memory exhaustion is killed by the container limit',
+  async ({ service, observe }) => {
+    const observation = { plannedProbes: 8, probes: [] };
+    observe(observation);
+    // Bounded sequential diagnostic probes: any failure fails the scenario; no retry-to-pass.
+    for (let index = 0; index < observation.plannedProbes; index++) {
+      const r = await service.run({
+        code: 'const retained=[];for(;;)retained.push(Buffer.alloc(4*1024*1024,127));',
+      });
+      observation.probes.push({
+        probe: index + 1,
+        exitCode: r.exitCode,
+        oomKilled: r.oomKilled,
+        stdout: r.stdout,
+        stderr: r.stderr,
+        outputBytes: r.outputBytes,
+        cleanup: r.cleanup,
+        backend: r.backend,
+      });
+      assert.notEqual(r.exitCode, 0);
+      assert.equal(r.oomKilled, true);
+    }
+    return observation;
+  },
+);
 scenario(
   'ISO-LIVE-08',
   'actual child-process ceiling refuses additional descendants',

@@ -1,3 +1,13 @@
+# Failed main gate and diagnostic repair — 2026-11-08T03:21:49.428Z
+
+PR204 merged normally as649142ea222b67f31f2165910a3a66b80bc7847d after11/11 final checks and independent review; merge tree matches. Main is5/6, not green: mandatory Linux source ISO-LIVE-07 exited nonzero with oomKilled:false, other11 scenarios passed, installed live skipped. The original [failed main receipt](validation/2026-11-08-aug005-main-failure.json) preserves the actual artifact, TAP, receipt and evidence gap. Cause remains unresolved; no containment or cleanup failure is inferred from missing observations.
+
+Owner branch fix/aug-005-live-oom-evidence-20261108 in the same isolated AUG005 clone repairs failure accounting first. Reporter tests went RED4->GREEN4, independent-review multi-cleanup regression RED1->GREEN5. Original memory payload/profile/8s per-job deadline and strict OOM assertion remain. Eight sequential probes all must pass, with a180s test-only envelope; observations and all cleanup errors are retained on failure. No product or dependency change. Four changed live-fixture matrix bindings return to unrun pending exact qualification; previous successful receipts remain immutable history.
+
+Next: independent source review, exact diagnostic source/installed CI, causal correction if indicated, normal qualified follow-up merge and main verification; #93 CLI-157/165 follows. No recurring owner approval or Codex/model request. Preserve original dirty checkout, prior APT failure, native EPERM failure and this main failure. Full acceptance remainsAUG0/117; CLI29.12%/0complete; DCP0/48; WEB0/12.
+
+---
+
 # Current delivery checkpoint — AUG-005 / PR204 — 2026-11-08T03:02:15.612Z
 
 Codee8264f74cd02df465a66a6ed81bf38034a01ad00 passed all11 hosted checks and independently reviewed source/rights/evidence gates. Native attempt1 retained439/440 with one existing private registration EPERM; unchanged focused1/1 and one disclosed full attempt2 passed440/440, installed28isolation/24resource/29pack/18provenance and audit0. Cause of the earlier OS denial is unproven, not declared fixed.

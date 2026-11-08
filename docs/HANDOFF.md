@@ -1,3 +1,53 @@
+# PR206 integration resumed on qualified PR208 main — 2026-11-08T08:37:54.922Z
+
+PR199 and PR208 are already merged. Current main is `ad1571b94c70fb8a0f4542302f5d40c6d80a97d7`; its tree matches the reviewed PR208 head and all six main checks passed. This ordinary merge combines that main with preserved PR206 head `3ca898791a9178fb4e94dcdaaf3ead7df7a543bf`.
+
+The tool-packs source conflict was an attribution header. Both installed verifier blocks are retained without weakened assertions: 42 update-check cases and 41 persistence cases. Combined development tests pass 83/83 on the existing Node 24.21.0 runtime. The initial command selected the workstation default Node 27 and was correctly rejected by Node 24 admission; its failed output is retained separately. [Integration evidence](validation/2026-11-08-aug011-registry-integration.json) records both observations.
+
+All original PR206 artifacts and both parents' validation history are preserved, including the 507/508 native EPERM failure. Its cause remains unknown. All 300 requirement stages and 117 capability scopes/dependencies are unchanged; no new full acceptance is claimed.
+
+Next: complete independent review, commit this ordinary integration, then qualify that exact committed head with native build/check, installed package, production audit, isolated parser and hosted checks. The final GitHub merge must use the reviewed expected head and verify merged-main checks. Standing owner authorization applies; no further manual approval is pending, and no model calls are authorized or made. Continue in the AUG011 checkout; preserve unrelated work.
+
+---
+
+# PR208 persistence qualification recorded — 2026-11-08T07:30:41.500Z
+
+Implementation6f70e5c/tree5f388a5 has native507/507 and allsixhosted gates passed. The actual hosted checkout3bc5335 has the identical tree. Allfourhosts pass installed persistence41/41; Windows507/507 and otherhosts495pass plus12existingWindows-onlyskips. Native package, productionaudit0 and isolated parsermodel0 passed. [Exact qualification](validation/2026-11-08-aug003-registry-qualification.json) binds actual logs, 19installed modules, four packageLICENSEs and corrected fixture bytes.
+
+ActualLinux source12/12 and installed12/12 pass with16strictOOM:true probes,144cleanup steps and38cgroupfs/v2 observations; all45artifact members and8runtimeLICENSE/NOTICEs are retained. Runtime/image pins and all947dependencyfiles/launcher are unchanged. Actualpackagepayload1005files14584333bytes is byte-identical to cb3; relative to qualified main it adds15102compiledbytes. node_modules1009files14587983bytes; entireprefix1012files14595507bytes. Full transitive/runtime/image rights and actualChatGPT integration remain unaccepted.
+
+The original cb3 macARM fixture-admission failure remains immutable and unqualified; its corrected successor passes actualmacARM. PR206 remains preserved at3ca8987 with native507/508 failed and11hostedpassed. Original EPERM causes remain unknown. No failed job was rerun or waived. All170earlierfiles plus the portability record remain unchanged, all300protectedrequirements and117scope/dependencyrecords are preserved, and acceptance remainsAUG0/117,CLI0/300,DCP0/48,WEB0/12.
+
+Next: independent final evidence/metadata review, six final-head gates, normal expected-head merge and sixmain gates; then ordinarily integrate intoPR206 and resume#93. Standing authorization applies, no manual approval pending, no model requests. Preserve dirty primary checkout and unrelated work. Checkpoint artifacts/aug003-registry/checkpoint.json.
+
+---
+
+# Registry fixture portability correction — 2026-11-08T07:15:33.665Z
+
+PR208 is draft; committed cb3aedf is unqualified: native507/507, installed41/41, audit0 and synthetic parsermodel0 passed, but hosted5/6 includes a macOS ARM64 fixture-admission failure. The product correctly rejected synthetic win32-arm64. Its complete failed qualification, 45-member real Linux artifact, 19 installed module bindings, four package licenses, eight runtime LICENSE/NOTICE files and exact logs remain pinned in [the portability record](validation/2026-11-08-aug003-registry-portability.json).
+
+Only the last registry-creation fixture changes. It performs actual native admission and a real owned hard link before selecting synthetic Windows cleanup, with exact stage targeting and unconditional restoration. Independent read-only review cleared the candidate: baseline RED0/1 and corrected focused GREEN41/41. No runtime source, platform guard, architecture, skip or original outcome assertion changes. New exact-head qualification remains next.
+
+PR206 stays preserved at 3ca8987 with its failed native507/508 and successful11hosted evidence. Original EPERM causes remain unknown. After qualified PR208 normal merge and main gates, integrate ordinarily into PR206 and resume #93. Standing authorization applies; no manual approval pending; no model requests. All acceptance totals remain AUG0/117, CLI0/300, DCP0/48, WEB0/12; full rights and actual ChatGPT integration remain open.
+
+---
+
+# Registry persistence correction under review — 2026-11-08T06:54:45.630Z
+
+Qualified main is a7c047c (PR207), with 6/6 final and 6/6 main checks and the identical reviewed tree. [Merged-main receipt](validation/2026-11-08-aug005-merged-main.json).
+
+PR206 is preserved clean at 3ca8987, ordinary integration of 4985 and qualified a7. Its 11 hosted checks passed; native 507/508 failed on uninstall EPERM. The operation/cause is unknown. A single separate 142-event diagnostic passed without EPERM and earns no acceptance credit. Both successful real Linux artifacts and the failed native log are preserved in [the development record](validation/2026-11-08-aug003-registry-development.json). No failed qualification was rerun; native package/audit/parser were not started after failure.
+
+The new #83 corrective branch fix/aug-003-registry-persistence-20261108 is owned in H:\MTechLabs\Dev\MTerm-CLI-AUG003-Registry-20261108. Generic writes now guard bounded Windows rename retries, retain no-overwrite creation, report committed creation with failed stage cleanup, and preserve primary staging errors. Registry mutation outcomes retain commit state independently of owned lock cleanup. Every retry rechecks authority and ownership; no destination deletion or complete-operation retry.
+
+Initial RED 6/34 to GREEN 34/34 was expanded by independent review: seven causal failures cover creation cleanup, final destination-check ordering, and write/sync-plus-close errors. The final 41 fixtures are unchanged across immutable-main RED 6 pass/35 fail and corrected GREEN 41/41. The package verifier now requires 41 cases against actual installed modules with nine source bindings. Independent scoped source-publication review is clear; this remains development evidence. Exact committed native/installed/security/license/hosted and independent final metadata review remain next.
+
+Requirements CLI-269 and CLI-287 retain all stages, acceptance, weights, estimates, dependencies and blockers. AUG 0/117, CLI 0/300 complete, DCP 0/48, WEB 0/12. Existing matrix observations remain tied to their original subjects. Actual ChatGPT integration and full rights are unaccepted.
+
+One implementation owner and one read-only peer; standing authorization applies, no manual approval pending, no Codex/model requests. Preserve primary dirty checkout, PR206 and unrelated work. After qualification, normal expected-head merge and main checks, integrate ordinarily into PR206 and resume #93. Checkpoint: artifacts/aug003-registry/checkpoint.json.
+
+---
+
 # PR206 ordinary integration of qualified PR207 main — 2026-11-08T06:06:19.784Z
 
 PR207 is normally merged as a7c047c, treebde6453 identical to reviewed finala8417e5, with6/6final and6/6main checks. Main source12/12+installed12/12,16strict rawOOM probes,38cgroupfs/v2 observations,144cleanup steps and31protocol cases passed; [merged-main receipt](validation/2026-11-08-aug005-merged-main.json) preserves the artifact/member pins. All previous failures remain historical, with no blanket cause/fix claim.

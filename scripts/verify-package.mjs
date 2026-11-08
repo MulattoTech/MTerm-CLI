@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-08-aug003-registry-persistence; actual installed file/registry fault regressions.
 // Modified: 2026-11-08-aug005-lifecycle-observation; require both causal deadline phases from the installed runtime.
 // Modified: 2026-11-08-aug011-update-check; qualify nonmutating update comparisons from the actual packed installation.
 // Modified: 2026-11-08-aug012-resource-budgets; exercise all resource fixtures against exact installed admission modules.
@@ -205,6 +206,8 @@ for (const name of [
   'cli.js',
   'mcp.js',
   'tool-packs.js',
+  'files.js',
+  'errors.js',
   'processes.js',
   'resource-budgets.js',
   'resource-budget-policy.js',
@@ -309,6 +312,63 @@ const installedPackUpdateCheck = {
   transactionalInstallVerified: false,
   fullCli165Acceptance: false,
   log: updateLog,
+};
+const persistenceAcceptance = await exec(
+  process.execPath,
+  [
+    '--test',
+    '--test-reporter=tap',
+    '--test-concurrency=1',
+    path.join(root, 'tests/file-write-retry.test.mjs'),
+    path.join(root, 'tests/pack-registry-outcomes.test.mjs'),
+  ],
+  {
+    cwd: home,
+    env: { ...env, MTERM_VERIFY_BIN: installed },
+    timeout: 90000,
+    maxBuffer: 2097152,
+    windowsHide: true,
+  },
+).then(
+  (result) => ({ ...result, exit: 0 }),
+  (error) => ({ stdout: error.stdout ?? '', stderr: error.stderr ?? '', exit: error.code ?? 'unknown' }),
+);
+const persistenceLog = path.join(output, 'registry-persistence-tests.tap');
+const persistenceOutput = persistenceAcceptance.stdout + persistenceAcceptance.stderr;
+await fs.writeFile(persistenceLog, persistenceOutput);
+assert.equal(
+  persistenceAcceptance.exit,
+  0,
+  'Installed registry persistence regression failed; see retained log',
+);
+const persistenceTests = Number(persistenceOutput.match(/^# tests (\d+)$/m)?.[1]);
+assert.ok(persistenceTests >= 41, 'Installed registry persistence cases did not run');
+assert.match(persistenceOutput, /^# fail 0$/m);
+assert.match(persistenceOutput, /^# skipped 0$/m);
+assert.match(persistenceOutput, /^# cancelled 0$/m);
+const installedRegistryPersistence = {
+  ok: true,
+  tests: persistenceTests,
+  failed: 0,
+  skipped: 0,
+  cancelled: 0,
+  moduleBindings: packBindings,
+  fixtureBindings: await Promise.all(
+    ['file-write-retry.test.mjs', 'pack-registry-outcomes.test.mjs'].map(async (name) => ({
+      path: 'tests/' + name,
+      sha256: createHash('sha256')
+        .update(await fs.readFile(path.join(root, 'tests', name)))
+        .digest('hex'),
+    })),
+  ),
+  syntheticFilesystemFaults: true,
+  substitutedPlatformBranches: true,
+  nativeLockConflictReproduced: false,
+  historicalEpermCauseKnown: false,
+  fromOutsideCheckout: true,
+  modelCalls: 0,
+  log: persistenceLog,
+  logSha256: createHash('sha256').update(persistenceOutput).digest('hex'),
 };
 const budgetAcceptance = await exec(
   process.execPath,
@@ -581,6 +641,7 @@ const report = {
   installedRemoteState: remoteState,
   installedOptionalPacks,
   installedPackUpdateCheck,
+  installedRegistryPersistence,
   installedResourceBudgets,
   installedIsolation,
   installedProvenance,

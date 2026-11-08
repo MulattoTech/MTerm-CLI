@@ -1,0 +1,80 @@
+{
+  "change_id": "2026-11-08-aug011-registry-integration",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "started_at": "2026-11-08T08:32:29.606Z",
+  "updated_at": "2026-11-08T08:37:54.922Z",
+  "base_sha": "3ca898791a9178fb4e94dcdaaf3ead7df7a543bf",
+  "issues": [
+    93,
+    83,
+    81
+  ],
+  "requirements": [
+    "CLI-157",
+    "CLI-165",
+    "CLI-269",
+    "CLI-287"
+  ],
+  "files": [
+    "src/tool-packs.ts",
+    "src/files.ts",
+    "scripts/verify-package.mjs",
+    "tests/file-write-retry.test.mjs",
+    "tests/pack-registry-outcomes.test.mjs",
+    "docs/HANDOFF.md",
+    "docs/roadmap/progress.json",
+    "docs/expansion/queue.json",
+    "docs/expansion/evidence.json",
+    "docs/validation/2026-11-08-aug011-registry-integration.json"
+  ],
+  "decisions": [
+    "Ordinarily integrate qualified main without rewriting either parent or historical artifacts.",
+    "Retain both exact installed verifier blocks and their assertions, module pins and logs.",
+    "Preserve all requirement stages and acceptance scopes. New native and hosted qualification is required.",
+    "Select the already-present Node 24.21.0 runtime explicitly; preserve the incorrect-default Node 27 development run."
+  ],
+  "tests": [
+    {
+      "command": "Node 24 development build and formatting",
+      "result": "Passed."
+    },
+    {
+      "command": "Node 24 combined update and persistence regressions",
+      "result": "83/83 passed; no failed, skipped or cancelled cases."
+    },
+    {
+      "command": "Exact committed native and hosted qualification",
+      "result": "Pending."
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "id": "CLI-157",
+      "stage_change": false,
+      "reason": "Integration preserves existing accepted scope and stage; scoped development coverage does not establish full acceptance."
+    },
+    {
+      "id": "CLI-165",
+      "stage_change": false,
+      "reason": "Integration preserves existing accepted scope and stage; scoped development coverage does not establish full acceptance."
+    },
+    {
+      "id": "CLI-269",
+      "stage_change": false,
+      "reason": "Integration preserves existing accepted scope and stage; scoped development coverage does not establish full acceptance."
+    },
+    {
+      "id": "CLI-287",
+      "stage_change": false,
+      "reason": "Integration preserves existing accepted scope and stage; scoped development coverage does not establish full acceptance."
+    }
+  ],
+  "limitations": [
+    "Offline comparison only; no transactional installation or automatic activation.",
+    "Original qualification failures remain immutable and their causes are not inferred from later success.",
+    "Full redistribution and actual ChatGPT integration acceptance remain separate."
+  ],
+  "checkpoint": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG011-20261108\\artifacts\\aug011-resume-20261108",
+  "next_unverified_action": "Independent combined source/metadata review; ordinary merge commit; exact native, installed package, production audit, isolated parser and hosted checks; expected-head normal merge after final review."
+}

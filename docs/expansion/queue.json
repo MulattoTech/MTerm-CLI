@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "asOf": "2026-11-08T06:06:19.784Z",
+  "asOf": "2026-11-08T08:37:54.922Z",
   "repository": "MulattoTech/MTerm-CLI",
   "epic": 81,
   "baseSha": "d7b7c4fb19867f7c5f9727598442c29c12d43709",
@@ -143,8 +143,8 @@
       "status": "merged_partial",
       "owner": "ChatGPT Web / GPT-6 Astra Pro",
       "branch": "feat/aug-003-pack-catalog-20261108",
-      "pr": 202,
-      "mergeSha": "d6eb0fa8a3df8a22abdec587f405e1105f78acb8",
+      "pr": 208,
+      "mergeSha": "ad1571b94c70fb8a0f4542302f5d40c6d80a97d7",
       "accepted": false,
       "testPlan": "common contract + original issue acceptance at issue URL",
       "platformScope": [
@@ -153,11 +153,26 @@
         "darwin-arm64",
         "darwin-x64"
       ],
-      "automatedTests": "Final3628672:9/9 checks and immutable independent review. Normal merge d6eb0fa shares tested tree380f84d and passed5/5 main checks. Native388/388; other hosts376pass+12existing skips. Installed29pack+18provenance on each host. PR207 changes the revocation fixture to verify uninstall preconditions; previous platform observations are historical until the exact new fixture qualifies. Original c9 native failure remains preserved. PR2074eeedae freshly qualifies the changed fixture on all four hosts (Windows466/466; others454pass+12existing skips), all five catalog observations and installed29pack/18provenance. The original c9 native failure remains preserved.",
+      "automatedTests": "PR208 is merged with the identical reviewed tree and six successful merged-main checks. Its native 507/507 and installed persistence 41/41 qualification remains pinned in the existing receipt. No earlier failed qualification was erased.",
       "actualClient": "Two real official SDK stdio clients with isolated selection and notification tests; synthetic local pack payload. Real ChatGPT-to-MTerm app integration remains unverified.",
       "blocker": "Scoped ABI1 tools catalog/selection/refresh delivered; resources/prompts and actual client/full platform/licensing acceptance remain open. No owner review is pending.",
       "declaredIssueDependencies": [],
-      "ownerAuthorization": "docs/OWNER_AUTHORIZATION.md"
+      "ownerAuthorization": "docs/OWNER_AUTHORIZATION.md",
+      "currentCorrection": {
+        "issue": 83,
+        "branch": "fix/aug-003-registry-persistence-20261108",
+        "base": "a7c047c76825562a3f51b100a8cc9b92151ee1f5",
+        "pr": 208,
+        "status": "implementation_qualified_final_review_pending",
+        "requirements": [
+          "CLI-269",
+          "CLI-287"
+        ],
+        "evidence": "docs/validation/2026-11-08-aug003-registry-qualification.json",
+        "accepted": false,
+        "tests": "Exact6f70e5c native507/507, allsixhosted, installed41/41, package29pack/24resource/31protocol/18provenance, audit0, fourpackageLICENSEs and zero-model parser. RealLinuxsource12+installed12,16strictOOM/144cleanup. Final metadata and main gates pending; priorcb3 failure retained.",
+        "head": "6f70e5cefcecd8cc9dbe982e5c0b05fdfcf73cb7"
+      }
     },
     {
       "id": "AUG-004",
@@ -502,9 +517,9 @@
         "darwin-arm64",
         "darwin-x64"
       ],
-      "automatedTests": "Original42/42focused development and independent source review retained. Original4985 native486/487, push3/5 and PR6/6 remain recorded, including failures. Ordinary integration of qualified PR207/maina7c047c is now prepared; new exact integrated native/package/audit/license and11hosted gates remain pending.",
+      "automatedTests": "Ordinary integration of qualified PR208 main. Combined Node 24 development tests pass 83/83 (42 update checks and 41 persistence cases); exact committed native, package, security and hosted gates remain pending. Original 3ca8987 native 507/508 failure and eleven passing hosted checks remain historical.",
       "actualClient": "Actual local CLI exercised; actual ChatGPT-to-MTerm connector unavailable and unverified.",
-      "blocker": "Only rooted offline update comparison is implemented. CLI165 execution/extraction/import closure, transactional installation, staging/activation and rollback remain open; original native EPERM cause remains unresolved. New integrated head must qualify before delivery.",
+      "blocker": "Rooted offline update comparison only. Transactional installation, staging/activation, rollback and full CLI-165 import/execution acceptance remain open. The original EPERM cause remains unknown; new integrated delivery requires exact qualification.",
       "declaredIssueDependencies": [],
       "ownerAuthorization": "docs/OWNER_AUTHORIZATION.md"
     },

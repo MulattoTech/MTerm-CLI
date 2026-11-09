@@ -1,0 +1,1501 @@
+{
+  "change_id": "2026-11-09-staging-handoff",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "session_id": "MTERM-WEB-20261109T131339Z-resume-a9287b3c",
+  "worker": "/root/recover_prior_run",
+  "status": "native-path source/fixture/docs and independent shared review CLEAR; root188 and normal local gates passed; replacement exact candidate hosted/connected/main gates pending",
+  "updated_at": "2026-11-09T17:04:19.880267+00:00",
+  "base_sha": "33f314055a5371d9b2bbcda9b7c8388f79d3cf35",
+  "branch": "feat/issue-231-staging-handoff-20261109",
+  "claim": {
+    "ref": "coord/mterm/issue-231",
+    "comment_url": "https://github.com/MulattoTech/MTerm-CLI/issues/231#issuecomment-6743531910"
+  },
+  "issues": [
+    231,
+    61,
+    65
+  ],
+  "requirements": [
+    "CLI-290",
+    "CLI-299"
+  ],
+  "remote_web_requirements": [
+    "WEB-008",
+    "WEB-012"
+  ],
+  "files": [
+    "scripts/staging-handoff.mjs",
+    "scripts/staging-handoff-seal.mjs",
+    "tests/staging-handoff.test.mjs",
+    "docs/validation/2026-11-09-staging-handoff.md",
+    "docs/ai/changes/2026-11-09-staging-handoff.json",
+    "README.md",
+    "docs/HANDOFF.md",
+    "docs/SECURITY.md",
+    "docs/REMOTE_MCP.md",
+    "docs/REMOTE_MCP_ROADMAP.md",
+    "docs/deployment/MTERM_STAGING.md",
+    "docs/validation/2026-11-09-staging-deployment.md",
+    "docs/roadmap/progress.json",
+    "docs/roadmap/review.json",
+    "docs/roadmap/FEATURES.md",
+    "docs/roadmap/index.html",
+    "docs/validation/2026-11-09-staging-handoff-scaffold-red.tap",
+    "docs/validation/2026-11-09-staging-handoff-pipe-red.tap",
+    "docs/validation/2026-11-09-staging-handoff-green.tap",
+    "docs/validation/2026-11-09-staging-handoff-native-red.tap",
+    "docs/validation/2026-11-09-staging-handoff-native-green.tap"
+  ],
+  "decisions": [
+    "Use a new isolated normal clone; preserve issue229, issue226 and immutable discovery checkouts.",
+    "Root-approved explicit probe or smoke mode, bound into protected context; fixed probe child is an operational nonsecret preflight, not an arbitrary command override.",
+    "Keep local reviewed source/bundle/helper/harness identities separate from the selected deployed source commit. Sender separately receives the reviewed selection.",
+    "Use one ephemeral nonextractable RSA3072 OAEP/SHA256 recipient key; wrap a fresh32-byte AES key and use AES256-GCM with12-byte IV,128-bit tag and exact protected-header AAD.",
+    "Root owns shared documentation, integration and actual connected nonsecret Cloudflare-to-Windows interoperability before any actual service token.",
+    "Fixed source inventory uses git rev-parse and ls-tree object identities, not diff drivers or clean filters; compare actual bytes and raw SHA256 bundle after async work. Global configuration remains unchanged.",
+    "Receiver consumes one instance before its first await, destroys ciphertext stdin after one frame, and checks a120-second monotonic/wall deadline before fixed child spawn and plaintext pipe release.",
+    "Same trusted Node executable, explicit process-local environment allowlist, no inherited preload/TLS hooks or shell; only fixed probe child or exact unchanged smoke can run.",
+    "Allow the existing240-second smoke abort plus a450-second outer child budget. Wait for actual close, bound/filter output, and label hard termination or uncertain child cleanup as unconfirmed.",
+    "The self-contained sealer validates actual RSA/AES operations before a fixed POST with unique name and explicit30m intent; failure deletes only a syntactically valid ID returned by its own successful creation response.",
+    "The fourth sender argument contains the independently selected mode/source/bundle/helper/harness/deployed identities; copying challenge values into it would not establish provenance.",
+    "Public probe makes no API/resource call and admits only its fixed public fixture pair; direct probe-child output is explicitly child-only.",
+    "Independent source review found a pending stdin-write path that could outlive the bounded close outcome. Preserve the original 130-case scaffold/implementation evidence, freeze one incremental native Writable regression, reproduce it on first receiver f3e3c1db, then race write completion against the existing close deadline without claiming unconfirmed child termination."
+  ],
+  "scaffold_baselines": [
+    {
+      "receipt_path": "artifacts/issue-231-staging-handoff/scaffold-red-receipt.json",
+      "receipt_sha256": "0caac7fb29314a551b539fa7addba0ea163b245a4e19f3d29ee6eade112cbc76",
+      "kind": "new-feature-scaffold-baseline; not an existing-source regression reproduction",
+      "counts": {
+        "tests": 114,
+        "suites": 0,
+        "pass": 18,
+        "fail": 96,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "exit_code": 1,
+      "fixture_sha256": "ca8a5cc6ec0b78cfd484ec3fa1b7b51c456b9de91b8d0c50a05a74162e80e70a",
+      "source_before_sha256": {
+        "scripts/staging-handoff.mjs": "c10f9621a59f60c1ee5847f51ee2d9a5948b651372e4450baf48c14e3969a338",
+        "scripts/staging-handoff-seal.mjs": "eb0c0f092e831399248895b3afd63fdc716cb668d7864b5e641f544a576be6bb",
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-handoff.test.mjs": "ca8a5cc6ec0b78cfd484ec3fa1b7b51c456b9de91b8d0c50a05a74162e80e70a"
+      },
+      "inputs_unchanged": true,
+      "tap_sha256": "8a8f31bc53877bade3231c84c59ea64f604e163e3306e579bdf69330c4a4c13e",
+      "stderr_bytes": 0
+    },
+    {
+      "receipt_path": "artifacts/issue-231-staging-handoff/corrected-scaffold-red-receipt.json",
+      "receipt_sha256": "55c5cde24f5d8cd78e12e44567017db6f6dbf86b9aa78e35788aa2d6fe6e7124",
+      "kind": "corrected new-feature scaffold baseline before behavior implementation",
+      "counts": {
+        "tests": 114,
+        "suites": 0,
+        "pass": 18,
+        "fail": 96,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "exit_code": 1,
+      "fixture_sha256": "55f380d7aeb39de1186d9fa566b0d8e690f9ecb49862bf630925db974f9b1251",
+      "source_before_sha256": {
+        "scripts/staging-handoff.mjs": "c10f9621a59f60c1ee5847f51ee2d9a5948b651372e4450baf48c14e3969a338",
+        "scripts/staging-handoff-seal.mjs": "eb0c0f092e831399248895b3afd63fdc716cb668d7864b5e641f544a576be6bb",
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-handoff.test.mjs": "55f380d7aeb39de1186d9fa566b0d8e690f9ecb49862bf630925db974f9b1251"
+      },
+      "inputs_unchanged": true,
+      "tap_sha256": "b662a0c0da11c18210dd627edb23330d3312f2b3e326ddc2b57b669b83cda551",
+      "stderr_bytes": 0
+    },
+    {
+      "receipt_path": "artifacts/issue-231-staging-handoff/reviewed-scaffold-red-receipt.json",
+      "receipt_sha256": "240c6ebd06aea2ab4e7c06c0b4774f808aa9624175ed77db517ca37f6c525f05",
+      "kind": "feature scaffold baseline after independent assertion-review corrections; before behavior implementation",
+      "counts": {
+        "tests": 130,
+        "suites": 0,
+        "pass": 24,
+        "fail": 106,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "exit_code": 1,
+      "fixture_sha256": "0469e67c557991c024fe43cebc270fe467b794e359a3acfa34494c3f77af89fb",
+      "source_before_sha256": {
+        "scripts/staging-handoff.mjs": "c10f9621a59f60c1ee5847f51ee2d9a5948b651372e4450baf48c14e3969a338",
+        "scripts/staging-handoff-seal.mjs": "eb0c0f092e831399248895b3afd63fdc716cb668d7864b5e641f544a576be6bb",
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-handoff.test.mjs": "0469e67c557991c024fe43cebc270fe467b794e359a3acfa34494c3f77af89fb"
+      },
+      "inputs_unchanged": true,
+      "tap_sha256": "5db33cdf07f8dbabfe87f1359d38dd7c1c9dc56336b1e8c82d54877eb757c9c9",
+      "stderr_bytes": 0
+    },
+    {
+      "receipt_path": "artifacts/issue-231-staging-handoff/final-scaffold-red-receipt.json",
+      "receipt_sha256": "afa0816aca0e9246f7adf77f632a41d7706ae8bbf07a9b048b9a3805ed144ae4",
+      "kind": "final feature-scaffold baseline before behavior implementation",
+      "counts": {
+        "tests": 130,
+        "suites": 0,
+        "pass": 24,
+        "fail": 106,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "exit_code": 1,
+      "fixture_sha256": "03816b569dd4522f4588aa4e9d380ea27f4f589e01b58a8f197fe4528f146517",
+      "source_before_sha256": {
+        "scripts/staging-handoff.mjs": "c10f9621a59f60c1ee5847f51ee2d9a5948b651372e4450baf48c14e3969a338",
+        "scripts/staging-handoff-seal.mjs": "eb0c0f092e831399248895b3afd63fdc716cb668d7864b5e641f544a576be6bb",
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-handoff.test.mjs": "03816b569dd4522f4588aa4e9d380ea27f4f589e01b58a8f197fe4528f146517"
+      },
+      "inputs_unchanged": true,
+      "tap_sha256": "ad896e69a0d1f54ed7931fbe7793113364a6141a03619e7bbd54e8fe7f5d06e7",
+      "stderr_bytes": 0
+    },
+    {
+      "receipt_path": "artifacts/issue-231-staging-handoff/frozen-scaffold-red-receipt.json",
+      "receipt_sha256": "102087d5085b9e1f3593fdc97a72eb095dd638b0673145e1b96616972c1518fe",
+      "kind": "frozen final new-feature scaffold baseline before behavior implementation",
+      "counts": {
+        "tests": 130,
+        "suites": 0,
+        "pass": 24,
+        "fail": 106,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "exit_code": 1,
+      "fixture_sha256": "b0acd37e1902adcafb556feaa554fbdcb38787cd061a90098637f76e88407cde",
+      "source_before_sha256": {
+        "scripts/staging-handoff.mjs": "c10f9621a59f60c1ee5847f51ee2d9a5948b651372e4450baf48c14e3969a338",
+        "scripts/staging-handoff-seal.mjs": "eb0c0f092e831399248895b3afd63fdc716cb668d7864b5e641f544a576be6bb",
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-handoff.test.mjs": "b0acd37e1902adcafb556feaa554fbdcb38787cd061a90098637f76e88407cde"
+      },
+      "inputs_unchanged": true,
+      "tap_sha256": "0db3d95e0a2655d90ca85638cf472f657e64161f85f18398fe9b222ba2537dea",
+      "stderr_bytes": 0
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "id": "CLI-290",
+      "stage_change": false,
+      "reason": "Append bounded encrypted handoff and separately qualified code-only deployment evidence; all protected fields and WEB008/012 acceptance unchanged. Append native-path regression and failed-hosted/follow-up evidence; no protected-field or acceptance change."
+    },
+    {
+      "id": "CLI-299",
+      "stage_change": false,
+      "reason": "Append bounded encrypted handoff and separately qualified code-only deployment evidence; all protected fields and WEB008/012 acceptance unchanged. Append native-path regression and failed-hosted/follow-up evidence; no protected-field or acceptance change."
+    }
+  ],
+  "limitations": [
+    "Five retained new-feature scaffold baselines precede implementation. They establish absent feature contracts, not a reproduction of the existing transport-history defect. Initial18 or later24 generic negative controls passed against NOT_IMPLEMENTED scaffolds.",
+    "Native RSA3072/OAEP256 and AES256-GCM execute with independently built envelopes; VM filesystem, Git, clock, API and child faults are controlled. Five actual owned local Node/Git/pipe cases observe receiver closure plus fixed-child receipts, not an independent Windows process-tree inventory.",
+    "Existing staging-build guard54-case suite executes the actual unchanged smoke with simulated Windows/SDK/DPAPI/network/filesystem dependencies; passing it does not establish live acceptance.",
+    "During the original worker source/fixture stage, no real credential, connected Cloudflare execution, service-token creation/deletion, deployment, Windows/owner operation, production bridge action, policy/binding/grant change or global runtime configuration change occurred.",
+    "Authenticated receiver challenge retrieval and independently reviewed caller selection are trust prerequisites. Encryption does not authenticate sender or attest a compromised host. Bundle covers selected source/build/dependency bytes, not the Node executable/OS, and source rechecks are not an atomic filesystem-execution guarantee.",
+    "Receiver deadline binds admission and plaintext release.450-second outer child budget is a fail-safe, not guaranteed cleanup; Windows signals are abrupt. Hard termination, interrupted delivery or unconfirmed close requires exact owned-process and dedicated-principal reconciliation before retry.",
+    "Sealer calculated expiry is reported created_at plus requested30m, not independent confirmation of provider expiry. A failed/aborted create without a trustworthy exact ID requires unique-name reconciliation. No blind duplicate creation or broad deletion.",
+    "The120-second challenge does not solve root-owned control-plane propagation or interrupted nonempty service-principal recovery. Follow-up232 is separate from this worker scope.",
+    "No guaranteed JS/OS memory erasure, universal upstream logging secrecy, real Windows DPAPI/SDK/ChatGPT acceptance, hosted gates, full repository test run, or broader CLI/Web progress is claimed.",
+    "Raw logs remain in ignored owned artifacts; committed unique records retain hashes/commands/results. Root owns durable transcripts, shared docs, protected metrics and serialized integration onto qualified9e2d663."
+  ],
+  "next_unverified_action": "Publish fast-forward replacement of blocked e5f candidate; qualify all six new candidate hosted jobs, actual connected public probe, ordinary expected-head merge and distinct actual-main jobs. No unchanged CI retry or real credential before issue232 recovery.",
+  "tests": [
+    {
+      "kind": "first complete implementation run; outcome below",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/staging-handoff.test.mjs"
+      ],
+      "cwd": "/workspace/scratch/a9287b3cfe09/mterm-staging-handoff",
+      "started_at": "2026-11-09T15:53:27.939747+00:00",
+      "finished_at": "2026-11-09T15:54:05.965312+00:00",
+      "wall_seconds": 38.025552072998835,
+      "node": "v24.22.1",
+      "platform": "Linux x64",
+      "exit_code": 0,
+      "counts": {
+        "tests": 130,
+        "suites": 0,
+        "pass": 130,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "before": {
+        "scripts/staging-handoff.mjs": "f3e3c1dbb301b2dddf48f5f1874a4303beafc84d50b6d790f88e5536dbb64fc9",
+        "scripts/staging-handoff-seal.mjs": "a29d4594b2aa544e9152944972ac25212dec0e910aeddbf3cb1be1501782e418",
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-handoff.test.mjs": "b0acd37e1902adcafb556feaa554fbdcb38787cd061a90098637f76e88407cde",
+        "package.json": "a8cbea0bff3999a7b406ff8789123069c7ac40cc8c52e6e8e46479a965e23e57",
+        "package-lock.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696"
+      },
+      "after": {
+        "scripts/staging-handoff.mjs": "f3e3c1dbb301b2dddf48f5f1874a4303beafc84d50b6d790f88e5536dbb64fc9",
+        "scripts/staging-handoff-seal.mjs": "a29d4594b2aa544e9152944972ac25212dec0e910aeddbf3cb1be1501782e418",
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-handoff.test.mjs": "b0acd37e1902adcafb556feaa554fbdcb38787cd061a90098637f76e88407cde",
+        "package.json": "a8cbea0bff3999a7b406ff8789123069c7ac40cc8c52e6e8e46479a965e23e57",
+        "package-lock.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696"
+      },
+      "inputs_unchanged": true,
+      "tap_sha256": "e8d47329f8c8c2c8b555034501e187d66ace144125f3729ab663ae449a0d99b2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "receipt_path": "artifacts/issue-231-staging-handoff/implementation-first-receipt.json",
+      "receipt_sha256": "07764eab0bf0aed9996793fa1a44bc30a42b17836a9b0be342ef2caa7891572b"
+    },
+    {
+      "kind": "focused helper and unchanged staging-build guard qualification",
+      "base": "33f314055a5371d9b2bbcda9b7c8388f79d3cf35",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/staging-handoff.test.mjs",
+        "tests/staging-build-identity.test.mjs"
+      ],
+      "cwd": "/workspace/scratch/a9287b3cfe09/mterm-staging-handoff",
+      "started_at": "2026-11-09T15:58:34.246765+00:00",
+      "finished_at": "2026-11-09T15:59:16.058987+00:00",
+      "wall_seconds": 41.81220482899516,
+      "node": "v24.22.1",
+      "platform": "Linux x64",
+      "exit_code": 0,
+      "counts": {
+        "tests": 184,
+        "suites": 0,
+        "pass": 184,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "before": {
+        "scripts/staging-handoff.mjs": "f3e3c1dbb301b2dddf48f5f1874a4303beafc84d50b6d790f88e5536dbb64fc9",
+        "scripts/staging-handoff-seal.mjs": "a29d4594b2aa544e9152944972ac25212dec0e910aeddbf3cb1be1501782e418",
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-handoff.test.mjs": "b0acd37e1902adcafb556feaa554fbdcb38787cd061a90098637f76e88407cde",
+        "tests/staging-build-identity.test.mjs": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73",
+        "package.json": "a8cbea0bff3999a7b406ff8789123069c7ac40cc8c52e6e8e46479a965e23e57",
+        "package-lock.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
+        "dist/remote/agent.js": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc",
+        "dist/remote/adapter.js": "aa809420a2757880b8a0b8301a0ace892b5e4adf52dae89e13fb4f523fe12705",
+        "dist/remote/state.js": "58299ed3676f604c6149a8230d984ce3578a4aaad000ae99556a247a5d8d8039",
+        "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14"
+      },
+      "after": {
+        "scripts/staging-handoff.mjs": "f3e3c1dbb301b2dddf48f5f1874a4303beafc84d50b6d790f88e5536dbb64fc9",
+        "scripts/staging-handoff-seal.mjs": "a29d4594b2aa544e9152944972ac25212dec0e910aeddbf3cb1be1501782e418",
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-handoff.test.mjs": "b0acd37e1902adcafb556feaa554fbdcb38787cd061a90098637f76e88407cde",
+        "tests/staging-build-identity.test.mjs": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73",
+        "package.json": "a8cbea0bff3999a7b406ff8789123069c7ac40cc8c52e6e8e46479a965e23e57",
+        "package-lock.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
+        "dist/remote/agent.js": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc",
+        "dist/remote/adapter.js": "aa809420a2757880b8a0b8301a0ace892b5e4adf52dae89e13fb4f523fe12705",
+        "dist/remote/state.js": "58299ed3676f604c6149a8230d984ce3578a4aaad000ae99556a247a5d8d8039",
+        "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14"
+      },
+      "inputs_unchanged": true,
+      "tap_sha256": "f35d3e4aee7322cca660179770603167b7d05de2f36cd10ed4478bde3d88665b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "limitations": "Native WebCrypto and owned local probe processes, controlled VM fs/time/child/API for fault cases; existing staging-build harness dependencies simulated. No real Cloudflare/token/Windows/live acceptance.",
+      "receipt_path": "artifacts/issue-231-staging-handoff/focused-green-receipt.json",
+      "receipt_sha256": "99d2943465c061b987eaf5a8048909565aafb20b9f68b6efaf2f0e70594d9823"
+    },
+    {
+      "kind": "incremental regression RED against actual first implementation after independent lifecycle finding; not scaffold proof",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "--test-name-pattern=outer deadline settles a pending native stdin final",
+        "tests/staging-handoff.test.mjs"
+      ],
+      "cwd": "/workspace/scratch/a9287b3cfe09/mterm-staging-handoff",
+      "started_at": "2026-11-09T16:11:41.857829+00:00",
+      "finished_at": "2026-11-09T16:11:42.884348+00:00",
+      "wall_seconds": 1.0265014429896837,
+      "node": "v24.22.1",
+      "platform": "Linux x64",
+      "exit_code": 1,
+      "counts": {
+        "tests": 1,
+        "suites": 0,
+        "pass": 0,
+        "fail": 1,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "before": {
+        "scripts/staging-handoff.mjs": "f3e3c1dbb301b2dddf48f5f1874a4303beafc84d50b6d790f88e5536dbb64fc9",
+        "scripts/staging-handoff-seal.mjs": "a29d4594b2aa544e9152944972ac25212dec0e910aeddbf3cb1be1501782e418",
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-handoff.test.mjs": "5bbb1a38693bcd8ca400a85aa7992bb5ea5570c4bdd623daec4325be0e6c3286"
+      },
+      "after": {
+        "scripts/staging-handoff.mjs": "f3e3c1dbb301b2dddf48f5f1874a4303beafc84d50b6d790f88e5536dbb64fc9",
+        "scripts/staging-handoff-seal.mjs": "a29d4594b2aa544e9152944972ac25212dec0e910aeddbf3cb1be1501782e418",
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-handoff.test.mjs": "5bbb1a38693bcd8ca400a85aa7992bb5ea5570c4bdd623daec4325be0e6c3286"
+      },
+      "inputs_unchanged": true,
+      "tap_sha256": "bcbfcbb4ca8dc5483bd70e4198125fba8a294b885a7a488b9da9fc67e9c158e3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "scope": "Real native Writable accepts the fixed public probe line but withholds _final callback; fake child kill returns false and never closes. Only450000/5000ms child timers are compressed for this case. An80ms independent observer finds the receiver still pending, then fixture-only owned pipe destruction releases it. No live/OS termination claim.",
+      "receipt_path": "artifacts/issue-231-staging-handoff/pipe-write-red-receipt.json",
+      "receipt_sha256": "1d356d5861ead8265150c59a58376e71ad5031cad587997e8dbd4cbc51614da6"
+    },
+    {
+      "kind": "incremental pending-pipe regression GREEN after minimal bounded wait correction; original feature proof retained",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "--test-name-pattern=outer deadline settles a pending native stdin final",
+        "tests/staging-handoff.test.mjs"
+      ],
+      "cwd": "/workspace/scratch/a9287b3cfe09/mterm-staging-handoff",
+      "started_at": "2026-11-09T16:15:20.997046+00:00",
+      "finished_at": "2026-11-09T16:15:21.379726+00:00",
+      "wall_seconds": 0.3826620780018857,
+      "node": "v24.22.1",
+      "platform": "Linux x64",
+      "exit_code": 0,
+      "counts": {
+        "tests": 1,
+        "suites": 0,
+        "pass": 1,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "before": {
+        "scripts/staging-handoff.mjs": "dda60e56ad10181b0dfce92ab107731a274d91c8c8d5de4876f66163983d3277",
+        "scripts/staging-handoff-seal.mjs": "a29d4594b2aa544e9152944972ac25212dec0e910aeddbf3cb1be1501782e418",
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-handoff.test.mjs": "5bbb1a38693bcd8ca400a85aa7992bb5ea5570c4bdd623daec4325be0e6c3286"
+      },
+      "after": {
+        "scripts/staging-handoff.mjs": "dda60e56ad10181b0dfce92ab107731a274d91c8c8d5de4876f66163983d3277",
+        "scripts/staging-handoff-seal.mjs": "a29d4594b2aa544e9152944972ac25212dec0e910aeddbf3cb1be1501782e418",
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-handoff.test.mjs": "5bbb1a38693bcd8ca400a85aa7992bb5ea5570c4bdd623daec4325be0e6c3286"
+      },
+      "inputs_unchanged": true,
+      "tap_sha256": "dee768c78cc6b4951e9f55a41e14f6e7a4da04784bdefd5332afbe242b6aa313",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "scope": "Real native Writable accepts the fixed public probe line but withholds final callback; fake child kill returns false and never closes. Child timers alone are compressed. No live resource or OS termination claim.",
+      "receipt_path": "artifacts/issue-231-staging-handoff/pipe-write-green-receipt.json",
+      "receipt_sha256": "d35aa31939d9d249defff15c1910cd8e9a91a346720156fd209a18483e9ed4b8"
+    },
+    {
+      "kind": "final focused helper after incremental pipe-write fix plus unchanged staging-build guard qualification",
+      "base": "33f314055a5371d9b2bbcda9b7c8388f79d3cf35",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/staging-handoff.test.mjs",
+        "tests/staging-build-identity.test.mjs"
+      ],
+      "cwd": "/workspace/scratch/a9287b3cfe09/mterm-staging-handoff",
+      "started_at": "2026-11-09T16:15:40.585629+00:00",
+      "finished_at": "2026-11-09T16:16:25.481682+00:00",
+      "wall_seconds": 44.896007524992456,
+      "node": "v24.22.1",
+      "platform": "Linux x64",
+      "exit_code": 0,
+      "counts": {
+        "tests": 185,
+        "suites": 0,
+        "pass": 185,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "before": {
+        "scripts/staging-handoff.mjs": "dda60e56ad10181b0dfce92ab107731a274d91c8c8d5de4876f66163983d3277",
+        "scripts/staging-handoff-seal.mjs": "a29d4594b2aa544e9152944972ac25212dec0e910aeddbf3cb1be1501782e418",
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-handoff.test.mjs": "5bbb1a38693bcd8ca400a85aa7992bb5ea5570c4bdd623daec4325be0e6c3286",
+        "tests/staging-build-identity.test.mjs": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73",
+        "package.json": "a8cbea0bff3999a7b406ff8789123069c7ac40cc8c52e6e8e46479a965e23e57",
+        "package-lock.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
+        "dist/remote/agent.js": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc",
+        "dist/remote/adapter.js": "aa809420a2757880b8a0b8301a0ace892b5e4adf52dae89e13fb4f523fe12705",
+        "dist/remote/state.js": "58299ed3676f604c6149a8230d984ce3578a4aaad000ae99556a247a5d8d8039",
+        "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14"
+      },
+      "after": {
+        "scripts/staging-handoff.mjs": "dda60e56ad10181b0dfce92ab107731a274d91c8c8d5de4876f66163983d3277",
+        "scripts/staging-handoff-seal.mjs": "a29d4594b2aa544e9152944972ac25212dec0e910aeddbf3cb1be1501782e418",
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-handoff.test.mjs": "5bbb1a38693bcd8ca400a85aa7992bb5ea5570c4bdd623daec4325be0e6c3286",
+        "tests/staging-build-identity.test.mjs": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73",
+        "package.json": "a8cbea0bff3999a7b406ff8789123069c7ac40cc8c52e6e8e46479a965e23e57",
+        "package-lock.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
+        "dist/remote/agent.js": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc",
+        "dist/remote/adapter.js": "aa809420a2757880b8a0b8301a0ace892b5e4adf52dae89e13fb4f523fe12705",
+        "dist/remote/state.js": "58299ed3676f604c6149a8230d984ce3578a4aaad000ae99556a247a5d8d8039",
+        "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14"
+      },
+      "inputs_unchanged": true,
+      "tap_sha256": "ac5a61ddb6efafd4a91c8e2b18d776724de4b6581ab2eb5078c2c99c225837e7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "limitations": "131 handoff cases and 54 unchanged staging-build identity cases. Native WebCrypto and owned local probe processes, controlled VM filesystem/time/child/API for faults; existing staging-build dependencies simulated. No real Cloudflare/token/Windows/live acceptance.",
+      "receipt_path": "artifacts/issue-231-staging-handoff/final-focused-green-receipt.json",
+      "receipt_sha256": "4256d30a7ac5189329a694f362043816a123872e4250a853d4e05b2112c329eb"
+    }
+  ],
+  "bounded_checks": {
+    "commands": [
+      {
+        "command": [
+          "npm",
+          "run",
+          "build:code"
+        ],
+        "exit_code": 0,
+        "stdout": "\n> mterm-cli@0.0.1-preview.1 build:code\n> tsc -p tsconfig.json\n\n",
+        "stderr": "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n"
+      },
+      {
+        "command": [
+          "node",
+          "--check",
+          "scripts/staging-handoff.mjs"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "node",
+          "--check",
+          "scripts/staging-handoff-seal.mjs"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "node",
+          "--check",
+          "tests/staging-handoff.test.mjs"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "node",
+          "node_modules/prettier/bin/prettier.cjs",
+          "--check",
+          "scripts/staging-handoff.mjs",
+          "scripts/staging-handoff-seal.mjs",
+          "tests/staging-handoff.test.mjs"
+        ],
+        "exit_code": 0,
+        "stdout": "Checking formatting...\nAll matched files use Prettier code style!\n",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "git",
+          "diff",
+          "--check"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    ],
+    "receipt_path": "artifacts/issue-231-staging-handoff/final-focused-checks.json",
+    "receipt_sha256": "bb2ee6dc08d8938d03bc48d77178b08958edefc0eb3d56d5d2a59f4d1b7dfa6d"
+  },
+  "dependency_install": {
+    "command": "npm ci --ignore-scripts --no-audit --no-fund",
+    "outcome": "completed own isolated19-package install from cache; normal output plus existing npm unknown http-proxy config warning; package/lock unchanged"
+  },
+  "final_sha256": {
+    "scripts/staging-handoff.mjs": "291cf6d467f1602b88373fc6dcfab5108e9f5e22e1aba6fe8c88229069d4f844",
+    "scripts/staging-handoff-seal.mjs": "a29d4594b2aa544e9152944972ac25212dec0e910aeddbf3cb1be1501782e418",
+    "tests/staging-handoff.test.mjs": "e1b31bace77b662f5e73a34457aced3c5c4c5961dcbe3d1b26b978b7b0eef55c",
+    "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e"
+  },
+  "independent_review": {
+    "reviewer": "/root/policy_and_candidate_review",
+    "fixture_contract": "CLEAR before implementation after all bounded assertion corrections; frozenb0acd37e130-case baseline completed before behavior edits.",
+    "source_and_final_execution": "CLEAR; no remaining material findings after verified incremental pending-write correction; final 131/131 exit 0 with all 11 bindings unchanged.",
+    "first_execution": {
+      "reviewer": "/root/policy_and_candidate_review",
+      "scope": "one independent frozen issue231 fixture run; source review separate",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/staging-handoff.test.mjs"
+      ],
+      "cwd": "/workspace/scratch/a9287b3cfe09/mterm-staging-handoff",
+      "source_base": "33f314055a5371d9b2bbcda9b7c8388f79d3cf35",
+      "started_at": "2026-11-09T16:08:15.472107+00:00",
+      "finished_at": "2026-11-09T16:08:54.784068+00:00",
+      "wall_seconds": 39.311965323999175,
+      "node": "v24.22.1",
+      "platform": "Linux x86_64",
+      "exit_code": 0,
+      "counts": {
+        "tests": 130,
+        "suites": 0,
+        "pass": 130,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "before": {
+        "scripts/staging-handoff.mjs": "f3e3c1dbb301b2dddf48f5f1874a4303beafc84d50b6d790f88e5536dbb64fc9",
+        "scripts/staging-handoff-seal.mjs": "a29d4594b2aa544e9152944972ac25212dec0e910aeddbf3cb1be1501782e418",
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-handoff.test.mjs": "b0acd37e1902adcafb556feaa554fbdcb38787cd061a90098637f76e88407cde",
+        "tests/staging-build-identity.test.mjs": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73",
+        "package.json": "a8cbea0bff3999a7b406ff8789123069c7ac40cc8c52e6e8e46479a965e23e57",
+        "package-lock.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
+        "npm-shrinkwrap.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
+        "tsconfig.json": "fec3c51cf36536da44ee036dfe6ad70c708c7a8e4c33911c2e496832e312593d",
+        "dist/remote/state.js": "58299ed3676f604c6149a8230d984ce3578a4aaad000ae99556a247a5d8d8039",
+        "dist/remote/agent.js": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc"
+      },
+      "after": {
+        "scripts/staging-handoff.mjs": "f3e3c1dbb301b2dddf48f5f1874a4303beafc84d50b6d790f88e5536dbb64fc9",
+        "scripts/staging-handoff-seal.mjs": "a29d4594b2aa544e9152944972ac25212dec0e910aeddbf3cb1be1501782e418",
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-handoff.test.mjs": "b0acd37e1902adcafb556feaa554fbdcb38787cd061a90098637f76e88407cde",
+        "tests/staging-build-identity.test.mjs": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73",
+        "package.json": "a8cbea0bff3999a7b406ff8789123069c7ac40cc8c52e6e8e46479a965e23e57",
+        "package-lock.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
+        "npm-shrinkwrap.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
+        "tsconfig.json": "fec3c51cf36536da44ee036dfe6ad70c708c7a8e4c33911c2e496832e312593d",
+        "dist/remote/state.js": "58299ed3676f604c6149a8230d984ce3578a4aaad000ae99556a247a5d8d8039",
+        "dist/remote/agent.js": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc"
+      },
+      "inputs_unchanged": true,
+      "tap_sha256": "7e66b3242f91d01829c5ec7700168f88c02d304f30d4192c744633a867f8d762",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "limitations": "Controlled VM/API/filesystem/clock/child faults and actual owned local Node/Git/pipe fixtures; no connected Cloudflare, Windows, real credential, deployment or OS process-tree acceptance.",
+      "receipt_path": "artifacts/issue-231-independent-review/peer-policy-4yam45pk/receipt.json",
+      "receipt_sha256": "157be85a0e7a8e651977642a2dda0827089d3a5ad043813d48ae7f45acf338fe"
+    },
+    "first_source_finding": "Pending written promise could prevent observing bounded close settlement. First 130/130 pass was not a source CLEAR.",
+    "incremental_delta_review": "CLEAR after exact native pending-final regression, retained first-source ERR_ASSERTION failure, minimal Promise.race correction and final independent execution.",
+    "final_execution": {
+      "reviewer": "/root/policy_and_candidate_review",
+      "scope": "one independent final frozen issue231 fixture run after verified pending-write correction",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/staging-handoff.test.mjs"
+      ],
+      "cwd": "/workspace/scratch/a9287b3cfe09/mterm-staging-handoff",
+      "source_base": "33f314055a5371d9b2bbcda9b7c8388f79d3cf35",
+      "started_at": "2026-11-09T16:17:03.369597+00:00",
+      "finished_at": "2026-11-09T16:17:38.463829+00:00",
+      "wall_seconds": 35.094230810995214,
+      "node": "v24.22.1",
+      "platform": "Linux x86_64",
+      "exit_code": 0,
+      "counts": {
+        "tests": 131,
+        "suites": 0,
+        "pass": 131,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "before": {
+        "scripts/staging-handoff.mjs": "dda60e56ad10181b0dfce92ab107731a274d91c8c8d5de4876f66163983d3277",
+        "scripts/staging-handoff-seal.mjs": "a29d4594b2aa544e9152944972ac25212dec0e910aeddbf3cb1be1501782e418",
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-handoff.test.mjs": "5bbb1a38693bcd8ca400a85aa7992bb5ea5570c4bdd623daec4325be0e6c3286",
+        "tests/staging-build-identity.test.mjs": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73",
+        "package.json": "a8cbea0bff3999a7b406ff8789123069c7ac40cc8c52e6e8e46479a965e23e57",
+        "package-lock.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
+        "npm-shrinkwrap.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
+        "tsconfig.json": "fec3c51cf36536da44ee036dfe6ad70c708c7a8e4c33911c2e496832e312593d",
+        "dist/remote/state.js": "58299ed3676f604c6149a8230d984ce3578a4aaad000ae99556a247a5d8d8039",
+        "dist/remote/agent.js": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc"
+      },
+      "after": {
+        "scripts/staging-handoff.mjs": "dda60e56ad10181b0dfce92ab107731a274d91c8c8d5de4876f66163983d3277",
+        "scripts/staging-handoff-seal.mjs": "a29d4594b2aa544e9152944972ac25212dec0e910aeddbf3cb1be1501782e418",
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-handoff.test.mjs": "5bbb1a38693bcd8ca400a85aa7992bb5ea5570c4bdd623daec4325be0e6c3286",
+        "tests/staging-build-identity.test.mjs": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73",
+        "package.json": "a8cbea0bff3999a7b406ff8789123069c7ac40cc8c52e6e8e46479a965e23e57",
+        "package-lock.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
+        "npm-shrinkwrap.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
+        "tsconfig.json": "fec3c51cf36536da44ee036dfe6ad70c708c7a8e4c33911c2e496832e312593d",
+        "dist/remote/state.js": "58299ed3676f604c6149a8230d984ce3578a4aaad000ae99556a247a5d8d8039",
+        "dist/remote/agent.js": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc"
+      },
+      "inputs_unchanged": true,
+      "tap_sha256": "0ce82b4189054fd6ba372aa50d09a3040aec91790c13ed8a5a6fa01fd8e5709e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "limitations": "Controlled VM/API/filesystem/clock/child faults and actual owned local Node/Git/pipe fixtures; no connected Cloudflare, Windows, real credential, deployment or OS process-tree acceptance.",
+      "receipt_path": "artifacts/issue-231-independent-review/peer-policy-final-ckb06ch4/receipt.json",
+      "receipt_sha256": "95befe75ac445e3169a864dc9bb5c02f985342cc9970ecfe5166582ab455734d"
+    }
+  },
+  "prior_bounded_checks": {
+    "commands": [
+      {
+        "command": [
+          "npm",
+          "run",
+          "build:code"
+        ],
+        "exit_code": 0,
+        "stdout": "\n> mterm-cli@0.0.1-preview.1 build:code\n> tsc -p tsconfig.json\n\n",
+        "stderr": "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n"
+      },
+      {
+        "command": [
+          "node",
+          "--check",
+          "scripts/staging-handoff.mjs"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "node",
+          "--check",
+          "scripts/staging-handoff-seal.mjs"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "node",
+          "--check",
+          "tests/staging-handoff.test.mjs"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "node",
+          "node_modules/prettier/bin/prettier.cjs",
+          "--check",
+          "scripts/staging-handoff.mjs",
+          "scripts/staging-handoff-seal.mjs",
+          "tests/staging-handoff.test.mjs"
+        ],
+        "exit_code": 0,
+        "stdout": "Checking formatting...\nAll matched files use Prettier code style!\n",
+        "stderr": ""
+      },
+      {
+        "command": [
+          "git",
+          "diff",
+          "--check"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    ],
+    "receipt_path": "artifacts/issue-231-staging-handoff/focused-checks.json",
+    "receipt_sha256": "bb2ee6dc08d8938d03bc48d77178b08958edefc0eb3d56d5d2a59f4d1b7dfa6d"
+  },
+  "root_integration": {
+    "base_sha": "9e2d6633294e22ff63053564bad1ebeda2dd4059",
+    "worker_commit": "d9465820fca38a76c7ac9ef071c1038e64decaf0",
+    "receipt_path": "artifacts/issue-231-integration/receipt.json",
+    "receipt_sha256": "0c18366885124b034d101052120ebfba19236635b503bb24ff140cddace0970a",
+    "receipt": {
+      "kind": "serialized root helper/staging-build integration",
+      "integration_base": "9e2d6633294e22ff63053564bad1ebeda2dd4059",
+      "worker_commit": "d9465820fca38a76c7ac9ef071c1038e64decaf0",
+      "root_head": "8ace23c65d9f8ba5afd17d94e0fa114b92db3530",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/staging-handoff.test.mjs",
+        "tests/staging-build-identity.test.mjs"
+      ],
+      "started_at": "2026-11-09T16:21:05.074174+00:00",
+      "node": "v24.22.1",
+      "before": {
+        "scripts/staging-handoff.mjs": "dda60e56ad10181b0dfce92ab107731a274d91c8c8d5de4876f66163983d3277",
+        "scripts/staging-handoff-seal.mjs": "a29d4594b2aa544e9152944972ac25212dec0e910aeddbf3cb1be1501782e418",
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-handoff.test.mjs": "5bbb1a38693bcd8ca400a85aa7992bb5ea5570c4bdd623daec4325be0e6c3286",
+        "tests/staging-build-identity.test.mjs": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73",
+        "package.json": "a8cbea0bff3999a7b406ff8789123069c7ac40cc8c52e6e8e46479a965e23e57",
+        "package-lock.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
+        "dist/remote/agent.js": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc",
+        "dist/remote/adapter.js": "aa809420a2757880b8a0b8301a0ace892b5e4adf52dae89e13fb4f523fe12705",
+        "dist/remote/state.js": "58299ed3676f604c6149a8230d984ce3578a4aaad000ae99556a247a5d8d8039",
+        "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14"
+      },
+      "finished_at": "2026-11-09T16:21:47.684494+00:00",
+      "elapsed_seconds": 42.605426843991154,
+      "exit_code": 0,
+      "after": {
+        "scripts/staging-handoff.mjs": "dda60e56ad10181b0dfce92ab107731a274d91c8c8d5de4876f66163983d3277",
+        "scripts/staging-handoff-seal.mjs": "a29d4594b2aa544e9152944972ac25212dec0e910aeddbf3cb1be1501782e418",
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-handoff.test.mjs": "5bbb1a38693bcd8ca400a85aa7992bb5ea5570c4bdd623daec4325be0e6c3286",
+        "tests/staging-build-identity.test.mjs": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73",
+        "package.json": "a8cbea0bff3999a7b406ff8789123069c7ac40cc8c52e6e8e46479a965e23e57",
+        "package-lock.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
+        "dist/remote/agent.js": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc",
+        "dist/remote/adapter.js": "aa809420a2757880b8a0b8301a0ace892b5e4adf52dae89e13fb4f523fe12705",
+        "dist/remote/state.js": "58299ed3676f604c6149a8230d984ce3578a4aaad000ae99556a247a5d8d8039",
+        "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14"
+      },
+      "unchanged": true,
+      "counts": {
+        "tests": 185,
+        "suites": 0,
+        "pass": 185,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "9c3655c73a050479377cb1c2cb50c1e7f7b817fb3becec6d45799df8ad4a3e9e",
+      "stderr_bytes": 0
+    },
+    "published_transcripts": [
+      {
+        "path": "docs/validation/2026-11-09-staging-handoff-scaffold-red.tap",
+        "sha256": "749284cd9e94ff8fa762967258a3aa31a2072526eacf5b0539d63722c90cc507",
+        "raw_path": "/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/artifacts/issue-231-staging-handoff/frozen-scaffold-red.tap",
+        "raw_sha256": "0db3d95e0a2655d90ca85638cf472f657e64161f85f18398fe9b222ba2537dea",
+        "normalization": "trailing whitespace only"
+      },
+      {
+        "path": "docs/validation/2026-11-09-staging-handoff-pipe-red.tap",
+        "sha256": "f0e6242e02ee2b8845e51ca84595635744fa583505e66afd8a7712c1c6c67969",
+        "raw_path": "/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/artifacts/issue-231-staging-handoff/pipe-write-red.tap",
+        "raw_sha256": "bcbfcbb4ca8dc5483bd70e4198125fba8a294b885a7a488b9da9fc67e9c158e3",
+        "normalization": "trailing whitespace only"
+      },
+      {
+        "path": "docs/validation/2026-11-09-staging-handoff-green.tap",
+        "sha256": "9c3655c73a050479377cb1c2cb50c1e7f7b817fb3becec6d45799df8ad4a3e9e",
+        "raw_path": "/workspace/scratch/a9287b3cfe09/mterm-resume/artifacts/issue-231-integration/tests.tap",
+        "raw_sha256": "9c3655c73a050479377cb1c2cb50c1e7f7b817fb3becec6d45799df8ad4a3e9e",
+        "normalization": "trailing whitespace only"
+      }
+    ],
+    "deployment_receipt": "https://github.com/MulattoTech/MTerm-CLI/issues/61#issuecomment-6744936272",
+    "next": "Publish exact candidate and qualify all six hosted gates plus actual connected nonsecret Cloudflare-to-Windows transport/privacy/natural-process-close proof; ordinary expected-head merge and six distinct actual-main gates. Real token/smoke remains dependent on issue232 recovery qualification.",
+    "gates": {
+      "path": "artifacts/issue-231-integration/gates.json",
+      "sha256": "53c529e271d095c9dc8c0d649e4b396f796b081e83bd3ef44439acb477040073",
+      "results": [
+        {
+          "command": [
+            "node",
+            "scripts/roadmap.mjs",
+            "--review",
+            "--change",
+            "2026-11-09-staging-handoff"
+          ],
+          "started_at": "2026-11-09T16:23:48.399302+00:00",
+          "finished_at": "2026-11-09T16:23:48.716894+00:00",
+          "exit_code": 0,
+          "stdout_sha256": "d362a517683e752b77ab4c5af3c97ce8d90480661691e19440177c42309d8e48",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_bytes": 0
+        },
+        {
+          "command": [
+            "node",
+            "scripts/roadmap.mjs",
+            "--render"
+          ],
+          "started_at": "2026-11-09T16:23:48.717079+00:00",
+          "finished_at": "2026-11-09T16:23:49.116584+00:00",
+          "exit_code": 0,
+          "stdout_sha256": "347c2527601dc28d23f4107434b2b02f35c33ed6cba57ab6ae684bb37e1cd302",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_bytes": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "build"
+          ],
+          "started_at": "2026-11-09T16:23:49.116810+00:00",
+          "finished_at": "2026-11-09T16:23:50.758353+00:00",
+          "exit_code": 0,
+          "stdout_sha256": "1c66d4a7f4a88e90c2b4323081193c0d29bf3d580ec5966c6010a61c018d5e73",
+          "stderr_sha256": "a06ef387e31a00721dc55e3b480ef2c346bf46d83f2d3e96b16ddc342895761f",
+          "stderr_bytes": 396
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "typecheck"
+          ],
+          "started_at": "2026-11-09T16:23:50.758583+00:00",
+          "finished_at": "2026-11-09T16:23:51.447359+00:00",
+          "exit_code": 0,
+          "stdout_sha256": "611912ed155b813e3ba68533be1dbbbaa27973a6263b6ce8c268c512d4ec00f4",
+          "stderr_sha256": "7125f194612fcff2f454c05d848e7cb71facc1967b4d5017e25b34fdee3ba74f",
+          "stderr_bytes": 99
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "format:check"
+          ],
+          "started_at": "2026-11-09T16:23:51.447707+00:00",
+          "finished_at": "2026-11-09T16:23:54.412019+00:00",
+          "exit_code": 0,
+          "stdout_sha256": "bd88f151ef9480dd27769a3c9d2b554768e8e39ca04354fcefc32fbdbcf2dd33",
+          "stderr_sha256": "7125f194612fcff2f454c05d848e7cb71facc1967b4d5017e25b34fdee3ba74f",
+          "stderr_bytes": 99
+        },
+        {
+          "command": [
+            "git",
+            "diff",
+            "--check"
+          ],
+          "started_at": "2026-11-09T16:23:54.412318+00:00",
+          "finished_at": "2026-11-09T16:23:54.453455+00:00",
+          "exit_code": 0,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_bytes": 0
+        }
+      ],
+      "source_fingerprint": "649a07d80dc088bc1091bab7abedc679e20b13539dffc4a83add67a8a7d122a8",
+      "source_entries": 181,
+      "full_local_suite": "Not repeated: the cloud environment has the previously reproduced Unix socket EPERM limitation. No full local or quick-verifier PASS claimed; all actual hosted/platform gates remain required."
+    },
+    "independent_shared_review": {
+      "reviewer": "/root/policy_and_candidate_review",
+      "result": "CLEAR",
+      "base": "9e2d6633294e22ff63053564bad1ebeda2dd4059",
+      "protected_rows_unchanged": 300,
+      "unchanged_seed_ledger_pin_lock_vendor_historical_files": 510,
+      "all_gate_log_hashes_and_root185_verified": true,
+      "transcripts_trailing_whitespace_only": true,
+      "helper_instructions_reviewed": true,
+      "deployment_scope_independently_reviewed_by": "/root/coordination_audit",
+      "limits": "No hosted, connected-process, credential or live-smoke acceptance supplied by this document review."
+    }
+  },
+  "prior_delivery_sha256": {
+    "scripts/staging-handoff.mjs": "dda60e56ad10181b0dfce92ab107731a274d91c8c8d5de4876f66163983d3277",
+    "scripts/staging-handoff-seal.mjs": "a29d4594b2aa544e9152944972ac25212dec0e910aeddbf3cb1be1501782e418",
+    "tests/staging-handoff.test.mjs": "5bbb1a38693bcd8ca400a85aa7992bb5ea5570c4bdd623daec4325be0e6c3286",
+    "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e"
+  },
+  "native_path_followup": {
+    "base_sha": "e5f15ebccdf908498f123d45b20a45a276925d33",
+    "branch": "fix/issue-231-native-paths-20261109",
+    "preserved_original_worker_commit": "d9465820fca38a76c7ac9ef071c1038e64decaf0",
+    "files": [
+      "scripts/staging-handoff.mjs",
+      "tests/staging-handoff.test.mjs",
+      "docs/validation/2026-11-09-staging-handoff.md",
+      "docs/ai/changes/2026-11-09-staging-handoff.json"
+    ],
+    "hosted_failure_basis": {
+      "published_head": "e5f15ebccdf908498f123d45b20a45a276925d33",
+      "tested_synthetic_merge": "c2fc56b8374dad49f59e5d2f9ecd80ed004a46d0",
+      "equal_tree": "6d900980250a093547abb15a4730f01cd62ff977",
+      "run_id": 42655557156,
+      "review_sha256": "73b058d961d7bea2cdd19ab4a295806000980ca73dc8fb629659cafdf079c2d0",
+      "logs": {
+        "129292976362": {
+          "path": "/workspace/scratch/a9287b3cfe09/mterm-resume/artifacts/issue-231-hosted-review/job-129292976362.log",
+          "sha256": "4a44703afd61fb28ead91fa3c48b582c7ded2d480a577c4e38000b58d3e96965"
+        },
+        "129292976528": {
+          "path": "/workspace/scratch/a9287b3cfe09/mterm-resume/artifacts/issue-231-hosted-review/job-129292976528.log",
+          "sha256": "0b45e9f8b3347d57768159fd772668c0f9f1debfbb16c6d5f0df99fc49fd9d32"
+        },
+        "129292976600": {
+          "path": "/workspace/scratch/a9287b3cfe09/mterm-resume/artifacts/issue-231-hosted-review/job-129292976600.log",
+          "sha256": "6398dd4a6ad346b475b9d6d4c73ee17f75391e1d521babd772fdab70dcbee1d0"
+        }
+      },
+      "source_sha256": {
+        "tests/staging-handoff.test.mjs": "5bbb1a38693bcd8ca400a85aa7992bb5ea5570c4bdd623daec4325be0e6c3286",
+        "scripts/staging-handoff.mjs": "dda60e56ad10181b0dfce92ab107731a274d91c8c8d5de4876f66163983d3277",
+        "scripts/staging-handoff-seal.mjs": "a29d4594b2aa544e9152944972ac25212dec0e910aeddbf3cb1be1501782e418"
+      },
+      "finding": "macOS alias entry mismatch is a source hypothesis to reproduce with actual native alias paths. Windows failing SOURCE_UNSAFE predicate is not identified by the log; canonical owned fixture paths are a prospective remedy, preserving all source admission checks. No retry/live launch."
+    },
+    "original_hosted_review_path": "artifacts/issue-231-native-paths/original-hosted-review.json",
+    "original_hosted_review_sha256": "73b058d961d7bea2cdd19ab4a295806000980ca73dc8fb629659cafdf079c2d0",
+    "actual_hosted_failures": {
+      "windows": {
+        "jobId": 129292976362,
+        "total": 1033,
+        "pass": 1029,
+        "fail": 4,
+        "skip": 0,
+        "observed": "Four real-process cases fail SOURCE_UNSAFE at --describe-source before challenge/child. Bare fixed probe child passes.",
+        "cause": "Exact failing path safety predicate is not exposed by the log; a path alias/canonicalization issue is a hypothesis, not diagnosed fact."
+      },
+      "macOS": {
+        "jobIds": [
+          129292976528,
+          129292976600
+        ],
+        "total": 1033,
+        "pass": 1016,
+        "fail": 5,
+        "skip": 12,
+        "observed": "All five real-process cases observe CLI exit 0 with empty stdout, followed by JSON.parse Unexpected end of JSON input.",
+        "sourceAssociation": "Bottom direct-entry guard compares lexical path.resolve(process.argv[1]) with fileURLToPath(import.meta.url). A system temporary-directory alias differing from Node ESM canonical path explains this shape; no new platform reproduction run by reviewer."
+      }
+    },
+    "source_change": "Only bottom entry selection changed; retain lexical samePath, canonical realpath identity fallback and caught resolution failure. Every preceding receiver byte stays unchanged.",
+    "fixture_change": "Canonicalize only owned mkdtemp root before population; add actual directory alias/junction descriptor and child cases, plus distinct importing wrapper control; unlink alias separately.",
+    "windows_limit": "Exact failed SOURCE_UNSAFE predicate remains unproven. Canonical fixture preparation is a prospective remedy pending revised hosted execution, not a weakening of source admission.",
+    "tests": [
+      {
+        "kind": "incremental native directory-alias RED against published candidate source before entry correction",
+        "published_head": "e5f15ebccdf908498f123d45b20a45a276925d33",
+        "command": [
+          "node",
+          "--test",
+          "--test-reporter=tap",
+          "--test-concurrency=1",
+          "--test-name-pattern=handoff native path",
+          "tests/staging-handoff.test.mjs"
+        ],
+        "cwd": "/workspace/scratch/a9287b3cfe09/mterm-staging-handoff",
+        "started_at": "2026-11-09T16:44:32.739479+00:00",
+        "finished_at": "2026-11-09T16:44:33.144239+00:00",
+        "wall_seconds": 0.40376857299997937,
+        "node": "v24.22.1",
+        "platform": "Linux x64",
+        "exit_code": 1,
+        "counts": {
+          "tests": 3,
+          "suites": 0,
+          "pass": 1,
+          "fail": 2,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "before": {
+          "scripts/staging-handoff.mjs": "dda60e56ad10181b0dfce92ab107731a274d91c8c8d5de4876f66163983d3277",
+          "scripts/staging-handoff-seal.mjs": "a29d4594b2aa544e9152944972ac25212dec0e910aeddbf3cb1be1501782e418",
+          "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+          "tests/staging-handoff.test.mjs": "e1b31bace77b662f5e73a34457aced3c5c4c5961dcbe3d1b26b978b7b0eef55c",
+          "package.json": "a8cbea0bff3999a7b406ff8789123069c7ac40cc8c52e6e8e46479a965e23e57",
+          "package-lock.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696"
+        },
+        "after": {
+          "scripts/staging-handoff.mjs": "dda60e56ad10181b0dfce92ab107731a274d91c8c8d5de4876f66163983d3277",
+          "scripts/staging-handoff-seal.mjs": "a29d4594b2aa544e9152944972ac25212dec0e910aeddbf3cb1be1501782e418",
+          "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+          "tests/staging-handoff.test.mjs": "e1b31bace77b662f5e73a34457aced3c5c4c5961dcbe3d1b26b978b7b0eef55c",
+          "package.json": "a8cbea0bff3999a7b406ff8789123069c7ac40cc8c52e6e8e46479a965e23e57",
+          "package-lock.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696"
+        },
+        "inputs_unchanged": true,
+        "tap_sha256": "c0feb04fbd688f56edcbba0c34cee7a4f086cd9cbb94a8028d50390edbad2ed8",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_bytes": 0,
+        "assertion_failures": 2,
+        "scope": "Actual owned directory symlink, real Node CLI, unchanged source; descriptor and fixed probe-child aliases exit 0 with empty stdout and fail the explicit output assertions. Distinct importing wrapper is a passing control. Owned fixture roots are canonicalized before population; Windows SOURCE_UNSAFE predicate remains unproven until hosted execution.",
+        "receipt_path": "artifacts/issue-231-native-paths/native-path-red-receipt.json",
+        "receipt_sha256": "d8dd4f470245f3c4e9673fee55e5a742ea0e6fee82039d083cfeaa523ccba39c"
+      },
+      {
+        "kind": "incremental native directory-alias GREEN after narrow entry correction",
+        "published_base": "e5f15ebccdf908498f123d45b20a45a276925d33",
+        "command": [
+          "node",
+          "--test",
+          "--test-reporter=tap",
+          "--test-concurrency=1",
+          "--test-name-pattern=handoff native path",
+          "tests/staging-handoff.test.mjs"
+        ],
+        "cwd": "/workspace/scratch/a9287b3cfe09/mterm-staging-handoff",
+        "started_at": "2026-11-09T16:47:37.258212+00:00",
+        "finished_at": "2026-11-09T16:47:37.794938+00:00",
+        "wall_seconds": 0.5360654660034925,
+        "node": "v24.22.1",
+        "platform": "Linux x64",
+        "exit_code": 0,
+        "counts": {
+          "tests": 3,
+          "suites": 0,
+          "pass": 3,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "before": {
+          "scripts/staging-handoff.mjs": "291cf6d467f1602b88373fc6dcfab5108e9f5e22e1aba6fe8c88229069d4f844",
+          "scripts/staging-handoff-seal.mjs": "a29d4594b2aa544e9152944972ac25212dec0e910aeddbf3cb1be1501782e418",
+          "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+          "tests/staging-handoff.test.mjs": "e1b31bace77b662f5e73a34457aced3c5c4c5961dcbe3d1b26b978b7b0eef55c",
+          "package.json": "a8cbea0bff3999a7b406ff8789123069c7ac40cc8c52e6e8e46479a965e23e57",
+          "package-lock.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696"
+        },
+        "after": {
+          "scripts/staging-handoff.mjs": "291cf6d467f1602b88373fc6dcfab5108e9f5e22e1aba6fe8c88229069d4f844",
+          "scripts/staging-handoff-seal.mjs": "a29d4594b2aa544e9152944972ac25212dec0e910aeddbf3cb1be1501782e418",
+          "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+          "tests/staging-handoff.test.mjs": "e1b31bace77b662f5e73a34457aced3c5c4c5961dcbe3d1b26b978b7b0eef55c",
+          "package.json": "a8cbea0bff3999a7b406ff8789123069c7ac40cc8c52e6e8e46479a965e23e57",
+          "package-lock.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696"
+        },
+        "inputs_unchanged": true,
+        "tap_sha256": "f6f3587435e51c5d1c2d85628f00479c98dabfbe65a64d220588ead0c3c01db9",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_bytes": 0,
+        "scope": "Actual owned directory symlink and real Node CLI; both aliases return exact expected output, distinct importing wrapper stays inert. All receiver bytes before the original entry guard, including source admission and lifecycle, remain unchanged. No Windows/macOS hosted acceptance implied.",
+        "receipt_path": "artifacts/issue-231-native-paths/native-path-green-receipt.json",
+        "receipt_sha256": "951710d8a191ec36035880f201301848160096e6d548290bd908468866be8fdc"
+      },
+      {
+        "kind": "focused native-path correction plus unchanged handoff and staging-build guards",
+        "base": "e5f15ebccdf908498f123d45b20a45a276925d33",
+        "command": [
+          "node",
+          "--test",
+          "--test-reporter=tap",
+          "--test-concurrency=1",
+          "tests/staging-handoff.test.mjs",
+          "tests/staging-build-identity.test.mjs"
+        ],
+        "cwd": "/workspace/scratch/a9287b3cfe09/mterm-staging-handoff",
+        "started_at": "2026-11-09T16:48:01.943835+00:00",
+        "finished_at": "2026-11-09T16:48:45.492250+00:00",
+        "wall_seconds": 43.547288596993894,
+        "node": "v24.22.1",
+        "platform": "Linux x64",
+        "exit_code": 0,
+        "counts": {
+          "tests": 188,
+          "suites": 0,
+          "pass": 188,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "before": {
+          "scripts/staging-handoff.mjs": "291cf6d467f1602b88373fc6dcfab5108e9f5e22e1aba6fe8c88229069d4f844",
+          "scripts/staging-handoff-seal.mjs": "a29d4594b2aa544e9152944972ac25212dec0e910aeddbf3cb1be1501782e418",
+          "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+          "tests/staging-handoff.test.mjs": "e1b31bace77b662f5e73a34457aced3c5c4c5961dcbe3d1b26b978b7b0eef55c",
+          "tests/staging-build-identity.test.mjs": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73",
+          "package.json": "a8cbea0bff3999a7b406ff8789123069c7ac40cc8c52e6e8e46479a965e23e57",
+          "package-lock.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
+          "dist/remote/agent.js": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc",
+          "dist/remote/adapter.js": "aa809420a2757880b8a0b8301a0ace892b5e4adf52dae89e13fb4f523fe12705",
+          "dist/remote/state.js": "58299ed3676f604c6149a8230d984ce3578a4aaad000ae99556a247a5d8d8039",
+          "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14"
+        },
+        "after": {
+          "scripts/staging-handoff.mjs": "291cf6d467f1602b88373fc6dcfab5108e9f5e22e1aba6fe8c88229069d4f844",
+          "scripts/staging-handoff-seal.mjs": "a29d4594b2aa544e9152944972ac25212dec0e910aeddbf3cb1be1501782e418",
+          "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+          "tests/staging-handoff.test.mjs": "e1b31bace77b662f5e73a34457aced3c5c4c5961dcbe3d1b26b978b7b0eef55c",
+          "tests/staging-build-identity.test.mjs": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73",
+          "package.json": "a8cbea0bff3999a7b406ff8789123069c7ac40cc8c52e6e8e46479a965e23e57",
+          "package-lock.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
+          "dist/remote/agent.js": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc",
+          "dist/remote/adapter.js": "aa809420a2757880b8a0b8301a0ace892b5e4adf52dae89e13fb4f523fe12705",
+          "dist/remote/state.js": "58299ed3676f604c6149a8230d984ce3578a4aaad000ae99556a247a5d8d8039",
+          "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14"
+        },
+        "inputs_unchanged": true,
+        "tap_sha256": "5385f0f28caaacab4863e029c543705378d2def0f17a6e310a64011c985d31bb",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_bytes": 0,
+        "limitations": "134 handoff cases include eight actual native local process/alias cases and controlled VM crypto/filesystem/clock/API/child cases; 54 unchanged staging-build cases simulate runtime/network dependencies. Windows SOURCE_UNSAFE exact predicate remains unproven and revised hosted Windows/macOS gates are pending. No connected receiver/token/resource operation.",
+        "receipt_path": "artifacts/issue-231-native-paths/focused-green-receipt.json",
+        "receipt_sha256": "14e2d30756e4cb2542fdb924270a204906b36169a1a3c81b1726f6075df5e092"
+      }
+    ],
+    "bounded_checks": {
+      "commands": [
+        {
+          "command": [
+            "npm",
+            "run",
+            "build:code"
+          ],
+          "exit_code": 0,
+          "stdout": "\n> mterm-cli@0.0.1-preview.1 build:code\n> tsc -p tsconfig.json\n\n",
+          "stderr": "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n"
+        },
+        {
+          "command": [
+            "node",
+            "--check",
+            "scripts/staging-handoff.mjs"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "node",
+            "--check",
+            "scripts/staging-handoff-seal.mjs"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "node",
+            "--check",
+            "tests/staging-handoff.test.mjs"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "node",
+            "node_modules/prettier/bin/prettier.cjs",
+            "--check",
+            "scripts/staging-handoff.mjs",
+            "scripts/staging-handoff-seal.mjs",
+            "tests/staging-handoff.test.mjs"
+          ],
+          "exit_code": 0,
+          "stdout": "Checking formatting...\nAll matched files use Prettier code style!\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "git",
+            "diff",
+            "--check"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        }
+      ],
+      "receipt_path": "artifacts/issue-231-native-paths/focused-checks.json",
+      "receipt_sha256": "bb2ee6dc08d8938d03bc48d77178b08958edefc0eb3d56d5d2a59f4d1b7dfa6d"
+    },
+    "independent_review": {
+      "reviewer": "/root/policy_and_candidate_review",
+      "frozen_regression": "CLEAR before source changes; actual RED and retained inputs independently verified.",
+      "source_delta": "CLEAR; exact unchanged receiver prefix and targeted GREEN verified.",
+      "final_execution": {
+        "reviewer": "/root/policy_and_candidate_review",
+        "scope": "One independent final134 helper run after narrow native CLI-entry fix; no build/live/API/Windows operation",
+        "command": [
+          "node",
+          "--test",
+          "--test-reporter=tap",
+          "--test-concurrency=1",
+          "tests/staging-handoff.test.mjs"
+        ],
+        "cwd": "/workspace/scratch/a9287b3cfe09/mterm-staging-handoff",
+        "source_base": "e5f15ebccdf908498f123d45b20a45a276925d33",
+        "started_at": "2026-11-09T16:49:47.124351+00:00",
+        "finished_at": "2026-11-09T16:50:23.625520+00:00",
+        "wall_seconds": 36.4979674770002,
+        "node": "v24.22.1",
+        "platform": "Linux x86_64",
+        "exit_code": 0,
+        "timed_out": false,
+        "counts": {
+          "tests": 134,
+          "suites": 0,
+          "pass": 134,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "before": {
+          "scripts/staging-handoff.mjs": "291cf6d467f1602b88373fc6dcfab5108e9f5e22e1aba6fe8c88229069d4f844",
+          "scripts/staging-handoff-seal.mjs": "a29d4594b2aa544e9152944972ac25212dec0e910aeddbf3cb1be1501782e418",
+          "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+          "tests/staging-handoff.test.mjs": "e1b31bace77b662f5e73a34457aced3c5c4c5961dcbe3d1b26b978b7b0eef55c",
+          "tests/staging-build-identity.test.mjs": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73",
+          "package.json": "a8cbea0bff3999a7b406ff8789123069c7ac40cc8c52e6e8e46479a965e23e57",
+          "package-lock.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
+          "npm-shrinkwrap.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
+          "tsconfig.json": "fec3c51cf36536da44ee036dfe6ad70c708c7a8e4c33911c2e496832e312593d",
+          "dist/remote/state.js": "58299ed3676f604c6149a8230d984ce3578a4aaad000ae99556a247a5d8d8039",
+          "dist/remote/agent.js": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc"
+        },
+        "after": {
+          "scripts/staging-handoff.mjs": "291cf6d467f1602b88373fc6dcfab5108e9f5e22e1aba6fe8c88229069d4f844",
+          "scripts/staging-handoff-seal.mjs": "a29d4594b2aa544e9152944972ac25212dec0e910aeddbf3cb1be1501782e418",
+          "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+          "tests/staging-handoff.test.mjs": "e1b31bace77b662f5e73a34457aced3c5c4c5961dcbe3d1b26b978b7b0eef55c",
+          "tests/staging-build-identity.test.mjs": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73",
+          "package.json": "a8cbea0bff3999a7b406ff8789123069c7ac40cc8c52e6e8e46479a965e23e57",
+          "package-lock.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
+          "npm-shrinkwrap.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
+          "tsconfig.json": "fec3c51cf36536da44ee036dfe6ad70c708c7a8e4c33911c2e496832e312593d",
+          "dist/remote/state.js": "58299ed3676f604c6149a8230d984ce3578a4aaad000ae99556a247a5d8d8039",
+          "dist/remote/agent.js": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc"
+        },
+        "inputs_unchanged": true,
+        "tap_sha256": "cb9aa4102efc5ccf66d4f11f890237ac7f76122fd9de85787f7045b535f22dd9",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_bytes": 0,
+        "limitations": [
+          "Actual owned Node processes and native directory alias on Linux; no new Windows/macOS hosted acceptance supplied.",
+          "Observed native receiver closure and fixed child receipts do not independently attest the full OS process tree.",
+          "No connected Cloudflare-to-Windows, real token, privacy/history or staging smoke acceptance."
+        ],
+        "receipt_path": "artifacts/issue-231-independent-review/peer-native-paths-seaheogh/receipt.json",
+        "receipt_sha256": "efbe55a1acf52e04fc5b84e25239e949eb09ebd2a25916e9b77282f5f28fbb12"
+      },
+      "result": "CLEAR; no remaining material source/fixture findings; Linux native evidence only, revised hosted Windows/macOS remain required."
+    },
+    "prior_markdown_prefix_sha256": "6c5a3c16533e43731505242ec99efca8a2e015b09fe3303499e4c3caaa918736"
+  },
+  "native_path_root_integration": {
+    "base_sha": "e5f15ebccdf908498f123d45b20a45a276925d33",
+    "worker_commit": "6ca7b9e649b52720bdc8a3256f52bda2adcdbb04",
+    "receipt_path": "artifacts/issue-231-native-integration/receipt.json",
+    "receipt_sha256": "3e9b12ccd1d4778a1d2ea33b6580e5ed5e6897517ffda04c64121adbb80ec224",
+    "receipt": {
+      "kind": "serialized root native-path integration",
+      "base_sha": "e5f15ebccdf908498f123d45b20a45a276925d33",
+      "worker_commit": "6ca7b9e649b52720bdc8a3256f52bda2adcdbb04",
+      "root_head": "bfb866c28619c9341fcec4171c4852c4f50ece38",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/staging-handoff.test.mjs",
+        "tests/staging-build-identity.test.mjs"
+      ],
+      "node": "v24.22.1",
+      "started_at": "2026-11-09T16:53:19.813419+00:00",
+      "before": {
+        "scripts/staging-handoff.mjs": "291cf6d467f1602b88373fc6dcfab5108e9f5e22e1aba6fe8c88229069d4f844",
+        "scripts/staging-handoff-seal.mjs": "a29d4594b2aa544e9152944972ac25212dec0e910aeddbf3cb1be1501782e418",
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-handoff.test.mjs": "e1b31bace77b662f5e73a34457aced3c5c4c5961dcbe3d1b26b978b7b0eef55c",
+        "tests/staging-build-identity.test.mjs": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73",
+        "package.json": "a8cbea0bff3999a7b406ff8789123069c7ac40cc8c52e6e8e46479a965e23e57",
+        "package-lock.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
+        "dist/remote/agent.js": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc",
+        "dist/remote/adapter.js": "aa809420a2757880b8a0b8301a0ace892b5e4adf52dae89e13fb4f523fe12705",
+        "dist/remote/state.js": "58299ed3676f604c6149a8230d984ce3578a4aaad000ae99556a247a5d8d8039",
+        "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14"
+      },
+      "finished_at": "2026-11-09T16:54:00.984584+00:00",
+      "wall_seconds": 41.17117127600068,
+      "exit_code": 0,
+      "after": {
+        "scripts/staging-handoff.mjs": "291cf6d467f1602b88373fc6dcfab5108e9f5e22e1aba6fe8c88229069d4f844",
+        "scripts/staging-handoff-seal.mjs": "a29d4594b2aa544e9152944972ac25212dec0e910aeddbf3cb1be1501782e418",
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-handoff.test.mjs": "e1b31bace77b662f5e73a34457aced3c5c4c5961dcbe3d1b26b978b7b0eef55c",
+        "tests/staging-build-identity.test.mjs": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73",
+        "package.json": "a8cbea0bff3999a7b406ff8789123069c7ac40cc8c52e6e8e46479a965e23e57",
+        "package-lock.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
+        "dist/remote/agent.js": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc",
+        "dist/remote/adapter.js": "aa809420a2757880b8a0b8301a0ace892b5e4adf52dae89e13fb4f523fe12705",
+        "dist/remote/state.js": "58299ed3676f604c6149a8230d984ce3578a4aaad000ae99556a247a5d8d8039",
+        "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14"
+      },
+      "unchanged": true,
+      "counts": {
+        "tests": 188,
+        "suites": 0,
+        "pass": 188,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "tap_sha256": "a98b3a083f904c2074337206116afc87834af2930d26c0e93c824cdecda3ebfd",
+      "stderr_bytes": 0
+    },
+    "published_transcripts": [
+      {
+        "path": "docs/validation/2026-11-09-staging-handoff-native-red.tap",
+        "sha256": "c0feb04fbd688f56edcbba0c34cee7a4f086cd9cbb94a8028d50390edbad2ed8",
+        "raw_sha256": "c0feb04fbd688f56edcbba0c34cee7a4f086cd9cbb94a8028d50390edbad2ed8",
+        "normalization": "trailing whitespace only"
+      },
+      {
+        "path": "docs/validation/2026-11-09-staging-handoff-native-green.tap",
+        "sha256": "a98b3a083f904c2074337206116afc87834af2930d26c0e93c824cdecda3ebfd",
+        "raw_sha256": "a98b3a083f904c2074337206116afc87834af2930d26c0e93c824cdecda3ebfd",
+        "normalization": "trailing whitespace only"
+      }
+    ],
+    "original_hosted_result_retained": "BLOCKED, 3 successful and 3 failed jobs, attempt1; no retry",
+    "root_source_review": "CLI-entry fallback only; full preceding27271 bytes and sealer/harness unchanged; frozen134 fixture with3 new native cases.",
+    "gates": {
+      "path": "artifacts/issue-231-native-integration/gates.json",
+      "sha256": "19c7a95e0472d35a2e0ab5dfbda8c34b82c5e9c765825133430399dc83be96bc",
+      "results": [
+        {
+          "command": [
+            "node",
+            "scripts/roadmap.mjs",
+            "--review",
+            "--change",
+            "2026-11-09-staging-handoff"
+          ],
+          "started_at": "2026-11-09T16:55:03.199407+00:00",
+          "finished_at": "2026-11-09T16:55:03.617530+00:00",
+          "exit_code": 0,
+          "stdout_sha256": "13a614603eec2cfff17ec9ecbd339ebf9dd32f2cc4637b382895e9879cd3a376",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_bytes": 0
+        },
+        {
+          "command": [
+            "node",
+            "scripts/roadmap.mjs",
+            "--render"
+          ],
+          "started_at": "2026-11-09T16:55:03.617813+00:00",
+          "finished_at": "2026-11-09T16:55:04.159743+00:00",
+          "exit_code": 0,
+          "stdout_sha256": "347c2527601dc28d23f4107434b2b02f35c33ed6cba57ab6ae684bb37e1cd302",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_bytes": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "build"
+          ],
+          "started_at": "2026-11-09T16:55:04.159966+00:00",
+          "finished_at": "2026-11-09T16:55:06.086983+00:00",
+          "exit_code": 0,
+          "stdout_sha256": "1c66d4a7f4a88e90c2b4323081193c0d29bf3d580ec5966c6010a61c018d5e73",
+          "stderr_sha256": "a06ef387e31a00721dc55e3b480ef2c346bf46d83f2d3e96b16ddc342895761f",
+          "stderr_bytes": 396
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "typecheck"
+          ],
+          "started_at": "2026-11-09T16:55:06.087202+00:00",
+          "finished_at": "2026-11-09T16:55:06.972178+00:00",
+          "exit_code": 0,
+          "stdout_sha256": "611912ed155b813e3ba68533be1dbbbaa27973a6263b6ce8c268c512d4ec00f4",
+          "stderr_sha256": "7125f194612fcff2f454c05d848e7cb71facc1967b4d5017e25b34fdee3ba74f",
+          "stderr_bytes": 99
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "format:check"
+          ],
+          "started_at": "2026-11-09T16:55:06.972694+00:00",
+          "finished_at": "2026-11-09T16:55:10.234043+00:00",
+          "exit_code": 0,
+          "stdout_sha256": "bd88f151ef9480dd27769a3c9d2b554768e8e39ca04354fcefc32fbdbcf2dd33",
+          "stderr_sha256": "7125f194612fcff2f454c05d848e7cb71facc1967b4d5017e25b34fdee3ba74f",
+          "stderr_bytes": 99
+        },
+        {
+          "command": [
+            "git",
+            "diff",
+            "--check"
+          ],
+          "started_at": "2026-11-09T16:55:10.234287+00:00",
+          "finished_at": "2026-11-09T16:55:10.270091+00:00",
+          "exit_code": 0,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stderr_bytes": 0
+        }
+      ],
+      "source_fingerprint": "cfb11e6206641bf0b6857faa64431fe1aa27f5a8bfc79e28a90eff158d5dfc0e",
+      "source_entries": 181,
+      "known_local_full_suite_constraint": "Previously reproduced Unix-socket EPERM; not rerun or claimed PASS. Exact hosted full/platform checks remain required."
+    },
+    "independent_shared_review": {
+      "status": "CLEAR",
+      "reviewer": "policy_and_candidate_review",
+      "scope": "12 paths; 300 protected catalog rows and metadata unchanged; 816 other tracked blobs unchanged; historical HANDOFF suffix and worker validation prefix preserved; root188 receipt, raw/native TAPs, all six local gate hashes and 181-entry source fingerprint verified. Replacement hosted, connected and actual-main gates remain pending."
+    }
+  }
+}

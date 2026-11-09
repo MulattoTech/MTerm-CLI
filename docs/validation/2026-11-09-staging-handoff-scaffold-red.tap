@@ -1,0 +1,3009 @@
+TAP version 13
+# Subtest: handoff receiver: independent real-crypto probe frame reaches only the fixed child
+not ok 1 - handoff receiver: independent real-crypto probe frame reaches only the fixed child
+  ---
+  duration_ms: 67.891706
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:992:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    'failed' !== 'passed'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'passed'
+  actual: 'failed'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:994:14)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.start (node:internal/test_runner/test:1262:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+  ...
+# Subtest: handoff receiver: independent real-crypto smoke frame reaches only the fixed child
+not ok 2 - handoff receiver: independent real-crypto smoke frame reaches only the fixed child
+  ---
+  duration_ms: 53.618884
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:992:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    'failed' !== 'passed'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'passed'
+  actual: 'failed'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:994:14)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: handoff receiver: concurrent invocation cannot create another key or child
+not ok 3 - handoff receiver: concurrent invocation cannot create another key or child
+  ---
+  duration_ms: 66.779559
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1017:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    'failed' !== 'passed'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'passed'
+  actual: 'failed'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1019:12)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: a second chunk during native unwrap is rejected by the closed input
+not ok 4 - handoff receiver: a second chunk during native unwrap is rejected by the closed input
+  ---
+  duration_ms: 54.43766
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1023:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    'failed' !== 'passed'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'passed'
+  actual: 'failed'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1025:12)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: rejects invalid mode before challenge
+not ok 5 - handoff receiver: rejects invalid mode before challenge
+  ---
+  duration_ms: 50.772699
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1042:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1044:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: rejects invalid local commit before challenge
+not ok 6 - handoff receiver: rejects invalid local commit before challenge
+  ---
+  duration_ms: 45.779207
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1042:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1044:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: rejects invalid deployed commit before challenge
+not ok 7 - handoff receiver: rejects invalid deployed commit before challenge
+  ---
+  duration_ms: 57.374773
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1042:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1044:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: rejects invalid bundle before challenge
+not ok 8 - handoff receiver: rejects invalid bundle before challenge
+  ---
+  duration_ms: 50.448059
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1042:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1044:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: rejects invalid preload argv before challenge
+not ok 9 - handoff receiver: rejects invalid preload argv before challenge
+  ---
+  duration_ms: 45.953631
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1042:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1044:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: rejects invalid NODE_OPTIONS before challenge
+not ok 10 - handoff receiver: rejects invalid NODE_OPTIONS before challenge
+  ---
+  duration_ms: 64.505039
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1042:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1044:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: rejects invalid case insensitive NODE_OPTIONS before challenge
+not ok 11 - handoff receiver: rejects invalid case insensitive NODE_OPTIONS before challenge
+  ---
+  duration_ms: 65.273204
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1042:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1044:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: rejects invalid TLS override before challenge
+not ok 12 - handoff receiver: rejects invalid TLS override before challenge
+  ---
+  duration_ms: 75.66334
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1042:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1044:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: rejects invalid dirty source before challenge
+not ok 13 - handoff receiver: rejects invalid dirty source before challenge
+  ---
+  duration_ms: 59.799979
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1042:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1044:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: rejects invalid wrong HEAD before challenge
+not ok 14 - handoff receiver: rejects invalid wrong HEAD before challenge
+  ---
+  duration_ms: 55.469102
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1042:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1044:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: rejects invalid symlink runtime before challenge
+not ok 15 - handoff receiver: rejects invalid symlink runtime before challenge
+  ---
+  duration_ms: 58.337131
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1042:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1044:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: authenticated mismatching protocol is denied
+not ok 16 - handoff receiver: authenticated mismatching protocol is denied
+  ---
+  duration_ms: 58.804201
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1069:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1070:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: authenticated mismatching purpose is denied
+not ok 17 - handoff receiver: authenticated mismatching purpose is denied
+  ---
+  duration_ms: 49.68334
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1069:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1070:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: authenticated mismatching mode is denied
+not ok 18 - handoff receiver: authenticated mismatching mode is denied
+  ---
+  duration_ms: 63.098777
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1069:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1070:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: authenticated mismatching alg is denied
+not ok 19 - handoff receiver: authenticated mismatching alg is denied
+  ---
+  duration_ms: 46.911211
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1069:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1070:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: authenticated mismatching enc is denied
+not ok 20 - handoff receiver: authenticated mismatching enc is denied
+  ---
+  duration_ms: 50.518876
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1069:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1070:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: authenticated mismatching runNonce is denied
+not ok 21 - handoff receiver: authenticated mismatching runNonce is denied
+  ---
+  duration_ms: 52.602756
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1069:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1070:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: authenticated mismatching recipientKeySha256 is denied
+not ok 22 - handoff receiver: authenticated mismatching recipientKeySha256 is denied
+  ---
+  duration_ms: 55.458151
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1069:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1070:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: authenticated mismatching expiresAt is denied
+not ok 23 - handoff receiver: authenticated mismatching expiresAt is denied
+  ---
+  duration_ms: 53.944321
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1069:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1070:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: authenticated mismatching accountId is denied
+not ok 24 - handoff receiver: authenticated mismatching accountId is denied
+  ---
+  duration_ms: 52.021104
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1069:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1070:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: authenticated mismatching origins is denied
+not ok 25 - handoff receiver: authenticated mismatching origins is denied
+  ---
+  duration_ms: 47.506144
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1069:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1070:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: authenticated mismatching localSourceCommit is denied
+not ok 26 - handoff receiver: authenticated mismatching localSourceCommit is denied
+  ---
+  duration_ms: 49.169284
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1069:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1070:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: authenticated mismatching localBundleSha256 is denied
+not ok 27 - handoff receiver: authenticated mismatching localBundleSha256 is denied
+  ---
+  duration_ms: 51.728381
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1069:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1070:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: authenticated mismatching receiverSha256 is denied
+not ok 28 - handoff receiver: authenticated mismatching receiverSha256 is denied
+  ---
+  duration_ms: 48.624567
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1069:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1070:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: authenticated mismatching sealerSha256 is denied
+not ok 29 - handoff receiver: authenticated mismatching sealerSha256 is denied
+  ---
+  duration_ms: 54.514962
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1069:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1070:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: authenticated mismatching harnessSha256 is denied
+not ok 30 - handoff receiver: authenticated mismatching harnessSha256 is denied
+  ---
+  duration_ms: 52.511703
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1069:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1070:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: authenticated mismatching expectedDeployedSourceCommit is denied
+not ok 31 - handoff receiver: authenticated mismatching expectedDeployedSourceCommit is denied
+  ---
+  duration_ms: 58.191806
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1069:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1070:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: authenticated mismatching tokenName is denied
+not ok 32 - handoff receiver: authenticated mismatching tokenName is denied
+  ---
+  duration_ms: 48.566729
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1069:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1070:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: authenticated mismatching tokenDuration is denied
+not ok 33 - handoff receiver: authenticated mismatching tokenDuration is denied
+  ---
+  duration_ms: 54.776892
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1069:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1070:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: authenticated mismatching tokenId is denied
+not ok 34 - handoff receiver: authenticated mismatching tokenId is denied
+  ---
+  duration_ms: 52.421898
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1069:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1070:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: rejects headerWhitespace without a child
+not ok 35 - handoff receiver: rejects headerWhitespace without a child
+  ---
+  duration_ms: 56.998204
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1090:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1091:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: rejects duplicateHeader without a child
+not ok 36 - handoff receiver: rejects duplicateHeader without a child
+  ---
+  duration_ms: 52.872969
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1090:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1091:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: rejects frameExtra without a child
+not ok 37 - handoff receiver: rejects frameExtra without a child
+  ---
+  duration_ms: 63.218554
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1090:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1091:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: rejects badEncoding without a child
+not ok 38 - handoff receiver: rejects badEncoding without a child
+  ---
+  duration_ms: 50.89274
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1090:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1091:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: rejects shortIv without a child
+not ok 39 - handoff receiver: rejects shortIv without a child
+  ---
+  duration_ms: 52.469359
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1090:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1091:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: rejects shortKey without a child
+not ok 40 - handoff receiver: rejects shortKey without a child
+  ---
+  duration_ms: 53.514984
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1090:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1091:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: rejects shortAes without a child
+not ok 41 - handoff receiver: rejects shortAes without a child
+  ---
+  duration_ms: 56.532587
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1090:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1091:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: rejects shortCiphertext without a child
+not ok 42 - handoff receiver: rejects shortCiphertext without a child
+  ---
+  duration_ms: 78.422064
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1090:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1091:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: rejects outerWhitespace without a child
+not ok 43 - handoff receiver: rejects outerWhitespace without a child
+  ---
+  duration_ms: 51.632813
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1090:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1091:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: rejects duplicateOuter without a child
+not ok 44 - handoff receiver: rejects duplicateOuter without a child
+  ---
+  duration_ms: 56.971444
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1090:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1091:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: rejects invalidJson without a child
+not ok 45 - handoff receiver: rejects invalidJson without a child
+  ---
+  duration_ms: 57.939631
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1090:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1091:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: rejects oversized without a child
+not ok 46 - handoff receiver: rejects oversized without a child
+  ---
+  duration_ms: 52.098936
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1090:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1091:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: rejects truncated without a child
+not ok 47 - handoff receiver: rejects truncated without a child
+  ---
+  duration_ms: 53.523731
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1090:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1091:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: rejects secondFrame without a child
+not ok 48 - handoff receiver: rejects secondFrame without a child
+  ---
+  duration_ms: 48.401871
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1090:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1091:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: rejects eof without a child
+not ok 49 - handoff receiver: rejects eof without a child
+  ---
+  duration_ms: 55.929051
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1090:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1091:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: rejects wrongKey without a child
+not ok 50 - handoff receiver: rejects wrongKey without a child
+  ---
+  duration_ms: 50.361719
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1090:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1091:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: tampered encryptedKey fails native crypto
+not ok 51 - handoff receiver: tampered encryptedKey fails native crypto
+  ---
+  duration_ms: 47.690587
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1095:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1096:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: tampered iv fails native crypto
+not ok 52 - handoff receiver: tampered iv fails native crypto
+  ---
+  duration_ms: 51.884347
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1095:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1096:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: tampered ciphertext fails native crypto
+not ok 53 - handoff receiver: tampered ciphertext fails native crypto
+  ---
+  duration_ms: 53.865331
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1095:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1096:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: exact deadline after generateKey is denied
+not ok 54 - handoff receiver: exact deadline after generateKey is denied
+  ---
+  duration_ms: 48.37236
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1108:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + 'HANDOFF_NOT_IMPLEMENTED'
+    - 'HANDOFF_EXPIRED'
+               ^
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'HANDOFF_EXPIRED'
+  actual: 'HANDOFF_NOT_IMPLEMENTED'
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:761:20)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1109:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: exact deadline after exportKey is denied
+not ok 55 - handoff receiver: exact deadline after exportKey is denied
+  ---
+  duration_ms: 54.55671
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1108:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + 'HANDOFF_NOT_IMPLEMENTED'
+    - 'HANDOFF_EXPIRED'
+               ^
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'HANDOFF_EXPIRED'
+  actual: 'HANDOFF_NOT_IMPLEMENTED'
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:761:20)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1109:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: exact deadline after digest is denied
+not ok 56 - handoff receiver: exact deadline after digest is denied
+  ---
+  duration_ms: 65.034894
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1108:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + 'HANDOFF_NOT_IMPLEMENTED'
+    - 'HANDOFF_EXPIRED'
+               ^
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'HANDOFF_EXPIRED'
+  actual: 'HANDOFF_NOT_IMPLEMENTED'
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:761:20)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1109:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: exact deadline after unwrap is denied
+not ok 57 - handoff receiver: exact deadline after unwrap is denied
+  ---
+  duration_ms: 51.181261
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1108:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + 'HANDOFF_NOT_IMPLEMENTED'
+    - 'HANDOFF_EXPIRED'
+               ^
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'HANDOFF_EXPIRED'
+  actual: 'HANDOFF_NOT_IMPLEMENTED'
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:761:20)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1109:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: exact deadline after importKey is denied
+not ok 58 - handoff receiver: exact deadline after importKey is denied
+  ---
+  duration_ms: 59.005434
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1108:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + 'HANDOFF_NOT_IMPLEMENTED'
+    - 'HANDOFF_EXPIRED'
+               ^
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'HANDOFF_EXPIRED'
+  actual: 'HANDOFF_NOT_IMPLEMENTED'
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:761:20)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1109:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: exact deadline after decrypt is denied
+not ok 59 - handoff receiver: exact deadline after decrypt is denied
+  ---
+  duration_ms: 55.162445
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1108:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + 'HANDOFF_NOT_IMPLEMENTED'
+    - 'HANDOFF_EXPIRED'
+               ^
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'HANDOFF_EXPIRED'
+  actual: 'HANDOFF_NOT_IMPLEMENTED'
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:761:20)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1109:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: exact deadline after source is denied
+not ok 60 - handoff receiver: exact deadline after source is denied
+  ---
+  duration_ms: 58.357866
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1108:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + 'HANDOFF_NOT_IMPLEMENTED'
+    - 'HANDOFF_EXPIRED'
+               ^
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'HANDOFF_EXPIRED'
+  actual: 'HANDOFF_NOT_IMPLEMENTED'
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:761:20)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1109:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: exact deadline after post-decrypt-source is denied
+not ok 61 - handoff receiver: exact deadline after post-decrypt-source is denied
+  ---
+  duration_ms: 50.064434
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1108:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + 'HANDOFF_NOT_IMPLEMENTED'
+    - 'HANDOFF_EXPIRED'
+               ^
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'HANDOFF_EXPIRED'
+  actual: 'HANDOFF_NOT_IMPLEMENTED'
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:761:20)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1109:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: wall rollback cannot extend monotonic deadline
+not ok 62 - handoff receiver: wall rollback cannot extend monotonic deadline
+  ---
+  duration_ms: 57.399239
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1112:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + 'HANDOFF_NOT_IMPLEMENTED'
+    - 'HANDOFF_EXPIRED'
+               ^
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'HANDOFF_EXPIRED'
+  actual: 'HANDOFF_NOT_IMPLEMENTED'
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:761:20)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1113:5)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: one millisecond before final crypto deadline remains valid
+not ok 63 - handoff receiver: one millisecond before final crypto deadline remains valid
+  ---
+  duration_ms: 50.503953
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1114:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    'failed' !== 'passed'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'passed'
+  actual: 'failed'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1116:12)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: expiry after child spawn prevents plaintext pipe release
+not ok 64 - handoff receiver: expiry after child spawn prevents plaintext pipe release
+  ---
+  duration_ms: 51.598945
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1119:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + 'HANDOFF_NOT_IMPLEMENTED'
+    - 'HANDOFF_EXPIRED'
+               ^
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'HANDOFF_EXPIRED'
+  actual: 'HANDOFF_NOT_IMPLEMENTED'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1122:12)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: source drift after spawn prevents plaintext release
+not ok 65 - handoff receiver: source drift after spawn prevents plaintext release
+  ---
+  duration_ms: 55.033248
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1128:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + 'HANDOFF_NOT_IMPLEMENTED'
+    - 'SOURCE_MISMATCH'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'SOURCE_MISMATCH'
+  actual: 'HANDOFF_NOT_IMPLEMENTED'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1131:12)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: smoke token metadata rejects tokenId null
+not ok 66 - handoff receiver: smoke token metadata rejects tokenId null
+  ---
+  duration_ms: 46.902431
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1144:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1145:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: smoke token metadata rejects tokenId ../other
+not ok 67 - handoff receiver: smoke token metadata rejects tokenId ../other
+  ---
+  duration_ms: 51.696692
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1144:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1145:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: smoke token metadata rejects tokenCreatedAt null
+not ok 68 - handoff receiver: smoke token metadata rejects tokenCreatedAt null
+  ---
+  duration_ms: 52.954165
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1144:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1145:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: smoke token metadata rejects tokenCreatedAt 1794238200000
+not ok 69 - handoff receiver: smoke token metadata rejects tokenCreatedAt 1794238200000
+  ---
+  duration_ms: 54.099149
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1144:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1145:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: smoke token metadata rejects tokenExpiresAt 1794236400000
+not ok 70 - handoff receiver: smoke token metadata rejects tokenExpiresAt 1794236400000
+  ---
+  duration_ms: 51.245066
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1144:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1145:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: smoke token metadata rejects tokenExpiresAt 1794240000000
+not ok 71 - handoff receiver: smoke token metadata rejects tokenExpiresAt 1794240000000
+  ---
+  duration_ms: 50.357602
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1144:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1145:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: source drift after native decrypt denies admission
+not ok 72 - handoff receiver: source drift after native decrypt denies admission
+  ---
+  duration_ms: 56.823165
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1148:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + 'HANDOFF_NOT_IMPLEMENTED'
+    - 'SOURCE_MISMATCH'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'SOURCE_MISMATCH'
+  actual: 'HANDOFF_NOT_IMPLEMENTED'
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:761:20)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1149:5)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: closes an idle ciphertext input on bounded timeout
+not ok 73 - handoff receiver: closes an idle ciphertext input on bounded timeout
+  ---
+  duration_ms: 49.871297
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1150:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + 'HANDOFF_NOT_IMPLEMENTED'
+    - 'HANDOFF_EXPIRED'
+               ^
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'HANDOFF_EXPIRED'
+  actual: 'HANDOFF_NOT_IMPLEMENTED'
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:761:20)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1151:5)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: probe rejects nonfixed synthetic credentials
+not ok 74 - handoff receiver: probe rejects nonfixed synthetic credentials
+  ---
+  duration_ms: 61.91893
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1152:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + 'HANDOFF_NOT_IMPLEMENTED'
+    - 'PROBE_PAYLOAD_REJECTED'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'PROBE_PAYLOAD_REJECTED'
+  actual: 'HANDOFF_NOT_IMPLEMENTED'
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:761:20)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1153:5)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: credential shape rejection stays private 44136fa3
+not ok 75 - handoff receiver: credential shape rejection stays private 44136fa3
+  ---
+  duration_ms: 53.061202
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1159:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1160:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: credential shape rejection stays private d858999b
+not ok 76 - handoff receiver: credential shape rejection stays private d858999b
+  ---
+  duration_ms: 53.511426
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1159:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1160:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: credential shape rejection stays private 65dcad05
+not ok 77 - handoff receiver: credential shape rejection stays private 65dcad05
+  ---
+  duration_ms: 46.535443
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1159:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    denied (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:765:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1160:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: child spawn-throw fails with filtered output and lifecycle state
+not ok 78 - handoff receiver: child spawn-throw fails with filtered output and lifecycle state
+  ---
+  duration_ms: 60.528802
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1175:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1178:14)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: child early-exit fails with filtered output and lifecycle state
+not ok 79 - handoff receiver: child early-exit fails with filtered output and lifecycle state
+  ---
+  duration_ms: 49.775763
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1175:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1178:14)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: child stdin-error fails with filtered output and lifecycle state
+not ok 80 - handoff receiver: child stdin-error fails with filtered output and lifecycle state
+  ---
+  duration_ms: 50.168045
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1175:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1178:14)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: child hang fails with filtered output and lifecycle state
+not ok 81 - handoff receiver: child hang fails with filtered output and lifecycle state
+  ---
+  duration_ms: 55.685673
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1175:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1178:14)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: child stderr fails with filtered output and lifecycle state
+not ok 82 - handoff receiver: child stderr fails with filtered output and lifecycle state
+  ---
+  duration_ms: 50.444112
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1175:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1178:14)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: child leak fails with filtered output and lifecycle state
+not ok 83 - handoff receiver: child leak fails with filtered output and lifecycle state
+  ---
+  duration_ms: 53.736997
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1175:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1178:14)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: child overflow fails with filtered output and lifecycle state
+not ok 84 - handoff receiver: child overflow fails with filtered output and lifecycle state
+  ---
+  duration_ms: 51.802356
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1175:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1178:14)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: child bad-summary fails with filtered output and lifecycle state
+not ok 85 - handoff receiver: child bad-summary fails with filtered output and lifecycle state
+  ---
+  duration_ms: 47.346737
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1175:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1178:14)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: child failed fails with filtered output and lifecycle state
+not ok 86 - handoff receiver: child failed fails with filtered output and lifecycle state
+  ---
+  duration_ms: 49.235107
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1175:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1178:14)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff receiver: child late-output-before-close fails with filtered output and lifecycle state
+not ok 87 - handoff receiver: child late-output-before-close fails with filtered output and lifecycle state
+  ---
+  duration_ms: 49.162959
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1175:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1178:14)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff sealer: independent decryption verifies fixed probe envelope
+not ok 88 - handoff sealer: independent decryption verifies fixed probe envelope
+  ---
+  duration_ms: 76.848523
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1191:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    'failed' !== 'sealed'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'sealed'
+  actual: 'failed'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1193:14)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff sealer: independent decryption verifies fixed smoke envelope
+not ok 89 - handoff sealer: independent decryption verifies fixed smoke envelope
+  ---
+  duration_ms: 170.153277
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1191:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    'failed' !== 'sealed'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'sealed'
+  actual: 'failed'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1193:14)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff sealer: weak key is rejected before resource creation
+ok 90 - handoff sealer: weak key is rejected before resource creation
+  ---
+  duration_ms: 110.759302
+  type: 'test'
+  ...
+# Subtest: handoff sealer: missing reviewed selection is rejected before resource creation
+ok 91 - handoff sealer: missing reviewed selection is rejected before resource creation
+  ---
+  duration_ms: 147.059557
+  type: 'test'
+  ...
+# Subtest: handoff sealer: reviewed mode mismatch is rejected before resource creation
+ok 92 - handoff sealer: reviewed mode mismatch is rejected before resource creation
+  ---
+  duration_ms: 99.207667
+  type: 'test'
+  ...
+# Subtest: handoff sealer: reviewed local mismatch is rejected before resource creation
+ok 93 - handoff sealer: reviewed local mismatch is rejected before resource creation
+  ---
+  duration_ms: 265.12745
+  type: 'test'
+  ...
+# Subtest: handoff sealer: reviewed bundle mismatch is rejected before resource creation
+ok 94 - handoff sealer: reviewed bundle mismatch is rejected before resource creation
+  ---
+  duration_ms: 144.862796
+  type: 'test'
+  ...
+# Subtest: handoff sealer: reviewed deployed mismatch is rejected before resource creation
+ok 95 - handoff sealer: reviewed deployed mismatch is rejected before resource creation
+  ---
+  duration_ms: 347.381264
+  type: 'test'
+  ...
+# Subtest: handoff sealer: reviewed receiver mismatch is rejected before resource creation
+ok 96 - handoff sealer: reviewed receiver mismatch is rejected before resource creation
+  ---
+  duration_ms: 208.891226
+  type: 'test'
+  ...
+# Subtest: handoff sealer: reviewed sealer mismatch is rejected before resource creation
+ok 97 - handoff sealer: reviewed sealer mismatch is rejected before resource creation
+  ---
+  duration_ms: 288.366793
+  type: 'test'
+  ...
+# Subtest: handoff sealer: reviewed harness mismatch is rejected before resource creation
+ok 98 - handoff sealer: reviewed harness mismatch is rejected before resource creation
+  ---
+  duration_ms: 447.151087
+  type: 'test'
+  ...
+# Subtest: handoff sealer: wrong selected account is rejected before resource creation
+ok 99 - handoff sealer: wrong selected account is rejected before resource creation
+  ---
+  duration_ms: 274.09593
+  type: 'test'
+  ...
+# Subtest: handoff sealer: bad key digest is rejected before resource creation
+ok 100 - handoff sealer: bad key digest is rejected before resource creation
+  ---
+  duration_ms: 183.824069
+  type: 'test'
+  ...
+# Subtest: handoff sealer: unbounded expiry is rejected before resource creation
+ok 101 - handoff sealer: unbounded expiry is rejected before resource creation
+  ---
+  duration_ms: 132.220707
+  type: 'test'
+  ...
+# Subtest: handoff sealer: already expired is rejected before resource creation
+ok 102 - handoff sealer: already expired is rejected before resource creation
+  ---
+  duration_ms: 308.491131
+  type: 'test'
+  ...
+# Subtest: handoff sealer: untrusted origin is rejected before resource creation
+ok 103 - handoff sealer: untrusted origin is rejected before resource creation
+  ---
+  duration_ms: 123.177985
+  type: 'test'
+  ...
+# Subtest: handoff sealer: wrong harness is rejected before resource creation
+ok 104 - handoff sealer: wrong harness is rejected before resource creation
+  ---
+  duration_ms: 90.999238
+  type: 'test'
+  ...
+# Subtest: handoff sealer: year default is rejected before resource creation
+ok 105 - handoff sealer: year default is rejected before resource creation
+  ---
+  duration_ms: 281.108508
+  type: 'test'
+  ...
+# Subtest: handoff sealer: invalid local commit is rejected before resource creation
+ok 106 - handoff sealer: invalid local commit is rejected before resource creation
+  ---
+  duration_ms: 403.959029
+  type: 'test'
+  ...
+# Subtest: handoff sealer: extra security field is rejected before resource creation
+ok 107 - handoff sealer: extra security field is rejected before resource creation
+  ---
+  duration_ms: 239.09847
+  type: 'test'
+  ...
+# Subtest: handoff sealer: public probe never calls even a throwing API adapter
+not ok 108 - handoff sealer: public probe never calls even a throwing API adapter
+  ---
+  duration_ms: 183.484672
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1238:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    'failed' !== 'sealed'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'sealed'
+  actual: 'failed'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1240:12)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff sealer: exact expiry after native importKey precedes creation
+ok 109 - handoff sealer: exact expiry after native importKey precedes creation
+  ---
+  duration_ms: 127.36235
+  type: 'test'
+  ...
+# Subtest: handoff sealer: exact expiry after native digest precedes creation
+ok 110 - handoff sealer: exact expiry after native digest precedes creation
+  ---
+  duration_ms: 234.88385
+  type: 'test'
+  ...
+# Subtest: handoff sealer: exact expiry after native encrypt precedes creation
+ok 111 - handoff sealer: exact expiry after native encrypt precedes creation
+  ---
+  duration_ms: 227.452228
+  type: 'test'
+  ...
+# Subtest: handoff sealer: one millisecond before post-crypto expiry admits the exact create
+not ok 112 - handoff sealer: one millisecond before post-crypto expiry admits the exact create
+  ---
+  duration_ms: 203.419332
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1252:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    'failed' !== 'sealed'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'sealed'
+  actual: 'failed'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1254:12)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff sealer: crypto importKey failure precedes creation
+ok 113 - handoff sealer: crypto importKey failure precedes creation
+  ---
+  duration_ms: 404.343464
+  type: 'test'
+  ...
+# Subtest: handoff sealer: crypto digest failure precedes creation
+ok 114 - handoff sealer: crypto digest failure precedes creation
+  ---
+  duration_ms: 235.981166
+  type: 'test'
+  ...
+# Subtest: handoff sealer: crypto encrypt failure precedes creation
+ok 115 - handoff sealer: crypto encrypt failure precedes creation
+  ---
+  duration_ms: 105.232572
+  type: 'test'
+  ...
+# Subtest: handoff sealer: create failure is unknown and never blindly retried
+not ok 116 - handoff sealer: create failure is unknown and never blindly retried
+  ---
+  duration_ms: 238.79958
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1267:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1270:12)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff sealer: sealing failure deletes only the exact newly returned token
+not ok 117 - handoff sealer: sealing failure deletes only the exact newly returned token
+  ---
+  duration_ms: 326.40952
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1281:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 2
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 2
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1284:14)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff sealer: late expiry deletes only the exact newly returned token
+not ok 118 - handoff sealer: late expiry deletes only the exact newly returned token
+  ---
+  duration_ms: 289.355455
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1281:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 2
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 2
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1284:14)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff sealer: expiry after sealing deletes only the exact newly returned token
+not ok 119 - handoff sealer: expiry after sealing deletes only the exact newly returned token
+  ---
+  duration_ms: 240.98719
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1281:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 2
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 2
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1284:14)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff sealer: bad credential deletes only the exact newly returned token
+not ok 120 - handoff sealer: bad credential deletes only the exact newly returned token
+  ---
+  duration_ms: 193.878055
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1281:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 2
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 2
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1284:14)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff sealer: wrong token name deletes only the exact newly returned token
+not ok 121 - handoff sealer: wrong token name deletes only the exact newly returned token
+  ---
+  duration_ms: 180.297129
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1281:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 2
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 2
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1284:14)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff sealer: deleteFailure keeps exact resource reconciliation pending
+not ok 122 - handoff sealer: deleteFailure keeps exact resource reconciliation pending
+  ---
+  duration_ms: 356.287515
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1294:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 2
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 2
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1297:14)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff sealer: deleteRejected keeps exact resource reconciliation pending
+not ok 123 - handoff sealer: deleteRejected keeps exact resource reconciliation pending
+  ---
+  duration_ms: 285.313871
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1294:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 2
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 2
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1297:14)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff sealer: deleteMismatch keeps exact resource reconciliation pending
+not ok 124 - handoff sealer: deleteMismatch keeps exact resource reconciliation pending
+  ---
+  duration_ms: 125.845874
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1294:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 2
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 2
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1297:14)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff sealer: malformed creation ID is never used in a deletion path
+not ok 125 - handoff sealer: malformed creation ID is never used in a deletion path
+  ---
+  duration_ms: 243.499456
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1302:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1305:12)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff real process: normal observes receiver closure and fixed-child receipt while writer stays open
+not ok 126 - handoff real process: normal observes receiver closure and fixed-child receipt while writer stays open
+  ---
+  duration_ms: 195.588291
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1315:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    {"type":"mterm-staging-handoff-result","result":"failed","code":"HANDOFF_NOT_IMPLEMENTED"}
+
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    inspect (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:820:10)
+    realProbe (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:828:18)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1323:27)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff real process: source drift observes receiver closure and fixed-child receipt while writer stays open
+not ok 127 - handoff real process: source drift observes receiver closure and fixed-child receipt while writer stays open
+  ---
+  duration_ms: 69.374786
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1315:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    {"type":"mterm-staging-handoff-result","result":"failed","code":"HANDOFF_NOT_IMPLEMENTED"}
+
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    inspect (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:820:10)
+    realProbe (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:828:18)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1323:27)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff real process: wrong probe payload observes receiver closure and fixed-child receipt while writer stays open
+not ok 128 - handoff real process: wrong probe payload observes receiver closure and fixed-child receipt while writer stays open
+  ---
+  duration_ms: 89.622125
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1315:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    {"type":"mterm-staging-handoff-result","result":"failed","code":"HANDOFF_NOT_IMPLEMENTED"}
+
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    inspect (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:820:10)
+    realProbe (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:828:18)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1323:27)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff real process: duplicate frame observes receiver closure and fixed-child receipt while writer stays open
+not ok 129 - handoff real process: duplicate frame observes receiver closure and fixed-child receipt while writer stays open
+  ---
+  duration_ms: 83.086738
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1315:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    {"type":"mterm-staging-handoff-result","result":"failed","code":"HANDOFF_NOT_IMPLEMENTED"}
+
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    inspect (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:820:10)
+    realProbe (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:828:18)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1323:27)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: handoff real process: bare probe child has child-only evidence and no parent success claim
+not ok 130 - handoff real process: bare probe child has child-only evidence and no parent success claim
+  ---
+  duration_ms: 73.529176
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1344:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-handoff/tests/staging-handoff.test.mjs:1352:14)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+1..130
+# tests 130
+# suites 0
+# pass 24
+# fail 106
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 13884.538969

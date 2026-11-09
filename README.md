@@ -207,6 +207,13 @@ credentials or raw file contents. New runs require the nonsecret
 matching edge/registry build labels before fixtures and after owned cleanup;
 see the [exact-source smoke instructions](docs/deployment/MTERM_STAGING.md#source-identity-for-a-new-staging-smoke).
 These labels do not independently prove deployed bytes or continuous version stability.
+Connected process tools retain stdin in history, so credentialed qualification uses
+the [fixed encrypted handoff](scripts/staging-handoff.mjs) and separately reviewed
+[sealing function](scripts/staging-handoff-seal.mjs). Its public probe must establish
+actual transport/privacy/process closure before real credentials; interrupted
+service-principal recovery remains a separate prerequisite. The [November 9 code
+deployment](docs/validation/2026-11-09-staging-deployment.md) has public and
+control-plane proof, while a fresh authenticated Windows smoke remains pending.
 See the [security boundary](docs/SECURITY.md),
 [deployment and recovery guide](docs/deployment/MTERM_STAGING.md), and
 [remote acceptance ledger](docs/REMOTE_MCP_ROADMAP.md).

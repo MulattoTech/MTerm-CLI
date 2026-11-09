@@ -246,6 +246,15 @@ hexadecimal characters and is checked before credential input or requests.
 [The deployment guide](deployment/MTERM_STAGING.md#source-identity-for-a-new-staging-smoke)
 shows the invocation and dedicated temporary service-identity prerequisites.
 
+The connected process channel retains supplied stdin in tool history. Use the
+fixed encrypted handoff and explicit public probe described there; never enter a
+real Client ID/Secret into a tool input, chat, command, environment or plaintext
+file. Only the receiver supplies the fixed smoke child through its anonymous pipe.
+The reviewed local helper revision/bundle and deployed gateway revision are
+separately selected. Successful source tests are not proof of actual connected
+transport, process closure, or recovery of a previously nonempty service principal.
+Those prerequisites remain explicit before a new real-credential smoke.
+
 Both public edge health and the authenticated registry build must match before
 fixture effects, and both are checked again after successful owned cleanup. A
 mismatch fails the run; it does not trigger deployment, retries or owner recovery.

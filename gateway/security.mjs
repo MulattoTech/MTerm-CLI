@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 // AI-Change: 2026-11-02-remote-gateway (OpenAI / GPT-6 Astra Pro; self-reported)
+// Modified: 2026-11-09-access-expiry; recheck identity timestamps after asynchronous verification.
 const encoder = new TextEncoder();
 export class HttpError extends Error {
   constructor(status, code, message = code) {
@@ -171,7 +172,16 @@ export async function verifyAccess(request, env, fetcher = fetch) {
     requireValue(h.alg === 'RS256' && typeof h.kid === 'string', 401, 'invalid_identity');
     const iss = safeOrigin(env.ACCESS_ISSUER);
     requireValue(new URL(iss).hostname.endsWith('.cloudflareaccess.com'), 503, 'invalid_configuration');
-    const now = Math.floor(Date.now() / 1000);
+    const timestampsCurrent = () => {
+      const now = Math.floor(Date.now() / 1000);
+      return (
+        Number.isFinite(c.exp) &&
+        c.exp > now &&
+        (!c.nbf || c.nbf <= now + 5) &&
+        Number.isFinite(c.iat) &&
+        c.iat <= now + 5
+      );
+    };
     // RFC 7519 permits either one audience string or an array. Cloudflare's live
     // service JWT uses the string form; both forms still require an exact match.
     const audienceMatches =
@@ -181,14 +191,7 @@ export async function verifyAccess(request, env, fetcher = fetch) {
           c.aud.every((a) => typeof a === 'string') &&
           c.aud.includes(env.ACCESS_AUDIENCE);
     requireValue(
-      c.type === 'app' &&
-        c.iss === iss &&
-        audienceMatches &&
-        Number.isFinite(c.exp) &&
-        c.exp > now &&
-        (!c.nbf || c.nbf <= now + 5) &&
-        Number.isFinite(c.iat) &&
-        c.iat <= now + 5,
+      c.type === 'app' && c.iss === iss && audienceMatches && timestampsCurrent(),
       401,
       'invalid_identity',
     );
@@ -236,8 +239,12 @@ export async function verifyAccess(request, env, fetcher = fetch) {
       !c.email &&
       c.common_name === env.STAGING_SERVICE_ID;
     requireValue(human || service, 403, 'identity_not_allowed');
+    const userId = await sha256(iss + '\n' + (human ? 'user:' + c.sub : 'service:' + c.common_name));
+    // Key retrieval, signature verification and identity hashing may cross a time boundary.
+    // Keep the existing timestamp policy, with no await between this decision and return.
+    requireValue(timestampsCurrent(), 401, 'invalid_identity');
     return {
-      userId: await sha256(iss + '\n' + (human ? 'user:' + c.sub : 'service:' + c.common_name)),
+      userId,
       kind: human ? 'user' : 'staging-service',
     };
   } catch (e) {

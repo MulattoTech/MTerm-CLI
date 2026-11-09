@@ -1,0 +1,271 @@
+{
+  "change_id": "2026-11-09-access-expiry",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "session_id": "MTERM-WEB-20261109T131339Z-resume-a9287b3c",
+  "worker": "/root/recover_prior_run",
+  "started_at": "2026-11-09T13:19:46.410089+00:00",
+  "started_at_basis": "First frozen regression fixture modification timestamp; RED receipt recorded at13:20:02Z.",
+  "updated_at": "2026-11-09T13:44:56.578522+00:00",
+  "base_sha": "3d32c0e53b0444c2b012b15432928f6feeda053f",
+  "branch": "fix/issue-54-access-expiry-20261109",
+  "claim": {
+    "ref": "coord/mterm/issue-54",
+    "comment_url": "https://github.com/MulattoTech/MTerm-CLI/issues/54#issuecomment-6741001442"
+  },
+  "issues": [
+    54
+  ],
+  "requirements": [
+    "CLI-290",
+    "CLI-299"
+  ],
+  "remote_web_requirements": [
+    "WEB-001"
+  ],
+  "files": [
+    "gateway/security.mjs",
+    "tests/gateway-access-expiry.test.mjs",
+    "docs/validation/2026-11-09-access-expiry.md",
+    "docs/ai/changes/2026-11-09-access-expiry.json",
+    "docs/SECURITY.md",
+    "docs/HANDOFF.md",
+    "docs/REMOTE_MCP_ROADMAP.md",
+    "docs/roadmap/progress.json",
+    "docs/roadmap/review.json",
+    "docs/roadmap/FEATURES.md",
+    "docs/roadmap/index.html",
+    "docs/validation/2026-11-09-access-expiry-red.tap",
+    "docs/validation/2026-11-09-access-expiry-green.tap"
+  ],
+  "decisions": [
+    "Use a separate normal clone and disjoint four-file ownership; root integrates shared documentation and roadmap after issue56.",
+    "Write and freeze22 actual signed-WebCrypto cases before source; untouched base produces11 expected assertion failures.",
+    "Extract the existing exp/iat/nbf predicate unchanged and apply it both initially and after the final awaited identity hash; no await follows the final decision.",
+    "Preserve existing five-second issued-at/not-before tolerance, optional nbf expression, issuer/audience/signature/human allowlist and staging-only service checks.",
+    "Keep real certificate retrieval synthetic and fail any fixture external fetch; no owner credentials or network requests.",
+    "Reconcile intermediate b0733bee to final78aa4d7f as verified Prettier line wrapping only; final68 execution binds final bytes."
+  ],
+  "tests": [
+    {
+      "command": "node --test --test-reporter=tap --test-concurrency=1 tests/gateway-access-expiry.test.mjs",
+      "phase": "RED before source",
+      "result": "22 total,11 passed,11 failed; all failures expected missing-rejection assertions; exit1,0skip/cancel/todo,empty stderr.",
+      "source_sha256": "d0d310b6af0e1b04929e62e621ddf154615a4a2b5b9bedbea8c40852bc53d6d7",
+      "fixture_sha256": "9e24369e1ab38e9eedcc5f77d2b3c5056fa51d9ce77e94d6232d9b6b6259c1cd",
+      "tap_sha256": "1249fe84dc1210fb1b46f33809ea4bbd209834e49a89d22ea9fe77ef420ccba7"
+    },
+    {
+      "command": "node --test --test-reporter=tap --test-concurrency=1 tests/gateway-access-expiry.test.mjs",
+      "phase": "intermediate GREEN before formatting",
+      "result": "22/22 passed; exit0,0skip/cancel/todo,empty stderr.",
+      "source_sha256": "b0733beedc1d0ea27a214598bcdac2efc2c28254d57ced6a5653260e3559fbe8",
+      "fixture_sha256": "9e24369e1ab38e9eedcc5f77d2b3c5056fa51d9ce77e94d6232d9b6b6259c1cd",
+      "tap_sha256": "fdf963baf962ca45d049f2432c1b5091dd8b1778331b4df40febf7b9be37ed13"
+    },
+    {
+      "command": "npm ci --ignore-scripts --no-audit --no-fund && npm run build:code",
+      "result": "Both exit0 using this clone own dependencies; existing npm unknown http-proxy environment-config warning."
+    },
+    {
+      "command": "node --test --test-reporter=tap --test-concurrency=1 tests/gateway-access-expiry.test.mjs tests/remote-gateway.test.mjs tests/remote-admission.test.mjs",
+      "phase": "final focused GREEN",
+      "result": "68/68 passed;22new+46existing;exit0,0skip/cancel/todo,empty stderr;Node24.22.1 Linuxx64.",
+      "wall_seconds": 5.115929476000019,
+      "started_at": "2026-11-09T13:34:35.835942+00:00",
+      "before_sha256": {
+        "gateway/security.mjs": "78aa4d7f9f632568d2247d249691b7583dbf73d344bd040d6512104741183b7b",
+        "tests/gateway-access-expiry.test.mjs": "9e24369e1ab38e9eedcc5f77d2b3c5056fa51d9ce77e94d6232d9b6b6259c1cd",
+        "tests/remote-gateway.test.mjs": "852fd0735c26492f51e00ffde29b887d71496463450d0bbaa99349e100084357",
+        "tests/remote-admission.test.mjs": "885e136acf1a618d3fd9465126410df336323305c7ebb37a6ac80544cf3254ff",
+        "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14",
+        "dist/remote/agent.js": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc"
+      },
+      "after_sha256": {
+        "gateway/security.mjs": "78aa4d7f9f632568d2247d249691b7583dbf73d344bd040d6512104741183b7b",
+        "tests/gateway-access-expiry.test.mjs": "9e24369e1ab38e9eedcc5f77d2b3c5056fa51d9ce77e94d6232d9b6b6259c1cd",
+        "tests/remote-gateway.test.mjs": "852fd0735c26492f51e00ffde29b887d71496463450d0bbaa99349e100084357",
+        "tests/remote-admission.test.mjs": "885e136acf1a618d3fd9465126410df336323305c7ebb37a6ac80544cf3254ff",
+        "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14",
+        "dist/remote/agent.js": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc"
+      },
+      "tap_sha256": "4926f314b1bff122efe0d3a855b647f9ef0b37f681333fd5bb55f6babfde1c5c",
+      "receipt_sha256": "75ff3857b084ac021c8a7ad9d6046c4405f16f1430043290b4df2c8a491c8758"
+    },
+    {
+      "command": "node node_modules/prettier/bin/prettier.cjs --check gateway/security.mjs tests/gateway-access-expiry.test.mjs; node --check gateway/security.mjs; node --check tests/gateway-access-expiry.test.mjs; git diff --check",
+      "result": "All passed on final formatted source and frozen test."
+    },
+    {
+      "phase": "serialized integrated GREEN",
+      "result": "68/68;exit0;0fail/cancel/skip/todo;empty stderr;Node24.22.1 Linuxx64;all6bindings unchanged",
+      "receipt": {
+        "started_at": "2026-11-09T13:42:47.244750+00:00",
+        "base_sha": "4f9a1aa286c7832497e375009961d583d829e9da",
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          "--test-concurrency=1",
+          "tests/gateway-access-expiry.test.mjs",
+          "tests/remote-gateway.test.mjs",
+          "tests/remote-admission.test.mjs"
+        ],
+        "node": "v24.22.1",
+        "elapsed_seconds": 4.714324896995095,
+        "exit_code": 0,
+        "before": {
+          "gateway/security.mjs": "78aa4d7f9f632568d2247d249691b7583dbf73d344bd040d6512104741183b7b",
+          "tests/gateway-access-expiry.test.mjs": "9e24369e1ab38e9eedcc5f77d2b3c5056fa51d9ce77e94d6232d9b6b6259c1cd",
+          "tests/remote-gateway.test.mjs": "852fd0735c26492f51e00ffde29b887d71496463450d0bbaa99349e100084357",
+          "tests/remote-admission.test.mjs": "885e136acf1a618d3fd9465126410df336323305c7ebb37a6ac80544cf3254ff",
+          "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14",
+          "dist/remote/agent.js": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc"
+        },
+        "after": {
+          "gateway/security.mjs": "78aa4d7f9f632568d2247d249691b7583dbf73d344bd040d6512104741183b7b",
+          "tests/gateway-access-expiry.test.mjs": "9e24369e1ab38e9eedcc5f77d2b3c5056fa51d9ce77e94d6232d9b6b6259c1cd",
+          "tests/remote-gateway.test.mjs": "852fd0735c26492f51e00ffde29b887d71496463450d0bbaa99349e100084357",
+          "tests/remote-admission.test.mjs": "885e136acf1a618d3fd9465126410df336323305c7ebb37a6ac80544cf3254ff",
+          "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14",
+          "dist/remote/agent.js": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc"
+        },
+        "tap_sha256": "b00f8e51048105fcc8c4bdd16c0052949dba65d1e196317b8f0e9c1e61e2159c",
+        "stderr_bytes": 0
+      },
+      "receipt_sha256": "6777bde7e023db756ceb50a04fd100341b8254b558f64fcafe28b9c78c113d5d"
+    },
+    {
+      "phase": "normal reviewed integration gates",
+      "result": "All6 commands exit0; reviewed/rendered300 requirements,29.36%,0complete45blocked126notStarted; DCP0/48 and WEB0/12 unchanged; only existing npm http-proxy warning.",
+      "records": [
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "scripts/roadmap.mjs",
+            "--review",
+            "--change",
+            "2026-11-09-access-expiry"
+          ],
+          "exit_code": 0,
+          "log": "gate-0.log"
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "scripts/roadmap.mjs",
+            "--render"
+          ],
+          "exit_code": 0,
+          "log": "gate-1.log"
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "build"
+          ],
+          "exit_code": 0,
+          "log": "gate-2.log"
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "typecheck"
+          ],
+          "exit_code": 0,
+          "log": "gate-3.log"
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "format:check"
+          ],
+          "exit_code": 0,
+          "log": "gate-4.log"
+        },
+        {
+          "command": [
+            "git",
+            "diff",
+            "--check"
+          ],
+          "exit_code": 0,
+          "log": "gate-5.log"
+        }
+      ],
+      "source_fingerprint": "e7961ae99730cff948b5b6518409d150eac68b58d626ec960a5b1fd76b81ba84"
+    }
+  ],
+  "independent_review": {
+    "reviewer": "/root/policy_and_candidate_review",
+    "result": "Direct reviewer report clear: no material source/fixture issue; single22/22 execution, exit0,0fail/cancel/skip/todo,empty stderr, Node24.22.1 Linuxx64; source and fixture unchanged. Actual receipt and TAP read and hash-verified by implementation worker.",
+    "receipt_sha256": "908452faedf8803152a9bb654f4641c391623e6a82e03643f1ad8a482529d77d",
+    "source_sha256": "78aa4d7f9f632568d2247d249691b7583dbf73d344bd040d6512104741183b7b",
+    "fixture_sha256": "9e24369e1ab38e9eedcc5f77d2b3c5056fa51d9ce77e94d6232d9b6b6259c1cd",
+    "receipt_path": "artifacts/issue-54-independent-review/peer-policy-wkrmtn21/receipt.json",
+    "tap_path": "artifacts/issue-54-independent-review/peer-policy-wkrmtn21/tests.tap",
+    "tap_sha256": "b00dd6e3d79da79ecb106687bbe0df9c5965876479da136d2957418008a65655"
+  },
+  "final_sha256": {
+    "gateway/security.mjs": "78aa4d7f9f632568d2247d249691b7583dbf73d344bd040d6512104741183b7b",
+    "tests/gateway-access-expiry.test.mjs": "9e24369e1ab38e9eedcc5f77d2b3c5056fa51d9ce77e94d6232d9b6b6259c1cd"
+  },
+  "roadmap_updates": [
+    {
+      "id": "CLI-290",
+      "stage_change": false,
+      "reason": "Append bounded Access identity expiry source evidence; all existing acceptance/stages and protected metadata unchanged."
+    },
+    {
+      "id": "CLI-299",
+      "stage_change": false,
+      "reason": "Append bounded Access identity expiry source evidence; all existing acceptance/stages and protected metadata unchanged."
+    }
+  ],
+  "roadmap_integration": "Root appended CLI290/299 notes/evidence and one WEB001 dated paragraph; all protected fields and full acceptance unchanged.",
+  "limitations": [
+    "The final check is a verifyAccess return-decision boundary; later caller work or response delivery may occur after expiry.",
+    "Synthetic local certificate response, actual signatures/hashes and controlled clocks do not establish live Cloudflare/owner/browser/client/production qualification.",
+    "The existing optional nbf expression and five-second tolerance remain unchanged; this is not broader JWT-policy hardening or revocation work.",
+    "Raw execution logs remain in ignored worker artifacts; committed evidence retains counts and SHA256 bindings.",
+    "Shared docs/metrics, normal reviewed build, full repository/package/platform/native hosted gates, and separate merged-main checks remain integrator work.",
+    "No push, PR, merge, deployment, new allowance/grant, owner state, dependency pin/lock, global runtime or paid/model-consuming work by this worker."
+  ],
+  "logs": {
+    "directory": "artifacts/issue-54-access-expiry",
+    "red": {
+      "tap": "red.tap",
+      "receipt": "red-receipt.json"
+    },
+    "intermediate_green": {
+      "tap": "green.tap",
+      "receipt": "green-receipt.json"
+    },
+    "final_green": {
+      "tap": "final-focused-green.tap",
+      "receipt": "final-focused-green-receipt.json"
+    }
+  },
+  "next_unverified_action": "Finalize independent protected-document review, immutable committed-input gateway artifact, exact candidate hosted gates and separate actual-main qualification. No deployment.",
+  "integration_base_sha": "4f9a1aa286c7832497e375009961d583d829e9da",
+  "integrator": "/root",
+  "worker_commits": [
+    "88d4b80c6b1a0a36deac607964b461213467d13c",
+    "9efe5ada3fb4a9cf28a4acd2623944c947a90c5e"
+  ],
+  "committed_transcripts": {
+    "red": {
+      "path": "docs/validation/2026-11-09-access-expiry-red.tap",
+      "sha256": "1249fe84dc1210fb1b46f33809ea4bbd209834e49a89d22ea9fe77ef420ccba7",
+      "normalization": "Trailing whitespace removed only; original raw hashes retained separately."
+    },
+    "green": {
+      "path": "docs/validation/2026-11-09-access-expiry-green.tap",
+      "sha256": "b00f8e51048105fcc8c4bdd16c0052949dba65d1e196317b8f0e9c1e61e2159c",
+      "normalization": "Trailing whitespace removed only; original raw hashes retained separately."
+    }
+  }
+}

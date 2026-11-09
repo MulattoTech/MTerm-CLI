@@ -1,3 +1,17 @@
+# Access identity expiry checkpoint — 2026-11-09 UTC
+
+Session `MTERM-WEB-20261109T131339Z-resume-a9287b3c` owns `coord/mterm/issue-54`, feature `fix/issue-54-access-expiry-20261109`, with root integration base `4f9a1aa286c7832497e375009961d583d829e9da`. [Scoped atomic claim](https://github.com/MulattoTech/MTerm-CLI/issues/54#issuecomment-6741001442). The isolated worker's four-file patch and independent source review are preserved; root is the only shared-document/integration writer.
+
+[Access expiry evidence](validation/2026-11-09-access-expiry.md): a signed Access identity could expire during certificate retrieval, signature verification or identity hashing and still be returned. The existing timestamp predicate now runs again after the final await, retaining the original finite expiry/issued-at and five-second tolerance policy. Issuer/audience/signature, human allowlist and staging-only service rules remain unchanged. Frozen22 prebehavior cases produced11pass/11expectedfail; worker and integrated suites passed68/68, independent22/22, all without skips/cancellations. Source/frozen-fixture hashes match all final executions. This qualifies the function return decision, not later caller work, response delivery, revocation or live identity acceptance.
+
+PR223 merged normally at the integration base with tree `16f5d36890cb65b7c161fa8538cd645c5b4e5591`, identical to the candidate. All six candidate gates passed with actual-log/installed-receipt review: Windows756/756, other full744+12existing skips, new source/installed24, native12+12 real containment/cleanup. [Candidate receipt](https://github.com/MulattoTech/MTerm-CLI/pull/223#issuecomment-6741509440). Separate actual-main gates are running at this checkpoint. PR222's six PR/main gates and recovered-checkout cleanup are recorded in [issue8](https://github.com/MulattoTech/MTerm-CLI/issues/8#issuecomment-6741365447); the old staged checkout is now clean without changed files or deleted artifacts.
+
+CLI290/299 and WEB001 receive evidence only; all protected metadata and full acceptance remain unchanged. The read-only staging assessment still finds the November2 artifact and an existing owner enrollment record; no live deployment or owner state is changed. The production53-tool bridge is separate. A disjoint issue224 worker is addressing the client OAuth expiry boundary while root serializes integration.
+
+Normal explicit review/render, reviewed build/parity, typecheck, full formatting and whitespace gates passed; source fingerprint `e7961ae99730cff948b5b6518409d150eac68b58d626ec960a5b1fd76b81ba84`. Next: final independent shared-document review, exact committed-input gateway artifact, all six candidate hosted checks, ordinary expected-head merge and separate actual-main qualification. Gateway source is not shipped in the CLI package. No new service identity, credential, plugin, global runtime, paid/model-consuming worker or unrelated project change.
+
+---
+
 # Failed mutation-lock initialization checkpoint — 2026-11-09 UTC
 
 Session `MTERM-WEB-20261109T131339Z-resume-a9287b3c` owns `coord/mterm/issue-56`, feature `fix/issue-56-state-lock-init-20261109`, base `3d32c0e53b0444c2b012b15432928f6feeda053f`. [Atomic scoped claim](https://github.com/MulattoTech/MTerm-CLI/issues/56#issuecomment-6741000659). Isolated normal clone; one writer for this scope and independent read-only review. A separate bounded issue54 worker owns only gateway authentication files; root serializes shared documentation/integration.

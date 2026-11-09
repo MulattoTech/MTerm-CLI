@@ -94,6 +94,8 @@ Stages describe implementation evidence and do not award acceptance or a complet
 
 **Completed evidence:** Supported SDK initialized and listed all six tools against the deployed endpoint with live authentication and anonymous dispatch denial.
 
+**Dated source evidence — 2026-11-09:** [Access identity expiry](validation/2026-11-09-access-expiry.md) adds a fresh timestamp decision after the final awaited identity hash. Frozen22 signed-WebCrypto cases were original-source RED11pass/11expectedfail; final worker and integrated gateway/admission suites passed68/68, and an independent reviewer passed22/22. Existing timestamp tolerance, issuer/audience/signature checks, human allowlist and staging-only service rules remain unchanged. No live identity/client/deployment qualification or acceptance credit is added; historical evidence and outstanding work remain.
+
 **Remaining work, dependencies and blockers:**
 
 - Complete the supported-client/protocol matrix and live error handling for JSON POST, unsupported GET/SSE, Origin, content negotiation and protocol revisions; retain the actual negotiated SDK behavior. **Effort:** 2–6 engineering hours. **Depends on:** Recorded SDK 2.3.0 smoke; WEB-012 protocol regression matrix. **Blocker:** One SDK smoke is not full standards/client interoperability certification; human clients remain unverified.

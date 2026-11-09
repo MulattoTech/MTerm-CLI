@@ -1,0 +1,418 @@
+TAP version 13
+# Subtest: Access expiry: human settles one millisecond before expiry during keys
+ok 1 - Access expiry: human settles one millisecond before expiry during keys
+  ---
+  duration_ms: 40.358543
+  type: 'test'
+  ...
+# Subtest: Access expiry: human settles exactly at expiry during keys
+ok 2 - Access expiry: human settles exactly at expiry during keys
+  ---
+  duration_ms: 4.691582
+  type: 'test'
+  ...
+# Subtest: Access expiry: human settles after expiry during keys
+ok 3 - Access expiry: human settles after expiry during keys
+  ---
+  duration_ms: 2.541265
+  type: 'test'
+  ...
+# Subtest: Access expiry: staging service expires during keys
+ok 4 - Access expiry: staging service expires during keys
+  ---
+  duration_ms: 3.263887
+  type: 'test'
+  ...
+# Subtest: Access expiry: human settles one millisecond before expiry during signature
+ok 5 - Access expiry: human settles one millisecond before expiry during signature
+  ---
+  duration_ms: 2.031756
+  type: 'test'
+  ...
+# Subtest: Access expiry: human settles exactly at expiry during signature
+ok 6 - Access expiry: human settles exactly at expiry during signature
+  ---
+  duration_ms: 1.359712
+  type: 'test'
+  ...
+# Subtest: Access expiry: human settles after expiry during signature
+ok 7 - Access expiry: human settles after expiry during signature
+  ---
+  duration_ms: 1.573274
+  type: 'test'
+  ...
+# Subtest: Access expiry: staging service expires during signature
+ok 8 - Access expiry: staging service expires during signature
+  ---
+  duration_ms: 1.354334
+  type: 'test'
+  ...
+# Subtest: Access expiry: human settles one millisecond before expiry during identity
+ok 9 - Access expiry: human settles one millisecond before expiry during identity
+  ---
+  duration_ms: 1.715919
+  type: 'test'
+  ...
+# Subtest: Access expiry: human settles exactly at expiry during identity
+ok 10 - Access expiry: human settles exactly at expiry during identity
+  ---
+  duration_ms: 1.529789
+  type: 'test'
+  ...
+# Subtest: Access expiry: human settles after expiry during identity
+ok 11 - Access expiry: human settles after expiry during identity
+  ---
+  duration_ms: 2.291749
+  type: 'test'
+  ...
+# Subtest: Access expiry: staging service expires during identity
+ok 12 - Access expiry: staging service expires during identity
+  ---
+  duration_ms: 2.216696
+  type: 'test'
+  ...
+# Subtest: Access expiry: clock rollback after identity hashing rechecks issued-at tolerance
+ok 13 - Access expiry: clock rollback after identity hashing rechecks issued-at tolerance
+  ---
+  duration_ms: 1.497821
+  type: 'test'
+  ...
+# Subtest: Access expiry: clock rollback after signature verification rechecks not-before tolerance
+ok 14 - Access expiry: clock rollback after signature verification rechecks not-before tolerance
+  ---
+  duration_ms: 1.508356
+  type: 'test'
+  ...
+# Subtest: Access expiry: existing five-second issued-at and not-before tolerance stays valid
+ok 15 - Access expiry: existing five-second issued-at and not-before tolerance stays valid
+  ---
+  duration_ms: 1.546154
+  type: 'test'
+  ...
+# Subtest: Access expiry: iat beyond existing tolerance rejects before certificate retrieval
+ok 16 - Access expiry: iat beyond existing tolerance rejects before certificate retrieval
+  ---
+  duration_ms: 0.924921
+  type: 'test'
+  ...
+# Subtest: Access expiry: nbf beyond existing tolerance rejects before certificate retrieval
+ok 17 - Access expiry: nbf beyond existing tolerance rejects before certificate retrieval
+  ---
+  duration_ms: 1.097166
+  type: 'test'
+  ...
+# Subtest: Access expiry: already-expired signed identity rejects before certificate retrieval
+ok 18 - Access expiry: already-expired signed identity rejects before certificate retrieval
+  ---
+  duration_ms: 0.85473
+  type: 'test'
+  ...
+# Subtest: Access expiry: invalid signature remains rejected by actual verification
+ok 19 - Access expiry: invalid signature remains rejected by actual verification
+  ---
+  duration_ms: 1.230137
+  type: 'test'
+  ...
+# Subtest: Access expiry: wrong audience cannot acquire authorization
+ok 20 - Access expiry: wrong audience cannot acquire authorization
+  ---
+  duration_ms: 0.90145
+  type: 'test'
+  ...
+# Subtest: Access expiry: a valid signature does not broaden the human allowlist
+ok 21 - Access expiry: a valid signature does not broaden the human allowlist
+  ---
+  duration_ms: 1.356027
+  type: 'test'
+  ...
+# Subtest: Access expiry: service-principal acceptance remains unavailable in production
+ok 22 - Access expiry: service-principal acceptance remains unavailable in production
+  ---
+  duration_ms: 1.661293
+  type: 'test'
+  ...
+# Subtest: gateway delivers only the offered slots and retains queued deadlines and arguments
+ok 23 - gateway delivers only the offered slots and retains queued deadlines and arguments
+  ---
+  duration_ms: 46.45559
+  type: 'test'
+  ...
+# Subtest: gateway rejects malformed slot offers before changing jobs or heartbeat
+ok 24 - gateway rejects malformed slot offers before changing jobs or heartbeat
+  ---
+  duration_ms: 5.20737
+  type: 'test'
+  ...
+# Subtest: omitted capacity preserves the legacy four-request poll contract
+ok 25 - omitted capacity preserves the legacy four-request poll contract
+  ---
+  duration_ms: 4.121981
+  type: 'test'
+  ...
+# Subtest: zero-capacity polls still report cancellation and expiry without later executing expired work
+ok 26 - zero-capacity polls still report cancellation and expiry without later executing expired work
+  ---
+  duration_ms: 10.417242
+  type: 'test'
+  ...
+# Subtest: capacity offers do not bypass device authentication, ownership or revocation
+ok 27 - capacity offers do not bypass device authentication, ownership or revocation
+  ---
+  duration_ms: 3.779624
+  type: 'test'
+  ...
+# Subtest: agent retains delivery capacity through cancelled cleanup and resumes each queued request once
+ok 28 - agent retains delivery capacity through cancelled cleanup and resumes each queued request once
+  ---
+  duration_ms: 32.699052
+  type: 'test'
+  ...
+# Subtest: agent retains delivery capacity through timed-out cleanup and resumes each queued request once
+ok 29 - agent retains delivery capacity through timed-out cleanup and resumes each queued request once
+  ---
+  duration_ms: 18.07447
+  type: 'test'
+  ...
+# Subtest: agent retains delivery capacity through result delivery and resumes each queued request once
+ok 30 - agent retains delivery capacity through result delivery and resumes each queued request once
+  ---
+  duration_ms: 13.848623
+  type: 'test'
+  ...
+# Subtest: grant expiry: legacy poll cancels queued and delivered work without an alarm sweep
+ok 31 - grant expiry: legacy poll cancels queued and delivered work without an alarm sweep
+  ---
+  duration_ms: 106.810097
+  type: 'test'
+  ...
+# Subtest: grant expiry: 0-slot poll cancels queued and delivered work without an alarm sweep
+ok 32 - grant expiry: 0-slot poll cancels queued and delivered work without an alarm sweep
+  ---
+  duration_ms: 68.106722
+  type: 'test'
+  ...
+# Subtest: grant expiry: 4-slot poll cancels queued and delivered work without an alarm sweep
+ok 33 - grant expiry: 4-slot poll cancels queued and delivered work without an alarm sweep
+  ---
+  duration_ms: 83.910675
+  type: 'test'
+  ...
+# Subtest: grant expiry: result acceptance rejects exact expiry before retaining output
+ok 34 - grant expiry: result acceptance rejects exact expiry before retaining output
+  ---
+  duration_ms: 75.015354
+  type: 'test'
+  ...
+# Subtest: grant expiry: result acceptance rejects after expiry before retaining output
+ok 35 - grant expiry: result acceptance rejects after expiry before retaining output
+  ---
+  duration_ms: 40.571434
+  type: 'test'
+  ...
+# Subtest: grant expiry: result acceptance rejects missing expiry before retaining output
+ok 36 - grant expiry: result acceptance rejects missing expiry before retaining output
+  ---
+  duration_ms: 62.861947
+  type: 'test'
+  ...
+# Subtest: grant expiry: just-before success and another live client grant remain independent
+ok 37 - grant expiry: just-before success and another live client grant remain independent
+  ---
+  duration_ms: 82.827631
+  type: 'test'
+  ...
+# Subtest: grant expiry: existing request deadline takes precedence when both boundaries expire
+ok 38 - grant expiry: existing request deadline takes precedence when both boundaries expire
+  ---
+  duration_ms: 138.150969
+  type: 'test'
+  ...
+# Subtest: grant expiry: poll rechecks grant after asynchronous grant and epoch reads
+ok 39 - grant expiry: poll rechecks grant after asynchronous grant and epoch reads
+  ---
+  duration_ms: 50.474907
+  type: 'test'
+  ...
+# Subtest: grant expiry: poll rechecks deadline after asynchronous grant and epoch reads
+ok 40 - grant expiry: poll rechecks deadline after asynchronous grant and epoch reads
+  ---
+  duration_ms: 47.359549
+  type: 'test'
+  ...
+# Subtest: grant expiry: result rechecks grant after asynchronous grant and epoch reads
+ok 41 - grant expiry: result rechecks grant after asynchronous grant and epoch reads
+  ---
+  duration_ms: 49.004937
+  type: 'test'
+  ...
+# Subtest: grant expiry: result rechecks deadline after asynchronous grant and epoch reads
+ok 42 - grant expiry: result rechecks deadline after asynchronous grant and epoch reads
+  ---
+  duration_ms: 78.340529
+  type: 'test'
+  ...
+# Subtest: gateway fails closed; discovery is public, bounded, and precise
+ok 43 - gateway fails closed; discovery is public, bounded, and precise
+  ---
+  duration_ms: 58.298167
+  type: 'test'
+  ...
+# Subtest: Access JWT signature, audience, expiry and allowlist are enforced independently of headers
+ok 44 - Access JWT signature, audience, expiry and allowlist are enforced independently of headers
+  ---
+  duration_ms: 60.502543
+  type: 'test'
+  ...
+# Subtest: PKCE code is single use and tokens are resource-bound
+ok 45 - PKCE code is single use and tokens are resource-bound
+  ---
+  duration_ms: 85.433356
+  type: 'test'
+  ...
+# Subtest: pairing requires authenticated approval, is one-time, and never grants execution
+ok 46 - pairing requires authenticated approval, is one-time, and never grants execution
+  ---
+  duration_ms: 108.873669
+  type: 'test'
+  ...
+# Subtest: real relay request travels gateway queue to selected agent and result returns once
+ok 47 - real relay request travels gateway queue to selected agent and result returns once
+  ---
+  duration_ms: 527.133205
+  type: 'test'
+  ...
+# Subtest: cross-user and cross-device access, mutation names, and revoked credentials fail closed
+ok 48 - cross-user and cross-device access, mutation names, and revoked credentials fail closed
+  ---
+  duration_ms: 38.888223
+  type: 'test'
+  ...
+# Subtest: frequent polling cannot defer expiry cleanup and the sweep reaches beyond 1000 rows
+ok 49 - frequent polling cannot defer expiry cleanup and the sweep reaches beyond 1000 rows
+  ---
+  duration_ms: 62.143685
+  type: 'test'
+  ...
+# Subtest: refresh rotation is single use, replay revokes its whole grant, and resource mismatch fails
+ok 50 - refresh rotation is single use, replay revokes its whole grant, and resource mismatch fails
+  ---
+  duration_ms: 53.57567
+  type: 'test'
+  ...
+# Subtest: request cancellation is scoped, delivered requests never replay, and late results fail
+ok 51 - request cancellation is scoped, delivered requests never replay, and late results fail
+  ---
+  duration_ms: 615.875184
+  type: 'test'
+  ...
+# Subtest: offline, expired, malformed and oversized requests have bounded safe failures
+ok 52 - offline, expired, malformed and oversized requests have bounded safe failures
+  ---
+  duration_ms: 83.600395
+  type: 'test'
+  ...
+# Subtest: dashboard cancellation checks ownership and service identities require exact app-token claims
+ok 53 - dashboard cancellation checks ownership and service identities require exact app-token claims
+  ---
+  duration_ms: 100.218465
+  type: 'test'
+  ...
+# Subtest: revoke-all invalidates unredeemed authorization codes and approved unclaimed pairings
+ok 54 - revoke-all invalidates unredeemed authorization codes and approved unclaimed pairings
+  ---
+  duration_ms: 34.359497
+  type: 'test'
+  ...
+# Subtest: MCP optional arguments and JSON-RPC parse errors follow the advertised protocol
+ok 55 - MCP optional arguments and JSON-RPC parse errors follow the advertised protocol
+  ---
+  duration_ms: 132.717204
+  type: 'test'
+  ...
+# Subtest: pairing stays consumed after a credential-store failure and consent CSP permits only its callback
+ok 56 - pairing stays consumed after a credential-store failure and consent CSP permits only its callback
+  ---
+  duration_ms: 33.789697
+  type: 'test'
+  ...
+# Subtest: request ownership: consuming an old timeout preserves the replacement RPC lease
+ok 57 - request ownership: consuming an old timeout preserves the replacement RPC lease
+  ---
+  duration_ms: 41.001186
+  type: 'test'
+  ...
+# Subtest: request ownership: consuming an old cancelled preserves the replacement RPC lease
+ok 58 - request ownership: consuming an old cancelled preserves the replacement RPC lease
+  ---
+  duration_ms: 83.460914
+  type: 'test'
+  ...
+# Subtest: request ownership: consuming an old complete preserves the replacement RPC lease
+ok 59 - request ownership: consuming an old complete preserves the replacement RPC lease
+  ---
+  duration_ms: 49.003214
+  type: 'test'
+  ...
+# Subtest: request ownership: public cancellation still reaches a replacement after old result consumption
+ok 60 - request ownership: public cancellation still reaches a replacement after old result consumption
+  ---
+  duration_ms: 56.512682
+  type: 'test'
+  ...
+# Subtest: request ownership: repeated consumption rejects before modifying a reused RPC lease
+ok 61 - request ownership: repeated consumption rejects before modifying a reused RPC lease
+  ---
+  duration_ms: 74.630707
+  type: 'test'
+  ...
+# Subtest: request ownership: delayed old HTTP abort cleanup cannot cancel a replacement
+ok 62 - request ownership: delayed old HTTP abort cleanup cannot cancel a replacement
+  ---
+  duration_ms: 67.680707
+  type: 'test'
+  ...
+# Subtest: request ownership: delayed old HTTP deadline cleanup cannot cancel a replacement
+ok 63 - request ownership: delayed old HTTP deadline cleanup cannot cancel a replacement
+  ---
+  duration_ms: 591.267078
+  type: 'test'
+  ...
+# Subtest: request ownership: malformed private expected IDs cannot fall back to unbound cancellation
+ok 64 - request ownership: malformed private expected IDs cannot fall back to unbound cancellation
+  ---
+  duration_ms: 67.669941
+  type: 'test'
+  ...
+# Subtest: request ownership: private stale IDs require authentication and cannot select another job
+ok 65 - request ownership: private stale IDs require authentication and cannot select another job
+  ---
+  duration_ms: 83.486402
+  type: 'test'
+  ...
+# Subtest: request ownership: public notifications isolate bearer credentials and numeric versus string IDs
+ok 66 - request ownership: public notifications isolate bearer credentials and numeric versus string IDs
+  ---
+  duration_ms: 104.679277
+  type: 'test'
+  ...
+# Subtest: request ownership: a matching private expected ID still cancels its current job
+ok 67 - request ownership: a matching private expected ID still cancels its current job
+  ---
+  duration_ms: 41.031137
+  type: 'test'
+  ...
+# Subtest: request ownership: an absent active pointer permits first authorized terminal consumption
+ok 68 - request ownership: an absent active pointer permits first authorized terminal consumption
+  ---
+  duration_ms: 28.999799
+  type: 'test'
+  ...
+1..68
+# tests 68
+# suites 0
+# pass 68
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4635.072671

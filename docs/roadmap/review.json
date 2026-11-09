@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "changeId": "2026-11-09-state-lock-init",
-  "reviewedAt": "2026-11-09T13:26:47.318Z",
-  "sourceFingerprint": "ca1e928252e771af7bcb3af256310d7ae4f78d5c30442667c0db98c19b824bad",
+  "changeId": "2026-11-09-access-expiry",
+  "reviewedAt": "2026-11-09T13:44:40.451Z",
+  "sourceFingerprint": "e7961ae99730cff948b5b6518409d150eac68b58d626ec960a5b1fd76b81ba84",
   "sourceFiles": {
     ".gitattributes": "fa9689011bd85ae1fad8333facd3b0d5f4f14dffff98bd9744a62e58ab4cfae5",
     ".github/CODEOWNERS": "a9d3f8ebc91ecca981ebe65e5269f40aeb726ac0701418dc4734a94bcb3e53db",
@@ -27,7 +27,7 @@
     "docs/ORCHESTRATION.md": "00938476e3746cbbe7102dcb139e4959eed8d84920aa837874cd41b2aeddab1a",
     "docs/OWNER_AUTHORIZATION.md": "dc9af35a0eb2cd4933721d9cc4b4a1aeeca2ba8bf71ec32381df95064c2e003a",
     "docs/PROVENANCE.md": "aae6a13cbfcda0cd110709b736501938c82af29c8632f8940aca5a1a2defd3a5",
-    "docs/SECURITY.md": "1060d20308406916c885df636ef0206627841a5746b4a2342b562a8b5f873a1a",
+    "docs/SECURITY.md": "1bf25eff9f575f98fdf226519be1b531fd35f58c2006ff90a5ab9c7be2edc961",
     "docs/TODAY_CANDIDATE.md": "b95fbc1c02797a68f2c26a3e80c8448de7c3ec59a6a025b29fda13cbfad64ba4",
     "docs/execution/DESKTOP_COMMANDER_100_PASS_PROMPT.md": "2002abd688feb28e6526e0ddb12a4e3e1e6151fd9b0af9df79960a6544df0c68",
     "docs/execution/NEXT_PARITY_PROMPT.md": "5f22fd63c32b948df969114d788d2c8d6cb38e23a4211d11f690d6a0dc351844",
@@ -55,7 +55,7 @@
     "gateway/dashboard.mjs": "37de2f57ba8f6dfcd1c3331ab8cb994aea419dcfc673c5e3e6f6ef6df208c240",
     "gateway/deployment.example.json": "678a167ab23e83e8aba47ac3ae1e5d2f1cffbaca56133eec8542d16289611c72",
     "gateway/registry.mjs": "53706971f99d6f71d1e5a5db6fc87c739a90aca7c05146412820ff8a4285e472",
-    "gateway/security.mjs": "d0d310b6af0e1b04929e62e621ddf154615a4a2b5b9bedbea8c40852bc53d6d7",
+    "gateway/security.mjs": "78aa4d7f9f632568d2247d249691b7583dbf73d344bd040d6512104741183b7b",
     "gateway/worker.mjs": "9b716028170226096b295b0353357472a215970ab41fe60c29bf8099648511aa",
     "npm-shrinkwrap.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
     "package-lock.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
@@ -138,6 +138,7 @@
     "tests/files.test.mjs": "db7de0a574afeac7dfb25fd74088a228b2645a764322daf39479e00737dd1aca",
     "tests/fixtures/provenance/README.md": "9a43ae7dce8682b955211ee8162179170868863148475c996ec88a22fb88010a",
     "tests/fixtures/provenance/npm-11.19-incomplete.spdx.json": "c6a4a1e01db17fbb32a58e3945aaf7dd5edd5642dfa3bca16d021f0980033092",
+    "tests/gateway-access-expiry.test.mjs": "9e24369e1ab38e9eedcc5f77d2b3c5056fa51d9ce77e94d6232d9b6b6259c1cd",
     "tests/gateway-artifact.test.mjs": "d061936613ed6c053b5d15b56b63225d4283f63d6f0eb5a63729d4998a659029",
     "tests/git-boundaries.test.mjs": "a658fe4eb94e1186c83762e9059431867bd1733fb879ec2cf2214c37cf5986a2",
     "tests/git.test.mjs": "e6f1f56c050fa8ea53d2be10043ba26a0abf78ed480cef748e63caa5799c4b25",
@@ -180,7 +181,7 @@
     "vendor/modelcontextprotocol-server/source.patch": "7783730d37d00a3b8dc759e144dee6fa2d3ffb0c73b4bb48bf90151fe4234435",
     "versions.json": "7cadba4f207fa86eef1d32f74e63205d53dc1b344820c0425e67323a38364d29"
   },
-  "catalogFingerprint": "7c0624f36092cdfb69a29f98712163a4da5e99a539238ddc4eb5000dc5c697cb",
+  "catalogFingerprint": "7a3b70e9417419443a41cf4cecb13305de93eef2e63dba486641d972fd8e6556",
   "weightFingerprint": "3bbcd6acde44c38922429b79939480398048ae2f710640e68fd41705220fff7c",
   "assessment": "Explicit source/catalog review; rendering does not infer progress"
 }

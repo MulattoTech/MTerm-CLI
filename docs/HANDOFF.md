@@ -1,3 +1,19 @@
+# Failed run-lock initialization checkpoint — 2026-11-09 UTC
+
+Session `MTERM-WEB-20261109T031131Z-e0efd5d4` owns `coord/mterm/issue-57`, feature `fix/issue-57-run-lock-recovery-20261109`, base `700bc25fbc277ba2f9d996344e91c48a50e94bc0`. One source writer and independent read-only peers. [Atomic claim](https://github.com/MulattoTech/MTerm-CLI/issues/57#issuecomment-6733609390).
+
+[Run-lock recovery evidence](validation/2026-11-09-run-lock-recovery.md): failed initialization left empty/partial locks that blocked later starts without a running agent. All16 real-file cases predate source edits: RED9 passed/7 assertion failures; corrected focused38/38 and independent frozen16/16 with nine unchanged source/fixture/compiled bindings. Cleanup now requires failed initialization, confirmed handle closure and matching canonical parent/regular single-link file identities. Original initialization errors remain primary; successful locks and existing/replaced/uncertain locks are retained. A held-close gate proves admission remains occupied until actual close. Recorded identity checks do not guarantee atomic deletion, same-inode byte identity, hostile-race protection or crash durability. No stale takeover, PID recovery or retry loop.
+
+The additive installed verifier runs the same16 cases against seven exact compiled bindings, from a verified external working directory with retained TAP and post-run hash checks. Independent source/fixture/verifier reviews are clear. The fixture does not launch an agent, access credentials or invoke DPAPI; full packaged restart/reconnect stays open.
+
+Prerequisite PR220 merged normally at the base above, tree `548c1aec0c72821d2fea4196be5f5c43a086857a`, identical to candidate `b2bcb2627fdc9cdedc6407ffbbebf023017fc325`. All six candidate and all six separate main gates passed: Windows697/697; other full685+12 unchanged skips; all18 new move cases; installed18 move+8/46/18/5; native12 source+12 installed real containment/cleanup. [Qualification](https://github.com/MulattoTech/MTerm-CLI/pull/220#issuecomment-6733595066), [claim release](https://github.com/MulattoTech/MTerm-CLI/issues/25#issuecomment-6733601931) and [final main receipt](https://github.com/MulattoTech/MTerm-CLI/issues/25#issuecomment-6733679302) retain exact identities and independent actual-log review. PR211–220 have completed all six PR and separate main gates.
+
+CLI286/287 and WEB004 receive evidence only; all protected fields, historical records, seeds/pins/locks, estimates/stages/weights and AUG/DCP/WEB acceptance remain unchanged. No production bridge/plugin/global runtime/Cloudflare deployment, real owner data or unrelated project mutation.
+
+Normal reviewed build/typecheck/format/parity gates and independent documentation/protected-field review passed. Next: an exact-head draft PR with all six hosted/platform/installed/native checks before normal expected-head merge and separate main qualification. Known cloud full-suite Unix-socket EPERM remains recorded; no new skips or bypasses.
+
+---
+
 # Regular-file move cancellation checkpoint — 2026-11-09 UTC
 
 Session `MTERM-WEB-20261109T031131Z-e0efd5d4` owns `coord/mterm/issue-25`, feature `fix/issue-25-move-cancellation-20261109`, base `43f7c7152a6115a95e9c45e5ea582068f62ad33c`. Sole source writer and independent read-only peers. [Atomic claim](https://github.com/MulattoTech/MTerm-CLI/issues/25#issuecomment-6733335338).

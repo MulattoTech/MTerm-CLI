@@ -332,6 +332,21 @@
       ],
       "observation": "All twelve new cases precede behavior changes: RED38 total29 passed/9 assertion failures; corrected focused50/50. Old terminal consumption preserves newer active lookup and duplicate/cancel routing; repeat consumption returns409. Actual old HTTP abort and timeout cleanup cannot cancel replacement work. Matching private/public cancellation, typed IDs, bearer isolation, malformed expected IDs and absent-index consumption retain explicit controls.",
       "limits": "Synthetic source fixtures do not qualify real Cloudflare storage/network, owner-browser/client behavior, deployment, replay, load/soak or acceptance. Existing serialized fetch supplies comparison/deletion exclusion, not new transaction or recovery semantics."
+    },
+    {
+      "id": "RUN-LOCK-RECOVERY-20261109",
+      "level": "actual local RemoteStateStore with real owned temporary files, causal close gate and deterministic filesystem failures; installed/platform qualification pending",
+      "status": "source_regression_green",
+      "observedAt": "2026-11-09T06:21:58.922970+00:00",
+      "sourceBase": "700bc25fbc277ba2f9d996344e91c48a50e94bc0",
+      "refs": [
+        "docs/validation/2026-11-09-run-lock-recovery.md",
+        "src/remote/state.ts",
+        "tests/remote-run-lock.test.mjs",
+        "docs/ai/changes/2026-11-09-run-lock-recovery.json"
+      ],
+      "observation": "All16 cases precede behavior edits: RED9 passed/7 assertion failures; corrected focused38/38 and independent16/16. Failed initialization preserves its original error and only removes an exact owned regular single-link lock after confirmed close and matching parent/file identities. Held-close admission, explicit retry and preservation of existing/replaced/uncertain locks are tested.",
+      "limits": "Fault injection does not certify actual disk exhaustion, native close failures, crash durability or hostile same-user races. No credential/DPAPI/gateway/agent launch in the new fixture; full packaged start/stop/restart, network reconnect, deployment, load and acceptance remain open."
     }
   ],
   "pendingEvidence": [
@@ -746,7 +761,8 @@
         "LIVE-SMOKE-FINAL",
         "FINAL-GATES",
         "OWNER-CONNECTION-20261102",
-        "POLL-CAPACITY-20261109"
+        "POLL-CAPACITY-20261109",
+        "RUN-LOCK-RECOVERY-20261109"
       ],
       "implemented": "Foreground outbound polling carried actual Windows FileService results through Cloudflare. Both agents reached online state; device A stopped on revocation and device B stopped during owned cleanup. Backoff, cancellation and no-redelivery also have local transport tests.",
       "remainingWork": [

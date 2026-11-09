@@ -1,0 +1,125 @@
+{
+  "change_id": "2026-11-09-run-lock-recovery",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "session_id": "MTERM-WEB-20261109T031131Z-e0efd5d4",
+  "started_at": "2026-11-09T06:15:47Z",
+  "updated_at": "2026-11-09T06:25:30.324060+00:00",
+  "base_sha": "700bc25fbc277ba2f9d996344e91c48a50e94bc0",
+  "integration_dependency": {
+    "pr": 220,
+    "merged_as": "700bc25fbc277ba2f9d996344e91c48a50e94bc0",
+    "tree": "548c1aec0c72821d2fea4196be5f5c43a086857a",
+    "same_as_reviewed_candidate": true,
+    "pr_checks": "All six passed; independently inspected actual logs, PR220 comment6733595066.",
+    "main_checks": "All six separate push checks passed; actual logs and installed/native bindings independently inspected, issue25 comment6733679302."
+  },
+  "issues": [
+    57
+  ],
+  "requirements": [
+    "CLI-286",
+    "CLI-287"
+  ],
+  "remote_requirements": [
+    "WEB-004"
+  ],
+  "files": [
+    "src/remote/state.ts",
+    "tests/remote-run-lock.test.mjs",
+    "scripts/verify-package.mjs",
+    "docs/SECURITY.md",
+    "docs/HANDOFF.md",
+    "docs/REMOTE_MCP_ROADMAP.md",
+    "docs/ai/changes/2026-11-09-run-lock-recovery.json",
+    "docs/validation/2026-11-09-run-lock-recovery.md",
+    "docs/validation/2026-11-09-run-lock-recovery-red.tap",
+    "docs/validation/2026-11-09-run-lock-recovery-green.tap",
+    "docs/roadmap/progress.json",
+    "docs/roadmap/remote-web-progress.json",
+    "docs/roadmap/review.json",
+    "docs/roadmap/FEATURES.md",
+    "docs/roadmap/index.html",
+    "docs/roadmap/summary.json"
+  ],
+  "decisions": [
+    "Atomic issue57 claim after PR220 merge; sole source writer and independent read-only reviewers.",
+    "Capture canonical parent and acquired descriptor identities before initialization. A failure still rejects after successful cleanup; retry is an explicit subsequent operation.",
+    "Attempt close once. Preserve the original stat/write error when close or cleanup also fails; a close-only failure remains primary and retains the initialized lock.",
+    "Only failed initialization, confirmed close, known descriptor identity, unchanged canonical parent and unchanged regular single-link leaf authorize one unlink. Preserve mode and UID as well as device/inode.",
+    "Do not compare pre-write size/mtime or parse incomplete JSON. Do not steal stale/preexisting locks, retry initialization, introduce PID recovery or change normal release/write/mutate/credential handling.",
+    "All16 real-file regressions precede behavior edits, including a causal held-close admission gate and same-inode replacement-parent control.",
+    "Add installed16-case qualification with seven compiled import-graph bindings, fixture hash, post-run byte checks, an actual external working directory and TAP saved before awaited cleanup.",
+    "Evidence only for CLI286/287 and WEB004; preserve all protected metadata, historical records and acceptance."
+  ],
+  "tests": [
+    {
+      "command": "Final16-case real-file run-lock fixture on unchanged source and compiled baseline",
+      "result": "RED16 total:9 passed/7 ERR_ASSERTION failures; zero skips/cancellations/todo. Source and compiled baseline hashes unchanged before/after."
+    },
+    {
+      "command": "npm run build:code; node --test --test-reporter=tap --test-concurrency=1 tests/remote-run-lock.test.mjs tests/remote-state.test.mjs tests/remote-state-dpapi.test.mjs",
+      "result": "GREEN38/38; zero failures/skips/cancellations/todo. Node24.22.1 Linux x64; includes existing state/DPAPI fixtures, without claiming actual Windows protection on Linux."
+    },
+    {
+      "command": "Independent frozen16-case run by /root/backlog_triage",
+      "result": "16/16 passed; zero failures/skips/cancellations/todo, exit0 and empty stderr; TAP262.743318 ms on Node24.22.1 Linux x64. All nine source/fixture/compiled import-graph hashes unchanged; one execution, no build.",
+      "tap_sha256": "e1cbed1eaf9467ab18a89fc09c333846457495df5b5399de58eae2c0ba2acaa1",
+      "receipt_sha256": "47acde99ba60947c77206feb7bd4173dc597d1cffda853bcb1163a2ba198536e"
+    },
+    {
+      "command": "Explicit roadmap review/render/check; normal npm run build; npm run typecheck; npm run format:check; git diff --check",
+      "result": "Passed. Protected300 maturity remains29.36%,0 complete,45 blocked,126 not started; parity command passed with0/48 acceptance. Source fingerprint 9060cd7a0571604e4f3e3db3baecb7b5836838738dbdcd7f8ccfc82d6067c4bb."
+    }
+  ],
+  "independent_review": {
+    "reviewers": [
+      "/root/backlog_triage",
+      "/root/architecture_scan",
+      "/root/release_quality_scan"
+    ],
+    "result": "Independent original reproduction, design, frozen source/fixture reviews and a second source review are clear; one frozen16/16 execution passed with nine unchanged bindings. Installed verifier review clear; removing its additive block/comment/report field reproduces baseline bytes. Documentation/protected-field and raw-log reviews clear; historical WEB arrow serialization restored to retain its original text."
+  },
+  "reviewed_sha256": {
+    "src/remote/state.ts": "e053fac469ca19f30c4f9b36fca8f076d9a50c0166e885822a49efcda35acccf",
+    "tests/remote-run-lock.test.mjs": "cc89855f4cffa81750e2fcf1ff185380a42072a23710b243d8a8925c4be745a7",
+    "scripts/verify-package.mjs": "6b26d64754e2d20473ae24f88713f474a50a10b048a8e06099b6b9bbf0b9366e"
+  },
+  "compiled_state_sha256": "d1f971271863d2a7837d9530311104b789ee41099de7958bba8b4a193b3b2bbf",
+  "roadmap_updates": [
+    {
+      "id": "CLI-286",
+      "stage_change": false,
+      "reason": "Run-lock failure recovery preserves admission through confirmed close and refuses existing/uncertain locks; broader concurrent-session acceptance remains open."
+    },
+    {
+      "id": "CLI-287",
+      "stage_change": false,
+      "reason": "Preserve initialization error precedence through cleanup faults; this is partial error-contract evidence, with full requirement acceptance unchanged."
+    }
+  ],
+  "limitations": [
+    "Real temporary files with deterministic fault injection do not certify actual disk exhaustion, native close failures or crash durability.",
+    "Recorded identity checks are not byte identity or atomic conditional deletion; hostile final-check races, inode reuse and same-inode content changes remain outside the private-directory guarantee.",
+    "Unknown/replaced/linked/unconfirmed-close or cleanup-failed locks remain for explicit inspection; no automatic stale-lock stealing or cleanup retry.",
+    "The new fixture does not configure a gateway, pair, access credentials, invoke DPAPI, start an agent or qualify complete foreground-agent restart/reconnect behavior.",
+    "Installed and supported-platform results remain separate gates; no live deployment, production load or20\u201330-client acceptance.",
+    "No production bridge/plugin/global runtime, actual owner configuration/credential/grant/device, Cloudflare deployment or unrelated project mutation. Dependencies/pins/locks unchanged.",
+    "Known local full-suite Unix-socket listen EPERM limitation retained; no full local rerun or new skip substitutes for all six hosted gates and separate main qualification."
+  ],
+  "logs": {
+    "red": {
+      "original_sha256": "6ca5077d1fb86e08f8932d603fc3f02a707d0632cc8b54bc2e3da5a09fb4f917",
+      "display_normalization": "Only trailing whitespace removed from committed TAP display."
+    },
+    "green": {
+      "original_sha256": "4dc1ce81e172c31583d102142bf5e43b57fffbc9e54c2ec045c7821375d6a8bb",
+      "display_normalization": "Only trailing whitespace removed from committed TAP display."
+    }
+  },
+  "next_unverified_action": "Publish exact-head draft PR; require all six hosted/platform/installed/native gates, then normal expected-head merge and separate main verification.",
+  "documentation_review": {
+    "reviewer": "/root/architecture_scan",
+    "result": "All300 CLI protected fields and metadata preserved except CLI286/287 append-only notes/three refs each. WEB metadata/history and19 prior evidence rows unchanged; WEB004 gets one ref and one global row. DCP/summary/seeds/pins/locks/AUG unchanged. HANDOFF exact prepend and REMOTE roadmap exact append. All172 source fingerprints and raw/rstrip-only/independent TAP receipts match; no material finding."
+  }
+}

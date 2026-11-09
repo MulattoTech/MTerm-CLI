@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-09-run-lock-recovery; qualify installed failed-initialization lock ownership and recovery.
 // Modified: 2026-11-09-move-cancellation; qualify installed native/compatible move cancellation before mutation.
 // Modified: 2026-11-09-poll-capacity; bind installed-agent admission against reviewed source gateway fixtures.
 // Modified: 2026-11-09-file-cancellation; qualify actual installed native/MCP/remote cooperative cancellation.
@@ -692,6 +693,99 @@ const installedMoveCancellation = {
   log: moveCancellationLog,
   logSha256: createHash('sha256').update(moveCancellationOutput).digest('hex'),
 };
+const runLockBindings = [];
+for (const name of [
+  'remote/state.js',
+  'remote/adapter.js',
+  'remote/agent.js',
+  'remote/protocol.js',
+  'files.js',
+  'policy.js',
+  'errors.js',
+]) {
+  const source = await fs.readFile(path.join(root, 'dist', name));
+  const bytes = await fs.readFile(path.resolve(path.dirname(installed), '../dist', name));
+  assert.deepEqual(bytes, source, 'Installed run-lock module differs from compiled source');
+  runLockBindings.push({ path: 'dist/' + name, sha256: createHash('sha256').update(bytes).digest('hex') });
+}
+const runLockFixture = 'tests/remote-run-lock.test.mjs';
+const runLockFixtureSha256 = createHash('sha256')
+  .update(await fs.readFile(path.join(root, runLockFixture)))
+  .digest('hex');
+const runLockCwd = await fs.mkdtemp(path.join(os.tmpdir(), 'mterm-run-lock-qualification-'));
+const runLockLog = path.join(output, 'remote-run-lock-tests.tap');
+let runLockAcceptance;
+try {
+  const relative = path.relative(await fs.realpath(root), await fs.realpath(runLockCwd));
+  assert.ok(
+    relative === '..' || relative.startsWith('..' + path.sep) || path.isAbsolute(relative),
+    'Run-lock fixture working directory must be outside the checkout',
+  );
+  runLockAcceptance = await exec(
+    process.execPath,
+    ['--test', '--test-reporter=tap', '--test-concurrency=1', path.join(root, runLockFixture)],
+    {
+      cwd: runLockCwd,
+      env: { ...env, MTERM_VERIFY_BIN: installed },
+      timeout: 60000,
+      maxBuffer: 1048576,
+      windowsHide: true,
+    },
+  ).then(
+    (result) => ({ ...result, exit: 0 }),
+    (error) => ({ stdout: error.stdout ?? '', stderr: error.stderr ?? '', exit: error.code ?? 'unknown' }),
+  );
+  await fs.writeFile(runLockLog, runLockAcceptance.stdout + runLockAcceptance.stderr);
+} finally {
+  await fs.rm(runLockCwd, { recursive: true, force: true, maxRetries: 3 });
+}
+const runLockOutput = runLockAcceptance.stdout + runLockAcceptance.stderr;
+assert.equal(runLockAcceptance.exit, 0, 'Installed run-lock recovery failed; see retained log');
+const runLockTests = Number(runLockAcceptance.stdout.match(/^# tests (\d+)$/m)?.[1]);
+assert.ok(runLockTests >= 16, 'Installed run-lock recovery fixtures did not run');
+for (const field of ['fail', 'skipped', 'cancelled'])
+  assert.match(runLockAcceptance.stdout, new RegExp('^# ' + field + ' 0$', 'm'));
+for (const binding of runLockBindings) {
+  for (const base of [root, path.resolve(path.dirname(installed), '..')])
+    assert.equal(
+      createHash('sha256')
+        .update(await fs.readFile(path.join(base, binding.path)))
+        .digest('hex'),
+      binding.sha256,
+      'Run-lock runtime bytes changed during installed qualification',
+    );
+}
+assert.equal(
+  createHash('sha256')
+    .update(await fs.readFile(path.join(root, runLockFixture)))
+    .digest('hex'),
+  runLockFixtureSha256,
+  'Run-lock fixture changed during installed qualification',
+);
+const installedRunLockRecovery = {
+  ok: true,
+  tests: runLockTests,
+  failed: 0,
+  skipped: 0,
+  cancelled: 0,
+  moduleBindings: runLockBindings,
+  fixtureSha256: runLockFixtureSha256,
+  realTemporaryFiles: true,
+  deterministicFilesystemFaults: true,
+  causalCloseAdmissionGate: true,
+  explicitRetryAfterConfirmedCleanup: true,
+  preexistingAndUncertainLocksRetained: true,
+  staleLockStealing: false,
+  completeForegroundAgentRestartQualified: false,
+  credentialProtectionExercisedByFixture: false,
+  hostileFilesystemRaceProtectionGuaranteed: false,
+  crashDurabilityQualified: false,
+  productionLoadQualified: false,
+  fromOutsideCheckout: true,
+  modelCalls: 0,
+  log: runLockLog,
+  logSha256: createHash('sha256').update(runLockOutput).digest('hex'),
+};
 const admissionBindings = [];
 for (const name of ['remote/agent.js', 'remote/protocol.js', 'errors.js']) {
   const source = await fs.readFile(path.join(root, 'dist', name));
@@ -1009,6 +1103,7 @@ const report = {
   installedGitBoundaries,
   installedFileCancellation,
   installedMoveCancellation,
+  installedRunLockRecovery,
   installedRemoteAdmission,
   installedIsolation,
   installedProvenance,

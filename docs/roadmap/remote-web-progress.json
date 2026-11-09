@@ -289,6 +289,20 @@
       ],
       "observation": "Final archived-base19cases:5passed/14failed; corrected focused33/33 and independent19/19. RawHEAD, fixed committed inputs, isolated fresh protocol equality, immutable artifact preservation and compiler-temp cleanup exercised. Unrelated tracked edits and equivalentCRLF remain usable.",
       "limits": "No live deployment/template application, secrets/bindings/registry, rollback or acceptance qualification. Compiler/Git trusted; source consistency does not certify tests/review, hermeticity or full dependency integrity."
+    },
+    {
+      "id": "POLL-CAPACITY-20261109",
+      "level": "local deterministic actual agent/transport/gateway/registry with controlled adapter/response gates; installed/platform qualification pending",
+      "status": "source_reviewed_regression_green",
+      "observedAt": "2026-11-09T05:04:26.924912+00:00",
+      "sourceBase": "f38c2c4522dc68e25fd220593d6b056068902a58",
+      "refs": [
+        "docs/validation/2026-11-09-poll-capacity.md",
+        "tests/remote-admission.test.mjs",
+        "scripts/verify-package.mjs"
+      ],
+      "observation": "Final archived-base8cases:2passed/6failed. Corrected focused26/26. Available delivery slots preserve queued replacement work while cancelled/timed-out cleanup or successful result delivery retains agent capacity; release resumes each request once, maxfour. Explicit0..4 validation, absent legacy4, heartbeat/cancellation/expiry/auth denial observed. Independent final8/8 with unchanged hashes; source/fixture/verifier reviews clear.",
+      "limits": "Both updated components required; mixed pairs retain legacy limitations. Lost poll responses remain non-replayed until timeout. In-memory serialized storage and controlled adapter; no OAuth enrollment, Cloudflare runtime/deployment, fairness/load/soak or acceptance qualification."
     }
   ],
   "pendingEvidence": [
@@ -701,7 +715,8 @@
         "WINDOWS-ALIAS-CHECKPOINT",
         "LIVE-SMOKE-FINAL",
         "FINAL-GATES",
-        "OWNER-CONNECTION-20261102"
+        "OWNER-CONNECTION-20261102",
+        "POLL-CAPACITY-20261109"
       ],
       "implemented": "Foreground outbound polling carried actual Windows FileService results through Cloudflare. Both agents reached online state; device A stopped on revocation and device B stopped during owned cleanup. Backoff, cancellation and no-redelivery also have local transport tests.",
       "remainingWork": [
@@ -1324,7 +1339,8 @@
         "WINDOWS-ALIAS-CHECKPOINT",
         "LIVE-SMOKE-FINAL",
         "FINAL-GATES",
-        "FILE-CANCELLATION-20261109"
+        "FILE-CANCELLATION-20261109",
+        "POLL-CAPACITY-20261109"
       ],
       "implemented": "A real MCP SDK 2.3.0 session initialized six read-only tools, listed two Windows devices and read two actual FileService markers through the deployed gateway; returned SHA-256 values exactly matched both originals. Cross-device credentials, mutation and outside-root access were denied; revoke-one and grant revocation took effect.",
       "remainingWork": [

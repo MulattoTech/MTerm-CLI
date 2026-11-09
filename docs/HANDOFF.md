@@ -1,3 +1,17 @@
+# Remote delivery capacity checkpoint — 2026-11-09 UTC
+
+Session `MTERM-WEB-20261109T031131Z-e0efd5d4` owns `coord/mterm/issue-149`, feature `fix/issue-149-poll-capacity-20261109`, from main `f38c2c4522dc68e25fd220593d6b056068902a58`. One implementation writer and independent read-only peers; [atomic claim](https://github.com/MulattoTech/MTerm-CLI/issues/149#issuecomment-6732586571).
+
+[Admission evidence](validation/2026-11-09-poll-capacity.md): the actual agent and registry reproduced replacement work stranded after gateway delivery while four cancelled requests still owned local cleanup slots. Final unchanged eight-case fixture is RED2passed/6failed; corrected focused26/26. New bounded `availableSlots` offers keep replacements queued with unchanged deadlines, while zero-capacity polls still report cancellation/expiry and heartbeat. Slots remain owned through cleanup and result transport. Legacy omission keeps4; both updated components are required. Lost-response/restart replay and general fairness/load acceptance remain open. Installed qualification explicitly pairs an installed agent with source gateway fixtures, not an installed/deployed gateway.
+
+PR #216 normally merged at the base above, tree `aeb80415cf79295ce17354da245ced1e68cca3ea`. All six PR and all six separate main checks passed: Windows647/647, other full635+12existing platform skips;19gateway cases individually passed; installed46cancellation/18Git/5stop and native12source+12installedcontainment passed. Full [main receipt](https://github.com/MulattoTech/MTerm-CLI/issues/61#issuecomment-6732648081) and [actual byte-identical committed artifact receipt](https://github.com/MulattoTech/MTerm-CLI/pull/216#issuecomment-6732511470) are durable. Scoped claims for PR211–216 are inactive/completed; broad issues remain open.
+
+All300 protected requirement fields, dependencies, seeds and AUG/DCP/WEB acceptance remain unchanged. CLI286/288 and WEB004/009 evidence only. No production bridge/plugin/global runtime/Cloudflare deployment, unrelated project mutation or model-consuming worker. The private management Worker's source receipt remains [#209](https://github.com/MulattoTech/MTerm-CLI/issues/209#issuecomment-6731856127); it is separate from this CLI and staging gateway.
+
+Next: independent final source/fixture/verifier/docs review and normal reviewed build gates; draft PR with allsix exact-head/platform/installed checks, then normal expected-head merge and separate main qualification. This checkpoint does not award20–30-client readiness.
+
+---
+
 # Gateway artifact source checkpoint — 2026-11-09 UTC
 
 Session `MTERM-WEB-20261109T031131Z-e0efd5d4` owns `coord/mterm/issue-61`, feature `fix/issue-61-gateway-source-20261109`, from frozen source `3434f3319e707642727f95e3010c6b62dedc3db6`. Prerequisite PR #215 normally merged at `288499a427a71cf6c2c4006e21dbfc8701cf04dd`, identical tree731edad. One writer and independent read-only peers.

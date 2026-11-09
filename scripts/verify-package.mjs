@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-09-poll-capacity; bind installed-agent admission against reviewed source gateway fixtures.
 // Modified: 2026-11-09-file-cancellation; qualify actual installed native/MCP/remote cooperative cancellation.
 // Modified: 2026-11-09-git-boundaries; qualify native Git metadata and filter denials from the installed package.
 // Modified: 2026-11-09-owned-stop-retry; exercise explicit recovery against the actual installed process service.
@@ -17,6 +18,7 @@
 import fs from 'node:fs/promises';
 import { resolveNpmEntry } from './npm-runtime.mjs';
 import path from 'node:path';
+import os from 'node:os';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { performance } from 'node:perf_hooks';
@@ -584,6 +586,93 @@ const installedFileCancellation = {
   log: cancellationLog,
   logSha256: createHash('sha256').update(cancellationOutput).digest('hex'),
 };
+const admissionBindings = [];
+for (const name of ['remote/agent.js', 'remote/protocol.js', 'errors.js']) {
+  const source = await fs.readFile(path.join(root, 'dist', name));
+  const bytes = await fs.readFile(path.resolve(path.dirname(installed), '../dist', name));
+  assert.deepEqual(bytes, source, 'Installed admission module differs from compiled source');
+  admissionBindings.push({ path: 'dist/' + name, sha256: createHash('sha256').update(bytes).digest('hex') });
+}
+// Gateway files are deliberately not in the CLI package. The fixture uses these exact source bytes.
+const admissionGatewayBindings = [];
+for (const name of [
+  'gateway/app.mjs',
+  'gateway/registry.mjs',
+  'gateway/security.mjs',
+  'gateway/dashboard.mjs',
+  'dist/remote/protocol.js',
+]) {
+  const bytes = await fs.readFile(path.join(root, name));
+  admissionGatewayBindings.push({
+    path: name,
+    sha256: createHash('sha256').update(bytes).digest('hex'),
+  });
+}
+const admissionFixture = 'tests/remote-admission.test.mjs';
+const admissionCwd = await fs.mkdtemp(path.join(os.tmpdir(), 'mterm-admission-'));
+let admissionAcceptance;
+try {
+  const relative = path.relative(await fs.realpath(root), await fs.realpath(admissionCwd));
+  assert.ok(
+    relative === '..' || relative.startsWith('..' + path.sep) || path.isAbsolute(relative),
+    'Admission fixture working directory must be outside the checkout',
+  );
+  admissionAcceptance = await exec(
+    process.execPath,
+    ['--test', '--test-reporter=tap', '--test-concurrency=1', path.join(root, admissionFixture)],
+    {
+      cwd: admissionCwd,
+      env: { ...env, MTERM_VERIFY_BIN: installed },
+      timeout: 60000,
+      maxBuffer: 1048576,
+      windowsHide: true,
+    },
+  ).then(
+    (result) => ({ ...result, exit: 0 }),
+    (error) => ({ stdout: error.stdout ?? '', stderr: error.stderr ?? '', exit: error.code ?? 'unknown' }),
+  );
+} finally {
+  await fs.rm(admissionCwd, { recursive: true, force: true, maxRetries: 3 });
+}
+const admissionOutput = admissionAcceptance.stdout + admissionAcceptance.stderr;
+const admissionLog = path.join(output, 'remote-admission-tests.tap');
+await fs.writeFile(admissionLog, admissionOutput);
+assert.equal(admissionAcceptance.exit, 0, 'Installed agent admission failed; see retained log');
+const admissionTests = Number(admissionAcceptance.stdout.match(/^# tests (\d+)$/m)?.[1]);
+assert.ok(admissionTests >= 8, 'Installed agent admission fixtures did not run');
+for (const field of ['fail', 'skipped', 'cancelled'])
+  assert.match(admissionAcceptance.stdout, new RegExp('^# ' + field + ' 0$', 'm'));
+for (const binding of admissionGatewayBindings)
+  assert.equal(
+    createHash('sha256')
+      .update(await fs.readFile(path.join(root, binding.path)))
+      .digest('hex'),
+    binding.sha256,
+    'Source gateway changed during installed agent qualification',
+  );
+const installedRemoteAdmission = {
+  ok: true,
+  tests: admissionTests,
+  failed: 0,
+  skipped: 0,
+  cancelled: 0,
+  moduleBindings: admissionBindings,
+  sourceGatewayBindings: admissionGatewayBindings,
+  fixtureSha256: createHash('sha256')
+    .update(await fs.readFile(path.join(root, admissionFixture)))
+    .digest('hex'),
+  sourceGatewayWithInstalledAgent: true,
+  gatewayInstalled: false,
+  deterministicAdapterAndResponseGates: true,
+  inMemorySerializedStorage: true,
+  cloudflareStorageRuntimeQualified: false,
+  deployedGatewayQualified: false,
+  productionLoadQualified: false,
+  fromOutsideCheckout: true,
+  modelCalls: 0,
+  log: admissionLog,
+  logSha256: createHash('sha256').update(admissionOutput).digest('hex'),
+};
 const isolationBindings = [];
 for (const name of [
   'cli.js',
@@ -813,6 +902,7 @@ const report = {
   installedProcessStopRecovery,
   installedGitBoundaries,
   installedFileCancellation,
+  installedRemoteAdmission,
   installedIsolation,
   installedProvenance,
   fullTransitiveLicenseClearance: false,

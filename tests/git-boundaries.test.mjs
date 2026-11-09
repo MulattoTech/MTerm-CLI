@@ -71,7 +71,10 @@ async function linkedFixture(t, relative = false) {
   f.admin = path.join(f.worktree, 'owned-admin');
   f.common = path.join(f.repository, '.git');
   await fs.rename(oldAdmin, f.admin);
-  await fs.writeFile(path.join(f.worktree, '.git'), 'gitdir: ' + f.admin.replaceAll('\\', '/') + '\n');
+  // Git for Windows can mark its pointer hidden; replace only this owned disposable fixture.
+  const pointer = path.join(f.worktree, '.git');
+  await fs.unlink(pointer);
+  await fs.writeFile(pointer, 'gitdir: ' + f.admin.replaceAll('\\', '/') + '\n', { flag: 'wx' });
   await fs.writeFile(
     path.join(f.admin, 'gitdir'),
     path.join(f.worktree, '.git').replaceAll('\\', '/') + '\n',

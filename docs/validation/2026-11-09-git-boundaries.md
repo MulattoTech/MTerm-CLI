@@ -14,7 +14,7 @@ The existing file policy, root grants and execution flags are unchanged. Reposit
 
 ## Regression evidence
 
-Final fixture SHA-256: `058d41674db5cc596c9c644108b82c8f70a9d35b8a560701eedaa144933eed65`.
+Final fixture SHA-256: `a658fe4eb94e1186c83762e9059431867bd1733fb879ec2cf2214c37cf5986a2`.
 
 - On unchanged base code: **18 tests, 4 passed / 14 failed**, exit 1, zero skipped/cancelled. [Exact RED log](2026-11-09-git-boundaries-red.tap).
 - Corrected new Git cases plus existing Git/MCP suites: **26/26 passed**, zero skipped/cancelled, Node v24.22.1 Linux x64. [GREEN log](2026-11-09-git-boundaries-green.tap).
@@ -22,6 +22,12 @@ Final fixture SHA-256: `058d41674db5cc596c9c644108b82c8f70a9d35b8a560701eedaa144
 - The installed verifier binds Git/executable modules and existing dependencies to the tarball and reruns these same 18 cases outside the checkout; full exact-head hosted qualification is subsequent evidence.
 
 Coverage includes absolute/relative external common directories, nested cwd, canonical aliases, current narrowing, explicit multiple roots, normal/direct-external metadata cases, cancellation, clean/process/smudge filters, mixed/dotted names, duplicate/empty declarations, config.worktree, includes, inactive includeIf, and an actual no-exec SDK call.
+
+## Windows fixture correction
+
+Initial head `117a17e10c0516094737f56a347461e0d854c6d3` remains unqualified. [Windows job 128964934478](https://github.com/MulattoTech/MTerm-CLI/actions/runs/42557022960/job/128964934478) ran 572 cases: 565 passed and seven failed, with no skips/cancellations. Every failure occurred while opening the existing Git-created `.git` fixture pointer for overwrite, before product assertions.
+
+The portable fixture now removes only that known owned temporary pointer and recreates it exclusively with `wx`. No real checkout, production source, assertion or platform gate changes. Independent review found no material issue with the scoped correction. The exact corrected fixture still reproduces 14 failures on unchanged base and passes all 26 focused cases on corrected code. The original failed commit/run is preserved; all six checks must pass on the new head.
 
 ## Limits and acceptance
 

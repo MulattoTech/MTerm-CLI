@@ -4,7 +4,7 @@
   "model": "GPT-6 Astra Pro",
   "session_id": "MTERM-WEB-20261109T031131Z-e0efd5d4",
   "started_at": "2026-11-09T03:24:50Z",
-  "updated_at": "2026-11-09T03:31:16.107Z",
+  "updated_at": "2026-11-09T03:37:19.024776+00:00",
   "base_sha": "9d4a1815e9fcc005cfc5dd34e0eff1b74cb3cbb4",
   "issues": [
     66
@@ -86,10 +86,19 @@
     "Full cloud test repetition is avoided after the preserved PR211 Unix-socket EPERM limitation; all required hosted normal and installed/platform gates remain mandatory.",
     "No production owner bridge or installed plugin deployment is implied."
   ],
-  "next_unverified_action": "Run reviewed build/typecheck/format/parity checks; exact committed full hosted/installed platform qualification, expected-head normal merge and main verification.",
+  "next_unverified_action": "Complete independent portable-fixture review, publish normally on existing PR212, require all six exact-head hosted/installed gates, then expected-head merge and merged-main verification.",
   "red_log": {
-    "original_sha256": "6f8ec8daefdc46f92381bdf8be9570658c2712fe1ce29c4be34812a5f46da889",
+    "original_sha256": "aff526252074f748b6aa60986da1deab23f5377d0762d044116c6a832d3f8014",
     "committed_display": "docs/validation/2026-11-09-git-boundaries-red.tap",
     "display_normalization": "Trailing whitespace removed only; original failure outcomes unchanged; original bytes retained in the session artifact."
+  },
+  "portability_correction": {
+    "initial_unqualified_head": "117a17e10c0516094737f56a347461e0d854c6d3",
+    "failed_windows_job": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42557022960/job/128964934478",
+    "original_result": "572 tests: 565 passed, 7 failed, zero skipped/cancelled. All seven failures are EPERM opening the existing Git-created .git pointer in linkedFixture before product assertions.",
+    "change": "Replace only the known owned disposable .git pointer using unlink then exclusive wx creation. Product code, assertions and platform gates unchanged.",
+    "fixture_sha256": "a658fe4eb94e1186c83762e9059431867bd1733fb879ec2cf2214c37cf5986a2",
+    "revalidation": "Exact portable fixture against archived base9d4a181: 4/18 pass (14 expected failures); corrected focused new+existing Git/MCP26/26. No skips/cancellations.",
+    "independent_review": "Architecture peer reviewed owned replacement with no material issue; backlog peer independently reviewed final fixture a658fe4e and ran18/18, zero skipped/cancelled, diff check passed. Exact-head Windows and all other hosted gates remain mandatory."
   }
 }

@@ -1,3 +1,19 @@
+# External installed-package qualification checkpoint — 2026-11-09 UTC
+
+Session `MTERM-WEB-20261109T031131Z-e0efd5d4` owns `coord/mterm/issue-8`, feature `fix/issue-8-package-isolation-20261109`, base `19a446e5b88815154dea4b48fa7ecbd08deb136a`. Sole implementation writer and independent read-only peers. [Atomic claim](https://github.com/MulattoTech/MTerm-CLI/issues/8#issuecomment-6733913700).
+
+[Qualification evidence](validation/2026-11-09-package-isolation.md): older verifier prefixes/homes/caches were under the checkout, and the first MCP child inherited checkout cwd despite several outside-checkout claims. A canonical external runtime workspace now holds the whole installation and fixtures; measured locations, child Node/npm loader filtering and explicit standalone cwd close those paths. Pack/link remain source-root operations, and npm link remains explicitly source-linked. The existing workspace-retention policy and all component shutdown checks remain; a regular-file evidence snapshot records originals and hashes before success/failure settlement. Historical reports are preserved and narrowly corrected by dated notes. No actual missing production dependency was established.
+
+All19 new regressions were written before the behavioral fix using a behavior-preserving allocator extraction: initial and frozen RED4 passed/15 failed; focused27/27 and independent frozen19/19 passed with five unchanged bindings. Real Node imports, Node/npm preloads, explicit guard preservation, canonical alias refusal, error identity, held-child retention and copy failures are covered. Constructed package fixtures do not substitute for actual hosted installation.
+
+Prerequisite PR221 merged at the base above, identical tree `4dac0d42d47068d3c9c8bea125687eee5508bfe4`. All six PR and six separate main gates passed: Windows713/713, other full701+12 unchanged skips; installed16/18/8/46/18/5; native12+12 real containment/cleanup. [PR receipt](https://github.com/MulattoTech/MTerm-CLI/pull/221#issuecomment-6733887191) and [final main receipt](https://github.com/MulattoTech/MTerm-CLI/issues/57#issuecomment-6734000843) retain actual-log review. PR211–221 have complete PR/main qualification.
+
+CLI214/260 and DCP006 receive evidence only. All protected fields, historical review timestamps, seeds/pins/locks and AUG/DCP/WEB acceptance remain unchanged; broader #8 stays open. No product runtime source, owner bridge/plugin/global runtime/Cloudflare deployment, real owner data or unrelated project mutation.
+
+Independent source/fixture and protected-ledger reviews plus normal reviewed build/typecheck/format/parity passed. All27 compiled JS modules remain byte-identical. Next: exact-head hosted/package/native gates, normal expected-head merge and separate main qualification. Known cloud full-suite Unix-socket EPERM remains recorded; no new skips or bypasses.
+
+---
+
 # Failed run-lock initialization checkpoint — 2026-11-09 UTC
 
 Session `MTERM-WEB-20261109T031131Z-e0efd5d4` owns `coord/mterm/issue-57`, feature `fix/issue-57-run-lock-recovery-20261109`, base `700bc25fbc277ba2f9d996344e91c48a50e94bc0`. One source writer and independent read-only peers. [Atomic claim](https://github.com/MulattoTech/MTerm-CLI/issues/57#issuecomment-6733609390).

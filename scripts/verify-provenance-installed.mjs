@@ -1,7 +1,9 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-09-package-isolation; measure actual canonical installed/runtime locations.
 // AI-Change: 2026-11-07-aug002-provenance (OpenAI / GPT-6 Astra Pro; self-reported)
 // Qualification helper: test-owned manifests and actual installed CLI, no model requests.
 import fs from 'node:fs/promises';
+import { inspectPackageLocations } from './package-workspace.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createHash } from 'node:crypto';
@@ -15,6 +17,13 @@ assert.match(sourceCommit ?? '', /^[a-f0-9]{40}$/);
 const entry = await fs.realpath(entryInput),
   prefix = await fs.realpath(prefixInput),
   output = await fs.realpath(outputInput);
+const executionLocations = await inspectPackageLocations(repo, {
+  entry,
+  prefix,
+  output,
+  configuredCwd: output,
+});
+assert.equal(executionLocations.outsideCheckout, true, 'Installed provenance must run outside the checkout');
 const platform = process.platform + '-' + process.arch;
 const hash = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const json = (value) => JSON.stringify(value, null, 2) + '\n';
@@ -295,7 +304,8 @@ console.log(
     skipped: 0,
     cancelled: 0,
     moduleBindings,
-    fromOutsideCheckout: true,
+    fromOutsideCheckout: executionLocations.outsideCheckout,
+    executionLocations,
     referenceFilesVerified: 7,
     productionPackages: 4,
     productionEdges: 5,

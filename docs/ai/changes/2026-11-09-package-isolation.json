@@ -1,0 +1,192 @@
+{
+  "change_id": "2026-11-09-package-isolation",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "session_id": "MTERM-WEB-20261109T031131Z-e0efd5d4",
+  "started_at": "2026-11-09T06:37:24Z",
+  "updated_at": "2026-11-09T06:58:21.660348+00:00",
+  "base_sha": "19a446e5b88815154dea4b48fa7ecbd08deb136a",
+  "integration_dependency": {
+    "pr": 221,
+    "merged_as": "19a446e5b88815154dea4b48fa7ecbd08deb136a",
+    "tree": "4dac0d42d47068d3c9c8bea125687eee5508bfe4",
+    "same_as_reviewed_candidate": true,
+    "pr_checks": "All six actual logs independently qualified; PR221 comment6733887191.",
+    "main_checks": "All six separate push/attempt1 checks independently qualified; issue57 comment6734000843."
+  },
+  "issues": [
+    8
+  ],
+  "requirements": [
+    "CLI-214",
+    "CLI-260"
+  ],
+  "parity_requirements": [
+    "DCP-006"
+  ],
+  "files": [
+    "scripts/package-workspace.mjs",
+    "scripts/verify-package.mjs",
+    "scripts/verify-provenance-installed.mjs",
+    "tests/package-workspace.test.mjs",
+    "docs/HANDOFF.md",
+    "docs/ai/changes/2026-11-09-package-isolation.json",
+    "docs/validation/2026-11-09-package-isolation.md",
+    "docs/validation/2026-11-09-package-isolation-red.tap",
+    "docs/validation/2026-11-09-package-isolation-green.tap",
+    "docs/roadmap/progress.json",
+    "docs/roadmap/desktop-commander-parity.json",
+    "docs/roadmap/review.json",
+    "docs/roadmap/FEATURES.md",
+    "docs/roadmap/index.html"
+  ],
+  "decisions": [
+    "Atomic nonconflicting issue8 claim after PR221 merge; one source writer and three independent reviewers.",
+    "Correct a confirmed qualification gap, not an identified missing production dependency. Preserve historical receipts and append dated scope reconciliation.",
+    "Extract old allocator/environment unchanged before19 regression tests; explicitly label RED as a behavior-preserving seam, not untouched GitHEAD.",
+    "Move entire runtime output to a canonical external owned workspace; evidence directory remains under checkout artifacts. Reject temp parents inside checkout including aliases.",
+    "Measure installed entry/prefix/output/home/cache/configured cwd; default npm commands to external home except explicit source pack/link. First MCP transport gets explicit external cwd.",
+    "Strip inherited NODE_PATH/NODE_OPTIONS/npm_config_node[-_]options case-insensitively from child env; preserve explicit fixture guard and native-lane configuration.",
+    "Preserve old outer-workspace retention; mirror regular evidence before settlement, exclude runtime fixtures/links, preserve primary failures, fail successful verification on retention failure. No new child-exit/deletion guarantee.",
+    "Keep all prior gate assertions/module bindings/fixture counts and helper cleanup contracts. Source test drivers and npm link remain explicitly checkout-backed.",
+    "Evidence only for CLI214/260 and DCP006; all protected metadata and acceptance unchanged.",
+    "Expose the actual post-retention workspace receipt and its SHA-256 in final stdout for hosted-log review. Preserve the already-hashed callback result.json snapshot; no self-referential hash or retroactive rewrite."
+  ],
+  "tests": [
+    {
+      "command": "Initial19 fixture cases against behavior-preserving extraction, before behavior edit",
+      "result": "RED4 passed/15 failed;11 assertions and4 absent-new-receipt failures; zero skips/cancellations/todo."
+    },
+    {
+      "command": "Final frozen19 against archived baseline helper in separate owned fixture tree",
+      "result": "RED4/15 with same real resolution and environment causes; no working source replacement."
+    },
+    {
+      "command": "node --test --test-reporter=tap --test-concurrency=1 tests/package-workspace.test.mjs tests/npm-runtime.test.mjs tests/prepack-lifecycle.test.mjs",
+      "result": "GREEN27/27, zero failures/skips/cancellations/todo; Node24.22.1 Linuxx64."
+    },
+    {
+      "command": "Independent frozen19 case execution by /root/backlog_triage",
+      "result": "19/19 passed, exit0, empty stderr, zero fail/skip/cancel/todo, one execution/no build; five source/fixture/resolver hashes unchanged.",
+      "tap_sha256": "8967c4acd69b15b90d9ca5c9ec8f65bd869264ae8b5250d7e3717a20058708dd",
+      "receipt_sha256": "b5539e199e73eb76368a7645ac950568a2dca94cb15522b61085fd5cbc16ef32"
+    },
+    {
+      "command": "Normal roadmap review/render/check, build, typecheck, format, parity, diff",
+      "result": "Passed twice, including final reporting-only delta: explicit roadmap review/render/check, normal build (parity + compile), typecheck, format and diff checks. All27 compiled JS modules unchanged; protected300 maturity29.36%,0complete45blocked126notstarted; DCP0/48. Final source fingerprint397050988bcfb293615d09482bd4bb6d2c9d9475714d8445b2f9e910d0c3e5c4,174 files."
+    }
+  ],
+  "independent_review": {
+    "reviewers": [
+      "/root/architecture_scan",
+      "/root/backlog_triage",
+      "/root/release_quality_scan"
+    ],
+    "result": "Two independent source/verifier reviews clear; all three fixture reliability findings fixed and frozen19/19 independently executed with five unchanged inputs. Final stdout embeds the actual retention receipt/hash after copying without rewriting captured result.json; reporting-only delta is separately inspected, disclosed after the independent fixture run and awaits actual hosted execution. Documentation/protected-ledger review clear."
+  },
+  "reviewed_sha256": {
+    "scripts/package-workspace.mjs": "4bc4a87a582b47e45cb7bbd2c981be487ea1933da3ef3ad6c33fbabdb2e37871",
+    "scripts/verify-package.mjs": "3d1ab29e135e07393546f2f5b3c54028e056662d5f3a1e966d4ebbfd09192f75",
+    "scripts/verify-provenance-installed.mjs": "4ee1d1e79bd93b6a60ac4cabab90edf06f7967067b9ab8e7054d6e728c270c78",
+    "tests/package-workspace.test.mjs": "c8ae085f5ce12c5046cebf9f2a4f94c76c755de9fbe10e6b3efc6f2e4a82f3b4"
+  },
+  "baseline_seam": {
+    "base": "19a446e5b88815154dea4b48fa7ecbd08deb136a",
+    "method": "Behavior-preserving extraction of current output/prefix/home/cache allocation and child environment into helper before regression assertions; RED is against this seam, not an unchanged Git HEAD. Entire core body mechanically indented; final console moves after returned report. No package qualification executed at extraction.",
+    "files": {
+      "base-verify-package.mjs": "6b26d64754e2d20473ae24f88713f474a50a10b048a8e06099b6b9bbf0b9366e",
+      "seam-package-workspace.mjs": "c198a4c57ddb16228caa1cd01ac480e1625f8162e1a548bf02cd6da97198169c",
+      "seam-verify-package.mjs": "0057afddcc31c337a2809f5d426553b05ea5cf0a527a6e2ab4f1e78989bb1509"
+    },
+    "red": {
+      "total": 19,
+      "passed": 4,
+      "failed": 15,
+      "assertionFailures": 11,
+      "missingNewReceiptFailures": 4,
+      "skipped": 0,
+      "cancelled": 0,
+      "fixtureSha256": "27254e9215630764373374817fcf8b1fd965a5ce0d41f90ba8bc40a6671ed893",
+      "tapSha256": "9b41769ec9664d8e9f3c4bc8cf9c126d175a4a48e7ed485af5e5baf255739f07"
+    },
+    "finalFrozenRegression": {
+      "fixtureSha256": "c8ae085f5ce12c5046cebf9f2a4f94c76c755de9fbe10e6b3efc6f2e4a82f3b4",
+      "redSha256": "209a2ff407c9970daa8f450ce99cfa2abfd7b991742cbfb7d948bd585418167b",
+      "total": 19,
+      "passed": 4,
+      "failed": 15,
+      "skipped": 0,
+      "cancelled": 0,
+      "reliabilityChanges": "Bounded owned fixture close, live signal/exit/close observations, intended Node PATH, and command stdout/stderr retention assertions. Actual resolution/loader cases unchanged."
+    }
+  },
+  "roadmap_updates": [
+    {
+      "id": "CLI-214",
+      "stage_change": false,
+      "reason": "Correct historical installed-package location scope and add measured external verification evidence; preserve broader acceptance and all protected fields."
+    },
+    {
+      "id": "CLI-260",
+      "stage_change": false,
+      "reason": "Correct historical installed-package location scope and add measured external verification evidence; preserve broader acceptance and all protected fields."
+    }
+  ],
+  "limitations": [
+    "No actual undeclared MTerm production dependency identified; constructed positive fixture packages are not npm-installed artifacts.",
+    "Child-environment scrub cannot undo a parent preload and is not hermetic system isolation; source test harness and npm link intentionally use checkout.",
+    "Whole external workspace remains retained on all outcomes, as old verifier retained its workspace; no new exit, cleanup, hostile-copy-race or crash guarantee.",
+    "Historical outside-checkout wording is narrowed by dated reconciliation; prior receipt bytes and functional/module/license/native observations retain their original limited scope.",
+    "Hosted actual install/platform/native and separate main gates remain required; broad DCP006/Codex agent and license acceptance remain open.",
+    "Known local full-suite Unix-socket listen EPERM constraint retained; no full rerun/new skip or weakened gate.",
+    "No product runtime source, dependencies, pins, locks, user global/runtime/config/credentials/grants, production bridge/plugin, Cloudflare resources, unrelated projects or model workers changed."
+  ],
+  "logs": {
+    "red": {
+      "original_sha256": "209a2ff407c9970daa8f450ce99cfa2abfd7b991742cbfb7d948bd585418167b",
+      "display_normalization": "Trailing whitespace only removed from committed TAP."
+    },
+    "green": {
+      "original_sha256": "c793a4494552cd41b53c8ddb2caf3c73b87d09e2ed1ebcd901977ab75d8e6787",
+      "display_normalization": "Trailing whitespace only removed from committed TAP."
+    }
+  },
+  "next_unverified_action": "Publish exact-head draft PR after final review confirmation; require all six hosted/package/platform/native gates, then normal expected-head merge and separate actual-main qualification.",
+  "compiled_runtime_modules": {
+    "count": 27,
+    "unchanged_after_normal_build": true,
+    "sha256": {
+      "dist/cli.js": "0013150bdf378efd842b6c3a2a0c84863a7ebe5b2780df14ac8e8729601a0cad",
+      "dist/codex-registration.js": "f8763fa335995711898411a86923519c800c3466eb1e2a32601a950533028f7f",
+      "dist/codex.js": "a64385732386917b08566ffe2e9ecab2171c3d3d85bd40192deff2d82dd035ca",
+      "dist/compat-config.js": "f6f412a83d13a1aab24398f1d54ca1c301e093c6de1511f2097e0d43b720cc32",
+      "dist/config.js": "4b4783dfcfc22a609937038047228bed35ad98496acdf54248f5249611f7c3c9",
+      "dist/desktop-commander-files.js": "df055e25585342ed558e9952e9e4908f416ff0216640479ef7ed022ffd5e4196",
+      "dist/errors.js": "26fa1c3341396a1f9eda45debe86dc2295cb997b9dd7e525e70ac17ef2c910a9",
+      "dist/executables.js": "af2f81c0ea7599867663f2b2e9b5f1165001cef9e27a5f44d1350f0316c60434",
+      "dist/files.js": "8987f7527ab378ec69cbda62d9bcd75cf79393c4c9374565dfd562e43ec7c0ec",
+      "dist/git.js": "a04f629aa7a234f8c56a90dc8d72e34bd2f4ab72a91f56bee227ee64c427f530",
+      "dist/isolation-engine.js": "91873b8e77def703cb31d9f021f3293faf32aa71f3f84c49d633e8c67ca4b392",
+      "dist/isolation-http.js": "0fad31e0d688f663c3c37e2316863b6ec4ff30d67abca5a6a5a728420de265d5",
+      "dist/isolation-policy.js": "3b9c4a56d75e9660c6b8ed0cb9bfc32aa8441fabe6eddcd33a10d43458a26de9",
+      "dist/isolation.js": "4efc7b035ce22195fdace01e8249866db934aea8d55049d6c3300563ebac6120",
+      "dist/mcp.js": "be46458d2d46e05fb0e8805652ba106395d49dc4cc1e5e759014e923ec2ef170",
+      "dist/pack-updates.js": "21fc47ecd75540b3ba5ea386b2704f67fc0bac68d4063a9d06bcfabfdfc764e5",
+      "dist/policy.js": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d",
+      "dist/processes.js": "490a57923f5f073a92a222f4c2428c3c11d283c061d00ccc1fedf3ee18e6bfeb",
+      "dist/provenance.js": "ad842f4e4ebb14152575632773a7e460a194f7dadedd595ea9b77309f28e2902",
+      "dist/remote/adapter.js": "aa809420a2757880b8a0b8301a0ace892b5e4adf52dae89e13fb4f523fe12705",
+      "dist/remote/agent.js": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc",
+      "dist/remote/cli.js": "b27236e2aeb8ba8add5e781e775c5f6745ce126ed6e5e69e2a07f331c7e9ef6f",
+      "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14",
+      "dist/remote/state.js": "d1f971271863d2a7837d9530311104b789ee41099de7958bba8b4a193b3b2bbf",
+      "dist/resource-budget-policy.js": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac",
+      "dist/resource-budgets.js": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64",
+      "dist/tool-packs.js": "29730618c96df312a7207b5eb369bcf3d4f1aa5358c641038f874a31b55f7d61"
+    }
+  },
+  "documentation_review": {
+    "reviewer": "/root/architecture_scan",
+    "result": "All300 CLI/all48 DCP protected fields and root metadata preserved. Only CLI214/260 and DCP006 append notes/observation plus3refs each; all1441 historicalCLI/127DCPrefs retained. HANDOFF exactprepend; summarybyteidentical29.36/0/45/126. GeneratedHTMLsurroundings+scriptunchanged; Markdownonlytworelevantrows. All174sourcehashes/fp397050988bcfb293615d09482bd4bb6d2c9d9475714d8445b2f9e910d0c3e5c4 match;27compiledJS andprior25bindings unchanged. TAPnormalizationandindependentreceipts verified; no material finding."
+  }
+}

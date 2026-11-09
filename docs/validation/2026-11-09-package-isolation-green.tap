@@ -1,0 +1,172 @@
+TAP version 13
+# Subtest: npm resolver recognizes Windows adjacent and Unix lib installation layouts
+ok 1 - npm resolver recognizes Windows adjacent and Unix lib installation layouts
+  ---
+  duration_ms: 8.11743
+  type: 'test'
+  ...
+# Subtest: npm resolver gives actionable absence and respects an explicit existing npm_execpath
+ok 2 - npm resolver gives actionable absence and respects an explicit existing npm_execpath
+  ---
+  duration_ms: 2.447113
+  type: 'test'
+  ...
+# Subtest: checkout-only dependency control resolves from a nested cjs package
+ok 3 - checkout-only dependency control resolves from a nested cjs package
+  ---
+  duration_ms: 72.180296
+  type: 'test'
+  ...
+# Subtest: standalone cjs package cannot borrow a checkout-only dependency
+ok 4 - standalone cjs package cannot borrow a checkout-only dependency
+  ---
+  duration_ms: 69.864893
+  type: 'test'
+  ...
+# Subtest: standalone cjs package resolves its declared installed dependency
+ok 5 - standalone cjs package resolves its declared installed dependency
+  ---
+  duration_ms: 73.154321
+  type: 'test'
+  ...
+# Subtest: checkout-only dependency control resolves from a nested mjs package
+ok 6 - checkout-only dependency control resolves from a nested mjs package
+  ---
+  duration_ms: 59.503376
+  type: 'test'
+  ...
+# Subtest: standalone mjs package cannot borrow a checkout-only dependency
+ok 7 - standalone mjs package cannot borrow a checkout-only dependency
+  ---
+  duration_ms: 66.112154
+  type: 'test'
+  ...
+# Subtest: standalone mjs package resolves its declared installed dependency
+ok 8 - standalone mjs package resolves its declared installed dependency
+  ---
+  duration_ms: 71.900333
+  type: 'test'
+  ...
+# Subtest: standalone workspace, home and declared prefixes are external; evidence remains separate
+ok 9 - standalone workspace, home and declared prefixes are external; evidence remains separate
+  ---
+  duration_ms: 5.26765
+  type: 'test'
+  ...
+# Subtest: checkout-owned temporary parent is refused
+ok 10 - checkout-owned temporary parent is refused
+  ---
+  duration_ms: 3.172738
+  type: 'test'
+  ...
+# Subtest: checkout-owned temporary parent is refused through a directory alias
+ok 11 - checkout-owned temporary parent is refused through a directory alias
+  ---
+  duration_ms: 3.364728
+  type: 'test'
+  ...
+# Subtest: inherited NODE_PATH cannot supply a dependency to an already external CJS probe
+ok 12 - inherited NODE_PATH cannot supply a dependency to an already external CJS probe
+  ---
+  duration_ms: 60.281635
+  type: 'test'
+  ...
+# Subtest: inherited NODE_OPTIONS preload is removed but an explicit fixture import still executes
+ok 13 - inherited NODE_OPTIONS preload is removed but an explicit fixture import still executes
+  ---
+  duration_ms: 69.186609
+  type: 'test'
+  ...
+# Subtest: inherited npm node-options cannot reconstruct a preload in a real npm script
+ok 14 - inherited npm node-options cannot reconstruct a preload in a real npm script
+  ---
+  duration_ms: 262.009621
+  type: 'test'
+  ...
+# Subtest: environment scrub handles key case while preserving explicit native-lane inputs
+ok 15 - environment scrub handles key case while preserving explicit native-lane inputs
+  ---
+  duration_ms: 4.508654
+  type: 'test'
+  ...
+# Subtest: success retains the external workspace and mirrors regular evidence without following links
+ok 16 - success retains the external workspace and mirrors regular evidence without following links
+  ---
+  duration_ms: 12.231779
+  type: 'test'
+  ...
+# Subtest: early error failure retains its exact identity without requiring an installed prefix
+ok 17 - early error failure retains its exact identity without requiring an installed prefix
+  ---
+  duration_ms: 6.70585
+  type: 'test'
+  ...
+# Subtest: early falsy failure retains its exact identity without requiring an installed prefix
+ok 18 - early falsy failure retains its exact identity without requiring an installed prefix
+  ---
+  duration_ms: 4.82393
+  type: 'test'
+  ...
+# Subtest: a failed verifier with a real held child retains workspace and mirrors evidence before rejecting
+ok 19 - a failed verifier with a real held child retains workspace and mirrors evidence before rejecting
+  ---
+  duration_ms: 63.469726
+  type: 'test'
+  ...
+# Subtest: evidence copy failure preserves the primary verification error
+ok 20 - evidence copy failure preserves the primary verification error
+  ---
+  duration_ms: 4.188651
+  type: 'test'
+  ...
+# Subtest: evidence copy failure prevents a success result
+ok 21 - evidence copy failure prevents a success result
+  ---
+  duration_ms: 3.556788
+  type: 'test'
+  ...
+# Subtest: normal prepack builds a clean package and installs exactly the tested bytes
+ok 22 - normal prepack builds a clean package and installs exactly the tested bytes
+  ---
+  duration_ms: 1802.766422
+  type: 'test'
+  ...
+# Subtest: stale passing output cannot allow newly failing source into an archive
+ok 23 - stale passing output cannot allow newly failing source into an archive
+  ---
+  duration_ms: 1534.895646
+  type: 'test'
+  ...
+# Subtest: stale failing output cannot block newly passing source from normal packing
+ok 24 - stale failing output cannot block newly passing source from normal packing
+  ---
+  duration_ms: 1758.032714
+  type: 'test'
+  ...
+# Subtest: a failed post-build check prevents any new package archive
+ok 25 - a failed post-build check prevents any new package archive
+  ---
+  duration_ms: 1337.241237
+  type: 'test'
+  ...
+# Subtest: failed roadmap:check prevents compilation and publication
+ok 26 - failed roadmap:check prevents compilation and publication
+  ---
+  duration_ms: 464.324136
+  type: 'test'
+  ...
+# Subtest: failed parity:check prevents compilation and publication
+ok 27 - failed parity:check prevents compilation and publication
+  ---
+  duration_ms: 633.239931
+  type: 'test'
+  ...
+1..27
+# tests 27
+# suites 0
+# pass 27
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 8677.70588

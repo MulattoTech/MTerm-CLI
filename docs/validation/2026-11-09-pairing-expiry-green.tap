@@ -1,0 +1,862 @@
+TAP version 13
+# Subtest: Access expiry: human settles one millisecond before expiry during keys
+ok 1 - Access expiry: human settles one millisecond before expiry during keys
+  ---
+  duration_ms: 122.125749
+  type: 'test'
+  ...
+# Subtest: Access expiry: human settles exactly at expiry during keys
+ok 2 - Access expiry: human settles exactly at expiry during keys
+  ---
+  duration_ms: 3.461202
+  type: 'test'
+  ...
+# Subtest: Access expiry: human settles after expiry during keys
+ok 3 - Access expiry: human settles after expiry during keys
+  ---
+  duration_ms: 2.040349
+  type: 'test'
+  ...
+# Subtest: Access expiry: staging service expires during keys
+ok 4 - Access expiry: staging service expires during keys
+  ---
+  duration_ms: 2.846445
+  type: 'test'
+  ...
+# Subtest: Access expiry: human settles one millisecond before expiry during signature
+ok 5 - Access expiry: human settles one millisecond before expiry during signature
+  ---
+  duration_ms: 1.496298
+  type: 'test'
+  ...
+# Subtest: Access expiry: human settles exactly at expiry during signature
+ok 6 - Access expiry: human settles exactly at expiry during signature
+  ---
+  duration_ms: 1.465251
+  type: 'test'
+  ...
+# Subtest: Access expiry: human settles after expiry during signature
+ok 7 - Access expiry: human settles after expiry during signature
+  ---
+  duration_ms: 1.55021
+  type: 'test'
+  ...
+# Subtest: Access expiry: staging service expires during signature
+ok 8 - Access expiry: staging service expires during signature
+  ---
+  duration_ms: 1.581757
+  type: 'test'
+  ...
+# Subtest: Access expiry: human settles one millisecond before expiry during identity
+ok 9 - Access expiry: human settles one millisecond before expiry during identity
+  ---
+  duration_ms: 1.694978
+  type: 'test'
+  ...
+# Subtest: Access expiry: human settles exactly at expiry during identity
+ok 10 - Access expiry: human settles exactly at expiry during identity
+  ---
+  duration_ms: 1.954194
+  type: 'test'
+  ...
+# Subtest: Access expiry: human settles after expiry during identity
+ok 11 - Access expiry: human settles after expiry during identity
+  ---
+  duration_ms: 1.887669
+  type: 'test'
+  ...
+# Subtest: Access expiry: staging service expires during identity
+ok 12 - Access expiry: staging service expires during identity
+  ---
+  duration_ms: 2.421544
+  type: 'test'
+  ...
+# Subtest: Access expiry: clock rollback after identity hashing rechecks issued-at tolerance
+ok 13 - Access expiry: clock rollback after identity hashing rechecks issued-at tolerance
+  ---
+  duration_ms: 1.352281
+  type: 'test'
+  ...
+# Subtest: Access expiry: clock rollback after signature verification rechecks not-before tolerance
+ok 14 - Access expiry: clock rollback after signature verification rechecks not-before tolerance
+  ---
+  duration_ms: 1.202805
+  type: 'test'
+  ...
+# Subtest: Access expiry: existing five-second issued-at and not-before tolerance stays valid
+ok 15 - Access expiry: existing five-second issued-at and not-before tolerance stays valid
+  ---
+  duration_ms: 1.317348
+  type: 'test'
+  ...
+# Subtest: Access expiry: iat beyond existing tolerance rejects before certificate retrieval
+ok 16 - Access expiry: iat beyond existing tolerance rejects before certificate retrieval
+  ---
+  duration_ms: 1.131938
+  type: 'test'
+  ...
+# Subtest: Access expiry: nbf beyond existing tolerance rejects before certificate retrieval
+ok 17 - Access expiry: nbf beyond existing tolerance rejects before certificate retrieval
+  ---
+  duration_ms: 0.849437
+  type: 'test'
+  ...
+# Subtest: Access expiry: already-expired signed identity rejects before certificate retrieval
+ok 18 - Access expiry: already-expired signed identity rejects before certificate retrieval
+  ---
+  duration_ms: 0.852677
+  type: 'test'
+  ...
+# Subtest: Access expiry: invalid signature remains rejected by actual verification
+ok 19 - Access expiry: invalid signature remains rejected by actual verification
+  ---
+  duration_ms: 1.216105
+  type: 'test'
+  ...
+# Subtest: Access expiry: wrong audience cannot acquire authorization
+ok 20 - Access expiry: wrong audience cannot acquire authorization
+  ---
+  duration_ms: 0.856783
+  type: 'test'
+  ...
+# Subtest: Access expiry: a valid signature does not broaden the human allowlist
+ok 21 - Access expiry: a valid signature does not broaden the human allowlist
+  ---
+  duration_ms: 1.339161
+  type: 'test'
+  ...
+# Subtest: Access expiry: service-principal acceptance remains unavailable in production
+ok 22 - Access expiry: service-principal acceptance remains unavailable in production
+  ---
+  duration_ms: 1.276827
+  type: 'test'
+  ...
+# Subtest: gateway delivers only the offered slots and retains queued deadlines and arguments
+ok 23 - gateway delivers only the offered slots and retains queued deadlines and arguments
+  ---
+  duration_ms: 44.760076
+  type: 'test'
+  ...
+# Subtest: gateway rejects malformed slot offers before changing jobs or heartbeat
+ok 24 - gateway rejects malformed slot offers before changing jobs or heartbeat
+  ---
+  duration_ms: 4.038193
+  type: 'test'
+  ...
+# Subtest: omitted capacity preserves the legacy four-request poll contract
+ok 25 - omitted capacity preserves the legacy four-request poll contract
+  ---
+  duration_ms: 4.211655
+  type: 'test'
+  ...
+# Subtest: zero-capacity polls still report cancellation and expiry without later executing expired work
+ok 26 - zero-capacity polls still report cancellation and expiry without later executing expired work
+  ---
+  duration_ms: 5.346467
+  type: 'test'
+  ...
+# Subtest: capacity offers do not bypass device authentication, ownership or revocation
+ok 27 - capacity offers do not bypass device authentication, ownership or revocation
+  ---
+  duration_ms: 3.123513
+  type: 'test'
+  ...
+# Subtest: agent retains delivery capacity through cancelled cleanup and resumes each queued request once
+ok 28 - agent retains delivery capacity through cancelled cleanup and resumes each queued request once
+  ---
+  duration_ms: 27.199934
+  type: 'test'
+  ...
+# Subtest: agent retains delivery capacity through timed-out cleanup and resumes each queued request once
+ok 29 - agent retains delivery capacity through timed-out cleanup and resumes each queued request once
+  ---
+  duration_ms: 15.374359
+  type: 'test'
+  ...
+# Subtest: agent retains delivery capacity through result delivery and resumes each queued request once
+ok 30 - agent retains delivery capacity through result delivery and resumes each queued request once
+  ---
+  duration_ms: 15.757367
+  type: 'test'
+  ...
+# Subtest: gateway transport rejects insecure/credential-bearing URLs and never follows authenticated redirects
+ok 31 - gateway transport rejects insecure/credential-bearing URLs and never follows authenticated redirects
+  ---
+  duration_ms: 5.720552
+  type: 'test'
+  ...
+# Subtest: gateway transport bounds input and error output, and distinguishes revocation
+ok 32 - gateway transport bounds input and error output, and distinguishes revocation
+  ---
+  duration_ms: 1.608668
+  type: 'test'
+  ...
+# Subtest: outbound agent delivers a real adapter result once, rejects replay after reconnect, and stops on revocation
+ok 33 - outbound agent delivers a real adapter result once, rejects replay after reconnect, and stops on revocation
+  ---
+  duration_ms: 3.317817
+  type: 'test'
+  ...
+# Subtest: outbound agent forwards cancellation and shuts down its owned work cleanly
+ok 34 - outbound agent forwards cancellation and shuts down its owned work cleanly
+  ---
+  duration_ms: 1.778369
+  type: 'test'
+  ...
+# Subtest: grant expiry: legacy poll cancels queued and delivered work without an alarm sweep
+ok 35 - grant expiry: legacy poll cancels queued and delivered work without an alarm sweep
+  ---
+  duration_ms: 96.879772
+  type: 'test'
+  ...
+# Subtest: grant expiry: 0-slot poll cancels queued and delivered work without an alarm sweep
+ok 36 - grant expiry: 0-slot poll cancels queued and delivered work without an alarm sweep
+  ---
+  duration_ms: 81.602996
+  type: 'test'
+  ...
+# Subtest: grant expiry: 4-slot poll cancels queued and delivered work without an alarm sweep
+ok 37 - grant expiry: 4-slot poll cancels queued and delivered work without an alarm sweep
+  ---
+  duration_ms: 42.799503
+  type: 'test'
+  ...
+# Subtest: grant expiry: result acceptance rejects exact expiry before retaining output
+ok 38 - grant expiry: result acceptance rejects exact expiry before retaining output
+  ---
+  duration_ms: 64.064981
+  type: 'test'
+  ...
+# Subtest: grant expiry: result acceptance rejects after expiry before retaining output
+ok 39 - grant expiry: result acceptance rejects after expiry before retaining output
+  ---
+  duration_ms: 119.852142
+  type: 'test'
+  ...
+# Subtest: grant expiry: result acceptance rejects missing expiry before retaining output
+ok 40 - grant expiry: result acceptance rejects missing expiry before retaining output
+  ---
+  duration_ms: 40.721432
+  type: 'test'
+  ...
+# Subtest: grant expiry: just-before success and another live client grant remain independent
+ok 41 - grant expiry: just-before success and another live client grant remain independent
+  ---
+  duration_ms: 77.249567
+  type: 'test'
+  ...
+# Subtest: grant expiry: existing request deadline takes precedence when both boundaries expire
+ok 42 - grant expiry: existing request deadline takes precedence when both boundaries expire
+  ---
+  duration_ms: 45.518762
+  type: 'test'
+  ...
+# Subtest: grant expiry: poll rechecks grant after asynchronous grant and epoch reads
+ok 43 - grant expiry: poll rechecks grant after asynchronous grant and epoch reads
+  ---
+  duration_ms: 77.104458
+  type: 'test'
+  ...
+# Subtest: grant expiry: poll rechecks deadline after asynchronous grant and epoch reads
+ok 44 - grant expiry: poll rechecks deadline after asynchronous grant and epoch reads
+  ---
+  duration_ms: 51.006938
+  type: 'test'
+  ...
+# Subtest: grant expiry: result rechecks grant after asynchronous grant and epoch reads
+ok 45 - grant expiry: result rechecks grant after asynchronous grant and epoch reads
+  ---
+  duration_ms: 52.277114
+  type: 'test'
+  ...
+# Subtest: grant expiry: result rechecks deadline after asynchronous grant and epoch reads
+ok 46 - grant expiry: result rechecks deadline after asynchronous grant and epoch reads
+  ---
+  duration_ms: 53.028558
+  type: 'test'
+  ...
+# Subtest: gateway fails closed; discovery is public, bounded, and precise
+ok 47 - gateway fails closed; discovery is public, bounded, and precise
+  ---
+  duration_ms: 34.006164
+  type: 'test'
+  ...
+# Subtest: Access JWT signature, audience, expiry and allowlist are enforced independently of headers
+ok 48 - Access JWT signature, audience, expiry and allowlist are enforced independently of headers
+  ---
+  duration_ms: 61.205226
+  type: 'test'
+  ...
+# Subtest: PKCE code is single use and tokens are resource-bound
+ok 49 - PKCE code is single use and tokens are resource-bound
+  ---
+  duration_ms: 70.060029
+  type: 'test'
+  ...
+# Subtest: pairing requires authenticated approval, is one-time, and never grants execution
+ok 50 - pairing requires authenticated approval, is one-time, and never grants execution
+  ---
+  duration_ms: 58.615754
+  type: 'test'
+  ...
+# Subtest: real relay request travels gateway queue to selected agent and result returns once
+ok 51 - real relay request travels gateway queue to selected agent and result returns once
+  ---
+  duration_ms: 539.645451
+  type: 'test'
+  ...
+# Subtest: cross-user and cross-device access, mutation names, and revoked credentials fail closed
+ok 52 - cross-user and cross-device access, mutation names, and revoked credentials fail closed
+  ---
+  duration_ms: 110.952342
+  type: 'test'
+  ...
+# Subtest: frequent polling cannot defer expiry cleanup and the sweep reaches beyond 1000 rows
+ok 53 - frequent polling cannot defer expiry cleanup and the sweep reaches beyond 1000 rows
+  ---
+  duration_ms: 92.188009
+  type: 'test'
+  ...
+# Subtest: refresh rotation is single use, replay revokes its whole grant, and resource mismatch fails
+ok 54 - refresh rotation is single use, replay revokes its whole grant, and resource mismatch fails
+  ---
+  duration_ms: 72.227584
+  type: 'test'
+  ...
+# Subtest: request cancellation is scoped, delivered requests never replay, and late results fail
+ok 55 - request cancellation is scoped, delivered requests never replay, and late results fail
+  ---
+  duration_ms: 572.453843
+  type: 'test'
+  ...
+# Subtest: offline, expired, malformed and oversized requests have bounded safe failures
+ok 56 - offline, expired, malformed and oversized requests have bounded safe failures
+  ---
+  duration_ms: 136.697883
+  type: 'test'
+  ...
+# Subtest: dashboard cancellation checks ownership and service identities require exact app-token claims
+ok 57 - dashboard cancellation checks ownership and service identities require exact app-token claims
+  ---
+  duration_ms: 115.834524
+  type: 'test'
+  ...
+# Subtest: revoke-all invalidates unredeemed authorization codes and approved unclaimed pairings
+ok 58 - revoke-all invalidates unredeemed authorization codes and approved unclaimed pairings
+  ---
+  duration_ms: 42.413408
+  type: 'test'
+  ...
+# Subtest: MCP optional arguments and JSON-RPC parse errors follow the advertised protocol
+ok 59 - MCP optional arguments and JSON-RPC parse errors follow the advertised protocol
+  ---
+  duration_ms: 38.244232
+  type: 'test'
+  ...
+# Subtest: pairing stays consumed after a credential-store failure and consent CSP permits only its callback
+ok 60 - pairing stays consumed after a credential-store failure and consent CSP permits only its callback
+  ---
+  duration_ms: 69.534394
+  type: 'test'
+  ...
+# Subtest: request ownership: consuming an old timeout preserves the replacement RPC lease
+ok 61 - request ownership: consuming an old timeout preserves the replacement RPC lease
+  ---
+  duration_ms: 58.327624
+  type: 'test'
+  ...
+# Subtest: request ownership: consuming an old cancelled preserves the replacement RPC lease
+ok 62 - request ownership: consuming an old cancelled preserves the replacement RPC lease
+  ---
+  duration_ms: 43.667141
+  type: 'test'
+  ...
+# Subtest: request ownership: consuming an old complete preserves the replacement RPC lease
+ok 63 - request ownership: consuming an old complete preserves the replacement RPC lease
+  ---
+  duration_ms: 66.123147
+  type: 'test'
+  ...
+# Subtest: request ownership: public cancellation still reaches a replacement after old result consumption
+ok 64 - request ownership: public cancellation still reaches a replacement after old result consumption
+  ---
+  duration_ms: 40.208846
+  type: 'test'
+  ...
+# Subtest: request ownership: repeated consumption rejects before modifying a reused RPC lease
+ok 65 - request ownership: repeated consumption rejects before modifying a reused RPC lease
+  ---
+  duration_ms: 35.659732
+  type: 'test'
+  ...
+# Subtest: request ownership: delayed old HTTP abort cleanup cannot cancel a replacement
+ok 66 - request ownership: delayed old HTTP abort cleanup cannot cancel a replacement
+  ---
+  duration_ms: 70.537554
+  type: 'test'
+  ...
+# Subtest: request ownership: delayed old HTTP deadline cleanup cannot cancel a replacement
+ok 67 - request ownership: delayed old HTTP deadline cleanup cannot cancel a replacement
+  ---
+  duration_ms: 616.952771
+  type: 'test'
+  ...
+# Subtest: request ownership: malformed private expected IDs cannot fall back to unbound cancellation
+ok 68 - request ownership: malformed private expected IDs cannot fall back to unbound cancellation
+  ---
+  duration_ms: 41.364141
+  type: 'test'
+  ...
+# Subtest: request ownership: private stale IDs require authentication and cannot select another job
+ok 69 - request ownership: private stale IDs require authentication and cannot select another job
+  ---
+  duration_ms: 106.425881
+  type: 'test'
+  ...
+# Subtest: request ownership: public notifications isolate bearer credentials and numeric versus string IDs
+ok 70 - request ownership: public notifications isolate bearer credentials and numeric versus string IDs
+  ---
+  duration_ms: 72.845587
+  type: 'test'
+  ...
+# Subtest: request ownership: a matching private expected ID still cancels its current job
+ok 71 - request ownership: a matching private expected ID still cancels its current job
+  ---
+  duration_ms: 49.48887
+  type: 'test'
+  ...
+# Subtest: request ownership: an absent active pointer permits first authorized terminal consumption
+ok 72 - request ownership: an absent active pointer permits first authorized terminal consumption
+  ---
+  duration_ms: 65.404008
+  type: 'test'
+  ...
+# Subtest: OAuth expiry: public MCP authorization settles just before token expiry during epoch read
+ok 73 - OAuth expiry: public MCP authorization settles just before token expiry during epoch read
+  ---
+  duration_ms: 41.766763
+  type: 'test'
+  ...
+# Subtest: OAuth expiry: public MCP authorization settles exactly at token expiry during epoch read
+ok 74 - OAuth expiry: public MCP authorization settles exactly at token expiry during epoch read
+  ---
+  duration_ms: 31.922537
+  type: 'test'
+  ...
+# Subtest: OAuth expiry: public MCP authorization settles after token expiry during epoch read
+ok 75 - OAuth expiry: public MCP authorization settles after token expiry during epoch read
+  ---
+  duration_ms: 85.532031
+  type: 'test'
+  ...
+# Subtest: OAuth expiry: public MCP authorization still rejects grant expiry during epoch read
+ok 76 - OAuth expiry: public MCP authorization still rejects grant expiry during epoch read
+  ---
+  duration_ms: 141.775736
+  type: 'test'
+  ...
+# Subtest: OAuth expiry: public MCP authorization settles just before token expiry during grant read
+ok 77 - OAuth expiry: public MCP authorization settles just before token expiry during grant read
+  ---
+  duration_ms: 41.193042
+  type: 'test'
+  ...
+# Subtest: OAuth expiry: public MCP authorization settles exactly at token expiry during grant read
+ok 78 - OAuth expiry: public MCP authorization settles exactly at token expiry during grant read
+  ---
+  duration_ms: 52.223718
+  type: 'test'
+  ...
+# Subtest: OAuth expiry: public MCP authorization settles after token expiry during grant read
+ok 79 - OAuth expiry: public MCP authorization settles after token expiry during grant read
+  ---
+  duration_ms: 87.05488
+  type: 'test'
+  ...
+# Subtest: OAuth expiry: public MCP authorization still rejects grant expiry during grant read
+ok 80 - OAuth expiry: public MCP authorization still rejects grant expiry during grant read
+  ---
+  duration_ms: 42.236226
+  type: 'test'
+  ...
+# Subtest: OAuth expiry: an already-expired access token rejects before epoch and grant reads
+ok 81 - OAuth expiry: an already-expired access token rejects before epoch and grant reads
+  ---
+  duration_ms: 39.405194
+  type: 'test'
+  ...
+# Subtest: OAuth expiry: another live client token remains authorized after the first token expires
+ok 82 - OAuth expiry: another live client token remains authorized after the first token expires
+  ---
+  duration_ms: 39.14419
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approval settles at -1ms during user-code-hash
+ok 83 - pairing expiry: approval settles at -1ms during user-code-hash
+  ---
+  duration_ms: 30.909198
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approval settles at 0ms during user-code-hash
+ok 84 - pairing expiry: approval settles at 0ms during user-code-hash
+  ---
+  duration_ms: 6.358365
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approval settles at 1ms during user-code-hash
+ok 85 - pairing expiry: approval settles at 1ms during user-code-hash
+  ---
+  duration_ms: 5.502113
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approval settles at -1ms during inventory-list
+ok 86 - pairing expiry: approval settles at -1ms during inventory-list
+  ---
+  duration_ms: 4.020377
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approval settles at 0ms during inventory-list
+ok 87 - pairing expiry: approval settles at 0ms during inventory-list
+  ---
+  duration_ms: 3.858323
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approval settles at 1ms during inventory-list
+ok 88 - pairing expiry: approval settles at 1ms during inventory-list
+  ---
+  duration_ms: 6.669935
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approval settles at -1ms during approval-inventory-epoch
+ok 89 - pairing expiry: approval settles at -1ms during approval-inventory-epoch
+  ---
+  duration_ms: 4.589566
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approval settles at 0ms during approval-inventory-epoch
+ok 90 - pairing expiry: approval settles at 0ms during approval-inventory-epoch
+  ---
+  duration_ms: 4.124785
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approval settles at 1ms during approval-inventory-epoch
+ok 91 - pairing expiry: approval settles at 1ms during approval-inventory-epoch
+  ---
+  duration_ms: 5.571407
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approval settles at -1ms during approval-final-epoch
+ok 92 - pairing expiry: approval settles at -1ms during approval-final-epoch
+  ---
+  duration_ms: 3.232538
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approval settles at 0ms during approval-final-epoch
+ok 93 - pairing expiry: approval settles at 0ms during approval-final-epoch
+  ---
+  duration_ms: 3.017363
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approval settles at 1ms during approval-final-epoch
+ok 94 - pairing expiry: approval settles at 1ms during approval-final-epoch
+  ---
+  duration_ms: 3.434062
+  type: 'test'
+  ...
+# Subtest: pairing expiry: pending settles at -1ms during device-code-hash
+ok 95 - pairing expiry: pending settles at -1ms during device-code-hash
+  ---
+  duration_ms: 3.007068
+  type: 'test'
+  ...
+# Subtest: pairing expiry: pending settles at 0ms during device-code-hash
+ok 96 - pairing expiry: pending settles at 0ms during device-code-hash
+  ---
+  duration_ms: 3.551484
+  type: 'test'
+  ...
+# Subtest: pairing expiry: pending settles at 1ms during device-code-hash
+ok 97 - pairing expiry: pending settles at 1ms during device-code-hash
+  ---
+  duration_ms: 3.79039
+  type: 'test'
+  ...
+# Subtest: pairing expiry: pending settles at -1ms during rate-read
+ok 98 - pairing expiry: pending settles at -1ms during rate-read
+  ---
+  duration_ms: 2.742589
+  type: 'test'
+  ...
+# Subtest: pairing expiry: pending settles at 0ms during rate-read
+ok 99 - pairing expiry: pending settles at 0ms during rate-read
+  ---
+  duration_ms: 3.05486
+  type: 'test'
+  ...
+# Subtest: pairing expiry: pending settles at 1ms during rate-read
+ok 100 - pairing expiry: pending settles at 1ms during rate-read
+  ---
+  duration_ms: 2.981019
+  type: 'test'
+  ...
+# Subtest: pairing expiry: pending settles at -1ms during rate-write
+ok 101 - pairing expiry: pending settles at -1ms during rate-write
+  ---
+  duration_ms: 2.979627
+  type: 'test'
+  ...
+# Subtest: pairing expiry: pending settles at 0ms during rate-write
+ok 102 - pairing expiry: pending settles at 0ms during rate-write
+  ---
+  duration_ms: 3.062812
+  type: 'test'
+  ...
+# Subtest: pairing expiry: pending settles at 1ms during rate-write
+ok 103 - pairing expiry: pending settles at 1ms during rate-write
+  ---
+  duration_ms: 2.489527
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approved settles at -1ms during device-code-hash
+ok 104 - pairing expiry: approved settles at -1ms during device-code-hash
+  ---
+  duration_ms: 7.863296
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approved settles at 0ms during device-code-hash
+ok 105 - pairing expiry: approved settles at 0ms during device-code-hash
+  ---
+  duration_ms: 4.65214
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approved settles at 1ms during device-code-hash
+ok 106 - pairing expiry: approved settles at 1ms during device-code-hash
+  ---
+  duration_ms: 3.463167
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approved settles at -1ms during rate-read
+ok 107 - pairing expiry: approved settles at -1ms during rate-read
+  ---
+  duration_ms: 5.063421
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approved settles at 0ms during rate-read
+ok 108 - pairing expiry: approved settles at 0ms during rate-read
+  ---
+  duration_ms: 5.429814
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approved settles at 1ms during rate-read
+ok 109 - pairing expiry: approved settles at 1ms during rate-read
+  ---
+  duration_ms: 4.732452
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approved settles at -1ms during rate-write
+ok 110 - pairing expiry: approved settles at -1ms during rate-write
+  ---
+  duration_ms: 8.260064
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approved settles at 0ms during rate-write
+ok 111 - pairing expiry: approved settles at 0ms during rate-write
+  ---
+  duration_ms: 4.379358
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approved settles at 1ms during rate-write
+ok 112 - pairing expiry: approved settles at 1ms during rate-write
+  ---
+  duration_ms: 4.615915
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approved settles at -1ms during approved-owner-epoch
+ok 113 - pairing expiry: approved settles at -1ms during approved-owner-epoch
+  ---
+  duration_ms: 5.024132
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approved settles at 0ms during approved-owner-epoch
+ok 114 - pairing expiry: approved settles at 0ms during approved-owner-epoch
+  ---
+  duration_ms: 4.14828
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approved settles at 1ms during approved-owner-epoch
+ok 115 - pairing expiry: approved settles at 1ms during approved-owner-epoch
+  ---
+  duration_ms: 3.819213
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approved settles at -1ms during inventory-list
+ok 116 - pairing expiry: approved settles at -1ms during inventory-list
+  ---
+  duration_ms: 5.942217
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approved settles at 0ms during inventory-list
+ok 117 - pairing expiry: approved settles at 0ms during inventory-list
+  ---
+  duration_ms: 3.999847
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approved settles at 1ms during inventory-list
+ok 118 - pairing expiry: approved settles at 1ms during inventory-list
+  ---
+  duration_ms: 3.358699
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approved settles at -1ms during approved-inventory-epoch
+ok 119 - pairing expiry: approved settles at -1ms during approved-inventory-epoch
+  ---
+  duration_ms: 4.526721
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approved settles at 0ms during approved-inventory-epoch
+ok 120 - pairing expiry: approved settles at 0ms during approved-inventory-epoch
+  ---
+  duration_ms: 4.51986
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approved settles at 1ms during approved-inventory-epoch
+ok 121 - pairing expiry: approved settles at 1ms during approved-inventory-epoch
+  ---
+  duration_ms: 4.222863
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approved settles at -1ms during credential-hash
+ok 122 - pairing expiry: approved settles at -1ms during credential-hash
+  ---
+  duration_ms: 4.893995
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approved settles at 0ms during credential-hash
+ok 123 - pairing expiry: approved settles at 0ms during credential-hash
+  ---
+  duration_ms: 4.239858
+  type: 'test'
+  ...
+# Subtest: pairing expiry: approved settles at 1ms during credential-hash
+ok 124 - pairing expiry: approved settles at 1ms during credential-hash
+  ---
+  duration_ms: 5.373214
+  type: 'test'
+  ...
+# Subtest: pairing expiry: already-expired approval entry remains rejected
+ok 125 - pairing expiry: already-expired approval entry remains rejected
+  ---
+  duration_ms: 4.930189
+  type: 'test'
+  ...
+# Subtest: pairing expiry: wrong code keeps approval error precedence
+ok 126 - pairing expiry: wrong code keeps approval error precedence
+  ---
+  duration_ms: 2.916462
+  type: 'test'
+  ...
+# Subtest: pairing expiry: rate limit keeps approval error precedence
+ok 127 - pairing expiry: rate limit keeps approval error precedence
+  ---
+  duration_ms: 2.931183
+  type: 'test'
+  ...
+# Subtest: pairing expiry: already-expired pending entry remains rejected
+ok 128 - pairing expiry: already-expired pending entry remains rejected
+  ---
+  duration_ms: 2.307162
+  type: 'test'
+  ...
+# Subtest: pairing expiry: wrong code keeps pending error precedence
+ok 129 - pairing expiry: wrong code keeps pending error precedence
+  ---
+  duration_ms: 2.223656
+  type: 'test'
+  ...
+# Subtest: pairing expiry: rate limit keeps pending error precedence
+ok 130 - pairing expiry: rate limit keeps pending error precedence
+  ---
+  duration_ms: 3.592091
+  type: 'test'
+  ...
+# Subtest: pairing expiry: already-expired approved entry remains rejected
+ok 131 - pairing expiry: already-expired approved entry remains rejected
+  ---
+  duration_ms: 4.200078
+  type: 'test'
+  ...
+# Subtest: pairing expiry: wrong code keeps approved error precedence
+ok 132 - pairing expiry: wrong code keeps approved error precedence
+  ---
+  duration_ms: 4.030533
+  type: 'test'
+  ...
+# Subtest: pairing expiry: rate limit keeps approved error precedence
+ok 133 - pairing expiry: rate limit keeps approved error precedence
+  ---
+  duration_ms: 3.968288
+  type: 'test'
+  ...
+# Subtest: pairing expiry: full inventory keeps approval device-limit precedence
+ok 134 - pairing expiry: full inventory keeps approval device-limit precedence
+  ---
+  duration_ms: 10.17182
+  type: 'test'
+  ...
+# Subtest: pairing expiry: full inventory keeps approved device-limit precedence
+ok 135 - pairing expiry: full inventory keeps approved device-limit precedence
+  ---
+  duration_ms: 4.635756
+  type: 'test'
+  ...
+# Subtest: pairing expiry: revoked approval keeps its existing polling error precedence
+ok 136 - pairing expiry: revoked approval keeps its existing polling error precedence
+  ---
+  duration_ms: 4.210244
+  type: 'test'
+  ...
+# Subtest: pairing expiry: a successful claim remains single-use and its credential works
+ok 137 - pairing expiry: a successful claim remains single-use and its credential works
+  ---
+  duration_ms: 5.643606
+  type: 'test'
+  ...
+# Subtest: pairing expiry: failed credential persistence still consumes before create and cannot replay
+ok 138 - pairing expiry: failed credential persistence still consumes before create and cannot replay
+  ---
+  duration_ms: 4.633822
+  type: 'test'
+  ...
+# Subtest: pairing expiry: rejecting one expired pair leaves an independent live pair usable
+ok 139 - pairing expiry: rejecting one expired pair leaves an independent live pair usable
+  ---
+  duration_ms: 9.073848
+  type: 'test'
+  ...
+# Subtest: pairing expiry: denial permits existing rate bookkeeping and expired-index cleanup
+ok 140 - pairing expiry: denial permits existing rate bookkeeping and expired-index cleanup
+  ---
+  duration_ms: 3.974087
+  type: 'test'
+  ...
+# Subtest: pairing expiry: a live approval decision may finish its storage write after expiry
+ok 141 - pairing expiry: a live approval decision may finish its storage write after expiry
+  ---
+  duration_ms: 3.569637
+  type: 'test'
+  ...
+# Subtest: pairing expiry: a live claim decision may finish consume/create I/O after expiry
+ok 142 - pairing expiry: a live claim decision may finish consume/create I/O after expiry
+  ---
+  duration_ms: 5.822205
+  type: 'test'
+  ...
+1..142
+# tests 142
+# suites 0
+# pass 142
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5712.170755

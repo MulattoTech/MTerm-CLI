@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "changeId": "2026-11-09-staging-build-identity",
-  "reviewedAt": "2026-11-09T14:17:00.912Z",
-  "sourceFingerprint": "07374845b2c1dcc8a944e30be9c54a2a57d2eccb52029021f8e7886f07a2bcdb",
+  "changeId": "2026-11-09-pairing-expiry",
+  "reviewedAt": "2026-11-09T14:56:48.667Z",
+  "sourceFingerprint": "3421ab33b8b63dbfe41c655084ac0537a4802c9b306a1f120092fdc5b9d8eb12",
   "sourceFiles": {
     ".gitattributes": "fa9689011bd85ae1fad8333facd3b0d5f4f14dffff98bd9744a62e58ab4cfae5",
     ".github/CODEOWNERS": "a9d3f8ebc91ecca981ebe65e5269f40aeb726ac0701418dc4734a94bcb3e53db",
@@ -27,7 +27,7 @@
     "docs/ORCHESTRATION.md": "00938476e3746cbbe7102dcb139e4959eed8d84920aa837874cd41b2aeddab1a",
     "docs/OWNER_AUTHORIZATION.md": "dc9af35a0eb2cd4933721d9cc4b4a1aeeca2ba8bf71ec32381df95064c2e003a",
     "docs/PROVENANCE.md": "aae6a13cbfcda0cd110709b736501938c82af29c8632f8940aca5a1a2defd3a5",
-    "docs/SECURITY.md": "896112bcada8bb84d6288f1e5e1a1abc1c1f23ef318089d7bf1af3ad6d8adc38",
+    "docs/SECURITY.md": "3511281345ead447d5feb12eac311642142c87a6aa1099641bd29374338b5700",
     "docs/TODAY_CANDIDATE.md": "b95fbc1c02797a68f2c26a3e80c8448de7c3ec59a6a025b29fda13cbfad64ba4",
     "docs/execution/DESKTOP_COMMANDER_100_PASS_PROMPT.md": "2002abd688feb28e6526e0ddb12a4e3e1e6151fd9b0af9df79960a6544df0c68",
     "docs/execution/NEXT_PARITY_PROMPT.md": "5f22fd63c32b948df969114d788d2c8d6cb38e23a4211d11f690d6a0dc351844",
@@ -54,7 +54,7 @@
     "gateway/app.mjs": "61b5c43a8ce7dc6fc61d772fcc16c4a4b7d5cb8f17c70555829fae3ce53e42a1",
     "gateway/dashboard.mjs": "37de2f57ba8f6dfcd1c3331ab8cb994aea419dcfc673c5e3e6f6ef6df208c240",
     "gateway/deployment.example.json": "678a167ab23e83e8aba47ac3ae1e5d2f1cffbaca56133eec8542d16289611c72",
-    "gateway/registry.mjs": "a849f4a1b7881fd8198e7f97f7b6ad3da5bea7fd4a7492801f3a7f9d774a872d",
+    "gateway/registry.mjs": "ecfa498867b20d1676cf7e035af23f1accc90be656de7c6c22ebf272dfff6cda",
     "gateway/security.mjs": "78aa4d7f9f632568d2247d249691b7583dbf73d344bd040d6512104741183b7b",
     "gateway/worker.mjs": "9b716028170226096b295b0353357472a215970ab41fe60c29bf8099648511aa",
     "npm-shrinkwrap.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
@@ -164,6 +164,7 @@
     "tests/remote-admission.test.mjs": "885e136acf1a618d3fd9465126410df336323305c7ebb37a6ac80544cf3254ff",
     "tests/remote-agent.test.mjs": "53b63b74cf38d70c29291b50c739ed13455bf0903adf5a966eea4dcc3a3a5019",
     "tests/remote-gateway.test.mjs": "dfbb1bc65c6c33c00b9acccd0d481ba0052e433ec324dd38bc616fa4f77094b1",
+    "tests/remote-pairing-expiry.test.mjs": "276f844411cca3c0f0d346ed60c3420960786902a9f30b64d69d1d3ec278b6f8",
     "tests/remote-run-lock.test.mjs": "cc89855f4cffa81750e2fcf1ff185380a42072a23710b243d8a8925c4be745a7",
     "tests/remote-state-dpapi.test.mjs": "1125e477a85d2dd264942a5a97edeccdf799528b85a7bccb4adc9de0404ebd58",
     "tests/remote-state-lock.test.mjs": "52f01c08cc89a573e77b41986ccabb473273d799e4dd4175c5ca897e15e5f0ed",
@@ -182,7 +183,7 @@
     "vendor/modelcontextprotocol-server/source.patch": "7783730d37d00a3b8dc759e144dee6fa2d3ffb0c73b4bb48bf90151fe4234435",
     "versions.json": "7cadba4f207fa86eef1d32f74e63205d53dc1b344820c0425e67323a38364d29"
   },
-  "catalogFingerprint": "ebb0148ee552088152b6114f881a885e18a90cdd4ab2f2c44f6771a4b8b0bf70",
+  "catalogFingerprint": "149de171f61f9428bf72c1b5c3d83b0575deb4610c6b74584d4134145f576148",
   "weightFingerprint": "3bbcd6acde44c38922429b79939480398048ae2f710640e68fd41705220fff7c",
   "assessment": "Explicit source/catalog review; rendering does not infer progress"
 }

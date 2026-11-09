@@ -123,6 +123,8 @@ Stages describe implementation evidence and do not award acceptance or a complet
 
 ### WEB-003 — One-time device pairing and verification
 
+**2026-11-09 pairing-deadline correction (#229):** Final approval, pending-poll and approved-claim decisions recheck expiry after their awaited work, retaining existing errors, precedence, serialized storage and consume-before-create ordering. The frozen 60-case public-route fixture was original-source 30 pass/30 expected assertion failures; worker focus 138/138, independent 60/60 and combined integration 142/142 passed with unchanged bindings. Denials create no new authority while permitted housekeeping remains. This uses real signed synthetic identities/native digests with controlled time and in-memory storage; it does not establish deployed timing, owner/client acceptance, response-before-expiry or crash atomicity. [Evidence](validation/2026-11-09-pairing-expiry.md). All broader acceptance and protected metadata remain unchanged.
+
 **Issue:** [#56](https://github.com/MulattoTech/MTerm-CLI/issues/56) · **Priority:** P0 · **Stage:** Implemented; live smoke passed · **Accepted:** no · **ETA:** Unscheduled.
 
 **Acceptance contract:** Implement a one-time expiration-bound pairing code, local agent initiation and authenticated dashboard approval requiring displayed code match. Prove mismatch/expired/replayed code is refused and secrets never appear in logs or Git.

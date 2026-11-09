@@ -4,6 +4,7 @@
 // Modified: 2026-11-09-grant-expiry; authorize delivery/results at fresh post-read decision boundaries.
 // Modified: 2026-11-09-request-ownership; terminal consumption and private cancellation preserve newer RPC leases.
 // Modified: 2026-11-09-oauth-expiry; recheck client token and grant expiry after authorization reads.
+// Modified: 2026-11-09-pairing-expiry; authorize final pairing decisions after asynchronous checks.
 import {
   READ_TOOLS,
   WIRE_VERSION,
@@ -499,6 +500,7 @@ export class MTermRegistry {
       requireValue((await this.userDevices(a.identity.userId)).length < 20, 409, 'device_limit');
       p.userId = a.identity.userId;
       p.epoch = await this.epoch(p.userId);
+      requireValue(p.expiresAt > now(), 400, 'invalid_pairing');
       await this.storage.put('pair:' + p.pairId, p);
       return { approved: true };
     }
@@ -510,12 +512,16 @@ export class MTermRegistry {
       requireValue(p && p.expiresAt > now(), 410, 'pairing_expired');
       requireValue(constantEqual(p.deviceCodeHash, await sha256(a.input.deviceCode)), 403, 'invalid_pairing');
       await this.rate('pair-poll:' + p.pairId, 90);
-      if (!p.userId) return { pending: true };
+      if (!p.userId) {
+        requireValue(p.expiresAt > now(), 410, 'pairing_expired');
+        return { pending: true };
+      }
       requireValue(p.epoch === (await this.epoch(p.userId)), 410, 'pairing_revoked');
       requireValue((await this.userDevices(p.userId)).length < 20, 409, 'device_limit');
       const deviceId = crypto.randomUUID(),
         deviceToken = randomToken(),
         hash = await sha256(deviceToken);
+      requireValue(p.expiresAt > now(), 410, 'pairing_expired');
       // Consume before creating credentials: a crash may require re-pairing, never replay.
       await this.storage.delete('pair:' + p.pairId);
       await this.storage.put('device:' + deviceId, {

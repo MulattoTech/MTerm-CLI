@@ -1,0 +1,208 @@
+TAP version 13
+# Subtest: gateway builder preserves exact six modules and byte-identical immutable repeat
+ok 1 - gateway builder preserves exact six modules and byte-identical immutable repeat
+  ---
+  duration_ms: 890.277309
+  type: 'test'
+  ...
+# Subtest: gateway builder refuses a nonexistent source commit label
+ok 2 - gateway builder refuses a nonexistent source commit label
+  ---
+  duration_ms: 305.54098
+  type: 'test'
+  ...
+# Subtest: gateway builder refuses a different existing commit than current HEAD
+ok 3 - gateway builder refuses a different existing commit than current HEAD
+  ---
+  duration_ms: 300.55165
+  type: 'test'
+  ...
+# Subtest: gateway builder refuses uncommitted material drift in gateway/worker.mjs
+ok 4 - gateway builder refuses uncommitted material drift in gateway/worker.mjs
+  ---
+  duration_ms: 315.377312
+  type: 'test'
+  ...
+# Subtest: gateway builder refuses uncommitted material drift in src/remote/protocol.ts
+ok 5 - gateway builder refuses uncommitted material drift in src/remote/protocol.ts
+  ---
+  duration_ms: 323.605274
+  type: 'test'
+  ...
+# Subtest: gateway builder refuses uncommitted material drift in scripts/build-gateway.mjs
+ok 6 - gateway builder refuses uncommitted material drift in scripts/build-gateway.mjs
+  ---
+  duration_ms: 339.790466
+  type: 'test'
+  ...
+# Subtest: gateway builder refuses uncommitted material drift in scripts/gateway-source.mjs
+ok 7 - gateway builder refuses uncommitted material drift in scripts/gateway-source.mjs
+  ---
+  duration_ms: 319.653087
+  type: 'test'
+  ...
+# Subtest: gateway builder refuses uncommitted material drift in tsconfig.json
+ok 8 - gateway builder refuses uncommitted material drift in tsconfig.json
+  ---
+  duration_ms: 325.350283
+  type: 'test'
+  ...
+# Subtest: gateway builder refuses uncommitted material drift in package.json
+ok 9 - gateway builder refuses uncommitted material drift in package.json
+  ---
+  duration_ms: 314.148511
+  type: 'test'
+  ...
+# Subtest: gateway builder refuses stale compiled protocol after a source commit
+ok 10 - gateway builder refuses stale compiled protocol after a source commit
+  ---
+  duration_ms: 579.182865
+  type: 'test'
+  ...
+# Subtest: gateway builder refuses missing tested protocol without recreating shared dist
+ok 11 - gateway builder refuses missing tested protocol without recreating shared dist
+  ---
+  duration_ms: 352.784543
+  type: 'test'
+  ...
+# Subtest: gateway builder accepts equivalent CRLF inputs and unrelated working files
+ok 12 - gateway builder accepts equivalent CRLF inputs and unrelated working files
+  ---
+  duration_ms: 900.740757
+  type: 'test'
+  ...
+# Subtest: gateway builder ignores inherited Git repository overrides
+ok 13 - gateway builder ignores inherited Git repository overrides
+  ---
+  duration_ms: 476.462921
+  type: 'test'
+  ...
+# Subtest: gateway builder refuses unsupported committed compiler routing without changing dist
+ok 14 - gateway builder refuses unsupported committed compiler routing without changing dist
+  ---
+  duration_ms: 269.50226
+  type: 'test'
+  ...
+# Subtest: gateway builder refuses mismatched committed compiler pins before artifacts
+ok 15 - gateway builder refuses mismatched committed compiler pins before artifacts
+  ---
+  duration_ms: 266.17814
+  type: 'test'
+  ...
+# Subtest: gateway builder refuses invalid committed TypeScript instead of packaging old output
+ok 16 - gateway builder refuses invalid committed TypeScript instead of packaging old output
+  ---
+  duration_ms: 477.810784
+  type: 'test'
+  ...
+# Subtest: gateway builder cannot attribute replacement-object bytes to the original commit
+ok 17 - gateway builder cannot attribute replacement-object bytes to the original commit
+  ---
+  duration_ms: 257.800202
+  type: 'test'
+  ...
+# Subtest: gateway builder preserves tampered existing manifest.json and refuses overwrite
+ok 18 - gateway builder preserves tampered existing manifest.json and refuses overwrite
+  ---
+  duration_ms: 756.50195
+  type: 'test'
+  ...
+# Subtest: gateway builder preserves tampered existing modules.json and refuses overwrite
+ok 19 - gateway builder preserves tampered existing modules.json and refuses overwrite
+  ---
+  duration_ms: 744.853175
+  type: 'test'
+  ...
+# Subtest: gateway fails closed; discovery is public, bounded, and precise
+ok 20 - gateway fails closed; discovery is public, bounded, and precise
+  ---
+  duration_ms: 94.521393
+  type: 'test'
+  ...
+# Subtest: Access JWT signature, audience, expiry and allowlist are enforced independently of headers
+ok 21 - Access JWT signature, audience, expiry and allowlist are enforced independently of headers
+  ---
+  duration_ms: 77.407392
+  type: 'test'
+  ...
+# Subtest: PKCE code is single use and tokens are resource-bound
+ok 22 - PKCE code is single use and tokens are resource-bound
+  ---
+  duration_ms: 34.534414
+  type: 'test'
+  ...
+# Subtest: pairing requires authenticated approval, is one-time, and never grants execution
+ok 23 - pairing requires authenticated approval, is one-time, and never grants execution
+  ---
+  duration_ms: 31.53144
+  type: 'test'
+  ...
+# Subtest: real relay request travels gateway queue to selected agent and result returns once
+ok 24 - real relay request travels gateway queue to selected agent and result returns once
+  ---
+  duration_ms: 540.425942
+  type: 'test'
+  ...
+# Subtest: cross-user and cross-device access, mutation names, and revoked credentials fail closed
+ok 25 - cross-user and cross-device access, mutation names, and revoked credentials fail closed
+  ---
+  duration_ms: 113.554454
+  type: 'test'
+  ...
+# Subtest: frequent polling cannot defer expiry cleanup and the sweep reaches beyond 1000 rows
+ok 26 - frequent polling cannot defer expiry cleanup and the sweep reaches beyond 1000 rows
+  ---
+  duration_ms: 43.480906
+  type: 'test'
+  ...
+# Subtest: refresh rotation is single use, replay revokes its whole grant, and resource mismatch fails
+ok 27 - refresh rotation is single use, replay revokes its whole grant, and resource mismatch fails
+  ---
+  duration_ms: 46.967538
+  type: 'test'
+  ...
+# Subtest: request cancellation is scoped, delivered requests never replay, and late results fail
+ok 28 - request cancellation is scoped, delivered requests never replay, and late results fail
+  ---
+  duration_ms: 569.881874
+  type: 'test'
+  ...
+# Subtest: offline, expired, malformed and oversized requests have bounded safe failures
+ok 29 - offline, expired, malformed and oversized requests have bounded safe failures
+  ---
+  duration_ms: 31.368274
+  type: 'test'
+  ...
+# Subtest: dashboard cancellation checks ownership and service identities require exact app-token claims
+ok 30 - dashboard cancellation checks ownership and service identities require exact app-token claims
+  ---
+  duration_ms: 70.743393
+  type: 'test'
+  ...
+# Subtest: revoke-all invalidates unredeemed authorization codes and approved unclaimed pairings
+ok 31 - revoke-all invalidates unredeemed authorization codes and approved unclaimed pairings
+  ---
+  duration_ms: 74.767708
+  type: 'test'
+  ...
+# Subtest: MCP optional arguments and JSON-RPC parse errors follow the advertised protocol
+ok 32 - MCP optional arguments and JSON-RPC parse errors follow the advertised protocol
+  ---
+  duration_ms: 54.013253
+  type: 'test'
+  ...
+# Subtest: pairing stays consumed after a credential-store failure and consent CSP permits only its callback
+ok 33 - pairing stays consumed after a credential-store failure and consent CSP permits only its callback
+  ---
+  duration_ms: 60.246517
+  type: 'test'
+  ...
+1..33
+# tests 33
+# suites 0
+# pass 33
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 10516.549304

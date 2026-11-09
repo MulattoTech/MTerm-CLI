@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-09-gateway-source; bind captured inputs and tested protocol to the actual committed source.
 // AI-Change: 2026-11-02-remote-gateway (OpenAI / GPT-6 Astra Pro; self-reported)
 // Produces immutable source modules for the Cloudflare API. Credentials/configuration
 // are supplied separately by the authorized deployment connector, never this artifact.
@@ -6,25 +7,13 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
+import { verifiedGatewaySource } from './gateway-source.mjs';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const sourceCommit = process.argv[2];
 if (!/^[a-f0-9]{40}$/.test(sourceCommit || ''))
   throw Error('Usage: node scripts/build-gateway.mjs <verified-source-commit>');
-const paths = [
-  'gateway/app.mjs',
-  'gateway/dashboard.mjs',
-  'gateway/registry.mjs',
-  'gateway/security.mjs',
-  'gateway/worker.mjs',
-  'dist/remote/protocol.js',
-];
 const sha = (value) => createHash('sha256').update(value).digest('hex');
-const modules = await Promise.all(
-  paths.map(async (name) => ({
-    name,
-    content: (await fs.readFile(path.join(root, name), 'utf8')).replace(/\r\n/g, '\n'),
-  })),
-);
+const { modules, sourceVerification } = await verifiedGatewaySource(root, sourceCommit);
 const files = modules.map((m) => ({
   path: m.name,
   bytes: Buffer.byteLength(m.content),
@@ -42,6 +31,7 @@ const manifest = {
   permissions: 'read-only',
   files,
   artifactSha256,
+  sourceVerification,
 };
 for (const [name, value] of [
   ['manifest.json', manifest],

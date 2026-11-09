@@ -85,9 +85,30 @@ $MTermSource = (git rev-parse HEAD).Trim()
 node scripts/build-gateway.mjs $MTermSource
 ```
 
+The builder requires the supplied SHA to equal the checkout's raw HEAD commit. It
+compares the five gateway modules, protocol TypeScript, compiler configuration and
+pins, both locks, and builder/helper source with committed blobs, normalizing CRLF
+to LF. Relevant edits are refused; unrelated tracked/untracked work is permitted.
+Git replacement objects and inherited repository/config overrides cannot substitute
+another source identity.
+
+Using the installed exact-pinned TypeScript CLI, the builder compiles the standalone
+protocol into an owned temporary directory and compares it with the existing tested
+`dist/remote/protocol.js`. Missing or stale output fails before artifact creation;
+the builder does not repair shared `dist`. Unsupported compiler routing, including
+`extends`, references or custom output directories, requires explicit support.
+Temporary compiler inputs/output are removed before the builder proceeds. Normal
+build/check remains a separate prerequisite; source consistency is not test or
+review acceptance. See [the source-binding evidence](../validation/2026-11-09-gateway-source.md).
+
 The builder writes immutable `manifest.json` and `modules.json` beneath
 `artifacts/gateway/<source-commit>-<artifact-hash-prefix>/`. Preserve both files and
 record the full artifact SHA-256, source commit, Worker version and deployment ID.
+The manifest's additive `sourceVerification` records normalized material-input
+hashes and the compiler version, with test execution and deployment verification
+explicitly false. The six-module digest and existing exclusive-write/byte-equal
+repeat behavior remain unchanged. This uses a trusted Git/compiler installation;
+it is not a hermetic or hostile-checkout build sandbox.
 Verify every module's byte count and SHA-256 against the manifest before upload.
 The six module names must remain exact so relative imports resolve:
 

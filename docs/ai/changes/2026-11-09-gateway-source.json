@@ -1,0 +1,119 @@
+{
+  "change_id": "2026-11-09-gateway-source",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "session_id": "MTERM-WEB-20261109T031131Z-e0efd5d4",
+  "started_at": "2026-11-09T04:33:15Z",
+  "updated_at": "2026-11-09T04:46:03.221098+00:00",
+  "base_sha": "3434f3319e707642727f95e3010c6b62dedc3db6",
+  "claim_base_sha": "5880c61fcaaaaa8972f06d1ae5a88d6e2d3cbd70",
+  "integration_dependency": {
+    "pr": 215,
+    "merged_as": "288499a427a71cf6c2c4006e21dbfc8701cf04dd",
+    "tree": "731edad164428343c70bd128fcca20030f08d941",
+    "same_as_source_base": true,
+    "pr_checks": "Allsix revised gates passed; original Ubuntu failure preserved.",
+    "main_checks": "Allsix passed, actual logs independently verified and rootrechecked; issue62 comment6732455891."
+  },
+  "issues": [
+    61
+  ],
+  "related_issues": [
+    64
+  ],
+  "requirements": [
+    "CLI-147"
+  ],
+  "files": [
+    "scripts/build-gateway.mjs",
+    "scripts/gateway-source.mjs",
+    "tests/gateway-artifact.test.mjs",
+    "docs/deployment/MTERM_STAGING.md",
+    "docs/REMOTE_MCP_ROADMAP.md",
+    "docs/roadmap/remote-web-progress.json",
+    "docs/HANDOFF.md",
+    "docs/ai/changes/2026-11-09-gateway-source.json",
+    "docs/validation/2026-11-09-gateway-source.md",
+    "docs/validation/2026-11-09-gateway-source-red.tap",
+    "docs/validation/2026-11-09-gateway-source-green.tap",
+    "docs/roadmap/progress.json",
+    "docs/roadmap/review.json",
+    "docs/roadmap/FEATURES.md",
+    "docs/roadmap/index.html",
+    "docs/roadmap/summary.json"
+  ],
+  "decisions": [
+    "Atomic coord/mterm/issue-61 claim; one implementation writer with read-only peers; source work serialized after frozen PR215.",
+    "Verify raw HEAD and normalized fixed committed inputs; ignore Git replacements and inherited repository/config overrides.",
+    "Use the exact-pinned installed TypeScript CLI to compile captured standalone protocol into owned temp; refuse missing/stale tested dist rather than mutate it.",
+    "Constrain compiler routing and require one emitted module; preserve frozen six-module bytes/order/digest and immutable write behavior.",
+    "Record additive source-verification evidence without claiming build tests, review approval or deployment.",
+    "Preserve all300 protected fields and WEB008 historical deployment/acceptance."
+  ],
+  "tests": [
+    {
+      "command": "Initial17-case regression fixture before behavioral change",
+      "result": "17cases:5passed/12failed, no skipped/cancelled."
+    },
+    {
+      "command": "Final19 fixtures with MTERM_GATEWAY_FIXTURE_SOURCE selecting archivedbase3434f331",
+      "result": "RED5passed/14failed, exit1, no skipped/cancelled."
+    },
+    {
+      "command": "node --test --test-reporter=tap --test-concurrency=1 tests/gateway-artifact.test.mjs tests/remote-gateway.test.mjs",
+      "result": "GREEN33/33, zero failures/skips/cancellations; Nodev24.22.1 Linuxx64."
+    },
+    {
+      "command": "Independent final frozen19-case fixture execution",
+      "result": "19/19 passed, zero failures/skips/cancellations,7710.455687ms; allthree hashes identical before/after."
+    },
+    {
+      "command": "npm run build; npm run typecheck; npm run format:check; roadmap review/render/check; git diff --check",
+      "result": "Passed on final frozen source. No dependency, protocol, gateway runtime or template changes."
+    }
+  ],
+  "independent_review": {
+    "reviewer": "/root/release_quality_scan",
+    "role": "read-only source/fixture reviewer and independent focused execution",
+    "result": "No blocking source finding within trusted-checkout scope; final19/19 passes. Earlier17-case execution is historical and not relabeled as final.",
+    "reviewed_sha256": {
+      "scripts/build-gateway.mjs": "135d9501647b4f6daa80d69e825af0f4a4c954c915ae326ca16a6d149a68d6b9",
+      "scripts/gateway-source.mjs": "ceb0d805b2277aa3478ebb8bf07664f38a2204a0c0b53adf919f36868791a010",
+      "tests/gateway-artifact.test.mjs": "d061936613ed6c053b5d15b56b63225d4283f63d6f0eb5a63729d4998a659029"
+    }
+  },
+  "reviewed_sha256": {
+    "scripts/build-gateway.mjs": "135d9501647b4f6daa80d69e825af0f4a4c954c915ae326ca16a6d149a68d6b9",
+    "scripts/gateway-source.mjs": "ceb0d805b2277aa3478ebb8bf07664f38a2204a0c0b53adf919f36868791a010",
+    "tests/gateway-artifact.test.mjs": "d061936613ed6c053b5d15b56b63225d4283f63d6f0eb5a63729d4998a659029"
+  },
+  "roadmap_updates": [
+    {
+      "id": "CLI-147",
+      "stage_change": false,
+      "reason": "Scoped gateway source/distribution identity evidence only; versions.json and all protected fields unchanged."
+    }
+  ],
+  "limitations": [
+    "Source/output consistency is not review approval, full test success, hermetic compilation, compiler authenticity, deployment or full redistribution clearance.",
+    "Trusted Git/compiler installation; no general hostile-repository or adversarial local writer sandbox. Unsupported future compiler routing/dependencies fail closed.",
+    "Current source fixtures exercise realGit/nativeTS but exact-head hosted/platform/installed and actual committed-checkout artifact observations remain subsequent.",
+    "No live gateway, registry, secrets, Access/OAuth, owner bridge/plugin/runtime, global configuration or model request."
+  ],
+  "next_unverified_action": "Publish exact-head draftPR, run actual committed-checkout artifact and require allsix hosted/platform/package gates, then normal expected-head merge and merged-main verification.",
+  "logs": {
+    "red": {
+      "original_sha256": "f4b6f4a8e801dd8af5caa18ded00fb2d4029eb85b560dc1b75385aa0baccc40e",
+      "display_normalization": "Only trailing whitespace removed from committed TAP display."
+    },
+    "green": {
+      "original_sha256": "da44b8659ffb36f3dd67137d9f273e8bbf1eed2d7d701b950737f2a85b1a2fe3",
+      "display_normalization": "Only trailing whitespace removed from committed TAP display."
+    }
+  },
+  "additional_review": {
+    "reviewer": "/root/backlog_triage",
+    "role": "independent read-only source/fixture/docs and protected-field review",
+    "result": "No material blocker. All300 protected fields and prior evidence/notes preserved; onlyCLI147 receives appended evidence. WEB008/globalacceptance/historicalstaging untouched except newevidence reference. No duplicate execution."
+  }
+}

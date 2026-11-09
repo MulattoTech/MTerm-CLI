@@ -1,0 +1,188 @@
+TAP version 13
+# Subtest: remote run lock preserves successful ownership, duplicate refusal and explicit owner release
+ok 1 - remote run lock preserves successful ownership, duplicate refusal and explicit owner release
+  ---
+  duration_ms: 22.198818
+  type: 'test'
+  ...
+# Subtest: remote run lock never removes a preexisting malformed lock
+ok 2 - remote run lock never removes a preexisting malformed lock
+  ---
+  duration_ms: 3.927568
+  type: 'test'
+  ...
+# Subtest: remote run lock recovers an owned empty initialization failure for an explicit retry
+not ok 3 - remote run lock recovers an owned empty initialization failure for an explicit retry
+  ---
+  duration_ms: 5.335974
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-run-lock.test.mjs:119:3'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-run-lock.test.mjs:126:7)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: remote run lock recovers an owned partial initialization failure for an explicit retry
+not ok 4 - remote run lock recovers an owned partial initialization failure for an explicit retry
+  ---
+  duration_ms: 3.348564
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-run-lock.test.mjs:119:3'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-run-lock.test.mjs:126:7)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: remote run lock keeps admission occupied until failed initialization closes its real handle
+not ok 5 - remote run lock keeps admission occupied until failed initialization closes its real handle
+  ---
+  duration_ms: 3.355995
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-run-lock.test.mjs:136:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-run-lock.test.mjs:173:3)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: remote run lock closes but retains ownership when descriptor identity inspection fails
+not ok 6 - remote run lock closes but retains ownership when descriptor identity inspection fails
+  ---
+  duration_ms: 2.251288
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-run-lock.test.mjs:180:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-run-lock.test.mjs:193:3)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: remote run lock preserves an initialization error when close confirmation also fails
+not ok 7 - remote run lock preserves an initialization error when close confirmation also fails
+  ---
+  duration_ms: 1.911635
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-run-lock.test.mjs:199:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The validation function is expected to return "true". Received false
+
+    Caught error:
+
+    Error: Synthetic owned run-lock failure
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-run-lock.test.mjs:210:3)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: remote run lock retains a completed payload when only close confirmation fails
+ok 8 - remote run lock retains a completed payload when only close confirmation fails
+  ---
+  duration_ms: 2.40462
+  type: 'test'
+  ...
+# Subtest: remote run lock cleanup preserves a replacement and the renamed original
+ok 9 - remote run lock cleanup preserves a replacement and the renamed original
+  ---
+  duration_ms: 2.785155
+  type: 'test'
+  ...
+# Subtest: remote run lock cleanup retains an inode with an additional hard link
+ok 10 - remote run lock cleanup retains an inode with an additional hard link
+  ---
+  duration_ms: 2.403507
+  type: 'test'
+  ...
+# Subtest: remote run lock cleanup preserves a symlink or junction replacement and its target
+ok 11 - remote run lock cleanup preserves a symlink or junction replacement and its target
+  ---
+  duration_ms: 2.951515
+  type: 'test'
+  ...
+# Subtest: remote run lock retains the file when cleanup identity cannot be inspected
+not ok 12 - remote run lock retains the file when cleanup identity cannot be inspected
+  ---
+  duration_ms: 2.929272
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-run-lock.test.mjs:287:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-run-lock.test.mjs:309:10)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: remote run lock preserves the initialization error when its one cleanup unlink fails
+not ok 13 - remote run lock preserves the initialization error when its one cleanup unlink fails
+  ---
+  duration_ms: 2.819786
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-run-lock.test.mjs:313:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-run-lock.test.mjs:328:10)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: remote run lock cleanup refuses a redirected parent and preserves both lock locations
+ok 14 - remote run lock cleanup refuses a redirected parent and preserves both lock locations
+  ---
+  duration_ms: 3.010884
+  type: 'test'
+  ...
+# Subtest: remote run lock cleanup retains its inode after that inode moves under a replacement parent
+ok 15 - remote run lock cleanup retains its inode after that inode moves under a replacement parent
+  ---
+  duration_ms: 2.82868
+  type: 'test'
+  ...
+# Subtest: remote run lock propagates an initial open error without acquiring cleanup authority
+ok 16 - remote run lock propagates an initial open error without acquiring cleanup authority
+  ---
+  duration_ms: 1.416629
+  type: 'test'
+  ...
+1..16
+# tests 16
+# suites 0
+# pass 9
+# fail 7
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 210.468428

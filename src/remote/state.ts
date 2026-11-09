@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-09-run-lock-recovery; clean only a failed attempt's confirmed closed and unchanged run lock.
 // AI-Change: 2026-11-02-remote-agent (OpenAI / GPT-6 Astra Pro; self-reported)
 // AI-Change: 2026-11-02-windows-dpapi-bounds (OpenAI / GPT-6 Astra Pro; self-reported)
 import fs from 'node:fs/promises';
@@ -387,6 +388,13 @@ export class RemoteStateStore {
   }
   async acquire(instanceId: string): Promise<void> {
     const file = path.join(this.directory, 'run.lock');
+    const parent = await fs.lstat(this.directory);
+    if (
+      !parent.isDirectory() ||
+      parent.isSymbolicLink() ||
+      path.relative(this.directory, await fs.realpath(this.directory)) !== ''
+    )
+      fail('REMOTE_STATE', 'Remote run-lock directory is no longer canonical.');
     let handle;
     try {
       handle = await fs.open(file, 'wx', 0o600);
@@ -398,10 +406,53 @@ export class RemoteStateStore {
         );
       throw e;
     }
+    let identity: Awaited<ReturnType<typeof handle.stat>> | undefined;
+    let initializationFailure: { error: unknown } | undefined;
+    let closed = false;
     try {
+      identity = await handle.stat();
       await handle.writeFile(JSON.stringify({ instanceId, pid: process.pid }));
-    } finally {
+    } catch (error) {
+      initializationFailure = { error };
+    }
+    try {
       await handle.close();
+      closed = true;
+    } catch (error) {
+      if (!initializationFailure) throw error;
+    }
+    if (initializationFailure) {
+      if (closed && identity) {
+        try {
+          const currentParent = await fs.lstat(this.directory);
+          if (
+            currentParent.isDirectory() &&
+            !currentParent.isSymbolicLink() &&
+            currentParent.dev === parent.dev &&
+            currentParent.ino === parent.ino &&
+            currentParent.mode === parent.mode &&
+            currentParent.uid === parent.uid &&
+            path.relative(this.directory, await fs.realpath(this.directory)) === ''
+          ) {
+            const current = await fs.lstat(file);
+            if (
+              identity.isFile() &&
+              identity.nlink === 1 &&
+              current.isFile() &&
+              !current.isSymbolicLink() &&
+              current.nlink === 1 &&
+              current.dev === identity.dev &&
+              current.ino === identity.ino &&
+              current.mode === identity.mode &&
+              current.uid === identity.uid
+            )
+              await fs.unlink(file);
+          }
+        } catch {
+          // Retain uncertain ownership or failed cleanup; initialization remains primary.
+        }
+      }
+      throw initializationFailure.error;
     }
   }
   async release(instanceId: string): Promise<void> {

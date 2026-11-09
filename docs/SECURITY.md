@@ -206,6 +206,23 @@ limitations above still apply: a hostile process with the same OS-user authority
 race filesystem changes or inspect that user's running processes. No elevation,
 container isolation or handle-anchored sandbox is claimed.
 
+### Foreground agent run locks
+
+A failed run-lock initialization still rejects its original stat/write error. It
+may remove only that attempt's newly created regular single-link lock, after the
+acquired handle has confirmed closure and the canonical parent and leaf retain
+their captured device/inode, mode and owner. Partial JSON is not used as ownership
+proof. A successful acquisition keeps its lock for the existing owner release path.
+
+A close-only failure retains the initialized lock. If initialization also failed,
+that original error remains primary; unconfirmed closure, unknown or changed
+identity, additional links and cleanup failure retain the lock for explicit
+inspection. There is one guarded unlink attempt, with no initialization retry,
+PID-based recovery or automatic removal of stale/preexisting locks. The pathname
+checks and unlink are not atomic against a hostile same-user process, and no crash
+durability or complete agent restart guarantee is added. See the
+[run-lock recovery evidence](validation/2026-11-09-run-lock-recovery.md).
+
 ### Pairing, credentials and revocation
 
 Pairing uses separate random verification and device codes, authenticated approval,

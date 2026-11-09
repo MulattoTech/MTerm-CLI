@@ -1,0 +1,110 @@
+{
+  "change_id": "2026-11-09-grant-expiry",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "session_id": "MTERM-WEB-20261109T031131Z-e0efd5d4",
+  "started_at": "2026-11-09T05:12:30Z",
+  "updated_at": "2026-11-09T05:24:48.363168+00:00",
+  "base_sha": "5660ae2cd91840e70af2a41e58e8b8d39154c40c",
+  "claim_base_sha": "f38c2c4522dc68e25fd220593d6b056068902a58",
+  "integration_dependency": {
+    "pr": 217,
+    "merged_as": "cb383b958c88cedc0dfc446c9b6502e00e730840",
+    "tree": "79c7cfbef8fd380fe12bf8625ac67a4434edd547",
+    "same_as_source_base": true,
+    "pr_checks": "Allsix passed; independent actual-log/installed/native reviews clear, PR217 comment6732853470.",
+    "main_checks": "Allsix passed; independent actual-log/installed/native reviews and rootfinalcheck clear; issue149 comment6732940619."
+  },
+  "issues": [
+    55
+  ],
+  "related_issues": [
+    62
+  ],
+  "requirements": [
+    "CLI-290"
+  ],
+  "files": [
+    "gateway/registry.mjs",
+    "tests/remote-gateway.test.mjs",
+    "docs/REMOTE_MCP_ROADMAP.md",
+    "docs/roadmap/remote-web-progress.json",
+    "docs/HANDOFF.md",
+    "docs/ai/changes/2026-11-09-grant-expiry.json",
+    "docs/validation/2026-11-09-grant-expiry.md",
+    "docs/validation/2026-11-09-grant-expiry-red.tap",
+    "docs/validation/2026-11-09-grant-expiry-green.tap",
+    "docs/roadmap/progress.json",
+    "docs/roadmap/review.json",
+    "docs/roadmap/FEATURES.md",
+    "docs/roadmap/index.html",
+    "docs/roadmap/summary.json"
+  ],
+  "decisions": [
+    "Atomic coord/mterm/issue-55 claim; same sole writer serializes shared registry after frozenPR217; independent reviewers.",
+    "Enforce current grant expiry for all queued/delivered jobs regardless of availableSlots; same-response cooperative cancellation uses existing revoked path.",
+    "Authenticate device/job ownership and pending state before result mutation; invalid grant terminalizes only that job and returns existing410,repeat409.",
+    "Evaluate fresh time after grant/epoch awaits; preserve job deadline precedence, no stale authorization decision after asynchronous reads.",
+    "Preserve successes authorized before expiry, unrelated live grants/devices, existing no-replay and bounded admission.",
+    "Use real local JWT/OAuth/PKCE/token/pairing code with synthetic certificates/identities, serialized memory storage, controlled clock/read boundaries and no sweep.",
+    "Evidence only for CLI290/WEB002/009; preserve all protected fields/history and no deployment."
+  ],
+  "tests": [
+    {
+      "command": "Final26-case gateway fixture before behavior changes against exact base registry",
+      "result": "RED16passed/10failed, all ten ERR_ASSERTION; zero skipped/cancelled. Fourteen existing and twelve new cases present before fix."
+    },
+    {
+      "command": "node --test --test-reporter=tap --test-concurrency=1 tests/remote-gateway.test.mjs tests/remote-admission.test.mjs tests/remote-agent.test.mjs",
+      "result": "GREEN38/38, zero failures/skips/cancellations, Node24.22.1 Linuxx64."
+    },
+    {
+      "command": "Independent frozen gateway fixture execution by /root/backlog_triage",
+      "result": "26/26 passed (12new+14existing), zero failures/skips/cancellations,2860.340146ms; all source/fixture and dependencies unchanged before/after."
+    },
+    {
+      "command": "Explicit roadmap review/render/check; normal npm run build; npm run typecheck; npm run format:check; git diff --check",
+      "result": "Passed; unchanged300-row protectedbaseline,29.36%maturity,0complete,45blocked,126notstarted. Parity commandpassed while retaining0/48acceptance. No TSmodule/dependency/lock/seed change."
+    }
+  ],
+  "independent_review": {
+    "reviewer": "/root/backlog_triage",
+    "role": "independent causal reproduction, source/fixture design review and one frozen execution",
+    "result": "No material source/fixture finding. Result invalid-grant terminalization and post-await fresh time incorporated; all26 cases pass with unchanged hashes."
+  },
+  "reviewed_sha256": {
+    "gateway/registry.mjs": "10e025b845ebf2c8d9e0d97e42ca52eeba9bae51ef1c30d359a754e71cc7c92b",
+    "tests/remote-gateway.test.mjs": "44258c4cc20d852dbdcd14188c144042e62bb75dd0e74095d196f39df5eeaf60"
+  },
+  "roadmap_updates": [
+    {
+      "id": "CLI-290",
+      "stage_change": false,
+      "reason": "Scoped gateway authorization expiry evidence only; full remote transport/client acceptance remains open and all protected fields retained."
+    }
+  ],
+  "limitations": [
+    "Authorization is checked at broker decision boundaries; no guarantee of immediate interruption of already-dispatched OS work or response arrival before expiry.",
+    "Expired client result retrieval was not reproduced: ordinary access already denied expired grants. The defect concerned dispatch and result acceptance/retention.",
+    "Synthetic local identities/certificate lookup, serialized in-memory storage, controlled clocks/async reads; no real owner browser/OAuth/Cloudflare persistence/deployment qualification.",
+    "Gateway is not shipped in CLI package; existing installed admission verifies source gateway with installed agent, not installed gateway.",
+    "No new replay policy, fairness/priority or20–30-client load/soak acceptance.",
+    "No dependency/pin/lock/global runtime installation/production bridge/plugin/global configuration/unrelated project/model-consuming worker change.",
+    "Local full suite retains known Unix-socket listen EPERM environment limitation. Allsix exact-head hosted/platform/package/native gates and separate main verification remain required."
+  ],
+  "logs": {
+    "red": {
+      "original_sha256": "d6d960a0f4d087c6fed2b9e814492c0bc2ca8b7459b87f66b89b1c270a5dd7bc",
+      "display_normalization": "Only trailing whitespace removed from committed TAP display."
+    },
+    "green": {
+      "original_sha256": "8c2d70831cfbd4b5f57a726d00d970fec182b854728bbfc0dbea98b4a4a76575",
+      "display_normalization": "Only trailing whitespace removed from committed TAP display."
+    }
+  },
+  "next_unverified_action": "Publish exact-head draftPR, require allsix hosted/platform/package/native gates, then normal expected-head merge and separate main checks. Build an actual committed-source artifact before any later deployment qualification.",
+  "documentation_review": {
+    "reviewer": "/root/backlog_triage",
+    "result": "All300 CLI protected fields/catalog metadata preserved except CLI290 appended notes/evidence; all12WEB non-evidence fields and17historical records preserved except one new row/WEB002+009 refs. Seeds/pins/locks/summary/AUG/DCP byte-identical. Source169-file/catalog fingerprints match; raw and normalized logs verified. No material finding."
+  }
+}

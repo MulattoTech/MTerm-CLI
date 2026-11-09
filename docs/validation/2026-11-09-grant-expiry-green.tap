@@ -1,0 +1,238 @@
+TAP version 13
+# Subtest: gateway delivers only the offered slots and retains queued deadlines and arguments
+ok 1 - gateway delivers only the offered slots and retains queued deadlines and arguments
+  ---
+  duration_ms: 39.842127
+  type: 'test'
+  ...
+# Subtest: gateway rejects malformed slot offers before changing jobs or heartbeat
+ok 2 - gateway rejects malformed slot offers before changing jobs or heartbeat
+  ---
+  duration_ms: 3.670298
+  type: 'test'
+  ...
+# Subtest: omitted capacity preserves the legacy four-request poll contract
+ok 3 - omitted capacity preserves the legacy four-request poll contract
+  ---
+  duration_ms: 4.111804
+  type: 'test'
+  ...
+# Subtest: zero-capacity polls still report cancellation and expiry without later executing expired work
+ok 4 - zero-capacity polls still report cancellation and expiry without later executing expired work
+  ---
+  duration_ms: 7.264141
+  type: 'test'
+  ...
+# Subtest: capacity offers do not bypass device authentication, ownership or revocation
+ok 5 - capacity offers do not bypass device authentication, ownership or revocation
+  ---
+  duration_ms: 3.081971
+  type: 'test'
+  ...
+# Subtest: agent retains delivery capacity through cancelled cleanup and resumes each queued request once
+ok 6 - agent retains delivery capacity through cancelled cleanup and resumes each queued request once
+  ---
+  duration_ms: 31.06275
+  type: 'test'
+  ...
+# Subtest: agent retains delivery capacity through timed-out cleanup and resumes each queued request once
+ok 7 - agent retains delivery capacity through timed-out cleanup and resumes each queued request once
+  ---
+  duration_ms: 14.483513
+  type: 'test'
+  ...
+# Subtest: agent retains delivery capacity through result delivery and resumes each queued request once
+ok 8 - agent retains delivery capacity through result delivery and resumes each queued request once
+  ---
+  duration_ms: 14.796828
+  type: 'test'
+  ...
+# Subtest: gateway transport rejects insecure/credential-bearing URLs and never follows authenticated redirects
+ok 9 - gateway transport rejects insecure/credential-bearing URLs and never follows authenticated redirects
+  ---
+  duration_ms: 4.824139
+  type: 'test'
+  ...
+# Subtest: gateway transport bounds input and error output, and distinguishes revocation
+ok 10 - gateway transport bounds input and error output, and distinguishes revocation
+  ---
+  duration_ms: 1.762489
+  type: 'test'
+  ...
+# Subtest: outbound agent delivers a real adapter result once, rejects replay after reconnect, and stops on revocation
+ok 11 - outbound agent delivers a real adapter result once, rejects replay after reconnect, and stops on revocation
+  ---
+  duration_ms: 2.954848
+  type: 'test'
+  ...
+# Subtest: outbound agent forwards cancellation and shuts down its owned work cleanly
+ok 12 - outbound agent forwards cancellation and shuts down its owned work cleanly
+  ---
+  duration_ms: 1.420994
+  type: 'test'
+  ...
+# Subtest: grant expiry: legacy poll cancels queued and delivered work without an alarm sweep
+ok 13 - grant expiry: legacy poll cancels queued and delivered work without an alarm sweep
+  ---
+  duration_ms: 112.799749
+  type: 'test'
+  ...
+# Subtest: grant expiry: 0-slot poll cancels queued and delivered work without an alarm sweep
+ok 14 - grant expiry: 0-slot poll cancels queued and delivered work without an alarm sweep
+  ---
+  duration_ms: 45.363116
+  type: 'test'
+  ...
+# Subtest: grant expiry: 4-slot poll cancels queued and delivered work without an alarm sweep
+ok 15 - grant expiry: 4-slot poll cancels queued and delivered work without an alarm sweep
+  ---
+  duration_ms: 29.130423
+  type: 'test'
+  ...
+# Subtest: grant expiry: result acceptance rejects exact expiry before retaining output
+ok 16 - grant expiry: result acceptance rejects exact expiry before retaining output
+  ---
+  duration_ms: 58.662198
+  type: 'test'
+  ...
+# Subtest: grant expiry: result acceptance rejects after expiry before retaining output
+ok 17 - grant expiry: result acceptance rejects after expiry before retaining output
+  ---
+  duration_ms: 63.836541
+  type: 'test'
+  ...
+# Subtest: grant expiry: result acceptance rejects missing expiry before retaining output
+ok 18 - grant expiry: result acceptance rejects missing expiry before retaining output
+  ---
+  duration_ms: 57.49088
+  type: 'test'
+  ...
+# Subtest: grant expiry: just-before success and another live client grant remain independent
+ok 19 - grant expiry: just-before success and another live client grant remain independent
+  ---
+  duration_ms: 45.326801
+  type: 'test'
+  ...
+# Subtest: grant expiry: existing request deadline takes precedence when both boundaries expire
+ok 20 - grant expiry: existing request deadline takes precedence when both boundaries expire
+  ---
+  duration_ms: 44.560375
+  type: 'test'
+  ...
+# Subtest: grant expiry: poll rechecks grant after asynchronous grant and epoch reads
+ok 21 - grant expiry: poll rechecks grant after asynchronous grant and epoch reads
+  ---
+  duration_ms: 27.780765
+  type: 'test'
+  ...
+# Subtest: grant expiry: poll rechecks deadline after asynchronous grant and epoch reads
+ok 22 - grant expiry: poll rechecks deadline after asynchronous grant and epoch reads
+  ---
+  duration_ms: 103.655836
+  type: 'test'
+  ...
+# Subtest: grant expiry: result rechecks grant after asynchronous grant and epoch reads
+ok 23 - grant expiry: result rechecks grant after asynchronous grant and epoch reads
+  ---
+  duration_ms: 42.329382
+  type: 'test'
+  ...
+# Subtest: grant expiry: result rechecks deadline after asynchronous grant and epoch reads
+ok 24 - grant expiry: result rechecks deadline after asynchronous grant and epoch reads
+  ---
+  duration_ms: 79.006568
+  type: 'test'
+  ...
+# Subtest: gateway fails closed; discovery is public, bounded, and precise
+ok 25 - gateway fails closed; discovery is public, bounded, and precise
+  ---
+  duration_ms: 24.882716
+  type: 'test'
+  ...
+# Subtest: Access JWT signature, audience, expiry and allowlist are enforced independently of headers
+ok 26 - Access JWT signature, audience, expiry and allowlist are enforced independently of headers
+  ---
+  duration_ms: 61.960078
+  type: 'test'
+  ...
+# Subtest: PKCE code is single use and tokens are resource-bound
+ok 27 - PKCE code is single use and tokens are resource-bound
+  ---
+  duration_ms: 114.296783
+  type: 'test'
+  ...
+# Subtest: pairing requires authenticated approval, is one-time, and never grants execution
+ok 28 - pairing requires authenticated approval, is one-time, and never grants execution
+  ---
+  duration_ms: 117.512772
+  type: 'test'
+  ...
+# Subtest: real relay request travels gateway queue to selected agent and result returns once
+ok 29 - real relay request travels gateway queue to selected agent and result returns once
+  ---
+  duration_ms: 525.849331
+  type: 'test'
+  ...
+# Subtest: cross-user and cross-device access, mutation names, and revoked credentials fail closed
+ok 30 - cross-user and cross-device access, mutation names, and revoked credentials fail closed
+  ---
+  duration_ms: 48.265693
+  type: 'test'
+  ...
+# Subtest: frequent polling cannot defer expiry cleanup and the sweep reaches beyond 1000 rows
+ok 31 - frequent polling cannot defer expiry cleanup and the sweep reaches beyond 1000 rows
+  ---
+  duration_ms: 145.711668
+  type: 'test'
+  ...
+# Subtest: refresh rotation is single use, replay revokes its whole grant, and resource mismatch fails
+ok 32 - refresh rotation is single use, replay revokes its whole grant, and resource mismatch fails
+  ---
+  duration_ms: 34.859496
+  type: 'test'
+  ...
+# Subtest: request cancellation is scoped, delivered requests never replay, and late results fail
+ok 33 - request cancellation is scoped, delivered requests never replay, and late results fail
+  ---
+  duration_ms: 568.252504
+  type: 'test'
+  ...
+# Subtest: offline, expired, malformed and oversized requests have bounded safe failures
+ok 34 - offline, expired, malformed and oversized requests have bounded safe failures
+  ---
+  duration_ms: 38.054679
+  type: 'test'
+  ...
+# Subtest: dashboard cancellation checks ownership and service identities require exact app-token claims
+ok 35 - dashboard cancellation checks ownership and service identities require exact app-token claims
+  ---
+  duration_ms: 49.985172
+  type: 'test'
+  ...
+# Subtest: revoke-all invalidates unredeemed authorization codes and approved unclaimed pairings
+ok 36 - revoke-all invalidates unredeemed authorization codes and approved unclaimed pairings
+  ---
+  duration_ms: 52.098691
+  type: 'test'
+  ...
+# Subtest: MCP optional arguments and JSON-RPC parse errors follow the advertised protocol
+ok 37 - MCP optional arguments and JSON-RPC parse errors follow the advertised protocol
+  ---
+  duration_ms: 124.246839
+  type: 'test'
+  ...
+# Subtest: pairing stays consumed after a credential-store failure and consent CSP permits only its callback
+ok 38 - pairing stays consumed after a credential-store failure and consent CSP permits only its callback
+  ---
+  duration_ms: 61.70299
+  type: 'test'
+  ...
+1..38
+# tests 38
+# suites 0
+# pass 38
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3044.062939

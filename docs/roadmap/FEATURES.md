@@ -4054,13 +4054,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Future HTTP/remote transport requires authentication, origin/bind policy and separate review rather than inheriting stdio trust.
 
-**Current scope:** Final 2026-11-02 evidence at b90432a: Remote setup/pair/start stays explicit and root/device-bound. Final live and hosted evidence passed; write/exec and unattended service capability remain unavailable. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.
+**Current scope:** Final 2026-11-02 evidence at b90432a: Remote setup/pair/start stays explicit and root/device-bound. Final live and hosted evidence passed; write/exec and unattended service capability remain unavailable. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit. 2026-11-09 grant expiry: source gateway checks queued/delivered work and result acceptance against current grant validity independently of cleanup sweeps, including zero-capacity polls and expiry crossed during metadata awaits. Invalid grants terminalize only owned jobs with sanitized audit/cancellation; deadlines retain precedence and unrelated live grants remain usable. Finalprebehavior26cases16pass10assertionfail, correctedfocus38/38 and independent26/26. No real expired-client retrieval was reproduced; ordinary access already denied it. Source evidence only; live OAuth/client/Cloudflare and full acceptance remain open, protected fields unchanged.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 3–11 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/remote-gateway.test.mjs`, `tests/remote-agent.test.mjs`, `tests/remote-adapter.test.mjs`, `tests/remote-state.test.mjs`, `docs/ai/changes/2026-11-02-remote-gateway.json`, `docs/ai/changes/2026-11-02-remote-agent.json`, `docs/validation/2026-11-02-remote-staging-smoke.json`, `docs/REMOTE_MCP.md`, `docs/validation/2026-11-02-remote-sprint.md`, `docs/validation/2026-11-02-remote-staging-smoke-final.json`
+**Evidence:** `tests/files.test.mjs`, `tests/processes.test.mjs`, `tests/mcp.test.mjs`, `tests/remote-gateway.test.mjs`, `tests/remote-agent.test.mjs`, `tests/remote-adapter.test.mjs`, `tests/remote-state.test.mjs`, `docs/ai/changes/2026-11-02-remote-gateway.json`, `docs/ai/changes/2026-11-02-remote-agent.json`, `docs/validation/2026-11-02-remote-staging-smoke.json`, `docs/REMOTE_MCP.md`, `docs/validation/2026-11-02-remote-sprint.md`, `docs/validation/2026-11-02-remote-staging-smoke-final.json`, `docs/validation/2026-11-09-grant-expiry.md`, `docs/ai/changes/2026-11-09-grant-expiry.json`
 
 ## CLI-291 — Implement local-tool doctor/capability report
 

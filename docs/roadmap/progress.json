@@ -7232,9 +7232,11 @@
         "docs/validation/2026-11-02-remote-staging-smoke.json",
         "docs/REMOTE_MCP.md",
         "docs/validation/2026-11-02-remote-sprint.md",
-        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json",
+        "docs/validation/2026-11-09-grant-expiry.md",
+        "docs/ai/changes/2026-11-09-grant-expiry.json"
       ],
-      "notes": "Final 2026-11-02 evidence at b90432a: Remote setup/pair/start stays explicit and root/device-bound. Final live and hosted evidence passed; write/exec and unattended service capability remain unavailable. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
+      "notes": "Final 2026-11-02 evidence at b90432a: Remote setup/pair/start stays explicit and root/device-bound. Final live and hosted evidence passed; write/exec and unattended service capability remain unavailable. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit. 2026-11-09 grant expiry: source gateway checks queued/delivered work and result acceptance against current grant validity independently of cleanup sweeps, including zero-capacity polls and expiry crossed during metadata awaits. Invalid grants terminalize only owned jobs with sanitized audit/cancellation; deadlines retain precedence and unrelated live grants remain usable. Finalprebehavior26cases16pass10assertionfail, correctedfocus38/38 and independent26/26. No real expired-client retrieval was reproduced; ordinary access already denied it. Source evidence only; live OAuth/client/Cloudflare and full acceptance remain open, protected fields unchanged.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [
         "CLI-033",

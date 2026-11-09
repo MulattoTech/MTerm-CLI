@@ -144,6 +144,54 @@ contains `hostname`, `zone_id`, `service:"mterm-gateway-staging"`, and the API's
 default slot `environment:"production"`. That slot name does not change the product's
 `ENVIRONMENT=staging`. Reuse an already correctly owned domain; stop for a conflict.
 
+## Source identity for a new staging smoke
+
+Use the exact qualified checkout and its tested Node runtime after the reviewed
+build. The runner now requires the nonsecret
+`MTERM_STAGING_EXPECTED_SOURCE_COMMIT` environment value before reading credentials
+or making requests. Set it deliberately from the source commit in the verified
+artifact manifest for this deployment; it must be exactly 40 lowercase hexadecimal
+characters. Do not substitute a short SHA, the current branch name, an inferred
+health response or an unreviewed local HEAD.
+
+In the isolated PowerShell session that will run the smoke, after selecting the
+verified manifest:
+
+```powershell
+$MTermSmokeManifest = Get-Content -Raw '<verified-artifact-directory>\manifest.json' | ConvertFrom-Json
+$env:MTERM_STAGING_EXPECTED_SOURCE_COMMIT = $MTermSmokeManifest.sourceCommit
+node .\scripts\verify-remote-staging.mjs
+```
+
+The placeholder is an operator-selected verified artifact directory. Supply the
+dedicated temporary service principal's one JSON credential line only through the
+runner's stdin after `INPUT_REQUIRED`. Its credentials do not belong in this
+nonsecret environment value, command arguments, reports or plaintext files. Keep
+the original service-only and initially-empty identity prerequisites; never run
+this acceptance harness with owner cookies or an owner grant.
+
+Before OAuth registration, pairing or agent startup, public edge health and the
+authenticated registry dashboard must both return the expected full source label.
+After successful owned remote/local cleanup and agent/SDK shutdown, the runner
+checks both again. Missing, malformed, mismatched or unavailable observations fail
+closed without retrying or waiting for deployment convergence. Canonical observed
+SHAs are recorded by phase; arbitrary values are replaced with null. New successful
+runs include `final_staging_build_identity` in addition to the historical eleven
+checks. Historical reports remain evidence of their original executable and scope.
+
+[Cloudflare code updates](https://developers.cloudflare.com/durable-objects/deployments/durable-objects-code-updates/)
+can leave the edge Worker and an active Durable Object on different versions;
+the documented default deferred strategy permits up to 300 seconds before forced
+adoption. A public health build alone does not prove registry adoption. Inspect
+and qualify the deployment separately before starting a fresh smoke attempt; this
+runner never deploys, changes a strategy or silently waits for a different result.
+
+Build labels are response metadata. Matching initial/final observations do not
+independently hash deployed bytes, prove an atomic observation, or establish that
+versions stayed constant during the run or afterward. Preserve the separate
+control-plane version, artifact/module-hash, configuration, owner-lifecycle and
+rollback checks. See the [source-level regression evidence](../validation/2026-11-09-staging-build-identity.md).
+
 ## Final verified staging state
 
 | Evidence identity | Value |

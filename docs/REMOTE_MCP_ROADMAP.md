@@ -227,6 +227,8 @@ and `GATEWAY-SOURCE-BINDING-20261109`. This adds no deployed environment, bindin
 secret-rotation, rollback or full WEB-008 acceptance; historical evidence and remaining
 work below remain unchanged.
 
+**Dated harness evidence — 2026-11-09:** [Expected staging builds](validation/2026-11-09-staging-build-identity.md), narrow #226, requires an explicit full source commit and matching edge/registry observations before fixture effects and after successful owned cleanup. Actual unchanged harness plus final frozen54-case VM fixture was RED13pass/41assertionfail; corrected worker, independent and integrated executions each passed54/54. VM Windows/SDK/DPAPI/agents/network/filesystem are simulated. No live or deployed-byte qualification, continuous-version guarantee, owner recovery or full acceptance credit is added. [Updated invocation](deployment/MTERM_STAGING.md#source-identity-for-a-new-staging-smoke) preserves stdin-only service credentials and the separate owner boundary.
+
 **Remaining work, dependencies and blockers:**
 
 - Automate reviewed template application and repeatable dev/staging dry-run validation, including immutable-module checks and platform secret-binding preservation/rotation. Retain the completed pause/restore drill as evidence; future incompatible-migration scenarios remain separate. **Effort:** 6–12 engineering hours. **Depends on:** Attached deployment template and staging inventory; Recorded immutable artifact and owner-only recovery version; Authorized isolated deployment controls. **Blocker:** The template and configuration attachment are complete. Automated application/dry-run and platform secret-binding lifecycle qualification are not yet demonstrated. The non-destructive pause/restore drill passed; its report documents the code10214 recovery constraint.
@@ -303,6 +305,8 @@ live-smoke identity and remaining work below are unchanged.
 **Current evidence:** Sanitized HAR analysis, independent gateway review and 14 gateway fixture groups are recorded. The live 11-check smoke adds signed Access service authentication, PKCE negatives, pairing/replay/DPAPI, actual SDK/Windows reads, root/mutation/device denials and revocation. Human-client, broader fault and full platform acceptance remain incomplete. Evidence records: `HAR-AUDIT`, `GATEWAY-TESTS`, `WINDOWS-FOCUSED`, `OWNER-GUIDE`, `LIVE-SMOKE`, `WINDOWS-ALIAS-CHECKPOINT`, `LIVE-SMOKE-FINAL`, `FINAL-GATES`.
 
 **Completed evidence:** Recorded 11/11 live service-identity checks with exact deployment/build and SDK/runtime identities; all synthetic credentials/devices/processes cleaned up.
+
+**Dated harness evidence — 2026-11-09:** [Expected staging builds](validation/2026-11-09-staging-build-identity.md), narrow #226, requires an explicit full source commit and matching edge/registry observations before fixture effects and after successful owned cleanup. Actual unchanged harness plus final frozen54-case VM fixture was RED13pass/41assertionfail; corrected worker, independent and integrated executions each passed54/54. VM Windows/SDK/DPAPI/agents/network/filesystem are simulated. No live or deployed-byte qualification, continuous-version guarantee, owner recovery or full acceptance credit is added. [Updated invocation](deployment/MTERM_STAGING.md#source-identity-for-a-new-staging-smoke) preserves stdin-only service credentials and the separate owner boundary.
 
 **Remaining work, dependencies and blockers:**
 

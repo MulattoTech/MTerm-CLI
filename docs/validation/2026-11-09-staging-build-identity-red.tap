@@ -1,0 +1,1212 @@
+TAP version 13
+# Subtest: matching builds traverse all original simulated smoke checks and owned cleanup
+ok 1 - matching builds traverse all original simulated smoke checks and owned cleanup
+  ---
+  duration_ms: 101.791436
+  type: 'test'
+  ...
+# Subtest: expected commit missing fails before stdin, network or fixtures
+not ok 2 - expected commit missing fails before stdin, network or fixtures
+  ---
+  duration_ms: 95.858728
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:588:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:590:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: expected commit empty fails before stdin, network or fixtures
+not ok 3 - expected commit empty fails before stdin, network or fixtures
+  ---
+  duration_ms: 93.209249
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:588:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:590:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: expected commit abbreviated fails before stdin, network or fixtures
+not ok 4 - expected commit abbreviated fails before stdin, network or fixtures
+  ---
+  duration_ms: 97.70838
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:588:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:590:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: expected commit 39 characters fails before stdin, network or fixtures
+not ok 5 - expected commit 39 characters fails before stdin, network or fixtures
+  ---
+  duration_ms: 93.568966
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:588:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:590:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: expected commit 41 characters fails before stdin, network or fixtures
+not ok 6 - expected commit 41 characters fails before stdin, network or fixtures
+  ---
+  duration_ms: 92.34119
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:588:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:590:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: expected commit 64 characters fails before stdin, network or fixtures
+not ok 7 - expected commit 64 characters fails before stdin, network or fixtures
+  ---
+  duration_ms: 80.872537
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:588:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:590:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: expected commit uppercase fails before stdin, network or fixtures
+not ok 8 - expected commit uppercase fails before stdin, network or fixtures
+  ---
+  duration_ms: 81.358205
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:588:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:590:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: expected commit leading whitespace fails before stdin, network or fixtures
+not ok 9 - expected commit leading whitespace fails before stdin, network or fixtures
+  ---
+  duration_ms: 79.750203
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:588:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:590:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: expected commit trailing newline fails before stdin, network or fixtures
+not ok 10 - expected commit trailing newline fails before stdin, network or fixtures
+  ---
+  duration_ms: 105.531454
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:588:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:590:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: expected commit untrusted value fails before stdin, network or fixtures
+not ok 11 - expected commit untrusted value fails before stdin, network or fixtures
+  ---
+  duration_ms: 109.816301
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:588:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:590:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: initial edge build missing blocks OAuth and fixture effects
+not ok 12 - initial edge build missing blocks OAuth and fixture effects
+  ---
+  duration_ms: 87.234248
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:610:7'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:617:11)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: initial edge build null blocks OAuth and fixture effects
+not ok 13 - initial edge build null blocks OAuth and fixture effects
+  ---
+  duration_ms: 90.068885
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:610:7'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:617:11)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: initial edge build object blocks OAuth and fixture effects
+not ok 14 - initial edge build object blocks OAuth and fixture effects
+  ---
+  duration_ms: 94.113749
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:610:7'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:617:11)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: initial edge build abbreviated blocks OAuth and fixture effects
+not ok 15 - initial edge build abbreviated blocks OAuth and fixture effects
+  ---
+  duration_ms: 90.527477
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:610:7'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:617:11)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: initial edge build uppercase blocks OAuth and fixture effects
+not ok 16 - initial edge build uppercase blocks OAuth and fixture effects
+  ---
+  duration_ms: 91.89392
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:610:7'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:617:11)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: initial edge build trailing newline blocks OAuth and fixture effects
+not ok 17 - initial edge build trailing newline blocks OAuth and fixture effects
+  ---
+  duration_ms: 93.670966
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:610:7'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:617:11)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: initial edge build arbitrary response text blocks OAuth and fixture effects
+not ok 18 - initial edge build arbitrary response text blocks OAuth and fixture effects
+  ---
+  duration_ms: 99.122162
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:610:7'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:617:11)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: initial edge build different canonical commit blocks OAuth and fixture effects
+not ok 19 - initial edge build different canonical commit blocks OAuth and fixture effects
+  ---
+  duration_ms: 88.142542
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:610:7'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:617:11)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: initial registry build missing blocks OAuth and fixture effects
+not ok 20 - initial registry build missing blocks OAuth and fixture effects
+  ---
+  duration_ms: 88.616323
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:610:7'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:617:11)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: initial registry build null blocks OAuth and fixture effects
+not ok 21 - initial registry build null blocks OAuth and fixture effects
+  ---
+  duration_ms: 96.289387
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:610:7'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:617:11)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: initial registry build object blocks OAuth and fixture effects
+not ok 22 - initial registry build object blocks OAuth and fixture effects
+  ---
+  duration_ms: 92.870434
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:610:7'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:617:11)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: initial registry build abbreviated blocks OAuth and fixture effects
+not ok 23 - initial registry build abbreviated blocks OAuth and fixture effects
+  ---
+  duration_ms: 95.225577
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:610:7'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:617:11)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: initial registry build uppercase blocks OAuth and fixture effects
+not ok 24 - initial registry build uppercase blocks OAuth and fixture effects
+  ---
+  duration_ms: 87.227893
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:610:7'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:617:11)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: initial registry build trailing newline blocks OAuth and fixture effects
+not ok 25 - initial registry build trailing newline blocks OAuth and fixture effects
+  ---
+  duration_ms: 78.036662
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:610:7'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:617:11)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: initial registry build arbitrary response text blocks OAuth and fixture effects
+not ok 26 - initial registry build arbitrary response text blocks OAuth and fixture effects
+  ---
+  duration_ms: 100.362119
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:610:7'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:617:11)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: initial registry build different canonical commit blocks OAuth and fixture effects
+not ok 27 - initial registry build different canonical commit blocks OAuth and fixture effects
+  ---
+  duration_ms: 91.866022
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:610:7'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:617:11)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: matching edge with stale registry is rejected as partial adoption
+not ok 28 - matching edge with stale registry is rejected as partial adoption
+  ---
+  duration_ms: 91.263903
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:626:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:628:5)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: matching registry cannot excuse a stale edge
+not ok 29 - matching registry cannot excuse a stale edge
+  ---
+  duration_ms: 89.104946
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:632:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:634:5)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: final edge build missing during local cleanup prevents success
+not ok 30 - final edge build missing during local cleanup prevents success
+  ---
+  duration_ms: 86.185429
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:643:7'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:650:11)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: final edge build malformed during local cleanup prevents success
+not ok 31 - final edge build malformed during local cleanup prevents success
+  ---
+  duration_ms: 90.299629
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:643:7'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:650:11)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: final edge build different canonical commit during local cleanup prevents success
+not ok 32 - final edge build different canonical commit during local cleanup prevents success
+  ---
+  duration_ms: 97.082694
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:643:7'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:650:11)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: final edge HTTP failure cannot report success or retry
+not ok 33 - final edge HTTP failure cannot report success or retry
+  ---
+  duration_ms: 97.227382
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:663:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:665:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: final edge transport failure is sanitized and not retried
+not ok 34 - final edge transport failure is sanitized and not retried
+  ---
+  duration_ms: 82.112999
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:669:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:671:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: final registry build missing during local cleanup prevents success
+not ok 35 - final registry build missing during local cleanup prevents success
+  ---
+  duration_ms: 83.346146
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:643:7'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:650:11)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: final registry build malformed during local cleanup prevents success
+not ok 36 - final registry build malformed during local cleanup prevents success
+  ---
+  duration_ms: 89.082012
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:643:7'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:650:11)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: final registry build different canonical commit during local cleanup prevents success
+not ok 37 - final registry build different canonical commit during local cleanup prevents success
+  ---
+  duration_ms: 93.483353
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:643:7'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:650:11)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: final registry HTTP failure cannot report success or retry
+not ok 38 - final registry HTTP failure cannot report success or retry
+  ---
+  duration_ms: 80.693792
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:663:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:665:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: final registry transport failure is sanitized and not retried
+not ok 39 - final registry transport failure is sanitized and not retried
+  ---
+  duration_ms: 85.33431
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:669:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:671:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: matching final observations follow all owned cleanup and precede the success receipt
+not ok 40 - matching final observations follow all owned cleanup and precede the success receipt
+  ---
+  duration_ms: 101.008955
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:676:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+
+    + undefined
+    - {
+    -   expectedSourceCommit: 'a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1',
+    -   final: {
+    -     edge: 'a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1',
+    -     registry: 'a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1'
+    -   },
+    -   initial: {
+    -     edge: 'a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1',
+    -     registry: 'a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1'
+    -   }
+    - }
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    expectedSourceCommit: 'a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1'
+    initial:
+      edge: 'a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1'
+      registry: 'a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1'
+    final:
+      edge: 'a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1'
+      registry: 'a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:679:12)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: existing argv input guard remains fail-closed
+ok 41 - existing argv input guard remains fail-closed
+  ---
+  duration_ms: 68.517347
+  type: 'test'
+  ...
+# Subtest: existing non-Windows runtime guard remains fail-closed
+ok 42 - existing non-Windows runtime guard remains fail-closed
+  ---
+  duration_ms: 67.542886
+  type: 'test'
+  ...
+# Subtest: existing disabled TLS verification guard remains fail-closed
+ok 43 - existing disabled TLS verification guard remains fail-closed
+  ---
+  duration_ms: 72.299916
+  type: 'test'
+  ...
+# Subtest: existing wrong SDK version guard remains fail-closed
+ok 44 - existing wrong SDK version guard remains fail-closed
+  ---
+  duration_ms: 67.196384
+  type: 'test'
+  ...
+# Subtest: existing disabled staging guard remains fail-closed
+ok 45 - existing disabled staging guard remains fail-closed
+  ---
+  duration_ms: 85.189267
+  type: 'test'
+  ...
+# Subtest: existing production environment guard remains fail-closed
+ok 46 - existing production environment guard remains fail-closed
+  ---
+  duration_ms: 76.212735
+  type: 'test'
+  ...
+# Subtest: existing unauthenticated identity guard remains fail-closed
+ok 47 - existing unauthenticated identity guard remains fail-closed
+  ---
+  duration_ms: 85.25444
+  type: 'test'
+  ...
+# Subtest: existing human identity guard remains fail-closed
+ok 48 - existing human identity guard remains fail-closed
+  ---
+  duration_ms: 76.439097
+  type: 'test'
+  ...
+# Subtest: existing existing devices guard remains fail-closed
+ok 49 - existing existing devices guard remains fail-closed
+  ---
+  duration_ms: 80.525068
+  type: 'test'
+  ...
+# Subtest: existing existing grants guard remains fail-closed
+ok 50 - existing existing grants guard remains fail-closed
+  ---
+  duration_ms: 101.889889
+  type: 'test'
+  ...
+# Subtest: final registry requires its authenticated flag as well as a matching build
+not ok 51 - final registry requires its authenticated flag as well as a matching build
+  ---
+  duration_ms: 90.133611
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:725:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:727:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: final registry requires its service identity as well as a matching build
+not ok 52 - final registry requires its service identity as well as a matching build
+  ---
+  duration_ms: 100.569412
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:725:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    failed (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:549:10)
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline/tests/staging-build-identity.test.mjs:727:7)
+    Test.runInAsyncScope (node:async_hooks:227:14)
+    Test.run (node:internal/test_runner/test:1402:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+    Test.postRun (node:internal/test_runner/test:1542:19)
+    Test.run (node:internal/test_runner/test:1467:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: existing remote cleanup failure stays failed and skips success-only probes
+ok 53 - existing remote cleanup failure stays failed and skips success-only probes
+  ---
+  duration_ms: 166.689916
+  type: 'test'
+  ...
+# Subtest: existing local cleanup failure stays failed and skips success-only probes
+ok 54 - existing local cleanup failure stays failed and skips success-only probes
+  ---
+  duration_ms: 143.211155
+  type: 'test'
+  ...
+1..54
+# tests 54
+# suites 0
+# pass 13
+# fail 41
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5067.857338

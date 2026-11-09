@@ -174,6 +174,21 @@ the final target; broader owner-root parents do not receive the narrower request
 guard. The actual Windows regression campaign exercised five native 8.3 cases,
 including the previously reproduced configuration-file bypass.
 
+## Staging qualification source identity
+
+The separate synthetic staging smoke requires an explicit nonsecret full source
+commit before credential input or network requests. It requires matching public
+edge and authenticated service-registry build labels before admitting fixtures,
+then rechecks both after successful owned cleanup and before reporting success.
+An initial registry mismatch never enables revoke-all cleanup. Arbitrary remote
+label strings are excluded from receipts, and mismatches do not trigger retries,
+deployment or owner recovery. Existing stdin-only credentials, fixed destinations,
+TLS, dedicated initially-empty service identity and owned cleanup remain enforced.
+These are response-label observations, not independent deployed-code hashes,
+atomic version adoption or continuous stability. [Bounded evidence](validation/2026-11-09-staging-build-identity.md)
+uses simulated harness dependencies; real Windows/DPAPI/SDK/authentication and
+Cloudflare qualification remain separate.
+
 ## Remote preview: explicit trust boundaries
 
 The implemented staging endpoints are

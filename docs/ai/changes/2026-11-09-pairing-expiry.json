@@ -1,0 +1,500 @@
+{
+  "change_id": "2026-11-09-pairing-expiry",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "session_id": "MTERM-WEB-20261109T131339Z-resume-a9287b3c",
+  "worker": "/root/recover_prior_run",
+  "started_at": "2026-11-09T14:43:24.956542+00:00",
+  "started_at_basis": "First frozen full RED receipt; instruction review, clone setup and fixture writing preceded this timestamp.",
+  "updated_at": "2026-11-09T14:56:22.663780+00:00",
+  "base_sha": "fd47dea59e6cfba12995d453392216593a52237b",
+  "branch": "fix/issue-229-pairing-expiry-20261109",
+  "claim": {
+    "ref": "coord/mterm/issue-229",
+    "comment_url": "https://github.com/MulattoTech/MTerm-CLI/issues/229#issuecomment-6742689698"
+  },
+  "issues": [
+    229,
+    56
+  ],
+  "requirements": [
+    "CLI-290",
+    "CLI-299"
+  ],
+  "remote_web_requirements": [
+    "WEB-003"
+  ],
+  "files": [
+    "gateway/registry.mjs",
+    "tests/remote-pairing-expiry.test.mjs",
+    "docs/validation/2026-11-09-pairing-expiry.md",
+    "docs/ai/changes/2026-11-09-pairing-expiry.json",
+    "docs/SECURITY.md",
+    "docs/HANDOFF.md",
+    "docs/REMOTE_MCP_ROADMAP.md",
+    "docs/roadmap/progress.json",
+    "docs/roadmap/review.json",
+    "docs/roadmap/FEATURES.md",
+    "docs/roadmap/index.html",
+    "docs/validation/2026-11-09-pairing-expiry-red.tap",
+    "docs/validation/2026-11-09-pairing-expiry-green.tap"
+  ],
+  "decisions": [
+    "Use an isolated normal clone at the atomically claimed qualified base; preserve the issue226 clone and both immutable read-only discovery records.",
+    "Freeze 60 individual public-route cases before behavior edits; capture untouched-original RED with 30 passes and 30 expected ERR_ASSERTION failures, explicit exit 1 and unchanged bindings.",
+    "Add only three fresh pairing deadline checks: after approval epoch before write, inside pending branch after rate before return, and after credential hash before consuming approved pair.",
+    "Preserve HTTP400 invalid_pairing for approval and HTTP410 pairing_expired for polling; keep initial checks, wrong-code/rate/revocation/device-limit precedence and consume-before-create order.",
+    "Reject freshly expired decisions before persisted approval, pair consumption or new device/agent/index/success-audit writes. Allow existing bounded rate bookkeeping and expired-index cleanup.",
+    "Use actual signed synthetic Access approval and public gateway/agent routes. Digest barriers await native SHA-256 and prove one selected boundary hit; global fetch is a network tripwire.",
+    "Retain positive preexpiry-decision/later-I/O controls. No late postwrite denial, rollback, retry, replay, schema migration, permission or token-format change.",
+    "Root owns shared documentation, metric review and publication after issue226; local evidence does not award broader WEB003 or CLI acceptance."
+  ],
+  "tests": [
+    {
+      "phase": "RED before any behavior edits",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/remote-pairing-expiry.test.mjs"
+      ],
+      "cwd": "/workspace/scratch/a9287b3cfe09/mterm-pairing-expiry",
+      "started_at": "2026-11-09T14:43:24.956542+00:00",
+      "finished_at": "2026-11-09T14:43:25.479625+00:00",
+      "wall_seconds": 0.523067351008649,
+      "node": "v24.22.1",
+      "platform": "Linux x64",
+      "exit_code": 1,
+      "counts": {
+        "tests": 60,
+        "suites": 0,
+        "pass": 30,
+        "fail": 30,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "before_sha256": {
+        "gateway/registry.mjs": "a849f4a1b7881fd8198e7f97f7b6ad3da5bea7fd4a7492801f3a7f9d774a872d",
+        "gateway/security.mjs": "78aa4d7f9f632568d2247d249691b7583dbf73d344bd040d6512104741183b7b",
+        "gateway/app.mjs": "61b5c43a8ce7dc6fc61d772fcc16c4a4b7d5cb8f17c70555829fae3ce53e42a1",
+        "gateway/dashboard.mjs": "37de2f57ba8f6dfcd1c3331ab8cb994aea419dcfc673c5e3e6f6ef6df208c240",
+        "tests/remote-pairing-expiry.test.mjs": "276f844411cca3c0f0d346ed60c3420960786902a9f30b64d69d1d3ec278b6f8",
+        "src/remote/protocol.ts": "43e8c5067e8a2e4878b76f2ec6c0871dca499a02d5cd02cd31ecef57a8a3ed28",
+        "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14"
+      },
+      "after_sha256": {
+        "gateway/registry.mjs": "a849f4a1b7881fd8198e7f97f7b6ad3da5bea7fd4a7492801f3a7f9d774a872d",
+        "gateway/security.mjs": "78aa4d7f9f632568d2247d249691b7583dbf73d344bd040d6512104741183b7b",
+        "gateway/app.mjs": "61b5c43a8ce7dc6fc61d772fcc16c4a4b7d5cb8f17c70555829fae3ce53e42a1",
+        "gateway/dashboard.mjs": "37de2f57ba8f6dfcd1c3331ab8cb994aea419dcfc673c5e3e6f6ef6df208c240",
+        "tests/remote-pairing-expiry.test.mjs": "276f844411cca3c0f0d346ed60c3420960786902a9f30b64d69d1d3ec278b6f8",
+        "src/remote/protocol.ts": "43e8c5067e8a2e4878b76f2ec6c0871dca499a02d5cd02cd31ecef57a8a3ed28",
+        "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14"
+      },
+      "unchanged": true,
+      "stderr_bytes": 0,
+      "tap_sha256": "c9e7996652854c7302c82b70977f6033fe191b5a798c208fe0e0f466a19e8e47",
+      "receipt_path": "artifacts/issue-229-pairing-expiry/red-receipt.json",
+      "receipt_sha256": "f1f7813e9b462fca48c629745deee9394c83163fa0c7f53eebb5ef78ce2a9033"
+    },
+    {
+      "phase": "Final focused GREEN",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/remote-pairing-expiry.test.mjs",
+        "tests/gateway-access-expiry.test.mjs",
+        "tests/remote-gateway.test.mjs",
+        "tests/remote-admission.test.mjs"
+      ],
+      "cwd": "/workspace/scratch/a9287b3cfe09/mterm-pairing-expiry",
+      "started_at": "2026-11-09T14:44:38.014749+00:00",
+      "finished_at": "2026-11-09T14:44:43.657874+00:00",
+      "wall_seconds": 5.643107258001692,
+      "node": "v24.22.1",
+      "platform": "Linux x64",
+      "exit_code": 0,
+      "counts": {
+        "tests": 138,
+        "suites": 0,
+        "pass": 138,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "before_sha256": {
+        "gateway/registry.mjs": "ecfa498867b20d1676cf7e035af23f1accc90be656de7c6c22ebf272dfff6cda",
+        "gateway/security.mjs": "78aa4d7f9f632568d2247d249691b7583dbf73d344bd040d6512104741183b7b",
+        "gateway/app.mjs": "61b5c43a8ce7dc6fc61d772fcc16c4a4b7d5cb8f17c70555829fae3ce53e42a1",
+        "gateway/dashboard.mjs": "37de2f57ba8f6dfcd1c3331ab8cb994aea419dcfc673c5e3e6f6ef6df208c240",
+        "tests/remote-pairing-expiry.test.mjs": "276f844411cca3c0f0d346ed60c3420960786902a9f30b64d69d1d3ec278b6f8",
+        "tests/gateway-access-expiry.test.mjs": "9e24369e1ab38e9eedcc5f77d2b3c5056fa51d9ce77e94d6232d9b6b6259c1cd",
+        "tests/remote-gateway.test.mjs": "dfbb1bc65c6c33c00b9acccd0d481ba0052e433ec324dd38bc616fa4f77094b1",
+        "tests/remote-admission.test.mjs": "885e136acf1a618d3fd9465126410df336323305c7ebb37a6ac80544cf3254ff",
+        "src/remote/protocol.ts": "43e8c5067e8a2e4878b76f2ec6c0871dca499a02d5cd02cd31ecef57a8a3ed28",
+        "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14",
+        "dist/remote/agent.js": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc",
+        "dist/remote/adapter.js": "aa809420a2757880b8a0b8301a0ace892b5e4adf52dae89e13fb4f523fe12705"
+      },
+      "after_sha256": {
+        "gateway/registry.mjs": "ecfa498867b20d1676cf7e035af23f1accc90be656de7c6c22ebf272dfff6cda",
+        "gateway/security.mjs": "78aa4d7f9f632568d2247d249691b7583dbf73d344bd040d6512104741183b7b",
+        "gateway/app.mjs": "61b5c43a8ce7dc6fc61d772fcc16c4a4b7d5cb8f17c70555829fae3ce53e42a1",
+        "gateway/dashboard.mjs": "37de2f57ba8f6dfcd1c3331ab8cb994aea419dcfc673c5e3e6f6ef6df208c240",
+        "tests/remote-pairing-expiry.test.mjs": "276f844411cca3c0f0d346ed60c3420960786902a9f30b64d69d1d3ec278b6f8",
+        "tests/gateway-access-expiry.test.mjs": "9e24369e1ab38e9eedcc5f77d2b3c5056fa51d9ce77e94d6232d9b6b6259c1cd",
+        "tests/remote-gateway.test.mjs": "dfbb1bc65c6c33c00b9acccd0d481ba0052e433ec324dd38bc616fa4f77094b1",
+        "tests/remote-admission.test.mjs": "885e136acf1a618d3fd9465126410df336323305c7ebb37a6ac80544cf3254ff",
+        "src/remote/protocol.ts": "43e8c5067e8a2e4878b76f2ec6c0871dca499a02d5cd02cd31ecef57a8a3ed28",
+        "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14",
+        "dist/remote/agent.js": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc",
+        "dist/remote/adapter.js": "aa809420a2757880b8a0b8301a0ace892b5e4adf52dae89e13fb4f523fe12705"
+      },
+      "unchanged": true,
+      "stderr_bytes": 0,
+      "tap_sha256": "384faf5365c9fb1fa0a737b71e7e815a03e4e39d1b6255e200f6d8cc092e3495",
+      "receipt_path": "artifacts/issue-229-pairing-expiry/focused-green-receipt.json",
+      "receipt_sha256": "496ce1e9792bb278ffeb77559d523fc78c121777e6afd0b89f97b1e9ed649c43"
+    },
+    {
+      "phase": "Serialized combined-source integration",
+      "result": "142/142, exit0, empty stderr, zero failures/cancellations/skips/todos, 13 unchanged bindings.",
+      "receipt": {
+        "started_at": "2026-11-09T14:54:46.283724+00:00",
+        "finished_at": "2026-11-09T14:54:52.070536+00:00",
+        "base_sha": "33f314055a5371d9b2bbcda9b7c8388f79d3cf35",
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          "--test-concurrency=1",
+          "tests/remote-pairing-expiry.test.mjs",
+          "tests/gateway-access-expiry.test.mjs",
+          "tests/remote-gateway.test.mjs",
+          "tests/remote-admission.test.mjs",
+          "tests/remote-agent.test.mjs"
+        ],
+        "node": "v24.22.1",
+        "elapsed_seconds": 5.791267255001003,
+        "exit_code": 0,
+        "counts": {
+          "tests": 142,
+          "suites": 0,
+          "pass": 142,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "before": {
+          "gateway/registry.mjs": "ecfa498867b20d1676cf7e035af23f1accc90be656de7c6c22ebf272dfff6cda",
+          "gateway/security.mjs": "78aa4d7f9f632568d2247d249691b7583dbf73d344bd040d6512104741183b7b",
+          "gateway/app.mjs": "61b5c43a8ce7dc6fc61d772fcc16c4a4b7d5cb8f17c70555829fae3ce53e42a1",
+          "gateway/dashboard.mjs": "37de2f57ba8f6dfcd1c3331ab8cb994aea419dcfc673c5e3e6f6ef6df208c240",
+          "tests/remote-pairing-expiry.test.mjs": "276f844411cca3c0f0d346ed60c3420960786902a9f30b64d69d1d3ec278b6f8",
+          "tests/gateway-access-expiry.test.mjs": "9e24369e1ab38e9eedcc5f77d2b3c5056fa51d9ce77e94d6232d9b6b6259c1cd",
+          "tests/remote-gateway.test.mjs": "dfbb1bc65c6c33c00b9acccd0d481ba0052e433ec324dd38bc616fa4f77094b1",
+          "tests/remote-admission.test.mjs": "885e136acf1a618d3fd9465126410df336323305c7ebb37a6ac80544cf3254ff",
+          "src/remote/protocol.ts": "43e8c5067e8a2e4878b76f2ec6c0871dca499a02d5cd02cd31ecef57a8a3ed28",
+          "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14",
+          "dist/remote/agent.js": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc",
+          "dist/remote/adapter.js": "aa809420a2757880b8a0b8301a0ace892b5e4adf52dae89e13fb4f523fe12705",
+          "tests/remote-agent.test.mjs": "53b63b74cf38d70c29291b50c739ed13455bf0903adf5a966eea4dcc3a3a5019"
+        },
+        "after": {
+          "gateway/registry.mjs": "ecfa498867b20d1676cf7e035af23f1accc90be656de7c6c22ebf272dfff6cda",
+          "gateway/security.mjs": "78aa4d7f9f632568d2247d249691b7583dbf73d344bd040d6512104741183b7b",
+          "gateway/app.mjs": "61b5c43a8ce7dc6fc61d772fcc16c4a4b7d5cb8f17c70555829fae3ce53e42a1",
+          "gateway/dashboard.mjs": "37de2f57ba8f6dfcd1c3331ab8cb994aea419dcfc673c5e3e6f6ef6df208c240",
+          "tests/remote-pairing-expiry.test.mjs": "276f844411cca3c0f0d346ed60c3420960786902a9f30b64d69d1d3ec278b6f8",
+          "tests/gateway-access-expiry.test.mjs": "9e24369e1ab38e9eedcc5f77d2b3c5056fa51d9ce77e94d6232d9b6b6259c1cd",
+          "tests/remote-gateway.test.mjs": "dfbb1bc65c6c33c00b9acccd0d481ba0052e433ec324dd38bc616fa4f77094b1",
+          "tests/remote-admission.test.mjs": "885e136acf1a618d3fd9465126410df336323305c7ebb37a6ac80544cf3254ff",
+          "src/remote/protocol.ts": "43e8c5067e8a2e4878b76f2ec6c0871dca499a02d5cd02cd31ecef57a8a3ed28",
+          "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14",
+          "dist/remote/agent.js": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc",
+          "dist/remote/adapter.js": "aa809420a2757880b8a0b8301a0ace892b5e4adf52dae89e13fb4f523fe12705",
+          "tests/remote-agent.test.mjs": "53b63b74cf38d70c29291b50c739ed13455bf0903adf5a966eea4dcc3a3a5019"
+        },
+        "tap_sha256": "0c75292812f57e7ee2253b296befb3ebe06e8220732008bdcb161661a7d3a9d9",
+        "stderr_bytes": 0,
+        "scope": "Actual gateway and cryptography with synthetic identities, controlled clock and in-memory storage; combined pairing/Access/OAuth/admission/agent regression evidence. No live endpoint or owner-state operation."
+      },
+      "receipt_sha256": "c42e5b95680b5a2d7e5556e2d4692c65f9006399d3bbc8aa12170ae96c63b259"
+    },
+    {
+      "phase": "Normal reviewed integration gates",
+      "result": "Explicit review/render, build/parity/TypeScript, typecheck, full source format and whitespace all exit0. All300 requirements retain29.36% maturity,0complete45blocked126notStarted; DCP0/48 andWEB0/12 unchanged. Existing npm http-proxy warning only.",
+      "records": [
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "scripts/roadmap.mjs",
+            "--review",
+            "--change",
+            "2026-11-09-pairing-expiry"
+          ],
+          "exit_code": 0,
+          "log": "gate-0.log"
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "scripts/roadmap.mjs",
+            "--render"
+          ],
+          "exit_code": 0,
+          "log": "gate-1.log"
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "build"
+          ],
+          "exit_code": 0,
+          "log": "gate-2.log"
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "typecheck"
+          ],
+          "exit_code": 0,
+          "log": "gate-3.log"
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "format:check"
+          ],
+          "exit_code": 0,
+          "log": "gate-4.log"
+        },
+        {
+          "command": [
+            "git",
+            "diff",
+            "--check"
+          ],
+          "exit_code": 0,
+          "log": "gate-5.log"
+        }
+      ],
+      "source_fingerprint": "3421ab33b8b63dbfe41c655084ac0537a4802c9b306a1f120092fdc5b9d8eb12"
+    }
+  ],
+  "bounded_checks": [
+    {
+      "command": "npm ci --ignore-scripts --no-audit --no-fund",
+      "exit_code": 0,
+      "scope": "Own isolated dependency tree; existing unknown http-proxy config warning; no manifest/lock edits."
+    },
+    {
+      "commands": [
+        {
+          "command": [
+            "npm",
+            "run",
+            "build:code"
+          ],
+          "exit_code": 0,
+          "stdout": "\n> mterm-cli@0.0.1-preview.1 build:code\n> tsc -p tsconfig.json\n\n",
+          "stderr": "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n"
+        },
+        {
+          "command": [
+            "node",
+            "--check",
+            "gateway/registry.mjs"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "node",
+            "--check",
+            "tests/remote-pairing-expiry.test.mjs"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "node",
+            "node_modules/prettier/bin/prettier.cjs",
+            "--check",
+            "gateway/registry.mjs",
+            "tests/remote-pairing-expiry.test.mjs"
+          ],
+          "exit_code": 0,
+          "stdout": "Checking formatting...\nAll matched files use Prettier code style!\n",
+          "stderr": ""
+        },
+        {
+          "command": [
+            "git",
+            "diff",
+            "--check"
+          ],
+          "exit_code": 0,
+          "stdout": "",
+          "stderr": ""
+        }
+      ],
+      "receipt_path": "artifacts/issue-229-pairing-expiry/focused-checks.json",
+      "receipt_sha256": "e43d366eeece01442d481b63d20adf338c237f51ce74a500780b0d4cd873e771",
+      "scope": "Final build:code, source/fixture syntax, focused formatting and diff checks. No full repository or hosted gate claim."
+    }
+  ],
+  "independent_review": {
+    "reviewer": "/root/policy_and_candidate_review",
+    "status": "CLEAR; no material source or fixture findings",
+    "executions": 1,
+    "command": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "--test",
+      "--test-reporter=tap",
+      "--test-concurrency=1",
+      "tests/remote-pairing-expiry.test.mjs"
+    ],
+    "started_at": "2026-11-09T14:51:51.131516+00:00",
+    "finished_at": "2026-11-09T14:51:51.802129+00:00",
+    "wall_seconds": 0.6706180290057091,
+    "node": "v24.22.1",
+    "platform": "Linux x64",
+    "exit_code": 0,
+    "counts": {
+      "tests": 60,
+      "suites": 0,
+      "pass": 60,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "before_sha256": {
+      "gateway/registry.mjs": "ecfa498867b20d1676cf7e035af23f1accc90be656de7c6c22ebf272dfff6cda",
+      "gateway/security.mjs": "78aa4d7f9f632568d2247d249691b7583dbf73d344bd040d6512104741183b7b",
+      "gateway/app.mjs": "61b5c43a8ce7dc6fc61d772fcc16c4a4b7d5cb8f17c70555829fae3ce53e42a1",
+      "gateway/dashboard.mjs": "37de2f57ba8f6dfcd1c3331ab8cb994aea419dcfc673c5e3e6f6ef6df208c240",
+      "tests/remote-pairing-expiry.test.mjs": "276f844411cca3c0f0d346ed60c3420960786902a9f30b64d69d1d3ec278b6f8",
+      "tests/gateway-access-expiry.test.mjs": "9e24369e1ab38e9eedcc5f77d2b3c5056fa51d9ce77e94d6232d9b6b6259c1cd",
+      "tests/remote-gateway.test.mjs": "dfbb1bc65c6c33c00b9acccd0d481ba0052e433ec324dd38bc616fa4f77094b1",
+      "tests/remote-admission.test.mjs": "885e136acf1a618d3fd9465126410df336323305c7ebb37a6ac80544cf3254ff",
+      "src/remote/protocol.ts": "43e8c5067e8a2e4878b76f2ec6c0871dca499a02d5cd02cd31ecef57a8a3ed28",
+      "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14",
+      "dist/remote/agent.js": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc",
+      "dist/remote/adapter.js": "aa809420a2757880b8a0b8301a0ace892b5e4adf52dae89e13fb4f523fe12705"
+    },
+    "after_sha256": {
+      "gateway/registry.mjs": "ecfa498867b20d1676cf7e035af23f1accc90be656de7c6c22ebf272dfff6cda",
+      "gateway/security.mjs": "78aa4d7f9f632568d2247d249691b7583dbf73d344bd040d6512104741183b7b",
+      "gateway/app.mjs": "61b5c43a8ce7dc6fc61d772fcc16c4a4b7d5cb8f17c70555829fae3ce53e42a1",
+      "gateway/dashboard.mjs": "37de2f57ba8f6dfcd1c3331ab8cb994aea419dcfc673c5e3e6f6ef6df208c240",
+      "tests/remote-pairing-expiry.test.mjs": "276f844411cca3c0f0d346ed60c3420960786902a9f30b64d69d1d3ec278b6f8",
+      "tests/gateway-access-expiry.test.mjs": "9e24369e1ab38e9eedcc5f77d2b3c5056fa51d9ce77e94d6232d9b6b6259c1cd",
+      "tests/remote-gateway.test.mjs": "dfbb1bc65c6c33c00b9acccd0d481ba0052e433ec324dd38bc616fa4f77094b1",
+      "tests/remote-admission.test.mjs": "885e136acf1a618d3fd9465126410df336323305c7ebb37a6ac80544cf3254ff",
+      "src/remote/protocol.ts": "43e8c5067e8a2e4878b76f2ec6c0871dca499a02d5cd02cd31ecef57a8a3ed28",
+      "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14",
+      "dist/remote/agent.js": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc",
+      "dist/remote/adapter.js": "aa809420a2757880b8a0b8301a0ace892b5e4adf52dae89e13fb4f523fe12705"
+    },
+    "inputs_unchanged": true,
+    "stderr_bytes": 0,
+    "receipt_path": "artifacts/issue-229-independent-review/peer-policy-_ny_3d_o/receipt.json",
+    "receipt_sha256": "e2532128d7157d72a1d5f77fa031295fd86f15eab4ed4066307a330c5fb80385",
+    "tap_path": "artifacts/issue-229-independent-review/peer-policy-_ny_3d_o/tests.tap",
+    "tap_sha256": "9783e4b19e363968b23f28e378d62b792d64fb3c32257ed1248d1fa6d087c367",
+    "worker_receipt_verification": "Read actual receipt and TAP; verified both hashes, all 60 successful titles, zero failed titles, empty stderr and all 12 current file bindings.",
+    "static_review": "Confirmed the three final guards, error precedence, consume-before-create, real signed Access/native digest barriers and valid-decision/later-I/O controls. Verified original RED bindings and 30 ERR_ASSERTION failures plus focused GREEN transcript.",
+    "scope": "One independent frozen-fixture run against actual source; real signed crypto with controlled in-memory clock/storage. No source/doc edits, rebuild, live endpoint, owner/host operation or model-consuming call.",
+    "limitations": "Combined integration revision, hosted platform/package qualification and live Durable Object timing remain separate."
+  },
+  "final_sha256": {
+    "gateway/registry.mjs": "ecfa498867b20d1676cf7e035af23f1accc90be656de7c6c22ebf272dfff6cda",
+    "tests/remote-pairing-expiry.test.mjs": "276f844411cca3c0f0d346ed60c3420960786902a9f30b64d69d1d3ec278b6f8"
+  },
+  "roadmap_updates": [
+    {
+      "id": "CLI-290",
+      "stage_change": false,
+      "reason": "Append bounded pairing-decision source evidence; protected fields and full WEB003 acceptance unchanged."
+    },
+    {
+      "id": "CLI-299",
+      "stage_change": false,
+      "reason": "Append bounded pairing-decision source evidence; protected fields and full WEB003 acceptance unchanged."
+    }
+  ],
+  "roadmap_integration": {
+    "status": "Evidence appended and explicit review/render/normal local gates complete; protected fields unchanged.",
+    "remote_web_requirement": "WEB-003",
+    "protected_fields_changed": false
+  },
+  "limitations": [
+    "Actual gateway and cryptography run with synthetic identities, serialized in-memory storage and controlled time. No deployed Cloudflare scheduling/storage, actual owner session, agent, Windows DPAPI or live-client qualification.",
+    "Fresh checks bind final admission decisions. Storage completion, response delivery and already-admitted operations can occur after expiry; no crash-atomicity or response-time expiry guarantee.",
+    "The original credential-issuance defect required a valid device code and prior authenticated approval; no approval or cross-owner bypass was demonstrated.",
+    "Gateway modules are separate from the installed CLI package and production owner bridge. No deployment, binding/policy/grant/credential operation or owner lifecycle change occurred.",
+    "Original worker transcripts remain in ignored artifacts. Root now publishes normalized original-source RED and combined GREEN; committed_transcripts records paths and hashes.",
+    "The full local Unix-socket suite remains unrun under its known EPERM constraint. Root combined-source142/142 and normal reviewed build/parity/typecheck/format/whitespace gates passed. Full hosted/platform/package and separate actual-main verification remain pending.",
+    "During the original worker stage, no source outside the four assigned files, dependency/provider, protected metric, upstream pin, shared doc or unrelated project change; no worker push, PR, merge or paid/model-consuming operation."
+  ],
+  "logs": {
+    "directory": "artifacts/issue-229-pairing-expiry",
+    "red": {
+      "tap": "red.tap",
+      "receipt": "red-receipt.json"
+    },
+    "final_focused_green": {
+      "tap": "focused-green.tap",
+      "receipt": "focused-green-receipt.json"
+    },
+    "focused_checks": "focused-checks.json"
+  },
+  "next_unverified_action": "Exact committed-input gateway artifact, six exact-candidate jobs, ordinary expected-head merge and separate six actual-main jobs. No live deployment.",
+  "integration_base_sha": "33f314055a5371d9b2bbcda9b7c8388f79d3cf35",
+  "integrator": "OpenAI / GPT-6 Astra Pro (self-reported), root",
+  "worker_commits": [
+    "59b0bacabad678091c98af8b8aea8375a6184c0c"
+  ],
+  "committed_transcripts": {
+    "red": {
+      "path": "docs/validation/2026-11-09-pairing-expiry-red.tap",
+      "sha256": "616cc13bf108ef78b7a84573961f6ecdcbc9fc2cd73e28559a6b0623f1daeaf4",
+      "normalization": "Trailing whitespace removed only."
+    },
+    "green": {
+      "path": "docs/validation/2026-11-09-pairing-expiry-green.tap",
+      "sha256": "0c75292812f57e7ee2253b296befb3ebe06e8220732008bdcb161661a7d3a9d9",
+      "normalization": "Trailing whitespace removed only."
+    }
+  },
+  "shared_document_review": {
+    "reviewer": "policy_and_candidate_review",
+    "status": "clear",
+    "reviewed_at": "2026-11-09T15:01:46.177334+00:00",
+    "scope": "All13 candidate paths against33f314055a5371d9b2bbcda9b7c8388f79d3cf35; prior60-case source review reused.",
+    "findings": [
+      "Only CLI290/299 notes and three refs each appended; all300 IDs/order/protected fields and top-level values preserved.",
+      "WEB003 dated evidence only; historical HANDOFF, owner/live reports and acceptance ledgers preserved.",
+      "Committed RED is exact trailing-whitespace normalization of original-source30pass/30assertionfail; integrated GREEN142/142 and13 bindings match actual receipt.",
+      "All six local gate logs/exits inspected; read-only roadmap check exit0 at the recorded178-entry fingerprint.",
+      "Clarified original worker-stage four-file limitation; current local versus pending artifact/hosted/main qualification and nonsecret-only preflight scope remain accurate."
+    ],
+    "source_fingerprint": "3421ab33b8b63dbfe41c655084ac0537a4802c9b306a1f120092fdc5b9d8eb12",
+    "limitations": "No source rerun or live qualification is implied by shared-document review."
+  }
+}

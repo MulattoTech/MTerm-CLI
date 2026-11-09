@@ -224,6 +224,17 @@ client, scope, resource, epoch and revocation checks remain enforced. This does 
 revoke operations admitted while valid or guarantee response arrival before expiry.
 See the [OAuth expiry evidence](validation/2026-11-09-oauth-expiry.md).
 
+Pairing retains its initial deadline checks and rechecks expiry after asynchronous
+work at each final successful decision: before persisting approval, before returning
+pending, and before consuming an approved claim to create credentials. Approval
+keeps `400 invalid_pairing`; polling keeps `410 pairing_expired`. The pending guard
+is confined to its branch, preserving existing code, rate, revocation and capacity
+error precedence. A freshly expired decision adds no approval or credential
+authority; permitted rate bookkeeping and expired-index cleanup remain. The
+single-use consume-before-create order is unchanged. Valid decisions may finish
+storage I/O or response delivery after expiry; no rollback or crash-atomicity claim
+is added. See the [pairing expiry evidence](validation/2026-11-09-pairing-expiry.md).
+
 An OAuth grant permits read access to the signed-in identity's paired device inventory.
 Every filesystem operation must select an explicit `deviceId`; the gateway checks its
 ownership and tool capability, and the agent independently checks the addressed device,

@@ -380,9 +380,11 @@
       "title": "move_file files/directories and cross-filesystem parity",
       "state": "open",
       "url": "https://github.com/MulattoTech/MTerm-CLI/issues/25",
-      "implementationObservation": "Regular-file same-filesystem no-overwrite move only. Directories and cross-device parity remain open.",
+      "implementationObservation": "Regular-file same-filesystem no-overwrite move only. Directories and cross-device parity remain open. 2026-11-09 partial evidence: native and compatible regular-file moves now observe cancellation after successful preflight awaits before linking. All18 cases predate the fix (RED10 passed/8 assertion failures; focused GREEN61/61), including instrumented actual-SDK calls. Post-link completion and existing primary errors are preserved; installed/platform acceptance remains a separate gate. Full gap remains open with no acceptance credit.",
       "evidence": [
-        "docs/validation/2026-10-05-codex-parity-foundation.md"
+        "docs/validation/2026-10-05-codex-parity-foundation.md",
+        "docs/validation/2026-11-09-move-cancellation.md",
+        "docs/ai/changes/2026-11-09-move-cancellation.json"
       ],
       "lastReviewedAt": "2026-10-05T21:08:42.944283+00:00"
     },

@@ -1,0 +1,125 @@
+{
+  "change_id": "2026-11-09-move-cancellation",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "session_id": "MTERM-WEB-20261109T031131Z-e0efd5d4",
+  "started_at": "2026-11-09T05:54:36Z",
+  "updated_at": "2026-11-09T06:07:24.674954+00:00",
+  "base_sha": "43f7c7152a6115a95e9c45e5ea582068f62ad33c",
+  "integration_dependency": {
+    "pr": 219,
+    "merged_as": "43f7c7152a6115a95e9c45e5ea582068f62ad33c",
+    "tree": "a6d92f453a474c2263092428d1430ed0bf570cad",
+    "same_as_reviewed_candidate": true,
+    "pr_checks": "All six passed; independently inspected actual logs, PR219 comment6733322296.",
+    "main_checks": "All six separate push checks passed; actual logs and installed/native bindings independently inspected, issue65 comment6733436065."
+  },
+  "issues": [
+    25
+  ],
+  "related_issues": [
+    62
+  ],
+  "requirements": [
+    "CLI-271",
+    "CLI-288"
+  ],
+  "files": [
+    "src/files.ts",
+    "tests/file-move-cancellation.test.mjs",
+    "tests/file-move-cancellation-mcp.test.mjs",
+    "scripts/verify-package.mjs",
+    "docs/SECURITY.md",
+    "docs/HANDOFF.md",
+    "docs/ai/changes/2026-11-09-move-cancellation.json",
+    "docs/validation/2026-11-09-move-cancellation.md",
+    "docs/validation/2026-11-09-move-cancellation-red.tap",
+    "docs/validation/2026-11-09-move-cancellation-green.tap",
+    "docs/roadmap/progress.json",
+    "docs/roadmap/desktop-commander-parity.json",
+    "docs/roadmap/review.json",
+    "docs/roadmap/FEATURES.md",
+    "docs/roadmap/index.html",
+    "docs/roadmap/summary.json"
+  ],
+  "decisions": [
+    "Atomic issue25 claim after PR219 merge; one implementation writer with independent read-only reviewers.",
+    "Check the existing cancellation signal immediately after each successful source resolution, destination resolution and source metadata await, before link starts.",
+    "Preserve existing errors from failed awaits. Once link starts, retain the link/unlink completion path and primary errors; do not add rollback, retry or cross-device fallback.",
+    "Write and format all18 direct/actual-SDK cases before behavior edits; exercise real owned temporary files and causal preflight/mutation gates.",
+    "Pass explicit owned compatibility configuration to both SDK hosts; await release and nested cleanup without claiming independently observed process exit.",
+    "Add installed verification for the same18 fixtures with12 compiled module bindings, fixture snapshots, post-run source/installed/fixture hash rechecks and an actual external working directory.",
+    "Evidence only for CLI271/288 and DCP023; preserve all protected fields, prior evidence and acceptance."
+  ],
+  "tests": [
+    {
+      "command": "Final18-case direct and actual-SDK move fixtures on unchanged source/compiled baseline",
+      "result": "RED18 total:10 passed/8 ERR_ASSERTION failures; zero skips/cancellations. Source and compiled hashes verified unchanged before behavior edits."
+    },
+    {
+      "command": "npm run build:code; node --test --test-reporter=tap --test-concurrency=1 tests/file-move-cancellation.test.mjs tests/file-move-cancellation-mcp.test.mjs tests/files.test.mjs tests/desktop-commander-files.test.mjs tests/file-write-retry.test.mjs",
+      "result": "GREEN61/61; zero failures/skips/cancellations. Node24.22.1 Linux x64."
+    },
+    {
+      "command": "Independent frozen18-case direct/actual-SDK execution by /root/backlog_triage",
+      "result": "18/18 passed; zero failures/skips/cancellations/todo, exit0, empty stderr; TAP783.203656 ms on Node24.22.1 Linux x64. All eight source/compiled/fixture hashes unchanged before/after; one execution, no build.",
+      "tap_sha256": "a260dba924e1a0cff0a430a816c9c420ff384be9ad9b926ea3fadc3fe442b104",
+      "receipt_sha256": "1ec3381af0bf8e4b5bf7b4c37c76b5aed2e8669eb1ef28560fbea9e973287304"
+    },
+    {
+      "command": "Explicit roadmap review/render/check; normal npm run build; npm run typecheck; npm run format:check; git diff --check",
+      "result": "Passed. Protected300 maturity remains29.36%,0 complete,45 blocked,126 not started; parity command passed with0/48 acceptance. Source fingerprint f2ca367c192afae29a8aa6dc362857a7919b2ec89569760165aa85346fc0bbec."
+    }
+  ],
+  "independent_review": {
+    "reviewers": [
+      "/root/backlog_triage",
+      "/root/architecture_scan",
+      "/root/release_quality_scan"
+    ],
+    "result": "Independent original reproduction, design and frozen source/fixture reviews clear; one frozen18/18 run passed with eight unchanged bindings. Verifier review found TAP was saved after cleanup; final revision saves captured output before awaited cleanup. Independent final verifier review clear at7548bf74488999e51660fd036bb339339bd10b15bffe224aa1e436da616b1335; removing only the additive block/comment/report field reproduces the old verifier bytes. Documentation/protected-field and raw-log reviews clear."
+  },
+  "reviewed_sha256": {
+    "src/files.ts": "417c4661b403d7804049e3137d6aca7e7bd3f4542b6e92ed2258df93c3d268ff",
+    "tests/file-move-cancellation.test.mjs": "f63e604ebc7f7f65bec8ac758241d7fb5b8ecb68ced59e241c89b7454393fb7f",
+    "tests/file-move-cancellation-mcp.test.mjs": "05743f38a98826fc6c8b4016783e2e8dbed850f437d6ff0b184d602db0aaec1b",
+    "scripts/verify-package.mjs": "7548bf74488999e51660fd036bb339339bd10b15bffe224aa1e436da616b1335"
+  },
+  "compiled_files_sha256": "8987f7527ab378ec69cbda62d9bcd75cf79393c4c9374565dfd562e43ec7c0ec",
+  "roadmap_updates": [
+    {
+      "id": "CLI-271",
+      "stage_change": false,
+      "reason": "Regular-file cancellation before mutation is partial safe-move evidence; full hostile race, directory/cross-device and upstream parity acceptance remain open."
+    },
+    {
+      "id": "CLI-288",
+      "stage_change": false,
+      "reason": "Scoped native/compatible move cancellation evidence; general shutdown, supported-client and production acceptance remain open."
+    }
+  ],
+  "limitations": [
+    "Cooperative cancellation after successful preflight awaits only; a failed await retains its original error and an OS operation already in progress is not interrupted.",
+    "No check after link starts: a subsequent unlink failure can retain both hard-linked names and preserves its primary error; no retry, rollback or cross-device fallback.",
+    "Existing path/root/link race limits remain. Directory moves and full DCP023 cross-filesystem parity remain unimplemented.",
+    "SDK cases use actual stdio clients and runtime modules with deterministic instrumentation; explicit close is awaited but independent server PID exit is not qualified.",
+    "The new installed working directory is verified outside the checkout; this does not retroactively qualify older verifier blocks with checkout-local home paths.",
+    "No live deployment/credential/grant/device/bridge/plugin/global runtime or unrelated project mutation; dependencies/pins/locks unchanged.",
+    "Known local full-suite Unix-socket listen EPERM limitation remains; all six hosted gates and separate main checks remain mandatory."
+  ],
+  "logs": {
+    "red": {
+      "original_sha256": "69f09819ee05db2251064fe4a60a76efc9ccd7fec596e1f5213dc5cf2520d239",
+      "display_normalization": "Only trailing whitespace removed from committed TAP display."
+    },
+    "green": {
+      "original_sha256": "8bc8c6dfe806a9798c85b66c921ec357ba84d668ee98581a173bb66d5e17030a",
+      "display_normalization": "Only trailing whitespace removed from committed TAP display."
+    }
+  },
+  "next_unverified_action": "Publish exact-head draft PR; require all six hosted/platform/installed/native gates, then normal expected-head merge and separate main verification.",
+  "documentation_review": {
+    "reviewer": "/root/architecture_scan",
+    "result": "All300 CLI and48 DCP protected fields and metadata preserved except CLI271/288 append-only notes/evidence and DCP023 observation/two refs. DCP023 open state and lastReviewedAt retained; WEB/summary/seeds/pins/locks/AUG unchanged. HANDOFF exact prepend; all171 source hashes, four reviewed hashes, compiled files binding and raw/rstrip-only TAP evidence match. Wording corrected to say mutation occurred after the signal was aborted; no material finding remains."
+  }
+}

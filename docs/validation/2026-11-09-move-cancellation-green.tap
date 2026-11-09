@@ -1,0 +1,378 @@
+TAP version 13
+# (node:46) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: text range and negative-tail output matches the exact pinned upstream handler
+ok 1 - text range and negative-tail output matches the exact pinned upstream handler
+  ---
+  duration_ms: 117.667554
+  type: 'test'
+  ...
+# Subtest: write requires explicit replacement intent and preserves BOM when appending
+ok 2 - write requires explicit replacement intent and preserves BOM when appending
+  ---
+  duration_ms: 16.424485
+  type: 'test'
+  ...
+# Subtest: multi-file reads retain successful text when another path fails
+ok 3 - multi-file reads retain successful text when another path fails
+  ---
+  duration_ms: 3.206589
+  type: 'test'
+  ...
+# Subtest: nested directory creation is idempotent and prevalidates the whole path
+ok 4 - nested directory creation is idempotent and prevalidates the whole path
+  ---
+  duration_ms: 4.819142
+  type: 'test'
+  ...
+# Subtest: recursive directory listing has depth limits and preserves private boundaries
+ok 5 - recursive directory listing has depth limits and preserves private boundaries
+  ---
+  duration_ms: 5.616365
+  type: 'test'
+  ...
+# Subtest: exact edit counts prevent accidental replacement and preserve literal dollar strings
+ok 6 - exact edit counts prevent accidental replacement and preserve literal dollar strings
+  ---
+  duration_ms: 7.437504
+  type: 'test'
+  ...
+# Subtest: MCP protocol advertises only implemented optional aliases and returns readable tool content
+ok 7 - MCP protocol advertises only implemented optional aliases and returns readable tool content
+  ---
+  duration_ms: 194.735
+  type: 'test'
+  ...
+# Subtest: actual SDK move cancellation prevents mutation through mterm_move
+ok 8 - actual SDK move cancellation prevents mutation through mterm_move
+  ---
+  duration_ms: 208.270586
+  type: 'test'
+  ...
+# Subtest: actual SDK move cancellation prevents mutation through move_file
+ok 9 - actual SDK move cancellation prevents mutation through move_file
+  ---
+  duration_ms: 214.299579
+  type: 'test'
+  ...
+# Subtest: move cancellation: native stops after source resolution without changing either path
+ok 10 - move cancellation: native stops after source resolution without changing either path
+  ---
+  duration_ms: 21.721418
+  type: 'test'
+  ...
+# Subtest: move cancellation: native stops after destination resolution without changing either path
+ok 11 - move cancellation: native stops after destination resolution without changing either path
+  ---
+  duration_ms: 4.659116
+  type: 'test'
+  ...
+# Subtest: move cancellation: native stops after source metadata without changing either path
+ok 12 - move cancellation: native stops after source metadata without changing either path
+  ---
+  duration_ms: 2.97925
+  type: 'test'
+  ...
+# Subtest: move cancellation: native completes a move when cancellation arrives after the real link
+ok 13 - move cancellation: native completes a move when cancellation arrives after the real link
+  ---
+  duration_ms: 3.103844
+  type: 'test'
+  ...
+# Subtest: move cancellation: native retains collision and no-overwrite behavior
+ok 14 - move cancellation: native retains collision and no-overwrite behavior
+  ---
+  duration_ms: 13.675607
+  type: 'test'
+  ...
+# Subtest: move cancellation: native preserves failed-unlink evidence after link and cancellation
+ok 15 - move cancellation: native preserves failed-unlink evidence after link and cancellation
+  ---
+  duration_ms: 2.952014
+  type: 'test'
+  ...
+# Subtest: move cancellation: compat stops after source resolution without changing either path
+ok 16 - move cancellation: compat stops after source resolution without changing either path
+  ---
+  duration_ms: 2.693394
+  type: 'test'
+  ...
+# Subtest: move cancellation: compat stops after destination resolution without changing either path
+ok 17 - move cancellation: compat stops after destination resolution without changing either path
+  ---
+  duration_ms: 2.235283
+  type: 'test'
+  ...
+# Subtest: move cancellation: compat stops after source metadata without changing either path
+ok 18 - move cancellation: compat stops after source metadata without changing either path
+  ---
+  duration_ms: 2.792865
+  type: 'test'
+  ...
+# Subtest: move cancellation: compat completes a move when cancellation arrives after the real link
+ok 19 - move cancellation: compat completes a move when cancellation arrives after the real link
+  ---
+  duration_ms: 2.785934
+  type: 'test'
+  ...
+# Subtest: move cancellation: compat retains collision and no-overwrite behavior
+ok 20 - move cancellation: compat retains collision and no-overwrite behavior
+  ---
+  duration_ms: 4.277225
+  type: 'test'
+  ...
+# Subtest: move cancellation: compat preserves failed-unlink evidence after link and cancellation
+ok 21 - move cancellation: compat preserves failed-unlink evidence after link and cancellation
+  ---
+  duration_ms: 2.874607
+  type: 'test'
+  ...
+# Subtest: move cancellation: an already-aborted request never resolves a path
+ok 22 - move cancellation: an already-aborted request never resolves a path
+  ---
+  duration_ms: 9.165036
+  type: 'test'
+  ...
+# Subtest: move cancellation: a request cancelled while queued cannot mutate after the prior move settles
+ok 23 - move cancellation: a request cancelled while queued cannot mutate after the prior move settles
+  ---
+  duration_ms: 3.242203
+  type: 'test'
+  ...
+# Subtest: move cancellation: an in-flight first-link failure retains its error and original source
+ok 24 - move cancellation: an in-flight first-link failure retains its error and original source
+  ---
+  duration_ms: 2.392922
+  type: 'test'
+  ...
+# Subtest: move cancellation: write permission and root confinement remain required
+ok 25 - move cancellation: write permission and root confinement remain required
+  ---
+  duration_ms: 2.162573
+  type: 'test'
+  ...
+# Subtest: file replacement recovers only exact Windows rename EPERM and EBUSY without destination deletion
+ok 26 - file replacement recovers only exact Windows rename EPERM and EBUSY without destination deletion
+  ---
+  duration_ms: 103.411802
+  type: 'test'
+  ...
+# Subtest: persistent Windows file replacement failure stops after five attempts with original bytes intact
+ok 27 - persistent Windows file replacement failure stops after five attempts with original bytes intact
+  ---
+  duration_ms: 393.903858
+  type: 'test'
+  ...
+# Subtest: file replacement does not retry linux EPERM
+ok 28 - file replacement does not retry linux EPERM
+  ---
+  duration_ms: 6.738549
+  type: 'test'
+  ...
+# Subtest: file replacement does not retry darwin EBUSY
+ok 29 - file replacement does not retry darwin EBUSY
+  ---
+  duration_ms: 5.104903
+  type: 'test'
+  ...
+# Subtest: file replacement does not retry win32 EACCES
+ok 30 - file replacement does not retry win32 EACCES
+  ---
+  duration_ms: 5.197073
+  type: 'test'
+  ...
+# Subtest: file replacement does not retry win32 EIO
+ok 31 - file replacement does not retry win32 EIO
+  ---
+  duration_ms: 9.351261
+  type: 'test'
+  ...
+# Subtest: file replacement revalidates destination edit during retry
+ok 32 - file replacement revalidates destination edit during retry
+  ---
+  duration_ms: 32.440844
+  type: 'test'
+  ...
+# Subtest: file replacement revalidates destination disappear during retry
+ok 33 - file replacement revalidates destination disappear during retry
+  ---
+  duration_ms: 32.844062
+  type: 'test'
+  ...
+# Subtest: file replacement revalidates destination new-inode during retry
+ok 34 - file replacement revalidates destination new-inode during retry
+  ---
+  duration_ms: 37.148177
+  type: 'test'
+  ...
+# Subtest: file replacement revalidates destination permissions during retry
+ok 35 - file replacement revalidates destination permissions during retry
+  ---
+  duration_ms: 33.408053
+  type: 'test'
+  ...
+# Subtest: file replacement refuses destination hardlink introduced during backoff
+ok 36 - file replacement refuses destination hardlink introduced during backoff
+  ---
+  duration_ms: 44.035181
+  type: 'test'
+  ...
+# Subtest: file replacement refuses destination directory introduced during backoff
+ok 37 - file replacement refuses destination directory introduced during backoff
+  ---
+  duration_ms: 31.569558
+  type: 'test'
+  ...
+# Subtest: file replacement cancellation during backoff prevents another rename
+ok 38 - file replacement cancellation during backoff prevents another rename
+  ---
+  duration_ms: 36.992453
+  type: 'test'
+  ...
+# Subtest: file replacement and stage cleanup reject a linked parent
+ok 39 - file replacement and stage cleanup reject a linked parent
+  ---
+  duration_ms: 31.021922
+  type: 'test'
+  ...
+# Subtest: file replacement and stage cleanup reject a replaced parent
+ok 40 - file replacement and stage cleanup reject a replaced parent
+  ---
+  duration_ms: 39.871291
+  type: 'test'
+  ...
+# Subtest: file replacement refuses and retains new-inode staging substitution
+ok 41 - file replacement refuses and retains new-inode staging substitution
+  ---
+  duration_ms: 34.45271
+  type: 'test'
+  ...
+# Subtest: file replacement refuses and retains modified-bytes staging substitution
+ok 42 - file replacement refuses and retains modified-bytes staging substitution
+  ---
+  duration_ms: 30.792337
+  type: 'test'
+  ...
+# Subtest: file replacement refuses and retains hardlink staging substitution
+ok 43 - file replacement refuses and retains hardlink staging substitution
+  ---
+  duration_ms: 31.102133
+  type: 'test'
+  ...
+# Subtest: no-overwrite file creation retains its link contract and never retries link failures
+ok 44 - no-overwrite file creation retains its link contract and never retries link failures
+  ---
+  duration_ms: 10.154673
+  type: 'test'
+  ...
+# Subtest: file replacement keeps the destination version check after staging reads
+ok 45 - file replacement keeps the destination version check after staging reads
+  ---
+  duration_ms: 4.568744
+  type: 'test'
+  ...
+# Subtest: file creation recovers transient owned-stage unlink failures without repeating its hard link
+ok 46 - file creation recovers transient owned-stage unlink failures without repeating its hard link
+  ---
+  duration_ms: 88.289135
+  type: 'test'
+  ...
+# Subtest: file creation reports committed bytes and persistent owned-stage cleanup failure
+ok 47 - file creation reports committed bytes and persistent owned-stage cleanup failure
+  ---
+  duration_ms: 393.107615
+  type: 'test'
+  ...
+# Subtest: file creation retains a substituted staging name and reports the confirmed commit
+ok 48 - file creation retains a substituted staging name and reports the confirmed commit
+  ---
+  duration_ms: 4.010792
+  type: 'test'
+  ...
+# Subtest: file staging preserves writeFile failure when descriptor close also fails
+ok 49 - file staging preserves writeFile failure when descriptor close also fails
+  ---
+  duration_ms: 4.493841
+  type: 'test'
+  ...
+# Subtest: file staging preserves sync failure when descriptor close also fails
+ok 50 - file staging preserves sync failure when descriptor close also fails
+  ---
+  duration_ms: 4.374491
+  type: 'test'
+  ...
+# Subtest: read-only default denies write without modifying existing bytes
+ok 51 - read-only default denies write without modifying existing bytes
+  ---
+  duration_ms: 7.866571
+  type: 'test'
+  ...
+# Subtest: UTF8 round trip returns SHA version, guarded update and directory listing
+ok 52 - UTF8 round trip returns SHA version, guarded update and directory listing
+  ---
+  duration_ms: 29.846633
+  type: 'test'
+  ...
+# Subtest: missing precondition never replaces existing target; malformed values rejected
+ok 53 - missing precondition never replaces existing target; malformed values rejected
+  ---
+  duration_ms: 3.560793
+  type: 'test'
+  ...
+# Subtest: outside-root, private metadata and Windows special paths fail closed
+ok 54 - outside-root, private metadata and Windows special paths fail closed
+  ---
+  duration_ms: 2.732884
+  type: 'test'
+  ...
+# Subtest: junction/symlink and hardlink escapes are refused
+ok 55 - junction/symlink and hardlink escapes are refused
+  ---
+  duration_ms: 3.756428
+  type: 'test'
+  ...
+# Subtest: read byte cap and strict UTF8 reject oversized, binary and malformed files
+ok 56 - read byte cap and strict UTF8 reject oversized, binary and malformed files
+  ---
+  duration_ms: 3.6449
+  type: 'test'
+  ...
+# Subtest: no-overwrite move preserves both files on collision
+ok 57 - no-overwrite move preserves both files on collision
+  ---
+  duration_ms: 8.829905
+  type: 'test'
+  ...
+# Subtest: bounded searches exclude private/expensive trees and support cancellation
+ok 58 - bounded searches exclude private/expensive trees and support cancellation
+  ---
+  duration_ms: 26.857448
+  type: 'test'
+  ...
+# Subtest: invalid limits and unknown fields never trigger destructive work
+ok 59 - invalid limits and unknown fields never trigger destructive work
+  ---
+  duration_ms: 8.423202
+  type: 'test'
+  ...
+# Subtest: file ranges expose total lines and explicit remaining state
+ok 60 - file ranges expose total lines and explicit remaining state
+  ---
+  duration_ms: 5.840303
+  type: 'test'
+  ...
+# Subtest: aborted mutation cannot create a file after cancellation
+ok 61 - aborted mutation cannot create a file after cancellation
+  ---
+  duration_ms: 1.97487
+  type: 'test'
+  ...
+1..61
+# tests 61
+# suites 0
+# pass 61
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3156.894749

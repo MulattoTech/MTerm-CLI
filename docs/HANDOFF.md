@@ -1,3 +1,17 @@
+# Supported installer review checkpoint — 2026-11-09 UTC
+
+Session `MTERM-WEB-20261109T031131Z-e0efd5d4` owns `coord/mterm/issue-94`, feature `fix/issue-94-installer-review-20261109`, from merged main `640953514c44c5932364341ecd754399f6265bd8`. One implementation writer and independent read-only peer.
+
+PR #212 merged normally with exact qualified tree `384eed88af4a7ea6a0fd36a079c5e52d738ef811`: six PR gates passed; Windows572/572, others560pass+12existingplatformskips, all installed Git18/18. Original Windows fixture failure is preserved. Merged-main checks are being observed; this checkpoint does not assume their outcome. Its #66 implementation claim is inactive; full issue acceptance remains open.
+
+[Installer-review evidence](validation/2026-11-09-installer-review.md): four tests reproduce missing root-installer coverage, RED0/4 to focused GREEN31/31. The scanner adds one manifest entry; installer behavior and user settings are untouched. CLI231/233/235 retain stage/weight/acceptance. Independent review and final exact-head gates precede expected-head merge/main verification.
+
+Next dependency-ready defect: normal npm prepack currently tests before compiling, allowing stale dist and failing clean packages (#3). Native read-only cancellation propagation (#62) is also a confirmed source gap with scoped test guidance. No paid/model lane or production bridge deployment is implied.
+
+Read-only operational refresh in #209 records current management Worker19/f9dee583 and separate staging versionaf4fd06e. The historical Windows-manager/Worker receipt is not relabeled as a new deployment.
+
+---
+
 # Git boundary development checkpoint — 2026-11-09 UTC
 
 Session `MTERM-WEB-20261109T031131Z-e0efd5d4` now owns `coord/mterm/issue-66`, branch `fix/issue-66-git-boundaries-20261109`, based on `9d4a1815e9fcc005cfc5dd34e0eff1b74cb3cbb4`.

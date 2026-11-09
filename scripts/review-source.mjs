@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-09-installer-review; include the supported root installer in reviewed source.
 // AI-Change: 2026-11-07-aug013-evidence-matrix
 // Existing review hashing, shared by development-only roadmap and expansion checks.
 import fs from 'node:fs/promises';
@@ -33,6 +34,7 @@ const singles = [
   '.prettierrc.json',
   '.gitattributes',
   'Start-MTerm-CLI.ps1',
+  'Install-MTermCLI.ps1',
   'AGENTS.md',
   'CONTRIBUTING.md',
   'CLAUDE.md',

@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-09-git-boundaries; confine common metadata and deny executable filters before read-only inspection.
 // AI-Change: 2026-10-04-local-mcp (OpenAI / GPT-6 Astra Pro; self-reported)
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -69,15 +70,61 @@ export class GitService {
       fail('GIT_FAILED', 'Git inspection failed; check that this is an accessible repository.');
     }
   }
+  private async metadataDirectory(output: string, signal?: AbortSignal) {
+    const reported = output.replace(/\r?\n$/, '');
+    if (!reported || reported.length > 4096 || !path.isAbsolute(reported) || /[\x00-\x1f\x7f]/.test(reported))
+      fail('GIT_FAILED', 'Git reported an invalid repository directory.');
+    const selected = path.resolve(reported);
+    if (!this.policy.inside(selected))
+      fail('GIT_OUTSIDE_ROOT', 'Repository worktree or metadata lies outside the trusted scope.');
+    cancelled(signal);
+    const canonical = await fs.realpath(selected);
+    cancelled(signal);
+    if (!this.policy.inside(canonical))
+      fail('GIT_OUTSIDE_ROOT', 'Repository worktree or metadata lies outside the trusted scope.');
+    const info = await fs.stat(canonical);
+    cancelled(signal);
+    if (!info.isDirectory()) fail('GIT_FAILED', 'Git metadata must be a directory.');
+  }
+  private async safeConfiguration(cwd: string, signal?: AbortSignal) {
+    // Values may contain credentials or command strings; admission needs only bounded key names.
+    // Reject includes rather than recursively following configuration that could hide a filter.
+    const output = await this.run(
+      cwd,
+      ['config', '--null', '--name-only', '--list', '--no-includes'],
+      signal,
+    );
+    const keys = output ? output.split('\x00') : [];
+    if (output && keys.pop() !== '')
+      fail('GIT_UNSAFE_CONFIG', 'Git configuration inspection returned invalid framing.');
+    if (keys.length > 4096 || keys.some((key) => !key || key.length > 4096))
+      fail('GIT_UNSAFE_CONFIG', 'Git configuration exceeds the inspection limits.');
+    for (const name of keys) {
+      const key = name.toLowerCase();
+      if (
+        key === 'include.path' ||
+        (key.startsWith('includeif.') && key.endsWith('.path')) ||
+        (key.startsWith('filter.') &&
+          ['.clean', '.smudge', '.process'].some((suffix) => key.endsWith(suffix)))
+      )
+        fail(
+          'GIT_UNSAFE_CONFIG',
+          'Read-only Git inspection does not support repository command filters or configuration includes.',
+        );
+    }
+    cancelled(signal);
+  }
   private async cwd(input: string, signal?: AbortSignal) {
     const cwd = await this.policy.resolve(input);
     if (!(await fs.stat(cwd)).isDirectory()) fail('NOT_DIRECTORY', 'Git path must be a directory.');
-    const top = (await this.run(cwd, ['rev-parse', '--show-toplevel'], signal)).trim();
-    if (!this.policy.inside(path.resolve(top)))
-      fail('GIT_OUTSIDE_ROOT', 'The enclosing repository extends outside the trusted root.');
-    const gitDir = (await this.run(cwd, ['rev-parse', '--absolute-git-dir'], signal)).trim();
-    if (!this.policy.inside(path.resolve(gitDir)))
-      fail('GIT_OUTSIDE_ROOT', 'Git metadata lies outside the trusted root.');
+    await this.metadataDirectory(await this.run(cwd, ['rev-parse', '--show-toplevel'], signal), signal);
+    await this.metadataDirectory(await this.run(cwd, ['rev-parse', '--absolute-git-dir'], signal), signal);
+    // A private worktree git-dir can be inside the root while its shared object/config directory is not.
+    await this.metadataDirectory(
+      await this.run(cwd, ['rev-parse', '--path-format=absolute', '--git-common-dir'], signal),
+      signal,
+    );
+    await this.safeConfiguration(cwd, signal);
     return cwd;
   }
   async status(input: unknown, signal?: AbortSignal) {

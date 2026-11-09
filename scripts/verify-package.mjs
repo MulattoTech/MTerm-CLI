@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-09-git-boundaries; qualify native Git metadata and filter denials from the installed package.
 // Modified: 2026-11-09-owned-stop-retry; exercise explicit recovery against the actual installed process service.
 // Modified: 2026-11-08-aug003-registry-persistence; actual installed file/registry fault regressions.
 // Modified: 2026-11-08-aug005-lifecycle-observation; require both causal deadline phases from the installed runtime.
@@ -468,6 +469,54 @@ const installedProcessStopRecovery = {
   log: stopRecoveryLog,
   logSha256: createHash('sha256').update(stopRecoveryOutput).digest('hex'),
 };
+const gitBindings = [...packBindings];
+for (const name of ['git.js', 'executables.js']) {
+  const source = await fs.readFile(path.join(root, 'dist', name));
+  const bytes = await fs.readFile(path.resolve(path.dirname(installed), '../dist', name));
+  assert.deepEqual(bytes, source, 'Installed Git boundary differs from compiled source');
+  gitBindings.push({ path: 'dist/' + name, sha256: createHash('sha256').update(bytes).digest('hex') });
+}
+const gitBoundaryAcceptance = await exec(
+  process.execPath,
+  ['--test', '--test-reporter=tap', '--test-concurrency=1', path.join(root, 'tests/git-boundaries.test.mjs')],
+  {
+    cwd: home,
+    env: { ...env, MTERM_VERIFY_BIN: installed },
+    timeout: 90000,
+    maxBuffer: 1048576,
+    windowsHide: true,
+  },
+).then(
+  (result) => ({ ...result, exit: 0 }),
+  (error) => ({ stdout: error.stdout ?? '', stderr: error.stderr ?? '', exit: error.code ?? 'unknown' }),
+);
+const gitBoundaryOutput = gitBoundaryAcceptance.stdout + gitBoundaryAcceptance.stderr;
+const gitBoundaryLog = path.join(output, 'git-boundaries-tests.tap');
+await fs.writeFile(gitBoundaryLog, gitBoundaryOutput);
+assert.equal(gitBoundaryAcceptance.exit, 0, 'Installed Git boundary tests failed; see retained log');
+const gitBoundaryTests = Number(gitBoundaryAcceptance.stdout.match(/^# tests (\d+)$/m)?.[1]);
+assert.ok(gitBoundaryTests >= 18, 'Installed Git boundary tests did not run');
+for (const field of ['fail', 'skipped', 'cancelled'])
+  assert.match(gitBoundaryAcceptance.stdout, new RegExp('^# ' + field + ' 0$', 'm'));
+const installedGitBoundaries = {
+  ok: true,
+  tests: gitBoundaryTests,
+  failed: 0,
+  skipped: 0,
+  cancelled: 0,
+  moduleBindings: gitBindings,
+  fixtureSha256: createHash('sha256')
+    .update(await fs.readFile(path.join(root, 'tests/git-boundaries.test.mjs')))
+    .digest('hex'),
+  realGitFixtureRepositories: true,
+  defaultMcpExecutionDisabled: true,
+  objectAlternatesQualified: false,
+  hostileRepositorySandbox: false,
+  fromOutsideCheckout: true,
+  modelCalls: 0,
+  log: gitBoundaryLog,
+  logSha256: createHash('sha256').update(gitBoundaryOutput).digest('hex'),
+};
 const isolationBindings = [];
 for (const name of [
   'cli.js',
@@ -695,6 +744,7 @@ const report = {
   installedRegistryPersistence,
   installedResourceBudgets,
   installedProcessStopRecovery,
+  installedGitBoundaries,
   installedIsolation,
   installedProvenance,
   fullTransitiveLicenseClearance: false,

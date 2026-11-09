@@ -122,11 +122,26 @@ Linked layouts work only when all those identities are already authorized; no ro
 a `.git` pointer. Normal file tools still refuse Git metadata.
 
 Before status/diff, a bounded keys-only query refuses repository `filter.*.clean`, `.smudge` and
-`.process` declarations and `include.path` / `includeIf.*.path`. The fixed `GIT_UNSAFE_CONFIG` error
-states that these configurations are unsupported; it contains no key, command, path or value.
-This deliberately includes unused, empty and duplicate declarations and inactive conditional
-includes. The adapter does not remove or rewrite configuration or silently change filter semantics.
-Benign keys such as `filter.*.required` alone do not grant or trigger command execution.
+`.process` declarations and `include.path` / `includeIf.*.path`. It also refuses
+`extensions.partialClone`, `remote.*.promisor` and `remote.*.partialCloneFilter` declarations.
+The fixed `GIT_UNSAFE_CONFIG` error states that these configurations are unsupported; it contains
+no key, command, path or value. This deliberately includes unused, empty and duplicate declarations,
+false promisor values, complete promisor repositories and inactive conditional includes. Key
+comparison is case-insensitive and preserves remote subsection boundaries, including dotted names.
+The adapter does not remove or rewrite configuration or silently change filter semantics. Ordinary
+remote URL/fetch settings and benign keys such as `filter.*.required` remain supported.
+
+The Git read adapter also sets `GIT_NO_LAZY_FETCH=1` for every native invocation. This is additional suppression where
+the selected Git version supports it; it is not an OS network boundary or a new enforced Git minimum.
+The [implicit-fetch SDK regression](validation/2026-11-09-git-no-lazy-fetch.md) uses separate owned
+local donors and a marker-only helper. Native ON/OFF calibrations establish the local fetch route
+and suppression before distinct SDK observations. The unchanged-source baseline invoked the helper
+for status and both diff modes when the required object was missing; status and unstaged diff also
+changed the disposable repository config. The corrected source refuses those declarations before
+status/diff and preserves the covered repository, donor, helper and home bytes. Native ON calibration
+effects remain separate from SDK immutability assertions. The ordinary-configuration control retains
+usable status and distinct staged/unstaged diffs. Actual installed and platform evidence is required
+for each delivered candidate; no result is inferred from a fixture's source alone.
 
 The [ordinary-worktree SDK regression](validation/2026-11-09-installed-worktree.md)
 uses a normal independent clone and an untouched Git-created linked layout. It
@@ -137,15 +152,19 @@ repository config. The fixture compares complete owned file/metadata byte
 manifests around actual stdio MCP calls and observes natural child close without
 signals. Reported capability fields, including `networkListener:false`, are
 asserted; this is not an independent OS listener census. The initial Linux source
-cases passed on unchanged production code. Installed/platform qualification is
-separately required through the normal package gates. No root discovery or new
-grant follows from a Git pointer, and byte equality is not a concurrent-writer defense.
+cases passed on unchanged production code. Its [original delivery](validation/2026-11-09-installed-worktree-delivery.json)
+separately qualified installed24 and all candidate/main platform gates. The existing installed
+Git gate now requires36 cases: original18, ordinary-worktree6 and implicit-fetch12. New candidates
+must satisfy those actual package gates. No root discovery or new grant follows from a Git pointer,
+and byte equality is not a concurrent-writer defense.
 
 These are scoped controls, not a hostile-repository sandbox. Initial Git discovery may consult
-configuration/includes before admission. Object alternates, partial-clone implicit fetches and
-other native Git extensions require separate qualification; an outside concurrent writer can
-still race checks. No explicit Git write, fetch, push or network tool is exposed. Full AUTO-001
-acceptance remains open; see the dated Git-boundary regression evidence.
+configuration/includes before admission; the key check still follows the three metadata probes.
+Object alternates, older Git behavior, other native Git extensions and full cross-workspace
+relationship proof require separate qualification; an outside concurrent writer can still race
+checks. The bounded partial-clone finding does not establish universal network denial or protection
+against every repository extension. No explicit Git write, fetch, push or network tool is exposed.
+Full AUTO-001 acceptance remains open; see the dated Git-boundary and implicit-fetch evidence.
 
 ## Publication boundary
 

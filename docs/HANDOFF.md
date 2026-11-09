@@ -1,3 +1,86 @@
+# Implicit Git fetch correction checkpoint — 2026-11-09 UTC
+
+Session `MTERM-WEB-20261109T131339Z-resume-a9287b3c` owns the separate
+[issue237 claim](https://github.com/MulattoTech/MTerm-CLI/issues/237#issuecomment-6751384480).
+The atomic claim and isolated worker began at qualified3077. Root integration uses separately
+qualified actual main `c351b6146ba1d3de4a1712a886dc7300ccdc3d70`; the four-path worker
+`81fa3dfc3d5fbf31e78afb5ad095ffa0828764cd` was ordinarily serialized, preserving its earlier
+fixture commits and all receipts. Root source checkpoint `8421fdea84df8e0b52bf0269ac4288e9eeef3646`
+contains the reviewed installed verifier and immutable source inputs for the combined44 run.
+Root alone owns shared records, metrics, publication and delivery.
+
+The Git read adapter now rejects `extensions.partialClone`, `remote.*.promisor` and
+`remote.*.partialCloneFilter` declarations through the existing bounded keys-only admission check.
+This deliberately includes complete repositories, false/empty/duplicate declarations and unused
+remote names. Every adapter invocation also sets `GIT_NO_LAZY_FETCH=1` as additional suppression
+where the native Git version supports it. Fixed sanitized `GIT_UNSAFE_CONFIG` responses preserve
+existing roots, filters/includes, limits, cancellation and ordinary remote configuration.
+
+[The dated regression record](validation/2026-11-09-git-no-lazy-fetch.md) preserves the first
+mixed observation: four fixture EPIPE setup failures, one actual staged-diff helper invocation,
+six configuration-policy differences and one positive pass. A reviewed fixture-only correction
+ends unused stdin without an empty write. It retains every assertion, error check and calibration.
+The corrected unchanged-production run reached all12 SDK cases and all6 native calibrations:
+status and both diff modes invoked the controlled local helper for missing objects; status and
+unstaged diff also changed only the disposable repository config by32 bytes. Eight declaration
+cases separately exposed the intended policy difference. The ordinary positive control passed.
+No setup-invalid result was relabeled a production failure.
+
+The frozen revised fixture stayed byte-identical through the production correction. Worker38/38,
+independent peer12/12 and serialized root44/44 are separate successful source executions on
+Node24.22.1/Git2.52.0/Linux x86_64. Each had empty test stderr, zero skips/cancellations/todos and
+unchanged execution bindings:120 for worker/peer,121 for root. In each run, the new12 cases collectively
+establish27 sanitized refusals and3 ordinary successes across30 SDK responses. All covered SDK
+manifests remain equal, all three missing targets stay absent, helper markers stay absent, and
+actual children close naturally without signals or kill attempts. Native ON calibration writes
+remain separately recorded. Root44 also retains all18 original boundaries, all6 ordinary clone/
+worktree cases and existing Git/MCP8. Complete manifests are per-case observations, not a fixed
+universal entry count or a concurrent-writer guarantee.
+
+[Durable source evidence](validation/2026-11-09-git-no-lazy-fetch-source-evidence.json) includes
+complete receipts, input hashes and lossless gzip archives of all five raw TAP captures, plus the
+original fixture. Both compressed and decompressed hashes are recorded. Raw whitespace-only Node
+diagnostic lines are preserved without relaxing repository whitespace checks. Independent source,
+verifier and root pre-run reviews are bound in the [change record](ai/changes/2026-11-09-git-no-lazy-fetch.json).
+Normal explicit roadmap review/render/check, reviewed build/parity, typecheck, formatting and
+whitespace all passed once at22:00:35–22:00:41UTC. The root integration record retains all seven
+actual exits and complete outputs, including the known npm configuration warnings. All121 source
+execution bindings and54 compiled modules remain byte-identical after the normal build. The parity
+baseline check preserves the visible DCP0/48 result; it does not award runtime parity.
+
+The existing installed Git gate now requires exactly36/36: preserved18 + worktree6 + new12,
+with all three fixture hashes and installed module bindings. **Local installed36 is NOT RUN.**
+No new installation was attempted after the previously retained offline metadata blockers.
+The known local Unix-socket limit supplies no full-local or quick PASS. All six exact-candidate
+hosted jobs, including five actual normal installed36 lanes, remain required before ordinary
+expected-head merge; the actual main must then pass six separate fresh jobs.
+
+No minimum Git version was introduced. Initial discovery still precedes configuration admission,
+and older Git behavior, alternate object stores, malformed metadata relationships, other native
+extensions and hostile concurrent writers remain unqualified. This is no general network or
+hostile-repository sandbox. Reported capability fields do not replace an OS listener census.
+CLI266/283/284 receive bounded evidence only; all300 protected rows, their seed and stages remain
+unchanged. Maturity remains29.36%,0complete45blocked126notStarted; DCP0/48 andWEB0/12. Parent#66 stays open.
+
+[Worktree PR236 is fully delivered](validation/2026-11-09-installed-worktree-delivery.json):
+its exactfc9 candidate and actualc351 main separately passed six jobs and installedGit24. The tracker
+was marked closed21:13:17UTC, while actual-main acceptance was recorded21:24:03 and the claim was
+released21:24:04. The close event does not establish its cause. The original negative PR wording
+is only a plausible automatic trigger; the original history and public correction are preserved.
+Future PR descriptions use neutral issue references until tracker closure is intended.
+
+The provider lifecycle and connected Windows cleanup in#232 remain open. The two earlier rejected
+creates remain the entire recorded attempt history; further token writes stay held. No new provider,
+connected Windows, deployment, production bridge, model request, global runtime or unrelated-project
+operation accompanied this source correction. Preserve the dirty primary checkout, owner state,
+retained lock and historical refs. Standing owner authorization covers normal qualified delivery.
+
+Next: finish the independent final shared/source/catalog review, publish the immutable candidate,
+qualify all six actual candidate jobs, merge normally with the expected head, then separately
+qualify actual main and reconcile the narrow claim. Continue dependency-ready work afterward.
+
+---
+
 # Ordinary-worktree SDK qualification checkpoint — 2026-11-09 UTC
 
 Session `MTERM-WEB-20261109T131339Z-resume-a9287b3c` owns the separate

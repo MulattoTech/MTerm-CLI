@@ -491,7 +491,12 @@ const report = await withPackageWorkspace(
       assert.deepEqual(bytes, source, 'Installed Git boundary differs from compiled source');
       gitBindings.push({ path: 'dist/' + name, sha256: createHash('sha256').update(bytes).digest('hex') });
     }
-    const gitFixtures = ['tests/git-boundaries.test.mjs', 'tests/git-worktree-mcp.test.mjs'];
+    // Modified: 2026-11-09-git-no-lazy-fetch; qualify bounded partial-clone admission through installed MCP.
+    const gitFixtures = [
+      'tests/git-boundaries.test.mjs',
+      'tests/git-worktree-mcp.test.mjs',
+      'tests/git-no-lazy-fetch.test.mjs',
+    ];
     const gitFixtureBindings = await Promise.all(
       gitFixtures.map(async (file) => ({
         path: file,
@@ -524,8 +529,12 @@ const report = await withPackageWorkspace(
     await fs.writeFile(gitBoundaryLog, gitBoundaryOutput);
     assert.equal(gitBoundaryAcceptance.exit, 0, 'Installed Git boundary tests failed; see retained log');
     const gitBoundaryTests = Number(gitBoundaryAcceptance.stdout.match(/^# tests (\d+)$/m)?.[1]);
-    assert.equal(gitBoundaryTests, 24, 'All 18 legacy and six ordinary-worktree cases must run');
-    assert.match(gitBoundaryAcceptance.stdout, /^# pass 24$/m);
+    assert.equal(
+      gitBoundaryTests,
+      36,
+      'All 18 legacy, six ordinary-worktree and 12 implicit-fetch cases must run',
+    );
+    assert.match(gitBoundaryAcceptance.stdout, /^# pass 36$/m);
     for (const field of ['fail', 'skipped', 'cancelled', 'todo'])
       assert.match(gitBoundaryAcceptance.stdout, new RegExp('^# ' + field + ' 0$', 'm'));
     for (const binding of gitFixtureBindings)
@@ -558,6 +567,23 @@ const report = await withPackageWorkspace(
         exactOwnerAndEffectiveRoots: true,
         completeReadonlyToolInventory: true,
         unchangedOwnedByteManifests: true,
+        naturalOwnedChildCloseWithoutSignals: true,
+        externalOwnedChildCwdAndHome: true,
+      },
+      implicitFetchMcp: {
+        tests: 12,
+        fixtureSha256: gitFixtureBindings[2].sha256,
+        localDonorAndMarkerOnlyHelper: true,
+        nativeLazyFetchOnAndOffCalibrated: true,
+        missingHeadTreeAndIndexOrHeadBlobs: true,
+        allThreePromisorDeclarationFamiliesDenied: true,
+        completePromisorRepositoriesDeliberatelyDenied: true,
+        falseEmptyDuplicateAndUnusedDeclarationsDenied: true,
+        ordinaryRemoteConfigurationAndDistinctDiffsUsable: true,
+        sanitizedUnsafeConfigErrors: true,
+        sdkDidNotInvokeConfiguredUploadPackHelper: true,
+        sdkMissingObjectsRemainAbsent: true,
+        sdkOwnedByteManifestsUnchanged: true,
         naturalOwnedChildCloseWithoutSignals: true,
         externalOwnedChildCwdAndHome: true,
       },

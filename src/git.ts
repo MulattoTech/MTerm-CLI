@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 // Modified: 2026-11-09-git-boundaries; confine common metadata and deny executable filters before read-only inspection.
+// Modified: 2026-11-09-git-no-lazy-fetch; reject partial clone declarations and suppress implicit fetch.
 // AI-Change: 2026-10-04-local-mcp (OpenAI / GPT-6 Astra Pro; self-reported)
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -57,6 +58,7 @@ export class GitService {
             GIT_CONFIG_GLOBAL: process.platform === 'win32' ? 'NUL' : '/dev/null',
             GIT_OPTIONAL_LOCKS: '0',
             GIT_TERMINAL_PROMPT: '0',
+            GIT_NO_LAZY_FETCH: '1',
           },
         },
       );
@@ -104,12 +106,17 @@ export class GitService {
       if (
         key === 'include.path' ||
         (key.startsWith('includeif.') && key.endsWith('.path')) ||
+        key === 'extensions.partialclone' ||
+        (key.startsWith('remote.') &&
+          ['.promisor', '.partialclonefilter'].some((suffix) =>
+            key.slice('remote.'.length).endsWith(suffix),
+          )) ||
         (key.startsWith('filter.') &&
           ['.clean', '.smudge', '.process'].some((suffix) => key.endsWith(suffix)))
       )
         fail(
           'GIT_UNSAFE_CONFIG',
-          'Read-only Git inspection does not support repository command filters or configuration includes.',
+          'Read-only Git inspection does not support repository command filters, configuration includes or partial clone declarations.',
         );
     }
     cancelled(signal);

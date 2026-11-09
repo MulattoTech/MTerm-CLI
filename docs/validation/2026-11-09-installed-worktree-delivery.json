@@ -1,0 +1,2495 @@
+{
+  "schemaVersion": 2,
+  "status": "SOURCE_DELIVERY_ACCEPTED_AFTER_SEPARATE_CANDIDATE_AND_ACTUAL_MAIN_QUALIFICATION",
+  "recordedAt": "2026-11-09T21:35:52.278809+00:00",
+  "session": "MTERM-WEB-20261109T131339Z-resume-a9287b3c",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "attribution": "Self-reported metadata; no platform review approval claimed",
+  "issue": 235,
+  "pullRequest": 236,
+  "parentIssue": 66,
+  "sourceDelivery": {
+    "candidate": "fc9a0f58cde51b7f3143b0ed06e2fa04188d8b83",
+    "tree": "c82839e6b51182bcfc3820d65aabe4716c8491c4",
+    "qualifiedBase": "3077a7fe1927d1ae17aab99570832d6f9e1e3819",
+    "localReviewedHead": "5f143c9cc13d6dff8582c7676af468739c6d6a38",
+    "workerCommit": "f37e9c1021bf457cfbe9a65e2a8303856ee7481a",
+    "serializedWorker": "b457bdd887a57a1d18933092d487491337e00ceb",
+    "actualMain": "c351b6146ba1d3de4a1712a886dc7300ccdc3d70",
+    "actualParents": [
+      "3077a7fe1927d1ae17aab99570832d6f9e1e3819",
+      "fc9a0f58cde51b7f3143b0ed06e2fa04188d8b83"
+    ],
+    "mergedAt": "2026-11-09T21:13:15Z",
+    "expectedHeadNormalMerge": true,
+    "actualMainAudit": "ACTUAL_MAIN_HOSTED_CLEAR; fresh push evidence, no candidate outcome reuse",
+    "actualMainReview": {
+      "path": "artifacts/issue-235-main-review-c351b614/review.json",
+      "sha256": "c09bb685f159146a0456d35f922c88809127af2ca5a210e91c2d9c004c1331f6",
+      "bytes": 42351
+    },
+    "narrowScopeAcceptanceComment": "https://github.com/MulattoTech/MTerm-CLI/issues/235#issuecomment-6751837057"
+  },
+  "candidateAudit": {
+    "receipt": "artifacts/issue-235-candidate-review-fc9a0f58/review.json",
+    "sha256": "2ec43d446e36ef96724f0e142438e4045301a947502795139e454400be8ff504",
+    "checks": 89,
+    "runs": [
+      {
+        "id": 42698349128,
+        "path": ".github/workflows/ci-fast.yml",
+        "head_sha": "fc9a0f58cde51b7f3143b0ed06e2fa04188d8b83",
+        "event": "pull_request",
+        "run_attempt": 1,
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-09T21:00:33Z",
+        "updated_at": "2026-11-09T21:03:45Z"
+      },
+      {
+        "id": 42698348774,
+        "path": ".github/workflows/cli-ci.yml",
+        "head_sha": "fc9a0f58cde51b7f3143b0ed06e2fa04188d8b83",
+        "event": "pull_request",
+        "run_attempt": 1,
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-09T21:00:33Z",
+        "updated_at": "2026-11-09T21:08:54Z"
+      }
+    ],
+    "jobs": [
+      {
+        "id": 129436135058,
+        "name": "CI / fast",
+        "status": "completed",
+        "conclusion": "success",
+        "sourceCounts": {
+          "tests": 1263,
+          "suites": 0,
+          "pass": 1251,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 12,
+          "todo": 0
+        },
+        "requiredTitles": {
+          "recovery": {
+            "expected": 221,
+            "passedExactlyOnce": 221,
+            "missingOrDuplicated": []
+          },
+          "helper": {
+            "expected": 134,
+            "passedExactlyOnce": 134,
+            "missingOrDuplicated": []
+          },
+          "staging": {
+            "expected": 54,
+            "passedExactlyOnce": 54,
+            "missingOrDuplicated": []
+          },
+          "pairing": {
+            "expected": 60,
+            "passedExactlyOnce": 60,
+            "missingOrDuplicated": []
+          },
+          "access": {
+            "expected": 22,
+            "passedExactlyOnce": 22,
+            "missingOrDuplicated": []
+          },
+          "oauth": {
+            "expected": 10,
+            "passedExactlyOnce": 10,
+            "missingOrDuplicated": []
+          },
+          "gitLegacy": {
+            "expected": 18,
+            "passedExactlyOnce": 18,
+            "missingOrDuplicated": []
+          },
+          "ordinaryWorktreeMcp": {
+            "expected": 6,
+            "passedExactlyOnce": 6,
+            "missingOrDuplicated": []
+          }
+        },
+        "rawLog": {
+          "path": "/workspace/scratch/a9287b3cfe09/mterm-resume/artifacts/issue-235-candidate-review-fc9a0f58/job-129436135058.log",
+          "sha256": "4195ecc04f4a55720e287010ec889abb113e4e507e57b88dcd080540e034fa6c",
+          "bytes": 247711
+        },
+        "installedGit": null
+      },
+      {
+        "id": 129436128652,
+        "name": "Native Linux isolation / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "sourceCounts": null,
+        "requiredTitles": null,
+        "rawLog": {
+          "path": "/workspace/scratch/a9287b3cfe09/mterm-resume/artifacts/issue-235-candidate-review-fc9a0f58/native/native-job.log",
+          "sha256": "2e72a718f7854e3d2ee307bec054954690662d44d46ccd97855de1f63d8f583e",
+          "bytes": 618701
+        },
+        "installedGit": {
+          "reportedTests": 24,
+          "allOrdinaryWorktreeFieldsAndExactFixtureModuleHashes": true,
+          "reportedTapSha256": "29d3bb47e850d696c75b18126b060037b90fdc88d266b88a59a81763bcde26d0",
+          "rawTapBytesIndependentlyRehashed": false,
+          "pass24Todo0AndExit0AssertedByExactReviewedVerifier": true
+        }
+      },
+      {
+        "id": 129436128838,
+        "name": "macos-15-intel / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "sourceCounts": {
+          "tests": 1263,
+          "suites": 0,
+          "pass": 1251,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 12,
+          "todo": 0
+        },
+        "requiredTitles": {
+          "recovery": {
+            "expected": 221,
+            "passedExactlyOnce": 221,
+            "missingOrDuplicated": []
+          },
+          "helper": {
+            "expected": 134,
+            "passedExactlyOnce": 134,
+            "missingOrDuplicated": []
+          },
+          "staging": {
+            "expected": 54,
+            "passedExactlyOnce": 54,
+            "missingOrDuplicated": []
+          },
+          "pairing": {
+            "expected": 60,
+            "passedExactlyOnce": 60,
+            "missingOrDuplicated": []
+          },
+          "access": {
+            "expected": 22,
+            "passedExactlyOnce": 22,
+            "missingOrDuplicated": []
+          },
+          "oauth": {
+            "expected": 10,
+            "passedExactlyOnce": 10,
+            "missingOrDuplicated": []
+          },
+          "gitLegacy": {
+            "expected": 18,
+            "passedExactlyOnce": 18,
+            "missingOrDuplicated": []
+          },
+          "ordinaryWorktreeMcp": {
+            "expected": 6,
+            "passedExactlyOnce": 6,
+            "missingOrDuplicated": []
+          }
+        },
+        "rawLog": {
+          "path": "/workspace/scratch/a9287b3cfe09/mterm-resume/artifacts/issue-235-candidate-review-fc9a0f58/job-129436128838.log",
+          "sha256": "fee3b37f737448b810267e7f521ef7fe6aee62ce694479bd75ba59645ec5c647",
+          "bytes": 340415
+        },
+        "installedGit": {
+          "reportedTests": 24,
+          "allOrdinaryWorktreeFieldsAndExactFixtureModuleHashes": true,
+          "reportedTapSha256": "cd2814902cac982329832cede3cc77127dc3a491091d904fde9912f87b84b5fa",
+          "rawTapBytesIndependentlyRehashed": false,
+          "pass24Todo0AndExit0AssertedByExactReviewedVerifier": true
+        }
+      },
+      {
+        "id": 129436129018,
+        "name": "macos-15 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "sourceCounts": {
+          "tests": 1263,
+          "suites": 0,
+          "pass": 1251,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 12,
+          "todo": 0
+        },
+        "requiredTitles": {
+          "recovery": {
+            "expected": 221,
+            "passedExactlyOnce": 221,
+            "missingOrDuplicated": []
+          },
+          "helper": {
+            "expected": 134,
+            "passedExactlyOnce": 134,
+            "missingOrDuplicated": []
+          },
+          "staging": {
+            "expected": 54,
+            "passedExactlyOnce": 54,
+            "missingOrDuplicated": []
+          },
+          "pairing": {
+            "expected": 60,
+            "passedExactlyOnce": 60,
+            "missingOrDuplicated": []
+          },
+          "access": {
+            "expected": 22,
+            "passedExactlyOnce": 22,
+            "missingOrDuplicated": []
+          },
+          "oauth": {
+            "expected": 10,
+            "passedExactlyOnce": 10,
+            "missingOrDuplicated": []
+          },
+          "gitLegacy": {
+            "expected": 18,
+            "passedExactlyOnce": 18,
+            "missingOrDuplicated": []
+          },
+          "ordinaryWorktreeMcp": {
+            "expected": 6,
+            "passedExactlyOnce": 6,
+            "missingOrDuplicated": []
+          }
+        },
+        "rawLog": {
+          "path": "/workspace/scratch/a9287b3cfe09/mterm-resume/artifacts/issue-235-candidate-review-fc9a0f58/job-129436129018.log",
+          "sha256": "193650643bdce7598546408fac788e6725322a3831f83faa18a14009bfbd486e",
+          "bytes": 337691
+        },
+        "installedGit": {
+          "reportedTests": 24,
+          "allOrdinaryWorktreeFieldsAndExactFixtureModuleHashes": true,
+          "reportedTapSha256": "1025cf29bec94b23f20e108c55e5849393d2b1f5b48e03b104ea12733e3ea9ca",
+          "rawTapBytesIndependentlyRehashed": false,
+          "pass24Todo0AndExit0AssertedByExactReviewedVerifier": true
+        }
+      },
+      {
+        "id": 129436129438,
+        "name": "ubuntu-24.04 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "sourceCounts": {
+          "tests": 1263,
+          "suites": 0,
+          "pass": 1251,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 12,
+          "todo": 0
+        },
+        "requiredTitles": {
+          "recovery": {
+            "expected": 221,
+            "passedExactlyOnce": 221,
+            "missingOrDuplicated": []
+          },
+          "helper": {
+            "expected": 134,
+            "passedExactlyOnce": 134,
+            "missingOrDuplicated": []
+          },
+          "staging": {
+            "expected": 54,
+            "passedExactlyOnce": 54,
+            "missingOrDuplicated": []
+          },
+          "pairing": {
+            "expected": 60,
+            "passedExactlyOnce": 60,
+            "missingOrDuplicated": []
+          },
+          "access": {
+            "expected": 22,
+            "passedExactlyOnce": 22,
+            "missingOrDuplicated": []
+          },
+          "oauth": {
+            "expected": 10,
+            "passedExactlyOnce": 10,
+            "missingOrDuplicated": []
+          },
+          "gitLegacy": {
+            "expected": 18,
+            "passedExactlyOnce": 18,
+            "missingOrDuplicated": []
+          },
+          "ordinaryWorktreeMcp": {
+            "expected": 6,
+            "passedExactlyOnce": 6,
+            "missingOrDuplicated": []
+          }
+        },
+        "rawLog": {
+          "path": "/workspace/scratch/a9287b3cfe09/mterm-resume/artifacts/issue-235-candidate-review-fc9a0f58/job-129436129438.log",
+          "sha256": "a4b3fb854f4e23f7df2985d725db0765caacb1008f08af56ef80a8fb0e5e0078",
+          "bytes": 336806
+        },
+        "installedGit": {
+          "reportedTests": 24,
+          "allOrdinaryWorktreeFieldsAndExactFixtureModuleHashes": true,
+          "reportedTapSha256": "d0bd571820f53df54055e5060271f862a44ba46002a5a9faf4dcc10b649617ab",
+          "rawTapBytesIndependentlyRehashed": false,
+          "pass24Todo0AndExit0AssertedByExactReviewedVerifier": true
+        }
+      },
+      {
+        "id": 129436129520,
+        "name": "windows-2022 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "sourceCounts": {
+          "tests": 1263,
+          "suites": 0,
+          "pass": 1263,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "requiredTitles": {
+          "recovery": {
+            "expected": 221,
+            "passedExactlyOnce": 221,
+            "missingOrDuplicated": []
+          },
+          "helper": {
+            "expected": 134,
+            "passedExactlyOnce": 134,
+            "missingOrDuplicated": []
+          },
+          "staging": {
+            "expected": 54,
+            "passedExactlyOnce": 54,
+            "missingOrDuplicated": []
+          },
+          "pairing": {
+            "expected": 60,
+            "passedExactlyOnce": 60,
+            "missingOrDuplicated": []
+          },
+          "access": {
+            "expected": 22,
+            "passedExactlyOnce": 22,
+            "missingOrDuplicated": []
+          },
+          "oauth": {
+            "expected": 10,
+            "passedExactlyOnce": 10,
+            "missingOrDuplicated": []
+          },
+          "gitLegacy": {
+            "expected": 18,
+            "passedExactlyOnce": 18,
+            "missingOrDuplicated": []
+          },
+          "ordinaryWorktreeMcp": {
+            "expected": 6,
+            "passedExactlyOnce": 6,
+            "missingOrDuplicated": []
+          }
+        },
+        "rawLog": {
+          "path": "/workspace/scratch/a9287b3cfe09/mterm-resume/artifacts/issue-235-candidate-review-fc9a0f58/job-129436129520.log",
+          "sha256": "8cde0014d48e3294dadf995067e897a901855d187a0b77a71d5453b570856a43",
+          "bytes": 340832
+        },
+        "installedGit": {
+          "reportedTests": 24,
+          "allOrdinaryWorktreeFieldsAndExactFixtureModuleHashes": true,
+          "reportedTapSha256": "b3276159a793f76bf231db95eee8af82a8050b4be24842726618a8ae6e33fa99",
+          "rawTapBytesIndependentlyRehashed": false,
+          "pass24Todo0AndExit0AssertedByExactReviewedVerifier": true
+        }
+      }
+    ],
+    "source": {
+      "trackedBlobs": 845,
+      "treeEntries": 881,
+      "compiledFiles": 54,
+      "sourceSnapshot": {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/source-snapshot.json",
+        "sha256": "c9edd67d5110491402713856b21c386b5edfd536907866bf9db9d73375025b56",
+        "bytes": 311056
+      },
+      "sharedReview": {
+        "path": "artifacts/issue-235-shared-review/review.json",
+        "sha256": "93fcc0b42add3310b4895bb44143129907888578d7bc5df8c95520257b596aab",
+        "bytes": 36477
+      },
+      "qualifiedBuildReceipt": {
+        "path": "artifacts/issue-235-root-gates/receipt.json",
+        "sha256": "498a8dd7c18e0a897549453e0d682310da8cdfb5ae38ffa88970d2a48b93bffc",
+        "bytes": 5025
+      }
+    },
+    "selectedLogReview": {
+      "path": "artifacts/issue-235-candidate-review-fc9a0f58/full-log-review-crlf-only.json",
+      "sha256": "5d21dcf5ba826d0bd5acb56febf7063118640df1f079cdf440e60155b63f05f4",
+      "bytes": 373678
+    },
+    "selectedParser": {
+      "path": "artifacts/issue-235-hosted-audit-preparation-provider/audit_logs_v3.py",
+      "sha256": "f63f1fdb517cb6f6a129db7986f00e5d5bd503a702bfe6d336d0d85f6b1b51a1",
+      "bytes": 15156
+    },
+    "parsingOnlyCrLfCorrection": {
+      "path": "artifacts/issue-235-hosted-audit-preparation-provider/final-newline-representation-correction.json",
+      "sha256": "7df56c68a7abece26dfce88bf363b506977b77a117ab0617ee3706f31e6871ae",
+      "bytes": 4503
+    },
+    "native": {
+      "independentReview": {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/native/independent-native-review.json",
+        "sha256": "9da14f0b1cfb58561747ccbd34e0592181129370d63b2dd6cda46daf8591ff3b",
+        "bytes": 14390
+      },
+      "archiveReview": {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/native/native-artifact-review.json",
+        "sha256": "9e641929fe4e6724cc7e1780b2d69ab8a7361f5d6c2abe8524b1d84d4671d189",
+        "bytes": 3765
+      },
+      "archive": {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/native/native-qualification.zip",
+        "sha256": "75427443aa18ff609267eff2b8dac21cc8812e1226d55242f697edf74f43d66e",
+        "bytes": 250685
+      },
+      "actualSourceCases": 12,
+      "actualInstalledCases": 12,
+      "syntheticProtocolCases": 31,
+      "rawThreeTapDigestsRecomputed": true
+    },
+    "normalPackageGit24Lanes": 5,
+    "codexRegistrationLanes": 4,
+    "requiredTitlesPerFullLane": 525,
+    "limitations": [
+      "This candidate gate does not substitute for fresh actual-main push workflows after an ordinary merge.",
+      "Git24 is established by five actual normal verifier success receipts, exact verifier/fixture bytes, and explicit assertions. Raw installed Git TAP bytes are absent from the retrieved artifact; reported digests are not claimed as independently rehashed raw TAP.",
+      "Before/after manifest equality and observed owned child closure are scoped; no continuous filesystem observation, whole process tree or independent OS listener census is inferred.",
+      "The original local installed24 attempts remain pre-test setup failures and NOT RUN; no behavioral RED or local full/quick PASS is manufactured.",
+      "Native runtime binaries and DEBs were not uploaded. Recorded identities and signed metadata are checked; retained gpgv/hash-chain review is not fresh cryptographic signature verification.",
+      "Outer package runtimes remain retained with no outer cleanup attempt. Native owned-container cleanup is separate.",
+      "Codex registration/MCP checks use owned configuration and zero model calls; actual agent/model tool invocation remains false.",
+      "No acceptance credit, broad issue66 closure, object-alternates/hostile-repository qualification, provider lifecycle or connected Windows cleanup follows from this gate."
+    ]
+  },
+  "sourceEvidence": {
+    "workerInitial": "6/6 on unchanged production; honest GREEN",
+    "independentPeer": "6/6, separately executed and recovered after interruption without repeat",
+    "rootCombined": "32/32 with120 unchanged bindings",
+    "firstRootWrapper": "UNKNOWN/unqualified; retained separately",
+    "localInstalled": "NOT RUN; two setup failures, no third install",
+    "normalGates": "seven root gates all exit0; final two documentation consistency checks exit0",
+    "fixtureSha256": "8f9cf62a1c6fb601bec9258a44ff26897bf84690fa40cf6e88d92963b6e7d529",
+    "original18FixtureSha256": "a658fe4eb94e1186c83762e9059431867bd1733fb879ec2cf2214c37cf5986a2",
+    "verifierSha256": "70c91d7ecfc4a3d3cbdd32f8237cf8fbe1c50461f036a5a3be7bcc897842e391"
+  },
+  "protectedCatalog": {
+    "affectedIds": [
+      "CLI-266",
+      "CLI-283",
+      "CLI-284"
+    ],
+    "stageChange": false,
+    "count": 300,
+    "maturityPercent": 29.36,
+    "complete": 0,
+    "blocked": 45,
+    "notStarted": 126,
+    "DCPAccepted": 0,
+    "DCPTotal": 48,
+    "WEBAccepted": 0,
+    "WEBTotal": 12
+  },
+  "claimState": "INACTIVE / COMPLETED; released at2026-11-09T21:24:04Z; original claim and historical refs preserved",
+  "remainingBoundaries": [
+    "Broader issue66 remains open",
+    "Issue232 live provider/connected cleanup remains open",
+    "No independent OS listener census",
+    "Before/after manifests do not prove concurrent-writer protection",
+    "No raw installedGit24TAP bytes in native uploaded archive",
+    "No provider, connectedWindows, deployment, productionbridge or model operation"
+  ],
+  "nextUnverifiedAction": "Root may serialize this final delivery history into a later scoped change. Issue237 and broader66/provider232 work remain separate and unqualified by this record.",
+  "assembledBy": "/root/provider_evidence",
+  "previousCheckpoint": {
+    "binding": {
+      "path": "artifacts/issue-235-publication/delivery-draft-pending-main.json",
+      "sha256": "d3da23ed119ee66c52510e2ea272a47e29cb38f43781a94429876fb5395c41b3",
+      "bytes": 18985
+    },
+    "status": "CANDIDATE_QUALIFIED_ACTUAL_MAIN_PENDING",
+    "recordedAt": "2026-11-09T21:16:57.875764+00:00",
+    "preservedByteForByte": true,
+    "historicalScope": "Pending-main and active-claim text remains unchanged history; this new record supplies later qualification and correction."
+  },
+  "actualMainAudit": {
+    "receipt": "artifacts/issue-235-main-review-c351b614/review.json",
+    "sha256": "c09bb685f159146a0456d35f922c88809127af2ca5a210e91c2d9c004c1331f6",
+    "observedAt": "2026-11-09T21:22:30.167313+00:00",
+    "checkCount": 92,
+    "runs": [
+      {
+        "id": 42700425677,
+        "path": ".github/workflows/ci-fast.yml",
+        "head_sha": "c351b6146ba1d3de4a1712a886dc7300ccdc3d70",
+        "event": "push",
+        "run_attempt": 1,
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-09T21:13:18Z",
+        "updated_at": "2026-11-09T21:16:30Z"
+      },
+      {
+        "id": 42700426074,
+        "path": ".github/workflows/cli-ci.yml",
+        "head_sha": "c351b6146ba1d3de4a1712a886dc7300ccdc3d70",
+        "event": "push",
+        "run_attempt": 1,
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-11-09T21:13:18Z",
+        "updated_at": "2026-11-09T21:21:17Z"
+      }
+    ],
+    "jobs": [
+      {
+        "id": 129443348281,
+        "name": "CI / fast",
+        "status": "completed",
+        "conclusion": "success",
+        "sourceCounts": {
+          "tests": 1263,
+          "suites": 0,
+          "pass": 1251,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 12,
+          "todo": 0
+        },
+        "requiredTitles": {
+          "recovery": {
+            "expected": 221,
+            "passedExactlyOnce": 221,
+            "missingOrDuplicated": []
+          },
+          "helper": {
+            "expected": 134,
+            "passedExactlyOnce": 134,
+            "missingOrDuplicated": []
+          },
+          "staging": {
+            "expected": 54,
+            "passedExactlyOnce": 54,
+            "missingOrDuplicated": []
+          },
+          "pairing": {
+            "expected": 60,
+            "passedExactlyOnce": 60,
+            "missingOrDuplicated": []
+          },
+          "access": {
+            "expected": 22,
+            "passedExactlyOnce": 22,
+            "missingOrDuplicated": []
+          },
+          "oauth": {
+            "expected": 10,
+            "passedExactlyOnce": 10,
+            "missingOrDuplicated": []
+          },
+          "gitLegacy": {
+            "expected": 18,
+            "passedExactlyOnce": 18,
+            "missingOrDuplicated": []
+          },
+          "ordinaryWorktreeMcp": {
+            "expected": 6,
+            "passedExactlyOnce": 6,
+            "missingOrDuplicated": []
+          }
+        },
+        "rawLog": {
+          "path": "/workspace/scratch/a9287b3cfe09/mterm-resume/artifacts/issue-235-main-review-c351b614/job-129443348281.log",
+          "sha256": "18783a41f5dd10800f79080a44aaa2033102e89dcfb5ec8003e09338f49f879d",
+          "bytes": 246641
+        },
+        "installedGit": null
+      },
+      {
+        "id": 129443348952,
+        "name": "Native Linux isolation / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "sourceCounts": null,
+        "requiredTitles": null,
+        "rawLog": {
+          "path": "/workspace/scratch/a9287b3cfe09/mterm-resume/artifacts/issue-235-main-review-c351b614/native/native-job.log",
+          "sha256": "614e012990442b20bb4d5f15fab8115004cc4050f10fb187cffa104970e30d37",
+          "bytes": 617621
+        },
+        "installedGit": {
+          "reportedTests": 24,
+          "allOrdinaryWorktreeFieldsAndExactFixtureModuleHashes": true,
+          "reportedTapSha256": "688691677edabd6b6c7700f401ffd94a6771854bd2e258797bf3dd14a0f4f76c",
+          "rawTapBytesIndependentlyRehashed": false,
+          "pass24Todo0AndExit0AssertedByExactReviewedVerifier": true
+        }
+      },
+      {
+        "id": 129443349043,
+        "name": "ubuntu-24.04 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "sourceCounts": {
+          "tests": 1263,
+          "suites": 0,
+          "pass": 1251,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 12,
+          "todo": 0
+        },
+        "requiredTitles": {
+          "recovery": {
+            "expected": 221,
+            "passedExactlyOnce": 221,
+            "missingOrDuplicated": []
+          },
+          "helper": {
+            "expected": 134,
+            "passedExactlyOnce": 134,
+            "missingOrDuplicated": []
+          },
+          "staging": {
+            "expected": 54,
+            "passedExactlyOnce": 54,
+            "missingOrDuplicated": []
+          },
+          "pairing": {
+            "expected": 60,
+            "passedExactlyOnce": 60,
+            "missingOrDuplicated": []
+          },
+          "access": {
+            "expected": 22,
+            "passedExactlyOnce": 22,
+            "missingOrDuplicated": []
+          },
+          "oauth": {
+            "expected": 10,
+            "passedExactlyOnce": 10,
+            "missingOrDuplicated": []
+          },
+          "gitLegacy": {
+            "expected": 18,
+            "passedExactlyOnce": 18,
+            "missingOrDuplicated": []
+          },
+          "ordinaryWorktreeMcp": {
+            "expected": 6,
+            "passedExactlyOnce": 6,
+            "missingOrDuplicated": []
+          }
+        },
+        "rawLog": {
+          "path": "/workspace/scratch/a9287b3cfe09/mterm-resume/artifacts/issue-235-main-review-c351b614/job-129443349043.log",
+          "sha256": "aee4cf1d9e10ecb47fd26b0d6cc9ca164a1e7e7bd831e58fd7308cf24e58389b",
+          "bytes": 335636
+        },
+        "installedGit": {
+          "reportedTests": 24,
+          "allOrdinaryWorktreeFieldsAndExactFixtureModuleHashes": true,
+          "reportedTapSha256": "348b1fc963ff1f1373fd0051d66d76493940f474d6b9778a4556525b68d9955e",
+          "rawTapBytesIndependentlyRehashed": false,
+          "pass24Todo0AndExit0AssertedByExactReviewedVerifier": true
+        }
+      },
+      {
+        "id": 129443349074,
+        "name": "windows-2022 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "sourceCounts": {
+          "tests": 1263,
+          "suites": 0,
+          "pass": 1263,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "requiredTitles": {
+          "recovery": {
+            "expected": 221,
+            "passedExactlyOnce": 221,
+            "missingOrDuplicated": []
+          },
+          "helper": {
+            "expected": 134,
+            "passedExactlyOnce": 134,
+            "missingOrDuplicated": []
+          },
+          "staging": {
+            "expected": 54,
+            "passedExactlyOnce": 54,
+            "missingOrDuplicated": []
+          },
+          "pairing": {
+            "expected": 60,
+            "passedExactlyOnce": 60,
+            "missingOrDuplicated": []
+          },
+          "access": {
+            "expected": 22,
+            "passedExactlyOnce": 22,
+            "missingOrDuplicated": []
+          },
+          "oauth": {
+            "expected": 10,
+            "passedExactlyOnce": 10,
+            "missingOrDuplicated": []
+          },
+          "gitLegacy": {
+            "expected": 18,
+            "passedExactlyOnce": 18,
+            "missingOrDuplicated": []
+          },
+          "ordinaryWorktreeMcp": {
+            "expected": 6,
+            "passedExactlyOnce": 6,
+            "missingOrDuplicated": []
+          }
+        },
+        "rawLog": {
+          "path": "/workspace/scratch/a9287b3cfe09/mterm-resume/artifacts/issue-235-main-review-c351b614/job-129443349074.log",
+          "sha256": "3714c98e12a21e277c0ae20aee3d86da6190fcae5c29063865a316465565c2ff",
+          "bytes": 339922
+        },
+        "installedGit": {
+          "reportedTests": 24,
+          "allOrdinaryWorktreeFieldsAndExactFixtureModuleHashes": true,
+          "reportedTapSha256": "81e5eb4a94952f80177fc923c44b311894b0fd609a738e2e6353acc4da8c6996",
+          "rawTapBytesIndependentlyRehashed": false,
+          "pass24Todo0AndExit0AssertedByExactReviewedVerifier": true
+        }
+      },
+      {
+        "id": 129443349095,
+        "name": "macos-15-intel / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "sourceCounts": {
+          "tests": 1263,
+          "suites": 0,
+          "pass": 1251,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 12,
+          "todo": 0
+        },
+        "requiredTitles": {
+          "recovery": {
+            "expected": 221,
+            "passedExactlyOnce": 221,
+            "missingOrDuplicated": []
+          },
+          "helper": {
+            "expected": 134,
+            "passedExactlyOnce": 134,
+            "missingOrDuplicated": []
+          },
+          "staging": {
+            "expected": 54,
+            "passedExactlyOnce": 54,
+            "missingOrDuplicated": []
+          },
+          "pairing": {
+            "expected": 60,
+            "passedExactlyOnce": 60,
+            "missingOrDuplicated": []
+          },
+          "access": {
+            "expected": 22,
+            "passedExactlyOnce": 22,
+            "missingOrDuplicated": []
+          },
+          "oauth": {
+            "expected": 10,
+            "passedExactlyOnce": 10,
+            "missingOrDuplicated": []
+          },
+          "gitLegacy": {
+            "expected": 18,
+            "passedExactlyOnce": 18,
+            "missingOrDuplicated": []
+          },
+          "ordinaryWorktreeMcp": {
+            "expected": 6,
+            "passedExactlyOnce": 6,
+            "missingOrDuplicated": []
+          }
+        },
+        "rawLog": {
+          "path": "/workspace/scratch/a9287b3cfe09/mterm-resume/artifacts/issue-235-main-review-c351b614/job-129443349095.log",
+          "sha256": "4ea54da11b5153564bd6a17e53f377177e0094f67e0179fff1724c1f92c2a202",
+          "bytes": 338087
+        },
+        "installedGit": {
+          "reportedTests": 24,
+          "allOrdinaryWorktreeFieldsAndExactFixtureModuleHashes": true,
+          "reportedTapSha256": "02478de2014b6a94287e25dddcff2b23448d54e2298dfb7014cbf99265f64aff",
+          "rawTapBytesIndependentlyRehashed": false,
+          "pass24Todo0AndExit0AssertedByExactReviewedVerifier": true
+        }
+      },
+      {
+        "id": 129443349485,
+        "name": "macos-15 / Node 24",
+        "status": "completed",
+        "conclusion": "success",
+        "sourceCounts": {
+          "tests": 1263,
+          "suites": 0,
+          "pass": 1251,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 12,
+          "todo": 0
+        },
+        "requiredTitles": {
+          "recovery": {
+            "expected": 221,
+            "passedExactlyOnce": 221,
+            "missingOrDuplicated": []
+          },
+          "helper": {
+            "expected": 134,
+            "passedExactlyOnce": 134,
+            "missingOrDuplicated": []
+          },
+          "staging": {
+            "expected": 54,
+            "passedExactlyOnce": 54,
+            "missingOrDuplicated": []
+          },
+          "pairing": {
+            "expected": 60,
+            "passedExactlyOnce": 60,
+            "missingOrDuplicated": []
+          },
+          "access": {
+            "expected": 22,
+            "passedExactlyOnce": 22,
+            "missingOrDuplicated": []
+          },
+          "oauth": {
+            "expected": 10,
+            "passedExactlyOnce": 10,
+            "missingOrDuplicated": []
+          },
+          "gitLegacy": {
+            "expected": 18,
+            "passedExactlyOnce": 18,
+            "missingOrDuplicated": []
+          },
+          "ordinaryWorktreeMcp": {
+            "expected": 6,
+            "passedExactlyOnce": 6,
+            "missingOrDuplicated": []
+          }
+        },
+        "rawLog": {
+          "path": "/workspace/scratch/a9287b3cfe09/mterm-resume/artifacts/issue-235-main-review-c351b614/job-129443349485.log",
+          "sha256": "b47b0a49f7e00917797f86eb58c1a3ce74d33454335603ed2a60a2ae478b5ba7",
+          "bytes": 337897
+        },
+        "installedGit": {
+          "reportedTests": 24,
+          "allOrdinaryWorktreeFieldsAndExactFixtureModuleHashes": true,
+          "reportedTapSha256": "a3b1d167e10d05011e808f35dd80d4e7f38f572062cf08e1fab418f76726603f",
+          "rawTapBytesIndependentlyRehashed": false,
+          "pass24Todo0AndExit0AssertedByExactReviewedVerifier": true
+        }
+      }
+    ],
+    "source": {
+      "trackedBlobs": 845,
+      "treeEntries": 881,
+      "compiledFiles": 54,
+      "sourceSnapshot": {
+        "path": "artifacts/issue-235-main-review-c351b614/source-snapshot.json",
+        "sha256": "78072a85b5a5a9b6b49e2828c16605af7608ba2675e119c5a824315baf53d279",
+        "bytes": 311989
+      },
+      "preservedCandidateReview": {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/review.json",
+        "sha256": "2ec43d446e36ef96724f0e142438e4045301a947502795139e454400be8ff504",
+        "bytes": 41148
+      },
+      "sharedReview": {
+        "path": "artifacts/issue-235-shared-review/review.json",
+        "sha256": "93fcc0b42add3310b4895bb44143129907888578d7bc5df8c95520257b596aab",
+        "bytes": 36477
+      },
+      "qualifiedBuildReceipt": {
+        "path": "artifacts/issue-235-root-gates/receipt.json",
+        "sha256": "498a8dd7c18e0a897549453e0d682310da8cdfb5ae38ffa88970d2a48b93bffc",
+        "bytes": 5025
+      }
+    },
+    "selectedLogReview": {
+      "path": "artifacts/issue-235-main-review-c351b614/full-log-review-crlf-only.json",
+      "sha256": "d7bf7a352b505e0e245243ea67ec98e298bf849763247f074ee0e04173fcb923",
+      "bytes": 373634
+    },
+    "selectedParser": {
+      "path": "artifacts/issue-235-hosted-audit-preparation-provider/audit_logs_v3.py",
+      "sha256": "f63f1fdb517cb6f6a129db7986f00e5d5bd503a702bfe6d336d0d85f6b1b51a1",
+      "bytes": 15156
+    },
+    "parsingOnlyCrLfCorrection": {
+      "path": "artifacts/issue-235-hosted-audit-preparation-provider/final-newline-representation-correction.json",
+      "sha256": "7df56c68a7abece26dfce88bf363b506977b77a117ab0617ee3706f31e6871ae",
+      "bytes": 4503
+    },
+    "native": {
+      "independentReview": {
+        "path": "artifacts/issue-235-main-review-c351b614/native/independent-native-review.json",
+        "sha256": "e9c80a437e0fc564798b311ad0e693b8dac35eaad64eacafe47f290e90e594eb",
+        "bytes": 13132
+      },
+      "archiveReview": {
+        "path": "artifacts/issue-235-main-review-c351b614/native/native-artifact-review.json",
+        "sha256": "10e06615f345347d18d3b2cc18e9ccf2011f2c952c7864bc630217e9a4499692",
+        "bytes": 3767
+      },
+      "archive": {
+        "path": "artifacts/issue-235-main-review-c351b614/native/native-qualification.zip",
+        "sha256": "67442b6b84e073f1dfe82f987d5382a15844a8968990e8c69e438a3bdc7d7bbc",
+        "bytes": 250993
+      },
+      "actualSourceCases": 12,
+      "actualInstalledCases": 12,
+      "syntheticProtocolCases": 31,
+      "rawThreeTapDigestsRecomputed": true
+    },
+    "normalPackageGit24Lanes": 5,
+    "codexRegistrationLanes": 4,
+    "requiredTitlesPerFullLane": 525,
+    "limitations": [
+      "This actual-main gate was observed separately from the candidate. Root owns issue closure, claim release and any acceptance changes.",
+      "Git24 is established by five actual normal verifier success receipts, exact verifier/fixture bytes, and explicit assertions. Raw installed Git TAP bytes are absent from the retrieved artifact; reported digests are not claimed as independently rehashed raw TAP.",
+      "Before/after manifest equality and observed owned child closure are scoped; no continuous filesystem observation, whole process tree or independent OS listener census is inferred.",
+      "The original local installed24 attempts remain pre-test setup failures and NOT RUN; no behavioral RED or local full/quick PASS is manufactured.",
+      "Native runtime binaries and DEBs were not uploaded. Recorded identities and signed metadata are checked; retained gpgv/hash-chain review is not fresh cryptographic signature verification.",
+      "Outer package runtimes remain retained with no outer cleanup attempt. Native owned-container cleanup is separate.",
+      "Codex registration/MCP checks use owned configuration and zero model calls; actual agent/model tool invocation remains false.",
+      "No acceptance credit, broad issue66 closure, object-alternates/hostile-repository qualification, provider lifecycle or connected Windows cleanup follows from this gate."
+    ]
+  },
+  "rootVerification": {
+    "root-publication-byte-recheck.json": {
+      "binding": {
+        "path": "artifacts/issue-235-publication/root-publication-byte-recheck.json",
+        "sha256": "5120bc42eef1b3f6013f1d393dbeb54a61b34974414bf8d9d56996723c2fea54",
+        "bytes": 722
+      },
+      "record": {
+        "observedAt": "2026-11-09T21:04:25.035653+00:00",
+        "sourceHead": "fc9a0f58cde51b7f3143b0ed06e2fa04188d8b83",
+        "sourceTree": "c82839e6b51182bcfc3820d65aabe4716c8491c4",
+        "reviewedLocalHead": "5f143c9cc13d6dff8582c7676af468739c6d6a38",
+        "all16ChangedBindingsEqual": true,
+        "sourceBlobCount": 845,
+        "sharedReviewSha256": "93fcc0b42add3310b4895bb44143129907888578d7bc5df8c95520257b596aab",
+        "workerReviewSha256": "ea034c0b1d3e8b620a6bad94b78815a6fa7d76895c76a56eb8eb502f98e1df4b",
+        "sourceFingerprint": "be5379955eb4aaa9dc625bcf7a2b9b59027f7be41498b121047b88ff647cd93f",
+        "clean": true,
+        "hostedCandidate": "pending; no gate pass inferred",
+        "actualMain": "not merged; future separate qualification required"
+      }
+    },
+    "root-hosted-source-recheck.json": {
+      "binding": {
+        "path": "artifacts/issue-235-publication/root-hosted-source-recheck.json",
+        "sha256": "5f16c0c22d9f96d1de43e9621f7494d8772878a24ecf6566a7698cf2851bbffe",
+        "bytes": 534
+      },
+      "record": {
+        "observedAt": "2026-11-09T21:09:11.825355+00:00",
+        "reviewer": "/root",
+        "candidate": "fc9a0f58cde51b7f3143b0ed06e2fa04188d8b83",
+        "tree": "c82839e6b51182bcfc3820d65aabe4716c8491c4",
+        "sourceSnapshotSha256": "c9edd67d5110491402713856b21c386b5edfd536907866bf9db9d73375025b56",
+        "sourceBlobsRehashed": 845,
+        "compiledFilesRehashed": 54,
+        "nativeComponentReviewSha256": "9da14f0b1cfb58561747ccbd34e0592181129370d63b2dd6cda46daf8591ff3b",
+        "fullCandidateQualification": "pending remaining job audit; no overallPASS awarded"
+      }
+    },
+    "root-final-candidate-recheck.json": {
+      "binding": {
+        "path": "artifacts/issue-235-publication/root-final-candidate-recheck.json",
+        "sha256": "c78e025ab669ac1f3429209fd38ecb00e3d06b944525a2c0dd62d32c11cc82d5",
+        "bytes": 872
+      },
+      "record": {
+        "observedAt": "2026-11-09T21:13:01.361280+00:00",
+        "reviewer": "/root",
+        "result": "CLEAR candidate audit byte/identity check",
+        "candidate": "fc9a0f58cde51b7f3143b0ed06e2fa04188d8b83",
+        "tree": "c82839e6b51182bcfc3820d65aabe4716c8491c4",
+        "reviewSha256": "2ec43d446e36ef96724f0e142438e4045301a947502795139e454400be8ff504",
+        "boundEvidenceFilesRehashed": 81,
+        "independentReviewChecks": 89,
+        "candidateJobs": 6,
+        "installedGit24Lanes": 5,
+        "sourceRecheckReceipt": "artifacts/issue-235-publication/root-hosted-source-recheck.json",
+        "sourceRecheckSha256": "5f16c0c22d9f96d1de43e9621f7494d8772878a24ecf6566a7698cf2851bbffe",
+        "parserCorrection": "Only CRLF normalized in parsing view; raw bytes retained; V1/V2 history preserved, selectedV3. No assertions or fixture/source changed.",
+        "actualMainQualification": "pending; not inferred",
+        "failures": []
+      }
+    },
+    "root-main-source-recheck.json": {
+      "binding": {
+        "path": "artifacts/issue-235-publication/root-main-source-recheck.json",
+        "sha256": "a790ad53ae1379644cf50f182bc0e22b3cc8bcb883e1e82aa6da388e55fcad78",
+        "bytes": 530
+      },
+      "record": {
+        "observedAt": "2026-11-09T21:22:31.152467+00:00",
+        "reviewer": "/root",
+        "actualMain": "c351b6146ba1d3de4a1712a886dc7300ccdc3d70",
+        "tree": "c82839e6b51182bcfc3820d65aabe4716c8491c4",
+        "sourceSnapshotSha256": "78072a85b5a5a9b6b49e2828c16605af7608ba2675e119c5a824315baf53d279",
+        "sourceBlobsRehashed": 845,
+        "compiledFilesRehashed": 54,
+        "nativeComponentReviewSha256": "e9c80a437e0fc564798b311ad0e693b8dac35eaad64eacafe47f290e90e594eb",
+        "fullMainQualification": "pending final overall audit; no overallPASS awarded"
+      }
+    },
+    "root-final-main-recheck.json": {
+      "binding": {
+        "path": "artifacts/issue-235-publication/root-final-main-recheck.json",
+        "sha256": "5805b4d700d7a9a3d7651536d78fcd265f303480672a3d189a03cedfe8bc0e26",
+        "bytes": 695
+      },
+      "record": {
+        "observedAt": "2026-11-09T21:23:32.130215+00:00",
+        "reviewer": "/root",
+        "result": "CLEAR actual-main audit byte/identity check",
+        "actualMain": "c351b6146ba1d3de4a1712a886dc7300ccdc3d70",
+        "tree": "c82839e6b51182bcfc3820d65aabe4716c8491c4",
+        "reviewSha256": "c09bb685f159146a0456d35f922c88809127af2ca5a210e91c2d9c004c1331f6",
+        "boundEvidenceFilesRehashed": 86,
+        "independentReviewChecks": 92,
+        "actualMainJobs": 6,
+        "installedGit24Lanes": 5,
+        "sourceRecheckReceipt": "artifacts/issue-235-publication/root-main-source-recheck.json",
+        "sourceRecheckSha256": "a790ad53ae1379644cf50f182bc0e22b3cc8bcb883e1e82aa6da388e55fcad78",
+        "candidateOutcomesReused": false,
+        "failures": []
+      }
+    }
+  },
+  "originalSourceEvidence": {
+    "durableRecord": {
+      "path": "docs/validation/2026-11-09-installed-worktree-source-evidence.json",
+      "sha256": "516e1ae78b0b0957c065ed8f7899352904d247f7597970785b4606e21886eabb",
+      "bytes": 48725
+    },
+    "workerIndependentReview": {
+      "path": "/workspace/scratch/a9287b3cfe09/mterm-git-worktree-qualification/artifacts/issue-235-review/final-worker-review.json",
+      "sha256": "ea034c0b1d3e8b620a6bad94b78815a6fa7d76895c76a56eb8eb502f98e1df4b",
+      "bytes": 15549
+    },
+    "executions": {
+      "workerInitial": {
+        "receipt": {
+          "path": "/workspace/scratch/a9287b3cfe09/mterm-git-worktree-qualification/artifacts/issue-235-installed-worktree/initial-source/receipt.json",
+          "sha256": "621aef7a91b97f8ba1190c033e58b12ab5e98d7978f5098063f7d5ffdedc60c4",
+          "bytes": 1356
+        },
+        "rawTap": {
+          "path": "/workspace/scratch/a9287b3cfe09/mterm-git-worktree-qualification/artifacts/issue-235-installed-worktree/initial-source/stdout.tap",
+          "sha256": "ad98fcece3558f9d6c5d150798a336191e5204af4ac75c62b6c3cb86fbb9f29d",
+          "bytes": 75507
+        },
+        "counts": {
+          "tests": 6,
+          "pass": 6,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "startedAt": "2026-11-09T20:20:44.080128+00:00",
+        "endedAt": "2026-11-09T20:20:46.386594+00:00",
+        "inputCount": 118,
+        "scope": "Actual Linux source execution; not installed-package execution"
+      },
+      "independentPeer": {
+        "receipt": {
+          "path": "/workspace/scratch/a9287b3cfe09/mterm-git-worktree-qualification/artifacts/issue-235-review/independent-source/receipt.json",
+          "sha256": "a79b91c25076b6d2fad2ae271104a1a7a93d245cf24a7c5130377ae98fe58798",
+          "bytes": 6469
+        },
+        "rawTap": {
+          "path": "/workspace/scratch/a9287b3cfe09/mterm-git-worktree-qualification/artifacts/issue-235-review/independent-source/stdout.tap",
+          "sha256": "c7ec522844a8dc055265d10f9c2e2e88b8e0b05d4281ebd49eaaf6bb5c40be7b",
+          "bytes": 75507
+        },
+        "counts": {
+          "tests": 6,
+          "suites": 0,
+          "pass": 6,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "startedAt": "2026-11-09T20:36:14.031090+00:00",
+        "endedAt": "2026-11-09T20:36:16.051410+00:00",
+        "inputCount": 119,
+        "scope": "Actual Linux source execution; not installed-package execution"
+      },
+      "rootCombined": {
+        "receipt": {
+          "path": "artifacts/issue-235-installed-worktree/root-integration-retry/receipt.json",
+          "sha256": "f5c4645e2de5bc6d3bb87d42a6d73204a0ee7cf81c945f738ec9e7ee6d8c5b54",
+          "bytes": 1670
+        },
+        "rawTap": {
+          "path": "artifacts/issue-235-installed-worktree/root-integration-retry/stdout.tap",
+          "sha256": "f0242c9d57a585cce31d302fec8976cd2daaf848b05854078c79f94fc65d04c5",
+          "bytes": 81109
+        },
+        "counts": {
+          "tests": 32,
+          "pass": 32,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "startedAt": "2026-11-09T20:40:01.580439+00:00",
+        "endedAt": "2026-11-09T20:40:10.794105+00:00",
+        "inputCount": 120,
+        "scope": "Actual Linux source execution; not installed-package execution"
+      }
+    },
+    "immutableMainSource": [
+      {
+        "repositoryPath": "tests/git-worktree-mcp.test.mjs",
+        "commit": "c351b6146ba1d3de4a1712a886dc7300ccdc3d70",
+        "gitBlob": "675a9484e927cf4a165f4df706eba2ec79cbceb7",
+        "sha256": "8f9cf62a1c6fb601bec9258a44ff26897bf84690fa40cf6e88d92963b6e7d529",
+        "bytes": 19603,
+        "verifiedFromImmutableGitObject": true
+      },
+      {
+        "repositoryPath": "tests/git-boundaries.test.mjs",
+        "commit": "c351b6146ba1d3de4a1712a886dc7300ccdc3d70",
+        "gitBlob": "e3bdf5dc9358a64bb66ec6d5841ebcea93cd4495",
+        "sha256": "a658fe4eb94e1186c83762e9059431867bd1733fb879ec2cf2214c37cf5986a2",
+        "bytes": 13004,
+        "verifiedFromImmutableGitObject": true
+      },
+      {
+        "repositoryPath": "scripts/verify-package.mjs",
+        "commit": "c351b6146ba1d3de4a1712a886dc7300ccdc3d70",
+        "gitBlob": "2c13e77ec295d323e259e96d2379060c531f8ce7",
+        "sha256": "70c91d7ecfc4a3d3cbdd32f8237cf8fbe1c50461f036a5a3be7bcc897842e391",
+        "bytes": 55078,
+        "verifiedFromImmutableGitObject": true
+      }
+    ],
+    "frozenWorkerVerifier": {
+      "path": "/workspace/scratch/a9287b3cfe09/mterm-git-worktree-qualification/artifacts/issue-235-installed-worktree/verifier-frozen-v1.mjs",
+      "sha256": "70c91d7ecfc4a3d3cbdd32f8237cf8fbe1c50461f036a5a3be7bcc897842e391",
+      "bytes": 55078
+    },
+    "firstRootWrapper": {
+      "classification": "UNKNOWN / unqualified",
+      "binding": {
+        "path": "artifacts/issue-235-installed-worktree/root-integration/interruption.json",
+        "sha256": "6930bf886309147582b7d181b4fc101f586cee94783983242a665a2cbb86f5ee",
+        "bytes": 659
+      },
+      "noOutcomeInferred": true
+    },
+    "localInstalled": {
+      "classification": "NOT RUN",
+      "attempts": [
+        {
+          "commands": {
+            "path": "/workspace/scratch/a9287b3cfe09/mterm-git-worktree-qualification/artifacts/package-verify-FOCXg5/commands.json",
+            "sha256": "81241388818106928641dac84531f74e94757ee4b2e6defe6f804a6a597648a3",
+            "bytes": 1579
+          },
+          "installStderr": {
+            "path": "/workspace/scratch/a9287b3cfe09/mterm-git-worktree-qualification/artifacts/package-verify-FOCXg5/install.stderr",
+            "sha256": "798e0509576d8068a9d29e79c48f337690dfc005248db0fba37690449d796ce9",
+            "bytes": 515
+          },
+          "outcome": "Offline setup failure before Git test block; no behavioral RED",
+          "missingPrerequisite": "Exact pinned public rebuilt-server tarball cache URL"
+        },
+        {
+          "commands": {
+            "path": "/workspace/scratch/a9287b3cfe09/mterm-git-worktree-qualification/artifacts/package-verify-jRDQ3f/commands.json",
+            "sha256": "6284fce5da36e02125259b33ece61372804b45b1be0c16858a84a76f2188485b",
+            "bytes": 1579
+          },
+          "installStderr": {
+            "path": "/workspace/scratch/a9287b3cfe09/mterm-git-worktree-qualification/artifacts/package-verify-jRDQ3f/install.stderr",
+            "sha256": "c2dff527c14a87ed0fa4de92007bc47daafc14a2b347e637c9d6b8d00e6eca87",
+            "bytes": 389
+          },
+          "outcome": "Offline setup failure before Git test block; no behavioral RED",
+          "missingPrerequisite": "Public zod registry metadata"
+        }
+      ],
+      "metadataPreflight": {
+        "path": "/workspace/scratch/a9287b3cfe09/mterm-git-worktree-qualification/artifacts/issue-235-installed-worktree/installed-metadata-preflight.json",
+        "sha256": "6c33f3e79eb3ba84a70d4fb771cc3156bd857d31ed75f3f3b054d09604c13759",
+        "bytes": 1471
+      },
+      "thirdInstallAttempted": false,
+      "normalHostedQualificationIsSeparate": true
+    },
+    "normalRootGates": {
+      "path": "artifacts/issue-235-root-gates/receipt.json",
+      "sha256": "498a8dd7c18e0a897549453e0d682310da8cdfb5ae38ffa88970d2a48b93bffc",
+      "bytes": 5025
+    },
+    "finalDocumentationConsistencyGates": {
+      "path": "artifacts/issue-235-root-gates/documentation-correction/receipt.json",
+      "sha256": "55ba0dbb61b61b347cfc8e25aa4f2fcb230638c6e510abdee4a07494cafd036a",
+      "bytes": 1027
+    },
+    "initialResult": "Honest initial GREEN on unchanged production; no artificial RED",
+    "productionChangeByIssue235": false,
+    "sourceBindingScope": "Root live workspace has begun issue237. Historical235 source is verified from immutablec351 Git objects and retained evidence, not the later live verifier."
+  },
+  "trackerTiming": {
+    "mergeAt": "2026-11-09T21:13:15Z",
+    "pullRequestClosedAt": "2026-11-09T21:13:16Z",
+    "issueClosedAt": "2026-11-09T21:13:17Z",
+    "closingEvent": {
+      "id": 35615122126,
+      "event": "closed",
+      "created_at": "2026-11-09T21:13:17Z",
+      "commit_id": null,
+      "commit_url": null,
+      "actor": "MulattoTech"
+    },
+    "closingCause": "UNPROVEN; closing event has null commit_id and commit_url",
+    "plausibleButUnprovenTrigger": "A closing-keyword sequence in the original negative PR sentence is a plausible automatic trigger; the event does not establish the cause.",
+    "independentMainQualificationAt": "2026-11-09T21:22:30.167313+00:00",
+    "rootFinalMainVerificationAt": "2026-11-09T21:23:32.130215+00:00",
+    "finalAcceptanceAt": "2026-11-09T21:24:03Z",
+    "claimReleaseAt": "2026-11-09T21:24:04Z",
+    "prWordingCorrectedAt": "2026-11-09T21:28:17Z",
+    "correctionCommentAt": "2026-11-09T21:28:18Z",
+    "acceptanceAndReleaseAfterActualMainQualification": true,
+    "trackerClosureDoesNotEstablishAcceptance": true,
+    "noNewClosureTimestampInvented": true,
+    "observedClosureEvents": 1,
+    "observedReopeningEvents": 0,
+    "laterExplicitStateUpdate": "Returned the original earlier closure timestamp; no later reclosure is claimed.",
+    "originalClaimBodyPreserved": true,
+    "originalPrDescriptionPreservedInReceipt": true,
+    "correctedPrBodyExactlyMatchesReceipt": true,
+    "originalPrBodySha256": "9e5ee6088ac0bc7f0b15a0df485ebb568eabcb8a9a2de51dbb59735ef9e34492",
+    "correctedPrBodySha256": "0acd8d29d71f3f5ccf53c04d6d4c0d6798906f17579904d69edbccfd64ecda57"
+  },
+  "trackerReceipts": {
+    "actualMerge": {
+      "path": "artifacts/issue-235-publication/actual-merge.json",
+      "sha256": "78b0321b8c32f285e99fa2d9e7debcac0cee8746cd29607eea0a2e2b410c42d6",
+      "bytes": 59268
+    },
+    "acceptanceClaimAndStateUpdate": {
+      "path": "artifacts/issue-235-publication/close-and-release-response.json",
+      "sha256": "c1919f73e2f21ff49ccd4ca90f014922032040b623c971320461f58b03f48877",
+      "bytes": 76477
+    },
+    "precorrectionReadback": {
+      "path": "artifacts/issue-235-publication/tracker-precorrection-readback.json",
+      "sha256": "c7acac9d395bf4943ffee0ff8999134863b15625b4014d4e03a9ea836e23edcd",
+      "bytes": 57148
+    },
+    "correctionResponse": {
+      "path": "artifacts/issue-235-publication/tracker-correction-response.json",
+      "sha256": "18417c5a07a6911d8954771401ee6d87e39585016ca87cae25db022e64603052",
+      "bytes": 14175
+    },
+    "acceptanceUrl": "https://github.com/MulattoTech/MTerm-CLI/issues/235#issuecomment-6751837057",
+    "claimUrl": "https://github.com/MulattoTech/MTerm-CLI/issues/235#issuecomment-6750304459",
+    "correctionUrl": "https://github.com/MulattoTech/MTerm-CLI/issues/235#issuecomment-6751924706"
+  },
+  "finalReadback": {
+    "observedAt": "2026-11-09 21:33:26 UTC",
+    "method": "Fresh GitHub connector GET-only metadata; compact projection of relevant fields",
+    "issue": {
+      "endpoint": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues/235",
+      "id": 6293858208,
+      "number": 235,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/issues/235",
+      "state": "closed",
+      "state_reason": "completed",
+      "created_at": "2026-11-09T20:12:28Z",
+      "updated_at": "2026-11-09T21:28:18Z",
+      "closed_at": "2026-11-09T21:13:17Z"
+    },
+    "pr": {
+      "endpoint": "https://api.github.com/repos/MulattoTech/MTerm-CLI/pulls/236",
+      "id": 5231103350,
+      "number": 236,
+      "url": "https://github.com/MulattoTech/MTerm-CLI/pull/236",
+      "state": "closed",
+      "merged": true,
+      "draft": false,
+      "created_at": "2026-11-09T21:00:29Z",
+      "updated_at": "2026-11-09T21:28:17Z",
+      "closed_at": "2026-11-09T21:13:16Z",
+      "merged_at": "2026-11-09T21:13:15Z",
+      "merge_commit_sha": "c351b6146ba1d3de4a1712a886dc7300ccdc3d70",
+      "headSha": "fc9a0f58cde51b7f3143b0ed06e2fa04188d8b83",
+      "headRef": "test/issue-235-installed-worktrees-20261109",
+      "baseSha": "3077a7fe1927d1ae17aab99570832d6f9e1e3819",
+      "body": "## Purpose\n\nReadonly MCP Git tools already admit ordinary linked worktrees when both the worktree and actual parent repository are explicitly trusted. Their installed-package verifier did not exercise that useful native layout. This PR adds real SDK/stdio coverage and makes the existing installed Git gate require **24/24 cases**: the preserved 18-case boundary fixture plus six ordinary clone/worktree cases.\n\nRefs #235 and parent #66. Session `MTERM-WEB-20261109T131339Z-resume-a9287b3c`; OpenAI / GPT-6 Astra Pro, self-reported. Qualified base `3077a7fe1927d1ae17aab99570832d6f9e1e3819`. Local independently reviewed checkpoint `5f143c9cc13d6dff8582c7676af468739c6d6a38`; exact tree `c82839e6b51182bcfc3820d65aabe4716c8491c4`.\n\n## Changes and behavior\n\n- Exercise status and distinct staged/unstaged diffs through actual SDK clients in an ordinary independent clone and untouched Git-created linked worktree, including a nested path.\n- Require both correct roots; missing or unrelated metadata grants remain denied, and ordinary file reads cannot expose Git metadata.\n- Check exact readonly tool inventory, capability/root bounds, complete per-case byte manifests and observed natural child closure. `networkListener:false` is a reported capability, without an independent OS listener census.\n- Extend only the existing Git block in the installed verifier; retain both fixture hashes, module binding checks and bounded execution. Production Git/root behavior, dependencies, workflows and self-host verification are unchanged.\n- Append bounded evidence to CLI-266/283/284 and preserve every protected roadmap field. Also retain completed PR #234 source-delivery history, with #232 open for live provider/connected cleanup.\n\n## Executed validation and independent review\n\n- Frozen first source run **6/6 GREEN** on unchanged production; additional coverage with no reproduced defect or artificial RED.\n- Independent source run **6/6**; root combined new6 + legacy18 + existing Git/MCP8 **32/32**, zero failures/skips/cancellations/todos, empty stderr and unchanged execution bindings.\n- Explicit roadmap review/render/check, normal build/parity, typecheck, format and whitespace gates: all seven actual exits0. Source fingerprint `be5379955eb4aaa9dc625bcf7a2b9b59027f7be41498b121047b88ff647cd93f` over183 entries. The final documentation correction passed roadmap/whitespace consistency checks without a product rerun.\n- Immutable worker review CLEAR: `ea034c0b1d3e8b620a6bad94b78815a6fa7d76895c76a56eb8eb502f98e1df4b`.\n- Independent final shared review CLEAR: `93fcc0b42add3310b4895bb44143129907888578d7bc5df8c95520257b596aab`, all87 checks and16 changed file bindings. It corrected an over-specific manifest entry count; raw evidence remains intact.\n\n**Local installed qualification is NOT RUN.** Two offline installation attempts failed before tests on distinct absent cache records. Their packs used `--ignore-scripts`; neither is normal prepack/full-verifier acceptance. No third install or fabricated cache metadata was used. A first root wrapper with a lost execution result remains UNKNOWN/unqualified; the later retained32-case run is separate. The known local Unix-socket limit supplies no full-local/quick PASS.\n\n## Delivery and limits\n\nAll six exact-candidate hosted jobs, including actual installed24 in each of the five package lanes, are mandatory before ordinary expected-head merge. The actual merge commit must separately pass all six main jobs. Final acceptance is recorded separately after actual-main qualification.\n\nStanding owner authorization in `docs/OWNER_AUTHORIZATION.md` covers normal qualified delivery without recurring manual approval. Historical branches and claims are preserved. Broad #66, malformed pointers, discovery configuration, alternates, implicit fetch and concurrent writers remain outside this coverage. No provider, Windows, deployment, production bridge, paid/model or unrelated-project operation is included.\n\nPublished candidate: `fc9a0f58cde51b7f3143b0ed06e2fa04188d8b83`; verified to have the exact reviewed local tree.\n",
+      "bodySha256": "0acd8d29d71f3f5ccf53c04d6d4c0d6798906f17579904d69edbccfd64ecda57"
+    },
+    "comments": {
+      "acceptance": {
+        "endpoint": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues/comments/6751837057",
+        "id": 6751837057,
+        "url": "https://github.com/MulattoTech/MTerm-CLI/issues/235#issuecomment-6751837057",
+        "issue_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues/235",
+        "created_at": "2026-11-09T21:24:03Z",
+        "updated_at": "2026-11-09T21:24:03Z",
+        "author": "MulattoTech",
+        "body": "## Narrow scope fully delivered and accepted\n\nPR #236's exact candidatefc9 and actual merged main `c351b6146ba1d3de4a1712a886dc7300ccdc3d70` separately passed all six hosted jobs. Actual-main tree `c82839e6b51182bcfc3820d65aabe4716c8491c4` exactly matches the reviewed candidate. Fresh push runs42700425677 and42700426074 both passed attempt1; their job/run IDs are disjoint from candidate evidence.\n\nAll five actual-main full source lanes ran1263 cases: Windows1263pass/0skip; others1251pass plus the same12 existing Windows-only skips. All525 required titles passed exactly once per full lane. Every one of the five normal package lanes established installedGit24/24 with the exact original18/new6 fixture pair, current verifier/modules and all asserted ordinary-worktree observations. Four native Codex registration receipts used zero model calls. Fresh native source12/installed12/protocol31 raw TAP, owned cleanup/OOM/SDK and module/source evidence also passed.\n\nActual-main independent seal `c09bb685f159146a0456d35f922c88809127af2ca5a210e91c2d9c004c1331f6`:92 checks, no findings. Root independently rehashed86 bound evidence files plus all845 immutable source blobs and54 compiled files. Fresh native archive13711676185 SHA256 `67442b6b84e073f1dfe82f987d5382a15844a8968990e8c69e438a3bdc7d7bbc`. Candidate seal2ec43d44 remains separate; original local setup failures/UNKNOWN result and parser-history corrections remain preserved.\n\nThe nine child acceptance points are covered: native untouched clone/worktree layouts; actual SDK/installed entry with external owned cwd/home; distinct status/staged/unstaged data at top/nested paths; exact paired grants; missing/unrelated-root denials; PRIVATE_PATH metadata reads and readonly inventory; complete owned manifests and natural closure; existing verifier extended with immutable original18; production/roots/dependencies/workflows/self-host preserved. Native Git24 raw TAP is absent from the uploaded archive, so acceptance relies on the actual normal-verifier receipts plus its exact assertions without an invented independent raw-byte rehash.\n\nClosing only this narrow qualification child and releasing its implementation claim. All protected300-row fields/seed/stages and DCP/WEB remain unchanged; maturity29.36%,0complete45blocked126notStarted. Broad #66 and live provider/connected cleanup #232 remain open. New #237 separately investigates implicit fetch; this source delivery does not claim that fix or change the production bridge. Historical claim/feature branches remain retained, with no reservation of future work.",
+        "bodySha256": "7d1f563bc888b2aaf985be161595e84b5963570df47743fa79a732e969aad344"
+      },
+      "claim": {
+        "endpoint": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues/comments/6750304459",
+        "id": 6750304459,
+        "url": "https://github.com/MulattoTech/MTerm-CLI/issues/235#issuecomment-6750304459",
+        "issue_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues/235",
+        "created_at": "2026-11-09T20:12:58Z",
+        "updated_at": "2026-11-09T21:24:04Z",
+        "author": "MulattoTech",
+        "body": "## Current status — INACTIVE / COMPLETED\n\nThis narrow source qualification is fully delivered through PR #236. Candidate `fc9a0f58cde51b7f3143b0ed06e2fa04188d8b83` and actual main `c351b6146ba1d3de4a1712a886dc7300ccdc3d70` separately passed all six required hosted jobs and installed Git24 qualification. The original claim below is retained as history. `coord/mterm/issue-235` and its feature branch remain preserved; they do not reserve later work. Session continuation is separately claimed in #237. Broader #66 and #232 remain open.\n\n---\n\n## Active isolated qualification claim\n\nSession `MTERM-WEB-20261109T131339Z-resume-a9287b3c`; OpenAI / GPT-6 Astra Pro, ChatGPT Web (self-reported). Atomically created `coord/mterm/issue-235` at qualified main `c69762da7d1dda54f7a74795c08c1f699367c77f` after an exact NOT_FOUND read. Existing issue66 branches are retained historical refs, and its last two checkpoints explicitly release the previous bounded slice.\n\nImplementation branch: `test/issue-235-installed-worktrees-20261109`.\nIsolated normal clone: `mterm-git-worktree-qualification`.\nOne implementation owner: `/root/worktree_implementation`, restricted to the four paths in this issue. Independent reviewer: `/root/provider_evidence`. Root alone owns shared documents, metrics, integration and publication.\n\nPR #234 is immutable at `3cde9c8608c40e3ae8774471ef42dfb9ca8d0b6b` and under read-only hosted audit; no competing implementation writer remains there. This scope is disjoint. Root serializes integration after separate #234 actual-main qualification. A new failure in #234 takes priority.\n\nFresh coordination observations: only PR #234 open; main remains c69762d; #66 has four comments and no active claim for this new scope. Container observation before claim: 9 CPUs, low load, approximately 7.6 GiB available RAM and 47 GiB free workspace. Work stays off the shared Windows workstation and production bridge.\n\nNext: independently review a frozen native-layout fixture before first execution against unchanged production source. Retain real initial results honestly; no manufactured RED and no source/roots/layout change to silence a failure. CLI-266/283/284 evidence only; broader #66 and unverified provider work remain open. Standing owner authorization applies.",
+        "bodySha256": "aa9dff6dad39896c079be132d992e8d95ce5a327e9196fb16149445346bac12d"
+      },
+      "correction": {
+        "endpoint": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues/comments/6751924706",
+        "id": 6751924706,
+        "url": "https://github.com/MulattoTech/MTerm-CLI/issues/235#issuecomment-6751924706",
+        "issue_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues/235",
+        "created_at": "2026-11-09T21:28:18Z",
+        "updated_at": "2026-11-09T21:28:18Z",
+        "author": "MulattoTech",
+        "body": "## Tracker timing correction\n\nRaw issue and timeline reads show that this tracker was already marked closed at **2026-11-09T21:13:17Z**, two seconds after PR #236 merged. My earlier post-merge statement that the issue remained open was incorrect. The closing event has no commit association, so its exact cause is not established by that event. The original PR description contained a closing-keyword sequence inside a negative sentence; that is a plausible automatic trigger. I removed that sentence while preserving the original description and readbacks in the delivery receipts.\n\n**Final acceptance was recorded at 21:24:03Z**, after the independent actual-main audit and root byte verification; the implementation claim was released at **21:24:04Z**. The later explicit state update returned the earlier closure timestamp. Tracker closure at merge did not establish actual-main acceptance. All six actual-main jobs and their evidence were separately qualified before final acceptance.\n\nThe currently completed state is correct and remains intact. The original event, earlier comments, candidate/main evidence and original PR wording are retained. Future PR descriptions will use neutral references and separate acceptance language, avoiding closing-keyword sequences until tracker closure is intended.",
+        "bodySha256": "bcfdd235c32b5e33b76c3b01f72602de9b10cb24c5fc970690bf9a1be6b07d49"
+      }
+    },
+    "timeline": {
+      "endpoint": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues/235/timeline?per_page=100&page=1",
+      "requestedPage": 1,
+      "perPage": 100,
+      "returnedEvents": 10,
+      "belowPageLimit": true,
+      "events": [
+        {
+          "id": 6750304459,
+          "event": "commented",
+          "created_at": "2026-11-09T20:12:58Z"
+        },
+        {
+          "id": null,
+          "event": "cross-referenced",
+          "created_at": "2026-11-09T20:16:43Z"
+        },
+        {
+          "id": null,
+          "event": "cross-referenced",
+          "created_at": "2026-11-09T20:20:00Z"
+        },
+        {
+          "id": 6751092306,
+          "event": "commented",
+          "created_at": "2026-11-09T20:48:54Z"
+        },
+        {
+          "id": null,
+          "event": "cross-referenced",
+          "created_at": "2026-11-09T21:00:30Z"
+        },
+        {
+          "id": 6751419976,
+          "event": "commented",
+          "created_at": "2026-11-09T21:04:25Z"
+        },
+        {
+          "id": 35615122126,
+          "event": "closed",
+          "created_at": "2026-11-09T21:13:17Z",
+          "commit_id": null,
+          "commit_url": null,
+          "actor": "MulattoTech"
+        },
+        {
+          "id": 6751624970,
+          "event": "commented",
+          "created_at": "2026-11-09T21:13:59Z"
+        },
+        {
+          "id": 6751837057,
+          "event": "commented",
+          "created_at": "2026-11-09T21:24:03Z"
+        },
+        {
+          "id": 6751924706,
+          "event": "commented",
+          "created_at": "2026-11-09T21:28:18Z"
+        }
+      ]
+    },
+    "remainingIssues": [
+      {
+        "endpoint": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues/66",
+        "id": 5894656485,
+        "number": 66,
+        "url": "https://github.com/MulattoTech/MTerm-CLI/issues/66",
+        "state": "open",
+        "state_reason": null,
+        "created_at": "2026-10-17T04:04:08Z",
+        "updated_at": "2026-11-09T21:03:11Z",
+        "closed_at": null
+      },
+      {
+        "endpoint": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues/232",
+        "id": 6289564760,
+        "number": 232,
+        "url": "https://github.com/MulattoTech/MTerm-CLI/issues/232",
+        "state": "open",
+        "state_reason": null,
+        "created_at": "2026-11-09T15:56:08Z",
+        "updated_at": "2026-11-09T20:31:59Z",
+        "closed_at": null
+      }
+    ]
+  },
+  "scopeDisposition": {
+    "narrowIssue235AcceptanceRecorded": true,
+    "acceptanceSource": "Root public acceptance after actual-main audit and root verification",
+    "roadmapStageOrAcceptanceCreditAdded": false,
+    "protectedCatalogUnchangedForThisDelivery": true,
+    "providerLifecycleAccepted": false,
+    "connectedWindowsCleanupAccepted": false,
+    "deploymentPerformed": false,
+    "paidOrModelOperationPerformed": false,
+    "hostedWindowsFixtureTestsQualified": true,
+    "remainingIssuesOpenAtReadback": [
+      66,
+      232
+    ],
+    "issue237SeparateScope": true
+  },
+  "assemblyActions": {
+    "freshReadOnlyGitHubRequests": 8,
+    "trackedEdits": 0,
+    "productTests": 0,
+    "githubMutations": 0,
+    "providerOperations": 0,
+    "connectedWindowsOperations": 0,
+    "deploymentOperations": 0,
+    "modelRequests": 0,
+    "newFilesOnly": [
+      "artifacts/issue-235-publication/final-source-delivery.json",
+      "artifacts/issue-235-publication/final-source-delivery.md"
+    ]
+  },
+  "immutableEvidenceVerification": {
+    "verifiedAt": "2026-11-09T21:35:52.293034+00:00",
+    "uniqueFileBindingsRehashed": 185,
+    "files": [
+      {
+        "path": "/workspace/scratch/a9287b3cfe09/mterm-git-worktree-qualification/artifacts/issue-235-installed-worktree/initial-source/receipt.json",
+        "sha256": "621aef7a91b97f8ba1190c033e58b12ab5e98d7978f5098063f7d5ffdedc60c4",
+        "bytes": 1356
+      },
+      {
+        "path": "/workspace/scratch/a9287b3cfe09/mterm-git-worktree-qualification/artifacts/issue-235-installed-worktree/initial-source/stdout.tap",
+        "sha256": "ad98fcece3558f9d6c5d150798a336191e5204af4ac75c62b6c3cb86fbb9f29d",
+        "bytes": 75507
+      },
+      {
+        "path": "/workspace/scratch/a9287b3cfe09/mterm-git-worktree-qualification/artifacts/issue-235-installed-worktree/installed-metadata-preflight.json",
+        "sha256": "6c33f3e79eb3ba84a70d4fb771cc3156bd857d31ed75f3f3b054d09604c13759",
+        "bytes": 1471
+      },
+      {
+        "path": "/workspace/scratch/a9287b3cfe09/mterm-git-worktree-qualification/artifacts/issue-235-installed-worktree/verifier-frozen-v1.mjs",
+        "sha256": "70c91d7ecfc4a3d3cbdd32f8237cf8fbe1c50461f036a5a3be7bcc897842e391",
+        "bytes": 55078
+      },
+      {
+        "path": "/workspace/scratch/a9287b3cfe09/mterm-git-worktree-qualification/artifacts/issue-235-review/final-worker-review.json",
+        "sha256": "ea034c0b1d3e8b620a6bad94b78815a6fa7d76895c76a56eb8eb502f98e1df4b",
+        "bytes": 15549
+      },
+      {
+        "path": "/workspace/scratch/a9287b3cfe09/mterm-git-worktree-qualification/artifacts/issue-235-review/independent-source/receipt.json",
+        "sha256": "a79b91c25076b6d2fad2ae271104a1a7a93d245cf24a7c5130377ae98fe58798",
+        "bytes": 6469
+      },
+      {
+        "path": "/workspace/scratch/a9287b3cfe09/mterm-git-worktree-qualification/artifacts/issue-235-review/independent-source/stdout.tap",
+        "sha256": "c7ec522844a8dc055265d10f9c2e2e88b8e0b05d4281ebd49eaaf6bb5c40be7b",
+        "bytes": 75507
+      },
+      {
+        "path": "/workspace/scratch/a9287b3cfe09/mterm-git-worktree-qualification/artifacts/package-verify-FOCXg5/commands.json",
+        "sha256": "81241388818106928641dac84531f74e94757ee4b2e6defe6f804a6a597648a3",
+        "bytes": 1579
+      },
+      {
+        "path": "/workspace/scratch/a9287b3cfe09/mterm-git-worktree-qualification/artifacts/package-verify-FOCXg5/install.stderr",
+        "sha256": "798e0509576d8068a9d29e79c48f337690dfc005248db0fba37690449d796ce9",
+        "bytes": 515
+      },
+      {
+        "path": "/workspace/scratch/a9287b3cfe09/mterm-git-worktree-qualification/artifacts/package-verify-jRDQ3f/commands.json",
+        "sha256": "6284fce5da36e02125259b33ece61372804b45b1be0c16858a84a76f2188485b",
+        "bytes": 1579
+      },
+      {
+        "path": "/workspace/scratch/a9287b3cfe09/mterm-git-worktree-qualification/artifacts/package-verify-jRDQ3f/install.stderr",
+        "sha256": "c2dff527c14a87ed0fa4de92007bc47daafc14a2b347e637c9d6b8d00e6eca87",
+        "bytes": 389
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/artifacts-final.json",
+        "sha256": "54093ba7184f1f2148621e0cb4f28841f658ba4f437dcdf068021b52b4bed25c",
+        "bytes": 768
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/candidate-commit.json",
+        "sha256": "937cab81c9d114ff37dc60d8f92bd813f7449e4f950aaff48c4d50eb1c4024d5",
+        "bytes": 1559
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/captured-job-129436128838.json",
+        "sha256": "d293700dc425f28c4e3e0e86246c4c80718bff1f98629b6c7d4f02247a65c919",
+        "bytes": 354894
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/captured-job-129436129520.json",
+        "sha256": "663dd13cae8f92cc3979da505d3eb668daa38b135895227dc07ad10626ea666f",
+        "bytes": 359181
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/checks-final.json",
+        "sha256": "c345e094ae807ae896c8bbf20301b0fb2ed405451545f280ccc3bc054be803e7",
+        "bytes": 21406
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/checks-observation-2.json",
+        "sha256": "6f61398939b930a14ca032c6bac372625cfb839852083bc89029dc702a4590a9",
+        "bytes": 21364
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/completed-four-log-inputs.json",
+        "sha256": "a794482970e0f789704ce229630b3f71f21f58ce362af7db149fa5fffd143ea8",
+        "bytes": 152725
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/completed-four-log-review.json",
+        "sha256": "2a4c7d443b6776104cef8f9bfe5e2e3a90ec14d3f7be1bea3bf4d69363bd7c04",
+        "bytes": 292932
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/full-log-review-crlf-only.json",
+        "sha256": "5d21dcf5ba826d0bd5acb56febf7063118640df1f079cdf440e60155b63f05f4",
+        "bytes": 373678
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/full-log-review-v1-crlf.json",
+        "sha256": "2c4c800cf9ba5a5904c7f042a812989b8560ef1265a7c703d0b255fa2d4eeef1",
+        "bytes": 417294
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/full-log-review.json",
+        "sha256": "66c517f56ba07139d1222590c105562fc87362513072b749dd8bfce7d1efb4f0",
+        "bytes": 373678
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/job-129436128838.log",
+        "sha256": "fee3b37f737448b810267e7f521ef7fe6aee62ce694479bd75ba59645ec5c647",
+        "bytes": 340415
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/job-129436129018.log",
+        "sha256": "193650643bdce7598546408fac788e6725322a3831f83faa18a14009bfbd486e",
+        "bytes": 337691
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/job-129436129438.log",
+        "sha256": "a4b3fb854f4e23f7df2985d725db0765caacb1008f08af56ef80a8fb0e5e0078",
+        "bytes": 336806
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/job-129436129520.log",
+        "sha256": "8cde0014d48e3294dadf995067e897a901855d187a0b77a71d5453b570856a43",
+        "bytes": 340832
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/job-129436135058.log",
+        "sha256": "4195ecc04f4a55720e287010ec889abb113e4e507e57b88dcd080540e034fa6c",
+        "bytes": 247711
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/jobs-cli-final.json",
+        "sha256": "dd6f90f329311c933abd3468160d91031e66133ce8cc09b18c253aaeea07ece9",
+        "bytes": 17566
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/jobs-cli-initial.json",
+        "sha256": "35e0cf417c9f945a79fbf200028167bd39f338836c091b475b8889b4e4802495",
+        "bytes": 16701
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/jobs-cli-observation-2.json",
+        "sha256": "73c15bc90cca7dbb4125c7bbbe4c9a2e98c7117840e1dd7bcbc473301b179d98",
+        "bytes": 16744
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/jobs-cli-observation-3.json",
+        "sha256": "dd6f90f329311c933abd3468160d91031e66133ce8cc09b18c253aaeea07ece9",
+        "bytes": 17566
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/jobs-fast-final.json",
+        "sha256": "f2c17d645f9ea50118100769305440632571772f249bdc322aaae5fd5fa0c5d3",
+        "bytes": 2773
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/jobs-fast-initial.json",
+        "sha256": "f2c17d645f9ea50118100769305440632571772f249bdc322aaae5fd5fa0c5d3",
+        "bytes": 2773
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/log-audit-inputs.json",
+        "sha256": "977e02c2b92bfa9d4b0eaeffe604bc521e548d6275719b6ae4f85f548e88286d",
+        "bytes": 163098
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/native/artifact-metadata.json",
+        "sha256": "9467192ea0621e540d1598d4f07d0f9c5a3e17cb843c2aae86f400e0104b5ed7",
+        "bytes": 819
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/native/artifacts-initial-normalized.json",
+        "sha256": "7ac69e8cc7d94c7d03c158c3948a469de546601093fa9c1b7b8cec5cb2d4a7f2",
+        "bytes": 23
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/native/artifacts-observation-2.json",
+        "sha256": "64f092900e2787ef7f473edbe2f49a0f0efcd6f3f9bd80541bbff3573527138f",
+        "bytes": 944
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/native/expected-inputs.json",
+        "sha256": "e940051822e6f0d205e7fbbdd6abc5ce0f98fb12a4aa7c4d9e95f9a635b0752c",
+        "bytes": 8469
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/native/independent-native-review.json",
+        "sha256": "9da14f0b1cfb58561747ccbd34e0592181129370d63b2dd6cda46daf8591ff3b",
+        "bytes": 14390
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/native/job-archive-binding.json",
+        "sha256": "3bacc7e3ba4b035377af42348c25676785f1d1be6e024a8af3666b2471f17658",
+        "bytes": 11157
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/native/job-archive-binding.py",
+        "sha256": "4b0eeda3d9d623bf1f96729335d7f8f2be0145d2a8eafa7cb6297da60ed22a28",
+        "bytes": 14461
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/native/job-initial.json",
+        "sha256": "cd3433037a084983c32208e773655f2b8090d78c96fcf4e30e0152dd5a4e7a9c",
+        "bytes": 167
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/native/jobs-completed.json",
+        "sha256": "a688f3512cdecbedf3fe512dcea8331751b661f7adfab07da8b85a1cf1c17fa9",
+        "bytes": 22608
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/native/jobs-final.json",
+        "sha256": "49f3f7952327b83d5c1a53d9cc39f6981eb4ca306612a8a2d747ae5c80f88e63",
+        "bytes": 23696
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/native/jobs-initial-normalized.json",
+        "sha256": "a265d549650cac7b4a71a6dab15400e58c58516f7b21f509d83650ed5dd0eb99",
+        "bytes": 12331
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/native/log-origin.json",
+        "sha256": "6c921c2ab3a048d547e434c0a7d0cc5570583f539c9982069e62356b1742fb7b",
+        "bytes": 336
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/native/native-artifact-review.json",
+        "sha256": "9e641929fe4e6724cc7e1780b2d69ab8a7361f5d6c2abe8524b1d84d4671d189",
+        "bytes": 3765
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/native/native-job.log",
+        "sha256": "2e72a718f7854e3d2ee307bec054954690662d44d46ccd97855de1f63d8f583e",
+        "bytes": 618701
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/native/native-qualification.zip",
+        "sha256": "75427443aa18ff609267eff2b8dac21cc8812e1226d55242f697edf74f43d66e",
+        "bytes": 250685
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/native/pr-final.json",
+        "sha256": "fb2d41aaf3cbea7eace5ca91c856d25c48b017593262e17d988d3a0e7d9dc779",
+        "bytes": 23026
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/native/pr-initial-normalized.json",
+        "sha256": "5c64d9d8ff42ad8948ba7c2372f1cecaf87ae770387d2900229f0fa38062846a",
+        "bytes": 5327
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/native/run-completed.json",
+        "sha256": "4759d176ed4655920aa4751125556411d3ef741d7a651f556a81d571d97a609f",
+        "bytes": 15099
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/native/run-initial.json",
+        "sha256": "4759d176ed4655920aa4751125556411d3ef741d7a651f556a81d571d97a609f",
+        "bytes": 15099
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/native/runs-initial-normalized.json",
+        "sha256": "5a4f0bbb6585762977b7cc33ecb73c77d9dd2ef7362b3b28b58be832737150b8",
+        "bytes": 818
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/native/synthetic-commit.json",
+        "sha256": "b337e9c392793b499873eba7a5531675fbe370b49202712241e09e01f08d69bb",
+        "bytes": 2872
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/pr-final.json",
+        "sha256": "684bb19a3fe3c2f5345324846b18010fc643170db7b3ab80e4a6e3c564e59134",
+        "bytes": 20363
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/pr-initial.json",
+        "sha256": "5e8058051df3c174b4d91fde90efa7bf59aee56c9ea3e3cf7b7ab26492de53ce",
+        "bytes": 20366
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/pr-observation-2.json",
+        "sha256": "80fe1420e7a7525eef7cc00eaca9dd85e09ceb077866a368830250804f65bc85",
+        "bytes": 20366
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/remaining-log-origin.json",
+        "sha256": "9e069621e466de5a103897fbcfdf3d00fc789223f39acabe713ceea52b47fbe9",
+        "bytes": 984
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/review.json",
+        "sha256": "2ec43d446e36ef96724f0e142438e4045301a947502795139e454400be8ff504",
+        "bytes": 41148
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/runs-final.json",
+        "sha256": "d6dbb6d518d31353a9e0dabf68f5f7f3f35888c1a773721d6691b086c8429830",
+        "bytes": 27136
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/runs-initial.json",
+        "sha256": "bc39e8db59ebced3fae081e7ea9e4d9e33ca48964e53bd3cd773474d00720b7b",
+        "bytes": 27133
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/runs-observation-2.json",
+        "sha256": "bc39e8db59ebced3fae081e7ea9e4d9e33ca48964e53bd3cd773474d00720b7b",
+        "bytes": 27133
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/runs-observation-3.json",
+        "sha256": "d6dbb6d518d31353a9e0dabf68f5f7f3f35888c1a773721d6691b086c8429830",
+        "bytes": 27136
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/seal-review.py",
+        "sha256": "27ad7004891e4205d0a0bbc2ae3d62fcf85b8a6e29093d186cfd13723976c9cd",
+        "bytes": 16078
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/source-snapshot.json",
+        "sha256": "c9edd67d5110491402713856b21c386b5edfd536907866bf9db9d73375025b56",
+        "bytes": 311056
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/statuses-final.json",
+        "sha256": "347fdff2d014d26a6659f61fb51ea7c73e5c553842c53aa72e8cdf9da33464ef",
+        "bytes": 4725
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/statuses-observation-2.json",
+        "sha256": "347fdff2d014d26a6659f61fb51ea7c73e5c553842c53aa72e8cdf9da33464ef",
+        "bytes": 4725
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/synthetic-commit.json",
+        "sha256": "bbbc7c256e2768ddb7fcc440e01ba73f95f83e19e4685ea23f3b129c301da799",
+        "bytes": 2669
+      },
+      {
+        "path": "artifacts/issue-235-candidate-review-fc9a0f58/tree.json",
+        "sha256": "29970d5e0f078e43f0c5c25175c78bbab2f92f079dd7ca8010c24a1123ccb527",
+        "bytes": 219641
+      },
+      {
+        "path": "artifacts/issue-235-hosted-audit-preparation-provider/READONLY_AUDIT.md",
+        "sha256": "fe8de36f453bbbc1d074a56c404811a66995c2500f0d9aa0ec9cc04fdc87efe7",
+        "bytes": 11546
+      },
+      {
+        "path": "artifacts/issue-235-hosted-audit-preparation-provider/audit_logs.py",
+        "sha256": "6bf7459ef8ad83335227fe40c7b05ee816b20961de0d147d08c743f4d842fc76",
+        "bytes": 14888
+      },
+      {
+        "path": "artifacts/issue-235-hosted-audit-preparation-provider/audit_logs_v2.py",
+        "sha256": "abcb508df631a03671649946e9849e0955b41e649037c137afed96b62fe3fb47",
+        "bytes": 15227
+      },
+      {
+        "path": "artifacts/issue-235-hosted-audit-preparation-provider/audit_logs_v3.py",
+        "sha256": "f63f1fdb517cb6f6a129db7986f00e5d5bd503a702bfe6d336d0d85f6b1b51a1",
+        "bytes": 15156
+      },
+      {
+        "path": "artifacts/issue-235-hosted-audit-preparation-provider/contract.json",
+        "sha256": "c8f12bc7c823ba312ee96ecf2d501bc147d4295f29b27fd50caf1e869020eee1",
+        "bytes": 103922
+      },
+      {
+        "path": "artifacts/issue-235-hosted-audit-preparation-provider/expected-titles.json",
+        "sha256": "c183094521033141b10ed46fd5dfa778c315495acb335029e332842f5aa8b649",
+        "bytes": 45251
+      },
+      {
+        "path": "artifacts/issue-235-hosted-audit-preparation-provider/final-newline-representation-correction.json",
+        "sha256": "7df56c68a7abece26dfce88bf363b506977b77a117ab0617ee3706f31e6871ae",
+        "bytes": 4503
+      },
+      {
+        "path": "artifacts/issue-235-hosted-audit-preparation-provider/legacy_audit_logs.py",
+        "sha256": "65c58dc462081e2df22c9ff00d9c4ad7278c4ec692f84e9a14f60a4d78d5df50",
+        "bytes": 16078
+      },
+      {
+        "path": "artifacts/issue-235-hosted-audit-preparation-provider/local-source-bindings.json",
+        "sha256": "8433cd48eff4fd6ce142e6078a6f63c935e7f9ebe2e47f448313bc052652dd2b",
+        "bytes": 214640
+      },
+      {
+        "path": "artifacts/issue-235-hosted-audit-preparation-provider/native-expected-template.json",
+        "sha256": "0ccafcd38af631271be0b49ad5f9642570d6824700e391484ef3b2bc4aa0757b",
+        "bytes": 7286
+      },
+      {
+        "path": "artifacts/issue-235-hosted-audit-preparation-provider/native_verify.py",
+        "sha256": "3d6f320c460e138c4fce3aa33635e67e1040b86313ee807c88e2556bf1c9698b",
+        "bytes": 18999
+      },
+      {
+        "path": "artifacts/issue-235-hosted-audit-preparation-provider/newline-representation-correction.json",
+        "sha256": "1eee998b461da1112fe20c0de0b5b50707477f84674a4be93346f7e6162de914",
+        "bytes": 4565
+      },
+      {
+        "path": "artifacts/issue-235-hosted-audit-preparation-provider/parser-v1-v2.patch",
+        "sha256": "ef87b490ecf4e16f0a964ef7a4d5189d9b1aeecaf34e528584f3f54f021156f7",
+        "bytes": 718
+      },
+      {
+        "path": "artifacts/issue-235-hosted-audit-preparation-provider/parser-v1-v3.patch",
+        "sha256": "541c2a944eeb2f6942ae6b6c997752a8541c85f6747ecaf9bc6f1524b66601a1",
+        "bytes": 646
+      },
+      {
+        "path": "artifacts/issue-235-hosted-audit-preparation-provider/parser-validation.json",
+        "sha256": "bf133c73dc8fcd28994b1bdc7dcfe0adc313978ebc5cbe392ccbed3b7e130f00",
+        "bytes": 3788
+      },
+      {
+        "path": "artifacts/issue-235-hosted-audit-preparation-provider/preparation.json",
+        "sha256": "c6ea6939107de9ee967943244cad5fdc2e43cac8b270b846a08012d8c01a37f9",
+        "bytes": 3675
+      },
+      {
+        "path": "artifacts/issue-235-hosted-audit-preparation-provider/retained-3077-baseline-review.json",
+        "sha256": "c036ddc18d613a88b83c280b490b8387aaed0432ed6e1f472136f974b062d40f",
+        "bytes": 342564
+      },
+      {
+        "path": "artifacts/issue-235-hosted-audit-preparation-provider/retained-3077-rejected-review-v2.json",
+        "sha256": "b5932c020458055c733ee2490eff95ccac52bd6a3791b9fd60577dd55f7cc5a2",
+        "bytes": 374223
+      },
+      {
+        "path": "artifacts/issue-235-hosted-audit-preparation-provider/retained-3077-rejected-review-v3.json",
+        "sha256": "e9b26a2bd65801b72060f413a73bbf38e207ee0770ef81f9310e0402bd4db582",
+        "bytes": 374223
+      },
+      {
+        "path": "artifacts/issue-235-hosted-audit-preparation-provider/retained-3077-rejected-review.json",
+        "sha256": "f09f060c440709d9ecbbe604aeb4a607ad56428c7fc9794118ff0e642dde362d",
+        "bytes": 374223
+      },
+      {
+        "path": "artifacts/issue-235-hosted-audit-preparation-provider/retained-3077-vs-issue235-inputs.json",
+        "sha256": "c9337c919cf4ca9ea786389de8b019a007c9fcc67e0c53d852f75d6d2471d4f6",
+        "bytes": 159650
+      },
+      {
+        "path": "artifacts/issue-235-installed-worktree/root-integration-retry/receipt.json",
+        "sha256": "f5c4645e2de5bc6d3bb87d42a6d73204a0ee7cf81c945f738ec9e7ee6d8c5b54",
+        "bytes": 1670
+      },
+      {
+        "path": "artifacts/issue-235-installed-worktree/root-integration-retry/stdout.tap",
+        "sha256": "f0242c9d57a585cce31d302fec8976cd2daaf848b05854078c79f94fc65d04c5",
+        "bytes": 81109
+      },
+      {
+        "path": "artifacts/issue-235-installed-worktree/root-integration/interruption.json",
+        "sha256": "6930bf886309147582b7d181b4fc101f586cee94783983242a665a2cbb86f5ee",
+        "bytes": 659
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/artifacts-final.json",
+        "sha256": "fccc214b0197f12ed3b1160ca53fe963c123e5f20710383b52a7e22396fda974",
+        "bytes": 729
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/captured-job-129443348281.json",
+        "sha256": "211e267fe06e385a907c50bdca7d9227ed4533942931c1cf821a91885f134894",
+        "bytes": 256882
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/captured-job-129443349043.json",
+        "sha256": "fc0ef056f1d657e1fd8be22111414382d0a8d55dda0d0d871a66de2a82eb44b3",
+        "bytes": 350078
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/captured-job-129443349074.json",
+        "sha256": "6910faa1a5ee48f7807b4bf35cc3b26e5a99a14e5c0e719fb80dfbae5167a24c",
+        "bytes": 358259
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/captured-job-129443349095.json",
+        "sha256": "af8cfa4b22d0df2fec3ed8d5d3e736d8a0c377ce60c5d1ad51954b21a8bc0b2e",
+        "bytes": 352520
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/captured-job-129443349485.json",
+        "sha256": "4a899d0809604ba234269309936aa7fc16d8d6f333348bb0cb0d657fa74fb5bc",
+        "bytes": 352341
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/checks-final.json",
+        "sha256": "67db9b1a436a0b854a91fa14f2118a0bbcb1f1499c1c831448067181dbada6bf",
+        "bytes": 18490
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/completed-four-log-inputs.json",
+        "sha256": "a8e3dd8dc201525a24ef00eb598032af7ebb3a255af47f57affd000572153aa3",
+        "bytes": 150343
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/completed-four-log-review.json",
+        "sha256": "a25bdc84f2659052ed7eae347cf4b688813cc688ef38598cd9d671560bb54e12",
+        "bytes": 292898
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/completed-two-log-inputs.json",
+        "sha256": "69ee7a449cba2ddfde12e6c91aef27abafd5db6d48d58eb91fd719b99b18efc9",
+        "bytes": 141258
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/completed-two-log-review.json",
+        "sha256": "b9df302003bfa4db445957ba332af3620cefac1bfae1da034467a2a8e709cdb1",
+        "bytes": 249442
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/fast-log-inputs.json",
+        "sha256": "ebd44c0110495ad1d7e55c795b59ea16fc4d127491ad4b388bb5b136786b182d",
+        "bytes": 135440
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/fast-log-review.json",
+        "sha256": "d5162e843d7c113765c55158e170e71eea52e163ee3dde314fcc5f8c0704ad2e",
+        "bytes": 5747
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/full-log-review-crlf-only.json",
+        "sha256": "d7bf7a352b505e0e245243ea67ec98e298bf849763247f074ee0e04173fcb923",
+        "bytes": 373634
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/job-129443348281.log",
+        "sha256": "18783a41f5dd10800f79080a44aaa2033102e89dcfb5ec8003e09338f49f879d",
+        "bytes": 246641
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/job-129443349043.log",
+        "sha256": "aee4cf1d9e10ecb47fd26b0d6cc9ca164a1e7e7bd831e58fd7308cf24e58389b",
+        "bytes": 335636
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/job-129443349074.log",
+        "sha256": "3714c98e12a21e277c0ae20aee3d86da6190fcae5c29063865a316465565c2ff",
+        "bytes": 339922
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/job-129443349095.log",
+        "sha256": "4ea54da11b5153564bd6a17e53f377177e0094f67e0179fff1724c1f92c2a202",
+        "bytes": 338087
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/job-129443349485.log",
+        "sha256": "b47b0a49f7e00917797f86eb58c1a3ce74d33454335603ed2a60a2ae478b5ba7",
+        "bytes": 337897
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/jobs-cli-final.json",
+        "sha256": "1702793feec6cbc9d14505171ed1cb9a92885371e04d7092fc3752faffc5c031",
+        "bytes": 17371
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/jobs-cli-initial.json",
+        "sha256": "ae902d8af38ad537f94818576021e557f4f63045a650d7c4e4ee6402aaac25b7",
+        "bytes": 15187
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/jobs-cli-observation-2.json",
+        "sha256": "9cdd21282cc37b7a87e7d76380c983f795b28ebd9ae1492d4dbdff170093705b",
+        "bytes": 16009
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/jobs-cli-observation-3.json",
+        "sha256": "9cdd21282cc37b7a87e7d76380c983f795b28ebd9ae1492d4dbdff170093705b",
+        "bytes": 16009
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/jobs-cli-observation-4.json",
+        "sha256": "849eb751a5a09e5baf783ff1d1f6601579ed85cce86971df59ac455068e0b22c",
+        "bytes": 16549
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/jobs-cli-observation-5.json",
+        "sha256": "1702793feec6cbc9d14505171ed1cb9a92885371e04d7092fc3752faffc5c031",
+        "bytes": 17371
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/jobs-fast-final.json",
+        "sha256": "000536a98e0164a2360f9f8bd80a95ca7484c8d5f242c5ba2c45d283e68e86d2",
+        "bytes": 2734
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/jobs-fast-initial.json",
+        "sha256": "2948e7ae8534171785e8556e78ab12b99ccb1c58dbba6ff18ef9c41dc031b403",
+        "bytes": 2409
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/jobs-fast-observation-2.json",
+        "sha256": "2948e7ae8534171785e8556e78ab12b99ccb1c58dbba6ff18ef9c41dc031b403",
+        "bytes": 2409
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/jobs-fast-observation-3.json",
+        "sha256": "000536a98e0164a2360f9f8bd80a95ca7484c8d5f242c5ba2c45d283e68e86d2",
+        "bytes": 2734
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/last-two-log-origin.json",
+        "sha256": "59f0d9501cb3ea47776a6909cdaa70163419d4beba0e3c5d845292456caf4204",
+        "bytes": 642
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/log-audit-inputs.json",
+        "sha256": "3f3b3f7b00c3176787e32729e416f9c46c9fdbe71e3bdd42baf1786af0acfa6b",
+        "bytes": 160628
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/main-commit.json",
+        "sha256": "7b2c251926dbe734b85196c090d94d1e93ea6486ce65d02982f26fbaefe78645",
+        "bytes": 2775
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/main-ref-final.json",
+        "sha256": "c4516994a2bd7fcc0e806980ead9e78ed4a4db9d948d90fc8be88d88f6bc8cf8",
+        "bytes": 341
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/main-ref-initial.json",
+        "sha256": "c4516994a2bd7fcc0e806980ead9e78ed4a4db9d948d90fc8be88d88f6bc8cf8",
+        "bytes": 341
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/native/artifact-metadata.json",
+        "sha256": "db0337ba5e443e8900275d3681ada7cf0f03f33675a130abdc943bc54dcbb091",
+        "bytes": 780
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/native/artifacts-initial.json",
+        "sha256": "727db86ed98b8cc32d0bcdd791fb133620c845ece0cccac67246336e1798a036",
+        "bytes": 43
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/native/artifacts-observation-2.json",
+        "sha256": "83915e62e6fa567e0a7eef078767b3e45aa5f6540230190bb6262029546eb2ce",
+        "bytes": 905
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/native/expected-inputs.json",
+        "sha256": "a804c97926048ff6bc650e2d5a7c3fafc00d717209e5499df363d5baa3131224",
+        "bytes": 8504
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/native/independent-native-review.json",
+        "sha256": "e9c80a437e0fc564798b311ad0e693b8dac35eaad64eacafe47f290e90e594eb",
+        "bytes": 13132
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/native/job-archive-binding.json",
+        "sha256": "944cfd1e507432e2b81431300da2655af78978a6b8b9828373b0ffe0ecbdcfcb",
+        "bytes": 10812
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/native/job-archive-binding.py",
+        "sha256": "8aa5889fccd95a0a2841e001f76489b5fda53167650c190c38dfc32391c2f3ba",
+        "bytes": 13907
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/native/jobs-initial.json",
+        "sha256": "376b0b9f6d257ac679a8ef8fb2bdf0342eff7be7b56549084fef05d33e981e4e",
+        "bytes": 21955
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/native/jobs-native-observation.json",
+        "sha256": "127027cc8694f30baf6bf077b8e20c357d62eff920d99d10550cfeaff4154f4f",
+        "bytes": 22413
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/native/log-origin.json",
+        "sha256": "9ac2b95db6987bd50286db3a351bee0759b3c5b6e3f1fe69ff996e720bddefd0",
+        "bytes": 294
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/native/main-commit.json",
+        "sha256": "14d199c179f87e5d1151f43fa1b31f2b6785c33611ef9dfc585149d94f31d3d7",
+        "bytes": 2978
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/native/native-artifact-review.json",
+        "sha256": "10e06615f345347d18d3b2cc18e9ccf2011f2c952c7864bc630217e9a4499692",
+        "bytes": 3767
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/native/native-job.log",
+        "sha256": "614e012990442b20bb4d5f15fab8115004cc4050f10fb187cffa104970e30d37",
+        "bytes": 617621
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/native/native-qualification.zip",
+        "sha256": "67442b6b84e073f1dfe82f987d5382a15844a8968990e8c69e438a3bdc7d7bbc",
+        "bytes": 250993
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/native/pr-merged.json",
+        "sha256": "98a2b848cda1ff42ac202750820bcb599f488a1fbbac429564de120e21884394",
+        "bytes": 24143
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/native/run-initial.json",
+        "sha256": "60116695feed1abf534c42552f9d2b75cd469c4fea6e6ad585927ec6a9f3ed3b",
+        "bytes": 14060
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/native/run-observation-2.json",
+        "sha256": "60116695feed1abf534c42552f9d2b75cd469c4fea6e6ad585927ec6a9f3ed3b",
+        "bytes": 14060
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/pr-final.json",
+        "sha256": "90e327777ab61de053752d65f086e38e146acf8ced57da066954ca130c172ac2",
+        "bytes": 21366
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/pr-initial.json",
+        "sha256": "90e327777ab61de053752d65f086e38e146acf8ced57da066954ca130c172ac2",
+        "bytes": 21366
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/review.json",
+        "sha256": "c09bb685f159146a0456d35f922c88809127af2ca5a210e91c2d9c004c1331f6",
+        "bytes": 42351
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/runs-final.json",
+        "sha256": "8ec9b0848403b12d127004a3d43a24a202883d0f223a9f0e37d89431e53227e2",
+        "bytes": 25492
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/runs-initial.json",
+        "sha256": "48c018fc61da09010811c1aed129d62e886e5e46951437491d8631e6cc99e56f",
+        "bytes": 25486
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/runs-observation-2.json",
+        "sha256": "48c018fc61da09010811c1aed129d62e886e5e46951437491d8631e6cc99e56f",
+        "bytes": 25486
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/runs-observation-3.json",
+        "sha256": "a8deeec6aa573c1e3bab3ab90c485d66b23500281d4f0453c34e2d0b1abaa39d",
+        "bytes": 25489
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/runs-observation-4.json",
+        "sha256": "a8deeec6aa573c1e3bab3ab90c485d66b23500281d4f0453c34e2d0b1abaa39d",
+        "bytes": 25489
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/seal-review.py",
+        "sha256": "0733f2582f4179beff2fdf8ad8397663f547261c9cf3988bcf220f94a2a3fb0d",
+        "bytes": 17686
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/source-snapshot.json",
+        "sha256": "78072a85b5a5a9b6b49e2828c16605af7608ba2675e119c5a824315baf53d279",
+        "bytes": 311989
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/statuses-final.json",
+        "sha256": "028edb40ff898aa2f2b0bb29c5ffb37391ba9f7c5e21ae48242763b8535aea65",
+        "bytes": 4725
+      },
+      {
+        "path": "artifacts/issue-235-main-review-c351b614/tree.json",
+        "sha256": "29970d5e0f078e43f0c5c25175c78bbab2f92f079dd7ca8010c24a1123ccb527",
+        "bytes": 219641
+      },
+      {
+        "path": "artifacts/issue-235-publication/actual-merge.json",
+        "sha256": "78b0321b8c32f285e99fa2d9e7debcac0cee8746cd29607eea0a2e2b410c42d6",
+        "bytes": 59268
+      },
+      {
+        "path": "artifacts/issue-235-publication/close-and-release-response.json",
+        "sha256": "c1919f73e2f21ff49ccd4ca90f014922032040b623c971320461f58b03f48877",
+        "bytes": 76477
+      },
+      {
+        "path": "artifacts/issue-235-publication/delivery-draft-pending-main.json",
+        "sha256": "d3da23ed119ee66c52510e2ea272a47e29cb38f43781a94429876fb5395c41b3",
+        "bytes": 18985
+      },
+      {
+        "path": "artifacts/issue-235-publication/root-final-candidate-recheck.json",
+        "sha256": "c78e025ab669ac1f3429209fd38ecb00e3d06b944525a2c0dd62d32c11cc82d5",
+        "bytes": 872
+      },
+      {
+        "path": "artifacts/issue-235-publication/root-final-main-recheck.json",
+        "sha256": "5805b4d700d7a9a3d7651536d78fcd265f303480672a3d189a03cedfe8bc0e26",
+        "bytes": 695
+      },
+      {
+        "path": "artifacts/issue-235-publication/root-hosted-source-recheck.json",
+        "sha256": "5f16c0c22d9f96d1de43e9621f7494d8772878a24ecf6566a7698cf2851bbffe",
+        "bytes": 534
+      },
+      {
+        "path": "artifacts/issue-235-publication/root-main-source-recheck.json",
+        "sha256": "a790ad53ae1379644cf50f182bc0e22b3cc8bcb883e1e82aa6da388e55fcad78",
+        "bytes": 530
+      },
+      {
+        "path": "artifacts/issue-235-publication/root-publication-byte-recheck.json",
+        "sha256": "5120bc42eef1b3f6013f1d393dbeb54a61b34974414bf8d9d56996723c2fea54",
+        "bytes": 722
+      },
+      {
+        "path": "artifacts/issue-235-publication/tracker-correction-response.json",
+        "sha256": "18417c5a07a6911d8954771401ee6d87e39585016ca87cae25db022e64603052",
+        "bytes": 14175
+      },
+      {
+        "path": "artifacts/issue-235-publication/tracker-precorrection-readback.json",
+        "sha256": "c7acac9d395bf4943ffee0ff8999134863b15625b4014d4e03a9ea836e23edcd",
+        "bytes": 57148
+      },
+      {
+        "path": "artifacts/issue-235-root-gates/01.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": "artifacts/issue-235-root-gates/01.stdout",
+        "sha256": "930fdfd75a88f800c09e6907713952839892062abfd8c07900d3fdc851022bfe",
+        "bytes": 141
+      },
+      {
+        "path": "artifacts/issue-235-root-gates/02.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": "artifacts/issue-235-root-gates/02.stdout",
+        "sha256": "347c2527601dc28d23f4107434b2b02f35c33ed6cba57ab6ae684bb37e1cd302",
+        "bytes": 120
+      },
+      {
+        "path": "artifacts/issue-235-root-gates/03.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": "artifacts/issue-235-root-gates/03.stdout",
+        "sha256": "347c2527601dc28d23f4107434b2b02f35c33ed6cba57ab6ae684bb37e1cd302",
+        "bytes": 120
+      },
+      {
+        "path": "artifacts/issue-235-root-gates/04.stderr",
+        "sha256": "a06ef387e31a00721dc55e3b480ef2c346bf46d83f2d3e96b16ddc342895761f",
+        "bytes": 396
+      },
+      {
+        "path": "artifacts/issue-235-root-gates/04.stdout",
+        "sha256": "1c66d4a7f4a88e90c2b4323081193c0d29bf3d580ec5966c6010a61c018d5e73",
+        "bytes": 786
+      },
+      {
+        "path": "artifacts/issue-235-root-gates/05.stderr",
+        "sha256": "7125f194612fcff2f454c05d848e7cb71facc1967b4d5017e25b34fdee3ba74f",
+        "bytes": 99
+      },
+      {
+        "path": "artifacts/issue-235-root-gates/05.stdout",
+        "sha256": "611912ed155b813e3ba68533be1dbbbaa27973a6263b6ce8c268c512d4ec00f4",
+        "bytes": 72
+      },
+      {
+        "path": "artifacts/issue-235-root-gates/06.stderr",
+        "sha256": "7125f194612fcff2f454c05d848e7cb71facc1967b4d5017e25b34fdee3ba74f",
+        "bytes": 99
+      },
+      {
+        "path": "artifacts/issue-235-root-gates/06.stdout",
+        "sha256": "bd88f151ef9480dd27769a3c9d2b554768e8e39ca04354fcefc32fbdbcf2dd33",
+        "bytes": 199
+      },
+      {
+        "path": "artifacts/issue-235-root-gates/07.stderr",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": "artifacts/issue-235-root-gates/07.stdout",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      {
+        "path": "artifacts/issue-235-root-gates/documentation-correction/receipt.json",
+        "sha256": "55ba0dbb61b61b347cfc8e25aa4f2fcb230638c6e510abdee4a07494cafd036a",
+        "bytes": 1027
+      },
+      {
+        "path": "artifacts/issue-235-root-gates/receipt.json",
+        "sha256": "498a8dd7c18e0a897549453e0d682310da8cdfb5ae38ffa88970d2a48b93bffc",
+        "bytes": 5025
+      },
+      {
+        "path": "artifacts/issue-235-shared-review/review.json",
+        "sha256": "93fcc0b42add3310b4895bb44143129907888578d7bc5df8c95520257b596aab",
+        "bytes": 36477
+      },
+      {
+        "path": "docs/validation/2026-11-09-installed-worktree-source-evidence.json",
+        "sha256": "516e1ae78b0b0957c065ed8f7899352904d247f7597970785b4606e21886eabb",
+        "bytes": 48725
+      }
+    ],
+    "immutableMainGitSourceBlobsSeparatelyVerified": [
+      {
+        "repositoryPath": "tests/git-worktree-mcp.test.mjs",
+        "commit": "c351b6146ba1d3de4a1712a886dc7300ccdc3d70",
+        "gitBlob": "675a9484e927cf4a165f4df706eba2ec79cbceb7",
+        "sha256": "8f9cf62a1c6fb601bec9258a44ff26897bf84690fa40cf6e88d92963b6e7d529",
+        "bytes": 19603,
+        "verifiedFromImmutableGitObject": true
+      },
+      {
+        "repositoryPath": "tests/git-boundaries.test.mjs",
+        "commit": "c351b6146ba1d3de4a1712a886dc7300ccdc3d70",
+        "gitBlob": "e3bdf5dc9358a64bb66ec6d5841ebcea93cd4495",
+        "sha256": "a658fe4eb94e1186c83762e9059431867bd1733fb879ec2cf2214c37cf5986a2",
+        "bytes": 13004,
+        "verifiedFromImmutableGitObject": true
+      },
+      {
+        "repositoryPath": "scripts/verify-package.mjs",
+        "commit": "c351b6146ba1d3de4a1712a886dc7300ccdc3d70",
+        "gitBlob": "2c13e77ec295d323e259e96d2379060c531f8ce7",
+        "sha256": "70c91d7ecfc4a3d3cbdd32f8237cf8fbe1c50461f036a5a3be7bcc897842e391",
+        "bytes": 55078,
+        "verifiedFromImmutableGitObject": true
+      }
+    ],
+    "mismatches": [],
+    "scope": "Included retained file bindings and candidate/main review input closures rehashed; source identity uses immutable actual-main objects where the live workspace has advanced. No product execution or gate replay."
+  }
+}

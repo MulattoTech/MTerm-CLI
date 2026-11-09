@@ -295,9 +295,10 @@ and fixture byte bindings distinguish the worker baseline from combined integrat
 Root appends SECURITY, a complete-history-preserving HANDOFF checkpoint, CLI290
 notes/evidence and one WEB002 paragraph. No stage, acceptance, weight, estimate,
 dependency, blocker, seed, pin, lock or historical review metadata changes. The
-normal reviewed gates, independent protected-document review, exact committed-input
-gateway artifact, candidate hosted gates and separate actual-main qualification
-are still required at this checkpoint. Gateway modules are not part of the installed
+normal reviewed local gates passed as recorded below. Independent protected-document
+scope/history review is clear; current-status wording was reconciled without source,
+fixture or ledger changes. The exact committed-input gateway artifact, candidate
+hosted gates and separate actual-main qualification remain pending at this checkpoint. Gateway modules are not part of the installed
 CLI package. No live deployment or owner state changed. Narrow issue224 can be
 closed after qualified delivery; full issue55/WEB002 remains open.
 

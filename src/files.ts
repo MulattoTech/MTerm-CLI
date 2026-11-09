@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-09-file-cancellation; propagate native read cancellation and await owned cleanup.
 // Modified: 2026-11-08-aug003-registry-persistence; bounded guarded replacement and owned staging checks.
 // Modified: 2026-10-05-codex-parity-foundation; preserve UTF-8 BOM and add guarded mkdirTree.
 // Modified: 2026-11-02-utf16le-read; explicit bounded compatibility decoding and read cancellation.
@@ -141,10 +142,12 @@ export class FileService {
     if (text.includes('\0')) fail('BINARY_FILE', 'Binary data is not exposed as text.');
     return text;
   }
-  async read(input: unknown) {
+  async read(input: unknown, signal?: AbortSignal) {
+    cancelled(signal);
     const a = fileSchemas.read.parse(input);
     const full = await this.policy.resolve(a.path);
-    const b = await this.bytes(full);
+    const b = await this.bytes(full, signal);
+    cancelled(signal);
     const text = this.text(b);
     const lines = text.split('\n');
     const end = a.length === undefined ? lines.length : Math.min(lines.length, a.offset + a.length);
@@ -157,10 +160,13 @@ export class FileService {
       nextOffset: end < lines.length ? end : null,
     };
   }
-  async info(input: unknown) {
+  async info(input: unknown, signal?: AbortSignal) {
+    cancelled(signal);
     const a = fileSchemas.info.parse(input);
     const full = await this.policy.resolve(a.path);
+    cancelled(signal);
     const st = await fs.lstat(full);
+    cancelled(signal);
     return {
       path: this.policy.relative(full),
       file: st.isFile(),
@@ -462,20 +468,42 @@ export class FileService {
       return { source: this.policy.relative(source), destination: this.policy.relative(dest), moved: true };
     });
   }
-  async list(input: unknown) {
+  async list(input: unknown, signal?: AbortSignal) {
+    cancelled(signal);
     const a = fileSchemas.list.parse(input);
     const full = await this.policy.resolve(a.path);
+    cancelled(signal);
     const dir = await fs.opendir(full);
+    const iterator = dir[Symbol.asyncIterator]();
+    let started = false;
     const entries: Array<{ name: string; directory: boolean; file: boolean; link: boolean }> = [];
     let truncated = false;
-    for await (const e of dir) {
-      if (privateName(e.name)) continue;
-      if (entries.length === a.limit) {
-        truncated = true;
-        break;
+    try {
+      for (;;) {
+        cancelled(signal);
+        started = true;
+        const next = await iterator.next();
+        cancelled(signal);
+        if (next.done) break;
+        const e = next.value;
+        if (privateName(e.name)) continue;
+        if (entries.length === a.limit) {
+          truncated = true;
+          break;
+        }
+        entries.push({
+          name: e.name,
+          directory: e.isDirectory(),
+          file: e.isFile(),
+          link: e.isSymbolicLink(),
+        });
       }
-      entries.push({ name: e.name, directory: e.isDirectory(), file: e.isFile(), link: e.isSymbolicLink() });
+    } finally {
+      // Returning an unstarted async generator does not close its acquired directory.
+      if (started) await iterator.return?.();
+      else await dir.close();
     }
+    cancelled(signal);
     entries.sort((x, y) => x.name.localeCompare(y.name));
     return { path: this.policy.relative(full), entries, truncated };
   }
@@ -483,6 +511,7 @@ export class FileService {
     const a = fileSchemas.search.parse(input);
     cancelled(signal);
     const root = await this.policy.resolve(a.path);
+    cancelled(signal);
     const deadline = performance.now() + a.timeoutMs;
     const results: Array<{ path: string; excerpt?: string }> = [];
     let visited = 0,
@@ -504,37 +533,56 @@ export class FileService {
     const visit = async (dirPath: string, depth: number): Promise<void> => {
       if (bounded()) return;
       const dir = await fs.opendir(dirPath);
-      for await (const e of dir) {
-        if (bounded()) break;
-        visited++;
-        if (e.isSymbolicLink() || privateName(e.name) || ignored.has(e.name.toLowerCase())) continue;
-        const raw = path.join(dirPath, e.name);
-        let full: string;
-        try {
-          full = await this.policy.resolve(this.policy.relative(raw));
-        } catch {
-          continue;
-        }
-        if (a.mode === 'name' && e.name.toLowerCase().includes(a.query.toLowerCase()))
-          results.push({ path: this.policy.relative(full) });
-        if (a.mode === 'content' && e.isFile())
+      const iterator = dir[Symbol.asyncIterator]();
+      let started = false;
+      try {
+        for (;;) {
+          cancelled(signal);
+          started = true;
+          const next = await iterator.next();
+          cancelled(signal);
+          if (next.done) break;
+          const e = next.value;
+          if (bounded()) break;
+          visited++;
+          if (e.isSymbolicLink() || privateName(e.name) || ignored.has(e.name.toLowerCase())) continue;
+          const raw = path.join(dirPath, e.name);
+          let full: string;
           try {
-            const b = await this.bytes(full);
-            readBytes += b.length;
-            const text = this.text(b);
-            const at = text.toLowerCase().indexOf(a.query.toLowerCase());
-            if (at >= 0)
-              results.push({
-                path: this.policy.relative(full),
-                excerpt: text.slice(Math.max(0, at - 80), at + a.query.length + 120),
-              });
+            full = await this.policy.resolve(this.policy.relative(raw));
+            cancelled(signal);
           } catch {
-            /* Unsupported/changed/unreadable files are skipped; no content is leaked. */
+            cancelled(signal);
+            continue;
           }
-        if (e.isDirectory() && depth < a.maxDepth) await visit(full, depth + 1);
+          if (a.mode === 'name' && e.name.toLowerCase().includes(a.query.toLowerCase()))
+            results.push({ path: this.policy.relative(full) });
+          if (a.mode === 'content' && e.isFile())
+            try {
+              const b = await this.bytes(full, signal);
+              cancelled(signal);
+              readBytes += b.length;
+              const text = this.text(b);
+              const at = text.toLowerCase().indexOf(a.query.toLowerCase());
+              if (at >= 0)
+                results.push({
+                  path: this.policy.relative(full),
+                  excerpt: text.slice(Math.max(0, at - 80), at + a.query.length + 120),
+                });
+            } catch {
+              cancelled(signal);
+              /* Unsupported/changed/unreadable files are skipped; no content is leaked. */
+            }
+          if (e.isDirectory() && depth < a.maxDepth) await visit(full, depth + 1);
+        }
+      } finally {
+        if (started) await iterator.return?.();
+        else await dir.close();
       }
+      cancelled(signal);
     };
     await visit(root, 0);
+    cancelled(signal);
     return { root: this.policy.relative(root), results, visited, readBytes, truncated };
   }
 }

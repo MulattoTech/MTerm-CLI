@@ -1,3 +1,19 @@
+# Native file cancellation checkpoint — 2026-11-09 UTC
+
+Session `MTERM-WEB-20261109T031131Z-e0efd5d4` owns `coord/mterm/issue-62`, feature `fix/issue-62-file-cancellation-20261109`, from merged main `5880c61fcaaaaa8972f06d1ae5a88d6e2d3cbd70`. One implementation writer; independent source, fixture and qualification reviewers. The clean branch was fast-forwarded from frozen prerequisite PR #214 source without content changes.
+
+[Cancellation evidence](validation/2026-11-09-file-cancellation.md): final unchanged fixtures reproduce late native I/O/success and missing SDK signal delivery, final RED7/46 to focused GREEN66/66. Original independent45/45 plus SDK delta3/3 is retained; independent final revision46/46 also passed. Native read/info/list now accept the owning signal; both adapters forward it, search preserves cancellation and every owned directory/file cleanup is awaited. Only admitted cooperative CANCELLED with a fired owned deadline signal or elapsed wall-clock deadline becomes DEADLINE_EXCEEDED. Four held reads retain capacity through cleanup. Actual SDK notification/ping ordering establishes server-side cancellation, with zero further target I/O and a CANCELLED audit outcome. The installed verifier adds the same46cases with exact byte bindings.
+
+Original PR #215 head27be966 failed Ubuntu one deadline classification case (614pass/1fail/12existingplatformskips). The actual timer had fired while the wall-clock guard still reported CANCELLED. A deterministic real-timer/controlled-clock regression reproduced the failure; the additive correction retains the owned signal. [Original failure](https://github.com/MulattoTech/MTerm-CLI/pull/215#issuecomment-6732249899) is preserved; no rerun or assertion weakening. New-head full gates remain mandatory.
+
+All300 protected requirement fields and WEB009 acceptance remain unchanged. Native search timeout/truncation remains intact. These are real I/O and SDK fixtures with controlled scheduling, not deployed gateway or20–30-client load acceptance. No production/plugin/owner runtime changes or model requests.
+
+Prior scoped deliveries: PR #211 stop retry, #212 Git boundaries and #213 installer fingerprint all have six successful PR and six successful main checks. PR #214 prepack order normally merged at5880c61 with exact reviewed tree403eb91a; allsix PR gates passed (Windows582/582; otherfull570+12existingplatformskips; installed/native gates passed). Allsix merged-main checks also passed, independently verified from actual logs and recorded in [#3](https://github.com/MulattoTech/MTerm-CLI/issues/3#issuecomment-6732158020). Scoped #3/#66/#94/#131 implementation claims are inactive; broad issues remain open.
+
+Next: complete final source/doc review and reviewed build/format/typecheck/roadmap/parity gates; publish this exact source for allsix hosted and installed/platform gates, then expected-head normal merge and main verification. Existing shared Windows worktrees, live bridge, private plugin and staging remain preserved. The management Worker's point-in-time14module source receipt remains [recorded in #209](https://github.com/MulattoTech/MTerm-CLI/issues/209#issuecomment-6731856127).
+
+---
+
 # Normal prepack checkpoint — 2026-11-09 UTC
 
 Session `MTERM-WEB-20261109T031131Z-e0efd5d4` owns `coord/mterm/issue-3`, feature `fix/issue-3-prepack-order-20261109`, from reviewed source `7abac1f22e03ed4242734bfd1c7966c9b01021e2`. Its prerequisite PR #213 is normally merged as `0c201abec09c4680607e864422e2c4555833607e`, with identical tree `4b34dbafc0c457174dd54b1db8440b5119838aa1` and six PR gates passed. Main checks are running; #94 implementation claim is inactive.

@@ -1,0 +1,204 @@
+{
+  "change_id": "2026-11-09-file-cancellation",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "session_id": "MTERM-WEB-20261109T031131Z-e0efd5d4",
+  "started_at": "2026-11-09T04:02:47Z",
+  "updated_at": "2026-11-09T04:31:03.112097+00:00",
+  "base_sha": "5880c61fcaaaaa8972f06d1ae5a88d6e2d3cbd70",
+  "claim_base_sha": "0c201abec09c4680607e864422e2c4555833607e",
+  "integration_dependency": {
+    "pr": 214,
+    "original_frozen_source_head": "0359569b70ddaa587ccab8e85d32cd9bd89a20e4",
+    "merged_as": "5880c61fcaaaaa8972f06d1ae5a88d6e2d3cbd70",
+    "tree": "403eb91a26fcda7806e3dcdbdb734f15ecddcbb4",
+    "local_branch_fast_forwarded_without_content_change": true,
+    "main_checks": "Allsix passed; actual logs independently reviewed; recorded in issue3 comment6732158020."
+  },
+  "issues": [
+    62
+  ],
+  "requirements": [
+    "CLI-268",
+    "CLI-270",
+    "CLI-272",
+    "CLI-273",
+    "CLI-274",
+    "CLI-287",
+    "CLI-288"
+  ],
+  "files": [
+    "src/files.ts",
+    "src/mcp.ts",
+    "src/remote/adapter.ts",
+    "scripts/verify-package.mjs",
+    "tests/file-cancellation.test.mjs",
+    "tests/file-cancellation-mcp.test.mjs",
+    "docs/SECURITY.md",
+    "docs/REMOTE_MCP.md",
+    "docs/REMOTE_MCP_ROADMAP.md",
+    "docs/roadmap/remote-web-progress.json",
+    "docs/HANDOFF.md",
+    "docs/ai/changes/2026-11-09-file-cancellation.json",
+    "docs/validation/2026-11-09-file-cancellation.md",
+    "docs/validation/2026-11-09-file-cancellation-red.tap",
+    "docs/validation/2026-11-09-file-cancellation-green.tap",
+    "docs/roadmap/progress.json",
+    "docs/roadmap/review.json",
+    "docs/roadmap/FEATURES.md",
+    "docs/roadmap/index.html",
+    "docs/roadmap/summary.json",
+    "docs/validation/2026-11-09-file-cancellation-deadline-red.tap"
+  ],
+  "decisions": [
+    "Atomic coord/mterm/issue-62 claim; one implementation writer and independent read-only peers.",
+    "Optional native read/info/list signals preserve callers; MCP and remote dispatch forward the owning bound signal.",
+    "Await real I/O and owned cleanup; never return capacity early using a cancellation race.",
+    "Distinguish unstarted directory closure from started iterator return; preserve search budget semantics and cancellation across skip catches.",
+    "Only admitted cooperative CANCELLED at or after expiry becomes DEADLINE_EXCEEDED; concrete sanitized errors retain precedence.",
+    "Preserve all300 protected requirements, historical staging metadata and full WEB009 acceptance.",
+    "Preserve original Ubuntu qualification failure; retain the actual owned deadline signal and normalize only admitted CANCELLED on owned-signal expiry OR wall-clock expiry. Do not pad sleeps, weaken assertions or rerun away failure."
+  ],
+  "tests": [
+    {
+      "command": "Final fixtures with MTERM_VERIFY_BIN pointing to compiled git archive of base5880c61",
+      "result": "Final RED46cases against archivedbase5880c61:7passed/39failed,exit1,zero skipped/cancelled."
+    },
+    {
+      "command": "node --test --test-reporter=tap --test-concurrency=1 tests/file-cancellation.test.mjs tests/file-cancellation-mcp.test.mjs tests/files.test.mjs tests/remote-adapter.test.mjs tests/mcp.test.mjs",
+      "result": "Final GREEN66/66,zero failed/skipped/cancelled; Nodev24.22.1 Linux x64."
+    },
+    {
+      "command": "Independent peer focused cancellation tests",
+      "result": "Independent45/45 before audit-observation adjustment; final SDK delta separately3/3, zero failed/skipped/cancelled. No runtime blocker; documented fixture race resolved."
+    },
+    {
+      "command": "npm run build; npm run typecheck; npm run format:check; roadmap review/render/check; git diff --check",
+      "result": "Final revised source: reviewed build, typecheck, format, roadmap/parity and diff checks passed. All300 protected fields, prior evidence, WEB history, seed and dependency pins remain preserved."
+    },
+    {
+      "command": "Final46 cancellation cases against original PR27be compiled output before revision",
+      "result": "45passed/1failed; added real fired-deadline/controlled-wall-clock case is sole failure; zero skipped/cancelled."
+    },
+    {
+      "command": "Independent final revised46-case cancellation suite against frozen compiled source",
+      "result": "46/46 passed, zero failures/skips/cancellations; Nodev24.22.1 Linuxx64;2795.426725ms. Source/dist/fixture hashes unchanged across execution."
+    }
+  ],
+  "fixture_development_note": "Initial patched run42/45: native/remote and SDK signal/no-I/O/audit assertions passed; final SDK status query used an execution-only tool on default read-only hosts. Corrected to default capabilities probe, asserting only the probe occupies normal admission. Final unchanged fixtures were rerun against archived original source, preserving RED7/45. No product assertions weakened. Independent review identified possible report-before-audit visibility; final SDK fixture bounded-polls the actual audit event before asserting outcome/admission. Final RED7/45 and GREEN65/65 reran with this exact fixture; independent delta3/3.",
+  "reviewed_sha256": {
+    "src/files.ts": "26a3050914b4c5c1ee4530428bb0237d0a946de5eab6694a22180c08c88e2353",
+    "src/mcp.ts": "f514270a2eb5d14c2203af18bb3039754c1cf317fcbddc69e86983aea03e4fd0",
+    "src/remote/adapter.ts": "6f0732d714b099c418eafd81703224f2e28ceb981be69658dfb5c9dfb49606fc",
+    "scripts/verify-package.mjs": "7d217ab822a9ba9691b36ad08db1fcca49d82e0113420151883ecb645c70e3e5",
+    "tests/file-cancellation.test.mjs": "44999e3e33d64eb9aed963dce99d7bcc209209bb224e092a4ce29156894c7735",
+    "tests/file-cancellation-mcp.test.mjs": "2aca4601a8196f1e91d8ee9eff1a310300c0c637d4a98bc2f9ee82a9280a3f0e"
+  },
+  "roadmap_updates": [
+    {
+      "id": "CLI-268",
+      "stage_change": false,
+      "reason": "Append scoped native/remote cancellation evidence; retain all protected fields and broader acceptance."
+    },
+    {
+      "id": "CLI-270",
+      "stage_change": false,
+      "reason": "Append scoped native/remote cancellation evidence; retain all protected fields and broader acceptance."
+    },
+    {
+      "id": "CLI-272",
+      "stage_change": false,
+      "reason": "Append scoped native/remote cancellation evidence; retain all protected fields and broader acceptance."
+    },
+    {
+      "id": "CLI-273",
+      "stage_change": false,
+      "reason": "Append scoped native/remote cancellation evidence; retain all protected fields and broader acceptance."
+    },
+    {
+      "id": "CLI-274",
+      "stage_change": false,
+      "reason": "Append scoped native/remote cancellation evidence; retain all protected fields and broader acceptance."
+    },
+    {
+      "id": "CLI-287",
+      "stage_change": false,
+      "reason": "Append scoped native/remote cancellation evidence; retain all protected fields and broader acceptance."
+    },
+    {
+      "id": "CLI-288",
+      "stage_change": false,
+      "reason": "Append scoped native/remote cancellation evidence; retain all protected fields and broader acceptance."
+    }
+  ],
+  "limitations": [
+    "Cooperative cancellation cannot guarantee interruption of a pending OS operation. Scheduling gates and EACCES injection are explicit; actual filesystem handles and SDK transport are used.",
+    "Native search timeoutMs still produces bounded truncated results.",
+    "Installed package, platform/native and exact-head hosted qualification remain separate gates.",
+    "Cloud Unix-socket EPERM limitation remains recorded; no test or required gate bypassed.",
+    "No production bridge/plugin/staging deployment, model request, new dependency or global runtime change."
+  ],
+  "next_unverified_action": "Publish additive reviewed revision with expected-old-head guard, require allsix new-head hosted/installed/platform gates, then expected-head normal merge and merged-main verification.",
+  "logs": {
+    "red": {
+      "original_sha256": "e1dc96068a29fc8f33865bc92294473c7adb9b2e491996e605d7498d501199a0",
+      "display_normalization": "Only trailing whitespace removed from committed TAP display."
+    },
+    "green": {
+      "original_sha256": "bab3f888b7e877041c8424bdba999b3698159fb928d0d988f422b2b769330bf3",
+      "display_normalization": "Only trailing whitespace removed from committed TAP display."
+    },
+    "deadline-red": {
+      "original_sha256": "1409ca0c7a58742ad5394c584aa3000c09b4c088c5c04ac4239b5aed5795cfd3",
+      "display_normalization": "Only trailing whitespace removed from committed TAP display."
+    }
+  },
+  "independent_review": [
+    {
+      "reviewer": "/root/release_quality_scan",
+      "role": "independent read-only source and execution reviewer",
+      "result": "No blocking runtime findings;45/45 and final SDK3/3 passed. Audit observation race resolved with bounded event polling. Documentation corrected to preserve existing non-cancellation search skip behavior; no broader cleanup-error claim.",
+      "source_sha256": {
+        "src/files.ts": "26a3050914b4c5c1ee4530428bb0237d0a946de5eab6694a22180c08c88e2353",
+        "src/mcp.ts": "f514270a2eb5d14c2203af18bb3039754c1cf317fcbddc69e86983aea03e4fd0",
+        "src/remote/adapter.ts": "7e479d112c83241153dee91a9badd1306c50c344684b5721eb6f7e22de283157"
+      },
+      "final_sdk_fixture_sha256": "2aca4601a8196f1e91d8ee9eff1a310300c0c637d4a98bc2f9ee82a9280a3f0e"
+    },
+    {
+      "reviewer": "/root/backlog_triage",
+      "role": "independent read-only fixture and installed-verifier reviewer",
+      "result": "No material findings; causal real I/O, real timer expiry, four retained slots, SDK FIFO barrier and exact installed byte/log binding verified by inspection. Focused execution coordinated with source reviewer; not duplicated."
+    },
+    {
+      "reviewer": "/root/architecture_scan",
+      "role": "independent revision source and evidence review",
+      "result": "No material findings in minimal owned-deadline signal correction, deterministic real-timer/controlled-wall-clock regression or final docs. Original gate chronology clarified; original failed head/run retained.",
+      "source_adapter_sha256": "6f0732d714b099c418eafd81703224f2e28ceb981be69658dfb5c9dfb49606fc"
+    },
+    {
+      "reviewer": "/root/release_quality_scan",
+      "role": "independent final revision execution and semantics",
+      "result": "46/46 passed; no failures/skips/cancellations; narrow error guards and unchanged capacity finally verified. No build or edits.",
+      "source_adapter_sha256": "6f0732d714b099c418eafd81703224f2e28ceb981be69658dfb5c9dfb49606fc",
+      "compiled_adapter_sha256": "aa809420a2757880b8a0b8301a0ace892b5e4adf52dae89e13fb4f523fe12705",
+      "native_fixture_sha256": "44999e3e33d64eb9aed963dce99d7bcc209209bb224e092a4ce29156894c7735",
+      "sdk_fixture_sha256": "2aca4601a8196f1e91d8ee9eff1a310300c0c637d4a98bc2f9ee82a9280a3f0e"
+    }
+  ],
+  "revision_parent": "27be966c1811bb5e508ca151fbc52d42a26506a9",
+  "original_hosted_failure": {
+    "head": "27be966c1811bb5e508ca151fbc52d42a26506a9",
+    "run": 42561637263,
+    "job": 128979126908,
+    "platform": "Node24.21.0 linux/x64",
+    "tests": 627,
+    "passed": 614,
+    "failed": 1,
+    "existing_platform_skips": 12,
+    "observed": "Actual owned deadline signal had fired; only wall-clock classification returned CANCELLED instead of DEADLINE_EXCEEDED. Exact OS timer/clock cause not established.",
+    "url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42561637263/job/128979126908",
+    "rerun": false,
+    "later_gates_skipped": true
+  }
+}

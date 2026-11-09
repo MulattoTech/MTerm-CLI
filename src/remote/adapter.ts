@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-09-file-cancellation; propagate bounded signals and classify admitted deadline cancellation.
 // AI-Change: 2026-11-02-remote-agent (OpenAI / GPT-6 Astra Pro; self-reported)
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -51,6 +52,7 @@ export class RemoteReadAdapter {
   }
   async execute(request: ToolRequest, signal?: AbortSignal): Promise<ToolResult> {
     let counted = false;
+    let deadline: AbortSignal | undefined;
     const envelope = {
       version: WIRE_VERSION,
       requestId: UUID_PATTERN.test(request?.requestId ?? '') ? request.requestId : 'invalid',
@@ -86,18 +88,18 @@ export class RemoteReadAdapter {
       this.admitted.set(request.requestId, request.deadline + 60000);
       this.active++;
       counted = true;
-      const deadline = AbortSignal.timeout(Math.max(1, request.deadline - Date.now()));
+      deadline = AbortSignal.timeout(Math.max(1, request.deadline - Date.now()));
       const bound = signal ? AbortSignal.any([signal, deadline]) : deadline;
       let value: Record<string, unknown>;
       switch (request.tool) {
         case 'mterm_read_file':
-          value = await this.files.read(request.arguments);
+          value = await this.files.read(request.arguments, bound);
           break;
         case 'mterm_file_info':
-          value = await this.files.info(request.arguments);
+          value = await this.files.info(request.arguments, bound);
           break;
         case 'mterm_list_directory':
-          value = await this.files.list(request.arguments);
+          value = await this.files.list(request.arguments, bound);
           break;
         default: {
           const args = fileSchemas.search.omit({ mode: true }).parse(request.arguments);
@@ -115,7 +117,14 @@ export class RemoteReadAdapter {
         fail('RESPONSE_LIMIT', 'Result exceeds the remote wire budget; request a smaller range.');
       return { ...envelope, result };
     } catch (error) {
-      const value = { ok: false, error: safeError(error) };
+      const safe = safeError(error);
+      // A fired owned timer remains an expiry even if wall-clock granularity disagrees.
+      // Preserve late-settlement precedence without hiding unrelated I/O/admission failures.
+      const failure =
+        counted && safe.code === 'CANCELLED' && (deadline?.aborted === true || Date.now() >= request.deadline)
+          ? { code: 'DEADLINE_EXCEEDED', message: 'Remote tool exceeded its deadline.' }
+          : safe;
+      const value = { ok: false, error: failure };
       return {
         ...envelope,
         result: {

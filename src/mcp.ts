@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-09-file-cancellation; forward native read, metadata and listing request signals.
 // Modified: 2026-11-08-aug012-resource-budgets; bounded owned-control lane and immutable process admission.
 // Modified: 2026-11-08-aug003-pack-catalog; connection-local pack selection and effective output schemas.
 // Modified: 2026-11-07-aug001-pack-boundary; lazy opt-in pack discovery through the owned process runner.
@@ -420,7 +421,7 @@ export async function runMcp(options: HostOptions): Promise<void> {
         'Read bounded UTF-8 text and SHA-256 version; optional zero-based line range.',
         fileSchemas.read,
         true,
-        (a) =>
+        (a, signal) =>
           files.read(
             configuration
               ? {
@@ -428,6 +429,7 @@ export async function runMcp(options: HostOptions): Promise<void> {
                   length: (a as { length?: number }).length ?? configuration.current().fileReadLineLimit,
                 }
               : a,
+            signal,
           ),
       );
       add(
@@ -435,14 +437,14 @@ export async function runMcp(options: HostOptions): Promise<void> {
         'Read file/directory metadata within the trusted root.',
         fileSchemas.info,
         true,
-        (a) => files.info(a),
+        (a, signal) => files.info(a, signal),
       );
       add(
         'mterm_list_directory',
         'List bounded directory entries; private metadata names are withheld.',
         fileSchemas.list,
         true,
-        (a) => files.list(a),
+        (a, signal) => files.list(a, signal),
       );
       add(
         'mterm_search_files',

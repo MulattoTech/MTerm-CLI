@@ -228,6 +228,15 @@ Stages describe implementation evidence and do not award acceptance or a complet
 
 **Completed evidence:** Actual HTTPS→gateway→two Windows agents→FileService→SDK reads matched exact hashes without storing raw file contents; specified denial and revocation checks passed.
 
+**Subsequent local evidence — 2026-11-09:** Native file operations and local MCP/remote
+adapter dispatch were exercised for cooperative cancellation, deadline error
+classification and retained in-flight capacity using owned real filesystem fixtures
+and controlled scheduling. See [the scoped cancellation report](validation/2026-11-09-file-cancellation.md)
+and evidence record `FILE-CANCELLATION-20261109` for exact source, test counts and
+qualification limits. This does not establish deployed gateway cancellation,
+production load, restart/disconnect recovery or full WEB-009 acceptance. Historical
+live-smoke identity and remaining work below are unchanged.
+
 **Remaining work, dependencies and blockers:**
 
 - Exercise the remaining metadata/list/search read tools and their schema/result bounds through the actual deployed SDK path. **Effort:** 2–4 engineering hours. **Depends on:** Recorded read_file/inventory round trip; Known harmless Windows fixtures. **Blocker:** The live smoke proved read_file and inventory; all other tool methods and boundary cases need live coverage.

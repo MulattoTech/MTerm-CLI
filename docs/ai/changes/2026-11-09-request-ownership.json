@@ -1,0 +1,115 @@
+{
+  "change_id": "2026-11-09-request-ownership",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "session_id": "MTERM-WEB-20261109T031131Z-e0efd5d4",
+  "started_at": "2026-11-09T05:37:22Z",
+  "updated_at": "2026-11-09T05:45:33.200702+00:00",
+  "base_sha": "b20c020537c5b8fb8d654ea6e39a429fb81cacb8",
+  "integration_dependency": {
+    "pr": 218,
+    "merged_as": "b20c020537c5b8fb8d654ea6e39a429fb81cacb8",
+    "tree": "cf0c2a22732728f670108ec00b0d69482ef09ad6",
+    "same_as_reviewed_candidate": true,
+    "pr_checks": "All six passed; independently inspected actual logs, PR218 comment6733105333.",
+    "main_checks": "All six separate push checks passed; actual logs and installed/native bindings independently inspected, issue55 comment6733220125."
+  },
+  "issues": [
+    65
+  ],
+  "related_issues": [
+    62,
+    54
+  ],
+  "requirements": [
+    "CLI-288"
+  ],
+  "files": [
+    "gateway/app.mjs",
+    "gateway/registry.mjs",
+    "tests/remote-gateway.test.mjs",
+    "docs/HANDOFF.md",
+    "docs/REMOTE_MCP_ROADMAP.md",
+    "docs/ai/changes/2026-11-09-request-ownership.json",
+    "docs/validation/2026-11-09-request-ownership.md",
+    "docs/validation/2026-11-09-request-ownership-red.tap",
+    "docs/validation/2026-11-09-request-ownership-green.tap",
+    "docs/roadmap/progress.json",
+    "docs/roadmap/remote-web-progress.json",
+    "docs/roadmap/review.json",
+    "docs/roadmap/FEATURES.md",
+    "docs/roadmap/index.html",
+    "docs/roadmap/summary.json"
+  ],
+  "decisions": [
+    "Atomic issue65 claim after PR218 merge; sole implementation writer, independent read-only reviewers.",
+    "Reject consumed results after existing authorization/ownership checks and before mutation.",
+    "First terminal result remains consumable when its index is absent or superseded; delete only an index that still identifies that job.",
+    "Capture internal request identity for private HTTP abort/deadline cleanup; authenticate and validate present expected IDs before mismatch no-op.",
+    "Preserve public token/RPC-ID cancellation semantics, typed IDs, deadlines, capacity and no replay.",
+    "Use actual gateway/serialized registry and real local OAuth with synthetic identities; binding response gates are outside serialization.",
+    "Evidence only for CLI288/WEB009/012; preserve all protected fields, prior evidence and acceptance."
+  ],
+  "tests": [
+    {
+      "command": "Final 38-case gateway fixture on unchanged source before behavior edits",
+      "result": "RED29 passed/9 failed; all nine ERR_ASSERTION, zero skips/cancellations. All twelve new cases present before fix."
+    },
+    {
+      "command": "node --test --test-reporter=tap --test-concurrency=1 tests/remote-gateway.test.mjs tests/remote-admission.test.mjs tests/remote-agent.test.mjs",
+      "result": "GREEN50/50; zero failures/skips/cancellations. Node24.22.1 Linux x64."
+    },
+    {
+      "command": "Independent frozen gateway execution by /root/backlog_triage",
+      "result": "38/38 passed (12 new plus 26 prior), zero failures/skips/cancellations/stderr; 3966.340487 ms on Node24.22.1 Linux x64. Six source/fixture/dependency hashes unchanged before/after.",
+      "tap_sha256": "0ad926a63ed803512ffe36d76ec2ba00b7fc7af040fcb496e741727b4c5f03e2"
+    },
+    {
+      "command": "Explicit roadmap review/render/check; normal npm run build; npm run typecheck; npm run format:check; git diff --check",
+      "result": "Passed. Protected 300-row maturity remains29.36%,0 complete,45 blocked,126 not started; parity command passed with0/48 acceptance. Source fingerprint c846510498b1749db94de66f0d5a5661d0577a73c2384a39e3011f1c1d887725."
+    }
+  ],
+  "independent_review": {
+    "reviewers": [
+      "/root/backlog_triage",
+      "/root/architecture_scan"
+    ],
+    "result": "Independent original reproduction, design and final source/fixture reviews clear; one frozen38/38 execution passed with unchanged hashes. Documentation/protected-field and raw-log normalization reviews clear."
+  },
+  "reviewed_sha256": {
+    "gateway/app.mjs": "61b5c43a8ce7dc6fc61d772fcc16c4a4b7d5cb8f17c70555829fae3ce53e42a1",
+    "gateway/registry.mjs": "53706971f99d6f71d1e5a5db6fc87c739a90aca7c05146412820ff8a4285e472",
+    "tests/remote-gateway.test.mjs": "852fd0735c26492f51e00ffde29b887d71496463450d0bbaa99349e100084357"
+  },
+  "roadmap_updates": [
+    {
+      "id": "CLI-288",
+      "stage_change": false,
+      "reason": "Scoped remote request cleanup evidence only; broader shutdown, live client and platform acceptance remains open."
+    }
+  ],
+  "limitations": [
+    "Same-credential lifetime failure; no cross-user data access demonstrated.",
+    "Serialized memory storage, controlled time and binding gates do not certify actual Cloudflare persistence or network faults.",
+    "Existing serialized fetch exclusion is not a new distributed transaction or storage-failure recovery guarantee.",
+    "Gateway source is not included in the npm CLI package; installed admission combines source gateway with installed agent.",
+    "No OS interruption, new replay/fairness policy, load/soak or 20–30-client acceptance.",
+    "No live deployment/credential/grant/device/bridge/plugin/global runtime or unrelated project mutation; dependencies/pins/locks unchanged.",
+    "Known local full-suite Unix-socket listen EPERM limitation remains; all six hosted gates and separate main checks remain mandatory."
+  ],
+  "logs": {
+    "red": {
+      "original_sha256": "490181ad619599c82768117c4cd2462e9ad01ccbc75d6d7914be24541edb2afb",
+      "display_normalization": "Only trailing whitespace removed from committed TAP display."
+    },
+    "green": {
+      "original_sha256": "0cf263b6664371088b5f574c021ead089f2ab50b8854b88aa40f188e625fb3b9",
+      "display_normalization": "Only trailing whitespace removed from committed TAP display."
+    }
+  },
+  "next_unverified_action": "Publish exact-head draft PR and committed gateway artifact receipt, require all six hosted/platform/installed/native gates, then normal expected-head merge and separate main verification.",
+  "documentation_review": {
+    "reviewer": "/root/architecture_scan",
+    "result": "All 300 CLI fields and catalog metadata preserved except CLI288 appended notes/two evidence refs; all WEB metadata/history/acceptance preserved except one evidence row and WEB009/012 refs. HANDOFF exact prepend, REMOTE roadmap exact append; seeds/pins/locks/AUG/DCP/summary unchanged. All169 reviewed source fingerprints and retained raw/display TAP hashes match. No material finding."
+  }
+}

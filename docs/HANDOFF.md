@@ -1,3 +1,17 @@
+# Gateway request ownership checkpoint — 2026-11-09 UTC
+
+Session `MTERM-WEB-20261109T031131Z-e0efd5d4` owns `coord/mterm/issue-65`, feature `fix/issue-65-request-ownership-20261109`, source base `b20c020537c5b8fb8d654ea6e39a429fb81cacb8`. Sole implementation writer, independent read-only reviewers. [Atomic claim](https://github.com/MulattoTech/MTerm-CLI/issues/65#issuecomment-6733115075).
+
+[Request ownership evidence](validation/2026-11-09-request-ownership.md): actual old terminal consumption removed a replacement's active lookup after RPC-ID reuse, repeated consumption returned a fabricated error result, and delayed old HTTP abort/deadline cleanup cancelled newer work. All twelve new cases predate behavior edits: RED38 total, 29 passed/9 assertion failures; corrected focused50/50 and independent frozen38/38. Consumption now rejects repeats and removes only its own lookup. Private cleanup includes an expected internal request ID, with authentication and presence-based UUID validation before a mismatch no-op. Public current-RPC cancellation, typed IDs and bearer separation remain intact. No new persistence transaction, replay, immediate OS interruption or deployment claim.
+
+Prerequisite PR218 merged normally as the base above, tree `cf0c2a22732728f670108ec00b0d69482ef09ad6`, identical to reviewed head `2bd7fa595542c00960e378c34c904fd9d643957a`. All six PR checks passed: Windows667/667; other full655+12 existing skips; all twelve expiry cases passed; installed8/46/18/5 and native12 source+12 installed cleanup passed. [Qualification](https://github.com/MulattoTech/MTerm-CLI/pull/218#issuecomment-6733105333), [artifact receipt](https://github.com/MulattoTech/MTerm-CLI/pull/218#issuecomment-6733032249) and [claim release](https://github.com/MulattoTech/MTerm-CLI/issues/55#issuecomment-6733108174) are durable. All six separate merged-main checks also passed with independent actual-log and installed/native review; the [final main receipt](https://github.com/MulattoTech/MTerm-CLI/issues/55#issuecomment-6733220125) records the exact qualification. PR211–218 have completed all six PR and all six main gates.
+
+CLI288 and WEB009/012 evidence only; all protected fields, historical records, seeds, stages, weights, estimates, dependencies and AUG/DCP/WEB acceptance remain unchanged. No owner bridge/plugin/global runtime/Cloudflare deployment or unrelated project changed.
+
+Independent source/fixture review and normal reviewed build/typecheck/format/parity/roadmap gates passed. Documentation/protected-metric review also passed. Next: an exact-head draft PR and all six hosted checks before normal expected-head merge and separate main verification. Full #65 threat-model and real-client acceptance remain open.
+
+---
+
 # Gateway grant expiry checkpoint — 2026-11-09 UTC
 
 Session `MTERM-WEB-20261109T031131Z-e0efd5d4` owns `coord/mterm/issue-55`, feature `fix/issue-55-grant-expiry-20261109`, source base `5660ae2cd91840e70af2a41e58e8b8d39154c40c`. One implementation writer; independent source/fixture and qualification reviewers. [Atomic claim](https://github.com/MulattoTech/MTerm-CLI/issues/55#issuecomment-6732784685).

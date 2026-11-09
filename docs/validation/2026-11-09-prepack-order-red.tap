@@ -1,0 +1,210 @@
+TAP version 13
+# Subtest: normal prepack builds a clean package and installs exactly the tested bytes
+not ok 1 - normal prepack builds a clean package and installs exactly the tested bytes
+  ---
+  duration_ms: 1052.566683
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/prepack-lifecycle.test.mjs:179:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    node:internal/fs/promises:1345
+      return new FileHandle(await PromisePrototypeThen(
+                            ^
+
+    Error: ENOENT: no such file or directory, open 'dist/probe.mjs'
+        at async open (node:internal/fs/promises:1345:25)
+        at async Object.readFile (node:internal/fs/promises:2003:14)
+        at async file:///tmp/mterm-prepack-2iVUAp/package/scripts/leaf.mjs:13:17 {
+      errno: -2,
+      code: 'ENOENT',
+      syscall: 'open',
+      path: 'dist/probe.mjs'
+    }
+
+    Node.js v24.22.1
+    npm error code 1
+    npm error path /tmp/mterm-prepack-2iVUAp/package
+    npm error command failed
+    npm error command sh -c npm run check && npm run build:code
+    npm error A complete log of this run can be found in: /tmp/mterm-prepack-2iVUAp/npm/cache/_logs/2026-11-09T03_53_40_042Z-debug-0.log
+
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    async open (node:internal/fs/promises:1345:25)
+    async Object.readFile (node:internal/fs/promises:2003:14)
+    async file:///tmp/mterm-prepack-2iVUAp/package/scripts/leaf.mjs:13:17 {
+    assertPackedFresh (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/prepack-lifecycle.test.mjs:146:10)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/prepack-lifecycle.test.mjs:182:3)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: stale passing output cannot allow newly failing source into an archive
+not ok 2 - stale passing output cannot allow newly failing source into an archive
+  ---
+  duration_ms: 1183.230652
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/prepack-lifecycle.test.mjs:185:1'
+  failureType: 'testCodeFailure'
+  error: |-
+
+    > mterm-prepack-fixture@1.0.0 prepack
+    > npm run check && npm run build:code
+
+
+    > mterm-prepack-fixture@1.0.0 check
+    > npm run roadmap:check && npm run parity:check && npm run typecheck && npm run format:check && npm test
+
+
+    > mterm-prepack-fixture@1.0.0 roadmap:check
+    > node scripts/leaf.mjs roadmap:check
+
+
+    > mterm-prepack-fixture@1.0.0 parity:check
+    > node scripts/leaf.mjs parity:check
+
+
+    > mterm-prepack-fixture@1.0.0 typecheck
+    > node scripts/leaf.mjs typecheck
+
+
+    > mterm-prepack-fixture@1.0.0 format:check
+    > node scripts/leaf.mjs format:check
+
+
+    > mterm-prepack-fixture@1.0.0 test
+    > node scripts/leaf.mjs test
+
+
+    > mterm-prepack-fixture@1.0.0 build:code
+    > node scripts/leaf.mjs build:code
+
+    mterm-prepack-fixture-1.0.0.tgz
+    npm notice
+    npm notice 📦  mterm-prepack-fixture@1.0.0
+    npm notice Tarball Contents
+    npm notice 59B dist/probe.mjs
+    npm notice 638B package.json
+    npm notice Tarball Details
+    npm notice name: mterm-prepack-fixture
+    npm notice version: 1.0.0
+    npm notice filename: mterm-prepack-fixture-1.0.0.tgz
+    npm notice package size: 388 B
+    npm notice unpacked size: 697 B
+    npm notice shasum: ad142ad2c1ddfa2443e3ef6e68437aa8cc4d6fb0
+    npm notice integrity: sha512-KB6pf8BIEROMX[...]FvzOCz4BEsFoQ==
+    npm notice total files: 2
+    npm notice
+
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/prepack-lifecycle.test.mjs:188:10)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: stale failing output cannot block newly passing source from normal packing
+not ok 3 - stale failing output cannot block newly passing source from normal packing
+  ---
+  duration_ms: 1115.871297
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/prepack-lifecycle.test.mjs:196:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    node:internal/modules/run_main:107
+        triggerUncaughtException(
+        ^
+
+    AssertionError [ERR_ASSERTION]: Freshly compiled fixture must satisfy its test
+
+    'fail' !== 'pass'
+
+        at file:///tmp/mterm-prepack-j7tdLj/package/scripts/leaf.mjs:16:10 {
+      generatedMessage: false,
+      code: 'ERR_ASSERTION',
+      actual: 'fail',
+      expected: 'pass',
+      operator: 'strictEqual',
+      diff: 'simple'
+    }
+
+    Node.js v24.22.1
+    npm error code 1
+    npm error path /tmp/mterm-prepack-j7tdLj/package
+    npm error command failed
+    npm error command sh -c npm run check && npm run build:code
+    npm error A complete log of this run can be found in: /tmp/mterm-prepack-j7tdLj/npm/cache/_logs/2026-11-09T03_53_42_292Z-debug-0.log
+
+
+    1 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 1
+  operator: 'strictEqual'
+  stack: |-
+    file:///tmp/mterm-prepack-j7tdLj/package/scripts/leaf.mjs:16:10 {
+    assertPackedFresh (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/prepack-lifecycle.test.mjs:146:10)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/prepack-lifecycle.test.mjs:197:3)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: a failed post-build check prevents any new package archive
+not ok 4 - a failed post-build check prevents any new package archive
+  ---
+  duration_ms: 859.600606
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/prepack-lifecycle.test.mjs:200:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    0 !== 1
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/prepack-lifecycle.test.mjs:206:10)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: failed roadmap:check prevents compilation and publication
+ok 5 - failed roadmap:check prevents compilation and publication
+  ---
+  duration_ms: 477.955232
+  type: 'test'
+  ...
+# Subtest: failed parity:check prevents compilation and publication
+ok 6 - failed parity:check prevents compilation and publication
+  ---
+  duration_ms: 609.59116
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 2
+# fail 4
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5381.404102

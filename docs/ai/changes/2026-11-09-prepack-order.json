@@ -1,0 +1,106 @@
+{
+  "change_id": "2026-11-09-prepack-order",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "session_id": "MTERM-WEB-20261109T031131Z-e0efd5d4",
+  "started_at": "2026-11-09T03:52:10Z",
+  "updated_at": "2026-11-09T03:59:44.438176+00:00",
+  "base_sha": "7abac1f22e03ed4242734bfd1c7966c9b01021e2",
+  "claim_base_sha": "640953514c44c5932364341ecd754399f6265bd8",
+  "integration_dependency": {
+    "pr": 213,
+    "merged_as": "0c201abec09c4680607e864422e2c4555833607e",
+    "tree": "4b34dbafc0c457174dd54b1db8440b5119838aa1",
+    "same_as_source_base": true,
+    "main_checks": "running; not yet claimed passed"
+  },
+  "issues": [
+    3
+  ],
+  "related_issues": [
+    8
+  ],
+  "requirements": [
+    "CLI-178",
+    "CLI-214",
+    "CLI-260",
+    "CLI-262"
+  ],
+  "files": [
+    "package.json",
+    "tests/prepack-lifecycle.test.mjs",
+    "docs/HANDOFF.md",
+    "docs/ai/changes/2026-11-09-prepack-order.json",
+    "docs/validation/2026-11-09-prepack-order.md",
+    "docs/validation/2026-11-09-prepack-order-red.tap",
+    "docs/validation/2026-11-09-prepack-order-green.tap",
+    "docs/roadmap/progress.json",
+    "docs/roadmap/review.json",
+    "docs/roadmap/FEATURES.md",
+    "docs/roadmap/index.html",
+    "docs/roadmap/summary.json"
+  ],
+  "decisions": [
+    "Atomic coord/mterm/issue-3 claim; one implementation owner with independent read-only review; source editing serialized after frozen PR213.",
+    "Use normal reviewed build before complete check; preserve short-circuit failure and all existing gates.",
+    "Qualify real npm lifecycle/archive/install using actual orchestration strings with explicit isolated compiler/check stand-ins.",
+    "Keep historical missing-dist receipt, no dependency or lockfile regeneration, no registry publication.",
+    "Preserve protected300 requirements and broad DCP001 acceptance."
+  ],
+  "tests": [
+    {
+      "command": "node --test --test-reporter=tap --test-concurrency=1 tests/prepack-lifecycle.test.mjs (unchanged lifecycle)",
+      "result": "RED: 6tests,2passed/4failed, exit1, no skipped/cancelled; clean missing-dist and both stale-build defects reproduced."
+    },
+    {
+      "command": "node --test --test-reporter=tap --test-concurrency=1 tests/prepack-lifecycle.test.mjs tests/npm-runtime.test.mjs",
+      "result": "GREEN8/8, zero skipped/cancelled; Nodev24.22.1 Linux x64."
+    },
+    {
+      "command": "npm run build; npm run typecheck; npm run format:check; roadmap review/render/check; git diff --check",
+      "result": "Passed. Dependency and both lockfiles unchanged; all300 protected item fields preserved."
+    }
+  ],
+  "independent_review": {
+    "reviewer": "/root/backlog_triage",
+    "role": "independent read-only peer",
+    "result": "No material issues; independent6/6 lifecycle tests and diff check passed. Windows inspection clear; actual hosted qualification remains required. Not a GitHub approval event.",
+    "reviewed_sha256": {
+      "package.json": "a8cbea0bff3999a7b406ff8789123069c7ac40cc8c52e6e8e46479a965e23e57",
+      "tests/prepack-lifecycle.test.mjs": "7832d3e6090bba86e5340c0d4e494fc7e6b9ab7d3c5f0fcfe695b95f0737e3e2"
+    }
+  },
+  "roadmap_updates": [
+    {
+      "id": "CLI-178",
+      "stage_change": false,
+      "reason": "Add scoped normal-prepack lifecycle evidence; preserve all protected fields and full-issue acceptance."
+    },
+    {
+      "id": "CLI-214",
+      "stage_change": false,
+      "reason": "Add scoped normal-prepack lifecycle evidence; preserve all protected fields and full-issue acceptance."
+    },
+    {
+      "id": "CLI-260",
+      "stage_change": false,
+      "reason": "Add scoped normal-prepack lifecycle evidence; preserve all protected fields and full-issue acceptance."
+    },
+    {
+      "id": "CLI-262",
+      "stage_change": false,
+      "reason": "Add scoped normal-prepack lifecycle evidence; preserve all protected fields and full-issue acceptance."
+    }
+  ],
+  "limitations": [
+    "Compiler/check leaves in lifecycle fixtures are deterministic stand-ins; actual project/platform/installed qualification remains separate.",
+    "Existing actual package verifier packs with ignore-scripts after source gates; that result is not relabeled as normal prepack.",
+    "Cloud socket EPERM limitation remains recorded; full hosted gates required.",
+    "No production bridge/plugin/staging or model request."
+  ],
+  "next_unverified_action": "Publish exact-head draft PR, require allsix hosted/platform/installed gates and independent final evidence review, then expected-head normal merge and merged-main verification.",
+  "red_log": {
+    "original_sha256": "c6197b66b1e98cf034f12ba289a56e20d33ed75f78977baffb38998f4f479c14",
+    "display_normalization": "Only trailing whitespace removed from committed TAP display."
+  }
+}

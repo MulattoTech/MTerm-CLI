@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: npm resolver recognizes Windows adjacent and Unix lib installation layouts
+ok 1 - npm resolver recognizes Windows adjacent and Unix lib installation layouts
+  ---
+  duration_ms: 8.293086
+  type: 'test'
+  ...
+# Subtest: npm resolver gives actionable absence and respects an explicit existing npm_execpath
+ok 2 - npm resolver gives actionable absence and respects an explicit existing npm_execpath
+  ---
+  duration_ms: 3.042192
+  type: 'test'
+  ...
+# Subtest: normal prepack builds a clean package and installs exactly the tested bytes
+ok 3 - normal prepack builds a clean package and installs exactly the tested bytes
+  ---
+  duration_ms: 1755.232224
+  type: 'test'
+  ...
+# Subtest: stale passing output cannot allow newly failing source into an archive
+ok 4 - stale passing output cannot allow newly failing source into an archive
+  ---
+  duration_ms: 1483.156849
+  type: 'test'
+  ...
+# Subtest: stale failing output cannot block newly passing source from normal packing
+ok 5 - stale failing output cannot block newly passing source from normal packing
+  ---
+  duration_ms: 1806.624339
+  type: 'test'
+  ...
+# Subtest: a failed post-build check prevents any new package archive
+ok 6 - a failed post-build check prevents any new package archive
+  ---
+  duration_ms: 1356.184695
+  type: 'test'
+  ...
+# Subtest: failed roadmap:check prevents compilation and publication
+ok 7 - failed roadmap:check prevents compilation and publication
+  ---
+  duration_ms: 453.107165
+  type: 'test'
+  ...
+# Subtest: failed parity:check prevents compilation and publication
+ok 8 - failed parity:check prevents compilation and publication
+  ---
+  duration_ms: 601.303437
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7614.626653

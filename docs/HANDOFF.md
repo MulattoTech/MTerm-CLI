@@ -1,3 +1,17 @@
+# Normal prepack checkpoint — 2026-11-09 UTC
+
+Session `MTERM-WEB-20261109T031131Z-e0efd5d4` owns `coord/mterm/issue-3`, feature `fix/issue-3-prepack-order-20261109`, from reviewed source `7abac1f22e03ed4242734bfd1c7966c9b01021e2`. Its prerequisite PR #213 is normally merged as `0c201abec09c4680607e864422e2c4555833607e`, with identical tree `4b34dbafc0c457174dd54b1db8440b5119838aa1` and six PR gates passed. Main checks are running; #94 implementation claim is inactive.
+
+[Prepack evidence](validation/2026-11-09-prepack-order.md): actual offline npm fixtures reproduce stale/missing compiled output, RED2/6 to focused GREEN8/8. The single product script now performs reviewed build before complete check. Six lifecycle cases include no-archive failures and byte-identical installed fixture output. Compiler/check leaves are explicit stand-ins; real MTerm qualification remains required. Independent review passed6/6; no dependency/lock/runtime implementation change. All300 protected requirement fields and full #3 acceptance remain unchanged.
+
+PR #212 main is fully verified: allsix checks passed, identical tree384eed88, Windows572/572, otherfull560pass+12existingplatformskips, installedGit18/18. Its scoped claim remains inactive. PR #213 qualified Windows576/576, otherfull564pass+12existingplatformskips; four new installer cases never skipped.
+
+Read-only #209 observation now binds all14 deployed management-Worker modules (231911rawbytes) to MTechLabs-Access4dbd868, stable active/latest versionf9dee583 and ETag718af417 across the content read. [Nonsecret receipt](https://github.com/MulattoTech/MTerm-CLI/issues/209#issuecomment-6731856127) preserves exact hashes and limits. This is current edge-source verification, not a Windows-runtime upgrade, deployment or full-service acceptance.
+
+Next: exact committed prepack PR qualification and normal merge/main verification. Then native read-only cancellation propagation (#62) is the next confirmed source gap: missing read/info/list signals, swallowed final-search cancellation, and remote deadline error classification require causal real-I/O/SDK tests. No paid/model lane or live host mutation.
+
+---
+
 # Supported installer review checkpoint — 2026-11-09 UTC
 
 Session `MTERM-WEB-20261109T031131Z-e0efd5d4` owns `coord/mterm/issue-94`, feature `fix/issue-94-installer-review-20261109`, from merged main `640953514c44c5932364341ecd754399f6265bd8`. One implementation writer and independent read-only peer.

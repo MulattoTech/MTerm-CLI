@@ -2,6 +2,7 @@
 // AI-Change: 2026-11-02-remote-gateway (OpenAI / GPT-6 Astra Pro; self-reported)
 // Modified: 2026-11-09-poll-capacity; retain queued work until the agent offers delivery capacity.
 // Modified: 2026-11-09-grant-expiry; authorize delivery/results at fresh post-read decision boundaries.
+// Modified: 2026-11-09-request-ownership; terminal consumption and private cancellation preserve newer RPC leases.
 import {
   READ_TOOLS,
   WIRE_VERSION,
@@ -675,6 +676,7 @@ export class MTermRegistry {
         'request_unavailable',
       );
       await this.ownedDevice(t.userId, job.deviceId);
+      requireValue(job.status !== 'consumed', 409, 'result_already_consumed');
       if (['queued', 'delivered'].includes(job.status) && job.deadline <= now())
         await this.finish(job, 'timeout');
       if (['queued', 'delivered'].includes(job.status)) return { pending: true };
@@ -683,14 +685,18 @@ export class MTermRegistry {
       delete job.result;
       job.status = 'consumed';
       await this.storage.put('job:' + job.requestId, job);
-      await this.storage.delete(job.rpcKey);
+      const active = await this.storage.get(job.rpcKey);
+      if (active?.requestId === job.requestId) await this.storage.delete(job.rpcKey);
       return { result };
     }
     if (action === 'cancel') {
-      const t = await this.access(a.token),
-        rpcKey = 'active:' + t.tokenHash + ':' + (await sha256(JSON.stringify(a.rpcId)));
-      const entry = await this.storage.get(rpcKey),
-        job = entry && (await this.storage.get('job:' + entry.requestId));
+      const t = await this.access(a.token);
+      const hasExpected = Object.hasOwn(a, 'expectedRequestId');
+      requireValue(!hasExpected || uuid(a.expectedRequestId), 400, 'invalid_request');
+      const rpcKey = 'active:' + t.tokenHash + ':' + (await sha256(JSON.stringify(a.rpcId)));
+      const entry = await this.storage.get(rpcKey);
+      if (hasExpected && entry?.requestId !== a.expectedRequestId) return { cancelled: true };
+      const job = entry && (await this.storage.get('job:' + entry.requestId));
       if (job && job.userId === t.userId && ['queued', 'delivered'].includes(job.status))
         await this.finish(job, 'cancelled');
       return { cancelled: true };

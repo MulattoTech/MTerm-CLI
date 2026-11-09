@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 // AI-Change: 2026-11-02-remote-gateway (OpenAI / GPT-6 Astra Pro; self-reported)
+// Modified: 2026-11-09-request-ownership; bind delayed HTTP cleanup to its original queued request.
 import { READ_TOOLS, MAX_FRAME_BYTES, UUID_PATTERN } from '../dist/remote/protocol.js';
 import {
   HttpError,
@@ -169,7 +170,9 @@ async function mcp(request, env) {
       tool: params.name,
       arguments: args,
     });
-    const cancel = () => registry(env, 'cancel', { token, rpcId: id }).catch(() => {});
+    const requestId = queued.requestId;
+    const cancel = () =>
+      registry(env, 'cancel', { token, rpcId: id, expectedRequestId: requestId }).catch(() => {});
     request.signal.addEventListener('abort', cancel, { once: true });
     try {
       while (Date.now() <= queued.deadline + 1000) {
@@ -177,7 +180,7 @@ async function mcp(request, env) {
           await cancel();
           throw new HttpError(408, 'request_cancelled');
         }
-        const result = await registry(env, 'jobResult', { token, requestId: queued.requestId });
+        const result = await registry(env, 'jobResult', { token, requestId });
         if (!result.pending) return rpc(id, result.result);
         // Keep the complete deadline below the conservative 50-subrequest budget.
         await new Promise((resolve) => setTimeout(resolve, 500));

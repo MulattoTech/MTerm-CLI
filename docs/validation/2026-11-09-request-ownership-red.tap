@@ -1,0 +1,495 @@
+TAP version 13
+# Subtest: grant expiry: legacy poll cancels queued and delivered work without an alarm sweep
+ok 1 - grant expiry: legacy poll cancels queued and delivered work without an alarm sweep
+  ---
+  duration_ms: 68.065109
+  type: 'test'
+  ...
+# Subtest: grant expiry: 0-slot poll cancels queued and delivered work without an alarm sweep
+ok 2 - grant expiry: 0-slot poll cancels queued and delivered work without an alarm sweep
+  ---
+  duration_ms: 64.064771
+  type: 'test'
+  ...
+# Subtest: grant expiry: 4-slot poll cancels queued and delivered work without an alarm sweep
+ok 3 - grant expiry: 4-slot poll cancels queued and delivered work without an alarm sweep
+  ---
+  duration_ms: 60.770429
+  type: 'test'
+  ...
+# Subtest: grant expiry: result acceptance rejects exact expiry before retaining output
+ok 4 - grant expiry: result acceptance rejects exact expiry before retaining output
+  ---
+  duration_ms: 55.228345
+  type: 'test'
+  ...
+# Subtest: grant expiry: result acceptance rejects after expiry before retaining output
+ok 5 - grant expiry: result acceptance rejects after expiry before retaining output
+  ---
+  duration_ms: 101.847657
+  type: 'test'
+  ...
+# Subtest: grant expiry: result acceptance rejects missing expiry before retaining output
+ok 6 - grant expiry: result acceptance rejects missing expiry before retaining output
+  ---
+  duration_ms: 47.086091
+  type: 'test'
+  ...
+# Subtest: grant expiry: just-before success and another live client grant remain independent
+ok 7 - grant expiry: just-before success and another live client grant remain independent
+  ---
+  duration_ms: 69.155465
+  type: 'test'
+  ...
+# Subtest: grant expiry: existing request deadline takes precedence when both boundaries expire
+ok 8 - grant expiry: existing request deadline takes precedence when both boundaries expire
+  ---
+  duration_ms: 33.290116
+  type: 'test'
+  ...
+# Subtest: grant expiry: poll rechecks grant after asynchronous grant and epoch reads
+ok 9 - grant expiry: poll rechecks grant after asynchronous grant and epoch reads
+  ---
+  duration_ms: 53.975556
+  type: 'test'
+  ...
+# Subtest: grant expiry: poll rechecks deadline after asynchronous grant and epoch reads
+ok 10 - grant expiry: poll rechecks deadline after asynchronous grant and epoch reads
+  ---
+  duration_ms: 42.257663
+  type: 'test'
+  ...
+# Subtest: grant expiry: result rechecks grant after asynchronous grant and epoch reads
+ok 11 - grant expiry: result rechecks grant after asynchronous grant and epoch reads
+  ---
+  duration_ms: 137.568639
+  type: 'test'
+  ...
+# Subtest: grant expiry: result rechecks deadline after asynchronous grant and epoch reads
+ok 12 - grant expiry: result rechecks deadline after asynchronous grant and epoch reads
+  ---
+  duration_ms: 39.992108
+  type: 'test'
+  ...
+# Subtest: gateway fails closed; discovery is public, bounded, and precise
+ok 13 - gateway fails closed; discovery is public, bounded, and precise
+  ---
+  duration_ms: 48.05539
+  type: 'test'
+  ...
+# Subtest: Access JWT signature, audience, expiry and allowlist are enforced independently of headers
+ok 14 - Access JWT signature, audience, expiry and allowlist are enforced independently of headers
+  ---
+  duration_ms: 104.033347
+  type: 'test'
+  ...
+# Subtest: PKCE code is single use and tokens are resource-bound
+ok 15 - PKCE code is single use and tokens are resource-bound
+  ---
+  duration_ms: 34.951929
+  type: 'test'
+  ...
+# Subtest: pairing requires authenticated approval, is one-time, and never grants execution
+ok 16 - pairing requires authenticated approval, is one-time, and never grants execution
+  ---
+  duration_ms: 48.331907
+  type: 'test'
+  ...
+# Subtest: real relay request travels gateway queue to selected agent and result returns once
+ok 17 - real relay request travels gateway queue to selected agent and result returns once
+  ---
+  duration_ms: 556.831889
+  type: 'test'
+  ...
+# Subtest: cross-user and cross-device access, mutation names, and revoked credentials fail closed
+ok 18 - cross-user and cross-device access, mutation names, and revoked credentials fail closed
+  ---
+  duration_ms: 62.672931
+  type: 'test'
+  ...
+# Subtest: frequent polling cannot defer expiry cleanup and the sweep reaches beyond 1000 rows
+ok 19 - frequent polling cannot defer expiry cleanup and the sweep reaches beyond 1000 rows
+  ---
+  duration_ms: 50.535188
+  type: 'test'
+  ...
+# Subtest: refresh rotation is single use, replay revokes its whole grant, and resource mismatch fails
+ok 20 - refresh rotation is single use, replay revokes its whole grant, and resource mismatch fails
+  ---
+  duration_ms: 65.484833
+  type: 'test'
+  ...
+# Subtest: request cancellation is scoped, delivered requests never replay, and late results fail
+ok 21 - request cancellation is scoped, delivered requests never replay, and late results fail
+  ---
+  duration_ms: 598.258264
+  type: 'test'
+  ...
+# Subtest: offline, expired, malformed and oversized requests have bounded safe failures
+ok 22 - offline, expired, malformed and oversized requests have bounded safe failures
+  ---
+  duration_ms: 98.189285
+  type: 'test'
+  ...
+# Subtest: dashboard cancellation checks ownership and service identities require exact app-token claims
+ok 23 - dashboard cancellation checks ownership and service identities require exact app-token claims
+  ---
+  duration_ms: 94.099954
+  type: 'test'
+  ...
+# Subtest: revoke-all invalidates unredeemed authorization codes and approved unclaimed pairings
+ok 24 - revoke-all invalidates unredeemed authorization codes and approved unclaimed pairings
+  ---
+  duration_ms: 86.962344
+  type: 'test'
+  ...
+# Subtest: MCP optional arguments and JSON-RPC parse errors follow the advertised protocol
+ok 25 - MCP optional arguments and JSON-RPC parse errors follow the advertised protocol
+  ---
+  duration_ms: 52.336412
+  type: 'test'
+  ...
+# Subtest: pairing stays consumed after a credential-store failure and consent CSP permits only its callback
+ok 26 - pairing stays consumed after a credential-store failure and consent CSP permits only its callback
+  ---
+  duration_ms: 19.780539
+  type: 'test'
+  ...
+# Subtest: request ownership: consuming an old timeout preserves the replacement RPC lease
+not ok 27 - request ownership: consuming an old timeout preserves the replacement RPC lease
+  ---
+  duration_ms: 38.736051
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:1024:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Old consumption must preserve the newer lookup
+    + actual - expected
+
+    + undefined
+    - {
+    -   expiresAt: 1794202824940,
+    -   requestId: 'de9fafe8-f0a1-4f4e-af82-50289c58db4b'
+    - }
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    requestId: 'de9fafe8-f0a1-4f4e-af82-50289c58db4b'
+    expiresAt: 1794202824940
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:1061:12)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: request ownership: consuming an old cancelled preserves the replacement RPC lease
+not ok 28 - request ownership: consuming an old cancelled preserves the replacement RPC lease
+  ---
+  duration_ms: 78.829342
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:1024:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Old consumption must preserve the newer lookup
+    + actual - expected
+
+    + undefined
+    - {
+    -   expiresAt: 1794202824978,
+    -   requestId: '71a91d97-141f-4305-bb95-b6fc70e57518'
+    - }
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    requestId: '71a91d97-141f-4305-bb95-b6fc70e57518'
+    expiresAt: 1794202824978
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:1061:12)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: request ownership: consuming an old complete preserves the replacement RPC lease
+not ok 29 - request ownership: consuming an old complete preserves the replacement RPC lease
+  ---
+  duration_ms: 25.944152
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:1024:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Old consumption must preserve the newer lookup
+    + actual - expected
+
+    + undefined
+    - {
+    -   expiresAt: 1794202825057,
+    -   requestId: 'e2852892-4bc7-4961-9d0d-4c42bdf6ee13'
+    - }
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    requestId: 'e2852892-4bc7-4961-9d0d-4c42bdf6ee13'
+    expiresAt: 1794202825057
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:1061:12)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: request ownership: public cancellation still reaches a replacement after old result consumption
+not ok 30 - request ownership: public cancellation still reaches a replacement after old result consumption
+  ---
+  duration_ms: 78.490481
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:1074:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + 'queued'
+    - 'cancelled'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'cancelled'
+  actual: 'queued'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:1082:10)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: request ownership: repeated consumption rejects before modifying a reused RPC lease
+not ok 31 - request ownership: repeated consumption rejects before modifying a reused RPC lease
+  ---
+  duration_ms: 43.720616
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:1086:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    200 !== 409
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 409
+  actual: 200
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:1099:10)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: request ownership: delayed old HTTP abort cleanup cannot cancel a replacement
+not ok 32 - request ownership: delayed old HTTP abort cleanup cannot cancel a replacement
+  ---
+  duration_ms: 42.146009
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:1122:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Old HTTP cleanup cannot cancel newer work
+    + actual - expected
+
+    + 'cancelled'
+    - 'queued'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'queued'
+  actual: 'cancelled'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:1185:14)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: request ownership: delayed old HTTP deadline cleanup cannot cancel a replacement
+not ok 33 - request ownership: delayed old HTTP deadline cleanup cannot cancel a replacement
+  ---
+  duration_ms: 589.926687
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:1122:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Old HTTP cleanup cannot cancel newer work
+    + actual - expected
+
+    + 'cancelled'
+    - 'queued'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'queued'
+  actual: 'cancelled'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:1185:14)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: request ownership: malformed private expected IDs cannot fall back to unbound cancellation
+not ok 34 - request ownership: malformed private expected IDs cannot fall back to unbound cancellation
+  ---
+  duration_ms: 52.087301
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:1204:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    null
+
+    200 !== 400
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 400
+  actual: 200
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:1214:12)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: request ownership: private stale IDs require authentication and cannot select another job
+not ok 35 - request ownership: private stale IDs require authentication and cannot select another job
+  ---
+  duration_ms: 76.587553
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:1219:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+
+      {
+        index: {
+          expiresAt: 1794202804889,
+          requestId: '0f34d034-6d75-46c4-8c66-0c1993e26f05'
+        },
+        job: {
+    +     abortRequested: true,
+    -     arguments: {
+    -       path: 'request-ownership-fixture.txt'
+    -     },
+          clientId: 'CKZQKCyAqRK__S-JenOk1TG5Kmq4ohcX',
+          deadline: 1794202803889,
+          deviceId: '16dd7174-9c09-40be-8138-eb8562f6953e',
+          epoch: 0,
+    +     expiresAt: 1794202903889,
+    +     finishedAt: 1794202783889,
+    -     expiresAt: 1794202923889,
+          grantId: '19992b52-3971-4b11-96b5-783a91aa422e',
+          requestId: '0f34d034-6d75-46c4-8c66-0c1993e26f05',
+          rpcKey: 'active:63b7f5fd6272f45bfe90fb6f132623c26f385cefdbaeadbf754229750773d692:5f7b1447e115b025fbfdab9c3586d2e4b29d2d36f798507c370f2364b91efb19',
+    +     status: 'cancelled',
+    -     status: 'queued',
+          tool: 'mterm_file_info',
+          userId: '86be553024f54f8810143175ceb5f41878c99c304aa487ffb0d5499b8065308f'
+        },
+        other: {
+          arguments: {
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    job:
+      requestId: '0f34d034-6d75-46c4-8c66-0c1993e26f05'
+      deviceId: '16dd7174-9c09-40be-8138-eb8562f6953e'
+      userId: '86be553024f54f8810143175ceb5f41878c99c304aa487ffb0d5499b8065308f'
+      clientId: 'CKZQKCyAqRK__S-JenOk1TG5Kmq4ohcX'
+      grantId: '19992b52-3971-4b11-96b5-783a91aa422e'
+      epoch: 0
+      tool: 'mterm_file_info'
+      arguments:
+        path: 'request-ownership-fixture.txt'
+      deadline: 1794202803889
+      status: 'queued'
+      rpcKey: 'active:63b7f5fd6272f45bfe90fb6f132623c26f385cefdbaeadbf754229750773d692:5f7b1447e115b025fbfdab9c3586d2e4b29d2d36f798507c370f2364b91efb19'
+      expiresAt: 1794202923889
+    other:
+      requestId: '71435a76-b15d-4896-87a5-af8c2b013ddb'
+      deviceId: '16dd7174-9c09-40be-8138-eb8562f6953e'
+      userId: '86be553024f54f8810143175ceb5f41878c99c304aa487ffb0d5499b8065308f'
+      clientId: 'CKZQKCyAqRK__S-JenOk1TG5Kmq4ohcX'
+      grantId: '19992b52-3971-4b11-96b5-783a91aa422e'
+      epoch: 0
+      tool: 'mterm_file_info'
+      arguments:
+        path: 'request-ownership-fixture.txt'
+      deadline: 1794202803889
+      status: 'queued'
+      rpcKey: 'active:63b7f5fd6272f45bfe90fb6f132623c26f385cefdbaeadbf754229750773d692:3726edfea05b747b934a1d264286a94a31dcd6a9c7c929949db91b239ea4335d'
+      expiresAt: 1794202923889
+    index:
+      requestId: '0f34d034-6d75-46c4-8c66-0c1993e26f05'
+      expiresAt: 1794202804889
+  actual:
+    job:
+      requestId: '0f34d034-6d75-46c4-8c66-0c1993e26f05'
+      deviceId: '16dd7174-9c09-40be-8138-eb8562f6953e'
+      userId: '86be553024f54f8810143175ceb5f41878c99c304aa487ffb0d5499b8065308f'
+      clientId: 'CKZQKCyAqRK__S-JenOk1TG5Kmq4ohcX'
+      grantId: '19992b52-3971-4b11-96b5-783a91aa422e'
+      epoch: 0
+      tool: 'mterm_file_info'
+      deadline: 1794202803889
+      status: 'cancelled'
+      rpcKey: 'active:63b7f5fd6272f45bfe90fb6f132623c26f385cefdbaeadbf754229750773d692:5f7b1447e115b025fbfdab9c3586d2e4b29d2d36f798507c370f2364b91efb19'
+      expiresAt: 1794202903889
+      finishedAt: 1794202783889
+      abortRequested: true
+    other:
+      requestId: '71435a76-b15d-4896-87a5-af8c2b013ddb'
+      deviceId: '16dd7174-9c09-40be-8138-eb8562f6953e'
+      userId: '86be553024f54f8810143175ceb5f41878c99c304aa487ffb0d5499b8065308f'
+      clientId: 'CKZQKCyAqRK__S-JenOk1TG5Kmq4ohcX'
+      grantId: '19992b52-3971-4b11-96b5-783a91aa422e'
+      epoch: 0
+      tool: 'mterm_file_info'
+      arguments:
+        path: 'request-ownership-fixture.txt'
+      deadline: 1794202803889
+      status: 'queued'
+      rpcKey: 'active:63b7f5fd6272f45bfe90fb6f132623c26f385cefdbaeadbf754229750773d692:3726edfea05b747b934a1d264286a94a31dcd6a9c7c929949db91b239ea4335d'
+      expiresAt: 1794202923889
+    index:
+      requestId: '0f34d034-6d75-46c4-8c66-0c1993e26f05'
+      expiresAt: 1794202804889
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:1244:10)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: request ownership: public notifications isolate bearer credentials and numeric versus string IDs
+ok 36 - request ownership: public notifications isolate bearer credentials and numeric versus string IDs
+  ---
+  duration_ms: 98.672375
+  type: 'test'
+  ...
+# Subtest: request ownership: a matching private expected ID still cancels its current job
+ok 37 - request ownership: a matching private expected ID still cancels its current job
+  ---
+  duration_ms: 80.606458
+  type: 'test'
+  ...
+# Subtest: request ownership: an absent active pointer permits first authorized terminal consumption
+ok 38 - request ownership: an absent active pointer permits first authorized terminal consumption
+  ---
+  duration_ms: 55.002754
+  type: 'test'
+  ...
+1..38
+# tests 38
+# suites 0
+# pass 29
+# fail 9
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4038.198736

@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 // AI-Change: 2026-11-02-remote-gateway (OpenAI / GPT-6 Astra Pro; self-reported)
 // Modified: 2026-11-09-grant-expiry; actual OAuth/pairing fixtures exercise dispatch/result expiry without a sweep.
+// Modified: 2026-11-09-request-ownership; delayed results and HTTP cleanup retain their original request identity.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createGateway } from '../gateway/app.mjs';
@@ -104,9 +105,10 @@ async function fixture() {
     ).toString('base64url');
     return header + '.' + claims + '.' + signature;
   }
-  async function req(path, { method = 'GET', body, token, jwt, host = origin, headers = {} } = {}) {
+  async function req(path, { method = 'GET', body, token, jwt, host = origin, headers = {}, signal } = {}) {
     const r = new Request(host + path, {
       method,
+      signal,
       headers: {
         ...(body === undefined ? {} : { 'content-type': 'application/json' }),
         ...(token ? { authorization: 'Bearer ' + token } : {}),
@@ -948,4 +950,359 @@ test('pairing stays consumed after a credential-store failure and consent CSP pe
     /form-action 'self' https:\/\/client\.test\.invalid;/,
   );
   assert.ok((await consent.text()).includes('Client callback:'));
+});
+
+async function requestOwnershipFixture(t) {
+  let clock = Date.now();
+  t.mock.method(Date, 'now', () => clock);
+  const f = await fixture(),
+    auth = await f.oauth(),
+    device = await f.pair();
+  const dispatch = async (action, data) => {
+    const response = await f.registry.fetch(
+      new Request('https://registry.internal/dispatch', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ action, data }),
+      }),
+    );
+    return { status: response.status, data: await response.json() };
+  };
+  const poll = async (availableSlots = 0) => {
+    const response = await f.req('/api/agent/poll', {
+      method: 'POST',
+      token: device.deviceToken,
+      body: { version: 1, deviceId: device.deviceId, availableSlots },
+    });
+    assert.equal(response.status, 200);
+    return response.json();
+  };
+  await poll();
+  const tryEnqueue = (rpcId, credentials = auth) =>
+    dispatch('enqueue', {
+      token: credentials.access_token,
+      deviceId: device.deviceId,
+      tool: 'mterm_file_info',
+      arguments: { path: 'request-ownership-fixture.txt' },
+      rpcId,
+    });
+  const enqueue = async (rpcId, credentials) => {
+    const result = await tryEnqueue(rpcId, credentials);
+    assert.equal(result.status, 200, JSON.stringify(result.data));
+    return result.data;
+  };
+  const jobState = (job) => f.storage.get('job:' + job.requestId);
+  const index = async (job) => f.storage.get((await jobState(job)).rpcKey);
+  const consume = (job) => dispatch('jobResult', { token: auth.access_token, requestId: job.requestId });
+  const notify = (rpcId, credentials = auth) =>
+    f.req('/mcp', {
+      method: 'POST',
+      token: credentials.access_token,
+      body: { jsonrpc: '2.0', method: 'notifications/cancelled', params: { requestId: rpcId } },
+    });
+  const expireLease = async (job) => {
+    clock = job.deadline + 1001;
+    await poll(); // Actual timeout processing and a fresh device heartbeat.
+  };
+  return {
+    ...f,
+    auth,
+    device,
+    dispatch,
+    poll,
+    tryEnqueue,
+    enqueue,
+    jobState,
+    index,
+    consume,
+    notify,
+    expireLease,
+  };
+}
+
+for (const terminal of ['timeout', 'cancelled', 'complete']) {
+  test(`request ownership: consuming an old ${terminal} preserves the replacement RPC lease`, async (t) => {
+    const f = await requestOwnershipFixture(t),
+      rpcId = 'reused-terminal',
+      old = await f.enqueue(rpcId);
+    if (terminal === 'cancelled') assert.equal((await f.notify(rpcId)).status, 202);
+    if (terminal === 'complete') {
+      assert.deepEqual(
+        (await f.poll(1)).requests.map((r) => r.requestId),
+        [old.requestId],
+      );
+      const response = await f.req('/api/agent/result', {
+        method: 'POST',
+        token: f.device.deviceToken,
+        body: {
+          version: 1,
+          deviceId: f.device.deviceId,
+          requestId: old.requestId,
+          result: {
+            content: [{ type: 'text', text: 'old-owned-result' }],
+            structuredContent: { value: 7 },
+            isError: false,
+          },
+        },
+      });
+      assert.equal(response.status, 200);
+    }
+    await f.expireLease(old);
+    assert.equal((await f.jobState(old)).status, terminal);
+    const replacement = await f.enqueue(rpcId),
+      before = await f.index(replacement);
+    assert.equal(before.requestId, replacement.requestId);
+    assert.equal((await f.tryEnqueue(rpcId)).status, 409);
+    const consumed = await f.consume(old);
+    assert.equal(consumed.status, 200);
+    if (terminal === 'complete') assert.deepEqual(consumed.data.result.structuredContent, { value: 7 });
+    else assert.equal(consumed.data.result.structuredContent.error.code, 'REMOTE_' + terminal.toUpperCase());
+    assert.equal((await f.jobState(old)).status, 'consumed');
+    assert.deepEqual(await f.index(replacement), before, 'Old consumption must preserve the newer lookup');
+    const duplicate = await f.tryEnqueue(rpcId);
+    assert.equal(duplicate.status, 409);
+    assert.equal(duplicate.data.error, 'request_in_progress');
+    const delivered = await f.poll(1);
+    assert.deepEqual(
+      delivered.requests.map((r) => r.requestId),
+      [replacement.requestId],
+    );
+    assert.equal((await f.poll(1)).requests.length, 0, 'Replacement is delivered once');
+  });
+}
+
+test('request ownership: public cancellation still reaches a replacement after old result consumption', async (t) => {
+  const f = await requestOwnershipFixture(t),
+    rpcId = 'reused-public-cancel',
+    old = await f.enqueue(rpcId);
+  await f.expireLease(old);
+  const replacement = await f.enqueue(rpcId);
+  assert.equal((await f.consume(old)).status, 200);
+  assert.equal((await f.notify(rpcId)).status, 202);
+  assert.equal((await f.jobState(replacement)).status, 'cancelled');
+  assert.ok((await f.poll()).cancelled.includes(replacement.requestId));
+});
+
+test('request ownership: repeated consumption rejects before modifying a reused RPC lease', async (t) => {
+  const f = await requestOwnershipFixture(t),
+    rpcId = 'repeated-consumption',
+    old = await f.enqueue(rpcId);
+  await f.expireLease(old);
+  assert.equal((await f.consume(old)).status, 200);
+  const replacement = await f.enqueue(rpcId),
+    before = {
+      old: await f.jobState(old),
+      next: await f.jobState(replacement),
+      index: await f.index(replacement),
+    };
+  const repeated = await f.consume(old);
+  assert.equal(repeated.status, 409);
+  assert.equal(repeated.data.error, 'result_already_consumed');
+  assert.deepEqual(
+    { old: await f.jobState(old), next: await f.jobState(replacement), index: await f.index(replacement) },
+    before,
+  );
+});
+
+async function boundedObservation(promise, label) {
+  let timer;
+  try {
+    return await Promise.race([
+      promise,
+      new Promise((_, reject) => {
+        timer = setTimeout(() => reject(Error('Fixture observation timed out: ' + label)), 5000);
+      }),
+    ]);
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+for (const trigger of ['abort', 'deadline']) {
+  test(`request ownership: delayed old HTTP ${trigger} cleanup cannot cancel a replacement`, async (t) => {
+    const f = await requestOwnershipFixture(t),
+      rpcId = 'reused-http-' + trigger,
+      queued = Promise.withResolvers(),
+      entered = Promise.withResolvers(),
+      release = Promise.withResolvers(),
+      cancelSettled = Promise.withResolvers(),
+      controller = new AbortController();
+    let old,
+      gated = false;
+    // Gate the binding outside serialized registry.fetch, so a replacement can
+    // actually be admitted while the original HTTP handler awaits its response.
+    f.env.REGISTRY = {
+      idFromName: () => 'one',
+      get: () => ({
+        fetch: async (request) => {
+          const message = await request.clone().json();
+          if (message.action === 'enqueue') {
+            const response = await f.registry.fetch(request);
+            old = await response.clone().json();
+            assert.equal(response.status, 200);
+            queued.resolve(old);
+            return response;
+          }
+          if (message.action === 'jobResult' && !gated) {
+            gated = true;
+            assert.equal(message.data.requestId, old.requestId);
+            // Abort gates the lookup itself; deadline gates a genuine pending
+            // response. Cancellation is observed before any old result consumption.
+            const response = trigger === 'deadline' ? await f.registry.fetch(request) : undefined;
+            if (response) assert.deepEqual(await response.clone().json(), { pending: true });
+            entered.resolve();
+            await release.promise;
+            return response ?? f.registry.fetch(request);
+          }
+          const response = await f.registry.fetch(request);
+          if (message.action === 'cancel') cancelSettled.resolve({ message, status: response.status });
+          return response;
+        },
+      }),
+    };
+    const http = f.req('/mcp', {
+      method: 'POST',
+      token: f.auth.access_token,
+      signal: controller.signal,
+      body: {
+        jsonrpc: '2.0',
+        id: rpcId,
+        method: 'tools/call',
+        params: { name: 'mterm_file_info', arguments: { deviceId: f.device.deviceId, path: 'owned.txt' } },
+      },
+    });
+    try {
+      old = await boundedObservation(queued.promise, 'original enqueue');
+      await boundedObservation(entered.promise, 'original result response gate');
+      await f.expireLease(old);
+      const replacement = await f.enqueue(rpcId),
+        before = { job: await f.jobState(replacement), index: await f.index(replacement) };
+      assert.equal((await f.jobState(old)).status, 'timeout');
+      if (trigger === 'abort') controller.abort();
+      else release.resolve();
+      const cancellation = await boundedObservation(cancelSettled.promise, 'original HTTP cancellation');
+      assert.equal(cancellation.status, 200);
+      assert.equal(
+        (await f.jobState(replacement)).status,
+        'queued',
+        'Old HTTP cleanup cannot cancel newer work',
+      );
+      assert.deepEqual({ job: await f.jobState(replacement), index: await f.index(replacement) }, before);
+      assert.equal(cancellation.message.data.expectedRequestId, old.requestId);
+      assert.deepEqual(
+        (await f.poll(1)).requests.map((r) => r.requestId),
+        [replacement.requestId],
+      );
+    } finally {
+      controller.abort();
+      release.resolve();
+      await boundedObservation(http, 'original HTTP teardown');
+    }
+  });
+}
+
+test('request ownership: malformed private expected IDs cannot fall back to unbound cancellation', async (t) => {
+  const f = await requestOwnershipFixture(t),
+    job = await f.enqueue('invalid-private-id'),
+    before = { job: await f.jobState(job), index: await f.index(job) };
+  for (const expectedRequestId of [null, '', false, 1, {}, [], 'not-a-uuid']) {
+    const response = await f.dispatch('cancel', {
+      token: f.auth.access_token,
+      rpcId: 'invalid-private-id',
+      expectedRequestId,
+    });
+    assert.equal(response.status, 400, JSON.stringify(expectedRequestId));
+    assert.deepEqual({ job: await f.jobState(job), index: await f.index(job) }, before);
+  }
+});
+
+test('request ownership: private stale IDs require authentication and cannot select another job', async (t) => {
+  const f = await requestOwnershipFixture(t),
+    job = await f.enqueue('private-current'),
+    other = await f.enqueue('private-other'),
+    before = { job: await f.jobState(job), other: await f.jobState(other), index: await f.index(job) };
+  assert.equal(
+    (
+      await f.dispatch('cancel', {
+        token: 'invalid-fixture-token',
+        rpcId: 'private-current',
+        expectedRequestId: other.requestId,
+      })
+    ).status,
+    401,
+  );
+  assert.equal(
+    (
+      await f.dispatch('cancel', {
+        token: f.auth.access_token,
+        rpcId: 'private-current',
+        expectedRequestId: other.requestId,
+      })
+    ).status,
+    200,
+  );
+  assert.deepEqual(
+    { job: await f.jobState(job), other: await f.jobState(other), index: await f.index(job) },
+    before,
+  );
+  await f.storage.delete(before.job.rpcKey);
+  assert.equal(
+    (
+      await f.dispatch('cancel', {
+        token: f.auth.access_token,
+        rpcId: 'private-current',
+        expectedRequestId: job.requestId,
+      })
+    ).status,
+    200,
+  );
+  assert.deepEqual(
+    await f.jobState(job),
+    before.job,
+    'Missing pointer does not authorize a direct job lookup',
+  );
+  assert.deepEqual(await f.jobState(other), before.other);
+});
+
+test('request ownership: public notifications isolate bearer credentials and numeric versus string IDs', async (t) => {
+  const f = await requestOwnershipFixture(t),
+    other = await f.oauth(),
+    text = await f.enqueue('7'),
+    number = await f.enqueue(7),
+    otherClient = await f.enqueue('7', other);
+  assert.equal((await f.notify('7')).status, 202);
+  assert.equal((await f.jobState(text)).status, 'cancelled');
+  assert.equal((await f.jobState(number)).status, 'queued');
+  assert.equal((await f.jobState(otherClient)).status, 'queued');
+  assert.equal((await f.notify(7)).status, 202);
+  assert.equal((await f.jobState(number)).status, 'cancelled');
+  assert.equal((await f.jobState(otherClient)).status, 'queued');
+  assert.equal((await f.notify('7', other)).status, 202);
+  assert.equal((await f.jobState(otherClient)).status, 'cancelled');
+});
+
+test('request ownership: a matching private expected ID still cancels its current job', async (t) => {
+  const f = await requestOwnershipFixture(t),
+    job = await f.enqueue('matching-private-id');
+  const response = await f.dispatch('cancel', {
+    token: f.auth.access_token,
+    rpcId: 'matching-private-id',
+    expectedRequestId: job.requestId,
+  });
+  assert.equal(response.status, 200);
+  assert.equal((await f.jobState(job)).status, 'cancelled');
+  assert.ok((await f.poll()).cancelled.includes(job.requestId));
+});
+
+test('request ownership: an absent active pointer permits first authorized terminal consumption', async (t) => {
+  const f = await requestOwnershipFixture(t),
+    job = await f.enqueue('missing-active-pointer');
+  await f.expireLease(job);
+  const { rpcKey } = await f.jobState(job);
+  await f.storage.delete(rpcKey);
+  const response = await f.consume(job);
+  assert.equal(response.status, 200);
+  assert.equal(response.data.result.structuredContent.error.code, 'REMOTE_TIMEOUT');
+  assert.equal((await f.jobState(job)).status, 'consumed');
+  assert.equal(await f.storage.get(rpcKey), undefined);
 });

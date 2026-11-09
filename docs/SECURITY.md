@@ -19,6 +19,17 @@ fsynced and atomically replaced; failed checks preserve original bytes. No gener
 No-overwrite move currently supports regular files only via link/unlink. Interrupted movement can
 leave both names. Parent directories must already exist except for explicit one-level mkdir.
 
+Regular-file moves observe the owning cancellation signal after each successful
+source resolution, destination resolution and source metadata await. An observed
+cancellation returns `CANCELLED` before the first link operation. Failed preflight
+awaits retain their original errors. Once linking starts, the existing link/unlink
+completion path continues: cancellation does not trigger rollback or turn a
+completed mutation into a cancellation result. A later unlink failure can leave
+both names and remains the primary error. No directory support, cross-device
+fallback, OS interruption or stronger path-race guarantee is added. The same
+boundary applies to native `mterm_move` and compatible `move_file`; see the
+[move cancellation evidence](validation/2026-11-09-move-cancellation.md).
+
 Compatibility `read_file` and `read_multiple_files` additionally admit explicit
 BOM-marked UTF-16LE through a separate read-only decoder. The raw-file ceiling
 includes the BOM; decoded NUL and malformed UTF-16 fail closed, including outside

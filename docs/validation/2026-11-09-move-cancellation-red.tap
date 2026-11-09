@@ -1,0 +1,224 @@
+TAP version 13
+# Subtest: actual SDK move cancellation prevents mutation through mterm_move
+not ok 1 - actual SDK move cancellation prevents mutation through mterm_move
+  ---
+  duration_ms: 221.011202
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-move-cancellation-mcp.test.mjs:38:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+
+      {
+    +   link: 1,
+    +   unlink: 1
+    -   link: 0,
+    -   unlink: 0
+      }
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    link: 0
+    unlink: 0
+  actual:
+    link: 1
+    unlink: 1
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-move-cancellation-mcp.test.mjs:153:12)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: actual SDK move cancellation prevents mutation through move_file
+not ok 2 - actual SDK move cancellation prevents mutation through move_file
+  ---
+  duration_ms: 208.302174
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-move-cancellation-mcp.test.mjs:38:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+
+      {
+    +   link: 1,
+    +   unlink: 1
+    -   link: 0,
+    -   unlink: 0
+      }
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    link: 0
+    unlink: 0
+  actual:
+    link: 1
+    unlink: 1
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-move-cancellation-mcp.test.mjs:153:12)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: move cancellation: native stops after source resolution without changing either path
+not ok 3 - move cancellation: native stops after source resolution without changing either path
+  ---
+  duration_ms: 13.043274
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-move-cancellation.test.mjs:69:5'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-move-cancellation.test.mjs:102:7)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: move cancellation: native stops after destination resolution without changing either path
+not ok 4 - move cancellation: native stops after destination resolution without changing either path
+  ---
+  duration_ms: 4.220759
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-move-cancellation.test.mjs:69:5'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-move-cancellation.test.mjs:102:7)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: move cancellation: native stops after source metadata without changing either path
+not ok 5 - move cancellation: native stops after source metadata without changing either path
+  ---
+  duration_ms: 6.774362
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-move-cancellation.test.mjs:69:5'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-move-cancellation.test.mjs:102:7)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: move cancellation: native completes a move when cancellation arrives after the real link
+ok 6 - move cancellation: native completes a move when cancellation arrives after the real link
+  ---
+  duration_ms: 4.16118
+  type: 'test'
+  ...
+# Subtest: move cancellation: native retains collision and no-overwrite behavior
+ok 7 - move cancellation: native retains collision and no-overwrite behavior
+  ---
+  duration_ms: 2.971364
+  type: 'test'
+  ...
+# Subtest: move cancellation: native preserves failed-unlink evidence after link and cancellation
+ok 8 - move cancellation: native preserves failed-unlink evidence after link and cancellation
+  ---
+  duration_ms: 2.215283
+  type: 'test'
+  ...
+# Subtest: move cancellation: compat stops after source resolution without changing either path
+not ok 9 - move cancellation: compat stops after source resolution without changing either path
+  ---
+  duration_ms: 2.667585
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-move-cancellation.test.mjs:69:5'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-move-cancellation.test.mjs:102:7)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: move cancellation: compat stops after destination resolution without changing either path
+not ok 10 - move cancellation: compat stops after destination resolution without changing either path
+  ---
+  duration_ms: 2.393822
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-move-cancellation.test.mjs:69:5'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-move-cancellation.test.mjs:102:7)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: move cancellation: compat stops after source metadata without changing either path
+not ok 11 - move cancellation: compat stops after source metadata without changing either path
+  ---
+  duration_ms: 2.255584
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-move-cancellation.test.mjs:69:5'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-move-cancellation.test.mjs:102:7)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: move cancellation: compat completes a move when cancellation arrives after the real link
+ok 12 - move cancellation: compat completes a move when cancellation arrives after the real link
+  ---
+  duration_ms: 3.448204
+  type: 'test'
+  ...
+# Subtest: move cancellation: compat retains collision and no-overwrite behavior
+ok 13 - move cancellation: compat retains collision and no-overwrite behavior
+  ---
+  duration_ms: 2.196424
+  type: 'test'
+  ...
+# Subtest: move cancellation: compat preserves failed-unlink evidence after link and cancellation
+ok 14 - move cancellation: compat preserves failed-unlink evidence after link and cancellation
+  ---
+  duration_ms: 2.00131
+  type: 'test'
+  ...
+# Subtest: move cancellation: an already-aborted request never resolves a path
+ok 15 - move cancellation: an already-aborted request never resolves a path
+  ---
+  duration_ms: 2.067145
+  type: 'test'
+  ...
+# Subtest: move cancellation: a request cancelled while queued cannot mutate after the prior move settles
+ok 16 - move cancellation: a request cancelled while queued cannot mutate after the prior move settles
+  ---
+  duration_ms: 2.996862
+  type: 'test'
+  ...
+# Subtest: move cancellation: an in-flight first-link failure retains its error and original source
+ok 17 - move cancellation: an in-flight first-link failure retains its error and original source
+  ---
+  duration_ms: 2.539432
+  type: 'test'
+  ...
+# Subtest: move cancellation: write permission and root confinement remain required
+ok 18 - move cancellation: write permission and root confinement remain required
+  ---
+  duration_ms: 2.078086
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 10
+# fail 8
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 798.068549

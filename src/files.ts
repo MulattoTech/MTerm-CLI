@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-09-move-cancellation; honor cancelled preflight before starting a no-overwrite move.
 // Modified: 2026-11-09-file-cancellation; propagate native read cancellation and await owned cleanup.
 // Modified: 2026-11-08-aug003-registry-persistence; bounded guarded replacement and owned staging checks.
 // Modified: 2026-10-05-codex-parity-foundation; preserve UTF-8 BOM and add guarded mkdirTree.
@@ -453,8 +454,11 @@ export class FileService {
       cancelled(signal);
       const a = fileSchemas.move.parse(input);
       const source = await this.policy.resolve(a.source);
+      cancelled(signal);
       const dest = await this.policy.resolve(a.destination, true);
+      cancelled(signal);
       const st = await fs.lstat(source);
+      cancelled(signal);
       if (!st.isFile()) fail('NOT_FILE', 'The current no-overwrite move supports regular files only.');
       try {
         await fs.link(source, dest);

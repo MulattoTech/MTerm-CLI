@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-09-move-cancellation; qualify installed native/compatible move cancellation before mutation.
 // Modified: 2026-11-09-poll-capacity; bind installed-agent admission against reviewed source gateway fixtures.
 // Modified: 2026-11-09-file-cancellation; qualify actual installed native/MCP/remote cooperative cancellation.
 // Modified: 2026-11-09-git-boundaries; qualify native Git metadata and filter denials from the installed package.
@@ -586,6 +587,111 @@ const installedFileCancellation = {
   log: cancellationLog,
   logSha256: createHash('sha256').update(cancellationOutput).digest('hex'),
 };
+const moveCancellationBindings = [...packBindings];
+for (const name of ['desktop-commander-files.js', 'compat-config.js', 'config.js']) {
+  const source = await fs.readFile(path.join(root, 'dist', name));
+  const bytes = await fs.readFile(path.resolve(path.dirname(installed), '../dist', name));
+  assert.deepEqual(bytes, source, 'Installed move module differs from compiled source');
+  moveCancellationBindings.push({
+    path: 'dist/' + name,
+    sha256: createHash('sha256').update(bytes).digest('hex'),
+  });
+}
+const moveCancellationFixtures = await Promise.all(
+  ['tests/file-move-cancellation.test.mjs', 'tests/file-move-cancellation-mcp.test.mjs'].map(
+    async (file) => ({
+      path: file,
+      sha256: createHash('sha256')
+        .update(await fs.readFile(path.join(root, file)))
+        .digest('hex'),
+    }),
+  ),
+);
+const moveCancellationCwd = await fs.mkdtemp(path.join(os.tmpdir(), 'mterm-move-cancellation-'));
+const moveCancellationLog = path.join(output, 'file-move-cancellation-tests.tap');
+let moveCancellationAcceptance;
+try {
+  const relative = path.relative(await fs.realpath(root), await fs.realpath(moveCancellationCwd));
+  assert.ok(
+    relative === '..' || relative.startsWith('..' + path.sep) || path.isAbsolute(relative),
+    'Move cancellation fixture working directory must be outside the checkout',
+  );
+  moveCancellationAcceptance = await exec(
+    process.execPath,
+    [
+      '--test',
+      '--test-reporter=tap',
+      '--test-concurrency=1',
+      ...moveCancellationFixtures.map((fixture) => path.join(root, fixture.path)),
+    ],
+    {
+      cwd: moveCancellationCwd,
+      env: { ...env, MTERM_VERIFY_BIN: installed },
+      timeout: 90000,
+      maxBuffer: 1048576,
+      windowsHide: true,
+    },
+  ).then(
+    (result) => ({ ...result, exit: 0 }),
+    (error) => ({ stdout: error.stdout ?? '', stderr: error.stderr ?? '', exit: error.code ?? 'unknown' }),
+  );
+  await fs.writeFile(
+    moveCancellationLog,
+    moveCancellationAcceptance.stdout + moveCancellationAcceptance.stderr,
+  );
+} finally {
+  await fs.rm(moveCancellationCwd, { recursive: true, force: true, maxRetries: 3 });
+}
+const moveCancellationOutput = moveCancellationAcceptance.stdout + moveCancellationAcceptance.stderr;
+assert.equal(moveCancellationAcceptance.exit, 0, 'Installed move cancellation failed; see retained log');
+const moveCancellationTests = Number(moveCancellationAcceptance.stdout.match(/^# tests (\d+)$/m)?.[1]);
+assert.ok(moveCancellationTests >= 18, 'Installed move cancellation fixtures did not run');
+for (const field of ['fail', 'skipped', 'cancelled'])
+  assert.match(moveCancellationAcceptance.stdout, new RegExp('^# ' + field + ' 0$', 'm'));
+for (const binding of moveCancellationBindings) {
+  for (const base of [root, path.resolve(path.dirname(installed), '..')]) {
+    assert.equal(
+      createHash('sha256')
+        .update(await fs.readFile(path.join(base, binding.path)))
+        .digest('hex'),
+      binding.sha256,
+      'Move runtime bytes changed during installed qualification',
+    );
+  }
+}
+for (const fixture of moveCancellationFixtures)
+  assert.equal(
+    createHash('sha256')
+      .update(await fs.readFile(path.join(root, fixture.path)))
+      .digest('hex'),
+    fixture.sha256,
+    'Move cancellation fixture changed during installed qualification',
+  );
+const installedMoveCancellation = {
+  ok: true,
+  tests: moveCancellationTests,
+  failed: 0,
+  skipped: 0,
+  cancelled: 0,
+  moduleBindings: moveCancellationBindings,
+  fixtures: moveCancellationFixtures,
+  realTemporaryFileMoves: true,
+  instrumentedRealSdkStdioCancellation: true,
+  deterministicPreflightAndMutationGates: true,
+  explicitOwnedCompatibilityConfig: true,
+  cancellationBeforeFirstMutation: true,
+  postLinkCompletionPreserved: true,
+  pendingOsIoInterruptionGuaranteed: false,
+  postLinkRollbackGuaranteed: false,
+  directoryMovesQualified: false,
+  crossFilesystemMovesQualified: false,
+  independentStdioHostExitQualified: false,
+  productionLoadQualified: false,
+  fromOutsideCheckout: true,
+  modelCalls: 0,
+  log: moveCancellationLog,
+  logSha256: createHash('sha256').update(moveCancellationOutput).digest('hex'),
+};
 const admissionBindings = [];
 for (const name of ['remote/agent.js', 'remote/protocol.js', 'errors.js']) {
   const source = await fs.readFile(path.join(root, 'dist', name));
@@ -902,6 +1008,7 @@ const report = {
   installedProcessStopRecovery,
   installedGitBoundaries,
   installedFileCancellation,
+  installedMoveCancellation,
   installedRemoteAdmission,
   installedIsolation,
   installedProvenance,

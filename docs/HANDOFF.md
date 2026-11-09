@@ -1,3 +1,17 @@
+# Regular-file move cancellation checkpoint — 2026-11-09 UTC
+
+Session `MTERM-WEB-20261109T031131Z-e0efd5d4` owns `coord/mterm/issue-25`, feature `fix/issue-25-move-cancellation-20261109`, base `43f7c7152a6115a95e9c45e5ea582068f62ad33c`. Sole source writer and independent read-only peers. [Atomic claim](https://github.com/MulattoTech/MTerm-CLI/issues/25#issuecomment-6733335338).
+
+[Move cancellation evidence](validation/2026-11-09-move-cancellation.md): actual preflight aborts could still perform link/unlink. All18 new direct/actual-SDK cases predate source edits, RED10 passed/8 assertion failures; corrected focused61/61 and independent frozen18/18 with eight unchanged source/compiled/fixture bindings. Three post-await checks prevent the first mutation. Once linking starts, existing completion and primary errors remain intact; no directory/cross-device fallback, rollback or OS-interruption guarantee. SDK settlement is observed through the actual signal, mutation counters, file state, audit and admission; separate PID exit is not claimed. Installed verification adds the same18 cases,12 module bindings and a verified external working directory. Review caught and corrected test-log saving after cleanup; captured output now survives a later cleanup rejection.
+
+Prerequisite PR219 merged normally at the base above, tree `a6d92f453a474c2263092428d1430ed0bf570cad`, identical to candidate `74ca7c0fc303e251ec51d481d3603ed5f205c7c8`. All six PR and all six separate main gates passed with independent actual-log review: Windows679/679; other full667+12 unchanged skips; all12 ownership cases; installed8/46/18/5; native12 source+12 installed real containment/cleanup. [Qualification](https://github.com/MulattoTech/MTerm-CLI/pull/219#issuecomment-6733322296), [committed artifact receipt](https://github.com/MulattoTech/MTerm-CLI/pull/219#issuecomment-6733305458), [claim release](https://github.com/MulattoTech/MTerm-CLI/issues/65#issuecomment-6733325710) and [final main receipt](https://github.com/MulattoTech/MTerm-CLI/issues/65#issuecomment-6733436065) are durable. PR211–219 have completed all six PR and separate main gates.
+
+CLI271/288 and DCP023 receive evidence only. All protected fields, historical records, dependencies/pins/locks and AUG/DCP/WEB acceptance remain unchanged; broader #25 directory/cross-device parity stays open. No owner bridge/plugin/global runtime/Cloudflare deployment or unrelated project mutation.
+
+Independent source/fixture/verifier/documentation/protected-field reviews and normal reviewed build/typecheck/format/parity gates passed. Next: publish the exact-head draft PR for all six hosted gates before normal expected-head merge and separate main qualification. Known cloud full-suite Unix-socket EPERM remains recorded; no new skips or bypasses.
+
+---
+
 # Gateway request ownership checkpoint — 2026-11-09 UTC
 
 Session `MTERM-WEB-20261109T031131Z-e0efd5d4` owns `coord/mterm/issue-65`, feature `fix/issue-65-request-ownership-20261109`, source base `b20c020537c5b8fb8d654ea6e39a429fb81cacb8`. Sole implementation writer, independent read-only reviewers. [Atomic claim](https://github.com/MulattoTech/MTerm-CLI/issues/65#issuecomment-6733115075).

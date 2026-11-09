@@ -1,0 +1,300 @@
+TAP version 13
+# Subtest: ordinary in-root status, staged diff and unstaged diff remain available
+ok 1 - ordinary in-root status, staged diff and unstaged diff remain available
+  ---
+  duration_ms: 70.490885
+  type: 'test'
+  ...
+# Subtest: internal git-dir cannot authorize an external absolute common directory
+not ok 2 - internal git-dir cannot authorize an external absolute common directory
+  ---
+  duration_ms: 35.685724
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/git-boundaries.test.mjs:121:3'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/git-boundaries.test.mjs:131:9)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: internal git-dir cannot authorize an external relative common directory
+not ok 3 - internal git-dir cannot authorize an external relative common directory
+  ---
+  duration_ms: 35.897795
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/git-boundaries.test.mjs:121:3'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/git-boundaries.test.mjs:131:9)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: common metadata reached through an in-root directory alias remains outside scope
+not ok 4 - common metadata reached through an in-root directory alias remains outside scope
+  ---
+  duration_ms: 32.248668
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/git-boundaries.test.mjs:136:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/git-boundaries.test.mjs:142:3)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: a linked worktree remains usable when all reported metadata is already inside selected roots
+ok 5 - a linked worktree remains usable when all reported metadata is already inside selected roots
+  ---
+  duration_ms: 40.95146
+  type: 'test'
+  ...
+# Subtest: current request narrowing can deny common metadata even when startup roots include it
+not ok 6 - current request narrowing can deny common metadata even when startup roots include it
+  ---
+  duration_ms: 29.945298
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/git-boundaries.test.mjs:154:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/git-boundaries.test.mjs:162:3)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: the existing direct external git-dir denial remains enforced
+ok 7 - the existing direct external git-dir denial remains enforced
+  ---
+  duration_ms: 26.590976
+  type: 'test'
+  ...
+# Subtest: malformed common metadata fails without exposing raw Git diagnostics
+ok 8 - malformed common metadata fails without exposing raw Git diagnostics
+  ---
+  duration_ms: 25.143959
+  type: 'test'
+  ...
+# Subtest: cancellation during common-directory canonicalization prevents later Git inspection
+not ok 9 - cancellation during common-directory canonicalization prevents later Git inspection
+  ---
+  duration_ms: 30.750878
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/git-boundaries.test.mjs:184:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/git-boundaries.test.mjs:194:3)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: read-only inspection refuses configured clean filters without executing them
+not ok 10 - read-only inspection refuses configured clean filters without executing them
+  ---
+  duration_ms: 90.187499
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/git-boundaries.test.mjs:198:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Read-only Git must not run a repository filter
+
+    true !== false
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/git-boundaries.test.mjs:206:14)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: read-only inspection refuses configured process filters without executing them
+not ok 11 - read-only inspection refuses configured process filters without executing them
+  ---
+  duration_ms: 51.536471
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/git-boundaries.test.mjs:198:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Read-only Git must not run a repository filter
+
+    true !== false
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/git-boundaries.test.mjs:206:14)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: read-only inspection refuses configured smudge filters without executing them
+not ok 12 - read-only inspection refuses configured smudge filters without executing them
+  ---
+  duration_ms: 25.361136
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/git-boundaries.test.mjs:198:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + undefined
+    - 'GIT_UNSAFE_CONFIG'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'GIT_UNSAFE_CONFIG'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/git-boundaries.test.mjs:207:14)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: configuration includes cannot hide a command filter from read-only admission
+not ok 13 - configuration includes cannot hide a command filter from read-only admission
+  ---
+  duration_ms: 101.514489
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/git-boundaries.test.mjs:213:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    true !== false
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/git-boundaries.test.mjs:225:10)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: a separately enabled worktree configuration cannot introduce a command filter
+not ok 14 - a separately enabled worktree configuration cannot introduce a command filter
+  ---
+  duration_ms: 93.979159
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/git-boundaries.test.mjs:229:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    true !== false
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/git-boundaries.test.mjs:240:10)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: mixed-case driver names containing dots do not bypass the filter gate
+not ok 15 - mixed-case driver names containing dots do not bypass the filter gate
+  ---
+  duration_ms: 92.28242
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/git-boundaries.test.mjs:244:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    true !== false
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/git-boundaries.test.mjs:251:10)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: conditional configuration includes are explicitly unsupported even when presently inactive
+not ok 16 - conditional configuration includes are explicitly unsupported even when presently inactive
+  ---
+  duration_ms: 23.750937
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/git-boundaries.test.mjs:255:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/git-boundaries.test.mjs:263:3)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: an empty duplicate filter declaration does not make executable configuration supported
+not ok 17 - an empty duplicate filter declaration does not make executable configuration supported
+  ---
+  duration_ms: 26.500495
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/git-boundaries.test.mjs:266:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/git-boundaries.test.mjs:270:3)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: default MCP Git inspection refuses a filter while general process execution stays unavailable
+not ok 18 - default MCP Git inspection refuses a filter while general process execution stays unavailable
+  ---
+  duration_ms: 290.26106
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/git-boundaries.test.mjs:274:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    true !== false
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/git-boundaries.test.mjs:287:12)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 4
+# fail 14
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1326.915383

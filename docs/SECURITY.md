@@ -94,8 +94,23 @@ serialization and audit metadata omit raw arguments/error bodies; explicit file 
 universal secret scanner. The local audit is a 256-row memory ring, not durable compliance logging.
 
 The Git read adapter disables optional locks, fsmonitor hooks, external diff/textconv, pagers and
-prompts; enclosing worktree and metadata must remain within the chosen root. Externally located Git
-worktree metadata is currently unsupported. No Git write, fetch, push or network operation is exposed.
+prompts. Each request validates the canonical enclosing worktree, private Git directory and common
+Git directory against the existing startup roots and current request scope before status/diff.
+Linked layouts work only when all those identities are already authorized; no root is added from
+a `.git` pointer. Normal file tools still refuse Git metadata.
+
+Before status/diff, a bounded keys-only query refuses repository `filter.*.clean`, `.smudge` and
+`.process` declarations and `include.path` / `includeIf.*.path`. The fixed `GIT_UNSAFE_CONFIG` error
+states that these configurations are unsupported; it contains no key, command, path or value.
+This deliberately includes unused, empty and duplicate declarations and inactive conditional
+includes. The adapter does not remove or rewrite configuration or silently change filter semantics.
+Benign keys such as `filter.*.required` alone do not grant or trigger command execution.
+
+These are scoped controls, not a hostile-repository sandbox. Initial Git discovery may consult
+configuration/includes before admission. Object alternates, partial-clone implicit fetches and
+other native Git extensions require separate qualification; an outside concurrent writer can
+still race checks. No explicit Git write, fetch, push or network tool is exposed. Full AUTO-001
+acceptance remains open; see the dated Git-boundary regression evidence.
 
 ## Publication boundary
 

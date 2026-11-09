@@ -1,0 +1,95 @@
+{
+  "change_id": "2026-11-09-git-boundaries",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "session_id": "MTERM-WEB-20261109T031131Z-e0efd5d4",
+  "started_at": "2026-11-09T03:24:50Z",
+  "updated_at": "2026-11-09T03:31:16.107Z",
+  "base_sha": "9d4a1815e9fcc005cfc5dd34e0eff1b74cb3cbb4",
+  "issues": [
+    66
+  ],
+  "requirements": [
+    "CLI-266",
+    "CLI-283",
+    "CLI-284"
+  ],
+  "files": [
+    "src/git.ts",
+    "tests/git-boundaries.test.mjs",
+    "scripts/verify-package.mjs",
+    "docs/SECURITY.md",
+    "docs/HANDOFF.md",
+    "docs/ai/changes/2026-11-09-git-boundaries.json",
+    "docs/validation/2026-11-09-git-boundaries.md",
+    "docs/validation/2026-11-09-git-boundaries-red.tap",
+    "docs/validation/2026-11-09-git-boundaries-green.tap",
+    "docs/roadmap/progress.json",
+    "docs/roadmap/review.json",
+    "docs/roadmap/FEATURES.md",
+    "docs/roadmap/index.html"
+  ],
+  "decisions": [
+    "Atomic coord/mterm/issue-66 claim; one implementation owner and independent read-only review; source base is normally merged PR211 with all six main checks successful.",
+    "Validate reported top-level worktree, private Git directory and common Git directory as bounded absolute directory identities against existing startup roots and current request guard.",
+    "Before every status/diff query, inspect only bounded NUL-delimited configuration key names; reject command filters and all include/includeIf paths with a fixed sanitized error.",
+    "Keep filtered/include-config repositories explicitly unsupported for this adapter; do not modify owner configuration, grant execution, broaden roots or silently substitute filter semantics.",
+    "Qualify the same real Git/default SDK fixtures against byte-bound installed modules. No new dependencies or upstream code reuse.",
+    "Keep full AUTO-001 acceptance open and all protected roadmap fields unchanged."
+  ],
+  "tests": [
+    {
+      "command": "node --test --test-reporter=tap --test-concurrency=1 tests/git-boundaries.test.mjs (unchanged base)",
+      "result": "RED: 18 tests; 4 passed, 14 failed, 0 skipped/cancelled. Actual exit1. Real disposable Git fixtures reproduce common-directory admission and marker-only clean/process filter execution."
+    },
+    {
+      "command": "node --test --test-reporter=tap --test-concurrency=1 tests/git-boundaries.test.mjs tests/git.test.mjs tests/mcp.test.mjs",
+      "result": "GREEN: 26/26, no failures, skips or cancellations on Node v24.22.1 Linux x64."
+    },
+    {
+      "command": "npm run build; npm run typecheck; npm run format:check; roadmap review/render/check",
+      "result": "Passed. Dependency pins unchanged; preceding run audit reported zero production advisories. Full hosted and installed/platform gates are next."
+    }
+  ],
+  "independent_review": {
+    "reviewer": "/root/backlog_triage",
+    "role": "independent read-only peer",
+    "result": "No material findings; independent 18/18 focused tests and diff check passed. Not a GitHub approval event.",
+    "reviewed_sha256": {
+      "src/git.ts": "362494082669a53057f7d8ebf2875b5d5b411c30ce315140732049baef9ee99b",
+      "tests/git-boundaries.test.mjs": "058d41674db5cc596c9c644108b82c8f70a9d35b8a560701eedaa144933eed65",
+      "scripts/verify-package.mjs": "09c64263f25fad47cbd17e71608b25324e2b973f59d9b192a19a4d98280eca63",
+      "docs/SECURITY.md": "5626980f0ad0a83b050d4b00d34ce2dde30cd01d46cf96033cb4b1e21258cfa6"
+    }
+  },
+  "roadmap_updates": [
+    {
+      "id": "CLI-266",
+      "stage_change": false,
+      "reason": "Append scoped common-metadata and executable-filter denial evidence; preserve acceptance, stages, weights, estimates and broader qualification limits."
+    },
+    {
+      "id": "CLI-283",
+      "stage_change": false,
+      "reason": "Append scoped common-metadata and executable-filter denial evidence; preserve acceptance, stages, weights, estimates and broader qualification limits."
+    },
+    {
+      "id": "CLI-284",
+      "stage_change": false,
+      "reason": "Append scoped common-metadata and executable-filter denial evidence; preserve acceptance, stages, weights, estimates and broader qualification limits."
+    }
+  ],
+  "limitations": [
+    "Initial Git discovery can consult config/includes; this does not claim no outside config was read before admission.",
+    "Object alternates, partial-clone implicit fetches, native extensions and concurrent-writer races remain separate qualification work.",
+    "Full AUTO-001 and hostile-repository sandbox acceptance remain unclaimed.",
+    "Full cloud test repetition is avoided after the preserved PR211 Unix-socket EPERM limitation; all required hosted normal and installed/platform gates remain mandatory.",
+    "No production owner bridge or installed plugin deployment is implied."
+  ],
+  "next_unverified_action": "Run reviewed build/typecheck/format/parity checks; exact committed full hosted/installed platform qualification, expected-head normal merge and main verification.",
+  "red_log": {
+    "original_sha256": "6f8ec8daefdc46f92381bdf8be9570658c2712fe1ce29c4be34812a5f46da889",
+    "committed_display": "docs/validation/2026-11-09-git-boundaries-red.tap",
+    "display_normalization": "Trailing whitespace removed only; original failure outcomes unchanged; original bytes retained in the session artifact."
+  }
+}

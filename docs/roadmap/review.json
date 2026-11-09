@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "changeId": "2026-11-09-owned-stop-retry",
-  "reviewedAt": "2026-11-09T03:15:46.411Z",
-  "sourceFingerprint": "545c857b9bb24dea6999e33a109ae1ee78dac2d4c7da1fb937e3dc9181c23d96",
+  "changeId": "2026-11-09-git-boundaries",
+  "reviewedAt": "2026-11-09T03:31:16.640Z",
+  "sourceFingerprint": "55f67c7f056b4e8e6cd4219d18326416aaa72fd860ca1a910f8d3a599d004eab",
   "sourceFiles": {
     ".gitattributes": "fa9689011bd85ae1fad8333facd3b0d5f4f14dffff98bd9744a62e58ab4cfae5",
     ".github/CODEOWNERS": "a9d3f8ebc91ecca981ebe65e5269f40aeb726ac0701418dc4734a94bcb3e53db",
@@ -26,7 +26,7 @@
     "docs/ORCHESTRATION.md": "00938476e3746cbbe7102dcb139e4959eed8d84920aa837874cd41b2aeddab1a",
     "docs/OWNER_AUTHORIZATION.md": "dc9af35a0eb2cd4933721d9cc4b4a1aeeca2ba8bf71ec32381df95064c2e003a",
     "docs/PROVENANCE.md": "aae6a13cbfcda0cd110709b736501938c82af29c8632f8940aca5a1a2defd3a5",
-    "docs/SECURITY.md": "74ba764815c639298203befd4b404f090b7c8a9dbcf9cbbc3c1f2a6942a686b8",
+    "docs/SECURITY.md": "5626980f0ad0a83b050d4b00d34ce2dde30cd01d46cf96033cb4b1e21258cfa6",
     "docs/TODAY_CANDIDATE.md": "b95fbc1c02797a68f2c26a3e80c8448de7c3ec59a6a025b29fda13cbfad64ba4",
     "docs/execution/DESKTOP_COMMANDER_100_PASS_PROMPT.md": "2002abd688feb28e6526e0ddb12a4e3e1e6151fd9b0af9df79960a6544df0c68",
     "docs/execution/NEXT_PARITY_PROMPT.md": "5f22fd63c32b948df969114d788d2c8d6cb38e23a4211d11f690d6a0dc351844",
@@ -78,7 +78,7 @@
     "scripts/verify-configuration-installed.mjs": "ff38f93d738b4a6d47347d62fc62c84bedb1228ea0ff488e0aee1bd44232e49b",
     "scripts/verify-isolation-live.mjs": "fdd16600d2190dc398a5210afa88fd0c0302b3713b826bb910a0b7955d2793ff",
     "scripts/verify-managed-codex.mjs": "499663c6a9616f4005f96e4ea85df74173b9dd74164e169d481403404dc5fd07",
-    "scripts/verify-package.mjs": "07bd6a456277c5d04ac33bb3df10b9349842c70a8591210ee8f6585d04720218",
+    "scripts/verify-package.mjs": "09c64263f25fad47cbd17e71608b25324e2b973f59d9b192a19a4d98280eca63",
     "scripts/verify-provenance-installed.mjs": "326d8c7b13cd69b1e11ed4f4edf193059c7004c369453229245a2b8b66ee6a14",
     "scripts/verify-remote-staging.mjs": "73b2a600f0281c4e35f08814f81b9c743758cf83f645b4e7483cddca252ca54d",
     "scripts/verify-remote-state-installed.mjs": "d6061a2fe27bf8a1b20546ebac7e0fa3f28b34408a5534eb82b47832d7722c2f",
@@ -92,7 +92,7 @@
     "src/errors.ts": "cb846f81c0cdfacf741991bda5c2be5ba25835ad57edd86d6fba6ee0baf3020f",
     "src/executables.ts": "d25bb49648e9c4737203e40e27a6709ddbc749cdb927f4e0c991b1921170bb8a",
     "src/files.ts": "76eafeecc7f64d8b823e9e9441d1120c0dd0d8383617cecb0d9a6e68481c52b0",
-    "src/git.ts": "05e4d4576811b5acfda20d85c195a9b65c6758190dcd181565e16d383d177822",
+    "src/git.ts": "362494082669a53057f7d8ebf2875b5d5b411c30ce315140732049baef9ee99b",
     "src/isolation-engine.ts": "73718518cf7c229d8b2e444ffd48c20c08e80ca880562f0f428fc673a0581a67",
     "src/isolation-http.ts": "718554fd640ac0bb0f92752ca3f3d0bdbddbccf3deba3d5539c5a551f3cef2e7",
     "src/isolation-policy.ts": "15a86fc684475d70a4960f3153b6b003b3926e876ae3784ede0080cc6f67c41c",
@@ -131,6 +131,7 @@
     "tests/files.test.mjs": "db7de0a574afeac7dfb25fd74088a228b2645a764322daf39479e00737dd1aca",
     "tests/fixtures/provenance/README.md": "9a43ae7dce8682b955211ee8162179170868863148475c996ec88a22fb88010a",
     "tests/fixtures/provenance/npm-11.19-incomplete.spdx.json": "c6a4a1e01db17fbb32a58e3945aaf7dd5edd5642dfa3bca16d021f0980033092",
+    "tests/git-boundaries.test.mjs": "058d41674db5cc596c9c644108b82c8f70a9d35b8a560701eedaa144933eed65",
     "tests/git.test.mjs": "e6f1f56c050fa8ea53d2be10043ba26a0abf78ed480cef748e63caa5799c4b25",
     "tests/isolation-ci-config.test.mjs": "afb9c922d4a3b3c563c7ed4994a6634f3e91317fbc95edff8b0893d25bbe4500",
     "tests/isolation-evidence.test.mjs": "5737728283473e033ccd73fb31ae45127a7498e86c43e90d0bdc95dfce3e34d5",
@@ -165,7 +166,7 @@
     "vendor/modelcontextprotocol-server/source.patch": "7783730d37d00a3b8dc759e144dee6fa2d3ffb0c73b4bb48bf90151fe4234435",
     "versions.json": "7cadba4f207fa86eef1d32f74e63205d53dc1b344820c0425e67323a38364d29"
   },
-  "catalogFingerprint": "b8bf0b68529dcfd39cb11fb4b1ebac4c7791ac5c34c2d27ca9249f5c206d2ce5",
+  "catalogFingerprint": "68ca4f79bc0832cfdaa5822428314e799b9ab665ca469723a41364816afa29f2",
   "weightFingerprint": "3bbcd6acde44c38922429b79939480398048ae2f710640e68fd41705220fff7c",
   "assessment": "Explicit source/catalog review; rendering does not infer progress"
 }

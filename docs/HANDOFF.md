@@ -1,3 +1,17 @@
+# Git boundary development checkpoint — 2026-11-09 UTC
+
+Session `MTERM-WEB-20261109T031131Z-e0efd5d4` now owns `coord/mterm/issue-66`, branch `fix/issue-66-git-boundaries-20261109`, based on `9d4a1815e9fcc005cfc5dd34e0eff1b74cb3cbb4`.
+
+PR #211 is fully merged: exact reviewed tree `0f38280a06cc3596dac92c614495c7e46777bad5`, six PR checks and six main checks passed. Windows 554/554; Linux/macOS 542 passed plus 12 existing platform skips; installed owned-stop recovery 5/5 on every lane. Source/installed peer review and audit zero are recorded on the PR. #131 remains open for its broader scope; its implementation claim is inactive.
+
+[Git-boundary evidence](validation/2026-11-09-git-boundaries.md): final-fixture RED 4/18, corrected focused GREEN 26/26, independent 18/18. The native adapter now validates shared metadata and refuses executable filters/config includes before status/diff. Root grants and general file access are unchanged. Filter/include-config repositories are explicitly unsupported; alternates, implicit fetches, initial discovery and local writer races remain open. Full #66 is not accepted.
+
+Next: reviewed source/build gates, exact committed hosted/installed qualification, normal expected-head merge and merged-main verification. Then continue the supported-installer review fingerprint gap (#94) or package build ordering (#3). All 300 stages and AUG/DCP/WEB acceptance remain unchanged. Standing authorization applies; no paid/model worker or production bridge rollout is in this source slice.
+
+The separate owner bridge has been identified as MTechLabs-Access/integrations/mcp-manager; #209 now records working authenticated calls and its mixed verifier/deployment lineage. A private pinned stable runtime candidate remains operational follow-up; global Node and the active manager are preserved.
+
+---
+
 # Owned stop recovery development checkpoint — 2026-11-09 UTC
 
 Session `MTERM-WEB-20261109T031131Z-e0efd5d4` owns `coord/mterm/issue-131` and branch `fix/issue-131-stop-retry-20261109`, based on `fcfd221b7896c1307fd17b5881a1cb2df20d3248`. Work is in an isolated normal clone; the unpublished workstation checkout and live bridge are preserved.

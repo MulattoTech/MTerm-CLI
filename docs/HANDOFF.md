@@ -1,3 +1,73 @@
+# Ordinary-worktree SDK qualification checkpoint — 2026-11-09 UTC
+
+Session `MTERM-WEB-20261109T131339Z-resume-a9287b3c` owns the separate
+[issue235 claim](https://github.com/MulattoTech/MTerm-CLI/issues/235#issuecomment-6750304459).
+The atomic claim began at qualified c69762d; root integration now uses separately
+qualified actual main `3077a7fe1927d1ae17aab99570832d6f9e1e3819`. One implementation
+worker owns the four-path slice; root serializes shared documents, metrics and
+publication. Worker `f37e9c1021bf457cfbe9a65e2a8303856ee7481a` is preserved and
+serialized as `b457bdd887a57a1d18933092d487491337e00ceb` on
+`test/issue-235-installed-worktrees-20261109`. Production Git/root code, original
+18-case fixture, dependencies, workflows and self-host verifier remain unchanged.
+
+[The six-case SDK fixture](validation/2026-11-09-installed-worktree.md) passed its
+first execution against unchanged production source: this is additional coverage,
+with no reproduced product defect or manufactured RED. It uses an ordinary
+independent clone and untouched Git-created linked layout. Explicit worktree and
+actual parent-repository roots permit status and distinct staged/unstaged diffs
+at top and nested paths. Missing or unrelated metadata grants remain denied, as
+do normal file reads of Git metadata. The read-only tool inventory and reported
+capability/root bounds are checked. Complete per-case owned byte manifests and
+actual natural child closure surround each MCP interval; before/after equality
+does not prove protection against concurrent writers.
+
+Worker source6/6 passed with 118 unchanged bindings. The serialized root's new6,
+legacy18 and existing Git/MCP8 passed32/32, empty stderr and120 unchanged bindings.
+A preceding root wrapper lost its execution-channel result and retained only its
+input snapshot: it remains UNKNOWN/unqualified. The confirmed run changed only
+the ignored wrapper's output retention and foreground observation; no test or
+product assertion changed. [Durable raw TAP and exact source evidence](validation/2026-11-09-installed-worktree-source-evidence.json)
+preserve both observations. Independent review results are recorded in the
+[change record](ai/changes/2026-11-09-installed-worktree.json).
+
+The existing installed Git verifier now requires exactly24/24, retaining the
+original18 hash and adding the six-case fixture/hash and precise observations.
+**Local installed qualification is NOT RUN.** Two offline setup attempts failed
+before tests: first a missing pinned-server URL cache record, then missing zod
+registry metadata. Both packs used `--ignore-scripts`; they are not normal
+prepack/full-verifier passes. Read-only preflight found original zod/core metadata
+absent, and no third install, fabricated record, new download or dependency rewrite
+occurred. All five required hosted package lanes must actually prove24/24 before
+candidate acceptance; the later actual-main gates remain separate.
+
+Normal explicit roadmap review/render/check, reviewed build/parity, typecheck,
+source formatting and whitespace outcomes belong to the root integration record.
+The known local Unix-socket full-suite limit remains without a false full/quick
+PASS. CLI266/283/284 receive bounded evidence only: all300 protected rows and the
+seed remain unchanged. Maturity stays29.36%,0complete45blocked126notStarted;
+DCP0/48 andWEB0/12. Broader AUTO001/#66, adversarial pointers, initial discovery
+configuration, alternates, implicit fetch and concurrent-writer questions stay open.
+
+[Recovery source PR234 is fully delivered](validation/2026-11-09-staging-recovery-delivery.json):
+exact3cde candidate and actual3077 main separately passed all six jobs, with five
+1257-case source suites, five installed-package and four native Codex0.160.1
+receipts, and scoped native source12/installed12/protocol31 evidence. Its source
+claim was released20:31:59UTC; historical refs and original claim text remain.
+Issue232 stays open for actual provider lifecycle and connected Windows cleanup.
+The two rejected creates remain the full recorded attempt history, with no
+acknowledged resource UUID or supported cause; further token writes remain held.
+No new provider, Windows, deployment, production bridge or unrelated-project
+operation accompanied this source delivery.
+
+Next: finish the independent final shared/source/catalog review, publish the
+immutable issue235 candidate, inspect all six actual candidate gates including
+installed24/24, merge normally with expected-head protection, then separately
+qualify all six actual-main jobs. Standing owner authorization applies. Preserve
+the dirty Windows checkout, owner state/retained lock, historical refs and other
+projects. Continue dependency-ready work after source delivery.
+
+---
+
 # Owned staging recovery checkpoint — 2026-11-09 UTC
 
 Session `MTERM-WEB-20261109T131339Z-resume-a9287b3c` exclusively owns issue232 on

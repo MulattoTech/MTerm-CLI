@@ -128,6 +128,19 @@ This deliberately includes unused, empty and duplicate declarations and inactive
 includes. The adapter does not remove or rewrite configuration or silently change filter semantics.
 Benign keys such as `filter.*.required` alone do not grant or trigger command execution.
 
+The [ordinary-worktree SDK regression](validation/2026-11-09-installed-worktree.md)
+uses a normal independent clone and an untouched Git-created linked layout. It
+checks status and staged/unstaged diff at top and nested paths with the explicit
+worktree plus actual parent-repository roots, while missing/unrelated metadata
+grants remain denied. Normal file reads still refuse the `.git` pointer and
+repository config. The fixture compares complete owned file/metadata byte
+manifests around actual stdio MCP calls and observes natural child close without
+signals. Reported capability fields, including `networkListener:false`, are
+asserted; this is not an independent OS listener census. The initial Linux source
+cases passed on unchanged production code. Installed/platform qualification is
+separately required through the normal package gates. No root discovery or new
+grant follows from a Git pointer, and byte equality is not a concurrent-writer defense.
+
 These are scoped controls, not a hostile-repository sandbox. Initial Git discovery may consult
 configuration/includes before admission. Object alternates, partial-clone implicit fetches and
 other native Git extensions require separate qualification; an outside concurrent writer can

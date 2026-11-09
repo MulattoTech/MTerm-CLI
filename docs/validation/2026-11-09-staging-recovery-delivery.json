@@ -1,0 +1,882 @@
+{
+  "schemaVersion": 1,
+  "type": "mterm-staging-recovery-source-delivery",
+  "recordedAt": "2026-11-09T20:33:33.649745+00:00",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "sessionId": "MTERM-WEB-20261109T131339Z-resume-a9287b3c",
+  "provenance": "Self-reported root summary of retained exact-candidate and separately executed actual-main evidence, with independent audits and root byte rechecks; no new execution is claimed by this record.",
+  "repository": "MulattoTech/MTerm-CLI",
+  "pullRequest": 234,
+  "issue": 232,
+  "sourceContract": {
+    "candidate": "3cde9c8608c40e3ae8774471ef42dfb9ca8d0b6b",
+    "tree": "5164e59bd30d2328fe35ca3563096d77cb59256e",
+    "reviewSourceFingerprint": "b504ded585eee440d27c1b95dad1042c5e2c3987a452b4008b1553bbdeaef3c0",
+    "reviewSourceEntries": 182,
+    "recoveryFixture": {
+      "path": "tests/staging-recovery.test.mjs",
+      "sha256": "82e3469cfd6b31acfb5f2954c15f16966d4484870bdac75db8e2dce6a5356b19"
+    },
+    "legacyHandoffFixture": {
+      "path": "tests/staging-handoff.test.mjs",
+      "sha256": "e1b31bace77b662f5e73a34457aced3c5c4c5961dcbe3d1b26b978b7b0eef55c"
+    },
+    "legacyFixtureUnchanged": true,
+    "newModes": [
+      "cleanup",
+      "smoke-owned"
+    ],
+    "providerLifecycleQualified": false,
+    "connectedWindowsCleanupQualified": false
+  },
+  "candidate": {
+    "identity": {
+      "commit": "3cde9c8608c40e3ae8774471ef42dfb9ca8d0b6b",
+      "tree": "5164e59bd30d2328fe35ca3563096d77cb59256e",
+      "base": "c69762da7d1dda54f7a74795c08c1f699367c77f",
+      "executedSyntheticMerge": "0374030df6b6a9835652c5b8f9c7cbcb0a14b65e",
+      "syntheticMergeParents": [
+        "c69762da7d1dda54f7a74795c08c1f699367c77f",
+        "3cde9c8608c40e3ae8774471ef42dfb9ca8d0b6b"
+      ]
+    },
+    "runs": [
+      {
+        "id": 42689645892,
+        "attempt": 1,
+        "event": "pull_request",
+        "head": "3cde9c8608c40e3ae8774471ef42dfb9ca8d0b6b",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 42689645488,
+        "attempt": 1,
+        "event": "pull_request",
+        "head": "3cde9c8608c40e3ae8774471ef42dfb9ca8d0b6b",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ],
+    "jobs": [
+      {
+        "id": 129405673164,
+        "run": 42689645892,
+        "name": "CI / fast",
+        "executedCheckout": "0374030df6b6a9835652c5b8f9c7cbcb0a14b65e",
+        "counts": {
+          "tests": 1257,
+          "suites": 0,
+          "pass": 1245,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 12,
+          "todo": 0
+        },
+        "packageReceiptChecked": false,
+        "codexReceiptChecked": false
+      },
+      {
+        "id": 129405667390,
+        "run": 42689645488,
+        "name": "Native Linux isolation / Node 24",
+        "executedCheckout": "0374030df6b6a9835652c5b8f9c7cbcb0a14b65e",
+        "counts": null,
+        "packageReceiptChecked": true,
+        "codexReceiptChecked": false
+      },
+      {
+        "id": 129405667537,
+        "run": 42689645488,
+        "name": "windows-2022 / Node 24",
+        "executedCheckout": "0374030df6b6a9835652c5b8f9c7cbcb0a14b65e",
+        "counts": {
+          "tests": 1257,
+          "suites": 0,
+          "pass": 1257,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "packageReceiptChecked": true,
+        "codexReceiptChecked": true
+      },
+      {
+        "id": 129405667664,
+        "run": 42689645488,
+        "name": "ubuntu-24.04 / Node 24",
+        "executedCheckout": "0374030df6b6a9835652c5b8f9c7cbcb0a14b65e",
+        "counts": {
+          "tests": 1257,
+          "suites": 0,
+          "pass": 1245,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 12,
+          "todo": 0
+        },
+        "packageReceiptChecked": true,
+        "codexReceiptChecked": true
+      },
+      {
+        "id": 129405667747,
+        "run": 42689645488,
+        "name": "macos-15 / Node 24",
+        "executedCheckout": "0374030df6b6a9835652c5b8f9c7cbcb0a14b65e",
+        "counts": {
+          "tests": 1257,
+          "suites": 0,
+          "pass": 1245,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 12,
+          "todo": 0
+        },
+        "packageReceiptChecked": true,
+        "codexReceiptChecked": true
+      },
+      {
+        "id": 129405667780,
+        "run": 42689645488,
+        "name": "macos-15-intel / Node 24",
+        "executedCheckout": "0374030df6b6a9835652c5b8f9c7cbcb0a14b65e",
+        "counts": {
+          "tests": 1257,
+          "suites": 0,
+          "pass": 1245,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 12,
+          "todo": 0
+        },
+        "packageReceiptChecked": true,
+        "codexReceiptChecked": true
+      }
+    ],
+    "fullSourceSuites": {
+      "count": 5,
+      "testsEach": 1257,
+      "windowsPass": 1257,
+      "otherLanesPass": 1245,
+      "otherLanesSkips": 12,
+      "skippedTitles": [
+        "automation PowerShell scripts parse without executing",
+        "one-command setup preview is read-only and permission-conservative",
+        "one-command setup refuses a whole-drive root",
+        "top-level MTerm CLI launcher parses as PowerShell without execution",
+        "top-level Plan and Install preview do not modify the selected workspace",
+        "top-level Verify reports explicit local versus remote readiness without mutation",
+        "top-level launcher refuses unsafe root and unapproved execution paths",
+        "Windows short filenames cannot expose existing compatibility policy storage",
+        "Windows short file aliases return canonical identities and cannot evade the request guard",
+        "Windows short file aliases cannot conceal a private canonical filename",
+        "Windows missing leaves retain their canonical parent and final request guard",
+        "Windows missing leaves cannot be created below an aliased private directory"
+      ],
+      "requiredTitlesPerLane": 501,
+      "requiredTitleCounts": {
+        "recovery": 221,
+        "helper": 134,
+        "staging": 54,
+        "pairing": 60,
+        "access": 22,
+        "oauth": 10
+      },
+      "fixtureBindings": {
+        "recovery": {
+          "path": "tests/staging-recovery.test.mjs",
+          "sha256": "82e3469cfd6b31acfb5f2954c15f16966d4484870bdac75db8e2dce6a5356b19"
+        },
+        "helper": {
+          "path": "tests/staging-handoff.test.mjs",
+          "sha256": "e1b31bace77b662f5e73a34457aced3c5c4c5961dcbe3d1b26b978b7b0eef55c"
+        },
+        "staging": {
+          "path": "tests/staging-build-identity.test.mjs",
+          "sha256": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73"
+        },
+        "pairing": {
+          "path": "tests/remote-pairing-expiry.test.mjs",
+          "sha256": "276f844411cca3c0f0d346ed60c3420960786902a9f30b64d69d1d3ec278b6f8"
+        },
+        "access": {
+          "path": "tests/gateway-access-expiry.test.mjs",
+          "sha256": "9e24369e1ab38e9eedcc5f77d2b3c5056fa51d9ce77e94d6232d9b6b6259c1cd"
+        },
+        "oauth": {
+          "path": "tests/remote-gateway.test.mjs",
+          "sha256": "dfbb1bc65c6c33c00b9acccd0d481ba0052e433ec324dd38bc616fa4f77094b1"
+        }
+      },
+      "allRequiredTitlesPassExactlyOnce": true,
+      "failures": 0,
+      "cancellations": 0,
+      "todos": 0
+    },
+    "installedPackageEvidence": {
+      "receipts": 5,
+      "allCheckedAgainstExactSourceAndCompiledHashes": true,
+      "outsideCheckoutOfflinePackLinkExecAndMcp": true,
+      "installedFixtureGroupsAndStateBoundaries": true,
+      "actualWindowsDpapiOwnedChildren": 2,
+      "modelCalls": 0,
+      "userGlobalPrefixChanged": false,
+      "outerPackageWorkspaceRetention": [
+        {
+          "runtimeRetained": true,
+          "cleanupAttempted": false,
+          "childExitsProvedByWorkspaceOwner": false,
+          "outcome": "passed"
+        },
+        {
+          "runtimeRetained": true,
+          "cleanupAttempted": false,
+          "childExitsProvedByWorkspaceOwner": false,
+          "outcome": "passed"
+        },
+        {
+          "runtimeRetained": true,
+          "cleanupAttempted": false,
+          "childExitsProvedByWorkspaceOwner": false,
+          "outcome": "passed"
+        },
+        {
+          "runtimeRetained": true,
+          "cleanupAttempted": false,
+          "childExitsProvedByWorkspaceOwner": false,
+          "outcome": "passed"
+        },
+        {
+          "runtimeRetained": true,
+          "cleanupAttempted": false,
+          "childExitsProvedByWorkspaceOwner": false,
+          "outcome": "passed"
+        }
+      ]
+    },
+    "nativeCodexEvidence": {
+      "receipts": 4,
+      "codexVersion": "0.160.1",
+      "node": "v24.21.0",
+      "platforms": [
+        "win32/x64",
+        "linux/x64",
+        "darwin/arm64",
+        "darwin/x64"
+      ],
+      "testOwnedNativeExecutables": true,
+      "setupIdempotencyConfigurationParsingPersistenceAndLimits": true,
+      "registeredCommandMcpRoundsEach": 2,
+      "shutdownAndRemovalVerified": true,
+      "modelCalls": 0,
+      "actualCodexAgentToolInvocation": false,
+      "realUserConfigChanged": false
+    },
+    "nativeLinuxArtifact": {
+      "artifactId": 13706935664,
+      "run": 42689645488,
+      "attempt": 1,
+      "sha256": "0549913b09c83bfabe2febfcae9b666393c495ecf9303232849e59eb50fd0ecc",
+      "bytes": 250716,
+      "sourceScenarios": {
+        "sourceCommit": "0374030df6b6a9835652c5b8f9c7cbcb0a14b65e",
+        "entry": "/home/runner/work/MTerm-CLI/MTerm-CLI/bin/mterm-cli.js",
+        "counts": {
+          "tests": 12,
+          "suites": 0,
+          "pass": 12,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "tapSha256": "7136abf8230362f58dd956fa88ebaf3df5ad340431bfe57c74d950717fa9bd35",
+        "modelCalls": 0,
+        "acceptedCapability": false,
+        "scenarioIds": [
+          "ISO-LIVE-01",
+          "ISO-LIVE-02",
+          "ISO-LIVE-03",
+          "ISO-LIVE-04",
+          "ISO-LIVE-05",
+          "ISO-LIVE-06",
+          "ISO-LIVE-07",
+          "ISO-LIVE-08",
+          "ISO-LIVE-09",
+          "ISO-LIVE-10",
+          "ISO-LIVE-11",
+          "ISO-LIVE-12"
+        ]
+      },
+      "installedScenarios": {
+        "sourceCommit": "0374030df6b6a9835652c5b8f9c7cbcb0a14b65e",
+        "entry": "/tmp/mterm-package-verify-G94Cx0/install/node_modules/mterm-cli/bin/mterm-cli.js",
+        "counts": {
+          "tests": 12,
+          "suites": 0,
+          "pass": 12,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "tapSha256": "db4592f8a73dbf391de888c9930ad9e2f567bda4db4f48e2f73101171c1b64c6",
+        "modelCalls": 0,
+        "acceptedCapability": false,
+        "scenarioIds": [
+          "ISO-LIVE-01",
+          "ISO-LIVE-02",
+          "ISO-LIVE-03",
+          "ISO-LIVE-04",
+          "ISO-LIVE-05",
+          "ISO-LIVE-06",
+          "ISO-LIVE-07",
+          "ISO-LIVE-08",
+          "ISO-LIVE-09",
+          "ISO-LIVE-10",
+          "ISO-LIVE-11",
+          "ISO-LIVE-12"
+        ]
+      },
+      "syntheticProtocol": {
+        "counts": {
+          "tests": 31,
+          "suites": 0,
+          "pass": 31,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "tapSha256": "1c30c318383626ad6a9a705b6ef22c755dae736233e4fb77f167d99c447984f8",
+        "syntheticOnly": true,
+        "modelCalls": 0
+      },
+      "allArtifactChecksPassed": true,
+      "bootstrap": {
+        "sourceCommit": "0374030df6b6a9835652c5b8f9c7cbcb0a14b65e",
+        "modelCalls": 0,
+        "licenseBytesRehashed": 8,
+        "signedIndexBytesRehashed": true,
+        "signedPackageRecordsChecked": 3,
+        "runtimeBinaryRecords": 5,
+        "runtimeBinaryBytesRehashed": false,
+        "debBytesRehashed": false,
+        "signatureIndependentlyReverifiedOffline": false,
+        "retainedGpgvTranscriptChecked": true
+      },
+      "limitations": [
+        "Inputs must be bound independently to exact candidate/synthetic tree or actual main checkout, successful native job/run/attempt and immutable source logs.",
+        "Module hashes come from a separately qualified exact-source local build; this verifier never builds or launches product code.",
+        "Gpgv transcript and signed-index byte chain are checked; cryptographic signature is not re-executed offline here.",
+        "Runtime binaries and .deb files are absent from uploaded archive; recorded identities and signed package metadata are checked without claiming rehashed binary/deb bytes.",
+        "Real native scenario cleanup is scoped to owned containers/services/fixtures; no global workspace cleanup or broader capability acceptance is inferred.",
+        "Full image/transitive license redistribution, Codex model calls, provider lifecycle and connected Windows recovery are outside this artifact audit."
+      ]
+    },
+    "independentAuditSha256": "d6e6d28b74312ad2efbc14cf467f0ba82eea4dbb0ecee10dba1256f9b82ebd25",
+    "auditEvidenceFiles": 43,
+    "finalRemoteGateState": {
+      "draft": true,
+      "open": true,
+      "unmerged": true,
+      "headAndBaseUnchanged": true,
+      "mergeable": true,
+      "mergeableState": "clean",
+      "all11CandidateChecksCompletedSuccess": true,
+      "legacyCommitStatusContexts": 0,
+      "emptyCombinedStatusDefault": "pending",
+      "emptyCombinedStatusMeaning": "No legacy status context exists; check-runs are all completed success",
+      "ancillaryBranchPushRun": 42689636312,
+      "ancillaryPushAttempt": 1,
+      "ancillaryPushJobIds": [
+        129405635032,
+        129405635190,
+        129405635604,
+        129405635664,
+        129405636783
+      ],
+      "ancillaryPushAllFiveJobsAndStepsSuccess": true,
+      "ancillaryPushScope": "Additional current check-state metadata only; the six selected PR jobs provide this audit's full actual log evidence",
+      "allCandidateRunsEnumerated": 3
+    },
+    "checkpoint": "https://github.com/MulattoTech/MTerm-CLI/pull/234#issuecomment-6750433726"
+  },
+  "normalMerge": {
+    "mergedAt": "2026-11-09T20:19:06Z",
+    "expectedCandidateHead": "3cde9c8608c40e3ae8774471ef42dfb9ca8d0b6b",
+    "commit": {
+      "sha": "3077a7fe1927d1ae17aab99570832d6f9e1e3819",
+      "tree": "5164e59bd30d2328fe35ca3563096d77cb59256e",
+      "parents": [
+        "c69762da7d1dda54f7a74795c08c1f699367c77f",
+        "3cde9c8608c40e3ae8774471ef42dfb9ca8d0b6b"
+      ]
+    },
+    "normalMerge": true,
+    "forcePushOrReset": false,
+    "rootCloneFastForwarded": true,
+    "historicalBranchesRetained": true
+  },
+  "actualMain": {
+    "qualification": "CLEAR",
+    "commit": "3077a7fe1927d1ae17aab99570832d6f9e1e3819",
+    "tree": "5164e59bd30d2328fe35ca3563096d77cb59256e",
+    "parents": [
+      "c69762da7d1dda54f7a74795c08c1f699367c77f",
+      "3cde9c8608c40e3ae8774471ef42dfb9ca8d0b6b"
+    ],
+    "runs": [
+      {
+        "id": 42691810905,
+        "attempt": 1,
+        "event": "push",
+        "branch": "main",
+        "head": "3077a7fe1927d1ae17aab99570832d6f9e1e3819",
+        "path": ".github/workflows/ci-fast.yml",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 42691810568,
+        "attempt": 1,
+        "event": "push",
+        "branch": "main",
+        "head": "3077a7fe1927d1ae17aab99570832d6f9e1e3819",
+        "path": ".github/workflows/cli-ci.yml",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ],
+    "jobs": [
+      {
+        "id": 129413184301,
+        "run": 42691810905,
+        "name": "CI / fast",
+        "executedCheckout": "3077a7fe1927d1ae17aab99570832d6f9e1e3819",
+        "counts": {
+          "tests": 1257,
+          "suites": 0,
+          "pass": 1245,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 12,
+          "todo": 0
+        },
+        "packageReceiptChecked": false,
+        "codexReceiptChecked": false
+      },
+      {
+        "id": 129413179378,
+        "run": 42691810568,
+        "name": "Native Linux isolation / Node 24",
+        "executedCheckout": "3077a7fe1927d1ae17aab99570832d6f9e1e3819",
+        "counts": null,
+        "packageReceiptChecked": true,
+        "codexReceiptChecked": false
+      },
+      {
+        "id": 129413179725,
+        "run": 42691810568,
+        "name": "macos-15 / Node 24",
+        "executedCheckout": "3077a7fe1927d1ae17aab99570832d6f9e1e3819",
+        "counts": {
+          "tests": 1257,
+          "suites": 0,
+          "pass": 1245,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 12,
+          "todo": 0
+        },
+        "packageReceiptChecked": true,
+        "codexReceiptChecked": true
+      },
+      {
+        "id": 129413179735,
+        "run": 42691810568,
+        "name": "windows-2022 / Node 24",
+        "executedCheckout": "3077a7fe1927d1ae17aab99570832d6f9e1e3819",
+        "counts": {
+          "tests": 1257,
+          "suites": 0,
+          "pass": 1257,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "packageReceiptChecked": true,
+        "codexReceiptChecked": true
+      },
+      {
+        "id": 129413179738,
+        "run": 42691810568,
+        "name": "ubuntu-24.04 / Node 24",
+        "executedCheckout": "3077a7fe1927d1ae17aab99570832d6f9e1e3819",
+        "counts": {
+          "tests": 1257,
+          "suites": 0,
+          "pass": 1245,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 12,
+          "todo": 0
+        },
+        "packageReceiptChecked": true,
+        "codexReceiptChecked": true
+      },
+      {
+        "id": 129413179806,
+        "run": 42691810568,
+        "name": "macos-15-intel / Node 24",
+        "executedCheckout": "3077a7fe1927d1ae17aab99570832d6f9e1e3819",
+        "counts": {
+          "tests": 1257,
+          "suites": 0,
+          "pass": 1245,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 12,
+          "todo": 0
+        },
+        "packageReceiptChecked": true,
+        "codexReceiptChecked": true
+      }
+    ],
+    "sourceSuites": {
+      "count": 5,
+      "testsEach": 1257,
+      "windowsPass": 1257,
+      "windowsSkips": 0,
+      "otherLanePass": 1245,
+      "otherLaneSkips": 12,
+      "exactExistingSkipTitles": [
+        "automation PowerShell scripts parse without executing",
+        "one-command setup preview is read-only and permission-conservative",
+        "one-command setup refuses a whole-drive root",
+        "top-level MTerm CLI launcher parses as PowerShell without execution",
+        "top-level Plan and Install preview do not modify the selected workspace",
+        "top-level Verify reports explicit local versus remote readiness without mutation",
+        "top-level launcher refuses unsafe root and unapproved execution paths",
+        "Windows short filenames cannot expose existing compatibility policy storage",
+        "Windows short file aliases return canonical identities and cannot evade the request guard",
+        "Windows short file aliases cannot conceal a private canonical filename",
+        "Windows missing leaves retain their canonical parent and final request guard",
+        "Windows missing leaves cannot be created below an aliased private directory"
+      ],
+      "requiredTitlesEach": 501,
+      "requiredTitleGroups": {
+        "recovery": 221,
+        "helper": 134,
+        "staging": 54,
+        "pairing": 60,
+        "access": 22,
+        "oauth": 10
+      },
+      "allRequiredTitlesPassedExactlyOnce": true,
+      "fixtureBindings": {
+        "recovery": {
+          "path": "tests/staging-recovery.test.mjs",
+          "sha256": "82e3469cfd6b31acfb5f2954c15f16966d4484870bdac75db8e2dce6a5356b19"
+        },
+        "helper": {
+          "path": "tests/staging-handoff.test.mjs",
+          "sha256": "e1b31bace77b662f5e73a34457aced3c5c4c5961dcbe3d1b26b978b7b0eef55c"
+        },
+        "staging": {
+          "path": "tests/staging-build-identity.test.mjs",
+          "sha256": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73"
+        },
+        "pairing": {
+          "path": "tests/remote-pairing-expiry.test.mjs",
+          "sha256": "276f844411cca3c0f0d346ed60c3420960786902a9f30b64d69d1d3ec278b6f8"
+        },
+        "access": {
+          "path": "tests/gateway-access-expiry.test.mjs",
+          "sha256": "9e24369e1ab38e9eedcc5f77d2b3c5056fa51d9ce77e94d6232d9b6b6259c1cd"
+        },
+        "oauth": {
+          "path": "tests/remote-gateway.test.mjs",
+          "sha256": "dfbb1bc65c6c33c00b9acccd0d481ba0052e433ec324dd38bc616fa4f77094b1"
+        }
+      },
+      "fail": 0,
+      "cancelled": 0,
+      "todo": 0
+    },
+    "installedPackage": {
+      "actualReceipts": 5,
+      "allSourceAndCompiledHashesMatched": true,
+      "outsideCheckoutOfflinePackLinkExecAndMcp": true,
+      "installedFixtureGroupsAndSyntheticStateBoundaries": true,
+      "ownedWindowsDpapiChildren": 2,
+      "modelCalls": 0,
+      "userGlobalPrefixChanged": false,
+      "outerRuntimeRetention": [
+        {
+          "runtimeRetained": true,
+          "cleanupAttempted": false,
+          "childExitsProvedByWorkspaceOwner": false,
+          "outcome": "passed"
+        },
+        {
+          "runtimeRetained": true,
+          "cleanupAttempted": false,
+          "childExitsProvedByWorkspaceOwner": false,
+          "outcome": "passed"
+        },
+        {
+          "runtimeRetained": true,
+          "cleanupAttempted": false,
+          "childExitsProvedByWorkspaceOwner": false,
+          "outcome": "passed"
+        },
+        {
+          "runtimeRetained": true,
+          "cleanupAttempted": false,
+          "childExitsProvedByWorkspaceOwner": false,
+          "outcome": "passed"
+        },
+        {
+          "runtimeRetained": true,
+          "cleanupAttempted": false,
+          "childExitsProvedByWorkspaceOwner": false,
+          "outcome": "passed"
+        }
+      ]
+    },
+    "nativeCodex": {
+      "actualReceipts": 4,
+      "version": "0.160.1",
+      "node": "v24.21.0",
+      "platforms": [
+        {
+          "node": "v24.21.0",
+          "platform": "darwin",
+          "arch": "arm64"
+        },
+        {
+          "node": "v24.21.0",
+          "platform": "win32",
+          "arch": "x64"
+        },
+        {
+          "node": "v24.21.0",
+          "platform": "linux",
+          "arch": "x64"
+        },
+        {
+          "node": "v24.21.0",
+          "platform": "darwin",
+          "arch": "x64"
+        }
+      ],
+      "testOwnedNativeExecutables": true,
+      "setupIdempotencyConfigurationParsingPersistenceAndLimits": true,
+      "registeredCommandMcpRoundsEach": 2,
+      "shutdownAndRemovalVerified": true,
+      "modelCalls": 0,
+      "actualCodexAgentToolInvocation": false,
+      "realUserConfigChanged": false
+    },
+    "nativeLinux": {
+      "artifact": {
+        "id": 13707786169,
+        "node_id": "MDg6QXJ0aWZhY3QxMzcwNzc4NjE2OQ==",
+        "name": "aug005-linux-42691810568-1",
+        "size_in_bytes": 250888,
+        "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/artifacts/13707786169",
+        "archive_download_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/artifacts/13707786169/zip",
+        "expired": false,
+        "digest": "sha256:fb140948e36e6b8e3461301279a4a9993d0d870250b495f15e63da99b5084e2d",
+        "created_at": "2026-11-09T20:20:48Z",
+        "updated_at": "2026-11-09T20:20:48Z",
+        "expires_at": "2026-12-09T20:20:47Z",
+        "workflow_run": {
+          "id": 42691810568,
+          "repository_id": 1391226983,
+          "head_repository_id": 1391226983,
+          "head_branch": "main",
+          "head_sha": "3077a7fe1927d1ae17aab99570832d6f9e1e3819"
+        }
+      },
+      "zip": {
+        "path": "artifacts/issue-232-main-review-3077a7fe/native/native-qualification.zip",
+        "sha256": "fb140948e36e6b8e3461301279a4a9993d0d870250b495f15e63da99b5084e2d",
+        "bytes": 250888
+      },
+      "source": {
+        "sourceCommit": "3077a7fe1927d1ae17aab99570832d6f9e1e3819",
+        "entry": "/home/runner/work/MTerm-CLI/MTerm-CLI/bin/mterm-cli.js",
+        "counts": {
+          "tests": 12,
+          "suites": 0,
+          "pass": 12,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "tapSha256": "1554edb4d823dd7c64e42c4cd2be36d199fa5de14fe74a770df18d67fcd4b700",
+        "modelCalls": 0,
+        "acceptedCapability": false,
+        "scenarioIds": [
+          "ISO-LIVE-01",
+          "ISO-LIVE-02",
+          "ISO-LIVE-03",
+          "ISO-LIVE-04",
+          "ISO-LIVE-05",
+          "ISO-LIVE-06",
+          "ISO-LIVE-07",
+          "ISO-LIVE-08",
+          "ISO-LIVE-09",
+          "ISO-LIVE-10",
+          "ISO-LIVE-11",
+          "ISO-LIVE-12"
+        ]
+      },
+      "installed": {
+        "sourceCommit": "3077a7fe1927d1ae17aab99570832d6f9e1e3819",
+        "entry": "/tmp/mterm-package-verify-N069M2/install/node_modules/mterm-cli/bin/mterm-cli.js",
+        "counts": {
+          "tests": 12,
+          "suites": 0,
+          "pass": 12,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "tapSha256": "cbbc7b48f950cfd5c699de27526c2e04255f6e1a9e451ac3150eec29ca02ed27",
+        "modelCalls": 0,
+        "acceptedCapability": false,
+        "scenarioIds": [
+          "ISO-LIVE-01",
+          "ISO-LIVE-02",
+          "ISO-LIVE-03",
+          "ISO-LIVE-04",
+          "ISO-LIVE-05",
+          "ISO-LIVE-06",
+          "ISO-LIVE-07",
+          "ISO-LIVE-08",
+          "ISO-LIVE-09",
+          "ISO-LIVE-10",
+          "ISO-LIVE-11",
+          "ISO-LIVE-12"
+        ]
+      },
+      "syntheticProtocol": {
+        "counts": {
+          "tests": 31,
+          "suites": 0,
+          "pass": 31,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "tapSha256": "f70d5bdbe50fdb6ea7b638a42e7d7cdee13fb518f09802169357909ab0680c13",
+        "syntheticOnly": true,
+        "modelCalls": 0
+      },
+      "bootstrap": {
+        "sourceCommit": "3077a7fe1927d1ae17aab99570832d6f9e1e3819",
+        "modelCalls": 0,
+        "licenseBytesRehashed": 8,
+        "signedIndexBytesRehashed": true,
+        "signedPackageRecordsChecked": 3,
+        "runtimeBinaryRecords": 5,
+        "runtimeBinaryBytesRehashed": false,
+        "debBytesRehashed": false,
+        "signatureIndependentlyReverifiedOffline": false,
+        "retainedGpgvTranscriptChecked": true
+      },
+      "allArtifactChecksPassed": true,
+      "installedLiveReceiptInJobLogEqualsArchive": true,
+      "scopedOwnedCleanupAndFinalAbsenceChecked": true,
+      "limitations": [
+        "Inputs must be bound independently to exact candidate/synthetic tree or actual main checkout, successful native job/run/attempt and immutable source logs.",
+        "Module hashes come from a separately qualified exact-source local build; this verifier never builds or launches product code.",
+        "Gpgv transcript and signed-index byte chain are checked; cryptographic signature is not re-executed offline here.",
+        "Runtime binaries and .deb files are absent from uploaded archive; recorded identities and signed package metadata are checked without claiming rehashed binary/deb bytes.",
+        "Real native scenario cleanup is scoped to owned containers/services/fixtures; no global workspace cleanup or broader capability acceptance is inferred.",
+        "Full image/transitive license redistribution, Codex model calls, provider lifecycle and connected Windows recovery are outside this artifact audit."
+      ]
+    },
+    "independentAuditSha256": "6fa9c4f0f1b7cff83af2a288325b316ab8547595569a226f88694c1ab265f7bb",
+    "auditEvidenceFiles": 48,
+    "finalRemoteState": {
+      "mainRef": "3077a7fe1927d1ae17aab99570832d6f9e1e3819",
+      "prMerged": true,
+      "prMergeCommit": "3077a7fe1927d1ae17aab99570832d6f9e1e3819",
+      "allSixCheckRunsCompletedSuccess": true,
+      "allRunsEnumerated": 2,
+      "runAttempts": [
+        1,
+        1
+      ],
+      "legacyStatusContexts": 0,
+      "emptyCombinedStatusDefault": "pending",
+      "emptyCombinedStatusMeaning": "No legacy status context exists; all six check-runs completed successfully"
+    },
+    "checkpoint": "https://github.com/MulattoTech/MTerm-CLI/issues/232#issuecomment-6750720856",
+    "candidatePassNotSubstitutedForMain": true
+  },
+  "issueDisposition": {
+    "state": "open",
+    "sourceDelivery": "qualified candidate and actual main; source implementation/integration slice completed",
+    "claimReleased": true,
+    "remaining": [
+      "Actual provider expiry/renewal/rotation lifecycle",
+      "Connected Windows cleanup and exact temporary-resource reconciliation"
+    ],
+    "broadIssues": [
+      61,
+      65
+    ],
+    "claimReleasedAt": "2026-11-09T20:31:59Z",
+    "claimComment": "https://github.com/MulattoTech/MTerm-CLI/issues/232#issuecomment-6747207135",
+    "historicalClaimBodyPreserved": true,
+    "historicalRefsRetained": true,
+    "activeSeparateImplementationIssue": 235
+  },
+  "providerHistory": {
+    "record": "docs/validation/2026-11-09-staging-provider-diagnostics.json",
+    "completedCreateAttempts": 2,
+    "acknowledgedResourceUuids": 0,
+    "additionalTokenWritesHeld": true,
+    "noLiveOperationDuringSourceDelivery": true
+  },
+  "qualificationLimits": [
+    "This record qualifies source delivery of the bounded recovery helpers; actual provider expiry/renewal/rotation and connected Windows cleanup remain unqualified.",
+    "The two rejected provider creation attempts remain the complete recorded attempt history, with no acknowledged resource UUID. Cause is unresolved; no new provider operation is inferred from source/hosted tests.",
+    "Issue232 and broad61/65 remain open. Source claim release does not award lifecycle acceptance or reserve unfinished live work.",
+    "Native owned-container and helper-child cleanup observations retain their exact scope. Outer package workspaces were retained; no global cleanup is claimed.",
+    "Runtime binary and DEB bytes are absent from the uploaded native archives; recorded identities and signed metadata were checked without independent byte rehashing or offline signature reverification.",
+    "Native Codex0.160.1 configuration and registered-command MCP receipts use zero model calls and do not prove a model-driven Codex agent tool invocation.",
+    "Local focused and normal build gates are separate from hosted evidence. The known local Unix-socket full-suite limitation is retained; no local full/quick PASS is asserted.",
+    "No production bridge, owner state, provider policy/binding, staging deployment or unrelated-project operation occurred during this source delivery. Protected CLI/DCP/WEB stages and acceptance remain unchanged."
+  ],
+  "protectedAcceptanceChanged": false,
+  "dcpAcceptance": "0/48",
+  "webAcceptance": "0/12",
+  "rootByteRechecks": {
+    "candidate": {
+      "sha256": "e41fb348dc509716e681f46a48f8b35de77e41ab6d2e3cedb70b6f37e024e742",
+      "observedAt": "2026-11-09T20:18:53.493008+00:00",
+      "result": "CLEAR candidate audit byte/identity check",
+      "evidenceFilesRehashed": 43,
+      "failures": []
+    },
+    "actualMain": {
+      "sha256": "29c44fec0a0f021c23ed5b2c028fca045884209a09df6f717dfd85ef62275234",
+      "observedAt": "2026-11-09T20:31:45.204132+00:00",
+      "result": "CLEAR actual-main audit byte/identity check",
+      "evidenceFilesRehashed": 48,
+      "failures": []
+    }
+  }
+}

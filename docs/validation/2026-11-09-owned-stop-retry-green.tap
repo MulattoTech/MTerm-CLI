@@ -1,0 +1,256 @@
+TAP version 13
+# Subtest: an explicit retry can stop an owned child after unconfirmed cleanup without releasing its slot early
+ok 1 - an explicit retry can stop an owned child after unconfirmed cleanup without releasing its slot early
+  ---
+  duration_ms: 17.440639
+  type: 'test'
+  ...
+# Subtest: concurrent stop callers share one failed attempt and one explicit successful retry
+ok 2 - concurrent stop callers share one failed attempt and one explicit successful retry
+  ---
+  duration_ms: 11.754938
+  type: 'test'
+  ...
+# Subtest: a late observed child close replaces an earlier stop failure without sending another signal
+ok 3 - a late observed child close replaces an earlier stop failure without sending another signal
+  ---
+  duration_ms: 29.082868
+  type: 'test'
+  ...
+# Subtest: host close can retry a prior failed stop while keeping admission closed
+ok 4 - host close can retry a prior failed stop while keeping admission closed
+  ---
+  duration_ms: 4.127949
+  type: 'test'
+  ...
+# Subtest: a failed host close preserves ownership for a later explicit close retry
+ok 5 - a failed host close preserves ownership for a later explicit close retry
+  ---
+  duration_ms: 3.016772
+  type: 'test'
+  ...
+# Subtest: disabled execution denies without starting anything
+ok 6 - disabled execution denies without starting anything
+  ---
+  duration_ms: 7.339436
+  type: 'test'
+  ...
+# Subtest: start preserves structured args, working directory and final exit code
+ok 7 - start preserves structured args, working directory and final exit code
+  ---
+  duration_ms: 53.045779
+  type: 'test'
+  ...
+# Subtest: spawn failure has no falsely running session
+ok 8 - spawn failure has no falsely running session
+  ---
+  duration_ms: 2.532222
+  type: 'test'
+  ...
+# Subtest: UTF8 split output survives incremental decoding and byte/event bounds
+ok 9 - UTF8 split output survives incremental decoding and byte/event bounds
+  ---
+  duration_ms: 107.281196
+  type: 'test'
+  ...
+# Subtest: stdin round trip and output cursor omit already consumed events
+ok 10 - stdin round trip and output cursor omit already consumed events
+  ---
+  duration_ms: 45.689794
+  type: 'test'
+  ...
+# Subtest: active slots are capped atomically and reused after stop
+ok 11 - active slots are capped atomically and reused after stop
+  ---
+  duration_ms: 50.83345
+  type: 'test'
+  ...
+# Subtest: timeout and server close terminate owned live jobs
+ok 12 - timeout and server close terminate owned live jobs
+  ---
+  duration_ms: 167.8668
+  type: 'test'
+  ...
+# Subtest: unknown/stale IDs cannot interact with unrelated system processes
+ok 13 - unknown/stale IDs cannot interact with unrelated system processes
+  ---
+  duration_ms: 1.334043
+  type: 'test'
+  ...
+# Subtest: child environment does not inherit unrequested credentials
+ok 14 - child environment does not inherit unrequested credentials
+  ---
+  duration_ms: 42.904695
+  type: 'test'
+  ...
+# Subtest: owned live parent cleanup reaches its child on Windows/Unix supported path
+ok 15 - owned live parent cleanup reaches its child on Windows/Unix supported path
+  ---
+  duration_ms: 44.415175
+  type: 'test'
+  ...
+# Subtest: small cursor pages never silently lose a suffix of a large output event
+ok 16 - small cursor pages never silently lose a suffix of a large output event
+  ---
+  duration_ms: 44.170545
+  type: 'test'
+  ...
+# Subtest: stdin acknowledgment says queued, never claims process consumption
+ok 17 - stdin acknowledgment says queued, never claims process consumption
+  ---
+  duration_ms: 3.473412
+  type: 'test'
+  ...
+# Subtest: owner budget input is strict, immutable and cannot grant hard CPU/GPU/RAM quotas
+ok 18 - owner budget input is strict, immutable and cannot grant hard CPU/GPU/RAM quotas
+  ---
+  duration_ms: 3.016192
+  type: 'test'
+  ...
+# Subtest: normal and control admission have separate finite caps, zero queue and idempotent release
+ok 19 - normal and control admission have separate finite caps, zero queue and idempotent release
+  ---
+  duration_ms: 1.301674
+  type: 'test'
+  ...
+# Subtest: resource status reports per-instance ceilings and unsupported hard quotas without probing drives
+ok 20 - resource status reports per-instance ceilings and unsupported hard quotas without probing drives
+  ---
+  duration_ms: 15.573206
+  type: 'test'
+  ...
+# Subtest: per-job runtime and retained output narrow owner ceilings and recover after timeout
+ok 21 - per-job runtime and retained output narrow owner ceilings and recover after timeout
+  ---
+  duration_ms: 1057.87913
+  type: 'test'
+  ...
+# Subtest: pending start admission remains bounded across actual asynchronous statfs and atomic job admission
+ok 22 - pending start admission remains bounded across actual asynchronous statfs and atomic job admission
+  ---
+  duration_ms: 22.490359
+  type: 'test'
+  ...
+# Subtest: real filesystem capacity admits a declared job and above-total floor denies before spawn without deleting data
+ok 23 - real filesystem capacity admits a declared job and above-total floor denies before spawn without deleting data
+  ---
+  duration_ms: 39.011054
+  type: 'test'
+  ...
+# Subtest: injected equal-volume observations share one conservative atomic reservation pool and recover on close
+ok 24 - injected equal-volume observations share one conservative atomic reservation pool and recover on close
+  ---
+  duration_ms: 7.548592
+  type: 'test'
+  ...
+# Subtest: actual ENOENT spawn failure releases the reserved estimate and pending admission once
+ok 25 - actual ENOENT spawn failure releases the reserved estimate and pending admission once
+  ---
+  duration_ms: 4.792322
+  type: 'test'
+  ...
+# Subtest: a post-spawn child error cannot release a live job or its reservation
+ok 26 - a post-spawn child error cannot release a live job or its reservation
+  ---
+  duration_ms: 6.656615
+  type: 'test'
+  ...
+# Subtest: CLI tools reports the effective budget and managed setup refuses to silently discard it
+ok 27 - CLI tools reports the effective budget and managed setup refuses to silently discard it
+  ---
+  duration_ms: 174.45373
+  type: 'test'
+  ...
+# Subtest: cancelled statfs retains its physical pending slot until settlement and cannot spawn late
+ok 28 - cancelled statfs retains its physical pending slot until settlement and cannot spawn late
+  ---
+  duration_ms: 17.885991
+  type: 'test'
+  ...
+# Subtest: cooperative admission deadline after real statfs fails closed with no late child
+ok 29 - cooperative admission deadline after real statfs fails closed with no late child
+  ---
+  duration_ms: 153.081308
+  type: 'test'
+  ...
+# Subtest: an owned writer closing invalidates an earlier disk observation even after its reservation returns to zero
+ok 30 - an owned writer closing invalidates an earlier disk observation even after its reservation returns to zero
+  ---
+  duration_ms: 50.895343
+  type: 'test'
+  ...
+# Subtest: native start cancellation is checked after final real executable stat even without disk policy
+ok 31 - native start cancellation is checked after final real executable stat even without disk policy
+  ---
+  duration_ms: 1.366832
+  type: 'test'
+  ...
+# Subtest: placement preserves explicit cwd, deduplicates candidates and deterministically selects existing approved directories
+ok 32 - placement preserves explicit cwd, deduplicates candidates and deterministically selects existing approved directories
+  ---
+  duration_ms: 73.21525
+  type: 'test'
+  ...
+# Subtest: placement rejects outside, private, linked and non-directory candidates before probing them
+ok 33 - placement rejects outside, private, linked and non-directory candidates before probing them
+  ---
+  duration_ms: 3.365579
+  type: 'test'
+  ...
+# Subtest: effective request scope can only narrow placement and is rechecked after asynchronous observation
+ok 34 - effective request scope can only narrow placement and is rechecked after asynchronous observation
+  ---
+  duration_ms: 2.237347
+  type: 'test'
+  ...
+# Subtest: injected unsupported, permission, operational and invalid-statistics failures are distinct and fail closed
+ok 35 - injected unsupported, permission, operational and invalid-statistics failures are distinct and fail closed
+  ---
+  duration_ms: 3.271096
+  type: 'test'
+  ...
+# Subtest: disk high-water arithmetic includes reservations and decimal bigints without rounding or disabled-policy bypass
+ok 36 - disk high-water arithmetic includes reservations and decimal bigints without rounding or disabled-policy bypass
+  ---
+  duration_ms: 5.12976
+  type: 'test'
+  ...
+# Subtest: two real SDK hosts expose independent immutable budgets and installed native disk admission
+ok 37 - two real SDK hosts expose independent immutable budgets and installed native disk admission
+  ---
+  duration_ms: 392.901634
+  type: 'test'
+  ...
+# Subtest: four real pack calls cannot starve bounded stop/output/status and recover without orphaned children
+ok 38 - four real pack calls cannot starve bounded stop/output/status and recover without orphaned children
+  ---
+  duration_ms: 430.659242
+  type: 'test'
+  ...
+# Subtest: pack admission honors compatibility startup scope and cleanup survives its later malformed config
+ok 39 - pack admission honors compatibility startup scope and cleanup survives its later malformed config
+  ---
+  duration_ms: 408.761317
+  type: 'test'
+  ...
+# Subtest: real disk denial through SDK still permits owned status and rejects unsupported hard limits
+ok 40 - real disk denial through SDK still permits owned status and rejects unsupported hard limits
+  ---
+  duration_ms: 189.62265
+  type: 'test'
+  ...
+# Subtest: actual MCP cancellation during delayed real statfs cannot launch a native child after client abort
+ok 41 - actual MCP cancellation during delayed real statfs cannot launch a native child after client abort
+  ---
+  duration_ms: 677.408002
+  type: 'test'
+  ...
+1..41
+# tests 41
+# suites 0
+# pass 41
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4811.728457

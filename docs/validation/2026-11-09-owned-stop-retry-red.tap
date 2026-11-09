@@ -1,0 +1,97 @@
+TAP version 13
+# Subtest: an explicit retry can stop an owned child after unconfirmed cleanup without releasing its slot early
+not ok 1 - an explicit retry can stop an owned child after unconfirmed cleanup without releasing its slot early
+  ---
+  duration_ms: 20.199411
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/process-stop-retry.test.mjs:50:1'
+  failureType: 'testCodeFailure'
+  error: 'Injected unconfirmed fixture stop.'
+  code: 'STOP_UNCONFIRMED'
+  name: 'ToolError'
+  stack: |-
+    Object.fail (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/process-stop-retry.test.mjs:46:30)
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/process-stop-retry.test.mjs:55:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: concurrent stop callers share one failed attempt and one explicit successful retry
+not ok 2 - concurrent stop callers share one failed attempt and one explicit successful retry
+  ---
+  duration_ms: 19.668866
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/process-stop-retry.test.mjs:71:1'
+  failureType: 'testCodeFailure'
+  error: 'Injected unconfirmed fixture stop.'
+  code: 'STOP_UNCONFIRMED'
+  name: 'ToolError'
+  stack: |-
+    Object.fail (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/process-stop-retry.test.mjs:46:30)
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/process-stop-retry.test.mjs:79:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: a late observed child close replaces an earlier stop failure without sending another signal
+not ok 3 - a late observed child close replaces an earlier stop failure without sending another signal
+  ---
+  duration_ms: 39.751104
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/process-stop-retry.test.mjs:97:1'
+  failureType: 'testCodeFailure'
+  error: 'Injected unconfirmed fixture stop.'
+  code: 'STOP_UNCONFIRMED'
+  name: 'ToolError'
+  stack: |-
+    Object.fail (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/process-stop-retry.test.mjs:46:30)
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/process-stop-retry.test.mjs:105:12)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: host close can retry a prior failed stop while keeping admission closed
+not ok 4 - host close can retry a prior failed stop while keeping admission closed
+  ---
+  duration_ms: 5.066596
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/process-stop-retry.test.mjs:116:1'
+  failureType: 'testCodeFailure'
+  error: 'Some owned process termination could not be confirmed.'
+  code: 'CLEANUP_UNCONFIRMED'
+  name: 'ToolError'
+  stack: |-
+    fail (file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-131/baseline/dist/errors.js:12:11)
+    ProcessService.close (file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-131/baseline/dist/processes.js:540:13)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/process-stop-retry.test.mjs:123:3)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: a failed host close preserves ownership for a later explicit close retry
+not ok 5 - a failed host close preserves ownership for a later explicit close retry
+  ---
+  duration_ms: 4.220053
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/process-stop-retry.test.mjs:131:1'
+  failureType: 'testCodeFailure'
+  error: 'Some owned process termination could not be confirmed.'
+  code: 'CLEANUP_UNCONFIRMED'
+  name: 'ToolError'
+  stack: |-
+    fail (file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-131/baseline/dist/errors.js:12:11)
+    ProcessService.close (file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-131/baseline/dist/processes.js:540:13)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/process-stop-retry.test.mjs:142:3)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 0
+# fail 5
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 227.230547

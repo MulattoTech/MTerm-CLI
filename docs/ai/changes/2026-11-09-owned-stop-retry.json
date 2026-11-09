@@ -1,0 +1,98 @@
+{
+  "change_id": "2026-11-09-owned-stop-retry",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "session_id": "MTERM-WEB-20261109T031131Z-e0efd5d4",
+  "started_at": "2026-11-09T03:11:31Z",
+  "updated_at": "2026-11-09T03:15:45.867Z",
+  "base_sha": "fcfd221b7896c1307fd17b5881a1cb2df20d3248",
+  "issues": [
+    131,
+    40
+  ],
+  "requirements": [
+    "CLI-280",
+    "CLI-281",
+    "CLI-287",
+    "CLI-288"
+  ],
+  "files": [
+    "src/processes.ts",
+    "tests/process-stop-retry.test.mjs",
+    "scripts/verify-package.mjs",
+    "docs/ai/changes/2026-11-09-owned-stop-retry.json",
+    "docs/validation/2026-11-09-owned-stop-retry.md",
+    "docs/validation/2026-11-09-owned-stop-retry-red.tap",
+    "docs/validation/2026-11-09-owned-stop-retry-green.tap",
+    "docs/HANDOFF.md",
+    "docs/roadmap/progress.json",
+    "docs/roadmap/review.json",
+    "docs/roadmap/FEATURES.md",
+    "docs/roadmap/index.html"
+  ],
+  "decisions": [
+    "One implementation owner, independently reviewing peers, atomic coord/mterm/issue-131 claim, isolated normal clone; preserve production bridge and dirty workstation checkout.",
+    "Cache only an in-flight stop attempt and release the matching promise in finally after either outcome. Do not change ownership, limits, closure evidence or error contracts.",
+    "A failed explicit stop remains visible; no automatic retry. Later explicit stop/close may retry while actual live jobs retain their capacity.",
+    "Run the same five recovery cases against byte-bound installed process modules. Fault injection is explicitly scoped to the termination helper; the child processes and successful close operations are real.",
+    "Standing owner authorization applies; no paid model lane or new service. Keep broad issue131 and all acceptance stages open."
+  ],
+  "tests": [
+    {
+      "command": "npm ci --ignore-scripts; npm run build:code",
+      "result": "Passed with Node v24.22.1, linux x64, pinned lockfile; no lifecycle scripts."
+    },
+    {
+      "command": "Exact final fixture against source archived from fcfd221b7896c1307fd17b5881a1cb2df20d3248 and compiled separately",
+      "result": "RED: 5 tests, 0 passed, 5 failed, no skipped/cancelled; actual exit 1. All fixture children were cleaned up."
+    },
+    {
+      "command": "node --test --test-reporter=tap --test-concurrency=1 tests/process-stop-retry.test.mjs tests/processes.test.mjs tests/resource-budgets.test.mjs",
+      "result": "GREEN: 41 tests, 41 passed, no failures/skips/cancellations."
+    },
+    {
+      "command": "npm run build && npm run check",
+      "result": "Reviewed build, roadmap/parity, typecheck and formatting passed. Full cloud check FAILED: 554 tests, 515 passed, 27 failed, 12 pre-existing platform skips, 0 cancelled. All 27 failures are listen EPERM while creating Unix socket fixtures in tests/isolation.test.mjs. No test skips/assertions or security controls changed; hosted full qualification is required."
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "id": "CLI-280",
+      "stage_change": false,
+      "reason": "Append bounded owned-stop recovery evidence; preserve stage, acceptance, weight, scope, estimates and remaining platform/containment limitations."
+    },
+    {
+      "id": "CLI-281",
+      "stage_change": false,
+      "reason": "Append bounded owned-stop recovery evidence; preserve stage, acceptance, weight, scope, estimates and remaining platform/containment limitations."
+    },
+    {
+      "id": "CLI-287",
+      "stage_change": false,
+      "reason": "Append bounded owned-stop recovery evidence; preserve stage, acceptance, weight, scope, estimates and remaining platform/containment limitations."
+    },
+    {
+      "id": "CLI-288",
+      "stage_change": false,
+      "reason": "Append bounded owned-stop recovery evidence; preserve stage, acceptance, weight, scope, estimates and remaining platform/containment limitations."
+    }
+  ],
+  "limitations": [
+    "Not full AUG-050 pause/resume/global-kill or DCP acceptance.",
+    "Injected termination-helper failure is not a reproduced OS signal/permission failure; no new detached-descendant guarantee.",
+    "This changes standalone CLI source, not the installed ChatGPT plugin or separately hosted owner bridge.",
+    "Exact committed package, security and hosted platform qualification follows this development checkpoint."
+  ],
+  "next_unverified_action": "Independent source review, explicit roadmap review, exact committed automated/package/security/hosted gates, expected-head normal merge and merged-main verification.",
+  "independent_review": {
+    "reviewer": "/root/architecture_scan",
+    "role": "independent read-only peer",
+    "result": "No material findings in source, five regression cases or installed verifier. Peer independently ran 5/5 focused tests on Node v24.22.1. This is not a GitHub approval event.",
+    "reviewed_sha256": {
+      "src/processes.ts": "3e2543b290510eb8cf4089bad9ec2214a51331203b09d8fce5b99cd131ff7c78",
+      "tests/process-stop-retry.test.mjs": "2b1032f375e4eb4a8061e73b85679adbe6f588d4b0cad607492fae47bdf9905a",
+      "scripts/verify-package.mjs": "07bd6a456277c5d04ac33bb3df10b9349842c70a8591210ee8f6585d04720218"
+    }
+  },
+  "cloud_failure_log_sha256": "5e3612f54b2846ab34da931a33ed2a6cc392ab3e46762a35634389eb029dbdb3"
+}

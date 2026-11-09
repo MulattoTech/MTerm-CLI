@@ -1,0 +1,75 @@
+TAP version 13
+# Subtest: gateway delivers only the offered slots and retains queued deadlines and arguments
+ok 1 - gateway delivers only the offered slots and retains queued deadlines and arguments
+  ---
+  duration_ms: 39.105929
+  type: 'test'
+  ...
+# Subtest: gateway rejects malformed slot offers before changing jobs or heartbeat
+ok 2 - gateway rejects malformed slot offers before changing jobs or heartbeat
+  ---
+  duration_ms: 3.733024
+  type: 'test'
+  ...
+# Subtest: omitted capacity preserves the legacy four-request poll contract
+ok 3 - omitted capacity preserves the legacy four-request poll contract
+  ---
+  duration_ms: 4.395093
+  type: 'test'
+  ...
+# Subtest: zero-capacity polls still report cancellation and expiry without later executing expired work
+ok 4 - zero-capacity polls still report cancellation and expiry without later executing expired work
+  ---
+  duration_ms: 4.909249
+  type: 'test'
+  ...
+# Subtest: capacity offers do not bypass device authentication, ownership or revocation
+ok 5 - capacity offers do not bypass device authentication, ownership or revocation
+  ---
+  duration_ms: 4.363425
+  type: 'test'
+  ...
+# Subtest: agent retains delivery capacity through cancelled cleanup and resumes each queued request once
+ok 6 - agent retains delivery capacity through cancelled cleanup and resumes each queued request once
+  ---
+  duration_ms: 28.195763
+  type: 'test'
+  ...
+# Subtest: agent retains delivery capacity through timed-out cleanup and resumes each queued request once
+not ok 7 - agent retains delivery capacity through timed-out cleanup and resumes each queued request once
+  ---
+  duration_ms: 7.531516
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-admission.test.mjs:233:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    {"error":"device_offline"}
+
+    409 !== 200
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 200
+  actual: 409
+  operator: 'strictEqual'
+  stack: |-
+    ok (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-admission.test.mjs:127:12)
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-admission.test.mjs:321:29)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: agent retains delivery capacity through result delivery and resumes each queued request once
+ok 8 - agent retains delivery capacity through result delivery and resumes each queued request once
+  ---
+  duration_ms: 13.640577
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 7
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 183.989577

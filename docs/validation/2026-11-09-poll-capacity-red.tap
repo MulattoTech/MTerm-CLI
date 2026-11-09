@@ -1,0 +1,292 @@
+TAP version 13
+# Subtest: gateway delivers only the offered slots and retains queued deadlines and arguments
+not ok 1 - gateway delivers only the offered slots and retains queued deadlines and arguments
+  ---
+  duration_ms: 27.635567
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-149/unchanged-base/tests/remote-admission.test.mjs:144:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    4 !== 0
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 4
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-149/unchanged-base/tests/remote-admission.test.mjs:152:12)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: gateway rejects malformed slot offers before changing jobs or heartbeat
+not ok 2 - gateway rejects malformed slot offers before changing jobs or heartbeat
+  ---
+  duration_ms: 4.729447
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-149/unchanged-base/tests/remote-admission.test.mjs:164:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    null
+
+    200 !== 400
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 400
+  actual: 200
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-149/unchanged-base/tests/remote-admission.test.mjs:171:12)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: omitted capacity preserves the legacy four-request poll contract
+ok 3 - omitted capacity preserves the legacy four-request poll contract
+  ---
+  duration_ms: 4.477428
+  type: 'test'
+  ...
+# Subtest: zero-capacity polls still report cancellation and expiry without later executing expired work
+not ok 4 - zero-capacity polls still report cancellation and expiry without later executing expired work
+  ---
+  duration_ms: 5.461222
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-149/unchanged-base/tests/remote-admission.test.mjs:187:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+
+    + [
+    +   {
+    +     arguments: {
+    +       path: 'fixture.txt'
+    +     },
+    +     deadline: 1794200601324,
+    +     deviceId: '7416fe74-e8d5-4c77-add6-b7f75b72198e',
+    +     requestId: '51ac1e76-7b0c-4434-b70d-6a5de3263fa9',
+    +     tool: 'mterm_file_info',
+    +     version: 1
+    +   }
+    + ]
+    - []
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    0:
+      version: 1
+      requestId: '51ac1e76-7b0c-4434-b70d-6a5de3263fa9'
+      deviceId: '7416fe74-e8d5-4c77-add6-b7f75b72198e'
+      tool: 'mterm_file_info'
+      arguments:
+        path: 'fixture.txt'
+      deadline: 1794200601324
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-149/unchanged-base/tests/remote-admission.test.mjs:203:10)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: capacity offers do not bypass device authentication, ownership or revocation
+ok 5 - capacity offers do not bypass device authentication, ownership or revocation
+  ---
+  duration_ms: 3.988169
+  type: 'test'
+  ...
+# Subtest: agent retains delivery capacity through cancelled cleanup and resumes each queued request once
+not ok 6 - agent retains delivery capacity through cancelled cleanup and resumes each queued request once
+  ---
+  duration_ms: 12.204689
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-149/unchanged-base/tests/remote-admission.test.mjs:236:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+
+    + [
+    +   {
+    +     arguments: {
+    +       path: 'fixture.txt'
+    +     },
+    +     deadline: 1794200601343,
+    +     deviceId: '1f4bad8d-c349-49d0-82e7-607c46031dbf',
+    +     requestId: '47b3c6f1-c52c-42cb-aa04-dfb84ffa7a74',
+    +     tool: 'mterm_file_info',
+    +     version: 1
+    +   },
+    +   {
+    +     arguments: {
+    +       path: 'fixture.txt'
+    +     },
+    +     deadline: 1794200601343,
+    +     deviceId: '1f4bad8d-c349-49d0-82e7-607c46031dbf',
+    +     requestId: '8bfddc8b-6dae-49b4-8330-d6982df1ee59',
+    +     tool: 'mterm_file_info',
+    +     version: 1
+    +   }
+    + ]
+    - []
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    0:
+      version: 1
+      requestId: '47b3c6f1-c52c-42cb-aa04-dfb84ffa7a74'
+      deviceId: '1f4bad8d-c349-49d0-82e7-607c46031dbf'
+      tool: 'mterm_file_info'
+      arguments:
+        path: 'fixture.txt'
+      deadline: 1794200601343
+    1:
+      version: 1
+      requestId: '8bfddc8b-6dae-49b4-8330-d6982df1ee59'
+      deviceId: '1f4bad8d-c349-49d0-82e7-607c46031dbf'
+      tool: 'mterm_file_info'
+      arguments:
+        path: 'fixture.txt'
+      deadline: 1794200601343
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-149/unchanged-base/tests/remote-admission.test.mjs:395:16)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: agent retains delivery capacity through timed-out cleanup and resumes each queued request once
+not ok 7 - agent retains delivery capacity through timed-out cleanup and resumes each queued request once
+  ---
+  duration_ms: 12.08587
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-149/unchanged-base/tests/remote-admission.test.mjs:236:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+
+    + [
+    +   {
+    +     arguments: {
+    +       path: 'fixture.txt'
+    +     },
+    +     deadline: 1794200621347,
+    +     deviceId: 'fe87959d-fdb6-4774-ac57-b1128019cb28',
+    +     requestId: 'b5fe8661-2653-44d7-a8e5-a0eca415d0e4',
+    +     tool: 'mterm_file_info',
+    +     version: 1
+    +   },
+    +   {
+    +     arguments: {
+    +       path: 'fixture.txt'
+    +     },
+    +     deadline: 1794200621347,
+    +     deviceId: 'fe87959d-fdb6-4774-ac57-b1128019cb28',
+    +     requestId: 'ffc00d84-39a3-40e1-b1eb-08fa10113236',
+    +     tool: 'mterm_file_info',
+    +     version: 1
+    +   }
+    + ]
+    - []
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    0:
+      version: 1
+      requestId: 'b5fe8661-2653-44d7-a8e5-a0eca415d0e4'
+      deviceId: 'fe87959d-fdb6-4774-ac57-b1128019cb28'
+      tool: 'mterm_file_info'
+      arguments:
+        path: 'fixture.txt'
+      deadline: 1794200621347
+    1:
+      version: 1
+      requestId: 'ffc00d84-39a3-40e1-b1eb-08fa10113236'
+      deviceId: 'fe87959d-fdb6-4774-ac57-b1128019cb28'
+      tool: 'mterm_file_info'
+      arguments:
+        path: 'fixture.txt'
+      deadline: 1794200621347
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-149/unchanged-base/tests/remote-admission.test.mjs:395:16)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: agent retains delivery capacity through result delivery and resumes each queued request once
+not ok 8 - agent retains delivery capacity through result delivery and resumes each queued request once
+  ---
+  duration_ms: 10.504393
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-149/unchanged-base/tests/remote-admission.test.mjs:236:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+
+    + [
+    +   {
+    +     arguments: {
+    +       path: 'fixture.txt'
+    +     },
+    +     deadline: 1794200601366,
+    +     deviceId: '3c00824a-93c3-4504-8894-b53ed5c396c8',
+    +     requestId: '5cef3517-168c-4a6b-abf7-05701b8545d3',
+    +     tool: 'mterm_file_info',
+    +     version: 1
+    +   },
+    +   {
+    +     arguments: {
+    +       path: 'fixture.txt'
+    +     },
+    +     deadline: 1794200601367,
+    +     deviceId: '3c00824a-93c3-4504-8894-b53ed5c396c8',
+    +     requestId: '830f8664-1087-4cbc-9a1d-27a5c662e5da',
+    +     tool: 'mterm_file_info',
+    +     version: 1
+    +   }
+    + ]
+    - []
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    0:
+      version: 1
+      requestId: '5cef3517-168c-4a6b-abf7-05701b8545d3'
+      deviceId: '3c00824a-93c3-4504-8894-b53ed5c396c8'
+      tool: 'mterm_file_info'
+      arguments:
+        path: 'fixture.txt'
+      deadline: 1794200601366
+    1:
+      version: 1
+      requestId: '830f8664-1087-4cbc-9a1d-27a5c662e5da'
+      deviceId: '3c00824a-93c3-4504-8894-b53ed5c396c8'
+      tool: 'mterm_file_info'
+      arguments:
+        path: 'fixture.txt'
+      deadline: 1794200601367
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-149/unchanged-base/tests/remote-admission.test.mjs:395:16)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 2
+# fail 6
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 166.355299

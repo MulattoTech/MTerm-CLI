@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 // AI-Change: 2026-11-02-remote-agent (OpenAI / GPT-6 Astra Pro; self-reported)
+// Modified: 2026-11-09-poll-capacity; offer only capacity retained through complete settlement.
 import { setTimeout as delay } from 'node:timers/promises';
 import { fail, ToolError } from '../errors.js';
 import {
@@ -7,6 +8,7 @@ import {
   UUID_PATTERN,
   WIRE_VERSION,
   type AgentPoll,
+  type AgentPollRequest,
   type ToolRequest,
   type ToolResult,
 } from './protocol.js';
@@ -220,16 +222,23 @@ export class RemoteAgent {
     try {
       while (!controller.signal.aborted) {
         try {
+          const polledAt = Date.now();
+          for (const [id, expiry] of seen) if (expiry <= polledAt) seen.delete(id);
           const { data } = await this.options.transport.post(
             '/api/agent/poll',
-            { version: WIRE_VERSION, deviceId: this.options.adapter.deviceId },
+            {
+              version: WIRE_VERSION,
+              deviceId: this.options.adapter.deviceId,
+              // Only this loop starts work; active can shrink while the poll is in flight.
+              // Cancellation must still be polled while cleanup/result delivery owns every slot.
+              availableSlots: Math.max(0, Math.min(4 - active.size, 4096 - seen.size)),
+            } satisfies AgentPollRequest,
             controller.signal,
           );
           const poll = parsePoll(data);
           failures = 0;
           for (const id of poll.cancelled) active.get(id)?.controller.abort();
           const now = Date.now();
-          for (const [id, expiry] of seen) if (expiry <= now) seen.delete(id);
           for (const request of poll.requests) {
             if (request.deviceId !== this.options.adapter.deviceId || seen.has(request.requestId)) continue;
             if (active.size >= 4 || seen.size >= 4096) break;

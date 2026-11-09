@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 // AI-Change: 2026-11-02-remote-agent (OpenAI / GPT-6 Astra Pro; self-reported)
+// Modified: 2026-11-09-poll-capacity; additive bounded agent delivery admission.
 // Versioned, runtime-independent broker/device contract. No filesystem logic belongs here.
 export const WIRE_VERSION = 1 as const;
 export const MAX_RESULT_BYTES = 262144;
@@ -92,4 +93,10 @@ export interface AgentPoll {
   requests: ToolRequest[];
   cancelled: string[];
   pollAfterMs: number;
+}
+export interface AgentPollRequest {
+  version: typeof WIRE_VERSION;
+  deviceId: string;
+  /** Integer 0..4; includes cleanup/result-delivery occupancy. Omitted by legacy agents. */
+  availableSlots?: number;
 }

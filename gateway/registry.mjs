@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 // AI-Change: 2026-11-02-remote-gateway (OpenAI / GPT-6 Astra Pro; self-reported)
+// Modified: 2026-11-09-poll-capacity; retain queued work until the agent offers delivery capacity.
 import {
   READ_TOOLS,
   WIRE_VERSION,
@@ -529,6 +530,12 @@ export class MTermRegistry {
     }
     if (action === 'agentPoll') {
       requireValue(a.input.version === WIRE_VERSION);
+      const availableSlots = Object.hasOwn(a.input, 'availableSlots') ? a.input.availableSlots : 4;
+      requireValue(
+        Number.isInteger(availableSlots) && availableSlots >= 0 && availableSlots <= 4,
+        400,
+        'invalid_capacity',
+      );
       const d = await this.device(a.token, a.input.deviceId);
       await this.rate('poll:' + d.id, 180);
       d.lastSeen = now();
@@ -539,7 +546,7 @@ export class MTermRegistry {
         if (job.deviceId !== d.id) continue;
         if (['queued', 'delivered'].includes(job.status) && job.deadline <= now())
           await this.finish(job, 'timeout');
-        if (job.status === 'queued' && requests.length < 4) {
+        if (job.status === 'queued' && requests.length < availableSlots) {
           const g = await this.storage.get('grant:' + job.grantId);
           if (!g || g.revokedAt || job.epoch !== (await this.epoch(job.userId))) {
             await this.finish(job, 'revoked');

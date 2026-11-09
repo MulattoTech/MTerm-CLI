@@ -1,0 +1,131 @@
+{
+  "change_id": "2026-11-09-poll-capacity",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "session_id": "MTERM-WEB-20261109T031131Z-e0efd5d4",
+  "started_at": "2026-11-09T04:56:16Z",
+  "updated_at": "2026-11-09T05:08:50.598258+00:00",
+  "base_sha": "f38c2c4522dc68e25fd220593d6b056068902a58",
+  "issues": [
+    149
+  ],
+  "related_issues": [
+    57,
+    62
+  ],
+  "requirements": [
+    "CLI-286",
+    "CLI-288"
+  ],
+  "files": [
+    "src/remote/agent.ts",
+    "src/remote/protocol.ts",
+    "gateway/registry.mjs",
+    "tests/remote-admission.test.mjs",
+    "scripts/verify-package.mjs",
+    "docs/REMOTE_MCP_ROADMAP.md",
+    "docs/roadmap/remote-web-progress.json",
+    "docs/HANDOFF.md",
+    "docs/ai/changes/2026-11-09-poll-capacity.json",
+    "docs/validation/2026-11-09-poll-capacity.md",
+    "docs/validation/2026-11-09-poll-capacity-red.tap",
+    "docs/validation/2026-11-09-poll-capacity-green.tap",
+    "docs/validation/2026-11-09-poll-capacity-fixture-development.tap",
+    "docs/roadmap/progress.json",
+    "docs/roadmap/review.json",
+    "docs/roadmap/FEATURES.md",
+    "docs/roadmap/index.html",
+    "docs/roadmap/summary.json"
+  ],
+  "decisions": [
+    "Atomic coord/mterm/issue-149 claim; one implementation writer and independent read-only peers.",
+    "Advertise conservative availableSlots after replay expiry pruning; retain capacity through cleanup and full result delivery.",
+    "Registry validates explicit integer0..4, defaults only omitted values to legacy4, preserves queued deadlines and scans cancellation/expiry at zero.",
+    "Preserve wire1, four-job admission, bounded replay memory and existing no-replay/lost-response policy. No extra local holding queue.",
+    "Fixture uses actual agent/transport/gateway/registry with isolated serialized storage and explicit adapter/HTTP scheduling gates.",
+    "Installed verifier binds installed agent plus reviewed source gateway and its imported checkout protocol; false deployment/runtime/load acceptance flags.",
+    "Only CLI286/288 and WEB004/009 evidence; all protected fields and historical records preserved."
+  ],
+  "tests": [
+    {
+      "command": "Final unchanged eight-case fixture against git archive f38c2c452 and its freshly compiled source",
+      "result": "RED2passed/6failed, zero skips/cancellations; all six failures assertion-based."
+    },
+    {
+      "command": "node --test --test-reporter=tap --test-concurrency=1 tests/remote-admission.test.mjs tests/remote-agent.test.mjs tests/remote-gateway.test.mjs",
+      "result": "GREEN26/26, zero failures/skips/cancellations, Node24.22.1 Linuxx64."
+    },
+    {
+      "command": "Initial corrected-source eight-case execution",
+      "result": "7passed/1failed: timeout fixture advanced beyond device heartbeat and received expected device_offline; raw failure preserved. Fixture refreshed heartbeat via actual poll before replacement enqueue."
+    },
+    {
+      "command": "Independent final frozen eight-case execution by /root/backlog_triage",
+      "result": "8/8 passed, zero failures/skips/cancellations,217.67969ms; no builds; all source/fixture/compiled hashes unchanged."
+    },
+    {
+      "command": "Explicit roadmap review/render/check; npm run build; npm run typecheck; npm run format:check; git diff --check",
+      "result": "Passed. All300 rows preserved, maturity29.36%,0complete,45blocked,126notstarted. Parity check retains0/48 acceptance. Dependencies, locks and seeds unchanged."
+    },
+    {
+      "command": "Eight cases from owned os.tmpdir cwd using absolute MTERM_VERIFY_BIN pointing to compiled candidate source",
+      "result": "8/8 passed; zero failures/skips/cancellations; cwd verified outside real checkout and owned directory removed. This is compiled-source CWD qualification, not installed-package acceptance.",
+      "raw_log_sha256": "a2fc63217aa541451e2b379b92aed905cfc45c4cc420dda4b85ffc0861be1810"
+    }
+  ],
+  "reviewed_sha256": {
+    "src/remote/agent.ts": "96ecac93e03f84cd931b71f27e0932120f475f10f6d5e7e61579eb8a93c0e8db",
+    "src/remote/protocol.ts": "43e8c5067e8a2e4878b76f2ec6c0871dca499a02d5cd02cd31ecef57a8a3ed28",
+    "gateway/registry.mjs": "763c38cfc3f30478689efff55ac1cbbe7b59ae9124eaa7dcf03e23700a95e199",
+    "tests/remote-admission.test.mjs": "885e136acf1a618d3fd9465126410df336323305c7ebb37a6ac80544cf3254ff",
+    "scripts/verify-package.mjs": "6f4242b79c7333b6c4202afb547f0ccb22ea51877f7c32203c7906b581378eeb"
+  },
+  "independent_review": {
+    "reviewer": "/root/backlog_triage",
+    "result": "Final source/fixture review clear. Timing finding resolved with observed actual transport settlement notifications. Independent8/8, zero failures/skips/cancellations, Node24.22.1 Linuxx64,217.67969ms; all six source/fixture/compiled hashes unchanged before/after."
+  },
+  "additional_review": {
+    "reviewer": "/root/release_quality_scan",
+    "result": "Final verifier review clear. All3 installed modules byte-bound; all5 source gateway graph files including checkoutprotocol recorded and rechecked. Earlier narrow source-protocol evidence finding resolved. No duplicate execution."
+  },
+  "roadmap_updates": [
+    {
+      "id": "CLI-286",
+      "stage_change": false,
+      "reason": "Bounded remote delivery/cancellation evidence; retain all protected fields and full acceptance gaps."
+    },
+    {
+      "id": "CLI-288",
+      "stage_change": false,
+      "reason": "Bounded remote delivery/cancellation evidence; retain all protected fields and full acceptance gaps."
+    }
+  ],
+  "limitations": [
+    "Updated agent and gateway required. Old gateway ignores offer; old agent retains legacy behavior.",
+    "No acknowledgement/replay for lost poll responses or restart, fairness/priority control, crash recovery or20–30-client qualification.",
+    "Synthetic seeded identities and serialized in-memory storage, controlled adapter/response completion; no OAuth enrollment or actual Cloudflare storage/deployment qualification.",
+    "Source gateway is not shipped in CLI package; installed proof exercises installed agent against reviewed source gateway.",
+    "Full local suite is constrained by previously observed cloud Unix-socket listen EPERM. Exact-head hosted/platform/installed/native gates remain required; no skips or gates weakened.",
+    "No dependency/pin/lock/global runtime installation/production plugin/bridge/global configuration/model-consuming worker change."
+  ],
+  "logs": {
+    "red": {
+      "original_sha256": "2fc6404984398095d356130dc3d8210b2a80d15edbd98d4177a71d12bbebcb19",
+      "display_normalization": "Only trailing whitespace removed from committed TAP display."
+    },
+    "green": {
+      "original_sha256": "7bcf545dee8d15df253af80dd7ea44480084024abec87774e7cf6331cd52d920",
+      "display_normalization": "Only trailing whitespace removed from committed TAP display."
+    },
+    "fixture-development": {
+      "original_sha256": "bec5005f6e20d83ecfdf0d8a5e997894c4e0966dd24f5e30232bfd3dd68398a9",
+      "display_normalization": "Only trailing whitespace removed from committed TAP display."
+    }
+  },
+  "next_unverified_action": "Finish independent documentation/protected-field review, publish exact-head draftPR, require allsix hosted/platform/installed gates then normal expected-head merge and merged-main checks.",
+  "documentation_review": {
+    "reviewer": "/root/architecture_scan",
+    "reviewed_tree": "9069f2a206e6778588561dd0b7c554683a44cd37",
+    "result": "17file checkpoint clear: all300 protectedCLI fields and historicalprefixes preserved, all12WEB non-evidence fields and historical data unchanged; AUG/DCP/seeds/pins/locks/deployment unchanged. Subsequent bounded verifier external-CWD correction separately reviewed; no protected data changed."
+  }
+}

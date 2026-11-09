@@ -340,3 +340,9 @@ code10214 constraint; health and anonymous denial were verified, with no registr
 replacement. See [the drill report](validation/2026-11-02-rollback-drill.json).
 Automated dry-run/secret-binding lifecycle and incompatible migration scenarios remain
 separate WEB-008 work; no full acceptance credit is awarded.
+
+## Remote delivery capacity evidence — 2026-11-09
+
+[The bounded #149 correction](validation/2026-11-09-poll-capacity.md) makes each new agent poll offer only its remaining execution/replay capacity. The updated registry retains other requests as queued with their original deadlines while still reporting heartbeat, cancellation and expiry at zero capacity. Actual agent/transport/gateway/registry fixtures cover cancellation cleanup, timeout cleanup and successful-result response settlement: final archived-base2/8 to focused26/26. The installed verifier separately binds an installed agent to reviewed source gateway files; it does not install or deploy that gateway.
+
+Both updated components are required. An omitted offer preserves legacy4, so mixed-version pairs retain the prior limitation. A lost poll response still does not trigger replay and may leave a delivered request to time out. This evidence does not change WEB004/009 stages, full #149 fairness/load acceptance, historical staging identities or WEB0/12. No deployment was performed.

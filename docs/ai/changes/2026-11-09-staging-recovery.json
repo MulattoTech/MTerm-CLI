@@ -1,0 +1,705 @@
+{
+  "change_id": "2026-11-09-staging-recovery",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "attribution": "self-reported; not cryptographic authorship proof",
+  "session_id": "MTERM-WEB-20261109T131339Z-resume-a9287b3c",
+  "worker": "/root/recovery_implementation",
+  "independent_peer": "/root/recovery_review",
+  "status": "Worker and root focused tests and normal reviewed local gates passed; independent shared/catalog review and exact hosted candidate/main gates remain required; live provider lifecycle/connected cleanup unqualified",
+  "updated_at": "2026-11-09T19:51:46.794781+00:00",
+  "base_sha": "c69762da7d1dda54f7a74795c08c1f699367c77f",
+  "branch": "feat/issue-232-staging-recovery-20261109",
+  "claim": {
+    "ref": "coord/mterm/issue-232",
+    "comment_url": "https://github.com/MulattoTech/MTerm-CLI/issues/232#issuecomment-6747207135"
+  },
+  "issues": [
+    232
+  ],
+  "requirements": [
+    "CLI-290",
+    "CLI-299"
+  ],
+  "remote_web_requirements": [
+    "WEB-008",
+    "WEB-012"
+  ],
+  "files": [
+    "README.md",
+    "docs/HANDOFF.md",
+    "docs/REMOTE_MCP.md",
+    "docs/REMOTE_MCP_ROADMAP.md",
+    "docs/SECURITY.md",
+    "docs/ai/changes/2026-11-09-staging-handoff.json",
+    "docs/ai/changes/2026-11-09-staging-recovery.json",
+    "docs/deployment/MTERM_STAGING.md",
+    "docs/roadmap/FEATURES.md",
+    "docs/roadmap/index.html",
+    "docs/roadmap/progress.json",
+    "docs/roadmap/review.json",
+    "docs/validation/2026-11-09-staging-handoff-connected-probe.json",
+    "docs/validation/2026-11-09-staging-handoff-delivery.json",
+    "docs/validation/2026-11-09-staging-handoff.md",
+    "docs/validation/2026-11-09-staging-provider-diagnostics.json",
+    "docs/validation/2026-11-09-staging-provider-diagnostics.md",
+    "docs/validation/2026-11-09-staging-recovery-green.tap",
+    "docs/validation/2026-11-09-staging-recovery-review-red.tap",
+    "docs/validation/2026-11-09-staging-recovery-scaffold-red.tap",
+    "docs/validation/2026-11-09-staging-recovery.md",
+    "scripts/staging-handoff-seal.mjs",
+    "scripts/staging-handoff.mjs",
+    "tests/staging-recovery.test.mjs"
+  ],
+  "decisions": [
+    "Preserve the resumed isolated clone, original134-case handoff fixture, unchanged smoke harness, legacy sealStagingHandoff function and both earlier scaffold baselines.",
+    "Separate protocol2 cleanup/smoke-owned purpose and explicit original ownership/renewal selection from protocol1 probe/create-only smoke.",
+    "Use only fixed account/origins/issuer/audience/registry context and independently reviewed local/source/deployed context; no caller-selectable tenant, store, destination or command.",
+    "Bootstrap is one explicit30m POST plus one exact-ID readback under30-second wall/monotonic decision bounds; capture acknowledged exact UUID before late validation and never delete or adopt by name.",
+    "Prepare real RSA/AES before mutations, observe both latest/current Worker bindings, select only the first current deployment with explicit percentage strategy and exactly one100percent active version, and never fall back to history.",
+    "Owned sealing permits at most one explicitly selected30m renewal when necessary and one exact original-ID rotation with independent expiry/identity readback; original created_at need not survive mutation.",
+    "Never compute protocol2 expiry from created_at plus requested duration. Required optional provider observations fail closed. Attempted and acknowledged writes remain distinct after late, rejected, missing or lost responses.",
+    "Anchor observed token lifetime to monotonic receipt time; require strictly more than455000ms after all crypto/source/spawn awaits, with no await before plaintext pipe release.",
+    "Cleanup uses only fixed public health, authenticated dashboard and same-origin revoke-all. Require typed acknowledged mutation plus both final checks; final emptiness cannot rescue a lost acknowledgement.",
+    "Cleanup has bounded input, per-request30-second/1MiB responses and180-second work budget; parent retains450-second child/5-second close bounds and requires actual natural close.",
+    "Independent source review and provider evidence prompted a16-case extension before fixes. Actual RED exposed four failures: valid history handling, missing/unknown current strategy, and a smoke-only marker admitted by cleanup output parsing.",
+    "Terminal-newline hypotheses were disproved by actual Node24 execution: all added newline checks already passed as negative controls. No validator behavior was changed for that disproved hypothesis.",
+    "Root owns actual provider/connected qualification, shared roadmap review/render, hosted gates and publication. No live provider call, Windows action, remote write or model-consuming command occurred in this worker."
+  ],
+  "tests": [
+    {
+      "label": "scaffold-red",
+      "receipt_path": "artifacts/issue-232-staging-recovery/scaffold-red-receipt.json",
+      "receipt_sha256": "520b910e6f2d5beba495201523e16b19c5d01fa94986335fd7237847a1c9daad",
+      "kind": "Initial honest new-feature scaffold baseline; two explicit nonfunctional exports plus cleanup stub on c697 source",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/staging-recovery.test.mjs"
+      ],
+      "started_at": "2026-11-09T18:22:29.157431+00:00",
+      "finished_at": "2026-11-09T18:22:58.423066+00:00",
+      "wall_seconds": 29.265636115000234,
+      "node": "v24.22.1",
+      "platform": "linux x64",
+      "exit_code": 1,
+      "counts": {
+        "tests": 193,
+        "suites": 0,
+        "pass": 23,
+        "fail": 170,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "inputs_unchanged": true,
+      "tap_sha256": "07414f2deebfa4607f58778d0750a9f9b7ab339c543a4fa8caf6cee16a7d3762",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "input_sha256": {
+        "scripts/staging-handoff.mjs": "ed35ad648e7fc1d0c5a3185326dd66c9acc65d296956105b7f336366d1b289a2",
+        "scripts/staging-handoff-seal.mjs": "a27e43da73f5e986b81197009401f71525363fb31d25fbf897634df45245a215",
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-handoff.test.mjs": "e1b31bace77b662f5e73a34457aced3c5c4c5961dcbe3d1b26b978b7b0eef55c",
+        "tests/staging-recovery.test.mjs": "883ba03eb18dc1cce563fcd951a8393c7d02ee64491b8926ffaf808d258c6e44",
+        "tests/staging-build-identity.test.mjs": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73",
+        "gateway/app.mjs": "61b5c43a8ce7dc6fc61d772fcc16c4a4b7d5cb8f17c70555829fae3ce53e42a1",
+        "gateway/registry.mjs": "ecfa498867b20d1676cf7e035af23f1accc90be656de7c6c22ebf272dfff6cda",
+        "gateway/security.mjs": "78aa4d7f9f632568d2247d249691b7583dbf73d344bd040d6512104741183b7b",
+        "gateway/dashboard.mjs": "37de2f57ba8f6dfcd1c3331ab8cb994aea419dcfc673c5e3e6f6ef6df208c240",
+        "src/remote/protocol.ts": "43e8c5067e8a2e4878b76f2ec6c0871dca499a02d5cd02cd31ecef57a8a3ed28",
+        "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14",
+        "package.json": "a8cbea0bff3999a7b406ff8789123069c7ac40cc8c52e6e8e46479a965e23e57",
+        "package-lock.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
+        "npm-shrinkwrap.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696"
+      }
+    },
+    {
+      "label": "scaffold-red-v2",
+      "receipt_path": "artifacts/issue-232-staging-recovery/scaffold-red-v2-receipt.json",
+      "receipt_sha256": "a875dd790207f042e349b34ca3440cb234e706c473f79818961e40cc9aa62785",
+      "kind": "Second frozen new-feature scaffold baseline after independent fixture refinements; no functional implementation",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/staging-recovery.test.mjs"
+      ],
+      "started_at": "2026-11-09T19:31:17.905815+00:00",
+      "finished_at": "2026-11-09T19:31:52.755432+00:00",
+      "wall_seconds": 34.849619219996384,
+      "node": "v24.22.1",
+      "platform": "linux x64",
+      "exit_code": 1,
+      "counts": {
+        "tests": 205,
+        "suites": 0,
+        "pass": 30,
+        "fail": 175,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "inputs_unchanged": true,
+      "tap_sha256": "5e83c375f9405b9cad2c4073c42426b176623a1a567428e67349cc0a36633b7f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "input_sha256": {
+        "scripts/staging-handoff.mjs": "ed35ad648e7fc1d0c5a3185326dd66c9acc65d296956105b7f336366d1b289a2",
+        "scripts/staging-handoff-seal.mjs": "a27e43da73f5e986b81197009401f71525363fb31d25fbf897634df45245a215",
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-handoff.test.mjs": "e1b31bace77b662f5e73a34457aced3c5c4c5961dcbe3d1b26b978b7b0eef55c",
+        "tests/staging-recovery.test.mjs": "e6f3fa226bc93277a1ae76ea848f406be9edfc49c6767176e5583b8d795be5f3",
+        "tests/staging-build-identity.test.mjs": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73",
+        "gateway/app.mjs": "61b5c43a8ce7dc6fc61d772fcc16c4a4b7d5cb8f17c70555829fae3ce53e42a1",
+        "gateway/registry.mjs": "ecfa498867b20d1676cf7e035af23f1accc90be656de7c6c22ebf272dfff6cda",
+        "gateway/security.mjs": "78aa4d7f9f632568d2247d249691b7583dbf73d344bd040d6512104741183b7b",
+        "gateway/dashboard.mjs": "37de2f57ba8f6dfcd1c3331ab8cb994aea419dcfc673c5e3e6f6ef6df208c240",
+        "src/remote/protocol.ts": "43e8c5067e8a2e4878b76f2ec6c0871dca499a02d5cd02cd31ecef57a8a3ed28",
+        "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14",
+        "package.json": "a8cbea0bff3999a7b406ff8789123069c7ac40cc8c52e6e8e46479a965e23e57",
+        "package-lock.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
+        "npm-shrinkwrap.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696"
+      }
+    },
+    {
+      "label": "functional-attempt-1",
+      "receipt_path": "artifacts/issue-232-staging-recovery/functional-attempt-1-receipt.json",
+      "receipt_sha256": "a11945f61d791d1ab3f25e8772133e108a8b987aaa115f1ec89da366d0599212",
+      "kind": "First functional source implementation against frozen205-case fixture; provider and connected acceptance remain unqualified",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/staging-recovery.test.mjs"
+      ],
+      "started_at": "2026-11-09T19:37:25.809152+00:00",
+      "finished_at": "2026-11-09T19:38:06.523926+00:00",
+      "wall_seconds": 40.714773743995465,
+      "node": "v24.22.1",
+      "platform": "linux x64",
+      "exit_code": 0,
+      "counts": {
+        "tests": 205,
+        "suites": 0,
+        "pass": 205,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "inputs_unchanged": true,
+      "tap_sha256": "4bf739cc6bec0e9ce083fc8684677072760fa27a3efb6138130aeb8ca845d335",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "input_sha256": {
+        "scripts/staging-handoff.mjs": "c76914a558f94ebde4284c0dbf2370efae42ac80372b57900dac8295bb06ddb0",
+        "scripts/staging-handoff-seal.mjs": "db61554d402801a3a9b05c08a1f1372c06754e8efd78dd62551f7fce17566930",
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-handoff.test.mjs": "e1b31bace77b662f5e73a34457aced3c5c4c5961dcbe3d1b26b978b7b0eef55c",
+        "tests/staging-recovery.test.mjs": "e6f3fa226bc93277a1ae76ea848f406be9edfc49c6767176e5583b8d795be5f3",
+        "tests/staging-build-identity.test.mjs": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73",
+        "gateway/app.mjs": "61b5c43a8ce7dc6fc61d772fcc16c4a4b7d5cb8f17c70555829fae3ce53e42a1",
+        "gateway/registry.mjs": "ecfa498867b20d1676cf7e035af23f1accc90be656de7c6c22ebf272dfff6cda",
+        "gateway/security.mjs": "78aa4d7f9f632568d2247d249691b7583dbf73d344bd040d6512104741183b7b",
+        "gateway/dashboard.mjs": "37de2f57ba8f6dfcd1c3331ab8cb994aea419dcfc673c5e3e6f6ef6df208c240",
+        "src/remote/protocol.ts": "43e8c5067e8a2e4878b76f2ec6c0871dca499a02d5cd02cd31ecef57a8a3ed28",
+        "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14",
+        "package.json": "a8cbea0bff3999a7b406ff8789123069c7ac40cc8c52e6e8e46479a965e23e57",
+        "package-lock.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
+        "npm-shrinkwrap.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696"
+      }
+    },
+    {
+      "label": "review-regressions-red",
+      "receipt_path": "artifacts/issue-232-staging-recovery/review-regressions-red-receipt.json",
+      "receipt_sha256": "6b1ed74ac7c787df4aac761ccac42a2819c83bf9f4885fe2b7ff841bd0b0a4f7",
+      "kind": "Independent review extension for strict new-protocol newline admission, deployment-history selection/strategy, and cleanup-only output parser; pre-fix functional source",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/staging-recovery.test.mjs"
+      ],
+      "started_at": "2026-11-09T19:40:44.254926+00:00",
+      "finished_at": "2026-11-09T19:41:31.124242+00:00",
+      "wall_seconds": 46.869321124991984,
+      "node": "v24.22.1",
+      "platform": "linux x64",
+      "exit_code": 1,
+      "counts": {
+        "tests": 221,
+        "suites": 0,
+        "pass": 217,
+        "fail": 4,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "inputs_unchanged": true,
+      "tap_sha256": "df7813539e4e0b3b78c15694dbdf6abfeaf86cc8952c5152f6a810a537f7a77d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "input_sha256": {
+        "scripts/staging-handoff.mjs": "c76914a558f94ebde4284c0dbf2370efae42ac80372b57900dac8295bb06ddb0",
+        "scripts/staging-handoff-seal.mjs": "db61554d402801a3a9b05c08a1f1372c06754e8efd78dd62551f7fce17566930",
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-handoff.test.mjs": "e1b31bace77b662f5e73a34457aced3c5c4c5961dcbe3d1b26b978b7b0eef55c",
+        "tests/staging-recovery.test.mjs": "82e3469cfd6b31acfb5f2954c15f16966d4484870bdac75db8e2dce6a5356b19",
+        "tests/staging-build-identity.test.mjs": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73",
+        "gateway/app.mjs": "61b5c43a8ce7dc6fc61d772fcc16c4a4b7d5cb8f17c70555829fae3ce53e42a1",
+        "gateway/registry.mjs": "ecfa498867b20d1676cf7e035af23f1accc90be656de7c6c22ebf272dfff6cda",
+        "gateway/security.mjs": "78aa4d7f9f632568d2247d249691b7583dbf73d344bd040d6512104741183b7b",
+        "gateway/dashboard.mjs": "37de2f57ba8f6dfcd1c3331ab8cb994aea419dcfc673c5e3e6f6ef6df208c240",
+        "src/remote/protocol.ts": "43e8c5067e8a2e4878b76f2ec6c0871dca499a02d5cd02cd31ecef57a8a3ed28",
+        "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14",
+        "package.json": "a8cbea0bff3999a7b406ff8789123069c7ac40cc8c52e6e8e46479a965e23e57",
+        "package-lock.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
+        "npm-shrinkwrap.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696"
+      }
+    },
+    {
+      "label": "focused-final-green",
+      "receipt_path": "artifacts/issue-232-staging-recovery/focused-final-green-receipt.json",
+      "receipt_sha256": "3378e283397bd744b20e21016cd2afc58d17ed75529307553b175ab0a3651e59",
+      "kind": "Reviewed recovery implementation plus unchanged original134 handoff and54 staging-build identity tests; local deterministic acceptance only",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/staging-recovery.test.mjs",
+        "tests/staging-handoff.test.mjs",
+        "tests/staging-build-identity.test.mjs"
+      ],
+      "started_at": "2026-11-09T19:43:10.000516+00:00",
+      "finished_at": "2026-11-09T19:44:43.649500+00:00",
+      "wall_seconds": 93.64898563300085,
+      "node": "v24.22.1",
+      "platform": "linux x64",
+      "exit_code": 0,
+      "counts": {
+        "tests": 409,
+        "suites": 0,
+        "pass": 409,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "inputs_unchanged": true,
+      "tap_sha256": "8b88aa26439e4e80f313f8510dfc44a349565a1d8b8f9888d7e55c02415edd62",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "input_sha256": {
+        "scripts/staging-handoff.mjs": "a3662e56818118a88248e3c8c98d34dfa9e47be456fe2e321a7f7f747e6bf390",
+        "scripts/staging-handoff-seal.mjs": "21a0a00cc6278ad3fd7711d9be3dd58bd7b91d420fdc949c710763eb37f81ecb",
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-handoff.test.mjs": "e1b31bace77b662f5e73a34457aced3c5c4c5961dcbe3d1b26b978b7b0eef55c",
+        "tests/staging-recovery.test.mjs": "82e3469cfd6b31acfb5f2954c15f16966d4484870bdac75db8e2dce6a5356b19",
+        "tests/staging-build-identity.test.mjs": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73",
+        "gateway/app.mjs": "61b5c43a8ce7dc6fc61d772fcc16c4a4b7d5cb8f17c70555829fae3ce53e42a1",
+        "gateway/registry.mjs": "ecfa498867b20d1676cf7e035af23f1accc90be656de7c6c22ebf272dfff6cda",
+        "gateway/security.mjs": "78aa4d7f9f632568d2247d249691b7583dbf73d344bd040d6512104741183b7b",
+        "gateway/dashboard.mjs": "37de2f57ba8f6dfcd1c3331ab8cb994aea419dcfc673c5e3e6f6ef6df208c240",
+        "src/remote/protocol.ts": "43e8c5067e8a2e4878b76f2ec6c0871dca499a02d5cd02cd31ecef57a8a3ed28",
+        "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14",
+        "package.json": "a8cbea0bff3999a7b406ff8789123069c7ac40cc8c52e6e8e46479a965e23e57",
+        "package-lock.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
+        "npm-shrinkwrap.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696"
+      }
+    },
+    {
+      "label": "independent-final-green",
+      "receipt_path": "artifacts/issue-232-staging-recovery/review-independent-e6f3fa22/peer-final-green-receipt.json",
+      "receipt_sha256": "ae27478a84a52dfae0b41dcfc78b364b7678935d68d58beccbf74a2302f7eba2",
+      "kind": "Independent recovery peer rerun of frozen221 new-recovery plus unchanged134 legacy handoff cases; no live qualification",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/staging-recovery.test.mjs",
+        "tests/staging-handoff.test.mjs"
+      ],
+      "started_at": "2026-11-09T19:43:28.203957+00:00",
+      "finished_at": "2026-11-09T19:44:52.548066+00:00",
+      "wall_seconds": 84.34411292700679,
+      "node": "v24.22.1",
+      "platform": "linux x64",
+      "exit_code": 0,
+      "counts": {
+        "tests": 355,
+        "suites": 0,
+        "pass": 355,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "inputs_unchanged": true,
+      "tap_sha256": "192cf43e7819c6591d428aad067c2343054fe26faf104a81495498f841c15f27",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "input_sha256": {
+        "scripts/staging-handoff.mjs": "a3662e56818118a88248e3c8c98d34dfa9e47be456fe2e321a7f7f747e6bf390",
+        "scripts/staging-handoff-seal.mjs": "21a0a00cc6278ad3fd7711d9be3dd58bd7b91d420fdc949c710763eb37f81ecb",
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-handoff.test.mjs": "e1b31bace77b662f5e73a34457aced3c5c4c5961dcbe3d1b26b978b7b0eef55c",
+        "tests/staging-recovery.test.mjs": "82e3469cfd6b31acfb5f2954c15f16966d4484870bdac75db8e2dce6a5356b19",
+        "tests/staging-build-identity.test.mjs": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73",
+        "gateway/app.mjs": "61b5c43a8ce7dc6fc61d772fcc16c4a4b7d5cb8f17c70555829fae3ce53e42a1",
+        "gateway/registry.mjs": "ecfa498867b20d1676cf7e035af23f1accc90be656de7c6c22ebf272dfff6cda",
+        "gateway/security.mjs": "78aa4d7f9f632568d2247d249691b7583dbf73d344bd040d6512104741183b7b",
+        "gateway/dashboard.mjs": "37de2f57ba8f6dfcd1c3331ab8cb994aea419dcfc673c5e3e6f6ef6df208c240",
+        "src/remote/protocol.ts": "43e8c5067e8a2e4878b76f2ec6c0871dca499a02d5cd02cd31ecef57a8a3ed28",
+        "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14",
+        "package.json": "a8cbea0bff3999a7b406ff8789123069c7ac40cc8c52e6e8e46479a965e23e57",
+        "package-lock.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
+        "npm-shrinkwrap.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696"
+      }
+    }
+  ],
+  "frozen_source_sha256": {
+    "scripts/staging-handoff.mjs": "a3662e56818118a88248e3c8c98d34dfa9e47be456fe2e321a7f7f747e6bf390",
+    "scripts/staging-handoff-seal.mjs": "21a0a00cc6278ad3fd7711d9be3dd58bd7b91d420fdc949c710763eb37f81ecb",
+    "tests/staging-recovery.test.mjs": "82e3469cfd6b31acfb5f2954c15f16966d4484870bdac75db8e2dce6a5356b19"
+  },
+  "preserved_sha256": {
+    "tests/staging-handoff.test.mjs": "e1b31bace77b662f5e73a34457aced3c5c4c5961dcbe3d1b26b978b7b0eef55c",
+    "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+    "sealStagingHandoff.toString()": "200f5c2aa79944220181aa6bcdd2abcec1e404e196f04394afebb72c3d4fbe08"
+  },
+  "independent_review": {
+    "fixture205": "CLEAR before behavior: e6f3fa226bc93277a1ae76ea848f406be9edfc49c6767176e5583b8d795be5f3; fresh205 scaffold RED175ERR_ASSERTION, all15 bindings verified independently.",
+    "fixture221": "CLEAR before review fixes:82e3469cfd6b31acfb5f2954c15f16966d4484870bdac75db8e2dce6a5356b19; fresh221 RED4ERR_ASSERTION, all15 bindings verified independently.",
+    "final_source": "CLEAR on receiver a3662e56818118a88248e3c8c98d34dfa9e47be456fe2e321a7f7f747e6bf390, sealer21a0a00cc6278ad3fd7711d9be3dd58bd7b91d420fdc949c710763eb37f81ecb and fixture82e3469cfd6b31acfb5f2954c15f16966d4484870bdac75db8e2dce6a5356b19; independent355/355 execution receipt ae27478a84a52dfae0b41dcfc78b364b7678935d68d58beccbf74a2302f7eba2; original134/smoke/legacy function preserved."
+  },
+  "provider_evidence": {
+    "acceptance": "UNQUALIFIED; two separate rejected20-second POSTs, no acknowledged UUID; no renewal/rotation/connected cleanup acceptance",
+    "diagnostic_docs": "docs/validation/2026-11-09-staging-provider-diagnostics.md",
+    "attempts": [
+      {
+        "started_at": "2026-11-09T17:50:19.422Z",
+        "finished_at": "2026-11-09T17:50:19.667Z",
+        "outcome": "known4xx; precise numeric provider code not retained; no UUID",
+        "name_reconciliation": "complete exact-name GET found0matches at17:52:18Z",
+        "comment": "https://github.com/MulattoTech/MTerm-CLI/issues/232#issuecomment-6747551626"
+      },
+      {
+        "started_at": "2026-11-09T18:20:15.969Z",
+        "finished_at": "2026-11-09T18:20:16.306Z",
+        "outcome": "HTTP400/code12121; no UUID",
+        "name_reconciliation": "complete exact-name GET found0matches at18:20:41.214Z",
+        "comment": "https://github.com/MulattoTech/MTerm-CLI/issues/232#issuecomment-6747989012"
+      }
+    ],
+    "diagnostic_execution_sha256": "23621138d87491e4b91762e18874aa95359960b8ca1018891ae2e347da5bbfe2",
+    "reconciliation_sha256": "2b9201afb6979f791bbd479173b0c6eb45c09005933565b736b3f59ad9fa5e4d",
+    "primary_research_sha256": "f4b5d67805571dbe8e2d6375d05497ecb1aea900dde10289f88ecd1a6257d471",
+    "cause": "Unresolved; no asserted duration, name, permission or API defect causation.",
+    "deployment_history": {
+      "source": "https://developers.cloudflare.com/api/resources/workers/subresources/scripts/subresources/deployments/methods/list/",
+      "observed_at": "2026-11-09T16:03:54.121Z",
+      "root_receipt_path": "artifacts/staging-deployment-readiness/deploy-independent-success-160354.json",
+      "root_receipt_sha256": "de3c9b01da3c454910c633ff1bcf7d5519fc70880093192436cb9c12f4017d29",
+      "observation": "Retained recentDeployments selects four rows (not asserted complete history): first current deployment e9b702fb-c6c0-4b15-b101-a9c8307a654f selects88e1a5ff-ac1e-4b9a-a4c2-31ba32d6221e at100percent. Grounds history shape only."
+    }
+  },
+  "roadmap_updates": [
+    {
+      "id": "CLI-290",
+      "stage_change": false,
+      "reason": "Append bounded owned staging recovery protocol, independent observed-expiry and cleanup/epoch regression evidence only; preserve protected stages, weights, catalog fields and full acceptance. Actual provider/connected recovery and WEB-008/WEB-012 remain unqualified; root owns shared ledger review/render."
+    },
+    {
+      "id": "CLI-299",
+      "stage_change": false,
+      "reason": "Append bounded owned staging recovery protocol, independent observed-expiry and cleanup/epoch regression evidence only; preserve protected stages, weights, catalog fields and full acceptance. Actual provider/connected recovery and WEB-008/WEB-012 remain unqualified; root owns shared ledger review/render."
+    }
+  ],
+  "limitations": [
+    "New-feature scaffold RED193/205 establishes absence of implementation, not a previously working product regression. The221-case review extension independently reproduces exactly four implementation defects; newline cases are already-passing controls.",
+    "Local Linux Node24 actual-source/real-WebCrypto executions include controlled provider/fetch/time/filesystem/child adapters and actual synthetic signed gateway/registry authority. They do not establish Cloudflare or connected Windows behavior.",
+    "The actual cleanup-child subprocess executes on Linux and refuses CLEANUP_REQUIRES_WINDOWS before source/input validation. It proves fixed dispatch/natural refusal and no attempted revoke; source/input gate execution uses the controlled Windows adapter, not an actual Windows process.",
+    "Optional provider enabled, expires_at and identity fields are local fail-closed admission gates; future responses are not promised to include them. providerObservedAt is the sealer observation clock, not signed provider metadata.",
+    "Source and binding checks are point-in-time observations, not hostile-host attestation, atomic source execution or continuous context stability. Encryption alone does not authenticate an untrusted sender.",
+    "Decision deadlines do not cancel in-flight provider requests. Child timeout/kill cannot establish remote cancellation or complete process-tree cleanup. A lost revoke-all acknowledgement remains failed even if final inventory is empty.",
+    "No guaranteed JavaScript/OS memory erasure, provider logging guarantee, live identity binding, Windows/DPAPI/SDK/ChatGPT acceptance or broader CLI/Web acceptance is asserted.",
+    "Actual provider diagnostics remain separate immutable rejected operations; HTTP400/code12121 meaning unresolved. No further token creation attempted. Issue232 cannot close on local fixtures or CI alone.",
+    "Normal build/check/pack/hosted exact-candidate and actual-main gates plus shared metric rendering remain root integration work; worker does not claim those gates."
+  ],
+  "next_unverified_action": "Finish independent shared protected-catalog review, publish this exact source/docs candidate, qualify all six hosted candidate jobs, merge normally with expected head, then qualify six separate actual-main jobs. Keep issue232 open and continue dependency-ready work; provider token writes remain held.",
+  "bounded_checks": {
+    "receipt_path": "artifacts/issue-232-staging-recovery/bounded-checks.json",
+    "receipt_sha256": "79cc8dbaba30cd48b5785beecfd85cb83823890781774fb25aa77e2a1fe9fd67",
+    "scope": "Syntax, formatting and diff whitespace only; no build/hosted/platform/provider acceptance",
+    "commands": [
+      {
+        "command": [
+          "node",
+          "--check",
+          "scripts/staging-handoff.mjs"
+        ],
+        "started_at": "2026-11-09T19:44:22.206347+00:00",
+        "finished_at": "2026-11-09T19:44:22.269877+00:00",
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_bytes": 0
+      },
+      {
+        "command": [
+          "node",
+          "--check",
+          "scripts/staging-handoff-seal.mjs"
+        ],
+        "started_at": "2026-11-09T19:44:22.270107+00:00",
+        "finished_at": "2026-11-09T19:44:22.330461+00:00",
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_bytes": 0
+      },
+      {
+        "command": [
+          "node",
+          "--check",
+          "tests/staging-recovery.test.mjs"
+        ],
+        "started_at": "2026-11-09T19:44:22.330794+00:00",
+        "finished_at": "2026-11-09T19:44:22.394988+00:00",
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_bytes": 0
+      },
+      {
+        "command": [
+          "node",
+          "node_modules/prettier/bin/prettier.cjs",
+          "--check",
+          "scripts/staging-handoff.mjs",
+          "scripts/staging-handoff-seal.mjs",
+          "tests/staging-recovery.test.mjs"
+        ],
+        "started_at": "2026-11-09T19:44:22.395164+00:00",
+        "finished_at": "2026-11-09T19:44:22.949616+00:00",
+        "exit_code": 0,
+        "stdout_sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_bytes": 0
+      },
+      {
+        "command": [
+          "git",
+          "diff",
+          "--check"
+        ],
+        "started_at": "2026-11-09T19:44:22.949872+00:00",
+        "finished_at": "2026-11-09T19:44:22.954931+00:00",
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_bytes": 0
+      }
+    ]
+  },
+  "root_integration": {
+    "recorded_at": "2026-11-09T19:51:46.794781+00:00",
+    "previous_worker_checkpoint": {
+      "status": "worker source, fixture and local execution independently CLEAR; combined409 and peer355 passed; root integration, shared review/render and exact hosted/connected acceptance remain pending",
+      "updated_at": "2026-11-09T19:45:51.265401+00:00",
+      "next_unverified_action": "Root integrates the five-path local worker commit, updates shared documentation and explicitly reviews/renders unchanged-stage CLI-290/CLI-299 evidence, then runs exact candidate/actual-main publication gates. Actual provider/connected recovery remains unqualified and issue232 stays open; no further token creation is authorized in this continuation.",
+      "files": [
+        "scripts/staging-handoff.mjs",
+        "scripts/staging-handoff-seal.mjs",
+        "tests/staging-recovery.test.mjs",
+        "docs/validation/2026-11-09-staging-recovery.md",
+        "docs/ai/changes/2026-11-09-staging-recovery.json"
+      ]
+    },
+    "qualified_base": "c69762da7d1dda54f7a74795c08c1f699367c77f",
+    "worker_commit": "a03b10dc439e563b00bf56c0a5f55ad83d95881d",
+    "serialized_commit": "9bb320ae96e44ccddbcf5cd2f2d4f9b5380de1c4",
+    "source_and_fixture_bytes_unchanged": true,
+    "worker_review_sha256": "224568a097dd73e39c28a6b2c855b920586ee58619a04be28ef8752c0520b6b4",
+    "execution_receipt_sha256": "b55f7947c3714d6bebe293eaf9ae24b94448e536dbf3ef520dbe8e88c167bd08",
+    "execution": {
+      "kind": "Root serialized recovery plus unchanged original handoff and build identity; exact integrated source acceptance only",
+      "base": "9bb320ae96e44ccddbcf5cd2f2d4f9b5380de1c4",
+      "session": "MTERM-WEB-20261109T131339Z-resume-a9287b3c",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "--test-concurrency=1",
+        "tests/staging-recovery.test.mjs",
+        "tests/staging-handoff.test.mjs",
+        "tests/staging-build-identity.test.mjs"
+      ],
+      "cwd": "/workspace/scratch/a9287b3cfe09/mterm-resume",
+      "started_at": "2026-11-09T19:48:23.300036+00:00",
+      "finished_at": "2026-11-09T19:49:47.031316+00:00",
+      "wall_seconds": 83.73123908499838,
+      "node": "v24.22.1",
+      "platform": "linux x64",
+      "exit_code": 0,
+      "counts": {
+        "tests": 409,
+        "suites": 0,
+        "pass": 409,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "before": {
+        "scripts/staging-handoff.mjs": "a3662e56818118a88248e3c8c98d34dfa9e47be456fe2e321a7f7f747e6bf390",
+        "scripts/staging-handoff-seal.mjs": "21a0a00cc6278ad3fd7711d9be3dd58bd7b91d420fdc949c710763eb37f81ecb",
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-handoff.test.mjs": "e1b31bace77b662f5e73a34457aced3c5c4c5961dcbe3d1b26b978b7b0eef55c",
+        "tests/staging-recovery.test.mjs": "82e3469cfd6b31acfb5f2954c15f16966d4484870bdac75db8e2dce6a5356b19",
+        "tests/staging-build-identity.test.mjs": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73",
+        "gateway/app.mjs": "61b5c43a8ce7dc6fc61d772fcc16c4a4b7d5cb8f17c70555829fae3ce53e42a1",
+        "gateway/registry.mjs": "ecfa498867b20d1676cf7e035af23f1accc90be656de7c6c22ebf272dfff6cda",
+        "gateway/security.mjs": "78aa4d7f9f632568d2247d249691b7583dbf73d344bd040d6512104741183b7b",
+        "gateway/dashboard.mjs": "37de2f57ba8f6dfcd1c3331ab8cb994aea419dcfc673c5e3e6f6ef6df208c240",
+        "src/remote/protocol.ts": "43e8c5067e8a2e4878b76f2ec6c0871dca499a02d5cd02cd31ecef57a8a3ed28",
+        "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14",
+        "package.json": "a8cbea0bff3999a7b406ff8789123069c7ac40cc8c52e6e8e46479a965e23e57",
+        "package-lock.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
+        "npm-shrinkwrap.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696"
+      },
+      "after": {
+        "scripts/staging-handoff.mjs": "a3662e56818118a88248e3c8c98d34dfa9e47be456fe2e321a7f7f747e6bf390",
+        "scripts/staging-handoff-seal.mjs": "21a0a00cc6278ad3fd7711d9be3dd58bd7b91d420fdc949c710763eb37f81ecb",
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-handoff.test.mjs": "e1b31bace77b662f5e73a34457aced3c5c4c5961dcbe3d1b26b978b7b0eef55c",
+        "tests/staging-recovery.test.mjs": "82e3469cfd6b31acfb5f2954c15f16966d4484870bdac75db8e2dce6a5356b19",
+        "tests/staging-build-identity.test.mjs": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73",
+        "gateway/app.mjs": "61b5c43a8ce7dc6fc61d772fcc16c4a4b7d5cb8f17c70555829fae3ce53e42a1",
+        "gateway/registry.mjs": "ecfa498867b20d1676cf7e035af23f1accc90be656de7c6c22ebf272dfff6cda",
+        "gateway/security.mjs": "78aa4d7f9f632568d2247d249691b7583dbf73d344bd040d6512104741183b7b",
+        "gateway/dashboard.mjs": "37de2f57ba8f6dfcd1c3331ab8cb994aea419dcfc673c5e3e6f6ef6df208c240",
+        "src/remote/protocol.ts": "43e8c5067e8a2e4878b76f2ec6c0871dca499a02d5cd02cd31ecef57a8a3ed28",
+        "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14",
+        "package.json": "a8cbea0bff3999a7b406ff8789123069c7ac40cc8c52e6e8e46479a965e23e57",
+        "package-lock.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696",
+        "npm-shrinkwrap.json": "a14bd1986b17140b084943e7137404deda977e10885022c97d751c0c5c5d9696"
+      },
+      "inputs_unchanged": true,
+      "tap_sha256": "93c8b1410255e0628f475181d256275ccca1f5069f0e504afeab11059ee48286",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "limitations": "Local deterministic actual-source execution with controlled API, time, filesystem and child adapters; real WebCrypto and signed synthetic gateway/registry. No live provider, Windows, deployment, token, policy or binding acceptance. New-feature scaffold RED is not a previously working product regression."
+    },
+    "durable_transcripts": [
+      {
+        "path": "docs/validation/2026-11-09-staging-recovery-scaffold-red.tap",
+        "sha256": "35979391109ce7ad82732348d8afca2e7de6d072d3a24dc4c35c179ecc666761",
+        "raw_sha256": "5e83c375f9405b9cad2c4073c42426b176623a1a567428e67349cc0a36633b7f",
+        "normalization": "Trailing spaces/tabs/CR only per line; no test identity, outcome, duration or message edits"
+      },
+      {
+        "path": "docs/validation/2026-11-09-staging-recovery-review-red.tap",
+        "sha256": "b2026c40c4acea66c79d7f50c1ccec7a6639e15ea7691bf23991f0f8c1f09c42",
+        "raw_sha256": "df7813539e4e0b3b78c15694dbdf6abfeaf86cc8952c5152f6a810a537f7a77d",
+        "normalization": "Trailing spaces/tabs/CR only per line; no test identity, outcome, duration or message edits"
+      },
+      {
+        "path": "docs/validation/2026-11-09-staging-recovery-green.tap",
+        "sha256": "93c8b1410255e0628f475181d256275ccca1f5069f0e504afeab11059ee48286",
+        "raw_sha256": "93c8b1410255e0628f475181d256275ccca1f5069f0e504afeab11059ee48286",
+        "normalization": "Trailing spaces/tabs/CR only per line; no test identity, outcome, duration or message edits"
+      }
+    ],
+    "historical_provider_document_review_sha256": "fd1eb2bfef0e474281c6818bddcc00f1e3d298395918a6796b427a793ef86ba5",
+    "guide_review_correction": "PowerShell7.5+ ConvertFrom-Json -DateKind String preserves original ownership timestamps; explicit absent registry routing keys and distinct sealer/receiver lifetime thresholds. No source behavior change.",
+    "provider_live_work_held": true,
+    "protected_catalog_acceptance_changed": false,
+    "normal_gates": {
+      "receipt_sha256": "b5638c490439054c1a09f9f96b4f5d50f3f00c387c97f7596733d5d9a7c9d078",
+      "steps": [
+        {
+          "command": [
+            "node",
+            "scripts/roadmap.mjs",
+            "--review",
+            "--change",
+            "2026-11-09-staging-recovery"
+          ],
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "node",
+            "scripts/roadmap.mjs",
+            "--render"
+          ],
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "node",
+            "scripts/roadmap.mjs",
+            "--check"
+          ],
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "build"
+          ],
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "typecheck"
+          ],
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "format:check"
+          ],
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "git",
+            "diff",
+            "--check"
+          ],
+          "exit_code": 0
+        }
+      ],
+      "source_fingerprint": "b504ded585eee440d27c1b95dad1042c5e2c3987a452b4008b1553bbdeaef3c0",
+      "source_entries": 182,
+      "warning": "Existing npm Unknown env config http-proxy warning only",
+      "all15_tested_bindings_unchanged_after_build": true,
+      "protected_summary": {
+        "count": 300,
+        "percent": 29.36,
+        "baselineWeight": 4068,
+        "complete": 0,
+        "blocked": 45,
+        "notStarted": 126,
+        "asOf": "2026-11-09T04:44:54.177168+00:00",
+        "meaning": "Reviewed delivery maturity, not readiness",
+        "guiCreditImported": false
+      }
+    }
+  }
+}

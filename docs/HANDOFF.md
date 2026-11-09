@@ -1,3 +1,77 @@
+# Owned staging recovery checkpoint — 2026-11-09 UTC
+
+Session `MTERM-WEB-20261109T131339Z-resume-a9287b3c` exclusively owns issue232 on
+`coord/mterm/issue-232` at qualified base `c69762da7d1dda54f7a74795c08c1f699367c77f`.
+[Claim](https://github.com/MulattoTech/MTerm-CLI/issues/232#issuecomment-6747207135),
+[continuity checkpoint](https://github.com/MulattoTech/MTerm-CLI/issues/232#issuecomment-6749407135).
+Root remains the sole shared-document, integration, publication and live-operation
+owner. The five-path worker commit `a03b10dc439e563b00bf56c0a5f55ad83d95881d` is
+serialized on feature `feat/issue-232-staging-recovery-20261109`; all15 frozen input
+bindings match. Source/fixture/worker-record review is independently CLEAR.
+
+[Recovery evidence](validation/2026-11-09-staging-recovery.md) adds separate
+protocol2 cleanup and smoke-owned modes. The original public ownership ledger,
+exact token/private selector and fixed issuer/audience/registry store constrain
+one explicit optional renewal and one rotation. Current deployment selection uses
+the first history entry, explicit percentage strategy and one100%-active version.
+Observed expiry and monotonic final release checks retain the complete child/close
+budget. The fixed cleanup requires typed revoke acknowledgement, final matching
+empty inventory and natural child closure; a lost acknowledgement remains failure.
+Owned errors retain recovery access without DELETE/replacement/retry. The original
+134-case fixture, legacy seal function and smoke remain byte-identical.
+
+Tests-first history remains distinct: original193 scaffold23pass/170assertionfail;
+refined205 scaffold30pass/175assertionfail; first functional205/205; separate
+review221 regression217pass/4assertionfail; final worker409/409, peer355/355 and
+serialized root409/409 all passed with empty stderr, zero skips/cancellations/todos
+and15 unchanged bindings. The four fixes concern deployment history/strategy and
+cleanup-only output. The newline hypothesis was disproved; its negative controls
+already passed and validator behavior was not changed. The actual Linux child
+proves dispatch and Windows-required refusal; Windows source/input cases use a
+controlled adapter. No live provider or Windows acceptance follows from these tests.
+
+[PR233 delivery](validation/2026-11-09-staging-handoff-delivery.json) is complete:
+replacement50be candidate and actualc697 main each passed all six required hosted
+jobs, with all134 helper cases and retained installed/native evidence. The actual
+connected public probe qualified the observed encrypted transport/privacy/process
+slice on exact50be; it used zero service credentials/API requests and no gateway
+request. Its independent observer saw the launcher-to-helper relationship and
+final absence of all3 PIDs; the short-lived child close came from the receiver and
+actual outer natural exit. Narrow231 closed17:45:11UTC and its claim was released;
+the first failed candidate and historical branch remain preserved.
+
+[Provider diagnostics](validation/2026-11-09-staging-provider-diagnostics.md) retain
+two distinct rejected creation attempts. The first recorded known4xx; the second
+recordedHTTP400/code12121. No acknowledged UUID, renewal, rotation, deletion, policy,
+binding or MTerm operation occurred in either operator. Complete exact-name reads
+found zero matches at their recorded times; this is not deletion or continuous
+absence proof. The cause remains unresolved, and further token writes are held.
+The latest saved owner-only configuration observation is18:19:01.842UTC, before
+the diagnostic; no later configuration observation is claimed. Actual expiry,
+renewal, rotation, service authentication and connected cleanup remain unqualified.
+**Keep issue232 and broad61/65 open after source delivery.**
+
+Staging remains separately observed at gateway source9e2d663/version88e1a5ff with
+its owner-only baseline and rollback retained. The dirty Windows primary checkout,
+owner enrollment/retained state lock, portable toolchain and production53-tool
+bridge remain preserved. The browser-origin limitation still blocks owner
+sign-in/consent. No global runtime, MJobs or unrelated project operation is added.
+
+Root appends CLI290/299 evidence only; every protected field and historical record
+remains. Maturity stays29.36%,0complete45blocked126notStarted; DCP0/48 andWEB0/12.
+Normal explicit review/render, reviewed build/parity, typecheck, full source format
+and whitespace gates passed; all15 tested bindings remain unchanged. Fingerprint
+`b504ded585eee440d27c1b95dad1042c5e2c3987a452b4008b1553bbdeaef3c0` covers182
+entries. Independent shared-catalog review and the six candidate/six actual-main
+hosted gates remain separate. The known cloud
+Unix-socket full-suite limitation is retained without a false full-local/quick PASS.
+Next: finish delivery of the exact reviewed recovery source through normal
+expected-head merge and separate actual-main qualification, then continue a
+new exclusively claimed dependency-ready scope. Do not repeat either completed
+provider intent, create another token, or substitute source tests for live recovery.
+
+---
+
 # Native handoff path correction — 2026-11-09 UTC
 
 The first PR233 candidate `e5f15ebccdf908498f123d45b20a45a276925d33` is **not qualified**: fast/Ubuntu/native Linux succeeded, but Windows failed4 actual native helper cases and both macOS architectures failed5. Failed-lane installed-package/Codex steps were skipped and supply no acceptance. [Retained failed-candidate receipt](https://github.com/MulattoTech/MTerm-CLI/pull/233#issuecomment-6745656691). No unchanged CI retry, connected receiver challenge or real token was started.

@@ -208,6 +208,68 @@ atomic version adoption or continuous stability. [Bounded evidence](validation/2
 uses simulated harness dependencies; real Windows/DPAPI/SDK/authentication and
 Cloudflare qualification remain separate.
 
+## Owned staging principal recovery
+
+The separate `cleanup` and `smoke-owned` handoff modes bind protocol2 and purpose
+`mterm-staging-owned-handoff` to an independently selected public ownership ledger.
+That ledger identifies one original token UUID/name/creation nonce and fixed staging
+issuer, audience and registry namespace/class. Original creation/expiry timestamps
+are provenance, not a current lifetime calculation. A fresh receiver nonce is
+required. The legacy protocol1 probe/create-only smoke and original smoke runner
+remain separate.
+
+The self-contained bootstrap creates at most one explicit30-minute token and
+returns only public ownership metadata after exact-ID observation. It captures an
+acknowledged UUID before later validation and retains unknown or partial outcomes
+for reconciliation. The owned sealer reads the exact selected token, requires its
+private Client ID to match both latest and active Worker selectors, and verifies
+the fixed issuer, audience, origins, staging/enabled flags, deployed build and
+registry store. It selects the first deployment in the documented history list,
+requires that current rollout to contain one100%-active version, and never searches
+older deployments for a match. The registry's `script_name` and `environment` keys
+must be absent, including null or nominally matching values. Missing, duplicate or
+ambiguous required bindings fail closed.
+
+Renewal is either `none` or the explicit `30m-if-needed` choice. The latter permits
+one exact-ID duration update when observed lifetime is insufficient; neither mode
+re-enables a disabled token. One exact-ID secret rotation supplies the encrypted
+payload; exact-token observations and a second fixed-context read follow it. No
+Client ID, actor ID, secret or credential-derived digest is returned. Owned failures
+retain the original token and route; they never invoke create-only deletion,
+replacement, refresh, name adoption or blind retry. Configuration checks are
+point-in-time observations, not continuous attestation.
+
+The sealer requires more than600,000ms and at most1,805,000ms of observed remaining
+lifetime before rotation and sealing. The envelope binds the sealer's observation
+time and provider-returned expiry.
+That observation time is the sealer's local clock, not a provider signature. The
+receiver rejects stale/future observations and anchors remaining lifetime to its
+monotonic clock. Immediately before the anonymous-pipe release, strictly more than
+the450-second child budget plus5-second closure allowance must remain, with no
+intervening await. Existing source, bundle, one-frame and natural-close admission
+still applies. Encryption does not attest the host or guarantee memory erasure.
+
+The fixed cleanup child has exactly five possible requests: public health,
+authenticated service dashboard, same-origin revoke-all POST, final public health,
+and final service dashboard. An initial identity/build mismatch stops before the
+POST. Once attempted, both bounded final reads are attempted once. Only HTTP200
+with typed `revoked:true` acknowledges revocation; a lost or rejected acknowledgement
+remains failure even if the final inventory is empty. Cleanup also advances the
+principal epoch when its initial inventory is empty. Credentials go only to the
+fixed dashboard origin; redirects are not followed. Each request is bounded to
+30seconds and1MiB, within an overall180-second child work bound. This child creates
+no SDK client, pair, agent, listener, fixture tree or report file.
+
+Remote authority revocation and local process closure are separate observations.
+The parent admits only the exact sanitized cleanup receipt and natural child exit.
+An uncertain write or child close remains failed/unconfirmed and retains recovery
+access. The operator must independently reconcile fixed configuration and owned
+processes before removing service policy, selector or token; deleting Access
+resources alone does not revoke existing MTerm authority. The [recovery report](validation/2026-11-09-staging-recovery.md)
+and [provider diagnostic report](validation/2026-11-09-staging-provider-diagnostics.md)
+keep source tests separate from unqualified actual expiry/renewal/rotation and
+connected cleanup. No owner authority or broad WEB acceptance is awarded.
+
 ## Remote preview: explicit trust boundaries
 
 The implemented staging endpoints are

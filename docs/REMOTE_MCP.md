@@ -253,7 +253,14 @@ file. Only the receiver supplies the fixed smoke child through its anonymous pip
 The reviewed local helper revision/bundle and deployed gateway revision are
 separately selected. Successful source tests are not proof of actual connected
 transport, process closure, or recovery of a previously nonempty service principal.
-Those prerequisites remain explicit before a new real-credential smoke.
+Those prerequisites remain explicit before a new real-credential smoke. The
+[recorded public probe](validation/2026-11-09-staging-handoff-delivery.json) qualified
+its exact source and observed connected slice. The [owned-principal recovery flow](deployment/MTERM_STAGING.md#owned-principal-recovery)
+separately adds `cleanup` and `smoke-owned`, using a retained public ownership ledger,
+exact token/store identity and explicit renewal choice. Its source evidence does
+not qualify the provider lifecycle or actual connected cleanup. The two recorded
+creation attempts were rejected, with the cause unresolved; further token attempts
+are held pending a supported operational decision.
 
 Both public edge health and the authenticated registry build must match before
 fixture effects, and both are checked again after successful owned cleanup. A

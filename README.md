@@ -209,9 +209,12 @@ see the [exact-source smoke instructions](docs/deployment/MTERM_STAGING.md#sourc
 These labels do not independently prove deployed bytes or continuous version stability.
 Connected process tools retain stdin in history, so credentialed qualification uses
 the [fixed encrypted handoff](scripts/staging-handoff.mjs) and separately reviewed
-[sealing function](scripts/staging-handoff-seal.mjs). Its public probe must establish
-actual transport/privacy/process closure before real credentials; interrupted
-service-principal recovery remains a separate prerequisite. The [November 9 code
+[sealing function](scripts/staging-handoff-seal.mjs). The [November 9 public probe](docs/validation/2026-11-09-staging-handoff-delivery.json)
+qualified the observed connected transport/privacy/process slice on its exact
+revision. The new [owned-principal recovery helpers](docs/deployment/MTERM_STAGING.md#owned-principal-recovery)
+add explicit cleanup and reuse modes, with provider lifecycle and actual connected
+cleanup still unqualified. Two [provider creation attempts](docs/validation/2026-11-09-staging-provider-diagnostics.md)
+were rejected; neither created an acknowledged resource. The [November 9 code
 deployment](docs/validation/2026-11-09-staging-deployment.md) has public and
 control-plane proof, while a fresh authenticated Windows smoke remains pending.
 See the [security boundary](docs/SECURITY.md),

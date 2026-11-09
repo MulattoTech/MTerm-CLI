@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "type": "mterm-issue231-connected-public-probe-observation",
+  "result": "observed-pass",
+  "recordedAt": "2026-11-09T17:26:57.125194+00:00",
+  "session": "MTERM-WEB-20261109T131339Z-resume-a9287b3c",
+  "candidate": {
+    "head": "50be8591ef9c492b4148eaa8e429dac6977787cf",
+    "tree": "70af939ceddcef7c6c51e827cb25af10ed469704",
+    "orderedParents": [
+      "e5f15ebccdf908498f123d45b20a45a276925d33"
+    ],
+    "sixHostedGates": "CLEAR",
+    "hostedReceiptSha256": "802c2a60051bcc2e61103bfa204090c8b9bceed1c00f426114a6574fb6b144c0"
+  },
+  "runtime": {
+    "platform": "win32",
+    "nodeVersion": "v24.21.0",
+    "nodeSha256": "ba4e6d110e8c1592a1ecd390f6b05f3da124b13871a5be62b341a07a853c6c32",
+    "bundleSha256": "6713bb0045c4ce874b054fddab5a9dac4744dd40c1ddb0bbc79f862e83a621f4",
+    "fileCount": 2006,
+    "byteCount": 65952184,
+    "independentlyCalculatedBeforeChallenge": true,
+    "rawCommittedSourceAnd13PinsVerified": true,
+    "postProbeBundleEqual": true,
+    "postProbeWorktreeClean": true
+  },
+  "context": {
+    "mode": "probe",
+    "localSourceCommit": "50be8591ef9c492b4148eaa8e429dac6977787cf",
+    "localBundleSha256": "6713bb0045c4ce874b054fddab5a9dac4744dd40c1ddb0bbc79f862e83a621f4",
+    "receiverSha256": "291cf6d467f1602b88373fc6dcfab5108e9f5e22e1aba6fe8c88229069d4f844",
+    "sealerSha256": "a29d4594b2aa544e9152944972ac25212dec0e910aeddbf3cb1be1501782e418",
+    "harnessSha256": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+    "expectedDeployedSourceCommit": "9e2d6633294e22ff63053564bad1ebeda2dd4059"
+  },
+  "challenge": {
+    "runNonce": "411422ff83b0370b2130029c3d3e0f68",
+    "expiresAt": 1794244850114,
+    "recipientKeySha256": "8f7147e1de249a94d4dae566ee7ac41ab3022643f6766552bb2e2d4c36c4b140"
+  },
+  "cloudflare": {
+    "accountId": "9e18ebcb3c1a920c9ef58a3d61b8d6b6",
+    "functionSha256": "200f5c2aa79944220181aa6bcdd2abcec1e404e196f04394afebb72c3d4fbe08",
+    "startedAt": "2026-11-09T17:19:25.312Z",
+    "completedAt": "2026-11-09T17:19:25.312Z",
+    "apiRequestAttempts": 0,
+    "adapter": "deny and count all attempted provider requests",
+    "actualWebCryptoSeal": true,
+    "frameChars": 2095,
+    "frameSha256": "10be5fedc7b5b4e9841d4cf6f5143523f67646a61837abc21d5c80624bcbca41",
+    "tokenId": null,
+    "tokenCreationStatus": "not-created"
+  },
+  "receiver": {
+    "type": "mterm-staging-handoff-result",
+    "result": "passed",
+    "mode": "probe",
+    "runNonce": "411422ff83b0370b2130029c3d3e0f68",
+    "localSourceCommit": "50be8591ef9c492b4148eaa8e429dac6977787cf",
+    "localBundleSha256": "6713bb0045c4ce874b054fddab5a9dac4744dd40c1ddb0bbc79f862e83a621f4",
+    "expectedDeployedSourceCommit": "9e2d6633294e22ff63053564bad1ebeda2dd4059",
+    "child": {
+      "started": true,
+      "closed": true,
+      "terminationRequested": false,
+      "pid": 56040,
+      "exitCode": 0,
+      "signal": null
+    },
+    "cleanup": "not-applicable",
+    "liveAcceptance": false
+  },
+  "processEvidence": {
+    "waiting": {
+      "type": "mterm-issue231-owned-process-observation",
+      "phase": "waiting",
+      "observedAt": "2026-11-09T17:19:00.0693547Z",
+      "observerPid": 73468,
+      "launcherPid": 72920,
+      "launcherPresent": true,
+      "ownedNodeMarkerCount": 1,
+      "exactReceiverCount": 1,
+      "helperPid": 15264,
+      "helperCreatedAt": "2026-11-09T17:18:50.0746120Z",
+      "nodePathAndLauncherParentMatched": true,
+      "verified": true,
+      "mutationsPerformed": false
+    },
+    "completed": {
+      "type": "mterm-issue231-owned-process-observation",
+      "phase": "completed",
+      "observedAt": "2026-11-09T17:20:11.1849403Z",
+      "observerPid": 46440,
+      "launcherPid": 72920,
+      "helperPid": 15264,
+      "probeChildPid": 56040,
+      "launcherAbsent": true,
+      "helperAbsent": true,
+      "probeChildAbsent": true,
+      "ownedNodeMarkerCount": 0,
+      "verified": true,
+      "mutationsPerformed": false
+    },
+    "launcherNaturalExitCode": 0,
+    "launcherRuntimeSeconds": 46.22,
+    "childNaturalCloseSource": "Reviewed receiver receipt; no independent live helper-to-child parent observation.",
+    "independentLiveParentObservation": "CIM launcher72920 to helper15264",
+    "originalThreePidsIndependentlyAbsent": true,
+    "diagnosticCleanup": {
+      "type": "mterm-issue231-post-observation-cleanup",
+      "observedAt": "2026-11-09T17:25:33.6903119Z",
+      "observerPid": 39564,
+      "diagnosticPids": [
+        13632,
+        73468,
+        46440,
+        24304
+      ],
+      "diagnosticPidsAbsent": true,
+      "ownedNodeMarkerCount": 0,
+      "verified": true,
+      "mutationsPerformed": false
+    },
+    "forceTerminationCalls": 0
+  },
+  "history": {
+    "coverageSha256": "4d2cd1887f97b30daa4f9318c980a54280c3a0e25a1dac0b18a5007ade14b179",
+    "exactCiphertextPlusNewlineObserved": true,
+    "inputChars": 2096,
+    "exactOwnedEntries": 9,
+    "omittedSelectedHistoryOutputs": 0
+  },
+  "privacy": {
+    "captureFiles": 18,
+    "captureBytes": 54079,
+    "captureManifestSha256": "9d5c22142bf69be0efd66778870632dc677b6d1b6cc3974836e317c44a886074",
+    "scanReceiptSha256": "577edc986abe66e3c90baa24ab10f140b1671992c1382c4406162e79c308672d",
+    "publicMarkerOccurrences": 0,
+    "sourceExclusionSha256": "eaec13fdbba0a4d22cc3821b0453f3c42e6f275e122fd8e552080d5ddcda2150",
+    "onlyExactReviewedSourceExcluded": true,
+    "runtimeMatchesNotFiltered": true
+  },
+  "artifacts": {
+    "preflight-observation.json": "08ad26e25a49b506b67a4ca223d6f25180f9c33d4c17224bb477da22faa2e33b",
+    "post-source-observation.json": "e2db31ba3ad5e360929d81efc959546727ddef91df609082426f658ff994fef2",
+    "post-observation-cleanup.json": "07edd7bf38d2b268479175cc080ce57542f1cde2c3365f9e667bb864e5086828",
+    "source-exclusion.json": "eaec13fdbba0a4d22cc3821b0453f3c42e6f275e122fd8e552080d5ddcda2150",
+    "history-coverage.json": "4d2cd1887f97b30daa4f9318c980a54280c3a0e25a1dac0b18a5007ade14b179",
+    "scan-final.json": "577edc986abe66e3c90baa24ab10f140b1671992c1382c4406162e79c308672d"
+  },
+  "limitations": [
+    "Public fixture only: no service-token API request, temporary Access policy, Worker binding, MTerm grant/device or real credentialed staging smoke.",
+    "The independent Windows observer establishes launcher-to-helper identity and final PID absence; child identity/natural close comes from the reviewed receiver and actual outer natural exit.",
+    "Privacy evidence covers the explicitly retained runtime arguments, outputs and nine exact owned history entries. Exact reviewed source literals are excluded; no global logging or memory-erasure claim.",
+    "Source and bundle checks are observations, not host attestation, atomic filesystem execution or authenticated npm dependency provenance.",
+    "Expected deployed9e2 is separate context; the probe performs no gateway network request and does not prove fresh authenticated registry adoption.",
+    "Six distinct actual-main jobs remain required after ordinary expected-head merge. Issue232 recovery remains required before real service credentials."
+  ],
+  "liveAcceptance": false,
+  "protectedCatalogAcceptanceChanged": false
+}

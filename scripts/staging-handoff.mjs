@@ -12,6 +12,13 @@ import { performance } from 'node:perf_hooks';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const ACCOUNT = '9e18ebcb3c1a920c9ef58a3d61b8d6b6';
 const ORIGINS = ['https://mcp-staging.m-techlabs.com', 'https://mterm-staging.m-techlabs.com'];
+const OWNED_MODES = ['cleanup', 'smoke-owned'];
+const STAGING = {
+  issuer: 'https://broken-breeze-d0bb.cloudflareaccess.com',
+  audience: '9533396534dbc90c78bae02791ecdd0fab21f775876ed7164ed3b57bf54e1563',
+  registryNamespaceId: 'b66edc2d536e474093e1a18d0e88a24d',
+  registryClassName: 'MTermRegistry',
+};
 const HARNESS = '208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e';
 const PROBE = {
   client_id: 'mterm_public_probe.access',
@@ -308,7 +315,7 @@ function unbase64(value, maximum, length) {
   return data;
 }
 function protectedHeader(challenge, token) {
-  return {
+  const common = {
     protocol: challenge.protocol,
     purpose: challenge.purpose,
     mode: challenge.mode,
@@ -325,12 +332,114 @@ function protectedHeader(challenge, token) {
     sealerSha256: challenge.sealerSha256,
     harnessSha256: challenge.harnessSha256,
     expectedDeployedSourceCommit: challenge.expectedDeployedSourceCommit,
+  };
+  if (challenge.protocol === 2)
+    return {
+      ...common,
+      ownership: challenge.ownership,
+      renewal: challenge.renewal,
+      providerObservedAt: token.providerObservedAt,
+      tokenExpiresAt: token.tokenExpiresAt,
+      renewed: token.renewed,
+      rotated: token.rotated,
+    };
+  return {
+    ...common,
     tokenName: challenge.tokenName,
     tokenDuration: challenge.tokenDuration,
     tokenId: token.tokenId,
     tokenCreatedAt: token.tokenCreatedAt,
     tokenExpiresAt: token.tokenExpiresAt,
   };
+}
+function ownedSelection(text) {
+  requireValue(typeof text === 'string' && Buffer.byteLength(text) <= 4096, 'OWNERSHIP_REQUIRED');
+  const selected = exactObject(text, ['ownership', 'renewal']);
+  const ownership = selected.ownership;
+  requireValue(
+    ownership &&
+      typeof ownership === 'object' &&
+      !Array.isArray(ownership) &&
+      JSON.stringify(Object.keys(ownership)) ===
+        JSON.stringify([
+          'tokenId',
+          'tokenName',
+          'creationRunNonce',
+          'originalCreatedAt',
+          'originalExpiresAt',
+          'staging',
+        ]) &&
+      typeof ownership.tokenId === 'string' &&
+      ownership.tokenId.length === 36 &&
+      canonical(ownership.tokenId, UUID) &&
+      typeof ownership.creationRunNonce === 'string' &&
+      ownership.creationRunNonce.length === 32 &&
+      canonical(ownership.creationRunNonce, /^[0-9a-f]{32}$/) &&
+      ownership.tokenName === 'mterm-staging-handoff-' + ownership.creationRunNonce &&
+      JSON.stringify(ownership.staging) === JSON.stringify(STAGING) &&
+      ['none', '30m-if-needed'].includes(selected.renewal),
+    'OWNERSHIP_REJECTED',
+  );
+  for (const value of [ownership.originalCreatedAt, ownership.originalExpiresAt]) {
+    requireValue(
+      typeof value === 'string' &&
+        value.length <= 40 &&
+        /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,9})?Z$/.test(value),
+      'OWNERSHIP_REJECTED',
+    );
+    const time = Date.parse(value);
+    requireValue(
+      Number.isSafeInteger(time) && new Date(time).toISOString().slice(0, 19) === value.slice(0, 19),
+      'OWNERSHIP_REJECTED',
+    );
+  }
+  return selected;
+}
+function cleanupReceipt(value, deployed) {
+  const keys = [
+    'type',
+    'result',
+    'expectedSourceCommit',
+    'buildIdentity',
+    'identityVerified',
+    'initialInventory',
+    'revoke',
+    'finalInventoryEmpty',
+    'cleanup',
+    'code',
+    'liveAcceptance',
+  ];
+  const exact = (item, fields) =>
+    item &&
+    typeof item === 'object' &&
+    !Array.isArray(item) &&
+    JSON.stringify(Object.keys(item)) === JSON.stringify(fields);
+  const build = (item) =>
+    exact(item, ['edge', 'registry']) && item.edge === deployed && item.registry === deployed;
+  return (
+    exact(value, keys) &&
+    value.type === 'mterm-staging-handoff-cleanup-child' &&
+    value.result === 'passed' &&
+    value.expectedSourceCommit === deployed &&
+    exact(value.buildIdentity, ['initial', 'final']) &&
+    build(value.buildIdentity.initial) &&
+    build(value.buildIdentity.final) &&
+    value.identityVerified === true &&
+    exact(value.initialInventory, ['devices', 'grants']) &&
+    ['devices', 'grants'].every(
+      (key) =>
+        Number.isSafeInteger(value.initialInventory[key]) &&
+        value.initialInventory[key] >= 0 &&
+        value.initialInventory[key] <= 10000,
+    ) &&
+    exact(value.revoke, ['attempted', 'acknowledged']) &&
+    value.revoke.attempted === true &&
+    value.revoke.acknowledged === true &&
+    value.finalInventoryEmpty === true &&
+    value.cleanup === 'remote-revocation-confirmed' &&
+    value.code === null &&
+    value.liveAcceptance === false
+  );
 }
 function credentials(text, mode) {
   const value = exactObject(text, ['client_id', 'client_secret']);
@@ -350,14 +459,16 @@ function matchSource(actual, selected) {
     'SOURCE_MISMATCH',
   );
 }
-async function fixedChild(clear, mode, deployed, source, clock, state) {
+async function fixedChild(clear, mode, deployed, source, clock, state, tokenEligible = () => {}) {
   clock.check();
   const childEnv = environment();
   childEnv.MTERM_STAGING_EXPECTED_SOURCE_COMMIT = deployed;
   const args =
     mode === 'probe'
       ? [path.join(ROOT, 'scripts', 'staging-handoff.mjs'), '--probe-child']
-      : [path.join(ROOT, 'scripts', 'verify-remote-staging.mjs')];
+      : mode === 'cleanup'
+        ? [path.join(ROOT, 'scripts', 'staging-handoff.mjs'), '--cleanup-child']
+        : [path.join(ROOT, 'scripts', 'verify-remote-staging.mjs')];
   clock.check();
   const child = spawn(process.execPath, args, {
     cwd: ROOT,
@@ -406,12 +517,17 @@ async function fixedChild(clear, mode, deployed, source, clock, state) {
       else rejectOutput();
       return;
     }
-    if (text === 'INPUT_REQUIRED') return;
+    if (mode !== 'cleanup' && text === 'INPUT_REQUIRED') return;
     let value;
     try {
       value = JSON.parse(text);
     } catch {
       rejectOutput();
+      return;
+    }
+    if (mode === 'cleanup') {
+      if (!finalReceipt && cleanupReceipt(value, deployed)) finalReceipt = { cleanup: true };
+      else rejectOutput();
       return;
     }
     if (
@@ -521,6 +637,7 @@ async function fixedChild(clear, mode, deployed, source, clock, state) {
     requireValue(await clock.wait(() => spawned), 'CHILD_START_FAILED');
     matchSource(await clock.wait(describeSource), source);
     clock.check();
+    tokenEligible();
     requireValue(
       !failed &&
         !state.closed &&
@@ -561,7 +678,7 @@ async function fixedChild(clear, mode, deployed, source, clock, state) {
         finalReceipt,
       failed || 'CHILD_FAILED',
     );
-    if (mode === 'smoke') state.reportFile = finalReceipt.reportFile;
+    if (mode === 'smoke' || mode === 'smoke-owned') state.reportFile = finalReceipt.reportFile;
   } finally {
     clearTimeout(outerTimer);
     if (!state.closed) {
@@ -618,8 +735,11 @@ export async function runReceiver() {
   try {
     runtime();
     mode = process.env.MTERM_STAGING_HANDOFF_MODE;
-    requireValue(mode === 'probe' || mode === 'smoke', 'MODE_REQUIRED');
-    requireValue(mode !== 'smoke' || process.platform === 'win32', 'SMOKE_REQUIRES_WINDOWS');
+    requireValue(mode === 'probe' || mode === 'smoke' || OWNED_MODES.includes(mode), 'MODE_REQUIRED');
+    requireValue(mode === 'probe' || process.platform === 'win32', 'SMOKE_REQUIRES_WINDOWS');
+    const owned = OWNED_MODES.includes(mode)
+      ? ownedSelection(process.env.MTERM_STAGING_OWNED_TOKEN_JSON)
+      : null;
     const selected = {
       localSourceCommit: process.env.MTERM_STAGING_LOCAL_SOURCE_COMMIT,
       bundleSha256: process.env.MTERM_STAGING_HANDOFF_BUNDLE_SHA256,
@@ -645,10 +765,11 @@ export async function runReceiver() {
     const keyHash = await clock.wait(() => webcrypto.subtle.digest('SHA-256', spki));
     matchSource(await clock.wait(describeSource), selected);
     runNonce = randomBytes(16).toString('hex');
+    requireValue(!owned || runNonce !== owned.ownership.creationRunNonce, 'OWNERSHIP_REJECTED');
     const challenge = {
       type: 'mterm-staging-handoff-challenge',
-      protocol: 1,
-      purpose: 'mterm-staging-handoff',
+      protocol: owned ? 2 : 1,
+      purpose: owned ? 'mterm-staging-owned-handoff' : 'mterm-staging-handoff',
       mode,
       runNonce,
       recipientKeySha256: Buffer.from(keyHash).toString('hex'),
@@ -661,8 +782,12 @@ export async function runReceiver() {
       sealerSha256: source.sealerSha256,
       harnessSha256: source.harnessSha256,
       expectedDeployedSourceCommit: deployed,
-      tokenName: 'mterm-staging-handoff-' + runNonce,
-      tokenDuration: '30m',
+      ...(owned
+        ? { ownership: owned.ownership, renewal: owned.renewal }
+        : {
+            tokenName: 'mterm-staging-handoff-' + runNonce,
+            tokenDuration: '30m',
+          }),
       publicKey: Buffer.from(spki).toString('base64url'),
     };
     clock.check();
@@ -683,7 +808,31 @@ export async function runReceiver() {
     }
     const expected = protectedHeader(challenge, header ?? {});
     requireValue(JSON.stringify(expected) === headerText, 'ENVELOPE_REJECTED');
-    if (mode === 'probe')
+    let tokenEligible = () => {};
+    if (owned) {
+      const receivedWall = Date.now(),
+        receivedMono = performance.now();
+      requireValue(
+        Number.isSafeInteger(header.providerObservedAt) &&
+          Number.isSafeInteger(header.tokenExpiresAt) &&
+          receivedWall - header.providerObservedAt <= DELIVERY_MS &&
+          header.providerObservedAt - receivedWall <= 5000 &&
+          header.tokenExpiresAt > header.providerObservedAt &&
+          header.tokenExpiresAt - header.providerObservedAt <= 1805000 &&
+          typeof header.renewed === 'boolean' &&
+          (owned.renewal !== 'none' || header.renewed === false) &&
+          header.rotated === true,
+        'ENVELOPE_REJECTED',
+      );
+      const remaining = header.tokenExpiresAt - receivedWall;
+      tokenEligible = () =>
+        requireValue(
+          header.tokenExpiresAt - Date.now() > CHILD_MS + CLOSE_MS &&
+            remaining - (performance.now() - receivedMono) > CHILD_MS + CLOSE_MS,
+          'TOKEN_LIFETIME_REJECTED',
+        );
+      tokenEligible();
+    } else if (mode === 'probe')
       requireValue(
         header.tokenId === null && header.tokenCreatedAt === null && header.tokenExpiresAt === null,
         'ENVELOPE_REJECTED',
@@ -726,8 +875,9 @@ export async function runReceiver() {
     plaintext = undefined;
     matchSource(await clock.wait(describeSource), selected);
     clock.check();
+    tokenEligible();
     requireValue(!outputFailed, 'OUTPUT_CLOSED');
-    await fixedChild(clear, mode, deployed, source, clock, child);
+    await fixedChild(clear, mode, deployed, source, clock, child, tokenEligible);
     return {
       type: 'mterm-staging-handoff-result',
       result: 'passed',
@@ -737,7 +887,12 @@ export async function runReceiver() {
       localBundleSha256: source.bundleSha256,
       expectedDeployedSourceCommit: deployed,
       child,
-      cleanup: mode === 'probe' ? 'not-applicable' : 'child-report-requires-review',
+      cleanup:
+        mode === 'probe'
+          ? 'not-applicable'
+          : mode === 'cleanup'
+            ? 'remote-revocation-confirmed'
+            : 'child-report-requires-review',
       liveAcceptance: false,
     };
   } catch (error) {
@@ -745,7 +900,7 @@ export async function runReceiver() {
       type: 'mterm-staging-handoff-result',
       result: 'failed',
       code: failure(error),
-      ...(mode === 'probe' || mode === 'smoke' ? { mode } : {}),
+      ...(mode === 'probe' || mode === 'smoke' || OWNED_MODES.includes(mode) ? { mode } : {}),
       ...(runNonce ? { runNonce } : {}),
       child,
       cleanup: child.started ? 'unconfirmed' : 'not-started',
@@ -768,6 +923,7 @@ async function cli() {
   let answer;
   try {
     if (args.length === 1 && args[0] === '--describe-source') answer = await describeSource();
+    else if (args.length === 1 && args[0] === '--cleanup-child') answer = await runCleanupChild();
     else if (args.length === 1 && args[0] === '--probe-child') {
       runtime();
       let timer;
@@ -818,3 +974,217 @@ async function isEntryPoint() {
   }
 }
 if (await isEntryPoint()) await cli();
+
+// AI-Change: 2026-11-09-staging-recovery (OpenAI / GPT-6 Astra Pro; self-reported)
+// Fixed cleanup only: no SDK, pairing, filesystem reports, agent or arbitrary URL.
+// A child receipt is a bounded observation, never parent/live acceptance.
+export async function runCleanupChild() {
+  const startedWall = Date.now(),
+    startedMono = performance.now();
+  const bound = 180000,
+    requestMs = 30000,
+    maximum = 1048576;
+  let clear,
+    expected = null,
+    inputTimer;
+  const answer = {
+    type: 'mterm-staging-handoff-cleanup-child',
+    result: 'failed',
+    expectedSourceCommit: null,
+    buildIdentity: { initial: { edge: null, registry: null }, final: { edge: null, registry: null } },
+    identityVerified: false,
+    initialInventory: { devices: 0, grants: 0 },
+    revoke: { attempted: false, acknowledged: false },
+    finalInventoryEmpty: false,
+    cleanup: 'not-attempted',
+    code: null,
+    liveAcceptance: false,
+  };
+  const check = () =>
+    requireValue(
+      Date.now() < startedWall + bound && performance.now() < startedMono + bound,
+      'CLEANUP_TIMEOUT',
+    );
+  const latch = (error) => {
+    answer.code ||= failure(error);
+  };
+  const object = (v) => v && typeof v === 'object' && !Array.isArray(v);
+  const request = async (url, mutation = false) => {
+    check();
+    const controller = new AbortController();
+    let timer, reader;
+    const timeout = Math.max(
+      1,
+      Math.min(requestMs, startedWall + bound - Date.now(), startedMono + bound - performance.now()),
+    );
+    try {
+      return await Promise.race([
+        (async () => {
+          const headers = url.startsWith(ORIGINS[1] + '/')
+            ? {
+                'CF-Access-Client-Id': clear.client_id,
+                'CF-Access-Client-Secret': clear.client_secret,
+                ...(mutation ? { 'Content-Type': 'application/json', Origin: ORIGINS[1] } : {}),
+              }
+            : {};
+          if (mutation) answer.revoke.attempted = true;
+          const response = await fetch(url, {
+            method: mutation ? 'POST' : 'GET',
+            redirect: 'manual',
+            headers,
+            signal: controller.signal,
+            ...(mutation ? { body: '{}' } : {}),
+          });
+          check();
+          requireValue(response.status === 200, 'CLEANUP_HTTP_REJECTED');
+          const length = response.headers.get('content-length');
+          requireValue(
+            length === null || (/^\d+$/.test(length) && Number(length) <= maximum),
+            'CLEANUP_BODY_LIMIT',
+          );
+          requireValue(
+            response.body && typeof response.body.getReader === 'function',
+            'CLEANUP_RESPONSE_REJECTED',
+          );
+          reader = response.body.getReader();
+          let size = 0;
+          const chunks = [];
+          for (;;) {
+            const next = await reader.read();
+            check();
+            if (next.done) break;
+            size += next.value.byteLength;
+            requireValue(size <= maximum, 'CLEANUP_BODY_LIMIT');
+            chunks.push(next.value);
+          }
+          const buffer = new Uint8Array(size);
+          let offset = 0;
+          for (const chunk of chunks) {
+            buffer.set(chunk, offset);
+            offset += chunk.byteLength;
+          }
+          let body;
+          try {
+            body = JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(buffer));
+          } catch {
+            throw new HandoffError('CLEANUP_RESPONSE_REJECTED');
+          }
+          requireValue(object(body), 'CLEANUP_RESPONSE_REJECTED');
+          return body;
+        })(),
+        new Promise((_, reject) => {
+          timer = setTimeout(() => {
+            controller.abort();
+            reject(new HandoffError('CLEANUP_REQUEST_TIMEOUT'));
+          }, timeout);
+        }),
+      ]);
+    } finally {
+      clearTimeout(timer);
+      controller.abort();
+      if (reader) void reader.cancel().catch(() => {});
+    }
+  };
+  const health = async (phase) => {
+    const value = await request(ORIGINS[0] + '/health');
+    requireValue(
+      value.enabled === true && value.environment === 'staging' && value.build === expected,
+      'CLEANUP_EDGE_REJECTED',
+    );
+    answer.buildIdentity[phase].edge = expected;
+  };
+  const inventory = async (phase) => {
+    const value = await request(ORIGINS[1] + '/api/dashboard');
+    requireValue(
+      value.authenticated === true && value.identityKind === 'staging-service' && value.build === expected,
+      'CLEANUP_IDENTITY_REJECTED',
+    );
+    for (const field of ['devices', 'grants'])
+      requireValue(
+        Array.isArray(value[field]) &&
+          value[field].length <= 10000 &&
+          value[field].every(
+            (item) =>
+              object(item) &&
+              typeof item.id === 'string' &&
+              item.id.length > 0 &&
+              item.id.length <= 256 &&
+              !/[\x00-\x1f\x7f]/.test(item.id),
+          ),
+        'CLEANUP_INVENTORY_REJECTED',
+      );
+    answer.buildIdentity[phase].registry = expected;
+    if (phase === 'initial') {
+      answer.identityVerified = true;
+      answer.initialInventory = { devices: value.devices.length, grants: value.grants.length };
+    } else {
+      answer.finalInventoryEmpty = value.devices.length === 0 && value.grants.length === 0;
+      requireValue(answer.finalInventoryEmpty, 'CLEANUP_NOT_EMPTY');
+    }
+  };
+  try {
+    runtime();
+    requireValue(process.platform === 'win32', 'CLEANUP_REQUIRES_WINDOWS');
+    requireValue(
+      typeof process.env.MTERM_STAGING_EXPECTED_SOURCE_COMMIT === 'string' &&
+        process.env.MTERM_STAGING_EXPECTED_SOURCE_COMMIT.length === 40 &&
+        canonical(process.env.MTERM_STAGING_EXPECTED_SOURCE_COMMIT, HEX40),
+      'SOURCE_SELECTION_REQUIRED',
+    );
+    expected = process.env.MTERM_STAGING_EXPECTED_SOURCE_COMMIT;
+    answer.expectedSourceCommit = expected;
+    try {
+      const line = await Promise.race([
+        readFrame(process.stdin, 2048),
+        new Promise((_, reject) => {
+          inputTimer = setTimeout(() => reject(new HandoffError('CLEANUP_INPUT_TIMEOUT')), 10000);
+        }),
+      ]);
+      clear = credentials(line, 'cleanup');
+    } finally {
+      clearTimeout(inputTimer);
+    }
+    await health('initial');
+    await inventory('initial');
+    try {
+      const acknowledgement = await request(ORIGINS[1] + '/api/revoke-all', true);
+      requireValue(acknowledgement.revoked === true, 'CLEANUP_REVOKE_UNCONFIRMED');
+      answer.revoke.acknowledged = true;
+    } catch (error) {
+      latch(error);
+    }
+    if (answer.revoke.attempted) {
+      // A lost acknowledgement remains latched. Both fixed observations are still
+      // attempted once; final emptiness cannot turn an uncertain POST into success.
+      try {
+        await health('final');
+      } catch (error) {
+        latch(error);
+      }
+      try {
+        await inventory('final');
+      } catch (error) {
+        latch(error);
+      }
+    }
+    check();
+    if (!answer.code && answer.revoke.acknowledged && answer.finalInventoryEmpty) {
+      answer.result = 'passed';
+      answer.cleanup = 'remote-revocation-confirmed';
+    }
+  } catch (error) {
+    latch(error);
+  } finally {
+    clearTimeout(inputTimer);
+    process.stdin.destroy();
+    if (clear) {
+      clear.client_id = '';
+      clear.client_secret = '';
+    }
+  }
+  if (answer.result !== 'passed') {
+    answer.code ||= 'CLEANUP_FAILED';
+    answer.cleanup = answer.revoke.attempted ? 'remote-revocation-unconfirmed' : 'not-attempted';
+  }
+  return answer;
+}

@@ -272,7 +272,7 @@
         "tests/file-cancellation-mcp.test.mjs",
         "scripts/verify-package.mjs"
       ],
-      "observation": "Unchanged archived-base45cases:7passed/38failed. Corrected focused65/65 and independent45/45. Actual SDK cancellation crosses the stdio boundary, suppresses post-resolution target I/O and records CANCELLED. Real file/directory cleanup and remote four-slot retention observed with scheduling gates; actual AbortSignal deadlines are exercised.",
+      "observation": "Unchanged archived-base45cases:7passed/38failed. Corrected focused65/65 and independent45/45. Actual SDK cancellation crosses the stdio boundary, suppresses post-resolution target I/O and records CANCELLED. Real file/directory cleanup and remote four-slot retention observed with scheduling gates; actual AbortSignal deadlines are exercised. Subsequent originalPR215 Ubuntu failure preserved: timer expiry was misclassified by a wall-clock-only catch. Added real fired-deadline/controlled-wall-clock regression is RED45/46 on originalcandidate; revisedfinal RED7/46 on base and GREEN66/66. Both owned signal and wall-clock expiry now classify admitted CANCELLED; new-head qualification remains required.",
       "limits": "Controlled scheduling and injected failures on owned fixtures; no guarantee of aborting pending OS work. No deployed gateway, production load, disconnect/restart, owner auth or acceptance qualification. Existing native search timeout/truncation semantics and historical live metadata remain unchanged."
     }
   ],

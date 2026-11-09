@@ -404,6 +404,27 @@ for (const operation of operations) {
   });
 }
 
+test('an expired owned deadline signal wins even when the wall clock is just before expiry', async (t) => {
+  const f = await fixture(t);
+  const adapter = await RemoteReadAdapter.create({ root: f.root, deviceId: randomUUID() });
+  const waitDeadline = observeDeadline(t);
+  const request = remoteRequest(adapter, operations[0], 250);
+  const resolve = adapter.files.policy.resolve.bind(adapter.files.policy);
+  let resolved = false;
+  t.mock.method(adapter.files.policy, 'resolve', async (...args) => {
+    const full = await resolve(...args);
+    await waitDeadline();
+    // Preserve the actual fired timer while deterministically reproducing clock disagreement.
+    t.mock.method(Date, 'now', () => request.deadline - 1);
+    resolved = true;
+    return full;
+  });
+  const counts = countTargetIo(t, f.file, () => resolved);
+  assert.equal(errorCode(await adapter.execute(request)), 'DEADLINE_EXCEEDED');
+  assert.equal(Date.now(), request.deadline - 1);
+  noIo(counts);
+});
+
 test('remote deadline does not relabel an unrelated filesystem failure as cancellation', async (t) => {
   const f = await fixture(t);
   const adapter = await RemoteReadAdapter.create({ root: f.root, deviceId: randomUUID() });

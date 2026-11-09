@@ -553,7 +553,7 @@ const cancellationLog = path.join(output, 'file-cancellation-tests.tap');
 await fs.writeFile(cancellationLog, cancellationOutput);
 assert.equal(cancellationAcceptance.exit, 0, 'Installed cancellation tests failed; see retained log');
 const cancellationTests = Number(cancellationAcceptance.stdout.match(/^# tests (\d+)$/m)?.[1]);
-assert.ok(cancellationTests >= 45, 'Installed cancellation tests did not run');
+assert.ok(cancellationTests >= 46, 'Installed cancellation tests did not run');
 for (const field of ['fail', 'skipped', 'cancelled'])
   assert.match(cancellationAcceptance.stdout, new RegExp('^# ' + field + ' 0$', 'm'));
 const installedFileCancellation = {

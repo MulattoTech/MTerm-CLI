@@ -52,6 +52,7 @@ export class RemoteReadAdapter {
   }
   async execute(request: ToolRequest, signal?: AbortSignal): Promise<ToolResult> {
     let counted = false;
+    let deadline: AbortSignal | undefined;
     const envelope = {
       version: WIRE_VERSION,
       requestId: UUID_PATTERN.test(request?.requestId ?? '') ? request.requestId : 'invalid',
@@ -87,7 +88,7 @@ export class RemoteReadAdapter {
       this.admitted.set(request.requestId, request.deadline + 60000);
       this.active++;
       counted = true;
-      const deadline = AbortSignal.timeout(Math.max(1, request.deadline - Date.now()));
+      deadline = AbortSignal.timeout(Math.max(1, request.deadline - Date.now()));
       const bound = signal ? AbortSignal.any([signal, deadline]) : deadline;
       let value: Record<string, unknown>;
       switch (request.tool) {
@@ -117,9 +118,10 @@ export class RemoteReadAdapter {
       return { ...envelope, result };
     } catch (error) {
       const safe = safeError(error);
-      // Match the existing late-success precedence without hiding unrelated I/O/admission failures.
+      // A fired owned timer remains an expiry even if wall-clock granularity disagrees.
+      // Preserve late-settlement precedence without hiding unrelated I/O/admission failures.
       const failure =
-        counted && safe.code === 'CANCELLED' && Date.now() >= request.deadline
+        counted && safe.code === 'CANCELLED' && (deadline?.aborted === true || Date.now() >= request.deadline)
           ? { code: 'DEADLINE_EXCEEDED', message: 'Remote tool exceeded its deadline.' }
           : safe;
       const value = { ok: false, error: failure };

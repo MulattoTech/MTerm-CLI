@@ -285,9 +285,9 @@ deadlines at both gateway and device. An OS file read already in progress may fi
 before cancellation is observed; late results are refused. No remote state-changing
 filesystem or process operation is enabled.
 
-For an admitted remote operation, a cooperative `CANCELLED` error observed at or
-after the request deadline is returned as `DEADLINE_EXCEEDED`. Explicit cancellation
-observed before expiry remains `CANCELLED`. Other errors already surfaced by the
+For an admitted remote operation, a cooperative `CANCELLED` error is returned as
+`DEADLINE_EXCEEDED` if its owned deadline signal has fired or the wall clock has
+reached the request deadline. Otherwise it remains `CANCELLED`. Other errors already surfaced by the
 tool, including validation and admission failures, retain their sanitized codes. This settlement rule also
 applies when a caller cancels before expiry but pending work finishes after it; it
 does not claim which signal fired first. Late successful results remain refused.

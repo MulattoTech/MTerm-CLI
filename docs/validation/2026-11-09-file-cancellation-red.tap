@@ -2,7 +2,7 @@ TAP version 13
 # Subtest: actual SDK cancellation reaches native mterm_read_file before post-resolution I/O
 not ok 1 - actual SDK cancellation reaches native mterm_read_file before post-resolution I/O
   ---
-  duration_ms: 247.240083
+  duration_ms: 220.453014
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation-mcp.test.mjs:37:3'
   failureType: 'testCodeFailure'
@@ -24,7 +24,7 @@ not ok 1 - actual SDK cancellation reaches native mterm_read_file before post-re
 # Subtest: actual SDK cancellation reaches native mterm_file_info before post-resolution I/O
 not ok 2 - actual SDK cancellation reaches native mterm_file_info before post-resolution I/O
   ---
-  duration_ms: 209.5853
+  duration_ms: 207.072287
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation-mcp.test.mjs:37:3'
   failureType: 'testCodeFailure'
@@ -46,7 +46,7 @@ not ok 2 - actual SDK cancellation reaches native mterm_file_info before post-re
 # Subtest: actual SDK cancellation reaches native mterm_list_directory before post-resolution I/O
 not ok 3 - actual SDK cancellation reaches native mterm_list_directory before post-resolution I/O
   ---
-  duration_ms: 235.055452
+  duration_ms: 202.942977
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation-mcp.test.mjs:37:3'
   failureType: 'testCodeFailure'
@@ -68,7 +68,7 @@ not ok 3 - actual SDK cancellation reaches native mterm_list_directory before po
 # Subtest: pre-aborted native mterm_read_file does not resolve or access a path
 not ok 4 - pre-aborted native mterm_read_file does not resolve or access a path
   ---
-  duration_ms: 24.689865
+  duration_ms: 23.52783
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:96:3'
   failureType: 'testCodeFailure'
@@ -83,7 +83,7 @@ not ok 4 - pre-aborted native mterm_read_file does not resolve or access a path
 # Subtest: pre-aborted native mterm_file_info does not resolve or access a path
 not ok 5 - pre-aborted native mterm_file_info does not resolve or access a path
   ---
-  duration_ms: 4.473922
+  duration_ms: 4.419889
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:96:3'
   failureType: 'testCodeFailure'
@@ -98,7 +98,7 @@ not ok 5 - pre-aborted native mterm_file_info does not resolve or access a path
 # Subtest: pre-aborted native mterm_list_directory does not resolve or access a path
 not ok 6 - pre-aborted native mterm_list_directory does not resolve or access a path
   ---
-  duration_ms: 4.668621
+  duration_ms: 4.232806
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:96:3'
   failureType: 'testCodeFailure'
@@ -113,19 +113,19 @@ not ok 6 - pre-aborted native mterm_list_directory does not resolve or access a 
 # Subtest: pre-aborted native mterm_search_files does not resolve or access a path
 ok 7 - pre-aborted native mterm_search_files does not resolve or access a path
   ---
-  duration_ms: 3.914699
+  duration_ms: 3.802086
   type: 'test'
   ...
 # Subtest: pre-aborted native mterm_search_content does not resolve or access a path
 ok 8 - pre-aborted native mterm_search_content does not resolve or access a path
   ---
-  duration_ms: 2.397359
+  duration_ms: 3.39364
   type: 'test'
   ...
 # Subtest: native read stops after cancellation during path resolution
 not ok 9 - native read stops after cancellation during path resolution
   ---
-  duration_ms: 3.239278
+  duration_ms: 3.176893
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:114:3'
   failureType: 'testCodeFailure'
@@ -140,7 +140,7 @@ not ok 9 - native read stops after cancellation during path resolution
 # Subtest: native info stops after cancellation during path resolution
 not ok 10 - native info stops after cancellation during path resolution
   ---
-  duration_ms: 2.601306
+  duration_ms: 2.925744
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:114:3'
   failureType: 'testCodeFailure'
@@ -155,7 +155,7 @@ not ok 10 - native info stops after cancellation during path resolution
 # Subtest: native list stops after cancellation during path resolution
 not ok 11 - native list stops after cancellation during path resolution
   ---
-  duration_ms: 3.1571
+  duration_ms: 5.542167
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:114:3'
   failureType: 'testCodeFailure'
@@ -170,7 +170,7 @@ not ok 11 - native list stops after cancellation during path resolution
 # Subtest: native read cancellation after real open closes its handle before settling
 not ok 12 - native read cancellation after real open closes its handle before settling
   ---
-  duration_ms: 3.554145
+  duration_ms: 4.385247
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:132:3'
   failureType: 'testCodeFailure'
@@ -185,7 +185,7 @@ not ok 12 - native read cancellation after real open closes its handle before se
 # Subtest: native read cancellation after real stat closes its handle before settling
 not ok 13 - native read cancellation after real stat closes its handle before settling
   ---
-  duration_ms: 3.317227
+  duration_ms: 2.63099
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:132:3'
   failureType: 'testCodeFailure'
@@ -200,7 +200,7 @@ not ok 13 - native read cancellation after real stat closes its handle before se
 # Subtest: native read cancellation after real read closes its handle before settling
 not ok 14 - native read cancellation after real read closes its handle before settling
   ---
-  duration_ms: 3.268884
+  duration_ms: 2.34629
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:132:3'
   failureType: 'testCodeFailure'
@@ -215,7 +215,7 @@ not ok 14 - native read cancellation after real read closes its handle before se
 # Subtest: native read cancellation after real close closes its handle before settling
 not ok 15 - native read cancellation after real close closes its handle before settling
   ---
-  duration_ms: 2.758323
+  duration_ms: 3.626592
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:132:3'
   failureType: 'testCodeFailure'
@@ -230,7 +230,7 @@ not ok 15 - native read cancellation after real close closes its handle before s
 # Subtest: native metadata cancellation after final real lstat cannot return success
 not ok 16 - native metadata cancellation after final real lstat cannot return success
   ---
-  duration_ms: 2.999397
+  duration_ms: 2.928824
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:171:1'
   failureType: 'testCodeFailure'
@@ -245,7 +245,7 @@ not ok 16 - native metadata cancellation after final real lstat cannot return su
 # Subtest: mterm_list_directory cancellation at directory open closes the real directory
 not ok 17 - mterm_list_directory cancellation at directory open closes the real directory
   ---
-  duration_ms: 3.541936
+  duration_ms: 3.353309
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:197:5'
   failureType: 'testCodeFailure'
@@ -260,7 +260,7 @@ not ok 17 - mterm_list_directory cancellation at directory open closes the real 
 # Subtest: mterm_list_directory cancellation at directory entry closes the real directory
 not ok 18 - mterm_list_directory cancellation at directory entry closes the real directory
   ---
-  duration_ms: 2.8221
+  duration_ms: 1.850272
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:197:5'
   failureType: 'testCodeFailure'
@@ -275,7 +275,7 @@ not ok 18 - mterm_list_directory cancellation at directory entry closes the real
 # Subtest: mterm_list_directory cancellation at directory eof closes the real directory
 not ok 19 - mterm_list_directory cancellation at directory eof closes the real directory
   ---
-  duration_ms: 2.612734
+  duration_ms: 1.554785
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:197:5'
   failureType: 'testCodeFailure'
@@ -290,7 +290,7 @@ not ok 19 - mterm_list_directory cancellation at directory eof closes the real d
 # Subtest: mterm_search_files cancellation at directory open closes the real directory
 not ok 20 - mterm_search_files cancellation at directory open closes the real directory
   ---
-  duration_ms: 3.759094
+  duration_ms: 2.937182
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:197:5'
   failureType: 'testCodeFailure'
@@ -312,13 +312,13 @@ not ok 20 - mterm_search_files cancellation at directory open closes the real di
 # Subtest: mterm_search_files cancellation at directory entry closes the real directory
 ok 21 - mterm_search_files cancellation at directory entry closes the real directory
   ---
-  duration_ms: 2.683451
+  duration_ms: 2.759685
   type: 'test'
   ...
 # Subtest: mterm_search_files cancellation at directory eof closes the real directory
 not ok 22 - mterm_search_files cancellation at directory eof closes the real directory
   ---
-  duration_ms: 2.402777
+  duration_ms: 1.579343
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:197:5'
   failureType: 'testCodeFailure'
@@ -333,7 +333,7 @@ not ok 22 - mterm_search_files cancellation at directory eof closes the real dir
 # Subtest: mterm_search_content cancellation at directory open closes the real directory
 not ok 23 - mterm_search_content cancellation at directory open closes the real directory
   ---
-  duration_ms: 3.027389
+  duration_ms: 2.064485
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:197:5'
   failureType: 'testCodeFailure'
@@ -355,13 +355,13 @@ not ok 23 - mterm_search_content cancellation at directory open closes the real 
 # Subtest: mterm_search_content cancellation at directory entry closes the real directory
 ok 24 - mterm_search_content cancellation at directory entry closes the real directory
   ---
-  duration_ms: 3.058376
+  duration_ms: 2.263906
   type: 'test'
   ...
 # Subtest: mterm_search_content cancellation at directory eof closes the real directory
 not ok 25 - mterm_search_content cancellation at directory eof closes the real directory
   ---
-  duration_ms: 2.049073
+  duration_ms: 1.97526
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:197:5'
   failureType: 'testCodeFailure'
@@ -376,7 +376,7 @@ not ok 25 - mterm_search_content cancellation at directory eof closes the real d
 # Subtest: mterm_list_directory observes cancellation during iterator cleanup
 not ok 26 - mterm_list_directory observes cancellation during iterator cleanup
   ---
-  duration_ms: 3.50462
+  duration_ms: 4.399859
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:229:3'
   failureType: 'testCodeFailure'
@@ -391,7 +391,7 @@ not ok 26 - mterm_list_directory observes cancellation during iterator cleanup
 # Subtest: mterm_search_files observes cancellation during iterator cleanup
 not ok 27 - mterm_search_files observes cancellation during iterator cleanup
   ---
-  duration_ms: 3.149684
+  duration_ms: 4.368831
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:229:3'
   failureType: 'testCodeFailure'
@@ -406,7 +406,7 @@ not ok 27 - mterm_search_files observes cancellation during iterator cleanup
 # Subtest: mterm_search_content observes cancellation during iterator cleanup
 not ok 28 - mterm_search_content observes cancellation during iterator cleanup
   ---
-  duration_ms: 4.297416
+  duration_ms: 4.046776
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:229:3'
   failureType: 'testCodeFailure'
@@ -421,7 +421,7 @@ not ok 28 - mterm_search_content observes cancellation during iterator cleanup
 # Subtest: nested content cancellation closes the file and every ancestor directory
 not ok 29 - nested content cancellation closes the file and every ancestor directory
   ---
-  duration_ms: 4.517638
+  duration_ms: 3.476766
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:263:1'
   failureType: 'testCodeFailure'
@@ -436,7 +436,7 @@ not ok 29 - nested content cancellation closes the file and every ancestor direc
 # Subtest: content search preserves cancellation at its final file read
 not ok 30 - content search preserves cancellation at its final file read
   ---
-  duration_ms: 3.491039
+  duration_ms: 2.715908
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:297:3'
   failureType: 'testCodeFailure'
@@ -451,7 +451,7 @@ not ok 30 - content search preserves cancellation at its final file read
 # Subtest: filename search preserves cancellation at final path resolution
 not ok 31 - filename search preserves cancellation at final path resolution
   ---
-  duration_ms: 3.034941
+  duration_ms: 3.091875
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:322:3'
   failureType: 'testCodeFailure'
@@ -466,7 +466,7 @@ not ok 31 - filename search preserves cancellation at final path resolution
 # Subtest: content search preserves cancellation at its final file read with an I/O failure
 not ok 32 - content search preserves cancellation at its final file read with an I/O failure
   ---
-  duration_ms: 3.393522
+  duration_ms: 4.159777
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:297:3'
   failureType: 'testCodeFailure'
@@ -481,7 +481,7 @@ not ok 32 - content search preserves cancellation at its final file read with an
 # Subtest: filename search preserves cancellation at final path resolution with a policy failure
 not ok 33 - filename search preserves cancellation at final path resolution with a policy failure
   ---
-  duration_ms: 3.638723
+  duration_ms: 3.730298
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:322:3'
   failureType: 'testCodeFailure'
@@ -496,7 +496,7 @@ not ok 33 - filename search preserves cancellation at final path resolution with
 # Subtest: remote caller cancellation reaches mterm_read_file before further I/O
 not ok 34 - remote caller cancellation reaches mterm_read_file before further I/O
   ---
-  duration_ms: 6.268943
+  duration_ms: 5.7796
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:346:3'
   failureType: 'testCodeFailure'
@@ -531,7 +531,7 @@ not ok 34 - remote caller cancellation reaches mterm_read_file before further I/
 # Subtest: remote caller cancellation reaches mterm_file_info before further I/O
 not ok 35 - remote caller cancellation reaches mterm_file_info before further I/O
   ---
-  duration_ms: 8.367629
+  duration_ms: 6.949114
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:346:3'
   failureType: 'testCodeFailure'
@@ -566,7 +566,7 @@ not ok 35 - remote caller cancellation reaches mterm_file_info before further I/
 # Subtest: remote caller cancellation reaches mterm_list_directory before further I/O
 not ok 36 - remote caller cancellation reaches mterm_list_directory before further I/O
   ---
-  duration_ms: 2.528246
+  duration_ms: 3.020317
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:346:3'
   failureType: 'testCodeFailure'
@@ -601,19 +601,19 @@ not ok 36 - remote caller cancellation reaches mterm_list_directory before furth
 # Subtest: remote caller cancellation reaches mterm_search_files before further I/O
 ok 37 - remote caller cancellation reaches mterm_search_files before further I/O
   ---
-  duration_ms: 4.748207
+  duration_ms: 4.069209
   type: 'test'
   ...
 # Subtest: remote caller cancellation reaches mterm_search_content before further I/O
 ok 38 - remote caller cancellation reaches mterm_search_content before further I/O
   ---
-  duration_ms: 2.639865
+  duration_ms: 2.923701
   type: 'test'
   ...
 # Subtest: real remote deadline cancels mterm_read_file without subsequent I/O
 not ok 39 - real remote deadline cancels mterm_read_file without subsequent I/O
   ---
-  duration_ms: 253.619633
+  duration_ms: 255.753509
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:385:3'
   failureType: 'testCodeFailure'
@@ -648,7 +648,7 @@ not ok 39 - real remote deadline cancels mterm_read_file without subsequent I/O
 # Subtest: real remote deadline cancels mterm_file_info without subsequent I/O
 not ok 40 - real remote deadline cancels mterm_file_info without subsequent I/O
   ---
-  duration_ms: 255.319629
+  duration_ms: 253.763336
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:385:3'
   failureType: 'testCodeFailure'
@@ -683,7 +683,7 @@ not ok 40 - real remote deadline cancels mterm_file_info without subsequent I/O
 # Subtest: real remote deadline cancels mterm_list_directory without subsequent I/O
 not ok 41 - real remote deadline cancels mterm_list_directory without subsequent I/O
   ---
-  duration_ms: 252.482528
+  duration_ms: 254.684889
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:385:3'
   failureType: 'testCodeFailure'
@@ -718,7 +718,7 @@ not ok 41 - real remote deadline cancels mterm_list_directory without subsequent
 # Subtest: real remote deadline cancels mterm_search_files without subsequent I/O
 not ok 42 - real remote deadline cancels mterm_search_files without subsequent I/O
   ---
-  duration_ms: 253.138431
+  duration_ms: 254.804175
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:385:3'
   failureType: 'testCodeFailure'
@@ -742,7 +742,7 @@ not ok 42 - real remote deadline cancels mterm_search_files without subsequent I
 # Subtest: real remote deadline cancels mterm_search_content without subsequent I/O
 not ok 43 - real remote deadline cancels mterm_search_content without subsequent I/O
   ---
-  duration_ms: 253.117159
+  duration_ms: 253.783175
   type: 'test'
   location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:385:3'
   failureType: 'testCodeFailure'
@@ -763,18 +763,42 @@ not ok 43 - real remote deadline cancels mterm_search_content without subsequent
     async Test.run (node:internal/test_runner/test:1409:7)
     async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
   ...
-# Subtest: remote deadline does not relabel an unrelated filesystem failure as cancellation
-ok 44 - remote deadline does not relabel an unrelated filesystem failure as cancellation
+# Subtest: an expired owned deadline signal wins even when the wall clock is just before expiry
+not ok 44 - an expired owned deadline signal wins even when the wall clock is just before expiry
   ---
-  duration_ms: 252.150213
+  duration_ms: 254.5933
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:407:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+
+    + 'CANCELLED'
+    - 'DEADLINE_EXCEEDED'
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'DEADLINE_EXCEEDED'
+  actual: 'CANCELLED'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:423:10)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: remote deadline does not relabel an unrelated filesystem failure as cancellation
+ok 45 - remote deadline does not relabel an unrelated filesystem failure as cancellation
+  ---
+  duration_ms: 254.772078
   type: 'test'
   ...
 # Subtest: remote cancelled reads retain all four slots through real open and close cleanup
-not ok 45 - remote cancelled reads retain all four slots through real open and close cleanup
+not ok 46 - remote cancelled reads retain all four slots through real open and close cleanup
   ---
-  duration_ms: 3.827927
+  duration_ms: 17.015148
   type: 'test'
-  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:422:1'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:443:1'
   failureType: 'testCodeFailure'
   error: |-
     Expected values to be strictly equal:
@@ -787,16 +811,16 @@ not ok 45 - remote cancelled reads retain all four slots through real open and c
   actual: 8
   operator: 'strictEqual'
   stack: |-
-    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:471:12)
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/file-cancellation.test.mjs:492:12)
     async Test.run (node:internal/test_runner/test:1409:7)
     async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
   ...
-1..45
-# tests 45
+1..46
+# tests 46
 # suites 0
 # pass 7
-# fail 38
+# fail 39
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 2717.864755
+# duration_ms 2904.571977

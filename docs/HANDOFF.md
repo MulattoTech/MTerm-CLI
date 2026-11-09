@@ -1,3 +1,15 @@
+# Owned stop recovery development checkpoint — 2026-11-09 UTC
+
+Session `MTERM-WEB-20261109T031131Z-e0efd5d4` owns `coord/mterm/issue-131` and branch `fix/issue-131-stop-retry-20261109`, based on `fcfd221b7896c1307fd17b5881a1cb2df20d3248`. Work is in an isolated normal clone; the unpublished workstation checkout and live bridge are preserved.
+
+The current bridge responded to authenticated file/configuration calls with tool-server 0.3.1 / bridge client 0.4.0; 53 tools were advertised, not all exercised. Its reported Node 27 alpha runtime is a separate operational concern, not changed or certified here. Source tests use Node 24.
+
+[Owned stop recovery evidence](validation/2026-11-09-owned-stop-retry.md): exact final fixture RED0/5 on archived main, focused GREEN41/41. Settled stop promises no longer poison explicit recovery, and in-flight callers still coalesce. No early capacity release or automatic restart. The installed verifier now includes the five recovery cases. Independent review and exact committed package/security/hosted qualification are next; do not treat this dated checkpoint as merge or deployment evidence.
+
+All 300 stages and AUG/DCP/WEB acceptance remain unchanged. Standing owner authorization applies; no new owner action or model-consuming lane. After qualified normal merge/main checks, continue with the independently reproduced Git common-metadata boundary under #66. Preserve existing branches and user work.
+
+---
+
 # ChatGPT account-plugin operations checkpoint — 2026-11-08 UTC
 
 See [ChatGPT connector operations](deployment/CHATGPT_CONNECTOR.md) for the

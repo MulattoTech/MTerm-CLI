@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-09-owned-stop-retry; exercise explicit recovery against the actual installed process service.
 // Modified: 2026-11-08-aug003-registry-persistence; actual installed file/registry fault regressions.
 // Modified: 2026-11-08-aug005-lifecycle-observation; require both causal deadline phases from the installed runtime.
 // Modified: 2026-11-08-aug011-update-check; qualify nonmutating update comparisons from the actual packed installation.
@@ -417,6 +418,56 @@ const installedResourceBudgets = {
   hardCpuGpuRamOrDiskWriteQuotas: false,
   log: budgetLog,
 };
+const stopRecoveryAcceptance = await exec(
+  process.execPath,
+  [
+    '--test',
+    '--test-reporter=tap',
+    '--test-concurrency=1',
+    path.join(root, 'tests/process-stop-retry.test.mjs'),
+  ],
+  {
+    cwd: home,
+    env: { ...env, MTERM_VERIFY_BIN: installed },
+    timeout: 30000,
+    maxBuffer: 1048576,
+    windowsHide: true,
+  },
+).then(
+  (result) => ({ ...result, exit: 0 }),
+  (error) => ({
+    stdout: error.stdout ?? '',
+    stderr: error.stderr ?? '',
+    exit: error.code ?? 'unknown',
+  }),
+);
+const stopRecoveryOutput = stopRecoveryAcceptance.stdout + stopRecoveryAcceptance.stderr;
+const stopRecoveryLog = path.join(output, 'process-stop-retry-tests.tap');
+await fs.writeFile(stopRecoveryLog, stopRecoveryOutput);
+assert.equal(stopRecoveryAcceptance.exit, 0, 'Installed stop recovery failed; see retained log');
+const stopRecoveryTests = Number(stopRecoveryAcceptance.stdout.match(/^# tests (\d+)$/m)?.[1]);
+assert.ok(stopRecoveryTests >= 5, 'Installed stop recovery tests did not run');
+for (const field of ['fail', 'skipped', 'cancelled'])
+  assert.match(stopRecoveryAcceptance.stdout, new RegExp('^# ' + field + ' 0$', 'm'));
+const installedProcessStopRecovery = {
+  ok: true,
+  tests: stopRecoveryTests,
+  failed: 0,
+  skipped: 0,
+  cancelled: 0,
+  moduleBindings: packBindings,
+  fixtureSha256: createHash('sha256')
+    .update(await fs.readFile(path.join(root, 'tests/process-stop-retry.test.mjs')))
+    .digest('hex'),
+  realOwnedChildren: true,
+  injectedTerminationFailure: true,
+  realOsTerminationFailureReproduced: false,
+  detachedDescendantContainment: false,
+  fromOutsideCheckout: true,
+  modelCalls: 0,
+  log: stopRecoveryLog,
+  logSha256: createHash('sha256').update(stopRecoveryOutput).digest('hex'),
+};
 const isolationBindings = [];
 for (const name of [
   'cli.js',
@@ -643,6 +694,7 @@ const report = {
   installedPackUpdateCheck,
   installedRegistryPersistence,
   installedResourceBudgets,
+  installedProcessStopRecovery,
   installedIsolation,
   installedProvenance,
   fullTransitiveLicenseClearance: false,

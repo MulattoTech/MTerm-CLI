@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "changeId": "2026-11-08-chatgpt-connector-operations",
-  "reviewedAt": "2026-11-08T19:47:46.246Z",
-  "sourceFingerprint": "587c8744f4166824e3ddcde15f7d95ce8692faf12c78dec0d8508add6df72164",
+  "changeId": "2026-11-09-owned-stop-retry",
+  "reviewedAt": "2026-11-09T03:15:46.411Z",
+  "sourceFingerprint": "545c857b9bb24dea6999e33a109ae1ee78dac2d4c7da1fb937e3dc9181c23d96",
   "sourceFiles": {
     ".gitattributes": "fa9689011bd85ae1fad8333facd3b0d5f4f14dffff98bd9744a62e58ab4cfae5",
     ".github/CODEOWNERS": "a9d3f8ebc91ecca981ebe65e5269f40aeb726ac0701418dc4734a94bcb3e53db",
@@ -78,7 +78,7 @@
     "scripts/verify-configuration-installed.mjs": "ff38f93d738b4a6d47347d62fc62c84bedb1228ea0ff488e0aee1bd44232e49b",
     "scripts/verify-isolation-live.mjs": "fdd16600d2190dc398a5210afa88fd0c0302b3713b826bb910a0b7955d2793ff",
     "scripts/verify-managed-codex.mjs": "499663c6a9616f4005f96e4ea85df74173b9dd74164e169d481403404dc5fd07",
-    "scripts/verify-package.mjs": "c8d9bd09e09c459a416ba757bab124867d0f64f4c6d7afb02248f93be5ef3263",
+    "scripts/verify-package.mjs": "07bd6a456277c5d04ac33bb3df10b9349842c70a8591210ee8f6585d04720218",
     "scripts/verify-provenance-installed.mjs": "326d8c7b13cd69b1e11ed4f4edf193059c7004c369453229245a2b8b66ee6a14",
     "scripts/verify-remote-staging.mjs": "73b2a600f0281c4e35f08814f81b9c743758cf83f645b4e7483cddca252ca54d",
     "scripts/verify-remote-state-installed.mjs": "d6061a2fe27bf8a1b20546ebac7e0fa3f28b34408a5534eb82b47832d7722c2f",
@@ -100,7 +100,7 @@
     "src/mcp.ts": "c30c46b9f975cdb1b0b39cfe34e76b7ce2ca9821ce91cb8549ca989ed325e88e",
     "src/pack-updates.ts": "65c70642995e99d277aeacfc286509d84dac1bb9adcafd6311da1cdebcd377bc",
     "src/policy.ts": "a8c2bce8f1f99656ea4dfd138080bf3df3fa9f7f79be0dcb6f398bddf5d6afbb",
-    "src/processes.ts": "53b1ce5e52c1e71ef0a998519398660d5afd2806eab1df3ad2f8258a38cf4bde",
+    "src/processes.ts": "3e2543b290510eb8cf4089bad9ec2214a51331203b09d8fce5b99cd131ff7c78",
     "src/provenance.ts": "41757bed441e3cc5aba9d5df630c72ed65a515611f3639edbdd777a38e785b01",
     "src/remote/adapter.ts": "962e55ba7aa98ad4d80aa2e830dafe1185cd295348fb7c09722b266f2cf89bca",
     "src/remote/agent.ts": "52db2f3361dd4a57edb4ef43820a9f9cbba758abf070def4e114ebe3b84eda06",
@@ -144,6 +144,7 @@
     "tests/pack-updates.test.mjs": "269bf868d6dc2e3de6d4efc3f59fae3ac0cb88e43543094aa66cd9e323b73133",
     "tests/parity-baseline.test.mjs": "b00883be0f2ec28fadf07f107ebf2a80d058e9a9f4f6010787b31ec6b8c3325a",
     "tests/policy-alias.test.mjs": "3fc4334a4deb624ef3ca14fa12dab373c598e4bba055263ab06917d8d2f98c7d",
+    "tests/process-stop-retry.test.mjs": "2b1032f375e4eb4a8061e73b85679adbe6f588d4b0cad607492fae47bdf9905a",
     "tests/processes.test.mjs": "067246add9d3adc176d761de12eb7bfd37ff751e92b44da862da4e0c602d8e61",
     "tests/provenance.test.mjs": "f882bec5bd6affa29ca79cf5991ac34a87b905bae5284cc79db865bead9992f6",
     "tests/remote-adapter.test.mjs": "4fa2350437c4bda0aeb64c52c4be0e8815fb3b1b8c83c2f7796ad33ac55ffb3e",
@@ -164,7 +165,7 @@
     "vendor/modelcontextprotocol-server/source.patch": "7783730d37d00a3b8dc759e144dee6fa2d3ffb0c73b4bb48bf90151fe4234435",
     "versions.json": "7cadba4f207fa86eef1d32f74e63205d53dc1b344820c0425e67323a38364d29"
   },
-  "catalogFingerprint": "62f4b402bd1a9a7487670e1de978f34f113b952631f933d18d1b6f1ac9e2e6c0",
+  "catalogFingerprint": "b8bf0b68529dcfd39cb11fb4b1ebac4c7791ac5c34c2d27ca9249f5c206d2ce5",
   "weightFingerprint": "3bbcd6acde44c38922429b79939480398048ae2f710640e68fd41705220fff7c",
   "assessment": "Explicit source/catalog review; rendering does not infer progress"
 }

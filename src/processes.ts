@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-09-owned-stop-retry; retain only pending termination attempts, preserving explicit recovery.
 // Modified: 2026-11-08-aug012-resource-budgets; bounded admission, declared disk reservations and per-job limits.
 // Modified: 2026-11-08-aug003-pack-catalog; internal final spawn guard for revocable pack calls.
 // AI-Change: 2026-10-04-local-mcp (OpenAI / GPT-6 Astra Pro; self-reported)
@@ -449,7 +450,16 @@ export class ProcessService {
     const a = processSchemas.session.parse(input);
     const s = this.get(a.sessionId);
     if (this.active(s) && !s.stopping) s.stopping = this.terminate(s);
-    if (s.stopping) await s.stopping;
+    const stopping = s.stopping;
+    if (stopping) {
+      try {
+        await stopping;
+      } finally {
+        // Coalesce only in-flight work. A failed attempt must not poison later explicit retries,
+        // and an older waiter must never clear a newer attempt. Closure alone releases capacity.
+        if (s.stopping === stopping) delete s.stopping;
+      }
+    }
     return { sessionId: s.id, running: this.active(s), state: s.state, treeCleanup: s.treeCleanup };
   }
   private async terminate(s: Session) {

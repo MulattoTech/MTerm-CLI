@@ -10,6 +10,14 @@ The template is not a Wrangler file or an executable deployment script. It defau
 to `MCP_ENABLED=false` and an empty `ALLOWED_EMAILS` value, which denies human
 identities until the exact permitted owner identities are configured outside Git.
 
+The latest qualified code deployment is the [2026-11-09 checkpoint](../validation/2026-11-09-staging-deployment.md):
+source `9e2d6633294e22ff63053564bad1ebeda2dd4059`, Worker version
+`88e1a5ff-ac1e-4b9a-a4c2-31ba32d6221e`, deployment
+`e9b702fb-c6c0-4b15-b101-a9c8307a654f` at 100%. Public discovery, ordinary health and
+anonymous denial were observed after deployment. Authenticated registry adoption
+and a fresh live Windows smoke remain unqualified. The November 2 smoke below is
+historical evidence for its own source and version.
+
 ## Resource inventory
 
 | Resource | Recorded staging identity |
@@ -71,6 +79,11 @@ real Access JWT, PKCE, pairing and MCP paths. Remove its binding, temporary Acce
 policy and service token after final proof. A service identity does not establish
 owner Google sign-in or ChatGPT Web consent, and production does not accept it.
 
+The November 9 upload requested the privacy values above; subsequent settings
+reads returned `logpush:false` and normalized `observability:null`. That null does
+not independently attest the requested query-string redaction flag. Preserve the
+distinction between submitted configuration and observed provider representation.
+
 ## Build and preserve the exact artifact
 
 Start from the reviewed source commit with pinned dependencies. Complete the normal
@@ -123,7 +136,7 @@ Upload through the authorized Cloudflare connector or REST control plane:
 `PUT /accounts/{account_id}/workers/scripts/mterm-gateway-staging`.
 Use `multipart/form-data`: one `metadata` part containing the reviewed upload
 metadata as `application/json`, and one part for each exact module name and filename
-with `Content-Type: application/javascript`. Set `metadata.main_module` to
+with `Content-Type: application/javascript+module`. Set `metadata.main_module` to
 `gateway/worker.mjs`. Upload the saved module content, without rebuilding it between
 acceptance and deployment. Keep credentials out of the artifact and command output.
 
@@ -137,6 +150,13 @@ For subsequent uploads to this existing staging Worker, omit migrations and reta
 the established `REGISTRY` binding/class. Confirm the namespace remains
 `b66edc2d536e474093e1a18d0e88a24d`. Never replay initial provisioning or destroy
 registry storage to simplify an update or rollback.
+
+The November 9 code-only update explicitly used
+`code_update_strategy:{mode:"deferred",max_delay:300}`. Preserve active-owner state
+and inspect the intended adoption strategy before another deployment; do not add
+an immediate reset to make a public health label converge. A write whose response
+is lost is unconfirmed: reconcile the exact script, versions, deployments, ETags,
+module bytes and audit events before considering a new write. Do not blindly retry.
 
 Inspect `GET /accounts/{account_id}/workers/domains` before creating a missing
 custom domain through `PUT /accounts/{account_id}/workers/domains`. A creation body
@@ -154,21 +174,66 @@ artifact manifest for this deployment; it must be exactly 40 lowercase hexadecim
 characters. Do not substitute a short SHA, the current branch name, an inferred
 health response or an unreviewed local HEAD.
 
-In the isolated PowerShell session that will run the smoke, after selecting the
-verified manifest:
+For the connected process transport, use the fixed encrypted handoff. A nonsecret
+preflight demonstrated that plaintext process input is retained in local tool
+history. Never paste a real credential line into process-interaction arguments,
+the chat, commands, environment variables or a plaintext file. The unchanged smoke
+runner still reads its credential line from stdin, but the helper supplies that
+line through an anonymous child pipe inside the authorized Windows process.
+
+After checking out and building the exact reviewed helper revision, inspect its
+public identities with `node scripts/staging-handoff.mjs --describe-source`.
+Independently verify the commit, helper/harness hashes, locked dependencies,
+compiled output and actual raw bundle before selecting the values below. The local
+helper revision and deployed gateway revision are distinct identities; neither is
+inferred from the challenge or a public health response.
+
+In an isolated PowerShell session, first qualify explicit nonsecret probe mode:
 
 ```powershell
 $MTermSmokeManifest = Get-Content -Raw '<verified-artifact-directory>\manifest.json' | ConvertFrom-Json
 $env:MTERM_STAGING_EXPECTED_SOURCE_COMMIT = $MTermSmokeManifest.sourceCommit
-node .\scripts\verify-remote-staging.mjs
+$env:MTERM_STAGING_LOCAL_SOURCE_COMMIT = '<reviewed-full-local-commit>'
+$env:MTERM_STAGING_HANDOFF_BUNDLE_SHA256 = '<independently-verified-raw-bundle-sha256>'
+$env:MTERM_STAGING_HANDOFF_MODE = 'probe'
+node .\scripts\staging-handoff.mjs
 ```
 
-The placeholder is an operator-selected verified artifact directory. Supply the
-dedicated temporary service principal's one JSON credential line only through the
-runner's stdin after `INPUT_REQUIRED`. Its credentials do not belong in this
-nonsecret environment value, command arguments, reports or plaintext files. Keep
-the original service-only and initially-empty identity prerequisites; never run
-this acceptance harness with owner cookies or an owner grant.
+Use the already qualified portable Node executable explicitly when the host's
+global Node differs. The placeholders are deliberately selected nonsecret values,
+not executable defaults. The receiver publishes a fresh public challenge with a
+120-second delivery deadline. Execute the exact reviewed
+`sealStagingHandoff(challenge, cloudflare, selectedAccountId, reviewed)` function
+from `scripts/staging-handoff-seal.mjs` in the connected Cloudflare executor, with
+independently selected mode, local commit/bundle/helper/harness/sealer hashes and
+deployed commit. Supply only its canonical encrypted envelope as the receiver's
+one input line. The function uses a fixed public probe pair and performs no API
+operation in probe mode. A directly invoked `--probe-child` receipt is not proof
+of the parent encryption/transport/lifecycle path.
+
+Before real credentials, verify actual Cloudflare-to-Windows interoperability,
+observed transport-history/result privacy, the anonymous child-pipe transfer,
+natural owned process closure and independent absence of the owned launcher and
+children. Then qualify recovery of an interrupted dedicated principal under
+[#232](https://github.com/MulattoTech/MTerm-CLI/issues/232). Source tests, hosted
+checks and a probe success do not replace that recovery prerequisite.
+
+Only after those gates may a separately selected `smoke` invocation create its
+uniquely named 30-minute service token. Keep the original service-only and
+initially-empty identity prerequisites; never use owner cookies or an owner grant.
+The helper does not add an Access policy, set `STAGING_SERVICE_ID`, revoke MTerm
+authority or recover a reused nonempty principal. Prepare and verify those exact
+owned lifecycle operations separately; the short challenge is not a control-plane
+propagation budget. Removing a Cloudflare token/policy/binding does not revoke
+already created MTerm device or OAuth authority. Preserve recovery access until
+that principal's remote authority and owned local processes are verified cleaned.
+
+The [handoff evidence](../validation/2026-11-09-staging-handoff.md) records source
+binding, one-shot encryption, strict output filtering and bounded child handling.
+Encryption does not attest the OS/Node executable, authenticate a sender by itself,
+make filesystem checks atomic, guarantee memory erasure or hide upstream internals.
+Hard termination or unconfirmed child closure is failed/cleanup-unconfirmed and
+requires deliberate reconciliation; it is never a successful smoke.
 
 Before OAuth registration, pairing or agent startup, public edge health and the
 authenticated registry dashboard must both return the expected full source label.
@@ -192,17 +257,17 @@ versions stayed constant during the run or afterward. Preserve the separate
 control-plane version, artifact/module-hash, configuration, owner-lifecycle and
 rollback checks. See the [source-level regression evidence](../validation/2026-11-09-staging-build-identity.md).
 
-## Final verified staging state
+## Historical complete staging smoke — 2026-11-02
 
 | Evidence identity | Value |
 | --- | --- |
 | Tested source | `b90432a1bc138d59305692a9f74f110a475d0881` |
 | Immutable Windows-built artifact SHA-256 | `97a0457b78e113c058ae8da3d3a6a54fcd93c2b35d1dd1781316c41001ac10a6` |
 | Final smoke Worker version | `f643872f-5fbb-44be-9e3d-a6f8f3f32aab` |
-| Current owner-only version / preferred safe recovery target | `af4fd06e-c4a3-4545-ad22-31d0ae956215` |
-| Current deployment | `5a0ff21c-6341-4e73-b4af-169e98b76db2` |
+| Owner-only version after that smoke / retained recovery target | `af4fd06e-c4a3-4545-ad22-31d0ae956215` |
+| Deployment at that checkpoint | `5a0ff21c-6341-4e73-b4af-169e98b76db2` |
 | Final live SDK-to-Windows checks | 11/11 PASS; finished 2026-11-02 01:24:29 UTC / 2026-11-01 19:24:29 Central |
-| Current MCP mode | Enabled; read-only |
+| MCP mode at that checkpoint | Enabled; read-only |
 | Temporary test identity | Service token and dedicated Access policy deleted; `STAGING_SERVICE_ID` removed |
 | Dashboard authorization | Original owner allow policy only |
 | Workers.dev / preview URLs | Disabled / disabled |
@@ -224,7 +289,7 @@ code. PR #69's matrix/fast runs are
 the push run is [41372068412](https://github.com/MulattoTech/MTerm-CLI/actions/runs/41372068412).
 The [final sprint record](../validation/2026-11-02-remote-sprint.md) is authoritative
 for that sprint's final Git merge/checkpoint status. Existing authenticated owner
-dashboard access and pairing are now observed. Fresh Google/Access login, client
+dashboard access and pairing were observed at that checkpoint. Fresh Google/Access login, client
 consent and ChatGPT tool use remain unverified. This is not production promotion.
 
 ## First recorded complete staging smoke
@@ -316,7 +381,8 @@ the same verified modules with owner-only read-only settings and checked both th
 settings inventory and live endpoint. Remove any temporary identity before reuse.
 
 The preferred recorded target below is the post-cleanup owner-only version, using
-the final verified artifact. Inspect its availability and current compatibility
+the November 2 verified artifact. It was rechecked and its exact module bytes
+retained before the November 9 deployment. Inspect its availability and current compatibility
 before applying it; preserve the existing Durable Object and Access resources.
 
 In the same PowerShell session as the pause commands:
@@ -348,8 +414,8 @@ The [actual staging drill](../validation/2026-11-02-rollback-drill.json) paused 
 MCP intake, observed health enabled=false, restored the recorded owner-only version
 through POST deployments, and observed health enabled=true with anonymous MCP 401.
 After the observed code-10214 settings constraint, the identical saved artifact was
-reuploaded with preserved owner-only bindings. The final version and deployment are
-listed above; the registry namespace was unchanged. No owner device was active.
+reuploaded with preserved owner-only bindings. The final version and deployment for
+that drill are in the November 2 table; the registry namespace was unchanged. No owner device was active.
 This proves that controlled drill, not arbitrary future migration compatibility.
 
 ## Qualification after deployment or rollback

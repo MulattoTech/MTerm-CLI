@@ -136,6 +136,25 @@ acceptance remains open; see the dated Git-boundary regression evidence.
 
 ## Publication boundary
 
+The staging qualification helper uses a one-shot RSA3072/OAEP-SHA256 and
+AES256-GCM envelope so only ciphertext enters the observed logged process-input
+channel. It binds the fixed account/origins, independently selected local source
+and raw execution bundle, separate expected deployed source, mode, nonce, recipient
+key and deadline. A fixed public probe performs no Cloudflare API operation. The
+smoke mode supplies credentials only to the unchanged fixed runner through an
+anonymous child pipe, with a restricted child environment and sanitized output.
+Completion requires pipe finish, the fixed child receipt and actual natural close;
+the outer timeout also bounds a pending pipe write. Unconfirmed termination or
+hard kill is failure with cleanup unconfirmed. See the
+[exact contract and evidence](validation/2026-11-09-staging-handoff.md).
+
+This transport does not attest the Node binary/OS, authenticate a sender on its own,
+make source checks atomic or guarantee memory erasure. Real credentials require
+connected nonsecret interoperability and process/privacy proof plus a separately
+qualified dedicated-principal recovery path. Token expiry or removal of Cloudflare
+policy/binding/token resources does not revoke already created MTerm authority.
+The helper itself changes no Access policy, gateway binding, grant or owner state.
+
 Earlier publication denials are historical observations, not current access proof. Verify the
 current operation and never bypass an active denial with another credential or route. CI results,
 deployed artifacts and local checkpoints belong to their exact source/version identities. Earlier

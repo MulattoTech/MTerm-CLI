@@ -1,0 +1,415 @@
+TAP version 13
+# Subtest: grant expiry: legacy poll cancels queued and delivered work without an alarm sweep
+not ok 1 - grant expiry: legacy poll cancels queued and delivered work without an alarm sweep
+  ---
+  duration_ms: 170.238185
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:298:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    An expired grant cannot dispatch pending work
+    + actual - expected
+
+    + [
+    +   {
+    +     arguments: {
+    +       path: 'grant-expiry-fixture.txt'
+    +     },
+    +     deadline: 1794201395705,
+    +     deviceId: '83e70609-a9df-40ed-bfe7-91aa0e087d76',
+    +     requestId: '32e7e0f9-ce83-4a35-ac67-5372e2f16fe5',
+    +     tool: 'mterm_file_info',
+    +     version: 1
+    +   }
+    + ]
+    - []
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    0:
+      version: 1
+      requestId: '32e7e0f9-ce83-4a35-ac67-5372e2f16fe5'
+      deviceId: '83e70609-a9df-40ed-bfe7-91aa0e087d76'
+      tool: 'mterm_file_info'
+      arguments:
+        path: 'grant-expiry-fixture.txt'
+      deadline: 1794201395705
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:311:12)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: grant expiry: 0-slot poll cancels queued and delivered work without an alarm sweep
+not ok 2 - grant expiry: 0-slot poll cancels queued and delivered work without an alarm sweep
+  ---
+  duration_ms: 33.650592
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:298:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+
+    + Set(0) {}
+    - Set(2) {
+    -   '7e3ca3a1-9f1d-499b-a47b-89d24d737825',
+    -   'b1633ae1-8edb-4d12-9de9-cb3bde02e5b8'
+    - }
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:312:12)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: grant expiry: 4-slot poll cancels queued and delivered work without an alarm sweep
+not ok 3 - grant expiry: 4-slot poll cancels queued and delivered work without an alarm sweep
+  ---
+  duration_ms: 50.5381
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:298:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    An expired grant cannot dispatch pending work
+    + actual - expected
+
+    + [
+    +   {
+    +     arguments: {
+    +       path: 'grant-expiry-fixture.txt'
+    +     },
+    +     deadline: 1794201395909,
+    +     deviceId: '3a423fde-4d9d-42dc-99a9-97ee20abd083',
+    +     requestId: '7edd3d04-b595-4cd3-80b8-3e87290fbe38',
+    +     tool: 'mterm_file_info',
+    +     version: 1
+    +   }
+    + ]
+    - []
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    0:
+      version: 1
+      requestId: '7edd3d04-b595-4cd3-80b8-3e87290fbe38'
+      deviceId: '3a423fde-4d9d-42dc-99a9-97ee20abd083'
+      tool: 'mterm_file_info'
+      arguments:
+        path: 'grant-expiry-fixture.txt'
+      deadline: 1794201395909
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:311:12)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: grant expiry: result acceptance rejects exact expiry before retaining output
+not ok 4 - grant expiry: result acceptance rejects exact expiry before retaining output
+  ---
+  duration_ms: 39.828062
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:332:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    200 !== 410
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 410
+  actual: 200
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:344:12)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: grant expiry: result acceptance rejects after expiry before retaining output
+not ok 5 - grant expiry: result acceptance rejects after expiry before retaining output
+  ---
+  duration_ms: 31.07852
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:332:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    200 !== 410
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 410
+  actual: 200
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:344:12)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: grant expiry: result acceptance rejects missing expiry before retaining output
+not ok 6 - grant expiry: result acceptance rejects missing expiry before retaining output
+  ---
+  duration_ms: 41.456378
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:332:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    200 !== 410
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 410
+  actual: 200
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:344:12)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: grant expiry: just-before success and another live client grant remain independent
+ok 7 - grant expiry: just-before success and another live client grant remain independent
+  ---
+  duration_ms: 67.272168
+  type: 'test'
+  ...
+# Subtest: grant expiry: existing request deadline takes precedence when both boundaries expire
+ok 8 - grant expiry: existing request deadline takes precedence when both boundaries expire
+  ---
+  duration_ms: 51.097224
+  type: 'test'
+  ...
+# Subtest: grant expiry: poll rechecks grant after asynchronous grant and epoch reads
+not ok 9 - grant expiry: poll rechecks grant after asynchronous grant and epoch reads
+  ---
+  duration_ms: 41.742509
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:408:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+
+    + [
+    +   {
+    +     arguments: {
+    +       path: 'grant-expiry-fixture.txt'
+    +     },
+    +     deadline: 1794201396191,
+    +     deviceId: 'e336b2d7-d501-4b3b-a0e3-3d4fb901872b',
+    +     requestId: 'e51c74b7-40c0-41ec-b787-c14c3126630c',
+    +     tool: 'mterm_file_info',
+    +     version: 1
+    +   }
+    + ]
+    - []
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    0:
+      version: 1
+      requestId: 'e51c74b7-40c0-41ec-b787-c14c3126630c'
+      deviceId: 'e336b2d7-d501-4b3b-a0e3-3d4fb901872b'
+      tool: 'mterm_file_info'
+      arguments:
+        path: 'grant-expiry-fixture.txt'
+      deadline: 1794201396191
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:428:16)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: grant expiry: poll rechecks deadline after asynchronous grant and epoch reads
+not ok 10 - grant expiry: poll rechecks deadline after asynchronous grant and epoch reads
+  ---
+  duration_ms: 35.915579
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:408:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+
+    + [
+    +   {
+    +     arguments: {
+    +       path: 'grant-expiry-fixture.txt'
+    +     },
+    +     deadline: 1794201396232,
+    +     deviceId: 'e8c919f7-8d3e-4c25-ac0c-1582a6a8abd9',
+    +     requestId: '7a43faf3-1b35-443d-b1a4-532234deead7',
+    +     tool: 'mterm_file_info',
+    +     version: 1
+    +   }
+    + ]
+    - []
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  actual:
+    0:
+      version: 1
+      requestId: '7a43faf3-1b35-443d-b1a4-532234deead7'
+      deviceId: 'e8c919f7-8d3e-4c25-ac0c-1582a6a8abd9'
+      tool: 'mterm_file_info'
+      arguments:
+        path: 'grant-expiry-fixture.txt'
+      deadline: 1794201396232
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:428:16)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: grant expiry: result rechecks grant after asynchronous grant and epoch reads
+not ok 11 - grant expiry: result rechecks grant after asynchronous grant and epoch reads
+  ---
+  duration_ms: 91.651199
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:408:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    200 !== 410
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 410
+  actual: 200
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:433:16)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: grant expiry: result rechecks deadline after asynchronous grant and epoch reads
+not ok 12 - grant expiry: result rechecks deadline after asynchronous grant and epoch reads
+  ---
+  duration_ms: 67.330638
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:408:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    200 !== 410
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 410
+  actual: 200
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/remote-gateway.test.mjs:433:16)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: gateway fails closed; discovery is public, bounded, and precise
+ok 13 - gateway fails closed; discovery is public, bounded, and precise
+  ---
+  duration_ms: 36.641014
+  type: 'test'
+  ...
+# Subtest: Access JWT signature, audience, expiry and allowlist are enforced independently of headers
+ok 14 - Access JWT signature, audience, expiry and allowlist are enforced independently of headers
+  ---
+  duration_ms: 72.925369
+  type: 'test'
+  ...
+# Subtest: PKCE code is single use and tokens are resource-bound
+ok 15 - PKCE code is single use and tokens are resource-bound
+  ---
+  duration_ms: 44.722821
+  type: 'test'
+  ...
+# Subtest: pairing requires authenticated approval, is one-time, and never grants execution
+ok 16 - pairing requires authenticated approval, is one-time, and never grants execution
+  ---
+  duration_ms: 33.782103
+  type: 'test'
+  ...
+# Subtest: real relay request travels gateway queue to selected agent and result returns once
+ok 17 - real relay request travels gateway queue to selected agent and result returns once
+  ---
+  duration_ms: 553.945467
+  type: 'test'
+  ...
+# Subtest: cross-user and cross-device access, mutation names, and revoked credentials fail closed
+ok 18 - cross-user and cross-device access, mutation names, and revoked credentials fail closed
+  ---
+  duration_ms: 40.159531
+  type: 'test'
+  ...
+# Subtest: frequent polling cannot defer expiry cleanup and the sweep reaches beyond 1000 rows
+ok 19 - frequent polling cannot defer expiry cleanup and the sweep reaches beyond 1000 rows
+  ---
+  duration_ms: 99.171362
+  type: 'test'
+  ...
+# Subtest: refresh rotation is single use, replay revokes its whole grant, and resource mismatch fails
+ok 20 - refresh rotation is single use, replay revokes its whole grant, and resource mismatch fails
+  ---
+  duration_ms: 120.141436
+  type: 'test'
+  ...
+# Subtest: request cancellation is scoped, delivered requests never replay, and late results fail
+ok 21 - request cancellation is scoped, delivered requests never replay, and late results fail
+  ---
+  duration_ms: 555.802174
+  type: 'test'
+  ...
+# Subtest: offline, expired, malformed and oversized requests have bounded safe failures
+ok 22 - offline, expired, malformed and oversized requests have bounded safe failures
+  ---
+  duration_ms: 195.962798
+  type: 'test'
+  ...
+# Subtest: dashboard cancellation checks ownership and service identities require exact app-token claims
+ok 23 - dashboard cancellation checks ownership and service identities require exact app-token claims
+  ---
+  duration_ms: 52.685701
+  type: 'test'
+  ...
+# Subtest: revoke-all invalidates unredeemed authorization codes and approved unclaimed pairings
+ok 24 - revoke-all invalidates unredeemed authorization codes and approved unclaimed pairings
+  ---
+  duration_ms: 20.130151
+  type: 'test'
+  ...
+# Subtest: MCP optional arguments and JSON-RPC parse errors follow the advertised protocol
+ok 25 - MCP optional arguments and JSON-RPC parse errors follow the advertised protocol
+  ---
+  duration_ms: 21.856436
+  type: 'test'
+  ...
+# Subtest: pairing stays consumed after a credential-store failure and consent CSP permits only its callback
+ok 26 - pairing stays consumed after a credential-store failure and consent CSP permits only its callback
+  ---
+  duration_ms: 78.570965
+  type: 'test'
+  ...
+1..26
+# tests 26
+# suites 0
+# pass 16
+# fail 10
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2745.107633

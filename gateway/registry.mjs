@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 // AI-Change: 2026-11-02-remote-gateway (OpenAI / GPT-6 Astra Pro; self-reported)
 // Modified: 2026-11-09-poll-capacity; retain queued work until the agent offers delivery capacity.
+// Modified: 2026-11-09-grant-expiry; authorize delivery/results at fresh post-read decision boundaries.
 import {
   READ_TOOLS,
   WIRE_VERSION,
@@ -544,16 +545,22 @@ export class MTermRegistry {
         cancelled = [];
       for (const job of await this.rows('job:', 256)) {
         if (job.deviceId !== d.id) continue;
-        if (['queued', 'delivered'].includes(job.status) && job.deadline <= now())
-          await this.finish(job, 'timeout');
-        if (job.status === 'queued' && requests.length < availableSlots) {
-          const g = await this.storage.get('grant:' + job.grantId);
-          if (!g || g.revokedAt || job.epoch !== (await this.epoch(job.userId))) {
-            await this.finish(job, 'revoked');
-            continue;
+        let checkedAt = now();
+        if (['queued', 'delivered'].includes(job.status)) {
+          if (job.deadline <= checkedAt) await this.finish(job, 'timeout');
+          else {
+            const grant = await this.storage.get('grant:' + job.grantId);
+            const epoch = await this.epoch(job.userId);
+            // Storage awaits may cross either boundary; timeout retains precedence.
+            checkedAt = now();
+            if (job.deadline <= checkedAt) await this.finish(job, 'timeout');
+            else if (!grant || grant.revokedAt || !(grant.expiresAt > checkedAt) || job.epoch !== epoch)
+              await this.finish(job, 'revoked');
           }
+        }
+        if (job.status === 'queued' && requests.length < availableSlots) {
           job.status = 'delivered';
-          job.deliveredAt = now();
+          job.deliveredAt = checkedAt;
           await this.storage.put('job:' + job.requestId, job);
           requests.push({
             version: WIRE_VERSION,
@@ -575,11 +582,13 @@ export class MTermRegistry {
       requireValue(job && job.deviceId === d.id && job.status === 'delivered', 409, 'request_not_pending');
       requireValue(job.deadline > now(), 410, 'request_expired');
       const grant = await this.storage.get('grant:' + job.grantId);
-      requireValue(
-        grant && !grant.revokedAt && job.epoch === (await this.epoch(job.userId)),
-        410,
-        'request_revoked',
-      );
+      const epoch = await this.epoch(job.userId);
+      const checkedAt = now();
+      requireValue(job.deadline > checkedAt, 410, 'request_expired');
+      if (!grant || grant.revokedAt || !(grant.expiresAt > checkedAt) || job.epoch !== epoch) {
+        await this.finish(job, 'revoked');
+        throw new HttpError(410, 'request_revoked');
+      }
       const r = frame.result;
       requireValue(
         r &&

@@ -303,6 +303,20 @@
       ],
       "observation": "Final archived-base8cases:2passed/6failed. Corrected focused26/26. Available delivery slots preserve queued replacement work while cancelled/timed-out cleanup or successful result delivery retains agent capacity; release resumes each request once, maxfour. Explicit0..4 validation, absent legacy4, heartbeat/cancellation/expiry/auth denial observed. Independent final8/8 with unchanged hashes; source/fixture/verifier reviews clear.",
       "limits": "Both updated components required; mixed pairs retain legacy limitations. Lost poll responses remain non-replayed until timeout. In-memory serialized storage and controlled adapter; no OAuth enrollment, Cloudflare runtime/deployment, fairness/load/soak or acceptance qualification."
+    },
+    {
+      "id": "GRANT-EXPIRY-20261109",
+      "level": "local actual gateway/JWT/OAuth/PKCE/pairing with synthetic identities, serialized memory storage and controlled time; hosted qualification pending",
+      "status": "source_reviewed_regression_green",
+      "observedAt": "2026-11-09T05:20:35.333845+00:00",
+      "sourceBase": "5660ae2cd91840e70af2a41e58e8b8d39154c40c",
+      "refs": [
+        "docs/validation/2026-11-09-grant-expiry.md",
+        "gateway/registry.mjs",
+        "tests/remote-gateway.test.mjs"
+      ],
+      "observation": "Finalprebehavior26cases16passed/10assertionfailures; correctedfocus38/38, independent26/26. At exact/after/missing grant expiry, dispatch and result acceptance fail closed without relying on alarm deletion. Poll returns cooperative cancellation for queued/delivered jobs even at0capacity; results are not retained; repeated submission stays rejected; other live grants/preboundary success remain valid. Fresh post-await checks preserve grant/deadline boundaries.",
+      "limits": "Source gateway only; expired-caller data retrieval was not reproduced because access already denied it. Controlled clock/storage reads are fixture injections. No live owner/browser/OAuth/Cloudflare/deployment, immediate OS interruption, replay redesign, load/soak or acceptance qualification."
     }
   ],
   "pendingEvidence": [
@@ -470,7 +484,8 @@
         "GATEWAY-TESTS",
         "LIVE-SMOKE",
         "LIVE-SMOKE-FINAL",
-        "FINAL-GATES"
+        "FINAL-GATES",
+        "GRANT-EXPIRY-20261109"
       ],
       "implemented": "OAuth S256 PKCE, exact resource binding, expiring grants, refresh rotation and replay/revocation are implemented. Live manual service-identity authorization rejected wrong PKCE/resource and code replay; grant revocation caused subsequent SDK MCP HTTP401.",
       "remainingWork": [
@@ -1340,7 +1355,8 @@
         "LIVE-SMOKE-FINAL",
         "FINAL-GATES",
         "FILE-CANCELLATION-20261109",
-        "POLL-CAPACITY-20261109"
+        "POLL-CAPACITY-20261109",
+        "GRANT-EXPIRY-20261109"
       ],
       "implemented": "A real MCP SDK 2.3.0 session initialized six read-only tools, listed two Windows devices and read two actual FileService markers through the deployed gateway; returned SHA-256 values exactly matched both originals. Cross-device credentials, mutation and outside-root access were denied; revoke-one and grant revocation took effect.",
       "remainingWork": [

@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 // AI-Change: 2026-11-02-remote-gateway (OpenAI / GPT-6 Astra Pro; self-reported)
+// Modified: 2026-11-09-grant-expiry; actual OAuth/pairing fixtures exercise dispatch/result expiry without a sweep.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createGateway } from '../gateway/app.mjs';
@@ -206,6 +207,241 @@ async function fixture() {
     return { ...(await claim.json()), pairing: p };
   }
   return { req, oauth, pair, identity, env, fetcher, storage, registry };
+}
+
+async function grantExpiryFixture(t) {
+  let clock = Date.now();
+  t.mock.method(Date, 'now', () => clock);
+  const f = await fixture(),
+    auth = await f.oauth(),
+    device = await f.pair();
+  const poll = async (availableSlots) => {
+    const response = await f.req('/api/agent/poll', {
+      method: 'POST',
+      token: device.deviceToken,
+      body: {
+        version: 1,
+        deviceId: device.deviceId,
+        ...(availableSlots === undefined ? {} : { availableSlots }),
+      },
+    });
+    assert.equal(response.status, 200);
+    return response.json();
+  };
+  await poll(0);
+  const token = await f.storage.get('token:' + (await sha256(auth.access_token)));
+  const grantKey = 'grant:' + token.grantId;
+  const grant = await f.storage.get(grantKey);
+  const expiry = clock + 1000;
+  grant.expiresAt = expiry;
+  await f.storage.put(grantKey, grant);
+  const dispatch = async (action, data) => {
+    const response = await f.registry.fetch(
+      new Request('https://registry.internal/dispatch', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ action, data }),
+      }),
+    );
+    return { status: response.status, data: await response.json() };
+  };
+  const enqueue = async (rpcId, credentials = auth) => {
+    const result = await dispatch('enqueue', {
+      token: credentials.access_token,
+      deviceId: device.deviceId,
+      tool: 'mterm_file_info',
+      arguments: { path: 'grant-expiry-fixture.txt' },
+      rpcId,
+    });
+    assert.equal(result.status, 200, JSON.stringify(result.data));
+    return result.data;
+  };
+  const submit = (job, text = 'synthetic-file-output-sentinel') =>
+    f.req('/api/agent/result', {
+      method: 'POST',
+      token: device.deviceToken,
+      body: {
+        version: 1,
+        requestId: job.requestId,
+        deviceId: device.deviceId,
+        result: { content: [{ type: 'text', text }], structuredContent: { text }, isError: false },
+      },
+    });
+  const ping = (credentials = auth) =>
+    f.req('/mcp', {
+      method: 'POST',
+      token: credentials.access_token,
+      body: { jsonrpc: '2.0', id: 'expiry-ping', method: 'ping' },
+    });
+  const jobState = (job) => f.storage.get('job:' + job.requestId);
+  return {
+    ...f,
+    auth,
+    device,
+    token,
+    grant,
+    grantKey,
+    expiry,
+    poll,
+    dispatch,
+    enqueue,
+    submit,
+    ping,
+    jobState,
+    setClock(value) {
+      clock = value;
+    },
+  };
+}
+
+for (const capacity of [undefined, 0, 4]) {
+  test(`grant expiry: ${capacity === undefined ? 'legacy' : capacity + '-slot'} poll cancels queued and delivered work without an alarm sweep`, async (t) => {
+    const f = await grantExpiryFixture(t);
+    const delivered = await f.enqueue('delivered');
+    assert.deepEqual(
+      (await f.poll(1)).requests.map((r) => r.requestId),
+      [delivered.requestId],
+    );
+    const queued = await f.enqueue('queued');
+    f.setClock(f.expiry);
+    assert.ok(queued.deadline > f.expiry && delivered.deadline > f.expiry);
+    assert.equal((await f.ping()).status, 401, 'Client access already rejects the expired grant');
+    assert.deepEqual(await f.storage.get(f.grantKey), f.grant, 'Expired grant remains physically stored');
+    const poll = await f.poll(capacity);
+    assert.deepEqual(poll.requests, [], 'An expired grant cannot dispatch pending work');
+    assert.deepEqual(new Set(poll.cancelled), new Set([delivered.requestId, queued.requestId]));
+    for (const job of [delivered, queued]) {
+      const state = await f.jobState(job);
+      assert.equal(state.status, 'revoked');
+      assert.equal(state.abortRequested, true);
+      assert.equal(state.arguments, undefined);
+      assert.equal(state.result, undefined);
+    }
+    assert.equal((await f.jobState(queued)).deliveredAt, undefined);
+    assert.deepEqual(await f.storage.get(f.grantKey), f.grant, 'Authorization does not depend on deletion');
+    const repeated = await f.poll(4);
+    assert.deepEqual(repeated.requests, []);
+    assert.deepEqual(new Set(repeated.cancelled), new Set(poll.cancelled));
+    const audit = await f.registry.rows('audit:' + f.grant.userId + ':');
+    for (const job of [delivered, queued])
+      assert.equal(audit.filter((e) => e.requestId === job.requestId && e.result === 'revoked').length, 1);
+  });
+}
+
+for (const boundary of ['exact', 'after', 'missing']) {
+  test(`grant expiry: result acceptance rejects ${boundary} expiry before retaining output`, async (t) => {
+    const f = await grantExpiryFixture(t);
+    const job = await f.enqueue('result');
+    assert.equal((await f.poll()).requests[0].requestId, job.requestId);
+    if (boundary === 'missing') {
+      delete f.grant.expiresAt;
+      await f.storage.put(f.grantKey, f.grant);
+    } else f.setClock(f.expiry + (boundary === 'after' ? 1 : 0));
+    assert.equal((await f.ping()).status, 401);
+    const before = await f.jobState(job);
+    assert.ok(before.deadline > Date.now());
+    const response = await f.submit(job);
+    assert.equal(response.status, 410);
+    assert.deepEqual(await response.json(), { error: 'request_revoked' });
+    const rejected = await f.jobState(job);
+    assert.equal(rejected.status, 'revoked');
+    assert.equal(rejected.arguments, undefined);
+    assert.equal(rejected.result, undefined);
+    assert.equal((await f.submit(job)).status, 409, 'A rejected result cannot later be retained');
+    assert.equal((await f.storage.get(f.grantKey)).id, f.grant.id);
+    const poll = await f.poll(0);
+    assert.ok(poll.cancelled.includes(job.requestId));
+    assert.equal((await f.jobState(job)).status, 'revoked');
+    const audit = await f.registry.rows('audit:' + f.grant.userId + ':');
+    assert.ok(!audit.some((e) => e.requestId === job.requestId && e.result === 'ok'));
+    assert.ok(!JSON.stringify(audit).includes('synthetic-file-output-sentinel'));
+    assert.ok(!JSON.stringify(await f.jobState(job)).includes('synthetic-file-output-sentinel'));
+  });
+}
+
+test('grant expiry: just-before success and another live client grant remain independent', async (t) => {
+  const f = await grantExpiryFixture(t);
+  const other = await f.oauth();
+  const before = await f.enqueue('before');
+  const independent = await f.enqueue('other', other);
+  f.setClock(f.expiry - 1);
+  assert.equal((await f.ping()).status, 200);
+  const poll = await f.poll();
+  assert.deepEqual(
+    new Set(poll.requests.map((r) => r.requestId)),
+    new Set([before.requestId, independent.requestId]),
+  );
+  assert.equal((await f.submit(before)).status, 200);
+  const consumed = await f.dispatch('jobResult', { token: f.auth.access_token, requestId: before.requestId });
+  assert.equal(consumed.status, 200);
+  assert.equal(consumed.data.result.structuredContent.text, 'synthetic-file-output-sentinel');
+  f.setClock(f.expiry);
+  assert.equal((await f.ping()).status, 401);
+  assert.equal((await f.ping(other)).status, 200);
+  assert.ok(!(await f.poll(0)).cancelled.includes(independent.requestId));
+  assert.equal((await f.submit(independent, 'other-client-result')).status, 200);
+  const result = await f.dispatch('jobResult', {
+    token: other.access_token,
+    requestId: independent.requestId,
+  });
+  assert.equal(result.status, 200);
+  assert.equal(result.data.result.structuredContent.text, 'other-client-result');
+  assert.equal((await f.poll()).requests.length, 0);
+});
+
+test('grant expiry: existing request deadline takes precedence when both boundaries expire', async (t) => {
+  const f = await grantExpiryFixture(t);
+  const job = await f.enqueue('deadline');
+  await f.poll();
+  f.setClock(job.deadline);
+  const response = await f.submit(job);
+  assert.equal(response.status, 410);
+  assert.deepEqual(await response.json(), { error: 'request_expired' });
+  const poll = await f.poll(0);
+  assert.ok(poll.cancelled.includes(job.requestId));
+  assert.equal((await f.jobState(job)).status, 'timeout');
+  assert.equal((await f.jobState(job)).result, undefined);
+});
+
+for (const action of ['poll', 'result']) {
+  for (const boundary of ['grant', 'deadline']) {
+    test(`grant expiry: ${action} rechecks ${boundary} after asynchronous grant and epoch reads`, async (t) => {
+      const f = await grantExpiryFixture(t);
+      const job = await f.enqueue('await-boundary');
+      if (action === 'result') await f.poll();
+      f.setClock(f.expiry - 1);
+      const read = f.storage.get.bind(f.storage);
+      let grantRead = false,
+        crossed = false;
+      f.storage.get = async (key) => {
+        const value = await read(key);
+        if (key === f.grantKey) grantRead = true;
+        else if (grantRead && key === 'epoch:' + f.grant.userId && !crossed) {
+          crossed = true;
+          f.setClock(boundary === 'grant' ? f.expiry : job.deadline);
+        }
+        return value;
+      };
+      if (action === 'poll') {
+        const result = await f.poll();
+        assert.equal(crossed, true, 'The actual epoch await crossed the decision boundary');
+        assert.deepEqual(result.requests, []);
+        assert.ok(result.cancelled.includes(job.requestId));
+      } else {
+        const response = await f.submit(job);
+        assert.equal(crossed, true, 'The actual epoch await crossed the decision boundary');
+        assert.equal(response.status, 410);
+        assert.deepEqual(await response.json(), {
+          error: boundary === 'grant' ? 'request_revoked' : 'request_expired',
+        });
+        assert.equal((await f.jobState(job)).result, undefined);
+        await f.poll(0);
+      }
+      const state = await f.jobState(job);
+      assert.equal(state.status, boundary === 'grant' ? 'revoked' : 'timeout');
+      assert.equal(state.result, undefined);
+    });
+  }
 }
 test('gateway fails closed; discovery is public, bounded, and precise', async () => {
   const f = await fixture();

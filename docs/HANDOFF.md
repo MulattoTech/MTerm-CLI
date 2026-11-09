@@ -1,3 +1,17 @@
+# Gateway grant expiry checkpoint — 2026-11-09 UTC
+
+Session `MTERM-WEB-20261109T031131Z-e0efd5d4` owns `coord/mterm/issue-55`, feature `fix/issue-55-grant-expiry-20261109`, source base `5660ae2cd91840e70af2a41e58e8b8d39154c40c`. One implementation writer; independent source/fixture and qualification reviewers. [Atomic claim](https://github.com/MulattoTech/MTerm-CLI/issues/55#issuecomment-6732784685).
+
+[Grant-expiry evidence](validation/2026-11-09-grant-expiry.md): actual source could dispatch queued work and retain submitted results after grant expiry although ordinary client access correctly returned401. Twelve new cases plus fourteen prior gateway cases are prebehaviorRED16pass/10assertionfail, correctedfocus38/38 and independent26/26. Poll validates queued/delivered jobs even at0capacity; invalid grants terminalize only those jobs and return same-response cancellation. Result authorization rejects before retention, removes arguments and records sanitized audit; repeat submissions return409. Fresh post-await time checks keep deadline precedence. Other live grants and pre-expiry successes remain valid. No expired-client retrieval, immediate OS interruption, live OAuth/Cloudflare or deployment qualification is claimed.
+
+Prerequisite PR #217 normally merged as `cb383b958c88cedc0dfc446c9b6502e00e730840`, identical tree `79c7cfbef8fd380fe12bf8625ac67a4434edd547`. Allsix PR checks passed: Windows655/655; otherfull643+12existing skips;8new cases individually passed; allfive installed admission8 and prior46/18/5 passed; native12source+12installedcontainment cleanup passed. [Exact-head receipt](https://github.com/MulattoTech/MTerm-CLI/pull/217#issuecomment-6732853470). Allsix separate main checks also passed, independently inspected and recorded in the [main receipt](https://github.com/MulattoTech/MTerm-CLI/issues/149#issuecomment-6732940619); scoped149claim inactive. PR211–216 already completed allsix PR+main gates, with their durable comments preserved.
+
+CLI290 and WEB002/009 evidence only. All300 protected fields, historical records, dependencies/seeds/pins, and AUG/DCP/WEB acceptance remain unchanged. No production bridge/plugin/global runtime installation, Cloudflare deployment, unrelated project or model-consuming worker change.
+
+Independent source/fixture/docs/protectedmetrics reviews and normal reviewed build/typecheck/format/parity/roadmap gates passed. Next: draft PR for this #55 slice with allsix exact-head/platform/installed checks, expected-head normal merge and separate main verification. Both components of217 must be updated for its capacity fix; no source merge implies a live deployment or20–30-client readiness.
+
+---
+
 # Remote delivery capacity checkpoint — 2026-11-09 UTC
 
 Session `MTERM-WEB-20261109T031131Z-e0efd5d4` owns `coord/mterm/issue-149`, feature `fix/issue-149-poll-capacity-20261109`, from main `f38c2c4522dc68e25fd220593d6b056068902a58`. One implementation writer and independent read-only peers; [atomic claim](https://github.com/MulattoTech/MTerm-CLI/issues/149#issuecomment-6732586571).

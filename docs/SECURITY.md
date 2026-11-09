@@ -191,6 +191,16 @@ configuring a real directory or connecting a client.
 | Device to gateway | Outbound HTTPS polling with a distinct opaque paired-device credential. The gateway binds that credential to its exact device and owner. No inbound workstation listener or extra tunnel is created. |
 | Device agent to local files | The existing `FileService` runs with `allowWrite: false`, a canonical owner-selected root and fixed limits. Remote requests cannot enable writes, execution or mutable local compatibility settings. |
 
+Access identity verification rechecks the original JWT timestamp predicate after
+certificate retrieval, signature verification and the final awaited identity hash.
+There is no await between that final check and returning the authenticated identity.
+An identity that has reached its expiry, or no longer satisfies the existing
+issued-at/not-before tolerance after a clock adjustment, returns `401 invalid_identity`.
+Issuer, audience, signature, human allowlist and staging-only service rules remain
+unchanged. This is a return-decision boundary; it does not guarantee that later
+caller work or response delivery finishes before expiry. See the
+[Access expiry evidence](validation/2026-11-09-access-expiry.md).
+
 An OAuth grant permits read access to the signed-in identity's paired device inventory.
 Every filesystem operation must select an explicit `deviceId`; the gateway checks its
 ownership and tool capability, and the agent independently checks the addressed device,

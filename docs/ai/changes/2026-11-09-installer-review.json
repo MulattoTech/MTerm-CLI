@@ -1,0 +1,87 @@
+{
+  "change_id": "2026-11-09-installer-review",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "session_id": "MTERM-WEB-20261109T031131Z-e0efd5d4",
+  "started_at": "2026-11-09T03:46:54Z",
+  "updated_at": "2026-11-09T03:49:47.401804+00:00",
+  "base_sha": "640953514c44c5932364341ecd754399f6265bd8",
+  "issues": [
+    94
+  ],
+  "requirements": [
+    "CLI-231",
+    "CLI-233",
+    "CLI-235"
+  ],
+  "files": [
+    "scripts/review-source.mjs",
+    "tests/installer-review.test.mjs",
+    "docs/HANDOFF.md",
+    "docs/ai/changes/2026-11-09-installer-review.json",
+    "docs/validation/2026-11-09-installer-review.md",
+    "docs/validation/2026-11-09-installer-review-red.tap",
+    "docs/validation/2026-11-09-installer-review-green.tap",
+    "docs/roadmap/progress.json",
+    "docs/roadmap/review.json",
+    "docs/roadmap/FEATURES.md",
+    "docs/roadmap/index.html",
+    "docs/roadmap/summary.json"
+  ],
+  "decisions": [
+    "Atomic coord/mterm/issue-94 claim; one implementation owner plus independent read-only review.",
+    "Add exactly the supported root installer to existing bounded source-review coverage; do not alter the installer or normalization.",
+    "Keep new fixtures separate from existing pinned roadmap/matrix tests.",
+    "Preserve all 300 protected requirements and full AUG013 acceptance; historical evidence remains tied to its original source."
+  ],
+  "tests": [
+    {
+      "command": "node --test --test-reporter=tap tests/installer-review.test.mjs (unchanged scanner)",
+      "result": "RED: 0/4 passed, four expected failures, exit1, zero skipped/cancelled."
+    },
+    {
+      "command": "node --test --test-reporter=tap --test-concurrency=1 tests/installer-review.test.mjs tests/roadmap.test.mjs tests/expansion-matrix.test.mjs",
+      "result": "GREEN: 31/31, zero skipped/cancelled; Node v24.22.1 Linux x64."
+    },
+    {
+      "command": "npm run build; npm run typecheck; npm run format:check; explicit roadmap review/render/check; git diff --check",
+      "result": "Passed. All protected fields of all300 requirements verified unchanged."
+    }
+  ],
+  "independent_review": {
+    "reviewer": "/root/backlog_triage",
+    "role": "independent read-only peer",
+    "result": "No material issues. Independent4/4 tests, zero skips/cancellations, diff check passed; all300 protected item fields and seed/pinned fixtures preserved. Not a GitHub approval event.",
+    "reviewed_sha256": {
+      "scripts/review-source.mjs": "2f06c9ac033d8c99df7b17bfbf629ac247a89345bf583ab55d538dd262fdb7a4",
+      "tests/installer-review.test.mjs": "19ae414949b8d0495fa607cf017d55b56d717643ef4de9e59a71999c5771e513"
+    }
+  },
+  "roadmap_updates": [
+    {
+      "id": "CLI-231",
+      "stage_change": false,
+      "reason": "Add scoped installer-review freshness evidence, preserve acceptance/stages/weights/estimates."
+    },
+    {
+      "id": "CLI-233",
+      "stage_change": false,
+      "reason": "Add scoped installer-review freshness evidence, preserve acceptance/stages/weights/estimates."
+    },
+    {
+      "id": "CLI-235",
+      "stage_change": false,
+      "reason": "Add scoped installer-review freshness evidence, preserve acceptance/stages/weights/estimates."
+    }
+  ],
+  "limitations": [
+    "Review-scanner coverage only, not installer execution or full AUG013 acceptance.",
+    "No production owner bridge, plugin, staging deployment or model request.",
+    "Full cloud suite not repeated solely to rediscover previously retained Unix-socket EPERM failures; hosted full/package/platform gates remain mandatory."
+  ],
+  "next_unverified_action": "Publish draft PR; exact-head full hosted/platform/installed gates, expected-head normal merge and merged-main verification.",
+  "red_log": {
+    "original_sha256": "e0696b74d7e2973807da9c5b7165a2d383747e988c1819076b1572af6165480f",
+    "display_normalization": "Only trailing whitespace removed for committed TAP display."
+  }
+}

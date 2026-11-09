@@ -3228,13 +3228,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Changing CLI source, pins or reviewed settings invalidates stale assessments.
 
-**Current scope:** Reproduced prior clean Git checkout CRLF/LF mismatch and fixed normalized text fingerprints; binary and real source/catalog drift remain detected. 2026-11-07 AUG-013: development-only matrix validates the fixed graph, exact evidence bindings and explicit unknown platform/scenario cells. All three expansion inputs invalidate stale review; source hashing is bounded and link-denying. Focused native27/27 passed after reproduced review findings. Committed qualification remains separate. No stage, weight, acceptance, estimate or blocker credit. Qualified code af992a3: native 375/375, four hosted platforms and all 27 matrix/roadmap tests, installed/runtime boundary and advisory checks passed; 993 runtime files remain identical. Twenty scoped checker observations are recorded, with no capability acceptance or stage credit.
+**Current scope:** Reproduced prior clean Git checkout CRLF/LF mismatch and fixed normalized text fingerprints; binary and real source/catalog drift remain detected. 2026-11-07 AUG-013: development-only matrix validates the fixed graph, exact evidence bindings and explicit unknown platform/scenario cells. All three expansion inputs invalidate stale review; source hashing is bounded and link-denying. Focused native27/27 passed after reproduced review findings. Committed qualification remains separate. No stage, weight, acceptance, estimate or blocker credit. Qualified code af992a3: native 375/375, four hosted platforms and all 27 matrix/roadmap tests, installed/runtime boundary and advisory checks passed; 993 runtime files remain identical. Twenty scoped checker observations are recorded, with no capability acceptance or stage credit. 2026-11-09: root installer participates in source review; isolated RED0/4 to focused GREEN31/31 proves edit/add/remove and stale-render refusal with LF/CRLF preservation. Scoped evidence only, no stage or acceptance credit.
 
 **Baseline weight:** 8 h (rough). **Remaining:** 1–6 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `scripts/roadmap.mjs`, `tests/roadmap.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`, `scripts/expansion-matrix.mjs`, `scripts/review-source.mjs`, `tests/expansion-matrix.test.mjs`, `docs/expansion/MATRIX.md`, `docs/validation/2026-11-07-aug013-development.json`, `docs/validation/2026-11-07-aug013-qualification.json`, `docs/validation/2026-11-07-aug013-source-review.json`
+**Evidence:** `scripts/roadmap.mjs`, `tests/roadmap.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`, `scripts/expansion-matrix.mjs`, `scripts/review-source.mjs`, `tests/expansion-matrix.test.mjs`, `docs/expansion/MATRIX.md`, `docs/validation/2026-11-07-aug013-development.json`, `docs/validation/2026-11-07-aug013-qualification.json`, `docs/validation/2026-11-07-aug013-source-review.json`, `tests/installer-review.test.mjs`, `docs/validation/2026-11-09-installer-review.md`
 
 ## CLI-232 — Test exported GUI fingerprint coverage
 
@@ -3256,13 +3256,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Build/package/CI publication checks reject stale reviews rather than silently regenerating credit.
 
-**Current scope:** Normal build/check now enforce both roadmap review and pinned-parity integrity. Forged PASS/closure without evidence is rejected; generated credit is still explicit review. 2026-11-07 AUG-013: development-only matrix validates the fixed graph, exact evidence bindings and explicit unknown platform/scenario cells. All three expansion inputs invalidate stale review; source hashing is bounded and link-denying. Focused native27/27 passed after reproduced review findings. Committed qualification remains separate. No stage, weight, acceptance, estimate or blocker credit. Qualified code af992a3: native 375/375, four hosted platforms and all 27 matrix/roadmap tests, installed/runtime boundary and advisory checks passed; 993 runtime files remain identical. Twenty scoped checker observations are recorded, with no capability acceptance or stage credit.
+**Current scope:** Normal build/check now enforce both roadmap review and pinned-parity integrity. Forged PASS/closure without evidence is rejected; generated credit is still explicit review. 2026-11-07 AUG-013: development-only matrix validates the fixed graph, exact evidence bindings and explicit unknown platform/scenario cells. All three expansion inputs invalidate stale review; source hashing is bounded and link-denying. Focused native27/27 passed after reproduced review findings. Committed qualification remains separate. No stage, weight, acceptance, estimate or blocker credit. Qualified code af992a3: native 375/375, four hosted platforms and all 27 matrix/roadmap tests, installed/runtime boundary and advisory checks passed; 993 runtime files remain identical. Twenty scoped checker observations are recorded, with no capability acceptance or stage credit. 2026-11-09: root installer participates in source review; isolated RED0/4 to focused GREEN31/31 proves edit/add/remove and stale-render refusal with LF/CRLF preservation. Scoped evidence only, no stage or acceptance credit.
 
 **Baseline weight:** 8 h (rough). **Remaining:** 1–6 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `scripts/roadmap.mjs`, `tests/roadmap.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`, `scripts/expansion-matrix.mjs`, `scripts/review-source.mjs`, `tests/expansion-matrix.test.mjs`, `docs/expansion/MATRIX.md`, `docs/validation/2026-11-07-aug013-development.json`, `docs/validation/2026-11-07-aug013-qualification.json`, `docs/validation/2026-11-07-aug013-source-review.json`
+**Evidence:** `scripts/roadmap.mjs`, `tests/roadmap.test.mjs`, `docs/validation/2026-10-05-codex-parity-foundation.md`, `scripts/expansion-matrix.mjs`, `scripts/review-source.mjs`, `tests/expansion-matrix.test.mjs`, `docs/expansion/MATRIX.md`, `docs/validation/2026-11-07-aug013-development.json`, `docs/validation/2026-11-07-aug013-qualification.json`, `docs/validation/2026-11-07-aug013-source-review.json`, `tests/installer-review.test.mjs`, `docs/validation/2026-11-09-installer-review.md`
 
 ## CLI-234 — Update contributor entry points in both repositories
 
@@ -3284,13 +3284,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** A render command cannot satisfy the explicit human/AI assessment requirement.
 
-**Current scope:** All300 IDs retained in reviewed catalog. Local SVG/Markdown/JSON/offline HTML plus explicit review and stale-source/output tests; hosted publication/browser-matrix validation pending.
+**Current scope:** All300 IDs retained in reviewed catalog. Local SVG/Markdown/JSON/offline HTML plus explicit review and stale-source/output tests; hosted publication/browser-matrix validation pending. 2026-11-09: root installer participates in source review; isolated RED0/4 to focused GREEN31/31 proves edit/add/remove and stale-render refusal with LF/CRLF preservation. Scoped evidence only, no stage or acceptance credit.
 
 **Baseline weight:** 8 h (rough). **Remaining:** 1–6 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `scripts/roadmap.mjs`, `tests/roadmap.test.mjs`
+**Evidence:** `scripts/roadmap.mjs`, `tests/roadmap.test.mjs`, `tests/installer-review.test.mjs`, `docs/validation/2026-11-09-installer-review.md`
 
 ## CLI-236 — Retain complete cross-repository source-project traceability
 

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baseline": "cli-300-initial-effort-v1",
-  "reviewedAt": "2026-11-08T08:37:54.922Z",
+  "reviewedAt": "2026-11-09T03:48:56.748680+00:00",
   "sourceSeedSha256": "09a5f76c7d5f83add8383b3cec3d02fb3fd41c9b2c4c80fbd482ffae29f457a2",
   "scope": "Full 300-item desired product, not just this Windows local MCP preview",
   "weightBasis": "Initial bands: ordinary acceptance8h; narrow UI/entry4h; Web40h; auth/update24h; platform/security/local tools16h. These rough baseline bands are frozen on first review.",
@@ -5142,9 +5142,11 @@
         "docs/expansion/MATRIX.md",
         "docs/validation/2026-11-07-aug013-development.json",
         "docs/validation/2026-11-07-aug013-qualification.json",
-        "docs/validation/2026-11-07-aug013-source-review.json"
+        "docs/validation/2026-11-07-aug013-source-review.json",
+        "tests/installer-review.test.mjs",
+        "docs/validation/2026-11-09-installer-review.md"
       ],
-      "notes": "Reproduced prior clean Git checkout CRLF/LF mismatch and fixed normalized text fingerprints; binary and real source/catalog drift remain detected. 2026-11-07 AUG-013: development-only matrix validates the fixed graph, exact evidence bindings and explicit unknown platform/scenario cells. All three expansion inputs invalidate stale review; source hashing is bounded and link-denying. Focused native27/27 passed after reproduced review findings. Committed qualification remains separate. No stage, weight, acceptance, estimate or blocker credit. Qualified code af992a3: native 375/375, four hosted platforms and all 27 matrix/roadmap tests, installed/runtime boundary and advisory checks passed; 993 runtime files remain identical. Twenty scoped checker observations are recorded, with no capability acceptance or stage credit.",
+      "notes": "Reproduced prior clean Git checkout CRLF/LF mismatch and fixed normalized text fingerprints; binary and real source/catalog drift remain detected. 2026-11-07 AUG-013: development-only matrix validates the fixed graph, exact evidence bindings and explicit unknown platform/scenario cells. All three expansion inputs invalidate stale review; source hashing is bounded and link-denying. Focused native27/27 passed after reproduced review findings. Committed qualification remains separate. No stage, weight, acceptance, estimate or blocker credit. Qualified code af992a3: native 375/375, four hosted platforms and all 27 matrix/roadmap tests, installed/runtime boundary and advisory checks passed; 993 runtime files remain identical. Twenty scoped checker observations are recorded, with no capability acceptance or stage credit. 2026-11-09: root installer participates in source review; isolated RED0/4 to focused GREEN31/31 proves edit/add/remove and stale-render refusal with LF/CRLF preservation. Scoped evidence only, no stage or acceptance credit.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
       "reviewer": "2026-11-07-aug013-evidence-matrix"
@@ -5195,9 +5197,11 @@
         "docs/expansion/MATRIX.md",
         "docs/validation/2026-11-07-aug013-development.json",
         "docs/validation/2026-11-07-aug013-qualification.json",
-        "docs/validation/2026-11-07-aug013-source-review.json"
+        "docs/validation/2026-11-07-aug013-source-review.json",
+        "tests/installer-review.test.mjs",
+        "docs/validation/2026-11-09-installer-review.md"
       ],
-      "notes": "Normal build/check now enforce both roadmap review and pinned-parity integrity. Forged PASS/closure without evidence is rejected; generated credit is still explicit review. 2026-11-07 AUG-013: development-only matrix validates the fixed graph, exact evidence bindings and explicit unknown platform/scenario cells. All three expansion inputs invalidate stale review; source hashing is bounded and link-denying. Focused native27/27 passed after reproduced review findings. Committed qualification remains separate. No stage, weight, acceptance, estimate or blocker credit. Qualified code af992a3: native 375/375, four hosted platforms and all 27 matrix/roadmap tests, installed/runtime boundary and advisory checks passed; 993 runtime files remain identical. Twenty scoped checker observations are recorded, with no capability acceptance or stage credit.",
+      "notes": "Normal build/check now enforce both roadmap review and pinned-parity integrity. Forged PASS/closure without evidence is rejected; generated credit is still explicit review. 2026-11-07 AUG-013: development-only matrix validates the fixed graph, exact evidence bindings and explicit unknown platform/scenario cells. All three expansion inputs invalidate stale review; source hashing is bounded and link-denying. Focused native27/27 passed after reproduced review findings. Committed qualification remains separate. No stage, weight, acceptance, estimate or blocker credit. Qualified code af992a3: native 375/375, four hosted platforms and all 27 matrix/roadmap tests, installed/runtime boundary and advisory checks passed; 993 runtime files remain identical. Twenty scoped checker observations are recorded, with no capability acceptance or stage credit. 2026-11-09: root installer participates in source review; isolated RED0/4 to focused GREEN31/31 proves edit/add/remove and stale-render refusal with LF/CRLF preservation. Scoped evidence only, no stage or acceptance credit.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
       "reviewer": "2026-11-07-aug013-evidence-matrix"
@@ -5241,9 +5245,11 @@
       "blocker": null,
       "evidence": [
         "scripts/roadmap.mjs",
-        "tests/roadmap.test.mjs"
+        "tests/roadmap.test.mjs",
+        "tests/installer-review.test.mjs",
+        "docs/validation/2026-11-09-installer-review.md"
       ],
-      "notes": "All300 IDs retained in reviewed catalog. Local SVG/Markdown/JSON/offline HTML plus explicit review and stale-source/output tests; hosted publication/browser-matrix validation pending.",
+      "notes": "All300 IDs retained in reviewed catalog. Local SVG/Markdown/JSON/offline HTML plus explicit review and stale-source/output tests; hosted publication/browser-matrix validation pending. 2026-11-09: root installer participates in source review; isolated RED0/4 to focused GREEN31/31 proves edit/add/remove and stale-render refusal with LF/CRLF preservation. Scoped evidence only, no stage or acceptance credit.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
       "reviewer": "2026-10-04-local-mcp"

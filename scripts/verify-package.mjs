@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-09-state-lock-init; qualify installed mutation-lock initialization ownership/recovery.
 // Modified: 2026-11-09-package-isolation; measure external installation/cwds and retain regular evidence.
 // Modified: 2026-11-09-run-lock-recovery; qualify installed failed-initialization lock ownership and recovery.
 // Modified: 2026-11-09-move-cancellation; qualify installed native/compatible move cancellation before mutation.
@@ -810,6 +811,88 @@ const report = await withPackageWorkspace(
       log: runLockLog,
       logSha256: createHash('sha256').update(runLockOutput).digest('hex'),
     };
+    const stateLockFixture = 'tests/remote-state-lock.test.mjs';
+    const stateLockFixtureSha256 = createHash('sha256')
+      .update(await fs.readFile(path.join(root, stateLockFixture)))
+      .digest('hex');
+    const stateLockCwd = await fs.mkdtemp(path.join(os.tmpdir(), 'mterm-state-lock-qualification-'));
+    const stateLockLog = path.join(output, 'remote-state-lock-tests.tap');
+    let stateLockAcceptance;
+    try {
+      const relative = path.relative(await fs.realpath(root), await fs.realpath(stateLockCwd));
+      assert.ok(
+        relative === '..' || relative.startsWith('..' + path.sep) || path.isAbsolute(relative),
+        'State-lock fixture working directory must be outside the checkout',
+      );
+      stateLockAcceptance = await exec(
+        process.execPath,
+        ['--test', '--test-reporter=tap', '--test-concurrency=1', path.join(root, stateLockFixture)],
+        {
+          cwd: stateLockCwd,
+          env: { ...env, MTERM_VERIFY_BIN: installed },
+          timeout: 60000,
+          maxBuffer: 1048576,
+          windowsHide: true,
+        },
+      ).then(
+        (result) => ({ ...result, exit: 0 }),
+        (error) => ({
+          stdout: error.stdout ?? '',
+          stderr: error.stderr ?? '',
+          exit: error.code ?? 'unknown',
+        }),
+      );
+      await fs.writeFile(stateLockLog, stateLockAcceptance.stdout + stateLockAcceptance.stderr);
+    } finally {
+      await fs.rm(stateLockCwd, { recursive: true, force: true, maxRetries: 3 });
+    }
+    const stateLockOutput = stateLockAcceptance.stdout + stateLockAcceptance.stderr;
+    assert.equal(stateLockAcceptance.exit, 0, 'Installed state-lock recovery failed; see retained log');
+    const stateLockTests = Number(stateLockAcceptance.stdout.match(/^# tests (\d+)$/m)?.[1]);
+    assert.ok(stateLockTests >= 24, 'Installed state-lock recovery fixtures did not run');
+    for (const field of ['fail', 'skipped', 'cancelled', 'todo'])
+      assert.match(stateLockAcceptance.stdout, new RegExp('^# ' + field + ' 0$', 'm'));
+    for (const binding of runLockBindings) {
+      for (const base of [root, path.resolve(path.dirname(installed), '..')])
+        assert.equal(
+          createHash('sha256')
+            .update(await fs.readFile(path.join(base, binding.path)))
+            .digest('hex'),
+          binding.sha256,
+          'State-lock runtime bytes changed during installed qualification',
+        );
+    }
+    assert.equal(
+      createHash('sha256')
+        .update(await fs.readFile(path.join(root, stateLockFixture)))
+        .digest('hex'),
+      stateLockFixtureSha256,
+      'State-lock fixture changed during installed qualification',
+    );
+    const installedStateLockRecovery = {
+      ok: true,
+      tests: stateLockTests,
+      failed: 0,
+      skipped: 0,
+      cancelled: 0,
+      moduleBindings: runLockBindings,
+      fixtureSha256: stateLockFixtureSha256,
+      realTemporaryFiles: true,
+      deterministicFilesystemFaults: true,
+      causalCloseAdmissionGate: true,
+      initializationFailureOnly: true,
+      explicitRetryAfterConfirmedCleanup: true,
+      preexistingAndUncertainLocksRetained: true,
+      staleLockStealing: false,
+      credentialProtectionExercisedByFixture: false,
+      fullPairingRecoveryQualified: false,
+      hostileFilesystemRaceProtectionGuaranteed: false,
+      crashDurabilityQualified: false,
+      fromOutsideCheckout: standaloneIsolation.outsideCheckout,
+      modelCalls: 0,
+      log: stateLockLog,
+      logSha256: createHash('sha256').update(stateLockOutput).digest('hex'),
+    };
     const admissionBindings = [];
     for (const name of ['remote/agent.js', 'remote/protocol.js', 'errors.js']) {
       const source = await fs.readFile(path.join(root, 'dist', name));
@@ -1148,6 +1231,7 @@ const report = await withPackageWorkspace(
       installedFileCancellation,
       installedMoveCancellation,
       installedRunLockRecovery,
+      installedStateLockRecovery,
       installedRemoteAdmission,
       installedIsolation,
       installedProvenance,

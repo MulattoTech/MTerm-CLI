@@ -225,6 +225,18 @@ durability or complete agent restart guarantee is added. See the
 
 ### Pairing, credentials and revocation
 
+Remote mutation-lock initialization is separate from the admitted operation. A
+failed descriptor inspection or nonce write preserves its original rejection.
+Only confirmed handle closure plus a known, unchanged canonical parent and
+regular single-link leaf identity permit one cleanup unlink. Preexisting,
+redirected, replaced, additionally linked or uncertain locks remain for explicit
+inspection; there is no stale-lock takeover or automatic retry. Complete JSON
+bytes do not convert a rejected write into successful initialization. The
+initialized operation and unconfirmed DPAPI lock-retention paths remain intact.
+These pathname checks do not guarantee atomic cleanup against a hostile local
+writer or recovery after a successful operation crashes. See the
+[mutation-lock evidence](validation/2026-11-09-state-lock-init.md).
+
 Pairing uses separate random verification and device codes, authenticated approval,
 a five-minute expiry and single-use claim. The claim is consumed before credentials
 are created: a storage failure can require explicit re-pairing, but cannot legitimately

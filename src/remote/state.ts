@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-09-state-lock-init; recover only confirmed owned failed mutation-lock initialization.
 // Modified: 2026-11-09-run-lock-recovery; clean only a failed attempt's confirmed closed and unchanged run lock.
 // AI-Change: 2026-11-02-remote-agent (OpenAI / GPT-6 Astra Pro; self-reported)
 // AI-Change: 2026-11-02-windows-dpapi-bounds (OpenAI / GPT-6 Astra Pro; self-reported)
@@ -236,6 +237,13 @@ export class RemoteStateStore {
   private async mutate<T>(operation: () => Promise<T>): Promise<T> {
     const file = path.join(this.directory, 'state.lock'),
       nonce = randomUUID();
+    const parent = await fs.lstat(this.directory);
+    if (
+      !parent.isDirectory() ||
+      parent.isSymbolicLink() ||
+      path.relative(this.directory, await fs.realpath(this.directory)) !== ''
+    )
+      fail('REMOTE_STATE', 'Remote mutation-lock directory is no longer canonical.');
     let handle;
     try {
       handle = await fs.open(file, 'wx', 0o600);
@@ -247,9 +255,53 @@ export class RemoteStateStore {
         );
       throw error;
     }
+    let identity: Awaited<ReturnType<typeof handle.stat>> | undefined;
+    try {
+      identity = await handle.stat();
+      await handle.writeFile(JSON.stringify({ nonce }));
+    } catch (error) {
+      let closed = false;
+      try {
+        await handle.close();
+        closed = true;
+      } catch {
+        // Unconfirmed closure retains admission; initialization remains the primary failure.
+      }
+      if (closed && identity) {
+        try {
+          const currentParent = await fs.lstat(this.directory);
+          if (
+            currentParent.isDirectory() &&
+            !currentParent.isSymbolicLink() &&
+            currentParent.dev === parent.dev &&
+            currentParent.ino === parent.ino &&
+            currentParent.mode === parent.mode &&
+            currentParent.uid === parent.uid &&
+            path.relative(this.directory, await fs.realpath(this.directory)) === ''
+          ) {
+            const current = await fs.lstat(file);
+            if (
+              identity.isFile() &&
+              identity.nlink === 1 &&
+              current.isFile() &&
+              !current.isSymbolicLink() &&
+              current.nlink === 1 &&
+              current.dev === identity.dev &&
+              current.ino === identity.ino &&
+              current.mode === identity.mode &&
+              current.uid === identity.uid
+            )
+              await fs.unlink(file);
+          }
+        } catch {
+          // Unknown/substituted ownership or failed cleanup never replaces the initialization error.
+        }
+      }
+      throw error;
+    }
+    // Initialized operations retain the existing nonce and uncertain-DPAPI cleanup policy.
     let retainLock = false;
     try {
-      await handle.writeFile(JSON.stringify({ nonce }));
       return await operation();
     } catch (error) {
       retainLock = error instanceof Error && unconfirmedDpapiErrors.has(error);

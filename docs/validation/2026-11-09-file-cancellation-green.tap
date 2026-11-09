@@ -1,0 +1,400 @@
+TAP version 13
+# Subtest: actual SDK cancellation reaches native mterm_read_file before post-resolution I/O
+ok 1 - actual SDK cancellation reaches native mterm_read_file before post-resolution I/O
+  ---
+  duration_ms: 247.804936
+  type: 'test'
+  ...
+# Subtest: actual SDK cancellation reaches native mterm_file_info before post-resolution I/O
+ok 2 - actual SDK cancellation reaches native mterm_file_info before post-resolution I/O
+  ---
+  duration_ms: 209.472389
+  type: 'test'
+  ...
+# Subtest: actual SDK cancellation reaches native mterm_list_directory before post-resolution I/O
+ok 3 - actual SDK cancellation reaches native mterm_list_directory before post-resolution I/O
+  ---
+  duration_ms: 241.365377
+  type: 'test'
+  ...
+# Subtest: pre-aborted native mterm_read_file does not resolve or access a path
+ok 4 - pre-aborted native mterm_read_file does not resolve or access a path
+  ---
+  duration_ms: 21.737409
+  type: 'test'
+  ...
+# Subtest: pre-aborted native mterm_file_info does not resolve or access a path
+ok 5 - pre-aborted native mterm_file_info does not resolve or access a path
+  ---
+  duration_ms: 3.365786
+  type: 'test'
+  ...
+# Subtest: pre-aborted native mterm_list_directory does not resolve or access a path
+ok 6 - pre-aborted native mterm_list_directory does not resolve or access a path
+  ---
+  duration_ms: 3.337412
+  type: 'test'
+  ...
+# Subtest: pre-aborted native mterm_search_files does not resolve or access a path
+ok 7 - pre-aborted native mterm_search_files does not resolve or access a path
+  ---
+  duration_ms: 5.546191
+  type: 'test'
+  ...
+# Subtest: pre-aborted native mterm_search_content does not resolve or access a path
+ok 8 - pre-aborted native mterm_search_content does not resolve or access a path
+  ---
+  duration_ms: 2.374519
+  type: 'test'
+  ...
+# Subtest: native read stops after cancellation during path resolution
+ok 9 - native read stops after cancellation during path resolution
+  ---
+  duration_ms: 4.581299
+  type: 'test'
+  ...
+# Subtest: native info stops after cancellation during path resolution
+ok 10 - native info stops after cancellation during path resolution
+  ---
+  duration_ms: 5.088295
+  type: 'test'
+  ...
+# Subtest: native list stops after cancellation during path resolution
+ok 11 - native list stops after cancellation during path resolution
+  ---
+  duration_ms: 2.35164
+  type: 'test'
+  ...
+# Subtest: native read cancellation after real open closes its handle before settling
+ok 12 - native read cancellation after real open closes its handle before settling
+  ---
+  duration_ms: 4.334256
+  type: 'test'
+  ...
+# Subtest: native read cancellation after real stat closes its handle before settling
+ok 13 - native read cancellation after real stat closes its handle before settling
+  ---
+  duration_ms: 2.690441
+  type: 'test'
+  ...
+# Subtest: native read cancellation after real read closes its handle before settling
+ok 14 - native read cancellation after real read closes its handle before settling
+  ---
+  duration_ms: 3.828028
+  type: 'test'
+  ...
+# Subtest: native read cancellation after real close closes its handle before settling
+ok 15 - native read cancellation after real close closes its handle before settling
+  ---
+  duration_ms: 3.026738
+  type: 'test'
+  ...
+# Subtest: native metadata cancellation after final real lstat cannot return success
+ok 16 - native metadata cancellation after final real lstat cannot return success
+  ---
+  duration_ms: 4.508004
+  type: 'test'
+  ...
+# Subtest: mterm_list_directory cancellation at directory open closes the real directory
+ok 17 - mterm_list_directory cancellation at directory open closes the real directory
+  ---
+  duration_ms: 3.128872
+  type: 'test'
+  ...
+# Subtest: mterm_list_directory cancellation at directory entry closes the real directory
+ok 18 - mterm_list_directory cancellation at directory entry closes the real directory
+  ---
+  duration_ms: 2.655999
+  type: 'test'
+  ...
+# Subtest: mterm_list_directory cancellation at directory eof closes the real directory
+ok 19 - mterm_list_directory cancellation at directory eof closes the real directory
+  ---
+  duration_ms: 1.675269
+  type: 'test'
+  ...
+# Subtest: mterm_search_files cancellation at directory open closes the real directory
+ok 20 - mterm_search_files cancellation at directory open closes the real directory
+  ---
+  duration_ms: 3.618251
+  type: 'test'
+  ...
+# Subtest: mterm_search_files cancellation at directory entry closes the real directory
+ok 21 - mterm_search_files cancellation at directory entry closes the real directory
+  ---
+  duration_ms: 2.674858
+  type: 'test'
+  ...
+# Subtest: mterm_search_files cancellation at directory eof closes the real directory
+ok 22 - mterm_search_files cancellation at directory eof closes the real directory
+  ---
+  duration_ms: 2.012457
+  type: 'test'
+  ...
+# Subtest: mterm_search_content cancellation at directory open closes the real directory
+ok 23 - mterm_search_content cancellation at directory open closes the real directory
+  ---
+  duration_ms: 2.306481
+  type: 'test'
+  ...
+# Subtest: mterm_search_content cancellation at directory entry closes the real directory
+ok 24 - mterm_search_content cancellation at directory entry closes the real directory
+  ---
+  duration_ms: 2.544771
+  type: 'test'
+  ...
+# Subtest: mterm_search_content cancellation at directory eof closes the real directory
+ok 25 - mterm_search_content cancellation at directory eof closes the real directory
+  ---
+  duration_ms: 1.70256
+  type: 'test'
+  ...
+# Subtest: mterm_list_directory observes cancellation during iterator cleanup
+ok 26 - mterm_list_directory observes cancellation during iterator cleanup
+  ---
+  duration_ms: 3.430327
+  type: 'test'
+  ...
+# Subtest: mterm_search_files observes cancellation during iterator cleanup
+ok 27 - mterm_search_files observes cancellation during iterator cleanup
+  ---
+  duration_ms: 3.640605
+  type: 'test'
+  ...
+# Subtest: mterm_search_content observes cancellation during iterator cleanup
+ok 28 - mterm_search_content observes cancellation during iterator cleanup
+  ---
+  duration_ms: 3.834267
+  type: 'test'
+  ...
+# Subtest: nested content cancellation closes the file and every ancestor directory
+ok 29 - nested content cancellation closes the file and every ancestor directory
+  ---
+  duration_ms: 4.381754
+  type: 'test'
+  ...
+# Subtest: content search preserves cancellation at its final file read
+ok 30 - content search preserves cancellation at its final file read
+  ---
+  duration_ms: 3.432051
+  type: 'test'
+  ...
+# Subtest: filename search preserves cancellation at final path resolution
+ok 31 - filename search preserves cancellation at final path resolution
+  ---
+  duration_ms: 3.90305
+  type: 'test'
+  ...
+# Subtest: content search preserves cancellation at its final file read with an I/O failure
+ok 32 - content search preserves cancellation at its final file read with an I/O failure
+  ---
+  duration_ms: 3.692493
+  type: 'test'
+  ...
+# Subtest: filename search preserves cancellation at final path resolution with a policy failure
+ok 33 - filename search preserves cancellation at final path resolution with a policy failure
+  ---
+  duration_ms: 2.616669
+  type: 'test'
+  ...
+# Subtest: remote caller cancellation reaches mterm_read_file before further I/O
+ok 34 - remote caller cancellation reaches mterm_read_file before further I/O
+  ---
+  duration_ms: 6.913115
+  type: 'test'
+  ...
+# Subtest: remote caller cancellation reaches mterm_file_info before further I/O
+ok 35 - remote caller cancellation reaches mterm_file_info before further I/O
+  ---
+  duration_ms: 7.250363
+  type: 'test'
+  ...
+# Subtest: remote caller cancellation reaches mterm_list_directory before further I/O
+ok 36 - remote caller cancellation reaches mterm_list_directory before further I/O
+  ---
+  duration_ms: 4.116132
+  type: 'test'
+  ...
+# Subtest: remote caller cancellation reaches mterm_search_files before further I/O
+ok 37 - remote caller cancellation reaches mterm_search_files before further I/O
+  ---
+  duration_ms: 5.327822
+  type: 'test'
+  ...
+# Subtest: remote caller cancellation reaches mterm_search_content before further I/O
+ok 38 - remote caller cancellation reaches mterm_search_content before further I/O
+  ---
+  duration_ms: 8.362201
+  type: 'test'
+  ...
+# Subtest: real remote deadline cancels mterm_read_file without subsequent I/O
+ok 39 - real remote deadline cancels mterm_read_file without subsequent I/O
+  ---
+  duration_ms: 253.900993
+  type: 'test'
+  ...
+# Subtest: real remote deadline cancels mterm_file_info without subsequent I/O
+ok 40 - real remote deadline cancels mterm_file_info without subsequent I/O
+  ---
+  duration_ms: 254.25392
+  type: 'test'
+  ...
+# Subtest: real remote deadline cancels mterm_list_directory without subsequent I/O
+ok 41 - real remote deadline cancels mterm_list_directory without subsequent I/O
+  ---
+  duration_ms: 252.865295
+  type: 'test'
+  ...
+# Subtest: real remote deadline cancels mterm_search_files without subsequent I/O
+ok 42 - real remote deadline cancels mterm_search_files without subsequent I/O
+  ---
+  duration_ms: 254.062211
+  type: 'test'
+  ...
+# Subtest: real remote deadline cancels mterm_search_content without subsequent I/O
+ok 43 - real remote deadline cancels mterm_search_content without subsequent I/O
+  ---
+  duration_ms: 254.055525
+  type: 'test'
+  ...
+# Subtest: remote deadline does not relabel an unrelated filesystem failure as cancellation
+ok 44 - remote deadline does not relabel an unrelated filesystem failure as cancellation
+  ---
+  duration_ms: 259.51911
+  type: 'test'
+  ...
+# Subtest: remote cancelled reads retain all four slots through real open and close cleanup
+ok 45 - remote cancelled reads retain all four slots through real open and close cleanup
+  ---
+  duration_ms: 4.261691
+  type: 'test'
+  ...
+# Subtest: read-only default denies write without modifying existing bytes
+ok 46 - read-only default denies write without modifying existing bytes
+  ---
+  duration_ms: 9.415349
+  type: 'test'
+  ...
+# Subtest: UTF8 round trip returns SHA version, guarded update and directory listing
+ok 47 - UTF8 round trip returns SHA version, guarded update and directory listing
+  ---
+  duration_ms: 25.461641
+  type: 'test'
+  ...
+# Subtest: missing precondition never replaces existing target; malformed values rejected
+ok 48 - missing precondition never replaces existing target; malformed values rejected
+  ---
+  duration_ms: 3.785022
+  type: 'test'
+  ...
+# Subtest: outside-root, private metadata and Windows special paths fail closed
+ok 49 - outside-root, private metadata and Windows special paths fail closed
+  ---
+  duration_ms: 2.89546
+  type: 'test'
+  ...
+# Subtest: junction/symlink and hardlink escapes are refused
+ok 50 - junction/symlink and hardlink escapes are refused
+  ---
+  duration_ms: 4.010633
+  type: 'test'
+  ...
+# Subtest: read byte cap and strict UTF8 reject oversized, binary and malformed files
+ok 51 - read byte cap and strict UTF8 reject oversized, binary and malformed files
+  ---
+  duration_ms: 3.363375
+  type: 'test'
+  ...
+# Subtest: no-overwrite move preserves both files on collision
+ok 52 - no-overwrite move preserves both files on collision
+  ---
+  duration_ms: 8.972781
+  type: 'test'
+  ...
+# Subtest: bounded searches exclude private/expensive trees and support cancellation
+ok 53 - bounded searches exclude private/expensive trees and support cancellation
+  ---
+  duration_ms: 20.101076
+  type: 'test'
+  ...
+# Subtest: invalid limits and unknown fields never trigger destructive work
+ok 54 - invalid limits and unknown fields never trigger destructive work
+  ---
+  duration_ms: 6.629189
+  type: 'test'
+  ...
+# Subtest: file ranges expose total lines and explicit remaining state
+ok 55 - file ranges expose total lines and explicit remaining state
+  ---
+  duration_ms: 4.746964
+  type: 'test'
+  ...
+# Subtest: aborted mutation cannot create a file after cancellation
+ok 56 - aborted mutation cannot create a file after cancellation
+  ---
+  duration_ms: 1.200621
+  type: 'test'
+  ...
+# Subtest: official client negotiates protocol and discovery, ping and least privilege
+ok 57 - official client negotiates protocol and discovery, ping and least privilege
+  ---
+  duration_ms: 220.975194
+  type: 'test'
+  ...
+# Subtest: official MCP file tools perform create/read/move and policy denials
+ok 58 - official MCP file tools perform create/read/move and policy denials
+  ---
+  duration_ms: 200.202952
+  type: 'test'
+  ...
+# Subtest: official MCP owned process accepts input, polls output and exits
+ok 59 - official MCP owned process accepts input, polls output and exits
+  ---
+  duration_ms: 250.272283
+  type: 'test'
+  ...
+# Subtest: server stdin EOF stops its owned process without leaving a resident host
+ok 60 - server stdin EOF stops its owned process without leaving a resident host
+  ---
+  duration_ms: 198.512459
+  type: 'test'
+  ...
+# Subtest: oversized stdio request closes promptly instead of unbounded buffering
+ok 61 - oversized stdio request closes promptly instead of unbounded buffering
+  ---
+  duration_ms: 196.274351
+  type: 'test'
+  ...
+# Subtest: remote adapter reads actual scoped content and advertises only five immutable read tools
+ok 62 - remote adapter reads actual scoped content and advertises only five immutable read tools
+  ---
+  duration_ms: 11.167583
+  type: 'test'
+  ...
+# Subtest: remote setup root validation rejects a regular file before configuration or pairing
+ok 63 - remote setup root validation rejects a regular file before configuration or pairing
+  ---
+  duration_ms: 2.659073
+  type: 'test'
+  ...
+# Subtest: remote adapter rejects mutation, cross-device, expired, cancelled and replay requests
+ok 64 - remote adapter rejects mutation, cross-device, expired, cancelled and replay requests
+  ---
+  duration_ms: 4.14792
+  type: 'test'
+  ...
+# Subtest: remote adapter retains path policy, credentials exclusions, response bounds and strict argument validation
+ok 65 - remote adapter retains path policy, credentials exclusions, response bounds and strict argument validation
+  ---
+  duration_ms: 11.359403
+  type: 'test'
+  ...
+1..65
+# tests 65
+# suites 0
+# pass 65
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 8176.179277

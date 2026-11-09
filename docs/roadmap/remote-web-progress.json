@@ -259,6 +259,21 @@
       ],
       "observation": "Original actual-main DPAPI10s timer failure retained; policy30s operation+5s cleanup, observed owned-child termination or generic unknown failure. Protect cleanup uncertainty retains pairing lock; Unprotect is read-only. Original native/Linux17/4pass13fail; unchanged supplementary22/22; independent source review found no blocker.",
       "limits": "No real enrollment, user auth, owner or deployed/staging change; no OS-cause or guaranteed termination claim. Native/fresh/installed/hosted final-head qualification remains pending. No accepted/stage/remaining-work credit."
+    },
+    {
+      "id": "FILE-CANCELLATION-20261109",
+      "level": "local deterministic real filesystem and SDK evidence; installed/platform qualification pending",
+      "status": "source_reviewed_regression_green",
+      "observedAt": "2026-11-09T04:18:59.495043+00:00",
+      "sourceBase": "5880c61fcaaaaa8972f06d1ae5a88d6e2d3cbd70",
+      "refs": [
+        "docs/validation/2026-11-09-file-cancellation.md",
+        "tests/file-cancellation.test.mjs",
+        "tests/file-cancellation-mcp.test.mjs",
+        "scripts/verify-package.mjs"
+      ],
+      "observation": "Unchanged archived-base45cases:7passed/38failed. Corrected focused65/65 and independent45/45. Actual SDK cancellation crosses the stdio boundary, suppresses post-resolution target I/O and records CANCELLED. Real file/directory cleanup and remote four-slot retention observed with scheduling gates; actual AbortSignal deadlines are exercised.",
+      "limits": "Controlled scheduling and injected failures on owned fixtures; no guarantee of aborting pending OS work. No deployed gateway, production load, disconnect/restart, owner auth or acceptance qualification. Existing native search timeout/truncation semantics and historical live metadata remain unchanged."
     }
   ],
   "pendingEvidence": [
@@ -1292,7 +1307,8 @@
         "LIVE-SMOKE",
         "WINDOWS-ALIAS-CHECKPOINT",
         "LIVE-SMOKE-FINAL",
-        "FINAL-GATES"
+        "FINAL-GATES",
+        "FILE-CANCELLATION-20261109"
       ],
       "implemented": "A real MCP SDK 2.3.0 session initialized six read-only tools, listed two Windows devices and read two actual FileService markers through the deployed gateway; returned SHA-256 values exactly matched both originals. Cross-device credentials, mutation and outside-root access were denied; revoke-one and grant revocation took effect.",
       "remainingWork": [

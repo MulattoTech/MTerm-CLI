@@ -28,6 +28,17 @@ result budgets. Descriptor reads check cancellation between awaits and close in
 `finally`; they cannot interrupt an OS read already in progress. See the
 [bounded contract](validation/2026-11-02-utf16le-read.md) for exact scope.
 
+Native file reads, metadata, directory listings and filename/content searches receive
+the owning request's cancellation signal. They check it around awaited filesystem
+work and before returning success. Search handling of unsupported or unreadable files
+does not suppress cancellation. File and directory cleanup is awaited, including
+acquired directories whose iteration has not started. Existing search skip behavior
+for non-cancellation errors is retained.
+Cancellation does not guarantee interruption of an OS operation already in progress.
+The request occupies its admission slot until awaited work and cleanup settle. Native
+search's `timeoutMs` retains its existing truncated-results contract. See the
+[native cancellation evidence](validation/2026-11-09-file-cancellation.md).
+
 ## Guarded file and registry persistence — 2026-11-08
 
 Existing-file writes use at most five Windows rename attempts, only for EPERM or
@@ -273,6 +284,14 @@ retains a separate cancellation marker after client result consumption, and obse
 deadlines at both gateway and device. An OS file read already in progress may finish
 before cancellation is observed; late results are refused. No remote state-changing
 filesystem or process operation is enabled.
+
+For an admitted remote operation, a cooperative `CANCELLED` error observed at or
+after the request deadline is returned as `DEADLINE_EXCEEDED`. Explicit cancellation
+observed before expiry remains `CANCELLED`. Other errors already surfaced by the
+tool, including validation and admission failures, retain their sanitized codes. This settlement rule also
+applies when a caller cancels before expiry but pending work finishes after it; it
+does not claim which signal fired first. Late successful results remain refused.
+The device retains the occupied execution slot until work and cleanup settle.
 
 ### What the staging tests establish
 

@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-09-file-cancellation; qualify actual installed native/MCP/remote cooperative cancellation.
 // Modified: 2026-11-09-git-boundaries; qualify native Git metadata and filter denials from the installed package.
 // Modified: 2026-11-09-owned-stop-retry; exercise explicit recovery against the actual installed process service.
 // Modified: 2026-11-08-aug003-registry-persistence; actual installed file/registry fault regressions.
@@ -517,6 +518,72 @@ const installedGitBoundaries = {
   log: gitBoundaryLog,
   logSha256: createHash('sha256').update(gitBoundaryOutput).digest('hex'),
 };
+const cancellationBindings = [...packBindings];
+for (const name of ['remote/adapter.js', 'remote/protocol.js']) {
+  const source = await fs.readFile(path.join(root, 'dist', name));
+  const bytes = await fs.readFile(path.resolve(path.dirname(installed), '../dist', name));
+  assert.deepEqual(bytes, source, 'Installed cancellation adapter differs from compiled source');
+  cancellationBindings.push({
+    path: 'dist/' + name,
+    sha256: createHash('sha256').update(bytes).digest('hex'),
+  });
+}
+const cancellationFixtures = ['tests/file-cancellation.test.mjs', 'tests/file-cancellation-mcp.test.mjs'];
+const cancellationAcceptance = await exec(
+  process.execPath,
+  [
+    '--test',
+    '--test-reporter=tap',
+    '--test-concurrency=1',
+    ...cancellationFixtures.map((file) => path.join(root, file)),
+  ],
+  {
+    cwd: home,
+    env: { ...env, MTERM_VERIFY_BIN: installed },
+    timeout: 90000,
+    maxBuffer: 1048576,
+    windowsHide: true,
+  },
+).then(
+  (result) => ({ ...result, exit: 0 }),
+  (error) => ({ stdout: error.stdout ?? '', stderr: error.stderr ?? '', exit: error.code ?? 'unknown' }),
+);
+const cancellationOutput = cancellationAcceptance.stdout + cancellationAcceptance.stderr;
+const cancellationLog = path.join(output, 'file-cancellation-tests.tap');
+await fs.writeFile(cancellationLog, cancellationOutput);
+assert.equal(cancellationAcceptance.exit, 0, 'Installed cancellation tests failed; see retained log');
+const cancellationTests = Number(cancellationAcceptance.stdout.match(/^# tests (\d+)$/m)?.[1]);
+assert.ok(cancellationTests >= 45, 'Installed cancellation tests did not run');
+for (const field of ['fail', 'skipped', 'cancelled'])
+  assert.match(cancellationAcceptance.stdout, new RegExp('^# ' + field + ' 0$', 'm'));
+const installedFileCancellation = {
+  ok: true,
+  tests: cancellationTests,
+  failed: 0,
+  skipped: 0,
+  cancelled: 0,
+  moduleBindings: cancellationBindings,
+  fixtures: await Promise.all(
+    cancellationFixtures.map(async (file) => ({
+      path: file,
+      sha256: createHash('sha256')
+        .update(await fs.readFile(path.join(root, file)))
+        .digest('hex'),
+    })),
+  ),
+  realFilesystemHandles: true,
+  realSdkStdioCancellation: true,
+  deterministicSchedulingInjection: true,
+  realAbortSignalDeadlines: true,
+  capacityRetainedUntilSettlement: true,
+  pendingOsIoInterruptionGuaranteed: false,
+  deployedGatewayQualified: false,
+  productionLoadQualified: false,
+  fromOutsideCheckout: true,
+  modelCalls: 0,
+  log: cancellationLog,
+  logSha256: createHash('sha256').update(cancellationOutput).digest('hex'),
+};
 const isolationBindings = [];
 for (const name of [
   'cli.js',
@@ -745,6 +812,7 @@ const report = {
   installedResourceBudgets,
   installedProcessStopRecovery,
   installedGitBoundaries,
+  installedFileCancellation,
   installedIsolation,
   installedProvenance,
   fullTransitiveLicenseClearance: false,

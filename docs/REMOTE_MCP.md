@@ -195,6 +195,14 @@ the existing local `FileService`; filesystem logic is not duplicated in the Work
 - Job payloads/results are temporary bounded routing data. Audit entries contain
   operation metadata instead of file contents, credentials, or raw prompts.
 
+Cancellation is cooperative: an active filesystem operation may finish before the
+signal is observed, and its execution slot stays occupied until work and cleanup
+settle. An admitted cooperative cancellation observed at or after the job deadline
+reports `DEADLINE_EXCEEDED`; before expiry it reports `CANCELLED`. Other errors
+surfaced by the tool keep their sanitized codes, and late successful results are refused. The
+[scoped source/fixture evidence](validation/2026-11-09-file-cancellation.md) does not
+establish deployed gateway cancellation or production load capacity.
+
 ## Diagnosis, repair, and rollback
 
 `REMOTE_UNCONFIGURED` means setup has not been applied in the chosen state directory.

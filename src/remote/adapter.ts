@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-09-file-cancellation; propagate bounded signals and classify admitted deadline cancellation.
 // AI-Change: 2026-11-02-remote-agent (OpenAI / GPT-6 Astra Pro; self-reported)
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -91,13 +92,13 @@ export class RemoteReadAdapter {
       let value: Record<string, unknown>;
       switch (request.tool) {
         case 'mterm_read_file':
-          value = await this.files.read(request.arguments);
+          value = await this.files.read(request.arguments, bound);
           break;
         case 'mterm_file_info':
-          value = await this.files.info(request.arguments);
+          value = await this.files.info(request.arguments, bound);
           break;
         case 'mterm_list_directory':
-          value = await this.files.list(request.arguments);
+          value = await this.files.list(request.arguments, bound);
           break;
         default: {
           const args = fileSchemas.search.omit({ mode: true }).parse(request.arguments);
@@ -115,7 +116,13 @@ export class RemoteReadAdapter {
         fail('RESPONSE_LIMIT', 'Result exceeds the remote wire budget; request a smaller range.');
       return { ...envelope, result };
     } catch (error) {
-      const value = { ok: false, error: safeError(error) };
+      const safe = safeError(error);
+      // Match the existing late-success precedence without hiding unrelated I/O/admission failures.
+      const failure =
+        counted && safe.code === 'CANCELLED' && Date.now() >= request.deadline
+          ? { code: 'DEADLINE_EXCEEDED', message: 'Remote tool exceeded its deadline.' }
+          : safe;
+      const value = { ok: false, error: failure };
       return {
         ...envelope,
         result: {

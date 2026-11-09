@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 // AI-Change: 2026-11-02-remote-staging-smoke (OpenAI / GPT-6 Astra Pro; self-reported)
+// Modified: 2026-11-09-staging-build-identity; require explicit edge and registry source observations.
 // Run after build: node scripts/verify-remote-staging.mjs
+// Set nonsecret MTERM_STAGING_EXPECTED_SOURCE_COMMIT to the exact lowercase 40-hex source commit first.
 // Supply ONE stdin JSON line: {"client_id":"...access","client_secret":"..."}.
 // Credentials never enter argv, environment, reports, or plaintext credential files.
 import fs from 'node:fs/promises';
@@ -52,6 +54,18 @@ class SmokeError extends Error {
 }
 function ensure(condition, code) {
   if (!condition) throw new SmokeError(code);
+}
+function canonicalSourceCommit(value) {
+  return typeof value === 'string' && value.length === 40 && /^[a-f0-9]{40}$/.test(value);
+}
+function requireBuild(value, surface, phase) {
+  // Never copy arbitrary remote strings into a report. These are source labels,
+  // not hashes of deployed bytes or a guarantee of continuous version stability.
+  const observed = canonicalSourceCommit(value) ? value : null;
+  report.buildIdentity[phase][surface] = observed;
+  ensure(observed !== null, surface.toUpperCase() + '_BUILD_INVALID');
+  ensure(observed === report.buildIdentity.expectedSourceCommit, surface.toUpperCase() + '_BUILD_MISMATCH');
+  return observed;
 }
 function failure(error) {
   return {
@@ -247,6 +261,13 @@ async function waitFor(predicate, milliseconds, code) {
 }
 
 async function main() {
+  const expectedSourceCommit = process.env.MTERM_STAGING_EXPECTED_SOURCE_COMMIT;
+  ensure(
+    typeof expectedSourceCommit === 'string' && expectedSourceCommit.length > 0,
+    'EXPECTED_SOURCE_COMMIT_REQUIRED',
+  );
+  ensure(canonicalSourceCommit(expectedSourceCommit), 'EXPECTED_SOURCE_COMMIT_INVALID');
+  report.buildIdentity = { expectedSourceCommit, initial: {}, final: {} };
   credentials = await inputCredentials();
   lifetimeTimer = setTimeout(() => lifetime.abort(), 240000);
   await check('windows_runtime_and_real_modules', async () => {
@@ -306,10 +327,7 @@ async function main() {
     const health = await request('public', '/health');
     status(health, 200, 'HEALTH_UNAVAILABLE');
     ensure(health.data?.enabled === true && health.data.environment === 'staging', 'NOT_ENABLED_STAGING');
-    report.build =
-      typeof health.data.build === 'string' && /^[a-f0-9]{7,64}$/i.test(health.data.build)
-        ? health.data.build
-        : 'unverified';
+    report.build = requireBuild(health.data.build, 'edge', 'initial');
     const resource = await request('public', '/.well-known/oauth-protected-resource/mcp');
     status(resource, 200, 'RESOURCE_DISCOVERY_FAILED');
     ensure(
@@ -353,6 +371,7 @@ async function main() {
         response.data.grants.length === 0,
       'STAGING_IDENTITY_NOT_EMPTY',
     );
+    requireBuild(response.data.build, 'registry', 'initial');
     syntheticIdentityVerified = true;
     return {
       authenticated: true,
@@ -807,6 +826,32 @@ try {
     } catch (error) {
       report.cleanup.onlyCreatedLocalFixturesRemoved = false;
       report.cleanup.fixtureFailure = failure(error);
+      report.status = 'failed';
+    }
+  }
+  if (report.status === 'passed') {
+    try {
+      await check('final_staging_build_identity', async () => {
+        // The run lifetime is already aborted. Each cleanup-style request still
+        // has its own timeout; do not retry or wait for a deployment to converge.
+        const health = await request('public', '/health', { signal: null });
+        status(health, 200, 'HEALTH_UNAVAILABLE');
+        ensure(health.data?.enabled === true && health.data.environment === 'staging', 'NOT_ENABLED_STAGING');
+        requireBuild(health.data.build, 'edge', 'final');
+        const registry = await request('dashboard', '/api/dashboard', { authenticate: true, signal: null });
+        status(registry, 200, 'ACCESS_SERVICE_AUTH_FAILED');
+        ensure(
+          registry.data?.authenticated === true && registry.data.identityKind === 'staging-service',
+          'NOT_SYNTHETIC_SERVICE_IDENTITY',
+        );
+        requireBuild(registry.data.build, 'registry', 'final');
+        return {
+          expectedSourceCommit: report.buildIdentity.expectedSourceCommit,
+          ...report.buildIdentity.final,
+        };
+      });
+    } catch (error) {
+      report.failure = failure(error);
       report.status = 'failed';
     }
   }

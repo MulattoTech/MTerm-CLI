@@ -202,7 +202,12 @@ Human Google/Access sign-in, human browser consent/callback and ChatGPT connecto
 installation remain unverified. Production promotion, remote writes/process execution
 and full local/remote parity remain separate gates. The
 [staging runner](scripts/verify-remote-staging.mjs) records metadata and hashes without
-credentials or raw file contents. See the [security boundary](docs/SECURITY.md),
+credentials or raw file contents. New runs require the nonsecret
+`MTERM_STAGING_EXPECTED_SOURCE_COMMIT` from the qualified artifact manifest and
+matching edge/registry build labels before fixtures and after owned cleanup;
+see the [exact-source smoke instructions](docs/deployment/MTERM_STAGING.md#source-identity-for-a-new-staging-smoke).
+These labels do not independently prove deployed bytes or continuous version stability.
+See the [security boundary](docs/SECURITY.md),
 [deployment and recovery guide](docs/deployment/MTERM_STAGING.md), and
 [remote acceptance ledger](docs/REMOTE_MCP_ROADMAP.md).
 

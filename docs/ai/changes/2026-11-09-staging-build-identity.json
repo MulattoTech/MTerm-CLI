@@ -1,0 +1,377 @@
+{
+  "change_id": "2026-11-09-staging-build-identity",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "session_id": "MTERM-WEB-20261109T131339Z-resume-a9287b3c",
+  "worker": "/root/recover_prior_run",
+  "started_at": "2026-11-09T14:04:48.581058+00:00",
+  "started_at_basis": "First persisted RED receipt; setup and fixture writing preceded this timestamp.",
+  "updated_at": "2026-11-09T14:17:28.718108+00:00",
+  "base_sha": "4f9a1aa286c7832497e375009961d583d829e9da",
+  "branch": "fix/issue-226-staging-build-guard-20261109",
+  "claim": {
+    "ref": "coord/mterm/issue-226",
+    "comment_url": "https://github.com/MulattoTech/MTerm-CLI/issues/226#issuecomment-6741797972"
+  },
+  "issues": [
+    226
+  ],
+  "requirements": [
+    "CLI-299"
+  ],
+  "remote_web_requirements": [
+    "WEB-008",
+    "WEB-012"
+  ],
+  "files": [
+    "scripts/verify-remote-staging.mjs",
+    "tests/staging-build-identity.test.mjs",
+    "docs/validation/2026-11-09-staging-build-identity.md",
+    "docs/ai/changes/2026-11-09-staging-build-identity.json",
+    "README.md",
+    "docs/SECURITY.md",
+    "docs/HANDOFF.md",
+    "docs/REMOTE_MCP.md",
+    "docs/deployment/MTERM_STAGING.md",
+    "docs/REMOTE_MCP_ROADMAP.md",
+    "docs/roadmap/progress.json",
+    "docs/roadmap/review.json",
+    "docs/roadmap/FEATURES.md",
+    "docs/roadmap/index.html",
+    "docs/validation/2026-11-09-staging-build-identity-red.tap",
+    "docs/validation/2026-11-09-staging-build-identity-green.tap"
+  ],
+  "decisions": [
+    "Use a separate normal clone at the exclusively claimed qualified base; own only the harness, fixture, and two unique records. No shared documentation or gateway edits.",
+    "Require explicit nonsecret MTERM_STAGING_EXPECTED_SOURCE_COMMIT, exactly 40 lowercase hexadecimal characters, before credential input, outbound requests, or fixture effects. Keep no-argv and stdin-only secret rules.",
+    "Require enabled-staging edge health and authenticated initially-empty staging-service registry build labels to match before OAuth registration, grant creation, pairing or agent start; do not set syntheticIdentityVerified on a stale registry.",
+    "After otherwise-successful owned cleanup, re-read edge health and authenticated registry with existing bounded fixed-origin requests before clearing credentials and writing success. Fail closed without retries or convergence waiting.",
+    "Record canonical observed source labels by initial/final and edge/registry phase; sanitize malformed or missing remote values to null. Source-label observations are not deployed-byte hashes or continuous-stability proof.",
+    "Execute actual untransformed harness source in a controlled VM; every import, fetch, stdin, filesystem, platform, SDK, DPAPI store and agent is simulated. No real network or host fixture effects.",
+    "Preserve initial actual-before-source RED. Reviewer identified fixture path portability; use one virtual POSIX path model while keeping source/spawn paths native, then reproduce RED on byte-identical git-show baseline with the final frozen fixture."
+  ],
+  "initial_red": {
+    "command": "node --test --test-reporter=tap tests/staging-build-identity.test.mjs",
+    "result": "Untouched checkout before source edits: 54 total, 13 pass, 41 expected assertion failures, exit 1, no cancelled/skipped/todo cases, empty stderr. Passing original-flow control excludes setup/import failures.",
+    "source_sha256": "73b2a600f0281c4e35f08814f81b9c743758cf83f645b4e7483cddca252ca54d",
+    "fixture_sha256": "7cb5a56408b06ae26be0036d8025c7ae66994076eba1920b2b353e8dfa9d6dcc",
+    "tap_sha256": "555cca6668bf30202cf37b7d22212f9487f7d169e49947e3e8bf1bc3f97555a9"
+  },
+  "final_regressions": [
+    {
+      "phase": "RED",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "tests/staging-build-identity.test.mjs"
+      ],
+      "cwd": "/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard/artifacts/issue-226-staging-build-identity/baseline",
+      "base_sha": "4f9a1aa286c7832497e375009961d583d829e9da",
+      "baseline_provenance": "RED source is a byte-identical git-show copy of the named base, with the final frozen fixture. No baseline extraction or behavior shim.",
+      "started_at": "2026-11-09T14:07:15.117438+00:00",
+      "finished_at": "2026-11-09T14:07:20.250579+00:00",
+      "wall_seconds": 5.133125377993565,
+      "exit_code": 1,
+      "counts": {
+        "tests": 54,
+        "suites": 0,
+        "pass": 13,
+        "fail": 41,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "node": "v24.22.1",
+      "platform": "linux",
+      "architecture": "x64",
+      "before_sha256": {
+        "scripts/verify-remote-staging.mjs": "73b2a600f0281c4e35f08814f81b9c743758cf83f645b4e7483cddca252ca54d",
+        "tests/staging-build-identity.test.mjs": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73"
+      },
+      "after_sha256": {
+        "scripts/verify-remote-staging.mjs": "73b2a600f0281c4e35f08814f81b9c743758cf83f645b4e7483cddca252ca54d",
+        "tests/staging-build-identity.test.mjs": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73"
+      },
+      "stderr_bytes": 0,
+      "tap_sha256": "8f35d924729714b24dff56c86fd3dcb8aaecfd084b543395f9f83dd330130bd5",
+      "receipt_path": "artifacts/issue-226-staging-build-identity/red-final-fixture-receipt.json",
+      "receipt_sha256": "7e49cbe686532267814348c8278bb7a0099285323bdda5e120c74977cf43fc5a"
+    },
+    {
+      "phase": "GREEN",
+      "command": [
+        "node",
+        "--test",
+        "--test-reporter=tap",
+        "tests/staging-build-identity.test.mjs"
+      ],
+      "cwd": "/workspace/scratch/a9287b3cfe09/mterm-staging-build-guard",
+      "base_sha": "4f9a1aa286c7832497e375009961d583d829e9da",
+      "baseline_provenance": null,
+      "started_at": "2026-11-09T14:07:20.264122+00:00",
+      "finished_at": "2026-11-09T14:07:25.599884+00:00",
+      "wall_seconds": 5.3357235779985785,
+      "exit_code": 0,
+      "counts": {
+        "tests": 54,
+        "suites": 0,
+        "pass": 54,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "node": "v24.22.1",
+      "platform": "linux",
+      "architecture": "x64",
+      "before_sha256": {
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-build-identity.test.mjs": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73"
+      },
+      "after_sha256": {
+        "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+        "tests/staging-build-identity.test.mjs": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73"
+      },
+      "stderr_bytes": 0,
+      "tap_sha256": "c108ebb6a64fcc4242cb822c61a0ec436aefcb99457800b30d28044966e709ad",
+      "receipt_path": "artifacts/issue-226-staging-build-identity/green-final-fixture-receipt.json",
+      "receipt_sha256": "a8605ba0cb91cd273296d222c8ecb2bb33b5c8f5baa53ba8725dd3ad4fbbc2da"
+    }
+  ],
+  "bounded_checks": [
+    {
+      "command": "npm ci --ignore-scripts --no-audit --no-fund",
+      "exit_code": 0,
+      "scope": "Own isolated dependency tree; no manifest/lock edits; existing unknown http-proxy configuration warning."
+    },
+    {
+      "command": "npm run build:code",
+      "exit_code": 0,
+      "scope": "TypeScript compile only, not normal reviewed build or full gates; existing unknown http-proxy configuration warning."
+    },
+    {
+      "commands": [
+        [
+          "node",
+          "--check",
+          "scripts/verify-remote-staging.mjs"
+        ],
+        [
+          "node",
+          "--check",
+          "tests/staging-build-identity.test.mjs"
+        ],
+        [
+          "node",
+          "node_modules/prettier/bin/prettier.cjs",
+          "--check",
+          "scripts/verify-remote-staging.mjs",
+          "tests/staging-build-identity.test.mjs"
+        ],
+        [
+          "git",
+          "diff",
+          "--check"
+        ]
+      ],
+      "result": "All exit 0.",
+      "receipt_path": "artifacts/issue-226-staging-build-identity/focused-checks.json",
+      "receipt_sha256": "2c8fd1d1d5bac0f658db0adae90cffa56277b9c65d099d83bce09b1ac58d1c78"
+    }
+  ],
+  "independent_review": {
+    "reviewer": "/root/policy_and_candidate_review",
+    "status": "CLEAR",
+    "result": "No remaining material findings. One bounded frozen-byte execution: 54/54 passed, exit 0, zero failures/cancelled/skipped/todo cases, empty stderr, Node24.22.1 Linuxx64. Reviewer verified original-source baseline identity and all41 RED failures as assertions. Implementation worker read the actual receipt and TAP and verified both hashes.",
+    "source_sha256": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+    "fixture_sha256": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73",
+    "inputs_unchanged": true,
+    "executions": 1,
+    "receipt_path": "artifacts/issue-226-independent-review/peer-policy-f7m4okas/receipt.json",
+    "receipt_sha256": "e67ce5c67a0b02deb2836f29e8fd63be35226ac1242b980aaf9d264975ba5aff",
+    "tap_path": "artifacts/issue-226-independent-review/peer-policy-f7m4okas/tests.tap",
+    "tap_sha256": "f4222951bccf21c171eb00f019774df9c40f4a671d1f4c6006238cd79fb909e9",
+    "scope": "Actual harness source with simulated dependencies. Portability correction reviewed; no actual Windows, real SDK/DPAPI or live staging qualification."
+  },
+  "final_sha256": {
+    "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+    "tests/staging-build-identity.test.mjs": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73"
+  },
+  "roadmap_updates": [
+    {
+      "id": "CLI-299",
+      "stage_change": false,
+      "reason": "Append source-level smoke identity/ordering evidence; all protected fields and broader WEB acceptance unchanged."
+    }
+  ],
+  "roadmap_integration": "Root appended CLI299 notes/3refs and one dated paragraph each for WEB008/012, without protected-field/stage changes.",
+  "limitations": [
+    "VM execution is source-level ordering and fail-closed evidence. Windows platform, DPAPI, SDK behavior, agents, stdin, filesystem and HTTP responses are simulated; real hosted or native qualification is not claimed.",
+    "Virtual smoke reports are kept only in the fake filesystem. Their inherited realWindowsReadViaDeployedGatewayAndSdk field is not saved or promoted as acceptance evidence.",
+    "Expected commit and returned build labels are metadata, not independent deployed-byte hashes. Initial/final observations do not prove atomic edge/registry adoption, continuous version stability, or future stability.",
+    "No existing-Worker update, owner enrollment/start/stop, Access policy/binding change, service credential creation, grant operation, actual staging request, production bridge operation, deployment or retry was performed.",
+    "The original worker-stage raw logs remain in ignored worker artifacts. Root has now published the final-fixture RED and integrated GREEN transcripts; their paths, SHA256 values and trailing-whitespace-only normalization are recorded in committed_transcripts.",
+    "Root shared docs, exact source/fixture integration and normal local review/render/build/parity/typecheck/format/whitespace gates are complete. Full hosted/platform/package qualification and separate actual-main verification remain pending; no live deployment."
+  ],
+  "logs": {
+    "directory": "artifacts/issue-226-staging-build-identity",
+    "initial_red": {
+      "tap": "red.tap",
+      "receipt": "red-receipt.json"
+    },
+    "final_red": {
+      "tap": "red-final-fixture.tap",
+      "receipt": "red-final-fixture-receipt.json"
+    },
+    "final_green": {
+      "tap": "green-final-fixture.tap",
+      "receipt": "green-final-fixture-receipt.json"
+    },
+    "focused_checks": "focused-checks.json"
+  },
+  "next_unverified_action": "Six exact-candidate hosted jobs, ordinary expected-head merge and separate six actual-main jobs. No live deployment.",
+  "integration_base_sha": "fd47dea59e6cfba12995d453392216593a52237b",
+  "integrator": "/root",
+  "worker_commits": [
+    "132c1ca209421d8135c2fbfb19a8cb6ae8c0888e"
+  ],
+  "tests": [
+    {
+      "phase": "worker original-source and corrected regressions",
+      "result": "Initial RED and final-fixture original-source RED:54total13pass41expectedassertionfail,exit1. Final workerGREEN54/54exit0. No skips/cancel/todo/stderr.",
+      "details_in_record": [
+        "initial_red",
+        "final_regressions"
+      ]
+    },
+    {
+      "phase": "independent frozen-source review",
+      "result": "Review clear; one54/54execution,exit0,no fail/skip/cancel/todo/stderr,unchanged source/fixture; actual receipt verified.",
+      "details_in_record": "independent_review"
+    },
+    {
+      "phase": "serialized integration GREEN",
+      "result": "54/54,exit0,empty stderr,zero fail/cancel/skip/todo,two unchanged bindings;VM source-level scope only",
+      "receipt": {
+        "started_at": "2026-11-09T14:14:19.941183+00:00",
+        "base_sha": "fd47dea59e6cfba12995d453392216593a52237b",
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          "tests/staging-build-identity.test.mjs"
+        ],
+        "node": "v24.22.1",
+        "elapsed_seconds": 5.196448382004746,
+        "exit_code": 0,
+        "before": {
+          "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+          "tests/staging-build-identity.test.mjs": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73"
+        },
+        "after": {
+          "scripts/verify-remote-staging.mjs": "208ac5b3296ae8c55986db8e947ec92c7bd678f0c045cf37014b2910ec7c811e",
+          "tests/staging-build-identity.test.mjs": "3edf79c400441917280d79d7363ec659db23bbfc3e52e7ac948f5e98b1993b73"
+        },
+        "tap_sha256": "adf6e49686e0217f121dbdb04097c0e931ff93aa7d692dad4e8456dc057ad649",
+        "stderr_bytes": 0,
+        "scope": "Actual untransformed harness source; VM endpoints/filesystem/platform/SDK/DPAPI/agents simulated; no live acceptance."
+      },
+      "receipt_sha256": "0bde2bac9b0148cf51b6118bc924992118bb7d48487b92cb6931ea4825378221"
+    },
+    {
+      "phase": "normal reviewed integration gates",
+      "result": "All6commands exit0;300requirements29.36%,0complete45blocked126notStarted;DCP0/48 andWEB0/12 unchanged;existing npm http-proxy warning only.",
+      "records": [
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "scripts/roadmap.mjs",
+            "--review",
+            "--change",
+            "2026-11-09-staging-build-identity"
+          ],
+          "exit_code": 0,
+          "log": "gate-0.log"
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "scripts/roadmap.mjs",
+            "--render"
+          ],
+          "exit_code": 0,
+          "log": "gate-1.log"
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "build"
+          ],
+          "exit_code": 0,
+          "log": "gate-2.log"
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "typecheck"
+          ],
+          "exit_code": 0,
+          "log": "gate-3.log"
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "format:check"
+          ],
+          "exit_code": 0,
+          "log": "gate-4.log"
+        },
+        {
+          "command": [
+            "git",
+            "diff",
+            "--check"
+          ],
+          "exit_code": 0,
+          "log": "gate-5.log"
+        }
+      ],
+      "source_fingerprint": "07374845b2c1dcc8a944e30be9c54a2a57d2eccb52029021f8e7886f07a2bcdb"
+    }
+  ],
+  "committed_transcripts": {
+    "red": {
+      "path": "docs/validation/2026-11-09-staging-build-identity-red.tap",
+      "sha256": "903545106bb9df30dc072ece67b5b66c4ccca39800f7bc78961fe063ff895824",
+      "normalization": "Trailing whitespace removed only."
+    },
+    "green": {
+      "path": "docs/validation/2026-11-09-staging-build-identity-green.tap",
+      "sha256": "adf6e49686e0217f121dbdb04097c0e931ff93aa7d692dad4e8456dc057ad649",
+      "normalization": "Trailing whitespace removed only."
+    }
+  },
+  "shared_document_review": {
+    "reviewer": "policy_and_candidate_review",
+    "status": "clear after documentation freshness corrections",
+    "reviewed_at": "2026-11-09T14:27:14.610922+00:00",
+    "scope": "All 16 candidate paths against fd47dea59e6cfba12995d453392216593a52237b; prior frozen-source review reused.",
+    "findings": [
+      "All 300 requirement IDs/order, protected fields and top-level catalog values preserved; only CLI299 notes/evidence appended.",
+      "Historical HANDOFF and roadmap records preserved; historical live smoke and owner reports unchanged.",
+      "Operator flow agrees with required exact nonsecret source SHA, stdin-only credentials, service identity and initial/final edge plus registry observations.",
+      "Committed RED is exactly the documented normalization of final-fixture worker RED; integrated GREEN and six local gate receipts match.",
+      "Clarified historical worker-log wording and updated only the new HANDOFF checkpoint with completed PR227 actual-main qualification."
+    ],
+    "independent_check": {
+      "command": "node scripts/roadmap.mjs --check",
+      "exit_code": 0,
+      "source_fingerprint": "07374845b2c1dcc8a944e30be9c54a2a57d2eccb52029021f8e7886f07a2bcdb"
+    },
+    "limitations": "No additional source execution or live acceptance claimed by this documentation review."
+  }
+}

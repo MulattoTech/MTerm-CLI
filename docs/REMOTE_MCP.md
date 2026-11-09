@@ -237,6 +237,22 @@ immutable artifact with its matching bindings. Preserve the Durable Object and
 Access configuration. Recheck authentication and the disabled/healthy state before
 re-enabling access. There is no token-bearing copy/paste rollback command.
 
+## Expected source for synthetic staging qualification
+
+The separate Windows staging runner now requires
+`MTERM_STAGING_EXPECTED_SOURCE_COMMIT` to name the exact qualified source commit
+from the verified deployment artifact. The nonsecret value must be 40 lowercase
+hexadecimal characters and is checked before credential input or requests.
+[The deployment guide](deployment/MTERM_STAGING.md#source-identity-for-a-new-staging-smoke)
+shows the invocation and dedicated temporary service-identity prerequisites.
+
+Both public edge health and the authenticated registry build must match before
+fixture effects, and both are checked again after successful owned cleanup. A
+mismatch fails the run; it does not trigger deployment, retries or owner recovery.
+These are source-label observations, not independent deployed-byte hashing or
+continuous-version proof. Synthetic service acceptance remains separate from the
+owner checklist below and never uses the owner's cookies, grants or enrollment.
+
 ## Owner acceptance checklist
 
 - [ ] Confirm the exact staging deployment/version and current validation report.

@@ -1,0 +1,115 @@
+{
+  "change_id": "2026-11-09-state-lock-init",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "session_id": "MTERM-WEB-20261109T131339Z-resume-a9287b3c",
+  "started_at": "2026-11-09T13:13:39Z",
+  "updated_at": "2026-11-09T13:28:44.445444+00:00",
+  "base_sha": "3d32c0e53b0444c2b012b15432928f6feeda053f",
+  "issues": [
+    56
+  ],
+  "requirements": [
+    "CLI-286",
+    "CLI-287"
+  ],
+  "remote_requirements": [
+    "WEB-003"
+  ],
+  "files": [
+    "src/remote/state.ts",
+    "tests/remote-state-lock.test.mjs",
+    "scripts/verify-package.mjs",
+    "docs/SECURITY.md",
+    "docs/HANDOFF.md",
+    "docs/REMOTE_MCP_ROADMAP.md",
+    "docs/validation/2026-11-09-state-lock-init.md",
+    "docs/validation/2026-11-09-state-lock-init-red.tap",
+    "docs/validation/2026-11-09-state-lock-init-green.tap",
+    "docs/ai/changes/2026-11-09-state-lock-init.json",
+    "docs/roadmap/progress.json",
+    "docs/roadmap/review.json",
+    "docs/roadmap/FEATURES.md",
+    "docs/roadmap/index.html"
+  ],
+  "decisions": [
+    "One atomic scoped claim and isolated normal clone; root owns this source while a second bounded worker owns disjoint gateway files under issue54. Shared documentation/integration serialized.",
+    "Separate failed lock initialization from initialized operation cleanup; preserve exact primary rejection and original DPAPI retained-lock behavior.",
+    "At most one identity-guarded cleanup unlink after confirmed handle close; no stale lock takeover, automatic retry or hostile-race/crash-durability claim.",
+    "Initial21 real-file regressions before source edits; reviewer added3 cases plus causal assertions/safer teardown. Final24 rerun unchanged against unmodified base clone and candidate.",
+    "Additive actual-installed verifier binds seven compiled/runtime files and frozen test before/after an external-cwd execution.",
+    "Evidence only; preserve all300 protected fields, existing evidence and metadata; no DCP/WEB/AUG acceptance."
+  ],
+  "tests": [
+    {
+      "command": "Original21 tests/remote-state-lock.test.mjs against compiled3d32 baseline, before behavior edits",
+      "result": "RED5passed16assertionfail,exit1,zero skips/cancellations/todo."
+    },
+    {
+      "command": "Final frozen24 against separate unmodified3d32 normal clone compiled from baseline",
+      "result": "RED6passed18assertionfail,exit1,zero skips/cancellations/todo; baseline dist/remote/state.js SHA d1f971271863d2a7837d9530311104b789ee41099de7958bba8b4a193b3b2bbf."
+    },
+    {
+      "command": "npm run build:code; node --test --test-reporter=tap --test-concurrency=1 tests/remote-state-lock.test.mjs tests/remote-run-lock.test.mjs tests/remote-state.test.mjs tests/remote-state-dpapi.test.mjs",
+      "result": "GREEN62/62,explicit exit0,zero fail/skip/cancel/todo,Node24.22.1 Linuxx64."
+    },
+    {
+      "command": "Independent frozen62 execution by /root/policy_and_candidate_review",
+      "result": "62/62 exit0,empty stderr,zero fail/skip/cancel/todo;13 input hashes unchanged."
+    },
+    {
+      "command": "Explicit roadmap review/render/check; npm run build; npm run typecheck; npm run format:check; git diff --check",
+      "result": "All passed, exit0. Source fingerprint ca1e928252e771af7bcb3af256310d7ae4f78d5c30442667c0db98c19b824bad; protected300 maturity29.36%,0complete45blocked126notstarted; DCP0/48."
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "id": "CLI-286",
+      "stage_change": false,
+      "reason": "Append bounded failed mutation-lock initialization evidence; existing broader acceptance/stages and all protected fields unchanged."
+    },
+    {
+      "id": "CLI-287",
+      "stage_change": false,
+      "reason": "Append bounded failed mutation-lock initialization evidence; existing broader acceptance/stages and all protected fields unchanged."
+    }
+  ],
+  "reviewed_sha256": {
+    "src/remote/state.ts": "e3438a9a6f3705eb2fd83287fdf6e0f621005a97e9f9172287c8a1b6e67f4f3d",
+    "dist/remote/state.js": "58299ed3676f604c6149a8230d984ce3578a4aaad000ae99556a247a5d8d8039",
+    "tests/remote-state-lock.test.mjs": "52f01c08cc89a573e77b41986ccabb473273d799e4dd4175c5ca897e15e5f0ed",
+    "scripts/verify-package.mjs": "4d8008d5366b4fb4db3ef3de68931bdf2d2cee39f5347b5b1e967ce2ff933f3b"
+  },
+  "logs": {
+    "final-red.tap": {
+      "raw_sha256": "bee1b412ace6a8442c65811c517e5c4187b794c4406ecb6361d7a249240e55d0",
+      "committed_sha256": "9f2b7b887a38207b677c015b39e7ef753bbb1db32f788beb696addbe7239590a",
+      "normalization": "Trailing whitespace only."
+    },
+    "final-green.tap": {
+      "raw_sha256": "216773661df2e931a2d1838cef2546877eb88d196f8c889658a695e194a01bc6",
+      "committed_sha256": "216773661df2e931a2d1838cef2546877eb88d196f8c889658a695e194a01bc6",
+      "normalization": "Trailing whitespace only."
+    }
+  },
+  "independent_review": {
+    "reviewer": "/root/policy_and_candidate_review",
+    "status": "Final source, fixture and additive installed verifier clear; all earlier fixture recommendations applied. Independent62/62 exit0 with zero fail/skip/cancel/todo and empty stderr, one execution/no build; all13 measured inputs unchanged.",
+    "receipt_sha256": "8b398bbd4fcee4e3b1346ebaa4697854c480fa78c2f6c88ea53dc623ed932dd4",
+    "tap_sha256": "a204c5ae06065d673ed6d1ecd4f711b1a6f12f8846137928523cad0186a4f813"
+  },
+  "limitations": [
+    "No native disk failure, hostile local filesystem race protection or crash durability proved.",
+    "Initialized-operation cleanup/error precedence and transactional credential recovery are unchanged.",
+    "New fixture does not invoke real DPAPI; existing deterministic DPAPI suite remains separate from native Windows execution.",
+    "Actual installed/platform/native and separate main gates remain required.",
+    "No production bridge/plugin, Cloudflare, real data/configuration/grants, global runtimes or model-consuming workers changed."
+  ],
+  "integration_dependency": {
+    "pr": 222,
+    "merged_as": "3d32c0e53b0444c2b012b15432928f6feeda053f",
+    "tree": "2a90ed62f42e08ee670dcb754fc15240baa9357d",
+    "qualification": "All six PR and six separate actual-main gates independently verified; issue8 comment6741150803."
+  },
+  "next_unverified_action": "Publish exact-tree draft PR after documentation review; require six hosted/platform/installed/native gates, normal expected-head merge and separate main qualification."
+}

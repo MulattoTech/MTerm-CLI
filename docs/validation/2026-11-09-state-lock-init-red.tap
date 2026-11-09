@@ -1,0 +1,422 @@
+TAP version 13
+# Subtest: remote state lock preserves successful configuration and explicit subsequent mutation
+ok 1 - remote state lock preserves successful configuration and explicit subsequent mutation
+  ---
+  duration_ms: 20.005397
+  type: 'test'
+  ...
+# Subtest: remote state lock preserves initialized operation failure and releases normal admission
+ok 2 - remote state lock preserves initialized operation failure and releases normal admission
+  ---
+  duration_ms: 7.164546
+  type: 'test'
+  ...
+# Subtest: remote state lock never removes a preexisting malformed lock
+ok 3 - remote state lock never removes a preexisting malformed lock
+  ---
+  duration_ms: 2.276059
+  type: 'test'
+  ...
+# Subtest: remote state lock preserves an exclusive-open failure without claiming cleanup ownership
+ok 4 - remote state lock preserves an exclusive-open failure without claiming cleanup ownership
+  ---
+  duration_ms: 1.962916
+  type: 'test'
+  ...
+# Subtest: remote state lock recovers owned empty initialization for an explicit retry
+not ok 5 - remote state lock recovers owned empty initialization for an explicit retry
+  ---
+  duration_ms: 3.544325
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:146:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    The validation function is expected to return "true". Received false
+
+    Caught error:
+
+    ToolError: Remote state JSON is invalid; no credential data is included.
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:150:5)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: remote state lock recovers owned partial initialization for an explicit retry
+not ok 6 - remote state lock recovers owned partial initialization for an explicit retry
+  ---
+  duration_ms: 3.645749
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:146:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    The validation function is expected to return "true". Received false
+
+    Caught error:
+
+    ToolError: Remote state JSON is invalid; no credential data is included.
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:150:5)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: remote state lock preserves a falsy initialization rejection
+not ok 7 - remote state lock preserves a falsy initialization rejection
+  ---
+  duration_ms: 3.629965
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:159:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+
+      {
+    +   error: ToolError: Remote state JSON is invalid; no credential data is included.
+    +       at fail (file:///workspace/scratch/a9287b3cfe09/state-lock-baseline/dist/errors.js:12:11)
+    +       at RemoteStateStore.read (file:///workspace/scratch/a9287b3cfe09/state-lock-baseline/dist/remote/state.js:202:17)
+    +       at async RemoteStateStore.mutate (file:///workspace/scratch/a9287b3cfe09/state-lock-baseline/dist/remote/state.js:259:31)
+    +       at async TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:162:18)
+    +       at async Test.run (node:internal/test_runner/test:1409:7)
+    +       at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    +     code: 'REMOTE_STATE'
+    +   },
+    -   error: undefined,
+        rejected: true
+      }
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    rejected: true
+  actual:
+    rejected: true
+    error:
+    error: 'Remote state JSON is invalid; no credential data is included.'
+    stack: |-
+      fail (file:///workspace/scratch/a9287b3cfe09/state-lock-baseline/dist/errors.js:12:11)
+      RemoteStateStore.read (file:///workspace/scratch/a9287b3cfe09/state-lock-baseline/dist/remote/state.js:202:17)
+      async RemoteStateStore.mutate (file:///workspace/scratch/a9287b3cfe09/state-lock-baseline/dist/remote/state.js:259:31)
+      async TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:162:18)
+      async Test.run (node:internal/test_runner/test:1409:7)
+      async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:166:10)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: remote state lock treats a complete nonce write followed by rejection as failed initialization
+ok 8 - remote state lock treats a complete nonce write followed by rejection as failed initialization
+  ---
+  duration_ms: 5.171564
+  type: 'test'
+  ...
+# Subtest: remote state lock keeps admission until failed initialization confirms handle closure
+not ok 9 - remote state lock keeps admission until failed initialization confirms handle closure
+  ---
+  duration_ms: 2.909286
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:191:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The validation function is expected to return "true". Received false
+
+    Caught error:
+
+    ToolError: Remote state JSON is invalid; no credential data is included.
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:225:5)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: remote state lock retains unknown descriptor identity while closing its acquired handle
+not ok 10 - remote state lock retains unknown descriptor identity while closing its acquired handle
+  ---
+  duration_ms: 4.032718
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:233:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:246:3)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: remote state lock preserves initialization failure if close confirmation also fails
+not ok 11 - remote state lock preserves initialization failure if close confirmation also fails
+  ---
+  duration_ms: 2.494659
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:253:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The validation function is expected to return "true". Received false
+
+    Caught error:
+
+    Error: Synthetic owned state-lock failure
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:266:3)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: remote state lock keeps committed operation bytes when only close confirmation fails
+ok 12 - remote state lock keeps committed operation bytes when only close confirmation fails
+  ---
+  duration_ms: 2.925731
+  type: 'test'
+  ...
+# Subtest: remote state lock recovery preserves a replaced leaf and its renamed original
+not ok 13 - remote state lock recovery preserves a replaced leaf and its renamed original
+  ---
+  duration_ms: 2.390442
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:288:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The validation function is expected to return "true". Received false
+
+    Caught error:
+
+    ToolError: Remote state JSON is invalid; no credential data is included.
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:301:3)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: remote state lock recovery retains an inode with an additional hard link
+not ok 14 - remote state lock recovery retains an inode with an additional hard link
+  ---
+  duration_ms: 2.11134
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:307:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The validation function is expected to return "true". Received false
+
+    Caught error:
+
+    ToolError: Remote state file is linked or not regular.
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:318:3)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: remote state lock recovery requires original parent identity even for the original leaf
+not ok 15 - remote state lock recovery requires original parent identity even for the original leaf
+  ---
+  duration_ms: 2.241046
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:324:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The validation function is expected to return "true". Received false
+
+    Caught error:
+
+    ToolError: Remote state JSON is invalid; no credential data is included.
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:339:3)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: remote state lock recovery preserves a redirected parent and its unrelated target
+not ok 16 - remote state lock recovery preserves a redirected parent and its unrelated target
+  ---
+  duration_ms: 3.306671
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:346:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The validation function is expected to return "true". Received false
+
+    Caught error:
+
+    ToolError: Remote state JSON is invalid; no credential data is included.
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:362:3)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: remote state lock recovery preserves a replaced link leaf and its unrelated target
+not ok 17 - remote state lock recovery preserves a replaced link leaf and its unrelated target
+  ---
+  duration_ms: 3.317422
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:368:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The validation function is expected to return "true". Received false
+
+    Caught error:
+
+    ToolError: Remote state file is linked or not regular.
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:384:3)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: remote state lock refuses an aliased parent before acquiring a new lock
+not ok 18 - remote state lock refuses an aliased parent before acquiring a new lock
+  ---
+  duration_ms: 3.61343
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:390:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:395:3)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: remote state lock recovery retains changed parent ownership metadata
+not ok 19 - remote state lock recovery retains changed parent ownership metadata
+  ---
+  duration_ms: 2.642212
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:401:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    The validation function is expected to return "true". Received false
+
+    Caught error:
+
+    ToolError: Remote state JSON is invalid; no credential data is included.
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:419:5)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: remote state lock recovery retains changed leaf ownership metadata
+not ok 20 - remote state lock recovery retains changed leaf ownership metadata
+  ---
+  duration_ms: 2.603904
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:401:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    The validation function is expected to return "true". Received false
+
+    Caught error:
+
+    ToolError: Remote state JSON is invalid; no credential data is included.
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:419:5)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: remote state lock preserves primary failure if cleanup inspection fails
+not ok 21 - remote state lock preserves primary failure if cleanup inspection fails
+  ---
+  duration_ms: 2.119292
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:425:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The validation function is expected to return "true". Received false
+
+    Caught error:
+
+    Error: Synthetic owned state-lock failure
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:441:3)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: remote state lock attempts one unlink and preserves primary failure when cleanup fails
+not ok 22 - remote state lock attempts one unlink and preserves primary failure when cleanup fails
+  ---
+  duration_ms: 2.209068
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:446:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The validation function is expected to return "true". Received false
+
+    Caught error:
+
+    ToolError: Remote state JSON is invalid; no credential data is included.
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:459:3)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: remote state lock failed initialization never enters savePairing
+not ok 23 - remote state lock failed initialization never enters savePairing
+  ---
+  duration_ms: 4.802407
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:467:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    The validation function is expected to return "true". Received false
+
+    Caught error:
+
+    ToolError: Remote state JSON is invalid; no credential data is included.
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:486:5)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: remote state lock failed initialization never enters clearPairing
+not ok 24 - remote state lock failed initialization never enters clearPairing
+  ---
+  duration_ms: 3.519258
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:467:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    The validation function is expected to return "true". Received false
+
+    Caught error:
+
+    ToolError: Remote state JSON is invalid; no credential data is included.
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/state-lock-baseline/tests/remote-state-lock.test.mjs:486:5)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+1..24
+# tests 24
+# suites 0
+# pass 6
+# fail 18
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 242.558079

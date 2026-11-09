@@ -1,3 +1,17 @@
+# Failed mutation-lock initialization checkpoint — 2026-11-09 UTC
+
+Session `MTERM-WEB-20261109T131339Z-resume-a9287b3c` owns `coord/mterm/issue-56`, feature `fix/issue-56-state-lock-init-20261109`, base `3d32c0e53b0444c2b012b15432928f6feeda053f`. [Atomic scoped claim](https://github.com/MulattoTech/MTerm-CLI/issues/56#issuecomment-6741000659). Isolated normal clone; one writer for this scope and independent read-only review. A separate bounded issue54 worker owns only gateway authentication files; root serializes shared documentation/integration.
+
+[Mutation-lock evidence](validation/2026-11-09-state-lock-init.md): an empty/partial state.lock initialization error was replaced by JSON parsing or close failure and blocked future configuration/pairing changes. Initial21 prebehavior tests were RED5/16. Final frozen24 with review improvements is original-base RED6passed/18assertionfail, corrected focused62/62 with zero skips/cancellations. Cleanup requires failed initialization, confirmed handle closure and unchanged canonical parent/regular single-link file identity. Original errors including falsy rejections remain primary; preexisting/replaced/uncertain locks remain. Initialized operations and unconfirmed DPAPI retained admission are unchanged. No stale takeover or crash/hostile-race guarantee.
+
+Installed verification adds the same24 cases with seven exact runtime bindings and an external cwd, retaining output before cleanup and rechecking hashes. Actual installed/platform gates remain separate. CLI286/287 and WEB003 evidence only; all protected fields and full acceptance remain unchanged.
+
+Recovered PR222 merged normally at the base above, identical candidate tree `2a90ed62f42e08ee670dcb754fc15240baa9357d`. All six PR and all six actual-main gates passed with independent actual-log and receipt-hash review. [Recovery/main receipt](https://github.com/MulattoTech/MTerm-CLI/issues/8#issuecomment-6741150803). The old staged checkout and historical artifacts are preserved; no duplicate implementation. Issue8's bounded claim is inactive, broad acceptance open.
+
+Independent final source/fixture/verifier review and a separate frozen62/62 execution passed with13 unchanged input hashes. Next: reviewed build/format/parity gates; exact-head draft PR and all six hosted/package/platform/native checks, then normal expected-head merge and separate main qualification. No production bridge/plugin/global runtime/Cloudflare or unrelated project mutation.
+
+---
+
 # External installed-package qualification checkpoint — 2026-11-09 UTC
 
 Session `MTERM-WEB-20261109T031131Z-e0efd5d4` owns `coord/mterm/issue-8`, feature `fix/issue-8-package-isolation-20261109`, base `19a446e5b88815154dea4b48fa7ecbd08deb136a`. Sole implementation writer and independent read-only peers. [Atomic claim](https://github.com/MulattoTech/MTerm-CLI/issues/8#issuecomment-6733913700).

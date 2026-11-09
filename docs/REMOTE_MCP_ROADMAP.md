@@ -127,6 +127,8 @@ Stages describe implementation evidence and do not award acceptance or a complet
 
 **Completed evidence:** Two real Windows enrollments, wrong-pair-code HTTP 400, wrong-device-code HTTP 403 and consumed-pairing HTTP 410 with current-user DPAPI persistence.
 
+**2026-11-09 local persistence evidence:** [Mutation-lock initialization recovery](validation/2026-11-09-state-lock-init.md) preserves original failed-init errors and removes only a confirmed closed, identity-matched owned lock. Final unchanged 24-case baseline RED is 6 passed/18 assertion failures; focused source GREEN is 62/62 including existing DPAPI/run-lock cases. Installed/platform and full real enrollment gates remain distinct; no acceptance, stage or estimate change.
+
 **Remaining work, dependencies and blockers:**
 
 - Exercise live expiration, interrupted approval/credential persistence and restart failure paths, proving no extra usable enrollment can emerge from a failed operation. **Effort:** 3–6 engineering hours. **Depends on:** Recorded two-device staging pairing; WEB-004 lifecycle fault tests. **Blocker:** Consumed replay and code mismatches passed; expiry/crash/persistence-failure coverage in the real runtime remains pending.

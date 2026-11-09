@@ -1,0 +1,382 @@
+TAP version 13
+# Subtest: remote run lock preserves successful ownership, duplicate refusal and explicit owner release
+ok 1 - remote run lock preserves successful ownership, duplicate refusal and explicit owner release
+  ---
+  duration_ms: 22.907333
+  type: 'test'
+  ...
+# Subtest: remote run lock never removes a preexisting malformed lock
+ok 2 - remote run lock never removes a preexisting malformed lock
+  ---
+  duration_ms: 3.388559
+  type: 'test'
+  ...
+# Subtest: remote run lock recovers an owned empty initialization failure for an explicit retry
+ok 3 - remote run lock recovers an owned empty initialization failure for an explicit retry
+  ---
+  duration_ms: 4.502942
+  type: 'test'
+  ...
+# Subtest: remote run lock recovers an owned partial initialization failure for an explicit retry
+ok 4 - remote run lock recovers an owned partial initialization failure for an explicit retry
+  ---
+  duration_ms: 6.106354
+  type: 'test'
+  ...
+# Subtest: remote run lock keeps admission occupied until failed initialization closes its real handle
+ok 5 - remote run lock keeps admission occupied until failed initialization closes its real handle
+  ---
+  duration_ms: 5.760041
+  type: 'test'
+  ...
+# Subtest: remote run lock closes but retains ownership when descriptor identity inspection fails
+ok 6 - remote run lock closes but retains ownership when descriptor identity inspection fails
+  ---
+  duration_ms: 2.919781
+  type: 'test'
+  ...
+# Subtest: remote run lock preserves an initialization error when close confirmation also fails
+ok 7 - remote run lock preserves an initialization error when close confirmation also fails
+  ---
+  duration_ms: 2.414327
+  type: 'test'
+  ...
+# Subtest: remote run lock retains a completed payload when only close confirmation fails
+ok 8 - remote run lock retains a completed payload when only close confirmation fails
+  ---
+  duration_ms: 3.110673
+  type: 'test'
+  ...
+# Subtest: remote run lock cleanup preserves a replacement and the renamed original
+ok 9 - remote run lock cleanup preserves a replacement and the renamed original
+  ---
+  duration_ms: 3.646559
+  type: 'test'
+  ...
+# Subtest: remote run lock cleanup retains an inode with an additional hard link
+ok 10 - remote run lock cleanup retains an inode with an additional hard link
+  ---
+  duration_ms: 3.642302
+  type: 'test'
+  ...
+# Subtest: remote run lock cleanup preserves a symlink or junction replacement and its target
+ok 11 - remote run lock cleanup preserves a symlink or junction replacement and its target
+  ---
+  duration_ms: 3.359144
+  type: 'test'
+  ...
+# Subtest: remote run lock retains the file when cleanup identity cannot be inspected
+ok 12 - remote run lock retains the file when cleanup identity cannot be inspected
+  ---
+  duration_ms: 2.872248
+  type: 'test'
+  ...
+# Subtest: remote run lock preserves the initialization error when its one cleanup unlink fails
+ok 13 - remote run lock preserves the initialization error when its one cleanup unlink fails
+  ---
+  duration_ms: 2.073271
+  type: 'test'
+  ...
+# Subtest: remote run lock cleanup refuses a redirected parent and preserves both lock locations
+ok 14 - remote run lock cleanup refuses a redirected parent and preserves both lock locations
+  ---
+  duration_ms: 3.764406
+  type: 'test'
+  ...
+# Subtest: remote run lock cleanup retains its inode after that inode moves under a replacement parent
+ok 15 - remote run lock cleanup retains its inode after that inode moves under a replacement parent
+  ---
+  duration_ms: 2.440797
+  type: 'test'
+  ...
+# Subtest: remote run lock propagates an initial open error without acquiring cleanup authority
+ok 16 - remote run lock propagates an initial open error without acquiring cleanup authority
+  ---
+  duration_ms: 1.39666
+  type: 'test'
+  ...
+# Subtest: DPAPI protection can finish after ten seconds within the bounded thirty-second budget
+ok 17 - DPAPI protection can finish after ten seconds within the bounded thirty-second budget
+  ---
+  duration_ms: 30.674676
+  type: 'test'
+  ...
+# Subtest: DPAPI unprotection can finish immediately before thirty seconds without altering stored bytes
+ok 18 - DPAPI unprotection can finish immediately before thirty seconds without altering stored bytes
+  ---
+  duration_ms: 7.125328
+  type: 'test'
+  ...
+# Subtest: DPAPI success waits for code-zero close even after an observed successful exit
+ok 19 - DPAPI success waits for code-zero close even after an observed successful exit
+  ---
+  duration_ms: 16.611608
+  type: 'test'
+  ...
+# Subtest: DPAPI exact deadline kills only its child once and cannot accept a late successful close
+ok 20 - DPAPI exact deadline kills only its child once and cannot accept a late successful close
+  ---
+  duration_ms: 10.402003
+  type: 'test'
+  ...
+# Subtest: DPAPI failure can observe exit before pipe close and release its pairing lock safely
+ok 21 - DPAPI failure can observe exit before pipe close and release its pairing lock safely
+  ---
+  duration_ms: 6.734402
+  type: 'test'
+  ...
+# Subtest: DPAPI unprotection accepts exactly thirty-two KiB of stdout
+ok 22 - DPAPI unprotection accepts exactly thirty-two KiB of stdout
+  ---
+  duration_ms: 8.174168
+  type: 'test'
+  ...
+# Subtest: DPAPI stdout overflow terminates once and refuses partial or late output
+ok 23 - DPAPI stdout overflow terminates once and refuses partial or late output
+  ---
+  duration_ms: 6.379717
+  type: 'test'
+  ...
+# Subtest: DPAPI nonzero close exposes no stderr or credential bytes and preserves configuration
+ok 24 - DPAPI nonzero close exposes no stderr or credential bytes and preserves configuration
+  ---
+  duration_ms: 7.524456
+  type: 'test'
+  ...
+# Subtest: DPAPI synchronous spawn failure is generic and releases the pairing lock without a child
+ok 25 - DPAPI synchronous spawn failure is generic and releases the pairing lock without a child
+  ---
+  duration_ms: 7.472057
+  type: 'test'
+  ...
+# Subtest: DPAPI asynchronous failed spawn with no child PID does not retain a stale lock
+ok 26 - DPAPI asynchronous failed spawn with no child PID does not retain a stale lock
+  ---
+  duration_ms: 27.675139
+  type: 'test'
+  ...
+# Subtest: DPAPI synchronous stdin.end throw waits for owned-child termination and preserves prior bytes
+ok 27 - DPAPI synchronous stdin.end throw waits for owned-child termination and preserves prior bytes
+  ---
+  duration_ms: 10.080979
+  type: 'test'
+  ...
+# Subtest: DPAPI asynchronous stdin error waits for owned-child termination and preserves prior bytes
+ok 28 - DPAPI asynchronous stdin error waits for owned-child termination and preserves prior bytes
+  ---
+  duration_ms: 7.994716
+  type: 'test'
+  ...
+# Subtest: DPAPI spawned child error waits for owned-child termination and preserves prior bytes
+ok 29 - DPAPI spawned child error waits for owned-child termination and preserves prior bytes
+  ---
+  duration_ms: 8.884961
+  type: 'test'
+  ...
+# Subtest: DPAPI kill returns false has a bounded cleanup grace and retains unconfirmed pairing admission
+ok 30 - DPAPI kill returns false has a bounded cleanup grace and retains unconfirmed pairing admission
+  ---
+  duration_ms: 7.071472
+  type: 'test'
+  ...
+# Subtest: DPAPI kill throws has a bounded cleanup grace and retains unconfirmed pairing admission
+ok 31 - DPAPI kill throws has a bounded cleanup grace and retains unconfirmed pairing admission
+  ---
+  duration_ms: 9.802341
+  type: 'test'
+  ...
+# Subtest: DPAPI overflow cleanup uncertainty retains the lock even when kill reports success
+ok 32 - DPAPI overflow cleanup uncertainty retains the lock even when kill reports success
+  ---
+  duration_ms: 5.688063
+  type: 'test'
+  ...
+# Subtest: DPAPI unprotection errors stay generic and preserve both existing files
+ok 33 - DPAPI unprotection errors stay generic and preserve both existing files
+  ---
+  duration_ms: 5.846081
+  type: 'test'
+  ...
+# Subtest: remote state lock preserves successful configuration and explicit subsequent mutation
+ok 34 - remote state lock preserves successful configuration and explicit subsequent mutation
+  ---
+  duration_ms: 33.401436
+  type: 'test'
+  ...
+# Subtest: remote state lock preserves initialized operation failure and releases normal admission
+ok 35 - remote state lock preserves initialized operation failure and releases normal admission
+  ---
+  duration_ms: 9.116085
+  type: 'test'
+  ...
+# Subtest: remote state lock never removes a preexisting malformed lock
+ok 36 - remote state lock never removes a preexisting malformed lock
+  ---
+  duration_ms: 4.151712
+  type: 'test'
+  ...
+# Subtest: remote state lock preserves an exclusive-open failure without claiming cleanup ownership
+ok 37 - remote state lock preserves an exclusive-open failure without claiming cleanup ownership
+  ---
+  duration_ms: 2.367396
+  type: 'test'
+  ...
+# Subtest: remote state lock recovers owned empty initialization for an explicit retry
+ok 38 - remote state lock recovers owned empty initialization for an explicit retry
+  ---
+  duration_ms: 7.952072
+  type: 'test'
+  ...
+# Subtest: remote state lock recovers owned partial initialization for an explicit retry
+ok 39 - remote state lock recovers owned partial initialization for an explicit retry
+  ---
+  duration_ms: 4.828714
+  type: 'test'
+  ...
+# Subtest: remote state lock preserves a falsy initialization rejection
+ok 40 - remote state lock preserves a falsy initialization rejection
+  ---
+  duration_ms: 2.257189
+  type: 'test'
+  ...
+# Subtest: remote state lock treats a complete nonce write followed by rejection as failed initialization
+ok 41 - remote state lock treats a complete nonce write followed by rejection as failed initialization
+  ---
+  duration_ms: 5.218393
+  type: 'test'
+  ...
+# Subtest: remote state lock keeps admission until failed initialization confirms handle closure
+ok 42 - remote state lock keeps admission until failed initialization confirms handle closure
+  ---
+  duration_ms: 5.435
+  type: 'test'
+  ...
+# Subtest: remote state lock retains unknown descriptor identity while closing its acquired handle
+ok 43 - remote state lock retains unknown descriptor identity while closing its acquired handle
+  ---
+  duration_ms: 2.95246
+  type: 'test'
+  ...
+# Subtest: remote state lock preserves initialization failure if close confirmation also fails
+ok 44 - remote state lock preserves initialization failure if close confirmation also fails
+  ---
+  duration_ms: 3.062095
+  type: 'test'
+  ...
+# Subtest: remote state lock keeps committed operation bytes when only close confirmation fails
+ok 45 - remote state lock keeps committed operation bytes when only close confirmation fails
+  ---
+  duration_ms: 4.083588
+  type: 'test'
+  ...
+# Subtest: remote state lock recovery preserves a replaced leaf and its renamed original
+ok 46 - remote state lock recovery preserves a replaced leaf and its renamed original
+  ---
+  duration_ms: 3.154055
+  type: 'test'
+  ...
+# Subtest: remote state lock recovery retains an inode with an additional hard link
+ok 47 - remote state lock recovery retains an inode with an additional hard link
+  ---
+  duration_ms: 2.928654
+  type: 'test'
+  ...
+# Subtest: remote state lock recovery requires original parent identity even for the original leaf
+ok 48 - remote state lock recovery requires original parent identity even for the original leaf
+  ---
+  duration_ms: 2.980352
+  type: 'test'
+  ...
+# Subtest: remote state lock recovery preserves a redirected parent and its unrelated target
+ok 49 - remote state lock recovery preserves a redirected parent and its unrelated target
+  ---
+  duration_ms: 2.868153
+  type: 'test'
+  ...
+# Subtest: remote state lock recovery preserves a replaced link leaf and its unrelated target
+ok 50 - remote state lock recovery preserves a replaced link leaf and its unrelated target
+  ---
+  duration_ms: 2.656793
+  type: 'test'
+  ...
+# Subtest: remote state lock refuses an aliased parent before acquiring a new lock
+ok 51 - remote state lock refuses an aliased parent before acquiring a new lock
+  ---
+  duration_ms: 4.100774
+  type: 'test'
+  ...
+# Subtest: remote state lock recovery retains changed parent ownership metadata
+ok 52 - remote state lock recovery retains changed parent ownership metadata
+  ---
+  duration_ms: 2.21136
+  type: 'test'
+  ...
+# Subtest: remote state lock recovery retains changed leaf ownership metadata
+ok 53 - remote state lock recovery retains changed leaf ownership metadata
+  ---
+  duration_ms: 1.69435
+  type: 'test'
+  ...
+# Subtest: remote state lock preserves primary failure if cleanup inspection fails
+ok 54 - remote state lock preserves primary failure if cleanup inspection fails
+  ---
+  duration_ms: 1.848443
+  type: 'test'
+  ...
+# Subtest: remote state lock attempts one unlink and preserves primary failure when cleanup fails
+ok 55 - remote state lock attempts one unlink and preserves primary failure when cleanup fails
+  ---
+  duration_ms: 3.344924
+  type: 'test'
+  ...
+# Subtest: remote state lock failed initialization never enters savePairing
+ok 56 - remote state lock failed initialization never enters savePairing
+  ---
+  duration_ms: 5.470203
+  type: 'test'
+  ...
+# Subtest: remote state lock failed initialization never enters clearPairing
+ok 57 - remote state lock failed initialization never enters clearPairing
+  ---
+  duration_ms: 5.143389
+  type: 'test'
+  ...
+# Subtest: remote state separates public config from protected credentials and round-trips local protection
+ok 58 - remote state separates public config from protected credentials and round-trips local protection
+  ---
+  duration_ms: 32.738453
+  type: 'test'
+  ...
+# Subtest: remote state refuses exposing its credential directory and unapproved reconfiguration of a paired device
+ok 59 - remote state refuses exposing its credential directory and unapproved reconfiguration of a paired device
+  ---
+  duration_ms: 10.866575
+  type: 'test'
+  ...
+# Subtest: concurrent pair saves retain one coherent device/token binding
+ok 60 - concurrent pair saves retain one coherent device/token binding
+  ---
+  duration_ms: 8.025944
+  type: 'test'
+  ...
+# Subtest: device credential binds its enrolled root and refuses a retargeted root
+ok 61 - device credential binds its enrolled root and refuses a retargeted root
+  ---
+  duration_ms: 9.18186
+  type: 'test'
+  ...
+# Subtest: idempotent remote setup reports an existing pairing accurately
+ok 62 - idempotent remote setup reports an existing pairing accurately
+  ---
+  duration_ms: 9.18818
+  type: 'test'
+  ...
+1..62
+# tests 62
+# suites 0
+# pass 62
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1065.238151

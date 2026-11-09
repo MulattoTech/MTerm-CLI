@@ -804,4 +804,17 @@ async function cli() {
   process.stdout.write(JSON.stringify(answer) + '\n');
   process.exitCode = answer.result === 'failed' ? 1 : 0;
 }
-if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) await cli();
+async function isEntryPoint() {
+  if (!process.argv[1]) return false;
+  const entry = path.resolve(process.argv[1]),
+    moduleFile = fileURLToPath(import.meta.url);
+  if (samePath(entry, moduleFile)) return true;
+  try {
+    // Node can canonicalize the module URL while argv retains a directory alias.
+    return samePath(await fs.realpath(entry), await fs.realpath(moduleFile));
+  } catch {
+    // An unresolved importing argv does not identify this module as the CLI.
+    return false;
+  }
+}
+if (await isEntryPoint()) await cli();

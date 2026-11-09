@@ -194,3 +194,74 @@ merge and six distinct actual-main checks remain separate. Real token/smoke
 execution also depends on issue232's interrupted-principal recovery. All300 CLI
 rows retain29.36% maturity,0complete45blocked126notStarted; DCP0/48 andWEB0/12.
 No stage or protected-field change.
+
+## Native-path follow-up after blocked candidate
+
+The original worker and root-integration records above describe the pre-hosted source. Candidate [PR #233](https://github.com/MulattoTech/MTerm-CLI/pull/233) at `e5f15ebccdf908498f123d45b20a45a276925d33` was blocked by actual platform failures; it was not retried or merged. The tested synthetic merge `c2fc56b8374dad49f59e5d2f9ecd80ed004a46d0` has the same tree `6d900980250a093547abb15a4730f01cd62ff977`. The [blocked-candidate checkpoint](https://github.com/MulattoTech/MTerm-CLI/pull/233#issuecomment-6745656691) preserves that result.
+
+| Hosted lane | Actual full-suite outcome | Observed helper failure |
+| --- | --- | --- |
+| Windows | 1,033 total; 1,029 pass; four fail; no skips | Four native cases fail `SOURCE_UNSAFE` during `--describe-source`; the bare fixed child passes |
+| macOS Intel | 1,033 total; 1,016 pass; five fail; 12 existing platform skips | All five native cases see exit 0 with empty stdout, then fail JSON parsing |
+| macOS ARM | Same counts as Intel | Same empty-output shape |
+
+Fast, Ubuntu and native Linux lanes passed, but they do not qualify the failed platform lanes. The immutable hosted-review receipt is SHA256 `73b058d961d7bea2cdd19ab4a295806000980ca73dc8fb629659cafdf079c2d0`. The Windows failing safety predicate is not exposed by its log. A canonical Windows checkout passed root's separate descriptor diagnostic; this narrows the investigation without proving the temporary-fixture cause.
+
+Work resumed on `fix/issue-231-native-paths-20261109` from the exact published candidate. The original `d9465820fca38a76c7ac9ef071c1038e64decaf0` branch/history, scaffold snapshots, 130/131/185 results, pending-write regression and root integration evidence are preserved. The source correction changes only the bottom CLI entry selection: retain the lexical `samePath` fast path, otherwise compare both real file paths; failed resolution leaves an unrelated import inert. Every preceding receiver byte, including source admission, cryptography and bounded lifecycle, remains unchanged. The sealer and fixed smoke are unchanged.
+
+The native test factory resolves only its newly owned temporary root before populating it. This prepares a canonical path for the existing strict source checks; it does not relax `lstat`, symlink/realpath, hard-link, committed-blob or bundle checks. Its Windows benefit remains a prospective fixture correction until the revised hosted run passes.
+
+Three actual native regressions were frozen before the entry change. An owned directory symlink (junction on Windows) invokes the descriptor and bare fixed child; both must return their exact nonempty output with exit 0 and empty stderr. A distinct importing wrapper emits only its own marker. Cleanup removes the alias itself before its owned parent. On unchanged published receiver `dda60e56…`, the two alias cases reached exit 0 with empty stdout and failed the explicit output assertions, while the importing control passed. This reproduces the macOS failure shape with actual Node/filesystem behavior on Linux; it is not a simulated-path assertion or a claim of native macOS execution.
+
+```text
+node --test --test-reporter=tap --test-concurrency=1 --test-name-pattern='handoff native path' tests/staging-handoff.test.mjs
+```
+
+The exact frozen fixture `e1b31bac…` produced three RED cases: one pass and two `ERR_ASSERTION` failures, exit 1, no skip/cancel/todo and empty stderr. All six bindings were unchanged. After the narrow source correction the same three cases passed, exit 0. The final focused command passed **188/188**, exit 0, in 43.547 seconds: 134 handoff cases, including eight native local process/alias cases, plus the unchanged 54 build-identity cases. All 11 recorded inputs stayed unchanged; there were no failures, skips, cancellations or todos and stderr was empty. Final `build:code`, both script/fixture syntax checks, focused formatting and whitespace checks passed; the existing npm `http-proxy` warning remains recorded.
+
+| Native follow-up artifact | SHA256 |
+| --- | --- |
+| Corrected receiver | `291cf6d467f1602b88373fc6dcfab5108e9f5e22e1aba6fe8c88229069d4f844` |
+| Frozen 134-case fixture | `e1b31bace77b662f5e73a34457aced3c5c4c5961dcbe3d1b26b978b7b0eef55c` |
+| Three-case RED TAP | `c0feb04fbd688f56edcbba0c34cee7a4f086cd9cbb94a8028d50390edbad2ed8` |
+| Three-case RED receipt | `d8dd4f470245f3c4e9673fee55e5a742ea0e6fee82039d083cfeaa523ccba39c` |
+| Three-case GREEN TAP | `f6f3587435e51c5d1c2d85628f00479c98dabfbe65a64d220588ead0c3c01db9` |
+| Three-case GREEN receipt | `951710d8a191ec36035880f201301848160096e6d548290bd908468866be8fdc` |
+| Focused 188-case TAP | `5385f0f28caaacab4863e029c543705378d2def0f17a6e310a64011c985d31bb` |
+| Focused 188-case receipt | `14e2d30756e4cb2542fdb924270a204906b36169a1a3c81b1726f6075df5e092` |
+| Independent 134-case TAP | `cb9aa4102efc5ccf66d4f11f890237ac7f76122fd9de85787f7045b535f22dd9` |
+| Independent 134-case receipt | `efbe55a1acf52e04fc5b84e25239e949eb09ebd2a25916e9b77282f5f28fbb12` |
+
+The original published files, exact hosted failure basis, native RED/GREEN and bounded checks are retained under `artifacts/issue-231-native-paths/`; prior evidence was not overwritten. Independent frozen regression and final source/fixture review is **CLEAR**, with no remaining material findings. Exactly one final independent execution passed **134/134**, exit 0, in 36.498 seconds, with empty stderr, no failures/skips/cancellations/todos and all 11 bindings unchanged. The worker read the actual peer receipt/TAP and recomputed both hashes. Revised exact-candidate Windows/macOS and all other required hosted gates, actual-main qualification, connected Cloudflare-to-Windows public probe, privacy and owned-process observation remain pending. No real credential, token, policy, binding, owner operation or connected Windows receiver launch was performed by this worker.
+
+The final independent receipt and TAP are retained in `artifacts/issue-231-independent-review/peer-native-paths-seaheogh/`. The local correction is ready for root integration and a new published candidate; the earlier failed candidate remains a historical failure.
+
+## Root native-path integration
+
+Root serialized reviewed worker commit
+`6ca7b9e649b52720bdc8a3256f52bda2adcdbb04` onto the original published
+`e5f15ebccdf908498f123d45b20a45a276925d33` candidate. The receiver/frozen134 fixture
+and unchanged sealer/harness hashes above remained intact. The combined helper and
+staging-build suite passed **188/188**, actual exit0, empty stderr, no skips,
+cancellations or todos and11 unchanged bindings. It ran at16:53:19–16:54:00UTC on
+Node v24.22.1/Linux x64. Receipt SHA256
+`3e9b12ccd1d4778a1d2ea33b6580e5ed5e6897517ffda04c64121adbb80ec224`; raw TAP SHA256
+`a98b3a083f904c2074337206116afc87834af2930d26c0e93c824cdecda3ebfd`.
+
+- [2026-11-09-staging-handoff-native-red.tap](2026-11-09-staging-handoff-native-red.tap), SHA256 `c0feb04fbd688f56edcbba0c34cee7a4f086cd9cbb94a8028d50390edbad2ed8`; original raw SHA256 `c0feb04fbd688f56edcbba0c34cee7a4f086cd9cbb94a8028d50390edbad2ed8`.
+- [2026-11-09-staging-handoff-native-green.tap](2026-11-09-staging-handoff-native-green.tap), SHA256 `a98b3a083f904c2074337206116afc87834af2930d26c0e93c824cdecda3ebfd`; original raw SHA256 `a98b3a083f904c2074337206116afc87834af2930d26c0e93c824cdecda3ebfd`.
+
+Only trailing whitespace was normalized. The original published transcripts and
+failed hosted logs remain unchanged. Root appends CLI290/299 notes and these two
+evidence references, a current HANDOFF checkpoint and dated WEB008/012 explanation;
+protected catalog fields and acceptance remain unchanged. Normal explicit review/render,
+reviewed build/parity, typecheck, full source formatting and whitespace checks
+passed with exit0. Fingerprint `cfb11e6206641bf0b6857faa64431fe1aa27f5a8bfc79e28a90eff158d5dfc0e`
+covers181 entries; gate receipt SHA256 `19c7a95e0472d35a2e0ab5dfbda8c34b82c5e9c765825133430399dc83be96bc`.
+The existing npm http-proxy warning remains, and the known local Unix-socket
+full-suite limitation was not rerun or labeled PASS. Independent shared-document
+and protected-catalog review is CLEAR: all 300 rows, 816 other tracked blobs,
+historical records and actual receipt/transcript hashes were verified. Replacement
+exact candidate hosted checks, the actual connected public probe and ordinary
+merge/separate main gates remain pending. No unchanged workflow retry
+or real credential; all300 protected rows/acceptance and historical results remain.

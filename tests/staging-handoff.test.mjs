@@ -815,7 +815,7 @@ function denied(result, code) {
 }
 
 async function ownRepo() {
-  const dir = await fs.mkdtemp(path.join(os.tmpdir(), 'mterm-handoff-test-'));
+  const dir = await fs.realpath(await fs.mkdtemp(path.join(os.tmpdir(), 'mterm-handoff-test-')));
   for (const name of ['staging-handoff.mjs', 'staging-handoff-seal.mjs', 'verify-remote-staging.mjs']) {
     await fs.mkdir(path.join(dir, 'scripts'), { recursive: true });
     await fs.copyFile(path.join(REPO, 'scripts', name), path.join(dir, 'scripts', name));
@@ -852,6 +852,19 @@ async function ownRepo() {
     assert.equal(child.status, 0, child.stderr);
   }
   return dir;
+}
+async function withOwnedAlias(dir, action) {
+  const parent = await fs.realpath(await fs.mkdtemp(path.join(os.tmpdir(), 'mterm-handoff-alias-')));
+  const alias = path.join(parent, 'repo');
+  let linked = false;
+  try {
+    await fs.symlink(dir, alias, process.platform === 'win32' ? 'junction' : 'dir');
+    linked = true;
+    await action(alias);
+  } finally {
+    if (linked) await fs.unlink(alias);
+    await fs.rmdir(parent);
+  }
 }
 function safeEnvironment() {
   const env = {};
@@ -1418,6 +1431,83 @@ if (process.argv.includes(CHILD)) {
         type: 'mterm-staging-handoff-probe-child',
         received: true,
       });
+    } finally {
+      await fs.rm(dir, { recursive: true, force: true });
+    }
+  });
+  test('handoff native path: directory alias selects the real descriptor entry point', async () => {
+    const dir = await ownRepo();
+    try {
+      const expected = inspect(dir);
+      await withOwnedAlias(dir, async (alias) => {
+        const child = spawnSync(
+          process.execPath,
+          [path.join(alias, 'scripts/staging-handoff.mjs'), '--describe-source'],
+          { cwd: dir, env: safeEnvironment(), encoding: 'utf8', timeout: 15000, maxBuffer: 16384 },
+        );
+        assert.ifError(child.error);
+        assert.equal(child.status, 0);
+        assert.equal(child.signal, null);
+        assert.equal(child.stderr, '');
+        assert.notEqual(child.stdout, '', 'aliased CLI invocation emits its source descriptor');
+        assert.deepEqual(JSON.parse(child.stdout), expected);
+      });
+    } finally {
+      await fs.rm(dir, { recursive: true, force: true });
+    }
+  });
+  test('handoff native path: directory alias selects only the fixed probe child', async () => {
+    const dir = await ownRepo();
+    try {
+      await withOwnedAlias(dir, async (alias) => {
+        const child = spawnSync(
+          process.execPath,
+          [path.join(alias, 'scripts/staging-handoff.mjs'), '--probe-child'],
+          {
+            cwd: dir,
+            env: safeEnvironment(),
+            input: JSON.stringify(PROBE) + '\n',
+            encoding: 'utf8',
+            timeout: 5000,
+            maxBuffer: 16384,
+          },
+        );
+        assert.ifError(child.error);
+        assert.equal(child.status, 0);
+        assert.equal(child.signal, null);
+        assert.equal(child.stderr, '');
+        assert.notEqual(child.stdout, '', 'aliased CLI invocation emits its child-only receipt');
+        assert.deepEqual(JSON.parse(child.stdout), {
+          type: 'mterm-staging-handoff-probe-child',
+          received: true,
+        });
+      });
+    } finally {
+      await fs.rm(dir, { recursive: true, force: true });
+    }
+  });
+  test('handoff native path: importing from a different file never selects the CLI', async () => {
+    const dir = await ownRepo();
+    try {
+      const wrapper = path.join(dir, 'import-only.mjs');
+      const marker = '{"type":"owned-import-wrapper"}\n';
+      await fs.writeFile(
+        wrapper,
+        "import './scripts/staging-handoff.mjs';\nprocess.stdout.write(" + JSON.stringify(marker) + ');\n',
+      );
+      const child = spawnSync(process.execPath, [wrapper], {
+        cwd: dir,
+        env: safeEnvironment(),
+        input: JSON.stringify(PROBE) + '\n',
+        encoding: 'utf8',
+        timeout: 5000,
+        maxBuffer: 16384,
+      });
+      assert.ifError(child.error);
+      assert.equal(child.status, 0);
+      assert.equal(child.signal, null);
+      assert.equal(child.stderr, '');
+      assert.equal(child.stdout, marker);
     } finally {
       await fs.rm(dir, { recursive: true, force: true });
     }

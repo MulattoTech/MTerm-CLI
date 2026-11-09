@@ -265,3 +265,55 @@ historical records and actual receipt/transcript hashes were verified. Replaceme
 exact candidate hosted checks, the actual connected public probe and ordinary
 merge/separate main gates remain pending. No unchanged workflow retry
 or real credential; all300 protected rows/acceptance and historical results remain.
+
+
+## Completed delivery and connected public probe
+
+This section supersedes the pending-delivery statements above without rewriting
+their historical observations. [PR #233](https://github.com/MulattoTech/MTerm-CLI/pull/233)
+was delivered from replacement head `50be8591ef9c492b4148eaa8e429dac6977787cf` and
+merged normally at `c69762da7d1dda54f7a74795c08c1f699367c77f`, tree
+`70af939ceddcef7c6c51e827cb25af10ed469704`, at 17:32:34 UTC. The first blocked
+candidate remains a recorded failure. The [delivery receipt](2026-11-09-staging-handoff-delivery.json)
+identifies all six replacement-candidate jobs and six separate actual-main jobs.
+Every required job and step succeeded. Each full-source lane passed all134 helper
+cases: Windows passed1036/1036; fast, Ubuntu and both macOS architectures passed1024
+with the same12 existing Windows-specific skips. Installed/native Codex0.160.1
+fixtures performed zero model requests; native source/installed isolation and
+actual owned cleanup evidence remain separately audited.
+
+The actual connected Cloudflare-to-Windows **public probe** ran against the
+qualified50be source with portable Node24.21.0 and independently calculated bundle
+`6713bb0045c4ce874b054fddab5a9dac4744dd40c1ddb0bbc79f862e83a621f4`.
+The [unaltered probe receipt](2026-11-09-staging-handoff-connected-probe.json), SHA256
+`77f79e9f83f586b886f915dc5756d710010e53e536592148b74c12df30bf0fa1`, records actual
+RSA3072/OAEP-SHA256 and AES256-GCM sealing, exact one-frame delivery and an anonymous
+child pipe. The launcher naturally exited0 after46.22seconds; the receiver recorded
+natural child close, no requested termination, and success. An independent Windows
+observer verified the launcher-to-receiver identity and final absence of all three
+recorded PIDs. The short-lived child-parent edge was not independently observed
+while live. All owned diagnostic processes were subsequently observed absent.
+
+Observed privacy evidence comprises18 captured files totaling54,079bytes and nine
+exact owned history entries. Only the exact reviewed function source was excluded
+from the scan; runtime matches were not filtered. No public payload marker occurred
+in the captured runtime data. The independent saved-evidence review passed54
+consistency assertions; these are artifact checks, not54 additional product tests.
+This probe used no real credential, made zero Cloudflare API requests and no staging
+gateway request, and supplied no authenticated or principal-recovery acceptance.
+The scope does not include global logs, upstream internals, memory erasure or host
+attestation.
+
+The [final actual-main checkpoint](https://github.com/MulattoTech/MTerm-CLI/issues/231#issuecomment-6747183079)
+records narrow issue231 closed at17:45:11UTC and the claim released; its historical
+coordination branch remains. Main audit SHA256
+`f1ad1d26464a2124aa8c10b8947ce7b1e2e5f4688a834da4d4932c2d02a3a381`
+binds the actual main commit, both parents, equal candidate tree, six successful
+jobs and retained native artifact. CLI290/299 receive bounded evidence only;
+all300 protected rows,29.36% maturity, DCP0/48 and WEB0/12 remain unchanged.
+
+Issue232 is now separately claimed for owned-principal recovery. Its
+[provider diagnostics](2026-11-09-staging-provider-diagnostics.md) record two rejected
+creation attempts and no successful token lifecycle or credentialed cleanup. The
+recovery source and a fresh live staging smoke remain separate qualification work;
+closing narrow231 did not close issue232 or broad61/65.

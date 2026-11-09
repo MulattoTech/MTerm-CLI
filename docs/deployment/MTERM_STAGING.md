@@ -257,6 +257,109 @@ versions stayed constant during the run or afterward. Preserve the separate
 control-plane version, artifact/module-hash, configuration, owner-lifecycle and
 rollback checks. See the [source-level regression evidence](../validation/2026-11-09-staging-build-identity.md).
 
+## Owned-principal recovery
+
+Issue232 adds two explicit protocol2 modes: `cleanup` revokes previously created
+authority under the exact owned staging principal; `smoke-owned` invokes the
+byte-identical smoke runner with that same principal after cleanup. The existing
+protocol1 public probe and create-only `smoke` remain available. This is a guarded
+operator interface, not completed provider or owner acceptance. The [source report](../validation/2026-11-09-staging-recovery.md)
+and [two rejected provider attempts](../validation/2026-11-09-staging-provider-diagnostics.md)
+record the limits. Further token attempts are currently held while the rejection
+cause and a supported next operation remain unresolved. Do not repeat either
+completed intent or reset its attempt guard.
+
+After the actual provider lifecycle is qualified, the separate self-contained
+`bootstrapStagingRecovery(publicCreationNonce, cloudflare, selectedAccountId)`
+operation can create one explicit30-minute token without keeping a receiver open.
+It has its own30-second decision deadline. Its successful output contains only the
+original token UUID/name/creation nonce, original observed creation/expiry timestamps,
+and fixed issuer/audience/registry metadata. Save that exact public `ownership`
+object in the reviewed run ledger. The secret is discarded inside the provider
+executor. A missing or ambiguous creation outcome is retained for reconciliation;
+never create another token or adopt/delete a name match to erase uncertainty.
+
+Preparing the dedicated service-only Access policy and `STAGING_SERVICE_ID` remains
+a separate exact-resource operation inside the provider executor. Do not expose the
+private Client ID while preparing it. Compare the current owner policy and namespace
+with their retained baseline and preserve them. Before starting the short receiver
+challenge, independently verify latest settings, the currently serving version,
+the fixed issuer/audience/origins/registry store and deployed source, and any
+required propagation. The helper does not add policies, publish Worker bindings or
+wait for a rollout to converge.
+
+Use the same independently selected source and bundle variables shown above. This
+example requires [PowerShell7.5 or later](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/convertfrom-json?view=powershell-7.5)
+so `-DateKind String` preserves the exact
+original timestamp strings. Set the following additional **public metadata** in
+the isolated authorized Windows session; the selected file must contain the exact
+reviewed bootstrap ledger:
+
+```powershell
+$MTermRecoveryOwnership = (Get-Content -Raw '<reviewed-public-run-ledger.json>' | ConvertFrom-Json -DateKind String).ownership
+$env:MTERM_STAGING_OWNED_TOKEN_JSON = [ordered]@{
+  ownership = $MTermRecoveryOwnership
+  renewal = 'none'
+} | ConvertTo-Json -Depth 8 -Compress
+$env:MTERM_STAGING_HANDOFF_MODE = 'cleanup'
+node .\scripts\staging-handoff.mjs
+```
+
+Use the qualified portable Node executable explicitly as above. Do not round-trip
+the ledger through a parser that converts its timestamp strings to date objects;
+the independent sender selection must match the original ownership exactly. The ownership JSON
+has exactly `ownership` then `renewal`; the original ownership field order is
+`tokenId`, `tokenName`, `creationRunNonce`, `originalCreatedAt`, `originalExpiresAt`,
+`staging`. Do not include Client ID/Secret, actor identifiers, an arbitrary account,
+origin or registry. `renewal:'none'` rejects insufficient observed lifetime before
+any write. A separately explicit `30m-if-needed` selection permits at most one
+duration update on that exact token. No fallback duration, refresh, re-enable,
+replacement or internal retry is allowed.
+
+Execute the exact reviewed
+`sealOwnedStagingHandoff(challenge, cloudflare, selectedAccountId, reviewed)`
+function. Independently selected `reviewed` values include the seven existing
+mode/source/hash fields followed by `ownership` and `renewal`. The function checks
+crypto and selection before writes, reads the token by UUID, requires its private
+Client ID to equal both Worker selectors, and checks all fixed context. The
+[deployment list](https://developers.cloudflare.com/api/resources/workers/subresources/scripts/subresources/deployments/methods/list/)
+contains history; only its first current deployment may supply the sole100%-active
+version. An older matching version is never a fallback. Required bindings must be
+unique, and the registry's `script_name` and `environment` keys must both be absent,
+including null or nominally matching override values.
+
+Before rotation and sealing, more than600,000ms and at most1,805,000ms of observed
+lifetime must remain. The receiver separately requires strictly more than455,000ms
+at its final pipe-release decision; these are different gates. When admitted, the
+function rotates the exact token once, observes its current
+expiry through a new exact-ID GET and rereads fixed Worker context before sealing.
+Original ledger timestamps do not substitute for observed expiry or require the
+provider to preserve `created_at` across renewal/rotation. The one-frame encrypted
+payload contains only the new Client ID/Secret pair. Supply that canonical frame
+and one newline to the receiver. No plaintext credential may enter chat, tool
+arguments/history, commands, environment variables or a plaintext file. Owned-mode
+errors retain the token and recovery route; never invoke the legacy create-failure
+deletion path for a reused principal.
+
+The cleanup child first checks public edge and authenticated staging-service
+registry identity/build. It permits an initially nonempty inventory, always posts
+revoke-all after admission, and requires both an explicit acknowledgement and an
+empty final inventory. Even an initially empty inventory must advance the epoch.
+After an attempted POST, both final observations are attempted once; lost
+acknowledgement remains failure. It starts no SDK, pairing, agent, local test tree
+or report file. Both the child receipt and natural local process closure must be
+verified; timeout/termination is not proof of either remote cleanup or exit.
+
+Independently reconcile the same fixed namespace/issuer/selectors before and after
+actual cleanup. Point-in-time helper checks do not prove continuous configuration
+stability. After confirmed cleanup, a fresh receiver challenge with `smoke-owned`
+can use the same original ownership ledger and explicit renewal choice. Keep the
+recovery route until the smoke's remote authority and all owned local processes
+are confirmed cleaned. Remove only the exact run-owned service policy, selector
+and token after those independent checks. Preserve uncertain resources and the
+public ledger when any stage is unconfirmed. Owner cookies, enrollment, grants,
+state locks and the production bridge remain outside this workflow.
+
 ## Historical complete staging smoke — 2026-11-02
 
 | Evidence identity | Value |

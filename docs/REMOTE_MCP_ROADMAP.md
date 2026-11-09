@@ -10,6 +10,30 @@ Reviewed on **2026-11-02 UTC** against [`b90432a1bc138d59305692a9f74f110a475d088
 
 The [qualified deployment](validation/2026-11-09-staging-deployment.md) now uses source `9e2d6633294e22ff63053564bad1ebeda2dd4059`, artifact `b6108e45df2c8142924a746c85af34790a3f2894221658798406b6a5cdeba722`, version `88e1a5ff-ac1e-4b9a-a4c2-31ba32d6221e` and deployment `e9b702fb-c6c0-4b15-b101-a9c8307a654f` at 100%. All six candidate and six actual-main gates were qualified. Independent downloaded-byte/settings/owner-policy checks passed; ordinary public health, discovery and anonymous denial were observed after propagation. Authenticated registry adoption and a fresh Windows/SDK smoke remain unqualified. The prior owner-only version and exact modules are retained for recovery. No token, Access policy, validation binding or owner lifecycle was changed. Historical November 2 results below retain their original scope; no acceptance stage changes.
 
+## Handoff delivery and owned recovery — 2026-11-09
+
+[PR233 delivery](validation/2026-11-09-staging-handoff-delivery.json) is complete:
+replacement candidate50be and actual mainc697 each passed all six required hosted
+jobs. The recorded connected public probe qualified its exact reviewed source,
+observed encrypted transport, privacy scope and owned-process closure. It used no
+service credential or gateway request. Narrow231 is closed and its claim released;
+the first failed candidate and every historical receipt retain their original scope.
+
+[Issue232 recovery](validation/2026-11-09-staging-recovery.md) adds original-token
+ownership, fixed issuer/audience/registry-store checks, explicit bounded renewal and
+rotation, and a cleanup child requiring acknowledged revocation plus final empty
+inventory and natural close. Source tests include real signed synthetic Access and
+actual gateway/registry authority revocation while unrelated principal authority
+remains usable. Worker409/409 and independent355/355 passed; exact integration and
+hosted delivery remain separately recorded. The [provider evidence](validation/2026-11-09-staging-provider-diagnostics.md)
+records two rejected creation attempts, no acknowledged UUID and no successful
+expiry/renewal/rotation or connected cleanup. The second rejection was HTTP400/code12121;
+its cause remains unresolved. No further provider token attempt is selected.
+
+This appends bounded WEB008/012 evidence only. Issue232, broad61/65 and all full
+WEB requirements remain open; acceptance stays0/12. No protected ledger field or
+historical acceptance changes.
+
 ## Historical complete checkpoint — b90432a
 
 The [final sprint report](validation/2026-11-02-remote-sprint.md) records **PASS** for Windows full orchestration in **55.35s**: reviewed build, typecheck, formatting, parity, **149/149 tests with no skips** (**32,829ms**), package/isolated npm link, actual test-owned native **Codex 0.160.1**, and a clean tracked diff. [PR matrix 41372073094](https://github.com/MulattoTech/MTerm-CLI/actions/runs/41372073094) passed all four OS/architecture jobs; [fast 41372073095](https://github.com/MulattoTech/MTerm-CLI/actions/runs/41372073095) and [push matrix 41372068412](https://github.com/MulattoTech/MTerm-CLI/actions/runs/41372068412) also passed. [PR #69](https://github.com/MulattoTech/MTerm-CLI/pull/69) records final publication and documentation checks. No stage, weight or WEB acceptance credit is added here.

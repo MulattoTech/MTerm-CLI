@@ -1,0 +1,749 @@
+{
+  "schemaVersion": 1,
+  "type": "mterm-issue232-proposed-provider-diagnostics-durable-summary",
+  "status": "ROOT_REVIEWED_SAVED_PROVIDER_EVIDENCE; LIVE_LIFECYCLE_UNQUALIFIED",
+  "preparedAt": "2026-11-09T19:34:18.486346+00:00",
+  "preparedBy": {
+    "agent": "/root/provider_evidence",
+    "provider": "OpenAI",
+    "model": "GPT-6 Astra Pro",
+    "provenance": "self-reported"
+  },
+  "session": "MTERM-WEB-20261109T131339Z-resume-a9287b3c",
+  "issue": 232,
+  "claimComment": "https://github.com/MulattoTech/MTerm-CLI/issues/232#issuecomment-6747207135",
+  "localQualifiedSourceCommit": "c69762da7d1dda54f7a74795c08c1f699367c77f",
+  "accountId": "9e18ebcb3c1a920c9ef58a3d61b8d6b6",
+  "summary": "Two separately recorded explicit 20s service-token creation POSTs were rejected. Neither returned a usable resource UUID or acknowledged creation. The second captured HTTP 400/provider code 12121; its meaning remains unresolved. Complete exact-name listings found zero matches at their recorded times. Provider lifecycle and connected recovery acceptance remain unqualified.",
+  "recordedOperatorTotals": {
+    "separateInvocations": 2,
+    "tokenCreatePostAttempts": 2,
+    "acknowledgedCreations": 0,
+    "observedCreatedResourceUuids": 0,
+    "tokenRenewalCalls": 0,
+    "tokenRotationCalls": 0,
+    "tokenDeleteCalls": 0,
+    "policyWrites": 0,
+    "workerBindingWrites": 0,
+    "mtermRequests": 0,
+    "interpretation": "Counts cover the two recorded operator invocations. Separate read-only reconciliation/preflight/audit calls are enumerated below. No global account-state conclusion is implied."
+  },
+  "attempts": [
+    {
+      "id": "initial-lifecycle-qualification",
+      "purpose": "Qualify active-to-expired metadata, bounded renewal, same-identity rotation and exact-resource cleanup; execution stopped at its first request.",
+      "runNonce": "17e4190fc92bb6db5f7bda32d4b6ed6a",
+      "name": "mterm-issue232-qualification-17e4190fc92bb6db5f7bda32d4b6ed6a",
+      "startedAt": "2026-11-09T17:50:19.422Z",
+      "completedAt": "2026-11-09T17:50:19.667Z",
+      "elapsedMs": 245,
+      "request": {
+        "method": "POST",
+        "path": "/accounts/9e18ebcb3c1a920c9ef58a3d61b8d6b6/access/service_tokens",
+        "duration": "20s"
+      },
+      "actualApiCalls": [
+        {
+          "index": 1,
+          "method": "POST",
+          "route": "token-collection",
+          "outcome": "threw"
+        }
+      ],
+      "outcome": "failed",
+      "failure": {
+        "phase": "create20s",
+        "code": "provider_write_rejected"
+      },
+      "creationAcknowledged": false,
+      "resourceId": null,
+      "httpClassification": "The reviewed operator recorded a known HTTP 4xx rejection; the precise number and provider error were not retained.",
+      "httpStatus": null,
+      "numericProviderErrorCodes": null,
+      "preciseRejectionCause": "UNRESOLVED",
+      "lifecycleSequenceComplete": false,
+      "cleanupOutcome": "no-confirmed-created-id",
+      "deleteAttempted": false,
+      "sourceFileSha256": "b0b2b2e00ffd3587b490ac44f5169f7bbf6c6d909094dbefedb8cd1b4695bdef",
+      "functionSha256": "73ec9e940973f52e6a7a8f62d02b676dbfe202534cbfd976ed1ee8ff8e766fba",
+      "invocationWrapperSha256": "6b61963a67cb1c5069866d83bf926e92d13d874485f3bcf7ed6e301c696d76a2",
+      "independentStaticReviewSha256": "757e6f678373038eabcbc9684d0e981ad491af91c5ebd494413c0f6345b312b9",
+      "executionReceiptSha256": "d5e9f97c32a03ad31445689cc8ac81044c151b32f92bd0cd1b06a5ccd5ddf5df",
+      "preInvocationIntent": "https://github.com/MulattoTech/MTerm-CLI/issues/232#issuecomment-6747297435",
+      "durableOutcome": "https://github.com/MulattoTech/MTerm-CLI/issues/232#issuecomment-6747551626"
+    },
+    {
+      "id": "separate-create-only-diagnostic",
+      "purpose": "Recover the missing sanitized response classification through the same selected account/connector/endpoint, with smaller create-and-exact-cleanup-only scope.",
+      "runNonce": "f02f487c355192580739f768cde74665",
+      "name": "mterm-issue232-qualification-f02f487c355192580739f768cde74665",
+      "guardRecordedAt": "2026-11-09T18:20:15.517Z",
+      "startedAt": "2026-11-09T18:20:15.969Z",
+      "completedAt": "2026-11-09T18:20:16.306Z",
+      "elapsedMs": 337,
+      "request": {
+        "method": "POST",
+        "path": "/accounts/9e18ebcb3c1a920c9ef58a3d61b8d6b6/access/service_tokens",
+        "duration": "20s"
+      },
+      "sameAccountEndpointCredentialAndNamePrefixAsFirst": true,
+      "actualApiCalls": [
+        {
+          "index": 1,
+          "method": "POST",
+          "route": "token-collection",
+          "outcome": "threw"
+        }
+      ],
+      "outcome": "rejection-observed",
+      "failure": {
+        "phase": "create20s",
+        "code": "provider_write_rejected"
+      },
+      "creationAcknowledged": false,
+      "resourceId": null,
+      "httpStatus": 400,
+      "httpStatusEvidence": "error-message-http-status",
+      "numericProviderErrorCodes": [
+        12121
+      ],
+      "diagnosticInspectionTruncated": false,
+      "conflictingStatusEvidence": false,
+      "allowlistedTopicFlags": {
+        "durationMentioned": false,
+        "nameMentioned": false,
+        "permissionMentioned": false,
+        "authenticationMentioned": false,
+        "validationMentioned": false
+      },
+      "topicFlagsEstablishCause": false,
+      "preciseRejectionCause": "UNRESOLVED",
+      "cleanupOutcome": "no-cleanup-target-after-rejection",
+      "deleteAttempted": false,
+      "operatorExactIdReadbackAttempted": false,
+      "singleAttemptGuardRecorded": true,
+      "originalAttemptPreserved": true,
+      "sourceFileSha256": "941f020f41eaa2a75a99773f05c617b980b0933b8ea7d979988d7f2160e67ef4",
+      "functionSha256": "bc3741bcaf0724a896221a66c5e306b28ff38b9c15a8c2e0cc0338d08b65c304",
+      "invocationWrapperSha256": "f46db9a54dd32c3aca4fcf71cea123e305098cc7ce74ee5a41a33d973762bb1a",
+      "executionReceiptSha256": "23621138d87491e4b91762e18874aa95359960b8ca1018891ae2e347da5bbfe2",
+      "preInvocationIntent": "https://github.com/MulattoTech/MTerm-CLI/issues/232#issuecomment-6747907145",
+      "durableOutcome": "https://github.com/MulattoTech/MTerm-CLI/issues/232#issuecomment-6747989012",
+      "limit": "This result belongs to this diagnostic and does not establish the first invocation's exact status or cause."
+    }
+  ],
+  "exactNameReconciliations": [
+    {
+      "relationship": "Post-rejection observation of the first name",
+      "observedAt": "2026-11-09T17:52:18.820Z",
+      "name": "mterm-issue232-qualification-17e4190fc92bb6db5f7bda32d4b6ed6a",
+      "exactNameMatches": 0,
+      "returnedRows": 0,
+      "pagination": {
+        "page": 1,
+        "per_page": 1000,
+        "total_pages": 0,
+        "total_count": 0
+      },
+      "completeSelectedListing": true,
+      "outcome": "no-matching-resource-observed",
+      "mutationCalls": 0,
+      "evidencePath": "artifacts/issue-232-provider-lifecycle-20261109/rejected-create-reconciliation.json",
+      "sha256": "d2d3a408535a9c74e86fc4820507b7fa2d8b2fc02aafb95a1516e2bc0b215784"
+    },
+    {
+      "relationship": "Recheck of the original name before the diagnostic",
+      "observedAt": "2026-11-09T18:19:03.323Z",
+      "name": "mterm-issue232-qualification-17e4190fc92bb6db5f7bda32d4b6ed6a",
+      "exactNameMatches": 0,
+      "returnedRows": 0,
+      "pagination": {
+        "page": 1,
+        "per_page": 1000,
+        "total_pages": 0,
+        "total_count": 0
+      },
+      "completeSelectedListing": true,
+      "outcome": "no-matching-resource-observed",
+      "mutationCalls": 0,
+      "evidencePath": "artifacts/issue-232-provider-diagnostic-20261109/final-preflight-181903.json",
+      "sha256": "1e386991f48dd92f9a707ed1fad63693f4ca3f2a0d90337603021c9b25987ad9"
+    },
+    {
+      "relationship": "Fresh selected diagnostic name checked before its only invocation",
+      "observedAt": "2026-11-09T18:19:02.534Z",
+      "name": "mterm-issue232-qualification-f02f487c355192580739f768cde74665",
+      "exactNameMatches": 0,
+      "returnedRows": 0,
+      "pagination": {
+        "page": 1,
+        "per_page": 1000,
+        "total_pages": 0,
+        "total_count": 0
+      },
+      "completeSelectedListing": true,
+      "outcome": "no-matching-resource-observed",
+      "mutationCalls": 0,
+      "evidencePath": "artifacts/issue-232-provider-diagnostic-20261109/final-preflight-181903.json",
+      "sha256": "1e386991f48dd92f9a707ed1fad63693f4ca3f2a0d90337603021c9b25987ad9"
+    },
+    {
+      "relationship": "Separate post-rejection observation of the diagnostic name",
+      "observedAt": "2026-11-09T18:20:41.214Z",
+      "name": "mterm-issue232-qualification-f02f487c355192580739f768cde74665",
+      "exactNameMatches": 0,
+      "returnedRows": 0,
+      "pagination": {
+        "page": 1,
+        "per_page": 1000,
+        "total_pages": 0,
+        "total_count": 0
+      },
+      "completeSelectedListing": true,
+      "outcome": "no-matching-resource-observed",
+      "mutationCalls": 0,
+      "evidencePath": "artifacts/issue-232-provider-diagnostic-20261109/rejected-create-reconciliation.json",
+      "sha256": "2b9201afb6979f791bbd479173b0c6eb45c09005933565b736b3f59ad9fa5e4d"
+    }
+  ],
+  "reconciliationLimits": [
+    "A complete zero-match listing is a point-in-time absence observation, not a successful deletion receipt or proof that no request reached the provider.",
+    "No resource UUID was observed and no resource was adopted or deleted by name.",
+    "The two separate POSTs are recorded explicitly; neither operator retried internally. Historical intent files keep their pre-invocation wording, while guard and result files record later state."
+  ],
+  "auditReconciliation": {
+    "targetAttempt": "initial-lifecycle-qualification",
+    "since": "2026-11-09T17:50:17Z",
+    "before": "2026-11-09T17:50:23Z",
+    "totalAuditGets": 3,
+    "reads": [
+      {
+        "observedAt": "2026-11-09T17:53:51.526Z",
+        "filter": "POST and /accounts/9e18ebcb3c1a920c9ef58a3d61b8d6b6/access/service_tokens",
+        "returnedRows": 0,
+        "matchingEvents": 0,
+        "cursorPresent": false
+      },
+      {
+        "observedAt": "2026-11-09T17:54:29.206Z",
+        "filter": "POST and /client/v4/accounts/9e18ebcb3c1a920c9ef58a3d61b8d6b6/access/service_tokens",
+        "returnedRows": 0,
+        "matchingEvents": 0,
+        "cursorPresent": false
+      },
+      {
+        "observedAt": "2026-11-09T17:58:34.644Z",
+        "filter": "Time window only; method/collection URI matching performed internally",
+        "returnedRows": 0,
+        "matchingEvents": 0,
+        "cursorPresent": false
+      }
+    ],
+    "httpStatusRecovered": null,
+    "providerEventIdRecovered": null,
+    "rejectionCauseRecovered": false,
+    "staticInvocationReview": "No request-shape defect identified: supported method/path/object-body interface and unchanged forwarding wrapper. This establishes correspondence only, not a rejection cause.",
+    "limit": "No returned audit event does not prove the POST never reached Cloudflare and supplies no independent resource-existence conclusion."
+  },
+  "ownerOnlyConfigurationObservations": {
+    "observedAt": [
+      "2026-11-09T17:48:07.325Z",
+      "2026-11-09T18:09:55.345Z",
+      "2026-11-09T18:19:01.842Z"
+    ],
+    "latestRecordedOwnerOnlyObservationAt": "2026-11-09T18:19:01.842Z",
+    "activeVersion": "88e1a5ff-ac1e-4b9a-a4c2-31ba32d6221e",
+    "activeDeployedSourceCommit": "9e2d6633294e22ff63053564bad1ebeda2dd4059",
+    "bindingCount": 9,
+    "latestAndActiveBindingsEqual": true,
+    "stagingServiceSelectorAbsent": true,
+    "accessPolicyCount": 1,
+    "ownerPolicyId": "278aac2d-13d9-424f-845b-dd7c27d43662",
+    "ownerPolicyCanonicalSha256": "283e434138db2563ab8edd8cbc6e0a1a723e0d17fd0fa706966ac599e990e49d",
+    "ownerPolicyAndAllowlistMatchObserved": true,
+    "mutationsDuringRecordedPreflights": 0,
+    "limit": "These pre-invocation reads observe the original owner-only configuration. The recorded operators contain no policy/binding/MTerm operations, but no continuous-stability or later configuration read is claimed."
+  },
+  "configurationShapeObservation": {
+    "observedAt": "2026-11-09T18:15:14.871Z",
+    "apiReads": 3,
+    "mutations": 0,
+    "activeVersion": "88e1a5ff-ac1e-4b9a-a4c2-31ba32d6221e",
+    "versionIdMatches": true,
+    "locations": [
+      "settings.result.bindings",
+      "version.result.resources.bindings"
+    ],
+    "fixedPublicContextCompared": {
+      "issuer": "https://broken-breeze-d0bb.cloudflareaccess.com",
+      "audience": "9533396534dbc90c78bae02791ecdd0fab21f775876ed7164ed3b57bf54e1563",
+      "registryNamespaceId": "b66edc2d536e474093e1a18d0e88a24d",
+      "registryClassName": "MTermRegistry",
+      "mcpOrigin": "https://mcp-staging.m-techlabs.com",
+      "dashboardOrigin": "https://mterm-staging.m-techlabs.com",
+      "environment": "staging",
+      "mcpEnabled": true,
+      "deployedSourceCommit": "9e2d6633294e22ff63053564bad1ebeda2dd4059"
+    },
+    "latest": {
+      "arrayObserved": true,
+      "count": 9,
+      "requiredBindings": {
+        "ACCESS_ISSUER": {
+          "count": 1,
+          "plainText": true,
+          "matches": true
+        },
+        "ACCESS_AUDIENCE": {
+          "count": 1,
+          "plainText": true,
+          "matches": true
+        },
+        "ENVIRONMENT": {
+          "count": 1,
+          "plainText": true,
+          "matches": true
+        },
+        "MCP_ENABLED": {
+          "count": 1,
+          "plainText": true,
+          "matches": true
+        },
+        "BUILD_SHA": {
+          "count": 1,
+          "plainText": true,
+          "matches": true
+        },
+        "PUBLIC_ORIGIN": {
+          "count": 1,
+          "plainText": true,
+          "matches": true
+        },
+        "DASHBOARD_ORIGIN": {
+          "count": 1,
+          "plainText": true,
+          "matches": true
+        }
+      },
+      "serviceSelectorCount": 0,
+      "registry": {
+        "count": 1,
+        "typeMatches": true,
+        "namespaceMatches": true,
+        "classMatches": true,
+        "propertyNames": [
+          "class_name",
+          "name",
+          "namespace_id",
+          "type"
+        ],
+        "scriptNamePresent": false,
+        "scriptNameNull": false,
+        "scriptNameMatchesFixedWorker": false,
+        "environmentPresent": false,
+        "environmentNull": false,
+        "environmentEmpty": false,
+        "environmentProduction": false
+      }
+    },
+    "active": {
+      "arrayObserved": true,
+      "count": 9,
+      "requiredBindings": {
+        "ACCESS_ISSUER": {
+          "count": 1,
+          "plainText": true,
+          "matches": true
+        },
+        "ACCESS_AUDIENCE": {
+          "count": 1,
+          "plainText": true,
+          "matches": true
+        },
+        "ENVIRONMENT": {
+          "count": 1,
+          "plainText": true,
+          "matches": true
+        },
+        "MCP_ENABLED": {
+          "count": 1,
+          "plainText": true,
+          "matches": true
+        },
+        "BUILD_SHA": {
+          "count": 1,
+          "plainText": true,
+          "matches": true
+        },
+        "PUBLIC_ORIGIN": {
+          "count": 1,
+          "plainText": true,
+          "matches": true
+        },
+        "DASHBOARD_ORIGIN": {
+          "count": 1,
+          "plainText": true,
+          "matches": true
+        }
+      },
+      "serviceSelectorCount": 0,
+      "registry": {
+        "count": 1,
+        "typeMatches": true,
+        "namespaceMatches": true,
+        "classMatches": true,
+        "propertyNames": [
+          "class_name",
+          "name",
+          "namespace_id",
+          "type"
+        ],
+        "scriptNamePresent": false,
+        "scriptNameNull": false,
+        "scriptNameMatchesFixedWorker": false,
+        "environmentPresent": false,
+        "environmentNull": false,
+        "environmentEmpty": false,
+        "environmentProduction": false
+      }
+    },
+    "meaning": "Grounds the observed configuration response shape and fixed identity/store comparisons only; it does not qualify service-token fields, live recovery or continuous deployment stability."
+  },
+  "diagnosticOfflineReview": {
+    "scope": "Controlled fake-provider cases and static/wrapper review, separate from product feature tests and provider acceptance.",
+    "initialCases": {
+      "tests": 18,
+      "pass": 18,
+      "fail": 0,
+      "exitCode": 0
+    },
+    "frozenReadbackCasesBeforeFix": {
+      "sourceSha256": "3c51588a0d0b6ccd1ba469ea089169e0d24fb53e50851b99c64c03e35ac277cd",
+      "tests": 23,
+      "pass": 19,
+      "fail": 4,
+      "skipped": 0,
+      "exitCode": 1,
+      "stdoutSha256": "809966dfd46442ff0e2e00ed4673af60cc0b97824508d24a7365dcae252e3b3d"
+    },
+    "sameFrozenCasesAfterFix": {
+      "sourceSha256": "941f020f41eaa2a75a99773f05c617b980b0933b8ea7d979988d7f2160e67ef4",
+      "tests": 23,
+      "pass": 23,
+      "fail": 0,
+      "skipped": 0,
+      "exitCode": 0,
+      "stdoutSha256": "b6458013ecb52e7e0116f316fc16d8c821d24f27462e0a4a790491ac54a38c9e"
+    },
+    "resolvedFinding": "A successful exact-ID GET envelope previously claimed resource-still-observed even with missing/malformed/wrong ID. Four assertions failed before the correction; the exact-ID control passed. The corrected path requires a valid matching ID.",
+    "independentExecution": {
+      "counts": {
+        "tests": 23,
+        "pass": 23,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "exitCode": 0,
+      "stderrBytes": 0,
+      "inputBindingsUnchanged": true,
+      "receiptSha256": "423fdf50390984b1ae0c76fd22a17b94c194ae553be50154f48ddfc70ecaa439",
+      "tapSha256": "bd2a00d6214e905e6f8981ef89abdf5415d5e5eb4a482aaf964982727437e344"
+    },
+    "independentStaticReview": {
+      "result": "CLEAR",
+      "reviewedAt": "2026-11-09T18:19:08.351902+00:00",
+      "sha256": "b0190e807b6813896d54e2b2a39716f303c6e8a7d33952acb64ca76f292c2fc4"
+    },
+    "independentActualReceiptReview": {
+      "result": "CLEAR",
+      "reviewedAt": "2026-11-09T18:22:55.033749+00:00",
+      "sha256": "b13108410f42dd137b65a29ef7e3ddf1603b736b2b8927a7bb74850044ccd487",
+      "savedToolTextEqualsParsed": true,
+      "providerSideAuditPerformedByReviewer": false
+    }
+  },
+  "primarySourceResearch": {
+    "recordedAt": "2026-11-09T18:23:32.596Z",
+    "performedByPriorCoordinator": true,
+    "repeatedForThisDraft": false,
+    "result": "UNRESOLVED: no code 12121 mapping found in the inspected primary material; no supported concrete request change follows.",
+    "documentation": [
+      "https://developers.cloudflare.com/api/resources/zero_trust/subresources/access/subresources/service_tokens/methods/create/"
+    ],
+    "documentationQualification": "The inspected request schema permits seconds syntax and specifies no minimum duration or name-length bound. Documented syntax is not proof of account acceptance.",
+    "openApiServiceTokenPathsInspected": 6,
+    "exactCodeMatches": 0,
+    "cloudflareOwnedSourceSearches": [
+      {
+        "query": "12121 repo:cloudflare/api-schemas",
+        "result": {
+          "total_count": 0,
+          "incomplete_results": false,
+          "paths": []
+        }
+      },
+      {
+        "query": "12121 repo:cloudflare/cloudflare-go",
+        "result": {
+          "total_count": 0,
+          "incomplete_results": false,
+          "paths": []
+        }
+      },
+      {
+        "query": "12121 repo:cloudflare/cloudflare-typescript",
+        "result": {
+          "total_count": 0,
+          "incomplete_results": false,
+          "paths": []
+        }
+      },
+      {
+        "query": "12121 repo:cloudflare/terraform-provider-cloudflare",
+        "result": {
+          "total_count": 0,
+          "incomplete_results": false,
+          "paths": []
+        }
+      }
+    ],
+    "repositoryUrls": [
+      "https://github.com/cloudflare/api-schemas",
+      "https://github.com/cloudflare/cloudflare-go",
+      "https://github.com/cloudflare/cloudflare-typescript",
+      "https://github.com/cloudflare/terraform-provider-cloudflare"
+    ],
+    "limitations": [
+      "Search absence does not establish the meaning of a private backend error code.",
+      "HTTP 400 plus 12121 does not establish a minimum duration, invalid name or missing permission.",
+      "False allowlisted topic flags do not establish a different underlying cause.",
+      "No further provider operation or token attempt was made."
+    ],
+    "receiptSha256": "f4b5d67805571dbe8e2d6375d05497ecb1aea900dde10289f88ecd1a6257d471"
+  },
+  "acceptance": {
+    "providerCreationQualified": false,
+    "providerDeletionQualified": false,
+    "providerExpiryRenewalRotationQualified": false,
+    "serviceAuthenticationQualified": false,
+    "mtermPrincipalRecoveryCleanupQualified": false,
+    "connectedWindowsRecoveryQualified": false,
+    "fullIssue232AcceptanceAwarded": false,
+    "broad61Or65AcceptanceAwarded": false,
+    "roadmapCompletionCreditAwarded": false,
+    "recordedIssueState": "Issue 232 and broad issues 61/65 remain open at durable outcome checkpoint 6747989012; this draft performs no fresh issue-state query.",
+    "nextOperationalBoundary": "Further provider token attempts are held while the cause and a supported next operation remain unresolved. Do not repeat either completed intent or reset its guard. Continue local guarded implementation with the live limitations visible."
+  },
+  "privacyAndInterpretation": [
+    "The draft includes selected public resource/run identities, configuration-observation booleans and hashes of source/evidence artifacts only.",
+    "It copies no raw provider error/body/header, Client ID, Client Secret, dashboard actor ID or credential-derived digest.",
+    "HTTP 400/code 12121 and false topic flags establish neither a duration/name constraint nor a permission denial.",
+    "No acknowledged resource creation is not a universal assertion that no transient provider-side resource ever existed.",
+    "No MTerm authority operation occurred in the recorded operators; existing owner authority is outside this diagnostic scope.",
+    "The qualified local source commit and deployed gateway source commit are distinct identities and are not interchangeable.",
+    "Retained original intent/guard/results are historical records; this summary does not reset, replace or authorize repetition of either attempt."
+  ],
+  "durableCheckpoints": {
+    "claim": "https://github.com/MulattoTech/MTerm-CLI/issues/232#issuecomment-6747207135",
+    "firstIntent": "https://github.com/MulattoTech/MTerm-CLI/issues/232#issuecomment-6747297435",
+    "firstOutcome": "https://github.com/MulattoTech/MTerm-CLI/issues/232#issuecomment-6747551626",
+    "diagnosticIntent": "https://github.com/MulattoTech/MTerm-CLI/issues/232#issuecomment-6747907145",
+    "diagnosticOutcome": "https://github.com/MulattoTech/MTerm-CLI/issues/232#issuecomment-6747989012"
+  },
+  "inputManifest": [
+    {
+      "path": "artifacts/issue-232-provider-lifecycle-20261109/intent.json",
+      "sha256": "bc11849acd73f8a4932131b7bb36ed5a36a6514567647d297da22f22c77fbcce",
+      "bytes": 1103,
+      "role": "First intent and recorded invocation-start state"
+    },
+    {
+      "path": "artifacts/issue-232-provider-lifecycle-20261109/execute-argument.json",
+      "sha256": "6b61963a67cb1c5069866d83bf926e92d13d874485f3bcf7ed6e301c696d76a2",
+      "bytes": 20013,
+      "role": "First exact invocation wrapper"
+    },
+    {
+      "path": "artifacts/issue-232-provider-lifecycle-20261109/execution-result.json",
+      "sha256": "d5e9f97c32a03ad31445689cc8ac81044c151b32f92bd0cd1b06a5ccd5ddf5df",
+      "bytes": 6778,
+      "role": "First saved tool receipt and equal parsed result"
+    },
+    {
+      "path": "artifacts/issue-232-provider-lifecycle-20261109/rejected-create-reconciliation.json",
+      "sha256": "d2d3a408535a9c74e86fc4820507b7fa2d8b2fc02aafb95a1516e2bc0b215784",
+      "bytes": 3290,
+      "role": "First complete exact-name post-rejection observation"
+    },
+    {
+      "path": "artifacts/issue-232-provider-lifecycle-20261109/root-reconciliation-checkpoint.json",
+      "sha256": "bbd4f3e113c8c5875a2fb8df2dc12ab9b01b3faa2dd45d211155d1d7368ffcd0",
+      "bytes": 3102,
+      "role": "Durable first-outcome checkpoint body and URL"
+    },
+    {
+      "path": "artifacts/issue-232-provider-lifecycle-20261109/preflight.json",
+      "sha256": "5951f0146ef77b007bdef6fcd3e68d427e01cd1a71839113636e14b91f2333d7",
+      "bytes": 5690,
+      "role": "First owner-only configuration preflight"
+    },
+    {
+      "path": "artifacts/issue-232-provider-lifecycle-20261109/audit-diagnosis-20261109T175429Z.json",
+      "sha256": "952f93d3964fd2aceb643393528812c9db66328904dd82a21dee145b6defbecd",
+      "bytes": 2459,
+      "role": "Two narrowly filtered audit GET receipts"
+    },
+    {
+      "path": "artifacts/issue-232-provider-lifecycle-20261109/audit-final-20261109T175834Z.json",
+      "sha256": "5d5841eb8303828c23bf1c613d2659e0b1881a1be18791965883279547b3312c",
+      "bytes": 2494,
+      "role": "Final time-window-only audit GET and static request-shape review"
+    },
+    {
+      "path": "artifacts/issue-232-provider-lifecycle-20261109/staging-context-shape-181514.json",
+      "sha256": "dbe88249a5b35e935f1c22eb645217896245cb028dd199e510de5e53ede8bea0",
+      "bytes": 9774,
+      "role": "Read-only latest/active identity/store response-shape observation"
+    },
+    {
+      "path": "artifacts/issue-232-provider-qualification-draft/qualify-provider-lifecycle-v3.mjs",
+      "sha256": "b0b2b2e00ffd3587b490ac44f5169f7bbf6c6d909094dbefedb8cd1b4695bdef",
+      "bytes": 18449,
+      "role": "Exact first operator source, not invoked by this draft task"
+    },
+    {
+      "path": "artifacts/issue-232-provider-qualification-draft/peer-review-v3-recover-prior-run.json",
+      "sha256": "757e6f678373038eabcbc9684d0e981ad491af91c5ebd494413c0f6345b312b9",
+      "bytes": 3993,
+      "role": "Independent static first-operator review"
+    },
+    {
+      "path": "artifacts/issue-232-provider-diagnostic-20261109/intent.json",
+      "sha256": "cf6b11b65b14635912fae395cf61eb094d08b5bf8bf313608e625d9ab47b8660",
+      "bytes": 997,
+      "role": "Historical diagnostic pre-invocation selection"
+    },
+    {
+      "path": "artifacts/issue-232-provider-diagnostic-20261109/attempt-started.json",
+      "sha256": "742a09f2926061ce0d8e3aed82c2c5eb2370f092bb124965b7ccaad78ec81b69",
+      "bytes": 389,
+      "role": "Diagnostic durable single-attempt guard"
+    },
+    {
+      "path": "artifacts/issue-232-provider-diagnostic-20261109/execute-argument.json",
+      "sha256": "f46db9a54dd32c3aca4fcf71cea123e305098cc7ce74ee5a41a33d973762bb1a",
+      "bytes": 17400,
+      "role": "Exact diagnostic invocation wrapper"
+    },
+    {
+      "path": "artifacts/issue-232-provider-diagnostic-20261109/execution-result.json",
+      "sha256": "23621138d87491e4b91762e18874aa95359960b8ca1018891ae2e347da5bbfe2",
+      "bytes": 9094,
+      "role": "Saved actual diagnostic receipt and equal parsed result"
+    },
+    {
+      "path": "artifacts/issue-232-provider-diagnostic-20261109/rejected-create-reconciliation.json",
+      "sha256": "2b9201afb6979f791bbd479173b0c6eb45c09005933565b736b3f59ad9fa5e4d",
+      "bytes": 3290,
+      "role": "Separate complete exact-name post-diagnostic observation"
+    },
+    {
+      "path": "artifacts/issue-232-provider-diagnostic-20261109/preflight-180955.json",
+      "sha256": "15ade01155f3a701444f2b747bf54f709f20542788f946812790c05eaab8532d",
+      "bytes": 924,
+      "role": "Intermediate owner-only configuration preflight"
+    },
+    {
+      "path": "artifacts/issue-232-provider-diagnostic-20261109/final-preflight-181903.json",
+      "sha256": "1e386991f48dd92f9a707ed1fad63693f4ca3f2a0d90337603021c9b25987ad9",
+      "bytes": 12698,
+      "role": "Fresh owner-only context and both exact-name absence checks before diagnostic"
+    },
+    {
+      "path": "artifacts/issue-232-provider-diagnostic-20261109/diagnose-create-only.mjs",
+      "sha256": "941f020f41eaa2a75a99773f05c617b980b0933b8ea7d979988d7f2160e67ef4",
+      "bytes": 15661,
+      "role": "Exact diagnostic operator source, not invoked by this draft task"
+    },
+    {
+      "path": "artifacts/issue-232-provider-diagnostic-20261109/local-fault-cases.test.mjs",
+      "sha256": "dec45b31d1eb4f83f8f1840e6b81bef3b11af69ad0b9b7fa8b3a747edcba63c1",
+      "bytes": 11629,
+      "role": "Frozen offline diagnostic fixture"
+    },
+    {
+      "path": "artifacts/issue-232-provider-diagnostic-20261109/local-verification.json",
+      "sha256": "13357bb3bc09c679e64a89dd42745332751fef078e016533b7fbbda10afa135c",
+      "bytes": 2106,
+      "role": "Author diagnostic fault-case and regression lineage"
+    },
+    {
+      "path": "artifacts/issue-232-provider-diagnostic-20261109/readback-baseline.tap",
+      "sha256": "809966dfd46442ff0e2e00ed4673af60cc0b97824508d24a7365dcae252e3b3d",
+      "bytes": 8206,
+      "role": "Frozen pre-fix diagnostic regression transcript"
+    },
+    {
+      "path": "artifacts/issue-232-provider-diagnostic-20261109/readback-fixed.tap",
+      "sha256": "b6458013ecb52e7e0116f316fc16d8c821d24f27462e0a4a790491ac54a38c9e",
+      "bytes": 5070,
+      "role": "Same frozen fixture after diagnostic correction"
+    },
+    {
+      "path": "artifacts/issue-232-provider-diagnostic-20261109/peer-review-9ikipa4s/review.json",
+      "sha256": "b0190e807b6813896d54e2b2a39716f303c6e8a7d33952acb64ca76f292c2fc4",
+      "bytes": 5911,
+      "role": "Independent diagnostic source/wrapper/offline review"
+    },
+    {
+      "path": "artifacts/issue-232-provider-diagnostic-20261109/peer-review-9ikipa4s/execution.json",
+      "sha256": "423fdf50390984b1ae0c76fd22a17b94c194ae553be50154f48ddfc70ecaa439",
+      "bytes": 2196,
+      "role": "Independent offline diagnostic execution receipt"
+    },
+    {
+      "path": "artifacts/issue-232-provider-diagnostic-20261109/peer-review-9ikipa4s/tests.tap",
+      "sha256": "bd2a00d6214e905e6f8981ef89abdf5415d5e5eb4a482aaf964982727437e344",
+      "bytes": 5072,
+      "role": "Independent offline diagnostic transcript"
+    },
+    {
+      "path": "artifacts/issue-232-provider-diagnostic-20261109/peer-actual-review-rmd1h1oy/review.json",
+      "sha256": "b13108410f42dd137b65a29ef7e3ddf1603b736b2b8927a7bb74850044ccd487",
+      "bytes": 5222,
+      "role": "Independent saved actual-result and reconciliation review"
+    },
+    {
+      "path": "artifacts/issue-232-provider-diagnostic-20261109/public-code12121-research.json",
+      "sha256": "f4b5d67805571dbe8e2d6375d05497ecb1aea900dde10289f88ecd1a6257d471",
+      "bytes": 2658,
+      "role": "Recorded public primary-source code research"
+    }
+  ],
+  "draftingScope": {
+    "draftInputs": "Saved sanitized receipts, read-only observations, retained source/evidence hashes and recorded independent reviews; no fresh live state query.",
+    "newLiveApiCalls": 0,
+    "newOperatorInvocations": 0,
+    "newTokenAttempts": 0,
+    "newTestsRun": 0,
+    "trackedOrSharedFileEdits": 0,
+    "sourceRecordEdits": 0,
+    "rootOwnsIntegrationAndFutureOperationalDecisions": true,
+    "futureExecutionAuthorizedByThisSummary": false,
+    "latestRecordedProviderObservationAt": "2026-11-09T18:20:41.214Z"
+  },
+  "rootIntegration": {
+    "recordedAt": "2026-11-09T19:41:24.905467+00:00",
+    "owner": "/root",
+    "sourceDraftSha256": "0406fb4510ba03c25032919057f564015ce107054bae3935b4ba74c66405a148",
+    "sourceDraftMarkdownSha256": "9c97df99cdf48ecf2d71201f4f2a250dc43347dda95ae394b01abf0bf989dd68",
+    "all28InputHashesAndSizesRecomputed": true,
+    "newLiveCalls": 0,
+    "newOperatorInvocations": 0,
+    "historicalSourceRecordsModified": false,
+    "furtherProviderWritesHeld": true,
+    "technicalBoundary": "Cause unresolved; no third attempt or alternate credential/path is selected. Standing owner authorization remains in force for supported project work."
+  }
+}

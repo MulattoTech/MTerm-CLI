@@ -212,6 +212,15 @@ Stages describe implementation evidence and do not award acceptance or a complet
 
 **Completed evidence:** Recorded Worker version/artifact/source identity and live discovery/authenticated Windows SDK smoke. Attached the reproducible public staging configuration: initial-only SQLite migration, existing registry preservation, nonsecret Worker bindings, Access policy/environment inventory, immutable artifact/version identities and recovery instructions.
 
+**Subsequent local source consistency evidence — 2026-11-09:** The artifact builder
+now binds its fixed inputs to raw HEAD, compiles the standalone protocol with the
+installed pinned CLI in owned temporary output, and refuses mismatched tested dist
+before artifact writes. Real Git/compiler fixtures retain immutable artifacts and
+permit unrelated workspace edits. See [the scoped report](validation/2026-11-09-gateway-source.md)
+and `GATEWAY-SOURCE-BINDING-20261109`. This adds no deployed environment, binding,
+secret-rotation, rollback or full WEB-008 acceptance; historical evidence and remaining
+work below remain unchanged.
+
 **Remaining work, dependencies and blockers:**
 
 - Automate reviewed template application and repeatable dev/staging dry-run validation, including immutable-module checks and platform secret-binding preservation/rotation. Retain the completed pause/restore drill as evidence; future incompatible-migration scenarios remain separate. **Effort:** 6–12 engineering hours. **Depends on:** Attached deployment template and staging inventory; Recorded immutable artifact and owner-only recovery version; Authorized isolated deployment controls. **Blocker:** The template and configuration attachment are complete. Automated application/dry-run and platform secret-binding lifecycle qualification are not yet demonstrated. The non-destructive pause/restore drill passed; its report documents the code10214 recovery constraint.

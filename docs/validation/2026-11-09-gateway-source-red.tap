@@ -1,0 +1,304 @@
+TAP version 13
+# Subtest: gateway builder preserves exact six modules and byte-identical immutable repeat
+not ok 1 - gateway builder preserves exact six modules and byte-identical immutable repeat
+  ---
+  duration_ms: 310.692635
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:141:1'
+  failureType: 'testCodeFailure'
+  error: 'Artifact must retain its source verification evidence'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:159:10)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+  ...
+# Subtest: gateway builder refuses a nonexistent source commit label
+not ok 2 - gateway builder refuses a nonexistent source commit label
+  ---
+  duration_ms: 262.582841
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:180:1'
+  failureType: 'testCodeFailure'
+  error: 'Builder must refuse unverified provenance before artifact writes'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 0
+  operator: 'notStrictEqual'
+  stack: |-
+    refused (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:128:10)
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:182:9)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: gateway builder refuses a different existing commit than current HEAD
+not ok 3 - gateway builder refuses a different existing commit than current HEAD
+  ---
+  duration_ms: 308.6745
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:185:1'
+  failureType: 'testCodeFailure'
+  error: 'Builder must refuse unverified provenance before artifact writes'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 0
+  operator: 'notStrictEqual'
+  stack: |-
+    refused (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:128:10)
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:190:9)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: gateway builder refuses uncommitted material drift in gateway/worker.mjs
+not ok 4 - gateway builder refuses uncommitted material drift in gateway/worker.mjs
+  ---
+  duration_ms: 282.877861
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:201:3'
+  failureType: 'testCodeFailure'
+  error: 'Builder must refuse unverified provenance before artifact writes'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 0
+  operator: 'notStrictEqual'
+  stack: |-
+    refused (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:128:10)
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:209:11)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: gateway builder refuses uncommitted material drift in src/remote/protocol.ts
+not ok 5 - gateway builder refuses uncommitted material drift in src/remote/protocol.ts
+  ---
+  duration_ms: 267.951779
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:201:3'
+  failureType: 'testCodeFailure'
+  error: 'Builder must refuse unverified provenance before artifact writes'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 0
+  operator: 'notStrictEqual'
+  stack: |-
+    refused (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:128:10)
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:209:11)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: gateway builder refuses uncommitted material drift in scripts/build-gateway.mjs
+not ok 6 - gateway builder refuses uncommitted material drift in scripts/build-gateway.mjs
+  ---
+  duration_ms: 290.094022
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:201:3'
+  failureType: 'testCodeFailure'
+  error: 'Builder must refuse unverified provenance before artifact writes'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 0
+  operator: 'notStrictEqual'
+  stack: |-
+    refused (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:128:10)
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:209:11)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: gateway builder refuses uncommitted material drift in scripts/gateway-source.mjs
+not ok 7 - gateway builder refuses uncommitted material drift in scripts/gateway-source.mjs
+  ---
+  duration_ms: 287.779068
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:201:3'
+  failureType: 'testCodeFailure'
+  error: 'Builder must refuse unverified provenance before artifact writes'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 0
+  operator: 'notStrictEqual'
+  stack: |-
+    refused (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:128:10)
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:209:11)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: gateway builder refuses uncommitted material drift in tsconfig.json
+not ok 8 - gateway builder refuses uncommitted material drift in tsconfig.json
+  ---
+  duration_ms: 309.251832
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:201:3'
+  failureType: 'testCodeFailure'
+  error: 'Builder must refuse unverified provenance before artifact writes'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 0
+  operator: 'notStrictEqual'
+  stack: |-
+    refused (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:128:10)
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:209:11)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: gateway builder refuses uncommitted material drift in package.json
+not ok 9 - gateway builder refuses uncommitted material drift in package.json
+  ---
+  duration_ms: 243.298611
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:201:3'
+  failureType: 'testCodeFailure'
+  error: 'Builder must refuse unverified provenance before artifact writes'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 0
+  operator: 'notStrictEqual'
+  stack: |-
+    refused (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:128:10)
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:209:11)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: gateway builder refuses stale compiled protocol after a source commit
+not ok 10 - gateway builder refuses stale compiled protocol after a source commit
+  ---
+  duration_ms: 277.673908
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:213:1'
+  failureType: 'testCodeFailure'
+  error: 'Builder must refuse unverified provenance before artifact writes'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 0
+  operator: 'notStrictEqual'
+  stack: |-
+    refused (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:128:10)
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:223:9)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: gateway builder refuses missing tested protocol without recreating shared dist
+ok 11 - gateway builder refuses missing tested protocol without recreating shared dist
+  ---
+  duration_ms: 277.827174
+  type: 'test'
+  ...
+# Subtest: gateway builder accepts equivalent CRLF inputs and unrelated working files
+ok 12 - gateway builder accepts equivalent CRLF inputs and unrelated working files
+  ---
+  duration_ms: 366.936183
+  type: 'test'
+  ...
+# Subtest: gateway builder ignores inherited Git repository overrides
+ok 13 - gateway builder ignores inherited Git repository overrides
+  ---
+  duration_ms: 287.062693
+  type: 'test'
+  ...
+# Subtest: gateway builder refuses unsupported committed compiler routing without changing dist
+not ok 14 - gateway builder refuses unsupported committed compiler routing without changing dist
+  ---
+  duration_ms: 331.389463
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:271:1'
+  failureType: 'testCodeFailure'
+  error: 'Builder must refuse unverified provenance before artifact writes'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 0
+  operator: 'notStrictEqual'
+  stack: |-
+    refused (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:128:10)
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:280:9)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: gateway builder refuses mismatched committed compiler pins before artifacts
+not ok 15 - gateway builder refuses mismatched committed compiler pins before artifacts
+  ---
+  duration_ms: 312.064808
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:284:1'
+  failureType: 'testCodeFailure'
+  error: 'Builder must refuse unverified provenance before artifact writes'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 0
+  operator: 'notStrictEqual'
+  stack: |-
+    refused (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:128:10)
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:291:9)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: gateway builder refuses invalid committed TypeScript instead of packaging old output
+not ok 16 - gateway builder refuses invalid committed TypeScript instead of packaging old output
+  ---
+  duration_ms: 302.950954
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:294:1'
+  failureType: 'testCodeFailure'
+  error: 'Builder must refuse unverified provenance before artifact writes'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 0
+  operator: 'notStrictEqual'
+  stack: |-
+    refused (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:128:10)
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:303:9)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: gateway builder cannot attribute replacement-object bytes to the original commit
+not ok 17 - gateway builder cannot attribute replacement-object bytes to the original commit
+  ---
+  duration_ms: 278.966453
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:307:1'
+  failureType: 'testCodeFailure'
+  error: 'Builder must refuse unverified provenance before artifact writes'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: 0
+  operator: 'notStrictEqual'
+  stack: |-
+    refused (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:128:10)
+    TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/tests/gateway-artifact.test.mjs:317:9)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: gateway builder preserves tampered existing manifest.json and refuses overwrite
+ok 18 - gateway builder preserves tampered existing manifest.json and refuses overwrite
+  ---
+  duration_ms: 331.432883
+  type: 'test'
+  ...
+# Subtest: gateway builder preserves tampered existing modules.json and refuses overwrite
+ok 19 - gateway builder preserves tampered existing modules.json and refuses overwrite
+  ---
+  duration_ms: 328.158117
+  type: 'test'
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 5
+# fail 14
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5745.141592

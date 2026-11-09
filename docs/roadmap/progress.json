@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "baseline": "cli-300-initial-effort-v1",
-  "reviewedAt": "2026-11-09T04:29:47.543849+00:00",
+  "reviewedAt": "2026-11-09T04:44:54.177168+00:00",
   "sourceSeedSha256": "09a5f76c7d5f83add8383b3cec3d02fb3fd41c9b2c4c80fbd482ffae29f457a2",
   "scope": "Full 300-item desired product, not just this Windows local MCP preview",
   "weightBasis": "Initial bands: ordinary acceptance8h; narrow UI/entry4h; Web40h; auth/update24h; platform/security/local tools16h. These rough baseline bands are frozen on first review.",
@@ -3137,9 +3137,13 @@
       "blocker": null,
       "evidence": [
         "package.json",
-        "package-lock.json"
+        "package-lock.json",
+        "scripts/build-gateway.mjs",
+        "scripts/gateway-source.mjs",
+        "tests/gateway-artifact.test.mjs",
+        "docs/validation/2026-11-09-gateway-source.md"
       ],
-      "notes": "Core production dependencies are exact-pinned and third-party boundaries documented. Full Codex/Web/status bundle and all-platform installed-size acceptance remain unverified.",
+      "notes": "Core production dependencies are exact-pinned and third-party boundaries documented. Full Codex/Web/status bundle and all-platform installed-size acceptance remain unverified. Gateway source consistency evidence (2026-11-09): raw HEAD/material-input checks and pinned standalone protocol recompilation refuse false labels, changed inputs and stale tested output. Final RED5/19 to focused GREEN33/33; independent19/19. Exact-head/platform/actual-artifact qualification remains separate; no stage, estimate, versions.json or full acceptance change.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
       "reviewer": "2026-10-04-local-mcp"

@@ -2052,13 +2052,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Each required component has an exact source commit and distribution identity.
 
-**Current scope:** Core production dependencies are exact-pinned and third-party boundaries documented. Full Codex/Web/status bundle and all-platform installed-size acceptance remain unverified.
+**Current scope:** Core production dependencies are exact-pinned and third-party boundaries documented. Full Codex/Web/status bundle and all-platform installed-size acceptance remain unverified. Gateway source consistency evidence (2026-11-09): raw HEAD/material-input checks and pinned standalone protocol recompilation refuse false labels, changed inputs and stale tested output. Final RED5/19 to focused GREEN33/33; independent19/19. Exact-head/platform/actual-artifact qualification remains separate; no stage, estimate, versions.json or full acceptance change.
 
 **Baseline weight:** 8 h (rough). **Remaining:** 2–10 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `package.json`, `package-lock.json`
+**Evidence:** `package.json`, `package-lock.json`, `scripts/build-gateway.mjs`, `scripts/gateway-source.mjs`, `tests/gateway-artifact.test.mjs`, `docs/validation/2026-11-09-gateway-source.md`
 
 ## CLI-148 — Record platform asset checksums
 

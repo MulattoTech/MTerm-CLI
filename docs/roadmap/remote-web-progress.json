@@ -274,6 +274,21 @@
       ],
       "observation": "Unchanged archived-base45cases:7passed/38failed. Corrected focused65/65 and independent45/45. Actual SDK cancellation crosses the stdio boundary, suppresses post-resolution target I/O and records CANCELLED. Real file/directory cleanup and remote four-slot retention observed with scheduling gates; actual AbortSignal deadlines are exercised. Subsequent originalPR215 Ubuntu failure preserved: timer expiry was misclassified by a wall-clock-only catch. Added real fired-deadline/controlled-wall-clock regression is RED45/46 on originalcandidate; revisedfinal RED7/46 on base and GREEN66/66. Both owned signal and wall-clock expiry now classify admitted CANCELLED; new-head qualification remains required.",
       "limits": "Controlled scheduling and injected failures on owned fixtures; no guarantee of aborting pending OS work. No deployed gateway, production load, disconnect/restart, owner auth or acceptance qualification. Existing native search timeout/truncation semantics and historical live metadata remain unchanged."
+    },
+    {
+      "id": "GATEWAY-SOURCE-BINDING-20261109",
+      "level": "local realGit/pinnedCLI source consistency; hosted and committed-artifact qualification pending",
+      "status": "source_reviewed_regression_green",
+      "observedAt": "2026-11-09T04:44:54.177168+00:00",
+      "sourceBase": "3434f3319e707642727f95e3010c6b62dedc3db6",
+      "refs": [
+        "docs/validation/2026-11-09-gateway-source.md",
+        "scripts/build-gateway.mjs",
+        "scripts/gateway-source.mjs",
+        "tests/gateway-artifact.test.mjs"
+      ],
+      "observation": "Final archived-base19cases:5passed/14failed; corrected focused33/33 and independent19/19. RawHEAD, fixed committed inputs, isolated fresh protocol equality, immutable artifact preservation and compiler-temp cleanup exercised. Unrelated tracked edits and equivalentCRLF remain usable.",
+      "limits": "No live deployment/template application, secrets/bindings/registry, rollback or acceptance qualification. Compiler/Git trusted; source consistency does not certify tests/review, hermeticity or full dependency integrity."
     }
   ],
   "pendingEvidence": [
@@ -1192,7 +1207,8 @@
         "LIVE-SMOKE",
         "LIVE-SMOKE-FINAL",
         "FINAL-GATES",
-        "DEPLOYMENT-CONFIG"
+        "DEPLOYMENT-CONFIG",
+        "GATEWAY-SOURCE-BINDING-20261109"
       ],
       "implemented": "Restricted staging is deployed from b90432a with immutable artifact 97a0457b78e113c058ae8da3d3a6a54fcd93c2b35d1dd1781316c41001ac10a6. Final SDK smoke passed 11/11. Current version af4fd06e follows removal of temporary validation binding; temporary Access policy/token deleted, only owner policy remains, workers.dev disabled, MCP read-only enabled. Reproducible nonsecret migrations/bindings/Access/environment metadata and deployment/recovery instructions are attached in gateway/deployment.example.json and docs/deployment/MTERM_STAGING.md; the template is deliberately not an executable deployment script.",
       "remainingWork": [

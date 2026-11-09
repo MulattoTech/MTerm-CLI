@@ -1,3 +1,15 @@
+# Gateway artifact source checkpoint — 2026-11-09 UTC
+
+Session `MTERM-WEB-20261109T031131Z-e0efd5d4` owns `coord/mterm/issue-61`, feature `fix/issue-61-gateway-source-20261109`, from frozen source `3434f3319e707642727f95e3010c6b62dedc3db6`. Prerequisite PR #215 normally merged at `288499a427a71cf6c2c4006e21dbfc8701cf04dd`, identical tree731edad. One writer and independent read-only peers.
+
+[Gateway source evidence](validation/2026-11-09-gateway-source.md): final realGit/pinnedCLI fixtures reproduce false commit labels, changed inputs and stale protocol output, RED5/19 to focused GREEN33/33; independent19/19. The builder binds twelve normalized material inputs to raw HEAD, compiles captured standalone protocol in owned temp, compares tested dist, and keeps existing immutable writes/six-module digest. Unrelated tracked edits and CRLF remain supported. Source-verification metadata explicitly does not claim tests or deployment. No runtime/protocol/dependency/template/live service changes. CLI147 and WEB008 evidence only; all protected fields and historical identity/acceptance remain unchanged.
+
+PR #215 passed allsix revised PR gates: Windows628/628; Linux/macOS616+12existingplatformskips; installed cancellation46/46allfive lanes; native real12source+12installedcontainment and cleanup passed. Its original Ubuntu deadline failure is preserved with the deterministic correction. Allsix merged-main gates also passed, independently verified and recorded in [#62](https://github.com/MulattoTech/MTerm-CLI/issues/62#issuecomment-6732455891). The scoped #62 claim is inactive; full WEB009 remains open. Earlier PR211–214 source deliveries have completed allsix PR+main gates.
+
+Next: final docs/metrics and reviewed build/typecheck/format/parity checks; exact committed PR/hosted/platform qualification and a local committed-checkout artifact receipt before normal expected-head merge/main verification. This does not authorize a gateway deployment or imply20–30-client load readiness. Shared owner bridge/plugin/worktrees remain preserved.
+
+---
+
 # Native file cancellation checkpoint — 2026-11-09 UTC
 
 Session `MTERM-WEB-20261109T031131Z-e0efd5d4` owns `coord/mterm/issue-62`, feature `fix/issue-62-file-cancellation-20261109`, from merged main `5880c61fcaaaaa8972f06d1ae5a88d6e2d3cbd70`. One implementation writer; independent source, fixture and qualification reviewers. The clean branch was fast-forwarded from frozen prerequisite PR #214 source without content changes.

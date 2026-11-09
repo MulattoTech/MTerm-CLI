@@ -2,6 +2,7 @@
 // AI-Change: 2026-11-02-remote-gateway (OpenAI / GPT-6 Astra Pro; self-reported)
 // Modified: 2026-11-09-grant-expiry; actual OAuth/pairing fixtures exercise dispatch/result expiry without a sweep.
 // Modified: 2026-11-09-request-ownership; delayed results and HTTP cleanup retain their original request identity.
+// Modified: 2026-11-09-oauth-expiry; public MCP authorization observes token expiry after registry reads.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { createGateway } from '../gateway/app.mjs';
@@ -1305,4 +1306,117 @@ test('request ownership: an absent active pointer permits first authorized termi
   assert.equal(response.data.result.structuredContent.error.code, 'REMOTE_TIMEOUT');
   assert.equal((await f.jobState(job)).status, 'consumed');
   assert.equal(await f.storage.get(rpcKey), undefined);
+});
+
+async function oauthExpiryFixture(t) {
+  let clock = Date.now();
+  t.mock.method(Date, 'now', () => clock);
+  let externalRequests = 0;
+  t.mock.method(globalThis, 'fetch', async () => {
+    externalRequests++;
+    assert.fail('OAuth expiry fixtures must not make external requests.');
+  });
+  t.after(() => assert.equal(externalRequests, 0));
+  const f = await fixture(),
+    auth = await f.oauth(),
+    tokenKey = 'token:' + (await sha256(auth.access_token)),
+    token = await f.storage.get(tokenKey),
+    grantKey = 'grant:' + token.grantId,
+    grant = await f.storage.get(grantKey),
+    epochKey = 'epoch:' + token.userId,
+    expiry = clock + 1000;
+  token.expiresAt = expiry;
+  await f.storage.put(tokenKey, token);
+  const read = f.storage.get;
+  const observed = { tokenReads: 0, epochReads: 0, grantReads: 0, crossings: 0 };
+  let transition;
+  t.mock.method(f.storage, 'get', async function (key) {
+    const value = await read.call(this, key);
+    if (key === tokenKey) observed.tokenReads++;
+    if (key === epochKey) observed.epochReads++;
+    if (key === grantKey) observed.grantReads++;
+    if (transition?.key === key) {
+      clock = transition.time;
+      transition = undefined;
+      observed.crossings++;
+    }
+    return value;
+  });
+  return {
+    ...f,
+    auth,
+    token,
+    tokenKey,
+    grant,
+    grantKey,
+    expiry,
+    observed,
+    setClock(time) {
+      clock = time;
+    },
+    crossRead(phase, time) {
+      transition = { key: phase === 'epoch' ? epochKey : grantKey, time };
+    },
+    ping(credentials = auth) {
+      return f.req('/mcp', {
+        method: 'POST',
+        token: credentials.access_token,
+        body: { jsonrpc: '2.0', id: 'oauth-expiry', method: 'ping' },
+      });
+    },
+  };
+}
+
+for (const phase of ['epoch', 'grant']) {
+  for (const delta of [-1, 0, 1]) {
+    const boundary = delta < 0 ? 'just before' : delta === 0 ? 'exactly at' : 'after';
+    test(`OAuth expiry: public MCP authorization settles ${boundary} token expiry during ${phase} read`, async (t) => {
+      const f = await oauthExpiryFixture(t);
+      f.crossRead(phase, f.expiry + delta);
+      const response = await f.ping();
+      assert.deepEqual(f.observed, { tokenReads: 1, epochReads: 1, grantReads: 1, crossings: 1 });
+      assert.ok(f.grant.expiresAt > f.expiry + delta, 'The client grant remains valid');
+      assert.equal(response.status, delta < 0 ? 200 : 401);
+      assert.deepEqual(
+        await response.json(),
+        delta < 0 ? { jsonrpc: '2.0', id: 'oauth-expiry', result: {} } : { error: 'invalid_token' },
+      );
+    });
+  }
+  test(`OAuth expiry: public MCP authorization still rejects grant expiry during ${phase} read`, async (t) => {
+    const f = await oauthExpiryFixture(t);
+    f.token.expiresAt = f.expiry + 60000;
+    await f.storage.put(f.tokenKey, f.token);
+    f.grant.expiresAt = f.expiry;
+    await f.storage.put(f.grantKey, f.grant);
+    f.crossRead(phase, f.expiry);
+    const response = await f.ping();
+    assert.deepEqual(f.observed, { tokenReads: 1, epochReads: 1, grantReads: 1, crossings: 1 });
+    assert.ok(f.token.expiresAt > f.expiry, 'The client access token remains valid');
+    assert.equal(response.status, 401);
+    assert.deepEqual(await response.json(), { error: 'invalid_token' });
+  });
+}
+
+test('OAuth expiry: an already-expired access token rejects before epoch and grant reads', async (t) => {
+  const f = await oauthExpiryFixture(t);
+  f.setClock(f.expiry);
+  const response = await f.ping();
+  assert.equal(response.status, 401);
+  assert.deepEqual(await response.json(), { error: 'invalid_token' });
+  assert.deepEqual(f.observed, { tokenReads: 1, epochReads: 0, grantReads: 0, crossings: 0 });
+});
+
+test('OAuth expiry: another live client token remains authorized after the first token expires', async (t) => {
+  const f = await oauthExpiryFixture(t),
+    other = await f.oauth();
+  assert.notEqual(other.client.client_id, f.auth.client.client_id);
+  assert.notEqual(other.access_token, f.auth.access_token);
+  f.setClock(f.expiry);
+  const expired = await f.ping();
+  assert.equal(expired.status, 401);
+  assert.deepEqual(await expired.json(), { error: 'invalid_token' });
+  const live = await f.ping(other);
+  assert.equal(live.status, 200);
+  assert.deepEqual(await live.json(), { jsonrpc: '2.0', id: 'oauth-expiry', result: {} });
 });

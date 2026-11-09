@@ -1,0 +1,350 @@
+TAP version 13
+# Subtest: checkout-only dependency control resolves from a nested cjs package
+ok 1 - checkout-only dependency control resolves from a nested cjs package
+  ---
+  duration_ms: 73.843758
+  type: 'test'
+  ...
+# Subtest: standalone cjs package cannot borrow a checkout-only dependency
+not ok 2 - standalone cjs package cannot borrow a checkout-only dependency
+  ---
+  duration_ms: 70.585731
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:125:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+
+      {
+    -   code: 'MODULE_NOT_FOUND',
+        cwd: '/tmp/mterm-package-layout-ElMHGo/checkout/artifacts/package-verify-RH0JoS/home',
+    +   ok: true,
+    +   resolved: '/tmp/mterm-package-layout-ElMHGo/checkout/node_modules/mterm-checkout-only-mterm-package-layout-elmhgo/index.cjs',
+    +   value: 'checkout-only'
+    -   ok: false
+      }
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    ok: false
+    code: 'MODULE_NOT_FOUND'
+    cwd: '/tmp/mterm-package-layout-ElMHGo/checkout/artifacts/package-verify-RH0JoS/home'
+  actual:
+    ok: true
+    value: 'checkout-only'
+    resolved: '/tmp/mterm-package-layout-ElMHGo/checkout/node_modules/mterm-checkout-only-mterm-package-layout-elmhgo/index.cjs'
+    cwd: '/tmp/mterm-package-layout-ElMHGo/checkout/artifacts/package-verify-RH0JoS/home'
+  operator: 'deepStrictEqual'
+  stack: |-
+    file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:130:14
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:127:5)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: standalone cjs package resolves its declared installed dependency
+ok 3 - standalone cjs package resolves its declared installed dependency
+  ---
+  duration_ms: 69.430693
+  type: 'test'
+  ...
+# Subtest: checkout-only dependency control resolves from a nested mjs package
+ok 4 - checkout-only dependency control resolves from a nested mjs package
+  ---
+  duration_ms: 59.136593
+  type: 'test'
+  ...
+# Subtest: standalone mjs package cannot borrow a checkout-only dependency
+not ok 5 - standalone mjs package cannot borrow a checkout-only dependency
+  ---
+  duration_ms: 56.349367
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:125:3'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+
+      {
+    -   code: 'ERR_MODULE_NOT_FOUND',
+        cwd: '/tmp/mterm-package-layout-jKmq7b/checkout/artifacts/package-verify-etwEv3/home',
+    +   ok: true,
+    +   resolved: 'file:///tmp/mterm-package-layout-jKmq7b/checkout/node_modules/mterm-checkout-only-mterm-package-layout-jkmq7b/index.cjs',
+    +   value: 'checkout-only'
+    -   ok: false
+      }
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    ok: false
+    code: 'ERR_MODULE_NOT_FOUND'
+    cwd: '/tmp/mterm-package-layout-jKmq7b/checkout/artifacts/package-verify-etwEv3/home'
+  actual:
+    ok: true
+    value: 'checkout-only'
+    resolved: 'file:///tmp/mterm-package-layout-jKmq7b/checkout/node_modules/mterm-checkout-only-mterm-package-layout-jkmq7b/index.cjs'
+    cwd: '/tmp/mterm-package-layout-jKmq7b/checkout/artifacts/package-verify-etwEv3/home'
+  operator: 'deepStrictEqual'
+  stack: |-
+    file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:130:14
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:127:5)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: standalone mjs package resolves its declared installed dependency
+ok 6 - standalone mjs package resolves its declared installed dependency
+  ---
+  duration_ms: 64.116588
+  type: 'test'
+  ...
+# Subtest: standalone workspace, home and declared prefixes are external; evidence remains separate
+not ok 7 - standalone workspace, home and declared prefixes are external; evidence remains separate
+  ---
+  duration_ms: 4.228141
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:162:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    false !== true
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: 'strictEqual'
+  stack: |-
+    file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:167:14
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:164:3)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: checkout-owned temporary parent is refused
+not ok 8 - checkout-owned temporary parent is refused
+  ---
+  duration_ms: 3.407222
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:178:3'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  operator: 'rejects'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:187:7)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: checkout-owned temporary parent is refused through a directory alias
+not ok 9 - checkout-owned temporary parent is refused through a directory alias
+  ---
+  duration_ms: 2.926296
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:178:3'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+  operator: 'rejects'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:187:7)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: inherited NODE_PATH cannot supply a dependency to an already external CJS probe
+not ok 10 - inherited NODE_PATH cannot supply a dependency to an already external CJS probe
+  ---
+  duration_ms: 66.041414
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:202:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    true !== false
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    f.use.inheritedEnv (file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:208:14)
+    process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:205:3)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: inherited NODE_OPTIONS preload is removed but an explicit fixture import still executes
+not ok 11 - inherited NODE_OPTIONS preload is removed but an explicit fixture import still executes
+  ---
+  duration_ms: 64.37884
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:215:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    code: 'ENOENT'
+  operator: 'rejects'
+  stack: |-
+    async f.use.inheritedEnv (file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:243:7)
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:229:3)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: inherited npm node-options cannot reconstruct a preload in a real npm script
+not ok 12 - inherited npm node-options cannot reconstruct a preload in a real npm script
+  ---
+  duration_ms: 297.521095
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:249:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    code: 'ENOENT'
+  operator: 'rejects'
+  stack: |-
+    async f.use.inheritedEnv (file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:274:7)
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:255:3)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: environment scrub handles key case while preserving explicit native-lane inputs
+not ok 13 - environment scrub handles key case while preserving explicit native-lane inputs
+  ---
+  duration_ms: 3.494363
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:285:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    true !== false
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    f.use.inheritedEnv (file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:299:14)
+    withPackageWorkspace (file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/scripts/package-workspace.mjs:31:10)
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:297:3)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: success retains the external workspace and mirrors regular evidence without following links
+not ok 14 - success retains the external workspace and mirrors regular evidence without following links
+  ---
+  duration_ms: 5.695345
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:314:1'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    code: 'ENOENT'
+  operator: 'rejects'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:343:3)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: early error failure retains its exact identity without requiring an installed prefix
+not ok 15 - early error failure retains its exact identity without requiring an installed prefix
+  ---
+  duration_ms: 3.203575
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:374:3'
+  failureType: 'testCodeFailure'
+  error: "ENOENT: no such file or directory, open '/tmp/mterm-package-layout-ziG9vp/checkout/artifacts/package-verify-YUtExI/workspace.json'"
+  code: 'ENOENT'
+  stack: |-
+    async open (node:internal/fs/promises:1345:25)
+    async Object.readFile (node:internal/fs/promises:2003:14)
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:393:34)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: early falsy failure retains its exact identity without requiring an installed prefix
+not ok 16 - early falsy failure retains its exact identity without requiring an installed prefix
+  ---
+  duration_ms: 2.791432
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:374:3'
+  failureType: 'testCodeFailure'
+  error: "ENOENT: no such file or directory, open '/tmp/mterm-package-layout-LlnpiJ/checkout/artifacts/package-verify-wth8xb/workspace.json'"
+  code: 'ENOENT'
+  stack: |-
+    async open (node:internal/fs/promises:1345:25)
+    async Object.readFile (node:internal/fs/promises:2003:14)
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:393:34)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: a failed verifier with a real held child retains workspace and mirrors evidence before rejecting
+not ok 17 - a failed verifier with a real held child retains workspace and mirrors evidence before rejecting
+  ---
+  duration_ms: 64.480458
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:410:1'
+  failureType: 'testCodeFailure'
+  error: "ENOENT: no such file or directory, open '/tmp/mterm-package-layout-3CG4w1/checkout/artifacts/package-verify-oVMAXC/workspace.json'"
+  code: 'ENOENT'
+  stack: |-
+    async open (node:internal/fs/promises:1345:25)
+    async Object.readFile (node:internal/fs/promises:2003:14)
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:455:30)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: evidence copy failure preserves the primary verification error
+not ok 18 - evidence copy failure preserves the primary verification error
+  ---
+  duration_ms: 6.704948
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:462:3'
+  failureType: 'testCodeFailure'
+  error: "ENOENT: no such file or directory, open '/tmp/mterm-package-layout-ZkXGNw/checkout/artifacts/package-verify-XxOz7s/workspace.json'"
+  code: 'ENOENT'
+  stack: |-
+    async open (node:internal/fs/promises:1345:25)
+    async Object.readFile (node:internal/fs/promises:2003:14)
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:488:34)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: evidence copy failure prevents a success result
+not ok 19 - evidence copy failure prevents a success result
+  ---
+  duration_ms: 3.307731
+  type: 'test'
+  location: '/workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:462:3'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected rejection.'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  stack: |-
+    async TestContext.<anonymous> (file:///workspace/scratch/b7103ebc01a9/mterm-cli/artifacts/session-20261109/issue-8/frozen-seam/tests/package-workspace.test.mjs:475:7)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 4
+# fail 15
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1004.921749

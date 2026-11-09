@@ -102,12 +102,15 @@
       "title": "Cross-platform npm/Codex install validation",
       "state": "open",
       "url": "https://github.com/MulattoTech/MTerm-CLI/issues/8",
-      "implementationObservation": "Verified baseline main 059413ffa4fb3b18c8e15af907744a40e0b874a7 passed Windows2022, Ubuntu24.04, macOS14 ARM64 and macOS15 Intel normal build/check/package/pinned Codex gates in run41375692062 plus fast41375691964. This is foundation/platform evidence; all feature contracts and actual Codex agent acceptance remain open. New changes need their own exact-source checks.",
+      "implementationObservation": "Verified baseline main 059413ffa4fb3b18c8e15af907744a40e0b874a7 passed Windows2022, Ubuntu24.04, macOS14 ARM64 and macOS15 Intel normal build/check/package/pinned Codex gates in run41375692062 plus fast41375691964. This is foundation/platform evidence; all feature contracts and actual Codex agent acceptance remain open. New changes need their own exact-source checks. 2026-11-09 qualification correction: earlier install/home/cache paths beneath checkout artifacts and an inherited first MCP cwd did not establish checkout-independent package resolution. The verifier now uses a canonical external installation/workspace, measured locations and child Node/npm loader filtering; source-linked npm link remains explicit. Initial/frozen seam RED4/19 and corrected focused27/27 plus independent19/19 support the narrow correction. Historical receipts preserved; exact hosted gates remain separate and no stage/acceptance credit is awarded.",
       "evidence": [
         "docs/validation/2026-10-05-codex-parity-foundation.md",
         "docs/ai/changes/2026-11-02-foundation-portability.json",
         "docs/validation/2026-11-02-config-baseline-ci.json",
-        "docs/validation/2026-11-02-remote-sprint.md"
+        "docs/validation/2026-11-02-remote-sprint.md",
+        "scripts/package-workspace.mjs",
+        "tests/package-workspace.test.mjs",
+        "docs/validation/2026-11-09-package-isolation.md"
       ],
       "lastReviewedAt": "2026-11-02T03:07:05.180902+00:00"
     },

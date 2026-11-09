@@ -3,6 +3,7 @@
 // Modified: 2026-11-09-poll-capacity; retain queued work until the agent offers delivery capacity.
 // Modified: 2026-11-09-grant-expiry; authorize delivery/results at fresh post-read decision boundaries.
 // Modified: 2026-11-09-request-ownership; terminal consumption and private cancellation preserve newer RPC leases.
+// Modified: 2026-11-09-oauth-expiry; recheck client token and grant expiry after authorization reads.
 import {
   READ_TOOLS,
   WIRE_VERSION,
@@ -136,10 +137,13 @@ export class MTermRegistry {
       'invalid_token',
     );
     const grant = await this.storage.get('grant:' + t.grantId);
+    // Epoch and grant reads may cross token expiry; the final decision has no subsequent await.
+    const checkedAt = now();
     requireValue(
       grant &&
         !grant.revokedAt &&
-        grant.expiresAt > now() &&
+        t.expiresAt > checkedAt &&
+        grant.expiresAt > checkedAt &&
         grant.userId === t.userId &&
         grant.clientId === t.clientId,
       401,

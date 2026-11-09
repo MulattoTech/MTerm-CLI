@@ -201,6 +201,14 @@ unchanged. This is a return-decision boundary; it does not guarantee that later
 caller work or response delivery finishes before expiry. See the
 [Access expiry evidence](validation/2026-11-09-access-expiry.md).
 
+Client OAuth token authorization checks token expiry on entry and again after
+its awaited epoch and grant reads. The final decision uses one fresh timestamp for
+both token and grant expiry, with no subsequent await before returning the
+authorized token. An expired token or grant retains `401 invalid_token`; owner,
+client, scope, resource, epoch and revocation checks remain enforced. This does not
+revoke operations admitted while valid or guarantee response arrival before expiry.
+See the [OAuth expiry evidence](validation/2026-11-09-oauth-expiry.md).
+
 An OAuth grant permits read access to the signed-in identity's paired device inventory.
 Every filesystem operation must select an explicit `deviceId`; the gateway checks its
 ownership and tool capability, and the agent independently checks the addressed device,

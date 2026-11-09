@@ -112,6 +112,8 @@ Stages describe implementation evidence and do not award acceptance or a complet
 
 **Completed evidence:** Real service-identity manual PKCE exchange, wrong PKCE/resource and authorization-code replay denial, followed by OAuth grant revocation and MCP HTTP 401.
 
+**Dated source evidence — 2026-11-09:** [Client token expiry](validation/2026-11-09-oauth-expiry.md) records narrow defect #224. The OAuth helper rechecks token and grant expiry at one fresh decision after epoch/grant reads. Ten frozen new public-MCP cases yielded original48total/44pass/4expectedfail; corrected focused60/60, independent48/48, and combined Access/OAuth/agent integration82/82 passed. Existing client/owner/resource/scope/epoch/revocation rules and error contracts remain. No file-result disclosure or live exploit was established. These source results leave full issue55/WEB002 acceptance and downstream asynchronous-operation limits unchanged.
+
 **Remaining work, dependencies and blockers:**
 
 - Complete live two-client grant isolation, refresh rotation/replay, expiry, exact callback and CSRF negatives; prove one client cannot expand or exchange another client's grant. **Effort:** 3–7 engineering hours. **Depends on:** Recorded live OAuth smoke; Two separately registered synthetic clients. **Blocker:** The smoke used one service identity/client lifecycle; live two-client isolation and refresh/expiry coverage remain pending.

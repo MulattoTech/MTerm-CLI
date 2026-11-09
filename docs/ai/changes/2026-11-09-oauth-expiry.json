@@ -1,0 +1,305 @@
+{
+  "change_id": "2026-11-09-oauth-expiry",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "session_id": "MTERM-WEB-20261109T131339Z-resume-a9287b3c",
+  "started_at": "2026-11-09T13:40:07.189246+00:00",
+  "updated_at": "2026-11-09T13:59:50.647221+00:00",
+  "base_sha": "3d32c0e53b0444c2b012b15432928f6feeda053f",
+  "issues": [
+    224
+  ],
+  "related_issues": [
+    55
+  ],
+  "requirements": [
+    "CLI-290"
+  ],
+  "claim": {
+    "ref": "coord/mterm/issue-224",
+    "receipt": "https://github.com/MulattoTech/MTerm-CLI/issues/224#issuecomment-6741408032",
+    "integration_owner": "/root",
+    "implementation_owner": "/root/policy_and_candidate_review"
+  },
+  "branch": "fix/issue-224-oauth-expiry-20261109",
+  "files": [
+    "gateway/registry.mjs",
+    "tests/remote-gateway.test.mjs",
+    "docs/validation/2026-11-09-oauth-expiry.md",
+    "docs/ai/changes/2026-11-09-oauth-expiry.json",
+    "docs/SECURITY.md",
+    "docs/HANDOFF.md",
+    "docs/REMOTE_MCP_ROADMAP.md",
+    "docs/roadmap/progress.json",
+    "docs/roadmap/review.json",
+    "docs/roadmap/FEATURES.md",
+    "docs/roadmap/index.html",
+    "docs/validation/2026-11-09-oauth-expiry-red.tap",
+    "docs/validation/2026-11-09-oauth-expiry-green.tap"
+  ],
+  "decisions": [
+    "Use an ordinary isolated clone at the exact claimed reviewed base; preserve other active branches and owner state.",
+    "Write and freeze all ten additive public-path fixtures before changing registry behavior; preserve the original-source four-assertion-failure result.",
+    "Capture one fresh decision time after existing epoch/grant reads and require both client token and grant expiry against it, with no subsequent await before return.",
+    "Retain early expired-token rejection and the existing kind/resource/scope/epoch/owner/client/revocation rules and HTTP401 invalid_token response.",
+    "Reuse actual signed-JWT, registration, consent, PKCE and token issuance fixture paths; control only owned lifetimes and post-read clocks, and guard external fetch.",
+    "Keep this OAuth token defect distinct from prior agent grant checks and concurrent Cloudflare Access JWT verification.",
+    "Root serializes shared documentation and explicit metric review; no stage or broader capability acceptance is awarded."
+  ],
+  "runtime": {
+    "node": "v24.22.1",
+    "platform": "linux",
+    "architecture": "x64"
+  },
+  "tests": [
+    {
+      "command": "npm ci --ignore-scripts --no-audit --no-fund",
+      "result": "Passed; lifecycle scripts disabled."
+    },
+    {
+      "command": "npm run build:code",
+      "result": "Passed before RED; development compilation only; no TypeScript source change."
+    },
+    {
+      "command": "node --test --test-reporter=tap --test-concurrency=1 tests/remote-gateway.test.mjs",
+      "result": "Original-source RED: 48 total, 44 passed, four ERR_ASSERTION failures, exit1, zero skipped/cancelled/TODO; empty stderr.",
+      "started_at": "2026-11-09T13:40:07.189246+00:00",
+      "finished_at": "2026-11-09T13:40:11.708867+00:00",
+      "executions": 1
+    },
+    {
+      "command": "node --test --test-reporter=tap --test-concurrency=1 tests/remote-gateway.test.mjs tests/remote-admission.test.mjs tests/remote-agent.test.mjs",
+      "result": "Focused GREEN: 60/60 passed, exit0, zero failed/skipped/cancelled/TODO; empty stderr.",
+      "started_at": "2026-11-09T13:41:00.857174+00:00",
+      "finished_at": "2026-11-09T13:41:05.874514+00:00",
+      "executions": 1
+    },
+    {
+      "command": "npm run typecheck; npm run format:check; npm run parity:check; git diff --check",
+      "result": "All passed. Parity baseline verified while full DCP acceptance remains0/48."
+    },
+    {
+      "command": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node --test --test-reporter=tap --test-concurrency=1 tests/remote-gateway.test.mjs",
+      "result": "Independent frozen gateway execution by /root/recover_prior_run:48/48,exit0,zero failures/skips/cancellations/TODO,empty stderr;six bindings unchanged.",
+      "started_at": "2026-11-09T13:43:22.918733+00:00",
+      "finished_at": "2026-11-09T13:43:28.299135+00:00",
+      "executions": 1
+    },
+    {
+      "phase": "combined Access/OAuth integration GREEN",
+      "result": "82/82;exit0;empty stderr;0fail/skip/cancel/todo;11bindings unchanged;Node24.22.1 Linuxx64",
+      "receipt": {
+        "started_at": "2026-11-09T13:57:39.580580+00:00",
+        "base_sha": "0d5a41b47ff40b2df8e50ad76d6cee18d4b0d1b1",
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "--test",
+          "--test-reporter=tap",
+          "--test-concurrency=1",
+          "tests/gateway-access-expiry.test.mjs",
+          "tests/remote-gateway.test.mjs",
+          "tests/remote-admission.test.mjs",
+          "tests/remote-agent.test.mjs"
+        ],
+        "node": "v24.22.1",
+        "elapsed_seconds": 6.131794642002205,
+        "exit_code": 0,
+        "before": {
+          "gateway/app.mjs": "61b5c43a8ce7dc6fc61d772fcc16c4a4b7d5cb8f17c70555829fae3ce53e42a1",
+          "gateway/security.mjs": "78aa4d7f9f632568d2247d249691b7583dbf73d344bd040d6512104741183b7b",
+          "gateway/registry.mjs": "a849f4a1b7881fd8198e7f97f7b6ad3da5bea7fd4a7492801f3a7f9d774a872d",
+          "tests/gateway-access-expiry.test.mjs": "9e24369e1ab38e9eedcc5f77d2b3c5056fa51d9ce77e94d6232d9b6b6259c1cd",
+          "tests/remote-gateway.test.mjs": "dfbb1bc65c6c33c00b9acccd0d481ba0052e433ec324dd38bc616fa4f77094b1",
+          "tests/remote-admission.test.mjs": "885e136acf1a618d3fd9465126410df336323305c7ebb37a6ac80544cf3254ff",
+          "tests/remote-agent.test.mjs": "53b63b74cf38d70c29291b50c739ed13455bf0903adf5a966eea4dcc3a3a5019",
+          "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14",
+          "dist/remote/agent.js": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc",
+          "dist/remote/adapter.js": "aa809420a2757880b8a0b8301a0ace892b5e4adf52dae89e13fb4f523fe12705",
+          "dist/remote/state.js": "58299ed3676f604c6149a8230d984ce3578a4aaad000ae99556a247a5d8d8039"
+        },
+        "after": {
+          "gateway/app.mjs": "61b5c43a8ce7dc6fc61d772fcc16c4a4b7d5cb8f17c70555829fae3ce53e42a1",
+          "gateway/security.mjs": "78aa4d7f9f632568d2247d249691b7583dbf73d344bd040d6512104741183b7b",
+          "gateway/registry.mjs": "a849f4a1b7881fd8198e7f97f7b6ad3da5bea7fd4a7492801f3a7f9d774a872d",
+          "tests/gateway-access-expiry.test.mjs": "9e24369e1ab38e9eedcc5f77d2b3c5056fa51d9ce77e94d6232d9b6b6259c1cd",
+          "tests/remote-gateway.test.mjs": "dfbb1bc65c6c33c00b9acccd0d481ba0052e433ec324dd38bc616fa4f77094b1",
+          "tests/remote-admission.test.mjs": "885e136acf1a618d3fd9465126410df336323305c7ebb37a6ac80544cf3254ff",
+          "tests/remote-agent.test.mjs": "53b63b74cf38d70c29291b50c739ed13455bf0903adf5a966eea4dcc3a3a5019",
+          "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14",
+          "dist/remote/agent.js": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc",
+          "dist/remote/adapter.js": "aa809420a2757880b8a0b8301a0ace892b5e4adf52dae89e13fb4f523fe12705",
+          "dist/remote/state.js": "58299ed3676f604c6149a8230d984ce3578a4aaad000ae99556a247a5d8d8039"
+        },
+        "tap_sha256": "eb96158a5b39698178262f42117d691140ac2cc64e2ee62751443cc4b52cde02",
+        "stderr_bytes": 0
+      },
+      "receipt_sha256": "50fb0966fd4858aecd4b0541629957195cf87acd30d39a08a011629a8a9eb2c3"
+    },
+    {
+      "phase": "normal reviewed integration gates",
+      "result": "All6commands exit0;300requirements29.36%,0complete45blocked126notStarted; DCP0/48 and WEB0/12 unchanged; existing npm http-proxy warning only.",
+      "records": [
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "scripts/roadmap.mjs",
+            "--review",
+            "--change",
+            "2026-11-09-oauth-expiry"
+          ],
+          "exit_code": 0,
+          "log": "gate-0.log"
+        },
+        {
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "scripts/roadmap.mjs",
+            "--render"
+          ],
+          "exit_code": 0,
+          "log": "gate-1.log"
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "build"
+          ],
+          "exit_code": 0,
+          "log": "gate-2.log"
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "typecheck"
+          ],
+          "exit_code": 0,
+          "log": "gate-3.log"
+        },
+        {
+          "command": [
+            "npm",
+            "run",
+            "format:check"
+          ],
+          "exit_code": 0,
+          "log": "gate-4.log"
+        },
+        {
+          "command": [
+            "git",
+            "diff",
+            "--check"
+          ],
+          "exit_code": 0,
+          "log": "gate-5.log"
+        }
+      ],
+      "source_fingerprint": "8e90c14eb8f45379c658554ca08fd2adae60585f742a1e674e317310277524e8"
+    }
+  ],
+  "original_source_binding": {
+    "base_sha": "3d32c0e53b0444c2b012b15432928f6feeda053f",
+    "inputs_sha256": {
+      "gateway/registry.mjs": "53706971f99d6f71d1e5a5db6fc87c739a90aca7c05146412820ff8a4285e472",
+      "gateway/app.mjs": "61b5c43a8ce7dc6fc61d772fcc16c4a4b7d5cb8f17c70555829fae3ce53e42a1",
+      "gateway/security.mjs": "d0d310b6af0e1b04929e62e621ddf154615a4a2b5b9bedbea8c40852bc53d6d7",
+      "tests/remote-gateway.test.mjs": "dfbb1bc65c6c33c00b9acccd0d481ba0052e433ec324dd38bc616fa4f77094b1",
+      "src/remote/protocol.ts": "43e8c5067e8a2e4878b76f2ec6c0871dca499a02d5cd02cd31ecef57a8a3ed28",
+      "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14"
+    },
+    "inputs_unchanged_after_run": true,
+    "fixture_frozen_before_behavior_change": true
+  },
+  "reviewed_sha256": {
+    "gateway/registry.mjs": "a849f4a1b7881fd8198e7f97f7b6ad3da5bea7fd4a7492801f3a7f9d774a872d",
+    "gateway/app.mjs": "61b5c43a8ce7dc6fc61d772fcc16c4a4b7d5cb8f17c70555829fae3ce53e42a1",
+    "gateway/security.mjs": "d0d310b6af0e1b04929e62e621ddf154615a4a2b5b9bedbea8c40852bc53d6d7",
+    "tests/remote-gateway.test.mjs": "dfbb1bc65c6c33c00b9acccd0d481ba0052e433ec324dd38bc616fa4f77094b1",
+    "tests/remote-admission.test.mjs": "885e136acf1a618d3fd9465126410df336323305c7ebb37a6ac80544cf3254ff",
+    "tests/remote-agent.test.mjs": "53b63b74cf38d70c29291b50c739ed13455bf0903adf5a966eea4dcc3a3a5019",
+    "src/remote/protocol.ts": "43e8c5067e8a2e4878b76f2ec6c0871dca499a02d5cd02cd31ecef57a8a3ed28",
+    "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14",
+    "dist/remote/agent.js": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc",
+    "dist/remote/adapter.js": "aa809420a2757880b8a0b8301a0ace892b5e4adf52dae89e13fb4f523fe12705"
+  },
+  "final_execution_inputs_unchanged": true,
+  "independent_review": {
+    "status": "clear",
+    "reviewer": "/root/recover_prior_run",
+    "role": "Independent source/fixture review and one frozen execution.",
+    "findings": "No material findings. Final decision follows authorization reads with no subsequent await; existing token kind/resource/scope/epoch and grant owner/client/revocation rules remain. Real local OAuth/PKCE and serialized memory storage fixtures cover both read boundaries, grant expiry, already-expired rejection and independent live-client success.",
+    "receipt": "artifacts/issue-224-independent-review/peer-recovery-fjdznzno/receipt.json",
+    "receipt_sha256": "1bbb6c08a8f64373c752f36619acca5e5af815a5064aed733e3f8de1d0951763",
+    "tap": "artifacts/issue-224-independent-review/peer-recovery-fjdznzno/tests.tap",
+    "tap_sha256": "6e333d47f1c87dc89f389db51c5c794a67d9a2e528bdd34ed38ab3fa4e2fb763",
+    "inputs_sha256": {
+      "gateway/registry.mjs": "a849f4a1b7881fd8198e7f97f7b6ad3da5bea7fd4a7492801f3a7f9d774a872d",
+      "tests/remote-gateway.test.mjs": "dfbb1bc65c6c33c00b9acccd0d481ba0052e433ec324dd38bc616fa4f77094b1",
+      "gateway/app.mjs": "61b5c43a8ce7dc6fc61d772fcc16c4a4b7d5cb8f17c70555829fae3ce53e42a1",
+      "gateway/security.mjs": "d0d310b6af0e1b04929e62e621ddf154615a4a2b5b9bedbea8c40852bc53d6d7",
+      "gateway/dashboard.mjs": "37de2f57ba8f6dfcd1c3331ab8cb994aea419dcfc673c5e3e6f6ef6df208c240",
+      "dist/remote/protocol.js": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14"
+    },
+    "inputs_unchanged": true,
+    "writer_verified_actual_receipt_and_tap": true,
+    "limitation": "Controlled local fixture, no live owner/provider/deployment qualification. Peer run uses base security.mjs d0d310b6; combined issue54/issue224 requires separate final-head gates."
+  },
+  "roadmap_updates": [
+    {
+      "id": "CLI-290",
+      "stage_change": false,
+      "reason": "Append bounded public MCP client-token expiry evidence; all protected metadata and full WEB002 acceptance unchanged."
+    }
+  ],
+  "logs": {
+    "red": {
+      "path": "artifacts/issue-224-oauth-expiry/red.tap",
+      "sha256": "d964b34191836e8b6115ad06fc6457a7b6694214fc03beedc89b8ca5509f70d4",
+      "receipt": "artifacts/issue-224-oauth-expiry/red-receipt.json",
+      "new_case_diagnostics_embedded_in": "docs/validation/2026-11-09-oauth-expiry.md",
+      "excerpt_normalization": "Trailing whitespace only."
+    },
+    "green": {
+      "path": "artifacts/issue-224-oauth-expiry/green.tap",
+      "sha256": "bb16b91dc78040f746b303a07bced92ddbbd22f3efc58b8e90580e5a768e486f",
+      "receipt": "artifacts/issue-224-oauth-expiry/green-receipt.json"
+    },
+    "independent": {
+      "path": "artifacts/issue-224-independent-review/peer-recovery-fjdznzno/tests.tap",
+      "sha256": "6e333d47f1c87dc89f389db51c5c794a67d9a2e528bdd34ed38ab3fa4e2fb763",
+      "receipt": "artifacts/issue-224-independent-review/peer-recovery-fjdznzno/receipt.json",
+      "receipt_sha256": "1bbb6c08a8f64373c752f36619acca5e5af815a5064aed733e3f8de1d0951763"
+    }
+  },
+  "limitations": [
+    "The original-source probe and regression fixtures establish public MCP ping authorization, not file-result disclosure or a deployed exploit.",
+    "Checks apply at the helper authorization decision; no promise of response arrival before expiry or retroactive interruption of previously authorized work.",
+    "Synthetic local identities, certificate lookup, serialized memory storage and controlled post-read clocks do not qualify live Cloudflare/owner browser behavior.",
+    "Gateway source is not shipped in the npm CLI; focused source execution is not installed/deployed gateway acceptance.",
+    "No dependency, lock, pin, production account/grant/policy, service, deployment, private plugin, bridge, global runtime or unrelated project change.",
+    "Root shared metric/handoff/security integration, normal reviewed build/check/package, all six final-head hosted/platform/native gates and separate actual-main verification remain pending."
+  ],
+  "next_unverified_action": "Final independent protected-document review, exact committed-input gateway artifact, six candidate hosted gates and six separate actual-main gates. No deployment.",
+  "started_at_basis": "Start of the first retained original-source regression execution; clone setup and fixture authoring preceded this observed timestamp.",
+  "integration_base_sha": "0d5a41b47ff40b2df8e50ad76d6cee18d4b0d1b1",
+  "integrator": "/root",
+  "worker_commits": [
+    "f73063b42453033e684a80424dec1bf7e78e25ca",
+    "71ff50f99b1984ba3068801513785f71cb4332ef"
+  ],
+  "committed_transcripts": {
+    "red": {
+      "path": "docs/validation/2026-11-09-oauth-expiry-red.tap",
+      "sha256": "dae55c88bc92ac033a3ed23c947a99890a0a8c1f80e885a1fe3d563258afa475",
+      "normalization": "Trailing whitespace removed only."
+    },
+    "green": {
+      "path": "docs/validation/2026-11-09-oauth-expiry-green.tap",
+      "sha256": "eb96158a5b39698178262f42117d691140ac2cc64e2ee62751443cc4b52cde02",
+      "normalization": "Trailing whitespace removed only."
+    }
+  },
+  "roadmap_integration": "Root appended CLI290 notes and2new evidence refs (existing gateway fixture retained), plus one WEB002 paragraph; all protected fields unchanged."
+}

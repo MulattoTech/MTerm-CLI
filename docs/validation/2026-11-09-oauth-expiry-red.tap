@@ -1,0 +1,362 @@
+TAP version 13
+# Subtest: grant expiry: legacy poll cancels queued and delivered work without an alarm sweep
+ok 1 - grant expiry: legacy poll cancels queued and delivered work without an alarm sweep
+  ---
+  duration_ms: 112.39878
+  type: 'test'
+  ...
+# Subtest: grant expiry: 0-slot poll cancels queued and delivered work without an alarm sweep
+ok 2 - grant expiry: 0-slot poll cancels queued and delivered work without an alarm sweep
+  ---
+  duration_ms: 61.997155
+  type: 'test'
+  ...
+# Subtest: grant expiry: 4-slot poll cancels queued and delivered work without an alarm sweep
+ok 3 - grant expiry: 4-slot poll cancels queued and delivered work without an alarm sweep
+  ---
+  duration_ms: 96.185295
+  type: 'test'
+  ...
+# Subtest: grant expiry: result acceptance rejects exact expiry before retaining output
+ok 4 - grant expiry: result acceptance rejects exact expiry before retaining output
+  ---
+  duration_ms: 120.525875
+  type: 'test'
+  ...
+# Subtest: grant expiry: result acceptance rejects after expiry before retaining output
+ok 5 - grant expiry: result acceptance rejects after expiry before retaining output
+  ---
+  duration_ms: 44.711117
+  type: 'test'
+  ...
+# Subtest: grant expiry: result acceptance rejects missing expiry before retaining output
+ok 6 - grant expiry: result acceptance rejects missing expiry before retaining output
+  ---
+  duration_ms: 52.878207
+  type: 'test'
+  ...
+# Subtest: grant expiry: just-before success and another live client grant remain independent
+ok 7 - grant expiry: just-before success and another live client grant remain independent
+  ---
+  duration_ms: 52.287552
+  type: 'test'
+  ...
+# Subtest: grant expiry: existing request deadline takes precedence when both boundaries expire
+ok 8 - grant expiry: existing request deadline takes precedence when both boundaries expire
+  ---
+  duration_ms: 43.064056
+  type: 'test'
+  ...
+# Subtest: grant expiry: poll rechecks grant after asynchronous grant and epoch reads
+ok 9 - grant expiry: poll rechecks grant after asynchronous grant and epoch reads
+  ---
+  duration_ms: 81.267938
+  type: 'test'
+  ...
+# Subtest: grant expiry: poll rechecks deadline after asynchronous grant and epoch reads
+ok 10 - grant expiry: poll rechecks deadline after asynchronous grant and epoch reads
+  ---
+  duration_ms: 34.511194
+  type: 'test'
+  ...
+# Subtest: grant expiry: result rechecks grant after asynchronous grant and epoch reads
+ok 11 - grant expiry: result rechecks grant after asynchronous grant and epoch reads
+  ---
+  duration_ms: 69.603043
+  type: 'test'
+  ...
+# Subtest: grant expiry: result rechecks deadline after asynchronous grant and epoch reads
+ok 12 - grant expiry: result rechecks deadline after asynchronous grant and epoch reads
+  ---
+  duration_ms: 69.77251
+  type: 'test'
+  ...
+# Subtest: gateway fails closed; discovery is public, bounded, and precise
+ok 13 - gateway fails closed; discovery is public, bounded, and precise
+  ---
+  duration_ms: 17.6059
+  type: 'test'
+  ...
+# Subtest: Access JWT signature, audience, expiry and allowlist are enforced independently of headers
+ok 14 - Access JWT signature, audience, expiry and allowlist are enforced independently of headers
+  ---
+  duration_ms: 110.584542
+  type: 'test'
+  ...
+# Subtest: PKCE code is single use and tokens are resource-bound
+ok 15 - PKCE code is single use and tokens are resource-bound
+  ---
+  duration_ms: 23.691755
+  type: 'test'
+  ...
+# Subtest: pairing requires authenticated approval, is one-time, and never grants execution
+ok 16 - pairing requires authenticated approval, is one-time, and never grants execution
+  ---
+  duration_ms: 31.297163
+  type: 'test'
+  ...
+# Subtest: real relay request travels gateway queue to selected agent and result returns once
+ok 17 - real relay request travels gateway queue to selected agent and result returns once
+  ---
+  duration_ms: 646.299402
+  type: 'test'
+  ...
+# Subtest: cross-user and cross-device access, mutation names, and revoked credentials fail closed
+ok 18 - cross-user and cross-device access, mutation names, and revoked credentials fail closed
+  ---
+  duration_ms: 38.734805
+  type: 'test'
+  ...
+# Subtest: frequent polling cannot defer expiry cleanup and the sweep reaches beyond 1000 rows
+ok 19 - frequent polling cannot defer expiry cleanup and the sweep reaches beyond 1000 rows
+  ---
+  duration_ms: 33.850254
+  type: 'test'
+  ...
+# Subtest: refresh rotation is single use, replay revokes its whole grant, and resource mismatch fails
+ok 20 - refresh rotation is single use, replay revokes its whole grant, and resource mismatch fails
+  ---
+  duration_ms: 58.641923
+  type: 'test'
+  ...
+# Subtest: request cancellation is scoped, delivered requests never replay, and late results fail
+ok 21 - request cancellation is scoped, delivered requests never replay, and late results fail
+  ---
+  duration_ms: 586.232199
+  type: 'test'
+  ...
+# Subtest: offline, expired, malformed and oversized requests have bounded safe failures
+ok 22 - offline, expired, malformed and oversized requests have bounded safe failures
+  ---
+  duration_ms: 23.790763
+  type: 'test'
+  ...
+# Subtest: dashboard cancellation checks ownership and service identities require exact app-token claims
+ok 23 - dashboard cancellation checks ownership and service identities require exact app-token claims
+  ---
+  duration_ms: 37.304302
+  type: 'test'
+  ...
+# Subtest: revoke-all invalidates unredeemed authorization codes and approved unclaimed pairings
+ok 24 - revoke-all invalidates unredeemed authorization codes and approved unclaimed pairings
+  ---
+  duration_ms: 33.348011
+  type: 'test'
+  ...
+# Subtest: MCP optional arguments and JSON-RPC parse errors follow the advertised protocol
+ok 25 - MCP optional arguments and JSON-RPC parse errors follow the advertised protocol
+  ---
+  duration_ms: 37.072868
+  type: 'test'
+  ...
+# Subtest: pairing stays consumed after a credential-store failure and consent CSP permits only its callback
+ok 26 - pairing stays consumed after a credential-store failure and consent CSP permits only its callback
+  ---
+  duration_ms: 119.159507
+  type: 'test'
+  ...
+# Subtest: request ownership: consuming an old timeout preserves the replacement RPC lease
+ok 27 - request ownership: consuming an old timeout preserves the replacement RPC lease
+  ---
+  duration_ms: 62.574883
+  type: 'test'
+  ...
+# Subtest: request ownership: consuming an old cancelled preserves the replacement RPC lease
+ok 28 - request ownership: consuming an old cancelled preserves the replacement RPC lease
+  ---
+  duration_ms: 30.601051
+  type: 'test'
+  ...
+# Subtest: request ownership: consuming an old complete preserves the replacement RPC lease
+ok 29 - request ownership: consuming an old complete preserves the replacement RPC lease
+  ---
+  duration_ms: 27.247681
+  type: 'test'
+  ...
+# Subtest: request ownership: public cancellation still reaches a replacement after old result consumption
+ok 30 - request ownership: public cancellation still reaches a replacement after old result consumption
+  ---
+  duration_ms: 56.950525
+  type: 'test'
+  ...
+# Subtest: request ownership: repeated consumption rejects before modifying a reused RPC lease
+ok 31 - request ownership: repeated consumption rejects before modifying a reused RPC lease
+  ---
+  duration_ms: 51.708154
+  type: 'test'
+  ...
+# Subtest: request ownership: delayed old HTTP abort cleanup cannot cancel a replacement
+ok 32 - request ownership: delayed old HTTP abort cleanup cannot cancel a replacement
+  ---
+  duration_ms: 48.939425
+  type: 'test'
+  ...
+# Subtest: request ownership: delayed old HTTP deadline cleanup cannot cancel a replacement
+ok 33 - request ownership: delayed old HTTP deadline cleanup cannot cancel a replacement
+  ---
+  duration_ms: 534.046694
+  type: 'test'
+  ...
+# Subtest: request ownership: malformed private expected IDs cannot fall back to unbound cancellation
+ok 34 - request ownership: malformed private expected IDs cannot fall back to unbound cancellation
+  ---
+  duration_ms: 55.999479
+  type: 'test'
+  ...
+# Subtest: request ownership: private stale IDs require authentication and cannot select another job
+ok 35 - request ownership: private stale IDs require authentication and cannot select another job
+  ---
+  duration_ms: 46.425521
+  type: 'test'
+  ...
+# Subtest: request ownership: public notifications isolate bearer credentials and numeric versus string IDs
+ok 36 - request ownership: public notifications isolate bearer credentials and numeric versus string IDs
+  ---
+  duration_ms: 57.033529
+  type: 'test'
+  ...
+# Subtest: request ownership: a matching private expected ID still cancels its current job
+ok 37 - request ownership: a matching private expected ID still cancels its current job
+  ---
+  duration_ms: 146.075834
+  type: 'test'
+  ...
+# Subtest: request ownership: an absent active pointer permits first authorized terminal consumption
+ok 38 - request ownership: an absent active pointer permits first authorized terminal consumption
+  ---
+  duration_ms: 63.542313
+  type: 'test'
+  ...
+# Subtest: OAuth expiry: public MCP authorization settles just before token expiry during epoch read
+ok 39 - OAuth expiry: public MCP authorization settles just before token expiry during epoch read
+  ---
+  duration_ms: 78.185871
+  type: 'test'
+  ...
+# Subtest: OAuth expiry: public MCP authorization settles exactly at token expiry during epoch read
+not ok 40 - OAuth expiry: public MCP authorization settles exactly at token expiry during epoch read
+  ---
+  duration_ms: 43.398354
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-oauth-expiry/tests/remote-gateway.test.mjs:1373:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    200 !== 401
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 401
+  actual: 200
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-oauth-expiry/tests/remote-gateway.test.mjs:1379:14)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: OAuth expiry: public MCP authorization settles after token expiry during epoch read
+not ok 41 - OAuth expiry: public MCP authorization settles after token expiry during epoch read
+  ---
+  duration_ms: 38.897741
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-oauth-expiry/tests/remote-gateway.test.mjs:1373:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    200 !== 401
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 401
+  actual: 200
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-oauth-expiry/tests/remote-gateway.test.mjs:1379:14)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: OAuth expiry: public MCP authorization still rejects grant expiry during epoch read
+ok 42 - OAuth expiry: public MCP authorization still rejects grant expiry during epoch read
+  ---
+  duration_ms: 47.16657
+  type: 'test'
+  ...
+# Subtest: OAuth expiry: public MCP authorization settles just before token expiry during grant read
+ok 43 - OAuth expiry: public MCP authorization settles just before token expiry during grant read
+  ---
+  duration_ms: 85.311344
+  type: 'test'
+  ...
+# Subtest: OAuth expiry: public MCP authorization settles exactly at token expiry during grant read
+not ok 44 - OAuth expiry: public MCP authorization settles exactly at token expiry during grant read
+  ---
+  duration_ms: 58.81561
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-oauth-expiry/tests/remote-gateway.test.mjs:1373:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    200 !== 401
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 401
+  actual: 200
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-oauth-expiry/tests/remote-gateway.test.mjs:1379:14)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: OAuth expiry: public MCP authorization settles after token expiry during grant read
+not ok 45 - OAuth expiry: public MCP authorization settles after token expiry during grant read
+  ---
+  duration_ms: 36.063865
+  type: 'test'
+  location: '/workspace/scratch/a9287b3cfe09/mterm-oauth-expiry/tests/remote-gateway.test.mjs:1373:5'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+
+    200 !== 401
+
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 401
+  actual: 200
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///workspace/scratch/a9287b3cfe09/mterm-oauth-expiry/tests/remote-gateway.test.mjs:1379:14)
+    async Test.run (node:internal/test_runner/test:1409:7)
+    async Test.processPendingSubtests (node:internal/test_runner/test:974:7)
+  ...
+# Subtest: OAuth expiry: public MCP authorization still rejects grant expiry during grant read
+ok 46 - OAuth expiry: public MCP authorization still rejects grant expiry during grant read
+  ---
+  duration_ms: 80.716887
+  type: 'test'
+  ...
+# Subtest: OAuth expiry: an already-expired access token rejects before epoch and grant reads
+ok 47 - OAuth expiry: an already-expired access token rejects before epoch and grant reads
+  ---
+  duration_ms: 33.262457
+  type: 'test'
+  ...
+# Subtest: OAuth expiry: another live client token remains authorized after the first token expires
+ok 48 - OAuth expiry: another live client token remains authorized after the first token expires
+  ---
+  duration_ms: 43.482024
+  type: 'test'
+  ...
+1..48
+# tests 48
+# suites 0
+# pass 44
+# fail 4
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4458.336486

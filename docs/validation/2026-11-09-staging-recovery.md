@@ -354,3 +354,16 @@ All15 tested bindings remained unchanged after the build. Only the existing npm
 `http-proxy` configuration warning appeared. Maturity stays29.36%, with0complete,
 45blocked and126notStarted; no protected stage or acceptance change. Independent
 shared-catalog review and exact hosted candidate/actual-main gates remain separate.
+
+## Subsequent source delivery — PR234
+
+[The source-delivery record](2026-11-09-staging-recovery-delivery.json) preserves
+separate exact-candidate and actual-main qualification. Candidate3cde9c86 and
+normally merged actual3077a7fe share tree5164e59b; each passed all six required
+jobs with independently inspected logs and native artifacts. The source claim
+was released at2026-11-09T20:31:59Z, with its historical text and refs retained.
+Issue232 and broad61/65 remain open: actual provider expiry/renewal/rotation,
+connected Windows cleanup and temporary-resource reconciliation are unqualified.
+The two rejected creation attempts remain the complete history; no new provider,
+Windows, policy/binding or deployment operation occurred during source delivery.
+Every preceding preparation/execution observation retains its original scope.

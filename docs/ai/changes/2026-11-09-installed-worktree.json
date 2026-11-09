@@ -1,0 +1,483 @@
+{
+  "change_id": "2026-11-09-installed-worktree",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "attribution": "Self-reported metadata, not a platform reviewer approval or cryptographic authorship proof.",
+  "session_id": "MTERM-WEB-20261109T131339Z-resume-a9287b3c",
+  "agent": "/root/worktree_implementation",
+  "started_at": "2026-11-09T20:16:20.834728+00:00",
+  "started_at_scope": "First retained worker dependency/baseline record; parent session began earlier.",
+  "updated_at": "2026-11-09T20:57:40.578348+00:00",
+  "base_sha": "c69762da7d1dda54f7a74795c08c1f699367c77f",
+  "issues": [
+    235,
+    66
+  ],
+  "requirements": [
+    "CLI-266",
+    "CLI-283",
+    "CLI-284"
+  ],
+  "files": [
+    "docs/HANDOFF.md",
+    "docs/SECURITY.md",
+    "docs/ai/changes/2026-11-09-installed-worktree.json",
+    "docs/ai/changes/2026-11-09-staging-recovery.json",
+    "docs/roadmap/FEATURES.md",
+    "docs/roadmap/index.html",
+    "docs/roadmap/progress.json",
+    "docs/roadmap/review.json",
+    "docs/validation/2026-11-09-installed-worktree-initial-source.tap",
+    "docs/validation/2026-11-09-installed-worktree-root-source.tap",
+    "docs/validation/2026-11-09-installed-worktree-source-evidence.json",
+    "docs/validation/2026-11-09-installed-worktree.md",
+    "docs/validation/2026-11-09-staging-recovery-delivery.json",
+    "docs/validation/2026-11-09-staging-recovery.md",
+    "scripts/verify-package.mjs",
+    "tests/git-worktree-mcp.test.mjs"
+  ],
+  "decisions": [
+    "One implementation owner in an isolated normal clone; atomic coord/mterm/issue-235 claim and standing owner authorization. Root owns shared integration, roadmap review, publication and ordinary expected-head merges.",
+    "Qualify existing behavior with real SDK/stdio calls in ordinary clone and untouched Git-created linked-worktree layouts. Production source, CLI flags, dependencies, workflows, original 18-case boundary fixture and self-host verifier remain unchanged.",
+    "Freeze and independently review the new fixture before its first execution. Immediate GREEN 6/6 on unchanged qualified production is honest added coverage; no behavior defect was reproduced and no artificial RED was introduced.",
+    "Use independent local clone objects, separate index/worktree/untracked sentinels, exact owner/effective roots, complete read-only tool inventory, bounded typed denials and private metadata-file refusals.",
+    "Compare complete owned file/Git metadata byte manifests around MCP observation; require captured natural child close 0 with no signal or kill attempt. Retain full agreed manifests and native relative topology in TAP. Retain a fixture if child closure is uncertain.",
+    "Extend only the existing installed Git verifier block to run original 18+new6, require exact 24/pass 24 and zero fail/skip/cancel/todo, and recheck both fixture hashes. Reports state only assertions covered by the new six cases.",
+    "Local actual-install setup used owned external workspaces and offline cache seeds. Two distinct ENOTCACHED prerequisites occurred before tests; original attempts remain retained. A read-only preflight found required original registry metadata absent, so no third install or fabricated metadata/network/resolution change occurred.",
+    "Keep local installed qualification NOT RUN. Mandatory hosted normal package/install lanes must prove 24/24 on the exact candidate and actual main. Full AUTO-001/#66 and all protected roadmap stages remain unclaimed."
+  ],
+  "frozen_inputs": {
+    "new_fixture_sha256": "8f9cf62a1c6fb601bec9258a44ff26897bf84690fa40cf6e88d92963b6e7d529",
+    "legacy18_fixture_sha256": "a658fe4eb94e1186c83762e9059431867bd1733fb879ec2cf2214c37cf5986a2",
+    "verifier_sha256": "70c91d7ecfc4a3d3cbdd32f8237cf8fbe1c50461f036a5a3be7bcc897842e391",
+    "fixture_freeze_receipt": "artifacts/issue-235-installed-worktree/fixture-freeze-v2.json",
+    "fixture_freeze_receipt_sha256": "638b3a3ad2a359976312de7c0fe490b6ad06f3a75e0e8f6e2e9d3b4fa769e0e9"
+  },
+  "tests": [
+    {
+      "command": "npm run build:code",
+      "result": "PASS; actual exit0 on unchanged production source. Development compile only, not normal reviewed build/prepack qualification.",
+      "receipt": "artifacts/issue-235-installed-worktree/build-code-receipt.json",
+      "receipt_sha256": "29d67d4900f7aa39e2a723b5add51ce53007c010c935371830882da8a3d6a746"
+    },
+    {
+      "command": "node --test --test-reporter=tap --test-concurrency=1 tests/git-worktree-mcp.test.mjs",
+      "result": "Initial GREEN:6/6,0fail/skip/cancel/todo,actual exit0,empty stderr. Existing source behavior; no product correction.",
+      "source_head": "c69762da7d1dda54f7a74795c08c1f699367c77f",
+      "node": "v24.22.1",
+      "git": "git version 2.52.0",
+      "platform": "Linux",
+      "architecture": "x86_64",
+      "started_at": "2026-11-09T20:20:44.080128+00:00",
+      "ended_at": "2026-11-09T20:20:46.386594+00:00",
+      "duration_seconds": 2.297318,
+      "execution_inputs": 118,
+      "inputs_unchanged": true,
+      "manifest_entries_per_case": 106,
+      "natural_child_closes": 6,
+      "termination_attempts": 0,
+      "receipt": "artifacts/issue-235-installed-worktree/initial-source/receipt.json",
+      "receipt_sha256": "621aef7a91b97f8ba1190c033e58b12ab5e98d7978f5098063f7d5ffdedc60c4",
+      "stdout_tap_sha256": "ad98fcece3558f9d6c5d150798a336191e5204af4ac75c62b6c3cb86fbb9f29d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": "node --check tests/git-worktree-mcp.test.mjs; node --check scripts/verify-package.mjs; targeted prettier formatting",
+      "result": "PASS for source syntax/format only; no test outcome inferred."
+    },
+    {
+      "command": "Real offline npm pack/install in external owned workspaces; reviewed exact Git verifier block was planned after installation",
+      "result": "Both packs exited0; both installs exited1 on distinct missing offline cache records before any installed test. No installed24 result exists.",
+      "attempts": [
+        {
+          "attempt": "attempt1",
+          "runtime": "/tmp/mterm-package-verify-dDebJ0",
+          "evidence": "artifacts/package-verify-FOCXg5",
+          "owned_cache": "/tmp/mterm-package-verify-dDebJ0/cache",
+          "pack_exit": 0,
+          "install_exit": 1,
+          "missing_cache_url": "https://raw.githubusercontent.com/MulattoTech/MTerm-CLI/8e6f2336d995b5c1cb5ff044071ed186cce03567/vendor/modelcontextprotocol-server/server-2.3.0-mterm.1.tgz",
+          "installed_tests_executed": false,
+          "commands_sha256": "81241388818106928641dac84531f74e94757ee4b2e6defe6f804a6a597648a3",
+          "install_stderr_sha256": "798e0509576d8068a9d29e79c48f337690dfc005248db0fba37690449d796ce9",
+          "workspace_receipt_sha256": "7dd35cc2429eb21d4a699bfbea23331ee7d8e7a8cd21a8cee562259400f903e6",
+          "cache_seed_sha256": "c87bf04c7fd529bfcb6c36a6ed411eed8443bb769b9917e64d27c137ccbdfcca",
+          "tarball_sha256": "dd2a09334cb53b5df752cabf68aaa796ec4023836118ed5c10da375ca2903412",
+          "tarball_bytes": 117187
+        },
+        {
+          "attempt": "attempt2",
+          "runtime": "/tmp/mterm-package-verify-aigwbI",
+          "evidence": "artifacts/package-verify-jRDQ3f",
+          "owned_cache": "/tmp/mterm-package-verify-aigwbI/cache",
+          "pack_exit": 0,
+          "install_exit": 1,
+          "missing_cache_url": "https://registry.npmjs.org/zod",
+          "installed_tests_executed": false,
+          "commands_sha256": "6284fce5da36e02125259b33ece61372804b45b1be0c16858a84a76f2188485b",
+          "install_stderr_sha256": "c2dff527c14a87ed0fa4de92007bc47daafc14a2b347e637c9d6b8d00e6eca87",
+          "workspace_receipt_sha256": "88b405cf2551824add184e40febea468e1890e3a635f770c6fb78c6cb31f2584",
+          "cache_seed_sha256": "f102f9ae773440a48c8e2c7752162812ea45c96bb5b43366fbc1eb1a899defd5",
+          "tarball_sha256": "dd2a09334cb53b5df752cabf68aaa796ec4023836118ed5c10da375ca2903412",
+          "tarball_bytes": 117187
+        }
+      ]
+    },
+    {
+      "command": "Read-only existing-cache public metadata preflight",
+      "result": "BLOCKED: zod and canonical core metadata entries absent. No third installation attempted.",
+      "receipt": "artifacts/issue-235-installed-worktree/installed-metadata-preflight.json",
+      "receipt_sha256": "6c33f3e79eb3ba84a70d4fb771cc3156bd857d31ed75f3f3b054d09604c13759"
+    },
+    {
+      "command": "node --test --test-reporter=tap --test-concurrency=1 tests/git-worktree-mcp.test.mjs tests/git-boundaries.test.mjs tests/git.test.mjs tests/mcp.test.mjs",
+      "result": "PASS:32/32,0fail/skip/cancel/todo,actual Node and outer exec exit0,empty stderr,120 unchanged bindings on serialized root source. No installed/full/quick/platform inference.",
+      "receipt_sha256": "f5c4645e2de5bc6d3bb87d42a6d73204a0ee7cf81c945f738ec9e7ee6d8c5b54",
+      "source_head": "b457bdd887a57a1d18933092d487491337e00ceb"
+    },
+    {
+      "command": "Explicit roadmap review/render/check; npm run build (including parity); npm run typecheck; npm run format:check; git diff --check",
+      "result": "PASS:all7 actual exits0; source fingerprint be5379955eb4aaa9dc625bcf7a2b9b59027f7be41498b121047b88ff647cd93f/183 entries; all120 tested inputs unchanged after build. Existing npm http-proxy warning retained. No full-local/quick/installed claim.",
+      "receipt_sha256": "498a8dd7c18e0a897549453e0d682310da8cdfb5ae38ffa88970d2a48b93bffc"
+    }
+  ],
+  "independent_review": {
+    "reviewer": "/root/provider_evidence",
+    "kind": "Independent source/evidence review; not a GitHub approval event.",
+    "fixture_prerun": {
+      "result": "CLEAR before first execution; final diagnostic-only revision retained complete agreed byte manifests.",
+      "receipt": "artifacts/issue-235-review/fixture-prerun-v2.json",
+      "sha256": "50684ed62c3f943a9848e9655bbdf9e8b54be983e3805e24667166dff18b8276"
+    },
+    "initial_source_evidence": {
+      "result": "CLEAR: actual6/6,118 inputs before/after/snapshot, six106-entry manifest hashes, native topology and natural close evidence independently inspected.",
+      "receipt": "artifacts/issue-235-review/initial-source-review.json",
+      "sha256": "9ca4182f5638a39af25c265d3c5b3ee605173da74af252554130f8ff3b12d064"
+    },
+    "verifier_wiring": {
+      "result": "CLEAR on frozen70c91d7e verifier; only existing Git block changed.",
+      "git_block_sha256": "9d08f8d11ccc0807ad71fc45dead57c9787d2bcbdbe6fa6e9e344985a8a01ff3",
+      "shared_binding_block_sha256": "fa6e8d7cad5725597d643a3c4c1e369b34b76eccd2526cb7c80c4b23e32b1510"
+    },
+    "independent_execution": {
+      "result": "PASS:6/6,actual foreground exit0,119 unchanged bindings,six106-entry manifests and natural child closes,empty stderr. Completed before runtime interruption and not repeated.",
+      "source_head": "f37e9c1021bf457cfbe9a65e2a8303856ee7481a",
+      "started_at": "2026-11-09T20:36:14.031090+00:00",
+      "ended_at": "2026-11-09T20:36:16.051410+00:00",
+      "receipt": "artifacts/issue-235-review/independent-source/receipt.json",
+      "receipt_sha256": "a79b91c25076b6d2fad2ae271104a1a7a93d245cf24a7c5130377ae98fe58798",
+      "raw_tap_sha256": "c7ec522844a8dc055265d10f9c2e2e88b8e0b05d4281ebd49eaaf6bb5c40be7b",
+      "scope": "Linux source only; no installed/full/hosted qualification"
+    }
+  },
+  "offline_cache": {
+    "source": "/home/agent/.npm/_cacache",
+    "request_headers_copied": false,
+    "auth_or_configuration_copied": false,
+    "fresh_download": false,
+    "owned_paths": [
+      "/tmp/mterm-package-verify-dDebJ0/cache",
+      "/tmp/mterm-package-verify-aigwbI/cache"
+    ],
+    "retained_seed_scope": "Attempt1: three exact locked tarball byte objects. Attempt2: same bytes plus exact existing public tarball URL records, original observation time, empty request headers and reviewed nonsecret response fields. Registry package-metadata bytes remain missing; neither cache is a complete standalone-install cache.",
+    "response_header_allowlist": [
+      "cache-control",
+      "content-type",
+      "date",
+      "etag",
+      "last-modified",
+      "expires",
+      "vary"
+    ],
+    "absent_metadata_lookups": [
+      {
+        "name": "zod",
+        "url": "https://registry.npmjs.org/zod",
+        "key": "make-fetch-happen:request-cache:https://registry.npmjs.org/zod",
+        "startedAt": "2026-11-09T20:33:11.821Z",
+        "endedAt": "2026-11-09T20:33:11.823Z",
+        "entryFound": false
+      },
+      {
+        "name": "@modelcontextprotocol/core",
+        "url": "https://registry.npmjs.org/@modelcontextprotocol%2fcore",
+        "key": "make-fetch-happen:request-cache:https://registry.npmjs.org/@modelcontextprotocol%2fcore",
+        "startedAt": "2026-11-09T20:33:11.823Z",
+        "endedAt": "2026-11-09T20:33:11.824Z",
+        "entryFound": false
+      }
+    ],
+    "third_install_attempted": false
+  },
+  "roadmap_updates": [
+    {
+      "id": "CLI-266",
+      "stage_change": false,
+      "reason": "Append bounded ordinary-worktree SDK/installed-verifier coverage evidence after root review; preserve existing acceptance, stages, weights, estimates, blockers and all300 seed IDs."
+    },
+    {
+      "id": "CLI-283",
+      "stage_change": false,
+      "reason": "Append bounded ordinary-worktree SDK/installed-verifier coverage evidence after root review; preserve existing acceptance, stages, weights, estimates, blockers and all300 seed IDs."
+    },
+    {
+      "id": "CLI-284",
+      "stage_change": false,
+      "reason": "Append bounded ordinary-worktree SDK/installed-verifier coverage evidence after root review; preserve existing acceptance, stages, weights, estimates, blockers and all300 seed IDs."
+    }
+  ],
+  "limitations": [
+    "The local source result is Linuxx64 only. Actual installed24, Windows/macOS/native hosted candidate and actual-main results are not inferred.",
+    "Normal roadmap review/render/check, reviewed build/typecheck/full-format, integrated focused32 and all hosted gates belong to root integration. Known local full-suite Unix-socket restrictions were not retried or weakened.",
+    "Byte-manifest equality proves the observed before/after state, not continuous immutability or a hostile concurrent-writer defense.",
+    "Malformed/adversarial pointers, alternates, partial-clone implicit fetch, configuration consulted during initial Git discovery, complete cross-workspace relationship proof and hostile-repository sandboxing remain outside this slice.",
+    "No new root discovery, automatic grant, write/execute permission, dependency, model call, live provider/Windows operation or production bridge/plugin change."
+  ],
+  "next_unverified_action": "Complete final independent worker/shared/catalog review and normal explicit roadmap/build/typecheck/format/parity gates, publish immutable candidate, inspect six exact hosted jobs including installed Git24, merge normally with expected-head protection and separately audit all six actual-main jobs. Keep broader66 and provider-blocked232 open.",
+  "record_scope": "Original worker checkpoint with a separate appended root integration; historical worker values/results retain their original source and observation scope.",
+  "root_integration": {
+    "root_agent": "/root",
+    "provider": "OpenAI",
+    "model": "GPT-6 Astra Pro (self-reported)",
+    "recorded_at": "2026-11-09T20:45:20.033173+00:00",
+    "qualified_base": "3077a7fe1927d1ae17aab99570832d6f9e1e3819",
+    "qualified_base_tree": "5164e59bd30d2328fe35ca3563096d77cb59256e",
+    "worker_commit": "f37e9c1021bf457cfbe9a65e2a8303856ee7481a",
+    "worker_tree": "c7d19d693209b98c3006f0f18246a53c0e4e6ffc",
+    "serialized_commit": "b457bdd887a57a1d18933092d487491337e00ceb",
+    "serialized_tree": "faa22abd70d66ad1435a5e88d6cb070ce4b30863",
+    "all_four_worker_blobs_equal_at_serialization": true,
+    "previous_worker_checkpoint": {
+      "base_sha": "c69762da7d1dda54f7a74795c08c1f699367c77f",
+      "updated_at": "2026-11-09T20:35:07.685213+00:00",
+      "files": [
+        "tests/git-worktree-mcp.test.mjs",
+        "scripts/verify-package.mjs",
+        "docs/validation/2026-11-09-installed-worktree.md",
+        "docs/ai/changes/2026-11-09-installed-worktree.json"
+      ],
+      "independent_review": {
+        "reviewer": "/root/provider_evidence",
+        "kind": "Independent source/evidence review; not a GitHub approval event.",
+        "fixture_prerun": {
+          "result": "CLEAR before first execution; final diagnostic-only revision retained complete agreed byte manifests.",
+          "receipt": "artifacts/issue-235-review/fixture-prerun-v2.json",
+          "sha256": "50684ed62c3f943a9848e9655bbdf9e8b54be983e3805e24667166dff18b8276"
+        },
+        "initial_source_evidence": {
+          "result": "CLEAR: actual6/6,118 inputs before/after/snapshot, six106-entry manifest hashes, native topology and natural close evidence independently inspected.",
+          "receipt": "artifacts/issue-235-review/initial-source-review.json",
+          "sha256": "9ca4182f5638a39af25c265d3c5b3ee605173da74af252554130f8ff3b12d064"
+        },
+        "verifier_wiring": {
+          "result": "CLEAR on frozen70c91d7e verifier; only existing Git block changed.",
+          "git_block_sha256": "9d08f8d11ccc0807ad71fc45dead57c9787d2bcbdbe6fa6e9e344985a8a01ff3",
+          "shared_binding_block_sha256": "fa6e8d7cad5725597d643a3c4c1e369b34b76eccd2526cb7c80c4b23e32b1510"
+        },
+        "independent_execution": "Pending at this worker record; final peer six-case execution and four-path review must be recorded separately before root publication."
+      },
+      "next_unverified_action": "Freeze and independently review these four paths and perform the bounded independent source6 run. Root then reconciles qualified current main, integrates focused32 plus normal review/build/typecheck/format/parity gates, and publishes for actual six candidate and six actual-main hosted jobs; installed Git must be24/24 in required lanes."
+    },
+    "source_execution": {
+      "counts": {
+        "tests": 32,
+        "pass": 32,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "input_count": 120,
+      "inputs_unchanged": true,
+      "started_at": "2026-11-09T20:40:01.580439+00:00",
+      "ended_at": "2026-11-09T20:40:10.794105+00:00",
+      "duration_seconds": 9.197288,
+      "receipt": "artifacts/issue-235-installed-worktree/root-integration-retry/receipt.json",
+      "receipt_sha256": "f5c4645e2de5bc6d3bb87d42a6d73204a0ee7cf81c945f738ec9e7ee6d8c5b54",
+      "raw_tap_sha256": "f0242c9d57a585cce31d302fec8976cd2daaf848b05854078c79f94fc65d04c5",
+      "source_evidence": "docs/validation/2026-11-09-installed-worktree-source-evidence.json",
+      "source_evidence_sha256": "516e1ae78b0b0957c065ed8f7899352904d247f7597970785b4606e21886eabb",
+      "durable_tap": "docs/validation/2026-11-09-installed-worktree-root-source.tap",
+      "durable_bytes_equal_raw": true,
+      "first_wrapper_attempt": "UNKNOWN/unqualified; no retained raw stream or completion receipt; input snapshot and interruption record retained. Confirmed execution changed only ignored output-retention/foreground wrapper."
+    },
+    "shared_changes": [
+      "Prepend current handoff and add scoped ordinary-layout security evidence; preserve existing historical text.",
+      "Append only CLI266/283/284 notes/evidence. Preserve all300 protected rows, seed, stages, estimates, weights, blockers and DCP/WEB ledgers.",
+      "Persist separately qualified PR234 candidate/main source delivery and released source claim; issue232 remains open for live provider/connected cleanup.",
+      "Retain both offline package setup failures and absent-metadata preflight. Local installed24 remains NOT RUN; required hosted normal lanes must establish it."
+    ],
+    "historical_recovery_delivery": {
+      "record": "docs/validation/2026-11-09-staging-recovery-delivery.json",
+      "sha256": "5a378c5388abb664e80b9daa4f838d0f9460b5ec554737728c875cc071600817",
+      "candidate_audit_sha256": "d6e6d28b74312ad2efbc14cf467f0ba82eea4dbb0ecee10dba1256f9b82ebd25",
+      "actual_main_audit_sha256": "6fa9c4f0f1b7cff83af2a288325b316ab8547595569a226f88694c1ab265f7bb",
+      "claim_released_at": "2026-11-09T20:31:59Z",
+      "issue_232": "open; source slice delivered, actual provider/connected lifecycle unqualified"
+    },
+    "independent_final_worker_review": {
+      "result": "CLEAR_FOR_IMMUTABLE_FOUR_PATH_WORKER_COMMIT",
+      "scope": "Immutable f37 four-path worker checkpoint; later root shared changes reviewed separately.",
+      "reviewer": "/root/provider_evidence",
+      "reviewed_at": "2026-11-09 20:49:50 UTC",
+      "receipt": "artifacts/issue-235-review/final-worker-review.json",
+      "sha256": "ea034c0b1d3e8b620a6bad94b78815a6fa7d76895c76a56eb8eb502f98e1df4b",
+      "worker_commit": "f37e9c1021bf457cfbe9a65e2a8303856ee7481a",
+      "worker_tree": "c7d19d693209b98c3006f0f18246a53c0e4e6ffc",
+      "four_worker_bindings": [
+        {
+          "path": "docs/ai/changes/2026-11-09-installed-worktree.json",
+          "sha256": "606bc14c9fc22e976bd7fbc7e6b7b447a9a3a41768c4efe6cbb1cf6bf814a077",
+          "bytes": 12861,
+          "mode": "100644"
+        },
+        {
+          "path": "docs/validation/2026-11-09-installed-worktree.md",
+          "sha256": "a2aa0abc17a7182e8dcd72a9bccded4b5d0e5fe1a962325f485c15e9eca3f30d",
+          "bytes": 9584,
+          "mode": "100644"
+        },
+        {
+          "path": "scripts/verify-package.mjs",
+          "sha256": "70c91d7ecfc4a3d3cbdd32f8237cf8fbe1c50461f036a5a3be7bcc897842e391",
+          "bytes": 55078,
+          "mode": "100644"
+        },
+        {
+          "path": "tests/git-worktree-mcp.test.mjs",
+          "sha256": "8f9cf62a1c6fb601bec9258a44ff26897bf84690fa40cf6e88d92963b6e7d529",
+          "bytes": 19603,
+          "mode": "100644"
+        }
+      ],
+      "root_rechecked_four_worker_files_and_all119_independent_snapshot_bindings": true
+    },
+    "normal_gates": {
+      "receipt": "artifacts/issue-235-root-gates/receipt.json",
+      "sha256": "498a8dd7c18e0a897549453e0d682310da8cdfb5ae38ffa88970d2a48b93bffc",
+      "started_at": "2026-11-09T20:46:15.720067+00:00",
+      "ended_at": "2026-11-09T20:46:22.728856+00:00",
+      "all_seven_passed": true,
+      "commands": [
+        [
+          "node",
+          "scripts/roadmap.mjs",
+          "--review",
+          "--change",
+          "2026-11-09-installed-worktree"
+        ],
+        [
+          "node",
+          "scripts/roadmap.mjs",
+          "--render"
+        ],
+        [
+          "node",
+          "scripts/roadmap.mjs",
+          "--check"
+        ],
+        [
+          "npm",
+          "run",
+          "build"
+        ],
+        [
+          "npm",
+          "run",
+          "typecheck"
+        ],
+        [
+          "npm",
+          "run",
+          "format:check"
+        ],
+        [
+          "git",
+          "diff",
+          "--check"
+        ]
+      ],
+      "exit_codes": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "review_source_fingerprint": "be5379955eb4aaa9dc625bcf7a2b9b59027f7be41498b121047b88ff647cd93f",
+      "review_source_entries": 183,
+      "tested_bindings": 120,
+      "changed_tested_bindings": [],
+      "full_local_or_quick_claim": false,
+      "installed_local": "NOT RUN; actual hosted24 required"
+    },
+    "candidate_hosted": "pending; six exact jobs and installed24 required",
+    "actual_main_hosted": "pending; separate actual-commit six jobs and installed24 required",
+    "runtime_continuity": "A later tool-runtime discontinuity removed ephemeral stores/agent slots; persisted Git/filesystem/GitHub checkpoints remained authoritative. Final independent reviews were resumed without repeating completed qualified tests or provider intents.",
+    "shared_review_correction": {
+      "reviewer": "/root/worktree_shared_review",
+      "recorded_at": "2026-11-09T20:57:40.578348+00:00",
+      "finding": "Handoff described 106 manifest entries as if it were universal. Actual per-case counts vary with Git object fanout-directory reuse.",
+      "disposition": "Changed only the universal Handoff phrase to complete per-case owned byte manifests; preserved every raw execution and snapshot.",
+      "worker_initial_manifest_entries": [
+        106,
+        106,
+        106,
+        106,
+        106,
+        106
+      ],
+      "independent_peer_manifest_entries": [
+        106,
+        106,
+        106,
+        106,
+        106,
+        106
+      ],
+      "root_source_manifest_entries": [
+        105,
+        105,
+        106,
+        106,
+        106,
+        106
+      ],
+      "root_files_per_case": [
+        47,
+        47,
+        47,
+        47,
+        47,
+        47
+      ],
+      "root_directories_per_case": [
+        58,
+        58,
+        59,
+        59,
+        59,
+        59
+      ],
+      "behavior_or_assertion_change": false,
+      "product_test_rerun": false,
+      "source_fingerprint_coverage": "Both Handoff and this AI record are outside the existing source fingerprint; the 183 reviewed inputs remain unchanged.",
+      "previous_frozen_head": "ba89d3a44a17acb6f96bb4efba12b4c984af9e06",
+      "previous_frozen_manifest": "artifacts/issue-235-coordination/frozen-integration.json",
+      "previous_frozen_manifest_sha256": "0475e85b09d508e8347eff0d6b6066a2d5d331fc7c99983f9f70d381cd74c980",
+      "final_consistency_gates": {
+        "receipt": "artifacts/issue-235-root-gates/documentation-correction/receipt.json",
+        "sha256": "55ba0dbb61b61b347cfc8e25aa4f2fcb230638c6e510abdee4a07494cafd036a",
+        "exit_codes": [
+          0,
+          0
+        ],
+        "source_fingerprint": "be5379955eb4aaa9dc625bcf7a2b9b59027f7be41498b121047b88ff647cd93f"
+      }
+    }
+  }
+}

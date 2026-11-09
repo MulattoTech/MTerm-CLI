@@ -483,6 +483,7 @@ const report = await withPackageWorkspace(
       log: stopRecoveryLog,
       logSha256: createHash('sha256').update(stopRecoveryOutput).digest('hex'),
     };
+    // Modified: 2026-11-09-installed-worktree; retain native-layout SDK qualification beside legacy denials.
     const gitBindings = [...packBindings];
     for (const name of ['git.js', 'executables.js']) {
       const source = await fs.readFile(path.join(root, 'dist', name));
@@ -490,13 +491,22 @@ const report = await withPackageWorkspace(
       assert.deepEqual(bytes, source, 'Installed Git boundary differs from compiled source');
       gitBindings.push({ path: 'dist/' + name, sha256: createHash('sha256').update(bytes).digest('hex') });
     }
+    const gitFixtures = ['tests/git-boundaries.test.mjs', 'tests/git-worktree-mcp.test.mjs'];
+    const gitFixtureBindings = await Promise.all(
+      gitFixtures.map(async (file) => ({
+        path: file,
+        sha256: createHash('sha256')
+          .update(await fs.readFile(path.join(root, file)))
+          .digest('hex'),
+      })),
+    );
     const gitBoundaryAcceptance = await exec(
       process.execPath,
       [
         '--test',
         '--test-reporter=tap',
         '--test-concurrency=1',
-        path.join(root, 'tests/git-boundaries.test.mjs'),
+        ...gitFixtures.map((file) => path.join(root, file)),
       ],
       {
         cwd: home,
@@ -514,9 +524,18 @@ const report = await withPackageWorkspace(
     await fs.writeFile(gitBoundaryLog, gitBoundaryOutput);
     assert.equal(gitBoundaryAcceptance.exit, 0, 'Installed Git boundary tests failed; see retained log');
     const gitBoundaryTests = Number(gitBoundaryAcceptance.stdout.match(/^# tests (\d+)$/m)?.[1]);
-    assert.ok(gitBoundaryTests >= 18, 'Installed Git boundary tests did not run');
-    for (const field of ['fail', 'skipped', 'cancelled'])
+    assert.equal(gitBoundaryTests, 24, 'All 18 legacy and six ordinary-worktree cases must run');
+    assert.match(gitBoundaryAcceptance.stdout, /^# pass 24$/m);
+    for (const field of ['fail', 'skipped', 'cancelled', 'todo'])
       assert.match(gitBoundaryAcceptance.stdout, new RegExp('^# ' + field + ' 0$', 'm'));
+    for (const binding of gitFixtureBindings)
+      assert.equal(
+        createHash('sha256')
+          .update(await fs.readFile(path.join(root, binding.path)))
+          .digest('hex'),
+        binding.sha256,
+        'Installed Git fixture changed during qualification',
+      );
     const installedGitBoundaries = {
       ok: true,
       tests: gitBoundaryTests,
@@ -524,9 +543,24 @@ const report = await withPackageWorkspace(
       skipped: 0,
       cancelled: 0,
       moduleBindings: gitBindings,
-      fixtureSha256: createHash('sha256')
-        .update(await fs.readFile(path.join(root, 'tests/git-boundaries.test.mjs')))
-        .digest('hex'),
+      fixtureSha256: gitFixtureBindings[0].sha256,
+      fixtureBindingsUnchanged: true,
+      ordinaryWorktreeMcp: {
+        tests: 6,
+        fixtureSha256: gitFixtureBindings[1].sha256,
+        independentLocalCloneObjects: true,
+        untouchedNativeLinkedLayout: true,
+        normalCloneStatusAndBothDiffs: true,
+        explicitPairedRootsAtTopAndNestedPaths: true,
+        distinctIndexAndWorktreeContent: true,
+        missingOrUnrelatedMetadataRootDenied: true,
+        privateMetadataFileReadsDenied: true,
+        exactOwnerAndEffectiveRoots: true,
+        completeReadonlyToolInventory: true,
+        unchangedOwnedByteManifests: true,
+        naturalOwnedChildCloseWithoutSignals: true,
+        externalOwnedChildCwdAndHome: true,
+      },
       realGitFixtureRepositories: true,
       defaultMcpExecutionDisabled: true,
       objectAlternatesQualified: false,

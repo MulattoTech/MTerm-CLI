@@ -1,6 +1,6 @@
 # Managed Codex registration
 
-`mterm-cli setup codex --root <absolute-root> [--allow-write] [--allow-exec]` prints a plan.
+`mterm-cli setup codex --root <absolute-root> [--allow-write] [--allow-exec] [--process-budget JSON]` prints a plan.
 Add `--apply` to write a backed-up managed stanza. `mterm-cli remove codex [--apply]` previews
 or removes only the exact owned stanza, preserving unrelated comments, CRLF and later additions.
 `--name NAME` chooses an independent conservative alphanumeric/hyphen/underscore name.
@@ -54,3 +54,43 @@ actual Codex TOML parsing plus SDK-invoked registered commands from model-driven
 records a passing standalone Windows package probe and the later passing revised source-entry
 and installed-entry managed-Codex gates. Both native runs used test-owned Codex 0.160.1;
 actual model-driven invocation remains unverified.
+
+## Process budgets in a managed command
+
+`--process-budget JSON` preserves the same strict per-host policy accepted by explicit stdio
+startup. Preview shows one normalized JSON argument; explicit `--apply` saves that argument in
+Codex's managed command. Execution still requires `--allow-exec`, and writes still require their
+separate grants. Selecting a budget adds no root, shell, network or remote permission.
+
+Omitting this option preserves the existing command and ownership hash. An explicit `{}` selects
+and saves the effective defaults, so it differs from omission even when both start with the same
+limits. Equivalent object key order produces the same normalized plan. Canonical decimal disk
+values stay strings, including values beyond JavaScript's safe integer range. The existing
+1,024-byte JSON input limit, duplicate-option refusal and strict supported-field checks remain.
+
+For example, this POSIX-shell preview selects two owned jobs and a 65,536-byte retained-output
+ceiling, without granting execution:
+
+```sh
+mterm-cli setup codex --root /absolute/root --process-budget '{"maxSessions":2,"maxOutputBytes":65536}'
+```
+
+Changing a registered budget produces a different plan. Preview still prints that plan. A repeated
+setup with `--apply` refuses the conflict rather than silently replacing or widening the owned entry. Preview the exact owned removal, apply it
+when intended, then preview and apply the replacement setup. Unowned, edited and ambiguous
+entries retain their existing preservation rules. Removal continues to preserve unrelated
+configuration and private backups. Managed isolation-policy and optional-pack registration
+remain outside this supported path.
+
+Each registered MCP host enforces its own policy. This does not add shared limits across hosts,
+hard CPU/GPU/RAM or disk-write quotas, or complete AUG-012/DCP-002 acceptance. Field definitions
+and admission limits are in [Process and drive admission](parity/RESOURCE_BUDGETS.md).
+
+The dedicated [registration regression](../tests/codex-budget-registration.test.mjs) checks
+preview, normalized ownership, conflicts, removal and a real SDK host with no execution grant.
+Its injected TOML-table cases test ownership bookkeeping; the separate real-Codex verifier
+parses the actual saved command with pinned Codex and checks budget propagation through both
+existing SDK sessions, owner ceilings, bounded job admission and confirmed release. Reported
+raw-observation hashes refer to runner-local files unless those files are separately collected.
+Actual results and remaining qualification are recorded in the
+[dated change record](validation/2026-11-09-managed-process-budgets.md).

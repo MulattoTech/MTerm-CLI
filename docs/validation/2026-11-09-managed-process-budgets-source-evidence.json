@@ -1,0 +1,1940 @@
+{
+  "preservedEarlierPresentationAttempt": {
+    "sha256": "e9b12a87ff92763072b03ef0f8cbb6476973052e3af01b9a0c643841abaf2b14",
+    "bytes": 2345,
+    "originalText": "{\n  \"schemaVersion\": 1,\n  \"recordedAt\": \"2026-11-09T23:48:09.710769+00:00\",\n  \"classification\": \"OFFLINE_PRESENTATION_ASSEMBLY_ERROR\",\n  \"toolChunkId\": \"e9b325\",\n  \"actualExitCode\": 1,\n  \"command\": \"python3 artifacts/issue-239-source-record-draft/assemble-compact-v2.py\",\n  \"scriptSha256\": \"8d7a2e522eec0020d06f2a76cabb5a8e0748e6f1fe87ab8858205ead7d1f8e62\",\n  \"observedException\": {\n    \"name\": \"AttributeError\",\n    \"message\": \"'list' object has no attribute 'get'\",\n    \"line\": 175,\n    \"phase\": \"Review inventory metadata after full gzip/raw archives/attribution were written\"\n  },\n  \"capturedTraceSource\": \"Complete tool response; no invented raw stderr archive\",\n  \"partialOutputs\": [\n    {\n      \"path\": \"v2/2026-11-09-managed-process-budgets-baseline11.tap.gz\",\n      \"bytes\": 7856,\n      \"sha256\": \"14d88a9d57ea773ef77a495dc11f9b77b621189d7b64edabff295976f81a7430\"\n    },\n    {\n      \"path\": \"v2/2026-11-09-managed-process-budgets-peer11.tap.gz\",\n      \"bytes\": 9919,\n      \"sha256\": \"2e2ddff10c843a500129adc93068b04d67f47fdd4fa0892d71888c1ca83438c9\"\n    },\n    {\n      \"path\": \"v2/2026-11-09-managed-process-budgets-source-attribution.json\",\n      \"bytes\": 17544,\n      \"sha256\": \"6212becd86366f2541624aee9e8862ecd168bdd3299f75b8b0bbabb229ddf102\"\n    },\n    {\n      \"path\": \"v2/2026-11-09-managed-process-budgets-source-attribution.tar.gz\",\n      \"bytes\": 28161,\n      \"sha256\": \"e6ef82e1e8fdb4401a54ed6c46ed3acec49c3049d6a9985fd5eaa58a22ac9eef\"\n    },\n    {\n      \"path\": \"v2/2026-11-09-managed-process-budgets-source-evidence-full.json.gz\",\n      \"bytes\": 1598555,\n      \"sha256\": \"2934559836d8d89f4fef451303ad95e32020e9cf4d6a80f50df1163579f8d531\"\n    },\n    {\n      \"path\": \"v2/2026-11-09-managed-process-budgets-source-support.tar.gz\",\n      \"bytes\": 2603488,\n      \"sha256\": \"0317043513de57397a4ef7ed054c192bc223a0b7017cf0c4276da0229adc1bed\"\n    },\n    {\n      \"path\": \"v2/2026-11-09-managed-process-budgets-worker56.tap.gz\",\n      \"bytes\": 12414,\n      \"sha256\": \"37de4cfc1944e9cebd6fcc591a57926ba9d0a8937896a70b106744100092fc2f\"\n    }\n  ],\n  \"originalV1AndSourceEvidenceChanged\": false,\n  \"productFixtureBuildInstallExecution\": false,\n  \"correction\": \"Treat parsed diagnostic JSON arrays as arrays; only object values supply review decision/timestamp fields. Preserve this script/output, write a new v2-complete presentation.\"\n}\n",
+    "parsed": {
+      "schemaVersion": 1,
+      "recordedAt": "2026-11-09T23:48:09.710769+00:00",
+      "classification": "OFFLINE_PRESENTATION_ASSEMBLY_ERROR",
+      "toolChunkId": "e9b325",
+      "actualExitCode": 1,
+      "command": "python3 artifacts/issue-239-source-record-draft/assemble-compact-v2.py",
+      "scriptSha256": "8d7a2e522eec0020d06f2a76cabb5a8e0748e6f1fe87ab8858205ead7d1f8e62",
+      "observedException": {
+        "name": "AttributeError",
+        "message": "'list' object has no attribute 'get'",
+        "line": 175,
+        "phase": "Review inventory metadata after full gzip/raw archives/attribution were written"
+      },
+      "capturedTraceSource": "Complete tool response; no invented raw stderr archive",
+      "partialOutputs": [
+        {
+          "path": "v2/2026-11-09-managed-process-budgets-baseline11.tap.gz",
+          "bytes": 7856,
+          "sha256": "14d88a9d57ea773ef77a495dc11f9b77b621189d7b64edabff295976f81a7430"
+        },
+        {
+          "path": "v2/2026-11-09-managed-process-budgets-peer11.tap.gz",
+          "bytes": 9919,
+          "sha256": "2e2ddff10c843a500129adc93068b04d67f47fdd4fa0892d71888c1ca83438c9"
+        },
+        {
+          "path": "v2/2026-11-09-managed-process-budgets-source-attribution.json",
+          "bytes": 17544,
+          "sha256": "6212becd86366f2541624aee9e8862ecd168bdd3299f75b8b0bbabb229ddf102"
+        },
+        {
+          "path": "v2/2026-11-09-managed-process-budgets-source-attribution.tar.gz",
+          "bytes": 28161,
+          "sha256": "e6ef82e1e8fdb4401a54ed6c46ed3acec49c3049d6a9985fd5eaa58a22ac9eef"
+        },
+        {
+          "path": "v2/2026-11-09-managed-process-budgets-source-evidence-full.json.gz",
+          "bytes": 1598555,
+          "sha256": "2934559836d8d89f4fef451303ad95e32020e9cf4d6a80f50df1163579f8d531"
+        },
+        {
+          "path": "v2/2026-11-09-managed-process-budgets-source-support.tar.gz",
+          "bytes": 2603488,
+          "sha256": "0317043513de57397a4ef7ed054c192bc223a0b7017cf0c4276da0229adc1bed"
+        },
+        {
+          "path": "v2/2026-11-09-managed-process-budgets-worker56.tap.gz",
+          "bytes": 12414,
+          "sha256": "37de4cfc1944e9cebd6fcc591a57926ba9d0a8937896a70b106744100092fc2f"
+        }
+      ],
+      "originalV1AndSourceEvidenceChanged": false,
+      "productFixtureBuildInstallExecution": false,
+      "correction": "Treat parsed diagnostic JSON arrays as arrays; only object values supply review decision/timestamp fields. Preserve this script/output, write a new v2-complete presentation."
+    }
+  },
+  "schemaVersion": 1,
+  "type": "COMPACT_SOURCE_EVIDENCE_INDEX_WITH_LOSSLESS_FULL_RECORD",
+  "presentationVersion": 2,
+  "recordedAt": "2026-11-09T23:48:10.210262+00:00",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "agent": "/root/managed_budget_implementation",
+  "attribution": "Self-reported metadata.",
+  "issue": 239,
+  "requirements": [
+    "CLI-292",
+    "CLI-259",
+    "CLI-286"
+  ],
+  "sourceHistory": [
+    {
+      "head": "9c05ed3fd92ee87dcc789a81a8c605e62fe7f141",
+      "tree": "78f28c5f4b69ec9e1b2514c3e732fb175e51bca7",
+      "scope": "Qualified base, parent qualification"
+    },
+    {
+      "head": "b7b97daa639fec0c32f1fc97048a97a63abaa082",
+      "tree": "e574188b58821642ef1e76c89af7ab3867ee817e",
+      "scope": "Fixture-only commit before first baseline"
+    },
+    {
+      "head": "4076ecd986f4d1397cb64c9598c8b1bdd5ef4921",
+      "tree": "16f117bbd7a791b2bdb693c966ed12cc61df1515",
+      "scope": "Clean source checkpoint before focused56"
+    },
+    {
+      "head": "53b2b67e9daba72f89537cd227409ca02972d593",
+      "tree": "6efe3dcf720c76b080f697491cb1f74fed390bfe",
+      "scope": "Documentation-only checkpoint after focused56, before independent11"
+    }
+  ],
+  "status": "SOURCE_ONLY: valid baseline11 4pass/7fail, worker56 PASS, independent11 PASS, final peer review CLEAR",
+  "fullRecordArchive": {
+    "filename": "2026-11-09-managed-process-budgets-source-evidence-full.json.gz",
+    "intendedPath": "docs/validation/2026-11-09-managed-process-budgets-source-evidence-full.json.gz",
+    "bytes": 1598555,
+    "sha256": "2934559836d8d89f4fef451303ad95e32020e9cf4d6a80f50df1163579f8d531",
+    "uncompressedBytes": 6711412,
+    "uncompressedSha256": "ca90ea3e09e7025f6694cb3b22a2edbdb8d27f76d958dd42bfb5cc37378683e0",
+    "gzipMtime": 0,
+    "exactDecompressionVerified": true
+  },
+  "fullRecordPreservation": "Exact v1 6,711,412-byte UTF-8 JSON is compressed without any edit. Decompress locally; verify its SHA256, parse JSON, then resolve documentSha256 in documents. Every original document preserves exact text and every JSON preserves its full parsed value. This index replaces only the large plaintext presentation.",
+  "fullRecordRecordedAt": "2026-11-09T23:41:34.092677+00:00",
+  "originalDocumentCount": 83,
+  "originalParsedJsonDocumentCount": 45,
+  "originalDocumentInventory": [
+    {
+      "sha256": "0232ec4cbf64317ba6226d99cbd0c43923180088c7d2a4436bd22582b3c5a323",
+      "bytes": 718,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-worker-source/docs-preparation.json"
+        }
+      ],
+      "fullRecordLocation": "documents.0232ec4cbf64317ba6226d99cbd0c43923180088c7d2a4436bd22582b3c5a323"
+    },
+    {
+      "sha256": "09e98a7df984acd22b4b7494c778163dec393f912ee89df3f5d314c38e992a1c",
+      "bytes": 3061,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "root",
+          "path": "artifacts/issue-239-peer-review/pre-run-review-v3.md"
+        }
+      ],
+      "fullRecordLocation": "documents.09e98a7df984acd22b4b7494c778163dec393f912ee89df3f5d314c38e992a1c"
+    },
+    {
+      "sha256": "0b65ddbbc7261bb7e5a7b66c89a6bf71c140147940bc8ec59a98cc81dc79efec",
+      "bytes": 9950,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "root",
+          "path": "artifacts/next-after-237/fixture-plan.md"
+        }
+      ],
+      "fullRecordLocation": "documents.0b65ddbbc7261bb7e5a7b66c89a6bf71c140147940bc8ec59a98cc81dc79efec"
+    },
+    {
+      "sha256": "1380c51f58718ce4edf310f5b4f4aadb45a6dda635456ebde58bfa5ba729444b",
+      "bytes": 1945,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "root",
+          "path": "artifacts/issue-239-source-record-draft/peer-selection.json"
+        }
+      ],
+      "fullRecordLocation": "documents.1380c51f58718ce4edf310f5b4f4aadb45a6dda635456ebde58bfa5ba729444b"
+    },
+    {
+      "sha256": "13b078cff70518327a5f8ccc729d430bdb3e6388b52bc979ee42ba8abd88fd88",
+      "bytes": 10093,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/recipe-v4.md"
+        }
+      ],
+      "fullRecordLocation": "documents.13b078cff70518327a5f8ccc729d430bdb3e6388b52bc979ee42ba8abd88fd88"
+    },
+    {
+      "sha256": "15a8f1d2836406688b5c2a4bc0b7412a7c7724f6ff9255a403a62893f6ebd6d0",
+      "bytes": 2522,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-worker-source/root-implementation-clearance.json"
+        },
+        {
+          "workspace": "root",
+          "path": "artifacts/issue-239-coordination/root-implementation-clearance.json"
+        }
+      ],
+      "fullRecordLocation": "documents.15a8f1d2836406688b5c2a4bc0b7412a7c7724f6ff9255a403a62893f6ebd6d0"
+    },
+    {
+      "sha256": "15adcf0fc68556c433add08d5c95dc674738759a8938cdc3349de8e56b996be5",
+      "bytes": 1469,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "root",
+          "path": "artifacts/issue-239-peer-review/pre-run-review-v3-superseded.json"
+        }
+      ],
+      "fullRecordLocation": "documents.15adcf0fc68556c433add08d5c95dc674738759a8938cdc3349de8e56b996be5"
+    },
+    {
+      "sha256": "17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20",
+      "bytes": 66,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/final-preparation-1.stdout"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-worker-source/preparation-3.stdout"
+        }
+      ],
+      "fullRecordLocation": "documents.17aa973d3f004560237d9a95171210b0671deff23d61628eecf7322ff5938f20"
+    },
+    {
+      "sha256": "1b5be440c77a69dc59d5bf55542e2e2f71cb2c6f721bd6b2ad216897fd59283c",
+      "bytes": 19,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/preparation-2.stdout"
+        }
+      ],
+      "fullRecordLocation": "documents.1b5be440c77a69dc59d5bf55542e2e2f71cb2c6f721bd6b2ad216897fd59283c"
+    },
+    {
+      "sha256": "1e0386d3be5bde05baebede7d82b6027e26e793ff06810faac6135895ba4d431",
+      "bytes": 6253,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "root",
+          "path": "artifacts/issue-239-peer-review/pre-run-review-v2.json"
+        }
+      ],
+      "fullRecordLocation": "documents.1e0386d3be5bde05baebede7d82b6027e26e793ff06810faac6135895ba4d431"
+    },
+    {
+      "sha256": "1eae08817c4896a4ba3588bb8a214d0dcd2727676bbd531291705d493ec9eb1d",
+      "bytes": 8620,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/recipe-v3.md"
+        }
+      ],
+      "fullRecordLocation": "documents.1eae08817c4896a4ba3588bb8a214d0dcd2727676bbd531291705d493ec9eb1d"
+    },
+    {
+      "sha256": "200a22eaf7603d76c3071b07321a3eaa10db24b72cb09c1a55987c0d04cd0c1c",
+      "bytes": 4029,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "root",
+          "path": "artifacts/issue-239-peer-review/pre-run-review-v4.json"
+        }
+      ],
+      "fullRecordLocation": "documents.200a22eaf7603d76c3071b07321a3eaa10db24b72cb09c1a55987c0d04cd0c1c"
+    },
+    {
+      "sha256": "249baf635bb43877fcb9422efa1a4904b702d0ddf14d3949b7cd0950d5229c81",
+      "bytes": 9,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/preparation-1.stdout"
+        }
+      ],
+      "fullRecordLocation": "documents.249baf635bb43877fcb9422efa1a4904b702d0ddf14d3949b7cd0950d5229c81"
+    },
+    {
+      "sha256": "287e6ed1e4fa672271f8ee40c523bacae906ab7a832a9f4f639c208f4688dbeb",
+      "bytes": 34308,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "root",
+          "path": "artifacts/issue-239-source-record-draft/assemble-source-record.py"
+        }
+      ],
+      "fullRecordLocation": "documents.287e6ed1e4fa672271f8ee40c523bacae906ab7a832a9f4f639c208f4688dbeb"
+    },
+    {
+      "sha256": "2ba5b24122c28e5ab825d6831b5475f620bcbd2bb57e7aab38e34f70037023d3",
+      "bytes": 280929,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-worker-source/freeze.json"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-source-v1/freeze.json"
+        }
+      ],
+      "fullRecordLocation": "documents.2ba5b24122c28e5ab825d6831b5475f620bcbd2bb57e7aab38e34f70037023d3"
+    },
+    {
+      "sha256": "2e5f7371617eb639687904111c929abfda523886805a5568a1643955e1763677",
+      "bytes": 6646,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "root",
+          "path": "artifacts/issue-239-peer-review/final-source-review.json"
+        }
+      ],
+      "fullRecordLocation": "documents.2e5f7371617eb639687904111c929abfda523886805a5568a1643955e1763677"
+    },
+    {
+      "sha256": "2fddbac77a79cd27d8b88a6c7b32f154ad488e773546cbe90d2a88ab2404c954",
+      "bytes": 1999,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-worker-source/recipe.md"
+        }
+      ],
+      "fullRecordLocation": "documents.2fddbac77a79cd27d8b88a6c7b32f154ad488e773546cbe90d2a88ab2404c954"
+    },
+    {
+      "sha256": "2ff9c59ba3075340eeef03ed106d44bffddafde6296fe6a4dd3d81d7cb6fce00",
+      "bytes": 1871,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "root",
+          "path": "artifacts/issue-239-peer-review/v4-independent-binding-check.json"
+        }
+      ],
+      "fullRecordLocation": "documents.2ff9c59ba3075340eeef03ed106d44bffddafde6296fe6a4dd3d81d7cb6fce00"
+    },
+    {
+      "sha256": "30c16d5527200185a869bcf18dc961f2698aab6548bbb0d17138bad09a216c7d",
+      "bytes": 3600,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "root",
+          "path": "artifacts/issue-239-peer-review/pre-run-review-v4.md"
+        }
+      ],
+      "fullRecordLocation": "documents.30c16d5527200185a869bcf18dc961f2698aab6548bbb0d17138bad09a216c7d"
+    },
+    {
+      "sha256": "322c6123537551ca1912e9ef7712e264c19227bac1292ef25fb6c8f36a6d6387",
+      "bytes": 3558,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "root",
+          "path": "artifacts/issue-239-peer-review/independent-source11-verification.json"
+        }
+      ],
+      "fullRecordLocation": "documents.322c6123537551ca1912e9ef7712e264c19227bac1292ef25fb6c8f36a6d6387"
+    },
+    {
+      "sha256": "337565667b7cc5e38e182bdc0860735f11abd9f1e760c9dec87414440ecf3726",
+      "bytes": 1619,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/final-preparation-receipt.json"
+        }
+      ],
+      "fullRecordLocation": "documents.337565667b7cc5e38e182bdc0860735f11abd9f1e760c9dec87414440ecf3726"
+    },
+    {
+      "sha256": "35686c209e490e389ddb87590e6019e742b7e5508957210f98a395e4b7dd90d2",
+      "bytes": 4147,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "root",
+          "path": "artifacts/issue-239-peer-review/pre-run-review-v3.json"
+        }
+      ],
+      "fullRecordLocation": "documents.35686c209e490e389ddb87590e6019e742b7e5508957210f98a395e4b7dd90d2"
+    },
+    {
+      "sha256": "3734e073df86311e83265fe98488c5f8113ceb671ade3539673863a309fbc17d",
+      "bytes": 6538,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/recipe.md"
+        }
+      ],
+      "fullRecordLocation": "documents.3734e073df86311e83265fe98488c5f8113ceb671ade3539673863a309fbc17d"
+    },
+    {
+      "sha256": "3b687db7e63f2cce90ce29f275d776fce625beda7927f4726e21f68917bf2b2c",
+      "bytes": 9735,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-worker-source/analyze-source.py"
+        }
+      ],
+      "fullRecordLocation": "documents.3b687db7e63f2cce90ce29f275d776fce625beda7927f4726e21f68917bf2b2c"
+    },
+    {
+      "sha256": "3d8437f3fa19e4ce29d214deec73288ec682402d67c0074fcce14256f460cf02",
+      "bytes": 77632,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-worker-source/final-six-path.diff"
+        }
+      ],
+      "fullRecordLocation": "documents.3d8437f3fa19e4ce29d214deec73288ec682402d67c0074fcce14256f460cf02"
+    },
+    {
+      "sha256": "3d9d808d72ab67907a89910594e3018fcac0f3568776737c1cbdd403957a79ac",
+      "bytes": 1401,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "root",
+          "path": "artifacts/issue-239-peer-review/source56-reporting-boundary.json"
+        }
+      ],
+      "fullRecordLocation": "documents.3d9d808d72ab67907a89910594e3018fcac0f3568776737c1cbdd403957a79ac"
+    },
+    {
+      "sha256": "4467613fc4e82e040887792dcded315677fa8fc84e56edd4da73e301804765a2",
+      "bytes": 4622,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "root",
+          "path": "artifacts/issue-239-peer-review/pre-run-review-v2.md"
+        }
+      ],
+      "fullRecordLocation": "documents.4467613fc4e82e040887792dcded315677fa8fc84e56edd4da73e301804765a2"
+    },
+    {
+      "sha256": "4503bcf8117f14809babf99678acd131c7561d2b0d5c4c0b71b123dfb0102926",
+      "bytes": 476,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-worker-source/docs-commit-message.txt"
+        }
+      ],
+      "fullRecordLocation": "documents.4503bcf8117f14809babf99678acd131c7561d2b0d5c4c0b71b123dfb0102926"
+    },
+    {
+      "sha256": "4ae20049023c95e745ffbaa294abfdd8a26580dfaf3b994b87ab107f54c44c92",
+      "bytes": 3923,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "root",
+          "path": "artifacts/next-after-237/root-issue-body-draft.md"
+        }
+      ],
+      "fullRecordLocation": "documents.4ae20049023c95e745ffbaa294abfdd8a26580dfaf3b994b87ab107f54c44c92"
+    },
+    {
+      "sha256": "4af7e9d5af23da54d6ec83dc819cb66cdfc1443d862b6cb9c3cb8e45e655ff58",
+      "bytes": 740,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-peer-source11-preparation/driver-exit.json"
+        }
+      ],
+      "fullRecordLocation": "documents.4af7e9d5af23da54d6ec83dc819cb66cdfc1443d862b6cb9c3cb8e45e655ff58"
+    },
+    {
+      "sha256": "4b6eb2cf17687f0747d50728fdd2a7db838bc89b5651b66963f587392e9cbf9b",
+      "bytes": 88524,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-source-v1/receipt.json"
+        }
+      ],
+      "fullRecordLocation": "documents.4b6eb2cf17687f0747d50728fdd2a7db838bc89b5651b66963f587392e9cbf9b"
+    },
+    {
+      "sha256": "4bdf662a46c0071811854130b4376f67376c41a180c0c8ff104b8e3df94e664d",
+      "bytes": 18368,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "docs/ai/changes/2026-11-09-managed-process-budgets.json"
+        }
+      ],
+      "fullRecordLocation": "documents.4bdf662a46c0071811854130b4376f67376c41a180c0c8ff104b8e3df94e664d"
+    },
+    {
+      "sha256": "4dc4a35b427e85543c2ce85be046cdecfbacc4592bf1f714c420f5559b3a857e",
+      "bytes": 1665,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "root",
+          "path": "artifacts/next-after-237/worker-clone-preparation.json"
+        }
+      ],
+      "fullRecordLocation": "documents.4dc4a35b427e85543c2ce85be046cdecfbacc4592bf1f714c420f5559b3a857e"
+    },
+    {
+      "sha256": "4dd04f793155a9fd00ce1fc7df20372c367640a105b82444fb4932f8338d4e29",
+      "bytes": 1199,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-peer-source11-preparation/driver.stdout.raw"
+        }
+      ],
+      "fullRecordLocation": "documents.4dd04f793155a9fd00ce1fc7df20372c367640a105b82444fb4932f8338d4e29"
+    },
+    {
+      "sha256": "5195654f4a68a00b8f9fe14e9fc4fd36a563e3b0373e5d44d1a0dddb45255315",
+      "bytes": 277184,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/freeze-v3.json"
+        }
+      ],
+      "fullRecordLocation": "documents.5195654f4a68a00b8f9fe14e9fc4fd36a563e3b0373e5d44d1a0dddb45255315"
+    },
+    {
+      "sha256": "549633751b99c6138fbe218319ba9f489afaa0a4a7734af734f8bee23a51665e",
+      "bytes": 349922,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-worker-source/final-six-path-freeze.json"
+        }
+      ],
+      "fullRecordLocation": "documents.549633751b99c6138fbe218319ba9f489afaa0a4a7734af734f8bee23a51665e"
+    },
+    {
+      "sha256": "6367ef26d118ca8236c93e0a70f6d7d1d38ead6841d9fb90ebfac8bc9ad773b5",
+      "bytes": 7012,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/preparation-receipt.json"
+        }
+      ],
+      "fullRecordLocation": "documents.6367ef26d118ca8236c93e0a70f6d7d1d38ead6841d9fb90ebfac8bc9ad773b5"
+    },
+    {
+      "sha256": "636f0b60af7065474c092b74a52301ee7b636be5915feb582161226fe97443be",
+      "bytes": 7871,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "root",
+          "path": "artifacts/issue-239-baseline-review/root-baseline-interpretation.json"
+        }
+      ],
+      "fullRecordLocation": "documents.636f0b60af7065474c092b74a52301ee7b636be5915feb582161226fe97443be"
+    },
+    {
+      "sha256": "64b8ab1eabd1d82ced62b463abb72765667940abce6eb957a6375720cf2dfa38",
+      "bytes": 6594,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/recipe-v2.md"
+        }
+      ],
+      "fullRecordLocation": "documents.64b8ab1eabd1d82ced62b463abb72765667940abce6eb957a6375720cf2dfa38"
+    },
+    {
+      "sha256": "64fb1e29e2264c4def156c8b8ca462736845c66d154009c1d313eedf492a57a9",
+      "bytes": 305,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-worker-source/docs-commit.stdout"
+        }
+      ],
+      "fullRecordLocation": "documents.64fb1e29e2264c4def156c8b8ca462736845c66d154009c1d313eedf492a57a9"
+    },
+    {
+      "sha256": "697cf1a62785b01c4c0666562d5a7e85b1d9027a637ccc3b0d3c2ac07fcb5f22",
+      "bytes": 8242,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "root",
+          "path": "artifacts/issue-239-peer-review/baseline-v1-interpretation.json"
+        }
+      ],
+      "fullRecordLocation": "documents.697cf1a62785b01c4c0666562d5a7e85b1d9027a637ccc3b0d3c2ac07fcb5f22"
+    },
+    {
+      "sha256": "7125f194612fcff2f454c05d848e7cb71facc1967b4d5017e25b34fdee3ba74f",
+      "bytes": 99,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/preparation-5.stderr"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-worker-source/preparation-2.stderr"
+        }
+      ],
+      "fullRecordLocation": "documents.7125f194612fcff2f454c05d848e7cb71facc1967b4d5017e25b34fdee3ba74f"
+    },
+    {
+      "sha256": "71e7f70721c17c2972dbb0a74b69c48004c5ee75f47c82b98e2cfc9a98432ae1",
+      "bytes": 2442,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-peer-source11-preparation/recipe.md"
+        }
+      ],
+      "fullRecordLocation": "documents.71e7f70721c17c2972dbb0a74b69c48004c5ee75f47c82b98e2cfc9a98432ae1"
+    },
+    {
+      "sha256": "74387c9c67154dc805417e0fba35d72cda77ffcc757892ad8f98c670a45e42a0",
+      "bytes": 115736,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "root",
+          "path": "artifacts/issue-239-baseline-review/root-decoded-observations.json"
+        }
+      ],
+      "fullRecordLocation": "documents.74387c9c67154dc805417e0fba35d72cda77ffcc757892ad8f98c670a45e42a0"
+    },
+    {
+      "sha256": "7514209c20dbe2fec67d4acec9554c459e12f4a7a50a5c1ff619d16c1bfee69d",
+      "bytes": 115805,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "root",
+          "path": "artifacts/issue-239-peer-review/baseline-v1-decoded-diagnostics.json"
+        }
+      ],
+      "fullRecordLocation": "documents.7514209c20dbe2fec67d4acec9554c459e12f4a7a50a5c1ff619d16c1bfee69d"
+    },
+    {
+      "sha256": "7ba5ad413d4013251f795655cd03194f068d1a73a3f123e044fb789e016643f3",
+      "bytes": 2085,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "root",
+          "path": "artifacts/issue-239-peer-review/source56-independent-review.json"
+        }
+      ],
+      "fullRecordLocation": "documents.7ba5ad413d4013251f795655cd03194f068d1a73a3f123e044fb789e016643f3"
+    },
+    {
+      "sha256": "7bb5e69ffdaf7f33acd7cf366e207a75fc3548d1ac13366a140c071637bfac09",
+      "bytes": 14090,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-worker-source/preparation-receipt.json"
+        }
+      ],
+      "fullRecordLocation": "documents.7bb5e69ffdaf7f33acd7cf366e207a75fc3548d1ac13366a140c071637bfac09"
+    },
+    {
+      "sha256": "7c4fca9a426fa2013b03cdecb6cc42aa151b68be3a9344a7b0036e23cd91e723",
+      "bytes": 669,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-independent-source11-v1/started.json"
+        }
+      ],
+      "fullRecordLocation": "documents.7c4fca9a426fa2013b03cdecb6cc42aa151b68be3a9344a7b0036e23cd91e723"
+    },
+    {
+      "sha256": "80e42afdf4d4f564c1064d618a5db15622763732f9f82392b7f4d7f2d4a83955",
+      "bytes": 1868,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "root",
+          "path": "artifacts/issue-239-peer-review/final-static-review-and-source11-preflight.json"
+        }
+      ],
+      "fullRecordLocation": "documents.80e42afdf4d4f564c1064d618a5db15622763732f9f82392b7f4d7f2d4a83955"
+    },
+    {
+      "sha256": "829baa7c02c16440830c49de092bb37dd527506ecbe26ad4993bea2fe788ada8",
+      "bytes": 5998,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "root",
+          "path": "artifacts/issue-239-peer-review/baseline-v1-interpretation.md"
+        }
+      ],
+      "fullRecordLocation": "documents.829baa7c02c16440830c49de092bb37dd527506ecbe26ad4993bea2fe788ada8"
+    },
+    {
+      "sha256": "86dc6cc3430828bf6d7ec6dc611db586569c0e32a0769b625594b5fcba6d222a",
+      "bytes": 4468,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "root",
+          "path": "artifacts/issue-239-coordination/initial-claim-checkpoint.json"
+        }
+      ],
+      "fullRecordLocation": "documents.86dc6cc3430828bf6d7ec6dc611db586569c0e32a0769b625594b5fcba6d222a"
+    },
+    {
+      "sha256": "8d47366a098e01c7bfec0975849fa5db014039215de8e72aad3f88495828c6a3",
+      "bytes": 8091,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/create-freeze-v3.py"
+        }
+      ],
+      "fullRecordLocation": "documents.8d47366a098e01c7bfec0975849fa5db014039215de8e72aad3f88495828c6a3"
+    },
+    {
+      "sha256": "8d7dd62410c0129a5a85b3b46709a85009dcfd87d8a5424d91938c9284f27384",
+      "bytes": 89157,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-independent-source11-v1/receipt.json"
+        }
+      ],
+      "fullRecordLocation": "documents.8d7dd62410c0129a5a85b3b46709a85009dcfd87d8a5424d91938c9284f27384"
+    },
+    {
+      "sha256": "911a808293dc32acd69c81c3603ebf54dbb41852b76d15175f039d4d0625d90f",
+      "bytes": 161332,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "root",
+          "path": "artifacts/issue-239-peer-review/independent-source11-decoded-diagnostics.json"
+        }
+      ],
+      "fullRecordLocation": "documents.911a808293dc32acd69c81c3603ebf54dbb41852b76d15175f039d4d0625d90f"
+    },
+    {
+      "sha256": "91dda6f9a5a5c982143061de0fd56924773018ce73e164fb98574a7528b78a2b",
+      "bytes": 4121,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "root",
+          "path": "artifacts/issue-239-coordination/prebaseline-hold-checkpoint.json"
+        }
+      ],
+      "fullRecordLocation": "documents.91dda6f9a5a5c982143061de0fd56924773018ce73e164fb98574a7528b78a2b"
+    },
+    {
+      "sha256": "938c5574dbbdcaab1bef3cd1984fa2e74cb8c1fdc708e761f10143ecabd9a0b9",
+      "bytes": 16620,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/run-frozen-v3.py"
+        }
+      ],
+      "fullRecordLocation": "documents.938c5574dbbdcaab1bef3cd1984fa2e74cb8c1fdc708e761f10143ecabd9a0b9"
+    },
+    {
+      "sha256": "9a9214dd92f21ea05ec920f34a2d1b1e5699936c060ba52eba85b89808758cb9",
+      "bytes": 64,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/preparation-5.stdout"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-worker-source/preparation-2.stdout"
+        }
+      ],
+      "fullRecordLocation": "documents.9a9214dd92f21ea05ec920f34a2d1b1e5699936c060ba52eba85b89808758cb9"
+    },
+    {
+      "sha256": "a42a38af02079276c37268445ecf5a409d3170d12cec9770bf5409b200ba9c48",
+      "bytes": 172,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-worker-source/source-commit.stdout"
+        }
+      ],
+      "fullRecordLocation": "documents.a42a38af02079276c37268445ecf5a409d3170d12cec9770bf5409b200ba9c48"
+    },
+    {
+      "sha256": "a5c849fd6e87b5117459c563c8009b8fcf03a00b8b044a47caddd1dc955726da",
+      "bytes": 775,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-source-v1/started.json"
+        }
+      ],
+      "fullRecordLocation": "documents.a5c849fd6e87b5117459c563c8009b8fcf03a00b8b044a47caddd1dc955726da"
+    },
+    {
+      "sha256": "ac29c4522b8a138ba222e839674942b7a02a471721e7e44e59e55de16cd53470",
+      "bytes": 47,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/preparation-3.stdout"
+        }
+      ],
+      "fullRecordLocation": "documents.ac29c4522b8a138ba222e839674942b7a02a471721e7e44e59e55de16cd53470"
+    },
+    {
+      "sha256": "aee8e3185d79bdec7285e67b528651a4b9908c69b5b0bb6e03473849f1b82c19",
+      "bytes": 669,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-baseline-v1/started.json"
+        }
+      ],
+      "fullRecordLocation": "documents.aee8e3185d79bdec7285e67b528651a4b9908c69b5b0bb6e03473849f1b82c19"
+    },
+    {
+      "sha256": "b2f59d96f88f586e2b0eb6f892732c5adf6456e361ebf11ea5701ae4beb5f295",
+      "bytes": 88863,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-independent-source11-v1/freeze.json"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-peer-source11-preparation/freeze.json"
+        }
+      ],
+      "fullRecordLocation": "documents.b2f59d96f88f586e2b0eb6f892732c5adf6456e361ebf11ea5701ae4beb5f295"
+    },
+    {
+      "sha256": "bab5c67570ea8654724394146882a56355b6abfab51faf744a4231ffa14d0507",
+      "bytes": 276981,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/freeze-v2.json"
+        }
+      ],
+      "fullRecordLocation": "documents.bab5c67570ea8654724394146882a56355b6abfab51faf744a4231ffa14d0507"
+    },
+    {
+      "sha256": "be2f8e6d89809d735d51dec2237f09d332d8798c88717c6467e6d8b9b00d475b",
+      "bytes": 85675,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-baseline-v1/receipt.json"
+        }
+      ],
+      "fullRecordLocation": "documents.be2f8e6d89809d735d51dec2237f09d332d8798c88717c6467e6d8b9b00d475b"
+    },
+    {
+      "sha256": "c650d17b0452493980fc00affea4741bc2e726561f98885c01cc0f23fb2d0cbf",
+      "bytes": 161350,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "root",
+          "path": "artifacts/issue-239-peer-review/source56-decoded-diagnostics.json"
+        }
+      ],
+      "fullRecordLocation": "documents.c650d17b0452493980fc00affea4741bc2e726561f98885c01cc0f23fb2d0cbf"
+    },
+    {
+      "sha256": "c6c46c7f8a364d23467b23b55e47c767dc4e09ff35a28d9c92cb657e3513340a",
+      "bytes": 8125,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/run-frozen.py"
+        }
+      ],
+      "fullRecordLocation": "documents.c6c46c7f8a364d23467b23b55e47c767dc4e09ff35a28d9c92cb657e3513340a"
+    },
+    {
+      "sha256": "cd18709fa54ea6d11bb4fee3879564a40454063968f01a829f6f5a7641bd1c46",
+      "bytes": 277164,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/freeze-v4.json"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-baseline-v1/freeze.json"
+        }
+      ],
+      "fullRecordLocation": "documents.cd18709fa54ea6d11bb4fee3879564a40454063968f01a829f6f5a7641bd1c46"
+    },
+    {
+      "sha256": "ce46c57961283b191f9c78d809e0890fbf03496c355885e6065b7379d5166f9a",
+      "bytes": 17902,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/run-frozen-v4.py"
+        }
+      ],
+      "fullRecordLocation": "documents.ce46c57961283b191f9c78d809e0890fbf03496c355885e6065b7379d5166f9a"
+    },
+    {
+      "sha256": "cf3b6a9d9a75370349bebeb57b6631e41639438c725d80dde82834382bc5ec12",
+      "bytes": 8070,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/create-freeze-v4.py"
+        }
+      ],
+      "fullRecordLocation": "documents.cf3b6a9d9a75370349bebeb57b6631e41639438c725d80dde82834382bc5ec12"
+    },
+    {
+      "sha256": "cfbf62188e3b9b6d4e2d031bb18016af948e58e323f3cac8bafe5d4f2b1c2e62",
+      "bytes": 110,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-worker-source/preparation-1.stdout"
+        }
+      ],
+      "fullRecordLocation": "documents.cfbf62188e3b9b6d4e2d031bb18016af948e58e323f3cac8bafe5d4f2b1c2e62"
+    },
+    {
+      "sha256": "cfe607c654ecd5c633822d445c6a3d3796fbe10434e5fde0a6b11d7a728e6f3c",
+      "bytes": 33258,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/initial-unexecuted-fixture.mjs"
+        }
+      ],
+      "fullRecordLocation": "documents.cfe607c654ecd5c633822d445c6a3d3796fbe10434e5fde0a6b11d7a728e6f3c"
+    },
+    {
+      "sha256": "de3d5435bcbbeaaf0d3034f00f0378e9be99ac1d4fc6f01d0c6c3e74dd16eee1",
+      "bytes": 272655,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/freeze.json"
+        }
+      ],
+      "fullRecordLocation": "documents.de3d5435bcbbeaaf0d3034f00f0378e9be99ac1d4fc6f01d0c6c3e74dd16eee1"
+    },
+    {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/final-preparation-1.stderr"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/final-preparation-2.stderr"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/final-preparation-2.stdout"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/final-preparation-3.stderr"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/final-preparation-3.stdout"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/final-preparation-4.stderr"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/final-preparation-4.stdout"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/fixture-commit.stderr"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/preparation-1.stderr"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/preparation-2.stderr"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/preparation-3.stderr"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/preparation-4.stderr"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/preparation-4.stdout"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-worker-source/docs-commit.stderr"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-worker-source/docs-whitespace.stderr"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-worker-source/docs-whitespace.stdout"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-worker-source/preparation-1.stderr"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-worker-source/preparation-3.stderr"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-worker-source/preparation-4.stderr"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-worker-source/preparation-4.stdout"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-worker-source/preparation-5.stderr"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-worker-source/preparation-5.stdout"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-worker-source/source-commit.stderr"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-baseline-v1/stderr.raw"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-source-v1/stderr.raw"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-independent-source11-v1/stderr.raw"
+        },
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-peer-source11-preparation/driver.stderr.raw"
+        }
+      ],
+      "fullRecordLocation": "documents.e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "sha256": "e95bfba822923f2e8ca9ab83dc396b30d22059cfaf85a666102454cf2bb8ea4e",
+      "bytes": 18516,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "docs/validation/2026-11-09-managed-process-budgets.md"
+        }
+      ],
+      "fullRecordLocation": "documents.e95bfba822923f2e8ca9ab83dc396b30d22059cfaf85a666102454cf2bb8ea4e"
+    },
+    {
+      "sha256": "ec1139338e4f16cd6eff853cd02b8ae8fb9487258b7eb1d8bc9051df38a76b18",
+      "bytes": 6571,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "root",
+          "path": "artifacts/issue-239-peer-review/final-source-review.md"
+        }
+      ],
+      "fullRecordLocation": "documents.ec1139338e4f16cd6eff853cd02b8ae8fb9487258b7eb1d8bc9051df38a76b18"
+    },
+    {
+      "sha256": "ef57562a792841eb92a2aa81961aaf662e0911a13598d346e390b74d6ac16700",
+      "bytes": 7467,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-source-v1/interpretation.json"
+        }
+      ],
+      "fullRecordLocation": "documents.ef57562a792841eb92a2aa81961aaf662e0911a13598d346e390b74d6ac16700"
+    },
+    {
+      "sha256": "efe1045f87928963e44fa063a2dc368c72b69d752bb8e06aba412a73621da39b",
+      "bytes": 209,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/fixture-commit.stdout"
+        }
+      ],
+      "fullRecordLocation": "documents.efe1045f87928963e44fa063a2dc368c72b69d752bb8e06aba412a73621da39b"
+    },
+    {
+      "sha256": "f45b168c026085ade588d185fe1ce758fbfd26029ae652fc19fef444c625290b",
+      "bytes": 1170,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/runner-v3-preparation.json"
+        }
+      ],
+      "fullRecordLocation": "documents.f45b168c026085ade588d185fe1ce758fbfd26029ae652fc19fef444c625290b"
+    },
+    {
+      "sha256": "f57cdac96dcc6ee02b93a3b9b49d2845186516e9cdca2d3269d91ac05dce3842",
+      "bytes": 1454,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/runner-v4-preparation.json"
+        }
+      ],
+      "fullRecordLocation": "documents.f57cdac96dcc6ee02b93a3b9b49d2845186516e9cdca2d3269d91ac05dce3842"
+    },
+    {
+      "sha256": "f73da7c9487213c3437c86aaf02201c0c0f737e4c152b060dace3cc272284307",
+      "bytes": 6004,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "root",
+          "path": "artifacts/issue-239-peer-review/baseline-v1-independent-verification.json"
+        }
+      ],
+      "fullRecordLocation": "documents.f73da7c9487213c3437c86aaf02201c0c0f737e4c152b060dace3cc272284307"
+    },
+    {
+      "sha256": "f859100b64ad7e6fbb4cd1ff3b8c8ca7f0848e14b8e9708dae2e2d6a391b16a1",
+      "bytes": 1700,
+      "encoding": "utf-8",
+      "containsFullParsedJson": true,
+      "origins": [
+        {
+          "workspace": "root",
+          "path": "artifacts/issue-239-coordination/root-baseline-clearance.json"
+        }
+      ],
+      "fullRecordLocation": "documents.f859100b64ad7e6fbb4cd1ff3b8c8ca7f0848e14b8e9708dae2e2d6a391b16a1"
+    },
+    {
+      "sha256": "fc358717b2c52e7ea7b1474c642cebb611e1a72a6a9a2a1353e6292893b09e59",
+      "bytes": 7997,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/create-freeze-v2.py"
+        }
+      ],
+      "fullRecordLocation": "documents.fc358717b2c52e7ea7b1474c642cebb611e1a72a6a9a2a1353e6292893b09e59"
+    },
+    {
+      "sha256": "fef80dac9316fa5fa2ea522a8be4d09cd53865ac190d185320467ad940157998",
+      "bytes": 7510,
+      "encoding": "utf-8",
+      "containsFullParsedJson": false,
+      "origins": [
+        {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-preparation/create-freeze.py"
+        }
+      ],
+      "fullRecordLocation": "documents.fef80dac9316fa5fa2ea522a8be4d09cd53865ac190d185320467ad940157998"
+    }
+  ],
+  "executions": {
+    "baseline11": {
+      "label": "First valid baseline",
+      "classification": "VALID_NEW_CAPABILITY_RED",
+      "actualCounts": {
+        "tests": 11,
+        "suites": 0,
+        "pass": 4,
+        "fail": 7,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "actualNodeExit": 1,
+      "head": "b7b97daa639fec0c32f1fc97048a97a63abaa082",
+      "tree": "e574188b58821642ef1e76c89af7ab3867ee817e",
+      "startedAt": "2026-11-09T23:17:31.951245+00:00",
+      "completedAt": "2026-11-09T23:17:33.924258+00:00",
+      "durationSeconds": 1.973015301002306,
+      "originalExecutionReceipt": {
+        "documentSha256": "be2f8e6d89809d735d51dec2237f09d332d8798c88717c6467e6d8b9b00d475b",
+        "workspace": "worker",
+        "path": "artifacts/issue-239-baseline-v1/receipt.json"
+      },
+      "originalStartRecord": {
+        "documentSha256": "aee8e3185d79bdec7285e67b528651a4b9908c69b5b0bb6e03473849f1b82c19",
+        "workspace": "worker",
+        "path": "artifacts/issue-239-baseline-v1/started.json"
+      },
+      "fullInputFreeze": {
+        "documentSha256": "cd18709fa54ea6d11bb4fee3879564a40454063968f01a829f6f5a7641bd1c46",
+        "workspace": "worker",
+        "path": "artifacts/issue-239-baseline-v1/freeze.json"
+      },
+      "fullAfterBindingsLocation": "originalExecutionReceipt.parsed.afterBindings",
+      "inputBindingCount": 524,
+      "allFrozenRunCopiesAndAfterMapsMatch": true,
+      "bindingMapCompactSha256": "551285ba6dfb0fd8bc787c69da3816f9e741930ed1ffe5825bfaa2d096b55d6c",
+      "rawStdout": {
+        "workspace": "worker",
+        "path": "artifacts/issue-239-baseline-v1/stdout.raw",
+        "sha256": "35687c1323ea69801673ffa3f1e2da36e775a9d776309a5581b107168b1e92e8",
+        "bytes": 85314
+      },
+      "rawStderr": {
+        "documentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "workspace": "worker",
+        "path": "artifacts/issue-239-baseline-v1/stderr.raw"
+      },
+      "archive": {
+        "filename": "2026-11-09-managed-process-budgets-baseline11.tap.gz",
+        "intendedPath": "docs/validation/2026-11-09-managed-process-budgets-baseline11.tap.gz",
+        "rawBytes": 85314,
+        "rawSha256": "35687c1323ea69801673ffa3f1e2da36e775a9d776309a5581b107168b1e92e8",
+        "compressedBytes": 7856,
+        "compressedSha256": "14d88a9d57ea773ef77a495dc11f9b77b621189d7b64edabff295976f81a7430",
+        "gzipMtime": 0,
+        "exactDecompressionVerified": true,
+        "originalSource": {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-baseline-v1/stdout.raw"
+        }
+      },
+      "executionRecipe": {
+        "documentSha256": "13b078cff70518327a5f8ccc729d430bdb3e6388b52bc979ee42ba8abd88fd88",
+        "workspace": "worker",
+        "path": "artifacts/issue-239-preparation/recipe-v4.md"
+      },
+      "executionDriver": {
+        "documentSha256": "ce46c57961283b191f9c78d809e0890fbf03496c355885e6065b7379d5166f9a",
+        "workspace": "worker",
+        "path": "artifacts/issue-239-preparation/run-frozen-v4.py"
+      },
+      "interpretation": {
+        "documentSha256": "636f0b60af7065474c092b74a52301ee7b636be5915feb582161226fe97443be",
+        "workspace": "root",
+        "path": "artifacts/issue-239-baseline-review/root-baseline-interpretation.json"
+      },
+      "phaseLimits": {
+        "normalizedPersistence": "NOT_REACHED",
+        "actualSdk": "NOT_REACHED"
+      },
+      "outerDriverObservation": {
+        "exit": 0,
+        "source": "Root original baseline interpretation captureDriverExitCode"
+      }
+    },
+    "worker56": {
+      "label": "Worker focused source",
+      "classification": "SOURCE_56_PASS_RETAINED_NODE_EVIDENCE",
+      "actualCounts": {
+        "tests": 56,
+        "suites": 0,
+        "pass": 56,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "actualNodeExit": 0,
+      "head": "4076ecd986f4d1397cb64c9598c8b1bdd5ef4921",
+      "tree": "16f117bbd7a791b2bdb693c966ed12cc61df1515",
+      "startedAt": "2026-11-09T23:25:04.022751+00:00",
+      "completedAt": "2026-11-09T23:25:12.561604+00:00",
+      "durationSeconds": 8.538854606988025,
+      "originalExecutionReceipt": {
+        "documentSha256": "4b6eb2cf17687f0747d50728fdd2a7db838bc89b5651b66963f587392e9cbf9b",
+        "workspace": "worker",
+        "path": "artifacts/issue-239-source-v1/receipt.json"
+      },
+      "originalStartRecord": {
+        "documentSha256": "a5c849fd6e87b5117459c563c8009b8fcf03a00b8b044a47caddd1dc955726da",
+        "workspace": "worker",
+        "path": "artifacts/issue-239-source-v1/started.json"
+      },
+      "fullInputFreeze": {
+        "documentSha256": "2ba5b24122c28e5ab825d6831b5475f620bcbd2bb57e7aab38e34f70037023d3",
+        "workspace": "worker",
+        "path": "artifacts/issue-239-source-v1/freeze.json"
+      },
+      "fullAfterBindingsLocation": "originalExecutionReceipt.parsed.afterBindings",
+      "inputBindingCount": 540,
+      "allFrozenRunCopiesAndAfterMapsMatch": true,
+      "bindingMapCompactSha256": "89de6ac5d7b131570d246a21cbbb2cff32c5de24cc3534dbebf4a1dc96e01807",
+      "rawStdout": {
+        "workspace": "worker",
+        "path": "artifacts/issue-239-source-v1/stdout.raw",
+        "sha256": "964a4d945efb98febff0bbadf96087848b13cb7035fbb0dc71f04b73967408ff",
+        "bytes": 114715
+      },
+      "rawStderr": {
+        "documentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "workspace": "worker",
+        "path": "artifacts/issue-239-source-v1/stderr.raw"
+      },
+      "archive": {
+        "filename": "2026-11-09-managed-process-budgets-worker56.tap.gz",
+        "intendedPath": "docs/validation/2026-11-09-managed-process-budgets-worker56.tap.gz",
+        "rawBytes": 114715,
+        "rawSha256": "964a4d945efb98febff0bbadf96087848b13cb7035fbb0dc71f04b73967408ff",
+        "compressedBytes": 12414,
+        "compressedSha256": "37de4cfc1944e9cebd6fcc591a57926ba9d0a8937896a70b106744100092fc2f",
+        "gzipMtime": 0,
+        "exactDecompressionVerified": true,
+        "originalSource": {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-source-v1/stdout.raw"
+        }
+      },
+      "executionRecipe": {
+        "documentSha256": "2fddbac77a79cd27d8b88a6c7b32f154ad488e773546cbe90d2a88ab2404c954",
+        "workspace": "worker",
+        "path": "artifacts/issue-239-worker-source/recipe.md"
+      },
+      "executionDriver": {
+        "documentSha256": "ce46c57961283b191f9c78d809e0890fbf03496c355885e6065b7379d5166f9a",
+        "workspace": "worker",
+        "path": "artifacts/issue-239-preparation/run-frozen-v4.py"
+      },
+      "interpretation": {
+        "documentSha256": "ef57562a792841eb92a2aa81961aaf662e0911a13598d346e390b74d6ac16700",
+        "workspace": "worker",
+        "path": "artifacts/issue-239-source-v1/interpretation.json"
+      },
+      "phaseLimits": {
+        "normalizedPersistence": "REACHED_INJECTED_BOOKKEEPING",
+        "actualSdk": "REACHED_ONE_READONLY_SESSION"
+      },
+      "outerDriverObservation": {
+        "exit": null,
+        "status": "UNKNOWN",
+        "source": "Original execution tool response context-truncated; sealed receipt/raw recovered without replay. Final printed summary and outer exit not separately retained."
+      }
+    },
+    "peer11": {
+      "label": "Independent peer source",
+      "classification": "INDEPENDENT_SOURCE11_PASS",
+      "actualCounts": {
+        "tests": 11,
+        "suites": 0,
+        "pass": 11,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "actualNodeExit": 0,
+      "head": "53b2b67e9daba72f89537cd227409ca02972d593",
+      "tree": "6efe3dcf720c76b080f697491cb1f74fed390bfe",
+      "startedAt": "2026-11-09T23:36:42.451520+00:00",
+      "completedAt": "2026-11-09T23:36:44.662101+00:00",
+      "durationSeconds": 2.210716762012453,
+      "originalExecutionReceipt": {
+        "documentSha256": "8d7dd62410c0129a5a85b3b46709a85009dcfd87d8a5424d91938c9284f27384",
+        "workspace": "worker",
+        "path": "artifacts/issue-239-independent-source11-v1/receipt.json"
+      },
+      "originalStartRecord": {
+        "documentSha256": "7c4fca9a426fa2013b03cdecb6cc42aa151b68be3a9344a7b0036e23cd91e723",
+        "workspace": "worker",
+        "path": "artifacts/issue-239-independent-source11-v1/started.json"
+      },
+      "fullInputFreeze": {
+        "documentSha256": "b2f59d96f88f586e2b0eb6f892732c5adf6456e361ebf11ea5701ae4beb5f295",
+        "workspace": "worker",
+        "path": "artifacts/issue-239-independent-source11-v1/freeze.json"
+      },
+      "fullAfterBindingsLocation": "originalExecutionReceipt.parsed.afterBindings",
+      "inputBindingCount": 544,
+      "allFrozenRunCopiesAndAfterMapsMatch": true,
+      "bindingMapCompactSha256": "63f50e6872279f7681960a51acf51c2b5935ca12a3023d28bac9f12703dac1d6",
+      "rawStdout": {
+        "workspace": "worker",
+        "path": "artifacts/issue-239-independent-source11-v1/stdout.raw",
+        "sha256": "40d0ce7ecb0ac46582c854ce93b4fa333251d577adcb334b60f4f4aa03ca1bb0",
+        "bytes": 103993
+      },
+      "rawStderr": {
+        "documentSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "workspace": "worker",
+        "path": "artifacts/issue-239-independent-source11-v1/stderr.raw"
+      },
+      "archive": {
+        "filename": "2026-11-09-managed-process-budgets-peer11.tap.gz",
+        "intendedPath": "docs/validation/2026-11-09-managed-process-budgets-peer11.tap.gz",
+        "rawBytes": 103993,
+        "rawSha256": "40d0ce7ecb0ac46582c854ce93b4fa333251d577adcb334b60f4f4aa03ca1bb0",
+        "compressedBytes": 9919,
+        "compressedSha256": "2e2ddff10c843a500129adc93068b04d67f47fdd4fa0892d71888c1ca83438c9",
+        "gzipMtime": 0,
+        "exactDecompressionVerified": true,
+        "originalSource": {
+          "workspace": "worker",
+          "path": "artifacts/issue-239-independent-source11-v1/stdout.raw"
+        }
+      },
+      "executionRecipe": {
+        "documentSha256": "71e7f70721c17c2972dbb0a74b69c48004c5ee75f47c82b98e2cfc9a98432ae1",
+        "workspace": "worker",
+        "path": "artifacts/issue-239-peer-source11-preparation/recipe.md"
+      },
+      "executionDriver": {
+        "documentSha256": "ce46c57961283b191f9c78d809e0890fbf03496c355885e6065b7379d5166f9a",
+        "workspace": "worker",
+        "path": "artifacts/issue-239-preparation/run-frozen-v4.py"
+      },
+      "interpretation": {
+        "documentSha256": "2e5f7371617eb639687904111c929abfda523886805a5568a1643955e1763677",
+        "workspace": "root",
+        "path": "artifacts/issue-239-peer-review/final-source-review.json"
+      },
+      "phaseLimits": {
+        "normalizedPersistence": "REACHED_INJECTED_BOOKKEEPING",
+        "actualSdk": "REACHED_ONE_READONLY_SESSION"
+      },
+      "outerDriverObservation": {
+        "exit": 0,
+        "source": "Separately captured direct driver stdout/stderr and shell status, preserved in driver-exit.json; independently verified by peer"
+      }
+    }
+  },
+  "reviews": [
+    {
+      "name": "baseline-v1-decoded-diagnostics.json",
+      "parsedKind": "list",
+      "documentSha256": "7514209c20dbe2fec67d4acec9554c459e12f4a7a50a5c1ff619d16c1bfee69d",
+      "bytes": 115805,
+      "reviewedAt": null,
+      "decision": null,
+      "fullRecordLocation": "documents.7514209c20dbe2fec67d4acec9554c459e12f4a7a50a5c1ff619d16c1bfee69d"
+    },
+    {
+      "name": "baseline-v1-independent-verification.json",
+      "parsedKind": "dict",
+      "documentSha256": "f73da7c9487213c3437c86aaf02201c0c0f737e4c152b060dace3cc272284307",
+      "bytes": 6004,
+      "reviewedAt": null,
+      "decision": null,
+      "fullRecordLocation": "documents.f73da7c9487213c3437c86aaf02201c0c0f737e4c152b060dace3cc272284307"
+    },
+    {
+      "name": "baseline-v1-interpretation.json",
+      "parsedKind": "dict",
+      "documentSha256": "697cf1a62785b01c4c0666562d5a7e85b1d9027a637ccc3b0d3c2ac07fcb5f22",
+      "bytes": 8242,
+      "reviewedAt": "2026-11-09T23:21:32.730740+00:00",
+      "decision": "VALID_NEW_CAPABILITY_RED",
+      "fullRecordLocation": "documents.697cf1a62785b01c4c0666562d5a7e85b1d9027a637ccc3b0d3c2ac07fcb5f22"
+    },
+    {
+      "name": "baseline-v1-interpretation.md",
+      "parsedKind": "NoneType",
+      "documentSha256": "829baa7c02c16440830c49de092bb37dd527506ecbe26ad4993bea2fe788ada8",
+      "bytes": 5998,
+      "reviewedAt": null,
+      "decision": null,
+      "fullRecordLocation": "documents.829baa7c02c16440830c49de092bb37dd527506ecbe26ad4993bea2fe788ada8"
+    },
+    {
+      "name": "final-source-review.json",
+      "parsedKind": "dict",
+      "documentSha256": "2e5f7371617eb639687904111c929abfda523886805a5568a1643955e1763677",
+      "bytes": 6646,
+      "reviewedAt": "2026-11-09T23:39:41.013891+00:00",
+      "decision": "CLEAR_SOURCE_IMPLEMENTATION_AND_INDEPENDENT_SOURCE11",
+      "fullRecordLocation": "documents.2e5f7371617eb639687904111c929abfda523886805a5568a1643955e1763677"
+    },
+    {
+      "name": "final-source-review.md",
+      "parsedKind": "NoneType",
+      "documentSha256": "ec1139338e4f16cd6eff853cd02b8ae8fb9487258b7eb1d8bc9051df38a76b18",
+      "bytes": 6571,
+      "reviewedAt": null,
+      "decision": null,
+      "fullRecordLocation": "documents.ec1139338e4f16cd6eff853cd02b8ae8fb9487258b7eb1d8bc9051df38a76b18"
+    },
+    {
+      "name": "final-static-review-and-source11-preflight.json",
+      "parsedKind": "dict",
+      "documentSha256": "80e42afdf4d4f564c1064d618a5db15622763732f9f82392b7f4d7f2d4a83955",
+      "bytes": 1868,
+      "reviewedAt": "2026-11-09T23:36:14.712878+00:00",
+      "decision": "CLEAR_FOR_AUTHORIZED_ONE_INDEPENDENT_SOURCE11",
+      "fullRecordLocation": "documents.80e42afdf4d4f564c1064d618a5db15622763732f9f82392b7f4d7f2d4a83955"
+    },
+    {
+      "name": "independent-source11-decoded-diagnostics.json",
+      "parsedKind": "list",
+      "documentSha256": "911a808293dc32acd69c81c3603ebf54dbb41852b76d15175f039d4d0625d90f",
+      "bytes": 161332,
+      "reviewedAt": null,
+      "decision": null,
+      "fullRecordLocation": "documents.911a808293dc32acd69c81c3603ebf54dbb41852b76d15175f039d4d0625d90f"
+    },
+    {
+      "name": "independent-source11-verification.json",
+      "parsedKind": "dict",
+      "documentSha256": "322c6123537551ca1912e9ef7712e264c19227bac1292ef25fb6c8f36a6d6387",
+      "bytes": 3558,
+      "reviewedAt": "2026-11-09T23:38:31.114091+00:00",
+      "decision": "INDEPENDENT_SOURCE11_PASS",
+      "fullRecordLocation": "documents.322c6123537551ca1912e9ef7712e264c19227bac1292ef25fb6c8f36a6d6387"
+    },
+    {
+      "name": "pre-run-review-v2.json",
+      "parsedKind": "dict",
+      "documentSha256": "1e0386d3be5bde05baebede7d82b6027e26e793ff06810faac6135895ba4d431",
+      "bytes": 6253,
+      "reviewedAt": "2026-11-09T23:08:15.975734+00:00",
+      "decision": "FINDINGS_NO_PRE_RUN_CLEARANCE",
+      "fullRecordLocation": "documents.1e0386d3be5bde05baebede7d82b6027e26e793ff06810faac6135895ba4d431"
+    },
+    {
+      "name": "pre-run-review-v2.md",
+      "parsedKind": "NoneType",
+      "documentSha256": "4467613fc4e82e040887792dcded315677fa8fc84e56edd4da73e301804765a2",
+      "bytes": 4622,
+      "reviewedAt": null,
+      "decision": null,
+      "fullRecordLocation": "documents.4467613fc4e82e040887792dcded315677fa8fc84e56edd4da73e301804765a2"
+    },
+    {
+      "name": "pre-run-review-v3-superseded.json",
+      "parsedKind": "dict",
+      "documentSha256": "15adcf0fc68556c433add08d5c95dc674738759a8938cdc3349de8e56b996be5",
+      "bytes": 1469,
+      "reviewedAt": "2026-11-09T23:14:11.354474+00:00",
+      "decision": "HOLD_V3_CLEARANCE_SUPERSEDED_BEFORE_RELEASE",
+      "fullRecordLocation": "documents.15adcf0fc68556c433add08d5c95dc674738759a8938cdc3349de8e56b996be5"
+    },
+    {
+      "name": "pre-run-review-v3.json",
+      "parsedKind": "dict",
+      "documentSha256": "35686c209e490e389ddb87590e6019e742b7e5508957210f98a395e4b7dd90d2",
+      "bytes": 4147,
+      "reviewedAt": "2026-11-09T23:13:19.566650+00:00",
+      "decision": "CLEAR_FOR_ROOT_TO_AUTHORIZE_ONE_FROZEN_BASELINE",
+      "fullRecordLocation": "documents.35686c209e490e389ddb87590e6019e742b7e5508957210f98a395e4b7dd90d2"
+    },
+    {
+      "name": "pre-run-review-v3.md",
+      "parsedKind": "NoneType",
+      "documentSha256": "09e98a7df984acd22b4b7494c778163dec393f912ee89df3f5d314c38e992a1c",
+      "bytes": 3061,
+      "reviewedAt": null,
+      "decision": null,
+      "fullRecordLocation": "documents.09e98a7df984acd22b4b7494c778163dec393f912ee89df3f5d314c38e992a1c"
+    },
+    {
+      "name": "pre-run-review-v4.json",
+      "parsedKind": "dict",
+      "documentSha256": "200a22eaf7603d76c3071b07321a3eaa10db24b72cb09c1a55987c0d04cd0c1c",
+      "bytes": 4029,
+      "reviewedAt": "2026-11-09T23:16:54.872499+00:00",
+      "decision": "CLEAR_FOR_ROOT_TO_AUTHORIZE_ONE_EXACT_V4_BASELINE",
+      "fullRecordLocation": "documents.200a22eaf7603d76c3071b07321a3eaa10db24b72cb09c1a55987c0d04cd0c1c"
+    },
+    {
+      "name": "pre-run-review-v4.md",
+      "parsedKind": "NoneType",
+      "documentSha256": "30c16d5527200185a869bcf18dc961f2698aab6548bbb0d17138bad09a216c7d",
+      "bytes": 3600,
+      "reviewedAt": null,
+      "decision": null,
+      "fullRecordLocation": "documents.30c16d5527200185a869bcf18dc961f2698aab6548bbb0d17138bad09a216c7d"
+    },
+    {
+      "name": "source56-decoded-diagnostics.json",
+      "parsedKind": "list",
+      "documentSha256": "c650d17b0452493980fc00affea4741bc2e726561f98885c01cc0f23fb2d0cbf",
+      "bytes": 161350,
+      "reviewedAt": null,
+      "decision": null,
+      "fullRecordLocation": "documents.c650d17b0452493980fc00affea4741bc2e726561f98885c01cc0f23fb2d0cbf"
+    },
+    {
+      "name": "source56-independent-review.json",
+      "parsedKind": "dict",
+      "documentSha256": "7ba5ad413d4013251f795655cd03194f068d1a73a3f123e044fb789e016643f3",
+      "bytes": 2085,
+      "reviewedAt": "2026-11-09T23:28:42.980975+00:00",
+      "decision": null,
+      "fullRecordLocation": "documents.7ba5ad413d4013251f795655cd03194f068d1a73a3f123e044fb789e016643f3"
+    },
+    {
+      "name": "source56-reporting-boundary.json",
+      "parsedKind": "dict",
+      "documentSha256": "3d9d808d72ab67907a89910594e3018fcac0f3568776737c1cbdd403957a79ac",
+      "bytes": 1401,
+      "reviewedAt": "2026-11-09T23:29:51.361024+00:00",
+      "decision": null,
+      "fullRecordLocation": "documents.3d9d808d72ab67907a89910594e3018fcac0f3568776737c1cbdd403957a79ac"
+    },
+    {
+      "name": "v4-independent-binding-check.json",
+      "parsedKind": "dict",
+      "documentSha256": "2ff9c59ba3075340eeef03ed106d44bffddafde6296fe6a4dd3d81d7cb6fce00",
+      "bytes": 1871,
+      "reviewedAt": null,
+      "decision": null,
+      "fullRecordLocation": "documents.2ff9c59ba3075340eeef03ed106d44bffddafde6296fe6a4dd3d81d7cb6fce00"
+    }
+  ],
+  "finalSourceReview": {
+    "decision": "CLEAR_SOURCE_IMPLEMENTATION_AND_INDEPENDENT_SOURCE11",
+    "openFindings": [],
+    "documentSha256": "2e5f7371617eb639687904111c929abfda523886805a5568a1643955e1763677"
+  },
+  "fixtureSha256": "369d2dc5e4da6e7180eb49375f80f86c2f8060695050c63050172c6810063799",
+  "reportingBoundary": "Source56 final printed driver summary and outer exit remain UNKNOWN after original tool-response context truncation. No rerun reconstructed them. Actual Node exit0/closure, full TAP and540 input bindings are preserved independently. Peer11 is a separate observation and does not retroactively fill the source56 reporting gap.",
+  "baselinePhaseLimits": "Valid11/4pass/7fail, no fixture-invalid case. Case7 persistence and case11 SDK actually NOT_REACHED. Later green phases are not backfilled into baseline.",
+  "runnerHistory": "v1 count-description preparation and v2/v3 exception-safety refinements were unexecuted. R239-PRE-1 ordinary-I/O fix and subsequent SIGINT refinement are preserved. Local v3 review was never released as clearance and is expressly superseded by its original supersession receipt. Selectedv4 was independently CLEAR before first baseline and stayed byte-identical across worker baseline/source execution.",
+  "sourceObservationScope": "Dedicated11 has14 natural CLI closes (5exit0/4exit1/5exit2),23 equal manifest comparisons across38 snapshots and one actual readonly SDK session with3 requests including real -32602 missing start-tool rejection. Injected-table persistence is bookkeeping only. Other45 source cases retain their TAP results without invented full child diagnostics.",
+  "archivesCopiedByteIdenticallyFromV1": [
+    {
+      "filename": "2026-11-09-managed-process-budgets-baseline11.tap.gz",
+      "intendedPath": "docs/validation/2026-11-09-managed-process-budgets-baseline11.tap.gz",
+      "bytes": 7856,
+      "sha256": "14d88a9d57ea773ef77a495dc11f9b77b621189d7b64edabff295976f81a7430",
+      "uncompressedBytes": 85314,
+      "uncompressedSha256": "35687c1323ea69801673ffa3f1e2da36e775a9d776309a5581b107168b1e92e8",
+      "gzipMtime": 0,
+      "copiedByteIdenticallyFromV1": true,
+      "exactDecompressionVerified": true
+    },
+    {
+      "filename": "2026-11-09-managed-process-budgets-worker56.tap.gz",
+      "intendedPath": "docs/validation/2026-11-09-managed-process-budgets-worker56.tap.gz",
+      "bytes": 12414,
+      "sha256": "37de4cfc1944e9cebd6fcc591a57926ba9d0a8937896a70b106744100092fc2f",
+      "uncompressedBytes": 114715,
+      "uncompressedSha256": "964a4d945efb98febff0bbadf96087848b13cb7035fbb0dc71f04b73967408ff",
+      "gzipMtime": 0,
+      "copiedByteIdenticallyFromV1": true,
+      "exactDecompressionVerified": true
+    },
+    {
+      "filename": "2026-11-09-managed-process-budgets-peer11.tap.gz",
+      "intendedPath": "docs/validation/2026-11-09-managed-process-budgets-peer11.tap.gz",
+      "bytes": 9919,
+      "sha256": "2e2ddff10c843a500129adc93068b04d67f47fdd4fa0892d71888c1ca83438c9",
+      "uncompressedBytes": 103993,
+      "uncompressedSha256": "40d0ce7ecb0ac46582c854ce93b4fa333251d577adcb334b60f4f4aa03ca1bb0",
+      "gzipMtime": 0,
+      "copiedByteIdenticallyFromV1": true,
+      "exactDecompressionVerified": true
+    },
+    {
+      "filename": "2026-11-09-managed-process-budgets-source-support.tar.gz",
+      "intendedPath": "docs/validation/2026-11-09-managed-process-budgets-source-support.tar.gz",
+      "bytes": 2603488,
+      "sha256": "0317043513de57397a4ef7ed054c192bc223a0b7017cf0c4276da0229adc1bed",
+      "uncompressedBytes": 10956800,
+      "uncompressedSha256": "5a2197034d189fdd5720dfc0c6c885fe24fb6fe81c10d68ed371dd31233b1c2d",
+      "gzipMtime": 0,
+      "copiedByteIdenticallyFromV1": true,
+      "exactDecompressionVerified": true
+    }
+  ],
+  "supportArchive": {
+    "filename": "2026-11-09-managed-process-budgets-source-support.tar.gz",
+    "uniqueBlobs": 565,
+    "rawContentBytes": 10508910,
+    "fullContentIndexLocation": "inputArchive.contents",
+    "includesThirdPartyRuntimeCode": true,
+    "supplementalAttributionRequiredAlongside": "2026-11-09-managed-process-budgets-source-attribution.json"
+  },
+  "archiveAttributionSupplement": {
+    "filename": "2026-11-09-managed-process-budgets-source-attribution.json",
+    "intendedPath": "docs/validation/2026-11-09-managed-process-budgets-source-attribution.json",
+    "bytes": 17544,
+    "sha256": "7b06653188bfcaa9b31b34b57e20a93b1e4204700f4d16bb9f152f694e5e49ca",
+    "archive": {
+      "filename": "2026-11-09-managed-process-budgets-source-attribution.tar.gz",
+      "intendedPath": "docs/validation/2026-11-09-managed-process-budgets-source-attribution.tar.gz",
+      "bytes": 28161,
+      "sha256": "e6ef82e1e8fdb4401a54ed6c46ed3acec49c3049d6a9985fd5eaa58a22ac9eef",
+      "uncompressedBytes": 153600,
+      "uncompressedSha256": "5cf38b7d92b3cfb69c06ad19a5c79f3830e8d3878e56f9b09931f96bf9f5cea2",
+      "gzipMtime": 0,
+      "exactDecompressionVerified": true
+    },
+    "packageCount": 14,
+    "packageLicenseNoticePaths": 15,
+    "parentLicenseNoticeReviewPaths": 3,
+    "newPackageAttributionPathsOutsideExecutionBindings": [
+      "node_modules/jose/LICENSE.md",
+      "node_modules/path-key/license",
+      "node_modules/shebang-command/license",
+      "node_modules/shebang-regex/license"
+    ],
+    "attributionAdditionsAreNotExecutedInputs": true
+  },
+  "unchangedExecutedInputCounts": {
+    "baseline11": 524,
+    "worker56": 540,
+    "peer11": 544
+  },
+  "originalAssemblyReceipt": {
+    "sha256": "0afc10194cd7a18f6ecd61f51ebf19388078646738799593256fe7d71894398b",
+    "bytes": 2544,
+    "originalText": "{\n  \"schemaVersion\": 1,\n  \"assembledAt\": \"2026-11-09T23:41:34.270282+00:00\",\n  \"agent\": \"/root/managed_budget_implementation\",\n  \"workerHead\": \"53b2b67e9daba72f89537cd227409ca02972d593\",\n  \"workerTrackedClean\": true,\n  \"rootTrackedEditsByAssembler\": false,\n  \"productTestBuildInstallExecution\": false,\n  \"externalCalls\": false,\n  \"sourceDocumentsOriginalBytesAndParsedJsonVerified\": 83,\n  \"inputCopiesVerifiedAcrossHistoricalFreezes\": 3149,\n  \"inputCopiesVerifiedAcrossActualRuns\": 1608,\n  \"uniqueSupportingBlobs\": 565,\n  \"originalReadFilesRechecked\": 4835,\n  \"rawDiagnosticTapEscapeRoundtrips\": 37,\n  \"source56OuterDriverStatus\": \"UNKNOWN; preserved, not reconstructed\",\n  \"noLaterQualificationCredit\": true,\n  \"outputFiles\": [\n    {\n      \"filename\": \"2026-11-09-managed-process-budgets-source-evidence.json\",\n      \"intendedPath\": \"docs/validation/2026-11-09-managed-process-budgets-source-evidence.json\",\n      \"bytes\": 6711412,\n      \"sha256\": \"ca90ea3e09e7025f6694cb3b22a2edbdb8d27f76d958dd42bfb5cc37378683e0\"\n    },\n    {\n      \"filename\": \"2026-11-09-managed-process-budgets-source-evidence.md\",\n      \"intendedPath\": \"docs/validation/2026-11-09-managed-process-budgets-source-evidence.md\",\n      \"bytes\": 8894,\n      \"sha256\": \"9b432ba0b328998ef7adfe97b7793aeebfd2a36b7ab964f86195412e00a780b1\"\n    },\n    {\n      \"filename\": \"2026-11-09-managed-process-budgets-baseline11.tap.gz\",\n      \"intendedPath\": \"docs/validation/2026-11-09-managed-process-budgets-baseline11.tap.gz\",\n      \"bytes\": 7856,\n      \"sha256\": \"14d88a9d57ea773ef77a495dc11f9b77b621189d7b64edabff295976f81a7430\"\n    },\n    {\n      \"filename\": \"2026-11-09-managed-process-budgets-worker56.tap.gz\",\n      \"intendedPath\": \"docs/validation/2026-11-09-managed-process-budgets-worker56.tap.gz\",\n      \"bytes\": 12414,\n      \"sha256\": \"37de4cfc1944e9cebd6fcc591a57926ba9d0a8937896a70b106744100092fc2f\"\n    },\n    {\n      \"filename\": \"2026-11-09-managed-process-budgets-peer11.tap.gz\",\n      \"intendedPath\": \"docs/validation/2026-11-09-managed-process-budgets-peer11.tap.gz\",\n      \"bytes\": 9919,\n      \"sha256\": \"2e2ddff10c843a500129adc93068b04d67f47fdd4fa0892d71888c1ca83438c9\"\n    },\n    {\n      \"filename\": \"2026-11-09-managed-process-budgets-source-support.tar.gz\",\n      \"intendedPath\": \"docs/validation/2026-11-09-managed-process-budgets-source-support.tar.gz\",\n      \"bytes\": 2603488,\n      \"sha256\": \"0317043513de57397a4ef7ed054c192bc223a0b7017cf0c4276da0229adc1bed\"\n    }\n  ],\n  \"assemblerSha256\": \"287e6ed1e4fa672271f8ee40c523bacae906ab7a832a9f4f639c208f4688dbeb\"\n}\n",
+    "parsed": {
+      "schemaVersion": 1,
+      "assembledAt": "2026-11-09T23:41:34.270282+00:00",
+      "agent": "/root/managed_budget_implementation",
+      "workerHead": "53b2b67e9daba72f89537cd227409ca02972d593",
+      "workerTrackedClean": true,
+      "rootTrackedEditsByAssembler": false,
+      "productTestBuildInstallExecution": false,
+      "externalCalls": false,
+      "sourceDocumentsOriginalBytesAndParsedJsonVerified": 83,
+      "inputCopiesVerifiedAcrossHistoricalFreezes": 3149,
+      "inputCopiesVerifiedAcrossActualRuns": 1608,
+      "uniqueSupportingBlobs": 565,
+      "originalReadFilesRechecked": 4835,
+      "rawDiagnosticTapEscapeRoundtrips": 37,
+      "source56OuterDriverStatus": "UNKNOWN; preserved, not reconstructed",
+      "noLaterQualificationCredit": true,
+      "outputFiles": [
+        {
+          "filename": "2026-11-09-managed-process-budgets-source-evidence.json",
+          "intendedPath": "docs/validation/2026-11-09-managed-process-budgets-source-evidence.json",
+          "bytes": 6711412,
+          "sha256": "ca90ea3e09e7025f6694cb3b22a2edbdb8d27f76d958dd42bfb5cc37378683e0"
+        },
+        {
+          "filename": "2026-11-09-managed-process-budgets-source-evidence.md",
+          "intendedPath": "docs/validation/2026-11-09-managed-process-budgets-source-evidence.md",
+          "bytes": 8894,
+          "sha256": "9b432ba0b328998ef7adfe97b7793aeebfd2a36b7ab964f86195412e00a780b1"
+        },
+        {
+          "filename": "2026-11-09-managed-process-budgets-baseline11.tap.gz",
+          "intendedPath": "docs/validation/2026-11-09-managed-process-budgets-baseline11.tap.gz",
+          "bytes": 7856,
+          "sha256": "14d88a9d57ea773ef77a495dc11f9b77b621189d7b64edabff295976f81a7430"
+        },
+        {
+          "filename": "2026-11-09-managed-process-budgets-worker56.tap.gz",
+          "intendedPath": "docs/validation/2026-11-09-managed-process-budgets-worker56.tap.gz",
+          "bytes": 12414,
+          "sha256": "37de4cfc1944e9cebd6fcc591a57926ba9d0a8937896a70b106744100092fc2f"
+        },
+        {
+          "filename": "2026-11-09-managed-process-budgets-peer11.tap.gz",
+          "intendedPath": "docs/validation/2026-11-09-managed-process-budgets-peer11.tap.gz",
+          "bytes": 9919,
+          "sha256": "2e2ddff10c843a500129adc93068b04d67f47fdd4fa0892d71888c1ca83438c9"
+        },
+        {
+          "filename": "2026-11-09-managed-process-budgets-source-support.tar.gz",
+          "intendedPath": "docs/validation/2026-11-09-managed-process-budgets-source-support.tar.gz",
+          "bytes": 2603488,
+          "sha256": "0317043513de57397a4ef7ed054c192bc223a0b7017cf0c4276da0229adc1bed"
+        }
+      ],
+      "assemblerSha256": "287e6ed1e4fa672271f8ee40c523bacae906ab7a832a9f4f639c208f4688dbeb"
+    }
+  },
+  "limits": [
+    "Source only: no native Codex parser/model, installed artifact, normal reviewed-build, full-local/quick, hosted candidate/main or delivery credit.",
+    "Actual SDK no-execution source proof is separate from internal generateTable ownership checks and parent pinned Codex0.160.1 verification.",
+    "No budget grants execution/write/config-write/shell/additional roots/remote capability; no global runtime changes.",
+    "No hard CPU/GPU/RAM/disk-write, cross-host quota, full AUG-012/DCP-002, provider/Cloudflare/connected Windows/deployment acceptance.",
+    "Natural child exit and reported networkListener:false are not global process/listener censuses. Abrupt SIGKILL, noninterruptible OS I/O, detached descendants and PID reuse remain outside capture guarantee.",
+    "Protected requirements seed/order/stages/weights/acceptance/estimates/blockers remain unchanged; parent owns final shared integration and qualification."
+  ],
+  "unresolvedRequiredFields": [
+    "Source56 final outer-driver summary/exit remain unobserved and are not reconstructed."
+  ],
+  "scope": "No product/test/build/install/external call or tracked edit in this presentation/attribution assembly. Normal/root/installed/native/hosted qualification stays separate.",
+  "nextAction": "Root independently decompresses, checks original hashes and copied archives, reviews the full recovered JSON/attribution, then copies selected v2 files and appends only separately observed later qualification."
+}

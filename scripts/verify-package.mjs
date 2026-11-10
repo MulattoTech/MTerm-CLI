@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-09-managed-process-budgets; bind installed managed-registration and existing resource cases.
 // Modified: 2026-11-09-state-lock-init; qualify installed mutation-lock initialization ownership/recovery.
 // Modified: 2026-11-09-package-isolation; measure external installation/cwds and retain regular evidence.
 // Modified: 2026-11-09-run-lock-recovery; qualify installed failed-initialization lock ownership and recovery.
@@ -386,52 +387,156 @@ const report = await withPackageWorkspace(
       log: persistenceLog,
       logSha256: createHash('sha256').update(persistenceOutput).digest('hex'),
     };
+    const budgetFixtures = ['tests/resource-budgets.test.mjs', 'tests/codex-budget-registration.test.mjs'];
+    const budgetFixtureBindings = await Promise.all(
+      budgetFixtures.map(async (name) => ({
+        path: name,
+        sha256: createHash('sha256')
+          .update(await fs.readFile(path.join(root, name)))
+          .digest('hex'),
+      })),
+    );
+    const installedRoot = path.resolve(path.dirname(installed), '..');
+    const budgetRuntimeFiles = async (packageRoot, directory = 'dist') => {
+      const files = [];
+      for (const item of (await fs.readdir(path.join(packageRoot, directory), { withFileTypes: true })).sort(
+        (a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0),
+      )) {
+        assert.ok(!item.isSymbolicLink(), 'Budget runtime files must stay in the selected package');
+        const relative = directory + '/' + item.name;
+        if (item.isDirectory()) files.push(...(await budgetRuntimeFiles(packageRoot, relative)));
+        else if (item.name.endsWith('.js')) {
+          assert.ok(item.isFile(), 'Budget runtime inputs must be regular files');
+          files.push(relative);
+        }
+      }
+      return files;
+    };
+    const budgetRuntimePaths = await budgetRuntimeFiles(root);
+    assert.deepEqual(await budgetRuntimeFiles(installedRoot), budgetRuntimePaths);
+    assert.ok(budgetRuntimePaths.includes('dist/codex-registration.js'));
+    assert.ok(budgetRuntimePaths.includes('dist/resource-budget-policy.js'));
+    const budgetBindings = [];
+    for (const name of ['bin/mterm-cli.js', ...budgetRuntimePaths]) {
+      const source = await fs.readFile(path.join(root, name));
+      const bytes = await fs.readFile(path.join(installedRoot, name));
+      assert.deepEqual(bytes, source, 'Installed managed/resource runtime differs from reviewed source');
+      budgetBindings.push({
+        path: name,
+        bytes: bytes.length,
+        sha256: createHash('sha256').update(bytes).digest('hex'),
+      });
+    }
+    const budgetManifestBytes = await fs.readFile(path.join(installedRoot, 'package.json'));
+    const budgetManifest = JSON.parse(budgetManifestBytes);
+    assert.equal(budgetManifest.name, 'mterm-cli');
+    assert.equal(budgetManifest.version, pack.version);
     const budgetAcceptance = await exec(
       process.execPath,
       [
         '--test',
         '--test-reporter=tap',
         '--test-concurrency=1',
-        path.join(root, 'tests/resource-budgets.test.mjs'),
+        ...budgetFixtures.map((name) => path.join(root, name)),
       ],
       {
         cwd: home,
         env: { ...env, MTERM_VERIFY_BIN: installed },
-        timeout: 90000,
-        maxBuffer: 2097152,
+        timeout: 180000,
+        maxBuffer: 8388608,
         windowsHide: true,
       },
     ).then(
       (result) => ({ ...result, exit: 0 }),
-      (error) => ({
-        stdout: error.stdout ?? '',
-        stderr: error.stderr ?? '',
-        exit: error.code ?? 'unknown',
-      }),
+      (error) => ({ stdout: error.stdout ?? '', stderr: error.stderr ?? '', exit: error.code ?? 'unknown' }),
     );
     const budgetLog = path.join(output, 'resource-budget-tests.tap');
+    const budgetStdoutLog = path.join(output, 'resource-budget-tests.stdout.tap');
+    const budgetStderrLog = path.join(output, 'resource-budget-tests.stderr.log');
     await fs.writeFile(budgetLog, budgetAcceptance.stdout + budgetAcceptance.stderr);
-    assert.equal(budgetAcceptance.exit, 0, 'Installed resource-budget acceptance failed; see retained log');
+    await fs.writeFile(budgetStdoutLog, budgetAcceptance.stdout);
+    await fs.writeFile(budgetStderrLog, budgetAcceptance.stderr);
+    assert.equal(
+      budgetAcceptance.exit,
+      0,
+      'Installed managed/resource-budget acceptance failed; see retained logs',
+    );
     const budgetTestCount = Number(budgetAcceptance.stdout.match(/^# tests (\d+)$/m)?.[1]);
-    assert.ok(budgetTestCount >= 24, 'Installed resource-budget acceptance did not run');
-    assert.match(budgetAcceptance.stdout, /^# fail 0$/m);
-    assert.match(budgetAcceptance.stdout, /^# skipped 0$/m);
-    assert.match(budgetAcceptance.stdout, /^# cancelled 0$/m);
+    assert.equal(budgetTestCount, 35, 'All 24 resource and 11 managed-registration cases must run');
+    assert.match(budgetAcceptance.stdout, /^# pass 35$/m);
+    for (const field of ['fail', 'skipped', 'cancelled', 'todo'])
+      assert.match(budgetAcceptance.stdout, new RegExp('^# ' + field + ' 0$', 'm'));
+    for (const binding of budgetFixtureBindings)
+      assert.equal(
+        createHash('sha256')
+          .update(await fs.readFile(path.join(root, binding.path)))
+          .digest('hex'),
+        binding.sha256,
+        'Budget fixture changed during installed qualification',
+      );
+    assert.deepEqual(await budgetRuntimeFiles(root), budgetRuntimePaths);
+    assert.deepEqual(await budgetRuntimeFiles(installedRoot), budgetRuntimePaths);
+    for (const binding of budgetBindings) {
+      for (const directory of [root, installedRoot]) {
+        const bytes = await fs.readFile(path.join(directory, binding.path));
+        assert.equal(bytes.length, binding.bytes);
+        assert.equal(
+          createHash('sha256').update(bytes).digest('hex'),
+          binding.sha256,
+          'Budget runtime changed during installed qualification',
+        );
+      }
+    }
+    assert.deepEqual(await fs.readFile(path.join(installedRoot, 'package.json')), budgetManifestBytes);
     const installedResourceBudgets = {
       ok: true,
       tests: budgetTestCount,
+      passed: 35,
       failed: 0,
       skipped: 0,
       cancelled: 0,
-      moduleBindings: packBindings,
+      todo: 0,
+      preservedResourceCases: 24,
+      managedRegistrationCases: 11,
+      moduleBindings: budgetBindings,
+      fixtureBindings: budgetFixtureBindings,
+      installedManifest: {
+        bytes: budgetManifestBytes.length,
+        sha256: createHash('sha256').update(budgetManifestBytes).digest('hex'),
+      },
+      inputBindingsUnchanged: true,
       scope: 'host-instance',
       realStatfsAndOwnedProcesses: true,
       injectedBackendFailuresLabeled: true,
+      managedRegistration: {
+        omittedBudgetCompatibility: true,
+        explicitDefaultSelection: true,
+        exactDecimalPolicyPreservation: true,
+        snapshotBeforeRootAwait: true,
+        guardedIdempotenceConflictAndRemoval: true,
+        injectedTablePersistenceLabeled: true,
+        actualReadonlySdkFromPreview: true,
+        actualExecutionToolDenial: true,
+        ownedChildClosureAndReadonlyManifests: true,
+        nativeCodexParserExercised: false,
+      },
       syntheticOnly: true,
       modelCalls: 0,
       crossHostEnforcement: false,
       hardCpuGpuRamOrDiskWriteQuotas: false,
       log: budgetLog,
+      stdout: {
+        path: budgetStdoutLog,
+        bytes: Buffer.byteLength(budgetAcceptance.stdout),
+        sha256: createHash('sha256').update(budgetAcceptance.stdout).digest('hex'),
+      },
+      stderr: {
+        path: budgetStderrLog,
+        bytes: Buffer.byteLength(budgetAcceptance.stderr),
+        sha256: createHash('sha256').update(budgetAcceptance.stderr).digest('hex'),
+      },
+      rawEvidenceRetention:
+        'Runner-local files; reported hashes do not establish independent retrieval or rehashing.',
     };
     const stopRecoveryAcceptance = await exec(
       process.execPath,

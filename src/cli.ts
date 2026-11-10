@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-09-managed-process-budgets; preserve selected budgets through managed setup.
 // Modified: 2026-11-08-aug012-resource-budgets; explicit immutable startup budgets and no silent registration downgrade.
 // Modified: 2026-11-07-aug001-pack-boundary; explicit local pack registration and execution grants.
 // AI-Change: 2026-10-04-local-mcp (OpenAI / GPT-6 Astra Pro; self-reported)
@@ -268,11 +269,6 @@ export async function main(args: string[]): Promise<number> {
       fail(
         'USAGE',
         'Managed Codex registration does not yet preserve isolation policy. Use explicit stdio arguments.',
-      );
-    if (opts.processBudget)
-      fail(
-        'USAGE',
-        'Managed Codex registration does not yet preserve process budgets. Use explicit stdio arguments.',
       );
     if (opts.packRegistry)
       fail(

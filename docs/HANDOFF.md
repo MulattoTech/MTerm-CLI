@@ -1,3 +1,100 @@
+# Managed Codex process-budget checkpoint — 2026-11-09 UTC
+
+Session `MTERM-WEB-20261109T131339Z-resume-a9287b3c` holds the
+[issue239 claim](https://github.com/MulattoTech/MTerm-CLI/issues/239#issuecomment-6753643736)
+at separately qualified actual main `9c05ed3fd92ee87dcc789a81a8c605e62fe7f141`.
+The one implementation worker sealed six owned paths at
+`53b2b67e9daba72f89537cd227409ca02972d593`, after the actual source run at
+`4076ecd986f4d1397cb64c9598c8b1bdd5ef4921`. Root owns shared verifiers,
+documentation, catalog evidence, integration and publication. Standing owner
+authorization covers normal qualified delivery.
+
+Managed setup now preserves an explicitly selected process budget through the
+existing strict parser, copying and freezing it before asynchronous root validation.
+One canonical JSON argument preserves exact decimal disk strings. Omission retains
+the legacy argv and ownership hash; explicit `{}` selects normalized defaults.
+Selection grants no execution, writes, shells, roots or remote permissions.
+Preview still prints a changed plan; explicit `--apply` retains the existing
+ownership conflict rule. Exact removal and unrelated configuration/auth preservation
+remain on the established journal/backup path. Separate isolation and optional-pack
+registration refusals remain unchanged.
+
+The unchanged eleven-case fixture first produced valid new-capability RED: four
+compatibility controls passed and seven assertions failed on intentionally unsupported
+behavior. All fourteen CLI children closed naturally. No setup-invalid observation
+was relabeled a product defect; baseline persistence case7 and SDK case11 were not
+reached. The ignored capture-runner finding was repaired and independently cleared
+before first execution; unexecuted earlier versions and their supersession remain.
+
+The minimal two-file production change and one deliberate old assertion transition
+passed the single focused source run:56/56, no skips/cancellations/TODOs, empty test
+stderr and540 unchanged inputs. The new fixture remained byte-identical. Its retained
+Node receipt/raw TAP establishes actual exit0; the original outer-driver response was
+lost during context handoff, so that supervisor exit/printed summary remains UNKNOWN.
+The run was not replayed to conceal the reporting limit. Separately, the independent
+source11 passed11/11 at the final six-path checkpoint, with its actual driver exit0,
+complete output and544 unchanged bindings independently recorded.
+
+Both passing dedicated-fixture observations reached normalized injected apply,
+changed-budget conflict, exact removal and a preview-derived read-only SDK host.
+They record14 natural CLI closures, one natural SDK closure, three SDK requests and
+23 equal manifest intervals per invocation. These are dedicated-fixture observations,
+not a census of other tests or all host processes. Injected ownership tables remain
+separate from actual native Codex parsing.
+
+The reviewed package gate preserves resource24 and adds managed-registration11,
+requiring exactly35/35 against the selected installed package. The existing real
+Codex0.160.1 verifier preserves all original assertions/grants and both registered
+SDK rounds, adding exact budget parsing, owner-ceiling refusal, one-session admission,
+natural owned-job completion and released-slot reuse. Its reported per-round raw-file
+hashes are runner-local unless independently retrieved. The hosted native Codex lanes
+use the source entry; installed35 is a separate gate, not proof of their intersection.
+
+Root serialized the six worker paths and four reviewed shared files at source checkpoint
+`1bb570caa665295b1e331dfe7aa4c49b5c9e34ff`. The first normal review stopped
+on the historical AUG012 fixture pin after the intentional live assertion transition.
+The original33,646-byte fixture and its old hash are now preserved in
+`docs/validation/fixtures/2026-11-08-aug012-resource-budgets.test.mjs`; only its
+ledger path changed, with all historical platform receipts/acceptance retained.
+The exact two-file correction is independently CLEAR at
+`a640c47b03f7607c334673242b26fdbe68f95fc7`. The failed attempt remains sealed.
+
+At23:58:50–23:58:56UTC, the corrected explicit review/render/check, normal
+build/parity, typecheck, formatting and whitespace sequence passed all seven commands.
+Complete output retains the known npm warnings; the parity baseline is verified while
+runtime DCP remains0/48. After the build, all497 corresponding inputs, including54
+compiled outputs and separately pinned Node bytes, equal the tested worker. No third
+identical focused source run was performed. [Durable source evidence](validation/2026-11-09-managed-process-budgets-source-evidence.json)
+preserves all83 original documents, three raw TAP captures, exact input maps and
+separate license notices in lossless archives; independent bundle review is CLEAR.
+Actual installed35 and native Codex budget qualification remain NOT_RUN locally;
+all six candidate jobs and six separate actual-main jobs remain required.
+
+[Issue237 / PR238 is fully delivered](validation/2026-11-09-git-no-lazy-fetch-delivery.json).
+Its exact6a6f candidate and actual9c05 main separately passed all six jobs, with five
+source suites, five installedGit36 lanes, four pinned Codex configuration/MCP lanes
+and the scoped native isolation artifacts. Actual-main acceptance was recorded
+22:50:53UTC, the claim released22:51:05, and issue237 explicitly completed22:51:12.
+Parent#66 remains open. The final delivery appendix preserves this chronology and
+all earlier mixed/RED/source/hosted evidence.
+
+CLI292/259/286 receive bounded evidence only. All300 protected rows, seed, stages,
+weights, estimates and acceptance remain unchanged:29.36% maturity,0complete,
+45blocked,126notStarted; DCP0/48 andWEB0/12. Parents#92/#4 remain open.
+Provider lifecycle and connected Windows cleanup in#232 remain held after the two
+recorded rejected creates. No third create, connected-workstation change, deployment,
+production bridge restart or model request accompanies this source change. Preserve
+the dirty Windows primary, unrelated projects, owner state, retained locks and
+historical claims/refs.
+
+Next: finish exact shared/source/catalog qualification, publish the immutable candidate,
+inspect all six candidate jobs including actual installed35 and real Codex budget
+rounds, merge normally with the expected head, then independently qualify all six
+fresh actual-main jobs before tracker acceptance and claim release. Continue useful
+dependency-ready work afterward; a source merge is not a deployment.
+
+---
+
 # Implicit Git fetch correction checkpoint — 2026-11-09 UTC
 
 Session `MTERM-WEB-20261109T131339Z-resume-a9287b3c` owns the separate

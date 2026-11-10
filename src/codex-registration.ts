@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 // AI-Change: 2026-10-05-codex-parity-foundation (OpenAI / GPT-6 Astra Pro; self-reported)
 // Modified: 2026-11-02-registration-rename-retry; bounded Windows retries retain conflict checks.
+// Modified: 2026-11-09-managed-process-budgets; snapshot selected owner policy before root validation.
 import fs from 'node:fs/promises';
 import { constants } from 'node:fs';
 import path from 'node:path';
@@ -14,6 +15,7 @@ import { z } from 'zod';
 import { RootPolicy } from './policy.js';
 import { resolveCodex } from './codex.js';
 import { fail } from './errors.js';
+import { parseProcessBudget } from './resource-budget-policy.js';
 
 const exec = promisify(execFile);
 const hash = (value: string | Buffer) => createHash('sha256').update(value).digest('hex');
@@ -54,9 +56,12 @@ export async function planCodexRegistration(options: {
   allowWrite?: boolean;
   allowExec?: boolean;
   compatDesktopCommander?: boolean;
+  processBudget?: unknown;
   name?: string;
 }): Promise<RegistrationPlan> {
   const name = nameSchema.parse(options.name ?? 'mterm-local');
+  const selectedBudget = options.processBudget;
+  const processBudget = selectedBudget === undefined ? undefined : parseProcessBudget(selectedBudget);
   const policy = await RootPolicy.create(options.roots ?? path.resolve(options.root));
   const bin = fileURLToPath(new URL('../bin/mterm-cli.js', import.meta.url));
   return {
@@ -74,6 +79,7 @@ export async function planCodexRegistration(options: {
       ...(options.compatConfig ? ['--compat-config', options.compatConfig] : []),
       ...(options.allowConfigWrite ? ['--allow-config-write'] : []),
       ...(options.allowedShells ?? []).flatMap((shell) => ['--allow-shell', shell]),
+      ...(processBudget === undefined ? [] : ['--process-budget', JSON.stringify(processBudget)]),
     ],
   };
 }

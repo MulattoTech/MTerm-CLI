@@ -10,6 +10,18 @@ import { TypeChecker } from '../dist/quality/typecheck.js';
 import { RefineEngine } from '../dist/quality/refine-pipeline.js';
 import { FileService } from '../dist/files.js';
 
+async function safeRm(dir) {
+  for (let i = 0; i < 20; i++) {
+    try {
+      await fs.rm(dir, { recursive: true, force: true, maxRetries: 10, retryDelay: 100 });
+      return;
+    } catch (e) {
+      if (i === 19) throw e;
+      await new Promise((r) => setTimeout(r, 150));
+    }
+  }
+}
+
 test('CodeFormatter normalizes whitespace and trailing newline', async () => {
   const unformatted = 'function test() {   \n  const x = 1; \n}';
   const { formattedText, engine } = await CodeFormatter.formatText(unformatted, 'sample.ts');
@@ -89,7 +101,7 @@ test('RefineEngine 5-pass pipeline successfully refines valid code and rejects i
     assert.equal(reportBad.syntaxValid, false);
     assert.match(reportBad.failureReason, /Syntax validation failed/);
   } finally {
-    await fs.rm(tmpDir, { recursive: true, force: true, maxRetries: 8, retryDelay: 50 });
+    await safeRm(tmpDir);
   }
 });
 
@@ -116,6 +128,6 @@ test('FileService integration exposes format, lint, and refine MCP operations', 
     assert.equal(refineRes.ok, true);
     assert.match(refineRes.finalContent, /return 10;/);
   } finally {
-    await fs.rm(tmpDir, { recursive: true, force: true, maxRetries: 8, retryDelay: 50 });
+    await safeRm(tmpDir);
   }
 });

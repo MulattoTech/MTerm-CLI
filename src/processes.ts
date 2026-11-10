@@ -475,6 +475,9 @@ export class ProcessService {
           });
           s.treeCleanup = 'requested-owned-live-tree';
         }
+        try {
+          s.child.kill('SIGKILL');
+        } catch {}
       } else {
         process.kill(-pid, 'SIGTERM');
         s.treeCleanup = 'requested-owned-process-group';

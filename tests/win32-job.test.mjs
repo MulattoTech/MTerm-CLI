@@ -47,3 +47,23 @@ test('Win32JobSupervisor initializes and cleanly terminates assigned process', a
     await supervisor.shutdown();
   }
 });
+
+test('shutdown reaps an owned supervisor child even before its READY handshake', async () => {
+  const supervisor = Win32JobSupervisor.getInstance();
+  const child = spawn(process.execPath, ['-e', 'setInterval(() => {}, 1000)'], { stdio: 'pipe' });
+  const closed = new Promise((resolve) => child.once('close', resolve));
+  try {
+    assert.ok(child.pid);
+    supervisor.child = child;
+    supervisor.ready = false;
+    await supervisor.shutdown();
+    const outcome = await Promise.race([
+      closed.then(() => 'closed'),
+      new Promise((resolve) => setTimeout(() => resolve('timeout'), 2000)),
+    ]);
+    assert.equal(outcome, 'closed', 'shutdown left an unready supervisor process running');
+  } finally {
+    child.kill('SIGKILL');
+    supervisor.child = undefined;
+  }
+});

@@ -48,7 +48,7 @@ export class Win32JobSupervisor {
           'v1.0',
           'powershell.exe',
         );
-        this.child = spawn(
+        const child = spawn(
           powershell,
           ['-NoProfile', '-NonInteractive', '-ExecutionPolicy', 'Bypass', '-File', scriptPath],
           {
@@ -56,10 +56,13 @@ export class Win32JobSupervisor {
             stdio: ['pipe', 'pipe', 'pipe'],
           },
         );
+        this.child = child;
 
         let lineBuffer = '';
+        let initTimer: NodeJS.Timeout | undefined;
 
-        this.child.stdout?.on('data', (data: Buffer) => {
+        child.stdout?.on('data', (data: Buffer) => {
+          if (this.child !== child) return;
           lineBuffer += data.toString();
           const lines = lineBuffer.split(/\r?\n/);
           lineBuffer = lines.pop() || '';
@@ -70,6 +73,7 @@ export class Win32JobSupervisor {
 
             if (trimmed === 'READY') {
               this.ready = true;
+              clearTimeout(initTimer);
               resolve();
               continue;
             }
@@ -85,27 +89,37 @@ export class Win32JobSupervisor {
           }
         });
 
-        this.child.on('error', (err) => {
-          this.ready = false;
-          this.initPromise = undefined;
-          for (const resolvePending of this.pending.values()) resolvePending('ERR_SUPERVISOR_EXIT');
-          this.pending.clear();
+        child.on('error', (err) => {
+          clearTimeout(initTimer);
+          if (this.child === child) {
+            this.child = undefined;
+            this.ready = false;
+            this.initPromise = undefined;
+            this.flushPending();
+          }
           reject(err);
         });
 
-        this.child.on('exit', () => {
-          this.ready = false;
-          this.initPromise = undefined;
-          for (const resolvePending of this.pending.values()) resolvePending('ERR_SUPERVISOR_EXIT');
-          this.pending.clear();
+        child.on('exit', () => {
+          clearTimeout(initTimer);
+          if (this.child === child) {
+            this.child = undefined;
+            this.ready = false;
+            this.initPromise = undefined;
+            this.flushPending();
+          }
+          resolve();
         });
 
         // Fail-safe timeout for supervisor initialization
-        setTimeout(() => {
-          if (!this.ready) {
+        initTimer = setTimeout(() => {
+          if (this.child === child && !this.ready) {
             this.ready = false;
-            resolve(); // Fallback to graceful non-job supervision
+            this.child = undefined;
+            this.initPromise = undefined;
+            child.kill();
           }
+          resolve(); // Fall back to taskkill-based supervision.
         }, 8000);
       } catch (err) {
         this.ready = false;
@@ -133,6 +147,11 @@ export class Win32JobSupervisor {
         }
       }, 4000);
     });
+  }
+
+  private flushPending(): void {
+    for (const resolvePending of this.pending.values()) resolvePending('ERR_SUPERVISOR_EXIT');
+    this.pending.clear();
   }
 
   /**
@@ -164,10 +183,16 @@ export class Win32JobSupervisor {
    * Closes the supervisor and all held job handles.
    */
   async shutdown(): Promise<void> {
-    if (this.child && this.ready) {
-      this.child.stdin?.write('EXIT\n');
-      this.ready = false;
-      this.child.kill();
-    }
+    const child = this.child;
+    if (!child) return;
+    const wasReady = this.ready;
+    this.child = undefined;
+    this.ready = false;
+    this.initPromise = undefined;
+    this.flushPending();
+    if (wasReady && child.stdin?.writable) child.stdin.write('EXIT\n');
+    const closed = new Promise<void>((resolve) => child.once('close', () => resolve()));
+    child.kill();
+    await Promise.race([closed, new Promise<void>((resolve) => setTimeout(resolve, 2000))]);
   }
 }

@@ -1,9 +1,12 @@
 // SPDX-License-Identifier: MIT
 // AI-Change: 2026-10-05-codex-parity-foundation
+// Modified: 2026-11-09-managed-process-budgets; verify explicit policy through real Codex and both registered sessions.
 // Modified: 2026-11-02-config-installed-qualification; synthetic multi-root configuration discovery and persistence.
 // Real Codex only receives isolated synthetic config. No model calls or auth access.
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import os from 'node:os';
+import { createHash } from 'node:crypto';
 import assert from 'node:assert/strict';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
@@ -26,6 +29,192 @@ async function verifyProcessExit(pid) {
     await delay(25);
   } while (Date.now() < deadline);
   throw new Error('The registered MCP child exit was not independently observed');
+}
+
+// The real Codex registration exercises a canonical decimal above the safe Number range.
+// Every actual job explicitly requests zero scratch; this is admission, not a disk-write quota.
+const selectedProcessBudget = Object.freeze({
+  maxSessions: 1,
+  maxPendingStarts: 2,
+  maxOutputBytes: 4096,
+  maxRuntimeMs: 60000,
+  admissionTimeoutMs: 3000,
+  disk: Object.freeze({
+    minFreeBytes: '0',
+    highWaterPercent: 100,
+    maxJobScratchBytes: '9007199254740993',
+  }),
+});
+const processBudgetArgument = JSON.stringify(selectedProcessBudget);
+
+async function verifyRegisteredProcessBudget(callTool, iteration, observationPath) {
+  const observations = [],
+    owned = new Map(),
+    fallbackCleanup = [];
+  let completed = false,
+    failure = null,
+    summary;
+  const observe = async (name, args = {}) => {
+    const response = await callTool({ name, arguments: args });
+    observations.push({ name, arguments: args, response });
+    const value = response.structuredContent;
+    if (name === 'mterm_start_process' && typeof value?.sessionId === 'string')
+      owned.set(value.sessionId, value.pid);
+    assert.ok(observations.length <= 512, 'Managed budget observation count exceeded its bound');
+    return response;
+  };
+  const success = async (name, args = {}) => {
+    const response = await observe(name, args);
+    assert.equal(response.isError, false, name + ' did not succeed');
+    assert.ok(response.structuredContent && typeof response.structuredContent === 'object');
+    return response.structuredContent;
+  };
+  const until = async (name, args, predicate) => {
+    const deadline = Date.now() + 5000;
+    let last;
+    do {
+      last = await success(name, args);
+      if (predicate(last)) return last;
+      await delay(50);
+    } while (Date.now() < deadline);
+    assert.fail('Managed budget condition did not occur: ' + JSON.stringify(last));
+  };
+  const textOf = (output) => output.events.map((event) => event.text).join('');
+  const outputArgs = (sessionId) => ({ sessionId, afterSeq: 0, maxBytes: 4096 });
+  const baseRequest = { command: process.execPath, scratchBytes: '0' };
+  const finishNaturally = async (job, marker) => {
+    const output = await until('mterm_read_process_output', outputArgs(job.sessionId), (x) => !x.running);
+    assert.equal(output.exitCode, 0);
+    assert.equal(output.signal, null);
+    assert.equal(output.timedOut, false);
+    assert.equal(output.lostOutput, false);
+    assert.ok(textOf(output).includes(marker));
+    assert.ok(output.retainedBytes <= selectedProcessBudget.maxOutputBytes);
+    await verifyProcessExit(job.pid);
+    owned.delete(job.sessionId);
+    return output;
+  };
+  try {
+    const capabilities = await success('mterm_capabilities');
+    assert.equal(capabilities.executionEnabled, true); // Existing explicit --allow-exec grant.
+    assert.deepEqual(capabilities.resources.limits, selectedProcessBudget);
+    const initial = await success('mterm_list_sessions');
+    assert.deepEqual(initial.resources.limits, selectedProcessBudget);
+    assert.equal(initial.resources.scope, 'host-instance');
+    assert.equal(initial.resources.usage.activeJobs, 0);
+    assert.equal(initial.resources.usage.pendingStarts, 0);
+    assert.equal(initial.sessions.length, 0);
+    for (const extra of [
+      { maxOutputBytes: selectedProcessBudget.maxOutputBytes + 1 },
+      { timeoutMs: selectedProcessBudget.maxRuntimeMs + 1 },
+    ]) {
+      const denied = await observe('mterm_start_process', {
+        ...baseRequest,
+        args: ['-e', 'process.stdout.write("UNEXPECTED_BUDGET_SPAWN")'],
+        ...extra,
+      });
+      assert.equal(denied.isError, true);
+      assert.equal(denied.structuredContent?.error?.code, 'BUDGET_EXCEEDED');
+    }
+    const afterCeilings = await success('mterm_list_sessions');
+    assert.equal(afterCeilings.sessions.length, 0);
+    assert.equal(afterCeilings.resources.usage.activeJobs, 0);
+    const held = await success('mterm_start_process', {
+      ...baseRequest,
+      args: [
+        '-e',
+        'process.stdout.write("BUDGET_READY\\n");process.stdin.resume();process.stdin.once("data",()=>{process.stdout.write("BUDGET_RELEASED\\n");process.stdin.destroy();});',
+      ],
+    });
+    assert.ok(Number.isInteger(held.pid) && held.pid > 0);
+    assert.equal(held.budget.timeoutMs, selectedProcessBudget.maxRuntimeMs);
+    assert.equal(held.budget.maxOutputBytes, selectedProcessBudget.maxOutputBytes);
+    assert.equal(held.budget.scratchBytes, '0');
+    assert.equal(held.budget.disk.backend, 'node:fs.statfs');
+    await until(
+      'mterm_read_process_output',
+      outputArgs(held.sessionId),
+      (x) => x.running && textOf(x).includes('BUDGET_READY'),
+    );
+    const denied = await observe('mterm_start_process', {
+      ...baseRequest,
+      args: ['-e', 'process.stdout.write("UNEXPECTED_SECOND_JOB")'],
+    });
+    assert.equal(denied.isError, true);
+    assert.equal(denied.structuredContent?.error?.code, 'SESSION_LIMIT');
+    const occupied = await success('mterm_list_sessions');
+    assert.equal(occupied.resources.usage.activeJobs, 1);
+    assert.equal(occupied.resources.usage.pendingStarts, 0);
+    assert.equal(occupied.sessions.length, 1);
+    assert.equal(occupied.sessions[0].sessionId, held.sessionId);
+    await success('mterm_process_input', { sessionId: held.sessionId, text: 'release\n' });
+    const released = await finishNaturally(held, 'BUDGET_RELEASED');
+    const afterRelease = await success('mterm_list_sessions');
+    assert.equal(afterRelease.resources.usage.activeJobs, 0);
+    const reused = await success('mterm_start_process', {
+      ...baseRequest,
+      args: ['-e', 'process.stdout.write("BUDGET_REUSED\\n")'],
+    });
+    assert.ok(Number.isInteger(reused.pid) && reused.pid > 0);
+    const finished = await finishNaturally(reused, 'BUDGET_REUSED');
+    const final = await success('mterm_list_sessions');
+    assert.equal(final.resources.usage.activeJobs, 0);
+    assert.equal(final.resources.usage.pendingStarts, 0);
+    assert.equal(final.resources.usage.reservedScratchBytes, '0');
+    assert.equal(final.sessions.length, 2);
+    assert.ok(final.sessions.every((session) => !session.running));
+    completed = true;
+    summary = {
+      iteration,
+      selectedPolicyVerified: true,
+      actualOwnedJobs: 2,
+      ownedJobSessionIds: [held.sessionId, reused.sessionId],
+      ownedJobPids: [held.pid, reused.pid],
+      sessionLimitDenials: 1,
+      ownerCeilingDenials: 2,
+      confirmedNaturalJobClosures: 2,
+      fallbackStopUsed: false,
+      releasePermittedNextJob: true,
+      finalActiveJobs: 0,
+      finalPendingStarts: 0,
+      finalReservedScratchBytes: '0',
+      closureExitCodes: [released.exitCode, finished.exitCode],
+      closureSignals: [released.signal, finished.signal],
+      realDiskAdmissionWithZeroScratch: true,
+      observationPath,
+    };
+  } catch (error) {
+    failure = { name: error.name, message: error.message };
+    throw error;
+  } finally {
+    const cleanupErrors = [];
+    for (const [sessionId, pid] of owned) {
+      try {
+        const stopped = await success('mterm_stop_process', { sessionId });
+        assert.equal(stopped.running, false);
+        await verifyProcessExit(pid);
+        fallbackCleanup.push({ sessionId, pid, confirmedClosed: true });
+      } catch (error) {
+        cleanupErrors.push(error);
+        fallbackCleanup.push({ sessionId, pid, confirmedClosed: false, error: error.message });
+      }
+    }
+    const raw =
+      JSON.stringify({ iteration, completed, failure, observations, fallbackCleanup }, null, 2) + '\n';
+    await fs.writeFile(observationPath, raw);
+    if (summary) {
+      summary.observationCount = observations.length;
+      summary.observationBytes = Buffer.byteLength(raw);
+      summary.observationSha256 = createHash('sha256').update(raw).digest('hex');
+    }
+    assert.ok(
+      Buffer.byteLength(raw) <= 2097152,
+      'Managed budget observation exceeded 2 MiB; full bytes retained',
+    );
+    if (cleanupErrors.length)
+      throw new AggregateError(cleanupErrors, 'Owned managed-budget job cleanup was not confirmed');
+  }
+  return summary;
 }
 
 // CI must select the pinned test-owned native binary, never a user/global wrapper
@@ -157,6 +346,8 @@ const args = [
   secondWorkspace,
   '--allow-write',
   '--allow-exec',
+  '--process-budget',
+  processBudgetArgument,
   '--compat-desktop-commander',
   '--compat-config',
   compatibilityFile,
@@ -175,9 +366,37 @@ assert.equal(spec.command, process.execPath);
 assert.equal(path.resolve(spec.args[0]), bin);
 assert.ok(spec.args.includes('--allow-config-write'));
 assert.equal(spec.args[spec.args.indexOf('--compat-config') + 1], compatibilityFile);
+assert.equal(spec.args.filter((argument) => argument === '--process-budget').length, 1);
+assert.equal(spec.args[spec.args.indexOf('--process-budget') + 1], processBudgetArgument);
+assert.deepEqual(JSON.parse(spec.args[spec.args.indexOf('--process-budget') + 1]), selectedProcessBudget);
+const budgetRounds = [];
+const mcpCwd = await fs.realpath(await fs.mkdtemp(path.join(os.tmpdir(), 'mterm-managed-codex-cwd-')));
+const selectedPackageRoot = await fs.realpath(path.resolve(path.dirname(bin), '..'));
+for (const parent of [await fs.realpath(root), selectedPackageRoot]) {
+  const relative = path.relative(parent, mcpCwd);
+  assert.ok(
+    relative === '..' || relative.startsWith('..' + path.sep) || path.isAbsolute(relative),
+    'Managed MCP cwd must be outside the checkout and selected package',
+  );
+}
+const cwdReceipt = path.join(evidence, 'registered-mcp-cwd.json');
+await fs.writeFile(
+  cwdReceipt,
+  JSON.stringify(
+    { cwd: mcpCwd, outsideCheckout: true, outsideSelectedPackage: true, cleanup: 'PENDING' },
+    null,
+    2,
+  ) + '\n',
+);
 // Launch twice from the actual config Codex parsed. No independent foreground server is needed.
 for (let iteration = 0; iteration < 2; iteration++) {
-  const transport = new StdioClientTransport({ command: spec.command, args: spec.args, env, stderr: 'pipe' });
+  const transport = new StdioClientTransport({
+    command: spec.command,
+    args: spec.args,
+    env,
+    cwd: mcpCwd,
+    stderr: 'pipe',
+  });
   const client = new Client({ name: 'mterm-managed-codex-fixture', version: '1.0.0' });
   const callTool = (args) => client.callTool(args, { timeout: 5000 });
   let childPid = null;
@@ -196,6 +415,13 @@ for (let iteration = 0; iteration < 2; iteration++) {
     assert.ok(toolList.tools.some((x) => x.name === 'read_file'));
     assert.ok(toolList.tools.some((x) => x.name === 'get_config'));
     assert.ok(toolList.tools.some((x) => x.name === 'set_config_value'));
+    budgetRounds.push(
+      await verifyRegisteredProcessBudget(
+        callTool,
+        iteration,
+        path.join(evidence, `managed-budget-round-${iteration}.json`),
+      ),
+    );
     const configuration = await callTool({ name: 'get_config', arguments: {} });
     assert.equal(configuration.isError, false);
     const preferences = configuration.structuredContent.config;
@@ -267,6 +493,21 @@ for (let iteration = 0; iteration < 2; iteration++) {
   }
   assert.equal(transport.pid, null);
 }
+assert.equal(budgetRounds.length, 2);
+await fs.rmdir(mcpCwd);
+await fs.writeFile(
+  cwdReceipt,
+  JSON.stringify(
+    {
+      cwd: mcpCwd,
+      outsideCheckout: true,
+      outsideSelectedPackage: true,
+      cleanup: 'REMOVED_EMPTY_OWNED_CWD_AFTER_CONFIRMED_MCP_EXIT',
+    },
+    null,
+    2,
+  ) + '\n',
+);
 const extra = '\n[mcp_servers.after_setup]\ncommand="another-unrelated"\n';
 await fs.appendFile(config, extra);
 assert.equal((await mterm(['remove', 'codex'])).applied, false);
@@ -292,6 +533,25 @@ const report = {
   setupApplied: true,
   setupIdempotent: true,
   configurationParsedByCodex: true,
+  managedProcessBudget: {
+    selectedPolicy: selectedProcessBudget,
+    exactSingleArgumentParsedByCodex: true,
+    registeredSessionRounds: budgetRounds.length,
+    rounds: budgetRounds,
+    registeredMcpCwdOutsideCheckoutAndSelectedPackage: true,
+    registeredMcpCwdRemovedAfterConfirmedExit: true,
+    injectedOwnershipTable: false,
+    rawObservationRetention:
+      'Runner-local files; reported hashes do not establish independent retrieval or rehashing.',
+    registeredMcpCwdReceipt: {
+      path: cwdReceipt,
+      bytes: (await fs.stat(cwdReceipt)).size,
+      sha256: createHash('sha256')
+        .update(await fs.readFile(cwdReceipt))
+        .digest('hex'),
+    },
+    crossHostOrHardQuotaAcceptance: false,
+  },
   registeredCommandMcpRounds: 2,
   compatibilityProfilePersisted: true,
   configurationToolsDiscovered: ['get_config', 'set_config_value'],

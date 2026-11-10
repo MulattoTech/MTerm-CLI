@@ -41,7 +41,14 @@ Execution still requires `--allow-exec`. Pack execution still requires its exact
 
 Byte strings allow 1–30 digits, from `0` through `999999999999999999999999999999`. Leading zeros, signs, exponent notation and whitespace are refused before BigInt conversion. Measured statistics outside the same accounting range fail closed.
 
-The existing `tools` command reports the effective policy. Managed `setup codex --process-budget …` is deliberately refused because that registration path does not yet preserve this option. Supply the explicit stdio arguments through a client that supports them. No generated registration silently drops the owner budget; this is a support boundary, not a request for recurring owner review.
+The existing `tools` command reports the effective policy. Managed `setup codex --process-budget …`
+previews the normalized policy and preserves it as one JSON argument when explicitly applied.
+Omitting the option preserves the previous command and ownership hash; explicit `{}` selects
+and records the defaults. Reordered keys normalize identically, and decimal disk strings are
+preserved exactly. Applying a different budget to an existing registration remains a changed-plan
+conflict: deliberate exact owned removal and reconfiguration are required. The existing ownership, backup and unrelated-byte
+preservation rules are unchanged; see [Managed Codex registration](../CODEX_REGISTRATION.md).
+Budget selection still grants no execution or write capability.
 
 ## Per-job requests
 
@@ -128,7 +135,7 @@ No failed admission removes user files or terminates unrelated processes. Window
 
 ## Qualification and remaining acceptance
 
-The regression suite is `tests/resource-budgets.test.mjs`. It uses real owned processes, official SDK stdio clients, actual filesystem observations and test-owned directories. Controlled unsupported/permission/invalid-statistics and post-spawn-error injections are labeled separately from actual platform observations. Tests exercise two independent hosts and explicitly verify that they do not share enforcement.
+The resource regression suite is `tests/resource-budgets.test.mjs`. Managed policy preservation adds `tests/codex-budget-registration.test.mjs`, with explicit separation between injected ownership-table checks and actual SDK observations. It uses real owned processes, official SDK stdio clients, actual filesystem observations and test-owned directories. Controlled unsupported/permission/invalid-statistics and post-spawn-error injections are labeled separately from actual platform observations. Tests exercise two independent hosts and explicitly verify that they do not share enforcement.
 
 Installed-package verification binds the compiled admission, policy, process, pack, CLI and MCP module bytes and reruns the suite outside the checkout. Exact source, Node version, platform results, retained failures, security/license observations and independent reviews are recorded under `docs/validation/2026-11-08-aug012-*`.
 

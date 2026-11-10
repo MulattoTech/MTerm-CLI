@@ -318,7 +318,7 @@ test('a post-spawn child error cannot release a live job or its reservation', as
   assert.equal(service.resourceStatus().usage.reservedScratchBytes, '0');
 });
 
-test('CLI tools reports the effective budget and managed setup refuses to silently discard it', async (t) => {
+test('CLI tools reports the effective budget and managed setup preserves it', async (t) => {
   const f = await directory(t);
   const result = await exec(
     process.execPath,
@@ -326,13 +326,16 @@ test('CLI tools reports the effective budget and managed setup refuses to silent
     { timeout: 15000 },
   );
   assert.equal(JSON.parse(result.stdout).processBudget.maxSessions, 1);
-  await assert.rejects(
-    exec(
-      process.execPath,
-      [entry, 'setup', 'codex', '--root', f.root, '--process-budget', '{"maxSessions":1}'],
-      { timeout: 15000 },
-    ),
-    (error) => error.code === 2 && /does not yet preserve process budgets/.test(error.stderr),
+  const setup = await exec(
+    process.execPath,
+    [entry, 'setup', 'codex', '--root', f.root, '--process-budget', '{"maxSessions":1}'],
+    { timeout: 15000 },
+  );
+  const args = JSON.parse(setup.stdout).add.args;
+  assert.equal(args.filter((value) => value === '--process-budget').length, 1);
+  assert.deepEqual(
+    JSON.parse(args[args.indexOf('--process-budget') + 1]),
+    JSON.parse(result.stdout).processBudget,
   );
 });
 

@@ -3,7 +3,7 @@
   "provider": "OpenAI",
   "model": "GPT-6",
   "started_at": "2026-11-10T12:00:00Z",
-  "updated_at": "2026-11-10T13:54:23Z",
+  "updated_at": "2026-11-10T14:10:22Z",
   "base_sha": "229235dfb20ed8ca998138d54168979f384665fa",
   "issues": [244],
   "requirements": ["CLI-157", "CLI-165", "CLI-269", "CLI-287"],
@@ -43,6 +43,7 @@
     "Remove implicit npx and project-controlled executable launches from default formatting and linting; gated local TypeScript checker requires execution permission.",
     "Label repository regex navigation, deterministic review and in-memory fleet task ledger honestly as partial, non-production capabilities.",
     "Package the Windows Job Object PowerShell helper with compiled assets; track assignment before tree termination and check native API success.",
+    "Canonicalize journal roots before hashing so macOS /var versus /private/var aliasing does not strand otherwise valid snapshots.",
     "Preserve the canonical requirement stages until independent acceptance evidence exists."
   ],
   "tests": [
@@ -57,6 +58,10 @@
     {
       "command": "npm run check",
       "result": "roadmap, parity, typecheck, and formatting checks passed; 543 tests passed, 12 platform-specific tests skipped, 27 isolation.test.mjs cases failed solely because the scratch sandbox prohibits Unix-domain socket listen (EPERM). No failures outside isolation.test.mjs were observed. Full suite not green in this constrained environment."
+    },
+    {
+      "command": "macos-15-intel CI for draft PR #245, run 42830125379",
+      "result": "First attempt failed one shadow journal test because temporary /var and /private/var aliases hashed differently. Reproduced with a symlink root on Linux, corrected, and 13/13 focused tests passed. Fresh CI required."
     },
     {
       "command": "Original Gemini PR Actions run 42780935140",

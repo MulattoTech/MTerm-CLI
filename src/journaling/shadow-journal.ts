@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 // Module: MTerm-CLI Transactional Shadow Journal & Rollback Engine
 import fs from 'node:fs/promises';
+import { realpathSync } from 'node:fs';
 import path from 'node:path';
 import os from 'node:os';
 import { createHash, randomUUID } from 'node:crypto';
@@ -30,7 +31,9 @@ export class ShadowJournal {
   private activeTransactionId?: string;
 
   constructor(rootDir?: string) {
-    this.rootDir = path.resolve(rootDir ?? process.cwd());
+    // macOS often aliases /var to /private/var. RootPolicy canonicalizes that
+    // alias; the journal must use the same real root for snapshot discovery.
+    this.rootDir = realpathSync.native(path.resolve(rootDir ?? process.cwd()));
     const base = process.env.MTERM_JOURNAL_DIR || path.join(os.tmpdir(), 'mterm-journals');
     // Snapshots from different trusted roots must never be visible to one another.
     const rootId = createHash('sha256').update(this.rootDir).digest('hex').slice(0, 32);
@@ -173,7 +176,7 @@ export class ShadowJournal {
   }): Promise<RollbackResult> {
     // Preserve the public API, but route it through the existing guarded atomic FileService.
     // The former implementation used unchecked fs.writeFile and could escape its root.
-    if (path.resolve(options.rootDir) !== this.rootDir) {
+    if (realpathSync.native(path.resolve(options.rootDir)) !== this.rootDir) {
       fail('JOURNAL_ROOT', 'Rollback root does not match the snapshot owner.');
     }
     if (!options.file) fail('ROLLBACK_SCOPE', 'Only guarded single-file rollback is currently supported.');

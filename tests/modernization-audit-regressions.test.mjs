@@ -56,6 +56,26 @@ test('rollback refuses a file modified since the recorded write', async () => {
   }
 });
 
+test('journal rollback uses the same canonical root when the temporary path has a symlink alias', async () => {
+  if (process.platform === 'win32') return;
+  const base = await fs.mkdtemp(path.join(os.tmpdir(), 'mterm-audit-root-alias-'));
+  try {
+    const actual = path.join(base, 'actual');
+    const alias = path.join(base, 'alias');
+    await fs.mkdir(actual);
+    await fs.symlink(actual, alias, 'dir');
+    const journal = new ShadowJournal(alias);
+    await fs.writeFile(path.join(actual, 'entry.js'), 'const x = 1;\n');
+    await journal.recordSnapshot('entry.js', 'const x = 1;\n', 'write', undefined, 'const x = 2;\n');
+    await fs.writeFile(path.join(actual, 'entry.js'), 'const x = 2;\n');
+    const rollback = await journal.rollback({ file: 'entry.js', rootDir: alias });
+    assert.equal(rollback.ok, true);
+    assert.equal(await fs.readFile(path.join(actual, 'entry.js'), 'utf8'), 'const x = 1;\n');
+  } finally {
+    await fs.rm(base, { recursive: true, force: true });
+  }
+});
+
 test('patch tool refuses a wrong target, multiple targets, or malformed hunk length', async () => {
   const root = await fs.mkdtemp(path.join(os.tmpdir(), 'mterm-audit-patch-'));
   try {

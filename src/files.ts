@@ -20,6 +20,7 @@ import { ShadowJournal } from './journaling/shadow-journal.js';
 import { RepoMapGenerator } from './intelligence/repomap.js';
 import { LspManager } from './lsp/manager.js';
 import { ModelRouter } from './ai/router.js';
+import { FleetSupervisor } from './orchestration/fleet-manager.js';
 const pathname = z.string().min(1).max(4096);
 const version = z.union([z.literal('missing'), z.string().regex(/^[a-f0-9]{64}$/)]);
 export const fileSchemas = {
@@ -85,6 +86,17 @@ export const fileSchemas = {
     diff: z.string().min(1).max(1048576),
     provider: z.string().max(32).optional(),
     focus: z.enum(['readability', 'security', 'performance', 'architecture']).optional(),
+  }),
+  fleetSubmit: z.strictObject({
+    sessionId: z.string().min(1).max(64),
+    clientLabel: z.string().min(1).max(64),
+    name: z.string().min(1).max(128),
+    taskId: z.string().max(64).optional(),
+    payload: z.record(z.string(), z.unknown()).optional(),
+  }),
+  fleetCheckpoint: z.strictObject({
+    taskId: z.string().min(1).max(64),
+    checkpointData: z.record(z.string(), z.unknown()),
   }),
   search: z.strictObject({
     path: pathname.default('.'),
@@ -755,5 +767,19 @@ export class FileService {
   async aiReviewDiff(input: unknown) {
     const a = fileSchemas.aiReviewDiff.parse(input);
     return ModelRouter.getInstance().reviewDiff(a.diff, { provider: a.provider, focus: a.focus });
+  }
+  async fleetSubmit(input: unknown) {
+    const a = fileSchemas.fleetSubmit.parse(input);
+    return FleetSupervisor.getInstance().submitTask(a);
+  }
+  async fleetStatus() {
+    return FleetSupervisor.getInstance().getStatus();
+  }
+  async fleetCheckpoint(input: unknown) {
+    const a = fileSchemas.fleetCheckpoint.parse(input);
+    return { ok: FleetSupervisor.getInstance().saveCheckpoint(a.taskId, a.checkpointData) };
+  }
+  async fleetHalt() {
+    return FleetSupervisor.getInstance().emergencyHalt();
   }
 }

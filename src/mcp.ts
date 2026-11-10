@@ -514,7 +514,35 @@ export async function runMcp(options: HostOptions): Promise<void> {
         true,
         (a) => files.aiReviewDiff(a),
       );
+      add(
+        'mterm_fleet_status',
+        'Report multi-session fleet queue metrics, active sessions, and admission state.',
+        empty,
+        true,
+        () => files.fleetStatus(),
+      );
       if (files.allowWrite) {
+        add(
+          'mterm_fleet_submit',
+          'Submit an idempotent task to the fleet supervisor queue.',
+          fileSchemas.fleetSubmit,
+          false,
+          (a) => files.fleetSubmit(a),
+        );
+        add(
+          'mterm_fleet_checkpoint',
+          'Save intermediate checkpoint state for an in-flight fleet task.',
+          fileSchemas.fleetCheckpoint,
+          false,
+          (a) => files.fleetCheckpoint(a),
+        );
+        add(
+          'mterm_fleet_halt',
+          'Emergency stop: cancel all in-flight and queued fleet tasks across all sessions.',
+          empty,
+          false,
+          () => files.fleetHalt(),
+        );
         add(
           'mterm_format_file',
           'Auto-format file using project Prettier, Ruff, or built-in deterministic normalization.',

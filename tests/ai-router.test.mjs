@@ -19,7 +19,7 @@ test('ModelRouter provides deterministic diff review and catches secrets', async
 `;
 
   const report = await router.reviewDiff(dirtyDiff);
-  assert.equal(report.ok, true);
+  assert.equal(report.ok, false);
   assert.equal(report.issues.length, 2);
   assert.equal(report.issues[0].severity, 'critical');
   assert.match(report.issues[0].message, /hardcoded API key/i);

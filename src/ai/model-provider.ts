@@ -101,7 +101,7 @@ export class DeterministicReviewProvider implements ModelProvider {
     }
 
     return {
-      ok: true,
+      ok: !issues.some((issue) => issue.severity === 'critical'),
       provider: this.name,
       model: 'deterministic-rule-engine',
       summary: `Deterministic diff review completed (${lines.length} lines analyzed). ${issues.length} potential issue(s) detected.`,

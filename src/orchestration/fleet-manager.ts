@@ -197,7 +197,7 @@ export class FleetSupervisor {
     let affected = 0;
 
     for (const task of this.tasks.values()) {
-      if (task.status === 'queued' || task.status === 'running') {
+      if (task.status === 'queued' || task.status === 'running' || task.status === 'checkpointed') {
         task.status = 'cancelled';
         task.error = 'Emergency fleet halt triggered';
         affected++;

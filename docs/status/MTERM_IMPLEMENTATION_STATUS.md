@@ -53,3 +53,20 @@ Legend:
 | **M9-01** | M9 | MTerm-CLI-DEV Environment Isolation | P2 | 🟢 Verified | `src/config.ts`, `src/cli.ts` | `MTERM_ENV=development` & isolated config (`tests/environment-isolation.test.mjs`) |
 | **M10-01**| M10 | Comprehensive Regression & Release Gate | P0 | 🟢 Verified | 55 unit/integration test suites passing | Clean build, typecheck, documentation |
 | **MEX-01**| Hard | Local Model Inference (Ollama/llama.cpp) | N/A | ⚪ Excluded | Excluded per directive | N/A |
+
+---
+
+## 3. GitHub CI Verification Matrix (PR #244)
+
+- **PR:** [#244](https://github.com/MulattoTech/MTerm-CLI/pull/244)
+- **CI Run ID:** [42780935140](https://github.com/MulattoTech/MTerm-CLI/actions/runs/42780935140)
+- **Status:** **100% Passed (5/5 green)**
+
+| Target Runner | Result | Duration | Direct Run Log |
+| :--- | :---: | :--- | :--- |
+| **Native Linux isolation / Node 24** | **PASS** | 1m 42s | [Job 129710542202](https://github.com/MulattoTech/MTerm-CLI/actions/runs/42780935140/job/129710542202) |
+| **ubuntu-24.04 / Node 24** | **PASS** | 2m 20s | [Job 129710542242](https://github.com/MulattoTech/MTerm-CLI/actions/runs/42780935140/job/129710542242) |
+| **macos-15 (Apple Silicon ARM64) / Node 24** | **PASS** | 3m 04s | [Job 129710541745](https://github.com/MulattoTech/MTerm-CLI/actions/runs/42780935140/job/129710541745) |
+| **macos-15-intel (x86_64) / Node 24** | **PASS** | 6m 30s | [Job 129710542191](https://github.com/MulattoTech/MTerm-CLI/actions/runs/42780935140/job/129710542191) |
+| **windows-2022 (Server x64) / Node 24** | **PASS** | 8m 46s | [Job 129710542168](https://github.com/MulattoTech/MTerm-CLI/actions/runs/42780935140/job/129710542168) |
+

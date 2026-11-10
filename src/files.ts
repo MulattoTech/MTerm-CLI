@@ -19,6 +19,7 @@ import { RefineEngine } from './quality/refine-pipeline.js';
 import { ShadowJournal } from './journaling/shadow-journal.js';
 import { RepoMapGenerator } from './intelligence/repomap.js';
 import { LspManager } from './lsp/manager.js';
+import { ModelRouter } from './ai/router.js';
 const pathname = z.string().min(1).max(4096);
 const version = z.union([z.literal('missing'), z.string().regex(/^[a-f0-9]{64}$/)]);
 export const fileSchemas = {
@@ -79,6 +80,11 @@ export const fileSchemas = {
   }),
   lspSymbols: z.strictObject({
     path: pathname,
+  }),
+  aiReviewDiff: z.strictObject({
+    diff: z.string().min(1).max(1048576),
+    provider: z.string().max(32).optional(),
+    focus: z.enum(['readability', 'security', 'performance', 'architecture']).optional(),
   }),
   search: z.strictObject({
     path: pathname.default('.'),
@@ -745,5 +751,9 @@ export class FileService {
     const a = fileSchemas.lspSymbols.parse(input);
     const full = await this.policy.resolve(a.path);
     return LspManager.getDocumentSymbols(full);
+  }
+  async aiReviewDiff(input: unknown) {
+    const a = fileSchemas.aiReviewDiff.parse(input);
+    return ModelRouter.getInstance().reviewDiff(a.diff, { provider: a.provider, focus: a.focus });
   }
 }

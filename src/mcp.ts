@@ -507,6 +507,13 @@ export async function runMcp(options: HostOptions): Promise<void> {
         true,
         (a) => files.lspSymbols(a),
       );
+      add(
+        'mterm_ai_review_diff',
+        'Review code diff for security, readability, and logic flaws with token budget controls.',
+        fileSchemas.aiReviewDiff,
+        true,
+        (a) => files.aiReviewDiff(a),
+      );
       if (files.allowWrite) {
         add(
           'mterm_format_file',

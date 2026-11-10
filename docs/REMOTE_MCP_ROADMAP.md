@@ -231,6 +231,8 @@ Stages describe implementation evidence and do not award acceptance or a complet
 
 **Completed evidence:** Real staging Access service identity reached authenticated management APIs; anonymous dashboard requests redirected HTTP 302.
 
+**Dated source work — 2026-11-10:** [Own-device admission occupancy](validation/2026-11-10-remote-occupancy.md) adds registry counts to authenticated device cards through text nodes. The frozen original-source14 run passed two independent compatibility groups and failed twelve missing-field assertions after valid setup and cleanup; actual three-card DOM observations lacked all24 new text matches. Its later UI assertions were NOT_REACHED. The later unchanged-fixture focused run passed152/152 at source926fa216, including all14 occupancy groups; the served-script assertions reached PASS with all24 text matches. Independent post-run review passed200 checks; normal/hosted qualification remains separately recorded in the dated evidence. This source/DOM-adapter slice grants no real-browser, visual, keyboard, screen-reader, client or deployment acceptance; WEB-007 remains open.
+
 **Remaining work, dependencies and blockers:**
 
 - Complete owner Google/Access sign-in, device verification and the desired client's consent/connector setup; record each actual client's result independently. **Effort:** 3–8 engineering hours. **Depends on:** Owner-approved identity/account availability; WEB-002 authorization; WEB-003 pairing. **Blocker:** A 302 Access redirect does not prove Google sign-in; human sign-in and ChatGPT connection are unverified.
@@ -304,6 +306,8 @@ live-smoke identity and remaining work below are unchanged.
 **Current evidence:** Minimal public health, authenticated dashboard metadata, safe tool errors, offline local status and bounded metadata-only audit exist. The live smoke returned bounded authorization/device/root-policy errors without raw file content in its evidence report. Full deployed diagnostics/audit review remains incomplete. Evidence records: `GATEWAY-SOURCE`, `GATEWAY-TESTS`, `AGENT-SOURCE`, `OWNER-GUIDE`, `LIVE-SMOKE`, `LIVE-SMOKE-FINAL`, `FINAL-GATES`.
 
 **Completed evidence:** The sanitized live report captured safe statuses, result hashes and cleanup without raw file bodies; no claim of full telemetry/audit retention verification.
+
+**Dated source work — 2026-11-10:** [Issue241 admission occupancy](validation/2026-11-10-remote-occupancy.md) addresses retained queued, delivered and completed-but-unconsumed jobs in the authenticated own-device dashboard. Actual frozen baseline fixtures reached four unconsumed completed results with empty sessions, while independent fifth-admission, single-use consumption/replacement and public MCP inventory controls passed. Counter owner/device filtering, old session semantics, lifecycle transitions and state redaction retain explicit source-fixture boundaries. A separate over-limit storage injection is labeled, and delivered/remaining values grant no execution or admission guarantee. The minimal source change subsequently passed152/152 focused tests, including all14 occupancy groups, with complete captured output and independently observed Node/driver/outer exits. Independent post-run review passed200 checks. Installed-agent/source-gateway and hosted observations remain separately attributed; no real Durable Object, full audit, load, deployment or WEB-010 acceptance is added.
 
 **Remaining work, dependencies and blockers:**
 

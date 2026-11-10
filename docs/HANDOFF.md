@@ -1,3 +1,95 @@
+# Authenticated registry-admission occupancy checkpoint — 2026-11-10 UTC
+
+Session `MTERM-WEB-20261109T131339Z-resume-a9287b3c` holds the
+[issue241 claim](https://github.com/MulattoTech/MTerm-CLI/issues/241#issuecomment-6755835482)
+from separately qualified main `f16abfa86878c24f1310d5261ad9b6bae3a43f6d`.
+Parents #149/AUG-066, #63/WEB-010 and #60/WEB-007 remain open. The sole source
+worker sealed five owned paths at `926fa216147b1fcbe8dadc941947653780639ab4`;
+root serialized those exact bytes at `87172f56a89a3880e37db0d04ffe8fcdfdae69f2`.
+Root owns shared documentation, catalog evidence, final integration and publication.
+Standing owner authorization covers normal qualified delivery.
+
+Authenticated device cards now show `registryAdmission`: the four-slot limit,
+queued, delivered, completed results awaiting collection, total occupied and remaining
+slots. Completed results can fill all four slots while the existing active-request
+list is empty. Counters filter owner plus returned device IDs and aggregate the
+owner's grants. They share the existing job snapshot; no new storage scan or
+per-device await is added. Occupied totals stay unclamped and remaining is bounded
+at zero. Existing sessions, public MCP device fields and admission policies remain
+unchanged. Delivered does not prove execution, and remaining registry slots do not
+guarantee admission or report the agent's transient `availableSlots` offer.
+
+The frozen original-source14 baseline was valid new-capability RED: two independent
+compatibility controls passed and twelve missing-field assertions failed after valid
+setup, transitions and observations. Its actual three-card DOM refresh observed24
+missing text matches; later UI assertions were NOT_REACHED. The unchanged fixture
+then passed in the single focused152 run at926fa216, from01:44:39.790535 to
+01:44:47.117494UTC:152 PASS, zero failures/skips/cancellations/TODOs. Node, capture
+driver and outer tool shell each exited0, independently retained. Capture was complete
+without timeout, truncation, signal, interrupt or capture failure; all75 selected,
+frozen-copy, run-copy and after-run bindings matched.
+
+All14 occupancy groups passed, with26 diagnostics,292 in-process response records
+and291 matching status controls. Twelve new-feature assertion phases reached PASS;
+the two existing controls stay independent. All14 groups settled their owned requests
+and restored their clocks. The served-script DOM assertions reached PASS for three
+cards and24 new text matches, with literal device-name text and no unsafe HTML
+assignment. These are source fixtures using in-memory storage, synthetic identities
+and a minimal DOM adapter. Real Durable Object storage/concurrency/recovery,
+browser/accessibility, deployment, load and full requirement acceptance remain open.
+Independent post-run review passed200 checks, including the raw capture, exact titles,
+counters, storage and served-script observations; no additional product run was
+indicated or performed. Normal integration qualification is recorded below; exact platform gates remain next.
+
+The [durable source appendix](validation/2026-11-10-remote-occupancy-source-evidence.json)
+preserves307 original payloads and649 references, including both raw captures and
+immutable inputs. Independent bundle review passed4453 byte/identity/phase checks;
+its baseline caveats remain historical and focused passes remain explicit. The
+three prior issue239 delivery files are bound without recursively embedding them.
+The dated AI record preserves the selected bundle review. Normal and hosted gates
+remain separate from that source seal.
+
+The first normal sequence passed review/render/check/build/typecheck, then stopped
+at Prettier's single fixture-chain wrap/indent finding; the seventh command was
+NOT_RUN. The [exact correction record](validation/2026-11-10-remote-occupancy-format-correction.json)
+preserves that failure and independent8057-node/788-literal/comment identity proof.
+Original baseline/focused fixture66e637 stays pinned to those executions. Only the
+later normal/hosted fixture changes to51612dd8; no extra local product run was indicated.
+All54 compiled outputs remained unchanged. The corrected seven-command sequence then
+passed02:18:57–02:19:03UTC at77c083a6; all14 raw streams and actual outer/driver exit0
+are preserved. Of2119 corresponding source/runtime/dependency paths,2118 equal the
+tested worker exactly; the sole difference is the approved fixture whitespace mapping.
+All186 reviewed source entries match fingerprint eb679d84. No extra local product run
+was performed. Final exact-tree review and six candidate/six new main jobs remain.
+
+[Issue239 / PR240 is fully delivered](validation/2026-11-10-managed-process-budgets-delivery.json).
+Its c9d17dc6 candidate and actual f16abfa8 main separately passed six jobs, with five
+full source suites, five installed resource35/Git36 gates, four pinned Codex0.160.1
+configuration/MCP lanes and distinct scoped native isolation artifacts. Main acceptance
+was recorded00:52:00UTC, the claim released00:57:19 and issue239 explicitly completed
+00:57:27. Parents #92/#4 remain open. The final delivery appendices are preserved in
+this integration; they do not claim to have existed in the already-qualified f16 tree.
+Earlier missing outer-driver reporting and historical failed/preparation observations
+remain explicit in those records.
+
+CLI-286 receives evidence only. All300 protected rows, the seed, weights, stages,
+estimates, blockers and acceptance are preserved:29.36% maturity,0complete,
+45blocked,126notStarted; DCP0/48 and WEB0/12. Existing installed-agent/source-gateway
+qualification stays separate from source occupancy tests; gateway source is excluded
+from the CLI package. Normal source/build/catalog qualification passed. Final exact-tree review, six candidate
+jobs, expected-head merge and six new actual-main jobs remain required before issue241
+acceptance, claim release and explicit completion.
+
+Issue232's provider lifecycle/connected Windows HOLD remains after exactly two rejected
+creates. No third create, owner configuration mutation, connected-workstation change,
+deployment, production bridge restart or model request accompanies this change.
+Preserve the dirty Windows primary, unrelated work, retained locks and historical refs.
+
+The previous handoff sections below are retained as dated observations, including
+claims and pending steps that were later resolved by the delivery records above.
+
+---
+
 # Managed Codex process-budget checkpoint — 2026-11-09 UTC
 
 Session `MTERM-WEB-20261109T131339Z-resume-a9287b3c` holds the

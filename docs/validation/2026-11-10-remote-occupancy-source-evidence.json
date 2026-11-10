@@ -1,0 +1,459 @@
+{
+  "acceptance": null,
+  "actualMain": null,
+  "actualRoleBindings": {
+    "catalog-serialization-correction": "root:artifacts/issue-241-integration/catalog-serialization-correction.json",
+    "focused-driver-exit": "worker:artifacts/issue-241-focused-driver-v1/driver-exit.json",
+    "focused-driver-stderr": "worker:artifacts/issue-241-focused-driver-v1/driver.stderr.raw",
+    "focused-driver-stdout": "worker:artifacts/issue-241-focused-driver-v1/driver.stdout.raw",
+    "focused-freeze-review": "root:artifacts/issue-241-source-prerun-peer-review/review.json",
+    "focused-interpretation": "root:artifacts/issue-241-root-source-review/classification.json",
+    "focused-outer-tool-response": "worker:artifacts/issue-241-focused-driver-v1/tool-shell-result-1.json",
+    "focused-raw-stderr": "worker:artifacts/issue-241-focused-v1/stderr.raw",
+    "focused-raw-stdout": "worker:artifacts/issue-241-focused-v1/stdout.raw",
+    "focused-receipt": "worker:artifacts/issue-241-focused-v1/receipt.json",
+    "focused-root-classification": "root:artifacts/issue-241-root-source-review/classification.json",
+    "focused-root-clearance": "root:artifacts/issue-241-root-source-prerun/focused-clearance.json",
+    "independent-source-audit": "root:artifacts/issue-241-source-peer-review/review.json"
+  },
+  "actualTitleCounts": [
+    {
+      "count": 14,
+      "path": "tests/remote-occupancy.test.mjs"
+    },
+    {
+      "count": 48,
+      "path": "tests/remote-gateway.test.mjs"
+    },
+    {
+      "count": 8,
+      "path": "tests/remote-admission.test.mjs"
+    },
+    {
+      "count": 22,
+      "path": "tests/gateway-access-expiry.test.mjs"
+    },
+    {
+      "count": 60,
+      "path": "tests/remote-pairing-expiry.test.mjs"
+    }
+  ],
+  "base": "f16abfa86878c24f1310d5261ad9b6bae3a43f6d",
+  "baseline": {
+    "actualDiagnostics": {
+      "beforeFeatureRecords": 12,
+      "controls": 291,
+      "dashboardObservations": 28,
+      "dashboardSentinelChecks": 4,
+      "diagnostics": 26,
+      "domCards": 3,
+      "domTextFalseObservations": 24,
+      "explicitExpiryDeletionIntervals": 1,
+      "finalRecords": 14,
+      "jwksRequests": 99,
+      "readIntervals": 6,
+      "requests": 292,
+      "unchangedIntervals": 5
+    },
+    "captureValid": true,
+    "classification": "VALID_NEW_CAPABILITY_RED",
+    "completedAt": "2026-11-10T01:24:51.408143+00:00",
+    "counts": {
+      "cancelled": 0,
+      "fail": 12,
+      "pass": 2,
+      "skipped": 0,
+      "suites": 0,
+      "tests": 14,
+      "todo": 0
+    },
+    "driverExit": 0,
+    "durationSeconds": 1.1711067550058942,
+    "executions": 1,
+    "head": "c0abead12c28208d2ff829cea9f770c71dae3223",
+    "independentAuditChecks": 146,
+    "inputCount": 62,
+    "laterDOMAssertions": "NOT_REACHED",
+    "nodeExit": 1,
+    "outerToolShellExit": 0,
+    "scope": "Two independent compatibility groups passed; twelve new capability groups failed at their first missing registryAdmission assertion. Later feature assertions receive no credit.",
+    "startedAt": "2026-11-10T01:24:50.237035+00:00",
+    "tree": "928b5ce7848a762fa383b78c0c9a4f4c082bec2a"
+  },
+  "candidate": null,
+  "canonicalFilesAlreadyPublished": false,
+  "catalogCorrection": {
+    "affectedOnlySpellingIds": [
+      "CLI-128",
+      "CLI-236",
+      "CLI-244",
+      "CLI-261"
+    ],
+    "exactParsedCurrentCatalogPreserved": true,
+    "finding": "R241-CATALOG-SERIALIZATION-1",
+    "observedAt": "2026-11-10T01:53:51.246927+00:00",
+    "onlyRawValueReplacements": [
+      "reviewedAt",
+      "CLI-286/evidence",
+      "CLI-286/notes"
+    ],
+    "originalBaseSha256": "701088a10f79274e85d99589e1c31da2ee96ed10a547811e0ea9f5d4982e2756",
+    "priorPreparedSha256": "0aefecbde35f16fd83527cae3403279bdf65b50cef259e7d04de852a858eec96",
+    "productOrGateExecution": false,
+    "protectedRowsSha256": "204ba46e427edf0dcdd1cbbe429c0ca5a6ee19d4be595c66100f69ce6d8da70b",
+    "reason": "Independent shared review found Unicode escape spelling churn in four unrelated acceptance strings; parsed values were unchanged. Restore exact original spelling by applying only the three permitted raw-value replacements to the original bytes.",
+    "schemaVersion": 1,
+    "selectedSha256": "07600affbd5b0758685635b4df507e6296a1ec73870a5c0ee3593fe8e3e07fe2"
+  },
+  "claimRelease": null,
+  "fixtureSha256": "66e6371a83b993d9c1bd13a2a4a27fa1a9031eeba4fbd1f1cc313c0c945c1596",
+  "focused": {
+    "captureAndCleanupFailures": [],
+    "captureComplete": true,
+    "captureTruncated": false,
+    "captureValid": true,
+    "completedAt": "2026-11-10T01:44:47.117494+00:00",
+    "counts": {
+      "cancelled": 0,
+      "fail": 0,
+      "pass": 152,
+      "skipped": 0,
+      "suites": 0,
+      "tests": 152,
+      "todo": 0
+    },
+    "durationSeconds": 7.3269599709892645,
+    "exitCode": 0,
+    "freezeSha256": "e8362f506cc497963e6f6141e820c2c5905ceec379532e8db082551eb80a2d3c",
+    "head": "926fa216147b1fcbe8dadc941947653780639ab4",
+    "inputBindingsUnchanged": true,
+    "inputCount": 75,
+    "primaryFailure": null,
+    "processExitObserved": true,
+    "startedAt": "2026-11-10T01:44:39.790535+00:00",
+    "terminationAttempts": [],
+    "timedOut": false,
+    "tree": "11e2de91b37d02decdc9b6757edc0acf614d8569"
+  },
+  "fullArchive": {
+    "bytes": 2331416,
+    "canonicalPath": "docs/validation/2026-11-10-remote-occupancy-source-evidence-full.json.gz",
+    "gzipMtime": 0,
+    "path": "artifacts/issue-241-source-evidence-assembly/final-v1/2026-11-10-remote-occupancy-source-evidence-full.json.gz",
+    "rawBytes": 19285808,
+    "rawSha256": "d4d08e516d11ea25e6d09da333898f6c5e06346a5ceba793e8b9e908f8948558",
+    "sha256": "d8fd0b627ce82d9443c6e5797e84803409eb1ac93f830687c9773ed8f239ce66"
+  },
+  "hashOnlyExclusions": [
+    {
+      "bytes": 6620704,
+      "excludedFromLosslessPayloadClaim": true,
+      "originalLocalBytesUntouched": true,
+      "path": "docs/validation/2026-11-10-managed-process-budgets-delivery-full.json.gz",
+      "preservation": "HASH_ONLY",
+      "reasons": [
+        "Already-canonical issue239 final delivery; bind exact bytes only to avoid recursive previous evidence payloads."
+      ],
+      "roles": [
+        "existing issue239 final canonical context"
+      ],
+      "sha256": "98aecd787fffe670bb224210cb77a3ac3c5fc1cf83ddbed33812b38874d63273",
+      "workspace": "root"
+    },
+    {
+      "bytes": 65281,
+      "excludedFromLosslessPayloadClaim": true,
+      "originalLocalBytesUntouched": true,
+      "path": "docs/validation/2026-11-10-managed-process-budgets-delivery.json",
+      "preservation": "HASH_ONLY",
+      "reasons": [
+        "Already-canonical issue239 final delivery; bind exact bytes only to avoid recursive previous evidence payloads."
+      ],
+      "roles": [
+        "existing issue239 final canonical context"
+      ],
+      "sha256": "d0278193e821998485c0cb1d00a41b9f725700511e7a880f481f3b636e4b014a",
+      "workspace": "root"
+    },
+    {
+      "bytes": 11059,
+      "excludedFromLosslessPayloadClaim": true,
+      "originalLocalBytesUntouched": true,
+      "path": "docs/validation/2026-11-10-managed-process-budgets-delivery.md",
+      "preservation": "HASH_ONLY",
+      "reasons": [
+        "Already-canonical issue239 final delivery; bind exact bytes only to avoid recursive previous evidence payloads."
+      ],
+      "roles": [
+        "existing issue239 final canonical context"
+      ],
+      "sha256": "cbb0b6d218a32402d81baa07825319a9c3732932774a89930bcb3fd6b44f79f8",
+      "workspace": "root"
+    }
+  ],
+  "historicalBaselineLimits": [
+    "Feature counters are absent in the actual API; computed state totals describe retained fixture state, not returned occupancy values.",
+    "Only the first missing-counter assertion executed in each feature group; later feature assertions were not credited. OCC-12 later UI assertions are NOT_REACHED despite earlier actual DOM observations.",
+    "Complete in-memory storage and raw result bodies are intentionally not persisted. Hash equality and exact result/deletion assertions are evidenced by the bound executed fixture and actual control outcome, not independent reconstruction of omitted secret-bearing payloads.",
+    "Native cryptographic identities, OAuth and gateway code are actual within the synthetic in-process fixture; no real provider, Durable Object storage/runtime, deployment or browser acceptance.",
+    "Owned request settlement, restored Date.now and natural Node process exit are observed; no global descendant census or fault-injection cleanup proof.",
+    "This audit performs no product/test/build execution and grants no implementation or publication authority."
+  ],
+  "historicalPreparationFaults": [
+    "Original peer path-discovery rg referenced absent scripts/check-parity.mjs; retained in readiness.json.",
+    "Initial GET collector used unavailable URL builtin before execution; v2 retained separately.",
+    "Five actual API422 search responses lacked is:issue/is:pull-request qualifiers; all original wrappers and separate corrected GETs retained.",
+    "Original coordination summary printer selected capture wrappers and raised TypeError; original responses unchanged.",
+    "Independent pre-run audit initially assumed root remained f16; root had advanced to documentation-only f26. Failure and corrected isolated-worker scope retained.",
+    "Root baseline clearance preparation assumed absent peer key decision and raised KeyError before clearance or product invocation.",
+    "Root progress-comment script had a parse SyntaxError before tool dispatch; retained as a preparation fault, not a product failure.",
+    "Baseline peer review v2 corrects seven to six in prose and spacing; original audit and146 checks retained.",
+    "Shared prospective wording R241-DOCS-1 corrected before source qualification; original and revised drafts/reviews retained.",
+    "Provider source-reader preparation initially expected executable/fixture paths only and omitted the two authorized owned validation/AI records. The path-set assertion exited1 before copies, capture reads or parser execution; its original script and finding are retained.",
+    "Assembly v1 scripts were drafted before the focused result arrived, never executed and preserved unchanged; v2 snapshots the now-actual source observation without claiming the pending independent audit.",
+    "R241-CATALOG-SERIALIZATION-1 restored four unrelated Unicode escape spellings without changing parsed values; only the three allowed catalog values were replaced. Original serialized bytes and correction receipt are retained."
+  ],
+  "hosted": null,
+  "independentAuditSummary": {
+    "blockingFindings": [],
+    "checkCount": null,
+    "decision": null,
+    "disposition": "SOURCE_FOCUSED_152_GREEN",
+    "executionCredit": {
+      "additionalFixtureRuns": 0,
+      "additionalProductRuns": 0,
+      "builds": 0,
+      "externalCalls": 0,
+      "trackedEdits": 0
+    },
+    "findings": null,
+    "verification": {
+      "allPassed": true,
+      "bytes": 87301,
+      "checks": 200,
+      "path": "/workspace/scratch/a9287b3cfe09/mterm-resume/artifacts/issue-241-source-peer-review/verification.json",
+      "sha256": "f7bf192bfd8c8258db2bd539441b72065b1309193e96cdecff4c59dfbae92c6d"
+    }
+  },
+  "independentRerun": null,
+  "independentRerunRequired": false,
+  "independentSourceCounts": {
+    "actualCounterObjects": 35,
+    "actualDomTextMatches": 24,
+    "beforeFeatureRecords": 12,
+    "dashboardObservations": 28,
+    "diagnostics": 26,
+    "domCards": 3,
+    "existingControlPasses": 2,
+    "existingExpiryDeletionIntervals": 1,
+    "featurePasses": 12,
+    "finalRecords": 14,
+    "httpStatusControls": 291,
+    "requestRecords": 292,
+    "storageIntervals": 6,
+    "syntheticJwksCallbacks": 99,
+    "unchangedIntervals": 5
+  },
+  "inputReferenceCount": 649,
+  "issue": 241,
+  "limits": [
+    "This is the one actual focused source run; no independent product rerun occurred.",
+    "Normal build/catalog/full-source/package/hosted candidate/main qualification is separate.",
+    "Memory storage, actual served script in a DOM adapter and controlled in-process agent do not qualify real Durable Objects, deployed/installed gateway, native paired devices, browser/accessibility or load.",
+    "Complete storage payloads/results remain omitted intentionally; hash equality and exact result/deletion conclusions use retained diagnostics plus passed assertions in the frozen executed fixture.",
+    "Owned request settlement, restored mocks, existing admission teardown assertions and natural Node close are observed; no global cleanup census or signal/fault cleanup injection is claimed.",
+    "Synthetic fault-state counters remain labeled, not a legitimate-admission or corruption/security claim.",
+    "Delivered work is a registry state, not proof of execution; remaining slots do not guarantee admission or measure agent poll capacity.",
+    "One existing job snapshot and a live-row cap do not bound traversal through arbitrary expired rows.",
+    "Executable identities are bound; host OS/shared-library closure is not archived or independently qualified.",
+    "Repository MIT does not relicense dependencies, runtime binaries, vendored SDK or parity reference snapshots. THIRD_PARTY.md is preserved unchanged.",
+    "This offline assembly creates no new product, build, hosted, provider, connected Windows, deployment or model result.",
+    "Prior issue239 canonical delivery files remain binding-only; no prior full archive is embedded."
+  ],
+  "losslessScope": "Exact original bytes for EXACT_BYTES members only. HASH_ONLY members retain identities and reasons, never a claim to preserve omitted payloads.",
+  "normalGates": null,
+  "originalTextAndParsedJSONPreserved": true,
+  "pendingGateStatus": {
+    "actualMainHosted": "NOT_RUN",
+    "candidateHosted": "NOT_RUN",
+    "fullSource": "NOT_RUN_AT_SOURCE_SEAL",
+    "normalBuild": "NOT_RUN_AT_SOURCE_SEAL",
+    "packageAndInstalled": "NOT_RUN_AT_SOURCE_SEAL",
+    "providerWindowsDeployment": "NO_NEW_QUALIFICATION",
+    "trackerAcceptance": "NOT_DONE"
+  },
+  "preparationRecords": {
+    "attribution": {
+      "bytes": 12135,
+      "path": "artifacts/issue-241-source-evidence-assembly/preparation-v2/source-attribution.json",
+      "sha256": "aa9fcf41cfc4473066929be6155e41c9327083a69359e960d10a9d4e87200d12"
+    },
+    "conservation": {
+      "bytes": 71996,
+      "path": "artifacts/issue-241-source-evidence-assembly/preparation-v2/frozen-input-conservation.json",
+      "sha256": "08b4b0fcfe34539bbb72bbfaef1075197bc95d898fa8524882ae05cb1fac21a8"
+    },
+    "inventory": {
+      "bytes": 293742,
+      "path": "artifacts/issue-241-source-evidence-assembly/preparation-v2/input-inventory.json",
+      "sha256": "eca6267e3306f37e7086ebb55badbeba20491738d4d069e63a93ed9772b93677"
+    },
+    "observations": {
+      "bytes": 7149,
+      "path": "artifacts/issue-241-source-evidence-assembly/preparation-v2/observations.json",
+      "sha256": "d9d9dd43febbbca83a4cb3fec5c2c46c2924567f369154815c9b83085e73b22b"
+    }
+  },
+  "recordedAtUtc": "2026-11-10T01:59:23.158840+00:00",
+  "rootSourceClassification": {
+    "actualDriverExit": 0,
+    "actualExactTitleMultisetMatches": 152,
+    "actualNodeExit": 0,
+    "actualOuterToolShellExit": 0,
+    "actualRequestRecords": 292,
+    "classification": "SOURCE_FOCUSED_GREEN_PENDING_INDEPENDENT_POST_RUN_AUDIT",
+    "dom": {
+      "cards": 3,
+      "createdImageOrScript": false,
+      "markupNameRemainedLiteral": true,
+      "realBrowserQualification": false,
+      "textMatchesTrue": 24,
+      "uiAssertions": "PASS",
+      "unsafeHtmlAssignments": 0
+    },
+    "independentExistingControlPass": 2,
+    "matchedStatusControls": 291,
+    "newFeatureAssertionPass": 12,
+    "ownedRequestsSettledAndClockRestored": 14,
+    "selectedInputOriginalFrozenRunAndAfterBindingMatches": 75,
+    "typedRecords": 26
+  },
+  "runtimes": {
+    "capture": {
+      "bash": {
+        "bytes": 1298416,
+        "path": "/usr/bin/bash",
+        "sha256": "223fe8564b60636bc738b6178d3ba9a50ef7d791266b0efae6363bb716e4c47f"
+      },
+      "python": {
+        "bytes": 30894944,
+        "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3.12",
+        "sha256": "fa67443527ed9647f760d807e2a38f26340757123e643c4639cf273ed15d5ea7"
+      },
+      "runtimeClosureLimit": "Host runtime libraries are not independently archived; executable identities and product import closure are bound."
+    },
+    "node": {
+      "bytes": 126939688,
+      "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+      "version": "v24.22.1"
+    }
+  },
+  "schemaVersion": 1,
+  "sourceAttributionReference": {
+    "bytes": 12135,
+    "path": "artifacts/issue-241-source-evidence-assembly/preparation-v2/source-attribution.json",
+    "sha256": "aa9fcf41cfc4473066929be6155e41c9327083a69359e960d10a9d4e87200d12"
+  },
+  "sourceAuditReference": "root:artifacts/issue-241-source-peer-review/review.json",
+  "sourceBuild": null,
+  "sourceDisposition": "SOURCE_FOCUSED_152_GREEN",
+  "sourceImportClosure": [
+    {
+      "bytes": 47004,
+      "license": "MIT",
+      "path": "tests/remote-occupancy.test.mjs",
+      "sha256": "66e6371a83b993d9c1bd13a2a4a27fa1a9031eeba4fbd1f1cc313c0c945c1596",
+      "sourceMapping": null
+    },
+    {
+      "bytes": 52573,
+      "license": "MIT",
+      "path": "tests/remote-gateway.test.mjs",
+      "sha256": "dfbb1bc65c6c33c00b9acccd0d481ba0052e433ec324dd38bc616fa4f77094b1",
+      "sourceMapping": null
+    },
+    {
+      "bytes": 18326,
+      "license": "MIT",
+      "path": "tests/remote-admission.test.mjs",
+      "sha256": "885e136acf1a618d3fd9465126410df336323305c7ebb37a6ac80544cf3254ff",
+      "sourceMapping": null
+    },
+    {
+      "bytes": 8297,
+      "license": "MIT",
+      "path": "tests/gateway-access-expiry.test.mjs",
+      "sha256": "9e24369e1ab38e9eedcc5f77d2b3c5056fa51d9ce77e94d6232d9b6b6259c1cd",
+      "sourceMapping": null
+    },
+    {
+      "bytes": 20068,
+      "license": "MIT",
+      "path": "tests/remote-pairing-expiry.test.mjs",
+      "sha256": "276f844411cca3c0f0d346ed60c3420960786902a9f30b64d69d1d3ec278b6f8",
+      "sourceMapping": null
+    },
+    {
+      "bytes": 14797,
+      "license": "MIT",
+      "path": "gateway/app.mjs",
+      "sha256": "61b5c43a8ce7dc6fc61d772fcc16c4a4b7d5cb8f17c70555829fae3ce53e42a1",
+      "sourceMapping": null
+    },
+    {
+      "bytes": 32572,
+      "license": "MIT",
+      "path": "gateway/registry.mjs",
+      "sha256": "3970f0a32a6f512124d8a7003c755085f325c5414e28a441e023f9286eb573d3",
+      "sourceMapping": null
+    },
+    {
+      "bytes": 9491,
+      "license": "MIT",
+      "path": "gateway/security.mjs",
+      "sha256": "78aa4d7f9f632568d2247d249691b7583dbf73d344bd040d6512104741183b7b",
+      "sourceMapping": null
+    },
+    {
+      "bytes": 15252,
+      "license": "MIT",
+      "path": "gateway/dashboard.mjs",
+      "sha256": "0371785ccd9a3ff3617041e237d59df163b03ecc21605d2aa4c58de817fb1399",
+      "sourceMapping": null
+    },
+    {
+      "bytes": 10640,
+      "license": "MIT",
+      "path": "dist/remote/agent.js",
+      "sha256": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc",
+      "sourceMapping": "src/remote/agent.ts"
+    },
+    {
+      "bytes": 2634,
+      "license": "MIT",
+      "path": "dist/remote/protocol.js",
+      "sha256": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14",
+      "sourceMapping": "src/remote/protocol.ts"
+    },
+    {
+      "bytes": 1727,
+      "license": "MIT",
+      "path": "dist/errors.js",
+      "sha256": "26fa1c3341396a1f9eda45debe86dc2295cb997b9dd7e525e70ac17ef2c910a9",
+      "sourceMapping": "src/errors.ts"
+    }
+  ],
+  "status": "SOURCE_OBSERVATIONS_ASSEMBLED_FOR_ROOT_REVIEW",
+  "trackerClosure": null,
+  "uniqueOriginalPayloads": 307,
+  "upstreamAndRuntimeLimits": {
+    "providerModel": {
+      "model": "GPT-6 Astra Pro",
+      "provider": "OpenAI",
+      "selfReported": true
+    },
+    "runtimeClosureLimit": "Executable identities are bound; host OS/shared-library closure is not archived or independently qualified.",
+    "upstreamNoticeLimit": "Repository MIT does not relicense dependencies, runtime binaries, vendored SDK or parity reference snapshots. THIRD_PARTY.md is preserved unchanged."
+  }
+}

@@ -6,6 +6,7 @@ import path from 'node:path';
 import { safeError, fail } from './errors.js';
 import { parseProcessBudget, type ProcessBudget } from './resource-budget-policy.js';
 import { parseIsolationPolicy, type IsolationPolicy } from './isolation-policy.js';
+import { getEnvironmentName, configPath } from './config.js';
 export const VERSION = '0.0.1-preview.1';
 export function parseHost(args: string[]) {
   const roots: string[] = [],
@@ -139,6 +140,8 @@ async function doctor(args: string[]) {
     schemaVersion: 1,
     ok: rootState.ready,
     version: VERSION,
+    environment: getEnvironmentName(),
+    configPath: configPath(),
     platform: process.platform,
     arch: process.arch,
     node: process.version,

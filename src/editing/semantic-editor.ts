@@ -38,7 +38,10 @@ export function parseUnifiedDiff(diffText: string): ParsedDiff[] {
     const line = lines[i]!;
 
     if (line.startsWith('--- ')) {
-      const oldPath = line.slice(4).trim().replace(/^[ab]\//, '');
+      const oldPath = line
+        .slice(4)
+        .trim()
+        .replace(/^[ab]\//, '');
       currentDiff = { oldPath, newPath: '', hunks: [] };
       diffs.push(currentDiff);
       currentHunk = null;
@@ -46,7 +49,10 @@ export function parseUnifiedDiff(diffText: string): ParsedDiff[] {
     }
 
     if (line.startsWith('+++ ') && currentDiff) {
-      currentDiff.newPath = line.slice(4).trim().replace(/^[ab]\//, '');
+      currentDiff.newPath = line
+        .slice(4)
+        .trim()
+        .replace(/^[ab]\//, '');
       continue;
     }
 

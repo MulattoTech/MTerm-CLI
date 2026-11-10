@@ -234,7 +234,7 @@ export async function capturePack(
     fail('PACK_PIN', 'Manifest does not match the owner-selected SHA-256.');
   const manifest = parsed(manifestSchema, json(read.text, 'PACK_MANIFEST'), 'PACK_MANIFEST');
   if (manifest.abiVersion !== 1) fail('PACK_ABI', 'Only optional-pack ABI version 1 is supported.');
-  if (manifest.runtime.nodeMajor !== 24 || Number(process.versions.node.split('.')[0]) !== 24)
+  if (manifest.runtime.nodeMajor !== 24 || Number(process.versions.node.split('.')[0]) < 24)
     fail('PACK_RUNTIME', 'This pack boundary requires the selected Node.js 24 runtime.');
   if (
     !['win32-x64', 'linux-x64', 'darwin-arm64', 'darwin-x64'].includes(

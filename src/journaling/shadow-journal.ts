@@ -2,6 +2,7 @@
 // Module: MTerm-CLI Transactional Shadow Journal & Rollback Engine
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import os from 'node:os';
 import { createHash, randomUUID } from 'node:crypto';
 
 export interface JournalEntry {
@@ -25,15 +26,16 @@ export class ShadowJournal {
   private readonly journalDir: string;
   private activeTransactionId?: string;
 
-  constructor(rootDir: string) {
-    this.journalDir = path.join(rootDir, '.mterm-journal');
+  constructor(rootDir?: string) {
+    const base = process.env.MTERM_JOURNAL_DIR || path.join(os.tmpdir(), '.mterm-journal');
+    this.journalDir = base;
   }
 
   static getInstance(rootDir?: string): ShadowJournal {
-    if (!this.instance && rootDir) {
+    if (!this.instance) {
       this.instance = new ShadowJournal(rootDir);
     }
-    return this.instance || new ShadowJournal(rootDir || process.cwd());
+    return this.instance;
   }
 
   private async ensureJournalDir(): Promise<void> {
@@ -64,7 +66,7 @@ export class ShadowJournal {
     relativePath: string,
     currentContent: string,
     action: 'write' | 'patch' | 'delete' = 'write',
-    transactionId?: string
+    transactionId?: string,
   ): Promise<string> {
     await this.ensureJournalDir();
     const txId = transactionId || this.activeTransactionId || randomUUID();
@@ -95,7 +97,11 @@ export class ShadowJournal {
     await this.ensureJournalDir();
     try {
       const files = await fs.readdir(this.journalDir);
-      const jsonFiles = files.filter((f) => f.endsWith('.json')).sort().reverse().slice(0, limit);
+      const jsonFiles = files
+        .filter((f) => f.endsWith('.json'))
+        .sort()
+        .reverse()
+        .slice(0, limit);
 
       const snapshots: Array<{ fileName: string; entry: JournalEntry }> = [];
       for (const f of jsonFiles) {
@@ -132,7 +138,12 @@ export class ShadowJournal {
       // Find latest snapshot for this specific file
       const match = snapshots.find((s) => s.entry.relativePath === options.file);
       if (!match) {
-        return { ok: false, restoredFiles: [], transactionId: '', error: `No snapshot found for file '${options.file}'.` };
+        return {
+          ok: false,
+          restoredFiles: [],
+          transactionId: '',
+          error: `No snapshot found for file '${options.file}'.`,
+        };
       }
       const fullPath = path.resolve(options.rootDir, match.entry.relativePath);
       await fs.writeFile(fullPath, match.entry.previousContent, 'utf8');
@@ -142,7 +153,12 @@ export class ShadowJournal {
       // Revert all files in this transaction
       const txSnapshots = snapshots.filter((s) => s.entry.transactionId === options.transactionId);
       if (txSnapshots.length === 0) {
-        return { ok: false, restoredFiles: [], transactionId: options.transactionId, error: `Transaction '${options.transactionId}' not found.` };
+        return {
+          ok: false,
+          restoredFiles: [],
+          transactionId: options.transactionId,
+          error: `Transaction '${options.transactionId}' not found.`,
+        };
       }
       for (const s of txSnapshots) {
         const fullPath = path.resolve(options.rootDir, s.entry.relativePath);

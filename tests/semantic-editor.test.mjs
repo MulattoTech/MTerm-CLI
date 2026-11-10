@@ -130,7 +130,7 @@ test('FileService.applyPatch performs dry-run and atomic patch application with 
       async () => {
         await service.applyPatch({ path: 'service.js', patch: badSyntaxPatch, dryRun: false });
       },
-      (err) => err.code === 'SYNTAX_ERROR'
+      (err) => err.code === 'SYNTAX_ERROR',
     );
 
     // Verify file on disk was NOT corrupted

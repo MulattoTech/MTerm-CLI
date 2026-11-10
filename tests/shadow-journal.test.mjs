@@ -48,7 +48,11 @@ test('FileService automatic snapshotting and mterm_rollback restores modified fi
     const write1 = await service.write({ path: testFile, text: initialText, expectedVersion: 'missing' });
 
     // 2. Update write (automatically triggers shadow snapshot)
-    const write2 = await service.write({ path: testFile, text: updatedText, expectedVersion: write1.version });
+    const write2 = await service.write({
+      path: testFile,
+      text: updatedText,
+      expectedVersion: write1.version,
+    });
 
     const currentText = (await service.read({ path: testFile })).text;
     assert.equal(currentText, updatedText);

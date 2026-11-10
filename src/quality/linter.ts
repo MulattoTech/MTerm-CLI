@@ -28,7 +28,11 @@ export class CodeLinter {
   /**
    * Runs linter on the specified file or content and returns structured diagnostics.
    */
-  static async lintFile(filePath: string, content?: string, options: { root?: string } = {}): Promise<LintReport> {
+  static async lintFile(
+    filePath: string,
+    content?: string,
+    options: { root?: string } = {},
+  ): Promise<LintReport> {
     const ext = path.extname(filePath).toLowerCase();
     const diagnostics: LintDiagnostic[] = [];
     let engine = 'builtin-linter';

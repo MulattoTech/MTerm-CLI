@@ -56,7 +56,10 @@ export class CodeFormatter {
   /**
    * Formats file content using detected formatters or built-in deterministic normalization.
    */
-  static async formatText(content: string, filePath: string): Promise<{ formattedText: string; engine: string }> {
+  static async formatText(
+    content: string,
+    filePath: string,
+  ): Promise<{ formattedText: string; engine: string }> {
     const ext = path.extname(filePath).toLowerCase();
 
     // JS/TS/JSON/Markdown formatting
@@ -72,7 +75,11 @@ export class CodeFormatter {
     // Python formatting via Ruff if available
     if (ext === '.py') {
       try {
-        const formatted = await this.spawnProcess('ruff', ['format', '--stdin-filename', filePath, '-'], content);
+        const formatted = await this.spawnProcess(
+          'ruff',
+          ['format', '--stdin-filename', filePath, '-'],
+          content,
+        );
         if (formatted) {
           return { formattedText: formatted, engine: 'ruff' };
         }

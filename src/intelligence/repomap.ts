@@ -61,7 +61,10 @@ export class RepoMapGenerator {
   /**
    * Generates a dense, token-efficient summary of repository symbols and structure.
    */
-  static async generate(rootDir: string, options: { maxLines?: number; maxFiles?: number } = {}): Promise<RepoMapReport> {
+  static async generate(
+    rootDir: string,
+    options: { maxLines?: number; maxFiles?: number } = {},
+  ): Promise<RepoMapReport> {
     const maxLines = options.maxLines || 120;
     const maxFiles = options.maxFiles || 50;
     const root = path.resolve(rootDir);
@@ -69,7 +72,11 @@ export class RepoMapGenerator {
     // Try reading git commit SHA for cache keying
     let treeSha: string | undefined;
     try {
-      const { stdout } = await exec('git', ['rev-parse', 'HEAD'], { cwd: root, timeout: 2000, windowsHide: true });
+      const { stdout } = await exec('git', ['rev-parse', 'HEAD'], {
+        cwd: root,
+        timeout: 2000,
+        windowsHide: true,
+      });
       treeSha = stdout.trim();
     } catch {}
 
@@ -128,7 +135,7 @@ export class RepoMapGenerator {
     rootDir: string,
     currentDir: string,
     outlines: FileOutline[],
-    maxFiles: number
+    maxFiles: number,
   ): Promise<void> {
     if (outlines.length >= maxFiles) return;
 

@@ -17,7 +17,7 @@ test('RepoMapGenerator builds outline and markdown summary of workspace', async 
     await fs.writeFile(
       path.join(srcDir, 'math.ts'),
       'export function add(a: number, b: number): number {\n  return a + b;\n}\nexport class Calculator {\n  compute() {}\n}\n',
-      'utf8'
+      'utf8',
     );
 
     const report = await RepoMapGenerator.generate(tmpDir);

@@ -53,7 +53,11 @@ export class DeterministicReviewProvider implements ModelProvider {
   async generateText(prompt: string): Promise<ModelResponse> {
     return {
       text: `Deterministic local response for prompt of ${prompt.length} chars. No cloud AI provider configured.`,
-      tokensUsed: { prompt: Math.ceil(prompt.length / 4), completion: 20, total: Math.ceil(prompt.length / 4) + 20 },
+      tokensUsed: {
+        prompt: Math.ceil(prompt.length / 4),
+        completion: 20,
+        total: Math.ceil(prompt.length / 4) + 20,
+      },
       model: 'deterministic-heuristic',
       provider: this.name,
     };

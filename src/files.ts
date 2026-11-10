@@ -21,6 +21,8 @@ import { RepoMapGenerator } from './intelligence/repomap.js';
 import { LspManager } from './lsp/manager.js';
 import { ModelRouter } from './ai/router.js';
 import { FleetSupervisor } from './orchestration/fleet-manager.js';
+import { WindowsRetryStrategy } from './files/retry-strategy.js';
+export { WindowsRetryStrategy };
 const pathname = z.string().min(1).max(4096);
 const version = z.union([z.literal('missing'), z.string().regex(/^[a-f0-9]{64}$/)]);
 export const fileSchemas = {
@@ -657,7 +659,10 @@ export class FileService {
       };
     }
 
-    const writeResult = await this.write({ path: a.path, text: patchResult.patchedText, expectedVersion: current.version }, signal);
+    const writeResult = await this.write(
+      { path: a.path, text: patchResult.patchedText, expectedVersion: current.version },
+      signal,
+    );
     return {
       path: current.path,
       ok: true,
@@ -687,7 +692,10 @@ export class FileService {
     const { formattedText, engine } = await CodeFormatter.formatText(current.text, full);
     const changed = formattedText !== current.text;
     if (a.write && changed) {
-      const writeResult = await this.write({ path: a.path, text: formattedText, expectedVersion: current.version }, signal);
+      const writeResult = await this.write(
+        { path: a.path, text: formattedText, expectedVersion: current.version },
+        signal,
+      );
       return {
         path: current.path,
         formatted: true,

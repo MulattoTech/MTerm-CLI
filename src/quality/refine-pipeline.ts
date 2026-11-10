@@ -48,12 +48,22 @@ export class RefineEngine {
     if (options.proposedPatch) {
       const parsedDiffs = parseUnifiedDiff(options.proposedPatch);
       if (parsedDiffs.length === 0 || !parsedDiffs[0] || parsedDiffs[0].hunks.length === 0) {
-        return this.failureReport(options, stagesPassed, workingContent, 'Failed to parse unified diff hunks.');
+        return this.failureReport(
+          options,
+          stagesPassed,
+          workingContent,
+          'Failed to parse unified diff hunks.',
+        );
       }
 
       const patchResult = applyHunks(options.originalText, parsedDiffs[0].hunks);
       if (!patchResult.ok) {
-        return this.failureReport(options, stagesPassed, workingContent, patchResult.error || 'Diff hunk conflict.');
+        return this.failureReport(
+          options,
+          stagesPassed,
+          workingContent,
+          patchResult.error || 'Diff hunk conflict.',
+        );
       }
 
       workingContent = patchResult.patchedText;
@@ -97,7 +107,9 @@ export class RefineEngine {
     let typeCheckClean = true;
     if (options.runTypeCheck && options.path.endsWith('.ts')) {
       const typeReport = await TypeChecker.checkProject();
-      typeCheckDiagnostics = typeReport.diagnostics.filter((d) => d.file.endsWith(options.path) || options.path.endsWith(d.file));
+      typeCheckDiagnostics = typeReport.diagnostics.filter(
+        (d) => d.file.endsWith(options.path) || options.path.endsWith(d.file),
+      );
       typeCheckClean = typeCheckDiagnostics.length === 0;
       if (typeCheckClean) {
         stagesPassed.push('pass-5:typecheck-clean');
@@ -108,7 +120,9 @@ export class RefineEngine {
 
     attemptsUsed = 1;
     const changed = workingContent !== options.originalText;
-    const diffPreview = changed ? createDiffPreview(options.path, options.originalText, workingContent) : undefined;
+    const diffPreview = changed
+      ? createDiffPreview(options.path, options.originalText, workingContent)
+      : undefined;
 
     return {
       ok: lintClean && typeCheckClean,
@@ -130,7 +144,7 @@ export class RefineEngine {
     options: RefinePipelineOptions,
     stagesPassed: string[],
     content: string,
-    reason: string
+    reason: string,
   ): RefinePipelineReport {
     return {
       ok: false,

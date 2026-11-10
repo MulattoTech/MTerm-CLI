@@ -24,7 +24,7 @@ export class LspManager {
   static async findDefinition(
     filePath: string,
     targetSymbol: string,
-    rootDir: string
+    rootDir: string,
   ): Promise<SymbolLocation | null> {
     const root = path.resolve(rootDir);
 
@@ -49,11 +49,7 @@ export class LspManager {
   /**
    * Finds all references to a symbol across the workspace.
    */
-  static async findReferences(
-    symbol: string,
-    rootDir: string,
-    limit = 50
-  ): Promise<SymbolLocation[]> {
+  static async findReferences(symbol: string, rootDir: string, limit = 50): Promise<SymbolLocation[]> {
     const locations: SymbolLocation[] = [];
     const root = path.resolve(rootDir);
 
@@ -68,7 +64,10 @@ export class LspManager {
           const fullPath = path.join(dir, e.name);
           if (e.isDirectory()) {
             await scan(fullPath);
-          } else if (e.isFile() && (e.name.endsWith('.ts') || e.name.endsWith('.js') || e.name.endsWith('.py'))) {
+          } else if (
+            e.isFile() &&
+            (e.name.endsWith('.ts') || e.name.endsWith('.js') || e.name.endsWith('.py'))
+          ) {
             try {
               const content = await fs.readFile(fullPath, 'utf8');
               const lines = content.split(/\r?\n/);
@@ -145,7 +144,10 @@ export class LspManager {
     }
   }
 
-  private static async searchFileForDeclaration(filePath: string, symbol: string): Promise<SymbolLocation | null> {
+  private static async searchFileForDeclaration(
+    filePath: string,
+    symbol: string,
+  ): Promise<SymbolLocation | null> {
     try {
       const content = await fs.readFile(filePath, 'utf8');
       const lines = content.split(/\r?\n/);

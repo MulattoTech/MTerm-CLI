@@ -1,10 +1,6 @@
 // SPDX-License-Identifier: MIT
 // Module: MTerm-CLI Model Router & Budget Guard
-import {
-  type ModelProvider,
-  type DiffReviewReport,
-  DeterministicReviewProvider,
-} from './model-provider.js';
+import { type ModelProvider, type DiffReviewReport, DeterministicReviewProvider } from './model-provider.js';
 
 export interface RouterConfig {
   dailyTokenLimit?: number;
@@ -53,12 +49,14 @@ export class ModelRouter {
    */
   async reviewDiff(
     diffText: string,
-    options: { provider?: string; focus?: string } = {}
+    options: { provider?: string; focus?: string } = {},
   ): Promise<DiffReviewReport> {
     this.checkDailyReset();
 
     if (this.dailyTokensUsed >= this.dailyTokenLimit) {
-      throw new Error(`Daily AI token budget limit reached (${this.dailyTokensUsed}/${this.dailyTokenLimit}).`);
+      throw new Error(
+        `Daily AI token budget limit reached (${this.dailyTokensUsed}/${this.dailyTokenLimit}).`,
+      );
     }
 
     const provider = this.getProvider(options.provider);

@@ -12,6 +12,10 @@ import { RootPolicy, ignored, privateName } from './policy.js';
 import { fail, cancelled, safeError, ToolError } from './errors.js';
 import { parseUnifiedDiff, applyHunks, createDiffPreview } from './editing/semantic-editor.js';
 import { SyntaxValidator } from './editing/syntax-validator.js';
+import { CodeFormatter } from './quality/formatter.js';
+import { CodeLinter } from './quality/linter.js';
+import { TypeChecker } from './quality/typecheck.js';
+import { RefineEngine } from './quality/refine-pipeline.js';
 const pathname = z.string().min(1).max(4096);
 const version = z.union([z.literal('missing'), z.string().regex(/^[a-f0-9]{64}$/)]);
 export const fileSchemas = {
@@ -35,6 +39,23 @@ export const fileSchemas = {
     path: pathname,
     text: z.string().max(1048576).optional(),
     language: z.string().max(32).optional(),
+  }),
+  formatFile: z.strictObject({
+    path: pathname,
+    write: z.boolean().default(true),
+  }),
+  lintCheck: z.strictObject({
+    path: pathname,
+  }),
+  typeCheck: z.strictObject({
+    project: pathname.optional(),
+  }),
+  refine: z.strictObject({
+    path: pathname,
+    patch: z.string().max(1048576).optional(),
+    autoFormat: z.boolean().default(true),
+    runLinter: z.boolean().default(true),
+    runTypeCheck: z.boolean().default(false),
   }),
   search: z.strictObject({
     path: pathname.default('.'),
@@ -609,5 +630,69 @@ export class FileService {
       content = current.text;
     }
     return SyntaxValidator.validate(content, a.path, a.language);
+  }
+  async formatFile(input: unknown, signal?: AbortSignal) {
+    const a = fileSchemas.formatFile.parse(input);
+    cancelled(signal);
+    const current = await this.read({ path: a.path });
+    cancelled(signal);
+    const full = await this.policy.resolve(a.path);
+    const { formattedText, engine } = await CodeFormatter.formatText(current.text, full);
+    const changed = formattedText !== current.text;
+    if (a.write && changed) {
+      const writeResult = await this.write({ path: a.path, text: formattedText, expectedVersion: current.version }, signal);
+      return {
+        path: current.path,
+        formatted: true,
+        changed: true,
+        originalBytes: current.bytes,
+        formattedBytes: writeResult.bytes,
+        engine,
+      };
+    }
+    return {
+      path: current.path,
+      formatted: true,
+      changed,
+      originalBytes: current.bytes,
+      formattedBytes: Buffer.byteLength(formattedText, 'utf8'),
+      engine,
+    };
+  }
+  async lintCheck(input: unknown, signal?: AbortSignal) {
+    const a = fileSchemas.lintCheck.parse(input);
+    cancelled(signal);
+    const current = await this.read({ path: a.path });
+    cancelled(signal);
+    const full = await this.policy.resolve(a.path);
+    return CodeLinter.lintFile(full, current.text, { root: this.policy.root });
+  }
+  async typeCheck(input: unknown, signal?: AbortSignal) {
+    const a = fileSchemas.typeCheck.parse(input);
+    cancelled(signal);
+    const targetProject = a.project ? await this.policy.resolve(a.project) : undefined;
+    return TypeChecker.checkProject(targetProject);
+  }
+  async refine(input: unknown, signal?: AbortSignal) {
+    const a = fileSchemas.refine.parse(input);
+    cancelled(signal);
+    const current = await this.read({ path: a.path });
+    cancelled(signal);
+    const full = await this.policy.resolve(a.path);
+    const report = await RefineEngine.run({
+      path: full,
+      originalText: current.text,
+      proposedPatch: a.patch,
+      autoFormat: a.autoFormat,
+      runLinter: a.runLinter,
+      runTypeCheck: a.runTypeCheck,
+    });
+    if (report.ok && report.changed) {
+      await this.write({ path: a.path, text: report.finalContent, expectedVersion: current.version }, signal);
+    }
+    return {
+      ...report,
+      path: current.path,
+    };
   }
 }

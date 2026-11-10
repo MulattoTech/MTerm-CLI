@@ -465,7 +465,35 @@ export async function runMcp(options: HostOptions): Promise<void> {
         true,
         (a) => files.validateSyntax(a),
       );
+      add(
+        'mterm_lint_check',
+        'Run deterministic static analysis / linting on a file and return structured diagnostics.',
+        fileSchemas.lintCheck,
+        true,
+        (a, s) => files.lintCheck(a, s),
+      );
+      add(
+        'mterm_typecheck',
+        'Run TypeScript compiler diagnostic check on the workspace or specified project.',
+        fileSchemas.typeCheck,
+        true,
+        (a, s) => files.typeCheck(a, s),
+      );
       if (files.allowWrite) {
+        add(
+          'mterm_format_file',
+          'Auto-format file using project Prettier, Ruff, or built-in deterministic normalization.',
+          fileSchemas.formatFile,
+          false,
+          (a, s) => files.formatFile(a, s),
+        );
+        add(
+          'mterm_refine_pipeline',
+          '5-Pass refinement pipeline: Understand -> Patch -> Format -> Lint/TypeCheck -> Auto-repair.',
+          fileSchemas.refine,
+          false,
+          (a, s) => files.refine(a, s),
+        );
         add(
           'mterm_apply_patch',
           'Context-aware unified diff patch application with optional AST syntax pre-validation and dry-run preview.',

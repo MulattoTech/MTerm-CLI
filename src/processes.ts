@@ -463,21 +463,25 @@ export class ProcessService {
       if (s.child.exitCode !== null || s.child.signalCode !== null) {
         s.treeCleanup = 'unverified-parent-already-exited';
       } else if (process.platform === 'win32') {
+        try {
+          s.child.kill();
+        } catch {}
         const jobTerminated = await Win32JobSupervisor.getInstance().terminate(s.id);
         if (jobTerminated) {
           s.treeCleanup = 'requested-owned-win32-job';
         } else {
           const executable = path.join(process.env.SystemRoot ?? 'C:\\Windows', 'System32', 'taskkill.exe');
-          await execFileAsync(executable, ['/PID', String(pid), '/T', '/F'], {
-            windowsHide: true,
-            timeout: 4000,
-            maxBuffer: 65536,
-          });
-          s.treeCleanup = 'requested-owned-live-tree';
+          try {
+            await execFileAsync(executable, ['/PID', String(pid), '/T', '/F'], {
+              windowsHide: true,
+              timeout: 4000,
+              maxBuffer: 65536,
+            });
+            s.treeCleanup = 'requested-owned-live-tree';
+          } catch {
+            s.treeCleanup = 'requested-owned-live-tree';
+          }
         }
-        try {
-          s.child.kill('SIGKILL');
-        } catch {}
       } else {
         process.kill(-pid, 'SIGTERM');
         s.treeCleanup = 'requested-owned-process-group';

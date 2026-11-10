@@ -19,6 +19,7 @@ import {
   type ProcessBudget,
   type DiskObservation,
 } from './resource-budgets.js';
+import { Win32JobSupervisor } from './native/win32-job.js';
 const execFileAsync = promisify(execFile);
 export const processSchemas = {
   start: z.strictObject({
@@ -320,6 +321,9 @@ export class ProcessService {
         treeCleanup: 'not-requested',
       };
       this.sessions.set(s.id, s);
+      if (child.pid && process.platform === 'win32') {
+        void Win32JobSupervisor.getInstance().assign(s.id, child.pid);
+      }
       const out = new StringDecoder('utf8'),
         err = new StringDecoder('utf8');
       child.stdout.on('data', (b: Buffer) => this.append(s, 'stdout', out.write(b)));
@@ -459,13 +463,18 @@ export class ProcessService {
       if (s.child.exitCode !== null || s.child.signalCode !== null) {
         s.treeCleanup = 'unverified-parent-already-exited';
       } else if (process.platform === 'win32') {
-        const executable = path.join(process.env.SystemRoot ?? 'C:\\Windows', 'System32', 'taskkill.exe');
-        await execFileAsync(executable, ['/PID', String(pid), '/T', '/F'], {
-          windowsHide: true,
-          timeout: 4000,
-          maxBuffer: 65536,
-        });
-        s.treeCleanup = 'requested-owned-live-tree';
+        const jobTerminated = await Win32JobSupervisor.getInstance().terminate(s.id);
+        if (jobTerminated) {
+          s.treeCleanup = 'requested-owned-win32-job';
+        } else {
+          const executable = path.join(process.env.SystemRoot ?? 'C:\\Windows', 'System32', 'taskkill.exe');
+          await execFileAsync(executable, ['/PID', String(pid), '/T', '/F'], {
+            windowsHide: true,
+            timeout: 4000,
+            maxBuffer: 65536,
+          });
+          s.treeCleanup = 'requested-owned-live-tree';
+        }
       } else {
         process.kill(-pid, 'SIGTERM');
         s.treeCleanup = 'requested-owned-process-group';
@@ -554,6 +563,9 @@ export class ProcessService {
     const results = await Promise.allSettled(
       [...this.sessions.values()].filter((s) => this.active(s)).map((s) => this.stop({ sessionId: s.id })),
     );
+    if (process.platform === 'win32') {
+      void Win32JobSupervisor.getInstance().shutdown();
+    }
     if (results.some((r) => r.status === 'rejected'))
       fail('CLEANUP_UNCONFIRMED', 'Some owned process termination could not be confirmed.');
   }

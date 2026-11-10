@@ -3,7 +3,7 @@
   "provider": "OpenAI",
   "model": "GPT-6",
   "started_at": "2026-11-10T12:00:00Z",
-  "updated_at": "2026-11-10T14:10:22Z",
+  "updated_at": "2026-11-10T14:14:36Z",
   "base_sha": "229235dfb20ed8ca998138d54168979f384665fa",
   "issues": [244],
   "requirements": ["CLI-157", "CLI-165", "CLI-269", "CLI-287"],
@@ -44,6 +44,7 @@
     "Label repository regex navigation, deterministic review and in-memory fleet task ledger honestly as partial, non-production capabilities.",
     "Package the Windows Job Object PowerShell helper with compiled assets; track assignment before tree termination and check native API success.",
     "Canonicalize journal roots before hashing so macOS /var versus /private/var aliasing does not strand otherwise valid snapshots.",
+    "Preserve host-native permission checks under platform-fault injection; bound Win32 helper assignment waiting so pack cancellation falls back promptly to taskkill.",
     "Preserve the canonical requirement stages until independent acceptance evidence exists."
   ],
   "tests": [
@@ -62,6 +63,10 @@
     {
       "command": "macos-15-intel CI for draft PR #245, run 42830125379",
       "result": "First attempt failed one shadow journal test because temporary /var and /private/var aliases hashed differently. Reproduced with a symlink root on Linux, corrected, and 13/13 focused tests passed. Fresh CI required."
+    },
+    {
+      "command": "windows-2022 CI for draft PR #245, run 42830125379",
+      "result": "First attempt exposed host mode check under simulated linux/darwin platform and an approximately eight-second sidecar cancellation wait. Host OS mode is now captured at module load and Win32 assignment has a 400ms deadline before taskkill fallback. Fresh CI required."
     },
     {
       "command": "Original Gemini PR Actions run 42780935140",

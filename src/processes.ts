@@ -323,8 +323,8 @@ export class ProcessService {
       };
       this.sessions.set(s.id, s);
       if (child.pid && process.platform === 'win32') {
-        // Track assignment so a racing stop never closes the parent before
-        // the supervisor can contain its descendants.
+        // Track assignment so a racing stop can wait briefly for containment
+        // before falling back to taskkill while the parent is still alive.
         s.jobAssignment = Win32JobSupervisor.getInstance()
           .assign(s.id, child.pid)
           .catch(() => false);
@@ -468,7 +468,17 @@ export class ProcessService {
       if (s.child.exitCode !== null || s.child.signalCode !== null) {
         s.treeCleanup = 'unverified-parent-already-exited';
       } else if (process.platform === 'win32') {
-        const assigned = (await s.jobAssignment) ?? false;
+        // PowerShell Add-Type startup can take seconds. Cancellation must not
+        // leave a sidecar alive for that entire time: after 400 ms, invoke the
+        // already-supported taskkill /T fallback against the still-live parent.
+        let assignmentTimer: NodeJS.Timeout | undefined;
+        const assigned = await Promise.race([
+          s.jobAssignment ?? Promise.resolve(false),
+          new Promise<boolean>((resolve) => {
+            assignmentTimer = setTimeout(() => resolve(false), 400);
+          }),
+        ]);
+        clearTimeout(assignmentTimer);
         const jobTerminated =
           assigned &&
           (await Win32JobSupervisor.getInstance()

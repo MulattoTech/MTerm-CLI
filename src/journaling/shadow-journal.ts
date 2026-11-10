@@ -7,6 +7,10 @@ import os from 'node:os';
 import { createHash, randomUUID } from 'node:crypto';
 import { fail } from '../errors.js';
 
+// Some deterministic fault-injection tests simulate a different process.platform.
+// Filesystem permissions must always be checked for the actual host OS.
+const hostHasPosixPermissions = process.platform !== 'win32';
+
 export interface JournalEntry {
   transactionId: string;
   timestamp: string;
@@ -48,11 +52,7 @@ export class ShadowJournal {
   private async ensureJournalDir(): Promise<void> {
     await fs.mkdir(this.journalDir, { recursive: true, mode: 0o700 });
     const st = await fs.lstat(this.journalDir);
-    if (
-      !st.isDirectory() ||
-      st.isSymbolicLink() ||
-      (process.platform !== 'win32' && (st.mode & 0o077) !== 0)
-    ) {
+    if (!st.isDirectory() || st.isSymbolicLink() || (hostHasPosixPermissions && (st.mode & 0o077) !== 0)) {
       fail('JOURNAL_UNSAFE', 'Journal directory is not an owner-private directory.');
     }
     if (typeof process.getuid === 'function' && st.uid !== process.getuid()) {

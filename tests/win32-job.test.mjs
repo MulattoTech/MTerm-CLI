@@ -10,21 +10,26 @@ test('Win32JobSupervisor initializes and cleanly terminates assigned process', a
   const supervisor = Win32JobSupervisor.getInstance();
 
   // Spawn a background child process that sleeps
-  const child = spawn('node', ['-e', 'setInterval(() => {}, 1000)'], {
+  const child = spawn(process.execPath, ['-e', 'setInterval(() => {}, 1000)'], {
     windowsHide: true,
   });
 
-  assert.ok(child.pid);
+  try {
+    assert.ok(child.pid);
 
-  const assigned = await supervisor.assign('test-session-1', child.pid);
-  assert.equal(assigned, true);
+    const assigned = await supervisor.assign('test-session-1', child.pid);
+    assert.equal(assigned, true);
 
-  const terminated = await supervisor.terminate('test-session-1');
-  assert.equal(terminated, true);
+    const terminated = await supervisor.terminate('test-session-1');
+    assert.equal(terminated, true);
 
-  // Verify process exit
-  await new Promise((resolve) => setTimeout(resolve, 300));
-  assert.equal(child.killed || child.exitCode !== null, true);
-
-  await supervisor.shutdown();
+    // Verify process exit
+    await new Promise((resolve) => setTimeout(resolve, 300));
+    assert.equal(child.killed || child.exitCode !== null, true);
+  } finally {
+    try {
+      child.kill('SIGKILL');
+    } catch {}
+    await supervisor.shutdown();
+  }
 });

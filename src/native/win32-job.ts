@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 // Module: MTerm-CLI Native Windows Job Object Supervisor Client
+import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawn, type ChildProcess } from 'node:child_process';
@@ -32,7 +33,19 @@ export class Win32JobSupervisor {
 
     this.initPromise = new Promise<void>((resolve, reject) => {
       try {
-        const scriptPath = path.resolve(__dirname, 'job-supervisor.ps1');
+        let scriptPath = path.resolve(__dirname, 'job-supervisor.ps1');
+        if (!fs.existsSync(scriptPath)) {
+          const srcPath = path.resolve(__dirname, '../../src/native/job-supervisor.ps1');
+          if (fs.existsSync(srcPath)) {
+            try {
+              fs.mkdirSync(path.dirname(scriptPath), { recursive: true });
+              fs.copyFileSync(srcPath, scriptPath);
+            } catch {
+              scriptPath = srcPath;
+            }
+          }
+        }
+
         this.child = spawn('powershell', ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', scriptPath], {
           windowsHide: true,
           stdio: ['pipe', 'pipe', 'pipe'],
@@ -81,7 +94,7 @@ export class Win32JobSupervisor {
             this.ready = false;
             resolve(); // Fallback to graceful non-job supervision
           }
-        }, 3000);
+        }, 8000);
       } catch (err) {
         this.ready = false;
         resolve();

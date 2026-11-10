@@ -89,7 +89,7 @@ test('RefineEngine 5-pass pipeline successfully refines valid code and rejects i
     assert.equal(reportBad.syntaxValid, false);
     assert.match(reportBad.failureReason, /Syntax validation failed/);
   } finally {
-    await fs.rm(tmpDir, { recursive: true, force: true });
+    await fs.rm(tmpDir, { recursive: true, force: true, maxRetries: 8, retryDelay: 50 });
   }
 });
 
@@ -116,6 +116,6 @@ test('FileService integration exposes format, lint, and refine MCP operations', 
     assert.equal(refineRes.ok, true);
     assert.match(refineRes.finalContent, /return 10;/);
   } finally {
-    await fs.rm(tmpDir, { recursive: true, force: true });
+    await fs.rm(tmpDir, { recursive: true, force: true, maxRetries: 8, retryDelay: 50 });
   }
 });

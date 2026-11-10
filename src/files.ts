@@ -10,6 +10,8 @@ import { createHash, randomUUID } from 'node:crypto';
 import { z } from 'zod';
 import { RootPolicy, ignored, privateName } from './policy.js';
 import { fail, cancelled, safeError, ToolError } from './errors.js';
+import { parseUnifiedDiff, applyHunks, createDiffPreview } from './editing/semantic-editor.js';
+import { SyntaxValidator } from './editing/syntax-validator.js';
 const pathname = z.string().min(1).max(4096);
 const version = z.union([z.literal('missing'), z.string().regex(/^[a-f0-9]{64}$/)]);
 export const fileSchemas = {
@@ -23,6 +25,17 @@ export const fileSchemas = {
   mkdir: z.strictObject({ path: pathname }),
   list: z.strictObject({ path: pathname.default('.'), limit: z.number().int().min(1).max(500).default(100) }),
   move: z.strictObject({ source: pathname, destination: pathname }),
+  patch: z.strictObject({
+    path: pathname,
+    patch: z.string().min(1).max(1048576),
+    dryRun: z.boolean().default(false),
+    validateSyntax: z.boolean().default(true),
+  }),
+  validateSyntax: z.strictObject({
+    path: pathname,
+    text: z.string().max(1048576).optional(),
+    language: z.string().max(32).optional(),
+  }),
   search: z.strictObject({
     path: pathname.default('.'),
     query: z.string().min(1).max(256),
@@ -536,5 +549,65 @@ export class FileService {
     };
     await visit(root, 0);
     return { root: this.policy.relative(root), results, visited, readBytes, truncated };
+  }
+  async applyPatch(input: unknown, signal?: AbortSignal) {
+    const a = fileSchemas.patch.parse(input);
+    cancelled(signal);
+    const current = await this.read({ path: a.path });
+    cancelled(signal);
+
+    const parsedDiffs = parseUnifiedDiff(a.patch);
+    if (parsedDiffs.length === 0 || !parsedDiffs[0] || parsedDiffs[0].hunks.length === 0) {
+      fail('MALFORMED_DIFF', 'Supplied patch contains no valid unified diff hunks.');
+    }
+
+    const patchResult = applyHunks(current.text, parsedDiffs[0].hunks);
+    if (!patchResult.ok) {
+      fail('PATCH_CONFLICT', patchResult.error ?? 'Failed to apply diff hunks to current file content.');
+    }
+
+    let syntaxValid = true;
+    if (a.validateSyntax) {
+      const syntaxResult = SyntaxValidator.validate(patchResult.patchedText, a.path);
+      syntaxValid = syntaxResult.valid;
+      if (!syntaxResult.valid) {
+        const first = syntaxResult.diagnostics[0];
+        const msg = first ? ` at line ${first.line}, col ${first.column}: ${first.message}` : '';
+        fail('SYNTAX_ERROR', `Patch rejected: resulting code contains syntax errors${msg}`);
+      }
+    }
+
+    if (a.dryRun) {
+      return {
+        path: current.path,
+        ok: true,
+        dryRun: true,
+        hunksApplied: patchResult.hunksApplied,
+        hunksTotal: patchResult.hunksTotal,
+        syntaxValid,
+        diffPreview: createDiffPreview(a.path, current.text, patchResult.patchedText),
+      };
+    }
+
+    const writeResult = await this.write({ path: a.path, text: patchResult.patchedText, expectedVersion: current.version }, signal);
+    return {
+      path: current.path,
+      ok: true,
+      dryRun: false,
+      hunksApplied: patchResult.hunksApplied,
+      hunksTotal: patchResult.hunksTotal,
+      syntaxValid,
+      bytes: writeResult.bytes,
+      version: writeResult.version,
+    };
+  }
+  async validateSyntax(input: unknown) {
+    const a = fileSchemas.validateSyntax.parse(input);
+    let content = a.text;
+    if (content === undefined) {
+      const current = await this.read({ path: a.path });
+      content = current.text;
+    }
+    return SyntaxValidator.validate(content, a.path, a.language);
   }
 }

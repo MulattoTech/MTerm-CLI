@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "project": "MTerm-CLI",
+  "planFile": "docs/plans/MTERM_INTELLIGENCE_MODERNIZATION_PLAN.md",
+  "baseBranch": "feat/aug-011-update-check-20261108",
+  "targetBranch": "feat/mterm-intelligence-modernization-20261110",
+  "lastUpdated": "2026-11-10T00:46:00Z",
+  "requirements": [
+    {
+      "id": "MOD-001",
+      "name": "Win32 Job Object Process Supervision",
+      "workstream": 3,
+      "state": "Not started",
+      "milestone": "Phase 1",
+      "targetFiles": ["src/native/win32-job.ts", "src/processes.ts"]
+    },
+    {
+      "id": "MOD-002",
+      "name": "Decompose files.ts into Atomic Services",
+      "workstream": 4,
+      "state": "Not started",
+      "milestone": "Phase 1",
+      "targetFiles": ["src/files/atomic-writer.ts", "src/files/retry-strategy.ts", "src/files.ts"]
+    },
+    {
+      "id": "MOD-003",
+      "name": "Shadow Journaling & Pre-Mutation Snapshots",
+      "workstream": 9,
+      "state": "Not started",
+      "milestone": "Phase 1",
+      "targetFiles": ["src/journaling/shadow-journal.ts", "src/files.ts"]
+    },
+    {
+      "id": "MOD-004",
+      "name": "Transactional mterm_rollback Tool",
+      "workstream": 9,
+      "state": "Not started",
+      "milestone": "Phase 1",
+      "targetFiles": ["src/journaling/shadow-journal.ts", "src/mcp.ts"]
+    },
+    {
+      "id": "MOD-005",
+      "name": "Semantic Unified Diff Engine (mterm_apply_patch)",
+      "workstream": 1,
+      "state": "Not started",
+      "milestone": "Phase 2",
+      "targetFiles": ["src/editing/semantic-editor.ts", "src/mcp.ts"]
+    },
+    {
+      "id": "MOD-006",
+      "name": "Pre-Save Syntactic AST Validator",
+      "workstream": 1,
+      "state": "Not started",
+      "milestone": "Phase 2",
+      "targetFiles": ["src/editing/syntax-validator.ts", "src/mcp.ts"]
+    },
+    {
+      "id": "MOD-007",
+      "name": "Deterministic Multi-Linter Tool (mterm_lint_check)",
+      "workstream": 2,
+      "state": "Not started",
+      "milestone": "Phase 2",
+      "targetFiles": ["src/quality/linter.ts", "src/mcp.ts"]
+    },
+    {
+      "id": "MOD-008",
+      "name": "Automated Code Formatter Tool (mterm_format_file)",
+      "workstream": 2,
+      "state": "Not started",
+      "milestone": "Phase 2",
+      "targetFiles": ["src/quality/formatter.ts", "src/mcp.ts"]
+    },
+    {
+      "id": "MOD-009",
+      "name": "5-Pass Self-Healing Refine Pipeline (RefineEngine)",
+      "workstream": 2,
+      "state": "Not started",
+      "milestone": "Phase 2",
+      "targetFiles": ["src/quality/refine-pipeline.ts", "src/mcp.ts"]
+    },
+    {
+      "id": "MOD-010",
+      "name": "Language Server Protocol Client (mterm_lsp_*)",
+      "workstream": 5,
+      "state": "Not started",
+      "milestone": "Phase 3",
+      "targetFiles": ["src/lsp/client.ts", "src/lsp/manager.ts", "src/mcp.ts"]
+    },
+    {
+      "id": "MOD-011",
+      "name": "Dense Repository Map Generator (mterm_repo_map)",
+      "workstream": 6,
+      "state": "Not started",
+      "milestone": "Phase 3",
+      "targetFiles": ["src/intelligence/repomap.ts", "src/mcp.ts"]
+    },
+    {
+      "id": "MOD-012",
+      "name": "Cloud AI Provider Adapters & Model Router",
+      "workstream": 10,
+      "state": "Not started",
+      "milestone": "Phase 3",
+      "targetFiles": ["src/ai/model-provider.ts", "src/ai/router.ts", "src/mcp.ts"]
+    },
+    {
+      "id": "MOD-013",
+      "name": "30+ Agent Fleet Supervisor & SQLite Task Queue",
+      "workstream": 8,
+      "state": "Not started",
+      "milestone": "Phase 3",
+      "targetFiles": ["src/orchestration/fleet-manager.ts", "src/orchestration/fleet-db.ts"]
+    },
+    {
+      "id": "MOD-014",
+      "name": "Dual Dev/Prod Packaging (mterm-cli-dev)",
+      "workstream": 7,
+      "state": "Not started",
+      "milestone": "Phase 4",
+      "targetFiles": ["package.json", "Start-MTerm-CLI.ps1"]
+    },
+    {
+      "id": "MOD-015",
+      "name": "Enhanced Diagnostics (mterm-cli doctor --json)",
+      "workstream": 12,
+      "state": "Not started",
+      "milestone": "Phase 4",
+      "targetFiles": ["src/cli.ts", "src/errors.ts"]
+    },
+    {
+      "id": "MOD-EX01",
+      "name": "Locally Hosted AI Inference (Ollama/llama.cpp/ROCm)",
+      "workstream": 10,
+      "state": "Excluded by user",
+      "milestone": "N/A",
+      "targetFiles": []
+    }
+  ]
+}

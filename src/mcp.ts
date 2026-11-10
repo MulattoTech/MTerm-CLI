@@ -458,7 +458,21 @@ export async function runMcp(options: HostOptions): Promise<void> {
         true,
         (a, s) => files.search({ ...(a as object), mode: 'content' }, s),
       );
+      add(
+        'mterm_validate_syntax',
+        'Pre-save syntactic validation for TypeScript, JavaScript, JSON, Python, and PowerShell.',
+        fileSchemas.validateSyntax,
+        true,
+        (a) => files.validateSyntax(a),
+      );
       if (files.allowWrite) {
+        add(
+          'mterm_apply_patch',
+          'Context-aware unified diff patch application with optional AST syntax pre-validation and dry-run preview.',
+          fileSchemas.patch,
+          false,
+          (a, s) => files.applyPatch(a, s),
+        );
         add(
           'mterm_write_file',
           'Atomic text save requiring expectedVersion: missing for create, SHA-256 for update.',

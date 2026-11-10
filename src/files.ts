@@ -17,6 +17,8 @@ import { CodeLinter } from './quality/linter.js';
 import { TypeChecker } from './quality/typecheck.js';
 import { RefineEngine } from './quality/refine-pipeline.js';
 import { ShadowJournal } from './journaling/shadow-journal.js';
+import { RepoMapGenerator } from './intelligence/repomap.js';
+import { LspManager } from './lsp/manager.js';
 const pathname = z.string().min(1).max(4096);
 const version = z.union([z.literal('missing'), z.string().regex(/^[a-f0-9]{64}$/)]);
 export const fileSchemas = {
@@ -62,6 +64,21 @@ export const fileSchemas = {
     transactionId: z.string().max(64).optional(),
     file: pathname.optional(),
     stepsBack: z.number().int().min(1).max(20).default(1),
+  }),
+  repoMap: z.strictObject({
+    maxLines: z.number().int().min(10).max(500).default(120),
+    maxFiles: z.number().int().min(1).max(200).default(50),
+  }),
+  lspDefinition: z.strictObject({
+    path: pathname,
+    symbol: z.string().min(1).max(128),
+  }),
+  lspReferences: z.strictObject({
+    symbol: z.string().min(1).max(128),
+    limit: z.number().int().min(1).max(100).default(50),
+  }),
+  lspSymbols: z.strictObject({
+    path: pathname,
   }),
   search: z.strictObject({
     path: pathname.default('.'),
@@ -710,5 +727,23 @@ export class FileService {
   async rollback(input: unknown) {
     const a = fileSchemas.rollback.parse(input);
     return this.journal.rollback({ ...a, rootDir: this.policy.root });
+  }
+  async repoMap(input: unknown) {
+    const a = fileSchemas.repoMap.parse(input);
+    return RepoMapGenerator.generate(this.policy.root, a);
+  }
+  async lspDefinition(input: unknown) {
+    const a = fileSchemas.lspDefinition.parse(input);
+    const full = await this.policy.resolve(a.path);
+    return LspManager.findDefinition(full, a.symbol, this.policy.root);
+  }
+  async lspReferences(input: unknown) {
+    const a = fileSchemas.lspReferences.parse(input);
+    return LspManager.findReferences(a.symbol, this.policy.root, a.limit);
+  }
+  async lspSymbols(input: unknown) {
+    const a = fileSchemas.lspSymbols.parse(input);
+    const full = await this.policy.resolve(a.path);
+    return LspManager.getDocumentSymbols(full);
   }
 }

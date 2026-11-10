@@ -479,6 +479,34 @@ export async function runMcp(options: HostOptions): Promise<void> {
         true,
         (a, s) => files.typeCheck(a, s),
       );
+      add(
+        'mterm_repo_map',
+        'Generate dense, token-efficient repository structure and symbol map with git-tree caching.',
+        fileSchemas.repoMap,
+        true,
+        (a) => files.repoMap(a),
+      );
+      add(
+        'mterm_lsp_definition',
+        'Find declaration / definition location for a symbol in the workspace.',
+        fileSchemas.lspDefinition,
+        true,
+        (a) => files.lspDefinition(a),
+      );
+      add(
+        'mterm_lsp_references',
+        'Find all references to a symbol across the workspace.',
+        fileSchemas.lspReferences,
+        true,
+        (a) => files.lspReferences(a),
+      );
+      add(
+        'mterm_lsp_symbols',
+        'Extract document symbols (functions, classes, interfaces) from a file.',
+        fileSchemas.lspSymbols,
+        true,
+        (a) => files.lspSymbols(a),
+      );
       if (files.allowWrite) {
         add(
           'mterm_format_file',

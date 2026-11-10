@@ -495,6 +495,13 @@ export async function runMcp(options: HostOptions): Promise<void> {
           (a, s) => files.refine(a, s),
         );
         add(
+          'mterm_rollback',
+          'Roll back file modifications using pre-mutation shadow journal snapshots.',
+          fileSchemas.rollback,
+          false,
+          (a) => files.rollback(a),
+        );
+        add(
           'mterm_apply_patch',
           'Context-aware unified diff patch application with optional AST syntax pre-validation and dry-run preview.',
           fileSchemas.patch,

@@ -16,6 +16,7 @@ import { CodeFormatter } from './quality/formatter.js';
 import { CodeLinter } from './quality/linter.js';
 import { TypeChecker } from './quality/typecheck.js';
 import { RefineEngine } from './quality/refine-pipeline.js';
+import { ShadowJournal } from './journaling/shadow-journal.js';
 const pathname = z.string().min(1).max(4096);
 const version = z.union([z.literal('missing'), z.string().regex(/^[a-f0-9]{64}$/)]);
 export const fileSchemas = {
@@ -57,6 +58,11 @@ export const fileSchemas = {
     runLinter: z.boolean().default(true),
     runTypeCheck: z.boolean().default(false),
   }),
+  rollback: z.strictObject({
+    transactionId: z.string().max(64).optional(),
+    file: pathname.optional(),
+    stepsBack: z.number().int().min(1).max(20).default(1),
+  }),
   search: z.strictObject({
     path: pathname.default('.'),
     query: z.string().min(1).max(256),
@@ -97,11 +103,14 @@ export class FileWriteCleanupError extends ToolError {
 }
 export class FileService {
   private queue: Promise<unknown> = Promise.resolve();
+  readonly journal: ShadowJournal;
   private constructor(
     readonly policy: RootPolicy,
     readonly allowWrite: boolean,
     readonly maxBytes: number,
-  ) {}
+  ) {
+    this.journal = new ShadowJournal(this.policy.root);
+  }
   static async create(
     root: string | readonly string[],
     options: { allowWrite?: boolean; maxBytes?: number } = {},
@@ -244,6 +253,9 @@ export class FileService {
       }
       if ((old === undefined ? 'missing' : sha(old)) !== a.expectedVersion)
         fail('CONFLICT', 'File changed or already exists; read it again before saving.');
+      if (old !== undefined) {
+        await this.journal.recordSnapshot(this.policy.relative(full), this.text(old), 'write');
+      }
       const temp = path.join(parentPath, '.mterm-' + randomUUID() + '.tmp');
       let owned = false;
       let created = false;
@@ -694,5 +706,9 @@ export class FileService {
       ...report,
       path: current.path,
     };
+  }
+  async rollback(input: unknown) {
+    const a = fileSchemas.rollback.parse(input);
+    return this.journal.rollback({ ...a, rootDir: this.policy.root });
   }
 }

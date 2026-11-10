@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-// Module: MTerm-CLI 30+ Multi-Session Fleet Supervisor & Task Queue
+// Module: MTerm-CLI in-memory fleet ledger (no external task execution)
 import { randomUUID } from 'node:crypto';
 
 export type TaskStatus = 'queued' | 'running' | 'checkpointed' | 'completed' | 'failed' | 'cancelled';
@@ -33,6 +33,8 @@ export class FleetSupervisor {
   private readonly tasks = new Map<string, FleetTask>();
   private readonly queue: string[] = []; // Task IDs waiting for admission
   private readonly maxConcurrentActiveTasks = 64;
+  private readonly maxRetainedTasks = 5000;
+  private readonly maxSessions = 100;
   private runningTaskCount = 0;
   private halted = false;
 
@@ -51,6 +53,7 @@ export class FleetSupervisor {
     const now = new Date().toISOString();
 
     if (!session) {
+      if (this.sessions.size >= this.maxSessions) throw new Error('Logical fleet session limit reached.');
       session = {
         sessionId,
         clientLabel,
@@ -97,6 +100,9 @@ export class FleetSupervisor {
     if (this.tasks.has(taskId)) {
       return this.tasks.get(taskId)!;
     }
+    if (this.tasks.size >= this.maxRetainedTasks) {
+      throw new Error('Logical fleet task retention limit reached; archival is not implemented.');
+    }
 
     this.registerSession(options.sessionId, options.clientLabel);
 
@@ -118,7 +124,7 @@ export class FleetSupervisor {
   }
 
   /**
-   * Schedules queued tasks using fair round-robin scheduling across sessions.
+   * Admits task records using FIFO; does not launch or schedule external workers.
    */
   private processQueue(): void {
     if (this.halted) return;
@@ -190,14 +196,20 @@ export class FleetSupervisor {
   }
 
   /**
-   * Emergency halt: immediately stops admission and marks running tasks.
+   * Emergency halt: stop admission and mark logical records; no OS processes
+   * or external ChatGPT sessions are stopped by this in-memory implementation.
    */
-  emergencyHalt(): { halted: boolean; affectedTasks: number; activeSessions: number } {
+  emergencyHalt(): {
+    halted: boolean;
+    affectedTasks: number;
+    activeSessions: number;
+    executorsStopped: number;
+  } {
     this.halted = true;
     let affected = 0;
 
     for (const task of this.tasks.values()) {
-      if (task.status === 'queued' || task.status === 'running') {
+      if (task.status === 'queued' || task.status === 'running' || task.status === 'checkpointed') {
         task.status = 'cancelled';
         task.error = 'Emergency fleet halt triggered';
         affected++;
@@ -216,6 +228,7 @@ export class FleetSupervisor {
       halted: true,
       affectedTasks: affected,
       activeSessions: this.sessions.size,
+      executorsStopped: 0,
     };
   }
 
@@ -233,21 +246,27 @@ export class FleetSupervisor {
    * Returns complete fleet status metrics.
    */
   getStatus(): {
+    mode: 'ledger-only';
+    executionAdapterConnected: false;
     halted: boolean;
     totalSessions: number;
     activeSessions: number;
     queuedTasks: number;
     runningTasks: number;
+    checkpointedTasks: number;
     completedTasks: number;
     failedTasks: number;
   } {
     const all = [...this.tasks.values()];
     return {
+      mode: 'ledger-only',
+      executionAdapterConnected: false,
       halted: this.halted,
       totalSessions: this.sessions.size,
       activeSessions: [...this.sessions.values()].filter((s) => s.status === 'active').length,
       queuedTasks: this.queue.length,
       runningTasks: all.filter((t) => t.status === 'running').length,
+      checkpointedTasks: all.filter((t) => t.status === 'checkpointed').length,
       completedTasks: all.filter((t) => t.status === 'completed').length,
       failedTasks: all.filter((t) => t.status === 'failed').length,
     };

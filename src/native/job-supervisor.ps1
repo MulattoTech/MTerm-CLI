@@ -101,9 +101,14 @@ while ($line = [Console]::In.ReadLine()) {
                 if ($hJob -eq [IntPtr]::Zero) {
                     [Console]::Out.WriteLine("ERR CREATE $($id) $([Marshal]::GetLastWin32Error())")
                 } else {
-                    [Win32Job]::EnableKillOnClose($hJob) | Out-Null
-                    $Jobs[$id] = $hJob
-                    [Console]::Out.WriteLine("OK CREATE $($id)")
+                    if ([Win32Job]::EnableKillOnClose($hJob)) {
+                        $Jobs[$id] = $hJob
+                        [Console]::Out.WriteLine("OK CREATE $($id)")
+                    } else {
+                        $err = [Marshal]::GetLastWin32Error()
+                        [Win32Job]::CloseHandle($hJob) | Out-Null
+                        [Console]::Out.WriteLine("ERR CREATE_LIMIT $($id) $($err)")
+                    }
                 }
             }
             "ASSIGN" {
@@ -112,7 +117,16 @@ while ($line = [Console]::In.ReadLine()) {
                 if (-not $Jobs.ContainsKey($id)) {
                     # Create job on the fly if needed
                     $hJob = [Win32Job]::CreateJobObject([IntPtr]::Zero, $null)
-                    [Win32Job]::EnableKillOnClose($hJob) | Out-Null
+                    if ($hJob -eq [IntPtr]::Zero) {
+                        [Console]::Out.WriteLine("ERR CREATE $($id) $([Marshal]::GetLastWin32Error())")
+                        continue
+                    }
+                    if (-not [Win32Job]::EnableKillOnClose($hJob)) {
+                        $err = [Marshal]::GetLastWin32Error()
+                        [Win32Job]::CloseHandle($hJob) | Out-Null
+                        [Console]::Out.WriteLine("ERR CREATE_LIMIT $($id) $($err)")
+                        continue
+                    }
                     $Jobs[$id] = $hJob
                 } else {
                     $hJob = $Jobs[$id]
@@ -135,10 +149,14 @@ while ($line = [Console]::In.ReadLine()) {
                 $id = $parts[1]
                 if ($Jobs.ContainsKey($id)) {
                     $hJob = $Jobs[$id]
-                    [Win32Job]::TerminateJobObject($hJob, 0) | Out-Null
+                    $terminated = [Win32Job]::TerminateJobObject($hJob, 0)
                     [Win32Job]::CloseHandle($hJob) | Out-Null
                     $Jobs.Remove($id) | Out-Null
-                    [Console]::Out.WriteLine("OK TERMINATE $($id)")
+                    if ($terminated) {
+                        [Console]::Out.WriteLine("OK TERMINATE $($id)")
+                    } else {
+                        [Console]::Out.WriteLine("ERR TERMINATE $($id)")
+                    }
                 } else {
                     [Console]::Out.WriteLine("OK TERMINATE_ALREADY_CLOSED $($id)")
                 }

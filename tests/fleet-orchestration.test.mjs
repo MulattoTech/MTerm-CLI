@@ -3,7 +3,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { FleetSupervisor } from '../dist/orchestration/fleet-manager.js';
 
-test('FleetSupervisor coordinates 35 concurrent agent sessions with fair queueing and admission limits', async () => {
+test('FleetSupervisor tracks 35 simulated session records with FIFO admission limits', async () => {
   const fleet = FleetSupervisor.getInstance();
   fleet.resumeFleet(); // Ensure clean state
 

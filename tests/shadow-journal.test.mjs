@@ -18,7 +18,7 @@ test('ShadowJournal records pre-mutation snapshots and restores previous content
     await fs.writeFile(path.join(tmpDir, testFile), originalText, 'utf8');
 
     // Record snapshot
-    const txId = await journal.recordSnapshot(testFile, originalText, 'write');
+    const txId = await journal.recordSnapshot(testFile, originalText, 'write', undefined, modifiedText);
     assert.ok(txId);
 
     // Apply mutation

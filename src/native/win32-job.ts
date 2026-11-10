@@ -33,23 +33,29 @@ export class Win32JobSupervisor {
 
     this.initPromise = new Promise<void>((resolve, reject) => {
       try {
-        let scriptPath = path.resolve(__dirname, 'job-supervisor.ps1');
+        const scriptPath = path.resolve(__dirname, 'job-supervisor.ps1');
         if (!fs.existsSync(scriptPath)) {
-          const srcPath = path.resolve(__dirname, '../../src/native/job-supervisor.ps1');
-          if (fs.existsSync(srcPath)) {
-            try {
-              fs.mkdirSync(path.dirname(scriptPath), { recursive: true });
-              fs.copyFileSync(srcPath, scriptPath);
-            } catch {
-              scriptPath = srcPath;
-            }
-          }
+          // Runtime code may not create executable helpers in an installation
+          // directory. The build must bundle this asset before publication.
+          resolve();
+          return;
         }
 
-        this.child = spawn('powershell', ['-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', scriptPath], {
-          windowsHide: true,
-          stdio: ['pipe', 'pipe', 'pipe'],
-        });
+        const powershell = path.join(
+          process.env.SystemRoot ?? 'C:\\Windows',
+          'System32',
+          'WindowsPowerShell',
+          'v1.0',
+          'powershell.exe',
+        );
+        this.child = spawn(
+          powershell,
+          ['-NoProfile', '-NonInteractive', '-ExecutionPolicy', 'Bypass', '-File', scriptPath],
+          {
+            windowsHide: true,
+            stdio: ['pipe', 'pipe', 'pipe'],
+          },
+        );
 
         let lineBuffer = '';
 
@@ -81,11 +87,17 @@ export class Win32JobSupervisor {
 
         this.child.on('error', (err) => {
           this.ready = false;
+          this.initPromise = undefined;
+          for (const resolvePending of this.pending.values()) resolvePending('ERR_SUPERVISOR_EXIT');
+          this.pending.clear();
           reject(err);
         });
 
         this.child.on('exit', () => {
           this.ready = false;
+          this.initPromise = undefined;
+          for (const resolvePending of this.pending.values()) resolvePending('ERR_SUPERVISOR_EXIT');
+          this.pending.clear();
         });
 
         // Fail-safe timeout for supervisor initialization
@@ -127,7 +139,8 @@ export class Win32JobSupervisor {
    * Assigns an active process to a dedicated Win32 Job Object.
    */
   async assign(jobId: string, pid: number): Promise<boolean> {
-    if (!this.enabled) return false;
+    if (!this.enabled || !/^[A-Za-z0-9_-]{1,100}$/.test(jobId) || !Number.isSafeInteger(pid) || pid <= 0)
+      return false;
     await this.ensureInitialized();
     if (!this.ready) return false;
 
@@ -139,7 +152,7 @@ export class Win32JobSupervisor {
    * Atomically terminates all processes in the job object using kernel-level termination.
    */
   async terminate(jobId: string): Promise<boolean> {
-    if (!this.enabled) return false;
+    if (!this.enabled || !/^[A-Za-z0-9_-]{1,100}$/.test(jobId)) return false;
     await this.ensureInitialized();
     if (!this.ready) return false;
 

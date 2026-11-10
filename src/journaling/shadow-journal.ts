@@ -4,6 +4,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import os from 'node:os';
 import { createHash, randomUUID } from 'node:crypto';
+import { fail } from '../errors.js';
 
 export interface JournalEntry {
   transactionId: string;
@@ -11,6 +12,8 @@ export interface JournalEntry {
   relativePath: string;
   previousVersion: string;
   previousContent: string;
+  /** Hash of the exact content written by the guarded mutation. Missing means unverified. */
+  nextVersion?: string;
   action: 'write' | 'patch' | 'delete';
 }
 
@@ -22,26 +25,36 @@ export interface RollbackResult {
 }
 
 export class ShadowJournal {
-  private static instance?: ShadowJournal;
   private readonly journalDir: string;
+  private readonly rootDir: string;
   private activeTransactionId?: string;
 
   constructor(rootDir?: string) {
-    const base = process.env.MTERM_JOURNAL_DIR || path.join(os.tmpdir(), '.mterm-journal');
-    this.journalDir = base;
+    this.rootDir = path.resolve(rootDir ?? process.cwd());
+    const base = process.env.MTERM_JOURNAL_DIR || path.join(os.tmpdir(), 'mterm-journals');
+    // Snapshots from different trusted roots must never be visible to one another.
+    const rootId = createHash('sha256').update(this.rootDir).digest('hex').slice(0, 32);
+    this.journalDir = path.join(base, `root-${rootId}`);
   }
 
   static getInstance(rootDir?: string): ShadowJournal {
-    if (!this.instance) {
-      this.instance = new ShadowJournal(rootDir);
-    }
-    return this.instance;
+    // A process-global singleton previously mixed journal contents from unrelated roots.
+    return new ShadowJournal(rootDir);
   }
 
   private async ensureJournalDir(): Promise<void> {
-    try {
-      await fs.mkdir(this.journalDir, { recursive: true });
-    } catch {}
+    await fs.mkdir(this.journalDir, { recursive: true, mode: 0o700 });
+    const st = await fs.lstat(this.journalDir);
+    if (
+      !st.isDirectory() ||
+      st.isSymbolicLink() ||
+      (process.platform !== 'win32' && (st.mode & 0o077) !== 0)
+    ) {
+      fail('JOURNAL_UNSAFE', 'Journal directory is not an owner-private directory.');
+    }
+    if (typeof process.getuid === 'function' && st.uid !== process.getuid()) {
+      fail('JOURNAL_UNSAFE', 'Journal directory is not owned by the current user.');
+    }
   }
 
   /**
@@ -67,7 +80,19 @@ export class ShadowJournal {
     currentContent: string,
     action: 'write' | 'patch' | 'delete' = 'write',
     transactionId?: string,
+    nextContent?: string,
   ): Promise<string> {
+    const target = path.resolve(this.rootDir, relativePath);
+    const relative = path.relative(this.rootDir, target);
+    if (
+      !relative ||
+      path.isAbsolute(relativePath) ||
+      relative === '..' ||
+      relative.startsWith('..' + path.sep) ||
+      path.isAbsolute(relative)
+    ) {
+      fail('JOURNAL_PATH', 'Journal snapshot must have a relative path inside its trusted root.');
+    }
     await this.ensureJournalDir();
     const txId = transactionId || this.activeTransactionId || randomUUID();
     const sha = createHash('sha256').update(currentContent, 'utf8').digest('hex');
@@ -78,13 +103,21 @@ export class ShadowJournal {
       relativePath,
       previousVersion: sha,
       previousContent: currentContent,
+      nextVersion:
+        nextContent === undefined
+          ? undefined
+          : createHash('sha256').update(nextContent, 'utf8').digest('hex'),
       action,
     };
 
-    const fileName = `${Date.now()}-${txId.slice(0, 8)}-${path.basename(relativePath)}.json`;
+    const fileName = `${Date.now()}-${randomUUID()}.json`;
     const targetFile = path.join(this.journalDir, fileName);
 
-    await fs.writeFile(targetFile, JSON.stringify(entry, null, 2), 'utf8');
+    await fs.writeFile(targetFile, JSON.stringify(entry, null, 2), {
+      encoding: 'utf8',
+      flag: 'wx',
+      mode: 0o600,
+    });
     await this.enforceRetentionQuota();
 
     return txId;
@@ -117,6 +150,18 @@ export class ShadowJournal {
     }
   }
 
+  async findSnapshot(
+    relativePath: string,
+    transactionId?: string,
+    stepsBack = 1,
+  ): Promise<JournalEntry | undefined> {
+    const snapshots = await this.listSnapshots(100);
+    return snapshots.filter(
+      ({ entry }) =>
+        entry.relativePath === relativePath && (!transactionId || entry.transactionId === transactionId),
+    )[stepsBack - 1]?.entry;
+  }
+
   /**
    * Reverts changes using snapshot journal records.
    */
@@ -126,62 +171,19 @@ export class ShadowJournal {
     stepsBack?: number;
     rootDir: string;
   }): Promise<RollbackResult> {
-    const snapshots = await this.listSnapshots(100);
-    if (snapshots.length === 0) {
-      return { ok: false, restoredFiles: [], transactionId: '', error: 'No journal snapshots found.' };
+    // Preserve the public API, but route it through the existing guarded atomic FileService.
+    // The former implementation used unchecked fs.writeFile and could escape its root.
+    if (path.resolve(options.rootDir) !== this.rootDir) {
+      fail('JOURNAL_ROOT', 'Rollback root does not match the snapshot owner.');
     }
-
-    const restoredFiles: string[] = [];
-    let targetTxId = options.transactionId;
-
-    if (options.file) {
-      // Find latest snapshot for this specific file
-      const match = snapshots.find((s) => s.entry.relativePath === options.file);
-      if (!match) {
-        return {
-          ok: false,
-          restoredFiles: [],
-          transactionId: '',
-          error: `No snapshot found for file '${options.file}'.`,
-        };
-      }
-      const fullPath = path.resolve(options.rootDir, match.entry.relativePath);
-      await fs.writeFile(fullPath, match.entry.previousContent, 'utf8');
-      restoredFiles.push(match.entry.relativePath);
-      targetTxId = match.entry.transactionId;
-    } else if (options.transactionId) {
-      // Revert all files in this transaction
-      const txSnapshots = snapshots.filter((s) => s.entry.transactionId === options.transactionId);
-      if (txSnapshots.length === 0) {
-        return {
-          ok: false,
-          restoredFiles: [],
-          transactionId: options.transactionId,
-          error: `Transaction '${options.transactionId}' not found.`,
-        };
-      }
-      for (const s of txSnapshots) {
-        const fullPath = path.resolve(options.rootDir, s.entry.relativePath);
-        await fs.writeFile(fullPath, s.entry.previousContent, 'utf8');
-        restoredFiles.push(s.entry.relativePath);
-      }
-    } else {
-      // Revert the latest transaction
-      const latest = snapshots[0]!;
-      targetTxId = latest.entry.transactionId;
-      const latestTxSnapshots = snapshots.filter((s) => s.entry.transactionId === targetTxId);
-      for (const s of latestTxSnapshots) {
-        const fullPath = path.resolve(options.rootDir, s.entry.relativePath);
-        await fs.writeFile(fullPath, s.entry.previousContent, 'utf8');
-        restoredFiles.push(s.entry.relativePath);
-      }
-    }
-
-    return {
-      ok: true,
-      restoredFiles: Array.from(new Set(restoredFiles)),
-      transactionId: targetTxId || 'unknown',
-    };
+    if (!options.file) fail('ROLLBACK_SCOPE', 'Only guarded single-file rollback is currently supported.');
+    const { FileService } = await import('../files.js');
+    const service = await FileService.create(this.rootDir, { allowWrite: true });
+    return service.rollback({
+      file: options.file,
+      transactionId: options.transactionId,
+      stepsBack: options.stepsBack,
+    });
   }
 
   /**

@@ -2,7 +2,16 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { spawn } from 'node:child_process';
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { Win32JobSupervisor } from '../dist/native/win32-job.js';
+
+test('Windows supervisor helper is bundled beside the compiled entry', async () => {
+  const here = path.dirname(fileURLToPath(import.meta.url));
+  const helper = path.resolve(here, '../dist/native/job-supervisor.ps1');
+  assert.equal((await fs.stat(helper)).isFile(), true);
+});
 
 test('Win32JobSupervisor initializes and cleanly terminates assigned process', async () => {
   if (process.platform !== 'win32') return;
@@ -23,9 +32,14 @@ test('Win32JobSupervisor initializes and cleanly terminates assigned process', a
     const terminated = await supervisor.terminate('test-session-1');
     assert.equal(terminated, true);
 
-    // Verify process exit
-    await new Promise((resolve) => setTimeout(resolve, 300));
-    assert.equal(child.killed || child.exitCode !== null, true);
+    // Observe an actual process close, not ChildProcess.killed (which only
+    // means a signal request was sent and does not prove termination).
+    const close = new Promise((resolve) => child.once('close', resolve));
+    const outcome = await Promise.race([
+      close.then(() => 'closed'),
+      new Promise((resolve) => setTimeout(() => resolve('timeout'), 4000)),
+    ]);
+    assert.equal(outcome, 'closed');
   } finally {
     try {
       child.kill('SIGKILL');

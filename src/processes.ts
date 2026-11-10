@@ -62,6 +62,7 @@ type Session = {
   finish: () => void;
   timer?: NodeJS.Timeout;
   stopping?: Promise<void>;
+  jobAssignment?: Promise<boolean>;
   treeCleanup: string;
 };
 export function childEnvironment(): NodeJS.ProcessEnv {
@@ -86,9 +87,9 @@ export function childEnvironment(): NodeJS.ProcessEnv {
     Object.entries(process.env).filter(([key, v]) => v !== undefined && keys.has(key.toLowerCase())),
   ) as NodeJS.ProcessEnv;
 }
-/** Owned captured processes, not a PTY and not an OS security sandbox.
- * Windows taskkill /T is best-effort tree cleanup while its owned parent is alive;
- * race-free detached descendant containment needs a future native Job Object helper. */
+/** Owned captured processes, not a PTY or an OS security sandbox.
+ * The optional Win32 job helper attempts tree containment; if unavailable,
+ * taskkill /T is best-effort and must run while the parent still exists. */
 export class ProcessService {
   readonly sessions = new Map<string, Session>();
   private isolatedActive = 0;
@@ -322,7 +323,11 @@ export class ProcessService {
       };
       this.sessions.set(s.id, s);
       if (child.pid && process.platform === 'win32') {
-        void Win32JobSupervisor.getInstance().assign(s.id, child.pid);
+        // Track assignment so a racing stop never closes the parent before
+        // the supervisor can contain its descendants.
+        s.jobAssignment = Win32JobSupervisor.getInstance()
+          .assign(s.id, child.pid)
+          .catch(() => false);
       }
       const out = new StringDecoder('utf8'),
         err = new StringDecoder('utf8');
@@ -463,10 +468,12 @@ export class ProcessService {
       if (s.child.exitCode !== null || s.child.signalCode !== null) {
         s.treeCleanup = 'unverified-parent-already-exited';
       } else if (process.platform === 'win32') {
-        try {
-          s.child.kill();
-        } catch {}
-        const jobTerminated = await Win32JobSupervisor.getInstance().terminate(s.id);
+        const assigned = (await s.jobAssignment) ?? false;
+        const jobTerminated =
+          assigned &&
+          (await Win32JobSupervisor.getInstance()
+            .terminate(s.id)
+            .catch(() => false));
         if (jobTerminated) {
           s.treeCleanup = 'requested-owned-win32-job';
         } else {
@@ -479,7 +486,7 @@ export class ProcessService {
             });
             s.treeCleanup = 'requested-owned-live-tree';
           } catch {
-            s.treeCleanup = 'requested-owned-live-tree';
+            s.treeCleanup = 'unverified-owned-live-tree';
           }
         }
       } else {
@@ -571,7 +578,7 @@ export class ProcessService {
       [...this.sessions.values()].filter((s) => this.active(s)).map((s) => this.stop({ sessionId: s.id })),
     );
     if (process.platform === 'win32') {
-      void Win32JobSupervisor.getInstance().shutdown();
+      await Win32JobSupervisor.getInstance().shutdown();
     }
     if (results.some((r) => r.status === 'rejected'))
       fail('CLEANUP_UNCONFIRMED', 'Some owned process termination could not be confirmed.');

@@ -35,12 +35,18 @@ export class ModelRouter {
   getProvider(name?: string): ModelProvider {
     this.checkDailyReset();
 
-    if (name && this.providers.has(name.toLowerCase())) {
-      const p = this.providers.get(name.toLowerCase())!;
-      if (p.isConfigured()) return p;
+    if (name) {
+      const p = this.providers.get(name.toLowerCase());
+      if (!p || !p.isConfigured()) {
+        throw new Error(
+          `Requested AI provider '${name}' is not configured. No automatic provider substitution was made.`,
+        );
+      }
+      return p;
     }
 
-    // Default to deterministic local reviewer
+    // No actual cloud provider is bundled. The default is explicitly labeled as
+    // a deterministic heuristic; it cannot claim model inference or code review.
     return this.providers.get('deterministic-local-reviewer')!;
   }
 
@@ -61,6 +67,14 @@ export class ModelRouter {
 
     const provider = this.getProvider(options.provider);
     const report = await provider.reviewDiff(diffText, { focus: options.focus });
+
+    if (
+      !Number.isSafeInteger(report.tokensUsed) ||
+      report.tokensUsed < 0 ||
+      this.dailyTokensUsed + report.tokensUsed > this.dailyTokenLimit
+    ) {
+      throw new Error('AI provider token usage was invalid or exceeded the configured daily budget.');
+    }
 
     this.dailyTokensUsed += report.tokensUsed;
     return report;

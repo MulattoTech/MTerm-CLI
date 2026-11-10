@@ -110,7 +110,7 @@ export class RefineEngine {
       typeCheckDiagnostics = typeReport.diagnostics.filter(
         (d) => d.file.endsWith(options.path) || options.path.endsWith(d.file),
       );
-      typeCheckClean = typeCheckDiagnostics.length === 0;
+      typeCheckClean = typeReport.clean && typeCheckDiagnostics.length === 0;
       if (typeCheckClean) {
         stagesPassed.push('pass-5:typecheck-clean');
       } else {

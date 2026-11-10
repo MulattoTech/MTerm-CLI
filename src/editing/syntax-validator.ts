@@ -2,6 +2,7 @@
 // Module: MTerm-CLI Pre-Save Syntactic AST Validator
 import path from 'node:path';
 import vm from 'node:vm';
+import { stripTypeScriptTypes } from 'node:module';
 
 export interface SyntaxDiagnostic {
   line: number;
@@ -36,8 +37,9 @@ export class SyntaxValidator {
       case '.jsx':
         return 'javascriptreact';
       case '.json':
-      case '.jsonc':
         return 'json';
+      case '.jsonc':
+        return 'jsonc';
       case '.py':
         return 'python';
       case '.ps1':
@@ -62,8 +64,9 @@ export class SyntaxValidator {
     const language = explicitLanguage || this.inferLanguage(filePath);
     const diagnostics: SyntaxDiagnostic[] = [];
 
-    // Check balanced delimiters for all code files
-    if (['typescript', 'javascript', 'json', 'python', 'powershell'].includes(language)) {
+    // The delimiter heuristic is only diagnostic help, never proof of language
+    // syntax. Real JS/TS/JSON parsers handle strings, regexes, comments and templates.
+    if (['python', 'powershell'].includes(language)) {
       const balanceError = this.checkBalancedDelimiters(content);
       if (balanceError) {
         diagnostics.push(balanceError);
@@ -72,22 +75,36 @@ export class SyntaxValidator {
     }
 
     switch (language) {
+      case 'typescript':
+      case 'typescriptreact':
+      case 'javascriptreact':
       case 'javascript': {
         try {
-          new vm.Script(content, { filename: path.basename(filePath) });
-        } catch (err: unknown) {
-          if (err instanceof SyntaxError) {
-            const stack = err.stack || '';
-            const match = stack.match(/:(\d+)(?::(\d+))?/);
-            const line = match && match[1] ? parseInt(match[1], 10) : 1;
-            const column = match && match[2] ? parseInt(match[2], 10) : 1;
-            diagnostics.push({
-              line,
-              column,
-              message: err.message,
-              severity: 'error',
-            });
+          // Node >=24 ships a TypeScript grammar parser. It does not execute
+          // the supplied source or download an external compiler.
+          if (language === 'typescriptreact' || language === 'javascriptreact') {
+            throw new Error('TSX/JSX syntax validation is not supported by the built-in parser.');
           }
+          const transformed = stripTypeScriptTypes(content, { mode: 'strip' });
+          if (language === 'javascript' && transformed !== content) {
+            throw new Error('TypeScript-only syntax is not valid JavaScript.');
+          }
+          if (
+            language === 'javascript' &&
+            path.extname(filePath).toLowerCase() !== '.mjs' &&
+            !/(^|\n)\s*(?:import|export)\b/m.test(content)
+          ) {
+            // CommonJS has an additional normal JS parse check; ESM is parsed
+            // by the built-in TypeScript grammar above.
+            new vm.Script(transformed, { filename: path.basename(filePath) });
+          }
+        } catch (err: unknown) {
+          diagnostics.push({
+            line: 1,
+            column: 1,
+            message: err instanceof Error ? err.message : 'Language syntax was not verified.',
+            severity: 'error',
+          });
         }
         break;
       }
@@ -111,6 +128,18 @@ export class SyntaxValidator {
             severity: 'error',
           });
         }
+        break;
+      }
+
+      case 'python':
+      case 'jsonc':
+      case 'powershell': {
+        diagnostics.push({
+          line: 1,
+          column: 1,
+          message: `${language} syntax parsing is not available in this process; no AST validation was performed.`,
+          severity: 'error',
+        });
         break;
       }
 

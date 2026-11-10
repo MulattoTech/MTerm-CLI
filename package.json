@@ -25,7 +25,7 @@
     "test": "node --test --test-concurrency=1 tests/*.test.mjs",
     "check": "npm run roadmap:check && npm run parity:check && npm run typecheck && npm run format:check && npm test",
     "roadmap:check": "node scripts/roadmap.mjs --check",
-    "build:code": "tsc -p tsconfig.json",
+    "build:code": "tsc -p tsconfig.json && node scripts/copy-runtime-assets.mjs",
     "format:check": "prettier --check \"src/**/*.ts\" \"bin/*.js\" \"scripts/*.mjs\" \"tests/*.mjs\" \"gateway/*.mjs\"",
     "prepack": "npm run check && npm run build:code",
     "roadmap:render": "node scripts/roadmap.mjs --render",

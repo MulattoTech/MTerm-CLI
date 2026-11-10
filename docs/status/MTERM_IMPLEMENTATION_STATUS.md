@@ -1,5 +1,16 @@
 # MTerm-CLI — Implementation & Modernization Status
 
+> **Independent audit, 2026-11-10 — SUPERSEDES THE GEMINI COMPLETION CLAIMS BELOW.**
+> PR [#244](https://github.com/MulattoTech/MTerm-CLI/pull/244) had five genuinely green CI jobs, but its feature acceptance is **not 100%**. The original 573/573 local run is a historical reported test result, not evidence that the capabilities described below are complete or correct. The branch is not merged into `main`; follow-up fixes are separately staged and require a fresh cross-platform CI review.
+>
+> **Verified narrower scope:** single-file patching and guarded rollback; JavaScript/TypeScript/JSON checks with unsupported language exclusions; built-in whitespace style diagnostics; a heuristic repository map and symbol search; a deterministic no-cloud-AI diff reviewer; an in-memory fleet task ledger rather than 35 actual workers; Windows Job Object supervision with release-helper packaging corrected in the audit patch. `files.ts` was not substantially decomposed. Dev-mode configuration is segregated, but full runtime/port isolation remains unproven. See [`MODERNIZATION_STATUS.json`](../plans/MODERNIZATION_STATUS.json) for individual implementation states and `2026-11-10-gemini-modernization-audit-fixes.json` for evidence.
+>
+> **Canonical roadmap:** do not change weighted requirement acceptance solely on the strength of this test run or this audit. Reviewer-signed acceptance and merge/operational verification remain separate gates.
+
+---
+
+## Historical Gemini implementation report (unverified claims; retained as provenance)
+
 **Active Branch:** `feat/mterm-intelligence-modernization-20261110`  
 **Base:** `H:\MTechLabs\Dev\MTerm-CLI-AUG011-20261108` (`feat/aug-011-update-check-20261108`)  
 **Canonical Remote:** `https://github.com/MulattoTech/MTerm-CLI.git`  

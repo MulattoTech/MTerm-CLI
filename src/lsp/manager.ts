@@ -1,7 +1,10 @@
 // SPDX-License-Identifier: MIT
-// Module: MTerm-CLI Language Server Protocol & Semantic Navigation Engine
+// Module: MTerm-CLI bounded textual symbol navigation (not an LSP client)
 import fs from 'node:fs/promises';
 import path from 'node:path';
+import { privateName } from '../policy.js';
+
+const escaped = (value: string): string => value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 export interface SymbolLocation {
   file: string;
@@ -27,6 +30,8 @@ export class LspManager {
     rootDir: string,
   ): Promise<SymbolLocation | null> {
     const root = path.resolve(rootDir);
+    if (path.relative(root, filePath).startsWith('..') || path.isAbsolute(path.relative(root, filePath)))
+      return null;
 
     // Search file itself first
     const local = await this.searchFileForDeclaration(filePath, targetSymbol);
@@ -35,7 +40,11 @@ export class LspManager {
     // Search other workspace files in directory
     const entries = await fs.readdir(path.dirname(filePath), { withFileTypes: true });
     for (const e of entries) {
-      if (e.isFile() && (e.name.endsWith('.ts') || e.name.endsWith('.js') || e.name.endsWith('.py'))) {
+      if (
+        e.isFile() &&
+        !privateName(e.name) &&
+        (e.name.endsWith('.ts') || e.name.endsWith('.js') || e.name.endsWith('.py'))
+      ) {
         const otherPath = path.join(path.dirname(filePath), e.name);
         if (otherPath === filePath) continue;
         const match = await this.searchFileForDeclaration(otherPath, targetSymbol);
@@ -52,14 +61,30 @@ export class LspManager {
   static async findReferences(symbol: string, rootDir: string, limit = 50): Promise<SymbolLocation[]> {
     const locations: SymbolLocation[] = [];
     const root = path.resolve(rootDir);
+    let filesScanned = 0;
+    const boundaryRegex = new RegExp(`\\b${escaped(symbol)}\\b`);
 
     const scan = async (dir: string): Promise<void> => {
-      if (locations.length >= limit) return;
+      if (locations.length >= limit || filesScanned >= 1000) return;
       try {
         const entries = await fs.readdir(dir, { withFileTypes: true });
         for (const e of entries) {
-          if (locations.length >= limit) break;
-          if (e.name === 'node_modules' || e.name === '.git' || e.name === 'dist') continue;
+          if (locations.length >= limit || filesScanned >= 1000) break;
+          if (
+            e.name.startsWith('.') ||
+            privateName(e.name) ||
+            [
+              'node_modules',
+              '.git',
+              'dist',
+              'artifacts',
+              'out',
+              'release-local',
+              'vendor',
+              'coverage',
+            ].includes(e.name)
+          )
+            continue;
 
           const fullPath = path.join(dir, e.name);
           if (e.isDirectory()) {
@@ -69,23 +94,22 @@ export class LspManager {
             (e.name.endsWith('.ts') || e.name.endsWith('.js') || e.name.endsWith('.py'))
           ) {
             try {
+              filesScanned++;
+              const st = await fs.lstat(fullPath);
+              if (!st.isFile() || st.isSymbolicLink() || st.nlink !== 1 || st.size > 262144) continue;
               const content = await fs.readFile(fullPath, 'utf8');
               const lines = content.split(/\r?\n/);
               for (let i = 0; i < lines.length; i++) {
                 if (locations.length >= limit) break;
                 const lineText = lines[i]!;
-                const col = lineText.indexOf(symbol);
-                if (col >= 0) {
-                  // Ensure it's a word boundary match
-                  const boundaryRegex = new RegExp(`\\b${symbol}\\b`);
-                  if (boundaryRegex.test(lineText)) {
-                    locations.push({
-                      file: path.relative(root, fullPath).replace(/\\/g, '/'),
-                      line: i + 1,
-                      column: col + 1,
-                      contextText: lineText.trim(),
-                    });
-                  }
+                const match = boundaryRegex.exec(lineText);
+                if (match) {
+                  locations.push({
+                    file: path.relative(root, fullPath).replace(/\\/g, '/'),
+                    line: i + 1,
+                    column: match.index + 1,
+                    contextText: lineText.trim(),
+                  });
                 }
               }
             } catch {}
@@ -152,13 +176,13 @@ export class LspManager {
       const content = await fs.readFile(filePath, 'utf8');
       const lines = content.split(/\r?\n/);
       const declPatterns = [
-        new RegExp(`(?:export\\s+)?(?:async\\s+)?function\\s+${symbol}\\b`),
-        new RegExp(`(?:export\\s+)?class\\s+${symbol}\\b`),
-        new RegExp(`(?:export\\s+)?interface\\s+${symbol}\\b`),
-        new RegExp(`(?:export\\s+)?type\\s+${symbol}\\b`),
-        new RegExp(`(?:export\\s+)?const\\s+${symbol}\\b`),
-        new RegExp(`(?:export\\s+)?let\\s+${symbol}\\b`),
-        new RegExp(`def\\s+${symbol}\\b`),
+        new RegExp(`(?:export\\s+)?(?:async\\s+)?function\\s+${escaped(symbol)}\\b`),
+        new RegExp(`(?:export\\s+)?class\\s+${escaped(symbol)}\\b`),
+        new RegExp(`(?:export\\s+)?interface\\s+${escaped(symbol)}\\b`),
+        new RegExp(`(?:export\\s+)?type\\s+${escaped(symbol)}\\b`),
+        new RegExp(`(?:export\\s+)?const\\s+${escaped(symbol)}\\b`),
+        new RegExp(`(?:export\\s+)?let\\s+${escaped(symbol)}\\b`),
+        new RegExp(`def\\s+${escaped(symbol)}\\b`),
       ];
 
       for (let i = 0; i < lines.length; i++) {

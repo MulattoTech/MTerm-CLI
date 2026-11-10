@@ -2,7 +2,6 @@
 // Module: MTerm-CLI Automated Project Formatter
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { spawn } from 'node:child_process';
 
 export interface FormatResult {
   path: string;
@@ -53,40 +52,13 @@ export class CodeFormatter {
     return { prettierConfig, ruffConfig };
   }
 
-  /**
-   * Formats file content using detected formatters or built-in deterministic normalization.
-   */
+  /** Format without spawning a shell, downloading tools or executing project code. */
   static async formatText(
     content: string,
-    filePath: string,
+    _filePath: string,
   ): Promise<{ formattedText: string; engine: string }> {
-    const ext = path.extname(filePath).toLowerCase();
-
-    // JS/TS/JSON/Markdown formatting
-    if (['.ts', '.js', '.mts', '.mjs', '.cts', '.cjs', '.json', '.md'].includes(ext)) {
-      try {
-        const formatted = await this.spawnProcess('npx', ['prettier', '--stdin-filepath', filePath], content);
-        if (formatted) {
-          return { formattedText: formatted, engine: 'prettier' };
-        }
-      } catch {}
-    }
-
-    // Python formatting via Ruff if available
-    if (ext === '.py') {
-      try {
-        const formatted = await this.spawnProcess(
-          'ruff',
-          ['format', '--stdin-filename', filePath, '-'],
-          content,
-        );
-        if (formatted) {
-          return { formattedText: formatted, engine: 'ruff' };
-        }
-      } catch {}
-    }
-
-    // Built-in deterministic normalization:
+    // Built-in deterministic normalization only. An external Prettier/Ruff
+    // integration must require separate, verified process-execution permission.
     // 1. Consistent line endings matching source
     // 2. Trailing newline at EOF
     // 3. Trim trailing whitespace from each line
@@ -97,42 +69,5 @@ export class CodeFormatter {
     const finalContent = cleaned.endsWith(eol) ? cleaned : cleaned + eol;
 
     return { formattedText: finalContent, engine: 'builtin-normalizer' };
-  }
-
-  private static spawnProcess(command: string, args: string[], input: string): Promise<string> {
-    return new Promise((resolve, reject) => {
-      const child = spawn(command, args, {
-        windowsHide: true,
-        shell: process.platform === 'win32',
-      });
-
-      let stdout = '';
-      let stderr = '';
-
-      child.stdout.on('data', (d) => {
-        stdout += d.toString();
-      });
-      child.stderr.on('data', (d) => {
-        stderr += d.toString();
-      });
-
-      child.on('error', reject);
-      child.on('close', (code) => {
-        if (code === 0 && stdout) {
-          resolve(stdout);
-        } else {
-          reject(new Error(stderr || `Process exited with code ${code}`));
-        }
-      });
-
-      child.stdin.write(input);
-      child.stdin.end();
-
-      // Enforce timeout
-      setTimeout(() => {
-        child.kill();
-        reject(new Error('Formatter timed out'));
-      }, 5000);
-    });
   }
 }

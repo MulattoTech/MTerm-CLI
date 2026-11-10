@@ -2,11 +2,7 @@
 // Module: MTerm-CLI Compact Repository Map & Symbol Indexer
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { createHash } from 'node:crypto';
-import { execFile } from 'node:child_process';
-import { promisify } from 'node:util';
-
-const exec = promisify(execFile);
+import { privateName } from '../policy.js';
 
 export interface RepoSymbol {
   name: string;
@@ -69,27 +65,9 @@ export class RepoMapGenerator {
     const maxFiles = options.maxFiles || 50;
     const root = path.resolve(rootDir);
 
-    // Try reading git commit SHA for cache keying
-    let treeSha: string | undefined;
-    try {
-      const { stdout } = await exec('git', ['rev-parse', 'HEAD'], {
-        cwd: root,
-        timeout: 2000,
-        windowsHide: true,
-      });
-      treeSha = stdout.trim();
-    } catch {}
-
-    const cacheDir = path.join(root, '.mterm-cache');
-    const cacheFile = treeSha ? path.join(cacheDir, `repomap-${treeSha.slice(0, 12)}.json`) : undefined;
-
-    if (cacheFile) {
-      try {
-        const cached = JSON.parse(await fs.readFile(cacheFile, 'utf8')) as RepoMapReport;
-        cached.cacheHit = true;
-        return cached;
-      } catch {}
-    }
+    // A Git HEAD hash does not change for uncommitted or untracked edits. The
+    // previous cache leaked writes from a read-only MCP tool into the checkout
+    // and returned stale maps. Disable it until an actually safe key is designed.
 
     const outlines: FileOutline[] = [];
     await this.scanDirectory(root, root, outlines, maxFiles);
@@ -117,17 +95,7 @@ export class RepoMapGenerator {
       outlines,
       markdownSummary: summaryLines.join('\n'),
       cacheHit: false,
-      treeSha,
     };
-
-    // Save cache asynchronously
-    if (cacheFile) {
-      try {
-        await fs.mkdir(cacheDir, { recursive: true });
-        await fs.writeFile(cacheFile, JSON.stringify(report, null, 2), 'utf8');
-      } catch {}
-    }
-
     return report;
   }
 
@@ -146,7 +114,7 @@ export class RepoMapGenerator {
         if (outlines.length >= maxFiles) break;
 
         const name = entry.name;
-        if (this.IGNORED_NAMES.has(name) || name.startsWith('.')) continue;
+        if (this.IGNORED_NAMES.has(name) || name.startsWith('.') || privateName(name)) continue;
 
         const fullPath = path.join(currentDir, name);
         const relPath = path.relative(rootDir, fullPath).replace(/\\/g, '/');
@@ -159,6 +127,8 @@ export class RepoMapGenerator {
 
           if (['.ts', '.js', '.mts', '.mjs', '.py', '.ps1', '.json'].includes(ext)) {
             try {
+              const st = await fs.lstat(fullPath);
+              if (!st.isFile() || st.isSymbolicLink() || st.nlink !== 1 || st.size > 262144) continue;
               const content = await fs.readFile(fullPath, 'utf8');
               const symbols = this.extractSymbols(content, ext);
               const lines = content.split(/\r?\n/).length;

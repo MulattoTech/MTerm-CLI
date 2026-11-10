@@ -4,8 +4,10 @@ import path from 'node:path';
 import fs from 'node:fs/promises';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
+import { createRequire } from 'node:module';
 
 const exec = promisify(execFile);
+const requireModule = createRequire(import.meta.url);
 
 export interface TypeCheckDiagnostic {
   file: string;
@@ -44,26 +46,49 @@ export class TypeChecker {
   /**
    * Runs TypeScript compiler typecheck and parses diagnostics into structured output.
    */
-  static async checkProject(projectPath?: string): Promise<TypeCheckReport> {
+  static async checkProject(
+    projectPath?: string,
+    options: { allowExec?: boolean } = {},
+  ): Promise<TypeCheckReport> {
     const configPath = projectPath || (await this.findTsConfig(process.cwd()));
+    const unavailable = (code: string, message: string): TypeCheckReport => ({
+      clean: false,
+      errorsCount: 1,
+      diagnostics: [{ file: configPath || 'unknown', line: 1, column: 1, code, message }],
+      projectPath: configPath || 'none-detected',
+    });
     if (!configPath) {
-      return {
-        clean: true,
-        errorsCount: 0,
-        diagnostics: [],
-        projectPath: 'none-detected',
-      };
+      return unavailable('NO_TSCONFIG', 'TypeScript config was not found; no typecheck was performed.');
+    }
+
+    if (!options.allowExec) {
+      return unavailable(
+        'EXEC_PERMISSION_REQUIRED',
+        'Typechecking requires explicit process-execution permission.',
+      );
+    }
+
+    let compiler: string;
+    try {
+      const moduleFile = requireModule.resolve('typescript');
+      compiler = path.resolve(path.dirname(moduleFile), '../bin/tsc');
+      if (!(await fs.stat(compiler)).isFile()) throw new Error('Missing compiler file');
+    } catch {
+      return unavailable(
+        'TSC_UNAVAILABLE',
+        'The verified local TypeScript compiler is unavailable; nothing was executed.',
+      );
     }
 
     const diagnostics: TypeCheckDiagnostic[] = [];
     const projectDir = path.dirname(configPath);
 
     try {
-      await exec('npx', ['tsc', '-p', configPath, '--noEmit'], {
+      await exec(process.execPath, [compiler, '-p', configPath, '--noEmit'], {
         cwd: projectDir,
         windowsHide: true,
-        shell: process.platform === 'win32',
         timeout: 15000,
+        maxBuffer: 1048576,
       });
       return {
         clean: true,
@@ -94,9 +119,19 @@ export class TypeChecker {
       }
 
       return {
-        clean: diagnostics.length === 0,
-        errorsCount: diagnostics.length,
-        diagnostics,
+        clean: false,
+        errorsCount: Math.max(1, diagnostics.length),
+        diagnostics: diagnostics.length
+          ? diagnostics
+          : [
+              {
+                file: configPath,
+                line: 1,
+                column: 1,
+                code: 'TSC_FAILED',
+                message: 'TypeScript compiler failed or timed out; no clean result is available.',
+              },
+            ],
         projectPath: configPath,
       };
     }

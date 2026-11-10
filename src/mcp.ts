@@ -46,7 +46,11 @@ export async function runMcp(options: HostOptions): Promise<void> {
         allowedShells: options.allowedShells,
       })
     : undefined;
-  const files = await FileService.create(roots, { allowWrite: options.allowWrite, maxBytes: 262144 });
+  const files = await FileService.create(roots, {
+    allowWrite: options.allowWrite,
+    allowExec: options.allowExec,
+    maxBytes: 262144,
+  });
   const jobs = await ProcessService.create(roots, {
     allowExec: options.allowExec,
     budgets: options.processBudget,
@@ -467,56 +471,58 @@ export async function runMcp(options: HostOptions): Promise<void> {
       );
       add(
         'mterm_lint_check',
-        'Run deterministic static analysis / linting on a file and return structured diagnostics.',
+        'Run safe built-in syntax and whitespace heuristics; not an external ESLint/Ruff integration.',
         fileSchemas.lintCheck,
         true,
         (a, s) => files.lintCheck(a, s),
       );
-      add(
-        'mterm_typecheck',
-        'Run TypeScript compiler diagnostic check on the workspace or specified project.',
-        fileSchemas.typeCheck,
-        true,
-        (a, s) => files.typeCheck(a, s),
-      );
+      if (options.allowExec) {
+        add(
+          'mterm_typecheck',
+          'Run the locally installed TypeScript compiler (requires explicit --allow-exec).',
+          fileSchemas.typeCheck,
+          false,
+          (a, s) => files.typeCheck(a, s),
+        );
+      }
       add(
         'mterm_repo_map',
-        'Generate dense, token-efficient repository structure and symbol map with git-tree caching.',
+        'Generate a bounded fresh repository symbol outline; no disk cache or file mutations.',
         fileSchemas.repoMap,
         true,
         (a) => files.repoMap(a),
       );
       add(
         'mterm_lsp_definition',
-        'Find declaration / definition location for a symbol in the workspace.',
+        'Heuristic declaration search in a source file and its siblings (not a language-server protocol client).',
         fileSchemas.lspDefinition,
         true,
         (a) => files.lspDefinition(a),
       );
       add(
         'mterm_lsp_references',
-        'Find all references to a symbol across the workspace.',
+        'Find bounded textual symbol mentions; not compiler-resolved references.',
         fileSchemas.lspReferences,
         true,
         (a) => files.lspReferences(a),
       );
       add(
         'mterm_lsp_symbols',
-        'Extract document symbols (functions, classes, interfaces) from a file.',
+        'Extract heuristic function/class/type declarations; not a hierarchical LSP result.',
         fileSchemas.lspSymbols,
         true,
         (a) => files.lspSymbols(a),
       );
       add(
         'mterm_ai_review_diff',
-        'Review code diff for security, readability, and logic flaws with token budget controls.',
+        'Run deterministic diff heuristics; no cloud model is configured or invoked by default.',
         fileSchemas.aiReviewDiff,
         true,
         (a) => files.aiReviewDiff(a),
       );
       add(
         'mterm_fleet_status',
-        'Report multi-session fleet queue metrics, active sessions, and admission state.',
+        'Report local in-memory logical task records (not actual ChatGPT session execution).',
         empty,
         true,
         () => files.fleetStatus(),
@@ -538,28 +544,28 @@ export async function runMcp(options: HostOptions): Promise<void> {
         );
         add(
           'mterm_fleet_halt',
-          'Emergency stop: cancel all in-flight and queued fleet tasks across all sessions.',
+          'Stop admissions and cancel in-memory task records only; does not stop real sessions.',
           empty,
           false,
           () => files.fleetHalt(),
         );
         add(
           'mterm_format_file',
-          'Auto-format file using project Prettier, Ruff, or built-in deterministic normalization.',
+          'Normalize trailing whitespace and final newline without launching project tools.',
           fileSchemas.formatFile,
           false,
           (a, s) => files.formatFile(a, s),
         );
         add(
           'mterm_refine_pipeline',
-          '5-Pass refinement pipeline: Understand -> Patch -> Format -> Lint/TypeCheck -> Auto-repair.',
+          'One-pass patch/syntax/normalization/heuristic checks; no autonomous code repair.',
           fileSchemas.refine,
           false,
           (a, s) => files.refine(a, s),
         );
         add(
           'mterm_rollback',
-          'Roll back file modifications using pre-mutation shadow journal snapshots.',
+          'Guarded single-file rollback using a per-root journal and current-version conflict check.',
           fileSchemas.rollback,
           false,
           (a) => files.rollback(a),

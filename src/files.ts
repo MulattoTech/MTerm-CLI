@@ -145,17 +145,23 @@ export class FileService {
     readonly policy: RootPolicy,
     readonly allowWrite: boolean,
     readonly maxBytes: number,
+    readonly allowExec: boolean,
   ) {
     this.journal = new ShadowJournal(this.policy.root);
   }
   static async create(
     root: string | readonly string[],
-    options: { allowWrite?: boolean; maxBytes?: number } = {},
+    options: { allowWrite?: boolean; maxBytes?: number; allowExec?: boolean } = {},
   ): Promise<FileService> {
     const max = options.maxBytes ?? 1048576;
     if (!Number.isInteger(max) || max < 1 || max > 1048576)
       fail('INVALID_ARGUMENT', 'Invalid file byte limit.');
-    return new FileService(await RootPolicy.create(root), options.allowWrite === true, max);
+    return new FileService(
+      await RootPolicy.create(root),
+      options.allowWrite === true,
+      max,
+      options.allowExec === true,
+    );
   }
   private mutation<T>(action: () => Promise<T>): Promise<T> {
     if (!this.allowWrite)
@@ -291,7 +297,9 @@ export class FileService {
       if ((old === undefined ? 'missing' : sha(old)) !== a.expectedVersion)
         fail('CONFLICT', 'File changed or already exists; read it again before saving.');
       if (old !== undefined) {
-        await this.journal.recordSnapshot(this.policy.relative(full), this.text(old), 'write');
+        const anchor = this.policy.anchor(full);
+        const journal = anchor === this.policy.root ? this.journal : new ShadowJournal(anchor);
+        await journal.recordSnapshot(path.relative(anchor, full), this.text(old), 'write', undefined, a.text);
       }
       const temp = path.join(parentPath, '.mterm-' + randomUUID() + '.tmp');
       let owned = false;
@@ -630,6 +638,12 @@ export class FileService {
     if (parsedDiffs.length === 0 || !parsedDiffs[0] || parsedDiffs[0].hunks.length === 0) {
       fail('MALFORMED_DIFF', 'Supplied patch contains no valid unified diff hunks.');
     }
+    if (parsedDiffs.length !== 1) fail('MULTI_FILE_PATCH', 'One patch operation can change only one file.');
+    const full = await this.policy.resolve(a.path);
+    const target = path.relative(this.policy.anchor(full), full).replace(/\\/g, '/');
+    if (parsedDiffs[0].oldPath !== target || parsedDiffs[0].newPath !== target) {
+      fail('PATCH_PATH_MISMATCH', 'Diff headers must identify the requested file exactly.');
+    }
 
     const patchResult = applyHunks(current.text, parsedDiffs[0].hunks);
     if (!patchResult.ok) {
@@ -725,8 +739,10 @@ export class FileService {
   async typeCheck(input: unknown, signal?: AbortSignal) {
     const a = fileSchemas.typeCheck.parse(input);
     cancelled(signal);
-    const targetProject = a.project ? await this.policy.resolve(a.project) : undefined;
-    return TypeChecker.checkProject(targetProject);
+    if (!this.allowExec)
+      fail('EXEC_DISABLED', 'Typechecking requires explicit process-execution permission.');
+    const targetProject = await this.policy.resolve(a.project ?? 'tsconfig.json');
+    return TypeChecker.checkProject(targetProject, { allowExec: true });
   }
   async refine(input: unknown, signal?: AbortSignal) {
     const a = fileSchemas.refine.parse(input);
@@ -734,6 +750,18 @@ export class FileService {
     const current = await this.read({ path: a.path });
     cancelled(signal);
     const full = await this.policy.resolve(a.path);
+    if (a.patch) {
+      const parsed = parseUnifiedDiff(a.patch);
+      const target = path.relative(this.policy.anchor(full), full).replace(/\\/g, '/');
+      if (
+        parsed.length !== 1 ||
+        !parsed[0]?.hunks.length ||
+        parsed[0].oldPath !== target ||
+        parsed[0].newPath !== target
+      ) {
+        fail('PATCH_PATH_MISMATCH', 'Refinement accepts only a single-file diff for the requested path.');
+      }
+    }
     const report = await RefineEngine.run({
       path: full,
       originalText: current.text,
@@ -752,7 +780,24 @@ export class FileService {
   }
   async rollback(input: unknown) {
     const a = fileSchemas.rollback.parse(input);
-    return this.journal.rollback({ ...a, rootDir: this.policy.root });
+    if (!this.allowWrite) fail('WRITE_DISABLED', 'Rollback requires the local write capability.');
+    // Multi-file rollback needs a separately designed all-or-nothing commit protocol.
+    // Never advertise independent per-file writes as an atomic transaction.
+    if (!a.file) fail('ROLLBACK_SCOPE', 'Specify one file for guarded rollback.');
+    const full = await this.policy.resolve(a.file);
+    const anchor = this.policy.anchor(full);
+    const rel = path.relative(anchor, full);
+    const journal = anchor === this.policy.root ? this.journal : new ShadowJournal(anchor);
+    const snapshot = await journal.findSnapshot(rel, a.transactionId, a.stepsBack);
+    if (!snapshot || !snapshot.nextVersion) {
+      fail('ROLLBACK_UNAVAILABLE', 'No verified post-write snapshot is available for the requested file.');
+    }
+    const current = await this.read({ path: a.file });
+    if (current.version !== snapshot.nextVersion) {
+      fail('ROLLBACK_CONFLICT', 'The file changed after the journaled write; rollback was refused.');
+    }
+    await this.write({ path: a.file, text: snapshot.previousContent, expectedVersion: current.version });
+    return { ok: true, restoredFiles: [rel.replace(/\\/g, '/')], transactionId: snapshot.transactionId };
   }
   async repoMap(input: unknown) {
     const a = fileSchemas.repoMap.parse(input);

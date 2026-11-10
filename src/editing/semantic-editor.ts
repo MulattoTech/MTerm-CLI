@@ -1,6 +1,5 @@
 // SPDX-License-Identifier: MIT
 // Module: MTerm-CLI Semantic Editor & Unified Diff Engine
-import os from 'node:os';
 
 export interface DiffHunk {
   oldStart: number;
@@ -74,7 +73,9 @@ export function parseUnifiedDiff(diffText: string): ParsedDiff[] {
     }
 
     if (currentHunk) {
-      if (line.startsWith('+') || line.startsWith('-') || line.startsWith(' ') || line === '') {
+      // An empty item from split() is the diff's final newline, not a context line.
+      // An actual empty context line starts with the literal ' ' prefix.
+      if (line.startsWith('+') || line.startsWith('-') || line.startsWith(' ')) {
         currentHunk.lines.push(line);
       }
     }
@@ -118,10 +119,18 @@ export function applyHunks(originalText: string, hunks: DiffHunk[]): PatchResult
       } else if (hLine.startsWith(' ')) {
         oldSlice.push(hLine.slice(1));
         newSlice.push(hLine.slice(1));
-      } else if (hLine === '') {
-        oldSlice.push('');
-        newSlice.push('');
       }
+    }
+
+    if (oldSlice.length !== hunk.oldLines || newSlice.length !== hunk.newLines) {
+      return {
+        ok: false,
+        patchedText: originalText,
+        hunksApplied,
+        hunksTotal: hunks.length,
+        error: `Hunk #${hIdx + 1} line counts do not match its unified diff header.`,
+        failedHunkIndex: hIdx,
+      };
     }
 
     // Try exact position match first
@@ -148,21 +157,44 @@ export function applyHunks(originalText: string, hunks: DiffHunk[]): PatchResult
       const startSearch = Math.max(0, expectedOldStart - windowRadius);
       const endSearch = Math.min(resultLines.length - oldSlice.length, expectedOldStart + windowRadius);
 
-      // Search exact first
+      // Search exact first. An unanchored repeated context is ambiguous, not a
+      // license to silently edit whichever occurrence happens to be first.
+      const exactMatches: number[] = [];
       for (let candidate = startSearch; candidate <= endSearch; candidate++) {
         if (canMatchAt(candidate, false)) {
-          matchIndex = candidate;
-          break;
+          exactMatches.push(candidate);
         }
+      }
+      if (exactMatches.length === 1) matchIndex = exactMatches[0]!;
+      if (exactMatches.length > 1) {
+        return {
+          ok: false,
+          patchedText: originalText,
+          hunksApplied,
+          hunksTotal: hunks.length,
+          error: `Hunk #${hIdx + 1} has ambiguous matching context.`,
+          failedHunkIndex: hIdx,
+        };
       }
 
       // If still not found, try fuzzy whitespace matching
       if (matchIndex === -1) {
+        const fuzzyMatches: number[] = [];
         for (let candidate = startSearch; candidate <= endSearch; candidate++) {
           if (canMatchAt(candidate, true)) {
-            matchIndex = candidate;
-            break;
+            fuzzyMatches.push(candidate);
           }
+        }
+        if (fuzzyMatches.length === 1) matchIndex = fuzzyMatches[0]!;
+        if (fuzzyMatches.length > 1) {
+          return {
+            ok: false,
+            patchedText: originalText,
+            hunksApplied,
+            hunksTotal: hunks.length,
+            error: `Hunk #${hIdx + 1} has ambiguous whitespace-tolerant context.`,
+            failedHunkIndex: hIdx,
+          };
         }
       }
     }
@@ -179,7 +211,20 @@ export function applyHunks(originalText: string, hunks: DiffHunk[]): PatchResult
     }
 
     // Apply the hunk replacement
-    resultLines.splice(matchIndex, oldSlice.length, ...newSlice);
+    // Preserve the target's original context whitespace even after fuzzy matching.
+    const replacement: string[] = [];
+    let sourceOffset = 0;
+    for (const line of hunk.lines) {
+      if (line.startsWith(' ')) {
+        replacement.push(resultLines[matchIndex + sourceOffset]!);
+        sourceOffset++;
+      } else if (line.startsWith('-')) {
+        sourceOffset++;
+      } else if (line.startsWith('+')) {
+        replacement.push(line.slice(1));
+      }
+    }
+    resultLines.splice(matchIndex, oldSlice.length, ...replacement);
     lineOffset += newSlice.length - oldSlice.length;
     hunksApplied++;
   }

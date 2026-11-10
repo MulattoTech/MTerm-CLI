@@ -3403,5 +3403,81 @@
         "correction": "Use canonical UTF-8 JSON for catalog fingerprint comparison; preserve raw Git blob hashes separately. No catalog/content/gate rerun."
       }
     }
+  },
+  "source_delivery": {
+    "recorded_at": "2026-11-10T01:08:44.922096+00:00",
+    "status": "ACCEPTED_ACTUAL_MAIN_ISSUE239_COMPLETED",
+    "historical_record_policy": "All preceding fields retain the original source-checkpoint observations, including pending states and UNKNOWN; this added object records later source delivery.",
+    "pr": 240,
+    "candidate_sha": "c9d17dc6ea0ffa5f55c0bfbe4ec2e31976794153",
+    "actual_main_sha": "f16abfa86878c24f1310d5261ad9b6bae3a43f6d",
+    "reviewed_tree": "62c4e18d26580a15f0f5a65e7e154356bf0831a8",
+    "merged_at": "2026-11-10T00:38:38Z",
+    "candidate_checks": {
+      "jobs": 6,
+      "review_checks": 130,
+      "native_review_checks": 143,
+      "runs": [
+        42727342895,
+        42727342915
+      ]
+    },
+    "actual_main_checks": {
+      "jobs": 6,
+      "review_checks": 137,
+      "native_review_checks": 156,
+      "runs": [
+        42729863945,
+        42729863941
+      ],
+      "separate_from_candidate": true
+    },
+    "acceptance": {
+      "comment_id": 6755690670,
+      "created_at": "2026-11-10T00:52:00Z"
+    },
+    "claim_release": {
+      "comment_id": 6753643736,
+      "updated_at": "2026-11-10T00:57:19Z",
+      "original_body_preserved": true,
+      "historical_coord_ref_preserved": true
+    },
+    "explicit_completion": {
+      "closed_at": "2026-11-10T00:57:27Z",
+      "state_reason": "completed",
+      "event_id": 35631437922
+    },
+    "parents": {
+      "92": "open",
+      "4": "open"
+    },
+    "tracker_receipt_sha256": "49b61c02dda5f8f8cefe3cb08c6239d57cb1a8fd6748edb0df4c8f94b7c19a7c",
+    "final_artifact_review": {
+      "sha256": "713f82dcbddf3dbc195cfeba27a1ab7c99477e76b0e614c6b673789846f4ce19",
+      "checks": 41,
+      "open_findings": 0
+    },
+    "evidence": [
+      {
+        "path": "docs/validation/2026-11-10-managed-process-budgets-delivery.json",
+        "sha256": "d0278193e821998485c0cb1d00a41b9f725700511e7a880f481f3b636e4b014a"
+      },
+      {
+        "path": "docs/validation/2026-11-10-managed-process-budgets-delivery.md",
+        "sha256": "cbb0b6d218a32402d81baa07825319a9c3732932774a89930bcb3fd6b44f79f8"
+      },
+      {
+        "path": "docs/validation/2026-11-10-managed-process-budgets-delivery-full.json.gz",
+        "sha256": "98aecd787fffe670bb224210cb77a3ac3c5fc1cf83ddbed33812b38874d63273"
+      }
+    ],
+    "integration_scope": "These immutable final appendices are serialized with later issue241 work. They were assembled after qualified main f16 and do not add product execution, deployment or acceptance.",
+    "prior_ai_record_sha256": "fb24e4916ca56a5fc2738748cc294bd820211f9c3480bd08181e3722f55a86d0",
+    "limits": [
+      "Source56 outer driver exit/summary remains UNKNOWN; baseline NOT_REACHED and initial normal-gate failure remain unchanged.",
+      "Normal installed TAP and managed Codex round sidecars were not retrieved; native binary/DEB bytes absent and retained histories incomplete.",
+      "No full-local, installed-native-Codex intersection, global cleanup, provider, connected Windows, deployment, owner-configuration or model claim.",
+      "Protected300, seed, DCP/WEB acceptance and issue232 operational HOLD remain unchanged."
+    ]
   }
 }

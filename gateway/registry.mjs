@@ -5,6 +5,7 @@
 // Modified: 2026-11-09-request-ownership; terminal consumption and private cancellation preserve newer RPC leases.
 // Modified: 2026-11-09-oauth-expiry; recheck client token and grant expiry after authorization reads.
 // Modified: 2026-11-09-pairing-expiry; authorize final pairing decisions after asynchronous checks.
+// Modified: 2026-11-10-remote-occupancy; expose owner-filtered dashboard admission counts.
 import {
   READ_TOOLS,
   WIRE_VERSION,
@@ -23,6 +24,7 @@ import {
   errorResponse,
 } from './security.mjs';
 const toolNames = new Set(READ_TOOLS.map((t) => t.name));
+const DEVICE_ADMISSION_LIMIT = 4;
 const now = () => Date.now();
 const uuid = (value) => typeof value === 'string' && UUID_PATTERN.test(value);
 const label = (value) =>
@@ -642,7 +644,7 @@ export class MTermRegistry {
         existing.length < 200 &&
           existing.filter(
             (j) => j.deviceId === d.id && ['queued', 'delivered', 'complete'].includes(j.status),
-          ).length < 4,
+          ).length < DEVICE_ADMISSION_LIMIT,
         429,
         'device_busy',
       );
@@ -721,7 +723,37 @@ export class MTermRegistry {
         expiresAt: g.expiresAt,
         scope: 'mterm:read',
       }));
-      const sessions = (await this.rows('job:', 256))
+      const jobs = await this.rows('job:', 256);
+      const admissionByDevice = new Map(
+        devices.map((device) => [
+          device.id,
+          {
+            limit: DEVICE_ADMISSION_LIMIT,
+            queued: 0,
+            delivered: 0,
+            completedAwaitingConsumption: 0,
+            occupied: 0,
+            remaining: DEVICE_ADMISSION_LIMIT,
+          },
+        ]),
+      );
+      // Share the existing live-row snapshot; completed results still occupy admission.
+      // Returned-device filtering applies to these counters, not the legacy sessions view.
+      for (const job of jobs) {
+        if (job.userId !== userId) continue;
+        const admission = admissionByDevice.get(job.deviceId);
+        if (!admission) continue;
+        if (job.status === 'queued') admission.queued++;
+        else if (job.status === 'delivered') admission.delivered++;
+        else if (job.status === 'complete') admission.completedAwaitingConsumption++;
+      }
+      for (const device of devices) {
+        const admission = admissionByDevice.get(device.id);
+        admission.occupied = admission.queued + admission.delivered + admission.completedAwaitingConsumption;
+        admission.remaining = Math.max(0, admission.limit - admission.occupied);
+        device.registryAdmission = admission;
+      }
+      const sessions = jobs
         .filter((j) => j.userId === userId && ['queued', 'delivered'].includes(j.status))
         .map((j) => ({
           requestId: j.requestId,

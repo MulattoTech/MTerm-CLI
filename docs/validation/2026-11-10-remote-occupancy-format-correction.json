@@ -1,0 +1,988 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-10T02:18:25.749208+00:00",
+  "issue": 241,
+  "status": "EXACT_FORMAT_ONLY_CORRECTION_APPLIED_AWAITING_SUBSEQUENT_NORMAL_AND_HOSTED_GATES",
+  "scope": "Preserve original source runs, apply only reviewed whitespace and separately bind later phases. No assertion or production behavior change.",
+  "firstNormalAttempt": {
+    "schemaVersion": 1,
+    "observedAt": "2026-11-10T02:13:51.343478+00:00",
+    "classification": "NORMAL_GATE_STYLE_FAILURE_AFTER_FIVE_PASSES",
+    "sourceCheckpoint": "b77f7f12747fb78f55bd9f001f1e5c30b4050186",
+    "tree": "12801f243413675e024ee30061bf91c1f40883ae",
+    "sequenceStartedAt": "2026-11-10T02:10:34.824382+00:00",
+    "sequenceEndedAt": "2026-11-10T02:10:41.167681+00:00",
+    "commandsReached": [
+      {
+        "index": 1,
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "scripts/roadmap.mjs",
+          "--review",
+          "--change",
+          "2026-11-10-remote-occupancy"
+        ],
+        "startedAt": "2026-11-10T02:10:34.824382+00:00",
+        "endedAt": "2026-11-10T02:10:35.192008+00:00",
+        "durationSeconds": 0.367635,
+        "exitCode": 0,
+        "terminationReason": null,
+        "ownedGroupSignals": [],
+        "stdoutBytes": 139,
+        "stdoutSha256": "acce40bfabe87b6e422f966d7d2c7c0b8d5ac2c678809b922b5179135192f83d",
+        "stderrBytes": 0,
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captureComplete": true
+      },
+      {
+        "index": 2,
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "scripts/roadmap.mjs",
+          "--render"
+        ],
+        "startedAt": "2026-11-10T02:10:35.192417+00:00",
+        "endedAt": "2026-11-10T02:10:35.594572+00:00",
+        "durationSeconds": 0.402168,
+        "exitCode": 0,
+        "terminationReason": null,
+        "ownedGroupSignals": [],
+        "stdoutBytes": 120,
+        "stdoutSha256": "347c2527601dc28d23f4107434b2b02f35c33ed6cba57ab6ae684bb37e1cd302",
+        "stderrBytes": 0,
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captureComplete": true
+      },
+      {
+        "index": 3,
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "scripts/roadmap.mjs",
+          "--check"
+        ],
+        "startedAt": "2026-11-10T02:10:35.594942+00:00",
+        "endedAt": "2026-11-10T02:10:35.997366+00:00",
+        "durationSeconds": 0.402436,
+        "exitCode": 0,
+        "terminationReason": null,
+        "ownedGroupSignals": [],
+        "stdoutBytes": 120,
+        "stdoutSha256": "347c2527601dc28d23f4107434b2b02f35c33ed6cba57ab6ae684bb37e1cd302",
+        "stderrBytes": 0,
+        "stderrSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "captureComplete": true
+      },
+      {
+        "index": 4,
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/lib/node_modules/npm/bin/npm-cli.js",
+          "run",
+          "build"
+        ],
+        "startedAt": "2026-11-10T02:10:35.997879+00:00",
+        "endedAt": "2026-11-10T02:10:37.611805+00:00",
+        "durationSeconds": 1.613939,
+        "exitCode": 0,
+        "terminationReason": null,
+        "ownedGroupSignals": [],
+        "stdoutBytes": 786,
+        "stdoutSha256": "1c66d4a7f4a88e90c2b4323081193c0d29bf3d580ec5966c6010a61c018d5e73",
+        "stderrBytes": 396,
+        "stderrSha256": "a06ef387e31a00721dc55e3b480ef2c346bf46d83f2d3e96b16ddc342895761f",
+        "captureComplete": true
+      },
+      {
+        "index": 5,
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/lib/node_modules/npm/bin/npm-cli.js",
+          "run",
+          "typecheck"
+        ],
+        "startedAt": "2026-11-10T02:10:37.612201+00:00",
+        "endedAt": "2026-11-10T02:10:38.298145+00:00",
+        "durationSeconds": 0.685956,
+        "exitCode": 0,
+        "terminationReason": null,
+        "ownedGroupSignals": [],
+        "stdoutBytes": 72,
+        "stdoutSha256": "611912ed155b813e3ba68533be1dbbbaa27973a6263b6ce8c268c512d4ec00f4",
+        "stderrBytes": 99,
+        "stderrSha256": "7125f194612fcff2f454c05d848e7cb71facc1967b4d5017e25b34fdee3ba74f",
+        "captureComplete": true
+      },
+      {
+        "index": 6,
+        "command": [
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+          "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/lib/node_modules/npm/bin/npm-cli.js",
+          "run",
+          "format:check"
+        ],
+        "startedAt": "2026-11-10T02:10:38.298600+00:00",
+        "endedAt": "2026-11-10T02:10:41.167681+00:00",
+        "durationSeconds": 2.869094,
+        "exitCode": 1,
+        "terminationReason": null,
+        "ownedGroupSignals": [],
+        "stdoutBytes": 156,
+        "stdoutSha256": "0cde6b9bf63975e47fc93e85b772b9dd5f56a767556167b37ceaaaa2698b04e2",
+        "stderrBytes": 222,
+        "stderrSha256": "dfeb5162da0d0b264fb50669a2687e35a5eabe12d4cfacb58eaeceddc5d583e5",
+        "captureComplete": true
+      }
+    ],
+    "step7": {
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "HEAD"
+      ],
+      "status": "NOT_RUN_AFTER_STOP_ON_FORMAT_FAILURE"
+    },
+    "actualDriverAndOuterToolExit": 1,
+    "outerToolResponse": {
+      "path": "artifacts/issue-241-integration/normal-gate-tool-response-1.json",
+      "bytes": 4017,
+      "sha256": "5442f15ae349a9c7040e8f270162453d35c8ee4f2e9c5c39883dd3ac3d040a1f"
+    },
+    "everyReachedCommandCaptureComplete": true,
+    "rawStreams": [
+      {
+        "path": "artifacts/issue-241-root-gates-v1/01.stdout",
+        "bytes": 139,
+        "sha256": "acce40bfabe87b6e422f966d7d2c7c0b8d5ac2c678809b922b5179135192f83d",
+        "originalText": "{\n  \"reviewed\": \"2026-11-10-remote-occupancy\",\n  \"sourceFingerprint\": \"469bb7d6fdbc0f9248b7f82492e3ae27f836c641277b611f3f0975d08a1288fe\"\n}\n"
+      },
+      {
+        "path": "artifacts/issue-241-root-gates-v1/01.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "originalText": ""
+      },
+      {
+        "path": "artifacts/issue-241-root-gates-v1/02.stdout",
+        "bytes": 120,
+        "sha256": "347c2527601dc28d23f4107434b2b02f35c33ed6cba57ab6ae684bb37e1cd302",
+        "originalText": "{\n  \"count\": 300,\n  \"percent\": 29.36,\n  \"baselineWeight\": 4068,\n  \"complete\": 0,\n  \"blocked\": 45,\n  \"notStarted\": 126\n}\n"
+      },
+      {
+        "path": "artifacts/issue-241-root-gates-v1/02.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "originalText": ""
+      },
+      {
+        "path": "artifacts/issue-241-root-gates-v1/03.stdout",
+        "bytes": 120,
+        "sha256": "347c2527601dc28d23f4107434b2b02f35c33ed6cba57ab6ae684bb37e1cd302",
+        "originalText": "{\n  \"count\": 300,\n  \"percent\": 29.36,\n  \"baselineWeight\": 4068,\n  \"complete\": 0,\n  \"blocked\": 45,\n  \"notStarted\": 126\n}\n"
+      },
+      {
+        "path": "artifacts/issue-241-root-gates-v1/03.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "originalText": ""
+      },
+      {
+        "path": "artifacts/issue-241-root-gates-v1/04.stdout",
+        "bytes": 786,
+        "sha256": "1c66d4a7f4a88e90c2b4323081193c0d29bf3d580ec5966c6010a61c018d5e73",
+        "originalText": "\n> mterm-cli@0.0.1-preview.1 build\n> npm run roadmap:check && npm run parity:check && npm run build:code\n\n\n> mterm-cli@0.0.1-preview.1 roadmap:check\n> node scripts/roadmap.mjs --check\n\n{\n  \"count\": 300,\n  \"percent\": 29.36,\n  \"baselineWeight\": 4068,\n  \"complete\": 0,\n  \"blocked\": 45,\n  \"notStarted\": 126\n}\n\n> mterm-cli@0.0.1-preview.1 parity:check\n> node scripts/parity-baseline.mjs --check\n\n{\n  \"baseline\": {\n    \"verified\": true,\n    \"repository\": \"wonderwhy-er/DesktopCommanderMCP\",\n    \"version\": \"0.2.52\",\n    \"commit\": \"c774c3b505de990219637ecdc9a830c8772fae9d\",\n    \"toolCount\": 26,\n    \"snapshotFiles\": 7,\n    \"runtimeParityProved\": false\n  },\n  \"parity\": {\n    \"closed\": 0,\n    \"gaps\": 48,\n    \"pass\": false\n  }\n}\n\n> mterm-cli@0.0.1-preview.1 build:code\n> tsc -p tsconfig.json\n\n"
+      },
+      {
+        "path": "artifacts/issue-241-root-gates-v1/04.stderr",
+        "bytes": 396,
+        "sha256": "a06ef387e31a00721dc55e3b480ef2c346bf46d83f2d3e96b16ddc342895761f",
+        "originalText": "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\nnpm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\nnpm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\nnpm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n"
+      },
+      {
+        "path": "artifacts/issue-241-root-gates-v1/05.stdout",
+        "bytes": 72,
+        "sha256": "611912ed155b813e3ba68533be1dbbbaa27973a6263b6ce8c268c512d4ec00f4",
+        "originalText": "\n> mterm-cli@0.0.1-preview.1 typecheck\n> tsc -p tsconfig.json --noEmit\n\n"
+      },
+      {
+        "path": "artifacts/issue-241-root-gates-v1/05.stderr",
+        "bytes": 99,
+        "sha256": "7125f194612fcff2f454c05d848e7cb71facc1967b4d5017e25b34fdee3ba74f",
+        "originalText": "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n"
+      },
+      {
+        "path": "artifacts/issue-241-root-gates-v1/06.stdout",
+        "bytes": 156,
+        "sha256": "0cde6b9bf63975e47fc93e85b772b9dd5f56a767556167b37ceaaaa2698b04e2",
+        "originalText": "\n> mterm-cli@0.0.1-preview.1 format:check\n> prettier --check \"src/**/*.ts\" \"bin/*.js\" \"scripts/*.mjs\" \"tests/*.mjs\" \"gateway/*.mjs\"\n\nChecking formatting...\n"
+      },
+      {
+        "path": "artifacts/issue-241-root-gates-v1/06.stderr",
+        "bytes": 222,
+        "sha256": "dfeb5162da0d0b264fb50669a2687e35a5eabe12d4cfacb58eaeceddc5d583e5",
+        "originalText": "npm warn Unknown env config \"http-proxy\". This will stop working in the next major version of npm.\n[warn] tests/remote-occupancy.test.mjs\n[warn] Code style issues found in the above file. Run Prettier with --write to fix.\n"
+      }
+    ],
+    "all54CompiledOutputsUnchangedAfterSuccessfulBuild": true,
+    "compiledAfter": {
+      "dist/cli.d.ts": {
+        "bytes": 1126,
+        "sha256": "086cdc010a3eff1853e0099bcd511d64925f6513e24a9d952cd5951ef8c6b97b"
+      },
+      "dist/cli.js": {
+        "bytes": 16173,
+        "sha256": "0890aa6599ccc3bd2876ed7f68e8b3a0e7e78c202eee23e572ec3b3ebe759f81"
+      },
+      "dist/codex-registration.d.ts": {
+        "bytes": 1817,
+        "sha256": "69bd31d50c6ad463923cd1058767f992913f356bb0bb3d02cc5445ff11f3fa02"
+      },
+      "dist/codex-registration.js": {
+        "bytes": 15357,
+        "sha256": "906400211da57ad6adfea92d315a05e1ff55f57e549f8a5ab06a845e9ba0946b"
+      },
+      "dist/codex.d.ts": {
+        "bytes": 250,
+        "sha256": "296b337be158ec9cb5acf7d4b094037d40254e3b6b53c6fabdcf5a7f327ae95f"
+      },
+      "dist/codex.js": {
+        "bytes": 3607,
+        "sha256": "a64385732386917b08566ffe2e9ecab2171c3d3d85bd40192deff2d82dd035ca"
+      },
+      "dist/compat-config.d.ts": {
+        "bytes": 6200,
+        "sha256": "7c845ae7e76c205eade3de6399eff742714ce78c2ab161f67fce3e89083f7c91"
+      },
+      "dist/compat-config.js": {
+        "bytes": 24670,
+        "sha256": "f6f412a83d13a1aab24398f1d54ca1c301e093c6de1511f2097e0d43b720cc32"
+      },
+      "dist/config.d.ts": {
+        "bytes": 761,
+        "sha256": "f33fa20612105e520eb1d0a8c52924caa273c7b5c3f272e1e23ce2dcd21e4ba0"
+      },
+      "dist/config.js": {
+        "bytes": 5000,
+        "sha256": "4b4783dfcfc22a609937038047228bed35ad98496acdf54248f5249611f7c3c9"
+      },
+      "dist/desktop-commander-files.d.ts": {
+        "bytes": 3207,
+        "sha256": "0c8aa43d7fda45b200ef9814469fbd404279b6b0464220cfaa591066f29dda4c"
+      },
+      "dist/desktop-commander-files.js": {
+        "bytes": 20342,
+        "sha256": "df055e25585342ed558e9952e9e4908f416ff0216640479ef7ed022ffd5e4196"
+      },
+      "dist/errors.d.ts": {
+        "bytes": 403,
+        "sha256": "79d7d717009a1866741ff6a09294e8ab1fc5e8acffea340ba6c317a385f5ce59"
+      },
+      "dist/errors.js": {
+        "bytes": 1727,
+        "sha256": "26fa1c3341396a1f9eda45debe86dc2295cb997b9dd7e525e70ac17ef2c910a9"
+      },
+      "dist/executables.d.ts": {
+        "bytes": 183,
+        "sha256": "5334368da0948ae3e5e9106b1868d31349f448e124d6a1648d86807420344e93"
+      },
+      "dist/executables.js": {
+        "bytes": 1401,
+        "sha256": "af2f81c0ea7599867663f2b2e9b5f1165001cef9e27a5f44d1350f0316c60434"
+      },
+      "dist/files.d.ts": {
+        "bytes": 3726,
+        "sha256": "c7fd9a1edfcd9c879d3249a3fa58cab07607f06041a884cef5602b696508458a"
+      },
+      "dist/files.js": {
+        "bytes": 27500,
+        "sha256": "8987f7527ab378ec69cbda62d9bcd75cf79393c4c9374565dfd562e43ec7c0ec"
+      },
+      "dist/git.d.ts": {
+        "bytes": 969,
+        "sha256": "6c9b66b066dd0b398ff4369e7f568ef5e1253ecd17793d433fe19e43e2f09f50"
+      },
+      "dist/git.js": {
+        "bytes": 6874,
+        "sha256": "930e29a3ac9e0642209eb2af2f43f05e87175eb1103a96962f93cc8c02f2d489"
+      },
+      "dist/isolation-engine.d.ts": {
+        "bytes": 2315,
+        "sha256": "91e0febf12265693614b8fddd16baf86a6434dc81429bfad3afc392ca964d399"
+      },
+      "dist/isolation-engine.js": {
+        "bytes": 26694,
+        "sha256": "91873b8e77def703cb31d9f021f3293faf32aa71f3f84c49d633e8c67ca4b392"
+      },
+      "dist/isolation-http.d.ts": {
+        "bytes": 1457,
+        "sha256": "f2f6b1cfbfb0858c3cfaf984f9e53667121b01a63ef29c3b41247c6ac1b872be"
+      },
+      "dist/isolation-http.js": {
+        "bytes": 11344,
+        "sha256": "0fad31e0d688f663c3c37e2316863b6ec4ff30d67abca5a6a5a728420de265d5"
+      },
+      "dist/isolation-policy.d.ts": {
+        "bytes": 335,
+        "sha256": "b0d6f349b02bfcc4164610e40aad632589e6e1190ed5b4d04e95415ee9c1dce4"
+      },
+      "dist/isolation-policy.js": {
+        "bytes": 2838,
+        "sha256": "3b9c4a56d75e9660c6b8ed0cb9bfc32aa8441fabe6eddcd33a10d43458a26de9"
+      },
+      "dist/isolation.d.ts": {
+        "bytes": 410,
+        "sha256": "a75ede301672a1e40864c54b6e61687d4d4052f1edda74c75e9b082a42f1f550"
+      },
+      "dist/isolation.js": {
+        "bytes": 1506,
+        "sha256": "4efc7b035ce22195fdace01e8249866db934aea8d55049d6c3300563ebac6120"
+      },
+      "dist/mcp.d.ts": {
+        "bytes": 494,
+        "sha256": "0dc705058239976d0715d474d99ca2659b244809b282342720cc306ccfe1e46d"
+      },
+      "dist/mcp.js": {
+        "bytes": 20241,
+        "sha256": "be46458d2d46e05fb0e8805652ba106395d49dc4cc1e5e759014e923ec2ef170"
+      },
+      "dist/pack-updates.d.ts": {
+        "bytes": 6758,
+        "sha256": "00aa16ec27f89da7777ecfa8c3b2bc58e91dcfe673e1eab1ec997c34c441563e"
+      },
+      "dist/pack-updates.js": {
+        "bytes": 15772,
+        "sha256": "21fc47ecd75540b3ba5ea386b2704f67fc0bac68d4063a9d06bcfabfdfc764e5"
+      },
+      "dist/policy.d.ts": {
+        "bytes": 952,
+        "sha256": "e2fc19cfb30d315cb0a499b2cdcf49e2e8204d7ee84825222721bafa4b292181"
+      },
+      "dist/policy.js": {
+        "bytes": 6796,
+        "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+      },
+      "dist/processes.d.ts": {
+        "bytes": 8096,
+        "sha256": "19744265c3f362ef47f7f9fd1dcf37786223a9009dde7b9f07d52072c244eb5b"
+      },
+      "dist/processes.js": {
+        "bytes": 22963,
+        "sha256": "490a57923f5f073a92a222f4c2428c3c11d283c061d00ccc1fedf3ee18e6bfeb"
+      },
+      "dist/provenance.d.ts": {
+        "bytes": 4318,
+        "sha256": "a3fbce3af607363ef6a0167731856a65f5f838262a88e18dfcc2bf617473604a"
+      },
+      "dist/provenance.js": {
+        "bytes": 25545,
+        "sha256": "ad842f4e4ebb14152575632773a7e460a194f7dadedd595ea9b77309f28e2902"
+      },
+      "dist/remote/adapter.d.ts": {
+        "bytes": 747,
+        "sha256": "642ced2020283d59ba47ead9544b9460d6d5a12cffc3bab90cc31dacaaf2c428"
+      },
+      "dist/remote/adapter.js": {
+        "bytes": 6631,
+        "sha256": "aa809420a2757880b8a0b8301a0ace892b5e4adf52dae89e13fb4f523fe12705"
+      },
+      "dist/remote/agent.d.ts": {
+        "bytes": 1304,
+        "sha256": "3abe6b042622d3cdcd10a03c3f496879b3fc9f7902306ab9eabbdcddbd405f23"
+      },
+      "dist/remote/agent.js": {
+        "bytes": 10640,
+        "sha256": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc"
+      },
+      "dist/remote/cli.d.ts": {
+        "bytes": 943,
+        "sha256": "37f64ed1277d561d1a1569c8f4bf665496429287cfd029caca830d92c7b04088"
+      },
+      "dist/remote/cli.js": {
+        "bytes": 10586,
+        "sha256": "b27236e2aeb8ba8add5e781e775c5f6745ce126ed6e5e69e2a07f331c7e9ef6f"
+      },
+      "dist/remote/protocol.d.ts": {
+        "bytes": 3697,
+        "sha256": "130bb6c3f633a2a52f48e1fdc2117fb52c68093273533c2b2c015d9f1405e36f"
+      },
+      "dist/remote/protocol.js": {
+        "bytes": 2634,
+        "sha256": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14"
+      },
+      "dist/remote/state.d.ts": {
+        "bytes": 1203,
+        "sha256": "f68582ff41f5b83db21eea37059d62bb567a10b38dd291a69aed3b82823a3bce"
+      },
+      "dist/remote/state.js": {
+        "bytes": 21638,
+        "sha256": "58299ed3676f604c6149a8230d984ce3578a4aaad000ae99556a247a5d8d8039"
+      },
+      "dist/resource-budget-policy.d.ts": {
+        "bytes": 484,
+        "sha256": "b10537526177b16e4f958ade215e07173a2d4f1a31b7534651ff05ef409cc883"
+      },
+      "dist/resource-budget-policy.js": {
+        "bytes": 2454,
+        "sha256": "fa78b030cb55988906f16c0290a403deb927a52ecdf8d85b5a2839aa813ecaac"
+      },
+      "dist/resource-budgets.d.ts": {
+        "bytes": 1333,
+        "sha256": "fc6eabff6c0427c8df5439632639f57a93b20da5ea5c331a4aa9eff88d3235a9"
+      },
+      "dist/resource-budgets.js": {
+        "bytes": 4115,
+        "sha256": "93371bce8fd9820d316a5485a47eb6da63d91fbeabdbdf6965716a2df7969d64"
+      },
+      "dist/tool-packs.d.ts": {
+        "bytes": 11458,
+        "sha256": "4c1d8e9bfcb200600923bf3b60748995af560c885f27b377e82c28b5315596ac"
+      },
+      "dist/tool-packs.js": {
+        "bytes": 40314,
+        "sha256": "29730618c96df312a7207b5eb369bcf3d4f1aa5358c641038f874a31b55f7d61"
+      }
+    },
+    "fixtureStillOriginalFrozenBytes": true,
+    "normalReceiptFullSuccessAbsent": true,
+    "failure": "Prettier3.9.9 requires one property-chain line-wrap/indent change in new fixture; no product assertion failed in this sequence.",
+    "selectedProposalSha256": "7b216f779a64ada6995fa2c199da295bbe8b322a9cf29a610205315e79fed042",
+    "next": "Independent review of exact formatting-only mapping before application and new source-fingerprint normal gates; preserve this first attempt and original baseline/focused source bytes."
+  },
+  "formatterProposal": {
+    "schemaVersion": 1,
+    "startedAt": "2026-11-10T02:12:11.500435+00:00",
+    "completedAt": "2026-11-10T02:12:11.800909+00:00",
+    "argv": [
+      "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+      "/workspace/scratch/a9287b3cfe09/mterm-resume/node_modules/prettier/bin/prettier.cjs",
+      "tests/remote-occupancy.test.mjs"
+    ],
+    "exitCode": 0,
+    "purpose": "Capture exact formatter output without changing tracked fixture or running product; root and independent peer review required before correction.",
+    "original": {
+      "bytes": 47004,
+      "sha256": "66e6371a83b993d9c1bd13a2a4a27fa1a9031eeba4fbd1f1cc313c0c945c1596"
+    },
+    "proposed": {
+      "bytes": 46982,
+      "sha256": "51612dd8ebfe90d2b2e70d9291da6dd603ce8d50bd066fcecf1b248210d846b0"
+    },
+    "stderr": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "patchSha256": "49cc18e25a9095a7f9a70f7b7e697aa28d5d4f176008c55acd6beea3d75f05f1",
+    "nodeSha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d",
+    "formatterSha256": "6e922134a3c76fd4de202959bb6aef50bde0c994148075003a15569b7197906e",
+    "prettierVersion": "3.9.9",
+    "prettierConfigSha256": "c860fe9b30efe20c3fa12e2726676901c20ba8381077fa2ec226de9f9eade31a",
+    "trackedFixtureUnchanged": true,
+    "firstNormalAttempt": "5PASS_THEN_FORMAT_FAIL_STEP7_NOT_RUN",
+    "rootHead": "b77f7f12747fb78f55bd9f001f1e5c30b4050186",
+    "noProductExecution": true,
+    "applicationAuthorized": false
+  },
+  "exactPatch": "--- original-frozen-66e637\n+++ formatter-proposal\n@@ -1037,13 +1037,11 @@\n     settled: true,\n     unsafeHtmlAssignments,\n     createdImageOrScript: tags.some((t) => ['img', 'script'].includes(t)),\n-    cards: elements\n-      .get('devices')\n-      .children.map((n) => ({\n-        textSha256: digest(n.textContent),\n-        textLength: n.textContent.length,\n-        redactedText: redactedText(n.textContent),\n-      })),\n+    cards: elements.get('devices').children.map((n) => ({\n+      textSha256: digest(n.textContent),\n+      textLength: n.textContent.length,\n+      redactedText: redactedText(n.textContent),\n+    })),\n   };\n   return { cards: elements.get('devices').children, unsafeHtmlAssignments, tags };\n }\n",
+  "rootStaticReview": {
+    "schemaVersion": 1,
+    "recordedAt": "2026-11-10T02:14:43.670815+00:00",
+    "decision": "EXACT_SINGLE_OUTSIDE_LITERAL_WHITESPACE_REPLACEMENT_CONFIRMED_PENDING_PEER",
+    "oldSha256": "66e6371a83b993d9c1bd13a2a4a27fa1a9031eeba4fbd1f1cc313c0c945c1596",
+    "newSha256": "51612dd8ebfe90d2b2e70d9291da6dd603ce8d50bd066fcecf1b248210d846b0",
+    "oldBlock": "    cards: elements\n      .get('devices')\n      .children.map((n) => ({\n        textSha256: digest(n.textContent),\n        textLength: n.textContent.length,\n        redactedText: redactedText(n.textContent),\n      })),",
+    "newBlock": "    cards: elements.get('devices').children.map((n) => ({\n      textSha256: digest(n.textContent),\n      textLength: n.textContent.length,\n      redactedText: redactedText(n.textContent),\n    })),",
+    "unchangedPrefixSuffixAndAllOtherBytes": true,
+    "stringLiteralDevicesUnchanged": true,
+    "assertionDefinitionsUnchanged": true,
+    "commentAndAttributionUnchanged": true,
+    "productExecution": false,
+    "applicationAuthorized": false
+  },
+  "independentReview": {
+    "actions": {
+      "builds": 0,
+      "externalCalls": 0,
+      "fixtureRuns": 0,
+      "formatterRunsByPeer": 0,
+      "productRuns": 0,
+      "staticParserOnly": true,
+      "trackedEdits": 0
+    },
+    "additionalProductRerunIndicated": false,
+    "blockingFindings": [],
+    "canonicalSourceEvidence": [
+      {
+        "bytes": 20319,
+        "path": "docs/validation/2026-11-10-remote-occupancy-source-evidence.json",
+        "sha256": "c9709e8acab3cd7a65155ffca4ab207b1f0b030b09be4755a6d8c71f465a5504"
+      },
+      {
+        "bytes": 5494,
+        "path": "docs/validation/2026-11-10-remote-occupancy-source-evidence.md",
+        "sha256": "92d00dd2b3b9c89b8261f0d90a78773bf1f428bb27f84cef0ecb610276b7e950"
+      },
+      {
+        "bytes": 2331416,
+        "path": "docs/validation/2026-11-10-remote-occupancy-source-evidence-full.json.gz",
+        "sha256": "d8fd0b627ce82d9443c6e5797e84803409eb1ac93f830687c9773ed8f239ce66"
+      }
+    ],
+    "disposition": "CLEAR_FORMAT_ONLY_CORRECTION",
+    "exactReplacement": {
+      "allOtherPrefixSuffixBytesExact": true,
+      "change": "Line wrapping and callback indentation only in cards: elements.get('devices').children.map(...)",
+      "oneBlock": true,
+      "sourcePositionsChange": true,
+      "stringsCommentsAssertionsDeclarationsAndControlFlowUnchanged": true,
+      "whitespaceBytesRemoved": 22
+    },
+    "formattedFixture": {
+      "bytes": 46982,
+      "path": "artifacts/issue-241-format-correction/formatted-proposal.mjs",
+      "sha256": "51612dd8ebfe90d2b2e70d9291da6dd603ce8d50bd066fcecf1b248210d846b0"
+    },
+    "identity": {
+      "astNodeAndCommentCount": 8057,
+      "commentCount": 4,
+      "literalSliceSha256": "7719f650e250cfbda6f593be57d0193324713932ed58d78348d1975855cb0be7",
+      "literalTemplateAndCommentSliceCount": 788,
+      "nodePin": {
+        "bytes": 126939688,
+        "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d"
+      },
+      "nodeVersion": "v24.22.1",
+      "normalizedAstBytes": 437883,
+      "normalizedAstSha256": "502fe09588894b39eb5b98e4bd9d3813425eb9d1d2a373fdca713fe06c33d894",
+      "parser": "Acorn ESTree parser bundled with the pinned local Prettier package; the formatter default parser is separate",
+      "parserPin": {
+        "bytes": 153669,
+        "path": "/workspace/scratch/a9287b3cfe09/mterm-resume/node_modules/prettier/plugins/acorn.mjs",
+        "sha256": "f1230c52b2387e8ba21b474958b705bf8fff469c16cd3767d6a00a7bf7d6a84f"
+      },
+      "positionFieldsExcluded": [
+        "start",
+        "end",
+        "range",
+        "loc",
+        "__contentEnd"
+      ],
+      "proof": "Single reviewed layout hunk; identical non-whitespace characters, full syntax structure, and exact literal/template/comment slices. Source positions change. This is not a product rerun or a claimed independent tokenizer invocation.",
+      "removedBytes": 22
+    },
+    "identityVerification": {
+      "bytes": 8274,
+      "path": "artifacts/issue-241-format-correction-peer-review/static-identity.json",
+      "sha256": "efbf818d706c48a0eda2a6f909b5b281c7cf075b5986272c10aa5c4817603e8a"
+    },
+    "inspectionHistory": [
+      {
+        "actualExit": 1,
+        "classification": "READ_ONLY_PARSER_PATH_DISCOVERY_ERROR",
+        "detail": "Initial inventory attempted node_modules/typescript/lib/typescript.js, which is absent in the installed TypeScript7.0.2 native package. No fixture or source code was executed or changed. Available files were enumerated, and the pinned local Acorn parser was selected for the completed static review."
+      }
+    ],
+    "issue": 241,
+    "nextNormalGateRecipe": {
+      "comparison": "Byte-identical except the single selected output directory v1-to-v2 replacement; all seven commands, thresholds and failure logic unchanged.",
+      "freshOutputAbsentAtReview": true,
+      "limits": "This static comparison does not add fault/signal-injection coverage or authorize broader commands.",
+      "resultClaim": null,
+      "status": "NOT_RUN",
+      "v1": {
+        "bytes": 4242,
+        "path": "artifacts/issue-241-normal-gate-preparation/run-normal-gates-v1.py",
+        "sha256": "096081f76ba92fe2dda0a0c5c0a9f57044e629da82348280412657b870f3f807"
+      },
+      "v2": {
+        "bytes": 4242,
+        "path": "artifacts/issue-241-normal-gate-preparation-v2/run-normal-gates-v2.py",
+        "sha256": "644b26c489eb120efdcb613491379657cf8b4ec6bfff1b4818999b73a9369f3b"
+      }
+    },
+    "originalFixture": {
+      "bytes": 47004,
+      "path": "artifacts/issue-241-format-correction/original-fixture.mjs",
+      "sha256": "66e6371a83b993d9c1bd13a2a4a27fa1a9031eeba4fbd1f1cc313c0c945c1596"
+    },
+    "originalNormalAttempt": {
+      "actualOuterExit": 1,
+      "actualOuterToolResponse": {
+        "bytes": 4017,
+        "path": "artifacts/issue-241-integration/normal-gate-tool-response-1.json",
+        "sha256": "5442f15ae349a9c7040e8f270162453d35c8ee4f2e9c5c39883dd3ac3d040a1f"
+      },
+      "all12RawStreamHashesAndSizesMatched": true,
+      "allSixCapturesComplete": true,
+      "faultSignals": [],
+      "firstFive": "PASS_REVIEW_RENDER_CHECK_BUILD_TYPECHECK",
+      "formatStderrOtherContent": "Existing npm environment-config warning; sole Prettier file warning is tests/remote-occupancy.test.mjs.",
+      "head": "b77f7f12747fb78f55bd9f001f1e5c30b4050186",
+      "partial": {
+        "bytes": 4164,
+        "path": "artifacts/issue-241-root-gates-v1/partial.json",
+        "sha256": "446f063c1e1fd02b69f6aac6104fa9c83de00424fde1a3e3722e967c6b26844e"
+      },
+      "receipt": {
+        "bytes": 18214,
+        "path": "artifacts/issue-241-format-correction/first-normal-attempt.json",
+        "sha256": "0b6b9a6304d10c281a115ccf49e6a070b13c691eeb238acf1b90a57006e4febc"
+      },
+      "seventh": "NOT_RUN",
+      "sixth": "FORMAT_CHECK_EXIT1_ONLY_OCCUPANCY_FIXTURE_STYLE"
+    },
+    "patch": {
+      "bytes": 719,
+      "path": "artifacts/issue-241-format-correction/format-only-proposal.patch",
+      "sha256": "49cc18e25a9095a7f9a70f7b7e697aa28d5d4f176008c55acd6beea3d75f05f1"
+    },
+    "phaseMapping": {
+      "baselineAndFocusedRawEvidence": "Retain original receipts, input maps, diagnostics and execution hashes unchanged. Formatting equivalence is a separate mapping, never a claim that those prior runs executed the new bytes.",
+      "baselineAndFocusedSourceFixtureSha256": "66e6371a83b993d9c1bd13a2a4a27fa1a9031eeba4fbd1f1cc313c0c945c1596",
+      "canonicalSourceArchive": "All three canonical source-evidence files still match the independently cleared source-bundle bytes.",
+      "newPhaseAdmission": "After applying only this exact proposal, root records the new fixture/source fingerprint and normal-v2 result. Candidate/main source expectations and hosted source jobs must bind and test their actual new bytes; no overwrite of historical source-reader expectations.",
+      "proposedSubsequentNormalAndHostedFixtureSha256": "51612dd8ebfe90d2b2e70d9291da6dd603ce8d50bd066fcecf1b248210d846b0",
+      "rootFixtureStillOriginalAtStaticReview": true,
+      "workerOriginalStillUnchanged": true
+    },
+    "proposal": {
+      "bytes": 1492,
+      "path": "artifacts/issue-241-format-correction/proposal.json",
+      "sha256": "7b216f779a64ada6995fa2c199da295bbe8b322a9cf29a610205315e79fed042"
+    },
+    "rationale": "The entire proposal reconstructs from one outside-literal whitespace replacement. The independent Acorn parse of both full files has identical8057-node/comment structure after removing only positional fields; all788 literal/template/comment raw slices and all non-whitespace source bytes are identical. No assertion, input, cleanup, auth boundary, diagnostic value or product branch changes. The normal format gate is the concrete remaining check; later hosted stages will execute actual final bytes.",
+    "recordedAtUtc": "2026-11-10T02:16:40.096363+00:00",
+    "reviewer": "/root/git_fetch_scope_review",
+    "rootIndependentBlockReview": {
+      "bytes": 1031,
+      "path": "artifacts/issue-241-format-correction/root-static-format-review.json",
+      "sha256": "b7960124dd432c1490d609c4821b7271ee2b3e3e9a099e696f9b299bd0f16f78"
+    },
+    "schemaVersion": 1,
+    "scopeLimits": [
+      "No standalone tokenizer invocation is claimed. Exact non-whitespace byte equality plus complete AST and raw literal/comment equality establish the reviewed lexical/semantic identity.",
+      "A formatting correction cannot retroactively change baseline, focused-source, archive or hosted execution identities.",
+      "Normal-v2, candidate/main hosted and final acceptance results remain unobserved at this review. Root owns application and further gates."
+    ],
+    "staticAuditScript": {
+      "bytes": 8931,
+      "path": "artifacts/issue-241-format-correction-peer-review/static_identity.mjs",
+      "sha256": "0002369867c9e79789b51b628de2f68fde37fca5a5e567650751f7d2b4af47e8"
+    }
+  },
+  "independentStaticIdentity": {
+    "schemaVersion": 1,
+    "startedAtUtc": "2026-11-10T02:15:05.317Z",
+    "scope": "Static syntax and exact-byte review of the selected formatting-only fixture proposal; source is read as text and never imported or evaluated.",
+    "productRuns": 0,
+    "fixtureRuns": 0,
+    "builds": 0,
+    "formatterRuns": 0,
+    "externalCalls": 0,
+    "trackedEdits": 0,
+    "identity": {
+      "parser": "Acorn ESTree parser bundled with the pinned local Prettier package; the formatter default parser is separate",
+      "parserPin": {
+        "path": "/workspace/scratch/a9287b3cfe09/mterm-resume/node_modules/prettier/plugins/acorn.mjs",
+        "bytes": 153669,
+        "sha256": "f1230c52b2387e8ba21b474958b705bf8fff469c16cd3767d6a00a7bf7d6a84f"
+      },
+      "nodePin": {
+        "path": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "bytes": 126939688,
+        "sha256": "61ab14cd750fc24d5db53490ec5fc40f756e4b6e136b78cf7004265471d9bd1d"
+      },
+      "nodeVersion": "v24.22.1",
+      "positionFieldsExcluded": [
+        "start",
+        "end",
+        "range",
+        "loc",
+        "__contentEnd"
+      ],
+      "normalizedAstSha256": "502fe09588894b39eb5b98e4bd9d3813425eb9d1d2a373fdca713fe06c33d894",
+      "normalizedAstBytes": 437883,
+      "astNodeAndCommentCount": 8057,
+      "literalTemplateAndCommentSliceCount": 788,
+      "literalSliceSha256": "7719f650e250cfbda6f593be57d0193324713932ed58d78348d1975855cb0be7",
+      "commentCount": 4,
+      "removedBytes": 22,
+      "proof": "Single reviewed layout hunk; identical non-whitespace characters, full syntax structure, and exact literal/template/comment slices. Source positions change. This is not a product rerun or a claimed independent tokenizer invocation."
+    },
+    "normalGate": {
+      "rootHead": "b77f7f12747fb78f55bd9f001f1e5c30b4050186",
+      "partial": {
+        "path": "/workspace/scratch/a9287b3cfe09/mterm-resume/artifacts/issue-241-root-gates-v1/partial.json",
+        "bytes": 4164,
+        "sha256": "446f063c1e1fd02b69f6aac6104fa9c83de00424fde1a3e3722e967c6b26844e"
+      },
+      "actualOuter": {
+        "path": "/workspace/scratch/a9287b3cfe09/mterm-resume/artifacts/issue-241-integration/normal-gate-tool-response-1.json",
+        "bytes": 4017,
+        "sha256": "5442f15ae349a9c7040e8f270162453d35c8ee4f2e9c5c39883dd3ac3d040a1f"
+      },
+      "outcomes": [
+        {
+          "index": 1,
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "scripts/roadmap.mjs",
+            "--review",
+            "--change",
+            "2026-11-10-remote-occupancy"
+          ],
+          "exitCode": 0
+        },
+        {
+          "index": 2,
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "scripts/roadmap.mjs",
+            "--render"
+          ],
+          "exitCode": 0
+        },
+        {
+          "index": 3,
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "scripts/roadmap.mjs",
+            "--check"
+          ],
+          "exitCode": 0
+        },
+        {
+          "index": 4,
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/lib/node_modules/npm/bin/npm-cli.js",
+            "run",
+            "build"
+          ],
+          "exitCode": 0
+        },
+        {
+          "index": 5,
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/lib/node_modules/npm/bin/npm-cli.js",
+            "run",
+            "typecheck"
+          ],
+          "exitCode": 0
+        },
+        {
+          "index": 6,
+          "command": [
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+            "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/lib/node_modules/npm/bin/npm-cli.js",
+            "run",
+            "format:check"
+          ],
+          "exitCode": 1
+        }
+      ],
+      "seventhStep": "NOT_RUN",
+      "captureComplete": true
+    },
+    "proposal": {
+      "path": "/workspace/scratch/a9287b3cfe09/mterm-resume/artifacts/issue-241-format-correction/proposal.json",
+      "bytes": 1492,
+      "sha256": "7b216f779a64ada6995fa2c199da295bbe8b322a9cf29a610205315e79fed042"
+    },
+    "original": {
+      "path": "/workspace/scratch/a9287b3cfe09/mterm-resume/artifacts/issue-241-format-correction/original-fixture.mjs",
+      "bytes": 47004,
+      "sha256": "66e6371a83b993d9c1bd13a2a4a27fa1a9031eeba4fbd1f1cc313c0c945c1596"
+    },
+    "formatted": {
+      "path": "/workspace/scratch/a9287b3cfe09/mterm-resume/artifacts/issue-241-format-correction/formatted-proposal.mjs",
+      "bytes": 46982,
+      "sha256": "51612dd8ebfe90d2b2e70d9291da6dd603ce8d50bd066fcecf1b248210d846b0"
+    },
+    "sourceArchive": {
+      "path": "/workspace/scratch/a9287b3cfe09/mterm-resume/docs/validation/2026-11-10-remote-occupancy-source-evidence-full.json.gz",
+      "bytes": 2331416,
+      "sha256": "d8fd0b627ce82d9443c6e5797e84803409eb1ac93f830687c9773ed8f239ce66"
+    },
+    "disposition": "CLEAR_FORMAT_ONLY_CORRECTION",
+    "additionalProductRunIndicated": false,
+    "completedAtUtc": "2026-11-10T02:15:05.624Z",
+    "checks": [
+      {
+        "name": "original exact frozen fixture",
+        "passed": true
+      },
+      {
+        "name": "proposed exact formatter output",
+        "passed": true
+      },
+      {
+        "name": "recorded patch pin",
+        "passed": true
+      },
+      {
+        "name": "formatter stderr empty",
+        "passed": true
+      },
+      {
+        "name": "root tracked fixture still old bytes before application",
+        "passed": true
+      },
+      {
+        "name": "worker original fixture unchanged",
+        "passed": true
+      },
+      {
+        "name": "full Acorn ESTree including comment values identical after removing only source positions",
+        "passed": true
+      },
+      {
+        "name": "all literal/template/comment raw slices identical",
+        "passed": true
+      },
+      {
+        "name": "all non-whitespace source bytes identical",
+        "passed": true
+      },
+      {
+        "name": "normal attempt six actual steps",
+        "passed": true
+      },
+      {
+        "name": "first five successful and format sixth failed",
+        "passed": true
+      },
+      {
+        "name": "normal step1 stdout exact capture",
+        "passed": true
+      },
+      {
+        "name": "normal step1 stderr exact capture",
+        "passed": true
+      },
+      {
+        "name": "normal step1 complete without termination",
+        "passed": true
+      },
+      {
+        "name": "normal step2 stdout exact capture",
+        "passed": true
+      },
+      {
+        "name": "normal step2 stderr exact capture",
+        "passed": true
+      },
+      {
+        "name": "normal step2 complete without termination",
+        "passed": true
+      },
+      {
+        "name": "normal step3 stdout exact capture",
+        "passed": true
+      },
+      {
+        "name": "normal step3 stderr exact capture",
+        "passed": true
+      },
+      {
+        "name": "normal step3 complete without termination",
+        "passed": true
+      },
+      {
+        "name": "normal step4 stdout exact capture",
+        "passed": true
+      },
+      {
+        "name": "normal step4 stderr exact capture",
+        "passed": true
+      },
+      {
+        "name": "normal step4 complete without termination",
+        "passed": true
+      },
+      {
+        "name": "normal step5 stdout exact capture",
+        "passed": true
+      },
+      {
+        "name": "normal step5 stderr exact capture",
+        "passed": true
+      },
+      {
+        "name": "normal step5 complete without termination",
+        "passed": true
+      },
+      {
+        "name": "normal step6 stdout exact capture",
+        "passed": true
+      },
+      {
+        "name": "normal step6 stderr exact capture",
+        "passed": true
+      },
+      {
+        "name": "normal step6 complete without termination",
+        "passed": true
+      },
+      {
+        "name": "only fixture named as style failure",
+        "passed": true
+      },
+      {
+        "name": "stage7 not observed or credited",
+        "passed": true
+      },
+      {
+        "name": "actual outer exit1",
+        "passed": true
+      },
+      {
+        "name": "original assembled source archive unchanged",
+        "passed": true
+      },
+      {
+        "name": "canonical source archive retains exact historical bytes",
+        "passed": true
+      }
+    ],
+    "checkCount": 34,
+    "allPassed": true
+  },
+  "rootApplication": {
+    "schemaVersion": 1,
+    "appliedAt": "2026-11-10T02:18:25.749208+00:00",
+    "sourceHeadBefore": "b77f7f12747fb78f55bd9f001f1e5c30b4050186",
+    "path": "tests/remote-occupancy.test.mjs",
+    "before": {
+      "bytes": 47004,
+      "sha256": "66e6371a83b993d9c1bd13a2a4a27fa1a9031eeba4fbd1f1cc313c0c945c1596",
+      "phase": "actual baseline14 and focused152 source executions"
+    },
+    "after": {
+      "bytes": 46982,
+      "sha256": "51612dd8ebfe90d2b2e70d9291da6dd603ce8d50bd066fcecf1b248210d846b0",
+      "phase": "subsequent normal and hosted inputs; no local product execution of these bytes at this application"
+    },
+    "exactReviewedProposalCopied": true,
+    "independentEquivalenceReview": {
+      "path": "artifacts/issue-241-format-correction-peer-review/review.json",
+      "sha256": "c880ed5e70826c3b8dfbc64f88341313c4eb47ca8c9e92af09a2a5ed5d34928f"
+    },
+    "sourceBehaviorAssertionOrLiteralChange": false,
+    "workerOriginalAndCanonicalSourceArchiveUnchanged": true,
+    "firstNormalAttemptSha256": "0b6b9a6304d10c281a115ccf49e6a070b13c691eeb238acf1b90a57006e4febc",
+    "normalV2DriverSha256": "644b26c489eb120efdcb613491379657cf8b4ec6bfff1b4818999b73a9369f3b",
+    "productRerun": "Not indicated by independent equivalence review; future full-source hosted executions remain required."
+  },
+  "rootApplicationSha256": "35b72fd160b5356bbe1ef287081703b8e29234b1571f6b77ca642ef1589a856c",
+  "canonicalHistoricalSourceArchive": {
+    "path": "docs/validation/2026-11-10-remote-occupancy-source-evidence-full.json.gz",
+    "sha256": "d8fd0b627ce82d9443c6e5797e84803409eb1ac93f830687c9773ed8f239ce66"
+  },
+  "correctedNormalSequence": "NOT_RUN_AT_THIS_CORRECTION_SEAL",
+  "candidateHosted": "NOT_RUN",
+  "actualMainHosted": "NOT_RUN",
+  "protectedStagesWeightsEstimatesSeedAcceptanceChanged": false,
+  "providerWindowsDeploymentModelActivity": false
+}

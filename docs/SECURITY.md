@@ -462,11 +462,35 @@ exclusions do not provide universal secret-content detection.
 | Supported MCP revisions | `2025-11-25`, `2025-06-18`, `2025-03-26` |
 | Device wire contract | Version `1` |
 | Active devices / OAuth grants per identity | 20 / 32 |
-| Concurrent remote jobs per device | 4 |
+| Jobs occupying registry admission slots per device | 4 (queued, delivered or completed awaiting consumption) |
 | Retained jobs in the shared registry | 200 |
 | Job deadline | 20 seconds |
 | Single-file read / result / agent frame | 65,536 / 262,144 / 300,000 bytes |
 | Normal device polling | Every 2 seconds; bounded reconnect backoff and jitter |
+
+The authenticated dashboard source reports `devices[*].registryAdmission` for each
+returned owned device: `limit`, `queued`, `delivered`,
+`completedAwaitingConsumption`, `occupied` and `remaining`. The limit remains four;
+occupied is the sum of the three counted states and remaining is clamped at zero.
+Four unconsumed completed results can therefore occupy every slot while the existing
+active-request list is empty. Results still follow their existing single-use
+consumption and retention rules.
+
+These are registry counts. Delivered does not prove execution, and remaining device
+slots do not promise admission or report the agent's transient `availableSlots` offer.
+Authorization, capabilities, device presence, shared retained-job capacity and rate
+checks continue to apply. Counters aggregate the authenticated owner's grants and
+filter both owner and returned device IDs. Existing sessions retain their original
+owner plus queued/delivered predicate and projection; public MCP device fields and
+shared device cleaning remain unchanged. Device-card values use text nodes.
+
+The counters and sessions share the existing job snapshot. A dashboard read does not
+consume a result or add a job transition; existing expired-row pruning and alarm
+initialization remain. The row helper limits returned live rows, not total traversal
+through expired rows. The [dated source evidence](validation/2026-11-10-remote-occupancy.md)
+distinguishes authenticated in-memory fixtures and the actual served-script DOM
+adapter from real Durable Object storage, browser/accessibility, load and deployment
+qualification. Issue241 adds no such operational acceptance.
 
 Registration, pairing, refresh and tool submission have additional bounded admission/rate
 checks. The single shared staging registry and polling design are not a production scale

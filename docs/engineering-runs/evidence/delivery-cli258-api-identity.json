@@ -1,0 +1,2717 @@
+{
+  "schemaVersion": 1,
+  "repository": "MulattoTech/MTerm-CLI",
+  "pullRequestNumber": 258,
+  "captureType": "PINNED_GITHUB_IDENTITY_INPUT",
+  "preparedAt": "2026-11-12T22:14:40.810229+00:00",
+  "pullRequest": {
+    "tool": "github_get_pr_info",
+    "arguments": {
+      "repository_full_name": "MulattoTech/MTerm-CLI",
+      "pr_number": 258
+    },
+    "requestUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/pulls/258",
+    "responseKind": "CONNECTOR_NORMALIZED_IDENTITY_FIELDS",
+    "response": {
+      "url": "https://github.com/MulattoTech/MTerm-CLI/pull/258",
+      "number": 258,
+      "state": "closed",
+      "merged": true,
+      "draft": false,
+      "base": "main",
+      "base_sha": "f447c0baac3f36470d6fd96360928c6a2a192c4b",
+      "head": "feat/public-endpoint-inspector-20261112",
+      "head_sha": "01c0fc0dc236fbb09d0400f9119df9147c6580f7",
+      "head_repo_id": 1391226983,
+      "head_repo_full_name": "MulattoTech/MTerm-CLI",
+      "merge_commit_sha": "da03dc5255976b1524b22796fffadb01e50a5149",
+      "created_at": "2026-11-12T21:13:21Z",
+      "updated_at": "2026-11-12T21:41:38Z",
+      "closed_at": "2026-11-12T21:25:04Z",
+      "merged_at": "2026-11-12T21:25:04Z"
+    }
+  },
+  "candidate": {
+    "commit": {
+      "requestUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/commits/01c0fc0dc236fbb09d0400f9119df9147c6580f7",
+      "response": {
+        "sha": "01c0fc0dc236fbb09d0400f9119df9147c6580f7",
+        "node_id": "C_kwDOUuxwZ9oAKDAxYzBmYzBkYzIzNmZiYjA5ZDA0MDBmOTExOWRmOTE0N2M2NTgwZjc",
+        "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/commits/01c0fc0dc236fbb09d0400f9119df9147c6580f7",
+        "html_url": "https://github.com/MulattoTech/MTerm-CLI/commit/01c0fc0dc236fbb09d0400f9119df9147c6580f7",
+        "author": {
+          "name": "Dylan",
+          "email": "5900632+MulattoTech@users.noreply.github.com",
+          "date": "2026-11-12T21:12:52Z"
+        },
+        "committer": {
+          "name": "Dylan",
+          "email": "5900632+MulattoTech@users.noreply.github.com",
+          "date": "2026-11-12T21:12:52Z"
+        },
+        "tree": {
+          "sha": "2ee6ecc09206ca3f8e64edc34635b3820383e00b",
+          "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/trees/2ee6ecc09206ca3f8e64edc34635b3820383e00b"
+        },
+        "message": "feat(remote): inspect public MCP endpoints with bounded HTTPS discovery\n\nAdd explicit unauthenticated endpoint inspection with public-address policy,\npinned TLS transport, strict protocol parsing, and owned legacy session cleanup.\nRetain 81 endpoint regressions and installed-package qualification.\n\nIncludes independently reviewed integration of the capability register and\nexact prior main qualification receipts. No acceptance credit or deployment.",
+        "parents": [
+          {
+            "sha": "f447c0baac3f36470d6fd96360928c6a2a192c4b",
+            "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/commits/f447c0baac3f36470d6fd96360928c6a2a192c4b",
+            "html_url": "https://github.com/MulattoTech/MTerm-CLI/commit/f447c0baac3f36470d6fd96360928c6a2a192c4b"
+          }
+        ],
+        "verification": {
+          "verified": false,
+          "reason": "unsigned",
+          "signature": null,
+          "payload": null,
+          "verified_at": null
+        }
+      }
+    },
+    "workflows": [
+      {
+        "requestUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/contents/.github/workflows/ci-fast.yml?ref=01c0fc0dc236fbb09d0400f9119df9147c6580f7",
+        "path": ".github/workflows/ci-fast.yml",
+        "ref": "01c0fc0dc236fbb09d0400f9119df9147c6580f7",
+        "responseKind": "DECODED_FILE_CONTENT",
+        "content": "# SPDX-License-Identifier: MIT\n# AI-Change: 2026-10-21-orchestrator-ready (OpenAI / GPT-6)\nname: CLI fast checks\non:\n  pull_request:\n  push:\n    branches: [main]\n  workflow_dispatch:\npermissions:\n  contents: read\nconcurrency:\n  group: cli-fast-${{ github.ref }}\n  cancel-in-progress: true\njobs:\n  fast:\n    name: CI / fast\n    runs-on: ubuntu-24.04\n    timeout-minutes: 12\n    steps:\n      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262\n        with:\n          persist-credentials: false\n      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020\n        with:\n          node-version: '24.21.0'\n          cache: npm\n      - name: Reproducible install without lifecycle scripts\n        run: npm ci --ignore-scripts --no-audit --no-fund\n      - name: Pinned reviewed build\n        run: npm run build\n      - name: Deterministic tests\n        run: npm run check\n      - name: No test-induced source mutation\n        run: git diff --exit-code\n"
+      },
+      {
+        "requestUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/contents/.github/workflows/cli-ci.yml?ref=01c0fc0dc236fbb09d0400f9119df9147c6580f7",
+        "path": ".github/workflows/cli-ci.yml",
+        "ref": "01c0fc0dc236fbb09d0400f9119df9147c6580f7",
+        "responseKind": "DECODED_FILE_CONTENT",
+        "content": "# SPDX-License-Identifier: MIT\n# AI-Change: 2026-10-05-codex-parity-foundation\nname: CLI compatibility foundation\non:\n  pull_request:\n  push:\n    branches: [main, 'feat/**']\n  workflow_dispatch:\npermissions:\n  contents: read\nconcurrency:\n  group: cli-${{ github.workflow }}-${{ github.ref }}\n  cancel-in-progress: true\njobs:\n  verify:\n    name: ${{ matrix.os }} / Node 24\n    runs-on: ${{ matrix.os }}\n    timeout-minutes: 20\n    strategy:\n      fail-fast: false\n      matrix:\n        include:\n          - os: windows-2022\n            platform: win32\n            arch: x64\n          - os: ubuntu-24.04\n            platform: linux\n            arch: x64\n          # macos-14 retired 2026-11-02; preserve the explicit ARM64 lane on a supported image.\n          - os: macos-15\n            platform: darwin\n            arch: arm64\n          - os: macos-15-intel\n            platform: darwin\n            arch: x64\n    steps:\n      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262\n        with:\n          persist-credentials: false\n      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020\n        with:\n          node-version: '24.21.0'\n      - name: Verify actual runtime architecture\n        run: node -e \"const a=require('node:assert/strict');a.equal(process.platform,process.env.EXPECT_PLATFORM);a.equal(process.arch,process.env.EXPECT_ARCH);console.log(JSON.stringify({node:process.version,platform:process.platform,arch:process.arch}))\"\n        env:\n          EXPECT_PLATFORM: ${{ matrix.platform }}\n          EXPECT_ARCH: ${{ matrix.arch }}\n      - name: Reproducible dependencies without lifecycle side effects\n        run: npm ci --ignore-scripts --no-audit --no-fund\n      - name: Reviewed source and pinned parity baseline\n        run: npm run build\n      - name: Typecheck formatting and deterministic tests\n        run: npm run check\n      - name: Verify packed install and isolated npm link\n        run: node scripts/verify-package.mjs\n      - name: Install pinned Codex into test-owned prefix\n        run: npm install --prefix artifacts/ci-codex --no-audit --no-fund --ignore-scripts --package-lock=false @openai/codex@0.160.1\n      - name: Real Codex registration without login or model calls\n        run: node scripts/verify-managed-codex.mjs\n        env:\n          MTERM_CODEX_TEST_PREFIX: artifacts/ci-codex\n          MTERM_CODEX_EXPECTED_VERSION: '0.160.1'\n      - name: Exact source remains unchanged by tests\n        run: git diff --exit-code\n  isolation-linux:\n    name: Native Linux isolation / Node 24\n    runs-on: ubuntu-24.04\n    timeout-minutes: 25\n    steps:\n      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262\n        with:\n          persist-credentials: false\n      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020\n        with:\n          node-version: '24.21.0'\n      - name: Reproducible dependencies and reviewed source\n        run: |\n          npm ci --ignore-scripts --no-audit --no-fund\n          npm run build\n      - name: Prepare signed pinned runtime on the disposable runner\n        run: node scripts/prepare-isolation-ci.mjs\n      - name: Mandatory real source containment and cleanup\n        run: node scripts/verify-isolation-live.mjs\n        env:\n          MTERM_ISOLATION_REQUIRE_LIVE: '1'\n      - name: Mandatory actual installed-package containment and cleanup\n        run: node scripts/verify-package.mjs\n        env:\n          MTERM_ISOLATION_REQUIRE_LIVE: '1'\n      - name: Exact source remains unchanged by live tests\n        run: git diff --exit-code\n      - name: Retain qualification evidence even after a failed gate\n        if: always()\n        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9\n        with:\n          name: aug005-linux-${{ github.run_id }}-${{ github.run_attempt }}\n          path: artifacts/aug005/ci-evidence/\n          if-no-files-found: error\n          retention-days: 30\n          overwrite: false\n          include-hidden-files: false\n"
+      }
+    ],
+    "runs": [
+      {
+        "requestUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43308098622",
+        "response": {
+          "id": 43308098622,
+          "name": "CLI fast checks",
+          "node_id": "WFR_kwLOUuxwZ88AAAAKFV0kPg",
+          "head_branch": "feat/public-endpoint-inspector-20261112",
+          "head_sha": "01c0fc0dc236fbb09d0400f9119df9147c6580f7",
+          "path": ".github/workflows/ci-fast.yml",
+          "display_title": "Inspect custom MCP endpoints with bounded public HTTPS discovery",
+          "run_number": 145,
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "workflow_id": 393731387,
+          "check_suite_id": 117278918106,
+          "check_suite_node_id": "CS_kwDOUuxwZ88AAAAbTl5F2g",
+          "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43308098622",
+          "html_url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43308098622",
+          "pull_requests": [],
+          "created_at": "2026-11-12T21:13:24Z",
+          "updated_at": "2026-11-12T21:16:46Z",
+          "actor": {
+            "login": "MulattoTech",
+            "id": 5900632,
+            "node_id": "MDQ6VXNlcjU5MDA2MzI=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/5900632?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/MulattoTech",
+            "html_url": "https://github.com/MulattoTech",
+            "followers_url": "https://api.github.com/users/MulattoTech/followers",
+            "following_url": "https://api.github.com/users/MulattoTech/following{/other_user}",
+            "gists_url": "https://api.github.com/users/MulattoTech/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/MulattoTech/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/MulattoTech/subscriptions",
+            "organizations_url": "https://api.github.com/users/MulattoTech/orgs",
+            "repos_url": "https://api.github.com/users/MulattoTech/repos",
+            "events_url": "https://api.github.com/users/MulattoTech/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/MulattoTech/received_events",
+            "type": "User",
+            "user_view_type": "public",
+            "site_admin": false
+          },
+          "run_attempt": 1,
+          "referenced_workflows": [],
+          "run_started_at": "2026-11-12T21:13:24Z",
+          "triggering_actor": {
+            "login": "MulattoTech",
+            "id": 5900632,
+            "node_id": "MDQ6VXNlcjU5MDA2MzI=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/5900632?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/MulattoTech",
+            "html_url": "https://github.com/MulattoTech",
+            "followers_url": "https://api.github.com/users/MulattoTech/followers",
+            "following_url": "https://api.github.com/users/MulattoTech/following{/other_user}",
+            "gists_url": "https://api.github.com/users/MulattoTech/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/MulattoTech/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/MulattoTech/subscriptions",
+            "organizations_url": "https://api.github.com/users/MulattoTech/orgs",
+            "repos_url": "https://api.github.com/users/MulattoTech/repos",
+            "events_url": "https://api.github.com/users/MulattoTech/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/MulattoTech/received_events",
+            "type": "User",
+            "user_view_type": "public",
+            "site_admin": false
+          },
+          "jobs_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43308098622/jobs",
+          "logs_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43308098622/logs",
+          "check_suite_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/check-suites/117278918106",
+          "artifacts_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43308098622/artifacts",
+          "cancel_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43308098622/cancel",
+          "rerun_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43308098622/rerun",
+          "previous_attempt_url": null,
+          "workflow_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/workflows/393731387",
+          "head_commit": {
+            "id": "01c0fc0dc236fbb09d0400f9119df9147c6580f7",
+            "tree_id": "2ee6ecc09206ca3f8e64edc34635b3820383e00b",
+            "message": "feat(remote): inspect public MCP endpoints with bounded HTTPS discovery\n\nAdd explicit unauthenticated endpoint inspection with public-address policy,\npinned TLS transport, strict protocol parsing, and owned legacy session cleanup.\nRetain 81 endpoint regressions and installed-package qualification.\n\nIncludes independently reviewed integration of the capability register and\nexact prior main qualification receipts. No acceptance credit or deployment.",
+            "timestamp": "2026-11-12T21:12:52Z",
+            "author": {
+              "name": "Dylan",
+              "email": "5900632+MulattoTech@users.noreply.github.com"
+            },
+            "committer": {
+              "name": "Dylan",
+              "email": "5900632+MulattoTech@users.noreply.github.com"
+            }
+          },
+          "repository": {
+            "id": 1391226983,
+            "node_id": "R_kgDOUuxwZw",
+            "name": "MTerm-CLI",
+            "full_name": "MulattoTech/MTerm-CLI",
+            "private": false,
+            "owner": {
+              "login": "MulattoTech",
+              "id": 5900632,
+              "node_id": "MDQ6VXNlcjU5MDA2MzI=",
+              "avatar_url": "https://avatars.githubusercontent.com/u/5900632?v=4",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/MulattoTech",
+              "html_url": "https://github.com/MulattoTech",
+              "followers_url": "https://api.github.com/users/MulattoTech/followers",
+              "following_url": "https://api.github.com/users/MulattoTech/following{/other_user}",
+              "gists_url": "https://api.github.com/users/MulattoTech/gists{/gist_id}",
+              "starred_url": "https://api.github.com/users/MulattoTech/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/MulattoTech/subscriptions",
+              "organizations_url": "https://api.github.com/users/MulattoTech/orgs",
+              "repos_url": "https://api.github.com/users/MulattoTech/repos",
+              "events_url": "https://api.github.com/users/MulattoTech/events{/privacy}",
+              "received_events_url": "https://api.github.com/users/MulattoTech/received_events",
+              "type": "User",
+              "user_view_type": "public",
+              "site_admin": false
+            },
+            "html_url": "https://github.com/MulattoTech/MTerm-CLI",
+            "description": "DevFleet is a self-hosted platform for isolated local development work using AI coding agents, offering optional redundancy with added nodes. ",
+            "fork": false,
+            "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI",
+            "forks_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/forks",
+            "keys_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/keys{/key_id}",
+            "collaborators_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/collaborators{/collaborator}",
+            "teams_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/teams",
+            "hooks_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/hooks",
+            "issue_events_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues/events{/number}",
+            "events_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/events",
+            "assignees_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/assignees{/user}",
+            "branches_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/branches{/branch}",
+            "tags_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/tags",
+            "blobs_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/blobs{/sha}",
+            "git_tags_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/tags{/sha}",
+            "git_refs_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/refs{/sha}",
+            "trees_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/trees{/sha}",
+            "statuses_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/statuses/{sha}",
+            "languages_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/languages",
+            "stargazers_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/stargazers",
+            "contributors_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/contributors",
+            "subscribers_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/subscribers",
+            "subscription_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/subscription",
+            "commits_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/commits{/sha}",
+            "git_commits_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/commits{/sha}",
+            "comments_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/comments{/number}",
+            "issue_comment_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues/comments{/number}",
+            "contents_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/contents/{+path}",
+            "compare_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/compare/{base}...{head}",
+            "merges_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/merges",
+            "archive_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/{archive_format}{/ref}",
+            "downloads_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/downloads",
+            "issues_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues{/number}",
+            "pulls_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/pulls{/number}",
+            "milestones_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/milestones{/number}",
+            "notifications_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/notifications{?since,all,participating}",
+            "labels_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/labels{/name}",
+            "releases_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/releases{/id}",
+            "deployments_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/deployments"
+          },
+          "head_repository": {
+            "id": 1391226983,
+            "node_id": "R_kgDOUuxwZw",
+            "name": "MTerm-CLI",
+            "full_name": "MulattoTech/MTerm-CLI",
+            "private": false,
+            "owner": {
+              "login": "MulattoTech",
+              "id": 5900632,
+              "node_id": "MDQ6VXNlcjU5MDA2MzI=",
+              "avatar_url": "https://avatars.githubusercontent.com/u/5900632?v=4",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/MulattoTech",
+              "html_url": "https://github.com/MulattoTech",
+              "followers_url": "https://api.github.com/users/MulattoTech/followers",
+              "following_url": "https://api.github.com/users/MulattoTech/following{/other_user}",
+              "gists_url": "https://api.github.com/users/MulattoTech/gists{/gist_id}",
+              "starred_url": "https://api.github.com/users/MulattoTech/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/MulattoTech/subscriptions",
+              "organizations_url": "https://api.github.com/users/MulattoTech/orgs",
+              "repos_url": "https://api.github.com/users/MulattoTech/repos",
+              "events_url": "https://api.github.com/users/MulattoTech/events{/privacy}",
+              "received_events_url": "https://api.github.com/users/MulattoTech/received_events",
+              "type": "User",
+              "user_view_type": "public",
+              "site_admin": false
+            },
+            "html_url": "https://github.com/MulattoTech/MTerm-CLI",
+            "description": "DevFleet is a self-hosted platform for isolated local development work using AI coding agents, offering optional redundancy with added nodes. ",
+            "fork": false,
+            "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI",
+            "forks_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/forks",
+            "keys_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/keys{/key_id}",
+            "collaborators_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/collaborators{/collaborator}",
+            "teams_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/teams",
+            "hooks_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/hooks",
+            "issue_events_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues/events{/number}",
+            "events_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/events",
+            "assignees_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/assignees{/user}",
+            "branches_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/branches{/branch}",
+            "tags_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/tags",
+            "blobs_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/blobs{/sha}",
+            "git_tags_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/tags{/sha}",
+            "git_refs_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/refs{/sha}",
+            "trees_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/trees{/sha}",
+            "statuses_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/statuses/{sha}",
+            "languages_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/languages",
+            "stargazers_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/stargazers",
+            "contributors_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/contributors",
+            "subscribers_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/subscribers",
+            "subscription_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/subscription",
+            "commits_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/commits{/sha}",
+            "git_commits_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/commits{/sha}",
+            "comments_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/comments{/number}",
+            "issue_comment_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues/comments{/number}",
+            "contents_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/contents/{+path}",
+            "compare_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/compare/{base}...{head}",
+            "merges_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/merges",
+            "archive_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/{archive_format}{/ref}",
+            "downloads_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/downloads",
+            "issues_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues{/number}",
+            "pulls_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/pulls{/number}",
+            "milestones_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/milestones{/number}",
+            "notifications_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/notifications{?since,all,participating}",
+            "labels_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/labels{/name}",
+            "releases_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/releases{/id}",
+            "deployments_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/deployments"
+          }
+        }
+      },
+      {
+        "requestUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43308098646",
+        "response": {
+          "id": 43308098646,
+          "name": "CLI compatibility foundation",
+          "node_id": "WFR_kwLOUuxwZ88AAAAKFV0kVg",
+          "head_branch": "feat/public-endpoint-inspector-20261112",
+          "head_sha": "01c0fc0dc236fbb09d0400f9119df9147c6580f7",
+          "path": ".github/workflows/cli-ci.yml",
+          "display_title": "Inspect custom MCP endpoints with bounded public HTTPS discovery",
+          "run_number": 207,
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "workflow_id": 375792633,
+          "check_suite_id": 117278918188,
+          "check_suite_node_id": "CS_kwDOUuxwZ88AAAAbTl5GLA",
+          "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43308098646",
+          "html_url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43308098646",
+          "pull_requests": [],
+          "created_at": "2026-11-12T21:13:24Z",
+          "updated_at": "2026-11-12T21:23:23Z",
+          "actor": {
+            "login": "MulattoTech",
+            "id": 5900632,
+            "node_id": "MDQ6VXNlcjU5MDA2MzI=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/5900632?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/MulattoTech",
+            "html_url": "https://github.com/MulattoTech",
+            "followers_url": "https://api.github.com/users/MulattoTech/followers",
+            "following_url": "https://api.github.com/users/MulattoTech/following{/other_user}",
+            "gists_url": "https://api.github.com/users/MulattoTech/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/MulattoTech/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/MulattoTech/subscriptions",
+            "organizations_url": "https://api.github.com/users/MulattoTech/orgs",
+            "repos_url": "https://api.github.com/users/MulattoTech/repos",
+            "events_url": "https://api.github.com/users/MulattoTech/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/MulattoTech/received_events",
+            "type": "User",
+            "user_view_type": "public",
+            "site_admin": false
+          },
+          "run_attempt": 1,
+          "referenced_workflows": [],
+          "run_started_at": "2026-11-12T21:13:24Z",
+          "triggering_actor": {
+            "login": "MulattoTech",
+            "id": 5900632,
+            "node_id": "MDQ6VXNlcjU5MDA2MzI=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/5900632?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/MulattoTech",
+            "html_url": "https://github.com/MulattoTech",
+            "followers_url": "https://api.github.com/users/MulattoTech/followers",
+            "following_url": "https://api.github.com/users/MulattoTech/following{/other_user}",
+            "gists_url": "https://api.github.com/users/MulattoTech/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/MulattoTech/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/MulattoTech/subscriptions",
+            "organizations_url": "https://api.github.com/users/MulattoTech/orgs",
+            "repos_url": "https://api.github.com/users/MulattoTech/repos",
+            "events_url": "https://api.github.com/users/MulattoTech/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/MulattoTech/received_events",
+            "type": "User",
+            "user_view_type": "public",
+            "site_admin": false
+          },
+          "jobs_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43308098646/jobs",
+          "logs_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43308098646/logs",
+          "check_suite_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/check-suites/117278918188",
+          "artifacts_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43308098646/artifacts",
+          "cancel_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43308098646/cancel",
+          "rerun_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43308098646/rerun",
+          "previous_attempt_url": null,
+          "workflow_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/workflows/375792633",
+          "head_commit": {
+            "id": "01c0fc0dc236fbb09d0400f9119df9147c6580f7",
+            "tree_id": "2ee6ecc09206ca3f8e64edc34635b3820383e00b",
+            "message": "feat(remote): inspect public MCP endpoints with bounded HTTPS discovery\n\nAdd explicit unauthenticated endpoint inspection with public-address policy,\npinned TLS transport, strict protocol parsing, and owned legacy session cleanup.\nRetain 81 endpoint regressions and installed-package qualification.\n\nIncludes independently reviewed integration of the capability register and\nexact prior main qualification receipts. No acceptance credit or deployment.",
+            "timestamp": "2026-11-12T21:12:52Z",
+            "author": {
+              "name": "Dylan",
+              "email": "5900632+MulattoTech@users.noreply.github.com"
+            },
+            "committer": {
+              "name": "Dylan",
+              "email": "5900632+MulattoTech@users.noreply.github.com"
+            }
+          },
+          "repository": {
+            "id": 1391226983,
+            "node_id": "R_kgDOUuxwZw",
+            "name": "MTerm-CLI",
+            "full_name": "MulattoTech/MTerm-CLI",
+            "private": false,
+            "owner": {
+              "login": "MulattoTech",
+              "id": 5900632,
+              "node_id": "MDQ6VXNlcjU5MDA2MzI=",
+              "avatar_url": "https://avatars.githubusercontent.com/u/5900632?v=4",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/MulattoTech",
+              "html_url": "https://github.com/MulattoTech",
+              "followers_url": "https://api.github.com/users/MulattoTech/followers",
+              "following_url": "https://api.github.com/users/MulattoTech/following{/other_user}",
+              "gists_url": "https://api.github.com/users/MulattoTech/gists{/gist_id}",
+              "starred_url": "https://api.github.com/users/MulattoTech/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/MulattoTech/subscriptions",
+              "organizations_url": "https://api.github.com/users/MulattoTech/orgs",
+              "repos_url": "https://api.github.com/users/MulattoTech/repos",
+              "events_url": "https://api.github.com/users/MulattoTech/events{/privacy}",
+              "received_events_url": "https://api.github.com/users/MulattoTech/received_events",
+              "type": "User",
+              "user_view_type": "public",
+              "site_admin": false
+            },
+            "html_url": "https://github.com/MulattoTech/MTerm-CLI",
+            "description": "DevFleet is a self-hosted platform for isolated local development work using AI coding agents, offering optional redundancy with added nodes. ",
+            "fork": false,
+            "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI",
+            "forks_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/forks",
+            "keys_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/keys{/key_id}",
+            "collaborators_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/collaborators{/collaborator}",
+            "teams_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/teams",
+            "hooks_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/hooks",
+            "issue_events_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues/events{/number}",
+            "events_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/events",
+            "assignees_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/assignees{/user}",
+            "branches_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/branches{/branch}",
+            "tags_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/tags",
+            "blobs_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/blobs{/sha}",
+            "git_tags_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/tags{/sha}",
+            "git_refs_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/refs{/sha}",
+            "trees_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/trees{/sha}",
+            "statuses_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/statuses/{sha}",
+            "languages_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/languages",
+            "stargazers_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/stargazers",
+            "contributors_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/contributors",
+            "subscribers_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/subscribers",
+            "subscription_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/subscription",
+            "commits_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/commits{/sha}",
+            "git_commits_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/commits{/sha}",
+            "comments_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/comments{/number}",
+            "issue_comment_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues/comments{/number}",
+            "contents_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/contents/{+path}",
+            "compare_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/compare/{base}...{head}",
+            "merges_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/merges",
+            "archive_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/{archive_format}{/ref}",
+            "downloads_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/downloads",
+            "issues_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues{/number}",
+            "pulls_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/pulls{/number}",
+            "milestones_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/milestones{/number}",
+            "notifications_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/notifications{?since,all,participating}",
+            "labels_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/labels{/name}",
+            "releases_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/releases{/id}",
+            "deployments_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/deployments"
+          },
+          "head_repository": {
+            "id": 1391226983,
+            "node_id": "R_kgDOUuxwZw",
+            "name": "MTerm-CLI",
+            "full_name": "MulattoTech/MTerm-CLI",
+            "private": false,
+            "owner": {
+              "login": "MulattoTech",
+              "id": 5900632,
+              "node_id": "MDQ6VXNlcjU5MDA2MzI=",
+              "avatar_url": "https://avatars.githubusercontent.com/u/5900632?v=4",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/MulattoTech",
+              "html_url": "https://github.com/MulattoTech",
+              "followers_url": "https://api.github.com/users/MulattoTech/followers",
+              "following_url": "https://api.github.com/users/MulattoTech/following{/other_user}",
+              "gists_url": "https://api.github.com/users/MulattoTech/gists{/gist_id}",
+              "starred_url": "https://api.github.com/users/MulattoTech/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/MulattoTech/subscriptions",
+              "organizations_url": "https://api.github.com/users/MulattoTech/orgs",
+              "repos_url": "https://api.github.com/users/MulattoTech/repos",
+              "events_url": "https://api.github.com/users/MulattoTech/events{/privacy}",
+              "received_events_url": "https://api.github.com/users/MulattoTech/received_events",
+              "type": "User",
+              "user_view_type": "public",
+              "site_admin": false
+            },
+            "html_url": "https://github.com/MulattoTech/MTerm-CLI",
+            "description": "DevFleet is a self-hosted platform for isolated local development work using AI coding agents, offering optional redundancy with added nodes. ",
+            "fork": false,
+            "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI",
+            "forks_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/forks",
+            "keys_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/keys{/key_id}",
+            "collaborators_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/collaborators{/collaborator}",
+            "teams_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/teams",
+            "hooks_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/hooks",
+            "issue_events_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues/events{/number}",
+            "events_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/events",
+            "assignees_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/assignees{/user}",
+            "branches_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/branches{/branch}",
+            "tags_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/tags",
+            "blobs_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/blobs{/sha}",
+            "git_tags_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/tags{/sha}",
+            "git_refs_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/refs{/sha}",
+            "trees_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/trees{/sha}",
+            "statuses_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/statuses/{sha}",
+            "languages_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/languages",
+            "stargazers_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/stargazers",
+            "contributors_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/contributors",
+            "subscribers_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/subscribers",
+            "subscription_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/subscription",
+            "commits_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/commits{/sha}",
+            "git_commits_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/commits{/sha}",
+            "comments_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/comments{/number}",
+            "issue_comment_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues/comments{/number}",
+            "contents_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/contents/{+path}",
+            "compare_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/compare/{base}...{head}",
+            "merges_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/merges",
+            "archive_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/{archive_format}{/ref}",
+            "downloads_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/downloads",
+            "issues_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues{/number}",
+            "pulls_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/pulls{/number}",
+            "milestones_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/milestones{/number}",
+            "notifications_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/notifications{?since,all,participating}",
+            "labels_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/labels{/name}",
+            "releases_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/releases{/id}",
+            "deployments_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/deployments"
+          }
+        }
+      }
+    ],
+    "jobLists": [
+      {
+        "requestUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43308098622/jobs?per_page=100",
+        "response": {
+          "total_count": 1,
+          "jobs": [
+            {
+              "id": 131496611514,
+              "run_id": 43308098622,
+              "workflow_name": "CLI fast checks",
+              "head_branch": "feat/public-endpoint-inspector-20261112",
+              "run_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43308098622",
+              "run_attempt": 1,
+              "node_id": "CR_kwDOUuxwZ88AAAAenc8Oug",
+              "head_sha": "01c0fc0dc236fbb09d0400f9119df9147c6580f7",
+              "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/jobs/131496611514",
+              "html_url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43308098622/job/131496611514",
+              "status": "completed",
+              "conclusion": "success",
+              "created_at": "2026-11-12T21:13:25Z",
+              "started_at": "2026-11-12T21:13:27Z",
+              "completed_at": "2026-11-12T21:16:46Z",
+              "name": "CI / fast",
+              "steps": [
+                {
+                  "name": "Set up job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 1,
+                  "started_at": "2026-11-12T21:13:28Z",
+                  "completed_at": "2026-11-12T21:13:29Z"
+                },
+                {
+                  "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 2,
+                  "started_at": "2026-11-12T21:13:29Z",
+                  "completed_at": "2026-11-12T21:13:31Z"
+                },
+                {
+                  "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 3,
+                  "started_at": "2026-11-12T21:13:31Z",
+                  "completed_at": "2026-11-12T21:13:39Z"
+                },
+                {
+                  "name": "Reproducible install without lifecycle scripts",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 4,
+                  "started_at": "2026-11-12T21:13:39Z",
+                  "completed_at": "2026-11-12T21:13:40Z"
+                },
+                {
+                  "name": "Pinned reviewed build",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 5,
+                  "started_at": "2026-11-12T21:13:40Z",
+                  "completed_at": "2026-11-12T21:13:41Z"
+                },
+                {
+                  "name": "Deterministic tests",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 6,
+                  "started_at": "2026-11-12T21:13:41Z",
+                  "completed_at": "2026-11-12T21:16:41Z"
+                },
+                {
+                  "name": "No test-induced source mutation",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 7,
+                  "started_at": "2026-11-12T21:16:41Z",
+                  "completed_at": "2026-11-12T21:16:42Z"
+                },
+                {
+                  "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 13,
+                  "started_at": "2026-11-12T21:16:42Z",
+                  "completed_at": "2026-11-12T21:16:42Z"
+                },
+                {
+                  "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 14,
+                  "started_at": "2026-11-12T21:16:42Z",
+                  "completed_at": "2026-11-12T21:16:42Z"
+                },
+                {
+                  "name": "Complete job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 15,
+                  "started_at": "2026-11-12T21:16:42Z",
+                  "completed_at": "2026-11-12T21:16:42Z"
+                }
+              ],
+              "check_run_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/check-runs/131496611514",
+              "labels": [
+                "ubuntu-24.04"
+              ],
+              "runner_id": 1000037078,
+              "runner_name": "GitHub Actions 1000037078",
+              "runner_group_id": 0,
+              "runner_group_name": "GitHub Actions"
+            }
+          ]
+        }
+      },
+      {
+        "requestUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43308098646/jobs?per_page=100",
+        "response": {
+          "total_count": 5,
+          "jobs": [
+            {
+              "id": 131496611423,
+              "run_id": 43308098646,
+              "workflow_name": "CLI compatibility foundation",
+              "head_branch": "feat/public-endpoint-inspector-20261112",
+              "run_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43308098646",
+              "run_attempt": 1,
+              "node_id": "CR_kwDOUuxwZ88AAAAenc8OXw",
+              "head_sha": "01c0fc0dc236fbb09d0400f9119df9147c6580f7",
+              "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/jobs/131496611423",
+              "html_url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43308098646/job/131496611423",
+              "status": "completed",
+              "conclusion": "success",
+              "created_at": "2026-11-12T21:13:25Z",
+              "started_at": "2026-11-12T21:13:28Z",
+              "completed_at": "2026-11-12T21:22:10Z",
+              "name": "windows-2022 / Node 24",
+              "steps": [
+                {
+                  "name": "Set up job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 1,
+                  "started_at": "2026-11-12T21:13:28Z",
+                  "completed_at": "2026-11-12T21:13:29Z"
+                },
+                {
+                  "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 2,
+                  "started_at": "2026-11-12T21:13:29Z",
+                  "completed_at": "2026-11-12T21:13:36Z"
+                },
+                {
+                  "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 3,
+                  "started_at": "2026-11-12T21:13:36Z",
+                  "completed_at": "2026-11-12T21:13:43Z"
+                },
+                {
+                  "name": "Verify actual runtime architecture",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 4,
+                  "started_at": "2026-11-12T21:13:43Z",
+                  "completed_at": "2026-11-12T21:13:44Z"
+                },
+                {
+                  "name": "Reproducible dependencies without lifecycle side effects",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 5,
+                  "started_at": "2026-11-12T21:13:44Z",
+                  "completed_at": "2026-11-12T21:13:48Z"
+                },
+                {
+                  "name": "Reviewed source and pinned parity baseline",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 6,
+                  "started_at": "2026-11-12T21:13:48Z",
+                  "completed_at": "2026-11-12T21:13:52Z"
+                },
+                {
+                  "name": "Typecheck formatting and deterministic tests",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 7,
+                  "started_at": "2026-11-12T21:13:52Z",
+                  "completed_at": "2026-11-12T21:19:23Z"
+                },
+                {
+                  "name": "Verify packed install and isolated npm link",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 8,
+                  "started_at": "2026-11-12T21:19:23Z",
+                  "completed_at": "2026-11-12T21:21:54Z"
+                },
+                {
+                  "name": "Install pinned Codex into test-owned prefix",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 9,
+                  "started_at": "2026-11-12T21:21:54Z",
+                  "completed_at": "2026-11-12T21:22:01Z"
+                },
+                {
+                  "name": "Real Codex registration without login or model calls",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 10,
+                  "started_at": "2026-11-12T21:22:01Z",
+                  "completed_at": "2026-11-12T21:22:06Z"
+                },
+                {
+                  "name": "Exact source remains unchanged by tests",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 11,
+                  "started_at": "2026-11-12T21:22:06Z",
+                  "completed_at": "2026-11-12T21:22:06Z"
+                },
+                {
+                  "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 21,
+                  "started_at": "2026-11-12T21:22:06Z",
+                  "completed_at": "2026-11-12T21:22:07Z"
+                },
+                {
+                  "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 22,
+                  "started_at": "2026-11-12T21:22:07Z",
+                  "completed_at": "2026-11-12T21:22:08Z"
+                },
+                {
+                  "name": "Complete job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 23,
+                  "started_at": "2026-11-12T21:22:08Z",
+                  "completed_at": "2026-11-12T21:22:08Z"
+                }
+              ],
+              "check_run_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/check-runs/131496611423",
+              "labels": [
+                "windows-2022"
+              ],
+              "runner_id": 1000037079,
+              "runner_name": "GitHub Actions 1000037079",
+              "runner_group_id": 0,
+              "runner_group_name": "GitHub Actions"
+            },
+            {
+              "id": 131496611691,
+              "run_id": 43308098646,
+              "workflow_name": "CLI compatibility foundation",
+              "head_branch": "feat/public-endpoint-inspector-20261112",
+              "run_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43308098646",
+              "run_attempt": 1,
+              "node_id": "CR_kwDOUuxwZ88AAAAenc8Paw",
+              "head_sha": "01c0fc0dc236fbb09d0400f9119df9147c6580f7",
+              "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/jobs/131496611691",
+              "html_url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43308098646/job/131496611691",
+              "status": "completed",
+              "conclusion": "success",
+              "created_at": "2026-11-12T21:13:25Z",
+              "started_at": "2026-11-12T21:13:32Z",
+              "completed_at": "2026-11-12T21:17:57Z",
+              "name": "macos-15 / Node 24",
+              "steps": [
+                {
+                  "name": "Set up job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 1,
+                  "started_at": "2026-11-12T21:13:32Z",
+                  "completed_at": "2026-11-12T21:13:33Z"
+                },
+                {
+                  "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 2,
+                  "started_at": "2026-11-12T21:13:33Z",
+                  "completed_at": "2026-11-12T21:13:36Z"
+                },
+                {
+                  "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 3,
+                  "started_at": "2026-11-12T21:13:36Z",
+                  "completed_at": "2026-11-12T21:13:41Z"
+                },
+                {
+                  "name": "Verify actual runtime architecture",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 4,
+                  "started_at": "2026-11-12T21:13:41Z",
+                  "completed_at": "2026-11-12T21:13:42Z"
+                },
+                {
+                  "name": "Reproducible dependencies without lifecycle side effects",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 5,
+                  "started_at": "2026-11-12T21:13:42Z",
+                  "completed_at": "2026-11-12T21:13:43Z"
+                },
+                {
+                  "name": "Reviewed source and pinned parity baseline",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 6,
+                  "started_at": "2026-11-12T21:13:43Z",
+                  "completed_at": "2026-11-12T21:13:45Z"
+                },
+                {
+                  "name": "Typecheck formatting and deterministic tests",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 7,
+                  "started_at": "2026-11-12T21:13:45Z",
+                  "completed_at": "2026-11-12T21:16:49Z"
+                },
+                {
+                  "name": "Verify packed install and isolated npm link",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 8,
+                  "started_at": "2026-11-12T21:16:49Z",
+                  "completed_at": "2026-11-12T21:17:44Z"
+                },
+                {
+                  "name": "Install pinned Codex into test-owned prefix",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 9,
+                  "started_at": "2026-11-12T21:17:44Z",
+                  "completed_at": "2026-11-12T21:17:50Z"
+                },
+                {
+                  "name": "Real Codex registration without login or model calls",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 10,
+                  "started_at": "2026-11-12T21:17:50Z",
+                  "completed_at": "2026-11-12T21:17:52Z"
+                },
+                {
+                  "name": "Exact source remains unchanged by tests",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 11,
+                  "started_at": "2026-11-12T21:17:52Z",
+                  "completed_at": "2026-11-12T21:17:52Z"
+                },
+                {
+                  "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 21,
+                  "started_at": "2026-11-12T21:17:52Z",
+                  "completed_at": "2026-11-12T21:17:52Z"
+                },
+                {
+                  "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 22,
+                  "started_at": "2026-11-12T21:17:52Z",
+                  "completed_at": "2026-11-12T21:17:53Z"
+                },
+                {
+                  "name": "Complete job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 23,
+                  "started_at": "2026-11-12T21:17:53Z",
+                  "completed_at": "2026-11-12T21:17:54Z"
+                }
+              ],
+              "check_run_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/check-runs/131496611691",
+              "labels": [
+                "macos-15"
+              ],
+              "runner_id": 1000037080,
+              "runner_name": "GitHub Actions 1000037080",
+              "runner_group_id": 0,
+              "runner_group_name": "GitHub Actions"
+            },
+            {
+              "id": 131496611957,
+              "run_id": 43308098646,
+              "workflow_name": "CLI compatibility foundation",
+              "head_branch": "feat/public-endpoint-inspector-20261112",
+              "run_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43308098646",
+              "run_attempt": 1,
+              "node_id": "CR_kwDOUuxwZ88AAAAenc8QdQ",
+              "head_sha": "01c0fc0dc236fbb09d0400f9119df9147c6580f7",
+              "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/jobs/131496611957",
+              "html_url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43308098646/job/131496611957",
+              "status": "completed",
+              "conclusion": "success",
+              "created_at": "2026-11-12T21:13:25Z",
+              "started_at": "2026-11-12T21:13:27Z",
+              "completed_at": "2026-11-12T21:15:31Z",
+              "name": "Native Linux isolation / Node 24",
+              "steps": [
+                {
+                  "name": "Set up job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 1,
+                  "started_at": "2026-11-12T21:13:28Z",
+                  "completed_at": "2026-11-12T21:13:30Z"
+                },
+                {
+                  "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 2,
+                  "started_at": "2026-11-12T21:13:30Z",
+                  "completed_at": "2026-11-12T21:13:33Z"
+                },
+                {
+                  "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 3,
+                  "started_at": "2026-11-12T21:13:33Z",
+                  "completed_at": "2026-11-12T21:13:38Z"
+                },
+                {
+                  "name": "Reproducible dependencies and reviewed source",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 4,
+                  "started_at": "2026-11-12T21:13:38Z",
+                  "completed_at": "2026-11-12T21:13:40Z"
+                },
+                {
+                  "name": "Prepare signed pinned runtime on the disposable runner",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 5,
+                  "started_at": "2026-11-12T21:13:40Z",
+                  "completed_at": "2026-11-12T21:14:07Z"
+                },
+                {
+                  "name": "Mandatory real source containment and cleanup",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 6,
+                  "started_at": "2026-11-12T21:14:07Z",
+                  "completed_at": "2026-11-12T21:14:18Z"
+                },
+                {
+                  "name": "Mandatory actual installed-package containment and cleanup",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 7,
+                  "started_at": "2026-11-12T21:14:18Z",
+                  "completed_at": "2026-11-12T21:15:25Z"
+                },
+                {
+                  "name": "Exact source remains unchanged by live tests",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 8,
+                  "started_at": "2026-11-12T21:15:25Z",
+                  "completed_at": "2026-11-12T21:15:25Z"
+                },
+                {
+                  "name": "Retain qualification evidence even after a failed gate",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 9,
+                  "started_at": "2026-11-12T21:15:25Z",
+                  "completed_at": "2026-11-12T21:15:27Z"
+                },
+                {
+                  "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 17,
+                  "started_at": "2026-11-12T21:15:27Z",
+                  "completed_at": "2026-11-12T21:15:27Z"
+                },
+                {
+                  "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 18,
+                  "started_at": "2026-11-12T21:15:27Z",
+                  "completed_at": "2026-11-12T21:15:27Z"
+                },
+                {
+                  "name": "Complete job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 19,
+                  "started_at": "2026-11-12T21:15:27Z",
+                  "completed_at": "2026-11-12T21:15:27Z"
+                }
+              ],
+              "check_run_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/check-runs/131496611957",
+              "labels": [
+                "ubuntu-24.04"
+              ],
+              "runner_id": 1000037081,
+              "runner_name": "GitHub Actions 1000037081",
+              "runner_group_id": 0,
+              "runner_group_name": "GitHub Actions"
+            },
+            {
+              "id": 131496612043,
+              "run_id": 43308098646,
+              "workflow_name": "CLI compatibility foundation",
+              "head_branch": "feat/public-endpoint-inspector-20261112",
+              "run_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43308098646",
+              "run_attempt": 1,
+              "node_id": "CR_kwDOUuxwZ88AAAAenc8Qyw",
+              "head_sha": "01c0fc0dc236fbb09d0400f9119df9147c6580f7",
+              "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/jobs/131496612043",
+              "html_url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43308098646/job/131496612043",
+              "status": "completed",
+              "conclusion": "success",
+              "created_at": "2026-11-12T21:13:25Z",
+              "started_at": "2026-11-12T21:13:27Z",
+              "completed_at": "2026-11-12T21:17:30Z",
+              "name": "ubuntu-24.04 / Node 24",
+              "steps": [
+                {
+                  "name": "Set up job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 1,
+                  "started_at": "2026-11-12T21:13:28Z",
+                  "completed_at": "2026-11-12T21:13:29Z"
+                },
+                {
+                  "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 2,
+                  "started_at": "2026-11-12T21:13:29Z",
+                  "completed_at": "2026-11-12T21:13:31Z"
+                },
+                {
+                  "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 3,
+                  "started_at": "2026-11-12T21:13:31Z",
+                  "completed_at": "2026-11-12T21:13:35Z"
+                },
+                {
+                  "name": "Verify actual runtime architecture",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 4,
+                  "started_at": "2026-11-12T21:13:35Z",
+                  "completed_at": "2026-11-12T21:13:35Z"
+                },
+                {
+                  "name": "Reproducible dependencies without lifecycle side effects",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 5,
+                  "started_at": "2026-11-12T21:13:35Z",
+                  "completed_at": "2026-11-12T21:13:36Z"
+                },
+                {
+                  "name": "Reviewed source and pinned parity baseline",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 6,
+                  "started_at": "2026-11-12T21:13:36Z",
+                  "completed_at": "2026-11-12T21:13:38Z"
+                },
+                {
+                  "name": "Typecheck formatting and deterministic tests",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 7,
+                  "started_at": "2026-11-12T21:13:38Z",
+                  "completed_at": "2026-11-12T21:16:25Z"
+                },
+                {
+                  "name": "Verify packed install and isolated npm link",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 8,
+                  "started_at": "2026-11-12T21:16:25Z",
+                  "completed_at": "2026-11-12T21:17:20Z"
+                },
+                {
+                  "name": "Install pinned Codex into test-owned prefix",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 9,
+                  "started_at": "2026-11-12T21:17:20Z",
+                  "completed_at": "2026-11-12T21:17:24Z"
+                },
+                {
+                  "name": "Real Codex registration without login or model calls",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 10,
+                  "started_at": "2026-11-12T21:17:24Z",
+                  "completed_at": "2026-11-12T21:17:26Z"
+                },
+                {
+                  "name": "Exact source remains unchanged by tests",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 11,
+                  "started_at": "2026-11-12T21:17:26Z",
+                  "completed_at": "2026-11-12T21:17:26Z"
+                },
+                {
+                  "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 21,
+                  "started_at": "2026-11-12T21:17:26Z",
+                  "completed_at": "2026-11-12T21:17:26Z"
+                },
+                {
+                  "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 22,
+                  "started_at": "2026-11-12T21:17:26Z",
+                  "completed_at": "2026-11-12T21:17:26Z"
+                },
+                {
+                  "name": "Complete job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 23,
+                  "started_at": "2026-11-12T21:17:26Z",
+                  "completed_at": "2026-11-12T21:17:26Z"
+                }
+              ],
+              "check_run_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/check-runs/131496612043",
+              "labels": [
+                "ubuntu-24.04"
+              ],
+              "runner_id": 1000037082,
+              "runner_name": "GitHub Actions 1000037082",
+              "runner_group_id": 0,
+              "runner_group_name": "GitHub Actions"
+            },
+            {
+              "id": 131496612183,
+              "run_id": 43308098646,
+              "workflow_name": "CLI compatibility foundation",
+              "head_branch": "feat/public-endpoint-inspector-20261112",
+              "run_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43308098646",
+              "run_attempt": 1,
+              "node_id": "CR_kwDOUuxwZ88AAAAenc8RVw",
+              "head_sha": "01c0fc0dc236fbb09d0400f9119df9147c6580f7",
+              "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/jobs/131496612183",
+              "html_url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43308098646/job/131496612183",
+              "status": "completed",
+              "conclusion": "success",
+              "created_at": "2026-11-12T21:13:25Z",
+              "started_at": "2026-11-12T21:13:30Z",
+              "completed_at": "2026-11-12T21:23:22Z",
+              "name": "macos-15-intel / Node 24",
+              "steps": [
+                {
+                  "name": "Set up job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 1,
+                  "started_at": "2026-11-12T21:13:31Z",
+                  "completed_at": "2026-11-12T21:13:32Z"
+                },
+                {
+                  "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 2,
+                  "started_at": "2026-11-12T21:13:32Z",
+                  "completed_at": "2026-11-12T21:13:37Z"
+                },
+                {
+                  "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 3,
+                  "started_at": "2026-11-12T21:13:37Z",
+                  "completed_at": "2026-11-12T21:13:51Z"
+                },
+                {
+                  "name": "Verify actual runtime architecture",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 4,
+                  "started_at": "2026-11-12T21:13:51Z",
+                  "completed_at": "2026-11-12T21:13:51Z"
+                },
+                {
+                  "name": "Reproducible dependencies without lifecycle side effects",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 5,
+                  "started_at": "2026-11-12T21:13:51Z",
+                  "completed_at": "2026-11-12T21:13:55Z"
+                },
+                {
+                  "name": "Reviewed source and pinned parity baseline",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 6,
+                  "started_at": "2026-11-12T21:13:55Z",
+                  "completed_at": "2026-11-12T21:14:00Z"
+                },
+                {
+                  "name": "Typecheck formatting and deterministic tests",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 7,
+                  "started_at": "2026-11-12T21:14:00Z",
+                  "completed_at": "2026-11-12T21:21:00Z"
+                },
+                {
+                  "name": "Verify packed install and isolated npm link",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 8,
+                  "started_at": "2026-11-12T21:21:00Z",
+                  "completed_at": "2026-11-12T21:22:59Z"
+                },
+                {
+                  "name": "Install pinned Codex into test-owned prefix",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 9,
+                  "started_at": "2026-11-12T21:22:59Z",
+                  "completed_at": "2026-11-12T21:23:13Z"
+                },
+                {
+                  "name": "Real Codex registration without login or model calls",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 10,
+                  "started_at": "2026-11-12T21:23:13Z",
+                  "completed_at": "2026-11-12T21:23:16Z"
+                },
+                {
+                  "name": "Exact source remains unchanged by tests",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 11,
+                  "started_at": "2026-11-12T21:23:16Z",
+                  "completed_at": "2026-11-12T21:23:17Z"
+                },
+                {
+                  "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 21,
+                  "started_at": "2026-11-12T21:23:17Z",
+                  "completed_at": "2026-11-12T21:23:17Z"
+                },
+                {
+                  "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 22,
+                  "started_at": "2026-11-12T21:23:17Z",
+                  "completed_at": "2026-11-12T21:23:18Z"
+                },
+                {
+                  "name": "Complete job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 23,
+                  "started_at": "2026-11-12T21:23:18Z",
+                  "completed_at": "2026-11-12T21:23:18Z"
+                }
+              ],
+              "check_run_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/check-runs/131496612183",
+              "labels": [
+                "macos-15-intel"
+              ],
+              "runner_id": 1000037083,
+              "runner_name": "GitHub Actions 1000037083",
+              "runner_group_id": 0,
+              "runner_group_name": "GitHub Actions"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "main": {
+    "commit": {
+      "requestUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/commits/da03dc5255976b1524b22796fffadb01e50a5149",
+      "response": {
+        "sha": "da03dc5255976b1524b22796fffadb01e50a5149",
+        "node_id": "C_kwDOUuxwZ9oAKGRhMDNkYzUyNTU5NzZiMTUyNGIyMjc5NmZmZmFkYjAxZTUwYTUxNDk",
+        "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/commits/da03dc5255976b1524b22796fffadb01e50a5149",
+        "html_url": "https://github.com/MulattoTech/MTerm-CLI/commit/da03dc5255976b1524b22796fffadb01e50a5149",
+        "author": {
+          "name": "Dylan",
+          "email": "5900632+MulattoTech@users.noreply.github.com",
+          "date": "2026-11-12T21:25:02Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-11-12T21:25:02Z"
+        },
+        "tree": {
+          "sha": "2ee6ecc09206ca3f8e64edc34635b3820383e00b",
+          "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/trees/2ee6ecc09206ca3f8e64edc34635b3820383e00b"
+        },
+        "message": "Merge pull request #258 from MulattoTech/feat/public-endpoint-inspector-20261112\n\nInspect custom MCP endpoints with bounded public HTTPS discovery",
+        "parents": [
+          {
+            "sha": "f447c0baac3f36470d6fd96360928c6a2a192c4b",
+            "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/commits/f447c0baac3f36470d6fd96360928c6a2a192c4b",
+            "html_url": "https://github.com/MulattoTech/MTerm-CLI/commit/f447c0baac3f36470d6fd96360928c6a2a192c4b"
+          },
+          {
+            "sha": "01c0fc0dc236fbb09d0400f9119df9147c6580f7",
+            "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/commits/01c0fc0dc236fbb09d0400f9119df9147c6580f7",
+            "html_url": "https://github.com/MulattoTech/MTerm-CLI/commit/01c0fc0dc236fbb09d0400f9119df9147c6580f7"
+          }
+        ],
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJq9i6uCRC1aQ7uu5UhlAAABw0QABhEiKZIu3E0qblZE5QH8nxw\n8/lLS7KaEKJKTi3e5f3etWR6y4qGAN/xG53JS07CPf0SbeVaPVyeqrF0L4YgXr+z\n3x0V3Ob/x8OIraD2s8nRmTLMiQZmgw+ALvNuzLZC4sGPRPeWEK4ChIEm2bq6q52l\nrBy5KNkwsT64nryjYrXo/s9AppYW6ci+cx15IECeDPR499Ul7BLQo4RRb9d14oiF\njT20PClXMVrfGATy15OH3dihHX8NTGoH4Mrw34LWQiccpLlMdns3lmCFDBynITuI\nl4KJxG0zs2G7vHEg8Y1+EwNU4sQmo9Nd/jJ7rGwz+Bnn0IC6QgXDX/huzFGMPy/1\n7gjijeI7tirIcOcyCysmp0q+i+wDs4CkN2h693HmikKIQn3huZVXE9Ez63yli/O2\nRwjzoWdOJ/y+n+0dmBQd9RZy4OEK+EyvPWyyuxGwtpAX41em+jhgoobHyj11cDyF\nO1ZaRmRyUk6f2YfC0BNhHWV/4lXlwQPqJb+A7erNIBqR8soFQsqa4gbl8Rhk9yJw\nouziENX0rD1WCvc+Z0ROOsNNrxOrF28fGGh9SOWrKElM6xsIdAFukykSpVUuZI7I\nSqxhFJBmvipIDVu3eQgX8gyGebxU55wMNquPWkFjCYKUtYVKWsorsrULKqoFkHae\nQEfSh5LYWhfv6TAoT6U/\n=VIua\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree 2ee6ecc09206ca3f8e64edc34635b3820383e00b\nparent f447c0baac3f36470d6fd96360928c6a2a192c4b\nparent 01c0fc0dc236fbb09d0400f9119df9147c6580f7\nauthor Dylan <5900632+MulattoTech@users.noreply.github.com> 1794518702 -0600\ncommitter GitHub <noreply@github.com> 1794518702 -0600\n\nMerge pull request #258 from MulattoTech/feat/public-endpoint-inspector-20261112\n\nInspect custom MCP endpoints with bounded public HTTPS discovery",
+          "verified_at": "2026-11-12T21:25:03Z"
+        }
+      }
+    },
+    "workflows": [
+      {
+        "requestUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/contents/.github/workflows/ci-fast.yml?ref=da03dc5255976b1524b22796fffadb01e50a5149",
+        "path": ".github/workflows/ci-fast.yml",
+        "ref": "da03dc5255976b1524b22796fffadb01e50a5149",
+        "responseKind": "DECODED_FILE_CONTENT",
+        "content": "# SPDX-License-Identifier: MIT\n# AI-Change: 2026-10-21-orchestrator-ready (OpenAI / GPT-6)\nname: CLI fast checks\non:\n  pull_request:\n  push:\n    branches: [main]\n  workflow_dispatch:\npermissions:\n  contents: read\nconcurrency:\n  group: cli-fast-${{ github.ref }}\n  cancel-in-progress: true\njobs:\n  fast:\n    name: CI / fast\n    runs-on: ubuntu-24.04\n    timeout-minutes: 12\n    steps:\n      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262\n        with:\n          persist-credentials: false\n      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020\n        with:\n          node-version: '24.21.0'\n          cache: npm\n      - name: Reproducible install without lifecycle scripts\n        run: npm ci --ignore-scripts --no-audit --no-fund\n      - name: Pinned reviewed build\n        run: npm run build\n      - name: Deterministic tests\n        run: npm run check\n      - name: No test-induced source mutation\n        run: git diff --exit-code\n"
+      },
+      {
+        "requestUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/contents/.github/workflows/cli-ci.yml?ref=da03dc5255976b1524b22796fffadb01e50a5149",
+        "path": ".github/workflows/cli-ci.yml",
+        "ref": "da03dc5255976b1524b22796fffadb01e50a5149",
+        "responseKind": "DECODED_FILE_CONTENT",
+        "content": "# SPDX-License-Identifier: MIT\n# AI-Change: 2026-10-05-codex-parity-foundation\nname: CLI compatibility foundation\non:\n  pull_request:\n  push:\n    branches: [main, 'feat/**']\n  workflow_dispatch:\npermissions:\n  contents: read\nconcurrency:\n  group: cli-${{ github.workflow }}-${{ github.ref }}\n  cancel-in-progress: true\njobs:\n  verify:\n    name: ${{ matrix.os }} / Node 24\n    runs-on: ${{ matrix.os }}\n    timeout-minutes: 20\n    strategy:\n      fail-fast: false\n      matrix:\n        include:\n          - os: windows-2022\n            platform: win32\n            arch: x64\n          - os: ubuntu-24.04\n            platform: linux\n            arch: x64\n          # macos-14 retired 2026-11-02; preserve the explicit ARM64 lane on a supported image.\n          - os: macos-15\n            platform: darwin\n            arch: arm64\n          - os: macos-15-intel\n            platform: darwin\n            arch: x64\n    steps:\n      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262\n        with:\n          persist-credentials: false\n      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020\n        with:\n          node-version: '24.21.0'\n      - name: Verify actual runtime architecture\n        run: node -e \"const a=require('node:assert/strict');a.equal(process.platform,process.env.EXPECT_PLATFORM);a.equal(process.arch,process.env.EXPECT_ARCH);console.log(JSON.stringify({node:process.version,platform:process.platform,arch:process.arch}))\"\n        env:\n          EXPECT_PLATFORM: ${{ matrix.platform }}\n          EXPECT_ARCH: ${{ matrix.arch }}\n      - name: Reproducible dependencies without lifecycle side effects\n        run: npm ci --ignore-scripts --no-audit --no-fund\n      - name: Reviewed source and pinned parity baseline\n        run: npm run build\n      - name: Typecheck formatting and deterministic tests\n        run: npm run check\n      - name: Verify packed install and isolated npm link\n        run: node scripts/verify-package.mjs\n      - name: Install pinned Codex into test-owned prefix\n        run: npm install --prefix artifacts/ci-codex --no-audit --no-fund --ignore-scripts --package-lock=false @openai/codex@0.160.1\n      - name: Real Codex registration without login or model calls\n        run: node scripts/verify-managed-codex.mjs\n        env:\n          MTERM_CODEX_TEST_PREFIX: artifacts/ci-codex\n          MTERM_CODEX_EXPECTED_VERSION: '0.160.1'\n      - name: Exact source remains unchanged by tests\n        run: git diff --exit-code\n  isolation-linux:\n    name: Native Linux isolation / Node 24\n    runs-on: ubuntu-24.04\n    timeout-minutes: 25\n    steps:\n      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262\n        with:\n          persist-credentials: false\n      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020\n        with:\n          node-version: '24.21.0'\n      - name: Reproducible dependencies and reviewed source\n        run: |\n          npm ci --ignore-scripts --no-audit --no-fund\n          npm run build\n      - name: Prepare signed pinned runtime on the disposable runner\n        run: node scripts/prepare-isolation-ci.mjs\n      - name: Mandatory real source containment and cleanup\n        run: node scripts/verify-isolation-live.mjs\n        env:\n          MTERM_ISOLATION_REQUIRE_LIVE: '1'\n      - name: Mandatory actual installed-package containment and cleanup\n        run: node scripts/verify-package.mjs\n        env:\n          MTERM_ISOLATION_REQUIRE_LIVE: '1'\n      - name: Exact source remains unchanged by live tests\n        run: git diff --exit-code\n      - name: Retain qualification evidence even after a failed gate\n        if: always()\n        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9\n        with:\n          name: aug005-linux-${{ github.run_id }}-${{ github.run_attempt }}\n          path: artifacts/aug005/ci-evidence/\n          if-no-files-found: error\n          retention-days: 30\n          overwrite: false\n          include-hidden-files: false\n"
+      }
+    ],
+    "runs": [
+      {
+        "requestUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43310056791",
+        "response": {
+          "id": 43310056791,
+          "name": "CLI fast checks",
+          "node_id": "WFR_kwLOUuxwZ88AAAAKFXsFVw",
+          "head_branch": "main",
+          "head_sha": "da03dc5255976b1524b22796fffadb01e50a5149",
+          "path": ".github/workflows/ci-fast.yml",
+          "display_title": "Merge pull request #258 from MulattoTech/feat/public-endpoint-inspect\u2026",
+          "run_number": 146,
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "workflow_id": 393731387,
+          "check_suite_id": 117284181136,
+          "check_suite_node_id": "CS_kwDOUuxwZ88AAAAbTq6UkA",
+          "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43310056791",
+          "html_url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43310056791",
+          "pull_requests": [],
+          "created_at": "2026-11-12T21:25:07Z",
+          "updated_at": "2026-11-12T21:27:43Z",
+          "actor": {
+            "login": "MulattoTech",
+            "id": 5900632,
+            "node_id": "MDQ6VXNlcjU5MDA2MzI=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/5900632?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/MulattoTech",
+            "html_url": "https://github.com/MulattoTech",
+            "followers_url": "https://api.github.com/users/MulattoTech/followers",
+            "following_url": "https://api.github.com/users/MulattoTech/following{/other_user}",
+            "gists_url": "https://api.github.com/users/MulattoTech/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/MulattoTech/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/MulattoTech/subscriptions",
+            "organizations_url": "https://api.github.com/users/MulattoTech/orgs",
+            "repos_url": "https://api.github.com/users/MulattoTech/repos",
+            "events_url": "https://api.github.com/users/MulattoTech/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/MulattoTech/received_events",
+            "type": "User",
+            "user_view_type": "public",
+            "site_admin": false
+          },
+          "run_attempt": 1,
+          "referenced_workflows": [],
+          "run_started_at": "2026-11-12T21:25:07Z",
+          "triggering_actor": {
+            "login": "MulattoTech",
+            "id": 5900632,
+            "node_id": "MDQ6VXNlcjU5MDA2MzI=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/5900632?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/MulattoTech",
+            "html_url": "https://github.com/MulattoTech",
+            "followers_url": "https://api.github.com/users/MulattoTech/followers",
+            "following_url": "https://api.github.com/users/MulattoTech/following{/other_user}",
+            "gists_url": "https://api.github.com/users/MulattoTech/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/MulattoTech/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/MulattoTech/subscriptions",
+            "organizations_url": "https://api.github.com/users/MulattoTech/orgs",
+            "repos_url": "https://api.github.com/users/MulattoTech/repos",
+            "events_url": "https://api.github.com/users/MulattoTech/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/MulattoTech/received_events",
+            "type": "User",
+            "user_view_type": "public",
+            "site_admin": false
+          },
+          "jobs_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43310056791/jobs",
+          "logs_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43310056791/logs",
+          "check_suite_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/check-suites/117284181136",
+          "artifacts_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43310056791/artifacts",
+          "cancel_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43310056791/cancel",
+          "rerun_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43310056791/rerun",
+          "previous_attempt_url": null,
+          "workflow_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/workflows/393731387",
+          "head_commit": {
+            "id": "da03dc5255976b1524b22796fffadb01e50a5149",
+            "tree_id": "2ee6ecc09206ca3f8e64edc34635b3820383e00b",
+            "message": "Merge pull request #258 from MulattoTech/feat/public-endpoint-inspector-20261112\n\nInspect custom MCP endpoints with bounded public HTTPS discovery",
+            "timestamp": "2026-11-12T21:25:02Z",
+            "author": {
+              "name": "Dylan",
+              "email": "5900632+MulattoTech@users.noreply.github.com"
+            },
+            "committer": {
+              "name": "GitHub",
+              "email": "noreply@github.com"
+            }
+          },
+          "repository": {
+            "id": 1391226983,
+            "node_id": "R_kgDOUuxwZw",
+            "name": "MTerm-CLI",
+            "full_name": "MulattoTech/MTerm-CLI",
+            "private": false,
+            "owner": {
+              "login": "MulattoTech",
+              "id": 5900632,
+              "node_id": "MDQ6VXNlcjU5MDA2MzI=",
+              "avatar_url": "https://avatars.githubusercontent.com/u/5900632?v=4",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/MulattoTech",
+              "html_url": "https://github.com/MulattoTech",
+              "followers_url": "https://api.github.com/users/MulattoTech/followers",
+              "following_url": "https://api.github.com/users/MulattoTech/following{/other_user}",
+              "gists_url": "https://api.github.com/users/MulattoTech/gists{/gist_id}",
+              "starred_url": "https://api.github.com/users/MulattoTech/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/MulattoTech/subscriptions",
+              "organizations_url": "https://api.github.com/users/MulattoTech/orgs",
+              "repos_url": "https://api.github.com/users/MulattoTech/repos",
+              "events_url": "https://api.github.com/users/MulattoTech/events{/privacy}",
+              "received_events_url": "https://api.github.com/users/MulattoTech/received_events",
+              "type": "User",
+              "user_view_type": "public",
+              "site_admin": false
+            },
+            "html_url": "https://github.com/MulattoTech/MTerm-CLI",
+            "description": "DevFleet is a self-hosted platform for isolated local development work using AI coding agents, offering optional redundancy with added nodes. ",
+            "fork": false,
+            "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI",
+            "forks_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/forks",
+            "keys_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/keys{/key_id}",
+            "collaborators_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/collaborators{/collaborator}",
+            "teams_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/teams",
+            "hooks_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/hooks",
+            "issue_events_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues/events{/number}",
+            "events_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/events",
+            "assignees_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/assignees{/user}",
+            "branches_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/branches{/branch}",
+            "tags_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/tags",
+            "blobs_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/blobs{/sha}",
+            "git_tags_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/tags{/sha}",
+            "git_refs_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/refs{/sha}",
+            "trees_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/trees{/sha}",
+            "statuses_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/statuses/{sha}",
+            "languages_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/languages",
+            "stargazers_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/stargazers",
+            "contributors_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/contributors",
+            "subscribers_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/subscribers",
+            "subscription_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/subscription",
+            "commits_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/commits{/sha}",
+            "git_commits_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/commits{/sha}",
+            "comments_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/comments{/number}",
+            "issue_comment_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues/comments{/number}",
+            "contents_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/contents/{+path}",
+            "compare_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/compare/{base}...{head}",
+            "merges_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/merges",
+            "archive_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/{archive_format}{/ref}",
+            "downloads_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/downloads",
+            "issues_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues{/number}",
+            "pulls_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/pulls{/number}",
+            "milestones_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/milestones{/number}",
+            "notifications_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/notifications{?since,all,participating}",
+            "labels_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/labels{/name}",
+            "releases_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/releases{/id}",
+            "deployments_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/deployments"
+          },
+          "head_repository": {
+            "id": 1391226983,
+            "node_id": "R_kgDOUuxwZw",
+            "name": "MTerm-CLI",
+            "full_name": "MulattoTech/MTerm-CLI",
+            "private": false,
+            "owner": {
+              "login": "MulattoTech",
+              "id": 5900632,
+              "node_id": "MDQ6VXNlcjU5MDA2MzI=",
+              "avatar_url": "https://avatars.githubusercontent.com/u/5900632?v=4",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/MulattoTech",
+              "html_url": "https://github.com/MulattoTech",
+              "followers_url": "https://api.github.com/users/MulattoTech/followers",
+              "following_url": "https://api.github.com/users/MulattoTech/following{/other_user}",
+              "gists_url": "https://api.github.com/users/MulattoTech/gists{/gist_id}",
+              "starred_url": "https://api.github.com/users/MulattoTech/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/MulattoTech/subscriptions",
+              "organizations_url": "https://api.github.com/users/MulattoTech/orgs",
+              "repos_url": "https://api.github.com/users/MulattoTech/repos",
+              "events_url": "https://api.github.com/users/MulattoTech/events{/privacy}",
+              "received_events_url": "https://api.github.com/users/MulattoTech/received_events",
+              "type": "User",
+              "user_view_type": "public",
+              "site_admin": false
+            },
+            "html_url": "https://github.com/MulattoTech/MTerm-CLI",
+            "description": "DevFleet is a self-hosted platform for isolated local development work using AI coding agents, offering optional redundancy with added nodes. ",
+            "fork": false,
+            "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI",
+            "forks_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/forks",
+            "keys_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/keys{/key_id}",
+            "collaborators_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/collaborators{/collaborator}",
+            "teams_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/teams",
+            "hooks_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/hooks",
+            "issue_events_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues/events{/number}",
+            "events_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/events",
+            "assignees_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/assignees{/user}",
+            "branches_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/branches{/branch}",
+            "tags_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/tags",
+            "blobs_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/blobs{/sha}",
+            "git_tags_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/tags{/sha}",
+            "git_refs_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/refs{/sha}",
+            "trees_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/trees{/sha}",
+            "statuses_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/statuses/{sha}",
+            "languages_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/languages",
+            "stargazers_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/stargazers",
+            "contributors_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/contributors",
+            "subscribers_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/subscribers",
+            "subscription_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/subscription",
+            "commits_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/commits{/sha}",
+            "git_commits_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/commits{/sha}",
+            "comments_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/comments{/number}",
+            "issue_comment_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues/comments{/number}",
+            "contents_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/contents/{+path}",
+            "compare_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/compare/{base}...{head}",
+            "merges_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/merges",
+            "archive_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/{archive_format}{/ref}",
+            "downloads_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/downloads",
+            "issues_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues{/number}",
+            "pulls_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/pulls{/number}",
+            "milestones_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/milestones{/number}",
+            "notifications_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/notifications{?since,all,participating}",
+            "labels_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/labels{/name}",
+            "releases_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/releases{/id}",
+            "deployments_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/deployments"
+          }
+        }
+      },
+      {
+        "requestUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43310058292",
+        "response": {
+          "id": 43310058292,
+          "name": "CLI compatibility foundation",
+          "node_id": "WFR_kwLOUuxwZ88AAAAKFXsLNA",
+          "head_branch": "main",
+          "head_sha": "da03dc5255976b1524b22796fffadb01e50a5149",
+          "path": ".github/workflows/cli-ci.yml",
+          "display_title": "Merge pull request #258 from MulattoTech/feat/public-endpoint-inspect\u2026",
+          "run_number": 208,
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "workflow_id": 375792633,
+          "check_suite_id": 117284185467,
+          "check_suite_node_id": "CS_kwDOUuxwZ88AAAAbTq6lew",
+          "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43310058292",
+          "html_url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43310058292",
+          "pull_requests": [],
+          "created_at": "2026-11-12T21:25:07Z",
+          "updated_at": "2026-11-12T21:39:22Z",
+          "actor": {
+            "login": "MulattoTech",
+            "id": 5900632,
+            "node_id": "MDQ6VXNlcjU5MDA2MzI=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/5900632?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/MulattoTech",
+            "html_url": "https://github.com/MulattoTech",
+            "followers_url": "https://api.github.com/users/MulattoTech/followers",
+            "following_url": "https://api.github.com/users/MulattoTech/following{/other_user}",
+            "gists_url": "https://api.github.com/users/MulattoTech/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/MulattoTech/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/MulattoTech/subscriptions",
+            "organizations_url": "https://api.github.com/users/MulattoTech/orgs",
+            "repos_url": "https://api.github.com/users/MulattoTech/repos",
+            "events_url": "https://api.github.com/users/MulattoTech/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/MulattoTech/received_events",
+            "type": "User",
+            "user_view_type": "public",
+            "site_admin": false
+          },
+          "run_attempt": 1,
+          "referenced_workflows": [],
+          "run_started_at": "2026-11-12T21:25:07Z",
+          "triggering_actor": {
+            "login": "MulattoTech",
+            "id": 5900632,
+            "node_id": "MDQ6VXNlcjU5MDA2MzI=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/5900632?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/MulattoTech",
+            "html_url": "https://github.com/MulattoTech",
+            "followers_url": "https://api.github.com/users/MulattoTech/followers",
+            "following_url": "https://api.github.com/users/MulattoTech/following{/other_user}",
+            "gists_url": "https://api.github.com/users/MulattoTech/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/MulattoTech/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/MulattoTech/subscriptions",
+            "organizations_url": "https://api.github.com/users/MulattoTech/orgs",
+            "repos_url": "https://api.github.com/users/MulattoTech/repos",
+            "events_url": "https://api.github.com/users/MulattoTech/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/MulattoTech/received_events",
+            "type": "User",
+            "user_view_type": "public",
+            "site_admin": false
+          },
+          "jobs_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43310058292/jobs",
+          "logs_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43310058292/logs",
+          "check_suite_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/check-suites/117284185467",
+          "artifacts_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43310058292/artifacts",
+          "cancel_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43310058292/cancel",
+          "rerun_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43310058292/rerun",
+          "previous_attempt_url": null,
+          "workflow_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/workflows/375792633",
+          "head_commit": {
+            "id": "da03dc5255976b1524b22796fffadb01e50a5149",
+            "tree_id": "2ee6ecc09206ca3f8e64edc34635b3820383e00b",
+            "message": "Merge pull request #258 from MulattoTech/feat/public-endpoint-inspector-20261112\n\nInspect custom MCP endpoints with bounded public HTTPS discovery",
+            "timestamp": "2026-11-12T21:25:02Z",
+            "author": {
+              "name": "Dylan",
+              "email": "5900632+MulattoTech@users.noreply.github.com"
+            },
+            "committer": {
+              "name": "GitHub",
+              "email": "noreply@github.com"
+            }
+          },
+          "repository": {
+            "id": 1391226983,
+            "node_id": "R_kgDOUuxwZw",
+            "name": "MTerm-CLI",
+            "full_name": "MulattoTech/MTerm-CLI",
+            "private": false,
+            "owner": {
+              "login": "MulattoTech",
+              "id": 5900632,
+              "node_id": "MDQ6VXNlcjU5MDA2MzI=",
+              "avatar_url": "https://avatars.githubusercontent.com/u/5900632?v=4",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/MulattoTech",
+              "html_url": "https://github.com/MulattoTech",
+              "followers_url": "https://api.github.com/users/MulattoTech/followers",
+              "following_url": "https://api.github.com/users/MulattoTech/following{/other_user}",
+              "gists_url": "https://api.github.com/users/MulattoTech/gists{/gist_id}",
+              "starred_url": "https://api.github.com/users/MulattoTech/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/MulattoTech/subscriptions",
+              "organizations_url": "https://api.github.com/users/MulattoTech/orgs",
+              "repos_url": "https://api.github.com/users/MulattoTech/repos",
+              "events_url": "https://api.github.com/users/MulattoTech/events{/privacy}",
+              "received_events_url": "https://api.github.com/users/MulattoTech/received_events",
+              "type": "User",
+              "user_view_type": "public",
+              "site_admin": false
+            },
+            "html_url": "https://github.com/MulattoTech/MTerm-CLI",
+            "description": "DevFleet is a self-hosted platform for isolated local development work using AI coding agents, offering optional redundancy with added nodes. ",
+            "fork": false,
+            "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI",
+            "forks_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/forks",
+            "keys_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/keys{/key_id}",
+            "collaborators_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/collaborators{/collaborator}",
+            "teams_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/teams",
+            "hooks_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/hooks",
+            "issue_events_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues/events{/number}",
+            "events_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/events",
+            "assignees_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/assignees{/user}",
+            "branches_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/branches{/branch}",
+            "tags_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/tags",
+            "blobs_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/blobs{/sha}",
+            "git_tags_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/tags{/sha}",
+            "git_refs_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/refs{/sha}",
+            "trees_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/trees{/sha}",
+            "statuses_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/statuses/{sha}",
+            "languages_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/languages",
+            "stargazers_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/stargazers",
+            "contributors_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/contributors",
+            "subscribers_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/subscribers",
+            "subscription_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/subscription",
+            "commits_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/commits{/sha}",
+            "git_commits_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/commits{/sha}",
+            "comments_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/comments{/number}",
+            "issue_comment_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues/comments{/number}",
+            "contents_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/contents/{+path}",
+            "compare_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/compare/{base}...{head}",
+            "merges_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/merges",
+            "archive_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/{archive_format}{/ref}",
+            "downloads_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/downloads",
+            "issues_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues{/number}",
+            "pulls_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/pulls{/number}",
+            "milestones_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/milestones{/number}",
+            "notifications_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/notifications{?since,all,participating}",
+            "labels_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/labels{/name}",
+            "releases_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/releases{/id}",
+            "deployments_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/deployments"
+          },
+          "head_repository": {
+            "id": 1391226983,
+            "node_id": "R_kgDOUuxwZw",
+            "name": "MTerm-CLI",
+            "full_name": "MulattoTech/MTerm-CLI",
+            "private": false,
+            "owner": {
+              "login": "MulattoTech",
+              "id": 5900632,
+              "node_id": "MDQ6VXNlcjU5MDA2MzI=",
+              "avatar_url": "https://avatars.githubusercontent.com/u/5900632?v=4",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/MulattoTech",
+              "html_url": "https://github.com/MulattoTech",
+              "followers_url": "https://api.github.com/users/MulattoTech/followers",
+              "following_url": "https://api.github.com/users/MulattoTech/following{/other_user}",
+              "gists_url": "https://api.github.com/users/MulattoTech/gists{/gist_id}",
+              "starred_url": "https://api.github.com/users/MulattoTech/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/MulattoTech/subscriptions",
+              "organizations_url": "https://api.github.com/users/MulattoTech/orgs",
+              "repos_url": "https://api.github.com/users/MulattoTech/repos",
+              "events_url": "https://api.github.com/users/MulattoTech/events{/privacy}",
+              "received_events_url": "https://api.github.com/users/MulattoTech/received_events",
+              "type": "User",
+              "user_view_type": "public",
+              "site_admin": false
+            },
+            "html_url": "https://github.com/MulattoTech/MTerm-CLI",
+            "description": "DevFleet is a self-hosted platform for isolated local development work using AI coding agents, offering optional redundancy with added nodes. ",
+            "fork": false,
+            "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI",
+            "forks_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/forks",
+            "keys_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/keys{/key_id}",
+            "collaborators_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/collaborators{/collaborator}",
+            "teams_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/teams",
+            "hooks_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/hooks",
+            "issue_events_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues/events{/number}",
+            "events_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/events",
+            "assignees_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/assignees{/user}",
+            "branches_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/branches{/branch}",
+            "tags_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/tags",
+            "blobs_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/blobs{/sha}",
+            "git_tags_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/tags{/sha}",
+            "git_refs_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/refs{/sha}",
+            "trees_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/trees{/sha}",
+            "statuses_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/statuses/{sha}",
+            "languages_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/languages",
+            "stargazers_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/stargazers",
+            "contributors_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/contributors",
+            "subscribers_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/subscribers",
+            "subscription_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/subscription",
+            "commits_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/commits{/sha}",
+            "git_commits_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/git/commits{/sha}",
+            "comments_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/comments{/number}",
+            "issue_comment_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues/comments{/number}",
+            "contents_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/contents/{+path}",
+            "compare_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/compare/{base}...{head}",
+            "merges_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/merges",
+            "archive_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/{archive_format}{/ref}",
+            "downloads_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/downloads",
+            "issues_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/issues{/number}",
+            "pulls_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/pulls{/number}",
+            "milestones_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/milestones{/number}",
+            "notifications_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/notifications{?since,all,participating}",
+            "labels_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/labels{/name}",
+            "releases_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/releases{/id}",
+            "deployments_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/deployments"
+          }
+        }
+      }
+    ],
+    "jobLists": [
+      {
+        "requestUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43310056791/jobs?per_page=100",
+        "response": {
+          "total_count": 1,
+          "jobs": [
+            {
+              "id": 131503470666,
+              "run_id": 43310056791,
+              "workflow_name": "CLI fast checks",
+              "head_branch": "main",
+              "run_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43310056791",
+              "run_attempt": 1,
+              "node_id": "CR_kwDOUuxwZ88AAAAenje4Sg",
+              "head_sha": "da03dc5255976b1524b22796fffadb01e50a5149",
+              "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/jobs/131503470666",
+              "html_url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43310056791/job/131503470666",
+              "status": "completed",
+              "conclusion": "success",
+              "created_at": "2026-11-12T21:25:08Z",
+              "started_at": "2026-11-12T21:25:09Z",
+              "completed_at": "2026-11-12T21:27:42Z",
+              "name": "CI / fast",
+              "steps": [
+                {
+                  "name": "Set up job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 1,
+                  "started_at": "2026-11-12T21:25:10Z",
+                  "completed_at": "2026-11-12T21:25:10Z"
+                },
+                {
+                  "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 2,
+                  "started_at": "2026-11-12T21:25:10Z",
+                  "completed_at": "2026-11-12T21:25:12Z"
+                },
+                {
+                  "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 3,
+                  "started_at": "2026-11-12T21:25:12Z",
+                  "completed_at": "2026-11-12T21:25:18Z"
+                },
+                {
+                  "name": "Reproducible install without lifecycle scripts",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 4,
+                  "started_at": "2026-11-12T21:25:18Z",
+                  "completed_at": "2026-11-12T21:25:18Z"
+                },
+                {
+                  "name": "Pinned reviewed build",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 5,
+                  "started_at": "2026-11-12T21:25:18Z",
+                  "completed_at": "2026-11-12T21:25:20Z"
+                },
+                {
+                  "name": "Deterministic tests",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 6,
+                  "started_at": "2026-11-12T21:25:20Z",
+                  "completed_at": "2026-11-12T21:27:39Z"
+                },
+                {
+                  "name": "No test-induced source mutation",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 7,
+                  "started_at": "2026-11-12T21:27:39Z",
+                  "completed_at": "2026-11-12T21:27:39Z"
+                },
+                {
+                  "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 13,
+                  "started_at": "2026-11-12T21:27:39Z",
+                  "completed_at": "2026-11-12T21:27:39Z"
+                },
+                {
+                  "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 14,
+                  "started_at": "2026-11-12T21:27:39Z",
+                  "completed_at": "2026-11-12T21:27:39Z"
+                },
+                {
+                  "name": "Complete job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 15,
+                  "started_at": "2026-11-12T21:27:39Z",
+                  "completed_at": "2026-11-12T21:27:39Z"
+                }
+              ],
+              "check_run_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/check-runs/131503470666",
+              "labels": [
+                "ubuntu-24.04"
+              ],
+              "runner_id": 1000037094,
+              "runner_name": "GitHub Actions 1000037094",
+              "runner_group_id": 0,
+              "runner_group_name": "GitHub Actions"
+            }
+          ]
+        }
+      },
+      {
+        "requestUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43310058292/jobs?per_page=100",
+        "response": {
+          "total_count": 5,
+          "jobs": [
+            {
+              "id": 131503476921,
+              "run_id": 43310058292,
+              "workflow_name": "CLI compatibility foundation",
+              "head_branch": "main",
+              "run_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43310058292",
+              "run_attempt": 1,
+              "node_id": "CR_kwDOUuxwZ88AAAAenjfQuQ",
+              "head_sha": "da03dc5255976b1524b22796fffadb01e50a5149",
+              "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/jobs/131503476921",
+              "html_url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43310058292/job/131503476921",
+              "status": "completed",
+              "conclusion": "success",
+              "created_at": "2026-11-12T21:25:08Z",
+              "started_at": "2026-11-12T21:25:10Z",
+              "completed_at": "2026-11-12T21:27:18Z",
+              "name": "Native Linux isolation / Node 24",
+              "steps": [
+                {
+                  "name": "Set up job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 1,
+                  "started_at": "2026-11-12T21:25:11Z",
+                  "completed_at": "2026-11-12T21:25:12Z"
+                },
+                {
+                  "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 2,
+                  "started_at": "2026-11-12T21:25:12Z",
+                  "completed_at": "2026-11-12T21:25:14Z"
+                },
+                {
+                  "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 3,
+                  "started_at": "2026-11-12T21:25:14Z",
+                  "completed_at": "2026-11-12T21:25:19Z"
+                },
+                {
+                  "name": "Reproducible dependencies and reviewed source",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 4,
+                  "started_at": "2026-11-12T21:25:19Z",
+                  "completed_at": "2026-11-12T21:25:23Z"
+                },
+                {
+                  "name": "Prepare signed pinned runtime on the disposable runner",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 5,
+                  "started_at": "2026-11-12T21:25:23Z",
+                  "completed_at": "2026-11-12T21:25:46Z"
+                },
+                {
+                  "name": "Mandatory real source containment and cleanup",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 6,
+                  "started_at": "2026-11-12T21:25:46Z",
+                  "completed_at": "2026-11-12T21:25:57Z"
+                },
+                {
+                  "name": "Mandatory actual installed-package containment and cleanup",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 7,
+                  "started_at": "2026-11-12T21:25:57Z",
+                  "completed_at": "2026-11-12T21:27:12Z"
+                },
+                {
+                  "name": "Exact source remains unchanged by live tests",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 8,
+                  "started_at": "2026-11-12T21:27:12Z",
+                  "completed_at": "2026-11-12T21:27:13Z"
+                },
+                {
+                  "name": "Retain qualification evidence even after a failed gate",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 9,
+                  "started_at": "2026-11-12T21:27:13Z",
+                  "completed_at": "2026-11-12T21:27:14Z"
+                },
+                {
+                  "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 17,
+                  "started_at": "2026-11-12T21:27:14Z",
+                  "completed_at": "2026-11-12T21:27:14Z"
+                },
+                {
+                  "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 18,
+                  "started_at": "2026-11-12T21:27:14Z",
+                  "completed_at": "2026-11-12T21:27:15Z"
+                },
+                {
+                  "name": "Complete job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 19,
+                  "started_at": "2026-11-12T21:27:15Z",
+                  "completed_at": "2026-11-12T21:27:15Z"
+                }
+              ],
+              "check_run_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/check-runs/131503476921",
+              "labels": [
+                "ubuntu-24.04"
+              ],
+              "runner_id": 1000037095,
+              "runner_name": "GitHub Actions 1000037095",
+              "runner_group_id": 0,
+              "runner_group_name": "GitHub Actions"
+            },
+            {
+              "id": 131503477166,
+              "run_id": 43310058292,
+              "workflow_name": "CLI compatibility foundation",
+              "head_branch": "main",
+              "run_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43310058292",
+              "run_attempt": 1,
+              "node_id": "CR_kwDOUuxwZ88AAAAenjfRrg",
+              "head_sha": "da03dc5255976b1524b22796fffadb01e50a5149",
+              "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/jobs/131503477166",
+              "html_url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43310058292/job/131503477166",
+              "status": "completed",
+              "conclusion": "success",
+              "created_at": "2026-11-12T21:25:08Z",
+              "started_at": "2026-11-12T21:25:11Z",
+              "completed_at": "2026-11-12T21:39:22Z",
+              "name": "macos-15-intel / Node 24",
+              "steps": [
+                {
+                  "name": "Set up job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 1,
+                  "started_at": "2026-11-12T21:25:14Z",
+                  "completed_at": "2026-11-12T21:25:15Z"
+                },
+                {
+                  "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 2,
+                  "started_at": "2026-11-12T21:25:15Z",
+                  "completed_at": "2026-11-12T21:25:21Z"
+                },
+                {
+                  "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 3,
+                  "started_at": "2026-11-12T21:25:21Z",
+                  "completed_at": "2026-11-12T21:25:58Z"
+                },
+                {
+                  "name": "Verify actual runtime architecture",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 4,
+                  "started_at": "2026-11-12T21:25:58Z",
+                  "completed_at": "2026-11-12T21:25:58Z"
+                },
+                {
+                  "name": "Reproducible dependencies without lifecycle side effects",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 5,
+                  "started_at": "2026-11-12T21:25:58Z",
+                  "completed_at": "2026-11-12T21:26:04Z"
+                },
+                {
+                  "name": "Reviewed source and pinned parity baseline",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 6,
+                  "started_at": "2026-11-12T21:26:04Z",
+                  "completed_at": "2026-11-12T21:26:15Z"
+                },
+                {
+                  "name": "Typecheck formatting and deterministic tests",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 7,
+                  "started_at": "2026-11-12T21:26:15Z",
+                  "completed_at": "2026-11-12T21:36:14Z"
+                },
+                {
+                  "name": "Verify packed install and isolated npm link",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 8,
+                  "started_at": "2026-11-12T21:36:14Z",
+                  "completed_at": "2026-11-12T21:38:54Z"
+                },
+                {
+                  "name": "Install pinned Codex into test-owned prefix",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 9,
+                  "started_at": "2026-11-12T21:38:54Z",
+                  "completed_at": "2026-11-12T21:39:07Z"
+                },
+                {
+                  "name": "Real Codex registration without login or model calls",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 10,
+                  "started_at": "2026-11-12T21:39:07Z",
+                  "completed_at": "2026-11-12T21:39:13Z"
+                },
+                {
+                  "name": "Exact source remains unchanged by tests",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 11,
+                  "started_at": "2026-11-12T21:39:13Z",
+                  "completed_at": "2026-11-12T21:39:14Z"
+                },
+                {
+                  "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 21,
+                  "started_at": "2026-11-12T21:39:14Z",
+                  "completed_at": "2026-11-12T21:39:14Z"
+                },
+                {
+                  "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 22,
+                  "started_at": "2026-11-12T21:39:14Z",
+                  "completed_at": "2026-11-12T21:39:15Z"
+                },
+                {
+                  "name": "Complete job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 23,
+                  "started_at": "2026-11-12T21:39:15Z",
+                  "completed_at": "2026-11-12T21:39:17Z"
+                }
+              ],
+              "check_run_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/check-runs/131503477166",
+              "labels": [
+                "macos-15-intel"
+              ],
+              "runner_id": 1000037096,
+              "runner_name": "GitHub Actions 1000037096",
+              "runner_group_id": 0,
+              "runner_group_name": "GitHub Actions"
+            },
+            {
+              "id": 131503477173,
+              "run_id": 43310058292,
+              "workflow_name": "CLI compatibility foundation",
+              "head_branch": "main",
+              "run_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43310058292",
+              "run_attempt": 1,
+              "node_id": "CR_kwDOUuxwZ88AAAAenjfRtQ",
+              "head_sha": "da03dc5255976b1524b22796fffadb01e50a5149",
+              "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/jobs/131503477173",
+              "html_url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43310058292/job/131503477173",
+              "status": "completed",
+              "conclusion": "success",
+              "created_at": "2026-11-12T21:25:08Z",
+              "started_at": "2026-11-12T21:25:11Z",
+              "completed_at": "2026-11-12T21:34:02Z",
+              "name": "windows-2022 / Node 24",
+              "steps": [
+                {
+                  "name": "Set up job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 1,
+                  "started_at": "2026-11-12T21:25:12Z",
+                  "completed_at": "2026-11-12T21:25:13Z"
+                },
+                {
+                  "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 2,
+                  "started_at": "2026-11-12T21:25:13Z",
+                  "completed_at": "2026-11-12T21:25:20Z"
+                },
+                {
+                  "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 3,
+                  "started_at": "2026-11-12T21:25:20Z",
+                  "completed_at": "2026-11-12T21:25:28Z"
+                },
+                {
+                  "name": "Verify actual runtime architecture",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 4,
+                  "started_at": "2026-11-12T21:25:28Z",
+                  "completed_at": "2026-11-12T21:25:28Z"
+                },
+                {
+                  "name": "Reproducible dependencies without lifecycle side effects",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 5,
+                  "started_at": "2026-11-12T21:25:28Z",
+                  "completed_at": "2026-11-12T21:25:32Z"
+                },
+                {
+                  "name": "Reviewed source and pinned parity baseline",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 6,
+                  "started_at": "2026-11-12T21:25:32Z",
+                  "completed_at": "2026-11-12T21:25:36Z"
+                },
+                {
+                  "name": "Typecheck formatting and deterministic tests",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 7,
+                  "started_at": "2026-11-12T21:25:36Z",
+                  "completed_at": "2026-11-12T21:31:12Z"
+                },
+                {
+                  "name": "Verify packed install and isolated npm link",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 8,
+                  "started_at": "2026-11-12T21:31:12Z",
+                  "completed_at": "2026-11-12T21:33:47Z"
+                },
+                {
+                  "name": "Install pinned Codex into test-owned prefix",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 9,
+                  "started_at": "2026-11-12T21:33:47Z",
+                  "completed_at": "2026-11-12T21:33:54Z"
+                },
+                {
+                  "name": "Real Codex registration without login or model calls",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 10,
+                  "started_at": "2026-11-12T21:33:54Z",
+                  "completed_at": "2026-11-12T21:33:58Z"
+                },
+                {
+                  "name": "Exact source remains unchanged by tests",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 11,
+                  "started_at": "2026-11-12T21:33:58Z",
+                  "completed_at": "2026-11-12T21:33:59Z"
+                },
+                {
+                  "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 21,
+                  "started_at": "2026-11-12T21:33:59Z",
+                  "completed_at": "2026-11-12T21:33:59Z"
+                },
+                {
+                  "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 22,
+                  "started_at": "2026-11-12T21:33:59Z",
+                  "completed_at": "2026-11-12T21:34:01Z"
+                },
+                {
+                  "name": "Complete job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 23,
+                  "started_at": "2026-11-12T21:34:01Z",
+                  "completed_at": "2026-11-12T21:34:01Z"
+                }
+              ],
+              "check_run_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/check-runs/131503477173",
+              "labels": [
+                "windows-2022"
+              ],
+              "runner_id": 1000037097,
+              "runner_name": "GitHub Actions 1000037097",
+              "runner_group_id": 0,
+              "runner_group_name": "GitHub Actions"
+            },
+            {
+              "id": 131503477324,
+              "run_id": 43310058292,
+              "workflow_name": "CLI compatibility foundation",
+              "head_branch": "main",
+              "run_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43310058292",
+              "run_attempt": 1,
+              "node_id": "CR_kwDOUuxwZ88AAAAenjfSTA",
+              "head_sha": "da03dc5255976b1524b22796fffadb01e50a5149",
+              "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/jobs/131503477324",
+              "html_url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43310058292/job/131503477324",
+              "status": "completed",
+              "conclusion": "success",
+              "created_at": "2026-11-12T21:25:08Z",
+              "started_at": "2026-11-12T21:25:11Z",
+              "completed_at": "2026-11-12T21:30:02Z",
+              "name": "macos-15 / Node 24",
+              "steps": [
+                {
+                  "name": "Set up job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 1,
+                  "started_at": "2026-11-12T21:25:10Z",
+                  "completed_at": "2026-11-12T21:25:11Z"
+                },
+                {
+                  "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 2,
+                  "started_at": "2026-11-12T21:25:11Z",
+                  "completed_at": "2026-11-12T21:25:14Z"
+                },
+                {
+                  "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 3,
+                  "started_at": "2026-11-12T21:25:14Z",
+                  "completed_at": "2026-11-12T21:25:19Z"
+                },
+                {
+                  "name": "Verify actual runtime architecture",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 4,
+                  "started_at": "2026-11-12T21:25:19Z",
+                  "completed_at": "2026-11-12T21:25:19Z"
+                },
+                {
+                  "name": "Reproducible dependencies without lifecycle side effects",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 5,
+                  "started_at": "2026-11-12T21:25:19Z",
+                  "completed_at": "2026-11-12T21:25:21Z"
+                },
+                {
+                  "name": "Reviewed source and pinned parity baseline",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 6,
+                  "started_at": "2026-11-12T21:25:21Z",
+                  "completed_at": "2026-11-12T21:25:22Z"
+                },
+                {
+                  "name": "Typecheck formatting and deterministic tests",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 7,
+                  "started_at": "2026-11-12T21:25:22Z",
+                  "completed_at": "2026-11-12T21:28:46Z"
+                },
+                {
+                  "name": "Verify packed install and isolated npm link",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 8,
+                  "started_at": "2026-11-12T21:28:46Z",
+                  "completed_at": "2026-11-12T21:29:49Z"
+                },
+                {
+                  "name": "Install pinned Codex into test-owned prefix",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 9,
+                  "started_at": "2026-11-12T21:29:49Z",
+                  "completed_at": "2026-11-12T21:29:54Z"
+                },
+                {
+                  "name": "Real Codex registration without login or model calls",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 10,
+                  "started_at": "2026-11-12T21:29:54Z",
+                  "completed_at": "2026-11-12T21:29:56Z"
+                },
+                {
+                  "name": "Exact source remains unchanged by tests",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 11,
+                  "started_at": "2026-11-12T21:29:56Z",
+                  "completed_at": "2026-11-12T21:29:57Z"
+                },
+                {
+                  "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 21,
+                  "started_at": "2026-11-12T21:29:57Z",
+                  "completed_at": "2026-11-12T21:29:57Z"
+                },
+                {
+                  "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 22,
+                  "started_at": "2026-11-12T21:29:57Z",
+                  "completed_at": "2026-11-12T21:29:58Z"
+                },
+                {
+                  "name": "Complete job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 23,
+                  "started_at": "2026-11-12T21:29:58Z",
+                  "completed_at": "2026-11-12T21:29:59Z"
+                }
+              ],
+              "check_run_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/check-runs/131503477324",
+              "labels": [
+                "macos-15"
+              ],
+              "runner_id": 1000037098,
+              "runner_name": "GitHub Actions 1000037098",
+              "runner_group_id": 0,
+              "runner_group_name": "GitHub Actions"
+            },
+            {
+              "id": 131503477425,
+              "run_id": 43310058292,
+              "workflow_name": "CLI compatibility foundation",
+              "head_branch": "main",
+              "run_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43310058292",
+              "run_attempt": 1,
+              "node_id": "CR_kwDOUuxwZ88AAAAenjfSsQ",
+              "head_sha": "da03dc5255976b1524b22796fffadb01e50a5149",
+              "url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/jobs/131503477425",
+              "html_url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43310058292/job/131503477425",
+              "status": "completed",
+              "conclusion": "success",
+              "created_at": "2026-11-12T21:25:08Z",
+              "started_at": "2026-11-12T21:25:10Z",
+              "completed_at": "2026-11-12T21:28:37Z",
+              "name": "ubuntu-24.04 / Node 24",
+              "steps": [
+                {
+                  "name": "Set up job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 1,
+                  "started_at": "2026-11-12T21:25:11Z",
+                  "completed_at": "2026-11-12T21:25:11Z"
+                },
+                {
+                  "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 2,
+                  "started_at": "2026-11-12T21:25:11Z",
+                  "completed_at": "2026-11-12T21:25:13Z"
+                },
+                {
+                  "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 3,
+                  "started_at": "2026-11-12T21:25:13Z",
+                  "completed_at": "2026-11-12T21:25:17Z"
+                },
+                {
+                  "name": "Verify actual runtime architecture",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 4,
+                  "started_at": "2026-11-12T21:25:17Z",
+                  "completed_at": "2026-11-12T21:25:17Z"
+                },
+                {
+                  "name": "Reproducible dependencies without lifecycle side effects",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 5,
+                  "started_at": "2026-11-12T21:25:17Z",
+                  "completed_at": "2026-11-12T21:25:19Z"
+                },
+                {
+                  "name": "Reviewed source and pinned parity baseline",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 6,
+                  "started_at": "2026-11-12T21:25:19Z",
+                  "completed_at": "2026-11-12T21:25:20Z"
+                },
+                {
+                  "name": "Typecheck formatting and deterministic tests",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 7,
+                  "started_at": "2026-11-12T21:25:20Z",
+                  "completed_at": "2026-11-12T21:27:43Z"
+                },
+                {
+                  "name": "Verify packed install and isolated npm link",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 8,
+                  "started_at": "2026-11-12T21:27:43Z",
+                  "completed_at": "2026-11-12T21:28:30Z"
+                },
+                {
+                  "name": "Install pinned Codex into test-owned prefix",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 9,
+                  "started_at": "2026-11-12T21:28:30Z",
+                  "completed_at": "2026-11-12T21:28:33Z"
+                },
+                {
+                  "name": "Real Codex registration without login or model calls",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 10,
+                  "started_at": "2026-11-12T21:28:33Z",
+                  "completed_at": "2026-11-12T21:28:35Z"
+                },
+                {
+                  "name": "Exact source remains unchanged by tests",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 11,
+                  "started_at": "2026-11-12T21:28:35Z",
+                  "completed_at": "2026-11-12T21:28:35Z"
+                },
+                {
+                  "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 21,
+                  "started_at": "2026-11-12T21:28:35Z",
+                  "completed_at": "2026-11-12T21:28:35Z"
+                },
+                {
+                  "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 22,
+                  "started_at": "2026-11-12T21:28:35Z",
+                  "completed_at": "2026-11-12T21:28:35Z"
+                },
+                {
+                  "name": "Complete job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 23,
+                  "started_at": "2026-11-12T21:28:35Z",
+                  "completed_at": "2026-11-12T21:28:35Z"
+                }
+              ],
+              "check_run_url": "https://api.github.com/repos/MulattoTech/MTerm-CLI/check-runs/131503477425",
+              "labels": [
+                "ubuntu-24.04"
+              ],
+              "runner_id": 1000037099,
+              "runner_name": "GitHub Actions 1000037099",
+              "runner_group_id": 0,
+              "runner_group_name": "GitHub Actions"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "captureSources": [
+    {
+      "file": "fresh-pr-identity.json",
+      "bytes": 48524,
+      "sha256": "a39925e8eca04820aba3294cc82bc3207a7854fb90485d1634ccac16f4bec0b2"
+    },
+    {
+      "file": "fresh-commit-api.json",
+      "bytes": 48048,
+      "sha256": "595949418f107476a407ef1c4e6183c164d4b1c19784c6df4e5c27f3201966ba"
+    },
+    {
+      "file": "fresh-job-api.json",
+      "bytes": 419024,
+      "sha256": "ee4efad9ea8c8dfb1253e208cddd993a805f23a9bdd4a12c99ea704f9b95c451"
+    },
+    {
+      "file": "fresh-run-api.json",
+      "bytes": 384955,
+      "sha256": "0a0a544a0babfd433878b8879f4551cc9fe6f965104dc9e5626d8b5f362ea209"
+    },
+    {
+      "file": "fresh-workflow-contents.json",
+      "bytes": 70715,
+      "sha256": "e2267b6be7361ef7a97c6c6e510c47b8415132437c01f5ed3337f84a7b26b335"
+    }
+  ],
+  "notes": [
+    "Commit, run and job response objects are the unmodified parsed JSON returned by GitHub API fetches.",
+    "PR identity fields retain original connector field names and values; this tool normalized GitHub metadata before returning it. The full tool response remains in the hashed source capture.",
+    "Workflow content is the exact returned text from the immutable-ref contents request. The connector returned decoded file content rather than the REST base64 envelope. Recompute Git blob and SHA256 from this text and bind the request URL/ref to the candidate or main commit.",
+    "Source capture filenames are relative to accounting-evidence. No new network calls or original-capture rewrites were made while preparing these identity inputs.",
+    "Display text, PR body and user fields are omitted from the PR identity projection; no identity field was synthesized from a normalized delivery receipt."
+  ]
+}

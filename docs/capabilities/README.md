@@ -24,9 +24,21 @@ does not change an acceptance flag. A source merge does not change a live servic
 
 Historical source observations retain their original immutable SHA and timestamp.
 Later `deliveryObservations` show qualified component work without rewriting that
-history. A qualified partial-delivery observation must match its saved six-check
-main receipt, candidate SHA, merge SHA and tree. An unmerged candidate remains an
-unmerged candidate until a subsequent observation establishes otherwise.
+history. A qualified component delivery binds the owning repository and layer,
+pull request, candidate SHA, actual merge SHA, ordered merge parents and equal
+candidate/main trees. Both phases must pass the exact workflow contracts captured
+at those immutable source commits. The CLI contract has six jobs; historical
+Access contracts have two, four or five jobs. A different repository's jobs or an
+older, smaller workflow cannot substitute for the source being qualified.
+
+The validator compares normalized run and job records with retained GitHub API
+observations, including workflow bytes, run IDs, attempts, events, heads, check
+names, results and repository URLs. Workflow Git blob and SHA-256 hashes are
+recomputed from the captured bytes. Requirement scope is explicit and reciprocal:
+every linked row must name that delivery's source, and every delivery must name
+the rows it supports. Each repository/PR can count only once. Failed and pending
+observations remain historical; a pending-main record can be superseded only by
+qualification of its same candidate, main and tree.
 
 Whole-requirement credit requires an explicit qualification receipt for each axis.
 The receipt names the requirement, exact source, product layer, environment, full
@@ -39,10 +51,19 @@ belong to the stated repository and an explicitly mapped product layer. Private
 plugin artifacts without that source binding need a separately reviewed receipt
 schema before they can receive full credit.
 
-Consumed upstream research and saved main receipts are byte-hashed in the reviewed
-register. A change to those inputs requires explicit reconciliation. Partial delivery
-labels come from a fixed set, and a successful main receipt must name the six required
-fast/platform/isolation checks; six unrelated green jobs are insufficient.
+Consumed upstream research, normalized receipts and original evidence are
+byte-hashed in the reviewed register after LF normalization. A change to those
+inputs requires explicit reconciliation. Partial delivery labels come from a
+fixed set. Current component counts are separate from whole-requirement claims,
+and links use the repository that actually owns the pull request.
+
+Saved plugin packages have a separate collection and count. The 0.2.3 package
+receipt binds the exact eight-file readback manifest, its observation time and
+its later source-reconciliation merge. The retained public-safe manifest omits
+private plugin/release identifiers while preserving file names, sizes, hashes
+and the original readback hash. A saved package cannot imply backend deployment,
+canonical-only OAuth, active-chat UI behavior, wrapper removal or full acceptance.
+The readback time remains earlier than its subsequent source reconciliation.
 
 These checks establish internal consistency, not the authenticity or truth of the
 evidence. A human or independently authorized reviewer must inspect the linked

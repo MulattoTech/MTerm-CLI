@@ -1,0 +1,213 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-12T19:33:33.299471+00:00",
+  "status": "TWO_REQUIRED_CANDIDATE_CHECKS_PASSED",
+  "repo": "MulattoTech/MTechLabs-Access",
+  "pr": 25,
+  "candidateSha": "60f188a805f59eeb13d04f27285ab7b55d1d6507",
+  "candidateTree": "04d1d397de37cb730b191f47bbe9877d0a94b7a3",
+  "parentSha": "834bd0154a6838475dfdd1c10fd79d162edb7949",
+  "baseSha": "ba4a55b7ed351f7e60928179edaa7449de00be7d",
+  "actualMainAtLastRead": "ba4a55b7ed351f7e60928179edaa7449de00be7d",
+  "checkoutMergeSha": "4e0e9a4d20fc9e08c399b0d87b90de0dd29541e9",
+  "checkoutMergeTreeEqualsCandidate": true,
+  "run": {
+    "id": 43291016374,
+    "html_url": "https://github.com/MulattoTech/MTechLabs-Access/actions/runs/43291016374",
+    "event": "pull_request",
+    "run_attempt": 1,
+    "status": "completed",
+    "conclusion": "success"
+  },
+  "checks": [
+    {
+      "id": 131436949416,
+      "name": "test",
+      "url": "https://github.com/MulattoTech/MTechLabs-Access/actions/runs/43291016374/job/131436949416",
+      "headSha": "60f188a805f59eeb13d04f27285ab7b55d1d6507",
+      "status": "completed",
+      "conclusion": "success",
+      "counts": {
+        "tests": 123,
+        "pass": 123,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "checkoutMergeObserved": true,
+      "node": "v24.22.2",
+      "npm": "11.19.1",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm test",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run check",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run build",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check generated UI matches its sources",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ],
+      "log": {
+        "path": "/workspace/scratch/a92a3aacdca1/peer-access25-60f188a8-evidence/job-131436949416.log",
+        "bytes": 49817,
+        "sha256": "4d9631360cb68335eb805dc0e08e793c1cbc087c3c33abf63c7f8fbe7692d03e"
+      }
+    },
+    {
+      "id": 131436948865,
+      "name": "managed-mcp",
+      "url": "https://github.com/MulattoTech/MTechLabs-Access/actions/runs/43291016374/job/131436948865",
+      "headSha": "60f188a805f59eeb13d04f27285ab7b55d1d6507",
+      "status": "completed",
+      "conclusion": "success",
+      "counts": {
+        "tests": 79,
+        "pass": 79,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "checkoutMergeObserved": true,
+      "node": "v24.22.2",
+      "npm": "11.19.1",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci --ignore-scripts --no-audit --no-fund",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm test",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ],
+      "log": {
+        "path": "/workspace/scratch/a92a3aacdca1/peer-access25-60f188a8-evidence/job-131436948865.log",
+        "bytes": 23716,
+        "sha256": "1113196a9289c17f615110be37d47f08db80e5ce6bc0bec0361b12d82500fed4"
+      }
+    }
+  ],
+  "requiredCheckNames": [
+    "test",
+    "managed-mcp"
+  ],
+  "upstreamQualificationJobInThisBranch": false,
+  "followupDelta": {
+    "commitCount": 1,
+    "files": [
+      {
+        "path": "docs/engineering/2026-11-12-engineering-descriptions.json",
+        "status": "modified",
+        "changes": 28
+      },
+      {
+        "path": "integrations/mcp-manager/METADATA.md",
+        "status": "modified",
+        "changes": 9
+      },
+      {
+        "path": "integrations/mcp-manager/metadata-evidence/access-descriptions-barrier-green.tap",
+        "status": "added",
+        "changes": 92
+      },
+      {
+        "path": "integrations/mcp-manager/metadata-evidence/peer-access25-834bd015-receipt.json",
+        "status": "added",
+        "changes": 92
+      },
+      {
+        "path": "integrations/mcp-manager/metadata-evidence/peer-access25-834bd015-receipt.md",
+        "status": "added",
+        "changes": 28
+      },
+      {
+        "path": "integrations/mcp-manager/test/gateway.test.mjs",
+        "status": "modified",
+        "changes": 11
+      }
+    ],
+    "descriptionsContractsRuntimeAndLocksChanged": false,
+    "basis": "None of those production source/lock paths appears in this six-file followup delta; sole test code delta is gateway.test.mjs."
+  },
+  "priorFailedReceiptsCommittedExactly": [
+    {
+      "path": "integrations/mcp-manager/metadata-evidence/peer-access25-834bd015-receipt.json",
+      "sha256": "e3f4642a23aae76d2c1797cf58759bb32ab465b9b3c830e25782605e1136e103",
+      "gitBlob": "1851032bf7292a865df9486dda1e927361586605",
+      "committedBlob": "1851032bf7292a865df9486dda1e927361586605",
+      "matches": true
+    },
+    {
+      "path": "integrations/mcp-manager/metadata-evidence/peer-access25-834bd015-receipt.md",
+      "sha256": "96b5c7f7546afb028901257017836627e0a59f9ec948f3ff3ce9b6fb74a0defc",
+      "gitBlob": "4165d01fee4417ef1dcfc2ce5927bf6d636e5b21",
+      "committedBlob": "4165d01fee4417ef1dcfc2ce5927bf6d636e5b21",
+      "matches": true
+    }
+  ],
+  "scope": "Candidate CI and base identity for the independent descriptor PR. Source review remains with architecture; PR24 Linux PDF qualification and production deployment are outside this receipt.",
+  "reviewerActions": {
+    "rerun": false,
+    "githubMutation": false,
+    "sourceMutation": false,
+    "upstreamLocalExecution": false,
+    "productionAction": false
+  },
+  "actualMainPostMergeVerified": false
+}

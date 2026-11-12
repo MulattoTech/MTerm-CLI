@@ -48,16 +48,31 @@
   "productLayers": {
     "canonical_plugin": {
       "owner": "private ChatGPT package",
-      "version": "0.2.2",
+      "version": "0.2.3",
       "appBinding": "shared with existing live wrapper; identifiers intentionally omitted",
-      "canonicalOnlyVerified": false
+      "canonicalOnlyVerified": false,
+      "repository": "MulattoTech/MTechLabs-Access",
+      "sourceRoot": "integrations/m-techlabs-desktop",
+      "versionHistory": [
+        {
+          "version": "0.2.2",
+          "observedAt": "2026-11-12T17:21:23.133206+00:00"
+        }
+      ],
+      "note": "Saved documentation/skill package v0.2.3, independently read back; canonical-only OAuth, UI activation and backend deployment remain unverified."
     },
     "managed_bridge": {
       "repository": "MulattoTech/MTechLabs-Access",
       "sourceRoot": "integrations/mcp-manager",
       "sourceSha": "ba4a55b7ed351f7e60928179edaa7449de00be7d",
       "advertisedTools": 53,
-      "note": "Runtime source-matched non-test components; not a pristine checkout and not standalone CLI."
+      "note": "Runtime source-matched non-test components; not a pristine checkout and not standalone CLI.",
+      "mergedSourceObservation": {
+        "sha": "ff31efca7c94ca4653305c61e9b933ce835cc04f",
+        "observedAt": "2026-11-12T22:09:14.100364+00:00",
+        "evidence": "canonical-plugin-source-qualified-main",
+        "note": "Source observation only; existing sourceSha remains the independently observed production installation."
+      }
     },
     "production_edge": {
       "repository": "MulattoTech/MTechLabs-Access",
@@ -74,12 +89,21 @@
       "candidateTree": "c4d2c52442daf652af4323827cda91b6f32cd538",
       "candidatePR": 249,
       "currentMainObservation": {
-        "sha": "4fb205088e77731e42da5adaca6bf167f8b75194",
-        "tree": "a41dd2124f4f9106ae86fbd6c42022bf44a9f9c3",
-        "observedAt": "2026-11-12T18:13:00.676692+00:00",
-        "evidence": "remote-profiles-corrected-candidate",
-        "qualification": "ACTUAL_MAIN_PENDING"
-      }
+        "sha": "6a6a883f3ce1cd86a7405d2c53a1fb08cd1210c2",
+        "tree": "ea714fd37926cb49325d9a4c6b60011cd01f021c",
+        "observedAt": "2026-11-12T22:22:36.707532+00:00",
+        "evidence": "device-observations-qualified-main",
+        "qualification": "ACTUAL_MAIN_QUALIFIED_SOURCE_ONLY"
+      },
+      "mainObservationHistory": [
+        {
+          "sha": "4fb205088e77731e42da5adaca6bf167f8b75194",
+          "tree": "a41dd2124f4f9106ae86fbd6c42022bf44a9f9c3",
+          "observedAt": "2026-11-12T18:13:00.676692+00:00",
+          "evidence": "remote-profiles-corrected-candidate",
+          "qualification": "ACTUAL_MAIN_PENDING"
+        }
+      ]
     },
     "standalone_staging_gateway": {
       "repository": "MulattoTech/MTerm-CLI",
@@ -118,7 +142,7 @@
     "registrationRule": "All nine proposed scopes now have concrete issue dispositions. Registered scope is separate from implementation and acceptance; no new issue remains proposed in this snapshot.",
     "dependencyRule": "requirements[].dependencies contains implementation prerequisites only. acceptance.dependsOnRequirementIds contains final qualification prerequisites. Conditional dependencies and implementationSlices prevent local-state work inheriting generic provider dependencies.",
     "verificationTimestampRule": "lastVerifiedAt and acceptance.lastVerifiedAt are null until whole-requirement verification exists. lastInventoryVerifiedAt preserves the earlier source/crosswalk observation; inventoryReviewedAt is this metadata reconciliation, not behavior testing.",
-    "currentSourceRule": "Recorded main and immutable candidate refs are observations as of their timestamps. Prior candidate tests/reviews never silently apply to a newer head; live deployment remains independently identified."
+    "currentSourceRule": "Recorded main and immutable candidate refs are observations as of their timestamps. Prior candidate tests/reviews never silently apply to a newer head; live deployment remains independently identified. Component-qualified rows are now derived from explicitly scoped current delivery refs; earlier baseline layer statuses remain historical."
   },
   "evidenceSources": {
     "auth": {
@@ -1208,6 +1232,288 @@
       "productLayers": [
         "managed_bridge"
       ]
+    },
+    "delivery_cli249": {
+      "repository": "MulattoTech/MTerm-CLI",
+      "sourceSha": "83a97daed6ef92b69e681b6b68f982f5d4266a51",
+      "productLayers": [
+        "standalone_cli"
+      ],
+      "observedAt": "2026-11-12T22:09:14.100364+00:00",
+      "sourceFiles": [
+        {
+          "path": "src/intelligence/source-reader.ts",
+          "ref": "83a97daed6ef92b69e681b6b68f982f5d4266a51",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/blob/83a97daed6ef92b69e681b6b68f982f5d4266a51/src/intelligence/source-reader.ts",
+          "sha256": "70a1ce3ea2d5e63e8cc7d19d8e79d1b597ba0e8c66f54304c2ecd3c5f4dccc6f"
+        },
+        {
+          "path": "src/intelligence/repomap.ts",
+          "ref": "83a97daed6ef92b69e681b6b68f982f5d4266a51",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/blob/83a97daed6ef92b69e681b6b68f982f5d4266a51/src/intelligence/repomap.ts",
+          "sha256": "e14dc6b249607c6ecfaf085439e37864131dc5ab173d833fd7e10feb0935a4ac"
+        },
+        {
+          "path": "src/lsp/manager.ts",
+          "ref": "83a97daed6ef92b69e681b6b68f982f5d4266a51",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/blob/83a97daed6ef92b69e681b6b68f982f5d4266a51/src/lsp/manager.ts",
+          "sha256": "37a9336d9c084610622dd60d0697ad54952f0d67d92760370a913bc5ff03ba35"
+        },
+        {
+          "path": "src/editing/syntax-validator.ts",
+          "ref": "83a97daed6ef92b69e681b6b68f982f5d4266a51",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/blob/83a97daed6ef92b69e681b6b68f982f5d4266a51/src/editing/syntax-validator.ts",
+          "sha256": "2ca06065e9d783dba2658894842bef61ea02977bc93a84b815120a3dbc16efb6"
+        },
+        {
+          "path": "src/editing/semantic-editor.ts",
+          "ref": "83a97daed6ef92b69e681b6b68f982f5d4266a51",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/blob/83a97daed6ef92b69e681b6b68f982f5d4266a51/src/editing/semantic-editor.ts",
+          "sha256": "93198e767caee64d5a7a689087ebc451628808533f5b0847ae0245cfc5baef3c"
+        },
+        {
+          "path": "src/journaling/shadow-journal.ts",
+          "ref": "83a97daed6ef92b69e681b6b68f982f5d4266a51",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/blob/83a97daed6ef92b69e681b6b68f982f5d4266a51/src/journaling/shadow-journal.ts",
+          "sha256": "71539d89a1834de47e2565ec63c6a8f830bdca162cf2fba21b1f83b99f95a789"
+        },
+        {
+          "path": "src/orchestration/fleet-manager.ts",
+          "ref": "83a97daed6ef92b69e681b6b68f982f5d4266a51",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/blob/83a97daed6ef92b69e681b6b68f982f5d4266a51/src/orchestration/fleet-manager.ts",
+          "sha256": "ca12a0d2c56d9c1e19422ea31c7e4ac3d48d4cf47384ad1451b89f2cecbd42da"
+        }
+      ],
+      "scope": "Reviewed modernization components, bounded navigation/parser/patch behavior, task isolation and native containment.",
+      "limitations": "Whole semantic/LSP/orchestration capabilities and production deployment remain independent.",
+      "qualificationEvidence": "docs/engineering-runs/evidence/delivery-cli249.json"
+    },
+    "delivery_cli256": {
+      "repository": "MulattoTech/MTerm-CLI",
+      "sourceSha": "4fb205088e77731e42da5adaca6bf167f8b75194",
+      "productLayers": [
+        "standalone_cli"
+      ],
+      "observedAt": "2026-11-12T22:09:14.100364+00:00",
+      "sourceFiles": [
+        {
+          "path": "src/remote/cli.ts",
+          "ref": "4fb205088e77731e42da5adaca6bf167f8b75194",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/blob/4fb205088e77731e42da5adaca6bf167f8b75194/src/remote/cli.ts",
+          "sha256": "a02648b99b74161f79ebcf4a16048a528a5d6c62864f1ac05d41122857efcf42"
+        },
+        {
+          "path": "src/remote/profiles.ts",
+          "ref": "4fb205088e77731e42da5adaca6bf167f8b75194",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/blob/4fb205088e77731e42da5adaca6bf167f8b75194/src/remote/profiles.ts",
+          "sha256": "fe7a066b9b2163ffa655a2ac1e4760249a9fdb46bbf30e1aca4e0a28d121f7c4"
+        },
+        {
+          "path": "src/remote/state.ts",
+          "ref": "4fb205088e77731e42da5adaca6bf167f8b75194",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/blob/4fb205088e77731e42da5adaca6bf167f8b75194/src/remote/state.ts",
+          "sha256": "2236c828707cb353fc6ec439ea7eeaee79885dd0ea13e6ead01a9a89b4a0cce6"
+        }
+      ],
+      "scope": "Named MTerm-origin profiles, isolated local state, credential binding, bounded inventory and owned stop.",
+      "limitations": "Generic MCP paths/provider OAuth, portal controls and two-device routing.",
+      "qualificationEvidence": "docs/engineering-runs/evidence/delivery-cli256.json"
+    },
+    "delivery_cli257": {
+      "repository": "MulattoTech/MTerm-CLI",
+      "sourceSha": "f447c0baac3f36470d6fd96360928c6a2a192c4b",
+      "productLayers": [
+        "standalone_cli"
+      ],
+      "observedAt": "2026-11-12T22:09:14.100364+00:00",
+      "sourceFiles": [
+        {
+          "path": "scripts/capability-register.mjs",
+          "ref": "f447c0baac3f36470d6fd96360928c6a2a192c4b",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/blob/f447c0baac3f36470d6fd96360928c6a2a192c4b/scripts/capability-register.mjs",
+          "sha256": "3a7788d328f9bd855eeab9226e6e2dcfa1df55ffb06ba7f230a82a215649d239"
+        },
+        {
+          "path": "tests/capability-register.test.mjs",
+          "ref": "f447c0baac3f36470d6fd96360928c6a2a192c4b",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/blob/f447c0baac3f36470d6fd96360928c6a2a192c4b/tests/capability-register.test.mjs",
+          "sha256": "738582c8d724ab5d08b762a9b520debc8500071897379fbb3a11a5ad3ab2c297"
+        },
+        {
+          "path": "package.json",
+          "ref": "f447c0baac3f36470d6fd96360928c6a2a192c4b",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/blob/f447c0baac3f36470d6fd96360928c6a2a192c4b/package.json",
+          "sha256": "7df8054332c8f992295404ee58744c3c1a04c58d86a2f996f11e4d861c65fad1"
+        }
+      ],
+      "scope": "143 rows, mission/catalog crosswalk, distinct evidence-based axes, validation and generated report.",
+      "limitations": "Other requirements are not completed by the register itself; no portal deployment or acceptance inference.",
+      "qualificationEvidence": "docs/engineering-runs/evidence/delivery-cli257.json"
+    },
+    "delivery_cli258": {
+      "repository": "MulattoTech/MTerm-CLI",
+      "sourceSha": "da03dc5255976b1524b22796fffadb01e50a5149",
+      "productLayers": [
+        "standalone_cli"
+      ],
+      "observedAt": "2026-11-12T22:09:14.100364+00:00",
+      "sourceFiles": [
+        {
+          "path": "src/remote/cli.ts",
+          "ref": "da03dc5255976b1524b22796fffadb01e50a5149",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/blob/da03dc5255976b1524b22796fffadb01e50a5149/src/remote/cli.ts",
+          "sha256": "0f8ae76ee0e1b9c43b71c208e544d7d0dcc1bf28781913e2418b7b4002c321d5"
+        },
+        {
+          "path": "src/remote/endpoint-policy.ts",
+          "ref": "da03dc5255976b1524b22796fffadb01e50a5149",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/blob/da03dc5255976b1524b22796fffadb01e50a5149/src/remote/endpoint-policy.ts",
+          "sha256": "6303372951a5f3fad75f51430aadddf9d85550b0c3b52b09741888fc97844ec3"
+        },
+        {
+          "path": "src/remote/endpoint-probe.ts",
+          "ref": "da03dc5255976b1524b22796fffadb01e50a5149",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/blob/da03dc5255976b1524b22796fffadb01e50a5149/src/remote/endpoint-probe.ts",
+          "sha256": "da57c3085f6f8de18e4e8d4e396edebf4630f6748aded659408233b80ed5d8a9"
+        }
+      ],
+      "scope": "Offline URL validation and explicit unauthenticated public HTTPS discovery; pinned verified TLS, bounded DNS/parsing, no redirects/insecure fallback, owned legacy cleanup. PROFILE-07 support is discovery only.",
+      "limitations": "Stored-profile enablement validation, authenticated health, persisted last-success data, portal controls, approved LAN mode and remote-server trust.",
+      "qualificationEvidence": "docs/engineering-runs/evidence/delivery-cli258.json"
+    },
+    "delivery_access24": {
+      "repository": "MulattoTech/MTechLabs-Access",
+      "sourceSha": "ef8dce0e1863e63958c4421e8506c9bdb5e881e0",
+      "productLayers": [
+        "managed_bridge"
+      ],
+      "observedAt": "2026-11-12T22:09:14.100364+00:00",
+      "sourceFiles": [
+        {
+          "path": "integrations/mcp-manager/lib/upstream-qualification.mjs",
+          "ref": "ef8dce0e1863e63958c4421e8506c9bdb5e881e0",
+          "url": "https://github.com/MulattoTech/MTechLabs-Access/blob/ef8dce0e1863e63958c4421e8506c9bdb5e881e0/integrations/mcp-manager/lib/upstream-qualification.mjs"
+        },
+        {
+          "path": "integrations/mcp-manager/upstream-package.json",
+          "ref": "ef8dce0e1863e63958c4421e8506c9bdb5e881e0",
+          "url": "https://github.com/MulattoTech/MTechLabs-Access/blob/ef8dce0e1863e63958c4421e8506c9bdb5e881e0/integrations/mcp-manager/upstream-package.json"
+        },
+        {
+          "path": "integrations/mcp-manager/upstream-package-lock.json",
+          "ref": "ef8dce0e1863e63958c4421e8506c9bdb5e881e0",
+          "url": "https://github.com/MulattoTech/MTechLabs-Access/blob/ef8dce0e1863e63958c4421e8506c9bdb5e881e0/integrations/mcp-manager/upstream-package-lock.json"
+        }
+      ],
+      "scope": "Managed stdio compatibility, owned process-tree cleanup, bounded output tail, completed search pagination and PDF create/read.",
+      "limitations": "Deployed remediation, upstream public remote OAuth, cancellation races, all Office search, PDF modification and Docker.",
+      "qualificationEvidence": "docs/engineering-runs/evidence/delivery-access24.json"
+    },
+    "delivery_access25": {
+      "repository": "MulattoTech/MTechLabs-Access",
+      "sourceSha": "499255adf0c3988558eb4b1dd04ee95ad3c7da33",
+      "productLayers": [
+        "managed_bridge"
+      ],
+      "observedAt": "2026-11-12T22:09:14.100364+00:00",
+      "sourceFiles": [
+        {
+          "path": "integrations/mcp-manager/lib/engineering-descriptions.mjs",
+          "ref": "499255adf0c3988558eb4b1dd04ee95ad3c7da33",
+          "url": "https://github.com/MulattoTech/MTechLabs-Access/blob/499255adf0c3988558eb4b1dd04ee95ad3c7da33/integrations/mcp-manager/lib/engineering-descriptions.mjs"
+        },
+        {
+          "path": "integrations/mcp-manager/lib/engineering-tools.mjs",
+          "ref": "499255adf0c3988558eb4b1dd04ee95ad3c7da33",
+          "url": "https://github.com/MulattoTech/MTechLabs-Access/blob/499255adf0c3988558eb4b1dd04ee95ad3c7da33/integrations/mcp-manager/lib/engineering-tools.mjs"
+        }
+      ],
+      "scope": "All28 engineering-tool descriptions with unchanged names/order/schemas/annotations; multiline/Unicode/length/paused-discovery tests.",
+      "limitations": "Production rollout and actual ChatGPT desktop/narrow rendering.",
+      "qualificationEvidence": "docs/engineering-runs/evidence/delivery-access25.json"
+    },
+    "delivery_access27": {
+      "repository": "MulattoTech/MTechLabs-Access",
+      "sourceSha": "9353b53a15cf50b67f4e9d452935e58a0bc9b8f3",
+      "productLayers": [
+        "managed_bridge"
+      ],
+      "observedAt": "2026-11-12T22:09:14.100364+00:00",
+      "sourceFiles": [
+        {
+          "path": "integrations/mcp-manager/lib/jobs.mjs",
+          "ref": "9353b53a15cf50b67f4e9d452935e58a0bc9b8f3",
+          "url": "https://github.com/MulattoTech/MTechLabs-Access/blob/9353b53a15cf50b67f4e9d452935e58a0bc9b8f3/integrations/mcp-manager/lib/jobs.mjs"
+        },
+        {
+          "path": "integrations/mcp-manager/test/job-authorization.test.mjs",
+          "ref": "9353b53a15cf50b67f4e9d452935e58a0bc9b8f3",
+          "url": "https://github.com/MulattoTech/MTechLabs-Access/blob/9353b53a15cf50b67f4e9d452935e58a0bc9b8f3/integrations/mcp-manager/test/job-authorization.test.mjs"
+        }
+      ],
+      "scope": "Stored-job permission rechecks, denied-resume evidence/count preservation and race-safe requeue.",
+      "limitations": "Complete durable worker recovery, distributed leases, all review gates and retroactive termination of active work.",
+      "qualificationEvidence": "docs/engineering-runs/evidence/delivery-access27.json"
+    },
+    "delivery_access28": {
+      "repository": "MulattoTech/MTechLabs-Access",
+      "sourceSha": "ff31efca7c94ca4653305c61e9b933ce835cc04f",
+      "productLayers": [
+        "canonical_plugin"
+      ],
+      "observedAt": "2026-11-12T22:09:14.100364+00:00",
+      "sourceFiles": [
+        {
+          "path": "integrations/m-techlabs-desktop/README.md",
+          "ref": "ff31efca7c94ca4653305c61e9b933ce835cc04f",
+          "url": "https://github.com/MulattoTech/MTechLabs-Access/blob/ff31efca7c94ca4653305c61e9b933ce835cc04f/integrations/m-techlabs-desktop/README.md"
+        },
+        {
+          "path": "integrations/m-techlabs-desktop/skills/connection-recovery/SKILL.md",
+          "ref": "ff31efca7c94ca4653305c61e9b933ce835cc04f",
+          "url": "https://github.com/MulattoTech/MTechLabs-Access/blob/ff31efca7c94ca4653305c61e9b933ce835cc04f/integrations/m-techlabs-desktop/skills/connection-recovery/SKILL.md"
+        }
+      ],
+      "scope": "Eight exact source files, recovery guidance, metadata-only owner-authorized check, working-wrapper preservation and source/release identity. PLUGIN-02 support is guidance only.",
+      "limitations": "Canonical-only OAuth, reconnect after manager upgrade, current-chat skill activation, UI rendering, available RDC fallback, website archive sync and runtime deployment.",
+      "qualificationEvidence": "docs/engineering-runs/evidence/delivery-access28.json"
+    },
+    "delivery_cli259": {
+      "repository": "MulattoTech/MTerm-CLI",
+      "sourceSha": "6a6a883f3ce1cd86a7405d2c53a1fb08cd1210c2",
+      "productLayers": [
+        "standalone_staging_gateway"
+      ],
+      "observedAt": "2026-11-12T22:22:36.707532+00:00",
+      "sourceFiles": [
+        {
+          "path": "gateway/registry.mjs",
+          "ref": "6a6a883f3ce1cd86a7405d2c53a1fb08cd1210c2",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/blob/6a6a883f3ce1cd86a7405d2c53a1fb08cd1210c2/gateway/registry.mjs",
+          "sha256": "9ffc114472f2a5f1394c90ee9b83033938f1bccf8c2a34ebd6db29d841f45caa"
+        },
+        {
+          "path": "gateway/dashboard.mjs",
+          "ref": "6a6a883f3ce1cd86a7405d2c53a1fb08cd1210c2",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/blob/6a6a883f3ce1cd86a7405d2c53a1fb08cd1210c2/gateway/dashboard.mjs",
+          "sha256": "af9a1929c50febdd62be7c79364d39ba21bcd53d49c585c9a73cb8e5aa8e7781"
+        },
+        {
+          "path": "tests/remote-device-readiness.test.mjs",
+          "ref": "6a6a883f3ce1cd86a7405d2c53a1fb08cd1210c2",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/blob/6a6a883f3ce1cd86a7405d2c53a1fb08cd1210c2/tests/remote-device-readiness.test.mjs",
+          "sha256": "ac836425b5fdf7cf2263caa80d06afaa33712b8fa8b931731ee92bcc9a31b742"
+        },
+        {
+          "path": "tests/remote-occupancy.test.mjs",
+          "ref": "6a6a883f3ce1cd86a7405d2c53a1fb08cd1210c2",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/blob/6a6a883f3ce1cd86a7405d2c53a1fb08cd1210c2/tests/remote-occupancy.test.mjs",
+          "sha256": "db0c76bd4272773c03937e00df393004b43dd89b2897cd2644de3e0a4b89ffaa"
+        }
+      ],
+      "scope": "Authenticated poll receipt, timestamped historical capacity offers, accepted result history and explicit unknown executor health on owner-scoped device views. Recheck selected-device freshness after asynchronous admission reads and before the first admission write. Safe dashboard text labels preserve wire/version and explicit targeting compatibility.",
+      "limitations": "Actual executor health/version telemetry, real Workers storage/crash qualification, live browser/two-device acceptance, profile defaults and confirmation workflows, source deployment and whole-requirement acceptance remain unverified.",
+      "qualificationEvidence": "docs/engineering-runs/evidence/delivery-cli259.json"
     }
   },
   "historicalEvidenceSources": {
@@ -2436,11 +2742,20 @@
     },
     "255": {
       "title": "Cross-layer capability register and evidence-derived delivery metrics",
-      "state": "open",
+      "state": "closed",
       "url": "https://github.com/MulattoTech/MTerm-CLI/issues/255",
-      "updatedAt": "2026-11-12T17:14:21Z",
-      "observedAt": "2026-11-12T17:21:23.133206+00:00",
-      "bodySha256": "be09f1ccaff9e6e77410325dfda7f5042af28acaf5bb263598fb4c1fef0d5241"
+      "updatedAt": "2026-11-12T21:02:05Z",
+      "observedAt": "2026-11-12T22:09:14.100364+00:00",
+      "history": [
+        {
+          "title": "Cross-layer capability register and evidence-derived delivery metrics",
+          "state": "open",
+          "url": "https://github.com/MulattoTech/MTerm-CLI/issues/255",
+          "updatedAt": "2026-11-12T17:14:21Z",
+          "observedAt": "2026-11-12T17:21:23.133206+00:00",
+          "bodySha256": "be09f1ccaff9e6e77410325dfda7f5042af28acaf5bb263598fb4c1fef0d5241"
+        }
+      ]
     }
   },
   "requirements": [
@@ -2525,7 +2840,8 @@
         "codeComplete": false,
         "sourceObservationKeys": [
           "auth",
-          "bridge_upstream"
+          "bridge_upstream",
+          "delivery_access24"
         ],
         "layers": [
           {
@@ -2549,6 +2865,20 @@
             "tests": "BEHAVIOR_NOT_VERIFIED_BY_THIS_INVENTORY",
             "deployment": "MATCHED_COMPONENTS_PRESENT",
             "accepted": false
+          },
+          {
+            "layer": "managed_bridge",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_access24"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "managed-upstream-033-qualified-main",
+            "scope": "Managed stdio compatibility, owned process-tree cleanup, bounded output tail, completed search pagination and PDF create/read.",
+            "remaining": "Deployed remediation, upstream public remote OAuth, cancellation races, all Office search, PDF modification and Docker."
           }
         ]
       },
@@ -2603,10 +2933,14 @@
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
         "auth",
-        "bridge_upstream"
+        "bridge_upstream",
+        "delivery_access24"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
-      "deliveryObservationRefs": []
+      "deliveryObservationRefs": [
+        "managed-upstream-033-qualified-main"
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-EXEC-01",
@@ -2802,7 +3136,9 @@
         "codeComplete": false,
         "sourceObservationKeys": [
           "process",
-          "candidate_native"
+          "candidate_native",
+          "delivery_cli249",
+          "delivery_access24"
         ],
         "layers": [
           {
@@ -2828,6 +3164,34 @@
             "accepted": false,
             "sourceSha": "09097ee82028ce01e069c6d555e7ab65b8add2e0",
             "sourceTree": "c4d2c52442daf652af4323827cda91b6f32cd538"
+          },
+          {
+            "layer": "standalone_cli",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_cli249"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "modernization-qualified-main",
+            "scope": "Reviewed modernization components, bounded navigation/parser/patch behavior, task isolation and native containment.",
+            "remaining": "Whole semantic/LSP/orchestration capabilities and production deployment remain independent."
+          },
+          {
+            "layer": "managed_bridge",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_access24"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "managed-upstream-033-qualified-main",
+            "scope": "Managed stdio compatibility, owned process-tree cleanup, bounded output tail, completed search pagination and PDF create/read.",
+            "remaining": "Deployed remediation, upstream public remote OAuth, cancellation races, all Office search, PDF modification and Docker."
           }
         ]
       },
@@ -2887,12 +3251,16 @@
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
         "process",
-        "candidate_native"
+        "candidate_native",
+        "delivery_cli249",
+        "delivery_access24"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
       "deliveryObservationRefs": [
-        "modernization-qualified-main"
-      ]
+        "modernization-qualified-main",
+        "managed-upstream-033-qualified-main"
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-EXEC-03",
@@ -3332,7 +3700,8 @@
         "codeComplete": false,
         "sourceObservationKeys": [
           "files",
-          "candidate_patch"
+          "candidate_patch",
+          "delivery_cli249"
         ],
         "layers": [
           {
@@ -3358,6 +3727,20 @@
             "accepted": false,
             "sourceSha": "09097ee82028ce01e069c6d555e7ab65b8add2e0",
             "sourceTree": "c4d2c52442daf652af4323827cda91b6f32cd538"
+          },
+          {
+            "layer": "standalone_cli",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_cli249"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "modernization-qualified-main",
+            "scope": "Reviewed modernization components, bounded navigation/parser/patch behavior, task isolation and native containment.",
+            "remaining": "Whole semantic/LSP/orchestration capabilities and production deployment remain independent."
           }
         ]
       },
@@ -3417,12 +3800,14 @@
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
         "files",
-        "candidate_patch"
+        "candidate_patch",
+        "delivery_cli249"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
       "deliveryObservationRefs": [
         "modernization-qualified-main"
-      ]
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-CAT-01",
@@ -4029,7 +4414,8 @@
         "codeComplete": false,
         "sourceObservationKeys": [
           "remote",
-          "registry"
+          "registry",
+          "delivery_cli259"
         ],
         "layers": [
           {
@@ -4043,6 +4429,20 @@
             "tests": "NOT_REEXECUTED",
             "deployment": "STAGING_ARTIFACT_EXISTS_SOURCE_MATCH_UNVERIFIED",
             "accepted": false
+          },
+          {
+            "layer": "standalone_staging_gateway",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_cli259"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "device-observations-qualified-main",
+            "scope": "Authenticated poll receipt, timestamped historical capacity offers, accepted result history and explicit unknown executor health on owner-scoped device views. Recheck selected-device freshness after asynchronous admission reads and before the first admission write. Safe dashboard text labels preserve wire/version and explicit targeting compatibility.",
+            "remaining": "Actual executor health/version telemetry, real Workers storage/crash qualification, live browser/two-device acceptance, profile defaults and confirmation workflows, source deployment and whole-requirement acceptance remain unverified."
           }
         ]
       },
@@ -4096,10 +4496,14 @@
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
         "remote",
-        "registry"
+        "registry",
+        "delivery_cli259"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
-      "deliveryObservationRefs": []
+      "deliveryObservationRefs": [
+        "device-observations-qualified-main"
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:22:36.707532+00:00"
     },
     {
       "id": "MTR-DEVICE-04",
@@ -5249,7 +5653,8 @@
       "implementation": {
         "codeComplete": false,
         "sourceObservationKeys": [
-          "process"
+          "process",
+          "delivery_access24"
         ],
         "layers": [
           {
@@ -5262,6 +5667,20 @@
             "tests": "NOT_REEXECUTED",
             "deployment": "NOT_VERIFIED",
             "accepted": false
+          },
+          {
+            "layer": "managed_bridge",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_access24"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "managed-upstream-033-qualified-main",
+            "scope": "Managed stdio compatibility, owned process-tree cleanup, bounded output tail, completed search pagination and PDF create/read.",
+            "remaining": "Deployed remediation, upstream public remote OAuth, cancellation races, all Office search, PDF modification and Docker."
           }
         ]
       },
@@ -5306,10 +5725,14 @@
       "inventoryReviewedAt": "2026-11-12T17:21:23.133206+00:00",
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
-        "process"
+        "process",
+        "delivery_access24"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
-      "deliveryObservationRefs": []
+      "deliveryObservationRefs": [
+        "managed-upstream-033-qualified-main"
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-FILE-03",
@@ -5390,7 +5813,8 @@
         "codeComplete": false,
         "sourceObservationKeys": [
           "files",
-          "compat_files"
+          "compat_files",
+          "delivery_access24"
         ],
         "layers": [
           {
@@ -5404,6 +5828,20 @@
             "tests": "NOT_REEXECUTED",
             "deployment": "NOT_VERIFIED",
             "accepted": false
+          },
+          {
+            "layer": "managed_bridge",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_access24"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "managed-upstream-033-qualified-main",
+            "scope": "Managed stdio compatibility, owned process-tree cleanup, bounded output tail, completed search pagination and PDF create/read.",
+            "remaining": "Deployed remediation, upstream public remote OAuth, cancellation races, all Office search, PDF modification and Docker."
           }
         ]
       },
@@ -5451,10 +5889,14 @@
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
         "files",
-        "compat_files"
+        "compat_files",
+        "delivery_access24"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
-      "deliveryObservationRefs": []
+      "deliveryObservationRefs": [
+        "managed-upstream-033-qualified-main"
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-JOBS-01",
@@ -5533,7 +5975,9 @@
         "codeComplete": false,
         "sourceObservationKeys": [
           "bridge_jobs",
-          "candidate_fleet"
+          "candidate_fleet",
+          "delivery_cli249",
+          "delivery_access27"
         ],
         "layers": [
           {
@@ -5559,6 +6003,34 @@
             "tests": "BEHAVIOR_NOT_VERIFIED_BY_THIS_INVENTORY",
             "deployment": "MATCHED_COMPONENTS_PRESENT",
             "accepted": false
+          },
+          {
+            "layer": "standalone_cli",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_cli249"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "modernization-qualified-main",
+            "scope": "Reviewed modernization components, bounded navigation/parser/patch behavior, task isolation and native containment.",
+            "remaining": "Whole semantic/LSP/orchestration capabilities and production deployment remain independent."
+          },
+          {
+            "layer": "managed_bridge",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_access27"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "managed-job-reauthorization-qualified-main",
+            "scope": "Stored-job permission rechecks, denied-resume evidence/count preservation and race-safe requeue.",
+            "remaining": "Complete durable worker recovery, distributed leases, all review gates and retroactive termination of active work."
           }
         ]
       },
@@ -5619,12 +6091,16 @@
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
         "bridge_jobs",
-        "candidate_fleet"
+        "candidate_fleet",
+        "delivery_cli249",
+        "delivery_access27"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
       "deliveryObservationRefs": [
-        "modernization-qualified-main"
-      ]
+        "modernization-qualified-main",
+        "managed-job-reauthorization-qualified-main"
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-DOC-01",
@@ -5676,7 +6152,8 @@
       "implementation": {
         "codeComplete": false,
         "sourceObservationKeys": [
-          "compat_files"
+          "compat_files",
+          "delivery_access24"
         ],
         "layers": [
           {
@@ -5689,6 +6166,20 @@
             "tests": "NOT_REEXECUTED",
             "deployment": "NOT_VERIFIED",
             "accepted": false
+          },
+          {
+            "layer": "managed_bridge",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_access24"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "managed-upstream-033-qualified-main",
+            "scope": "Managed stdio compatibility, owned process-tree cleanup, bounded output tail, completed search pagination and PDF create/read.",
+            "remaining": "Deployed remediation, upstream public remote OAuth, cancellation races, all Office search, PDF modification and Docker."
           }
         ]
       },
@@ -5733,10 +6224,14 @@
       "inventoryReviewedAt": "2026-11-12T17:21:23.133206+00:00",
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
-        "compat_files"
+        "compat_files",
+        "delivery_access24"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
-      "deliveryObservationRefs": []
+      "deliveryObservationRefs": [
+        "managed-upstream-033-qualified-main"
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-DOC-02",
@@ -6226,7 +6721,8 @@
         "codeComplete": false,
         "sourceObservationKeys": [
           "compat_files",
-          "candidate_patch"
+          "candidate_patch",
+          "delivery_cli249"
         ],
         "layers": [
           {
@@ -6252,6 +6748,20 @@
             "accepted": false,
             "sourceSha": "09097ee82028ce01e069c6d555e7ab65b8add2e0",
             "sourceTree": "c4d2c52442daf652af4323827cda91b6f32cd538"
+          },
+          {
+            "layer": "standalone_cli",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_cli249"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "modernization-qualified-main",
+            "scope": "Reviewed modernization components, bounded navigation/parser/patch behavior, task isolation and native containment.",
+            "remaining": "Whole semantic/LSP/orchestration capabilities and production deployment remain independent."
           }
         ]
       },
@@ -6310,12 +6820,14 @@
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
         "compat_files",
-        "candidate_patch"
+        "candidate_patch",
+        "delivery_cli249"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
       "deliveryObservationRefs": [
         "modernization-qualified-main"
-      ]
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-DOC-05",
@@ -7830,12 +8342,13 @@
         "registrationDisposition": "EXISTING_SCOPE_EXTENDED"
       },
       "dependencies": [],
-      "lifecycleState": "DESIGNED",
+      "lifecycleState": "IMPLEMENTING",
       "parityClassification": "REQUIRES_VERIFICATION",
       "implementation": {
         "codeComplete": false,
         "sourceObservationKeys": [
-          "architecture"
+          "architecture",
+          "delivery_access28"
         ],
         "layers": [
           {
@@ -7848,6 +8361,20 @@
             "tests": "CANONICAL_ONLY_NOT_VERIFIED",
             "deployment": "CURRENT_PACKAGE_AND_EDGE_IDENTIFIED",
             "accepted": false
+          },
+          {
+            "layer": "canonical_plugin",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_access28"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "canonical-plugin-source-qualified-main",
+            "scope": "Eight exact source files, recovery guidance, metadata-only owner-authorized check, working-wrapper preservation and source/release identity. PLUGIN-02 support is guidance only.",
+            "remaining": "Canonical-only OAuth, reconnect after manager upgrade, current-chat skill activation, UI rendering, available RDC fallback, website archive sync and runtime deployment."
           }
         ]
       },
@@ -7895,10 +8422,14 @@
       "inventoryReviewedAt": "2026-11-12T17:21:23.133206+00:00",
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
-        "architecture"
+        "architecture",
+        "delivery_access28"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
-      "deliveryObservationRefs": []
+      "deliveryObservationRefs": [
+        "canonical-plugin-source-qualified-main"
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-DIST-04",
@@ -8651,7 +9182,9 @@
         "sourceObservationKeys": [
           "gateway",
           "remote_state",
-          "candidate_environment"
+          "candidate_environment",
+          "delivery_cli249",
+          "delivery_cli256"
         ],
         "layers": [
           {
@@ -8678,6 +9211,34 @@
             "accepted": false,
             "sourceSha": "09097ee82028ce01e069c6d555e7ab65b8add2e0",
             "sourceTree": "c4d2c52442daf652af4323827cda91b6f32cd538"
+          },
+          {
+            "layer": "standalone_cli",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_cli249"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "modernization-qualified-main",
+            "scope": "Reviewed modernization components, bounded navigation/parser/patch behavior, task isolation and native containment.",
+            "remaining": "Whole semantic/LSP/orchestration capabilities and production deployment remain independent."
+          },
+          {
+            "layer": "standalone_cli",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_cli256"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "remote-profiles-qualified-main",
+            "scope": "Named MTerm-origin profiles, isolated local state, credential binding, bounded inventory and owned stop.",
+            "remaining": "Generic MCP paths/provider OAuth, portal controls and two-device routing."
           }
         ]
       },
@@ -8741,7 +9302,9 @@
       "sourceSnapshotRefs": [
         "gateway",
         "remote_state",
-        "candidate_environment"
+        "candidate_environment",
+        "delivery_cli249",
+        "delivery_cli256"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
       "implementationSlices": [
@@ -8771,8 +9334,10 @@
       ],
       "deliveryObservationRefs": [
         "modernization-qualified-main",
-        "remote-profiles-corrected-candidate"
-      ]
+        "remote-profiles-corrected-candidate",
+        "remote-profiles-qualified-main"
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-PLUGIN-02",
@@ -8832,12 +9397,13 @@
         "MTR-PLUGIN-01",
         "MTR-DIST-03"
       ],
-      "lifecycleState": "DESIGNED",
+      "lifecycleState": "IMPLEMENTING",
       "parityClassification": "REQUIRES_VERIFICATION",
       "implementation": {
         "codeComplete": false,
         "sourceObservationKeys": [
-          "architecture"
+          "architecture",
+          "delivery_access28"
         ],
         "layers": [
           {
@@ -8850,6 +9416,20 @@
             "tests": "CANONICAL_ONLY_NOT_VERIFIED",
             "deployment": "CURRENT_PACKAGE_AND_EDGE_IDENTIFIED",
             "accepted": false
+          },
+          {
+            "layer": "canonical_plugin",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_access28"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "canonical-plugin-source-qualified-main",
+            "scope": "Eight exact source files, recovery guidance, metadata-only owner-authorized check, working-wrapper preservation and source/release identity. PLUGIN-02 support is guidance only.",
+            "remaining": "Canonical-only OAuth, reconnect after manager upgrade, current-chat skill activation, UI rendering, available RDC fallback, website archive sync and runtime deployment."
           }
         ]
       },
@@ -8892,10 +9472,14 @@
       "inventoryReviewedAt": "2026-11-12T17:21:23.133206+00:00",
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
-        "architecture"
+        "architecture",
+        "delivery_access28"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
-      "deliveryObservationRefs": []
+      "deliveryObservationRefs": [
+        "canonical-plugin-source-qualified-main"
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-DIAG-02",
@@ -10836,7 +11420,8 @@
       "implementation": {
         "codeComplete": false,
         "sourceObservationKeys": [
-          "remote"
+          "remote",
+          "delivery_cli256"
         ],
         "layers": [
           {
@@ -10849,6 +11434,20 @@
             "tests": "NOT_REEXECUTED",
             "deployment": "STAGING_ARTIFACT_EXISTS_SOURCE_MATCH_UNVERIFIED",
             "accepted": false
+          },
+          {
+            "layer": "standalone_cli",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_cli256"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "remote-profiles-qualified-main",
+            "scope": "Named MTerm-origin profiles, isolated local state, credential binding, bounded inventory and owned stop.",
+            "remaining": "Generic MCP paths/provider OAuth, portal controls and two-device routing."
           }
         ]
       },
@@ -10906,12 +11505,15 @@
       "inventoryReviewedAt": "2026-11-12T17:21:23.133206+00:00",
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
-        "remote"
+        "remote",
+        "delivery_cli256"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
       "deliveryObservationRefs": [
-        "remote-profiles-corrected-candidate"
-      ]
+        "remote-profiles-corrected-candidate",
+        "remote-profiles-qualified-main"
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-PROFILE-02",
@@ -10990,7 +11592,8 @@
         "codeComplete": false,
         "sourceObservationKeys": [
           "remote",
-          "gateway"
+          "gateway",
+          "delivery_cli258"
         ],
         "layers": [
           {
@@ -11004,6 +11607,20 @@
             "tests": "NOT_REEXECUTED",
             "deployment": "STAGING_ARTIFACT_EXISTS_SOURCE_MATCH_UNVERIFIED",
             "accepted": false
+          },
+          {
+            "layer": "standalone_cli",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_cli258"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "public-endpoint-inspector-qualified-main",
+            "scope": "Offline URL validation and explicit unauthenticated public HTTPS discovery; pinned verified TLS, bounded DNS/parsing, no redirects/insecure fallback, owned legacy cleanup. PROFILE-07 support is discovery only.",
+            "remaining": "Stored-profile enablement validation, authenticated health, persisted last-success data, portal controls, approved LAN mode and remote-server trust."
           }
         ]
       },
@@ -11056,10 +11673,14 @@
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
         "remote",
-        "gateway"
+        "gateway",
+        "delivery_cli258"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
-      "deliveryObservationRefs": []
+      "deliveryObservationRefs": [
+        "public-endpoint-inspector-qualified-main"
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-PROFILE-03",
@@ -11276,7 +11897,8 @@
         "codeComplete": false,
         "sourceObservationKeys": [
           "gateway",
-          "remote"
+          "remote",
+          "delivery_cli258"
         ],
         "layers": [
           {
@@ -11290,6 +11912,20 @@
             "tests": "NOT_REEXECUTED",
             "deployment": "STAGING_ARTIFACT_EXISTS_SOURCE_MATCH_UNVERIFIED",
             "accepted": false
+          },
+          {
+            "layer": "standalone_cli",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_cli258"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "public-endpoint-inspector-qualified-main",
+            "scope": "Offline URL validation and explicit unauthenticated public HTTPS discovery; pinned verified TLS, bounded DNS/parsing, no redirects/insecure fallback, owned legacy cleanup. PROFILE-07 support is discovery only.",
+            "remaining": "Stored-profile enablement validation, authenticated health, persisted last-success data, portal controls, approved LAN mode and remote-server trust."
           }
         ]
       },
@@ -11337,10 +11973,14 @@
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
         "gateway",
-        "remote"
+        "remote",
+        "delivery_cli258"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
-      "deliveryObservationRefs": []
+      "deliveryObservationRefs": [
+        "public-endpoint-inspector-qualified-main"
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-PROFILE-06",
@@ -11424,11 +12064,13 @@
       "dependencies": [
         "MTR-PROFILE-01"
       ],
-      "lifecycleState": "DESIGNED",
+      "lifecycleState": "IMPLEMENTING",
       "parityClassification": "REQUIRES_VERIFICATION",
       "implementation": {
         "codeComplete": false,
-        "sourceObservationKeys": [],
+        "sourceObservationKeys": [
+          "delivery_cli256"
+        ],
         "layers": [
           {
             "layer": "requested_target",
@@ -11438,6 +12080,20 @@
             "tests": "NOT_VERIFIED",
             "deployment": "NOT_VERIFIED",
             "accepted": false
+          },
+          {
+            "layer": "standalone_cli",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_cli256"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "remote-profiles-qualified-main",
+            "scope": "Named MTerm-origin profiles, isolated local state, credential binding, bounded inventory and owned stop.",
+            "remaining": "Generic MCP paths/provider OAuth, portal controls and two-device routing."
           }
         ]
       },
@@ -11484,11 +12140,15 @@
       "lastInventoryVerifiedAt": "2026-11-12T17:02:47.888571+00:00",
       "inventoryReviewedAt": "2026-11-12T17:21:23.133206+00:00",
       "lastVerifiedAt": null,
-      "sourceSnapshotRefs": [],
+      "sourceSnapshotRefs": [
+        "delivery_cli256"
+      ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
       "deliveryObservationRefs": [
-        "remote-profiles-corrected-candidate"
-      ]
+        "remote-profiles-corrected-candidate",
+        "remote-profiles-qualified-main"
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-PROFILE-07",
@@ -11569,11 +12229,13 @@
         "MTR-PROFILE-09",
         "MTR-CAT-02"
       ],
-      "lifecycleState": "DESIGNED",
+      "lifecycleState": "IMPLEMENTING",
       "parityClassification": "REQUIRES_VERIFICATION",
       "implementation": {
         "codeComplete": false,
-        "sourceObservationKeys": [],
+        "sourceObservationKeys": [
+          "delivery_cli258"
+        ],
         "layers": [
           {
             "layer": "requested_target",
@@ -11583,6 +12245,20 @@
             "tests": "NOT_VERIFIED",
             "deployment": "NOT_VERIFIED",
             "accepted": false
+          },
+          {
+            "layer": "standalone_cli",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_cli258"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "public-endpoint-inspector-qualified-main",
+            "scope": "Offline URL validation and explicit unauthenticated public HTTPS discovery; pinned verified TLS, bounded DNS/parsing, no redirects/insecure fallback, owned legacy cleanup. PROFILE-07 support is discovery only.",
+            "remaining": "Stored-profile enablement validation, authenticated health, persisted last-success data, portal controls, approved LAN mode and remote-server trust."
           }
         ]
       },
@@ -11627,9 +12303,14 @@
       "lastInventoryVerifiedAt": "2026-11-12T17:02:47.888571+00:00",
       "inventoryReviewedAt": "2026-11-12T17:21:23.133206+00:00",
       "lastVerifiedAt": null,
-      "sourceSnapshotRefs": [],
+      "sourceSnapshotRefs": [
+        "delivery_cli258"
+      ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
-      "deliveryObservationRefs": []
+      "deliveryObservationRefs": [
+        "public-endpoint-inspector-qualified-main"
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-PROFILE-08",
@@ -11832,7 +12513,8 @@
       "implementation": {
         "codeComplete": false,
         "sourceObservationKeys": [
-          "registry"
+          "registry",
+          "delivery_cli256"
         ],
         "layers": [
           {
@@ -11845,6 +12527,20 @@
             "tests": "NOT_REEXECUTED",
             "deployment": "STAGING_ARTIFACT_EXISTS_SOURCE_MATCH_UNVERIFIED",
             "accepted": false
+          },
+          {
+            "layer": "standalone_cli",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_cli256"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "remote-profiles-qualified-main",
+            "scope": "Named MTerm-origin profiles, isolated local state, credential binding, bounded inventory and owned stop.",
+            "remaining": "Generic MCP paths/provider OAuth, portal controls and two-device routing."
           }
         ]
       },
@@ -11892,12 +12588,15 @@
       "inventoryReviewedAt": "2026-11-12T17:21:23.133206+00:00",
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
-        "registry"
+        "registry",
+        "delivery_cli256"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
       "deliveryObservationRefs": [
-        "remote-profiles-corrected-candidate"
-      ]
+        "remote-profiles-corrected-candidate",
+        "remote-profiles-qualified-main"
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-PROFILE-10",
@@ -11986,7 +12685,8 @@
         "codeComplete": false,
         "sourceObservationKeys": [
           "remote_state",
-          "auth"
+          "auth",
+          "delivery_cli256"
         ],
         "layers": [
           {
@@ -12000,6 +12700,20 @@
             "tests": "NOT_REEXECUTED",
             "deployment": "STAGING_ARTIFACT_EXISTS_SOURCE_MATCH_UNVERIFIED",
             "accepted": false
+          },
+          {
+            "layer": "standalone_cli",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_cli256"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "remote-profiles-qualified-main",
+            "scope": "Named MTerm-origin profiles, isolated local state, credential binding, bounded inventory and owned stop.",
+            "remaining": "Generic MCP paths/provider OAuth, portal controls and two-device routing."
           }
         ]
       },
@@ -12050,7 +12764,8 @@
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
         "remote_state",
-        "auth"
+        "auth",
+        "delivery_cli256"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
       "conditionalDependencies": [
@@ -12061,8 +12776,10 @@
         }
       ],
       "deliveryObservationRefs": [
-        "remote-profiles-corrected-candidate"
-      ]
+        "remote-profiles-corrected-candidate",
+        "remote-profiles-qualified-main"
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-PROFILE-11",
@@ -13101,7 +13818,8 @@
       "implementation": {
         "codeComplete": false,
         "sourceObservationKeys": [
-          "candidate_map"
+          "candidate_map",
+          "delivery_cli249"
         ],
         "layers": [
           {
@@ -13116,6 +13834,20 @@
             "accepted": false,
             "sourceSha": "09097ee82028ce01e069c6d555e7ab65b8add2e0",
             "sourceTree": "c4d2c52442daf652af4323827cda91b6f32cd538"
+          },
+          {
+            "layer": "standalone_cli",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_cli249"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "modernization-qualified-main",
+            "scope": "Reviewed modernization components, bounded navigation/parser/patch behavior, task isolation and native containment.",
+            "remaining": "Whole semantic/LSP/orchestration capabilities and production deployment remain independent."
           }
         ]
       },
@@ -13171,12 +13903,14 @@
       "inventoryReviewedAt": "2026-11-12T17:21:23.133206+00:00",
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
-        "candidate_map"
+        "candidate_map",
+        "delivery_cli249"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
       "deliveryObservationRefs": [
         "modernization-qualified-main"
-      ]
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-ENG-09",
@@ -13228,7 +13962,8 @@
       "implementation": {
         "codeComplete": false,
         "sourceObservationKeys": [
-          "candidate_syntax"
+          "candidate_syntax",
+          "delivery_cli249"
         ],
         "layers": [
           {
@@ -13243,6 +13978,20 @@
             "accepted": false,
             "sourceSha": "09097ee82028ce01e069c6d555e7ab65b8add2e0",
             "sourceTree": "c4d2c52442daf652af4323827cda91b6f32cd538"
+          },
+          {
+            "layer": "standalone_cli",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_cli249"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "modernization-qualified-main",
+            "scope": "Reviewed modernization components, bounded navigation/parser/patch behavior, task isolation and native containment.",
+            "remaining": "Whole semantic/LSP/orchestration capabilities and production deployment remain independent."
           }
         ]
       },
@@ -13298,12 +14047,14 @@
       "inventoryReviewedAt": "2026-11-12T17:21:23.133206+00:00",
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
-        "candidate_syntax"
+        "candidate_syntax",
+        "delivery_cli249"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
       "deliveryObservationRefs": [
         "modernization-qualified-main"
-      ]
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-ENG-10",
@@ -13362,7 +14113,8 @@
         "codeComplete": false,
         "sourceObservationKeys": [
           "candidate_lsp",
-          "bridge_code"
+          "bridge_code",
+          "delivery_cli249"
         ],
         "layers": [
           {
@@ -13388,6 +14140,20 @@
             "tests": "BEHAVIOR_NOT_VERIFIED_BY_THIS_INVENTORY",
             "deployment": "MATCHED_COMPONENTS_PRESENT",
             "accepted": false
+          },
+          {
+            "layer": "standalone_cli",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_cli249"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "modernization-qualified-main",
+            "scope": "Reviewed modernization components, bounded navigation/parser/patch behavior, task isolation and native containment.",
+            "remaining": "Whole semantic/LSP/orchestration capabilities and production deployment remain independent."
           }
         ]
       },
@@ -13445,12 +14211,14 @@
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
         "candidate_lsp",
-        "bridge_code"
+        "bridge_code",
+        "delivery_cli249"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
       "deliveryObservationRefs": [
         "modernization-qualified-main"
-      ]
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-ENG-11",
@@ -13504,7 +14272,8 @@
         "codeComplete": false,
         "sourceObservationKeys": [
           "candidate_lsp",
-          "bridge_code"
+          "bridge_code",
+          "delivery_cli249"
         ],
         "layers": [
           {
@@ -13530,6 +14299,20 @@
             "tests": "BEHAVIOR_NOT_VERIFIED_BY_THIS_INVENTORY",
             "deployment": "MATCHED_COMPONENTS_PRESENT",
             "accepted": false
+          },
+          {
+            "layer": "standalone_cli",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_cli249"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "modernization-qualified-main",
+            "scope": "Reviewed modernization components, bounded navigation/parser/patch behavior, task isolation and native containment.",
+            "remaining": "Whole semantic/LSP/orchestration capabilities and production deployment remain independent."
           }
         ]
       },
@@ -13586,12 +14369,14 @@
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
         "candidate_lsp",
-        "bridge_code"
+        "bridge_code",
+        "delivery_cli249"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
       "deliveryObservationRefs": [
         "modernization-qualified-main"
-      ]
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-ENG-12",
@@ -13650,7 +14435,8 @@
       "implementation": {
         "codeComplete": false,
         "sourceObservationKeys": [
-          "candidate_patch"
+          "candidate_patch",
+          "delivery_cli249"
         ],
         "layers": [
           {
@@ -13665,6 +14451,20 @@
             "accepted": false,
             "sourceSha": "09097ee82028ce01e069c6d555e7ab65b8add2e0",
             "sourceTree": "c4d2c52442daf652af4323827cda91b6f32cd538"
+          },
+          {
+            "layer": "standalone_cli",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_cli249"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "modernization-qualified-main",
+            "scope": "Reviewed modernization components, bounded navigation/parser/patch behavior, task isolation and native containment.",
+            "remaining": "Whole semantic/LSP/orchestration capabilities and production deployment remain independent."
           }
         ]
       },
@@ -13720,12 +14520,14 @@
       "inventoryReviewedAt": "2026-11-12T17:21:23.133206+00:00",
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
-        "candidate_patch"
+        "candidate_patch",
+        "delivery_cli249"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
       "deliveryObservationRefs": [
         "modernization-qualified-main"
-      ]
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-ENG-13",
@@ -14143,7 +14945,8 @@
         "codeComplete": false,
         "sourceObservationKeys": [
           "candidate_ai",
-          "bridge_code"
+          "bridge_code",
+          "delivery_cli249"
         ],
         "layers": [
           {
@@ -14169,6 +14972,20 @@
             "tests": "BEHAVIOR_NOT_VERIFIED_BY_THIS_INVENTORY",
             "deployment": "MATCHED_COMPONENTS_PRESENT",
             "accepted": false
+          },
+          {
+            "layer": "standalone_cli",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_cli249"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "modernization-qualified-main",
+            "scope": "Reviewed modernization components, bounded navigation/parser/patch behavior, task isolation and native containment.",
+            "remaining": "Whole semantic/LSP/orchestration capabilities and production deployment remain independent."
           }
         ]
       },
@@ -14225,12 +15042,14 @@
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
         "candidate_ai",
-        "bridge_code"
+        "bridge_code",
+        "delivery_cli249"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
       "deliveryObservationRefs": [
         "modernization-qualified-main"
-      ]
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-ENG-16",
@@ -14429,7 +15248,8 @@
       "implementation": {
         "codeComplete": false,
         "sourceObservationKeys": [
-          "candidate_quality"
+          "candidate_quality",
+          "delivery_cli249"
         ],
         "layers": [
           {
@@ -14444,6 +15264,20 @@
             "accepted": false,
             "sourceSha": "09097ee82028ce01e069c6d555e7ab65b8add2e0",
             "sourceTree": "c4d2c52442daf652af4323827cda91b6f32cd538"
+          },
+          {
+            "layer": "standalone_cli",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_cli249"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "modernization-qualified-main",
+            "scope": "Reviewed modernization components, bounded navigation/parser/patch behavior, task isolation and native containment.",
+            "remaining": "Whole semantic/LSP/orchestration capabilities and production deployment remain independent."
           }
         ]
       },
@@ -14499,12 +15333,14 @@
       "inventoryReviewedAt": "2026-11-12T17:21:23.133206+00:00",
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
-        "candidate_quality"
+        "candidate_quality",
+        "delivery_cli249"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
       "deliveryObservationRefs": [
         "modernization-qualified-main"
-      ]
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-MEM-02",
@@ -15010,12 +15846,14 @@
         "registrationDisposition": "EXISTING_SCOPE_EXTENDED"
       },
       "dependencies": [],
-      "lifecycleState": "DESIGNED",
+      "lifecycleState": "IMPLEMENTING",
       "parityClassification": "REQUIRES_VERIFICATION",
       "implementation": {
         "codeComplete": false,
         "sourceObservationKeys": [
-          "architecture"
+          "architecture",
+          "delivery_access25",
+          "delivery_access28"
         ],
         "layers": [
           {
@@ -15028,6 +15866,34 @@
             "tests": "CANONICAL_ONLY_NOT_VERIFIED",
             "deployment": "CURRENT_PACKAGE_AND_EDGE_IDENTIFIED",
             "accepted": false
+          },
+          {
+            "layer": "managed_bridge",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_access25"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "engineering-descriptions-qualified-main",
+            "scope": "All28 engineering-tool descriptions with unchanged names/order/schemas/annotations; multiline/Unicode/length/paused-discovery tests.",
+            "remaining": "Production rollout and actual ChatGPT desktop/narrow rendering."
+          },
+          {
+            "layer": "canonical_plugin",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_access28"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "canonical-plugin-source-qualified-main",
+            "scope": "Eight exact source files, recovery guidance, metadata-only owner-authorized check, working-wrapper preservation and source/release identity. PLUGIN-02 support is guidance only.",
+            "remaining": "Canonical-only OAuth, reconnect after manager upgrade, current-chat skill activation, UI rendering, available RDC fallback, website archive sync and runtime deployment."
           }
         ]
       },
@@ -15069,10 +15935,16 @@
       "inventoryReviewedAt": "2026-11-12T17:21:23.133206+00:00",
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
-        "architecture"
+        "architecture",
+        "delivery_access25",
+        "delivery_access28"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
-      "deliveryObservationRefs": []
+      "deliveryObservationRefs": [
+        "engineering-descriptions-qualified-main",
+        "canonical-plugin-source-qualified-main"
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-SKILL-03",
@@ -15555,12 +16427,13 @@
         "registrationDisposition": "EXISTING_SCOPE_EXTENDED"
       },
       "dependencies": [],
-      "lifecycleState": "DESIGNED",
+      "lifecycleState": "IMPLEMENTING",
       "parityClassification": "REQUIRES_VERIFICATION",
       "implementation": {
         "codeComplete": false,
         "sourceObservationKeys": [
-          "architecture"
+          "architecture",
+          "delivery_access28"
         ],
         "layers": [
           {
@@ -15573,6 +16446,20 @@
             "tests": "CANONICAL_ONLY_NOT_VERIFIED",
             "deployment": "CURRENT_PACKAGE_AND_EDGE_IDENTIFIED",
             "accepted": false
+          },
+          {
+            "layer": "canonical_plugin",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_access28"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "canonical-plugin-source-qualified-main",
+            "scope": "Eight exact source files, recovery guidance, metadata-only owner-authorized check, working-wrapper preservation and source/release identity. PLUGIN-02 support is guidance only.",
+            "remaining": "Canonical-only OAuth, reconnect after manager upgrade, current-chat skill activation, UI rendering, available RDC fallback, website archive sync and runtime deployment."
           }
         ]
       },
@@ -15615,10 +16502,14 @@
       "inventoryReviewedAt": "2026-11-12T17:21:23.133206+00:00",
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
-        "architecture"
+        "architecture",
+        "delivery_access28"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
-      "deliveryObservationRefs": []
+      "deliveryObservationRefs": [
+        "canonical-plugin-source-qualified-main"
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-SKILL-08",
@@ -15796,7 +16687,8 @@
       "implementation": {
         "codeComplete": false,
         "sourceObservationKeys": [
-          "candidate_fleet"
+          "candidate_fleet",
+          "delivery_cli249"
         ],
         "layers": [
           {
@@ -15811,6 +16703,20 @@
             "accepted": false,
             "sourceSha": "09097ee82028ce01e069c6d555e7ab65b8add2e0",
             "sourceTree": "c4d2c52442daf652af4323827cda91b6f32cd538"
+          },
+          {
+            "layer": "standalone_cli",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_cli249"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "modernization-qualified-main",
+            "scope": "Reviewed modernization components, bounded navigation/parser/patch behavior, task isolation and native containment.",
+            "remaining": "Whole semantic/LSP/orchestration capabilities and production deployment remain independent."
           }
         ]
       },
@@ -15865,12 +16771,14 @@
       "inventoryReviewedAt": "2026-11-12T17:21:23.133206+00:00",
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
-        "candidate_fleet"
+        "candidate_fleet",
+        "delivery_cli249"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
       "deliveryObservationRefs": [
         "modernization-qualified-main"
-      ]
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-ORCH-02",
@@ -15935,7 +16843,8 @@
       "implementation": {
         "codeComplete": false,
         "sourceObservationKeys": [
-          "candidate_fleet"
+          "candidate_fleet",
+          "delivery_cli249"
         ],
         "layers": [
           {
@@ -15950,6 +16859,20 @@
             "accepted": false,
             "sourceSha": "09097ee82028ce01e069c6d555e7ab65b8add2e0",
             "sourceTree": "c4d2c52442daf652af4323827cda91b6f32cd538"
+          },
+          {
+            "layer": "standalone_cli",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_cli249"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "modernization-qualified-main",
+            "scope": "Reviewed modernization components, bounded navigation/parser/patch behavior, task isolation and native containment.",
+            "remaining": "Whole semantic/LSP/orchestration capabilities and production deployment remain independent."
           }
         ]
       },
@@ -16004,12 +16927,14 @@
       "inventoryReviewedAt": "2026-11-12T17:21:23.133206+00:00",
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
-        "candidate_fleet"
+        "candidate_fleet",
+        "delivery_cli249"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
       "deliveryObservationRefs": [
         "modernization-qualified-main"
-      ]
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-ORCH-03",
@@ -16200,7 +17125,8 @@
         "sourceObservationKeys": [
           "budgets",
           "bridge_jobs",
-          "candidate_fleet"
+          "candidate_fleet",
+          "delivery_cli249"
         ],
         "layers": [
           {
@@ -16237,6 +17163,20 @@
             "tests": "BEHAVIOR_NOT_VERIFIED_BY_THIS_INVENTORY",
             "deployment": "MATCHED_COMPONENTS_PRESENT",
             "accepted": false
+          },
+          {
+            "layer": "standalone_cli",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_cli249"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "modernization-qualified-main",
+            "scope": "Reviewed modernization components, bounded navigation/parser/patch behavior, task isolation and native containment.",
+            "remaining": "Whole semantic/LSP/orchestration capabilities and production deployment remain independent."
           }
         ]
       },
@@ -16295,12 +17235,14 @@
       "sourceSnapshotRefs": [
         "budgets",
         "bridge_jobs",
-        "candidate_fleet"
+        "candidate_fleet",
+        "delivery_cli249"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
       "deliveryObservationRefs": [
         "modernization-qualified-main"
-      ]
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-ORCH-05",
@@ -16369,7 +17311,9 @@
       "implementation": {
         "codeComplete": false,
         "sourceObservationKeys": [
-          "candidate_fleet"
+          "candidate_fleet",
+          "delivery_cli249",
+          "delivery_access27"
         ],
         "layers": [
           {
@@ -16384,6 +17328,34 @@
             "accepted": false,
             "sourceSha": "09097ee82028ce01e069c6d555e7ab65b8add2e0",
             "sourceTree": "c4d2c52442daf652af4323827cda91b6f32cd538"
+          },
+          {
+            "layer": "standalone_cli",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_cli249"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "modernization-qualified-main",
+            "scope": "Reviewed modernization components, bounded navigation/parser/patch behavior, task isolation and native containment.",
+            "remaining": "Whole semantic/LSP/orchestration capabilities and production deployment remain independent."
+          },
+          {
+            "layer": "managed_bridge",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_access27"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "managed-job-reauthorization-qualified-main",
+            "scope": "Stored-job permission rechecks, denied-resume evidence/count preservation and race-safe requeue.",
+            "remaining": "Complete durable worker recovery, distributed leases, all review gates and retroactive termination of active work."
           }
         ]
       },
@@ -16437,12 +17409,16 @@
       "inventoryReviewedAt": "2026-11-12T17:21:23.133206+00:00",
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
-        "candidate_fleet"
+        "candidate_fleet",
+        "delivery_cli249",
+        "delivery_access27"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
       "deliveryObservationRefs": [
-        "modernization-qualified-main"
-      ]
+        "modernization-qualified-main",
+        "managed-job-reauthorization-qualified-main"
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-ORCH-06",
@@ -16496,7 +17472,8 @@
         "codeComplete": false,
         "sourceObservationKeys": [
           "bridge_jobs",
-          "candidate_fleet"
+          "candidate_fleet",
+          "delivery_cli249"
         ],
         "layers": [
           {
@@ -16522,6 +17499,20 @@
             "tests": "BEHAVIOR_NOT_VERIFIED_BY_THIS_INVENTORY",
             "deployment": "MATCHED_COMPONENTS_PRESENT",
             "accepted": false
+          },
+          {
+            "layer": "standalone_cli",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_cli249"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "modernization-qualified-main",
+            "scope": "Reviewed modernization components, bounded navigation/parser/patch behavior, task isolation and native containment.",
+            "remaining": "Whole semantic/LSP/orchestration capabilities and production deployment remain independent."
           }
         ]
       },
@@ -16576,12 +17567,14 @@
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
         "bridge_jobs",
-        "candidate_fleet"
+        "candidate_fleet",
+        "delivery_cli249"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
       "deliveryObservationRefs": [
         "modernization-qualified-main"
-      ]
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-ORCH-07",
@@ -16649,7 +17642,8 @@
         "codeComplete": false,
         "sourceObservationKeys": [
           "budgets",
-          "candidate_ai"
+          "candidate_ai",
+          "delivery_cli249"
         ],
         "layers": [
           {
@@ -16675,6 +17669,20 @@
             "accepted": false,
             "sourceSha": "09097ee82028ce01e069c6d555e7ab65b8add2e0",
             "sourceTree": "c4d2c52442daf652af4323827cda91b6f32cd538"
+          },
+          {
+            "layer": "standalone_cli",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_cli249"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "modernization-qualified-main",
+            "scope": "Reviewed modernization components, bounded navigation/parser/patch behavior, task isolation and native containment.",
+            "remaining": "Whole semantic/LSP/orchestration capabilities and production deployment remain independent."
           }
         ]
       },
@@ -16732,12 +17740,14 @@
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
         "budgets",
-        "candidate_ai"
+        "candidate_ai",
+        "delivery_cli249"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
       "deliveryObservationRefs": [
         "modernization-qualified-main"
-      ]
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-METRIC-01",
@@ -16785,7 +17795,7 @@
           {
             "number": 255,
             "url": "https://github.com/MulattoTech/MTerm-CLI/issues/255",
-            "state": "open",
+            "state": "closed",
             "relation": "acceptance_owner"
           }
         ],
@@ -16801,7 +17811,8 @@
       "implementation": {
         "codeComplete": false,
         "sourceObservationKeys": [
-          "roadmap"
+          "roadmap",
+          "delivery_cli257"
         ],
         "layers": [
           {
@@ -16814,6 +17825,20 @@
             "tests": "NOT_REEXECUTED",
             "deployment": "NOT_VERIFIED",
             "accepted": false
+          },
+          {
+            "layer": "standalone_cli",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_cli257"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "capability-register-qualified-main",
+            "scope": "143 rows, mission/catalog crosswalk, distinct evidence-based axes, validation and generated report.",
+            "remaining": "Other requirements are not completed by the register itself; no portal deployment or acceptance inference."
           }
         ]
       },
@@ -16836,14 +17861,27 @@
       "acceptance": {
         "status": "NOT_ACCEPTED",
         "criteria": [
-          "Deliver and verify: Meaningful work-progress measurement"
+          "Machine-readable mission rows cover every requested feature and map to existing CLI/DCP/WEB/AUG issues.",
+          "Preserve the 300-item seed and its frozen weights; separate inventory coverage, partial implementation, code-complete, tested, merged, deployed and accepted counts.",
+          "Validate IDs, references, evidence/version/layer bindings and dependencies; stale evidence cannot silently award current acceptance.",
+          "Readable dashboard/report derives metrics from evidence and clearly separates overlapping catalogs and unknown/unverified states."
         ],
         "evidence": [],
         "trackingIssue": 255,
         "trackingUrl": "https://github.com/MulattoTech/MTerm-CLI/issues/255",
         "scopeRule": "Acceptance applies to this complete requirement; linked issue creation, addenda, closure or an implemented sub-slice alone awards no acceptance.",
         "lastVerifiedAt": null,
-        "dependsOnRequirementIds": []
+        "dependsOnRequirementIds": [],
+        "criteriaHistory": [
+          {
+            "criteria": [
+              "Deliver and verify: Meaningful work-progress measurement"
+            ],
+            "supersededAt": "2026-11-12T22:27:25.714534+00:00",
+            "sourceIssue": "https://github.com/MulattoTech/MTerm-CLI/issues/255",
+            "reason": "Clarification to the existing acceptance-owner contract; no scope reduction. Original mission wording is retained here."
+          }
+        ]
       },
       "upstreamRequirementRefs": [],
       "engineeringValue": "high",
@@ -16858,10 +17896,14 @@
       "inventoryReviewedAt": "2026-11-12T17:21:23.133206+00:00",
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
-        "roadmap"
+        "roadmap",
+        "delivery_cli257"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
-      "deliveryObservationRefs": []
+      "deliveryObservationRefs": [
+        "capability-register-qualified-main"
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-ORCH-08",
@@ -16925,7 +17967,8 @@
       "implementation": {
         "codeComplete": false,
         "sourceObservationKeys": [
-          "policy"
+          "policy",
+          "delivery_access27"
         ],
         "layers": [
           {
@@ -16938,6 +17981,20 @@
             "tests": "NOT_REEXECUTED",
             "deployment": "NOT_VERIFIED",
             "accepted": false
+          },
+          {
+            "layer": "managed_bridge",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_access27"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "managed-job-reauthorization-qualified-main",
+            "scope": "Stored-job permission rechecks, denied-resume evidence/count preservation and race-safe requeue.",
+            "remaining": "Complete durable worker recovery, distributed leases, all review gates and retroactive termination of active work."
           }
         ]
       },
@@ -16980,10 +18037,14 @@
       "inventoryReviewedAt": "2026-11-12T17:21:23.133206+00:00",
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
-        "policy"
+        "policy",
+        "delivery_access27"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
-      "deliveryObservationRefs": []
+      "deliveryObservationRefs": [
+        "managed-job-reauthorization-qualified-main"
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-ORCH-09",
@@ -18566,12 +19627,13 @@
         "registrationDisposition": "EXISTING_SCOPE_EXTENDED"
       },
       "dependencies": [],
-      "lifecycleState": "DESIGNED",
+      "lifecycleState": "IMPLEMENTING",
       "parityClassification": "REQUIRES_VERIFICATION",
       "implementation": {
         "codeComplete": false,
         "sourceObservationKeys": [
-          "architecture"
+          "architecture",
+          "delivery_access28"
         ],
         "layers": [
           {
@@ -18584,6 +19646,20 @@
             "tests": "CANONICAL_ONLY_NOT_VERIFIED",
             "deployment": "CURRENT_PACKAGE_AND_EDGE_IDENTIFIED",
             "accepted": false
+          },
+          {
+            "layer": "canonical_plugin",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_access28"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "canonical-plugin-source-qualified-main",
+            "scope": "Eight exact source files, recovery guidance, metadata-only owner-authorized check, working-wrapper preservation and source/release identity. PLUGIN-02 support is guidance only.",
+            "remaining": "Canonical-only OAuth, reconnect after manager upgrade, current-chat skill activation, UI rendering, available RDC fallback, website archive sync and runtime deployment."
           }
         ]
       },
@@ -18624,10 +19700,14 @@
       "inventoryReviewedAt": "2026-11-12T17:21:23.133206+00:00",
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
-        "architecture"
+        "architecture",
+        "delivery_access28"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
-      "deliveryObservationRefs": []
+      "deliveryObservationRefs": [
+        "canonical-plugin-source-qualified-main"
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-CLIENT-05",
@@ -19017,7 +20097,8 @@
       "implementation": {
         "codeComplete": false,
         "sourceObservationKeys": [
-          "candidate_ai"
+          "candidate_ai",
+          "delivery_cli249"
         ],
         "layers": [
           {
@@ -19032,6 +20113,20 @@
             "accepted": false,
             "sourceSha": "09097ee82028ce01e069c6d555e7ab65b8add2e0",
             "sourceTree": "c4d2c52442daf652af4323827cda91b6f32cd538"
+          },
+          {
+            "layer": "standalone_cli",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_cli249"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "modernization-qualified-main",
+            "scope": "Reviewed modernization components, bounded navigation/parser/patch behavior, task isolation and native containment.",
+            "remaining": "Whole semantic/LSP/orchestration capabilities and production deployment remain independent."
           }
         ]
       },
@@ -19087,12 +20182,14 @@
       "inventoryReviewedAt": "2026-11-12T17:21:23.133206+00:00",
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
-        "candidate_ai"
+        "candidate_ai",
+        "delivery_cli249"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
       "deliveryObservationRefs": [
         "modernization-qualified-main"
-      ]
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     },
     {
       "id": "MTR-CLIENT-09",
@@ -20193,7 +21290,8 @@
         "codeComplete": false,
         "sourceObservationKeys": [
           "registry",
-          "remote"
+          "remote",
+          "delivery_cli259"
         ],
         "layers": [
           {
@@ -20207,6 +21305,20 @@
             "tests": "NOT_REEXECUTED",
             "deployment": "STAGING_ARTIFACT_EXISTS_SOURCE_MATCH_UNVERIFIED",
             "accepted": false
+          },
+          {
+            "layer": "standalone_staging_gateway",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_cli259"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "device-observations-qualified-main",
+            "scope": "Authenticated poll receipt, timestamped historical capacity offers, accepted result history and explicit unknown executor health on owner-scoped device views. Recheck selected-device freshness after asynchronous admission reads and before the first admission write. Safe dashboard text labels preserve wire/version and explicit targeting compatibility.",
+            "remaining": "Actual executor health/version telemetry, real Workers storage/crash qualification, live browser/two-device acceptance, profile defaults and confirmation workflows, source deployment and whole-requirement acceptance remain unverified."
           }
         ]
       },
@@ -20253,10 +21365,14 @@
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
         "registry",
-        "remote"
+        "remote",
+        "delivery_cli259"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
-      "deliveryObservationRefs": []
+      "deliveryObservationRefs": [
+        "device-observations-qualified-main"
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:22:36.707532+00:00"
     },
     {
       "id": "MTR-OBS-06",
@@ -20916,12 +22032,13 @@
       "dependencies": [
         "MTR-PLUGIN-03"
       ],
-      "lifecycleState": "DESIGNED",
+      "lifecycleState": "IMPLEMENTING",
       "parityClassification": "REQUIRES_VERIFICATION",
       "implementation": {
         "codeComplete": false,
         "sourceObservationKeys": [
-          "architecture"
+          "architecture",
+          "delivery_access28"
         ],
         "layers": [
           {
@@ -20934,6 +22051,20 @@
             "tests": "CANONICAL_ONLY_NOT_VERIFIED",
             "deployment": "CURRENT_PACKAGE_AND_EDGE_IDENTIFIED",
             "accepted": false
+          },
+          {
+            "layer": "canonical_plugin",
+            "implementation": "QUALIFIED_COMPONENT_SOURCE",
+            "merge": "QUALIFIED_COMPONENT_MERGED",
+            "sourceEvidence": [
+              "delivery_access28"
+            ],
+            "tests": "EXACT_CANDIDATE_AND_MAIN_CHECKS_PASSED_FOR_COMPONENT",
+            "deployment": "NOT_VERIFIED",
+            "accepted": false,
+            "deliveryRef": "canonical-plugin-source-qualified-main",
+            "scope": "Eight exact source files, recovery guidance, metadata-only owner-authorized check, working-wrapper preservation and source/release identity. PLUGIN-02 support is guidance only.",
+            "remaining": "Canonical-only OAuth, reconnect after manager upgrade, current-chat skill activation, UI rendering, available RDC fallback, website archive sync and runtime deployment."
           }
         ]
       },
@@ -20978,10 +22109,14 @@
       "inventoryReviewedAt": "2026-11-12T17:21:23.133206+00:00",
       "lastVerifiedAt": null,
       "sourceSnapshotRefs": [
-        "architecture"
+        "architecture",
+        "delivery_access28"
       ],
       "sourceSemantics": "Resolve sourceSnapshotRefs to immutable component/layer observations; none is whole-requirement behavior or current deployment proof.",
-      "deliveryObservationRefs": []
+      "deliveryObservationRefs": [
+        "canonical-plugin-source-qualified-main"
+      ],
+      "componentAccountingReviewedAt": "2026-11-12T22:09:14.100364+00:00"
     }
   ],
   "runObligations": [
@@ -26988,15 +28123,40 @@
     {
       "id": "modernization-qualified-main",
       "kind": "QUALIFIED_PARTIAL_COMPONENTS",
+      "repository": "MulattoTech/MTerm-CLI",
       "pullRequest": 249,
       "candidateSha": "09097ee82028ce01e069c6d555e7ab65b8add2e0",
       "mainSha": "83a97daed6ef92b69e681b6b68f982f5d4266a51",
       "tree": "c4d2c52442daf652af4323827cda91b6f32cd538",
-      "observedAt": "2026-11-12T17:47:02.776Z",
+      "observedAt": "2026-11-12T22:09:14.100364+00:00",
       "layer": "standalone_cli",
       "candidateChecksPassed": 6,
       "mainChecksPassed": 6,
-      "evidencePath": "docs/engineering-runs/evidence/modernization-main-qualification.json",
+      "evidencePath": "docs/engineering-runs/evidence/delivery-cli249.json",
+      "sourceEvidenceKey": "delivery_cli249",
+      "requirementIds": [
+        "MTR-EXEC-02",
+        "MTR-FILE-02",
+        "MTR-JOBS-01",
+        "MTR-FILE-05",
+        "MTR-PROFILE-04",
+        "MTR-ENG-08",
+        "MTR-ENG-09",
+        "MTR-ENG-10",
+        "MTR-ENG-11",
+        "MTR-ENG-12",
+        "MTR-ENG-15",
+        "MTR-ENG-17",
+        "MTR-ORCH-01",
+        "MTR-ORCH-02",
+        "MTR-ORCH-04",
+        "MTR-ORCH-05",
+        "MTR-ORCH-06",
+        "MTR-ORCH-07",
+        "MTR-CLIENT-08"
+      ],
+      "scope": "Reviewed modernization components, bounded navigation/parser/patch behavior, task isolation and native containment.",
+      "remainingScope": "Whole semantic/LSP/orchestration capabilities and production deployment remain independent.",
       "deployed": false,
       "wholeRequirementAcceptance": false
     },
@@ -27015,7 +28175,8 @@
       "deployed": false,
       "wholeRequirementAcceptance": false,
       "evidencePath": "docs/engineering-runs/evidence/remote-profile-final-focused.tap",
-      "supersededBy": "remote-profiles-corrected-candidate"
+      "supersededBy": "remote-profiles-corrected-candidate",
+      "repository": "MulattoTech/MTerm-CLI"
     },
     {
       "id": "remote-profiles-corrected-candidate",
@@ -27035,7 +28196,203 @@
       "localInstalledProfileTestsPassed": 24,
       "localFullPackageGate": "FAIL_27_UNIX_SOCKET_EPERM_IN_ENVIRONMENT",
       "mainSha": "4fb205088e77731e42da5adaca6bf167f8b75194",
-      "candidateChecksPassed": 6
+      "candidateChecksPassed": 6,
+      "repository": "MulattoTech/MTerm-CLI",
+      "supersededBy": "remote-profiles-qualified-main"
+    },
+    {
+      "id": "remote-profiles-qualified-main",
+      "kind": "QUALIFIED_PARTIAL_COMPONENTS",
+      "repository": "MulattoTech/MTerm-CLI",
+      "pullRequest": 256,
+      "candidateSha": "d412b7748ad6747f0b7fbc670e6ec252b74ebdf5",
+      "mainSha": "4fb205088e77731e42da5adaca6bf167f8b75194",
+      "tree": "a41dd2124f4f9106ae86fbd6c42022bf44a9f9c3",
+      "observedAt": "2026-11-12T22:09:14.100364+00:00",
+      "layer": "standalone_cli",
+      "candidateChecksPassed": 6,
+      "mainChecksPassed": 6,
+      "evidencePath": "docs/engineering-runs/evidence/delivery-cli256.json",
+      "sourceEvidenceKey": "delivery_cli256",
+      "requirementIds": [
+        "MTR-PROFILE-04",
+        "MTR-PROFILE-01",
+        "MTR-PROFILE-06",
+        "MTR-PROFILE-09",
+        "MTR-PROFILE-10"
+      ],
+      "scope": "Named MTerm-origin profiles, isolated local state, credential binding, bounded inventory and owned stop.",
+      "remainingScope": "Generic MCP paths/provider OAuth, portal controls and two-device routing.",
+      "deployed": false,
+      "wholeRequirementAcceptance": false
+    },
+    {
+      "id": "capability-register-qualified-main",
+      "kind": "QUALIFIED_PARTIAL_COMPONENTS",
+      "repository": "MulattoTech/MTerm-CLI",
+      "pullRequest": 257,
+      "candidateSha": "b0348d901b27975789d8764397a103204e08aaf0",
+      "mainSha": "f447c0baac3f36470d6fd96360928c6a2a192c4b",
+      "tree": "cbb3b682c4bfdf472bdfbc1ebfce5cd2e71174fc",
+      "observedAt": "2026-11-12T22:09:14.100364+00:00",
+      "layer": "standalone_cli",
+      "candidateChecksPassed": 6,
+      "mainChecksPassed": 6,
+      "evidencePath": "docs/engineering-runs/evidence/delivery-cli257.json",
+      "sourceEvidenceKey": "delivery_cli257",
+      "requirementIds": [
+        "MTR-METRIC-01"
+      ],
+      "scope": "143 rows, mission/catalog crosswalk, distinct evidence-based axes, validation and generated report.",
+      "remainingScope": "Other requirements are not completed by the register itself; no portal deployment or acceptance inference.",
+      "deployed": false,
+      "wholeRequirementAcceptance": false
+    },
+    {
+      "id": "public-endpoint-inspector-qualified-main",
+      "kind": "QUALIFIED_PARTIAL_COMPONENTS",
+      "repository": "MulattoTech/MTerm-CLI",
+      "pullRequest": 258,
+      "candidateSha": "01c0fc0dc236fbb09d0400f9119df9147c6580f7",
+      "mainSha": "da03dc5255976b1524b22796fffadb01e50a5149",
+      "tree": "2ee6ecc09206ca3f8e64edc34635b3820383e00b",
+      "observedAt": "2026-11-12T22:09:14.100364+00:00",
+      "layer": "standalone_cli",
+      "candidateChecksPassed": 6,
+      "mainChecksPassed": 6,
+      "evidencePath": "docs/engineering-runs/evidence/delivery-cli258.json",
+      "sourceEvidenceKey": "delivery_cli258",
+      "requirementIds": [
+        "MTR-PROFILE-02",
+        "MTR-PROFILE-05",
+        "MTR-PROFILE-07"
+      ],
+      "scope": "Offline URL validation and explicit unauthenticated public HTTPS discovery; pinned verified TLS, bounded DNS/parsing, no redirects/insecure fallback, owned legacy cleanup. PROFILE-07 support is discovery only.",
+      "remainingScope": "Stored-profile enablement validation, authenticated health, persisted last-success data, portal controls, approved LAN mode and remote-server trust.",
+      "deployed": false,
+      "wholeRequirementAcceptance": false
+    },
+    {
+      "id": "managed-upstream-033-qualified-main",
+      "kind": "QUALIFIED_PARTIAL_COMPONENTS",
+      "repository": "MulattoTech/MTechLabs-Access",
+      "pullRequest": 24,
+      "candidateSha": "4bd2b6bc5aeeec17e4b076eec4947081d2363c1d",
+      "mainSha": "ef8dce0e1863e63958c4421e8506c9bdb5e881e0",
+      "tree": "fe52f5d5720c6a34ee6bbec387b1dc098ea8f2d3",
+      "observedAt": "2026-11-12T22:09:14.100364+00:00",
+      "layer": "managed_bridge",
+      "candidateChecksPassed": 4,
+      "mainChecksPassed": 4,
+      "evidencePath": "docs/engineering-runs/evidence/delivery-access24.json",
+      "sourceEvidenceKey": "delivery_access24",
+      "requirementIds": [
+        "MTR-AUTH-01",
+        "MTR-EXEC-02",
+        "MTR-EXEC-05",
+        "MTR-FILE-03",
+        "MTR-DOC-01"
+      ],
+      "scope": "Managed stdio compatibility, owned process-tree cleanup, bounded output tail, completed search pagination and PDF create/read.",
+      "remainingScope": "Deployed remediation, upstream public remote OAuth, cancellation races, all Office search, PDF modification and Docker.",
+      "deployed": false,
+      "wholeRequirementAcceptance": false
+    },
+    {
+      "id": "engineering-descriptions-qualified-main",
+      "kind": "QUALIFIED_PARTIAL_COMPONENTS",
+      "repository": "MulattoTech/MTechLabs-Access",
+      "pullRequest": 25,
+      "candidateSha": "60f188a805f59eeb13d04f27285ab7b55d1d6507",
+      "mainSha": "499255adf0c3988558eb4b1dd04ee95ad3c7da33",
+      "tree": "04d1d397de37cb730b191f47bbe9877d0a94b7a3",
+      "observedAt": "2026-11-12T22:09:14.100364+00:00",
+      "layer": "managed_bridge",
+      "candidateChecksPassed": 2,
+      "mainChecksPassed": 2,
+      "evidencePath": "docs/engineering-runs/evidence/delivery-access25.json",
+      "sourceEvidenceKey": "delivery_access25",
+      "requirementIds": [
+        "MTR-SKILL-02"
+      ],
+      "scope": "All28 engineering-tool descriptions with unchanged names/order/schemas/annotations; multiline/Unicode/length/paused-discovery tests.",
+      "remainingScope": "Production rollout and actual ChatGPT desktop/narrow rendering.",
+      "deployed": false,
+      "wholeRequirementAcceptance": false
+    },
+    {
+      "id": "managed-job-reauthorization-qualified-main",
+      "kind": "QUALIFIED_PARTIAL_COMPONENTS",
+      "repository": "MulattoTech/MTechLabs-Access",
+      "pullRequest": 27,
+      "candidateSha": "162e829a5f30282ba86f32dd48cc004b76ad6ebc",
+      "mainSha": "9353b53a15cf50b67f4e9d452935e58a0bc9b8f3",
+      "tree": "a78d085222d478f0def630acd198289c458b189f",
+      "observedAt": "2026-11-12T22:09:14.100364+00:00",
+      "layer": "managed_bridge",
+      "candidateChecksPassed": 5,
+      "mainChecksPassed": 5,
+      "evidencePath": "docs/engineering-runs/evidence/delivery-access27.json",
+      "sourceEvidenceKey": "delivery_access27",
+      "requirementIds": [
+        "MTR-JOBS-01",
+        "MTR-ORCH-05",
+        "MTR-ORCH-08"
+      ],
+      "scope": "Stored-job permission rechecks, denied-resume evidence/count preservation and race-safe requeue.",
+      "remainingScope": "Complete durable worker recovery, distributed leases, all review gates and retroactive termination of active work.",
+      "deployed": false,
+      "wholeRequirementAcceptance": false
+    },
+    {
+      "id": "canonical-plugin-source-qualified-main",
+      "kind": "QUALIFIED_PARTIAL_COMPONENTS",
+      "repository": "MulattoTech/MTechLabs-Access",
+      "pullRequest": 28,
+      "candidateSha": "f422b4d0ce23087168de7e2b1eda5ff73c2811dd",
+      "mainSha": "ff31efca7c94ca4653305c61e9b933ce835cc04f",
+      "tree": "19a4dd1a9e1bed2bfb9b3e1d5954a7e2e0716691",
+      "observedAt": "2026-11-12T22:09:14.100364+00:00",
+      "layer": "canonical_plugin",
+      "candidateChecksPassed": 5,
+      "mainChecksPassed": 5,
+      "evidencePath": "docs/engineering-runs/evidence/delivery-access28.json",
+      "sourceEvidenceKey": "delivery_access28",
+      "requirementIds": [
+        "MTR-SKILL-02",
+        "MTR-SKILL-07",
+        "MTR-CLIENT-04",
+        "MTR-PLUGIN-04",
+        "MTR-TRUTH-01",
+        "MTR-PLUGIN-02"
+      ],
+      "scope": "Eight exact source files, recovery guidance, metadata-only owner-authorized check, working-wrapper preservation and source/release identity. PLUGIN-02 support is guidance only.",
+      "remainingScope": "Canonical-only OAuth, reconnect after manager upgrade, current-chat skill activation, UI rendering, available RDC fallback, website archive sync and runtime deployment.",
+      "deployed": false,
+      "wholeRequirementAcceptance": false
+    },
+    {
+      "id": "device-observations-qualified-main",
+      "kind": "QUALIFIED_PARTIAL_COMPONENTS",
+      "repository": "MulattoTech/MTerm-CLI",
+      "pullRequest": 259,
+      "candidateSha": "f6b17c72bfabe0da684bead0905608d4edf7cff2",
+      "mainSha": "6a6a883f3ce1cd86a7405d2c53a1fb08cd1210c2",
+      "tree": "ea714fd37926cb49325d9a4c6b60011cd01f021c",
+      "observedAt": "2026-11-12T22:22:36.707532+00:00",
+      "layer": "standalone_staging_gateway",
+      "candidateChecksPassed": 6,
+      "mainChecksPassed": 6,
+      "evidencePath": "docs/engineering-runs/evidence/delivery-cli259.json",
+      "sourceEvidenceKey": "delivery_cli259",
+      "requirementIds": [
+        "MTR-DEVICE-03",
+        "MTR-OBS-05"
+      ],
+      "scope": "Authenticated poll receipt, timestamped historical capacity offers, accepted result history and explicit unknown executor health on owner-scoped device views. Recheck selected-device freshness after asynchronous admission reads and before the first admission write. Safe dashboard text labels preserve wire/version and explicit targeting compatibility.",
+      "remainingScope": "Actual executor health/version telemetry, real Workers storage/crash qualification, live browser/two-device acceptance, profile defaults and confirmation workflows, source deployment and whole-requirement acceptance remain unverified.",
+      "deployed": false,
+      "wholeRequirementAcceptance": false
     }
   ],
   "qualificationReceipts": {},
@@ -27058,6 +28415,85 @@
   },
   "inputEvidenceHashes": {
     "docs/engineering-runs/evidence/upstream-research.json": "0162a83c00d51a023908380c22ffad7c2227d82645cc34e04c9866ea39033086",
-    "docs/engineering-runs/evidence/modernization-main-qualification.json": "f3a443cbc3b8bed8a2862ff05a4944ebe754ae10e829be06569557ff36af91d0"
-  }
+    "docs/engineering-runs/evidence/delivery-cli249-origin-candidate-source-review.json": "f480939f9d6ff19535a528e631bcbc923c04eeb009a57e908355d86b108e242d",
+    "docs/engineering-runs/evidence/peer-main-83a97dae-receipt.json": "1fd8aefb710a486d63cff7aeb5f4bc0ceb2db1de1c0637e8cc23f5e1afccadc3",
+    "docs/engineering-runs/evidence/delivery-cli249-api-identity.json": "61aecb50dfa67b88f545aeb383cf86cd7958b2934b536d71dd95761fc755cc34",
+    "docs/engineering-runs/evidence/delivery-cli249.json": "1343f383aec858d62bb12394396b90c2f377f01822bbf92129c0cdd575f72ca0",
+    "docs/engineering-runs/evidence/delivery-cli256-origin-candidate-source-review.json": "650e09f78d787a0fc996922e184b3a0a1052b4a7e3956fe0b38fddbf758219c4",
+    "docs/engineering-runs/evidence/peer-profile-d412-ci-receipt.json": "cf593d1b9a75cba43ad19dc7e06a57a04d3814290f97823353189964529d232a",
+    "docs/engineering-runs/evidence/delivery-cli256-origin-actual-main.json": "4a1a38d25f90fb0e2288ed657043224082ab503da988c9cc8567b99568f9d7d4",
+    "docs/engineering-runs/evidence/delivery-cli256-api-identity.json": "ba16c354e6ec486c76f9eea206cb4562051e41d8957cd2e1ca12dd4995916626",
+    "docs/engineering-runs/evidence/delivery-cli256.json": "d5ac6e3869c143d5a564c81db465aae9e233d954f0cf04b9606b0c6a37e1fbec",
+    "docs/engineering-runs/evidence/delivery-cli257-origin-candidate-source-review.json": "1fd15e5bcfdbf1ee354497d5f8452a783c938a3c399baf904c0f3ec89a9dc3f4",
+    "docs/engineering-runs/evidence/delivery-cli257-origin-candidate-qualification.json": "c376a02f6476dc650fd4c73e11fcff026d886c97e9099d633e20124dddcebe55",
+    "docs/engineering-runs/evidence/peer-mterm-main-f447c0ba-receipt.json": "6abf0091556faf97745c66932ddad8f8ae7360580ee28fbee3cda2067b0404d7",
+    "docs/engineering-runs/evidence/delivery-cli257-api-identity.json": "559e6b1d9f62cd16265ee0a8e67431fdbeba8e86d8ec023ea1d8430078931434",
+    "docs/engineering-runs/evidence/delivery-cli257.json": "d07fabdd72d0a30af849a70786eacde74c5a08543e2b25684b06efe2bf8beb7f",
+    "docs/engineering-runs/evidence/peer-mterm258-01c0fc0d-receipt.json": "97d356981e264a4d1905019f1c9409ef2d91a448eeb2947d12556b9c2b824dab",
+    "docs/engineering-runs/evidence/peer-mterm-main-da03dc52-receipt.json": "f65f4b6320984a752641047d999fcb95b9500416cc011b45395658d9b7d9dcee",
+    "docs/engineering-runs/evidence/delivery-cli258-api-identity.json": "ee041530b39de0ebb348d135365335fcdc0f274aa3378a301221ea54a1d17c2f",
+    "docs/engineering-runs/evidence/delivery-cli258.json": "aacdfc709ba96fee441a7e62bef21ef32e2965f0f05488160434c584dfd4c9af",
+    "docs/engineering-runs/evidence/delivery-access24-origin-candidate-source-review.json": "4ad72dffef22dcb208d765a83f3257abda0dc2169e8ece1c6fb9cb860dda856c",
+    "docs/engineering-runs/evidence/delivery-access24-origin-candidate-qualification.json": "651fecce43711b7d5f5300c11adf6f25fc5e988c7a87f55eaf28b8624b969af7",
+    "docs/engineering-runs/evidence/peer-access-main-ef8dce0e-receipt.json": "de943aed3b8dfccd7b2c7e49395f3446b81d5f28dc86155a99c5ebb7a1dd153e",
+    "docs/engineering-runs/evidence/delivery-access24-api-identity.json": "711112b17723f63b6e29bdb62af1cd36eb8880c8670fcc244c4e214ae440b47e",
+    "docs/engineering-runs/evidence/delivery-access24.json": "f84bd80518bb9b461fee8b1e227546f28cf3ec8bcf405d82ef9fe0267bf7fb99",
+    "docs/engineering-runs/evidence/delivery-access25-origin-candidate-source-review.json": "4b8bbd00627f3aa331210a522642b83ef602d740fcbd7a3cf5b61829b46cce53",
+    "docs/engineering-runs/evidence/delivery-access25-origin-candidate-qualification.json": "209b98dc8fab80b3628c0b55c02fbe42a1044af7c6ed42b81b9c4b94e7a6174b",
+    "docs/engineering-runs/evidence/peer-access-main-499255ad-receipt.json": "e341a67a133ac346052796a3d627f826f8d486a7b7005f06055168df35fbfd9d",
+    "docs/engineering-runs/evidence/delivery-access25-api-identity.json": "604bf3c6b5e9c34fc8e0ab01eb5e2823083b221c84bf14694e5eeb91c0294522",
+    "docs/engineering-runs/evidence/delivery-access25.json": "cddc2257633921b5755b393f6a143e6ca805e9e3e7e677d5fdf643db1c46db1c",
+    "docs/engineering-runs/evidence/peer-access27-162e829a-receipt.json": "3040ae584a65eddf7893e3c6c4ea85e26bcde5fbe7824218ad0b5c48dbac973d",
+    "docs/engineering-runs/evidence/peer-access-main-9353b53a-receipt.json": "5d9308cc52401a16d500e92a6c8a083c49e1d5fe202e2b3eb9778e3105f504db",
+    "docs/engineering-runs/evidence/delivery-access27-api-identity.json": "58c35d8e49f220a006276c7a21909bb27a1391df9d05b66a7d185047e2116eee",
+    "docs/engineering-runs/evidence/delivery-access27.json": "f927b9ed73cbe52cb0caf4bf4314e95a6210938d0ba4d2dfea79e998f9a087aa",
+    "docs/engineering-runs/evidence/peer-access28-f422b4d0-receipt.json": "c362b9217b024c3895540aa49b547efa4edc67557160a34fb8c8df230f146826",
+    "docs/engineering-runs/evidence/peer-access-main-ff31efca-receipt.json": "a6596c51fec5a8ed790a74ea1a77e95b976dd75fcac4396da895033cad094b88",
+    "docs/engineering-runs/evidence/delivery-access28-api-identity.json": "ae345e750c11916741b3a494ec4c44fb22119d6ad3dd366bc80a306bd646166b",
+    "docs/engineering-runs/evidence/delivery-access28.json": "aab921ad50b6bbcf827e839ded93b50f298caa64ee632d8b1a6444f33da64e7a",
+    "docs/engineering-runs/evidence/delivery-cli259-origin-candidate-qualification.json": "b26991014a0fcd2c895763db6d5a840f6104aa56742f650281b4c48aec089953",
+    "docs/engineering-runs/evidence/delivery-cli259-origin-actual-main.json": "f7910713d83839164ce67701f48db8bd77428af79b4dbdf3588e8fcbad0d5218",
+    "docs/engineering-runs/evidence/delivery-cli259-api-identity.json": "1d877d5b9cf1795b84706cf5e12ed383e658822b6c7e22419cf8e3fa33cbf4da",
+    "docs/engineering-runs/evidence/delivery-cli259.json": "a2b606d88f17875e38ca634ddedcd0cfdc6a0e0e042f41ee03cc1222cc35a551",
+    "docs/engineering-runs/evidence/canonical-plugin-readback-manifest-023.json": "8c34150376bbe737f0254692510b7757a2226b34f77428cbba119f6562784d9b",
+    "docs/engineering-runs/evidence/canonical-plugin-saved-release-023.json": "8cfff8925b74a7d3ee3f6a2f7bfd1d1002ebaa2bb7c563dd25e492403f938e9b"
+  },
+  "deliveryAccountingReviewedAt": "2026-11-12T22:22:36.707532+00:00",
+  "deliveryAccountingRule": "Current component delivery is derived from repository-specific candidate/main evidence. Original source and deployment observations retain their times. A qualified source component never implies whole requirement acceptance or runtime rollout.",
+  "historicalDeliveryObservations": [
+    {
+      "id": "modernization-qualified-main",
+      "kind": "QUALIFIED_PARTIAL_COMPONENTS",
+      "pullRequest": 249,
+      "candidateSha": "09097ee82028ce01e069c6d555e7ab65b8add2e0",
+      "mainSha": "83a97daed6ef92b69e681b6b68f982f5d4266a51",
+      "tree": "c4d2c52442daf652af4323827cda91b6f32cd538",
+      "observedAt": "2026-11-12T17:47:02.776Z",
+      "layer": "standalone_cli",
+      "candidateChecksPassed": 6,
+      "mainChecksPassed": 6,
+      "evidencePath": "docs/engineering-runs/evidence/modernization-main-qualification.json",
+      "deployed": false,
+      "wholeRequirementAcceptance": false
+    }
+  ],
+  "savedPluginReleaseObservations": [
+    {
+      "version": "0.2.3",
+      "observedAt": "2026-11-12T21:17:52.593543+00:00",
+      "evidencePath": "docs/engineering-runs/evidence/canonical-plugin-saved-release-023.json",
+      "sourceMainSha": "ff31efca7c94ca4653305c61e9b933ce835cc04f",
+      "sourceDeliveryRef": "canonical-plugin-source-qualified-main",
+      "backendDeploymentVerified": false,
+      "canonicalOnlyOAuthVerified": false,
+      "uiActivationVerified": false,
+      "workingWrapperRemovalVerified": false,
+      "repository": "MulattoTech/MTechLabs-Access",
+      "id": "canonical-plugin-recovery-saved-023",
+      "kind": "VERIFIED_SAVED_PLUGIN_PACKAGE",
+      "layer": "canonical_plugin",
+      "sourceReconciliationObservedAt": "2026-11-12T22:09:14.100364+00:00",
+      "wholeRequirementAcceptance": false
+    }
+  ]
 }

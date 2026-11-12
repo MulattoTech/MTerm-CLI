@@ -1,0 +1,781 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-12T18:40:18.044245+00:00",
+  "repository": "MulattoTech/MTerm-CLI",
+  "pullRequest": 257,
+  "headSha": "b0348d901b27975789d8764397a103204e08aaf0",
+  "tree": "cbb3b682c4bfdf472bdfbc1ebfce5cd2e71174fc",
+  "baseSha": "4fb205088e77731e42da5adaca6bf167f8b75194",
+  "decision": "PASS_EXACT_PR_HEAD_HOSTED_QUALIFICATION",
+  "requiredChecks": 6,
+  "passedChecks": 6,
+  "canonicalPullRequestRuns": [
+    43279988914,
+    43279988939
+  ],
+  "excludedPushRun": 43279976726,
+  "testedSource": {
+    "syntheticPullRequestMergeSha": "3dc259920452b04bd661ac83160b5a155de7e665",
+    "tree": "cbb3b682c4bfdf472bdfbc1ebfce5cd2e71174fc",
+    "parents": [
+      "4fb205088e77731e42da5adaca6bf167f8b75194",
+      "b0348d901b27975789d8764397a103204e08aaf0"
+    ],
+    "candidateTreeMatches": true,
+    "checkoutShaObservedInEveryJobLog": true
+  },
+  "independentSourceReview": {
+    "path": "/workspace/scratch/a92a3aacdca1/peer-register-review-b0348d9.json",
+    "sha256": "1fd15e5bcfdbf1ee354497d5f8452a783c938a3c399baf904c0f3ec89a9dc3f4"
+  },
+  "checks": [
+    {
+      "jobId": 131398394435,
+      "name": "CI / fast",
+      "headSha": "b0348d901b27975789d8764397a103204e08aaf0",
+      "status": "completed",
+      "conclusion": "success",
+      "detailsUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43279988914/job/131398394435",
+      "startedAt": "2026-11-12T18:27:20Z",
+      "completedAt": "2026-11-12T18:30:01Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "conclusion": "success"
+        },
+        {
+          "name": "Reproducible install without lifecycle scripts",
+          "conclusion": "success"
+        },
+        {
+          "name": "Pinned reviewed build",
+          "conclusion": "success"
+        },
+        {
+          "name": "Deterministic tests",
+          "conclusion": "success"
+        },
+        {
+          "name": "No test-induced source mutation",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ],
+      "log": "/workspace/scratch/a92a3aacdca1/pr257-ci-b0348d9/job-131398394435.log",
+      "logSha256": "aa31855e4ff8a8865312e9b7663087b8bfc4e84207795d7c9ec32f2cf904a276",
+      "sourceTests": {
+        "tests": 1395,
+        "pass": 1383,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 12
+      },
+      "sourceSkipCases": [
+        "\ufe63 automation PowerShell scripts parse without executing (0.652337ms) # SKIP",
+        "\ufe63 one-command setup preview is read-only and permission-conservative (0.925086ms) # SKIP",
+        "\ufe63 one-command setup refuses a whole-drive root (0.071917ms) # SKIP",
+        "\ufe63 top-level MTerm CLI launcher parses as PowerShell without execution (0.201461ms) # SKIP",
+        "\ufe63 top-level Plan and Install preview do not modify the selected workspace (0.081211ms) # SKIP",
+        "\ufe63 top-level Verify reports explicit local versus remote readiness without mutation (0.056224ms) # SKIP",
+        "\ufe63 top-level launcher refuses unsafe root and unapproved execution paths (0.042053ms) # SKIP",
+        "\ufe63 Windows short filenames cannot expose existing compatibility policy storage (0.101922ms) # SKIP",
+        "\ufe63 Windows short file aliases return canonical identities and cannot evade the request guard (0.203167ms) # SKIP",
+        "\ufe63 Windows short file aliases cannot conceal a private canonical filename (0.052089ms) # SKIP",
+        "\ufe63 Windows missing leaves retain their canonical parent and final request guard (0.025789ms) # SKIP",
+        "\ufe63 Windows missing leaves cannot be created below an aliased private directory (0.01975ms) # SKIP"
+      ]
+    },
+    {
+      "jobId": 131398394140,
+      "name": "Native Linux isolation / Node 24",
+      "headSha": "b0348d901b27975789d8764397a103204e08aaf0",
+      "status": "completed",
+      "conclusion": "success",
+      "detailsUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43279988939/job/131398394140",
+      "startedAt": "2026-11-12T18:27:20Z",
+      "completedAt": "2026-11-12T18:29:16Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "conclusion": "success"
+        },
+        {
+          "name": "Reproducible dependencies and reviewed source",
+          "conclusion": "success"
+        },
+        {
+          "name": "Prepare signed pinned runtime on the disposable runner",
+          "conclusion": "success"
+        },
+        {
+          "name": "Mandatory real source containment and cleanup",
+          "conclusion": "success"
+        },
+        {
+          "name": "Mandatory actual installed-package containment and cleanup",
+          "conclusion": "success"
+        },
+        {
+          "name": "Exact source remains unchanged by live tests",
+          "conclusion": "success"
+        },
+        {
+          "name": "Retain qualification evidence even after a failed gate",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ],
+      "log": "/workspace/scratch/a92a3aacdca1/pr257-ci-b0348d9/job-131398394140.log",
+      "logSha256": "1fd027273abcaf4cf0a0e847ecc4c081006aa24d5bb07e4c025932e7d1c65afe",
+      "installedPackageSummary": {
+        "path": "/workspace/scratch/a92a3aacdca1/pr257-ci-b0348d9/job-131398394140-package-summary.json",
+        "sha256": "8e7d5c01f500af1afddf46a2591f433cba78d1735f03505732c5a7bc1d3e8d53",
+        "fromOutsideCheckout": true,
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "ownedPrefixNpmLink": true,
+        "installedRemoteProfiles": {
+          "tests": 24,
+          "packageRoot": "/tmp/mterm-package-verify-pkPpsB/install/node_modules/mterm-cli",
+          "fromOutsideCheckout": true,
+          "syntheticOnly": true,
+          "actualRemoteEnrollment": false,
+          "modelCalls": 0,
+          "log": "/tmp/mterm-package-verify-pkPpsB/remote-profile-tests.tap",
+          "moduleBindings": [
+            {
+              "path": "dist/remote/cli.js",
+              "bytes": 13846,
+              "sha256": "65864f11ac9286428fa934c22720aed0046654ebe08f7cda2023b407506c7fdf"
+            },
+            {
+              "path": "dist/remote/profiles.js",
+              "bytes": 12397,
+              "sha256": "61a471d8b405c196114795696c8ec7d9f12df9eea60c29bfa3afebefcc393d50"
+            },
+            {
+              "path": "dist/remote/state.js",
+              "bytes": 24190,
+              "sha256": "57b4ae00ba82cdde25bd7d96f7a3a216dc45bf50a06f02c2c408909b8c467a52"
+            }
+          ]
+        },
+        "installedIsolationProtocolTests": 31,
+        "installedProductionBytes": 15339638,
+        "installedStandaloneCoreUnder50MB": true,
+        "productionLicenseRecords": 5,
+        "fullTransitiveLicenseClearance": false,
+        "fullDesktopCommanderParity": false
+      }
+    },
+    {
+      "jobId": 131398394540,
+      "name": "ubuntu-24.04 / Node 24",
+      "headSha": "b0348d901b27975789d8764397a103204e08aaf0",
+      "status": "completed",
+      "conclusion": "success",
+      "detailsUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43279988939/job/131398394540",
+      "startedAt": "2026-11-12T18:27:20Z",
+      "completedAt": "2026-11-12T18:31:50Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify actual runtime architecture",
+          "conclusion": "success"
+        },
+        {
+          "name": "Reproducible dependencies without lifecycle side effects",
+          "conclusion": "success"
+        },
+        {
+          "name": "Reviewed source and pinned parity baseline",
+          "conclusion": "success"
+        },
+        {
+          "name": "Typecheck formatting and deterministic tests",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify packed install and isolated npm link",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install pinned Codex into test-owned prefix",
+          "conclusion": "success"
+        },
+        {
+          "name": "Real Codex registration without login or model calls",
+          "conclusion": "success"
+        },
+        {
+          "name": "Exact source remains unchanged by tests",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ],
+      "log": "/workspace/scratch/a92a3aacdca1/pr257-ci-b0348d9/job-131398394540.log",
+      "logSha256": "79ed15237d87c3d0e65dd84aafda1bbd4059f23faf88a12c50b7352631a65923",
+      "sourceTests": {
+        "tests": 1395,
+        "pass": 1383,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 12
+      },
+      "sourceSkipCases": [
+        "\ufe63 automation PowerShell scripts parse without executing (0.853569ms) # SKIP",
+        "\ufe63 one-command setup preview is read-only and permission-conservative (1.001086ms) # SKIP",
+        "\ufe63 one-command setup refuses a whole-drive root (0.106091ms) # SKIP",
+        "\ufe63 top-level MTerm CLI launcher parses as PowerShell without execution (0.292186ms) # SKIP",
+        "\ufe63 top-level Plan and Install preview do not modify the selected workspace (0.111898ms) # SKIP",
+        "\ufe63 top-level Verify reports explicit local versus remote readiness without mutation (0.12187ms) # SKIP",
+        "\ufe63 top-level launcher refuses unsafe root and unapproved execution paths (0.094109ms) # SKIP",
+        "\ufe63 Windows short filenames cannot expose existing compatibility policy storage (0.140291ms) # SKIP",
+        "\ufe63 Windows short file aliases return canonical identities and cannot evade the request guard (0.220581ms) # SKIP",
+        "\ufe63 Windows short file aliases cannot conceal a private canonical filename (0.055356ms) # SKIP",
+        "\ufe63 Windows missing leaves retain their canonical parent and final request guard (0.034305ms) # SKIP",
+        "\ufe63 Windows missing leaves cannot be created below an aliased private directory (0.02763ms) # SKIP"
+      ],
+      "installedPackageSummary": {
+        "path": "/workspace/scratch/a92a3aacdca1/pr257-ci-b0348d9/job-131398394540-package-summary.json",
+        "sha256": "08d28e563b6e91e48de40f952eef87c882874013f5c1bea69505a146cb4a5368",
+        "fromOutsideCheckout": true,
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "ownedPrefixNpmLink": true,
+        "installedRemoteProfiles": {
+          "tests": 24,
+          "packageRoot": "/tmp/mterm-package-verify-c4fupu/install/node_modules/mterm-cli",
+          "fromOutsideCheckout": true,
+          "syntheticOnly": true,
+          "actualRemoteEnrollment": false,
+          "modelCalls": 0,
+          "log": "/tmp/mterm-package-verify-c4fupu/remote-profile-tests.tap",
+          "moduleBindings": [
+            {
+              "path": "dist/remote/cli.js",
+              "bytes": 13846,
+              "sha256": "65864f11ac9286428fa934c22720aed0046654ebe08f7cda2023b407506c7fdf"
+            },
+            {
+              "path": "dist/remote/profiles.js",
+              "bytes": 12397,
+              "sha256": "61a471d8b405c196114795696c8ec7d9f12df9eea60c29bfa3afebefcc393d50"
+            },
+            {
+              "path": "dist/remote/state.js",
+              "bytes": 24190,
+              "sha256": "57b4ae00ba82cdde25bd7d96f7a3a216dc45bf50a06f02c2c408909b8c467a52"
+            }
+          ]
+        },
+        "installedIsolationProtocolTests": 31,
+        "installedProductionBytes": 15339638,
+        "installedStandaloneCoreUnder50MB": true,
+        "productionLicenseRecords": 5,
+        "fullTransitiveLicenseClearance": false,
+        "fullDesktopCommanderParity": false
+      }
+    },
+    {
+      "jobId": 131398394383,
+      "name": "windows-2022 / Node 24",
+      "headSha": "b0348d901b27975789d8764397a103204e08aaf0",
+      "status": "completed",
+      "conclusion": "success",
+      "detailsUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43279988939/job/131398394383",
+      "startedAt": "2026-11-12T18:27:20Z",
+      "completedAt": "2026-11-12T18:36:31Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify actual runtime architecture",
+          "conclusion": "success"
+        },
+        {
+          "name": "Reproducible dependencies without lifecycle side effects",
+          "conclusion": "success"
+        },
+        {
+          "name": "Reviewed source and pinned parity baseline",
+          "conclusion": "success"
+        },
+        {
+          "name": "Typecheck formatting and deterministic tests",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify packed install and isolated npm link",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install pinned Codex into test-owned prefix",
+          "conclusion": "success"
+        },
+        {
+          "name": "Real Codex registration without login or model calls",
+          "conclusion": "success"
+        },
+        {
+          "name": "Exact source remains unchanged by tests",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ],
+      "log": "/workspace/scratch/a92a3aacdca1/pr257-ci-b0348d9/job-131398394383.log",
+      "logSha256": "abe5f8505abdec92af8f3ce54be1c5d2510acbb9fda6826fe1fe901337f5fbac",
+      "sourceTests": {
+        "tests": 1395,
+        "pass": 1395,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "sourceSkipCases": [],
+      "installedPackageSummary": {
+        "path": "/workspace/scratch/a92a3aacdca1/pr257-ci-b0348d9/job-131398394383-package-summary.json",
+        "sha256": "cdf93e034d0f3bf36e13005f022f621c85c9e2cbe3fd0059559bffde73027109",
+        "fromOutsideCheckout": true,
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "ownedPrefixNpmLink": true,
+        "installedRemoteProfiles": {
+          "tests": 24,
+          "packageRoot": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\mterm-package-verify-qRaa6u\\install\\node_modules\\mterm-cli",
+          "fromOutsideCheckout": true,
+          "syntheticOnly": true,
+          "actualRemoteEnrollment": false,
+          "modelCalls": 0,
+          "log": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\mterm-package-verify-qRaa6u\\remote-profile-tests.tap",
+          "moduleBindings": [
+            {
+              "path": "dist/remote/cli.js",
+              "bytes": 13846,
+              "sha256": "65864f11ac9286428fa934c22720aed0046654ebe08f7cda2023b407506c7fdf"
+            },
+            {
+              "path": "dist/remote/profiles.js",
+              "bytes": 12397,
+              "sha256": "61a471d8b405c196114795696c8ec7d9f12df9eea60c29bfa3afebefcc393d50"
+            },
+            {
+              "path": "dist/remote/state.js",
+              "bytes": 24190,
+              "sha256": "57b4ae00ba82cdde25bd7d96f7a3a216dc45bf50a06f02c2c408909b8c467a52"
+            }
+          ]
+        },
+        "installedIsolationProtocolTests": 31,
+        "installedProductionBytes": 15342683,
+        "installedStandaloneCoreUnder50MB": true,
+        "productionLicenseRecords": 5,
+        "fullTransitiveLicenseClearance": false,
+        "fullDesktopCommanderParity": false
+      }
+    },
+    {
+      "jobId": 131398396059,
+      "name": "macos-15 / Node 24",
+      "headSha": "b0348d901b27975789d8764397a103204e08aaf0",
+      "status": "completed",
+      "conclusion": "success",
+      "detailsUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43279988939/job/131398396059",
+      "startedAt": "2026-11-12T18:27:21Z",
+      "completedAt": "2026-11-12T18:33:32Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify actual runtime architecture",
+          "conclusion": "success"
+        },
+        {
+          "name": "Reproducible dependencies without lifecycle side effects",
+          "conclusion": "success"
+        },
+        {
+          "name": "Reviewed source and pinned parity baseline",
+          "conclusion": "success"
+        },
+        {
+          "name": "Typecheck formatting and deterministic tests",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify packed install and isolated npm link",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install pinned Codex into test-owned prefix",
+          "conclusion": "success"
+        },
+        {
+          "name": "Real Codex registration without login or model calls",
+          "conclusion": "success"
+        },
+        {
+          "name": "Exact source remains unchanged by tests",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ],
+      "log": "/workspace/scratch/a92a3aacdca1/pr257-ci-b0348d9/job-131398396059.log",
+      "logSha256": "edb34f05e5ebd3400d1f53038a4306cb60665a7d88e3eee632630b50cf7c8fc8",
+      "sourceTests": {
+        "tests": 1395,
+        "pass": 1383,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 12
+      },
+      "sourceSkipCases": [
+        "\ufe63 automation PowerShell scripts parse without executing (0.72875ms) # SKIP",
+        "\ufe63 one-command setup preview is read-only and permission-conservative (0.632375ms) # SKIP",
+        "\ufe63 one-command setup refuses a whole-drive root (0.067041ms) # SKIP",
+        "\ufe63 top-level MTerm CLI launcher parses as PowerShell without execution (0.34975ms) # SKIP",
+        "\ufe63 top-level Plan and Install preview do not modify the selected workspace (0.164416ms) # SKIP",
+        "\ufe63 top-level Verify reports explicit local versus remote readiness without mutation (0.181917ms) # SKIP",
+        "\ufe63 top-level launcher refuses unsafe root and unapproved execution paths (0.395417ms) # SKIP",
+        "\ufe63 Windows short filenames cannot expose existing compatibility policy storage (0.136292ms) # SKIP",
+        "\ufe63 Windows short file aliases return canonical identities and cannot evade the request guard (0.350334ms) # SKIP",
+        "\ufe63 Windows short file aliases cannot conceal a private canonical filename (0.087125ms) # SKIP",
+        "\ufe63 Windows missing leaves retain their canonical parent and final request guard (0.058291ms) # SKIP",
+        "\ufe63 Windows missing leaves cannot be created below an aliased private directory (0.093375ms) # SKIP"
+      ],
+      "installedPackageSummary": {
+        "path": "/workspace/scratch/a92a3aacdca1/pr257-ci-b0348d9/job-131398396059-package-summary.json",
+        "sha256": "f70c6c88d8742291e41370070005f4f8d58ba0b3233bad2a16dac3e3a08ad446",
+        "fromOutsideCheckout": true,
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "ownedPrefixNpmLink": true,
+        "installedRemoteProfiles": {
+          "tests": 24,
+          "packageRoot": "/private/var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/mterm-package-verify-9MyMg9/install/node_modules/mterm-cli",
+          "fromOutsideCheckout": true,
+          "syntheticOnly": true,
+          "actualRemoteEnrollment": false,
+          "modelCalls": 0,
+          "log": "/private/var/folders/2s/vty41l455yv698g4xkgfv7z00000gn/T/mterm-package-verify-9MyMg9/remote-profile-tests.tap",
+          "moduleBindings": [
+            {
+              "path": "dist/remote/cli.js",
+              "bytes": 13846,
+              "sha256": "65864f11ac9286428fa934c22720aed0046654ebe08f7cda2023b407506c7fdf"
+            },
+            {
+              "path": "dist/remote/profiles.js",
+              "bytes": 12397,
+              "sha256": "61a471d8b405c196114795696c8ec7d9f12df9eea60c29bfa3afebefcc393d50"
+            },
+            {
+              "path": "dist/remote/state.js",
+              "bytes": 24190,
+              "sha256": "57b4ae00ba82cdde25bd7d96f7a3a216dc45bf50a06f02c2c408909b8c467a52"
+            }
+          ]
+        },
+        "installedIsolationProtocolTests": 31,
+        "installedProductionBytes": 15339638,
+        "installedStandaloneCoreUnder50MB": true,
+        "productionLicenseRecords": 5,
+        "fullTransitiveLicenseClearance": false,
+        "fullDesktopCommanderParity": false
+      }
+    },
+    {
+      "jobId": 131398394472,
+      "name": "macos-15-intel / Node 24",
+      "headSha": "b0348d901b27975789d8764397a103204e08aaf0",
+      "status": "completed",
+      "conclusion": "success",
+      "detailsUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43279988939/job/131398394472",
+      "startedAt": "2026-11-12T18:27:22Z",
+      "completedAt": "2026-11-12T18:38:49Z",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify actual runtime architecture",
+          "conclusion": "success"
+        },
+        {
+          "name": "Reproducible dependencies without lifecycle side effects",
+          "conclusion": "success"
+        },
+        {
+          "name": "Reviewed source and pinned parity baseline",
+          "conclusion": "success"
+        },
+        {
+          "name": "Typecheck formatting and deterministic tests",
+          "conclusion": "success"
+        },
+        {
+          "name": "Verify packed install and isolated npm link",
+          "conclusion": "success"
+        },
+        {
+          "name": "Install pinned Codex into test-owned prefix",
+          "conclusion": "success"
+        },
+        {
+          "name": "Real Codex registration without login or model calls",
+          "conclusion": "success"
+        },
+        {
+          "name": "Exact source remains unchanged by tests",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ],
+      "log": "/workspace/scratch/a92a3aacdca1/pr257-ci-b0348d9/job-131398394472.log",
+      "logSha256": "ecce7aaa8256084856ef1129808a687e72c8023cdfcdad65137be3af35d4a1f1",
+      "sourceTests": {
+        "tests": 1395,
+        "pass": 1383,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 12
+      },
+      "sourceSkipCases": [
+        "\ufe63 automation PowerShell scripts parse without executing (2.8167ms) # SKIP",
+        "\ufe63 one-command setup preview is read-only and permission-conservative (1.913665ms) # SKIP",
+        "\ufe63 one-command setup refuses a whole-drive root (0.245108ms) # SKIP",
+        "\ufe63 top-level MTerm CLI launcher parses as PowerShell without execution (0.686832ms) # SKIP",
+        "\ufe63 top-level Plan and Install preview do not modify the selected workspace (0.506303ms) # SKIP",
+        "\ufe63 top-level Verify reports explicit local versus remote readiness without mutation (0.367097ms) # SKIP",
+        "\ufe63 top-level launcher refuses unsafe root and unapproved execution paths (0.349747ms) # SKIP",
+        "\ufe63 Windows short filenames cannot expose existing compatibility policy storage (0.289468ms) # SKIP",
+        "\ufe63 Windows short file aliases return canonical identities and cannot evade the request guard (0.341628ms) # SKIP",
+        "\ufe63 Windows short file aliases cannot conceal a private canonical filename (0.108589ms) # SKIP",
+        "\ufe63 Windows missing leaves retain their canonical parent and final request guard (0.080452ms) # SKIP",
+        "\ufe63 Windows missing leaves cannot be created below an aliased private directory (0.070338ms) # SKIP"
+      ],
+      "installedPackageSummary": {
+        "path": "/workspace/scratch/a92a3aacdca1/pr257-ci-b0348d9/job-131398394472-package-summary.json",
+        "sha256": "979bd8ab6d3dc00b31a13333cb98321a79aa2f0db91c1ae985cc0949914a84ce",
+        "fromOutsideCheckout": true,
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "ownedPrefixNpmLink": true,
+        "installedRemoteProfiles": {
+          "tests": 24,
+          "packageRoot": "/private/var/folders/20/jp1_0n3n7kndh6rnbqb5344m0000gn/T/mterm-package-verify-9zIFCu/install/node_modules/mterm-cli",
+          "fromOutsideCheckout": true,
+          "syntheticOnly": true,
+          "actualRemoteEnrollment": false,
+          "modelCalls": 0,
+          "log": "/private/var/folders/20/jp1_0n3n7kndh6rnbqb5344m0000gn/T/mterm-package-verify-9zIFCu/remote-profile-tests.tap",
+          "moduleBindings": [
+            {
+              "path": "dist/remote/cli.js",
+              "bytes": 13846,
+              "sha256": "65864f11ac9286428fa934c22720aed0046654ebe08f7cda2023b407506c7fdf"
+            },
+            {
+              "path": "dist/remote/profiles.js",
+              "bytes": 12397,
+              "sha256": "61a471d8b405c196114795696c8ec7d9f12df9eea60c29bfa3afebefcc393d50"
+            },
+            {
+              "path": "dist/remote/state.js",
+              "bytes": 24190,
+              "sha256": "57b4ae00ba82cdde25bd7d96f7a3a216dc45bf50a06f02c2c408909b8c467a52"
+            }
+          ]
+        },
+        "installedIsolationProtocolTests": 31,
+        "installedProductionBytes": 15339638,
+        "installedStandaloneCoreUnder50MB": true,
+        "productionLicenseRecords": 5,
+        "fullTransitiveLicenseClearance": false,
+        "fullDesktopCommanderParity": false
+      }
+    }
+  ],
+  "nativeArtifact": {
+    "id": 13971159684,
+    "name": "aug005-linux-43279988939-1",
+    "path": "/workspace/scratch/a92a3aacdca1/pr257-ci-b0348d9/native-linux-evidence.zip",
+    "bytes": 251867,
+    "sha256": "a9efae2f148ce428d2ed96cb524d01dfe91ac5a56fdbe6c54583fd2577673251",
+    "matchesGitHubPublishedDigest": true,
+    "source": {
+      "tests": 12,
+      "pass": 12,
+      "fail": 0,
+      "skip": 0,
+      "cleanupVerified": true,
+      "sourceCommit": "3dc259920452b04bd661ac83160b5a155de7e665",
+      "node": "v24.21.0",
+      "guestNode": "v24.22.2",
+      "platform": "linux",
+      "arch": "x64",
+      "syntheticOnly": false,
+      "modelCalls": 0,
+      "acceptedCapability": false,
+      "resultSha256": "08249250482363a85eb63803cff19da4df113f0c13d961256d6d3734eb872623",
+      "liveReceiptSha256": "e4c303a6382688cff54eb8387ffd01efb4e99cbfb796b5a8b45259ac99a46778"
+    },
+    "installed": {
+      "tests": 12,
+      "pass": 12,
+      "fail": 0,
+      "skip": 0,
+      "cleanupVerified": true,
+      "sourceCommit": "3dc259920452b04bd661ac83160b5a155de7e665",
+      "node": "v24.21.0",
+      "guestNode": "v24.22.2",
+      "platform": "linux",
+      "arch": "x64",
+      "syntheticOnly": false,
+      "modelCalls": 0,
+      "acceptedCapability": false,
+      "resultSha256": "077de494734b0d68e5b336ac771c849220f7e21c97d5742a4215c8d7b5744f12",
+      "liveReceiptSha256": "17ba6a81e0f119a69455a812fcf68ba25d5295d63e87a6bb52c213259ad43bf2"
+    },
+    "installedProtocolTests": 31,
+    "installedProtocolExitCode": 0,
+    "installedProtocolSyntheticOnly": true
+  },
+  "priorFailedCandidate": {
+    "headSha": "d61d280c371a66578c4a93aa1df50907c0424347",
+    "receipt": "/workspace/scratch/a92a3aacdca1/pr257-ci-d61d280/qualification-failure.json",
+    "sha256": "76b8f0fa318a4814a0c79795bb6afdbbf52f24036a262ce7cd512710ba44bee4",
+    "unchangedRetryUsed": false
+  },
+  "logEncoding": "Full connector-decoded UTF-8 text with CRLF normalized to LF; raw artifact ZIP bytes preserved.",
+  "limits": [
+    "Source qualification only; no deployed runtime, Cloudflare worker, plugin metadata, real enrollment or production execution changed.",
+    "Hosted profile tests use owned synthetic state; real public enrollment is not asserted.",
+    "Native receipts cover 12 bounded live Linux scenarios and separate 31 synthetic protocol tests, not complete isolation acceptance.",
+    "Full Desktop Commander parity and full transitive license clearance remain false in package evidence.",
+    "Actual merged-main commit still requires its own canonical six hosted checks.",
+    "Whole mission requirement codeComplete/tested/merged/deployed/accepted counters remain zero; this receipt grants no whole-requirement credit."
+  ]
+}

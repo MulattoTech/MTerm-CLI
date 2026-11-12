@@ -1,0 +1,71 @@
+✖ the actual historical two-job Access contract qualifies without six invented CLI jobs (38.960336ms)
+✖ delivery links use the owning repository, including historical records (44.935403ms)
+✖ a CLI receipt cannot be relabeled as a managed-bridge delivery (22.489981ms)
+✔ a delivery is not qualified when its candidate checks are missing or failed (67.01615ms)
+✔ missing, duplicate, skipped and unrelated main jobs fail qualification (53.636667ms)
+✔ job runs, attempts, events and repository URLs must describe the same evidence (156.170583ms)
+✔ workflow content, source pins and exact check sets cannot be substituted (100.046108ms)
+✔ candidate/tree/merge relationships and pull request identity must match (56.064845ms)
+✔ component references bind only to their explicitly reviewed requirement scope and source (47.85019ms)
+✔ a qualified component cannot implicitly claim deployment or whole acceptance (57.923972ms)
+✔ supersession must refer to a later record for the same repository and pull request (27.407595ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 8
+ℹ fail 3
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 948.012688
+
+✖ failing tests:
+
+test at tests/capability-delivery.test.mjs:69:1
+✖ the actual historical two-job Access contract qualifies without six invented CLI jobs (38.960336ms)
+  Error: [SOURCE_BINDING] fixture-access-delivery
+      at ensure (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Accounting/scripts/capability-register.mjs:13:18)
+      at validateCapabilityRegister (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Accounting/scripts/capability-register.mjs:317:7)
+      at TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Accounting/tests/capability-delivery.test.mjs:71:18)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17)
+
+test at tests/capability-delivery.test.mjs:78:1
+✖ delivery links use the owning repository, including historical records (44.935403ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(report.includes('https://github.com/MulattoTech/MTechLabs-Access/pull/25'))
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Accounting/tests/capability-delivery.test.mjs:82:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/capability-delivery.test.mjs:86:1
+✖ a CLI receipt cannot be relabeled as a managed-bridge delivery (22.489981ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Accounting/tests/capability-delivery.test.mjs:91:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /SOURCE_BINDING/,
+    operator: 'throws',
+    diff: 'simple'
+  }

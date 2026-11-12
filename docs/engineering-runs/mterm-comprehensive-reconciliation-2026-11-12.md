@@ -59,6 +59,25 @@ The Windows case fixture used the host's Node27 alpha and only temporary compile
 
 The existing HTTPS-origin `/api/pair/*` and `/api/agent/*` protocol is unchanged. Arbitrary custom MCP paths, provider auth lifecycles, web Profiles UI, production-manager compatibility and real two-computer/two-profile acceptance remain open under #250–253/#62/#65. The full capability register is tracked under #255.
 
+## Cycle 2 — published candidate review
+
+PR #256 first candidate `4742c179cbb94a0e0c5cefdff1df32ba50ebdc66` passed an independent 104-test source review, and Windows Node24 ran all 1,375 source tests without skips. Hosted installed-package verification correctly failed: the profile harness received the executable path instead of the package directory. The narrow correction is `d412b7748ad6747f0b7fbc670e6ec252b74ebdf5`, tree `a41dd2124f4f9106ae86fbd6c42022bf44a9f9c3`; the independent reviewer approved the exact source and delta, conditional on all required checks.
+
+The corrected local installed-profile group passed 24/24. The full local package gate remains failed because 27 isolation cases cannot bind Unix sockets in this workspace (`EPERM`); this is not reported as a full pass. The revised hosted native isolation lane passed source and installed containment plus installed profiles, with other platform gates still pending at this checkpoint. No production enrollment or deployment occurred.
+
+## Cycle 3 — evidence-derived capability register
+
+Issue #255; branch `feat/capability-register-20261112`. The preserved original mission maps to 143 scoped product rows, all 272 feature bullets and all 488 total bullets. Eleven governance groups remain separate. Every product row has a concrete issue owner; six new issues and fourteen existing-issue addenda fill the reviewed gaps. The historical baseline and source evidence remain pinned, and later delivery observations do not silently rewrite them.
+
+The new development validator checks unique IDs, exact mission coverage, issue/catalog/source references, immutable source URLs, dependencies, four separate baseline hashes and the unchanged CLI stage/weight snapshot. Full-requirement claims require source/layer/environment/criteria-bound receipts. Partial source, issue closure and historical tests cannot award complete, tested, merged, deployed or accepted status. Qualified partial deliveries must match saved main check receipts. Its deterministic report and JSON summary are checked by normal build/check/package gates, and the capabilities directory participates in explicit reviewed-source freshness.
+
+Nineteen focused capability tests plus six existing roadmap tests pass. Initial missing-module RED evidence and two additional reproduced binding defects are retained. The report shows 115 rows with partial source observations, 84 with partial original-baseline components and 19 referencing subsequently qualified modernization components; these are overlapping counts. Whole mission acceptance and composite maturity remain unawarded. Independent immutable review and full hosted qualification are still required.
+
 ## Exact next action
 
-Publish/review the immutable profile candidate, require all six hosted checks, merge with expected-head protection and verify actual main. Continue with the validated cross-layer capability register, then qualified upstream/package work. Do not make a third blind service-token-create attempt for #232, restart production, or remove the working wrapper.
+Finish the exact profile candidate's six checks, merge with expected-head protection and verify actual main. Independently review and qualify the separate capability-register candidate. The next upstream work belongs in MTechLabs-Access and requires a new isolated verifier: the old script targets production and cannot be reused as-is. The 0.3.1-to-0.3.3 upgrade spans substantial process/filesystem changes; remote-auth code is inactive in the normal stdio bridge, so no deployed remote-auth vulnerability fix is claimed. Do not make a third blind service-token-create attempt for #232, restart production, or remove the working wrapper.
+
+
+## Cycle 2 — normal merge observed
+
+PR256 merged at `4fb205088e77731e42da5adaca6bf167f8b75194` with the exact reviewed tree after six successful candidate jobs. Actual-main native containment has passed; the other required main jobs remain pending at this observation. Issue250 is open for the full registry/provider/UI/two-computer scope. A negated closing-keyword sentence briefly triggered automatic closure; the wording was corrected and the issue explicitly reopened. No full-profile acceptance was awarded.

@@ -1,0 +1,48 @@
+✖ acceptance ownership URLs cannot silently redirect readers to another issue or host (64.892125ms)
+✖ claimed qualified component delivery needs its matching saved main check receipt (26.737318ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 420.576962
+
+✖ failing tests:
+
+test at tests/capability-register.test.mjs:75:1
+✖ acceptance ownership URLs cannot silently redirect readers to another issue or host (64.892125ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at fails (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Register/tests/capability-register.test.mjs:18:10)
+      at TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Register/tests/capability-register.test.mjs:76:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /DANGLING_REFERENCE/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/capability-register.test.mjs:80:1
+✖ claimed qualified component delivery needs its matching saved main check receipt (26.737318ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at fails (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Register/tests/capability-register.test.mjs:18:10)
+      at TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Register/tests/capability-register.test.mjs:81:3)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /SOURCE_BINDING/,
+    operator: 'throws',
+    diff: 'simple'
+  }

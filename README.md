@@ -2,6 +2,9 @@
 
 [![Reviewed delivery maturity](docs/roadmap/bars/overall.svg)](docs/ROADMAP.md)
 
+[Cross-layer capability report](docs/capabilities/REPORT.md) ·
+[Named remote gateway profiles](docs/REMOTE_MCP.md#named-local-gateway-profiles)
+
 MTerm-CLI provides **Windows local MCP tools**, a thin launcher for an existing Codex
 installation, and an **opt-in authenticated remote read-only preview**. The remote preview
 has completed a real MCP SDK round trip through the deployed Cloudflare staging gateway

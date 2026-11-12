@@ -1,0 +1,46 @@
+✖ internally consistent receipts cannot attribute CLI source to the separate managed bridge (38.548844ms)
+✖ six unrelated green jobs cannot substitute for the required platform and isolation checks (23.925244ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 319.394053
+
+✖ failing tests:
+
+test at tests/capability-register.test.mjs:203:1
+✖ internally consistent receipts cannot attribute CLI source to the separate managed bridge (38.548844ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Register/tests/capability-register.test.mjs:211:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /QUALIFICATION_SCOPE/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/capability-register.test.mjs:214:1
+✖ six unrelated green jobs cannot substitute for the required platform and isolation checks (23.925244ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Register/tests/capability-register.test.mjs:218:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /SOURCE_BINDING/,
+    operator: 'throws',
+    diff: 'simple'
+  }

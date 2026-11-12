@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-12T20:56:47.622916+00:00",
+  "command": "node scripts/verify-package.mjs",
+  "exitCode": 1,
+  "scope": "Partial installed qualification before register integration",
+  "sourceCommit": "11038d1c37ecf93685170e09c4fa9456f62bcd09",
+  "sourceSnapshotUnchangedByCommit": true,
+  "node": "v24.22.1",
+  "endpointTests": 81,
+  "endpointPassed": 81,
+  "profileTests": 24,
+  "profilePassed": 24,
+  "installedIsolation": {
+    "tests": 31,
+    "pass": 4,
+    "fail": 27,
+    "cause": "Unix-domain listen EPERM before fixture execution"
+  },
+  "moduleBindings": [
+    {
+      "path": "dist/remote/cli.js",
+      "bytes": 16153,
+      "sha256": "8b81fe3a994ae7aad2c4146a1518303bdce5b227f02872e598c47e1762d79c76"
+    },
+    {
+      "path": "dist/remote/endpoint-policy.js",
+      "bytes": 4704,
+      "sha256": "7e1a9ccd003d26e3f805eeb2f2343ec843e5a97a7369ca3d6d8e7e858a2fad3a"
+    },
+    {
+      "path": "dist/remote/endpoint-probe.js",
+      "bytes": 24322,
+      "sha256": "a2102578b922586adbf94b39cb9bdd7e7f4e3cca6d8b45ee9c88d7abca805246"
+    }
+  ],
+  "outsideCheckout": true,
+  "fullPackageGatePassed": false,
+  "modelCalls": 0,
+  "realCredentialsUsed": false,
+  "runtimeRetained": true,
+  "cleanupAttempted": false,
+  "limitations": "Provenance/link stages after the isolation assertion were not reached. Complete hosted package gates are required; this partial receipt is not a full-package pass."
+}

@@ -1,0 +1,144 @@
+{
+  "cases": [
+    {
+      "address": "100.63.255.255",
+      "expected": "allow"
+    },
+    {
+      "address": "100.64.0.0",
+      "expected": "deny"
+    },
+    {
+      "address": "100.127.255.255",
+      "expected": "deny"
+    },
+    {
+      "address": "100.128.0.0",
+      "expected": "allow"
+    },
+    {
+      "address": "172.15.255.255",
+      "expected": "allow"
+    },
+    {
+      "address": "172.16.0.0",
+      "expected": "deny"
+    },
+    {
+      "address": "172.31.255.255",
+      "expected": "deny"
+    },
+    {
+      "address": "172.32.0.0",
+      "expected": "allow"
+    },
+    {
+      "address": "192.0.0.9",
+      "expected": "deny-special-public"
+    },
+    {
+      "address": "192.0.1.0",
+      "expected": "allow"
+    },
+    {
+      "address": "198.17.255.255",
+      "expected": "allow"
+    },
+    {
+      "address": "198.18.0.0",
+      "expected": "deny"
+    },
+    {
+      "address": "198.19.255.255",
+      "expected": "deny"
+    },
+    {
+      "address": "198.20.0.0",
+      "expected": "allow"
+    },
+    {
+      "address": "223.255.255.255",
+      "expected": "allow"
+    },
+    {
+      "address": "224.0.0.0",
+      "expected": "deny"
+    },
+    {
+      "address": "239.255.255.255",
+      "expected": "deny"
+    },
+    {
+      "address": "240.0.0.0",
+      "expected": "deny"
+    },
+    {
+      "address": "255.255.255.255",
+      "expected": "deny"
+    },
+    {
+      "address": "2000::",
+      "expected": "allow"
+    },
+    {
+      "address": "2001::",
+      "expected": "deny"
+    },
+    {
+      "address": "2001:1ff:ffff:ffff:ffff:ffff:ffff:ffff",
+      "expected": "deny"
+    },
+    {
+      "address": "2001:200::",
+      "expected": "allow"
+    },
+    {
+      "address": "2001:db8::",
+      "expected": "deny"
+    },
+    {
+      "address": "2001:db9::",
+      "expected": "allow"
+    },
+    {
+      "address": "2002::",
+      "expected": "deny"
+    },
+    {
+      "address": "2003::",
+      "expected": "allow"
+    },
+    {
+      "address": "2620:4f:8000::",
+      "expected": "deny-special-public"
+    },
+    {
+      "address": "3fff::",
+      "expected": "deny"
+    },
+    {
+      "address": "3fff:fff:ffff:ffff:ffff:ffff:ffff:ffff",
+      "expected": "deny"
+    },
+    {
+      "address": "3fff:1000::",
+      "expected": "allow"
+    },
+    {
+      "address": "4000::",
+      "expected": "deny-outside-supernet"
+    },
+    {
+      "address": "::ffff:8.8.8.8",
+      "expected": "deny-mapped"
+    },
+    {
+      "address": "8.8.8.8",
+      "expected": "allow"
+    },
+    {
+      "address": "2606:4700::1111",
+      "expected": "allow"
+    }
+  ]
+}

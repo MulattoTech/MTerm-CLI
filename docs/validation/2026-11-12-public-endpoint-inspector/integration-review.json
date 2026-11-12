@@ -1,0 +1,508 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-12T21:04:48.660387+00:00",
+  "reviewer": "Independent peer /root/job_integration_review",
+  "status": "APPROVED_SCOPED_INTEGRATION_DELTA_PENDING_IMMUTABLE_BINDING_AND_HOSTED_GATES",
+  "scope": "Read-only integration of incoming main capability-register delivery into the previously reviewed endpoint source; not an exhaustive security scan, full package pass, publication approval or requirement acceptance.",
+  "source": {
+    "path": "/workspace/scratch/a92a3aacdca1/MTerm-CLI-Endpoints",
+    "snapshot": "/workspace/scratch/a92a3aacdca1/peer-endpoint-integration-review-20261112/snapshot",
+    "freezeTime": "2026-11-12T21:01:34.960862+00:00",
+    "manifestSha256": "5f206570bfa64bd5deb111c5f63be6f33cbedb4d36b08ab8a4a0932d78eec6d0",
+    "files": 1030,
+    "changedDuringFreeze": [],
+    "postCheck": {
+      "observedAt": "2026-11-12T21:03:56.893830+00:00",
+      "fileCount": 1030,
+      "mismatches": [],
+      "readOnlyVerification": true
+    },
+    "endpointParent": {
+      "sha": "11038d1c37ecf93685170e09c4fa9456f62bcd09",
+      "tree": "27c18bfb21ca6958657a965eadc4acc51cca277d"
+    },
+    "incomingMain": {
+      "sha": "f447c0baac3f36470d6fd96360928c6a2a192c4b",
+      "tree": "cbb3b682c4bfdf472bdfbc1ebfce5cd2e71174fc"
+    },
+    "immutableIntegratedCommit": null
+  },
+  "findings": [],
+  "runtimePreservation": {
+    "allRuntimeFilesChecked": 53,
+    "directories": [
+      "src",
+      "gateway",
+      "bin"
+    ],
+    "unchangedFromEndpointParent": true,
+    "selectedPriorApprovalBinding": [
+      {
+        "path": "src/remote/endpoint-probe.ts",
+        "sha256": "da57c3085f6f8de18e4e8d4e396edebf4630f6748aded659408233b80ed5d8a9",
+        "matchesPreviouslyApprovedSnapshot": true
+      },
+      {
+        "path": "src/remote/endpoint-policy.ts",
+        "sha256": "6303372951a5f3fad75f51430aadddf9d85550b0c3b52b09741888fc97844ec3",
+        "matchesPreviouslyApprovedSnapshot": true
+      },
+      {
+        "path": "src/remote/cli.ts",
+        "sha256": "0f8ae76ee0e1b9c43b71c208e544d7d0dcc1bf28781913e2418b7b4002c321d5",
+        "matchesPreviouslyApprovedSnapshot": true
+      },
+      {
+        "path": "tests/remote-endpoint-probe.test.mjs",
+        "sha256": "cee7fd1a5a009cbb3932ddde8f6de6a6f133668b017e640250df05b27a0aaa10",
+        "matchesPreviouslyApprovedSnapshot": true
+      },
+      {
+        "path": "tests/remote-endpoint-policy.test.mjs",
+        "sha256": "7ef5fe4caf223f530a4b86ae52bf3e080bbd3540f3a2cec1a523eb12d9b9cb8c",
+        "matchesPreviouslyApprovedSnapshot": true
+      },
+      {
+        "path": "tests/remote-endpoint-cli.test.mjs",
+        "sha256": "61b8e29faf0215297ec24f0309c67bf3b775bd5313f42618f56813fc0be57eaa",
+        "matchesPreviouslyApprovedSnapshot": true
+      },
+      {
+        "path": "tests/remote-endpoint-tls.test.mjs",
+        "sha256": "d0d912c2f1545620e3bb72075f508edb0a208dad27982cd273d25ef5dde14ac0",
+        "matchesPreviouslyApprovedSnapshot": true
+      }
+    ],
+    "tlsFixtures": [
+      {
+        "path": "tests/fixtures/endpoint-tls/README.md",
+        "sha256": "6cd92eae57576d8dc6cbe9d9e8c4e8d84d98511d1cc20975f5150c0394e4065d"
+      },
+      {
+        "path": "tests/fixtures/endpoint-tls/fixture-cert.pem",
+        "sha256": "c4343f034008960ed80569115b8e5e1aece81d904f079304961866a4abe6146f"
+      },
+      {
+        "path": "tests/fixtures/endpoint-tls/fixture-key.pem",
+        "sha256": "999edc153bef174e17af1479245fa904368becff8b263443cd4d5ee22f870cf1"
+      }
+    ],
+    "noFilesRemovedFromEitherParent": true,
+    "parentComparisonCounts": {
+      "endpointParent": {
+        "unchanged": 984,
+        "changed": 10,
+        "added": 36,
+        "removed": 0
+      },
+      "incomingMain": {
+        "unchanged": 959,
+        "changed": 12,
+        "added": 59,
+        "removed": 0
+      }
+    },
+    "priorCorrectedSourceReceiptSha256": "bf55008690074cc2bee8b2ac4700d70b63ea857707185175303eff74966ce9fb",
+    "priorExecutedTests": "Independent corrected endpoint suite 81/81; two original independent session regressions passed unchanged; original oversized CRLF case rejected and eight exact boundary cases passed. No network suite rerun in this integration pass."
+  },
+  "baselineReconciliation": {
+    "rowsChecked": 300,
+    "sameOrderedIds": true,
+    "topLevelChanges": {},
+    "changedRows": [
+      {
+        "id": "CLI-042",
+        "fields": [
+          "evidence",
+          "notes",
+          "reviewer"
+        ]
+      },
+      {
+        "id": "CLI-051",
+        "fields": [
+          "evidence",
+          "notes",
+          "reviewer"
+        ]
+      },
+      {
+        "id": "CLI-091",
+        "fields": [
+          "evidence",
+          "notes",
+          "reviewer"
+        ]
+      },
+      {
+        "id": "CLI-113",
+        "fields": [
+          "evidence",
+          "notes",
+          "reviewer"
+        ]
+      },
+      {
+        "id": "CLI-200",
+        "fields": [
+          "evidence",
+          "notes",
+          "reviewer"
+        ]
+      },
+      {
+        "id": "CLI-201",
+        "fields": [
+          "evidence",
+          "notes",
+          "reviewer"
+        ]
+      },
+      {
+        "id": "CLI-206",
+        "fields": [
+          "evidence",
+          "notes",
+          "reviewer"
+        ]
+      }
+    ],
+    "allOtherItemFieldsUnchanged": true,
+    "previousSha256": "07600affbd5b0758685635b4df507e6296a1ec73870a5c0ee3593fe8e3e07fe2",
+    "currentSha256": "0f796ae589965e64c1a4478916d5c8e60a21ef212cbd1d4f3fa64df4ece2299f",
+    "historicalMetricObjectExact": true,
+    "registerOtherFieldsUnchanged": true,
+    "currentHashExact": true,
+    "preservedCatalogAndValidatorFiles": [
+      {
+        "path": "docs/roadmap/requirements-seed.json",
+        "sha256": "af0e40402e186c4223e7e513f64230dd3740b9f882e99ecb4f6229ba81cf103c",
+        "matchesIncomingMain": true
+      },
+      {
+        "path": "docs/roadmap/desktop-commander-parity.json",
+        "sha256": "3d6f19827f7a6fa7411e941d22e6e1bc80ca702e1dfcd1302b2b674f3d3089c4",
+        "matchesIncomingMain": true
+      },
+      {
+        "path": "docs/roadmap/remote-web-progress.json",
+        "sha256": "907f56220926d77163cff2c0f3f568ea26c223646b5170308d9f63c4786c348f",
+        "matchesIncomingMain": true
+      },
+      {
+        "path": "docs/expansion/queue.json",
+        "sha256": "5a6053af704337f15ed5d99c31bca2e3d39e7cdf9876f8c88f92ec07cc563adb",
+        "matchesIncomingMain": true
+      },
+      {
+        "path": "docs/roadmap/summary.json",
+        "sha256": "cfe0bda25c81e833d70f66c5e856aede7ce106914175ff7f2e77fba0fce1ab14",
+        "matchesIncomingMain": true
+      },
+      {
+        "path": "docs/roadmap/METRICS.md",
+        "sha256": "3a25f5585059b387a6ad8a818337f9d8121b21ea52e6f4ec59bee933d3751f54",
+        "matchesIncomingMain": true
+      },
+      {
+        "path": "docs/capabilities/summary.json",
+        "sha256": "9b04a286ff44b24fa66bbe6229fb7ab972f0fb577b4ae65969b08d21b8694ed8",
+        "matchesIncomingMain": true
+      },
+      {
+        "path": "docs/capabilities/REPORT.md",
+        "sha256": "8cff1c75885fc153187026d85c9072138fc35451f2d48d6d6dd9de531a3f3e9a",
+        "matchesIncomingMain": true
+      },
+      {
+        "path": "scripts/capability-register.mjs",
+        "sha256": "3a7788d328f9bd855eeab9226e6e2dcfa1df55ffb06ba7f230a82a215649d239",
+        "matchesIncomingMain": true
+      },
+      {
+        "path": "scripts/roadmap.mjs",
+        "sha256": "ca0fe5cde3a8278ca62391ee7daef5e1f23d9ebc2a9f3fab54cdb4b965d03672",
+        "matchesIncomingMain": true
+      }
+    ],
+    "actualIndependentControl": {
+      "currentRegisterPass": true,
+      "historicalBaselineAgainstCurrentProgress": {
+        "rejected": true,
+        "error": "[BASELINE_CHANGED] CLI stage/weight snapshot changed; explicit reconciliation required"
+      },
+      "roadmapPass": true,
+      "roadmap": {
+        "count": 300,
+        "percent": 29.36,
+        "baselineWeight": 4068,
+        "complete": 0,
+        "blocked": 45,
+        "notStarted": 126
+      },
+      "creditAxes": {
+        "codeComplete": 0,
+        "tested": 0,
+        "merged": 0,
+        "deployed": 0,
+        "accepted": 0
+      },
+      "mutatedSource": false
+    }
+  },
+  "gateComposition": {
+    "parentIdentities": [
+      {
+        "path": "package.json",
+        "bytes": 1865,
+        "snapshotSha256": "7df8054332c8f992295404ee58744c3c1a04c58d86a2f996f11e4d861c65fad1",
+        "gitBlob": "17e51e195d5ec87a2a30bc0a9491824696bd3c4e",
+        "endpoint": {
+          "commit": "11038d1c37ecf93685170e09c4fa9456f62bcd09",
+          "sha256": "4124ad3ac1244ecc51610598a9507aa049f43ce351542a9927f2ad25fd72b52a",
+          "identical": false
+        },
+        "main": {
+          "commit": "f447c0baac3f36470d6fd96360928c6a2a192c4b",
+          "sha256": "7df8054332c8f992295404ee58744c3c1a04c58d86a2f996f11e4d861c65fad1",
+          "identical": true
+        }
+      },
+      {
+        "path": "scripts/review-source.mjs",
+        "bytes": 9179,
+        "snapshotSha256": "9e6286c41ef0da4e8725513c0014deb8601aa7b582165873a3c7f5f929f70f44",
+        "gitBlob": "c944fbe9f4495e3fb68e115d4cb064f416ace3e1",
+        "endpoint": {
+          "commit": "11038d1c37ecf93685170e09c4fa9456f62bcd09",
+          "sha256": "2f06c9ac033d8c99df7b17bfbf629ac247a89345bf583ab55d538dd262fdb7a4",
+          "identical": false
+        },
+        "main": {
+          "commit": "f447c0baac3f36470d6fd96360928c6a2a192c4b",
+          "sha256": "9e6286c41ef0da4e8725513c0014deb8601aa7b582165873a3c7f5f929f70f44",
+          "identical": true
+        }
+      },
+      {
+        "path": "scripts/verify-package.mjs",
+        "bytes": 64732,
+        "snapshotSha256": "b15a5e75fd014202384159b8b1de6315d3df42ac6aea8c546b29505e9cafcc39",
+        "gitBlob": "abe8aa59ef5fc21a1b4f61b250064377e2b29528",
+        "endpoint": {
+          "commit": "11038d1c37ecf93685170e09c4fa9456f62bcd09",
+          "sha256": "b15a5e75fd014202384159b8b1de6315d3df42ac6aea8c546b29505e9cafcc39",
+          "identical": true
+        },
+        "main": {
+          "commit": "f447c0baac3f36470d6fd96360928c6a2a192c4b",
+          "sha256": "1367d3ec43087a686a6f18705a51a9f551610f56daf1b3fea571633d04a6eab0",
+          "identical": false
+        }
+      },
+      {
+        "path": "tests/prepack-lifecycle.test.mjs",
+        "bytes": 9229,
+        "snapshotSha256": "eb175996fa9d1f5c31aba01761fd254806e2490149ac05a2833b60f3bbbeeb91",
+        "gitBlob": "9ff91e6a27550488c7ddb775eefd1cd0bd95993c",
+        "endpoint": {
+          "commit": "11038d1c37ecf93685170e09c4fa9456f62bcd09",
+          "sha256": "7832d3e6090bba86e5340c0d4e494fc7e6b9ab7d3c5f0fcfe695b95f0737e3e2",
+          "identical": false
+        },
+        "main": {
+          "commit": "f447c0baac3f36470d6fd96360928c6a2a192c4b",
+          "sha256": "eb175996fa9d1f5c31aba01761fd254806e2490149ac05a2833b60f3bbbeeb91",
+          "identical": true
+        }
+      }
+    ],
+    "reviewConclusion": "Incoming main package.json, review-source fingerprint coverage, capability validator/test fixture and prepack lifecycle tests retained exactly; endpoint package verifier retained exactly. Main-to-verifier diff only adds installed endpoint qualification and reporting; no previous assertion or phase removed.",
+    "endpointInstalledThreshold": 81,
+    "profileInstalledThreshold": 24,
+    "zeroFailCancelSkipTodoRequired": true,
+    "endpointModuleBindingsRequired": 3,
+    "outsideCheckoutRequired": true,
+    "sourceAssertionPreservation": "All endpoint test files unchanged; main prepack failure tests include actual capabilities:check execution before compilation/publication refusal.",
+    "fullLocalOrPackageGateRerun": false,
+    "independentChallengerReceipt": {
+      "path": "/workspace/scratch/a92a3aacdca1/peer-endpoint-gate-integration-review/gate-integration-review.json",
+      "sha256": "d8771a70cbc378ccefeaa29983f9fa369963a71442972b3c6907a6cb2e808d51",
+      "reviewer": "/root/job_integration_review/endpoint_transport_challenger",
+      "result": "Bounded static approval; no integration defect or discarded assertion"
+    }
+  },
+  "historicalEvidence": {
+    "allManifestFilesVerified": 34,
+    "manifestMismatches": [],
+    "compiledRemoteModulesComparedToPriorIndependentBuild": [
+      {
+        "path": "dist/remote/adapter.js",
+        "declared": "aa809420a2757880b8a0b8301a0ace892b5e4adf52dae89e13fb4f523fe12705",
+        "fixedReviewerBuild": "aa809420a2757880b8a0b8301a0ace892b5e4adf52dae89e13fb4f523fe12705",
+        "match": true
+      },
+      {
+        "path": "dist/remote/agent.js",
+        "declared": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc",
+        "fixedReviewerBuild": "06951063060208b4b313fdefdbf369fb988ee6b09ddaecf200eeca59cd41c3dc",
+        "match": true
+      },
+      {
+        "path": "dist/remote/cli.js",
+        "declared": "8b81fe3a994ae7aad2c4146a1518303bdce5b227f02872e598c47e1762d79c76",
+        "fixedReviewerBuild": "8b81fe3a994ae7aad2c4146a1518303bdce5b227f02872e598c47e1762d79c76",
+        "match": true
+      },
+      {
+        "path": "dist/remote/endpoint-policy.js",
+        "declared": "7e1a9ccd003d26e3f805eeb2f2343ec843e5a97a7369ca3d6d8e7e858a2fad3a",
+        "fixedReviewerBuild": "7e1a9ccd003d26e3f805eeb2f2343ec843e5a97a7369ca3d6d8e7e858a2fad3a",
+        "match": true
+      },
+      {
+        "path": "dist/remote/endpoint-probe.js",
+        "declared": "a2102578b922586adbf94b39cb9bdd7e7f4e3cca6d8b45ee9c88d7abca805246",
+        "fixedReviewerBuild": "a2102578b922586adbf94b39cb9bdd7e7f4e3cca6d8b45ee9c88d7abca805246",
+        "match": true
+      },
+      {
+        "path": "dist/remote/profiles.js",
+        "declared": "61a471d8b405c196114795696c8ec7d9f12df9eea60c29bfa3afebefcc393d50",
+        "fixedReviewerBuild": "61a471d8b405c196114795696c8ec7d9f12df9eea60c29bfa3afebefcc393d50",
+        "match": true
+      },
+      {
+        "path": "dist/remote/protocol.js",
+        "declared": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14",
+        "fixedReviewerBuild": "83e0991bca35853a2560ab8fd837c50cdfb479c744ddcbaf7e641764d3f3ac14",
+        "match": true
+      },
+      {
+        "path": "dist/remote/state.js",
+        "declared": "57b4ae00ba82cdde25bd7d96f7a3a216dc45bf50a06f02c2c408909b8c467a52",
+        "fixedReviewerBuild": "57b4ae00ba82cdde25bd7d96f7a3a216dc45bf50a06f02c2c408909b8c467a52",
+        "match": true
+      }
+    ],
+    "retainedLogSummaries": {
+      "source": {
+        "tests": 1456,
+        "pass": 1417,
+        "fail": 27,
+        "skip": 12,
+        "allFailuresListenEperm": true,
+        "decodedRawSha256": "d2143b10359e1c47d0126113e09f4a00f8de7a761ad97c295cf882da330a9283"
+      },
+      "installedIsolation": {
+        "tests": 31,
+        "pass": 4,
+        "fail": 27,
+        "allFailuresListenEperm": true,
+        "decodedRawSha256": "dfb69e6f8fe9f381b34c8ef99b0dc966e0162a30c3570eea4f22a6ca3d6e5738"
+      },
+      "installedEndpoint": {
+        "sha256": "0576fd39d2a8475cfa9a3d65bd0f68f3970fe88cd668fb0a2961fa9d3e8e4d65",
+        "tapSummaries": [
+          "# tests 81",
+          "# pass 81",
+          "# fail 0",
+          "# cancelled 0",
+          "# skipped 0",
+          "# todo 0"
+        ]
+      },
+      "installedProfiles": {
+        "sha256": "e8efaff2020f3eba6b2e18fb51a3bdc4181d484533a7d018a165e0095eaa7351",
+        "tapSummaries": [
+          "# tests 24",
+          "# pass 24",
+          "# fail 0",
+          "# cancelled 0",
+          "# skipped 0",
+          "# todo 0"
+        ]
+      },
+      "integratedFocused": {
+        "sha256": "a6e4be20b3856ed8d348097276a76137d392f3b2d395deea5d12dcbad55619cd",
+        "tapSummaries": [
+          "# tests 142",
+          "# pass 142",
+          "# fail 0",
+          "# cancelled 0",
+          "# skipped 0",
+          "# todo 0"
+        ]
+      }
+    },
+    "fullSourceAndPackageGatesPassed": false,
+    "logVerificationNotIndependentTestExecution": true
+  },
+  "conflictResolutionReview": {
+    "checkpointHistory": "All prior endpoint checkpoint lines preserved; incoming main narrative retained, with Exact next action heading renamed historical.",
+    "handoff": "Incoming main content preserved; endpoint prepublication pending-gates text replaced by explicit retained partial local failures and remaining immutable/hosted gates.",
+    "roadmapReview": "Regenerated endpoint review passed unchanged check including new capability files, current catalog and source fingerprint."
+  },
+  "criticalHashes": [
+    {
+      "path": "scripts/capability-register.mjs",
+      "sha256": "3a7788d328f9bd855eeab9226e6e2dcfa1df55ffb06ba7f230a82a215649d239"
+    },
+    {
+      "path": "tests/capability-register.test.mjs",
+      "sha256": "738582c8d724ab5d08b762a9b520debc8500071897379fbb3a11a5ad3ab2c297"
+    },
+    {
+      "path": "docs/capabilities/register.json",
+      "sha256": "1d6f2eb2325f3f9593f53e07d5f2d40c752b7022d3125b9405b9c51fee9b097e"
+    },
+    {
+      "path": "docs/roadmap/progress.json",
+      "sha256": "0f796ae589965e64c1a4478916d5c8e60a21ef212cbd1d4f3fa64df4ece2299f"
+    },
+    {
+      "path": "docs/roadmap/review.json",
+      "sha256": "52770e44ce95a5cc62c74fcc7a9851f5922e37385f462193f61e42251654f240"
+    },
+    {
+      "path": "docs/validation/2026-11-12-public-endpoint-inspector/metric-evidence-reconciliation.json",
+      "sha256": "a131255dc8d3691b9bc5a0e36e4c902eec2cd629dc1bfa2d0896c2799b5c8952"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "snapshot-manifest.json",
+      "sha256": "5f206570bfa64bd5deb111c5f63be6f33cbedb4d36b08ab8a4a0932d78eec6d0"
+    },
+    {
+      "path": "parent-comparison.json",
+      "sha256": "a428288e0e41c2f53ce3ab00481dd9e4ae5b89e50241fd362a4fe2a73a51db23"
+    },
+    {
+      "path": "baseline-proof.json",
+      "sha256": "0bfefcdfbb7087d601f8d1db4d5e23a2da36961763e7c547ed532fcb57ba6737"
+    },
+    {
+      "path": "independent-baseline-guard-control.json",
+      "sha256": "b2f8a7c0e004b19e75c748773a7916137a65003a0054b206289427d14f8f30c2"
+    },
+    {
+      "path": "evidence-integrity.json",
+      "sha256": "3109920519d3cd5cc22f027c2f4a24d40924f2bf76ebf5f5338b9743c5056d14"
+    },
+    {
+      "path": "approved-source-binding.json",
+      "sha256": "de889b00eb975fa0e986cbec3a021c6bd40b6d6016a40266c9e1cd7ae9cda778"
+    },
+    {
+      "path": "snapshot-postcheck.json",
+      "sha256": "9c012718e76542d6405e82fcf9b0922eaa09d03cd9629e224f8b00ab581ea500"
+    }
+  ],
+  "limitations": [
+    "Snapshot is a frozen prepublication worktree; final remote commit/tree binding remains required.",
+    "No whole local or full package gate rerun; existing failed local receipts remain failed and do not waive hosted exact-candidate or actual-main gates.",
+    "No real external endpoint, credential store, production system, model/API request or source mutation was used.",
+    "Review is bounded to integration preservation, evidence integrity and metric reconciliation; it is not complete security attestation or whole requirement acceptance."
+  ]
+}

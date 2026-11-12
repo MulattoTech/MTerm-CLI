@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-12-public-endpoint-inspector; qualify installed endpoint policy, bounded discovery and actual owned TLS.
 // Modified: 2026-11-09-managed-process-budgets; bind installed managed-registration and existing resource cases.
 // Modified: 2026-11-09-state-lock-init; qualify installed mutation-lock initialization ownership/recovery.
 // Modified: 2026-11-09-package-isolation; measure external installation/cwds and retain regular evidence.
@@ -254,6 +255,46 @@ const report = await withPackageWorkspace(
         ['dist/remote/cli.js', 'dist/remote/state.js', 'dist/remote/profiles.js'].includes(file.path),
       ),
     };
+    const endpointVerification = await exec(
+      process.execPath,
+      [
+        '--test',
+        '--test-reporter=tap',
+        '--test-concurrency=1',
+        ...['cli', 'policy', 'probe', 'tls'].map((name) =>
+          path.join(root, `tests/remote-endpoint-${name}.test.mjs`),
+        ),
+      ],
+      {
+        cwd: home,
+        env: { ...env, MTERM_ENDPOINT_VERIFY_ROOT: installedPackageRoot },
+        timeout: 30000,
+        maxBuffer: 1048576,
+        windowsHide: true,
+      },
+    );
+    const endpointLog = path.join(output, 'remote-endpoint-tests.tap');
+    await fs.writeFile(endpointLog, endpointVerification.stdout + endpointVerification.stderr);
+    const endpointTestCount = Number(endpointVerification.stdout.match(/^# tests (\d+)$/m)?.[1]);
+    assert.ok(endpointTestCount >= 81, 'Installed endpoint qualification is incomplete');
+    for (const field of ['fail', 'cancelled', 'skipped', 'todo'])
+      assert.match(endpointVerification.stdout, new RegExp('^# ' + field + ' 0$', 'm'));
+    const remoteEndpoints = {
+      tests: endpointTestCount,
+      packageRoot: installedPackageRoot,
+      fromOutsideCheckout: profileOutsideCheckout,
+      externalEndpointProbed: false,
+      realCredentialsUsed: false,
+      ownedLoopbackTlsQualified: true,
+      modelCalls: 0,
+      log: endpointLog,
+      moduleBindings: remoteSourceFiles.filter((file) =>
+        ['dist/remote/cli.js', 'dist/remote/endpoint-policy.js', 'dist/remote/endpoint-probe.js'].includes(
+          file.path,
+        ),
+      ),
+    };
+    assert.equal(remoteEndpoints.moduleBindings.length, 3);
     const packBindings = [];
     for (const name of [
       'cli.js',
@@ -1430,6 +1471,7 @@ const report = await withPackageWorkspace(
       installedConfiguration: configuration,
       installedRemoteState: remoteState,
       installedRemoteProfiles: remoteProfiles,
+      installedRemoteEndpoints: remoteEndpoints,
       installedOptionalPacks,
       installedPackUpdateCheck,
       installedRegistryPersistence,

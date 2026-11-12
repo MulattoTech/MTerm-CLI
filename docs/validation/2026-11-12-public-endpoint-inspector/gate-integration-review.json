@@ -1,0 +1,178 @@
+{
+  "review": "Independent read-only endpoint/capability-register gate integration review",
+  "reviewer": "/root/job_integration_review/endpoint_transport_challenger",
+  "recordedAtUtc": "2026-11-12T21:04:12.677194+00:00",
+  "decision": "approved_within_stated_static_gate_composition_scope",
+  "findings": [],
+  "snapshotPath": "/workspace/scratch/a92a3aacdca1/peer-endpoint-integration-review-20261112/snapshot",
+  "snapshotManifestSha256": "5f206570bfa64bd5deb111c5f63be6f33cbedb4d36b08ab8a4a0932d78eec6d0",
+  "parents": {
+    "endpoint": {
+      "commit": "11038d1c37ecf93685170e09c4fa9456f62bcd09",
+      "tree": "27c18bfb21ca6958657a965eadc4acc51cca277d",
+      "parents": [
+        "4fb205088e77731e42da5adaca6bf167f8b75194"
+      ]
+    },
+    "main": {
+      "commit": "f447c0baac3f36470d6fd96360928c6a2a192c4b",
+      "tree": "cbb3b682c4bfdf472bdfbc1ebfce5cd2e71174fc",
+      "parents": [
+        "4fb205088e77731e42da5adaca6bf167f8b75194",
+        "b0348d901b27975789d8764397a103204e08aaf0"
+      ]
+    }
+  },
+  "sourceFiles": [
+    {
+      "path": "package.json",
+      "bytes": 1865,
+      "snapshotSha256": "7df8054332c8f992295404ee58744c3c1a04c58d86a2f996f11e4d861c65fad1",
+      "gitBlob": "17e51e195d5ec87a2a30bc0a9491824696bd3c4e",
+      "endpoint": {
+        "commit": "11038d1c37ecf93685170e09c4fa9456f62bcd09",
+        "sha256": "4124ad3ac1244ecc51610598a9507aa049f43ce351542a9927f2ad25fd72b52a",
+        "identical": false
+      },
+      "main": {
+        "commit": "f447c0baac3f36470d6fd96360928c6a2a192c4b",
+        "sha256": "7df8054332c8f992295404ee58744c3c1a04c58d86a2f996f11e4d861c65fad1",
+        "identical": true
+      }
+    },
+    {
+      "path": "scripts/review-source.mjs",
+      "bytes": 9179,
+      "snapshotSha256": "9e6286c41ef0da4e8725513c0014deb8601aa7b582165873a3c7f5f929f70f44",
+      "gitBlob": "c944fbe9f4495e3fb68e115d4cb064f416ace3e1",
+      "endpoint": {
+        "commit": "11038d1c37ecf93685170e09c4fa9456f62bcd09",
+        "sha256": "2f06c9ac033d8c99df7b17bfbf629ac247a89345bf583ab55d538dd262fdb7a4",
+        "identical": false
+      },
+      "main": {
+        "commit": "f447c0baac3f36470d6fd96360928c6a2a192c4b",
+        "sha256": "9e6286c41ef0da4e8725513c0014deb8601aa7b582165873a3c7f5f929f70f44",
+        "identical": true
+      }
+    },
+    {
+      "path": "scripts/verify-package.mjs",
+      "bytes": 64732,
+      "snapshotSha256": "b15a5e75fd014202384159b8b1de6315d3df42ac6aea8c546b29505e9cafcc39",
+      "gitBlob": "abe8aa59ef5fc21a1b4f61b250064377e2b29528",
+      "endpoint": {
+        "commit": "11038d1c37ecf93685170e09c4fa9456f62bcd09",
+        "sha256": "b15a5e75fd014202384159b8b1de6315d3df42ac6aea8c546b29505e9cafcc39",
+        "identical": true
+      },
+      "main": {
+        "commit": "f447c0baac3f36470d6fd96360928c6a2a192c4b",
+        "sha256": "1367d3ec43087a686a6f18705a51a9f551610f56daf1b3fea571633d04a6eab0",
+        "identical": false
+      }
+    },
+    {
+      "path": "tests/prepack-lifecycle.test.mjs",
+      "bytes": 9229,
+      "snapshotSha256": "eb175996fa9d1f5c31aba01761fd254806e2490149ac05a2833b60f3bbbeeb91",
+      "gitBlob": "9ff91e6a27550488c7ddb775eefd1cd0bd95993c",
+      "endpoint": {
+        "commit": "11038d1c37ecf93685170e09c4fa9456f62bcd09",
+        "sha256": "7832d3e6090bba86e5340c0d4e494fc7e6b9ab7d3c5f0fcfe695b95f0737e3e2",
+        "identical": false
+      },
+      "main": {
+        "commit": "f447c0baac3f36470d6fd96360928c6a2a192c4b",
+        "sha256": "eb175996fa9d1f5c31aba01761fd254806e2490149ac05a2833b60f3bbbeeb91",
+        "identical": true
+      }
+    },
+    {
+      "path": "scripts/capability-register.mjs",
+      "bytes": 24413,
+      "snapshotSha256": "3a7788d328f9bd855eeab9226e6e2dcfa1df55ffb06ba7f230a82a215649d239",
+      "gitBlob": "0eddcffeb758a695729f26446d9c690b9897ef7c",
+      "main": {
+        "commit": "f447c0baac3f36470d6fd96360928c6a2a192c4b",
+        "sha256": "3a7788d328f9bd855eeab9226e6e2dcfa1df55ffb06ba7f230a82a215649d239",
+        "identical": true
+      }
+    },
+    {
+      "path": "tests/capability-register.test.mjs",
+      "bytes": 10657,
+      "snapshotSha256": "738582c8d724ab5d08b762a9b520debc8500071897379fbb3a11a5ad3ab2c297",
+      "gitBlob": "71240099d0be34ea7347220501b63ec9cf931733",
+      "main": {
+        "commit": "f447c0baac3f36470d6fd96360928c6a2a192c4b",
+        "sha256": "738582c8d724ab5d08b762a9b520debc8500071897379fbb3a11a5ad3ab2c297",
+        "identical": true
+      }
+    }
+  ],
+  "checks": [
+    {
+      "name": "exact_main_preservation",
+      "result": "pass",
+      "details": "package.json, review-source.mjs, prepack-lifecycle.test.mjs, capability-register.mjs and capability-register.test.mjs are byte-identical to incoming main."
+    },
+    {
+      "name": "exact_endpoint_verifier_preservation",
+      "result": "pass",
+      "details": "verify-package.mjs is byte-identical to endpoint parent; its complete diff from main consists only of the endpoint qualification addition, identifying comment and installedRemoteEndpoints report field."
+    },
+    {
+      "name": "build_check_prepack_order",
+      "result": "pass",
+      "details": "build: roadmap -> parity -> capabilities -> build:code; check: roadmap -> parity -> capabilities -> typecheck -> format -> tests; prepack: build && check. All chained with &&."
+    },
+    {
+      "name": "source_manifest_coverage",
+      "result": "pass",
+      "details": "docs/capabilities is added to review-source roots; every existing root and fingerprint implementation is preserved."
+    },
+    {
+      "name": "prepack_failure_assertions",
+      "result": "pass",
+      "details": "Actual prepack/build/check script strings are copied to an offline disposable npm fixture; capabilities leaf and failure case retained. Each roadmap/parity/capabilities failing case asserts status 1, no archive, gate executed exactly once, no build:code, and no dist. Existing clean/stale/post-build cases retained."
+    },
+    {
+      "name": "installed_profiles",
+      "result": "pass",
+      "details": "Minimum 24 TAP tests; fail/cancelled/skipped/todo all zero; MTERM_PROFILE_VERIFY_ROOT points at installed package; cwd is independently asserted outside checkout."
+    },
+    {
+      "name": "installed_endpoints",
+      "result": "pass",
+      "details": "Four endpoint suites cli/policy/probe/tls retained; minimum 81 TAP tests; fail/cancelled/skipped/todo all zero; MTERM_ENDPOINT_VERIFY_ROOT points at installed package; same outside-checkout cwd; three exact endpoint compiled-module bindings required; report field retained."
+    },
+    {
+      "name": "scoped_inputs_stable",
+      "result": "pass",
+      "details": "Recomputed all six scoped source SHA256 values immediately before saving this record."
+    }
+  ],
+  "sourceLocations": {
+    "gateScripts": "package.json:23-35",
+    "sourceRootAddition": "scripts/review-source.mjs:25",
+    "prepackActualScriptComposition": "tests/prepack-lifecycle.test.mjs:57-71",
+    "prepackFailureAssertions": "tests/prepack-lifecycle.test.mjs:219-234",
+    "installedProfiles": "scripts/verify-package.mjs:218-257",
+    "installedEndpoints": "scripts/verify-package.mjs:258-297",
+    "endpointReportField": "scripts/verify-package.mjs:1474"
+  },
+  "execution": {
+    "testsRun": false,
+    "reason": "Exact source byte comparisons and additive diffs resolve the narrow composition question; parent owns full qualification.",
+    "fullGatesRun": false,
+    "networkOperations": 0,
+    "sourceOrSnapshotEdits": false,
+    "writes": "Reviewer-owned notes and comparison artifacts only."
+  },
+  "limits": [
+    "Static integration approval only; no claim that current CI, npm prepack, installed qualification or production behavior passed in this review.",
+    "The 300-row register baseline, whole-tree identity and final immutable publication binding are assigned to parent reviewer.",
+    "This review does not reopen the endpoint runtime security assessment or assert exhaustive security coverage."
+  ]
+}

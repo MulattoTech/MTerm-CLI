@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-12T20:58:10.294736+00:00",
+  "baseSha": "f447c0baac3f36470d6fd96360928c6a2a192c4b",
+  "previousProgressSha256": "07600affbd5b0758685635b4df507e6296a1ec73870a5c0ee3593fe8e3e07fe2",
+  "currentProgressSha256": "0f796ae589965e64c1a4478916d5c8e60a21ef212cbd1d4f3fa64df4ece2299f",
+  "changedIds": [
+    "CLI-042",
+    "CLI-051",
+    "CLI-091",
+    "CLI-113",
+    "CLI-200",
+    "CLI-201",
+    "CLI-206"
+  ],
+  "allowedFields": [
+    "evidence",
+    "notes",
+    "reviewer"
+  ],
+  "allOtherItemFieldsUnchanged": true,
+  "originalRequirementCount": 300,
+  "gateBeforeReconciliation": {
+    "command": "npm run capabilities:check",
+    "exitCode": 1,
+    "error": "[BASELINE_CHANGED] CLI stage/weight snapshot changed; explicit reconciliation required"
+  },
+  "decision": "Explicitly reconcile only the evidence snapshot hash while retaining the full historical metricBaselineEvidence; validator and completion rules unchanged."
+}

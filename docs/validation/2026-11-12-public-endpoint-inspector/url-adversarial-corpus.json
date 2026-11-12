@@ -1,0 +1,495 @@
+{
+  "scope": "Proposed v1 cases; expected decisions are design, not product validation results",
+  "cases": [
+    {
+      "input": "https://example.com/mcp",
+      "expected": "allow-offline",
+      "reason": "Canonical explicit HTTPS URL; DNS/network eligibility remains unverified offline"
+    },
+    {
+      "input": "https://MCP.Example.COM/mcp",
+      "expected": "allow-offline",
+      "reason": "Canonical explicit HTTPS URL; DNS/network eligibility remains unverified offline"
+    },
+    {
+      "input": "https://example.com:443/mcp",
+      "expected": "allow-offline",
+      "reason": "Canonical explicit HTTPS URL; DNS/network eligibility remains unverified offline"
+    },
+    {
+      "input": "https://example.com:8443/v1/mcp",
+      "expected": "allow-offline",
+      "reason": "Canonical explicit HTTPS URL; DNS/network eligibility remains unverified offline"
+    },
+    {
+      "input": "https://example.com/",
+      "expected": "allow-offline",
+      "reason": "Canonical explicit HTTPS URL; DNS/network eligibility remains unverified offline"
+    },
+    {
+      "input": "https://8.8.8.8/mcp",
+      "expected": "allow-offline",
+      "reason": "Canonical explicit HTTPS URL; DNS/network eligibility remains unverified offline"
+    },
+    {
+      "input": "https://[2606:4700::1111]/mcp",
+      "expected": "allow-offline",
+      "reason": "Canonical explicit HTTPS URL; DNS/network eligibility remains unverified offline"
+    },
+    {
+      "input": "https://xn--bcher-kva.example.com/mcp",
+      "expected": "allow-offline",
+      "reason": "Canonical explicit HTTPS URL; DNS/network eligibility remains unverified offline"
+    },
+    {
+      "input": "http://example.com/mcp",
+      "expected": "reject-url",
+      "reason": "Require explicit HTTPS authority"
+    },
+    {
+      "input": "ftp://example.com/mcp",
+      "expected": "reject-url",
+      "reason": "Require explicit HTTPS authority"
+    },
+    {
+      "input": "file:///etc/passwd",
+      "expected": "reject-url",
+      "reason": "Require explicit HTTPS authority"
+    },
+    {
+      "input": "https:example.com/mcp",
+      "expected": "reject-url",
+      "reason": "Require explicit HTTPS authority"
+    },
+    {
+      "input": "https:/example.com/mcp",
+      "expected": "reject-url",
+      "reason": "Require explicit HTTPS authority"
+    },
+    {
+      "input": "https:////example.com/mcp",
+      "expected": "reject-url",
+      "reason": "Require explicit HTTPS authority"
+    },
+    {
+      "input": "//example.com/mcp",
+      "expected": "reject-url",
+      "reason": "Require explicit HTTPS authority"
+    },
+    {
+      "input": " https://example.com/mcp",
+      "expected": "reject-url",
+      "reason": "Reject raw whitespace/control/non-ASCII under strict v1 contract"
+    },
+    {
+      "input": "https://example.com/mcp ",
+      "expected": "reject-url",
+      "reason": "Reject raw whitespace/control/non-ASCII under strict v1 contract"
+    },
+    {
+      "input": "https://exa\nmple.com/mcp",
+      "expected": "reject-url",
+      "reason": "Reject raw whitespace/control/non-ASCII under strict v1 contract"
+    },
+    {
+      "input": "https://example.com/\tmcp",
+      "expected": "reject-url",
+      "reason": "Reject raw whitespace/control/non-ASCII under strict v1 contract"
+    },
+    {
+      "input": "https://example.com/\u0000mcp",
+      "expected": "reject-url",
+      "reason": "Reject raw whitespace/control/non-ASCII under strict v1 contract"
+    },
+    {
+      "input": "https://example.com/\u007fmcp",
+      "expected": "reject-url",
+      "reason": "Reject raw whitespace/control/non-ASCII under strict v1 contract"
+    },
+    {
+      "input": "https://example.com/\u202emcp",
+      "expected": "reject-url",
+      "reason": "Reject raw whitespace/control/non-ASCII under strict v1 contract"
+    },
+    {
+      "input": "https://user:secret@example.com/mcp",
+      "expected": "reject-url",
+      "reason": "Reject raw userinfo marker even if normalized fields empty"
+    },
+    {
+      "input": "https://user@example.com/mcp",
+      "expected": "reject-url",
+      "reason": "Reject raw userinfo marker even if normalized fields empty"
+    },
+    {
+      "input": "https://@example.com/mcp",
+      "expected": "reject-url",
+      "reason": "Reject raw userinfo marker even if normalized fields empty"
+    },
+    {
+      "input": "https://:@example.com/mcp",
+      "expected": "reject-url",
+      "reason": "Reject raw userinfo marker even if normalized fields empty"
+    },
+    {
+      "input": "https://good.example@127.0.0.1/mcp",
+      "expected": "reject-url",
+      "reason": "Reject raw userinfo marker even if normalized fields empty"
+    },
+    {
+      "input": "https://user%40good.example@evil.example/mcp",
+      "expected": "reject-url",
+      "reason": "Reject raw userinfo marker even if normalized fields empty"
+    },
+    {
+      "input": "https://example.com/mcp?token=secret",
+      "expected": "reject-url",
+      "reason": "Reject all query/fragment delimiters before normalization"
+    },
+    {
+      "input": "https://example.com/mcp?",
+      "expected": "reject-url",
+      "reason": "Reject all query/fragment delimiters before normalization"
+    },
+    {
+      "input": "https://example.com/mcp#fragment",
+      "expected": "reject-url",
+      "reason": "Reject all query/fragment delimiters before normalization"
+    },
+    {
+      "input": "https://example.com/mcp#",
+      "expected": "reject-url",
+      "reason": "Reject all query/fragment delimiters before normalization"
+    },
+    {
+      "input": "https://example.com\\@127.0.0.1/mcp",
+      "expected": "reject-url",
+      "reason": "Reject backslash, encoded separator/control and double-encoding ambiguity"
+    },
+    {
+      "input": "https://example.com\\mcp",
+      "expected": "reject-url",
+      "reason": "Reject backslash, encoded separator/control and double-encoding ambiguity"
+    },
+    {
+      "input": "https://example.com/a\\b",
+      "expected": "reject-url",
+      "reason": "Reject backslash, encoded separator/control and double-encoding ambiguity"
+    },
+    {
+      "input": "https://example.com/%5cmcp",
+      "expected": "reject-url",
+      "reason": "Reject backslash, encoded separator/control and double-encoding ambiguity"
+    },
+    {
+      "input": "https://example.com/%2fmcp",
+      "expected": "reject-url",
+      "reason": "Reject backslash, encoded separator/control and double-encoding ambiguity"
+    },
+    {
+      "input": "https://example.com/%2Fmcp",
+      "expected": "reject-url",
+      "reason": "Reject backslash, encoded separator/control and double-encoding ambiguity"
+    },
+    {
+      "input": "https://example.com/%252fmcp",
+      "expected": "reject-url",
+      "reason": "Reject backslash, encoded separator/control and double-encoding ambiguity"
+    },
+    {
+      "input": "https://example.com/%255cmcp",
+      "expected": "reject-url",
+      "reason": "Reject backslash, encoded separator/control and double-encoding ambiguity"
+    },
+    {
+      "input": "https://example.com/%0d%0aX-Test:yes",
+      "expected": "reject-url",
+      "reason": "Reject backslash, encoded separator/control and double-encoding ambiguity"
+    },
+    {
+      "input": "https://example.com/a/../mcp",
+      "expected": "reject-url",
+      "reason": "Reject raw/encoded dot segments and repeated separators before normalization"
+    },
+    {
+      "input": "https://example.com/./mcp",
+      "expected": "reject-url",
+      "reason": "Reject raw/encoded dot segments and repeated separators before normalization"
+    },
+    {
+      "input": "https://example.com/%2e/mcp",
+      "expected": "reject-url",
+      "reason": "Reject raw/encoded dot segments and repeated separators before normalization"
+    },
+    {
+      "input": "https://example.com/%2E%2e/mcp",
+      "expected": "reject-url",
+      "reason": "Reject raw/encoded dot segments and repeated separators before normalization"
+    },
+    {
+      "input": "https://example.com/.%2e/mcp",
+      "expected": "reject-url",
+      "reason": "Reject raw/encoded dot segments and repeated separators before normalization"
+    },
+    {
+      "input": "https://example.com/%2e./mcp",
+      "expected": "reject-url",
+      "reason": "Reject raw/encoded dot segments and repeated separators before normalization"
+    },
+    {
+      "input": "https://example.com//mcp",
+      "expected": "reject-url",
+      "reason": "Reject raw/encoded dot segments and repeated separators before normalization"
+    },
+    {
+      "input": "https://ex%61mple.com/mcp",
+      "expected": "reject-url",
+      "reason": "Reject encoded/noncanonical host and invalid DNS labels"
+    },
+    {
+      "input": "https://%31%32%37.0.0.1/mcp",
+      "expected": "reject-url",
+      "reason": "Reject encoded/noncanonical host and invalid DNS labels"
+    },
+    {
+      "input": "https://example%2ecom/mcp",
+      "expected": "reject-url",
+      "reason": "Reject encoded/noncanonical host and invalid DNS labels"
+    },
+    {
+      "input": "https://example.com%00/mcp",
+      "expected": "reject-url",
+      "reason": "Reject encoded/noncanonical host and invalid DNS labels"
+    },
+    {
+      "input": "https://example\u3002com/mcp",
+      "expected": "reject-url",
+      "reason": "Reject encoded/noncanonical host and invalid DNS labels"
+    },
+    {
+      "input": "https://example.com./mcp",
+      "expected": "reject-url",
+      "reason": "Reject encoded/noncanonical host and invalid DNS labels"
+    },
+    {
+      "input": "https://example..com/mcp",
+      "expected": "reject-url",
+      "reason": "Reject encoded/noncanonical host and invalid DNS labels"
+    },
+    {
+      "input": "https://-bad.example.com/mcp",
+      "expected": "reject-url",
+      "reason": "Reject encoded/noncanonical host and invalid DNS labels"
+    },
+    {
+      "input": "https://bad-.example.com/mcp",
+      "expected": "reject-url",
+      "reason": "Reject encoded/noncanonical host and invalid DNS labels"
+    },
+    {
+      "input": "https://_service.example.com/mcp",
+      "expected": "reject-url",
+      "reason": "Reject encoded/noncanonical host and invalid DNS labels"
+    },
+    {
+      "input": "https://0x08080808/mcp",
+      "expected": "reject-url",
+      "reason": "Reject noncanonical IPv4 spellings even if normalized public"
+    },
+    {
+      "input": "https://134744072/mcp",
+      "expected": "reject-url",
+      "reason": "Reject noncanonical IPv4 spellings even if normalized public"
+    },
+    {
+      "input": "https://010.010.010.010/mcp",
+      "expected": "reject-url",
+      "reason": "Reject noncanonical IPv4 spellings even if normalized public"
+    },
+    {
+      "input": "https://8.8.2056/mcp",
+      "expected": "reject-url",
+      "reason": "Reject noncanonical IPv4 spellings even if normalized public"
+    },
+    {
+      "input": "https://8.526344/mcp",
+      "expected": "reject-url",
+      "reason": "Reject noncanonical IPv4 spellings even if normalized public"
+    },
+    {
+      "input": "https://127.1/mcp",
+      "expected": "reject-url",
+      "reason": "Reject noncanonical IPv4 spellings even if normalized public"
+    },
+    {
+      "input": "https://8.8.8.8./mcp",
+      "expected": "reject-url",
+      "reason": "Reject noncanonical IPv4 spellings even if normalized public"
+    },
+    {
+      "input": "https://example.com:/mcp",
+      "expected": "reject-url",
+      "reason": "Reject malformed/empty/out-of-range port or scoped IPv6"
+    },
+    {
+      "input": "https://example.com:0/mcp",
+      "expected": "reject-url",
+      "reason": "Reject malformed/empty/out-of-range port or scoped IPv6"
+    },
+    {
+      "input": "https://example.com:65536/mcp",
+      "expected": "reject-url",
+      "reason": "Reject malformed/empty/out-of-range port or scoped IPv6"
+    },
+    {
+      "input": "https://example.com:-1/mcp",
+      "expected": "reject-url",
+      "reason": "Reject malformed/empty/out-of-range port or scoped IPv6"
+    },
+    {
+      "input": "https://example.com:443.0/mcp",
+      "expected": "reject-url",
+      "reason": "Reject malformed/empty/out-of-range port or scoped IPv6"
+    },
+    {
+      "input": "https://[fe80::1%25eth0]/mcp",
+      "expected": "reject-url",
+      "reason": "Reject malformed/empty/out-of-range port or scoped IPv6"
+    },
+    {
+      "input": "https://[2606:4700::1111%25zone]/mcp",
+      "expected": "reject-url",
+      "reason": "Reject malformed/empty/out-of-range port or scoped IPv6"
+    },
+    {
+      "input": "https://127.0.0.1/mcp",
+      "expected": "reject-address",
+      "reason": "No admission for literal special/transition/platform destination"
+    },
+    {
+      "input": "https://10.0.0.1/mcp",
+      "expected": "reject-address",
+      "reason": "No admission for literal special/transition/platform destination"
+    },
+    {
+      "input": "https://169.254.169.254/mcp",
+      "expected": "reject-address",
+      "reason": "No admission for literal special/transition/platform destination"
+    },
+    {
+      "input": "https://100.100.100.200/mcp",
+      "expected": "reject-address",
+      "reason": "No admission for literal special/transition/platform destination"
+    },
+    {
+      "input": "https://168.63.129.16/mcp",
+      "expected": "reject-address",
+      "reason": "No admission for literal special/transition/platform destination"
+    },
+    {
+      "input": "https://192.0.0.9/mcp",
+      "expected": "reject-address",
+      "reason": "No admission for literal special/transition/platform destination"
+    },
+    {
+      "input": "https://198.18.0.1/mcp",
+      "expected": "reject-address",
+      "reason": "No admission for literal special/transition/platform destination"
+    },
+    {
+      "input": "https://224.0.0.1/mcp",
+      "expected": "reject-address",
+      "reason": "No admission for literal special/transition/platform destination"
+    },
+    {
+      "input": "https://240.0.0.1/mcp",
+      "expected": "reject-address",
+      "reason": "No admission for literal special/transition/platform destination"
+    },
+    {
+      "input": "https://[::1]/mcp",
+      "expected": "reject-address",
+      "reason": "No admission for literal special/transition/platform destination"
+    },
+    {
+      "input": "https://[::ffff:127.0.0.1]/mcp",
+      "expected": "reject-address",
+      "reason": "No admission for literal special/transition/platform destination"
+    },
+    {
+      "input": "https://[::ffff:7f00:1]/mcp",
+      "expected": "reject-address",
+      "reason": "No admission for literal special/transition/platform destination"
+    },
+    {
+      "input": "https://[::ffff:8.8.8.8]/mcp",
+      "expected": "reject-address",
+      "reason": "No admission for literal special/transition/platform destination"
+    },
+    {
+      "input": "https://[64:ff9b::a00:1]/mcp",
+      "expected": "reject-address",
+      "reason": "No admission for literal special/transition/platform destination"
+    },
+    {
+      "input": "https://[2002:0a00:0001::]/mcp",
+      "expected": "reject-address",
+      "reason": "No admission for literal special/transition/platform destination"
+    },
+    {
+      "input": "https://[2001:0000::1]/mcp",
+      "expected": "reject-address",
+      "reason": "No admission for literal special/transition/platform destination"
+    },
+    {
+      "input": "https://[2001:db8::1]/mcp",
+      "expected": "reject-address",
+      "reason": "No admission for literal special/transition/platform destination"
+    },
+    {
+      "input": "https://[3fff::1]/mcp",
+      "expected": "reject-address",
+      "reason": "No admission for literal special/transition/platform destination"
+    },
+    {
+      "input": "https://[fc00::1]/mcp",
+      "expected": "reject-address",
+      "reason": "No admission for literal special/transition/platform destination"
+    },
+    {
+      "input": "https://[fe80::1]/mcp",
+      "expected": "reject-address",
+      "reason": "No admission for literal special/transition/platform destination"
+    },
+    {
+      "input": "https://[ff02::1]/mcp",
+      "expected": "reject-address",
+      "reason": "No admission for literal special/transition/platform destination"
+    },
+    {
+      "input": "https://localhost/mcp",
+      "expected": "reject-host-before-dns",
+      "reason": "Special local-use hostname; also enforce address policy on DNS results"
+    },
+    {
+      "input": "https://foo.localhost/mcp",
+      "expected": "reject-host-before-dns",
+      "reason": "Special local-use hostname; also enforce address policy on DNS results"
+    },
+    {
+      "input": "https://foo.local/mcp",
+      "expected": "reject-host-before-dns",
+      "reason": "Special local-use hostname; also enforce address policy on DNS results"
+    },
+    {
+      "input": "https://metadata.google.internal/mcp",
+      "expected": "reject-host-before-dns",
+      "reason": "Special local-use hostname; also enforce address policy on DNS results"
+    },
+    {
+      "input": "https://router.home.arpa/mcp",
+      "expected": "reject-host-before-dns",
+      "reason": "Special local-use hostname; also enforce address policy on DNS results"
+    }
+  ]
+}

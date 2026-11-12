@@ -70,6 +70,90 @@ It does not provide arbitrary external MCP paths, provider OAuth adapters, a web
 Profiles page or demonstrated compatibility with the separate production manager.
 Those follow #250–253; final two-computer/two-profile acceptance belongs to #65.
 
+## Inspect a custom MCP endpoint
+
+Endpoint inspection is independent of saved gateway profiles and pairing. It
+does not open a state store, read credentials, save configuration or enable
+routing. A URL preview is offline; only `--check` performs network discovery.
+
+```text
+mterm-cli remote endpoint --url https://example.com/mcp --json
+mterm-cli remote endpoint --url https://example.com/mcp --check --json
+mterm-cli remote endpoint --url https://example.com/mcp --check --protocol 2025-11-25 --json
+```
+
+The default uses MCP **2026-07-28** `server/discover`. The explicit legacy option
+uses `initialize`, accepts the supported 2025-11-25, 2025-06-18 or 2025-03-26
+revision, and sends `notifications/initialized`. It never falls back between
+modern discovery and the legacy handshake or changes URLs automatically. No tool,
+resource, sampling, elicitation or model request is
+performed. Capability flags and displayed server identity are self-reported.
+
+| Result | What it establishes |
+| --- | --- |
+| `url-valid` | The URL passed local syntax/address-literal policy. DNS, reachability and MCP compatibility remain unchecked. |
+| `compatible` | The selected bounded discovery/handshake succeeded at this instant; any confirmed legacy session cleanup was acknowledged. |
+| `authorization-required` | HTTP401 was returned. No credential was sent, and MCP compatibility remains unverified. |
+| `access-denied` | HTTP403 was returned. Its authorization/policy cause and MCP compatibility remain unverified. |
+| `redirect-refused` | A redirect was returned; the destination was not followed. |
+| `blocked-address` | At least one resolved address violates public endpoint policy. No HTTPS request was sent. |
+| `compatible-cleanup-unconfirmed` | The legacy handshake succeeded, but session cleanup was unsupported or unconfirmed. |
+| `unsupported-protocol`, `inconclusive`, `timeout`, `cancelled` | This inspection did not qualify the requested operation; it does not prove the server is not an MCP server. |
+
+Exit0 means an offline URL preview or a fully qualified bounded inspection.
+Other completed inspection reports return exit2. Input errors use the normal
+safe CLI error path. Reports always state `credentialsUsed:false` and
+`routingEnabled:false`; they are not permission grants or cached routing decisions.
+
+Public mode accepts HTTPS, an ASCII DNS hostname or canonical public IP literal,
+an optional decimal port1–65535, and a simple ASCII path. Queries, fragments,
+credentials, percent encodings, Unicode path/host input, dot segments, repeated
+path separators and ambiguous numeric hosts are refused. Explicit ASCII IDN
+A-labels remain DNS names. Local/LAN mode is not implemented by this command.
+
+The address policy conservatively excludes IANA special-purpose ranges, including
+their globally reachable service exceptions, IPv4 multicast, Azure's platform
+address168.63.129.16, mapped IPv6 and known transition prefixes. IPv6 admission is
+limited to eligible addresses in2000::/3. All returned A/AAAA addresses must pass;
+a mixed public/private set is refused. This policy does not inspect arbitrary
+local routes, transparent intermediaries or organization-specific translation.
+
+The probe pins one admitted address into HTTPS connection lookup, preserves the
+original TLS hostname, uses a private agent with environment proxies disabled,
+and explicitly verifies certificates even under an ambient TLS-disable flag.
+System trust and explicitly configured additional certificate roots retain their
+normal Node roles. Each new inspection resolves and validates again.
+
+| Bound | Limit |
+| --- | --- |
+| A and AAAA resolution | One resolver call per family; at most8 combined answers; two-second phase deadline |
+| Main discovery/handshake | Eight-second deadline, including DNS |
+| Confirmed legacy session cleanup | Separate two-second maximum allowance |
+| HTTP response headers / body | 8KiB /64KiB; compressed responses refused |
+| Request-scoped SSE | At most16 events and16KiB per event, counting actual CR/LF/CRLF bytes; no stream resumption |
+| Accepted JSON | At most16 levels,2,048 inspected values and128 members per container; parsing is separately bounded by the response size |
+
+Both JSON and bounded SSE responses are supported, including split UTF-8, CRLF,
+comments and empty priming events. Server requests or interactive results remain
+inconclusive; they are not executed. Raw bodies, instructions, challenge URLs,
+cookies, error messages and session IDs are not included in the report.
+Displayed server metadata is omitted if it contains the known legacy session ID.
+
+Only a valid matching legacy initialization can bind a returned session ID for
+cleanup. A header attached to invalid data cannot authorize a DELETE. Cleanup
+uncertainty is reported even when an observed session header is malformed. Cleanup
+uses the original endpoint and pinned destination. HTTP405 is reported as
+unsupported cleanup; HTTP404 reports the session absent. Acknowledgment records
+an accepted HTTP response, not independently verified deletion of server state. A failed
+inspection never creates a replacement session or retries a different address.
+
+This source slice advances issue251. Provider OAuth/Access credentials252,
+profile CRUD/routing and portal253, authenticated readiness, local/LAN support,
+and two-computer acceptance remain separate. The existing MTerm agent gateway
+and installed production bridge are unchanged. Protocol source references and
+reviewed address-policy receipts are under
+`docs/validation/2026-11-12-public-endpoint-inspector/`.
+
 ## Staging addresses and identities
 
 | Purpose | Staging address |

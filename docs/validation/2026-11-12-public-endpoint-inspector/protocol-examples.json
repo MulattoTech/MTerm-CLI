@@ -1,0 +1,94 @@
+{
+  "note": "Synthetic protocol fixtures grounded in immutable official schema; no endpoint was contacted",
+  "modern": {
+    "headers": {
+      "Content-Type": "application/json",
+      "Accept": "application/json, text/event-stream",
+      "Accept-Encoding": "identity",
+      "MCP-Protocol-Version": "2026-07-28",
+      "Mcp-Method": "server/discover"
+    },
+    "request": {
+      "jsonrpc": "2.0",
+      "id": "mterm-endpoint-probe",
+      "method": "server/discover",
+      "params": {
+        "_meta": {
+          "io.modelcontextprotocol/protocolVersion": "2026-07-28",
+          "io.modelcontextprotocol/clientInfo": {
+            "name": "mterm-cli-endpoint-inspector",
+            "version": "0.0.1-preview.1"
+          },
+          "io.modelcontextprotocol/clientCapabilities": {}
+        }
+      }
+    },
+    "minimal_valid_response_without_serverInfo": {
+      "jsonrpc": "2.0",
+      "id": "mterm-endpoint-probe",
+      "result": {
+        "resultType": "complete",
+        "supportedVersions": [
+          "2026-07-28"
+        ],
+        "capabilities": {},
+        "ttlMs": 0,
+        "cacheScope": "private"
+      }
+    },
+    "post_count": 1,
+    "legacy_followups": 0,
+    "required_complete_fields": [
+      "resultType",
+      "supportedVersions",
+      "capabilities",
+      "ttlMs",
+      "cacheScope"
+    ]
+  },
+  "legacy": {
+    "request": {
+      "jsonrpc": "2.0",
+      "id": "mterm-endpoint-probe",
+      "method": "initialize",
+      "params": {
+        "protocolVersion": "2025-11-25",
+        "capabilities": {},
+        "clientInfo": {
+          "name": "mterm-cli-endpoint-inspector",
+          "version": "0.0.1-preview.1"
+        }
+      }
+    },
+    "response": {
+      "jsonrpc": "2.0",
+      "id": "mterm-endpoint-probe",
+      "result": {
+        "protocolVersion": "2025-11-25",
+        "capabilities": {},
+        "serverInfo": {
+          "name": "Synthetic fixture",
+          "version": "1"
+        }
+      }
+    },
+    "notification": {
+      "jsonrpc": "2.0",
+      "method": "notifications/initialized"
+    },
+    "notification_status": 202,
+    "subsequent_headers": [
+      "MCP-Protocol-Version",
+      "MCP-Session-Id only when issued during validated initialize"
+    ],
+    "delete_status_interpretations": {
+      "200": "cleanup acknowledged",
+      "204": "cleanup acknowledged",
+      "404": "session absent; do not recreate",
+      "405": "cleanup unsupported; permitted by spec",
+      "timeout": "cleanup uncertain"
+    },
+    "sse_example": "id: primer\r\ndata:\r\n\r\n: keepalive\r\n\r\nevent: message\r\ndata: {\"jsonrpc\":\"2.0\",\"id\":\"mterm-endpoint-probe\",\"result\":{\"protocolVersion\":\"2025-11-25\",\"capabilities\":{},\"serverInfo\":{\"name\":\"Synthetic fixture\",\"version\":\"1\"}}}\r\n\r\n",
+    "cancel_initialize_notification_forbidden": true
+  }
+}

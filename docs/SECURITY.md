@@ -634,3 +634,46 @@ Inventory is bounded, local and limited to allowlisted public runtime fields. A
 recorded device ID is not fresh credential or executor readiness proof. Invalid
 metadata yields an unknown pairing state. An owned stop checks state scope and lock
 identity without requiring the exposed workspace to remain accessible.
+
+## Public endpoint inspection — 2026-11-12
+
+The separate `remote endpoint` command admits an explicit URL before any profile
+selection or state-store access. Its default is offline. Explicit `--check` sends
+only protocol discovery/initialization metadata, with no stored credential, cookie,
+client certificate, OAuth exchange or tool invocation. Generic MCP URL support is
+not added to the credential-bearing MTerm agent transport.
+
+Original URL text is checked before normalization. Public IP admission rejects
+private/local/special allocations and known transition ranges; every DNS answer
+must pass. A dedicated connection lookup returns the already validated address,
+with fixed family and no alternate lookup. The same pin is used for any bounded
+legacy follow-up. The private HTTPS agent disables environment proxy inheritance,
+explicitly requires certificate validation and retains normal hostname checks.
+The request explicitly disables Node's insecure HTTP parser option.
+
+Timers, header/body/event/depth limits, no decompression, no redirects and no
+automatic fallback bound the untrusted response surface. Fixed status/error codes
+replace remote error text. Only bounded safe display metadata is returned;
+instructions and arbitrary metadata never affect execution or routing.
+
+Current2026 discovery creates no MCP protocol session; server logging or other
+internal state is outside this inspection. In explicit legacy mode, a matching valid
+initialization result is required before a session header can authorize cleanup.
+Invalid or unsolicited headers cannot cause DELETE requests. Failed or unsupported
+cleanup remains visible, including uncertainty after observing a malformed session
+header. Safe-character filtering also suppresses projected server metadata containing
+the known session value. A successful probe is a point-in-time observation, never
+a reusable authorization grant or an authenticated-readiness assertion.
+
+This is application-level outbound policy in a trusted local Node/OS environment.
+It is not an OS routing sandbox: arbitrary local routes, organization-specific
+IPv6 translation, privileged runtime tampering and intentionally extended system
+certificate trust are not eliminated. Public-mode restrictions are intentionally
+conservative and exclude some globally reachable special-purpose services.
+
+Tests use controlled resolver/HTTP streams and a separately owned loopback TLS
+fixture. Its self-signed certificate and deliberately public synthetic key are
+test data excluded from the product package. The actual inspection agent must
+reject that untrusted certificate and an incorrect hostname even with the ambient
+TLS-disable flag and a permissive per-request option. No CLI/environment switch
+bypasses endpoint address admission for those tests.

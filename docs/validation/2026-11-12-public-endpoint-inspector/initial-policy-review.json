@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-12T20:25:20.658617+00:00",
+  "reviewer": "/root/job_integration_review",
+  "scope": "Preliminary read-only URL and address policy; full transport/protocol implementation not yet reviewed",
+  "source": {
+    "baseSha": "4fb205088e77731e42da5adaca6bf167f8b75194",
+    "runtime": "v24.22.1",
+    "transform": "Node stripTypeScriptTypes mode transform; isolated reviewer snapshot only",
+    "files": [
+      {
+        "file": "src/remote/endpoint-policy.ts",
+        "bytes": 4440,
+        "sha256": "cca4891924db95ac03cb3e2290fb27642a690ad55b51729a4a85332486531491"
+      },
+      {
+        "file": "src/errors.ts",
+        "bytes": 1770,
+        "sha256": "cb846f81c0cdfacf741991bda5c2be5ba25835ad57edd86d6fba6ee0baf3020f"
+      },
+      {
+        "file": "tests/remote-endpoint-policy.test.mjs",
+        "bytes": 4976,
+        "sha256": "9841f5ac11ded510c50a7598b152ea711fd6745a8ee6bf879ca04aa99a7aa7c1"
+      }
+    ]
+  },
+  "sourceFilesModified": false,
+  "endpointNetworkProbes": 0,
+  "policyTestCounts": {
+    "tests": 5,
+    "suites": 0,
+    "pass": 5,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "independentAddressOracle": {
+    "source": "Provided IANA registry CSVs parsed independently with Python ipaddress, plus multicast and Azure platform exclusions; boundary and fixed-seed canonical-address vectors.",
+    "registeredNetworks": 51,
+    "vectors": 1051,
+    "mismatches": [],
+    "sources": [
+      {
+        "file": "/workspace/scratch/a92a3aacdca1/endpoint-adversarial-design-20261112/iana-ipv4-special.csv",
+        "sha256": "cbc4b7653c8bc640ba1e8e5d4ebbf11e7c7a1d867e7f1593aad001d3f8632aac",
+        "bytes": 2445
+      },
+      {
+        "file": "/workspace/scratch/a92a3aacdca1/endpoint-adversarial-design-20261112/iana-ipv6-special.csv",
+        "sha256": "bf56772aef97fbf9b4a27c98b8511f2bb1ba96da4b9ccc12ab203a2496faba66",
+        "bytes": 2300
+      }
+    ]
+  },
+  "conclusion": "No missing IANA deny range or reachable raw-URL canonicalization bypass was identified. One plain-address strictness gap and one overbroad source/design claim should be corrected before final review.",
+  "observations": [
+    {
+      "id": "EP-POLICY-01",
+      "classification": "Defensive input-validation inconsistency; no reachable URL-path SSRF demonstrated",
+      "location": "src/remote/endpoint-policy.ts:isPublicEndpointAddress",
+      "actual": [
+        {
+          "address": "2606:4700:4700::1111%eth0",
+          "eligible": true
+        },
+        {
+          "address": "2001:4860::1%1",
+          "eligible": true
+        }
+      ],
+      "counterevidence": "admitPublicEndpoint rejects literal and percent-encoded zone delimiters before URL parsing; ordinary DNS AAAA wire records do not carry interface zone identifiers.",
+      "recommendation": "Reject scoped address text in the exported classifier before family/range checks; add a global-unicast-zone negative case to ensure the plain-address contract is consistent."
+    },
+    {
+      "id": "EP-POLICY-02",
+      "classification": "Documentation overclaim; local-routing limitation",
+      "location": "Source comment in isPublicEndpointAddress and the design note claiming all NAT64 transition paths are blocked",
+      "detail": "RFC6052 permits organization-specific translation prefixes, including globally addressed prefixes serving non-global IPv4. The classifier blocks mapped and known IANA transition allocations, not every locally configured translator.",
+      "recommendation": "Narrow wording to known mapped/special-purpose transition prefixes and retain the explicit routing-table and local-network trust limitation.",
+      "source": {
+        "url": "https://www.rfc-editor.org/rfc/rfc6052.html",
+        "sections": [
+          "2.2",
+          "3.4"
+        ]
+      }
+    }
+  ],
+  "reviewReasoning": [
+    "Raw URL syntax is checked before WHATWG normalization, rejecting ambiguous whitespace/control, credentials, encoded input, queries, fragments, backslashes, dot path segments and alternate numeric IPv4 spellings.",
+    "Normalized DNS hostnames must match the validated raw lowercase hostname. IPv6 literals are parsed as actual IPv6 and range checked after canonicalization.",
+    "IPv4 and IPv6 range membership uses separate BlockLists. The current supplied IANA special-purpose allocations are completely excluded by explicit IPv4 blocks or the IPv6 global-unicast envelope with listed exceptions.",
+    "Publicly reachable special-purpose exceptions are intentionally denied; eligibility is not proof that an address is allocated, routed, trusted or a compatible MCP server.",
+    "URL-only preview must continue to report no network/protocol/authentication/routing verification. DNS pinning, proxy and TLS controls are not established by this file alone."
+  ],
+  "pendingFinalReview": [
+    "All DNS answers and family validation before socket creation; immutable pinned lookup with no fallback; actual transport uses that pin for every phase.",
+    "Private HTTPS agent with explicit certificate verification and original endpoint identity; proxy environment cannot reroute the owned connection.",
+    "Bounded protocol response processing, cancellation and session cleanup; no credentials or remote state-store access.",
+    "No automatic protocol fallback, discovered endpoint adoption, redirects or session replay beyond the selected bounded mode."
+  ],
+  "evidence": {
+    "source-manifest.json": {
+      "bytes": 678,
+      "sha256": "68c61a0eb99d7198f12fa9c029cd1aea106de1d41445f7339c19cc9302d7e721"
+    },
+    "policy-tests.tap": {
+      "bytes": 1237,
+      "sha256": "518f5134db7fc5e9a7a200e9b770bcb7e76980f9498490348ec022f879a993f0"
+    },
+    "iana-derived-address-vectors.json": {
+      "bytes": 88685,
+      "sha256": "3b3fc359418fbeae79ac35cabcdfe669293205df3f138738dd3c1e1396095eed"
+    },
+    "address-runtime-review.json": {
+      "bytes": 1126,
+      "sha256": "1d33bc3d90c29a664a76510e7add97b0b5c91fb72fb576845d779d2bb9306fb0"
+    }
+  }
+}

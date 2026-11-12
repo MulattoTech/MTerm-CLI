@@ -1,0 +1,156 @@
+TAP version 13
+# Subtest: remote default state isolates development without moving production state
+ok 1 - remote default state isolates development without moving production state
+  ---
+  duration_ms: 19.751708
+  type: 'test'
+  ...
+# Subtest: remote-owned dev and named-profile preview performs no mutation or network call
+ok 2 - remote-owned dev and named-profile preview performs no mutation or network call
+  ---
+  duration_ms: 14.550529
+  type: 'test'
+  ...
+# Subtest: two named profiles configure independent directories and default remains an alias
+ok 3 - two named profiles configure independent directories and default remains an alias
+  ---
+  duration_ms: 38.434413
+  type: 'test'
+  ...
+# Subtest: setup next-command argv preserves an explicit shell-sensitive state path
+ok 4 - setup next-command argv preserves an explicit shell-sensitive state path
+  ---
+  duration_ms: 9.503077
+  type: 'test'
+  ...
+# Subtest: remote root cannot expose another managed environment or profile namespace
+ok 5 - remote root cannot expose another managed environment or profile namespace
+  ---
+  duration_ms: 7.166616
+  type: 'test'
+  ...
+# Subtest: overlapping setup root is rejected before creating any remote state
+ok 6 - overlapping setup root is rejected before creating any remote state
+  ---
+  duration_ms: 5.928389
+  type: 'test'
+  ...
+# Subtest: profile inventory is local, bounded and does not decrypt credentials or expose arbitrary runtime fields
+ok 7 - profile inventory is local, bounded and does not decrypt credentials or expose arbitrary runtime fields
+  ---
+  duration_ms: 33.051131
+  type: 'test'
+  ...
+# Subtest: invalid or conflicting selectors refuse before creating state
+ok 8 - invalid or conflicting selectors refuse before creating state
+  ---
+  duration_ms: 3.629184
+  type: 'test'
+  ...
+# Subtest: profile credentials cannot be adopted by copying configuration and protected bytes
+ok 9 - profile credentials cannot be adopted by copying configuration and protected bytes
+  ---
+  duration_ms: 50.974381
+  type: 'test'
+  ...
+# Subtest: an opened named store refuses a substituted managed parent before writing
+ok 10 - an opened named store refuses a substituted managed parent before writing
+  ---
+  duration_ms: 16.544083
+  type: 'test'
+  ...
+# Subtest: protected profile scope rejects copied credentials even when public configuration has the new scope
+ok 11 - protected profile scope rejects copied credentials even when public configuration has the new scope
+  ---
+  duration_ms: 62.46903
+  type: 'test'
+  ...
+# Subtest: development refuses legacy production config before status or stop and preserves every state byte
+ok 12 - development refuses legacy production config before status or stop and preserves every state byte
+  ---
+  duration_ms: 52.693691
+  type: 'test'
+  ...
+# Subtest: development-bound arbitrary state is not readable or stoppable through a production selection
+ok 13 - development-bound arbitrary state is not readable or stoppable through a production selection
+  ---
+  duration_ms: 71.880855
+  type: 'test'
+  ...
+# Subtest: explicit environment and generated argv retain their target across ambient environment changes
+ok 14 - explicit environment and generated argv retain their target across ambient environment changes
+  ---
+  duration_ms: 24.823353
+  type: 'test'
+  ...
+# Subtest: linked managed collections are refused without writing through the link
+ok 15 - linked managed collections are refused without writing through the link
+  ---
+  duration_ms: 3.63178
+  type: 'test'
+  ...
+# Subtest: profile inventory bounds entry count and does not guess an unknown profile
+ok 16 - profile inventory bounds entry count and does not guess an unknown profile
+  ---
+  duration_ms: 149.115743
+  type: 'test'
+  ...
+# Subtest: stop and revoke select one profile without changing the other profile or its owned lock
+ok 17 - stop and revoke select one profile without changing the other profile or its owned lock
+  ---
+  duration_ms: 105.54155
+  type: 'test'
+  ...
+# MTerm remote: connecting
+# MTerm remote: revoked
+# Subtest: pairing and actual foreground agent startup retain the selected profile and protected credential
+ok 18 - pairing and actual foreground agent startup retain the selected profile and protected credential
+  ---
+  duration_ms: 1080.901037
+  type: 'test'
+  ...
+# Subtest: actual CLI status honors explicit profile/environment and ignores launcher configuration
+ok 19 - actual CLI status honors explicit profile/environment and ignores launcher configuration
+  ---
+  duration_ms: 201.029107
+  type: 'test'
+  ...
+# Subtest: owned profile stop remains available after its exposed workspace disappears
+ok 20 - owned profile stop remains available after its exposed workspace disappears
+  ---
+  duration_ms: 32.195937
+  type: 'test'
+  ...
+# Subtest: invalid runtime metadata does not turn a recorded pairing into a false unpaired claim
+ok 21 - invalid runtime metadata does not turn a recorded pairing into a false unpaired claim
+  ---
+  duration_ms: 53.643771
+  type: 'test'
+  ...
+# Subtest: a user-valid profile name cannot act as a hidden collection admission probe
+ok 22 - a user-valid profile name cannot act as a hidden collection admission probe
+  ---
+  duration_ms: 23.214656
+  type: 'test'
+  ...
+# Subtest: legacy private state remains usable under an owner-controlled readable namespace
+ok 23 - legacy private state remains usable under an owner-controlled readable namespace
+  ---
+  duration_ms: 8.323547
+  type: 'test'
+  ...
+# Subtest: platform path aliases cannot downgrade named profile state to a legacy store
+ok 24 - platform path aliases cannot downgrade named profile state to a legacy store
+  ---
+  duration_ms: 10.841577
+  type: 'test'
+  ...
+1..24
+# tests 24
+# suites 0
+# pass 24
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2312.801532

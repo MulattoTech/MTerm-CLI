@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-12T20:47:25.482352+00:00",
+  "reviewer": "/root/job_integration_review",
+  "conclusion": "APPROVE CORRECTED SOURCE SLICE: all three reported defects are resolved at the recorded hashes; no concrete remaining in-scope bypass or regression found. Final immutable candidate and delivery gates remain separate.",
+  "source": {
+    "observedAt": "2026-11-12T20:44:31.071303+00:00",
+    "head": "4fb205088e77731e42da5adaca6bf167f8b75194",
+    "filesCopied": 955,
+    "selected": {
+      "src/remote/cli.ts": {
+        "sha256": "0f8ae76ee0e1b9c43b71c208e544d7d0dcc1bf28781913e2418b7b4002c321d5",
+        "bytes": 16076
+      },
+      "src/remote/endpoint-policy.ts": {
+        "sha256": "6303372951a5f3fad75f51430aadddf9d85550b0c3b52b09741888fc97844ec3",
+        "bytes": 4726
+      },
+      "src/remote/endpoint-probe.ts": {
+        "sha256": "da57c3085f6f8de18e4e8d4e396edebf4630f6748aded659408233b80ed5d8a9",
+        "bytes": 22937
+      },
+      "tests/fixtures/endpoint-tls/README.md": {
+        "sha256": "6cd92eae57576d8dc6cbe9d9e8c4e8d84d98511d1cc20975f5150c0394e4065d",
+        "bytes": 504
+      },
+      "tests/fixtures/endpoint-tls/fixture-cert.pem": {
+        "sha256": "c4343f034008960ed80569115b8e5e1aece81d904f079304961866a4abe6146f",
+        "bytes": 1151
+      },
+      "tests/fixtures/endpoint-tls/fixture-key.pem": {
+        "sha256": "999edc153bef174e17af1479245fa904368becff8b263443cd4d5ee22f870cf1",
+        "bytes": 1704
+      },
+      "tests/remote-endpoint-cli.test.mjs": {
+        "sha256": "61b8e29faf0215297ec24f0309c67bf3b775bd5313f42618f56813fc0be57eaa",
+        "bytes": 4040
+      },
+      "tests/remote-endpoint-policy.test.mjs": {
+        "sha256": "7ef5fe4caf223f530a4b86ae52bf3e080bbd3540f3a2cec1a523eb12d9b9cb8c",
+        "bytes": 5521
+      },
+      "tests/remote-endpoint-probe.test.mjs": {
+        "sha256": "cee7fd1a5a009cbb3932ddde8f6de6a6f133668b017e640250df05b27a0aaa10",
+        "bytes": 23621
+      },
+      "tests/remote-endpoint-tls.test.mjs": {
+        "sha256": "d0d912c2f1545620e3bb72075f508edb0a208dad27982cd273d25ef5dde14ac0",
+        "bytes": 3735
+      }
+    }
+  },
+  "priorProbeSha256": "1afb9f99ec46a2928bb857bb7a4aa9109feca170b6fbebbd6fefc83fbe4db0b4",
+  "correctedProbeSha256": "da57c3085f6f8de18e4e8d4e396edebf4630f6748aded659408233b80ed5d8a9",
+  "correctedProbeTestSha256": "cee7fd1a5a009cbb3932ddde8f6de6a6f133668b017e640250df05b27a0aaa10",
+  "findings": [],
+  "resolvedFindings": [
+    {
+      "id": "EP-PROBE-01",
+      "result": "Resolved",
+      "mechanism": "The metadata printable predicate receives the validated initial session and omits the complete serverInfo projection when either name/version contains that exact value, including embedded occurrence. Stored session and cleanup request authority remain unchanged.",
+      "independentVerification": "The exact original reviewer regression, unchanged by hash, now passes against this frozen source. Author-added exact/embedded name/version cases also pass in the 81-test suite."
+    },
+    {
+      "id": "EP-PROBE-02",
+      "result": "Resolved",
+      "mechanism": "consume passes the actual CR/LF/CRLF delimiter width into line, which charges that width before accepting an event. A trailing CR waits for the next chunk or stream end.",
+      "independentVerification": "Original unchanged 21,181-byte input now returns ENDPOINT_LIMIT/inconclusive/protocolChecked=false. Independent exact16,384/plus-one16,385 inputs for LF, loneCR, CRLF and splitCRLF all match the bound; one destroyed mocked request per case.",
+      "receipt": "/workspace/scratch/a92a3aacdca1/peer-endpoint-transport-fixed/fixed-transport-review.json",
+      "receiptSha256": "b2eff3c44d900d89302c2f227c21f3b4535729916a37adb8974c4b74aac31e01"
+    },
+    {
+      "id": "EP-PROBE-03",
+      "result": "Resolved",
+      "mechanism": "onSessionObserved records uncertainty upon an observed session header before duplicate/type/format validation; only the separate validated onSession callback stores a candidate, and only a valid initialization adopts it for cleanup.",
+      "independentVerification": "The exact original reviewer malformed-header regression now passes unchanged. Empty, whitespace, oversized and duplicate-valued header tests return unconfirmed with no DELETE."
+    }
+  ],
+  "validation": {
+    "offlineInstall": "npm ci --offline --ignore-scripts --no-audit --no-fund; exit0",
+    "build": "npm run build:code; exit0",
+    "endpointSuite": {
+      "tests": 81,
+      "suites": 0,
+      "pass": 81,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "unchangedOriginalReviewerRegressions": {
+      "tests": 2,
+      "suites": 0,
+      "pass": 2,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "independentEventCases": 9,
+    "selectedSourceUnchangedAfterTests": true,
+    "sourcePreservation": {
+      "changed": [
+        "README.md",
+        "docs/REMOTE_MCP.md",
+        "docs/SECURITY.md",
+        "scripts/verify-package.mjs",
+        "src/remote/endpoint-probe.ts",
+        "tests/remote-endpoint-probe.test.mjs"
+      ],
+      "added": [],
+      "removed": [],
+      "oldSourceFiles": 955,
+      "newSourceFiles": 955,
+      "selectedHashesUnchangedAfterTests": true,
+      "counts": {
+        "endpoint-tests.log": {
+          "tests": 81,
+          "suites": 0,
+          "pass": 81,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "original-independent-regressions-green.tap": {
+          "tests": 2,
+          "suites": 0,
+          "pass": 2,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      }
+    }
+  },
+  "staticReassessment": [
+    "Session observation, validation and adoption are separate; a malformed or duplicate header alone cannot authorize cleanup.",
+    "Metadata filtering removes a display field without mutating the opaque session used in the original-endpoint request. Safe metadata without the known session remains eligible.",
+    "The event accounting repair does not alter JSON parsing, total byte limits, event count, timeout, target or session authority.",
+    "The scoped corrections do not change DNS admission/pinning, private-agent TLS/proxy settings, protocol selection/fallback policy, credential isolation or CLI option handling.",
+    "The accompanying documentation keeps authentication/routing readiness, local route/trust limits and cleanup uncertainty explicit. The installed-verifier threshold change61 to81 strengthens its expected coverage; its execution is not claimed by this review."
+  ],
+  "limitations": [
+    "Pre-publication working source snapshot, not yet bound to a remote immutable candidate.",
+    "Not an exhaustive security scan or authenticated endpoint interoperability proof.",
+    "Only mocked resolver/HTTP traffic and owned loopback TLS fixtures ran; no external endpoint probes, real credentials, production configuration or model calls.",
+    "No repository source or frozen snapshot edits; generated build output and reviewer evidence are owned local artifacts.",
+    "Final immutable publication, full CI/installed package/roadmap gates and actual-main verification remain with the delivery workflow."
+  ],
+  "evidence": {
+    "snapshot-manifest.json": {
+      "bytes": 1702,
+      "sha256": "f201c21b15c01d165b9419564171d74d50bd4a91a082a5c17a19f0f9dff5a035"
+    },
+    "source-preservation.json": {
+      "bytes": 702,
+      "sha256": "57b8ec26b4642c90f86d48ff80d600ce7702a3c40e51fbcce189f44af1c8611c"
+    },
+    "dependency-install.log": {
+      "bytes": 124,
+      "sha256": "9de28642a2f7030e46fe92aa2c04ce90db49412add2c5561f01b797048000950"
+    },
+    "build-code.log": {
+      "bytes": 203,
+      "sha256": "e62997662c4dd10ffc25181b219d4e133badd40304784482f424ab9e7fecf5ea"
+    },
+    "endpoint-tests.log": {
+      "bytes": 13503,
+      "sha256": "933c5adbea617a7bc076935d7a5009b4513d9c7e1e75267bcb973115838de2a4"
+    },
+    "test-run.json": {
+      "bytes": 641,
+      "sha256": "42fb231f384dff7d5be974e3416c3affa46cca004017e57aa3516ef51b9b3346"
+    },
+    "original-independent-regressions-green.tap": {
+      "bytes": 619,
+      "sha256": "0786002491f0a76aa7aed75d4904c2869d1e5261b6864d37f4fcbc8719f89cc0"
+    }
+  }
+}

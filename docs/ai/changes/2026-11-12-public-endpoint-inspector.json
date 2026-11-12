@@ -1,0 +1,156 @@
+{
+  "change_id": "2026-11-12-public-endpoint-inspector",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "updated_at": "2026-11-12T21:05:43.323424+00:00",
+  "base_sha": "4fb205088e77731e42da5adaca6bf167f8b75194",
+  "issues": [
+    251
+  ],
+  "requirements": [
+    "CLI-042",
+    "CLI-051",
+    "CLI-091",
+    "CLI-113",
+    "CLI-200",
+    "CLI-201",
+    "CLI-206"
+  ],
+  "files": [
+    "src/remote/endpoint-policy.ts",
+    "src/remote/endpoint-probe.ts",
+    "src/remote/cli.ts",
+    "tests/remote-endpoint-cli.test.mjs",
+    "tests/remote-endpoint-policy.test.mjs",
+    "tests/remote-endpoint-probe.test.mjs",
+    "tests/remote-endpoint-tls.test.mjs",
+    "tests/fixtures/endpoint-tls/fixture-cert.pem",
+    "tests/fixtures/endpoint-tls/fixture-key.pem",
+    "tests/fixtures/endpoint-tls/README.md",
+    "scripts/verify-package.mjs",
+    "README.md",
+    "docs/REMOTE_MCP.md",
+    "docs/SECURITY.md",
+    "docs/HANDOFF.md",
+    "docs/capabilities/register.json"
+  ],
+  "decisions": [
+    "Expose a separate explicit-URL inspector before profile/state/credential selection. Offline by default; --check enables one bounded public HTTPS inspection. No profile mutation or routing authorization.",
+    "Use current MCP2026-07-28 server/discover by default, and explicitly selected legacy2025-11-25 initialize/initialized with supported2025 version negotiation. No automatic cross-mode fallback, interactive request, tool invocation or model call.",
+    "Reject ambiguous URL forms and conservative IANA special-purpose addresses; admit every bounded A/AAAA result before pinning one destination. Preserve original TLS hostname and path, disable inherited proxies, force certificate and hostname validation, and refuse redirects.",
+    "Bound DNS, total work, response bytes, actual SSE delimiter bytes and accepted JSON shape. Report fixed errors; treat server metadata as unverified and suppress any known legacy session reflection.",
+    "Observe possible session allocation separately from adoption. Only a valid matching legacy result authorizes bounded same-endpoint session deletion; malformed headers retain uncertainty and authorize no deletion.",
+    "Use a real owned loopback TLS fixture only to test the actual private-agent factory. No CLI/environment address-admission bypass; deliberately public synthetic certificate/key are excluded from the product package.",
+    "Require all81 endpoint cases against installed modules from outside the checkout. Existing profile and all other package gates remain intact; dependency manifests and pins are unchanged.",
+    "Preserve whole CLI300/DCP48/WEB12/AUG117 stages and weights. Publish accurate source/merge evidence without treating it as production or whole-mission acceptance.",
+    "Normally merge the newly recovered capability-register main f447c0ba into the endpoint branch; preserve both documentation histories and regenerate explicit roadmap review for the combined source.",
+    "Explicitly reconcile only the evidence snapshot hash while retaining the full historical metricBaselineEvidence; validator and completion rules unchanged."
+  ],
+  "tests": [
+    {
+      "command": "Initial CLI, policy and probe tests before implementation",
+      "result": "RED: old CLI failed the new endpoint behavior with two controls passing; policy/probe tests failed for the missing modules."
+    },
+    {
+      "command": "Scoped IPv6 address regression before defensive correction",
+      "result": "RED: global IPv6 with a zone suffix was accepted by the exported classifier. Fixed explicit zone refusal; raw URL policy already rejected it."
+    },
+    {
+      "command": "Strict modern schema and HTTP parser regressions",
+      "result": "RED:4 failing counts of50, including parent failure; fixed cacheScope coercion, invalid optional serverInfo and explicit strict HTTP parser."
+    },
+    {
+      "command": "Independent full probe and transport review",
+      "result": "Initial61/61 passed but independent tests reproduced session metadata reflection, CRLF byte undercount and malformed-session cleanup understatement. Earlier failing receipts retained."
+    },
+    {
+      "command": "New peer regressions against unchanged pre-fix runtime",
+      "result": "RED:20 tests,6 passing boundary controls,14 failed counts. Includes exact/embedded session fields, unusable headers and LF/CR/CRLF exact-boundary cases."
+    },
+    {
+      "command": "Four endpoint files after corrections",
+      "result": "GREEN:81/81;0 failures/cancellations/skips/todos. Actual TLS untrusted certificate and hostname failures held under ambient disable/per-request permissive settings."
+    },
+    {
+      "command": "Normal build/check, installed package, independent corrected review and exact candidate/main hosted checks",
+      "result": "Pending at this prequalification checkpoint; each required gate must be recorded honestly before a qualified delivery claim."
+    },
+    {
+      "command": "Independent corrected source review plus unchanged reviewer repros",
+      "result": "APPROVE:81/81, both original session reproductions pass unchanged; original21,181-byte CRLF event rejected, eight independent exact/plus-one cases pass. Receipt corrected-probe-review.json binds source hashes; immutable candidate binding remains next."
+    },
+    {
+      "command": "node scripts/orchestration/verify.mjs --quick",
+      "result": "Build/typecheck/format/roadmap/parity checks passed. Full suite exit1:1456 total,1417 passed,27 existing Unix-socket listen EPERM failures,12 Windows-only skips,0 cancelled/todo. Complete log preserved losslessly; hosted qualification remains required."
+    },
+    {
+      "command": "Local installed-package verification before register integration",
+      "result": "Installed endpoint81/81 and profiles24/24 passed outside the checkout; three installed endpoint module hashes matched source. Full package exit1 at isolation31 (4pass27listenEPERMfail). Later provenance/link stages not reached; no full-package PASS claimed."
+    },
+    {
+      "command": "Capability register guard during normal merge integration",
+      "result": "Correctly failed BASELINE_CHANGED on the seven evidence-only progress updates. Compared all300 rows; every field except notes/evidence/reviewer is byte-value equivalent. Historical snapshot retained; current evidence hash explicitly reconciled without validator changes or credit."
+    },
+    {
+      "command": "Integrated normal build, typecheck, format and nine targeted gate/profile/endpoint files",
+      "result": "PASS:142/142 focused tests,0fail/cancel/skip/todo; normal build with capability-register gate, typecheck and full source formatting passed. Full hosted qualification still required."
+    },
+    {
+      "command": "Independent actual-main capability-register qualification",
+      "result": "Allsix f447c0ba jobs passed; mainreceipt6abf0091556faf97745c66932ddad8f8ae7360580ee28fbee3cda2067b0404d7. Issue255 completed. This qualifies the integrated baseline, not the endpoint candidate."
+    },
+    {
+      "command": "Independent frozen integration and package-gate composition review",
+      "result": "APPROVE:1030-file snapshot,53runtime files unchanged; all300progress rows differ only7IDs notes/evidence/reviewer; old-hash negative control still fails;142-test log, installed81/24, full local failure logs and all34earlier evidence bindings verified. Receipt8c5fcf300be305107c83c1805a9da26ab871c16c92183658a5449c5eea2e3b96. Finalremote binding/hosted gates remain separate."
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "id": "CLI-042",
+      "stage_change": false,
+      "reason": "The endpoint preview and remote help remain offline; this does not qualify all launcher help paths without installed dependencies."
+    },
+    {
+      "id": "CLI-051",
+      "stage_change": false,
+      "reason": "This command performs no startup network work without --check and never alters credentials; ordinary launch behavior across the full product remains separate."
+    },
+    {
+      "id": "CLI-091",
+      "stage_change": false,
+      "reason": "Synthetic response, error, challenge and known-session sentinels are excluded from endpoint output; all credential-bearing product success/error paths are not covered by this slice."
+    },
+    {
+      "id": "CLI-113",
+      "stage_change": false,
+      "reason": "The new inspector sends no credentials and refuses redirects; credential-bearing quota/provider origin overrides retain separate acceptance."
+    },
+    {
+      "id": "CLI-200",
+      "stage_change": false,
+      "reason": "Endpoint diagnostics use fixed codes and bounded self-reported metadata with known-session suppression; normal/debug/support diagnostics across the whole product remain open."
+    },
+    {
+      "id": "CLI-201",
+      "stage_change": false,
+      "reason": "The inspector has no auth input and uses one admitted pinned origin; provider authentication and all existing credential-bearing transports are outside this slice."
+    },
+    {
+      "id": "CLI-206",
+      "stage_change": false,
+      "reason": "Endpoint tests block state/credential access and use only synthetic owned TLS data; complete fixture separation across every provider/client flow remains unestablished."
+    }
+  ],
+  "limitations": [
+    "No provider OAuth/Cloudflare Access authentication, profile CRUD/routing/portal or local/LAN mode; no real remote endpoint, enrollment, model request or production change occurred.",
+    "Application-level public address admission trusts local Node/OS, configured DNS and certificate roots; it does not prove arbitrary local routing or organization-specific translation isolation.",
+    "A bounded protocol response is a point-in-time unauthenticated observation. Capability metadata is self-reported; no capability invocation or authenticated-readiness proof is supplied.",
+    "Eight-second work and separate confirmed-session two-second cleanup timers do not create an OS hard wall-clock guarantee during event-loop stalls.",
+    "The existing SDK and MTerm agent protocol remain unchanged. Manual bounded2026 discovery is not complete2026 SDK support.",
+    "Final immutable candidate review, six hosted candidate jobs and actual-main checks remain pending at this record creation."
+  ],
+  "evidence": "docs/validation/2026-11-12-public-endpoint-inspector/evidence-manifest.json",
+  "checkpoint": "docs/engineering-runs/mterm-comprehensive-reconciliation-2026-11-12.md",
+  "integration_base_sha": "f447c0baac3f36470d6fd96360928c6a2a192c4b",
+  "local_source_checkpoint": "11038d1c37ecf93685170e09c4fa9456f62bcd09"
+}

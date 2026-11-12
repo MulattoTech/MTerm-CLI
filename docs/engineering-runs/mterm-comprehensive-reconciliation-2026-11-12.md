@@ -30,6 +30,10 @@ Issue #248; branch `reconcile/modernization-reviewed-20261112`. Base is the star
 - Twelve regression cases were reproduced before repair (seven initial boundaries, cancelled rollback, two parser cases and two cleanup-cancellation cases). The final focused group passes 42/42; updated Git/scope/managed-registration inventory checks pass 29/29. The first broad run was interrupted with 1251 passing lines, 19 stale inventory failures now corrected, and 27 Unix-socket EPERM isolation failures. This is not a full-suite pass; hosted qualification is required.
 - JavaScript is parsed by exact-pinned Acorn 8.19.0; erasable TypeScript is stripped by Node then parsed for JavaScript grammar and early errors. JSON uses JSON.parse. No compiler process is launched. The complete upstream MIT license remains installed; provenance closure now contains five packages/six dependency edges. Registry audit reported zero known production vulnerabilities, without claiming complete security clearance.
 
+## Candidate review checkpoint
+
+PR #249 first candidate `f3e9615a6e808c855177b252c1f057c7df62737a`, tree `6d3870abf6d4d97bc7d555d6ad4b1fa1607aca9c`, received independent conditional source approval with 82/82 tests and independent Acorn artifact/license checks. Hosted fast CI passed. Platform/package gates correctly rejected the missing Acorn entry in the installed license allowlist and its stale four-package count; both are corrected without weakening any gate. Revised exact-head checks and actual-main qualification remain required.
+
 ## Progress discipline
 
 No original CLI stage, weight, DCP/WEB/AUG acceptance or deployment credit is increased by this integration. Heuristic navigation is not LSP, a logical ledger is not a running fleet, and a merged CLI commit is not a bridge deployment. The mission capability register will separately record implementation, tests, merge, deployment and acceptance evidence.

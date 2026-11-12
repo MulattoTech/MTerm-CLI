@@ -1318,6 +1318,7 @@ const report = await withPackageWorkspace(
       'mterm-cli': 'MIT',
       '@modelcontextprotocol/core': 'Apache-2.0',
       '@modelcontextprotocol/server': 'Apache-2.0',
+      acorn: 'MIT',
       zod: 'MIT',
     };
     const installedLock = JSON.parse(await fs.readFile(path.join(prefix, 'package-lock.json'), 'utf8'));
@@ -1360,7 +1361,7 @@ const report = await withPackageWorkspace(
     }
     assert.equal(
       productionLicenseEvidence.length,
-      4,
+      5,
       'Production dependency set changed; review its rights and footprint',
     );
     for (const name of ['electron', '@modelcontextprotocol/client', 'typescript', 'prettier', '@types/node'])

@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-12T17:16:13.601630+00:00",
+  "reviewer": {
+    "agent": "github_inventory",
+    "implementationRole": "independent read-only peer",
+    "model": "OpenAI GPT-6 Astra Pro (self-reported)"
+  },
+  "repository": "MulattoTech/MTerm-CLI",
+  "pullRequest": 249,
+  "pullRequestUrl": "https://github.com/MulattoTech/MTerm-CLI/pull/249",
+  "commit": "f3e9615a6e808c855177b252c1f057c7df62737a",
+  "tree": "6d3870abf6d4d97bc7d555d6ad4b1fa1607aca9c",
+  "parents": [
+    "cbfd29039fe84cd163a86090c8bcbffaa2b40174",
+    "1bf3efca0b112395c01d46ed52cd4ea6f75c2257"
+  ],
+  "verdict": "APPROVE_SOURCE_CONDITIONAL_ON_REQUIRED_CI",
+  "materialBlockers": [],
+  "scope": "Bounded review of executable/security changes versus current main, corrections to PR245, runtime/dependency controls, and selected regression evidence. Not an exhaustive repository security certification.",
+  "sourceIdentity": {
+    "cleanCloneHeadVerified": true,
+    "commitTreeVerified": true,
+    "archiveExportedFromCommit": true,
+    "sourceRoot": "/workspace/scratch/a92a3aacdca1/peer-final-f3e9615-m0slaz4o/source",
+    "repositoryMutationsByReviewer": false,
+    "githubMutationsByReviewer": false
+  },
+  "verification": {
+    "node": "v24.22.1",
+    "platform": "linux-x64",
+    "independentScratchBuild": {
+      "compilerCommand": "node node_modules/typescript/bin/tsc -p tsconfig.json",
+      "compilerExitCode": 0,
+      "runtimeAssetsCommand": "node scripts/copy-runtime-assets.mjs",
+      "runtimeAssetsExitCode": 0,
+      "dependencies": "Existing installed dependencies linked read-only; Acorn independently checked against upstream tarball."
+    },
+    "focusedTests": {
+      "command": "timeout --kill-after=3s 110s node --test --test-concurrency=1 --test-reporter=spec tests/modernization-boundaries.test.mjs tests/modernization-audit-regressions.test.mjs tests/semantic-editor.test.mjs tests/quality-pipeline.test.mjs tests/shadow-journal.test.mjs tests/repomap-lsp.test.mjs tests/ai-router.test.mjs tests/fleet-orchestration.test.mjs tests/environment-isolation.test.mjs tests/compat-config-mcp.test.mjs tests/codex-budget-registration.test.mjs tests/git-no-lazy-fetch.test.mjs tests/git-worktree-mcp.test.mjs",
+      "exitCode": 0,
+      "tests": 82,
+      "suites": 0,
+      "pass": 82,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "durationMs": 20789.652427,
+      "log": "/workspace/scratch/a92a3aacdca1/peer-final-f3e9615-focused.log",
+      "logSha256": "61565879571ba3c301c94c0f47bdb5e9985bd9927010155d5f72ee0b895da214"
+    },
+    "unchangedFromMain": {
+      "src/processes.ts": "55564ba772ba751cd6be7406a5da11688a358c32",
+      "src/tool-packs.ts": "5efa2c1951108e48acaa91f591ec6c31240ccd3f"
+    },
+    "node24PackBoundaryUnchanged": true,
+    "dependencyProvenance": {
+      "package": "acorn",
+      "version": "8.19.0",
+      "reviewedSourceCommit": "0e0ece7cc7202624d4aca531be4b515b0114b5d0",
+      "resolved": "https://registry.npmjs.org/acorn/-/acorn-8.19.0.tgz",
+      "integrity": "sha512-oJlA3XiRm7Cyk6qFD2Jn8ak9B7jSy0qy00ADO3+8dpT0LSjFihQYv4C02LFCSYJV3Q37xYwwRy5m+IpIiUzqWw==",
+      "lockMatchesShrinkwrap": true,
+      "metadataVersionMatches": true,
+      "metadataRepositoryMatches": true,
+      "licenseSha256": "76a876cf886ff9be2a8b5e2e86514fed06223c8c9f0c1e9ee9606e93841e00b7",
+      "licenseHashMatches": true,
+      "downloadedArchiveBytes": 134282,
+      "downloadedIntegrity": "sha512-oJlA3XiRm7Cyk6qFD2Jn8ak9B7jSy0qy00ADO3+8dpT0LSjFihQYv4C02LFCSYJV3Q37xYwwRy5m+IpIiUzqWw==",
+      "archiveIntegrityMatches": true,
+      "installedFilesMatchArchive": {
+        "LICENSE": true,
+        "package.json": true,
+        "dist/acorn.mjs": true,
+        "dist/acorn.js": true,
+        "dist/acorn.d.ts": true
+      }
+    },
+    "registryMetadataQuery": {
+      "command": "npm view acorn@8.19.0 version gitHead dist.integrity license repository --json",
+      "exitCode": 0,
+      "version": "8.19.0",
+      "gitHead": "0e0ece7cc7202624d4aca531be4b515b0114b5d0",
+      "matchesReviewedPins": true
+    }
+  },
+  "resolvedFindings": [
+    {
+      "id": "NAV-01",
+      "finding": "Repository map and references bypassed narrowed request scopes.",
+      "resolution": "Shared SourceReader resolves all traversal paths through RootPolicy and delegates production reads to FileService.read; explicit path permits narrower authorized roots.",
+      "verification": "Boundary and real-MCP compatibility regressions passed."
+    },
+    {
+      "id": "NAV-02",
+      "finding": "Definition fallback read a hardlinked sibling outside the allowed policy.",
+      "resolution": "Sibling content uses the same policy-backed descriptor reader and rejects multiply linked files.",
+      "verification": "Hardlinked-sibling regression passed."
+    },
+    {
+      "id": "NAV-03",
+      "finding": "Document symbol extraction used unbounded raw reads.",
+      "resolution": "Per-file navigation limit is at most 262144 bytes; strict decoding, descriptor read bounds, count/entry/depth/aggregate scan budgets apply.",
+      "verification": "Byte-limit and invalid-UTF8 regressions passed."
+    },
+    {
+      "id": "PARSE-01",
+      "finding": "Unsupported parsers and conflicting overrides could certify input.",
+      "resolution": "Unsupported languages return invalid/unavailable; known-extension conflicts are rejected.",
+      "verification": "Unsupported language and override regressions passed."
+    },
+    {
+      "id": "FLEET-01",
+      "finding": "Process-global fleet state mixed separate FileService instances.",
+      "resolution": "Each FileService owns its ledger; task-ID reuse from another logical session is rejected.",
+      "verification": "Instance-isolation and ownership regressions passed."
+    },
+    {
+      "id": "FORMAT-01",
+      "finding": "Whitespace normalization altered multiline string values.",
+      "resolution": "Conservative normalization preserves template strings, escaped line continuations, unsupported formats and invalid input.",
+      "verification": "Semantic-whitespace preservation regression passed."
+    },
+    {
+      "id": "CANCEL-01",
+      "finding": "Rollback discarded the MCP AbortSignal.",
+      "resolution": "MCP passes signal to rollback; snapshot/read boundaries check it and write receives it.",
+      "verification": "Cancellation during snapshot lookup leaves original bytes unchanged."
+    },
+    {
+      "id": "PARSE-02",
+      "finding": "Type stripping alone accepted invalid ESM early errors and regex syntax.",
+      "resolution": "Acorn parses complete JavaScript or stripped erasable TypeScript in-process; CJS/CTS use CommonJS, other supported extensions module grammar.",
+      "verification": "Malformed regex, duplicate binding and unresolved export regressions passed; supported ESM/CommonJS/TS positive controls passed."
+    },
+    {
+      "id": "CANCEL-02",
+      "finding": "Early navigation return could disclose results after cancellation during awaited iterator cleanup.",
+      "resolution": "SourceReader checks cancellation inside finally after close; FileService checks again after awaited navigation result.",
+      "verification": "References and definition iterator-close cancellation regressions passed."
+    },
+    {
+      "id": "EXEC-01",
+      "finding": "Standalone compiler execution bypassed established process controls.",
+      "resolution": "No mterm_typecheck MCP registration; FileService passes allowExec:false; refinement does not grant execution.",
+      "verification": "Source callsite inspection and real-MCP discovery regression passed."
+    },
+    {
+      "id": "WIN-01",
+      "finding": "Experimental Win32 attachment was not qualified against saved-PID/lifecycle races.",
+      "resolution": "ProcessService restored byte-for-byte to main; no production source import of the packaged prototype.",
+      "verification": "Exact Git blob comparison and import/callsite scan; no Windows containment qualification claimed."
+    }
+  ],
+  "approvalConditions": [
+    "Required hosted candidate jobs must succeed on exactly f3e9615a6e808c855177b252c1f057c7df62737a before merge; this review does not substitute for them.",
+    "If source changes, review the changed candidate; do not transfer this approval to a different tree without checking the delta.",
+    "After an authorized merge, verify remote main identity/tree and required actual-main CI before calling the integration qualified."
+  ],
+  "limitations": [
+    "The earlier interrupted full local npm check was incomplete; the 27 Unix-socket-blocked isolation cases require an appropriate hosted runner, not a local pass reclassification.",
+    "This reviewer did not qualify native Windows process containment, deployed Cloudflare services, production plugin behavior, package redistribution rights or formal roadmap acceptance.",
+    "Navigation remains lexical, fleet remains an in-memory logical ledger, review is deterministic, compiler execution remains unavailable through MCP, rollback is guarded single-file only, and formatting remains conservative normalization.",
+    "Acorn provenance checks verify exact metadata, tarball integrity, selected installed files and license hash. Existing SDK bundled-code rights clearance remains explicitly pending."
+  ],
+  "evidenceFiles": [
+    "/workspace/scratch/a92a3aacdca1/peer-final-acorn-provenance.json",
+    "/workspace/scratch/a92a3aacdca1/peer-final-verification-context.json",
+    "/workspace/scratch/a92a3aacdca1/peer-final-f3e9615-focused.log",
+    "/workspace/scratch/a92a3aacdca1/peer-local-gate-investigation.md"
+  ]
+}

@@ -1,5 +1,6 @@
 // SPDX-License-Identifier: MIT
 // AI-Change: 2026-11-02-remote-agent (OpenAI / GPT-6 Astra Pro; self-reported)
+// AI-Change: 2026-11-12-public-endpoint-inspector (OpenAI / GPT-6 Astra Pro; self-reported)
 import path from 'node:path';
 import os from 'node:os';
 import { randomUUID } from 'node:crypto';
@@ -9,6 +10,7 @@ import { RemoteReadAdapter, remoteRoot } from './adapter.js';
 import { GatewayTransport, normalizeGateway, RemoteAgent } from './agent.js';
 import { RemoteStateStore, type RemoteConfig } from './state.js';
 import { READ_TOOLS, UUID_PATTERN, WIRE_VERSION } from './protocol.js';
+import { inspectPublicEndpoint, type InspectionProtocol } from './endpoint-probe.js';
 import {
   admitRemoteStateDirectory,
   assertRemoteRootOutsideState,
@@ -28,12 +30,17 @@ export const REMOTE_HELP = `MTerm remote — opt-in outbound read-only agent
   mterm-cli remote stop [--state-dir PATH]
   mterm-cli remote revoke [--state-dir PATH]
   mterm-cli remote profiles [--dev | --environment production|development] [--json]
+  mterm-cli remote endpoint --url https://HOST/mcp [--check] [--protocol 2026-07-28|2025-11-25] [--json]
 
 All six lifecycle commands accept [--profile NAME | --state-dir PATH] and
 [--dev | --environment production|development]. Names are lowercase ASCII slugs;
 default is an alias, never a copy. Explicit --environment overrides MTERM_ENV.
 Development state is separate and never imports production credentials.
 Profiles select the MTerm HTTPS-origin pairing/agent protocol, not arbitrary MCP paths.
+Endpoint inspection is separate: URL-only by default; --check explicitly performs
+bounded public HTTPS discovery. It loads no profile or credential and enables no routing.
+Modern 2026-07-28 discovery is the default; the legacy handshake must be selected.
+Use an ASCII hostname and simple path; queries, fragments and encoded paths are unsupported.
 
 Setup previews by default. --apply saves only MTerm remote configuration.
 Pairing requires owner approval in the private browser dashboard.
@@ -255,12 +262,53 @@ async function start(store: RemoteStateStore): Promise<number> {
   }
 }
 
+async function endpoint(args: string[]): Promise<number> {
+  let url: string | undefined,
+    protocol: InspectionProtocol | undefined,
+    check = false;
+  const seen = new Set<string>();
+  for (let i = 0; i < args.length; i++) {
+    const key = args[i]!;
+    if (seen.has(key)) fail('USAGE', 'Endpoint options may occur only once.');
+    seen.add(key);
+    if (key === '--json') continue;
+    if (key === '--check') {
+      check = true;
+      continue;
+    }
+    if (key === '--url' || key === '--protocol') {
+      const value = args[++i];
+      if (!value || value.startsWith('--')) fail('USAGE', 'Endpoint option is missing its value.');
+      if (key === '--url') url = value;
+      else {
+        if (value !== '2026-07-28' && value !== '2025-11-25')
+          fail('USAGE', 'Select protocol 2026-07-28 or 2025-11-25 explicitly.');
+        protocol = value;
+      }
+      continue;
+    }
+    fail('USAGE', 'Unsupported endpoint option. See remote help.');
+  }
+  if (!url) fail('USAGE', 'Endpoint inspection requires --url HTTPS_URL.');
+  const controller = new AbortController();
+  const release = check ? ownSignals(controller) : () => {};
+  try {
+    const report = await inspectPublicEndpoint(url, { check, protocol, signal: controller.signal });
+    console.log(JSON.stringify(report, null, 2));
+    return report.status === 'url-valid' || report.status === 'compatible' ? 0 : 2;
+  } finally {
+    release();
+  }
+}
+
 export async function remoteMain(args: string[]): Promise<number> {
   const command = args[0];
   if (!command || command === 'help' || command === '--help') {
     console.log(REMOTE_HELP);
     return 0;
   }
+  // Endpoint inspection cannot select/admit a state directory or read a grant.
+  if (command === 'endpoint') return endpoint(args.slice(1));
   if (!['setup', 'pair', 'start', 'status', 'stop', 'revoke', 'profiles'].includes(command))
     fail('USAGE', 'Unknown remote command. See remote help.');
   const opts = options(args.slice(1), command);

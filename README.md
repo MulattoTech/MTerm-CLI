@@ -136,6 +136,13 @@ See [automation docs](docs/automation/README.md) and [readiness evidence](docs/v
 | Private dashboard, pairing and client consent | [https://mterm-staging.m-techlabs.com](https://mterm-staging.m-techlabs.com) |
 
 Follow the [remote setup, client connection and rollback guide](docs/REMOTE_MCP.md).
+For an independent custom endpoint inspection, use
+`mterm-cli remote endpoint --url https://example.com/mcp --json` for an offline
+URL preview; add `--check` for bounded public HTTPS MCP discovery. The inspector
+reads no saved credentials and enables no routing. It defaults to current2026
+discovery and offers an explicitly selected2025 handshake. See the guide for
+address restrictions, response limits, result meanings and authentication gaps.
+
 The sequence is `remote setup` (preview, then `--apply`), `remote pair`, authenticated
 approval, and `remote start`. Choose one narrow trusted directory and keep remote state
 outside it. Windows device credentials use current-user DPAPI. The foreground agent

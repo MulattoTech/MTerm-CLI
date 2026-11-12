@@ -1,0 +1,505 @@
+TAP version 13
+# Subtest: existing remote help remains offline without resolving a profile
+ok 1 - existing remote help remains offline without resolving a profile
+  ---
+  duration_ms: 2.155005
+  type: 'test'
+  ...
+# Subtest: explicit public endpoint preview validates a path without DNS, credentials or local state
+ok 2 - explicit public endpoint preview validates a path without DNS, credentials or local state
+  ---
+  duration_ms: 7.128013
+  type: 'test'
+  ...
+# Subtest: endpoint options reject profile selection, credential input and repeated flags
+ok 3 - endpoint options reject profile selection, credential input and repeated flags
+  ---
+  duration_ms: 1.106509
+  type: 'test'
+  ...
+# Subtest: explicit legacy preview stays offline and reports its selected protocol
+ok 4 - explicit legacy preview stays offline and reports its selected protocol
+  ---
+  duration_ms: 0.876525
+  type: 'test'
+  ...
+# Subtest: explicit endpoint network check still bypasses all state and credential admission
+ok 5 - explicit endpoint network check still bypasses all state and credential admission
+  ---
+  duration_ms: 1.960324
+  type: 'test'
+  ...
+# Subtest: public endpoint admission normalizes explicit safe origins and preserves the MCP path
+ok 6 - public endpoint admission normalizes explicit safe origins and preserves the MCP path
+  ---
+  duration_ms: 9.592179
+  type: 'test'
+  ...
+# Subtest: public URL validation rejects ambiguous raw syntax before URL normalization can hide it
+ok 7 - public URL validation rejects ambiguous raw syntax before URL normalization can hide it
+  ---
+  duration_ms: 0.832545
+  type: 'test'
+  ...
+# Subtest: private, special-purpose, mapped and transition addresses are denied in public mode
+ok 8 - private, special-purpose, mapped and transition addresses are denied in public mode
+  ---
+  duration_ms: 0.610175
+  type: 'test'
+  ...
+# Subtest: address boundaries leave ordinary public IPv4 and global IPv6 eligible
+ok 9 - address boundaries leave ordinary public IPv4 and global IPv6 eligible
+  ---
+  duration_ms: 0.175757
+  type: 'test'
+  ...
+# Subtest: refused URLs never disclose the rejected input in errors
+ok 10 - refused URLs never disclose the rejected input in errors
+  ---
+  duration_ms: 0.213262
+  type: 'test'
+  ...
+# Subtest: offline endpoint inspection never resolves DNS or sends a request
+ok 11 - offline endpoint inspection never resolves DNS or sends a request
+  ---
+  duration_ms: 10.633395
+  type: 'test'
+  ...
+# Subtest: modern discovery pins the inspected address and enforces credential-free TLS and proxy policy
+ok 12 - modern discovery pins the inspected address and enforces credential-free TLS and proxy policy
+  ---
+  duration_ms: 7.932691
+  type: 'test'
+  ...
+# Subtest: mixed, oversized, invalid or failed DNS answers never reach HTTPS
+    # Subtest: {"v4":["8.8.8.8","127.0.0.1"],"v6":[]}
+    ok 1 - {"v4":["8.8.8.8","127.0.0.1"],"v6":[]}
+      ---
+      duration_ms: 0.730348
+      type: 'test'
+      ...
+    # Subtest: {"v4":["8.8.8.8"],"v6":["::ffff:8.8.8.8"]}
+    ok 2 - {"v4":["8.8.8.8"],"v6":["::ffff:8.8.8.8"]}
+      ---
+      duration_ms: 0.513581
+      type: 'test'
+      ...
+    # Subtest: {"v4":["8.8.8.8"],"v6":["fe80::1"]}
+    ok 3 - {"v4":["8.8.8.8"],"v6":["fe80::1"]}
+      ---
+      duration_ms: 0.551466
+      type: 'test'
+      ...
+    # Subtest: {"v4":["8.8.8.8","8.8.8.8","8.8.8.8","8.8.8.8","8.8.8.8","8.8.8.8","8.8.8.8","8.8.8.8","8.8.8.8"],"v6":[]}
+    ok 4 - {"v4":["8.8.8.8","8.8.8.8","8.8.8.8","8.8.8.8","8.8.8.8","8.8.8.8","8.8.8.8","8.8.8.8","8.8.8.8"],"v6":[]}
+      ---
+      duration_ms: 0.504239
+      type: 'test'
+      ...
+    # Subtest: {"v4":["not-an-address"],"v6":[]}
+    ok 5 - {"v4":["not-an-address"],"v6":[]}
+      ---
+      duration_ms: 0.439783
+      type: 'test'
+      ...
+    # Subtest: {"v4":[],"v6":[]}
+    ok 6 - {"v4":[],"v6":[]}
+      ---
+      duration_ms: 0.341193
+      type: 'test'
+      ...
+    # Subtest: {"v4":["8.8.8.8"],"v6":{"code":"ESERVFAIL"}}
+    ok 7 - {"v4":["8.8.8.8"],"v6":{"code":"ESERVFAIL"}}
+      ---
+      duration_ms: 0.666205
+      type: 'test'
+      ...
+    1..7
+ok 13 - mixed, oversized, invalid or failed DNS answers never reach HTTPS
+  ---
+  duration_ms: 5.189151
+  type: 'test'
+  ...
+# Subtest: public IP literals require no DNS and still verify the connected address
+ok 14 - public IP literals require no DNS and still verify the connected address
+  ---
+  duration_ms: 0.53517
+  type: 'test'
+  ...
+# Subtest: authorization denials and redirects are classified without a second request or raw disclosure
+    # Subtest: 401
+    ok 1 - 401
+      ---
+      duration_ms: 0.670195
+      type: 'test'
+      ...
+    # Subtest: 403
+    ok 2 - 403
+      ---
+      duration_ms: 0.569354
+      type: 'test'
+      ...
+    # Subtest: 302
+    ok 3 - 302
+      ---
+      duration_ms: 2.612601
+      type: 'test'
+      ...
+    1..3
+ok 15 - authorization denials and redirects are classified without a second request or raw disclosure
+  ---
+  duration_ms: 4.563493
+  type: 'test'
+  ...
+# Subtest: SSE accepts bounded priming and notification events and closes at the final response
+ok 16 - SSE accepts bounded priming and notification events and closes at the final response
+  ---
+  duration_ms: 1.668469
+  type: 'test'
+  ...
+# Subtest: malformed, oversized, compressed and interactive responses cannot claim compatibility
+    # Subtest: 0
+    ok 1 - 0
+      ---
+      duration_ms: 1.488921
+      type: 'test'
+      ...
+    # Subtest: 1
+    ok 2 - 1
+      ---
+      duration_ms: 1.198175
+      type: 'test'
+      ...
+    # Subtest: 2
+    ok 3 - 2
+      ---
+      duration_ms: 1.224288
+      type: 'test'
+      ...
+    # Subtest: 3
+    ok 4 - 3
+      ---
+      duration_ms: 0.978335
+      type: 'test'
+      ...
+    # Subtest: 4
+    ok 5 - 4
+      ---
+      duration_ms: 1.983882
+      type: 'test'
+      ...
+    # Subtest: 5
+    ok 6 - 5
+      ---
+      duration_ms: 1.171527
+      type: 'test'
+      ...
+    # Subtest: 6
+    ok 7 - 6
+      ---
+      duration_ms: 1.6633
+      type: 'test'
+      ...
+    # Subtest: 7
+    ok 8 - 7
+      ---
+      duration_ms: 0.771147
+      type: 'test'
+      ...
+    # Subtest: 8
+    ok 9 - 8
+      ---
+      duration_ms: 0.740862
+      type: 'test'
+      ...
+    # Subtest: 9
+    ok 10 - 9
+      ---
+      duration_ms: 1.045938
+      type: 'test'
+      ...
+    # Subtest: 10
+    ok 11 - 10
+      ---
+      duration_ms: 0.574142
+      type: 'test'
+      ...
+    # Subtest: 11
+    ok 12 - 11
+      ---
+      duration_ms: 0.49856
+      type: 'test'
+      ...
+    # Subtest: 12
+    ok 13 - 12
+      ---
+      duration_ms: 0.581111
+      type: 'test'
+      ...
+    # Subtest: 13
+    ok 14 - 13
+      ---
+      duration_ms: 0.52806
+      type: 'test'
+      ...
+    # Subtest: 14
+    ok 15 - 14
+      ---
+      duration_ms: 0.629212
+      type: 'test'
+      ...
+    # Subtest: 15
+    ok 16 - 15
+      ---
+      duration_ms: 1.008898
+      type: 'test'
+      ...
+    # Subtest: 16
+    ok 17 - 16
+      ---
+      duration_ms: 0.749662
+      type: 'test'
+      ...
+    # Subtest: 17
+    ok 18 - 17
+      ---
+      duration_ms: 0.533251
+      type: 'test'
+      ...
+    # Subtest: 18
+    ok 19 - 18
+      ---
+      duration_ms: 0.471971
+      type: 'test'
+      ...
+    # Subtest: 19
+    ok 20 - 19
+      ---
+      duration_ms: 0.65428
+      type: 'test'
+      ...
+    # Subtest: 20
+    ok 21 - 20
+      ---
+      duration_ms: 0.451859
+      type: 'test'
+      ...
+    # Subtest: 21
+    ok 22 - 21
+      ---
+      duration_ms: 0.340553
+      type: 'test'
+      ...
+    1..22
+ok 17 - malformed, oversized, compressed and interactive responses cannot claim compatibility
+  ---
+  duration_ms: 22.083072
+  type: 'test'
+  ...
+# Subtest: SSE handles split UTF-8, split CRLF, lone CR and multiline data without exposing metadata
+ok 18 - SSE handles split UTF-8, split CRLF, lone CR and multiline data without exposing metadata
+  ---
+  duration_ms: 2.727226
+  type: 'test'
+  ...
+# Subtest: DNS timeout cancels the resolver before any connection is attempted
+ok 19 - DNS timeout cancels the resolver before any connection is attempted
+  ---
+  duration_ms: 18.400864
+  type: 'test'
+  ...
+# Subtest: legacy stateless negotiation reports the actual supported version without creating a session
+ok 20 - legacy stateless negotiation reports the actual supported version without creating a session
+  ---
+  duration_ms: 1.27968
+  type: 'test'
+  ...
+# Subtest: legacy handshake is explicit and releases only its own same-endpoint session
+ok 21 - legacy handshake is explicit and releases only its own same-endpoint session
+  ---
+  duration_ms: 1.169755
+  type: 'test'
+  ...
+# Subtest: legacy cleanup requires a valid initialization and reports unsupported cleanup honestly
+    # Subtest: false-204
+    ok 1 - false-204
+      ---
+      duration_ms: 1.255339
+      type: 'test'
+      ...
+    # Subtest: true-405
+    ok 2 - true-405
+      ---
+      duration_ms: 1.304495
+      type: 'test'
+      ...
+    # Subtest: true-500
+    ok 3 - true-500
+      ---
+      duration_ms: 2.065424
+      type: 'test'
+      ...
+    1..3
+ok 22 - legacy cleanup requires a valid initialization and reports unsupported cleanup honestly
+  ---
+  duration_ms: 5.572804
+  type: 'test'
+  ...
+# Subtest: legacy notification failure releases a session established by a valid matching initialization
+ok 23 - legacy notification failure releases a session established by a valid matching initialization
+  ---
+  duration_ms: 0.948747
+  type: 'test'
+  ...
+# Subtest: known legacy session values cannot be reflected through displayed server metadata
+    # Subtest: name-exact
+    ok 1 - name-exact
+      ---
+      duration_ms: 0.886572
+      type: 'test'
+      ...
+    # Subtest: name-embedded
+    ok 2 - name-embedded
+      ---
+      duration_ms: 1.023545
+      type: 'test'
+      ...
+    # Subtest: version-exact
+    ok 3 - version-exact
+      ---
+      duration_ms: 0.710772
+      type: 'test'
+      ...
+    # Subtest: version-embedded
+    ok 4 - version-embedded
+      ---
+      duration_ms: 1.203138
+      type: 'test'
+      ...
+    1..4
+ok 24 - known legacy session values cannot be reflected through displayed server metadata
+  ---
+  duration_ms: 4.606407
+  type: 'test'
+  ...
+# Subtest: unusable session headers retain cleanup uncertainty without authorizing a DELETE
+    # Subtest: length-0
+    ok 1 - length-0
+      ---
+      duration_ms: 0.69297
+      type: 'test'
+      ...
+    # Subtest: length-21
+    ok 2 - length-21
+      ---
+      duration_ms: 0.657968
+      type: 'test'
+      ...
+    # Subtest: length-257
+    ok 3 - length-257
+      ---
+      duration_ms: 0.423655
+      type: 'test'
+      ...
+    # Subtest: multiple-values
+    ok 4 - multiple-values
+      ---
+      duration_ms: 0.413677
+      type: 'test'
+      ...
+    1..4
+ok 25 - unusable session headers retain cleanup uncertainty without authorizing a DELETE
+  ---
+  duration_ms: 2.860939
+  type: 'test'
+  ...
+# Subtest: SSE event limits count actual LF, CR and CRLF bytes including split CRLF
+    # Subtest: "\\n"-whole-16384
+    ok 1 - "\\n"-whole-16384
+      ---
+      duration_ms: 0.82011
+      type: 'test'
+      ...
+    # Subtest: "\\n"-whole-16385
+    ok 2 - "\\n"-whole-16385
+      ---
+      duration_ms: 0.59865
+      type: 'test'
+      ...
+    # Subtest: "\\r"-whole-16384
+    ok 3 - "\\r"-whole-16384
+      ---
+      duration_ms: 0.868264
+      type: 'test'
+      ...
+    # Subtest: "\\r"-whole-16385
+    ok 4 - "\\r"-whole-16385
+      ---
+      duration_ms: 0.461367
+      type: 'test'
+      ...
+    # Subtest: "\\r\\n"-whole-16384
+    ok 5 - "\\r\\n"-whole-16384
+      ---
+      duration_ms: 0.479395
+      type: 'test'
+      ...
+    # Subtest: "\\r\\n"-whole-16385
+    ok 6 - "\\r\\n"-whole-16385
+      ---
+      duration_ms: 0.500408
+      type: 'test'
+      ...
+    # Subtest: "\\r\\n"-split-16384
+    ok 7 - "\\r\\n"-split-16384
+      ---
+      duration_ms: 1.118578
+      type: 'test'
+      ...
+    # Subtest: "\\r\\n"-split-16385
+    ok 8 - "\\r\\n"-split-16385
+      ---
+      duration_ms: 0.791421
+      type: 'test'
+      ...
+    1..8
+ok 26 - SSE event limits count actual LF, CR and CRLF bytes including split CRLF
+  ---
+  duration_ms: 6.968833
+  type: 'test'
+  ...
+# Subtest: many CRLF comments cannot hide an oversized SSE event inside the response budget
+ok 27 - many CRLF comments cannot hide an oversized SSE event inside the response budget
+  ---
+  duration_ms: 2.539088
+  type: 'test'
+  ...
+# Subtest: cancellation destroys an in-flight request without retry or raw error disclosure
+ok 28 - cancellation destroys an in-flight request without retry or raw error disclosure
+  ---
+  duration_ms: 7.790401
+  type: 'test'
+  ...
+# Subtest: overall deadline bounds a stalled request even without response or socket activity
+ok 29 - overall deadline bounds a stalled request even without response or socket activity
+  ---
+  duration_ms: 0.870773
+  type: 'test'
+  ...
+# (node:36) Warning: Setting the NODE_TLS_REJECT_UNAUTHORIZED environment variable to '0' makes TLS connections and HTTPS requests insecure by disabling certificate verification.
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: actual inspection TLS rejects an untrusted certificate and a wrong host under an ambient disable flag
+ok 30 - actual inspection TLS rejects an untrusted certificate and a wrong host under an ambient disable flag
+  ---
+  duration_ms: 131.514154
+  type: 'test'
+  ...
+1..30
+# tests 81
+# suites 0
+# pass 81
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 976.441061

@@ -582,13 +582,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Help succeeds without credentials, dependencies installed, network or model calls.
 
-**Current scope:** Offline command behavior and no injected Codex approval flags tested on Windows Node24. Installed Codex non-model startup verified.
+**Current scope:** Offline command behavior and no injected Codex approval flags tested on Windows Node24. Installed Codex non-model startup verified. 2026-11-12 public endpoint source slice:81/81 focused tests after actual RED and independent findings. The endpoint preview and remote help remain offline; this does not qualify all launcher help paths without installed dependencies. Stage, acceptance, weight, estimate and platform credit remain unchanged; final candidate/installed/main gates are separate.
 
 **Baseline weight:** 4 h (rough). **Remaining:** 1–2 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/cli.test.mjs`, `scripts/verify-codex-setup.mjs`
+**Evidence:** `tests/cli.test.mjs`, `scripts/verify-codex-setup.mjs`, `tests/remote-endpoint-cli.test.mjs`, `tests/remote-endpoint-probe.test.mjs`, `tests/remote-endpoint-tls.test.mjs`, `docs/validation/2026-11-12-public-endpoint-inspector/README.md`
 
 ## CLI-043 — Make version output deterministic
 
@@ -708,13 +708,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Ordinary launches do not update, install, query quotas or silently reconfigure credentials.
 
-**Current scope:** Offline command behavior and no injected Codex approval flags tested on Windows Node24. Installed Codex non-model startup verified.
+**Current scope:** Offline command behavior and no injected Codex approval flags tested on Windows Node24. Installed Codex non-model startup verified. 2026-11-12 public endpoint source slice:81/81 focused tests after actual RED and independent findings. This command performs no startup network work without --check and never alters credentials; ordinary launch behavior across the full product remains separate. Stage, acceptance, weight, estimate and platform credit remain unchanged; final candidate/installed/main gates are separate.
 
 **Baseline weight:** 4 h (rough). **Remaining:** 1–2 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/cli.test.mjs`, `scripts/verify-codex-setup.mjs`
+**Evidence:** `tests/cli.test.mjs`, `scripts/verify-codex-setup.mjs`, `tests/remote-endpoint-cli.test.mjs`, `tests/remote-endpoint-probe.test.mjs`, `tests/remote-endpoint-tls.test.mjs`, `docs/validation/2026-11-12-public-endpoint-inspector/README.md`
 
 ## CLI-052 — Define non-interactive semantics
 
@@ -1268,13 +1268,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** All success/error paths are tested with sentinel secrets absent from output.
 
-**Current scope:** Requirement preserved; no implementation or acceptance evidence in this local candidate.
+**Current scope:** Full original acceptance remains unestablished. 2026-11-12 public endpoint source slice:81/81 focused tests after actual RED and independent findings. Synthetic response, error, challenge and known-session sentinels are excluded from endpoint output; all credential-bearing product success/error paths are not covered by this slice. Stage, acceptance, weight, estimate and platform credit remain unchanged; final candidate/installed/main gates are separate.
 
 **Baseline weight:** 24 h (rough). **Remaining:** 12–48 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** None; no implementation credit.
+**Evidence:** `tests/remote-endpoint-cli.test.mjs`, `tests/remote-endpoint-probe.test.mjs`, `tests/remote-endpoint-tls.test.mjs`, `docs/validation/2026-11-12-public-endpoint-inspector/README.md`
 
 ## CLI-092 — Keep credentials out of repository artifacts
 
@@ -1576,13 +1576,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Endpoint overrides and redirects cannot send real tokens to an arbitrary host.
 
-**Current scope:** Requirement preserved; no implementation or acceptance evidence in this local candidate.
+**Current scope:** Full original acceptance remains unestablished. 2026-11-12 public endpoint source slice:81/81 focused tests after actual RED and independent findings. The new inspector sends no credentials and refuses redirects; credential-bearing quota/provider origin overrides retain separate acceptance. Stage, acceptance, weight, estimate and platform credit remain unchanged; final candidate/installed/main gates are separate.
 
 **Baseline weight:** 8 h (rough). **Remaining:** 4–16 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** Quota adapter is not integrated; no credentials or usage endpoint accessed..
 
-**Evidence:** None; no implementation credit.
+**Evidence:** `tests/remote-endpoint-cli.test.mjs`, `tests/remote-endpoint-probe.test.mjs`, `tests/remote-endpoint-tls.test.mjs`, `docs/validation/2026-11-12-public-endpoint-inspector/README.md`
 
 ## CLI-114 — Bound response size and parsing
 
@@ -2794,13 +2794,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Sentinel credentials are absent from normal errors, debug logs and support reports.
 
-**Current scope:** Local Windows tests exercise actual SDK wire/lifecycle paths with synthetic roots and no account/model calls. No hosted CI, Unix/macOS or sandbox claim. Windows DPAPI bounds preparation (2026-11-02): actual merged-main Windows301/302 failure at the unchanged10s helper is retained; OS cause unknown. New fixed30s+5s lifecycle preserves CurrentUser/stdin-only/32KiB/generic errors and holds pairing admission only for unconfirmed Protect cleanup. Original native and Linux RED17/4pass13fail; unchanged supplementaryGREEN22/22 and independent source review. Committed native/fresh/hosted/installed/delivery gates remain pending. No stage, acceptance, estimate, weight or platform credit.
+**Current scope:** Local Windows tests exercise actual SDK wire/lifecycle paths with synthetic roots and no account/model calls. No hosted CI, Unix/macOS or sandbox claim. Windows DPAPI bounds preparation (2026-11-02): actual merged-main Windows301/302 failure at the unchanged10s helper is retained; OS cause unknown. New fixed30s+5s lifecycle preserves CurrentUser/stdin-only/32KiB/generic errors and holds pairing admission only for unconfirmed Protect cleanup. Original native and Linux RED17/4pass13fail; unchanged supplementaryGREEN22/22 and independent source review. Committed native/fresh/hosted/installed/delivery gates remain pending. No stage, acceptance, estimate, weight or platform credit. 2026-11-12 public endpoint source slice:81/81 focused tests after actual RED and independent findings. Endpoint diagnostics use fixed codes and bounded self-reported metadata with known-session suppression; normal/debug/support diagnostics across the whole product remain open. Stage, acceptance, weight, estimate and platform credit remain unchanged; final candidate/installed/main gates are separate.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 3–11 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/cli.test.mjs`, `tests/mcp.test.mjs`, `tests/processes.test.mjs`, `docs/validation/2026-11-02-windows-dpapi-bounds.md`, `docs/validation/2026-11-02-windows-dpapi-bounds-development.json`, `docs/validation/2026-11-02-windows-dpapi-bounds-source-review.json`, `src/remote/state.ts`, `tests/remote-state-dpapi.test.mjs`, `scripts/verify-remote-state-installed.mjs`
+**Evidence:** `tests/cli.test.mjs`, `tests/mcp.test.mjs`, `tests/processes.test.mjs`, `docs/validation/2026-11-02-windows-dpapi-bounds.md`, `docs/validation/2026-11-02-windows-dpapi-bounds-development.json`, `docs/validation/2026-11-02-windows-dpapi-bounds-source-review.json`, `src/remote/state.ts`, `tests/remote-state-dpapi.test.mjs`, `scripts/verify-remote-state-installed.mjs`, `tests/remote-endpoint-cli.test.mjs`, `tests/remote-endpoint-probe.test.mjs`, `tests/remote-endpoint-tls.test.mjs`, `docs/validation/2026-11-12-public-endpoint-inspector/README.md`
 
 ## CLI-201 — Restrict credential-bearing endpoint origins
 
@@ -2808,13 +2808,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Arbitrary endpoints/redirects cannot receive auth headers.
 
-**Current scope:** Final 2026-11-02 evidence at b90432a: GatewayTransport fixes credential-bearing requests to approved HTTPS origins and refuses redirects; Access key retrieval uses manual redirect handling. Final local/live/hosted evidence supports the already-reviewed integrated stage; no extra credit is added. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.
+**Current scope:** Final 2026-11-02 evidence at b90432a: GatewayTransport fixes credential-bearing requests to approved HTTPS origins and refuses redirects; Access key retrieval uses manual redirect handling. Final local/live/hosted evidence supports the already-reviewed integrated stage; no extra credit is added. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit. 2026-11-12 public endpoint source slice:81/81 focused tests after actual RED and independent findings. The inspector has no auth input and uses one admitted pinned origin; provider authentication and all existing credential-bearing transports are outside this slice. Stage, acceptance, weight, estimate and platform credit remain unchanged; final candidate/installed/main gates are separate.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 2–6 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/remote-gateway.test.mjs`, `tests/remote-agent.test.mjs`, `tests/remote-adapter.test.mjs`, `tests/remote-state.test.mjs`, `docs/ai/changes/2026-11-02-remote-gateway.json`, `docs/ai/changes/2026-11-02-remote-agent.json`, `docs/validation/2026-11-02-remote-staging-smoke.json`, `gateway/security.mjs`, `src/remote/agent.ts`, `src/remote/cli.ts`, `docs/validation/2026-11-02-remote-sprint.md`, `docs/validation/2026-11-02-remote-staging-smoke-final.json`
+**Evidence:** `tests/remote-gateway.test.mjs`, `tests/remote-agent.test.mjs`, `tests/remote-adapter.test.mjs`, `tests/remote-state.test.mjs`, `docs/ai/changes/2026-11-02-remote-gateway.json`, `docs/ai/changes/2026-11-02-remote-agent.json`, `docs/validation/2026-11-02-remote-staging-smoke.json`, `gateway/security.mjs`, `src/remote/agent.ts`, `src/remote/cli.ts`, `docs/validation/2026-11-02-remote-sprint.md`, `docs/validation/2026-11-02-remote-staging-smoke-final.json`, `tests/remote-endpoint-cli.test.mjs`, `tests/remote-endpoint-probe.test.mjs`, `tests/remote-endpoint-tls.test.mjs`, `docs/validation/2026-11-12-public-endpoint-inspector/README.md`
 
 ## CLI-202 — Reject insecure TLS behavior
 
@@ -2878,13 +2878,13 @@ All original requirement IDs/acceptance text are retained. Stage credit is expli
 
 **Objective / acceptance:** Fixture endpoints/modes cannot read the real user auth home.
 
-**Current scope:** Local Windows tests exercise actual SDK wire/lifecycle paths with synthetic roots and no account/model calls. No hosted CI, Unix/macOS or sandbox claim. Windows DPAPI bounds preparation (2026-11-02): actual merged-main Windows301/302 failure at the unchanged10s helper is retained; OS cause unknown. New fixed30s+5s lifecycle preserves CurrentUser/stdin-only/32KiB/generic errors and holds pairing admission only for unconfirmed Protect cleanup. Original native and Linux RED17/4pass13fail; unchanged supplementaryGREEN22/22 and independent source review. Committed native/fresh/hosted/installed/delivery gates remain pending. No stage, acceptance, estimate, weight or platform credit.
+**Current scope:** Local Windows tests exercise actual SDK wire/lifecycle paths with synthetic roots and no account/model calls. No hosted CI, Unix/macOS or sandbox claim. Windows DPAPI bounds preparation (2026-11-02): actual merged-main Windows301/302 failure at the unchanged10s helper is retained; OS cause unknown. New fixed30s+5s lifecycle preserves CurrentUser/stdin-only/32KiB/generic errors and holds pairing admission only for unconfirmed Protect cleanup. Original native and Linux RED17/4pass13fail; unchanged supplementaryGREEN22/22 and independent source review. Committed native/fresh/hosted/installed/delivery gates remain pending. No stage, acceptance, estimate, weight or platform credit. 2026-11-12 public endpoint source slice:81/81 focused tests after actual RED and independent findings. Endpoint tests block state/credential access and use only synthetic owned TLS data; complete fixture separation across every provider/client flow remains unestablished. Stage, acceptance, weight, estimate and platform credit remain unchanged; final candidate/installed/main gates are separate.
 
 **Baseline weight:** 16 h (rough). **Remaining:** 3–11 engineer hours. **ETA:** Unscheduled.
 
 **Platform:** Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending. **Blocker:** None recorded; incomplete work remains in scope.
 
-**Evidence:** `tests/cli.test.mjs`, `tests/mcp.test.mjs`, `tests/processes.test.mjs`, `docs/validation/2026-11-02-windows-dpapi-bounds.md`, `docs/validation/2026-11-02-windows-dpapi-bounds-development.json`, `docs/validation/2026-11-02-windows-dpapi-bounds-source-review.json`, `src/remote/state.ts`, `tests/remote-state-dpapi.test.mjs`, `scripts/verify-remote-state-installed.mjs`
+**Evidence:** `tests/cli.test.mjs`, `tests/mcp.test.mjs`, `tests/processes.test.mjs`, `docs/validation/2026-11-02-windows-dpapi-bounds.md`, `docs/validation/2026-11-02-windows-dpapi-bounds-development.json`, `docs/validation/2026-11-02-windows-dpapi-bounds-source-review.json`, `src/remote/state.ts`, `tests/remote-state-dpapi.test.mjs`, `scripts/verify-remote-state-installed.mjs`, `tests/remote-endpoint-cli.test.mjs`, `tests/remote-endpoint-probe.test.mjs`, `tests/remote-endpoint-tls.test.mjs`, `docs/validation/2026-11-12-public-endpoint-inspector/README.md`
 
 ## CLI-207 — Create the root CLI workflow
 

@@ -901,12 +901,16 @@
       "blocker": null,
       "evidence": [
         "tests/cli.test.mjs",
-        "scripts/verify-codex-setup.mjs"
+        "scripts/verify-codex-setup.mjs",
+        "tests/remote-endpoint-cli.test.mjs",
+        "tests/remote-endpoint-probe.test.mjs",
+        "tests/remote-endpoint-tls.test.mjs",
+        "docs/validation/2026-11-12-public-endpoint-inspector/README.md"
       ],
-      "notes": "Offline command behavior and no injected Codex approval flags tested on Windows Node24. Installed Codex non-model startup verified.",
+      "notes": "Offline command behavior and no injected Codex approval flags tested on Windows Node24. Installed Codex non-model startup verified. 2026-11-12 public endpoint source slice:81/81 focused tests after actual RED and independent findings. The endpoint preview and remote help remain offline; this does not qualify all launcher help paths without installed dependencies. Stage, acceptance, weight, estimate and platform credit remain unchanged; final candidate/installed/main gates are separate.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "OpenAI / GPT-6 Astra Pro; self-reported scoped review, 2026-11-12"
     },
     {
       "id": "CLI-043",
@@ -1107,12 +1111,16 @@
       "blocker": null,
       "evidence": [
         "tests/cli.test.mjs",
-        "scripts/verify-codex-setup.mjs"
+        "scripts/verify-codex-setup.mjs",
+        "tests/remote-endpoint-cli.test.mjs",
+        "tests/remote-endpoint-probe.test.mjs",
+        "tests/remote-endpoint-tls.test.mjs",
+        "docs/validation/2026-11-12-public-endpoint-inspector/README.md"
       ],
-      "notes": "Offline command behavior and no injected Codex approval flags tested on Windows Node24. Installed Codex non-model startup verified.",
+      "notes": "Offline command behavior and no injected Codex approval flags tested on Windows Node24. Installed Codex non-model startup verified. 2026-11-12 public endpoint source slice:81/81 focused tests after actual RED and independent findings. This command performs no startup network work without --check and never alters credentials; ordinary launch behavior across the full product remains separate. Stage, acceptance, weight, estimate and platform credit remain unchanged; final candidate/installed/main gates are separate.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "OpenAI / GPT-6 Astra Pro; self-reported scoped review, 2026-11-12"
     },
     {
       "id": "CLI-052",
@@ -1938,11 +1946,16 @@
       "estimateBasis": "Initial rough engineering range; not a schedule or measured AI runtime. Security/upstream/platform uncertainty can increase this estimate.",
       "eta": "Unscheduled",
       "blocker": null,
-      "evidence": [],
-      "notes": "Requirement preserved; no implementation or acceptance evidence in this local candidate.",
+      "evidence": [
+        "tests/remote-endpoint-cli.test.mjs",
+        "tests/remote-endpoint-probe.test.mjs",
+        "tests/remote-endpoint-tls.test.mjs",
+        "docs/validation/2026-11-12-public-endpoint-inspector/README.md"
+      ],
+      "notes": "Full original acceptance remains unestablished. 2026-11-12 public endpoint source slice:81/81 focused tests after actual RED and independent findings. Synthetic response, error, challenge and known-session sentinels are excluded from endpoint output; all credential-bearing product success/error paths are not covered by this slice. Stage, acceptance, weight, estimate and platform credit remain unchanged; final candidate/installed/main gates are separate.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "OpenAI / GPT-6 Astra Pro; self-reported scoped review, 2026-11-12"
     },
     {
       "id": "CLI-092",
@@ -2378,11 +2391,16 @@
       "estimateBasis": "Initial rough engineering range; not a schedule or measured AI runtime. Security/upstream/platform uncertainty can increase this estimate.",
       "eta": "Unscheduled",
       "blocker": "Quota adapter is not integrated; no credentials or usage endpoint accessed.",
-      "evidence": [],
-      "notes": "Requirement preserved; no implementation or acceptance evidence in this local candidate.",
+      "evidence": [
+        "tests/remote-endpoint-cli.test.mjs",
+        "tests/remote-endpoint-probe.test.mjs",
+        "tests/remote-endpoint-tls.test.mjs",
+        "docs/validation/2026-11-12-public-endpoint-inspector/README.md"
+      ],
+      "notes": "Full original acceptance remains unestablished. 2026-11-12 public endpoint source slice:81/81 focused tests after actual RED and independent findings. The new inspector sends no credentials and refuses redirects; credential-bearing quota/provider origin overrides retain separate acceptance. Stage, acceptance, weight, estimate and platform credit remain unchanged; final candidate/installed/main gates are separate.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "OpenAI / GPT-6 Astra Pro; self-reported scoped review, 2026-11-12"
     },
     {
       "id": "CLI-114",
@@ -2668,7 +2686,7 @@
       "id": "CLI-128",
       "section": "Cache ownership and performance",
       "title": "Bind cache to the selected account/source",
-      "acceptance": "Switching accounts cannot display a previous account\u2019s quota.",
+      "acceptance": "Switching accounts cannot display a previous account’s quota.",
       "stage": "not_started",
       "weight": 8,
       "remainingHours": [
@@ -4362,12 +4380,16 @@
         "docs/validation/2026-11-02-windows-dpapi-bounds-source-review.json",
         "src/remote/state.ts",
         "tests/remote-state-dpapi.test.mjs",
-        "scripts/verify-remote-state-installed.mjs"
+        "scripts/verify-remote-state-installed.mjs",
+        "tests/remote-endpoint-cli.test.mjs",
+        "tests/remote-endpoint-probe.test.mjs",
+        "tests/remote-endpoint-tls.test.mjs",
+        "docs/validation/2026-11-12-public-endpoint-inspector/README.md"
       ],
-      "notes": "Local Windows tests exercise actual SDK wire/lifecycle paths with synthetic roots and no account/model calls. No hosted CI, Unix/macOS or sandbox claim. Windows DPAPI bounds preparation (2026-11-02): actual merged-main Windows301/302 failure at the unchanged10s helper is retained; OS cause unknown. New fixed30s+5s lifecycle preserves CurrentUser/stdin-only/32KiB/generic errors and holds pairing admission only for unconfirmed Protect cleanup. Original native and Linux RED17/4pass13fail; unchanged supplementaryGREEN22/22 and independent source review. Committed native/fresh/hosted/installed/delivery gates remain pending. No stage, acceptance, estimate, weight or platform credit.",
+      "notes": "Local Windows tests exercise actual SDK wire/lifecycle paths with synthetic roots and no account/model calls. No hosted CI, Unix/macOS or sandbox claim. Windows DPAPI bounds preparation (2026-11-02): actual merged-main Windows301/302 failure at the unchanged10s helper is retained; OS cause unknown. New fixed30s+5s lifecycle preserves CurrentUser/stdin-only/32KiB/generic errors and holds pairing admission only for unconfirmed Protect cleanup. Original native and Linux RED17/4pass13fail; unchanged supplementaryGREEN22/22 and independent source review. Committed native/fresh/hosted/installed/delivery gates remain pending. No stage, acceptance, estimate, weight or platform credit. 2026-11-12 public endpoint source slice:81/81 focused tests after actual RED and independent findings. Endpoint diagnostics use fixed codes and bounded self-reported metadata with known-session suppression; normal/debug/support diagnostics across the whole product remain open. Stage, acceptance, weight, estimate and platform credit remain unchanged; final candidate/installed/main gates are separate.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "OpenAI GPT-6 Astra Pro; self-reported scoped source/evidence review; 2026-11-02T21:55:56.070535+00:00"
+      "reviewer": "OpenAI / GPT-6 Astra Pro; self-reported scoped review, 2026-11-12"
     },
     {
       "id": "CLI-201",
@@ -4395,12 +4417,16 @@
         "src/remote/agent.ts",
         "src/remote/cli.ts",
         "docs/validation/2026-11-02-remote-sprint.md",
-        "docs/validation/2026-11-02-remote-staging-smoke-final.json"
+        "docs/validation/2026-11-02-remote-staging-smoke-final.json",
+        "tests/remote-endpoint-cli.test.mjs",
+        "tests/remote-endpoint-probe.test.mjs",
+        "tests/remote-endpoint-tls.test.mjs",
+        "docs/validation/2026-11-12-public-endpoint-inspector/README.md"
       ],
-      "notes": "Final 2026-11-02 evidence at b90432a: GatewayTransport fixes credential-bearing requests to approved HTTPS origins and refuses redirects; Access key retrieval uses manual redirect handling. Final local/live/hosted evidence supports the already-reviewed integrated stage; no extra credit is added. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit.",
+      "notes": "Final 2026-11-02 evidence at b90432a: GatewayTransport fixes credential-bearing requests to approved HTTPS origins and refuses redirects; Access key retrieval uses manual redirect handling. Final local/live/hosted evidence supports the already-reviewed integrated stage; no extra credit is added. Final publication and documentation checks are recorded in PR #69. Existing stage/weight retained; no further acceptance credit. 2026-11-12 public endpoint source slice:81/81 focused tests after actual RED and independent findings. The inspector has no auth input and uses one admitted pinned origin; provider authentication and all existing credential-bearing transports are outside this slice. Stage, acceptance, weight, estimate and platform credit remain unchanged; final candidate/installed/main gates are separate.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "2026-10-04-local-mcp"
+      "reviewer": "OpenAI / GPT-6 Astra Pro; self-reported scoped review, 2026-11-12"
     },
     {
       "id": "CLI-202",
@@ -4529,12 +4555,16 @@
         "docs/validation/2026-11-02-windows-dpapi-bounds-source-review.json",
         "src/remote/state.ts",
         "tests/remote-state-dpapi.test.mjs",
-        "scripts/verify-remote-state-installed.mjs"
+        "scripts/verify-remote-state-installed.mjs",
+        "tests/remote-endpoint-cli.test.mjs",
+        "tests/remote-endpoint-probe.test.mjs",
+        "tests/remote-endpoint-tls.test.mjs",
+        "docs/validation/2026-11-12-public-endpoint-inspector/README.md"
       ],
-      "notes": "Local Windows tests exercise actual SDK wire/lifecycle paths with synthetic roots and no account/model calls. No hosted CI, Unix/macOS or sandbox claim. Windows DPAPI bounds preparation (2026-11-02): actual merged-main Windows301/302 failure at the unchanged10s helper is retained; OS cause unknown. New fixed30s+5s lifecycle preserves CurrentUser/stdin-only/32KiB/generic errors and holds pairing admission only for unconfirmed Protect cleanup. Original native and Linux RED17/4pass13fail; unchanged supplementaryGREEN22/22 and independent source review. Committed native/fresh/hosted/installed/delivery gates remain pending. No stage, acceptance, estimate, weight or platform credit.",
+      "notes": "Local Windows tests exercise actual SDK wire/lifecycle paths with synthetic roots and no account/model calls. No hosted CI, Unix/macOS or sandbox claim. Windows DPAPI bounds preparation (2026-11-02): actual merged-main Windows301/302 failure at the unchanged10s helper is retained; OS cause unknown. New fixed30s+5s lifecycle preserves CurrentUser/stdin-only/32KiB/generic errors and holds pairing admission only for unconfirmed Protect cleanup. Original native and Linux RED17/4pass13fail; unchanged supplementaryGREEN22/22 and independent source review. Committed native/fresh/hosted/installed/delivery gates remain pending. No stage, acceptance, estimate, weight or platform credit. 2026-11-12 public endpoint source slice:81/81 focused tests after actual RED and independent findings. Endpoint tests block state/credential access and use only synthetic owned TLS data; complete fixture separation across every provider/client flow remains unestablished. Stage, acceptance, weight, estimate and platform credit remain unchanged; final candidate/installed/main gates are separate.",
       "platforms": "Windows Node24 tested for implemented local features; Linux/macOS and Web acceptance pending",
       "dependencies": [],
-      "reviewer": "OpenAI GPT-6 Astra Pro; self-reported scoped source/evidence review; 2026-11-02T21:55:56.070535+00:00"
+      "reviewer": "OpenAI / GPT-6 Astra Pro; self-reported scoped review, 2026-11-12"
     },
     {
       "id": "CLI-207",
@@ -5269,7 +5299,7 @@
       "id": "CLI-236",
       "section": "CLI roadmap, progress bars and governance",
       "title": "Retain complete cross-repository source-project traceability",
-      "acceptance": "GUI lineage and the CLI\u2019s three upstream licenses/features remain documented independently.",
+      "acceptance": "GUI lineage and the CLI’s three upstream licenses/features remain documented independently.",
       "stage": "planned",
       "weight": 8,
       "remainingHours": [
@@ -5453,7 +5483,7 @@
       "id": "CLI-244",
       "section": "AI attribution and recovery",
       "title": "Leave vendor-neutral handoff instructions",
-      "acceptance": "Another AI company\u2019s model can discover the current source of truth and next task from the repo.",
+      "acceptance": "Another AI company’s model can discover the current source of truth and next task from the repo.",
       "stage": "integrated",
       "weight": 8,
       "remainingHours": [
@@ -5907,7 +5937,7 @@
       "id": "CLI-261",
       "section": "Footprint and latency verification",
       "title": "Expose performance regressions honestly",
-      "acceptance": "Measured regressions remain visible; no \u201cnever slows down\u201d or unlike CLI/GUI comparison claims.",
+      "acceptance": "Measured regressions remain visible; no “never slows down” or unlike CLI/GUI comparison claims.",
       "stage": "implementation",
       "weight": 8,
       "remainingHours": [

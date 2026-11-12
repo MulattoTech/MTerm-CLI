@@ -1,0 +1,510 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-12T20:55:24.743814+00:00",
+  "verdict": "PASS_INDEPENDENT_NATIVE_ARTIFACT_REVIEW",
+  "repo": "MulattoTech/MTerm-CLI",
+  "pr": 257,
+  "actualMain": "f447c0baac3f36470d6fd96360928c6a2a192c4b",
+  "tree": "cbb3b682c4bfdf472bdfbc1ebfce5cd2e71174fc",
+  "reviewedCandidate": "b0348d901b27975789d8764397a103204e08aaf0",
+  "runId": 43304263698,
+  "jobId": 131483240941,
+  "artifact": {
+    "id": 13982807372,
+    "name": "aug005-linux-43304263698-1",
+    "file": "/workspace/scratch/a92a3aacdca1/peer-mterm-main-f447c0ba-evidence/native-linux-evidence.zip",
+    "bytes": 252037,
+    "sha256": "b3e07b715fd796c1b4896e92073ef8c9ee478bef279c2278d531f010a6c0226f",
+    "githubDigestMatches": true,
+    "all45ExtractedFilesMatchZip": true
+  },
+  "sourceBindings": [
+    {
+      "path": "scripts/prepare-isolation-ci.mjs",
+      "bytes": 19695,
+      "sha256": "01255fa4c51d811c06985e16331616bdf440dc34bd0c18a8bf6faf9317b66bf0",
+      "gitBlob": "fb305c62f3653e14b21ba840635516b345d5243d"
+    },
+    {
+      "path": "scripts/verify-isolation-live.mjs",
+      "bytes": 3722,
+      "sha256": "fdd16600d2190dc398a5210afa88fd0c0302b3713b826bb910a0b7955d2793ff",
+      "gitBlob": "f5b9710bfd1fcdcc52e8943e9278afc4dca77225"
+    },
+    {
+      "path": "scripts/isolation-ci-config.mjs",
+      "bytes": 3905,
+      "sha256": "895ca311b5a8d8ad3eeeb9d9efa0e6664ff083304b7a83526548aa343c38f1f3",
+      "gitBlob": "4b0e0d61688c07a47e082581ebe887c9a682e1c0"
+    },
+    {
+      "path": "scripts/isolation-ci-runner.mjs",
+      "bytes": 1416,
+      "sha256": "88e0238c7a4f5ec8bdfa9b24de0bd882977eac018827e7bb915f904b72bef402",
+      "gitBlob": "1e569f5f5a34189a043659d40729e5f9e065a114"
+    },
+    {
+      "path": "tests/isolation-live.mjs",
+      "bytes": 22227,
+      "sha256": "217361d3662142e22077b63e146d5e826e93da57e12050939981ea927e4e100b",
+      "gitBlob": "6eacb2e29fb2003b2597177338fdf670cb16fae7"
+    },
+    {
+      "path": "tests/isolation-live-evidence.mjs",
+      "bytes": 11321,
+      "sha256": "cb89df624e5d7539cdfd6c4d98f1045b28279f2e79407db90bb4e72a384bb34b",
+      "gitBlob": "d9590c3ea25abd8b8cf15d45ee3d64942da6a34d"
+    },
+    {
+      "path": ".github/workflows/cli-ci.yml",
+      "bytes": 4005,
+      "sha256": "5b4fbe4bf4f8debf43653909d7f8e18357f1a39ae2736f8a6a2f0119aa1a62a5",
+      "gitBlob": "1120c455f1ccf743b2e27f99b6f4ed3d57b06319"
+    }
+  ],
+  "lanes": [
+    {
+      "lane": "source",
+      "tests": {
+        "tests": 12,
+        "pass": 12,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "sourceCommit": "f447c0baac3f36470d6fd96360928c6a2a192c4b",
+      "fixtureSha256": "217361d3662142e22077b63e146d5e826e93da57e12050939981ea927e4e100b",
+      "evidenceHelperSha256": "cb89df624e5d7539cdfd6c4d98f1045b28279f2e79407db90bb4e72a384bb34b",
+      "rawTapSha256": "7dbdc411da0d4becdb3e17483b0f13225ae153cd5e416510eeb2161138626487",
+      "resultSha256": "032da65496bcd4416d707c64cbd3ade1a1f4bd487ba5bc801ccfbe2106c0e2cd",
+      "receiptSha256": "1db4fd14faa12bb7143f484b604f2666d9ad7d81c740d65c3418c7f402afebfc",
+      "cleanupScenarios": 12,
+      "oomProbes": 8,
+      "firstTerminalOomObservedForEveryProbe": true,
+      "moduleBindingsMatchReviewedCandidate": true,
+      "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+    },
+    {
+      "lane": "installed",
+      "tests": {
+        "tests": 12,
+        "pass": 12,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "sourceCommit": "f447c0baac3f36470d6fd96360928c6a2a192c4b",
+      "fixtureSha256": "217361d3662142e22077b63e146d5e826e93da57e12050939981ea927e4e100b",
+      "evidenceHelperSha256": "cb89df624e5d7539cdfd6c4d98f1045b28279f2e79407db90bb4e72a384bb34b",
+      "rawTapSha256": "1f0a1e7f6707b56235bd794ddb64bb4d320c8a347f2d31dd05d7292a3ecfbdea",
+      "resultSha256": "28f0b70d8648a194b76c29134c59d889e7c4cdd4ac121bf99c84a99e8b1a2bc7",
+      "receiptSha256": "2176610b6f84450b051548801ddb32e545585456f5256496450b03ba25986114",
+      "cleanupScenarios": 12,
+      "oomProbes": 8,
+      "firstTerminalOomObservedForEveryProbe": true,
+      "moduleBindingsMatchReviewedCandidate": true,
+      "imageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73"
+    }
+  ],
+  "installedProtocol": {
+    "tests": 31,
+    "pass": 31,
+    "fail": 0,
+    "skip": 0,
+    "cancelled": 0,
+    "syntheticOnly": true,
+    "rawTapSha256": "00030b26d77eb4d82fe6f15b9e6a0164a68c388c0b79cc9e240d51710b23491c",
+    "moduleBindingsMatchBothLiveLanes": true
+  },
+  "provenance": {
+    "bootstrapSha256": "e1937c9163c3db04f50b7b099e797bfe57ff0ffdadfbf0e22a50adbd0f27700b",
+    "sourceCommit": "f447c0baac3f36470d6fd96360928c6a2a192c4b",
+    "primaryFingerprint": "9DC858229FC7DD38854AE2D88D81803C0EBFCD88",
+    "signingFingerprint": "D3306A018370199E527AE7997EA0A9C3F273FCD8",
+    "gpgSignatureIndependentlyVerified": true,
+    "signedIndexHashesVerified": true,
+    "exactThreePackagePinsMatchSignedIndex": true,
+    "packagePins": [
+      {
+        "name": "docker-ce",
+        "version": "5:29.9.3-1~ubuntu.24.04~noble",
+        "filename": "dists/noble/pool/stable/amd64/docker-ce_29.9.3-1~ubuntu.24.04~noble_amd64.deb",
+        "downloadedFile": "docker-ce_5%3a29.9.3-1~ubuntu.24.04~noble_amd64.deb",
+        "sha256": "c546181f0bc5f1d19085d764a3219aa86069468dbee4743fae420ee8a31809a4",
+        "bytes": 24586336
+      },
+      {
+        "name": "docker-ce-cli",
+        "version": "5:29.9.3-1~ubuntu.24.04~noble",
+        "filename": "dists/noble/pool/stable/amd64/docker-ce-cli_29.9.3-1~ubuntu.24.04~noble_amd64.deb",
+        "downloadedFile": "docker-ce-cli_5%3a29.9.3-1~ubuntu.24.04~noble_amd64.deb",
+        "sha256": "24f78a893cece8d345c4e90b5163907c047b996b747265f873743e8b0b0546d4",
+        "bytes": 17584604
+      },
+      {
+        "name": "containerd.io",
+        "version": "2.4.2-3~ubuntu.24.04~noble",
+        "filename": "dists/noble/pool/stable/amd64/containerd.io_2.4.2-3~ubuntu.24.04~noble_amd64.deb",
+        "downloadedFile": "containerd.io_2.4.2-3~ubuntu.24.04~noble_amd64.deb",
+        "sha256": "f811ab57d1f4bb0cce19df7d526da8c711d8ebea0447cc83da1999188e664122",
+        "bytes": 23271468
+      }
+    ],
+    "engine": "29.9.3",
+    "containerd": "v2.4.2",
+    "runc": "1.5.2",
+    "cgroupDriver": "cgroupfs",
+    "cgroupVersion": "2",
+    "runtimeBinaryDigestsRecorded": [
+      {
+        "file": "/usr/bin/docker",
+        "bytes": 47325518,
+        "sha256": "4965a5e468369284e157b20ef9d9da2c7c1cd772d41d56ed822fb48d3898f382"
+      },
+      {
+        "file": "/usr/bin/dockerd",
+        "bytes": 112617776,
+        "sha256": "1a1128e84fea111e7560147380b69833d13d1f1009044d0061206037f1657a5b"
+      },
+      {
+        "file": "/usr/bin/containerd",
+        "bytes": 44299016,
+        "sha256": "fc185d75979d92a4f8de99b76293dca7fe81142e9c5fd01d7da59f786f0fc8d1"
+      },
+      {
+        "file": "/usr/bin/runc",
+        "bytes": 9719248,
+        "sha256": "1248fee8f9a0dc5382f888990d669e2bd225045869b9246f848a1681161abc96"
+      },
+      {
+        "file": "/usr/bin/containerd-shim-runc-v2",
+        "bytes": 8483416,
+        "sha256": "ca4c4b5919655332666dda634338b826d73a12cdd3b6633627e95d1ab4bc138a"
+      }
+    ],
+    "immutableImageId": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73",
+    "imageManifest": "sha256:c0a93797ee78814ae6d32fcca2561fdbbe423149c3f5389aad32d86e9fd85bd4",
+    "imageConfig": "sha256:280af3207172947339cc2e8c9d2efac585716fd906af49f57d6fdf0dbb829a73",
+    "recipeSha256": "b9337735f3a1bac3fb9501495448f8dc0ae58eacd8513fe757dd7da7bf4208da",
+    "retainedLicenseNoticeFiles": [
+      {
+        "name": "engine",
+        "repository": "moby/moby",
+        "commit": "70efc0e31da3a115fc87574d1b786fa2b867c346",
+        "filename": "LICENSE",
+        "url": "https://raw.githubusercontent.com/moby/moby/70efc0e31da3a115fc87574d1b786fa2b867c346/LICENSE",
+        "bytes": 10765,
+        "sha256": "7c87873291f289713ac5df48b1f2010eb6963752bbd6b530416ab99fc37914a8"
+      },
+      {
+        "name": "engine",
+        "repository": "moby/moby",
+        "commit": "70efc0e31da3a115fc87574d1b786fa2b867c346",
+        "filename": "NOTICE",
+        "url": "https://raw.githubusercontent.com/moby/moby/70efc0e31da3a115fc87574d1b786fa2b867c346/NOTICE",
+        "bytes": 1030,
+        "sha256": "a249c4197359eee43031d16cecb172326f92ee7b6701af99dfe5c3e5b3d5eca9"
+      },
+      {
+        "name": "cli",
+        "repository": "docker/cli",
+        "commit": "5457199aa57c45e990c59c89cab5f02b817238d7",
+        "filename": "LICENSE",
+        "url": "https://raw.githubusercontent.com/docker/cli/5457199aa57c45e990c59c89cab5f02b817238d7/LICENSE",
+        "bytes": 10765,
+        "sha256": "2d81ea060825006fc8f3fe28aa5dc0ffeb80faf325b612c955229157b8c10dc0"
+      },
+      {
+        "name": "cli",
+        "repository": "docker/cli",
+        "commit": "5457199aa57c45e990c59c89cab5f02b817238d7",
+        "filename": "NOTICE",
+        "url": "https://raw.githubusercontent.com/docker/cli/5457199aa57c45e990c59c89cab5f02b817238d7/NOTICE",
+        "bytes": 635,
+        "sha256": "a8c869fbda819afb8d80e0ac19bac52e766bc6c19cb38cf94f52d64c4be2aab6"
+      },
+      {
+        "name": "containerd",
+        "repository": "containerd/containerd",
+        "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51",
+        "filename": "LICENSE",
+        "url": "https://raw.githubusercontent.com/containerd/containerd/b7a25261e029d68978bbf290df0a62fc819b3c51/LICENSE",
+        "bytes": 10765,
+        "sha256": "4bbe3b885e8cd1907ab4cf9a41e862e74e24b5422297a4f2fe524e6a30ada2b4"
+      },
+      {
+        "name": "containerd",
+        "repository": "containerd/containerd",
+        "commit": "b7a25261e029d68978bbf290df0a62fc819b3c51",
+        "filename": "NOTICE",
+        "url": "https://raw.githubusercontent.com/containerd/containerd/b7a25261e029d68978bbf290df0a62fc819b3c51/NOTICE",
+        "bytes": 519,
+        "sha256": "03f0b4bcaecfdb491ef5a7d320e2c2adf886c732d34e3fff87d52dbaec64d8c3"
+      },
+      {
+        "name": "runc",
+        "repository": "opencontainers/runc",
+        "commit": "29dd3dc2b13b4123162e5fe132504bb4b15569f1",
+        "filename": "LICENSE",
+        "url": "https://raw.githubusercontent.com/opencontainers/runc/29dd3dc2b13b4123162e5fe132504bb4b15569f1/LICENSE",
+        "bytes": 10758,
+        "sha256": "552a739c3b25792263f731542238b92f6f8d07e9a488eae27e6c4690038a8243"
+      },
+      {
+        "name": "runc",
+        "repository": "opencontainers/runc",
+        "commit": "29dd3dc2b13b4123162e5fe132504bb4b15569f1",
+        "filename": "NOTICE",
+        "url": "https://raw.githubusercontent.com/opencontainers/runc/29dd3dc2b13b4123162e5fe132504bb4b15569f1/NOTICE",
+        "bytes": 515,
+        "sha256": "e94a9789f41c5c3d6f74212571e6f44367de88269f1ce9c32f26c1b67eec6e7f"
+      }
+    ],
+    "licenseNoticeHashesVerified": true,
+    "runtimeRedistributionClaimed": false
+  },
+  "files": [
+    {
+      "name": "001-docker.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "002-gpg.log",
+      "bytes": 564,
+      "sha256": "2aedfbea9a2f18276907dc72262cf937c56bebc012fd11e27935a0c2625c007b"
+    },
+    {
+      "name": "003-gpg.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "004-sudo.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "005-sudo.log",
+      "bytes": 215,
+      "sha256": "123ced8a728ad65c91daff9ba805fd650d4b59f23070eb3b7025955fee3408c5"
+    },
+    {
+      "name": "006-gpgv.log",
+      "bytes": 537,
+      "sha256": "c395e1dde381c0fd3e0985f82d684bcf083afcefa215b6d5787ddbee984c1385"
+    },
+    {
+      "name": "007-apt-helper.log",
+      "bytes": 497529,
+      "sha256": "c77070d435854dd768d2c49234542749678efa63ee3351b03710fc8f4455d8bc"
+    },
+    {
+      "name": "008-apt-get.log",
+      "bytes": 156,
+      "sha256": "5a673423d210ab8a55e048d32aa58adb8ce36537310a185336c5a2514f68687d"
+    },
+    {
+      "name": "009-apt-get.log",
+      "bytes": 160,
+      "sha256": "e65f9cb62fc02d0bce249e8c5f493e683773ccb93f309a34b133abda29bb47b4"
+    },
+    {
+      "name": "010-apt-get.log",
+      "bytes": 157,
+      "sha256": "e3dc57b99263cfae898619dfb43ec3a3a7c9952e13a744ab50409b9f514ced1e"
+    },
+    {
+      "name": "011-sudo.log",
+      "bytes": 2276,
+      "sha256": "b5363a0b719845209546fbb0b80e5866476d8eaf53598029223617c9dccd802f"
+    },
+    {
+      "name": "012-dockerd.log",
+      "bytes": 53,
+      "sha256": "ef2856de21c6ef2f045c4a46eb67327d4080349e533ef2ec2e19103f8e6234b7"
+    },
+    {
+      "name": "013-sudo.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "014-sudo.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "015-sudo.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "016-sudo.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "017-dpkg-query.log",
+      "bytes": 29,
+      "sha256": "f93044ee4d47e5af160e854f9d7eddb733c869d2280d8a4ba36cbe55f8efdaab"
+    },
+    {
+      "name": "018-dpkg-query.log",
+      "bytes": 29,
+      "sha256": "f93044ee4d47e5af160e854f9d7eddb733c869d2280d8a4ba36cbe55f8efdaab"
+    },
+    {
+      "name": "019-dpkg-query.log",
+      "bytes": 26,
+      "sha256": "87a3059394e98b31d8e424e7e96998818fbbcb9ac861b9ebe01091c684a99b7f"
+    },
+    {
+      "name": "020-docker.log",
+      "bytes": 880,
+      "sha256": "58041e9f63e4c510f59d2cbf063636fbe85cc41ffc70caef464e33dfb4ea3e58"
+    },
+    {
+      "name": "021-docker.log",
+      "bytes": 53,
+      "sha256": "ef2856de21c6ef2f045c4a46eb67327d4080349e533ef2ec2e19103f8e6234b7"
+    },
+    {
+      "name": "022-docker.log",
+      "bytes": 1073,
+      "sha256": "74c40f8544e34a8624dce8690540cca3e2adf46382f423be31181cf0ac084fc9"
+    },
+    {
+      "name": "023-docker.log",
+      "bytes": 53,
+      "sha256": "ef2856de21c6ef2f045c4a46eb67327d4080349e533ef2ec2e19103f8e6234b7"
+    },
+    {
+      "name": "024-docker.log",
+      "bytes": 1835,
+      "sha256": "04f88cdea05f19ab38848c9318919aaaea8299c7313285e8ef243730af559606"
+    },
+    {
+      "name": "bootstrap.json",
+      "bytes": 17365,
+      "sha256": "e1937c9163c3db04f50b7b099e797bfe57ff0ffdadfbf0e22a50adbd0f27700b"
+    },
+    {
+      "name": "cli-LICENSE",
+      "bytes": 10765,
+      "sha256": "2d81ea060825006fc8f3fe28aa5dc0ffeb80faf325b612c955229157b8c10dc0"
+    },
+    {
+      "name": "cli-NOTICE",
+      "bytes": 635,
+      "sha256": "a8c869fbda819afb8d80e0ac19bac52e766bc6c19cb38cf94f52d64c4be2aab6"
+    },
+    {
+      "name": "containerd-LICENSE",
+      "bytes": 10765,
+      "sha256": "4bbe3b885e8cd1907ab4cf9a41e862e74e24b5422297a4f2fe524e6a30ada2b4"
+    },
+    {
+      "name": "containerd-NOTICE",
+      "bytes": 519,
+      "sha256": "03f0b4bcaecfdb491ef5a7d320e2c2adf886c732d34e3fff87d52dbaec64d8c3"
+    },
+    {
+      "name": "docker-archive-key.asc",
+      "bytes": 3817,
+      "sha256": "1500c1f56fa9e26b9b8f42452a553675796ade0807cdce11975eb98170b3a570"
+    },
+    {
+      "name": "docker-noble-InRelease",
+      "bytes": 48475,
+      "sha256": "eaa9defc19d6515e3e4af14282950cea20dfdb450ace63cadb8e7b920e161361"
+    },
+    {
+      "name": "docker-noble-amd64-Packages",
+      "bytes": 497529,
+      "sha256": "c77070d435854dd768d2c49234542749678efa63ee3351b03710fc8f4455d8bc"
+    },
+    {
+      "name": "engine-LICENSE",
+      "bytes": 10765,
+      "sha256": "7c87873291f289713ac5df48b1f2010eb6963752bbd6b530416ab99fc37914a8"
+    },
+    {
+      "name": "engine-NOTICE",
+      "bytes": 1030,
+      "sha256": "a249c4197359eee43031d16cecb172326f92ee7b6701af99dfe5c3e5b3d5eca9"
+    },
+    {
+      "name": "installed-isolation-protocol.json",
+      "bytes": 1646,
+      "sha256": "4cf1bd74f24f63aff5d9abed394b7318ef20b26ee9f38da542068c3d72061fb9"
+    },
+    {
+      "name": "installed-isolation-protocol.tap",
+      "bytes": 7681,
+      "sha256": "00030b26d77eb4d82fe6f15b9e6a0164a68c388c0b79cc9e240d51710b23491c"
+    },
+    {
+      "name": "installed/live-receipt.json",
+      "bytes": 131792,
+      "sha256": "2176610b6f84450b051548801ddb32e545585456f5256496450b03ba25986114"
+    },
+    {
+      "name": "installed/live-tests.tap",
+      "bytes": 2776,
+      "sha256": "1f0a1e7f6707b56235bd794ddb64bb4d320c8a347f2d31dd05d7292a3ecfbdea"
+    },
+    {
+      "name": "installed/result.json",
+      "bytes": 133709,
+      "sha256": "28f0b70d8648a194b76c29134c59d889e7c4cdd4ac121bf99c84a99e8b1a2bc7"
+    },
+    {
+      "name": "node-image-Dockerfile",
+      "bytes": 5010,
+      "sha256": "b9337735f3a1bac3fb9501495448f8dc0ae58eacd8513fe757dd7da7bf4208da"
+    },
+    {
+      "name": "runc-LICENSE",
+      "bytes": 10758,
+      "sha256": "552a739c3b25792263f731542238b92f6f8d07e9a488eae27e6c4690038a8243"
+    },
+    {
+      "name": "runc-NOTICE",
+      "bytes": 515,
+      "sha256": "e94a9789f41c5c3d6f74212571e6f44367de88269f1ce9c32f26c1b67eec6e7f"
+    },
+    {
+      "name": "source/live-receipt.json",
+      "bytes": 131769,
+      "sha256": "1db4fd14faa12bb7143f484b604f2666d9ad7d81c740d65c3418c7f402afebfc"
+    },
+    {
+      "name": "source/live-tests.tap",
+      "bytes": 2776,
+      "sha256": "7dbdc411da0d4becdb3e17483b0f13225ae153cd5e416510eeb2161138626487"
+    },
+    {
+      "name": "source/result.json",
+      "bytes": 133687,
+      "sha256": "032da65496bcd4416d707c64cbd3ade1a1f4bd487ba5bc801ccfbe2106c0e2cd"
+    }
+  ],
+  "reviewerActions": {
+    "githubMutation": false,
+    "ciRerun": false,
+    "repositorySourceMutation": false,
+    "productOrContainerExecution": false,
+    "networkDownload": false,
+    "localGpgPublicSignatureVerification": true
+  },
+  "limits": [
+    "This is independent artifact verification of the exact hosted run, not a new live execution or full isolation acceptance.",
+    "The signed repository metadata, raw TAP, records and retained notices were independently verified; .deb payloads, runtime binaries and OCI layer bytes are not retained here, so their on-runner checks remain bounded by the exact harness and recorded evidence.",
+    "Reported installed package/source modules match each other and the prior qualified candidate; this is not a reproducible build claim.",
+    "Runtime/image redistribution remains unqualified; retaining top-level license/notice files is not full transitive license clearance.",
+    "No production deployment, user state mutation, paid model calls or full mission acceptance occurred."
+  ]
+}

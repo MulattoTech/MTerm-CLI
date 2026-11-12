@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-12T20:38:30.131251+00:00",
+  "reviewer": "/root/job_integration_review/endpoint_transport_challenger",
+  "scope": "Frozen low-level endpoint transport challenger; parent owns full protocol/session review and complete test suite",
+  "runtime": "Node24.22.1",
+  "sourceSha256": {
+    "src/errors.ts": "cb846f81c0cdfacf741991bda5c2be5ba25835ad57edd86d6fba6ee0baf3020f",
+    "src/remote/endpoint-policy.ts": "6303372951a5f3fad75f51430aadddf9d85550b0c3b52b09741888fc97844ec3",
+    "src/remote/endpoint-probe.ts": "1afb9f99ec46a2928bb857bb7a4aa9109feca170b6fbebbd6fefc83fbe4db0b4"
+  },
+  "sourceUntouched": true,
+  "networkProbes": 0,
+  "findings": [
+    {
+      "id": "ENDPOINT-EVENT-CRLF-COUNT",
+      "classification": "Per-event byte-bound accounting defect; total response bound remains effective",
+      "file": "src/remote/endpoint-probe.ts",
+      "lines": [
+        305,
+        331,
+        334,
+        336
+      ],
+      "mechanism": "line(value) always counts one delimiter byte, but consume recognizes and consumes two-byte CRLF without passing its width. A CRLF-heavy single event is smaller in the counter than on the wire.",
+      "observed": {
+        "case": "oneCRLFEventExceeds16KiB",
+        "rawEventBytes": 21181,
+        "declaredMaxEventBytes": 16384,
+        "declaredMaxResponseBytes": 65536,
+        "report": {
+          "schemaVersion": 1,
+          "endpoint": "https://example.com/mcp",
+          "mode": "public-https",
+          "requestedProtocol": "2026-07-28",
+          "status": "compatible",
+          "urlValidated": true,
+          "networkChecked": true,
+          "protocolChecked": true,
+          "credentialsUsed": false,
+          "routingEnabled": false,
+          "cleanup": "not-needed",
+          "addressesChecked": 1,
+          "httpStatus": 200,
+          "advertisedCapabilities": {
+            "tools": false,
+            "resources": false,
+            "prompts": false
+          },
+          "protocolVersion": "2026-07-28"
+        },
+        "networkRequests": 0,
+        "fixture": "mocked DNS and HTTPS; no socket opened"
+      },
+      "impact": "A server-controlled event can exceed16384 raw bytes and still be accepted. The demonstrated event is21181 bytes; total body remains below65536. No DNS/TLS/pinning bypass or unbounded response was demonstrated.",
+      "recommendation": "Count actual consumed delimiter bytes, including CRLF split across chunks; add raw exact-boundary and plus-one cases. If the intended limit is explicitly normalized data rather than wire bytes, document that distinction and retain the separate raw body cap."
+    }
+  ],
+  "checkedWithoutAdditionalFindings": [
+    "All returned A/AAAA addresses are bounded and validated by correct family and public-address policy before selecting a pin. Mixed prohibited/public records fail closed; lookup returns only the selected immutable address and uses no re-resolution.",
+    "Literal targets are admitted before bypassing DNS. The socket remote address is checked against the selected family/address, including canonicalized IPv6; TLS authorized must be true.",
+    "A new private HTTPS Agent uses proxyEnv empty, TLS verification true, minimumTLS1.2, normal hostname verification, no keepalive/session cache and one total socket. Request options retain original hostname/port/path and fixed family, autoSelectFamily false, and pinned lookup.",
+    "Saved Node24.22.2 source confirms private proxy configuration derives from its explicit options and agent options override per-request options. Explicit certificate settings therefore survive the tested request-level weakening.",
+    "The request never imports credentials, chooses redirect targets, accepts caller headers/options, installs a permissive certificate callback, or uses globalAgent/fetch.",
+    "DNS has a two-second abortable phase; main work is eight seconds; only an established owned legacy session may use an additional two-second cleanup phase. Abort closes request/response; finalization destroys the private agent.",
+    "HTTP core maxHeaderSize8192 and strict parsing, own duplicate sensitive-header checks, Content-Encoding rejection and raw body65536 cap bound accepted responses. Non-success/redirect/authentication bodies are not consumed or reflected."
+  ],
+  "limitations": [
+    "No complete endpoint suite rerun: parent handles it to avoid redundant tests.",
+    "Only the confirmed byte-limit discrepancy was dynamically exercised, using mocked DNS/HTTPS in an owned reviewer script with no socket.",
+    "No full security proof, external endpoint readiness, Windows runtime test or immutable published-commit approval is claimed.",
+    "System trust additions, local runtime injection and arbitrary local routing/translation remain outside the remote input boundary."
+  ],
+  "evidence": {
+    "source-hashes.json": {
+      "bytes": 295,
+      "sha256": "ca0223b949d1ba77cbdcafb1dedf8402393d708b4e09307f51213adce6c6a863"
+    },
+    "crlf-event-limit-repro.mjs": {
+      "bytes": 2190,
+      "sha256": "abc7fee186bac87b3e6b12bc4c92d232c348b45b5ce3ab686935e0b907e0c5f0"
+    },
+    "crlf-event-limit-observation.json": {
+      "bytes": 827,
+      "sha256": "242e12d00fdd0206b59d20e92f91b0b656f27021026f31305db4d2cabcf0f343"
+    }
+  }
+}

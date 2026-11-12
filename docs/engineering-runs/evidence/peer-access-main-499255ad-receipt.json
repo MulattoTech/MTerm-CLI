@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-12T19:43:16.980447+00:00",
+  "status": "ACTUAL_MAIN_TWO_REQUIRED_CHECKS_PASSED",
+  "repo": "MulattoTech/MTechLabs-Access",
+  "pr": 25,
+  "mainSha": "499255adf0c3988558eb4b1dd04ee95ad3c7da33",
+  "mainTree": "04d1d397de37cb730b191f47bbe9877d0a94b7a3",
+  "parents": [
+    "ba4a55b7ed351f7e60928179edaa7449de00be7d",
+    "60f188a805f59eeb13d04f27285ab7b55d1d6507"
+  ],
+  "qualifiedCandidateSha": "60f188a805f59eeb13d04f27285ab7b55d1d6507",
+  "mainTreeEqualsQualifiedCandidateTree": true,
+  "mergedAt": "2026-11-12T19:41:26Z",
+  "prState": "closed",
+  "merged": true,
+  "run": {
+    "id": 43292737244,
+    "html_url": "https://github.com/MulattoTech/MTechLabs-Access/actions/runs/43292737244",
+    "event": "push",
+    "run_attempt": 1,
+    "status": "completed",
+    "conclusion": "success",
+    "head_sha": "499255adf0c3988558eb4b1dd04ee95ad3c7da33"
+  },
+  "checks": [
+    {
+      "id": 131442935649,
+      "name": "test",
+      "url": "https://github.com/MulattoTech/MTechLabs-Access/actions/runs/43292737244/job/131442935649",
+      "headSha": "499255adf0c3988558eb4b1dd04ee95ad3c7da33",
+      "conclusion": "success",
+      "counts": {
+        "tests": 123,
+        "pass": 123,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "checkoutMainShaObserved": true,
+      "node": "v24.22.2",
+      "npm": "11.19.1",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm test",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run check",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm run build",
+          "conclusion": "success"
+        },
+        {
+          "name": "Check generated UI matches its sources",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ],
+      "log": {
+        "file": "/workspace/scratch/a92a3aacdca1/peer-access-main-499255ad-evidence/job-131442935649.log",
+        "bytes": 48753,
+        "sha256": "c1503cb1e2bc20e3f0d4079abc0f0f550e31128a66adb1a320e090eafecb58f7"
+      }
+    },
+    {
+      "id": 131442935086,
+      "name": "managed-mcp",
+      "url": "https://github.com/MulattoTech/MTechLabs-Access/actions/runs/43292737244/job/131442935086",
+      "headSha": "499255adf0c3988558eb4b1dd04ee95ad3c7da33",
+      "conclusion": "success",
+      "counts": {
+        "tests": 79,
+        "pass": 79,
+        "fail": 0,
+        "skipped": 0,
+        "cancelled": 0
+      },
+      "checkoutMainShaObserved": true,
+      "node": "v24.22.2",
+      "npm": "11.19.1",
+      "steps": [
+        {
+          "name": "Set up job",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm ci --ignore-scripts --no-audit --no-fund",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run npm test",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "conclusion": "success"
+        }
+      ],
+      "log": {
+        "file": "/workspace/scratch/a92a3aacdca1/peer-access-main-499255ad-evidence/job-131442935086.log",
+        "bytes": 22653,
+        "sha256": "466ec87811cceecc7d47387e94df0ea3d1120b0992ec1f35af569da30f115acf"
+      }
+    }
+  ],
+  "requiredCheckNames": [
+    "test",
+    "managed-mcp"
+  ],
+  "issue246": {
+    "repo": "MulattoTech/MTerm-CLI",
+    "number": 246,
+    "url": "https://github.com/MulattoTech/MTerm-CLI/issues/246",
+    "title": "[UX][MCP] Format MTerm tool and skill descriptions in ChatGPT Plugin Settings",
+    "state": "open",
+    "remainingAcceptance": "ChatGPT UI rendering and production deployment remain unverified by this source/CI receipt."
+  },
+  "scope": "Actual-main descriptor-source qualification only. PR24 Linux PDF qualification is separate and unresolved by this merge.",
+  "reviewerActions": {
+    "mergedPr": false,
+    "rerun": false,
+    "sourceMutation": false,
+    "githubMutation": false,
+    "upstreamLocalExecution": false,
+    "productionDeployment": false
+  },
+  "uiAcceptanceVerified": false,
+  "productionRolloutClaimed": false
+}

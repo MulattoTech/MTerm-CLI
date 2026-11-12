@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-12T20:46:24.393074+00:00",
+  "reviewer": "/root/job_integration_review/endpoint_transport_challenger",
+  "finding": "ENDPOINT-EVENT-CRLF-COUNT",
+  "verdict": "FIX VERIFIED for the frozen source; no remaining concrete defect found in the delimiter-byte correction.",
+  "oldSourceSha256": "1afb9f99ec46a2928bb857bb7a4aa9109feca170b6fbebbd6fefc83fbe4db0b4",
+  "fixedSourceSha256": "da57c3085f6f8de18e4e8d4e396edebf4630f6748aded659408233b80ed5d8a9",
+  "runtime": "Node24.22.1; frozen TypeScript transformed with Node stripTypeScriptTypes in an owned scratch runtime",
+  "staticReview": {
+    "file": "src/remote/endpoint-probe.ts",
+    "lines": [
+      315,
+      316,
+      341,
+      342,
+      345,
+      347
+    ],
+    "assessment": "consume preserves a trailing CR until the next chunk or stream end, derives actual delimiter width1 or2, and passes that width to line. The event counter includes that width before parsing or accepting an event. Carryover is still bounded and the total raw body ceiling is unchanged.",
+    "additionalChanges": "Session observation/redaction changes are outside this narrow recheck and remain with the parent reviewer."
+  },
+  "originalInput": {
+    "bytes": 21181,
+    "constructionUnchanged": true,
+    "priorStatus": "compatible",
+    "fixedStatus": "inconclusive",
+    "fixedErrorCode": "ENDPOINT_LIMIT",
+    "fixedProtocolChecked": false
+  },
+  "boundaryCases": [
+    {
+      "delimiter": "\"\\n\"",
+      "splitCRLF": false,
+      "bytes": 16384,
+      "chunks": 1,
+      "status": "compatible",
+      "errorCode": null,
+      "protocolChecked": true,
+      "requests": 1,
+      "destroyed": true
+    },
+    {
+      "delimiter": "\"\\n\"",
+      "splitCRLF": false,
+      "bytes": 16385,
+      "chunks": 1,
+      "status": "inconclusive",
+      "errorCode": "ENDPOINT_LIMIT",
+      "protocolChecked": false,
+      "requests": 1,
+      "destroyed": true
+    },
+    {
+      "delimiter": "\"\\r\"",
+      "splitCRLF": false,
+      "bytes": 16384,
+      "chunks": 1,
+      "status": "compatible",
+      "errorCode": null,
+      "protocolChecked": true,
+      "requests": 1,
+      "destroyed": true
+    },
+    {
+      "delimiter": "\"\\r\"",
+      "splitCRLF": false,
+      "bytes": 16385,
+      "chunks": 1,
+      "status": "inconclusive",
+      "errorCode": "ENDPOINT_LIMIT",
+      "protocolChecked": false,
+      "requests": 1,
+      "destroyed": true
+    },
+    {
+      "delimiter": "\"\\r\\n\"",
+      "splitCRLF": false,
+      "bytes": 16384,
+      "chunks": 1,
+      "status": "compatible",
+      "errorCode": null,
+      "protocolChecked": true,
+      "requests": 1,
+      "destroyed": true
+    },
+    {
+      "delimiter": "\"\\r\\n\"",
+      "splitCRLF": false,
+      "bytes": 16385,
+      "chunks": 1,
+      "status": "inconclusive",
+      "errorCode": "ENDPOINT_LIMIT",
+      "protocolChecked": false,
+      "requests": 1,
+      "destroyed": true
+    },
+    {
+      "delimiter": "\"\\r\\n\"",
+      "splitCRLF": true,
+      "bytes": 16384,
+      "chunks": 4,
+      "status": "compatible",
+      "errorCode": null,
+      "protocolChecked": true,
+      "requests": 1,
+      "destroyed": true
+    },
+    {
+      "delimiter": "\"\\r\\n\"",
+      "splitCRLF": true,
+      "bytes": 16385,
+      "chunks": 4,
+      "status": "inconclusive",
+      "errorCode": "ENDPOINT_LIMIT",
+      "protocolChecked": false,
+      "requests": 1,
+      "destroyed": true
+    }
+  ],
+  "checksPassed": 9,
+  "sourceOrSnapshotModified": false,
+  "externalNetworkProbes": 0,
+  "realSocketsOpened": 0,
+  "oldEvidencePreserved": true,
+  "limitations": [
+    "This verifies only the original CRLF byte-accounting finding and its immediate raw boundary cases.",
+    "The parent owns full endpoint suites, protocol/session review and immutable publication binding.",
+    "No production endpoint, deployment, complete security scan or Windows runtime qualification is claimed."
+  ],
+  "evidence": {
+    "source-hashes.json": {
+      "bytes": 295,
+      "sha256": "cb77357f354380d659917ced3cdc23c72f7b19852e34a23bac8141f1b481e437"
+    },
+    "original-input-fixed.mjs": {
+      "bytes": 2247,
+      "sha256": "500f718a87d77a40670a1304025379ec16c59ec7d5229e102c0c270159c995e9"
+    },
+    "original-input-fixed-observation.json": {
+      "bytes": 683,
+      "sha256": "b618660890ec4130ef6a1671fc06603cf92db86e519d67f13432c7015a11811f"
+    },
+    "raw-event-boundary-recheck.mjs": {
+      "bytes": 2793,
+      "sha256": "f91bc6b080cc45c3142b81a243f542462596e035697547d8f9df67aa5b4951b7"
+    },
+    "raw-event-boundary-observation.json": {
+      "bytes": 1825,
+      "sha256": "3dd5378841574a2e92682ffba64bf8ed0bb5251bd4be71c367b78e9cb2c3bf15"
+    },
+    "repro-assertion-only-diff.patch": {
+      "bytes": 1058,
+      "sha256": "012eb4538b03dce99e37103521941c31ae8e60f6e8bd54ac4480607aba1b9c6c"
+    }
+  },
+  "priorReceipt": {
+    "path": "/workspace/scratch/a92a3aacdca1/peer-endpoint-transport-challenger/transport-review.json",
+    "sha256": "d537e729e0c3ffc7630a83ae759365feec1b0735e01ffd7cab9f4b20408fde61"
+  }
+}

@@ -1,3 +1,42 @@
+# Comprehensive mission continuation — 2026-11-12 UTC
+
+The current [engineering checkpoint](engineering-runs/mterm-comprehensive-reconciliation-2026-11-12.md)
+supersedes earlier next-action instructions below. CLI modernization PR249 and
+isolated remote profiles PR256 are merged and passed all six actual-main jobs.
+Access PR25 (tool descriptions), PR24 (Desktop Commander0.3.3 qualification) and
+PR27 (stored-job capability reauthorization) are merged; their actual-main checks
+passed. These are source deliveries. The production bridge has not been deployed
+or restarted by this mission, and whole CLI/DCP/WEB/AUG acceptance is unchanged.
+
+CLI PR257's capability register merged at `f447c0baac3f36470d6fd96360928c6a2a192c4b`
+at20:50:24UTC, with the exact reviewed candidate tree and expected ordered parents.
+The initial normal merge timeout and405 remained unresolved for more than two
+hours. One controlled normal retry after fresh identity/check verification
+succeeded; no force/ref bypass or head mutation occurred. All six actual-main jobs
+passed in43304263686/43304263698. Windows passed1,395/1,395; other source lanes
+passed1,383 with12 Windows-only skips. All five package and four real Codex lanes
+passed. [The independent receipt](engineering-runs/evidence/peer-mterm-main-f447c0ba-receipt.json)
+binds the complete logs and native artifact. Issue255 is completed for the scoped
+register/validator delivery. The endpoint branch normally integrates this main.
+
+The next source slice is issue251's independent public endpoint inspector:
+`remote endpoint --url URL` is offline; explicit `--check` performs bounded,
+credential-free, pinned HTTPS discovery. Current2026 discovery is the default;
+legacy2025 initialization requires explicit selection. It never saves profiles,
+loads stored credentials, invokes a capability or enables routing. Review the
+[command contract](REMOTE_MCP.md#inspect-a-custom-mcp-endpoint) and
+[evidence](validation/2026-11-12-public-endpoint-inspector/README.md).
+
+Actual RED cases and independent adversarial review drove the fixes. Corrected
+endpoint tests pass81/81, including the owned real TLS fixture. Normal local,
+full-source qualification ran1,456 tests:1,417 passed,27 existing Unix-domain
+socket fixtures failed at `listen EPERM`, and12 Windows-only cases skipped.
+Installed endpoint81/81 and profile24/24 passed outside the checkout, but the
+full package gate failed at the same27 socket fixtures. Those are partial local
+results. Immutable candidate review and all six hosted candidate/actual-main
+gates remain required. Retain every failed receipt. No model/API calls, real
+endpoint credentials, live enrollment or production changes are needed.
+
 # Authenticated registry-admission occupancy checkpoint — 2026-11-10 UTC
 
 Session `MTERM-WEB-20261109T131339Z-resume-a9287b3c` holds the

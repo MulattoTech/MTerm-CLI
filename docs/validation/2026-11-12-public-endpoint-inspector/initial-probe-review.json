@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-12T20:40:31.796867+00:00",
+  "reviewer": "/root/job_integration_review",
+  "scope": "Pre-publication frozen endpoint policy, probe, CLI dispatch and four endpoint test files. No immutable remote candidate supplied yet.",
+  "source": {
+    "observedAt": "2026-11-12T20:33:51.151375+00:00",
+    "head": "4fb205088e77731e42da5adaca6bf167f8b75194",
+    "filesCopied": 955,
+    "selected": {
+      "src/remote/cli.ts": {
+        "sha256": "0f8ae76ee0e1b9c43b71c208e544d7d0dcc1bf28781913e2418b7b4002c321d5",
+        "bytes": 16076
+      },
+      "src/remote/endpoint-policy.ts": {
+        "sha256": "6303372951a5f3fad75f51430aadddf9d85550b0c3b52b09741888fc97844ec3",
+        "bytes": 4726
+      },
+      "src/remote/endpoint-probe.ts": {
+        "sha256": "1afb9f99ec46a2928bb857bb7a4aa9109feca170b6fbebbd6fefc83fbe4db0b4",
+        "bytes": 22283
+      },
+      "tests/fixtures/endpoint-tls/README.md": {
+        "sha256": "6cd92eae57576d8dc6cbe9d9e8c4e8d84d98511d1cc20975f5150c0394e4065d",
+        "bytes": 504
+      },
+      "tests/fixtures/endpoint-tls/fixture-cert.pem": {
+        "sha256": "c4343f034008960ed80569115b8e5e1aece81d904f079304961866a4abe6146f",
+        "bytes": 1151
+      },
+      "tests/fixtures/endpoint-tls/fixture-key.pem": {
+        "sha256": "999edc153bef174e17af1479245fa904368becff8b263443cd4d5ee22f870cf1",
+        "bytes": 1704
+      },
+      "tests/remote-endpoint-cli.test.mjs": {
+        "sha256": "61b8e29faf0215297ec24f0309c67bf3b775bd5313f42618f56813fc0be57eaa",
+        "bytes": 4040
+      },
+      "tests/remote-endpoint-policy.test.mjs": {
+        "sha256": "7ef5fe4caf223f530a4b86ae52bf3e080bbd3540f3a2cec1a523eb12d9b9cb8c",
+        "bytes": 5521
+      },
+      "tests/remote-endpoint-probe.test.mjs": {
+        "sha256": "49e57fe1cf810ee9faf19d34d2f23bf10e04390f1d1909352f6adf3ca6547b34",
+        "bytes": 18936
+      },
+      "tests/remote-endpoint-tls.test.mjs": {
+        "sha256": "d0d912c2f1545620e3bb72075f508edb0a208dad27982cd273d25ef5dde14ac0",
+        "bytes": 3735
+      }
+    }
+  },
+  "conclusion": "CHANGES REQUESTED for the three reproducible bounded issues below. No additional DNS/TLS/proxy/target-routing bypass identified in this review.",
+  "repositorySourceEdits": 0,
+  "externalEndpointProbes": 0,
+  "testing": {
+    "steps": [
+      {
+        "step": "dependency-install",
+        "command": [
+          "npm",
+          "ci",
+          "--offline",
+          "--ignore-scripts",
+          "--no-audit",
+          "--no-fund"
+        ],
+        "exit_code": 0
+      },
+      {
+        "step": "build-code",
+        "command": [
+          "npm",
+          "run",
+          "build:code"
+        ],
+        "exit_code": 0
+      },
+      {
+        "step": "endpoint-tests",
+        "command": [
+          "node",
+          "--test",
+          "--test-reporter=tap",
+          "tests/remote-endpoint-policy.test.mjs",
+          "tests/remote-endpoint-probe.test.mjs",
+          "tests/remote-endpoint-cli.test.mjs",
+          "tests/remote-endpoint-tls.test.mjs"
+        ],
+        "exit_code": 0
+      }
+    ],
+    "existingEndpointSuite": {
+      "tests": 61,
+      "suites": 0,
+      "pass": 61,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "ownedTlsFixture": "Actual loopback HTTPS certificate/hostname rejection using the product agent; deliberately public fixture key; isolated ephemeral port and owned socket cleanup.",
+    "independentNegativeRegressions": "Two additional reviewer tests fail as expected against the frozen current implementation; the transport challenger separately reproduces the CRLF limit discrepancy.",
+    "selectedSourceHashesUnchangedAfterTesting": true
+  },
+  "findings": [
+    {
+      "id": "EP-PROBE-01",
+      "classification": "Known-session redaction defect",
+      "location": "src/remote/endpoint-probe.ts:description (375-403), legacy metadata projection",
+      "reproduction": "Return a valid matching legacy initialization with MCP-Session-Id SYNTHETIC_OWNED_SESSION_DO_NOT_PRINT and serverInfo.version set to that same token; acknowledge initialized and return405 to cleanup. The token appears in the returned serverInfo.",
+      "impact": "A known ephemeral session value can reach CLI JSON/logs through metadata, including when cleanup is unsupported. No external token or service was used.",
+      "repair": "Omit or redact projected serverInfo if name or version contains the adopted session value; cover exact and embedded reflection in both fields.",
+      "regression": "reflected-session-regression.test.mjs",
+      "actualRed": "reflected-session-red.tap;0 pass/1 fail"
+    },
+    {
+      "id": "EP-PROBE-02",
+      "classification": "Bounded SSE event-size enforcement discrepancy",
+      "location": "src/remote/endpoint-probe.ts:305,331-334",
+      "reproduction": "One 21,181-byte CRLF SSE event, containing 7,000 comment lines and a valid modern result, returns compatible/protocolChecked=true despite MAX_EVENT_BYTES 16384.",
+      "impact": "Raw CRLF delimiters are charged as one byte while consuming two. The separate 65,536-byte total response cap still holds; this is not unbounded memory use or SSRF.",
+      "repair": "Charge the actual consumed delimiter width, including split CRLF, and add exact-boundary/plus-one cases.",
+      "independentChallengerReceipt": "/workspace/scratch/a92a3aacdca1/peer-endpoint-transport-challenger/transport-review.json",
+      "receiptSha256": "d537e729e0c3ffc7630a83ae759365feec1b0735e01ffd7cab9f4b20408fde61",
+      "reproductionFile": "/workspace/scratch/a92a3aacdca1/peer-endpoint-transport-challenger/crlf-event-limit-repro.mjs"
+    },
+    {
+      "id": "EP-PROBE-03",
+      "classification": "Cleanup-uncertainty reporting defect",
+      "location": "src/remote/endpoint-probe.ts:277-280,469-472",
+      "reproduction": "A legacy initialization response containing MCP-Session-Id invalid session value reports cleanup:not-needed after format rejection. It issues zero DELETE, which is correct.",
+      "impact": "The client observed a possible session that it cannot safely adopt; not-needed overstates the absence of cleanup uncertainty. The analogous valid-looking-but-invalid-result path already reports unconfirmed.",
+      "repair": "Separate observing a session header from validating/adopting it. Preserve cleanup:unconfirmed for an unusable observed legacy session without authorizing DELETE.",
+      "regression": "malformed-session-regression.test.mjs",
+      "actualRed": "malformed-session-red.tap;0 pass/1 fail"
+    }
+  ],
+  "positiveReview": [
+    "Previously reported scoped-address gap is fixed and the translated-address comment is narrowed in this snapshot.",
+    "Raw URL admission precedes parsing and any request; no profile selection, credential read or remote state-store admission is introduced on the endpoint command path.",
+    "Every bounded A/AAAA answer is checked for its claimed family and public policy. The same selected address is returned from the request lookup with no new resolver call; no alternate target or fallback is adopted.",
+    "The private agent uses explicit certificate verification, standard hostname checking, a TLS 1.2 floor, empty proxyEnv, no cached TLS sessions and bounded socket count. The owned TLS regression passes.",
+    "Modern discovery is one request with empty client capabilities. Explicit legacy mode negotiates only the three listed 2025 revisions, sends initialized to the original endpoint and adopts a session only after a valid matching initialization result.",
+    "Notification failures still run bounded cleanup for an established session. Invalid headers or invalid initialization do not authorize DELETE. All follow-ups use the original hostname, port, path and pin.",
+    "Authentication/error/redirect bodies are not consumed or printed; redirects, discovered endpoints, interactive server requests, compressed content and unrecognized protocol branches do not trigger fallback.",
+    "Total raw bytes, headers, JSON depth/node counts, SSE event count, work time, DNS time and cleanup time remain bounded. The event-byte discrepancy is separately identified.",
+    "Report fields explicitly keep credentialsUsed/routingEnabled false, distinguish protocol check from advertised capabilities and mark projected server info unverified."
+  ],
+  "limitations": [
+    "This is a bounded manual review, not an exhaustive security scan.",
+    "No external MCP server, production configuration, user credential, model API or live profile was accessed.",
+    "No full CLI CI/packaging/roadmap or final immutable publication approval is supplied by this snapshot review.",
+    "Node/system trust stores and arbitrary local translation/routing remain outside this admission policy."
+  ],
+  "evidenceDirectory": "/workspace/scratch/a92a3aacdca1/peer-endpoint-probe-review-20261112",
+  "evidence": {
+    "snapshot-manifest.json": {
+      "bytes": 1702,
+      "sha256": "f206d46b947c537e61af95e4fca051ff8fef16cb8648b56fe2f7d3a10ce211b7"
+    },
+    "test-run.json": {
+      "bytes": 641,
+      "sha256": "42fb231f384dff7d5be974e3416c3affa46cca004017e57aa3516ef51b9b3346"
+    },
+    "dependency-install.log": {
+      "bytes": 124,
+      "sha256": "9de28642a2f7030e46fe92aa2c04ce90db49412add2c5561f01b797048000950"
+    },
+    "build-code.log": {
+      "bytes": 203,
+      "sha256": "e62997662c4dd10ffc25181b219d4e133badd40304784482f424ab9e7fecf5ea"
+    },
+    "endpoint-tests.log": {
+      "bytes": 10554,
+      "sha256": "fc14456ab6a6a28dab2ddd8a281ded556b2cb69fd61e3d869e9c6749e555e8a3"
+    },
+    "reflected-session-regression.test.mjs": {
+      "bytes": 4462,
+      "sha256": "d5b077f79b43745dc01ef6116bd7a8d8cf749df6555fd81e65dfbea67474eee4"
+    },
+    "reflected-session-red.tap": {
+      "bytes": 1138,
+      "sha256": "722afd02ed5ead0914506e475851ed851588e3331005e7b7ccbd459e9e518c45"
+    },
+    "malformed-session-regression.test.mjs": {
+      "bytes": 4281,
+      "sha256": "0a8c60411af7375601c59c1254d90670dfe6689593913a6a6d2465fe5c99f565"
+    },
+    "malformed-session-red.tap": {
+      "bytes": 1122,
+      "sha256": "7c4d4fa7d81c3e35ddc31181853b0a874ffdb8cdd32b8450252d0b56bfc03c30"
+    }
+  }
+}

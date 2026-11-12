@@ -30,7 +30,8 @@ $codex = Get-Command codex -All -ErrorAction SilentlyContinue | Where-Object { $
 if (!$node -or !$npm) { throw 'Node.js and npm are required. Install a supported Node LTS first.' }
 $versionString = (& $node.Source --version).TrimStart('v')
 if ($LASTEXITCODE) { throw 'Could not read Node.js version.' }
-$version = [version]$versionString
+$cleanVersion = ($versionString -split '[-+]')[0]
+$version = [version]$cleanVersion
 if ($version.Major -lt 24) { throw 'MTerm-CLI requires Node.js 24 or newer. Prefer supported Node LTS.' }
 if ($Apply -and !$codex) { throw 'Codex CLI is required for -Apply. No config was changed.' }
 if ($CodexHome -and !(Test-Path -LiteralPath $CodexHome -PathType Container)) {

@@ -1,0 +1,1280 @@
+{
+  "schema_version": 1,
+  "verified_at": "2026-11-12T16:53:06.736392+00:00",
+  "audit_kind": "READ_ONLY_UPSTREAM_SOURCE_AND_REGISTRY",
+  "npm_registry_url": "https://registry.npmjs.org/@wonderwhy-er%2Fdesktop-commander",
+  "release_api_url": "https://api.github.com/repos/wonderwhy-er/DesktopCommanderMCP/releases/latest",
+  "release_url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/releases/tag/v0.3.3",
+  "release_published_at": "2026-11-12T12:54:41Z",
+  "versions": {
+    "alpha": {
+      "version": "0.3.2-alpha.3",
+      "published_at": "2026-11-05T22:05:43.356Z",
+      "git_head": "9ac442d64731a1a7322a5b45585c3c53b2089a90",
+      "engines": {
+        "node": ">=22.12.0"
+      },
+      "dist": {
+        "shasum": "8269bbb58c7181bf477692366f4fbc185fef54f0",
+        "tarball": "https://registry.npmjs.org/@wonderwhy-er/desktop-commander/-/desktop-commander-0.3.2-alpha.3.tgz",
+        "fileCount": 444,
+        "integrity": "sha512-mStt1iwCTvKBMQ9ug34CIQcpwTYYVuYE3ELxu1ImqZjjxIS0/HK881KbjUIf9sKpVDr9Lw25cpuQi6MxbAaBLQ==",
+        "signatures": [
+          {
+            "sig": "MEYCIQC/9piKKWN7ETbnwamU9DbjMlqP3fNLlHYOdhayfzbK9gIhAKq7shfFwPXzkkJAq653HLW2mhf8dYtzkm9QY5zhS1B+",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          },
+          {
+            "sig": "MEQCIG3RfQ+DrWhohcrliIxDnSPbemLlxgHY3cB1IZ0GdtiTAiB1bkj0Kpdh1bMr8O3aBlButR3sKzhS4AxIh6LPh+4+UQ==",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          }
+        ],
+        "unpackedSize": 5017892
+      }
+    },
+    "latest": {
+      "version": "0.3.3",
+      "published_at": "2026-11-12T12:59:49.155Z",
+      "git_head": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "engines": {
+        "node": ">=22.12.0"
+      },
+      "dist": {
+        "shasum": "3715d27c27d1e9c2efddb203467f6e14bd62cd35",
+        "tarball": "https://registry.npmjs.org/@wonderwhy-er/desktop-commander/-/desktop-commander-0.3.3.tgz",
+        "fileCount": 311,
+        "integrity": "sha512-htFuEj7ndaQ206P/eQY6mAPx/JEhMoWN5oITlWiwBgXnW8Uw698Mkx0Yydr3O17i6uVMo1pr1mDBusPsThRYBA==",
+        "signatures": [
+          {
+            "sig": "MEQCIG6KeeidE+pmTBD/3MA/5T9aROpRfvUygYMxz46wqpxRAiA4ezqlJW8f8125YLL840NHASVmxO9jT4gRcCqcwxvCFw==",
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U"
+          },
+          {
+            "keyid": "SHA256:DhQ8wR5APBvFHLF/+Tc+AYvPOdTpcIDqOhxsBHRwC7U",
+            "sig": "MEYCIQC7qbgqXNFV4Vda6LOfTtoEYBbQk6st8LcN8tZ3/AtPzQIhAMHjx4Q3esxzl9qVJ2Kd4Vk9ABqdxjisdQvz2ttlco53"
+          }
+        ],
+        "attestations": {
+          "url": "https://registry.npmjs.org/-/npm/v1/attestations/@wonderwhy-er%2fdesktop-commander@0.3.3",
+          "provenance": {
+            "predicateType": "https://slsa.dev/provenance/v1"
+          }
+        },
+        "unpackedSize": 4349837
+      }
+    }
+  },
+  "upstream_main_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+  "upstream_main_commit_date": "2026-11-12T12:52:26Z",
+  "main_equals_stable_git_head": true,
+  "commits_after_alpha": 18,
+  "commits_after_previous_stable": 4,
+  "remote_repository": {
+    "url": "https://github.com/desktop-commander/remote-desktop-commander",
+    "sha": "13f3aad116bcca609cea5714ba1bcba513fc433b",
+    "commit_date": "2026-11-09T18:50:39Z",
+    "commit_title": "Release 1.1.25",
+    "latest_release_tag": "1.0.80",
+    "latest_release_published_at": "2026-10-22T09:19:19Z",
+    "implementation_public": false
+  },
+  "stdio_tool_count": 25,
+  "capability_groups": [
+    {
+      "id": "UP-001",
+      "name": "Remote authentication backend trust and saved-session binding",
+      "category": "security",
+      "upstream_layer": "remote_device",
+      "upstream_status": "ALREADY IMPLEMENTED",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "Validates MCP origin and the advertised auth backend before restoring saved credentials, binds persisted sessions to the complete MCP/auth endpoint pair, rejects authentication redirects, and retains old credentials until replacement authorization succeeds.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/remote-device/remote-utils.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/remote-device/device.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/remote-device/device-authenticator.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/remote-device/remote-channel.ts"
+      ],
+      "test_files": [
+        "test/test-remote-backend-trust.js",
+        "test/test-remote-utils.js",
+        "test/test-remote-token-rotation-persisted.js"
+      ],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": "Security patch is v0.3.3. Custom third-party MCP domains are intentionally rejected by this upstream remote launcher."
+    },
+    {
+      "id": "UP-002",
+      "name": "POSIX, PowerShell and CMD command inspection",
+      "category": "security",
+      "upstream_layer": "stdio",
+      "upstream_status": "PARTIAL",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "Shell-aware readers inspect nested shell text, wrappers and known targets; outcomes are allowed, blocked, unseen and failed. Blocking or inspection failure refuses execution; unseen dynamic targets and script contents can still execute with a notice.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/command-manager.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/utils/posix-commands.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/utils/powershell-commands.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/utils/cmd-commands.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/utils/command-wrappers.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/utils/inline-shells.ts"
+      ],
+      "test_files": [
+        "test/test-command-check-corpus.js",
+        "test/test-command-check-invocation-files.js"
+      ],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": "This is a best-effort blocklist, not isolation, least privilege, or a guarantee that arbitrary shell commands are safe."
+    },
+    {
+      "id": "UP-003",
+      "name": "Managed process-tree termination",
+      "category": "reliability",
+      "upstream_layer": "stdio",
+      "upstream_status": "ALREADY IMPLEMENTED",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "force_terminate and kill_process on a managed start_process PID terminate the managed command tree. Windows uses taskkill /T /F; POSIX walks parent-child snapshots with TERM then KILL. Unmanaged PIDs use single-PID termination.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/utils/process-tree.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/tools/process.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/tools/improved-process-tools.ts"
+      ],
+      "test_files": [
+        "test/test-terminate-process-tree.js",
+        "test/test-kill-process.js"
+      ],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": "POSIX descendants already reparented before enumeration may be unfindable. node:local negative IDs are stopped with force_terminate."
+    },
+    {
+      "id": "UP-004",
+      "name": "Remote tool-call timeout alignment",
+      "category": "reliability",
+      "upstream_layer": "remote_device",
+      "upstream_status": "ALREADY IMPLEMENTED",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "The local MCP SDK request timeout is 30 minutes plus 30 seconds, aligned to the documented server sweep rather than the SDK default. A tool can outlive the initial synchronous response.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/remote-device/desktop-commander-integration.ts"
+      ],
+      "test_files": [
+        "test/test-remote-device-long-call.js"
+      ],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": "Timeout does not prove side effects were canceled; durable job cancellation is a separate requirement."
+    },
+    {
+      "id": "UP-005",
+      "name": "Filesystem boundary and symlink checks",
+      "category": "security",
+      "upstream_layer": "stdio",
+      "upstream_status": "PARTIAL",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "Allowed-directory resolution and validation handle links and nonexistent targets; v0.3.0 release includes dangling-link write validation and allowed symlink traversal corrections.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/tools/filesystem.ts"
+      ],
+      "test_files": [
+        "test/test-allowed-drive-root.js"
+      ],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": "Open PR #886 still proposes POSIX case-sensitive allowed-directory comparison. Filesystem guards do not sandbox arbitrary terminal commands."
+    },
+    {
+      "id": "UP-006",
+      "name": "Prevent accidental overwrite when mode omitted",
+      "category": "security",
+      "upstream_layer": "stdio",
+      "upstream_status": "ALREADY IMPLEMENTED",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "The write handler refuses an omitted write mode on an existing nonempty target; explicit rewrite and append modes remain available.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/handlers/filesystem-handlers.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/tools/schemas.ts"
+      ],
+      "test_files": [],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": "Open PR #984 removes a misleading schema default that conflicts with the existing runtime guard."
+    },
+    {
+      "id": "UP-007",
+      "name": "MCP side-effect annotations",
+      "category": "integration",
+      "upstream_layer": "stdio",
+      "upstream_status": "ALREADY IMPLEMENTED",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "All 25 advertised tools carry read-only, destructive and open-world hints. These describe behavior and are not enforcement by themselves.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/server.ts"
+      ],
+      "test_files": [],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": null
+    },
+    {
+      "id": "UP-008",
+      "name": "OAuth device pairing and hosted multi-device portal",
+      "category": "connectivity",
+      "upstream_layer": "hosted_service_and_remote_device",
+      "upstream_status": "PARTIAL",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "The public documentation describes browser device-code approval, paired device listing/revocation, multiple computers, and client OAuth with PKCE. The local pairing implementation is public; hosted service backend is closed source.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/remote-device/device-authenticator.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/remote-device/README.md"
+      ],
+      "test_files": [],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": "Documentation and client source were inspected; no new device was paired and no hosted authorization boundary was penetration tested."
+    },
+    {
+      "id": "UP-009",
+      "name": "Public remote-device launchers",
+      "category": "connectivity",
+      "upstream_layer": "installer",
+      "upstream_status": "ALREADY IMPLEMENTED",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "v0.3.2 release includes public remote launchers and a subsequent launcher change to install Node 24.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/scripts/remote/README.md",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/scripts/remote/remote-windows.ps1",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/scripts/remote/remote-linux.sh",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/scripts/remote/remote-macos.sh"
+      ],
+      "test_files": [
+        "test/remote-launchers.test.js",
+        "test/remote-launcher-windows.test.ps1"
+      ],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": "Launchers reuse Node 22.12+, ask before installing Node 24, verify runtime SHA-256 and execute the device as the initiating user. Downloads/install actions were not executed by this audit."
+    },
+    {
+      "id": "UP-010",
+      "name": "Readiness distinct from transport presence",
+      "category": "reliability",
+      "upstream_layer": "remote_device",
+      "upstream_status": "ALREADY IMPLEMENTED",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "Online admission combines actual local executor readiness with transport reachability; local-child loss marks device unreachable and triggers an active restart loop. Readiness requires a successful request, not only a handshake. Presence is dashboard best effort.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/remote-device/device.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/remote-device/remote-channel.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/remote-device/desktop-commander-integration.ts"
+      ],
+      "test_files": [
+        "test/test-remote-device-readiness.js"
+      ],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": null
+    },
+    {
+      "id": "UP-011",
+      "name": "Reconnect, sleep recovery and token refresh",
+      "category": "reliability",
+      "upstream_layer": "remote_device",
+      "upstream_status": "PARTIAL",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "Uses jittered reconnect/watchdog backoff, bounded readiness writes, local-executor restart and persisted rotated tokens. Pending calls are recovered in bounded batches.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/remote-device/remote-channel.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/remote-device/device.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/remote-device/desktop-commander-integration.ts"
+      ],
+      "test_files": [
+        "test/integration/remote-device-restart.js",
+        "test/test-remote-token-rotation-persisted.js"
+      ],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": "Open PR #829 proposes further refresh-failure retry and AC-only sleep handling; no full outage/reboot matrix was executed here."
+    },
+    {
+      "id": "UP-012",
+      "name": "MQTT certificate enrollment and observation",
+      "category": "connectivity",
+      "upstream_layer": "remote_device",
+      "upstream_status": "PARTIAL",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "Uses per-device certificate/key enrollment, TLS certificate validation, exact topics and identity validation, clean sessions, QoS1 subscription acknowledgement, reconnect/subscription readiness, bounded result acknowledgement and telemetry.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/remote-device/mqtt/mqtt-enrollment.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/remote-device/mqtt/mqtt-transport.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/remote-device/remote-channel.ts"
+      ],
+      "test_files": [
+        "test/test-mqtt-shadow.js",
+        "test/test-mqtt-local-logout.js"
+      ],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": "Current onMqttDoorbell has no dispatch body: incoming MQTT is shadow observation, not tool execution. The optional incoming execution flag cannot enable execution. Open PR #732 is a proposal, not shipped execution."
+    },
+    {
+      "id": "UP-013",
+      "name": "Correlation IDs, deduplication and interrupted delivery",
+      "category": "reliability",
+      "upstream_layer": "remote_device",
+      "upstream_status": "PARTIAL",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "Call IDs identify notifications/results; an in-memory seen-ID guard prevents duplicate execution within the process and conditional DB claims/recovery coordinate delivery.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/remote-device/device.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/remote-device/remote-channel.ts"
+      ],
+      "test_files": [],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": "The DB claim path can execute on transient DB errors and local dedup is bounded/non-durable. Do not claim durable exactly-once execution across process crashes or partitions."
+    },
+    {
+      "id": "UP-014",
+      "name": "Device revocation and credential cleanup",
+      "category": "security",
+      "upstream_layer": "remote_device",
+      "upstream_status": "PARTIAL",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "Logout requests backend revocation and only removes saved session/MQTT identity after confirmed success; failures preserve credentials for retry. Backend and saved-session identity binding are checked.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/remote-device/device.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/remote-device/README.md"
+      ],
+      "test_files": [
+        "test/test-remote-device-logout.js",
+        "test/test-mqtt-local-logout.js"
+      ],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": "Server must confirm MQTT revocation. This audit did not revoke the working fallback device."
+    },
+    {
+      "id": "UP-015",
+      "name": "Redacted support ZIP and remote diagnostics",
+      "category": "observability",
+      "upstream_layer": "remote_device",
+      "upstream_status": "ALREADY IMPLEMENTED",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "remote --report builds local text/JSON/log ZIP diagnostics with token, path, hostname and identifier filtering; code supports --no-upload.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/remote-device/diagnostics/report.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/remote-device/diagnostics/redact.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/remote-device/diagnostics/device-log.ts"
+      ],
+      "test_files": [],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": "Diagnostic report creation uploads by default unless --no-upload is supplied. General tool-call logging still includes arguments; a redacted support bundle is not evidence that every log is safe."
+    },
+    {
+      "id": "UP-016",
+      "name": "Windows environment propagation",
+      "category": "windows",
+      "upstream_layer": "stdio_and_remote_device",
+      "upstream_status": "PARTIAL",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "Restores ProgramData when omitted and passes string-valued device environment variables to the local MCP child.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/utils/shell.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/remote-device/desktop-commander-integration.ts"
+      ],
+      "test_files": [],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": "Open PR #958 proposes WINDIR restoration. Preserve working per-process environment rather than assuming all filtered variables are repaired."
+    },
+    {
+      "id": "UP-017",
+      "name": "Node 22/24 runtime and Windows libuv pool",
+      "category": "windows",
+      "upstream_layer": "runtime",
+      "upstream_status": "ALREADY IMPLEMENTED",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "Package engines require Node >=22.12.0. Windows Node 22 needs a pre-start environment/relaunch to establish the enlarged pool; Node 24/libuv >=1.52 can read the process environment. Lifecycle coupling makes the child terminate with its launcher.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/package.json",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/utils/threadpool-size.ts"
+      ],
+      "test_files": [
+        "test/test-threadpool-launcher-lifetime.js",
+        "test/test-threadpool-launcher-identity.js",
+        "test/test-threadpool-remote-dispatch.js"
+      ],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": "Some README/plugin instructions still say Node 18. Package engines and tested runtime should govern; open PR #1047 corrects those docs."
+    },
+    {
+      "id": "UP-018",
+      "name": "Output pagination and bounded process waits",
+      "category": "reliability",
+      "upstream_layer": "stdio",
+      "upstream_status": "ALREADY IMPLEMENTED",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "Terminal tools support streaming sessions, bounded initial waits and paged output; process/state detection and prompt handling are present.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/tools/improved-process-tools.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/terminal-manager.ts"
+      ],
+      "test_files": [],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": "Open PRs #948 and #903 propose post-resolve overhead and chunk-boundary UTF-8 fixes; #977 proposes bounded/sortable list_processes."
+    },
+    {
+      "id": "UP-019",
+      "name": "File and Office search completion",
+      "category": "files",
+      "upstream_layer": "stdio",
+      "upstream_status": "ALREADY IMPLEMENTED",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "Streaming search supports pagination and active-search lifecycle; v0.3.0 release fixes completion, global max-results, limits, ripgrep invocation and Office patterns.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/tools/filesystem.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/server.ts"
+      ],
+      "test_files": [
+        "test/test-search-outcome.js",
+        "test/test-search-office-completion.js",
+        "test/test-search-office-any-folder.js"
+      ],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": null
+    },
+    {
+      "id": "UP-020",
+      "name": "PDF reading, generation, editing and Docker",
+      "category": "documents",
+      "upstream_layer": "stdio",
+      "upstream_status": "ALREADY IMPLEMENTED",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "PDF read/write, markdown rendering, manipulation and extraction handlers are present; v0.3.2 corrects Docker PDF creation and install refresh.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/utils/files/pdf.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/tools/pdf/index.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/tools/pdf/manipulations.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/tools/pdf/markdown.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/install-docker.sh"
+      ],
+      "test_files": [
+        "test/test-pdf-render-resources.js",
+        "test/test-pdf-render-options.js",
+        "test/docker-installer-volume-update.test.js"
+      ],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": "Rendering requires an available Chrome runtime. Open PR #929 proposes removing eager startup browser acquisition."
+    },
+    {
+      "id": "UP-021",
+      "name": "Excel reading, searching and editing",
+      "category": "documents",
+      "upstream_layer": "stdio",
+      "upstream_status": "PARTIAL",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "ExcelJS-backed workbook read/write and Office search exist, including ranges and sparse sheets.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/utils/files/excel.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/tools/filesystem.ts"
+      ],
+      "test_files": [],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": "Open PRs #1051, #979 and #963 respectively address zero-length reads, merged-cell aliases, and quoted sheet names containing exclamation marks."
+    },
+    {
+      "id": "UP-022",
+      "name": "Word/DOCX read and edit",
+      "category": "documents",
+      "upstream_layer": "stdio",
+      "upstream_status": "PARTIAL",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "DOCX handler supports document content processing and editing.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/utils/files/docx.ts"
+      ],
+      "test_files": [],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": "Open PR #975 proposes preserving XML text/field whitespace during edits; do not equate basic DOCX support with full-fidelity document editing."
+    },
+    {
+      "id": "UP-023",
+      "name": "Markdown preview, editor and conflict handling",
+      "category": "documents",
+      "upstream_layer": "mcp_ui",
+      "upstream_status": "ALREADY IMPLEMENTED",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "File preview has Markdown parsing, rich editing, document outline, disk-change conflict dialog and save conflict handling.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/ui/file-preview/src/markdown/controller.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/ui/file-preview/src/markdown/editor.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/ui/file-preview/src/markdown/conflict-dialog.ts"
+      ],
+      "test_files": [],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": "UI availability depends on the MCP host and metadata/feature gating. Open proposals cover safer link schemes and default widget visibility."
+    },
+    {
+      "id": "UP-024",
+      "name": "Directory browsing, fuzzy edits and images",
+      "category": "files",
+      "upstream_layer": "stdio_and_mcp_ui",
+      "upstream_status": "ALREADY IMPLEMENTED",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "Directory listing/navigation, edit_block with fuzzy matching, image handling and file-preview UI exist.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/tools/edit.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/tools/fuzzySearchCore.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/utils/files/image.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/ui/file-preview/src/directory-controller.ts"
+      ],
+      "test_files": [],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": null
+    },
+    {
+      "id": "UP-025",
+      "name": "Structured results and MCP schemas",
+      "category": "integration",
+      "upstream_layer": "stdio",
+      "upstream_status": "PARTIAL",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "Tools expose input schemas and annotations; selected process/search facts are returned internally while caller-visible text remains compatible.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/server.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/tools/schemas.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/utils/internal-facts.ts"
+      ],
+      "test_files": [],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": "Do not claim complete outputSchema coverage. Open PRs #923, #988 and #787 propose output and schema portability improvements."
+    },
+    {
+      "id": "UP-026",
+      "name": "MCPB and MCP Registry packaging",
+      "category": "release",
+      "upstream_layer": "package",
+      "upstream_status": "ALREADY IMPLEMENTED",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "Root MCPB manifest, build-mcpb script, registry server.json, package version sync and release workflows exist.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/manifest.json",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/scripts/build-mcpb.cjs",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/server.json",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/.github/workflows/release.yml"
+      ],
+      "test_files": [
+        "test/test-root-mcpb-manifest.js"
+      ],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": "A manifest in source proves packaging intent; actual hosted client installation and registry listing still require independent verification."
+    },
+    {
+      "id": "UP-027",
+      "name": "Claude, Cursor, VS Code and Gemini integrations",
+      "category": "integration",
+      "upstream_layer": "client_packages",
+      "upstream_status": "ALREADY IMPLEMENTED",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "Public plugin/extension manifests and setup docs exist for these clients; the hosted repo separately publishes remote MCP manifests and OAuth setup.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/plugin.json",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/gemini-extension.json",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/plugins/cursor/README.md",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/plugins/claude/README.md"
+      ],
+      "test_files": [],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": "Package versions differ: local MCP npm is 0.3.3, local plugin/extension metadata is 1.5.0, hosted repository main identifies release 1.1.25 while latest GitHub release object is 1.0.80."
+    },
+    {
+      "id": "UP-028",
+      "name": "Native skills and prompt packages",
+      "category": "knowledge",
+      "upstream_layer": "client_packages",
+      "upstream_status": "ALREADY IMPLEMENTED",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "Ships overview, terminal, computer health, AI tools setup, knowledge base and Obsidian skill packages plus onboarding prompt data.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/skills/desktop-commander-overview/SKILL.md",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/skills/terminal/SKILL.md",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/skills/knowledge-base/SKILL.md",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/tools/prompts.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/data/onboarding-prompts.json"
+      ],
+      "test_files": [],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": "These are reusable guidance packages, not autonomous intelligence, source-grounded persistent memory, or an implemented agent fleet."
+    },
+    {
+      "id": "UP-029",
+      "name": "Cross-platform tests, coverage and frozen review",
+      "category": "release",
+      "upstream_layer": "ci",
+      "upstream_status": "ALREADY IMPLEMENTED",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "Node test runner, platform-aware CI, coverage/reporting, installer tests and frozen-review machinery exist; v0.3.2 promotes these changes.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/test/run-all-tests.js",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/test/run-ci.js",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/test/run-coverage.js",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/test/ci-review.js",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/.github/workflows/tests.yml",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/.github/workflows/review.yml"
+      ],
+      "test_files": [],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": "No upstream test suite was executed during this read-only source audit, and test existence is not current green CI evidence."
+    },
+    {
+      "id": "UP-030",
+      "name": "Release provenance and alpha promotion",
+      "category": "release",
+      "upstream_layer": "ci_and_registry",
+      "upstream_status": "PARTIAL",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "v0.3.3 npm metadata includes SHA-512 integrity, signatures and SLSA provenance attestation. Release tooling supports alpha publication, stable promotion, rehearsal and opt-in skipping of completed tests.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/scripts/publish-release.cjs",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/scripts/release-version.cjs",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/.github/workflows/release.yml"
+      ],
+      "test_files": [
+        "test/test-release-alpha-promotion.js"
+      ],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": "This audit recorded published integrity/provenance but did not independently cryptographically verify attestations or reproduce the package bit for bit."
+    },
+    {
+      "id": "UP-031",
+      "name": "Arbitrary custom Cloudflare endpoint routing",
+      "category": "connectivity",
+      "upstream_layer": "remote_device",
+      "upstream_status": "MISSING",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "Upstream 0.3.3 remote launcher restricts MCP_SERVER_URL to Desktop Commander DNS names or explicit local hosts and rejects paths. It is not a generic custom-domain MCP client/enrollment agent.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/remote-device/remote-utils.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/remote-device/README.md"
+      ],
+      "test_files": [],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": "MTerm needs its own standards-compatible transport/enrollment or reviewed owner trust configuration, separate credential storage, SSRF controls and per-profile endpoint binding. Removing the checks is not a parity implementation."
+    },
+    {
+      "id": "UP-032",
+      "name": "Independent DEV/staging credential profiles",
+      "category": "security",
+      "upstream_layer": "remote_device",
+      "upstream_status": "MISSING",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "DC_ENV staging/development still share the same local device session directory. Endpoint binding blocks silent credential reuse; changing endpoints requires reauthorization.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/remote-device/remote-utils.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/remote-device/README.md"
+      ],
+      "test_files": [],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": "Isolation is explicitly unfinished upstream; MTerm must separately implement profile-scoped session/secret storage."
+    },
+    {
+      "id": "UP-033",
+      "name": "Per-device least privilege and read-only execution",
+      "category": "security",
+      "upstream_layer": "remote_device_and_hosted_service",
+      "upstream_status": "REQUIRES VERIFICATION",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "Hosted docs establish paired ownership and device selection, but do not prove the full requested per-device tool/directory permissions, read-only execution, signed identities, or cross-profile authorization matrix.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/remote-device/README.md",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/server.ts"
+      ],
+      "test_files": [],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": "Open proposals #665, #399 and #224 should not be recorded as shipped access-control enforcement."
+    },
+    {
+      "id": "UP-034",
+      "name": "Durable orchestration, leases and cancellation",
+      "category": "orchestration",
+      "upstream_layer": "upstream",
+      "upstream_status": "MISSING",
+      "verified_version": "0.3.3",
+      "source_sha": "bce370e9395f5bc74eda34913e5ae1dee48df8f8",
+      "finding": "Remote calls and managed terminal sessions provide execution plumbing; source inspected does not supply the requested durable multi-agent ownership leases, budgeted scheduling, isolated worktrees or formal acceptance register.",
+      "source_urls": [
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/remote-device/device.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/remote-device/remote-channel.ts",
+        "https://github.com/wonderwhy-er/DesktopCommanderMCP/blob/bce370e9395f5bc74eda34913e5ae1dee48df8f8/src/tools/improved-process-tools.ts"
+      ],
+      "test_files": [],
+      "test_status": "SOURCE_INSPECTED_NOT_EXECUTED",
+      "mterm_status": "REQUIRES_VERIFICATION",
+      "mterm_note": "Root audit must map this to each deployed MTerm product layer; upstream source presence alone proves no MTerm deployment.",
+      "caveat": "Open Safe Executor proposal #356 is not released proof; MTerm engineering jobs must be evaluated independently."
+    }
+  ],
+  "open_pr_count": 129,
+  "relevant_open_prs": [
+    {
+      "number": 1055,
+      "title": "fix(remote): pin trusted Supabase projects before restoring sessions",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/1055",
+      "state": "open",
+      "draft": false,
+      "head_sha": "0c73d2970c17d8d4490c3759df5b3e434ae93af9",
+      "updated_at": "2026-11-12T12:38:03Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 1051,
+      "title": "fix(excel): honor zero-length row reads",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/1051",
+      "state": "open",
+      "draft": false,
+      "head_sha": "5d2f9b2ef350910c8423abbbba40da70e145d553",
+      "updated_at": "2026-11-11T21:21:01Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 1049,
+      "title": "fix(deps): bump markdown-it to 14.3.3 (lockfile only)",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/1049",
+      "state": "open",
+      "draft": false,
+      "head_sha": "cdb9d1681069a6ac5298a9598fa82ce5bf637e28",
+      "updated_at": "2026-11-09T20:54:58Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 1047,
+      "title": "docs: state the Node.js 22.12 minimum in the FAQ, plugin.yaml and remote README",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/1047",
+      "state": "open",
+      "draft": false,
+      "head_sha": "294d137473328eec23b4818155338f7dd07dc4c3",
+      "updated_at": "2026-11-09T19:52:30Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 989,
+      "title": "fix(command-manager): treat newlines as separators so the blocklist sees every command",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/989",
+      "state": "open",
+      "draft": false,
+      "head_sha": "78074537b12bec275dacbad08b3d6d0b81dfd7bd",
+      "updated_at": "2026-11-09T01:20:47Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 988,
+      "title": "Use native Zod 4 JSON Schema for MCP tools",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/988",
+      "state": "open",
+      "draft": false,
+      "head_sha": "ba9b29e2dfa47bb42b730add03db0b2477e7c500",
+      "updated_at": "2026-11-04T02:29:43Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 984,
+      "title": "fix(write_file): drop omitted-mode default from the tool schema",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/984",
+      "state": "open",
+      "draft": false,
+      "head_sha": "6aeb0eb154a901e69d00b75d5ad2967adc37c510",
+      "updated_at": "2026-11-02T10:06:49Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 979,
+      "title": "fix(excel): reject writes to merged cell aliases",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/979",
+      "state": "open",
+      "draft": false,
+      "head_sha": "25a6b9b1a22181669d6e73ed596698d36c342c47",
+      "updated_at": "2026-11-09T06:44:35Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 977,
+      "title": "Fix list_processes returning an unbounded, unsortable dump",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/977",
+      "state": "open",
+      "draft": false,
+      "head_sha": "b61ac13c299d3b5ef27860ee246fef72de07f913",
+      "updated_at": "2026-10-31T15:41:33Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 975,
+      "title": "fix(docx): preserve text whitespace when editing XML",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/975",
+      "state": "open",
+      "draft": false,
+      "head_sha": "c8eaa1111cf31aeb291c59ee9f42df9e3d7604c4",
+      "updated_at": "2026-11-08T19:15:25Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 958,
+      "title": "fix(windows): restore WINDIR for spawned commands",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/958",
+      "state": "open",
+      "draft": false,
+      "head_sha": "f3b2b9af8dabf4482305de08629661eef6b1dd77",
+      "updated_at": "2026-10-31T16:28:46Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 948,
+      "title": "fix(process): stop start_process wait work after resolve",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/948",
+      "state": "open",
+      "draft": false,
+      "head_sha": "de4de159568dd84fbbd2d6460162b0eaa31fd7c1",
+      "updated_at": "2026-10-31T16:44:38Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 937,
+      "title": "fix(files): keep healthy reads working beside stalled lookups",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/937",
+      "state": "open",
+      "draft": false,
+      "head_sha": "9296265a30e2687412322e2cdf9ba746ba693f5e",
+      "updated_at": "2026-11-07T04:54:56Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 936,
+      "title": "fix(logs): switch off tool-call logs while keeping recent calls",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/936",
+      "state": "open",
+      "draft": false,
+      "head_sha": "c5b502d94465a9e906f8463b33d9192265c58f2d",
+      "updated_at": "2026-11-06T11:44:37Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 931,
+      "title": "fix(command-manager): check a command the way PowerShell reads it",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/931",
+      "state": "open",
+      "draft": false,
+      "head_sha": "391a77c0f85ddec4e6d2b3bd79fc89b663c1ca71",
+      "updated_at": "2026-10-26T20:45:01Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 930,
+      "title": "fix(command-manager): check a command the way a POSIX shell reads it",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/930",
+      "state": "open",
+      "draft": false,
+      "head_sha": "82e956eb60efb26258335ad0be780f965ee3464f",
+      "updated_at": "2026-11-08T13:56:22Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 929,
+      "title": "fix(pdf): acquire Chrome only when PDF rendering is requested",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/929",
+      "state": "open",
+      "draft": false,
+      "head_sha": "05fa92fb4dfe9d3156de5c48ef23d8ac91e0237a",
+      "updated_at": "2026-10-26T12:36:14Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 927,
+      "title": "feat(remote): claim doorbell calls through backend API",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/927",
+      "state": "open",
+      "draft": false,
+      "head_sha": "3ca1726144bf640ed489e4e879c2897ea5dc791f",
+      "updated_at": "2026-10-26T09:54:42Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 923,
+      "title": "feat(config): declare an outputSchema for get_config (#689)",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/923",
+      "state": "open",
+      "draft": false,
+      "head_sha": "b60b26a029e838544b62fc49049fed34d38c8c88",
+      "updated_at": "2026-10-24T17:27:37Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 921,
+      "title": "feat(filesystem): add safe copy_file MCP tool (#676)",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/921",
+      "state": "open",
+      "draft": false,
+      "head_sha": "2313505af7037d3a865dfd2f8b140dc03c98a698",
+      "updated_at": "2026-10-24T13:03:26Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 919,
+      "title": "feat(process): support initial stdin in start_process",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/919",
+      "state": "open",
+      "draft": false,
+      "head_sha": "dc35e500bb99d83af8bab04fe8572928e5c9c0bd",
+      "updated_at": "2026-10-24T10:13:20Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 912,
+      "title": "fix(command-manager): handle dynamic call targets",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/912",
+      "state": "open",
+      "draft": false,
+      "head_sha": "990c4cf426beff9413cc6df7a1885cc2bc026975",
+      "updated_at": "2026-10-31T17:17:05Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 910,
+      "title": "fix(stdio): serialize sends under backpressure",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/910",
+      "state": "open",
+      "draft": false,
+      "head_sha": "bef6327240c1cd97338bd9d6dbcf6ec83d0d30d8",
+      "updated_at": "2026-10-24T01:22:33Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 909,
+      "title": "fix(windows): avoid simple nested shell sessions",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/909",
+      "state": "open",
+      "draft": false,
+      "head_sha": "216d1fe08312a230ad4c4cf282d0006ddd4608ab",
+      "updated_at": "2026-10-24T01:24:02Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 904,
+      "title": "fix(process): preserve spawn startup error details",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/904",
+      "state": "open",
+      "draft": false,
+      "head_sha": "cf923f0a52321ce802851249af9ce99bc6366f64",
+      "updated_at": "2026-10-24T01:02:32Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 903,
+      "title": "fix(process): preserve UTF-8 across output chunks",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/903",
+      "state": "open",
+      "draft": false,
+      "head_sha": "ea67a7e01f34d79ee94b6524ccd998c03074de09",
+      "updated_at": "2026-10-24T01:24:22Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 886,
+      "title": "fix(filesystem): compare allowedDirectories case-sensitively on POSIX",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/886",
+      "state": "open",
+      "draft": false,
+      "head_sha": "61f3e56f7fdcc59508e0fabff2785a68dce87a73",
+      "updated_at": "2026-10-25T12:11:13Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 865,
+      "title": "feat(remote): use the connected server's telemetry collector",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/865",
+      "state": "open",
+      "draft": false,
+      "head_sha": "27a5d93e064db3bf5e21c965dc986ad634be3e13",
+      "updated_at": "2026-11-05T11:21:09Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 864,
+      "title": "feat(mcp): add a read-only native activity monitor with safe terminal navigation",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/864",
+      "state": "open",
+      "draft": false,
+      "head_sha": "86a6aa606a7aaa342adb452ecf40aa5779971e11",
+      "updated_at": "2026-10-15T12:34:05Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 829,
+      "title": "fix(remote): retry session refresh failures and support AC-only sleep prevention",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/829",
+      "state": "open",
+      "draft": false,
+      "head_sha": "723ed9305930d9836c8f922eb6cb9a20573e84fe",
+      "updated_at": "2026-10-08T17:47:04Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 806,
+      "title": "fix(deps): bump @tiptap/* to 3.31.4 and keep hyphenated link schemes in the markdown editor",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/806",
+      "state": "open",
+      "draft": false,
+      "head_sha": "b47e63718ca10c55a5e335e5cd5113a117193d27",
+      "updated_at": "2026-10-02T08:41:25Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 787,
+      "title": "fix: publish portable MCP tool schemas",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/787",
+      "state": "open",
+      "draft": false,
+      "head_sha": "653073eecbfb32833e3b1018cf06f7f9314fb63d",
+      "updated_at": "2026-09-26T14:41:16Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 732,
+      "title": "feat(mqtt): separate transport and execution with analytics",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/732",
+      "state": "open",
+      "draft": true,
+      "head_sha": "fdf4e64d4a18fd336a0b4a33b85522ef76cab0e4",
+      "updated_at": "2026-09-21T19:26:28Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 728,
+      "title": "fix(remote): keep Desktop Commander child cwd durable",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/728",
+      "state": "open",
+      "draft": false,
+      "head_sha": "6a2ecd64a0c34ed9de1b874b56da7b36514fe32e",
+      "updated_at": "2026-09-20T03:09:17Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 665,
+      "title": "feat(security): support scoped directory permissions via commandScopes (#663)",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/665",
+      "state": "open",
+      "draft": false,
+      "head_sha": "af6b62576a61c201b3e9eedb237bca47f6b308b0",
+      "updated_at": "2026-08-28T12:42:00Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 619,
+      "title": "Harden URL reads and remote device call targeting",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/619",
+      "state": "open",
+      "draft": false,
+      "head_sha": "36ab323737b4b432e7d182a052e94aa788d4a80b",
+      "updated_at": "2026-08-01T15:53:05Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 607,
+      "title": "fix(remote): make heartbeat startup idempotent",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/607",
+      "state": "open",
+      "draft": false,
+      "head_sha": "86c4dbc5b38e4f64cec0889eee5eb969c7bb4155",
+      "updated_at": "2026-10-25T23:34:36Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 545,
+      "title": "fix: restrict markdown link navigation to safe URI schemes",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/545",
+      "state": "open",
+      "draft": false,
+      "head_sha": "c35b22327f86f882b120fc2b444b934ff5f8a889",
+      "updated_at": "2026-07-10T14:50:52Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 494,
+      "title": "feat(ui): remove MCP UI A/B test \u2014 widgets on for everyone, with showMcpUI opt-out setting",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/494",
+      "state": "open",
+      "draft": false,
+      "head_sha": "80d9baf6612c3e9d755a4fe39c7c77c280486f69",
+      "updated_at": "2026-08-09T17:17:01Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 399,
+      "title": "fix(security): lock down security-critical config keys from runtime modification",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/399",
+      "state": "open",
+      "draft": false,
+      "head_sha": "d6d643e3036ba8fa1c15ccf5d878ab324b0694af",
+      "updated_at": "2026-08-23T11:06:31Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 386,
+      "title": "fix: remove unused nexe dep, upgrade mcpb, add overrides for tar/tmp vulnerabilities",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/386",
+      "state": "open",
+      "draft": false,
+      "head_sha": "9a23f022f07b67ca1039943d919f46914401c0b8",
+      "updated_at": "2026-05-02T17:28:27Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 356,
+      "title": "Safe Executor v1 + MCP utilization standard (internal rollout)",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/356",
+      "state": "open",
+      "draft": false,
+      "head_sha": "951ffa09db3615a346bd3bbfb748d6a7d85ac021",
+      "updated_at": "2026-07-10T16:14:49Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 225,
+      "title": "Feature/destructive safety",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/225",
+      "state": "open",
+      "draft": false,
+      "head_sha": "177cef7f8d610e6babde3b52925d120407dc8065",
+      "updated_at": "2025-08-22T15:48:04Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 224,
+      "title": "Feature/read only protection",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/224",
+      "state": "open",
+      "draft": false,
+      "head_sha": "a54ce63c8c330cbaa70e97033425e441385132fc",
+      "updated_at": "2025-08-22T15:42:49Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    },
+    {
+      "number": 223,
+      "title": "feat: Add configuration schema for safety features",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pull/223",
+      "state": "open",
+      "draft": false,
+      "head_sha": "94d8e735b7df79fcf7457dfbcdb24c6326c100aa",
+      "updated_at": "2025-08-22T15:40:54Z",
+      "classification": "PROPOSED_NOT_ASSUMED_SHIPPED"
+    }
+  ],
+  "boundaries": [
+    "No MTerm runtime or deployment was changed by this audit.",
+    "No hosted device paired/revoked and no credentials read.",
+    "No upstream package installed or code executed; source and manifest review only.",
+    "Full open PR list fetched across both pages; open PR state is not proof that its fix is absent because changes can have been integrated separately.",
+    "Search/browser cache lagged live registry and GitHub API; v0.3.2 cached results were not used as the latest release."
+  ],
+  "web_sources": [
+    {
+      "ref": "turn0view0",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/releases",
+      "warning": "Cached release page omitted v0.3.3; useful only for older release change provenance."
+    },
+    {
+      "ref": "turn0view2",
+      "url": "https://github.com/desktop-commander/remote-desktop-commander",
+      "warning": "Public docs only; source implementation private and Node 18 minimum stale."
+    },
+    {
+      "ref": "turn2view1",
+      "url": "https://github.com/wonderwhy-er/DesktopCommanderMCP/pulls",
+      "warning": "Cached listing incomplete/stale; API list is authoritative at observation time."
+    }
+  ]
+}

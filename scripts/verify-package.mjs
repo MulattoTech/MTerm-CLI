@@ -1271,8 +1271,8 @@ const report = await withPackageWorkspace(
     );
     assert.equal(installedProvenance.ok, true);
     assert.equal(installedProvenance.productionRedistributionEligible, false);
-    assert.equal(installedProvenance.productionPackages, 4);
-    assert.equal(installedProvenance.productionEdges, 5);
+    assert.equal(installedProvenance.productionPackages, 5);
+    assert.equal(installedProvenance.productionEdges, 6);
     // CLI --prefix changes npm's local package root; environment prefix selects an isolated global link destination.
     env.npm_config_prefix = linkPrefix;
     assert.equal((await npmRun(['prefix', '--global'])).stdout.trim(), linkPrefix);
@@ -1318,6 +1318,7 @@ const report = await withPackageWorkspace(
       'mterm-cli': 'MIT',
       '@modelcontextprotocol/core': 'Apache-2.0',
       '@modelcontextprotocol/server': 'Apache-2.0',
+      acorn: 'MIT',
       zod: 'MIT',
     };
     const installedLock = JSON.parse(await fs.readFile(path.join(prefix, 'package-lock.json'), 'utf8'));
@@ -1360,7 +1361,7 @@ const report = await withPackageWorkspace(
     }
     assert.equal(
       productionLicenseEvidence.length,
-      4,
+      5,
       'Production dependency set changed; review its rights and footprint',
     );
     for (const name of ['electron', '@modelcontextprotocol/client', 'typescript', 'prettier', '@types/node'])

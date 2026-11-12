@@ -1,0 +1,420 @@
+{
+  "schemaVersion": 1,
+  "project": "MTerm-CLI",
+  "planFile": "docs/plans/MTERM_INTELLIGENCE_MODERNIZATION_PLAN.md",
+  "baseBranch": "feat/aug-011-update-check-20261108",
+  "targetBranch": "feat/mterm-intelligence-modernization-20261110",
+  "pullRequest": "https://github.com/MulattoTech/MTerm-CLI/pull/244",
+  "ciRun": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/42780935140",
+  "ciStatus": "Historical PR #244 result only; not the exact current reconciliation candidate and not feature acceptance",
+  "lastUpdated": "2026-11-12T16:59:22Z",
+  "audit": {
+    "changeId": "2026-11-10-gemini-modernization-audit-fixes",
+    "status": "Historical audit retained; current-main reconciliation candidate requires its own exact-head checks and independent review",
+    "note": "All in-scope modernization requirements remain partial implementation subsets. No genuine LSP client, cloud provider adapters, executing/durable fleet, self-healing agent or new production deployment is certified by this file."
+  },
+  "requirements": [
+    {
+      "id": "MOD-001",
+      "name": "Win32 Job Object Process Supervision",
+      "workstream": 3,
+      "state": "Partial: packaged Win32 helper prototype; not wired into normal ProcessService execution",
+      "milestone": "Phase 1",
+      "targetFiles": [
+        "src/native/job-supervisor.ps1",
+        "src/native/win32-job.ts",
+        "src/processes.ts"
+      ],
+      "implementationStatus": "PARTIAL",
+      "implementedSubset": "Helper source and focused lifecycle fixtures are retained. The reconciliation candidate removes automatic helper startup; ordinary Windows cleanup remains the existing best-effort taskkill path.",
+      "remaining": [
+        "Qualify host-owned native containment, process/service lifecycle isolation and Windows installed-package behavior before enabling integration."
+      ],
+      "testStatus": "EXACT_HEAD_QUALIFICATION_PENDING",
+      "testFiles": [
+        "tests/win32-job.test.mjs",
+        "tests/processes.test.mjs"
+      ],
+      "acceptanceStatus": "NOT_ACCEPTED",
+      "deploymentStatus": "NOT_DEPLOYED_BY_THIS_RECONCILIATION"
+    },
+    {
+      "id": "MOD-002",
+      "name": "Decompose files.ts into Atomic Services",
+      "workstream": 4,
+      "state": "Partial: retry strategy extracted; broad atomic-service decomposition incomplete",
+      "milestone": "Phase 1",
+      "targetFiles": [
+        "src/files/retry-strategy.ts",
+        "src/files.ts"
+      ],
+      "implementationStatus": "PARTIAL",
+      "implementedSubset": "Retry helpers exist; FileService still owns substantial file, policy and mutation logic.",
+      "remaining": [
+        "Complete the planned atomic-service decomposition with preserved policy, cancellation, conflict and durability semantics."
+      ],
+      "testStatus": "EXACT_HEAD_QUALIFICATION_PENDING",
+      "testFiles": [
+        "tests/file-write-retry.test.mjs",
+        "tests/file-cancellation.test.mjs"
+      ],
+      "acceptanceStatus": "NOT_ACCEPTED",
+      "deploymentStatus": "NOT_DEPLOYED_BY_THIS_RECONCILIATION"
+    },
+    {
+      "id": "MOD-003",
+      "name": "Shadow Journaling & Pre-Mutation Snapshots",
+      "workstream": 9,
+      "state": "Partial: guarded per-root single-file pre-write snapshots",
+      "milestone": "Phase 1",
+      "targetFiles": [
+        "src/journaling/shadow-journal.ts",
+        "src/files.ts"
+      ],
+      "implementationStatus": "PARTIAL",
+      "implementedSubset": "Journal snapshots are scoped to canonical roots and integrate with guarded file writes.",
+      "remaining": [
+        "Complete independent coverage of storage privacy, retention, failure recovery and every intended mutation path."
+      ],
+      "testStatus": "EXACT_HEAD_QUALIFICATION_PENDING",
+      "testFiles": [
+        "tests/shadow-journal.test.mjs",
+        "tests/modernization-audit-regressions.test.mjs"
+      ],
+      "acceptanceStatus": "NOT_ACCEPTED",
+      "deploymentStatus": "NOT_DEPLOYED_BY_THIS_RECONCILIATION"
+    },
+    {
+      "id": "MOD-004",
+      "name": "Transactional mterm_rollback Tool",
+      "workstream": 9,
+      "state": "Partial: conflict-checked single-file rollback; no atomic multi-file transaction",
+      "milestone": "Phase 1",
+      "targetFiles": [
+        "src/journaling/shadow-journal.ts",
+        "src/mcp.ts",
+        "src/files.ts"
+      ],
+      "implementationStatus": "PARTIAL",
+      "implementedSubset": "Rollback requires one explicit file and its expected post-write version.",
+      "remaining": [
+        "Implement and qualify an all-or-nothing multi-file commit/recovery protocol before claiming transactional rollback."
+      ],
+      "testStatus": "EXACT_HEAD_QUALIFICATION_PENDING",
+      "testFiles": [
+        "tests/shadow-journal.test.mjs",
+        "tests/modernization-audit-regressions.test.mjs"
+      ],
+      "acceptanceStatus": "NOT_ACCEPTED",
+      "deploymentStatus": "NOT_DEPLOYED_BY_THIS_RECONCILIATION"
+    },
+    {
+      "id": "MOD-005",
+      "name": "Semantic Unified Diff Engine (mterm_apply_patch)",
+      "workstream": 1,
+      "state": "Partial: bounded single-file unified-diff application; not AST-aware refactoring",
+      "milestone": "Phase 2",
+      "targetFiles": [
+        "src/editing/semantic-editor.ts",
+        "src/mcp.ts",
+        "src/files.ts"
+      ],
+      "implementationStatus": "PARTIAL",
+      "implementedSubset": "Patch target validation and conflict checks are integrated with guarded FileService mutations.",
+      "remaining": [
+        "Complete supported patch edge cases and independent acceptance; cross-file semantic refactoring is not provided."
+      ],
+      "testStatus": "EXACT_HEAD_QUALIFICATION_PENDING",
+      "testFiles": [
+        "tests/semantic-editor.test.mjs",
+        "tests/modernization-audit-regressions.test.mjs"
+      ],
+      "acceptanceStatus": "NOT_ACCEPTED",
+      "deploymentStatus": "NOT_DEPLOYED_BY_THIS_RECONCILIATION"
+    },
+    {
+      "id": "MOD-006",
+      "name": "Pre-Save Syntactic AST Validator",
+      "workstream": 1,
+      "state": "Partial: JS/TS/JSON syntax checks; unsupported parsers fail closed",
+      "milestone": "Phase 2",
+      "targetFiles": [
+        "src/editing/syntax-validator.ts",
+        "src/mcp.ts",
+        "src/files.ts"
+      ],
+      "implementationStatus": "PARTIAL",
+      "implementedSubset": "Unavailable languages and conflicting explicit-language overrides cannot return a successful validation result. Syntax checking is not project typechecking.",
+      "remaining": [
+        "Add separately qualified Python, PowerShell, JSX/TSX, JSONC and other parser adapters as needed."
+      ],
+      "testStatus": "EXACT_HEAD_QUALIFICATION_PENDING",
+      "testFiles": [
+        "tests/semantic-editor.test.mjs",
+        "tests/modernization-audit-regressions.test.mjs",
+        "tests/modernization-boundaries.test.mjs"
+      ],
+      "acceptanceStatus": "NOT_ACCEPTED",
+      "deploymentStatus": "NOT_DEPLOYED_BY_THIS_RECONCILIATION"
+    },
+    {
+      "id": "MOD-007",
+      "name": "Deterministic Multi-Linter Tool (mterm_lint_check)",
+      "workstream": 2,
+      "state": "Partial: built-in syntax/style diagnostics; no project-linter integration",
+      "milestone": "Phase 2",
+      "targetFiles": [
+        "src/quality/linter.ts",
+        "src/mcp.ts",
+        "src/files.ts"
+      ],
+      "implementationStatus": "PARTIAL",
+      "implementedSubset": "Default linting does not spawn npx, execute project scripts or invoke project-installed linters.",
+      "remaining": [
+        "Integrate intended linters through scoped process admission, cancellation and resource limits."
+      ],
+      "testStatus": "EXACT_HEAD_QUALIFICATION_PENDING",
+      "testFiles": [
+        "tests/quality-pipeline.test.mjs",
+        "tests/modernization-audit-regressions.test.mjs"
+      ],
+      "acceptanceStatus": "NOT_ACCEPTED",
+      "deploymentStatus": "NOT_DEPLOYED_BY_THIS_RECONCILIATION"
+    },
+    {
+      "id": "MOD-008",
+      "name": "Automated Code Formatter Tool (mterm_format_file)",
+      "workstream": 2,
+      "state": "Partial: conservative built-in whitespace normalization; no Prettier/Ruff integration",
+      "milestone": "Phase 2",
+      "targetFiles": [
+        "src/quality/formatter.ts",
+        "src/mcp.ts",
+        "src/files.ts"
+      ],
+      "implementationStatus": "PARTIAL",
+      "implementedSubset": "The candidate preserves multiline string, escaped-newline and non-code-format regression inputs rather than trimming their meaningful whitespace.",
+      "remaining": [
+        "Implement verified language-aware formatting and controlled external-tool integration before claiming project formatter parity."
+      ],
+      "testStatus": "EXACT_HEAD_QUALIFICATION_PENDING",
+      "testFiles": [
+        "tests/quality-pipeline.test.mjs",
+        "tests/modernization-boundaries.test.mjs"
+      ],
+      "acceptanceStatus": "NOT_ACCEPTED",
+      "deploymentStatus": "NOT_DEPLOYED_BY_THIS_RECONCILIATION"
+    },
+    {
+      "id": "MOD-009",
+      "name": "5-Pass Self-Healing Refine Pipeline (RefineEngine)",
+      "workstream": 2,
+      "state": "Partial: one deterministic five-stage refinement pass; no autonomous repair loop",
+      "milestone": "Phase 2",
+      "targetFiles": [
+        "src/quality/refine-pipeline.ts",
+        "src/mcp.ts",
+        "src/files.ts"
+      ],
+      "implementationStatus": "PARTIAL",
+      "implementedSubset": "The pipeline performs one attempt. Compiler execution is not exposed through MCP pending integration with scoped process controls; no absent compiler result counts as a clean typecheck.",
+      "remaining": [
+        "Implement bounded repair/retry policy, supported parser/formatter/linter stages and safe compiler integration with exact-head evidence."
+      ],
+      "testStatus": "EXACT_HEAD_QUALIFICATION_PENDING",
+      "testFiles": [
+        "tests/quality-pipeline.test.mjs",
+        "tests/modernization-audit-regressions.test.mjs"
+      ],
+      "acceptanceStatus": "NOT_ACCEPTED",
+      "deploymentStatus": "NOT_DEPLOYED_BY_THIS_RECONCILIATION"
+    },
+    {
+      "id": "MOD-010",
+      "name": "Language Server Protocol Client (mterm_lsp_*)",
+      "workstream": 5,
+      "state": "Partial lexical navigation only; genuine LSP client not implemented",
+      "milestone": "Phase 3",
+      "targetFiles": [
+        "src/lsp/manager.ts",
+        "src/mcp.ts",
+        "src/files.ts",
+        "src/intelligence/source-reader.ts"
+      ],
+      "implementationStatus": "PARTIAL",
+      "implementedSubset": "Definition/reference/symbol utilities use a policy-backed bounded source reader with cancellation and strict decoding. Results are heuristic, not compiler-resolved.",
+      "remaining": [
+        "Implement language-server transport, lifecycle, capabilities, document synchronization and compiler-resolved definitions/references."
+      ],
+      "testStatus": "EXACT_HEAD_QUALIFICATION_PENDING",
+      "testFiles": [
+        "tests/repomap-lsp.test.mjs",
+        "tests/modernization-boundaries.test.mjs"
+      ],
+      "acceptanceStatus": "NOT_ACCEPTED",
+      "deploymentStatus": "NOT_DEPLOYED_BY_THIS_RECONCILIATION"
+    },
+    {
+      "id": "MOD-011",
+      "name": "Dense Repository Map Generator (mterm_repo_map)",
+      "workstream": 6,
+      "state": "Partial: fresh bounded lexical repository outline; no persistent semantic index",
+      "milestone": "Phase 3",
+      "targetFiles": [
+        "src/intelligence/repomap.ts",
+        "src/mcp.ts",
+        "src/files.ts",
+        "src/intelligence/source-reader.ts"
+      ],
+      "implementationStatus": "PARTIAL",
+      "implementedSubset": "Source reads use current request policy, file/scan limits and cancellation. The stale HEAD-only disk cache is removed; no cache files are written by read-only mapping.",
+      "remaining": [
+        "Design dirty-tree-safe indexing and persistent cache invalidation without weakening read-only guarantees."
+      ],
+      "testStatus": "EXACT_HEAD_QUALIFICATION_PENDING",
+      "testFiles": [
+        "tests/repomap-lsp.test.mjs",
+        "tests/modernization-boundaries.test.mjs"
+      ],
+      "acceptanceStatus": "NOT_ACCEPTED",
+      "deploymentStatus": "NOT_DEPLOYED_BY_THIS_RECONCILIATION"
+    },
+    {
+      "id": "MOD-012",
+      "name": "Cloud AI Provider Adapters & Model Router",
+      "workstream": 10,
+      "state": "Partial abstraction and deterministic diff heuristics; cloud AI adapters not implemented",
+      "milestone": "Phase 3",
+      "targetFiles": [
+        "src/ai/model-provider.ts",
+        "src/ai/router.ts",
+        "src/mcp.ts",
+        "src/files.ts"
+      ],
+      "implementationStatus": "PARTIAL",
+      "implementedSubset": "No cloud provider is bundled or invoked. An explicitly requested unconfigured provider fails rather than silently substituting the heuristic.",
+      "remaining": [
+        "Implement qualified provider-specific adapters and owner-approved budgets without equating heuristic output to model inference."
+      ],
+      "testStatus": "EXACT_HEAD_QUALIFICATION_PENDING",
+      "testFiles": [
+        "tests/ai-router.test.mjs",
+        "tests/modernization-audit-regressions.test.mjs"
+      ],
+      "acceptanceStatus": "NOT_ACCEPTED",
+      "deploymentStatus": "NOT_DEPLOYED_BY_THIS_RECONCILIATION"
+    },
+    {
+      "id": "MOD-013",
+      "name": "30+ Agent Fleet Supervisor & Fair Queue",
+      "workstream": 8,
+      "state": "Partial: per-FileService in-memory logical task ledger; no executing or durable fleet",
+      "milestone": "Phase 3",
+      "targetFiles": [
+        "src/orchestration/fleet-manager.ts",
+        "src/mcp.ts",
+        "src/files.ts"
+      ],
+      "implementationStatus": "PARTIAL",
+      "implementedSubset": "FIFO admission, logical checkpoints and halt state are in memory. The candidate isolates separate FileService ledgers and rejects task-ID adoption across logical sessions.",
+      "remaining": [
+        "Implement real executors, durable state/recovery, measured fair scheduling, owned worktrees, cancellation and acceptance on actual sessions."
+      ],
+      "testStatus": "EXACT_HEAD_QUALIFICATION_PENDING",
+      "testFiles": [
+        "tests/fleet-orchestration.test.mjs",
+        "tests/modernization-boundaries.test.mjs"
+      ],
+      "acceptanceStatus": "NOT_ACCEPTED",
+      "deploymentStatus": "NOT_DEPLOYED_BY_THIS_RECONCILIATION"
+    },
+    {
+      "id": "MOD-014",
+      "name": "Dual Dev/Prod Isolation (MTermCLI-DEV)",
+      "workstream": 7,
+      "state": "Partial: ordinary CLI config isolation; remote credential/runtime isolation incomplete",
+      "milestone": "Phase 4",
+      "targetFiles": [
+        "src/config.ts",
+        "src/cli.ts"
+      ],
+      "implementationStatus": "PARTIAL",
+      "implementedSubset": "Development config has a separate directory. The remote state default still ignores development selection, and full backend/App/port separation is not verified.",
+      "remaining": [
+        "Isolate remote profile state and credentials first; separately verify independent staging App/backend/policy and runtime routing."
+      ],
+      "testStatus": "EXACT_HEAD_QUALIFICATION_PENDING",
+      "testFiles": [
+        "tests/environment-isolation.test.mjs",
+        "tests/remote-state.test.mjs"
+      ],
+      "acceptanceStatus": "NOT_ACCEPTED",
+      "deploymentStatus": "NOT_DEPLOYED_BY_THIS_RECONCILIATION"
+    },
+    {
+      "id": "MOD-015",
+      "name": "Enhanced Diagnostics (mterm-cli doctor --json)",
+      "workstream": 12,
+      "state": "Partial: basic doctor JSON inventory; end-to-end readiness not established",
+      "milestone": "Phase 4",
+      "targetFiles": [
+        "src/cli.ts"
+      ],
+      "implementationStatus": "PARTIAL",
+      "implementedSubset": "CLI diagnostics expose basic local configuration/environment observations. They do not prove the canonical plugin, remote executor or production deployment is ready.",
+      "remaining": [
+        "Connect scoped provenance and capability evidence to diagnostics and validate end-to-end readiness separately."
+      ],
+      "testStatus": "EXACT_HEAD_QUALIFICATION_PENDING",
+      "testFiles": [
+        "tests/cli.test.mjs"
+      ],
+      "acceptanceStatus": "NOT_ACCEPTED",
+      "deploymentStatus": "NOT_DEPLOYED_BY_THIS_RECONCILIATION"
+    },
+    {
+      "id": "MOD-EX01",
+      "name": "Locally Hosted AI Inference (Ollama/llama.cpp/ROCm)",
+      "workstream": 10,
+      "state": "Excluded by user",
+      "milestone": "N/A",
+      "targetFiles": [],
+      "implementationStatus": "NOT_APPLICABLE",
+      "testStatus": "NOT_APPLICABLE",
+      "acceptanceStatus": "EXCLUDED_BY_USER",
+      "deploymentStatus": "NOT_APPLICABLE"
+    }
+  ],
+  "history": [
+    {
+      "observedOn": "2026-11-10",
+      "source": "docs/ai/changes/2026-11-10-mterm-intelligence-modernization.json",
+      "kind": "original_author_report",
+      "reportedLocalTests": "573 passed; retained historical claim, not rerun by this status update",
+      "reportedCI": "PR #244 run 42780935140 reported five successful jobs",
+      "interpretation": "The original all-features-complete claim was superseded. Node 27 alpha is not Node 24 LTS; only separately observed Node 24 jobs establish that runtime evidence."
+    },
+    {
+      "observedOn": "2026-11-10",
+      "source": "docs/ai/changes/2026-11-10-gemini-modernization-audit-fixes.json",
+      "kind": "independent_audit_and_remediation",
+      "pullRequest": "https://github.com/MulattoTech/MTerm-CLI/pull/245",
+      "head": "1bf3efca0b112395c01d46ed52cd4ea6f75c2257",
+      "interpretation": "Corrected unsafe behavior and overstatements; historical test outcomes and failures remain in the dated record and are not current-head qualification."
+    },
+    {
+      "observedOn": "2026-11-12",
+      "kind": "current_main_reconciliation",
+      "baseSha": "cbfd29039fe84cd163a86090c8bcbffaa2b40174",
+      "incorporatedPrHead": "1bf3efca0b112395c01d46ed52cd4ea6f75c2257",
+      "candidateCommitSha": null,
+      "interpretation": "Integrates preserved modernization work with current main, adds policy/decoding/cancellation and logical-session boundaries, keeps unqualified compiler and native-helper integration inactive, and preserves unrelated deployed services."
+    }
+  ],
+  "currentEvidencePolicy": {
+    "sourceOfTruth": "Exact candidate commit, dated change record, independent review, hosted checks and deployment receipts must be recorded separately.",
+    "testFileMeaning": "Listed test files establish intended coverage, not that the final candidate has passed.",
+    "canonicalRoadmap": "This modernization ledger does not replace the full 300-ID CLI seed or DCP/WEB acceptance ledgers. No weighted acceptance percentage is awarded here.",
+    "productionBoundary": "The managed 53-tool bridge and production Worker are owned by MTechLabs-Access. CLI source merges do not deploy them."
+  }
+}

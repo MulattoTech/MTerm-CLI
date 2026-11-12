@@ -1,0 +1,136 @@
+✖ navigation respects a narrowed request scope before scanning any directory (27.134051ms)
+✖ definition fallback does not read hardlinked siblings or denied source files (10.841662ms)
+✖ document symbols obey the configured byte limit and strict UTF-8 decoding (5.542604ms)
+✖ all navigation entry points observe pre-aborted calls without filesystem reads (2.968726ms)
+✖ unavailable syntax parsers and mismatched language overrides cannot certify input (0.988486ms)
+✖ separate FileService instances do not share fleet payloads or halt state (5.7036ms)
+✖ a logical fleet task id cannot be adopted by another logical session (0.300374ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 0
+ℹ fail 7
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 439.160222
+
+✖ failing tests:
+
+test at tests/modernization-boundaries.test.mjs:20:1
+✖ navigation respects a narrowed request scope before scanning any directory (27.134051ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI/tests/modernization-boundaries.test.mjs:28:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    operator: 'rejects',
+    diff: 'simple'
+  }
+
+test at tests/modernization-boundaries.test.mjs:32:1
+✖ definition fallback does not read hardlinked siblings or denied source files (10.841662ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + {
+  +   column: 17,
+  +   contextText: 'export function privateMarker() { return "outside"; }',
+  +   file: '/tmp/mterm-navigation-L5bJo7/root/sibling.ts',
+  +   line: 1
+  + }
+  - null
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI/tests/modernization-boundaries.test.mjs:38:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { file: '/tmp/mterm-navigation-L5bJo7/root/sibling.ts', line: 1, column: 17, contextText: 'export function privateMarker() { return "outside"; }' },
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/modernization-boundaries.test.mjs:41:1
+✖ document symbols obey the configured byte limit and strict UTF-8 decoding (5.542604ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI/tests/modernization-boundaries.test.mjs:45:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    operator: 'rejects',
+    diff: 'simple'
+  }
+
+test at tests/modernization-boundaries.test.mjs:49:1
+✖ all navigation entry points observe pre-aborted calls without filesystem reads (2.968726ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI/tests/modernization-boundaries.test.mjs:57:6)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    operator: 'rejects',
+    diff: 'simple'
+  }
+
+test at tests/modernization-boundaries.test.mjs:60:1
+✖ unavailable syntax parsers and mismatched language overrides cannot certify input (0.988486ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI/tests/modernization-boundaries.test.mjs:65:13)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/modernization-boundaries.test.mjs:68:1
+✖ separate FileService instances do not share fleet payloads or halt state (5.7036ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'first' !== 'second'
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI/tests/modernization-boundaries.test.mjs:73:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'first',
+    expected: 'second',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/modernization-boundaries.test.mjs:79:1
+✖ a logical fleet task id cannot be adopted by another logical session (0.300374ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI/tests/modernization-boundaries.test.mjs:82:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /conflict|another|owner/i,
+    operator: 'throws',
+    diff: 'simple'
+  }

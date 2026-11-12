@@ -1,0 +1,468 @@
+{
+  "as_of": "2026-11-12",
+  "repository": "MulattoTech/MTerm-CLI",
+  "scope": "Feature-group issue mapping; implementation states require root integration's current source/deployment evidence. All existing 194 issues inspected through full REST pages. No mutations performed.",
+  "groups": [
+    {
+      "feature": "Canonical plugin unification, OAuth grant ownership, managed bridge source identity",
+      "issues": [
+        209,
+        91,
+        83,
+        82
+      ],
+      "action": "Extend existing issues; do not duplicate #209 or uninstall working wrapper."
+    },
+    {
+      "feature": "Website computer registration / Add Computer / pairing / signed device identity",
+      "issues": [
+        53,
+        56,
+        57,
+        58,
+        60,
+        64,
+        145,
+        147
+      ],
+      "action": "Extend epic #53 and existing WEB children with M-TechLabs.com integration and actual executor readiness."
+    },
+    {
+      "feature": "Per-device credentials, revocation, rotation and logout",
+      "issues": [
+        55,
+        59,
+        86,
+        146
+      ],
+      "action": "Extend existing children; current device replacement is revoke/re-pair and live rotation remains unverified."
+    },
+    {
+      "feature": "Custom Cloudflare MCP connection profiles (managed/custom/local/dev)",
+      "issues": [
+        53,
+        54,
+        55,
+        61,
+        62,
+        91,
+        146
+      ],
+      "action": "Create distinct connection-profile epic/children: no existing issue specifically covers profile CRUD, profile routing or credential isolation."
+    },
+    {
+      "feature": "Device selection, wrong-computer prevention and session target binding",
+      "issues": [
+        58,
+        62,
+        145,
+        86,
+        87
+      ],
+      "action": "Extend acceptance with explicit per-session target and readonly readiness probe."
+    },
+    {
+      "feature": "Custom URL SSRF protection, redirect/DNS rebinding policy and profile credential scoping",
+      "issues": [
+        20,
+        54,
+        55,
+        61,
+        62
+      ],
+      "action": "New connection-profile security child; link existing URL/read and remote auth policies."
+    },
+    {
+      "feature": "Stable capability discovery, selective packs and permission scopes",
+      "issues": [
+        82,
+        83,
+        86,
+        139,
+        187
+      ],
+      "action": "Reuse existing capability registry and its versioned opt-in pack boundary."
+    },
+    {
+      "feature": "Latest stable/alpha/main upstream comparison and drift",
+      "issues": [
+        2,
+        10,
+        94
+      ],
+      "action": "Extend to per-layer managed bridge/standalone/gateway statuses; historical DCP baseline remains 0.2.52 until separately reviewed."
+    },
+    {
+      "feature": "Shell command inspection and nested wrappers",
+      "issues": [
+        14,
+        15,
+        36,
+        88
+      ],
+      "action": "Extend version-specific upstream parity/security acceptance."
+    },
+    {
+      "feature": "Process-tree shutdown, cancellation, output pagination and PTY",
+      "issues": [
+        37,
+        38,
+        39,
+        40,
+        41,
+        43,
+        44,
+        45,
+        117,
+        131
+      ],
+      "action": "Reuse existing issues; review native helper ownership separately."
+    },
+    {
+      "feature": "Symlink/hardlink protections, root scoping and safe no-overwrite editing",
+      "issues": [
+        13,
+        22,
+        23,
+        25,
+        27,
+        84,
+        87,
+        90,
+        95
+      ],
+      "action": "Existing issues; record newly reproduced modernization leaks as defect children or PR-scoped blockers."
+    },
+    {
+      "feature": "Remote reconnect, retries, acknowledgments, deduplication and session recovery",
+      "issues": [
+        57,
+        62,
+        65,
+        117,
+        130,
+        148,
+        149
+      ],
+      "action": "Extend acceptance with transport-specific MQTT/WebSocket differences only after upstream evidence."
+    },
+    {
+      "feature": "Remote diagnostics/support bundles with privacy and redaction",
+      "issues": [
+        63,
+        65,
+        115,
+        150,
+        151
+      ],
+      "action": "Extend existing issues with support ZIP export and credential sentinel tests."
+    },
+    {
+      "feature": "Windows environment propagation, Node versions and runtime compatibility",
+      "issues": [
+        8,
+        15,
+        36,
+        45,
+        123,
+        187
+      ],
+      "action": "Add version-specific parity cases to existing rows rather than broad new issue."
+    },
+    {
+      "feature": "PDF, Excel, DOCX and Markdown structured document features",
+      "issues": [
+        28,
+        29,
+        30,
+        155,
+        160,
+        168
+      ],
+      "action": "Reuse existing document issues; Markdown rich preview may require scoped child."
+    },
+    {
+      "feature": "Directory browsing, fuzzy edits and streaming search",
+      "issues": [
+        24,
+        27,
+        31,
+        32,
+        33,
+        34,
+        35
+      ],
+      "action": "Existing DCP parity children; differentiate inherited managed bridge from standalone."
+    },
+    {
+      "feature": "MCPB / MCP Registry packaging and client install matrix",
+      "issues": [
+        3,
+        4,
+        5,
+        7,
+        8,
+        187,
+        190
+      ],
+      "action": "Add distinct client-packaging issue for MCPB/Registry plus Gemini/VS Code/Cursor profiles; no matching explicit existing issue."
+    },
+    {
+      "feature": "Release provenance, reproducibility, alpha promotion and rollback",
+      "issues": [
+        7,
+        8,
+        10,
+        85,
+        93,
+        107,
+        147
+      ],
+      "action": "Reuse provenance/update gates, extend release-channel promotion criterion."
+    },
+    {
+      "feature": "Repository Doctor and PR Finisher workflows",
+      "issues": [
+        113,
+        116,
+        118,
+        133,
+        134
+      ],
+      "action": "Add named starter workflows to skill-registry acceptance, not separate duplicate engine implementations."
+    },
+    {
+      "feature": "Git worktree lifecycle, stale/dirty branch detection and parallel edit leases",
+      "issues": [
+        66,
+        112,
+        113,
+        118,
+        121
+      ],
+      "action": "Existing issues; worktree inspection qualified slice does not complete lifecycle management."
+    },
+    {
+      "feature": "AST navigation, LSP, symbols, references and safe refactoring",
+      "issues": [
+        96,
+        97,
+        99,
+        100,
+        101,
+        103,
+        109,
+        111
+      ],
+      "action": "Do not credit text regex navigation as real LSP/AST or cross-file refactoring."
+    },
+    {
+      "feature": "Code knowledge graph and durable source-grounded memory",
+      "issues": [
+        98,
+        105,
+        110,
+        132,
+        138
+      ],
+      "action": "Existing distinct issues, not duplicate merely because names overlap."
+    },
+    {
+      "feature": "Automated test selection, build evidence and CI triage",
+      "issues": [
+        106,
+        108,
+        114,
+        115,
+        116,
+        134
+      ],
+      "action": "Existing issues; deterministic diff reviewer is only partial support."
+    },
+    {
+      "feature": "Skill registry search/versioning/permissions/templates and ten named initial skills",
+      "issues": [
+        120,
+        133,
+        132,
+        246
+      ],
+      "action": "Extend #133 with exact named skills and source/permission/schema tests."
+    },
+    {
+      "feature": "Task decomposition, dependency scheduler and bounded delegation",
+      "issues": [
+        127,
+        129,
+        134,
+        137,
+        136
+      ],
+      "action": "Existing AUG orchestration issues; in-memory task ledger is not actual execution."
+    },
+    {
+      "feature": "Concurrency/queue/resource budgets, leases and duplicate-work prevention",
+      "issues": [
+        92,
+        112,
+        127,
+        128,
+        149
+      ],
+      "action": "Reuse existing budgets/admission; attach actual measurement instead of counters."
+    },
+    {
+      "feature": "Durable jobs, checkpoints, pause/stop and interruption recovery",
+      "issues": [
+        117,
+        130,
+        131,
+        132,
+        148,
+        151
+      ],
+      "action": "Existing standalone backlog plus managed bridge-specific partial state."
+    },
+    {
+      "feature": "Windows process/startup/scheduled task/Event Log/service/network diagnostics",
+      "issues": [
+        42,
+        63,
+        133
+      ],
+      "action": "Create systems-diagnostics pack epic/children; existing process list/doctor scope is not full OS diagnostics."
+    },
+    {
+      "feature": "Docker/WSL/Hyper-V inventory and approved VM operations",
+      "issues": [
+        84,
+        114
+      ],
+      "action": "Create infrastructure-diagnostics children preserving currently managed bridge VM permission model; no specific matching backlog issue."
+    },
+    {
+      "feature": "Disk integrity/hardware inventory/environment diagnostics and owner-approved repairs",
+      "issues": [
+        63,
+        133
+      ],
+      "action": "Extend proposed systems-diagnostics pack with read-only defaults and plan/apply separation."
+    },
+    {
+      "feature": "Cloudflare Doctor, Tunnel/Access diagnostics and rollback",
+      "issues": [
+        61,
+        65,
+        189,
+        133
+      ],
+      "action": "Existing Cloudflare pack plus named skill; avoid altering #232 recovery HOLD casually."
+    },
+    {
+      "feature": "Codex/Claude/Gemini/Cursor/VS Code integrations",
+      "issues": [
+        4,
+        5,
+        6,
+        8,
+        124,
+        125,
+        187
+      ],
+      "action": "Reuse Codex/integration issues; make missing Gemini/editor client acceptance explicit."
+    },
+    {
+      "feature": "Plugin Creator and Template/Skill Creator integration",
+      "issues": [
+        133,
+        187,
+        209,
+        246
+      ],
+      "action": "Extend skill/plugin acceptance with package metadata compatibility; preserve identity."
+    },
+    {
+      "feature": "Optional local inference",
+      "issues": [
+        135,
+        167
+      ],
+      "action": "Already tracked, optional future feature; no required model download."
+    },
+    {
+      "feature": "Browser automation, OCR and visual QA",
+      "issues": [
+        143,
+        152,
+        153,
+        154,
+        157,
+        158,
+        159,
+        161
+      ],
+      "action": "Existing issues; preserve browser-session ownership and prompt-injection boundaries."
+    },
+    {
+      "feature": "Math/symbolic/scientific analysis and data visualization",
+      "issues": [
+        162,
+        163,
+        164,
+        165,
+        166,
+        168,
+        169,
+        170,
+        171
+      ],
+      "action": "Already registered; manager inherited math tools do not certify standalone parity."
+    },
+    {
+      "feature": "Future CAD/3D/game modules",
+      "issues": [
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186
+      ],
+      "action": "Already registered; out of immediate reliability-critical delivery."
+    },
+    {
+      "feature": "Admin dashboard, tool timeline, traces, metrics, SSE and tray/neural view",
+      "issues": [
+        63,
+        140,
+        141,
+        144,
+        145,
+        149,
+        150,
+        160,
+        195,
+        246,
+        247
+      ],
+      "action": "Do not duplicate #247; align #144 timeline core, #63 diagnostics and #247 presentation."
+    },
+    {
+      "feature": "Machine-readable progress register with distinct merged/tested/deployed/accepted states",
+      "issues": [
+        94,
+        81
+      ],
+      "action": "Create distinct progress-register implementation child; preserve immutable 300 seed and existing ledgers, derive complementary metrics."
+    }
+  ]
+}

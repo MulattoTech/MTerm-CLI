@@ -1,0 +1,117 @@
+{
+  "change_id": "2026-11-10-mterm-intelligence-modernization",
+  "provider": "Google",
+  "model": "Gemini Flash 3.8",
+  "started_at": "2026-11-10T06:00:00Z",
+  "updated_at": "2026-11-10T07:22:00Z",
+  "base_sha": "a7c047c76825562a3f51b100a8cc9b92151ee1f5",
+  "issues": [244],
+  "requirements": [
+    "CLI-001",
+    "CLI-002",
+    "CLI-003",
+    "CLI-157",
+    "CLI-165",
+    "CLI-269",
+    "CLI-287"
+  ],
+  "files": [
+    "src/editing/semantic-editor.ts",
+    "src/editing/syntax-validator.ts",
+    "src/quality/formatter.ts",
+    "src/quality/linter.ts",
+    "src/quality/typecheck.ts",
+    "src/quality/refine-pipeline.ts",
+    "src/native/job-supervisor.ps1",
+    "src/native/win32-job.ts",
+    "src/files/retry-strategy.ts",
+    "src/journaling/shadow-journal.ts",
+    "src/intelligence/repomap.ts",
+    "src/lsp/manager.ts",
+    "src/ai/model-provider.ts",
+    "src/ai/router.ts",
+    "src/orchestration/fleet-manager.ts",
+    "src/files.ts",
+    "src/processes.ts",
+    "src/mcp.ts",
+    "src/config.ts",
+    "src/cli.ts",
+    "src/tool-packs.ts",
+    "scripts/automation/Setup-MTermCLI.ps1"
+  ],
+  "decisions": [
+    "Implement in-memory semantic diff editing and pre-save AST validation without external shell overhead.",
+    "Implement native Win32 Job Object supervisor via zero-flashing stdio P/Invoke bridge, replacing taskkill.exe subprocesses.",
+    "Introduce transactional shadow journaling in isolated temporary directories with atomic rollback.",
+    "Provide dense repository symbol outlining and zero-daemon LSP symbol navigation.",
+    "Implement 35+ concurrent session fleet supervisor with fair queueing, task idempotency, and emergency halt.",
+    "Isolate development data environment (MTermCLI-DEV) from production runtime.",
+    "Fix Node.js runtime boundary to support Node >= 24 (Node 24 LTS and Node 27 pre-release).",
+    "Strictly exclude locally hosted AI inference per directive."
+  ],
+  "tests": [
+    {
+      "command": "node --test tests/semantic-editor.test.mjs",
+      "result": "7/7 passed"
+    },
+    {
+      "command": "node --test tests/quality-pipeline.test.mjs",
+      "result": "5/5 passed"
+    },
+    {
+      "command": "node --test tests/win32-job.test.mjs",
+      "result": "1/1 passed"
+    },
+    {
+      "command": "node --test tests/shadow-journal.test.mjs",
+      "result": "2/2 passed"
+    },
+    {
+      "command": "node --test tests/repomap-lsp.test.mjs",
+      "result": "3/3 passed"
+    },
+    {
+      "command": "node --test tests/ai-router.test.mjs",
+      "result": "3/3 passed"
+    },
+    {
+      "command": "node --test tests/fleet-orchestration.test.mjs",
+      "result": "1/1 passed"
+    },
+    {
+      "command": "node --test tests/environment-isolation.test.mjs",
+      "result": "2/2 passed"
+    },
+    {
+      "command": "npm test",
+      "result": "573/573 passed; 0 failed"
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "id": "CLI-157",
+      "stage_change": false,
+      "reason": "Preserve existing status with completed intelligence modernization."
+    },
+    {
+      "id": "CLI-165",
+      "stage_change": false,
+      "reason": "Preserve existing status with completed intelligence modernization."
+    },
+    {
+      "id": "CLI-269",
+      "stage_change": false,
+      "reason": "Preserve existing status with completed intelligence modernization."
+    },
+    {
+      "id": "CLI-287",
+      "stage_change": false,
+      "reason": "Preserve existing status with completed intelligence modernization."
+    }
+  ],
+  "limitations": [
+    "Zero local model weights per strict user exclusion.",
+    "Cloud AI integrations require explicit provider API credentials and adhere to configured daily token budgets."
+  ],
+  "checkpoint": "H:\\MTechLabs\\Dev\\MTerm-CLI-AUG011-20261108"
+}

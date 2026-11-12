@@ -77,16 +77,24 @@ const reordered = () => ({
 });
 const options = { concurrency: false, timeout: 45000 };
 const readonlyTools = [
+  'mterm_ai_review_diff',
   'mterm_audit_list',
   'mterm_capabilities',
   'mterm_file_info',
+  'mterm_fleet_status',
   'mterm_git_diff',
   'mterm_git_status',
+  'mterm_lint_check',
   'mterm_list_directory',
+  'mterm_lsp_definition',
+  'mterm_lsp_references',
+  'mterm_lsp_symbols',
   'mterm_read_file',
+  'mterm_repo_map',
   'mterm_search_content',
   'mterm_search_files',
   'mterm_system_info',
+  'mterm_validate_syntax',
 ];
 
 function environment(home) {

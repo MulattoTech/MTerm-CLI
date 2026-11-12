@@ -1,0 +1,140 @@
+{
+  "change_id": "2026-11-12-modernization-reconciliation",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "started_at": "2026-11-12T16:59:32.489715+00:00",
+  "updated_at": "2026-11-12T17:18:39.549365+00:00",
+  "base_sha": "cbfd29039fe84cd163a86090c8bcbffaa2b40174",
+  "issues": [
+    248,
+    81
+  ],
+  "requirements": [
+    "CLI-195",
+    "CLI-266",
+    "CLI-267",
+    "CLI-269",
+    "CLI-287",
+    "CLI-288",
+    "CLI-296"
+  ],
+  "files": [
+    "src/intelligence/source-reader.ts",
+    "src/intelligence/repomap.ts",
+    "src/lsp/manager.ts",
+    "src/files.ts",
+    "src/mcp.ts",
+    "src/editing/syntax-validator.ts",
+    "src/quality/formatter.ts",
+    "src/orchestration/fleet-manager.ts",
+    "tests/modernization-boundaries.test.mjs",
+    "tests/compat-config-mcp.test.mjs",
+    "package.json",
+    "package-lock.json",
+    "npm-shrinkwrap.json",
+    "versions.json",
+    "THIRD_PARTY.md",
+    "scripts/verify-provenance-installed.mjs",
+    "scripts/verify-package.mjs",
+    "tests/git-no-lazy-fetch.test.mjs",
+    "tests/git-worktree-mcp.test.mjs",
+    "tests/codex-budget-registration.test.mjs",
+    "docs/plans/MODERNIZATION_STATUS.json",
+    "docs/status/MTERM_IMPLEMENTATION_STATUS.md"
+  ],
+  "decisions": [
+    "Integrate audited PR245 with current main and retain both histories; retain main ProcessService and Node24 pack boundary instead of enabling unqualified new paths.",
+    "Apply current request root policy and bounded reads to every navigation operation.",
+    "Keep logical fleet/router state local to a FileService and refuse cross-session task-ID adoption.",
+    "Reject unsupported syntax validation; preserve semantics during conservative formatting.",
+    "Do not expose compiler execution outside the guarded process runner.",
+    "Keep full requirement stages unchanged until complete acceptance evidence exists.",
+    "Pin Acorn 8.19.0 and its complete MIT license/source/integrity metadata; parse JS and stripped erasable TS in-process to reject regex and ESM early errors without launching a compiler."
+  ],
+  "tests": [
+    {
+      "command": "node --test tests/modernization-boundaries.test.mjs (initial seven cases)",
+      "result": "RED: 0/7 passed before source fixes; fixture output retained in development scratch."
+    },
+    {
+      "command": "node --test tests/repomap-lsp.test.mjs tests/modernization-audit-regressions.test.mjs tests/quality-pipeline.test.mjs tests/semantic-editor.test.mjs tests/ai-router.test.mjs tests/fleet-orchestration.test.mjs tests/modernization-boundaries.test.mjs",
+      "result": "GREEN: 35/35 focused tests passed at the first corrected source."
+    },
+    {
+      "command": "node --test tests/modernization-boundaries.test.mjs tests/compat-config-mcp.test.mjs",
+      "result": "GREEN: 16/16 including real MCP narrowing passed before the additional rollback regression."
+    },
+    {
+      "command": "node --test --test-name-pattern='rollback cancellation' tests/modernization-boundaries.test.mjs",
+      "result": "RED: cancellation during lookup reproduced mutation; corrected signal forwarding now under full-suite qualification."
+    },
+    {
+      "command": "node --test --test-name-pattern='syntax validation rejects|syntax validation accepts|early directory cleanup' tests/modernization-boundaries.test.mjs",
+      "result": "RED: four failing cases reproduced incomplete syntax parsing, CommonJS return handling and cancellation during reference/definition iterator closure before repair."
+    },
+    {
+      "command": "node --test tests/modernization-boundaries.test.mjs tests/compat-config-mcp.test.mjs tests/quality-pipeline.test.mjs tests/modernization-audit-regressions.test.mjs tests/semantic-editor.test.mjs",
+      "result": "GREEN: 42 passed; zero failed, skipped or cancelled."
+    },
+    {
+      "command": "node --test --test-concurrency=1 tests/git-no-lazy-fetch.test.mjs tests/git-worktree-mcp.test.mjs tests/codex-budget-registration.test.mjs",
+      "result": "GREEN: 29 passed after updating explicit read-only tool inventory expectations; all scope/side-effect assertions retained."
+    },
+    {
+      "command": "npm audit --omit=dev --json",
+      "result": "Registry reported zero known production dependency vulnerabilities on 2026-11-12; not a complete security proof."
+    },
+    {
+      "command": "npm run check (first integration run)",
+      "result": "PARTIAL, exit130 after interruption: 1251 passed and 46 failed test lines observed, comprising 19 outdated tool inventories (subsequently corrected and re-tested) and 27 Unix-socket EPERM isolation cases in this workspace. Not a passed full-suite gate. Hosted candidate and main qualification required."
+    },
+    {
+      "command": "Hosted candidate f3e9615: six-job CLI CI and independent immutable source review",
+      "result": "Independent source review approved conditionally with82/82 tests and separately verified Acorn archive/license. Fast CI passed. Linux/macOS/native-isolation installed-package phases failed the exact license allowlist because Acorn was omitted and package count remained4; corrected to reviewed Acorn MIT and5 packages. All license byte, integrity, footprint and runtime checks retained. Revised candidate qualification pending."
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "id": "CLI-195",
+      "stage_change": false,
+      "reason": "Scoped integration and negative regressions strengthen existing controls; full criterion and deployed acceptance are not established."
+    },
+    {
+      "id": "CLI-266",
+      "stage_change": false,
+      "reason": "Scoped integration and negative regressions strengthen existing controls; full criterion and deployed acceptance are not established."
+    },
+    {
+      "id": "CLI-267",
+      "stage_change": false,
+      "reason": "Scoped integration and negative regressions strengthen existing controls; full criterion and deployed acceptance are not established."
+    },
+    {
+      "id": "CLI-269",
+      "stage_change": false,
+      "reason": "Scoped integration and negative regressions strengthen existing controls; full criterion and deployed acceptance are not established."
+    },
+    {
+      "id": "CLI-287",
+      "stage_change": false,
+      "reason": "Scoped integration and negative regressions strengthen existing controls; full criterion and deployed acceptance are not established."
+    },
+    {
+      "id": "CLI-288",
+      "stage_change": false,
+      "reason": "Scoped integration and negative regressions strengthen existing controls; full criterion and deployed acceptance are not established."
+    },
+    {
+      "id": "CLI-296",
+      "stage_change": false,
+      "reason": "Scoped integration and negative regressions strengthen existing controls; full criterion and deployed acceptance are not established."
+    }
+  ],
+  "limitations": [
+    "No production deployment, canonical-only auth test, true LSP, cloud inference or real fleet execution.",
+    "Experimental Windows Job Object integration remains inactive pending ownership/lifecycle qualification.",
+    "Compiler execution remains unexposed pending shared process admission, resource budgets and cancellation.",
+    "Independent final review and full candidate/main hosted gates are pending."
+  ],
+  "checkpoint": "docs/engineering-runs/mterm-comprehensive-reconciliation-2026-11-12.md"
+}

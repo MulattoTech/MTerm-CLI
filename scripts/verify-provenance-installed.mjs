@@ -244,7 +244,7 @@ for (const [location, locked] of Object.entries(lock.packages)) {
     assert.equal(locked.integrity, reviewed.integrity);
   }
   const sdk = metadata.name.startsWith('@modelcontextprotocol/');
-  const id = own ? 'mterm' : sdk ? 'mcp-sdk' : 'zod';
+  const id = own ? 'mterm' : sdk ? 'mcp-sdk' : metadata.name;
   const license = await pin(prefix, location + '/LICENSE', own ? 'utf8-lf' : 'bytes');
   if (own) assert.equal(license.sha256, (await pin(repo, 'LICENSE', 'utf8-lf')).sha256);
   else assert.equal(license.sha256, reviewed.sourceLicenseSha256);
@@ -255,7 +255,7 @@ for (const [location, locked] of Object.entries(lock.packages)) {
         ? 'https://github.com/MulattoTech/MTerm-CLI'
         : sdk
           ? 'https://github.com/modelcontextprotocol/typescript-sdk'
-          : 'https://github.com/colinhacks/zod',
+          : reviewed.repository.url.replace(/^git\+/, '').replace(/\.git$/, ''),
       commit: own ? sourceCommit : reviewed.sourceCommit,
       version: sdk ? '2.3.0 with MTerm server 2.3.0-mterm.1 rebuild' : metadata.version,
       license: sdk ? 'Apache-2.0 AND MIT' : 'MIT',
@@ -288,11 +288,12 @@ assert.deepEqual(
   runtimeReport.blockers.map((x) => [x.code, x.source]),
   [['TRANSITIVE_REVIEW_PENDING', 'mcp-sdk']],
 );
-assert.equal(runtimeReport.dependencyClosure.packageCount, 4);
-assert.equal(runtimeReport.dependencyClosure.edgeCount, 5);
+assert.equal(runtimeReport.dependencyClosure.packageCount, 5);
+assert.equal(runtimeReport.dependencyClosure.edgeCount, 6);
 assert.deepEqual(runtimeReport.dependencyClosure.packages.map((p) => p.name).sort(), [
   '@modelcontextprotocol/core',
   '@modelcontextprotocol/server',
+  'acorn',
   'mterm-cli',
   'zod',
 ]);
@@ -307,8 +308,8 @@ console.log(
     fromOutsideCheckout: executionLocations.outsideCheckout,
     executionLocations,
     referenceFilesVerified: 7,
-    productionPackages: 4,
-    productionEdges: 5,
+    productionPackages: 5,
+    productionEdges: 6,
     productionRedistributionEligible: false,
     retainedBundledNotices: 9,
     reviewedSdkArtifactPins: bundledReview.serverArtifactPins.length,

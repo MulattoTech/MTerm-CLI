@@ -1515,3 +1515,8 @@ bin is tracked executable to avoid package/link mode drift. The later canonical-
 and final Windows, package, managed Codex and hosted matrix results are recorded
 above. See the foundation-portability change record for historical evidence and
 the final sprint report/PR for delivery status.
+
+
+## 2026-11-12 — comprehensive reconciliation in progress
+
+See [the current run record](engineering-runs/mterm-comprehensive-reconciliation-2026-11-12.md). Issue #248 integrates #245 on current main with new request-scope, file-bound, cancellation, session-isolation and formatting regressions. Compiler MCP execution and experimental Win32 attachment are inactive; original main process controls remain. No formal requirement acceptance or production deployment is claimed. Continue from the exact next action in that record.

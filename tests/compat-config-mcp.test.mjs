@@ -134,6 +134,31 @@ test('file-write permission never implies config mutation permission', async (t)
     false,
   );
 });
+
+test('real MCP navigation honors live narrowing and does not advertise unguarded compiler execution', async (t) => {
+  const f = await fixture(t, { exec: true });
+  for (const [index, root] of f.roots.entries()) {
+    await fs.writeFile(path.join(root, 'source.ts'), `export function marker${index}() {}\n`);
+  }
+  const a = await f.connect();
+  const names = (await a.client.listTools()).tools.map((tool) => tool.name);
+  assert.ok(names.includes('mterm_repo_map'));
+  assert.ok(!names.includes('mterm_typecheck'));
+  assert.equal(
+    (await a.call('set_config_value', { key: 'allowedDirectories', value: [f.roots[1]] })).isError,
+    false,
+  );
+  assert.equal((await a.call('mterm_repo_map')).isError, true);
+  assert.equal((await a.call('mterm_lsp_references', { symbol: 'marker0' })).isError, true);
+  assert.equal(
+    (await a.call('mterm_lsp_symbols', { path: path.join(f.roots[0], 'source.ts') })).isError,
+    true,
+  );
+  const result = await a.call('mterm_repo_map', { path: f.roots[1] });
+  assert.equal(result.isError, false);
+  assert.match(JSON.stringify(result), /marker1/);
+  assert.doesNotMatch(JSON.stringify(result), /marker0/);
+});
 test('compatibility configuration inside a root cannot be changed through file tools', async (t) => {
   const f = await fixture(t, { innerConfig: true }),
     a = await f.connect();

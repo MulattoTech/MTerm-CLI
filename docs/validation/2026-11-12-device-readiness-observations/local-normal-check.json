@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-12T21:47:39.817418+00:00",
+  "sourceBase": "da03dc5255976b1524b22796fffadb01e50a5149",
+  "commands": [
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "result": "PASS"
+    },
+    {
+      "command": "npm run check",
+      "exitCode": 1,
+      "result": "FAIL",
+      "tests": 1516,
+      "pass": 1477,
+      "fail": 27,
+      "skipped": 12,
+      "cancelled": 0,
+      "todo": 0,
+      "durationMs": 275590.079792,
+      "failureScope": "All 27 complete failure sections are tests/isolation.test.mjs listen EPERM Unix socket fixtures. Existing 12 Windows-only skips. The roadmap expansion-inputs test passed in this complete run."
+    }
+  ],
+  "sourceSha256": {
+    "gateway/registry.mjs": "9ffc114472f2a5f1394c90ee9b83033938f1bccf8c2a34ebd6db29d841f45caa",
+    "gateway/dashboard.mjs": "af9a1929c50febdd62be7c79364d39ba21bcd53d49c585c9a73cb8e5aa8e7781",
+    "tests/remote-device-readiness.test.mjs": "ac836425b5fdf7cf2263caa80d06afaa33712b8fa8b931731ee92bcc9a31b742",
+    "tests/remote-occupancy.test.mjs": "db0c76bd4272773c03937e00df393004b43dd89b2897cd2644de3e0a4b89ffaa"
+  },
+  "logs": [
+    {
+      "encoding": "gzip+base64",
+      "originalFile": "readiness-direct-build.log",
+      "bytes": 3460,
+      "sha256": "4edfa4f8c18cd50bec933bcff9337f2e1882d6793394418dc5b583d14c8a1840"
+    },
+    {
+      "encoding": "gzip+base64",
+      "originalFile": "readiness-direct-check.log",
+      "bytes": 753982,
+      "sha256": "71803a7a9e160e5a0aac04083c0892c8917547fed532b67336026cd92f022339"
+    }
+  ],
+  "limitations": [
+    "The earlier optional quick wrapper timed out after six minutes. Its partial roadmap failure remains a historical failure; isolated and subsequent complete normal run pass does not establish its original cause.",
+    "No local full-suite PASS or installed-package PASS is claimed. Hosted exact-candidate and actual-main gates remain mandatory.",
+    "No runtime assertion, product timeout or workflow has been relaxed."
+  ]
+}

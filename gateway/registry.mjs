@@ -6,6 +6,7 @@
 // Modified: 2026-11-09-oauth-expiry; recheck client token and grant expiry after authorization reads.
 // Modified: 2026-11-09-pairing-expiry; authorize final pairing decisions after asynchronous checks.
 // Modified: 2026-11-10-remote-occupancy; expose owner-filtered dashboard admission counts.
+// Modified: 2026-11-12-device-readiness-observations; separate poll/result evidence and final admission freshness.
 import {
   READ_TOOLS,
   WIRE_VERSION,
@@ -25,28 +26,60 @@ import {
 } from './security.mjs';
 const toolNames = new Set(READ_TOOLS.map((t) => t.name));
 const DEVICE_ADMISSION_LIMIT = 4;
+const POLL_FRESH_MS = 15000;
+const POLL_OFFLINE_MS = 45000;
 const now = () => Date.now();
 const uuid = (value) => typeof value === 'string' && UUID_PATTERN.test(value);
 const label = (value) =>
   typeof value === 'string' && value.length > 0 && value.length <= 80 && !/[\x00-\x1f\x7f]/.test(value);
-const cleanDevice = (d) => ({
-  id: d.id,
-  name: d.name,
-  platform: d.platform,
-  capabilities: d.capabilities,
-  permissions: 'read-only',
-  createdAt: d.createdAt,
-  lastSeen: d.lastSeen || null,
-  status: d.revokedAt
-    ? 'revoked'
-    : !d.lastSeen
-      ? 'offline'
-      : now() - d.lastSeen < 15000
-        ? 'online'
-        : now() - d.lastSeen < 45000
-          ? 'reconnecting'
-          : 'offline',
-});
+const recordedTime = (value, observedAt) =>
+  Number.isSafeInteger(value) && value >= 0 && value <= observedAt ? value : null;
+const recentPoll = (d, observedAt) => {
+  const lastSeen = recordedTime(d.lastSeen, observedAt);
+  return lastSeen !== null && observedAt - lastSeen < POLL_FRESH_MS;
+};
+const cleanDevice = (d, observedAt) => {
+  const lastSeen = recordedTime(d.lastSeen, observedAt);
+  const capacity = d.lastReportedCapacity;
+  const capacityAt = recordedTime(capacity?.at, observedAt);
+  const result = d.lastAcceptedResult;
+  const resultAt = recordedTime(result?.at, observedAt);
+  return {
+    id: d.id,
+    name: d.name,
+    platform: d.platform,
+    capabilities: d.capabilities,
+    permissions: 'read-only',
+    createdAt: d.createdAt,
+    lastSeen,
+    status: d.revokedAt
+      ? 'revoked'
+      : lastSeen === null
+        ? 'offline'
+        : observedAt - lastSeen < POLL_FRESH_MS
+          ? 'online'
+          : observedAt - lastSeen < POLL_OFFLINE_MS
+            ? 'reconnecting'
+            : 'offline',
+    observations: {
+      observedAt,
+      pollObservedAt: lastSeen,
+      lastReportedCapacity:
+        capacityAt !== null &&
+        capacityAt === lastSeen &&
+        (capacity.slots === null ||
+          (Number.isInteger(capacity.slots) && capacity.slots >= 0 && capacity.slots <= 4))
+          ? { at: capacityAt, slots: capacity.slots }
+          : null,
+      lastAcceptedResult:
+        resultAt !== null && ['success', 'error'].includes(result.outcome)
+          ? { at: resultAt, outcome: result.outcome }
+          : null,
+      // These are bounded agent/gateway observations, not an executor health check.
+      executorHealth: 'unknown',
+    },
+  };
+};
 const toolError = (code) => ({
   content: [
     {
@@ -544,7 +577,8 @@ export class MTermRegistry {
     }
     if (action === 'agentPoll') {
       requireValue(a.input.version === WIRE_VERSION);
-      const availableSlots = Object.hasOwn(a.input, 'availableSlots') ? a.input.availableSlots : 4;
+      const capacityReported = Object.hasOwn(a.input, 'availableSlots');
+      const availableSlots = capacityReported ? a.input.availableSlots : 4;
       requireValue(
         Number.isInteger(availableSlots) && availableSlots >= 0 && availableSlots <= 4,
         400,
@@ -553,6 +587,9 @@ export class MTermRegistry {
       const d = await this.device(a.token, a.input.deviceId);
       await this.rate('poll:' + d.id, 180);
       d.lastSeen = now();
+      // An offer precedes allocation in this reply; it is not current free capacity.
+      // A legacy omission clears any earlier explicit claim without changing delivery.
+      d.lastReportedCapacity = { at: d.lastSeen, slots: capacityReported ? availableSlots : null };
       await this.storage.put('device:' + d.id, d);
       const requests = [],
         cancelled = [];
@@ -621,6 +658,10 @@ export class MTermRegistry {
         'result_too_large',
       );
       await this.finish(job, 'complete', r);
+      // Only an accepted matching result supplies this historical observation.
+      // Do not refresh the poll timestamp or capacity, and never retain result data here.
+      d.lastAcceptedResult = { at: checkedAt, outcome: r.isError ? 'error' : 'success' };
+      await this.storage.put('device:' + d.id, d);
       return { accepted: true };
     }
     if (action === 'agentRevoke') {
@@ -630,7 +671,9 @@ export class MTermRegistry {
     }
     if (action === 'listDevices') {
       const t = await this.access(a.token);
-      return { devices: (await this.userDevices(t.userId)).map(cleanDevice) };
+      const devices = await this.userDevices(t.userId);
+      const observedAt = now();
+      return { devices: devices.map((d) => cleanDevice(d, observedAt)) };
     }
     if (action === 'enqueue') {
       const t = await this.access(a.token);
@@ -638,7 +681,7 @@ export class MTermRegistry {
       requireValue(toolNames.has(a.tool), 403, 'tool_disabled');
       const d = await this.ownedDevice(t.userId, a.deviceId);
       requireValue(d.capabilities.includes(a.tool), 403, 'tool_unavailable');
-      requireValue(d.lastSeen && now() - d.lastSeen < 15000, 409, 'device_offline');
+      requireValue(recentPoll(d, now()), 409, 'device_offline');
       const existing = await this.rows('job:', 256);
       requireValue(
         existing.length < 200 &&
@@ -650,9 +693,12 @@ export class MTermRegistry {
       );
       const rpcKey = 'active:' + t.tokenHash + ':' + (await sha256(JSON.stringify(a.rpcId)));
       const active = await this.storage.get(rpcKey);
-      requireValue(!active || active.expiresAt <= now(), 409, 'request_in_progress');
+      const checkedAt = now();
+      requireValue(!active || active.expiresAt <= checkedAt, 409, 'request_in_progress');
+      // Job/lease reads can cross the presence deadline. No admission write precedes this check.
+      requireValue(recentPoll(d, checkedAt), 409, 'device_offline');
       const requestId = crypto.randomUUID(),
-        deadline = now() + JOB_TIMEOUT_MS;
+        deadline = checkedAt + JOB_TIMEOUT_MS;
       const job = {
         requestId,
         deviceId: d.id,
@@ -715,7 +761,7 @@ export class MTermRegistry {
     }
     if (action === 'dashboard') {
       const userId = a.identity.userId;
-      const devices = (await this.userDevices(userId)).map(cleanDevice);
+      const deviceRecords = await this.userDevices(userId);
       const grants = (await this.userGrants(userId)).map((g) => ({
         id: g.id,
         clientId: g.clientId,
@@ -725,7 +771,7 @@ export class MTermRegistry {
       }));
       const jobs = await this.rows('job:', 256);
       const admissionByDevice = new Map(
-        devices.map((device) => [
+        deviceRecords.map((device) => [
           device.id,
           {
             limit: DEVICE_ADMISSION_LIMIT,
@@ -747,11 +793,10 @@ export class MTermRegistry {
         else if (job.status === 'delivered') admission.delivered++;
         else if (job.status === 'complete') admission.completedAwaitingConsumption++;
       }
-      for (const device of devices) {
+      for (const device of deviceRecords) {
         const admission = admissionByDevice.get(device.id);
         admission.occupied = admission.queued + admission.delivered + admission.completedAwaitingConsumption;
         admission.remaining = Math.max(0, admission.limit - admission.occupied);
-        device.registryAdmission = admission;
       }
       const sessions = jobs
         .filter((j) => j.userId === userId && ['queued', 'delivered'].includes(j.status))
@@ -763,6 +808,12 @@ export class MTermRegistry {
           status: j.status,
         }));
       const audit = (await this.rows('audit:' + userId + ':', 128)).reverse().map(({ expiresAt, ...e }) => e);
+      // Project one fresh time after all dashboard storage reads, not before them.
+      const observedAt = now();
+      const devices = deviceRecords.map((d) => ({
+        ...cleanDevice(d, observedAt),
+        registryAdmission: admissionByDevice.get(d.id),
+      }));
       return {
         authenticated: true,
         identityKind: a.identity.kind,

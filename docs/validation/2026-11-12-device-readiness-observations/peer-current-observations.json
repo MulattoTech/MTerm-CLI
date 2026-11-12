@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "sourceCommit": "ddbb14d8c4f066c48ce416ec25cbe5c14167949f",
+  "sourceTree": "2ee6ecc09206ca3f8e64edc34635b3820383e00b",
+  "scope": "Executed observations of unchanged source; these are not future-feature passing tests or production probes.",
+  "observations": [
+    {
+      "id": "zero-capacity-presence",
+      "registeredWithoutPoll": "offline",
+      "pollOffer": 0,
+      "returnedStatus": "online",
+      "inventoryHasReadiness": false,
+      "storedOffer": null,
+      "conclusion": "Presence survives busy/cleanup capacity zero; current online is not executor availability."
+    },
+    {
+      "id": "legacy-omitted-capacity",
+      "delivered": 4,
+      "hasActualReportedCapacity": false,
+      "conclusion": "The legacy delivery default must not become a reported four-slot readiness claim."
+    },
+    {
+      "id": "offer-consumed-in-same-poll",
+      "offered": 1,
+      "delivered": 1,
+      "unallocatedAtReply": 0,
+      "returnedStatus": "online",
+      "conclusion": "A future projection must distinguish original offer from slots already allocated in its reply."
+    },
+    {
+      "id": "stale-admission-after-job-list",
+      "initialAgeMs": 14999,
+      "finalAgeMs": 15000,
+      "enqueueStatus": 200,
+      "resultingPresence": "reconnecting",
+      "conclusion": "Current enqueue admits after crossing its freshness deadline during a storage await."
+    },
+    {
+      "id": "stale-admission-after-active-lookup",
+      "initialAgeMs": 14999,
+      "finalAgeMs": 15000,
+      "enqueueStatus": 200,
+      "resultingPresence": "reconnecting",
+      "conclusion": "Current enqueue admits after crossing its freshness deadline during a storage await."
+    },
+    {
+      "id": "stale-at-entry-control",
+      "ageMs": 15000,
+      "enqueueStatus": 409,
+      "error": "device_offline"
+    },
+    {
+      "id": "accepted-request-is-not-successful-roundtrip",
+      "agentStates": [
+        "connecting",
+        "reconnecting",
+        "stopped"
+      ],
+      "gatewayPresence": "online",
+      "conclusion": "Authenticated inbound poll can update online while the actual agent rejects the poll response."
+    }
+  ],
+  "externalNetworkCalls": 0,
+  "realCredentialsUsed": false,
+  "sourceModified": false
+}

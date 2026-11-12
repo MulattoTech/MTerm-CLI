@@ -1,0 +1,129 @@
+{
+  "change_id": "2026-11-12-device-readiness-observations",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "updated_at": "2026-11-12T21:50:17.567687+00:00",
+  "base_sha": "da03dc5255976b1524b22796fffadb01e50a5149",
+  "issues": [
+    58,
+    62
+  ],
+  "requirements": [
+    "CLI-200",
+    "CLI-206",
+    "CLI-286",
+    "CLI-287",
+    "CLI-291",
+    "CLI-299"
+  ],
+  "files": [
+    "gateway/registry.mjs",
+    "gateway/dashboard.mjs",
+    "tests/remote-device-readiness.test.mjs",
+    "tests/remote-occupancy.test.mjs",
+    "docs/REMOTE_MCP.md",
+    "docs/SECURITY.md",
+    "docs/HANDOFF.md",
+    "docs/capabilities/register.json"
+  ],
+  "decisions": [
+    "Add bounded owner-filtered observations for authenticated poll receipt, timestamped capacity offer and accepted result outcome. Preserve legacy device status and wire version 1; executor health remains unknown.",
+    "Do not label an offer as current free capacity or a poll as a completed round trip. Legacy omission stays unknown in the observation while retaining the existing four-request delivery default.",
+    "Recheck a valid nonnegative poll age at the final enqueue decision after asynchronous storage reads, before admission writes. Preserve explicit device targeting, limits, cancellation and queuing behavior.",
+    "Maintain the existing registry storage and serialized authorization boundaries. No new Durable Object class, migration, dependency or runtime deployment.",
+    "Preserve all original CLI300/DCP48/WEB12/AUG117 stages, weights and acceptance. Update evidence only and explicitly reconcile the progress-file evidence hash."
+  ],
+  "tests": [
+    {
+      "command": "Independent actual unchanged-source observations and freshness regression",
+      "result": "Seven unchanged-source observations; actual RED has four cases, two expected freshness failures and two passing controls. Original regressions later pass against frozen corrected source."
+    },
+    {
+      "command": "Ported original freshness tests before behavior changes",
+      "result": "Actual RED: 4 tests, 2 expected failures and 2 passing controls; no skips/cancellations/todos."
+    },
+    {
+      "command": "New observation and boundary tests before behavior changes",
+      "result": "Actual RED: 37 tests, 28 failures and 9 passing controls."
+    },
+    {
+      "command": "Actual served dashboard script and exact MCP whitelist before behavior changes",
+      "result": "Actual RED: 2 selected tests, both failed; no skipped tests counted as passing."
+    },
+    {
+      "command": "node --test tests/remote-device-readiness.test.mjs tests/remote-occupancy.test.mjs",
+      "result": "GREEN: 54/54, zero failures/cancellations/skips/todos. Forty readiness cases plus all fourteen existing occupancy groups; exact prior assertions retained with only the intentional additive observation whitelist and new UI assertions."
+    },
+    {
+      "command": "Hosted candidate and actual-main qualification",
+      "result": "Pending on this preparation tree. All six normal hosted jobs and installed-package/native gates remain required before merge and actual-main qualification."
+    },
+    {
+      "command": "Independent frozen source review",
+      "result": "APPROVE. Six suites118/118; original four regression cases4/4 with only import paths changed; five additional persistence/projection boundary tests5/5. The four regressions overlap product tests and are not counted as additional distinct cases. Receipt ca3209bd33a8bc99cd11fc447239947dacd2104bd6ec64557891bf04a939ef86."
+    },
+    {
+      "command": "node scripts/orchestration/verify.mjs --quick",
+      "result": "FAILED: normal-check subprocess hit the unchanged six-minute spawnSync timeout before completing the suite. Build/typecheck/format/roadmap/parity/capability steps passed. Partial log retains known socket-permission failures and an additional roadmap freshness test failure; no complete suite count or local PASS is claimed."
+    },
+    {
+      "command": "Focused investigation of the additional roadmap test failure",
+      "result": "The unchanged single test passed 1/1 in isolation and passed again in the complete normal check. The partial wrapper failure remains recorded; its original cause is not established."
+    },
+    {
+      "command": "npm run build",
+      "result": "PASS; ordinary reviewed build with capability, roadmap and parity gates, then TypeScript compilation and runtime assets."
+    },
+    {
+      "command": "npm run check",
+      "result": "FAILED with complete outcome: 1,516 tests; 1,477 pass, 27 fail, 12 existing Windows-only skips, zero cancellations/TODOs. All 27 failures are tests/isolation.test.mjs listen EPERM Unix socket fixtures. The additional roadmap test passes. Full 753,982-byte log retained losslessly; no local full-suite PASS is claimed."
+    },
+    {
+      "command": "Independent local failure diagnostic",
+      "result": "Wrapper timeout confirmed; original partial roadmap failure remains unattributed. Direct normal check counts and all 27 isolation listen EPERM sections independently verified. Receipt 62d81b3abcde8ccc4cf432c134d27517d3cd74035d29b2518fd117f745630808."
+    },
+    {
+      "command": "Independent prepublication documentation, metrics and evidence review",
+      "result": "APPROVE: exact four approved runtime/test hashes, all 300 progress objects with exactly six evidence-only rows, complete prior metric history, all 24 then-current manifest entries and 12 lossless wrappers, eight producer-matched prior-delivery receipts. Initial 46-file review 34e2e58fafcb386cc4ac4a56d408580b805bf42b35255e98076abc8e95d22819. Four reviewer-receipt files added afterward; final immutable-tree binding is separate."
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "id": "CLI-200",
+      "stage_change": false,
+      "reason": "Scoped gateway source observations and admission freshness do not complete the original cross-product acceptance requirement."
+    },
+    {
+      "id": "CLI-206",
+      "stage_change": false,
+      "reason": "Scoped gateway source observations and admission freshness do not complete the original cross-product acceptance requirement."
+    },
+    {
+      "id": "CLI-286",
+      "stage_change": false,
+      "reason": "Scoped gateway source observations and admission freshness do not complete the original cross-product acceptance requirement."
+    },
+    {
+      "id": "CLI-287",
+      "stage_change": false,
+      "reason": "Scoped gateway source observations and admission freshness do not complete the original cross-product acceptance requirement."
+    },
+    {
+      "id": "CLI-291",
+      "stage_change": false,
+      "reason": "Scoped gateway source observations and admission freshness do not complete the original cross-product acceptance requirement."
+    },
+    {
+      "id": "CLI-299",
+      "stage_change": false,
+      "reason": "Scoped gateway source observations and admission freshness do not complete the original cross-product acceptance requirement."
+    }
+  ],
+  "limitations": [
+    "No current executor health verification, installed agent version/update telemetry or new protocol handshake.",
+    "No production or staging deployment, real device probe, authenticated human-client UI test, model call or whole-feature acceptance.",
+    "Endpoint PR258 actual main da03dc5255976b1524b22796fffadb01e50a5149 passed all six fresh checks. This qualifies the preceding source baseline, not the unmerged readiness changes."
+  ],
+  "evidence": "docs/validation/2026-11-12-device-readiness-observations/evidence-manifest.json",
+  "checkpoint": "docs/engineering-runs/mterm-comprehensive-reconciliation-2026-11-12.md"
+}

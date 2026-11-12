@@ -1,0 +1,335 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root/readiness_delivery_review",
+  "observedAt": "2026-11-12T21:49:44.153236+00:00",
+  "verdict": "APPROVE_DELIVERY_RECORDS_PENDING_FINAL_COMMIT_AND_REMOTE_BINDING",
+  "base": "da03dc5255976b1524b22796fffadb01e50a5149",
+  "baseTree": "2ee6ecc09206ca3f8e64edc34635b3820383e00b",
+  "scope": "Independent source-binding, documentation, progress and evidence-integrity review; prior independent runtime review is preserved and its four source hashes were reverified. Not a new full runtime suite or exhaustive security scan.",
+  "findings": [],
+  "verified": [
+    "All four source/test files exactly match frozen runtime review ca3209bd33a8bc99cd11fc447239947dacd2104bd6ec64557891bf04a939ef86.",
+    "All300 original progress rows and top-level metadata preserved; only six notes/evidence/reviewer deltas. Original notes and evidence lists remain exact prefixes.",
+    "Original acceptance, stage, weight, estimates, blockers, platform credit and separate CLI/DCP/WEB/AUG catalogs remain unchanged.",
+    "Capability register changes only metricBaselineEvidence, whose historicalBaseline equals the complete previous object; current progress SHA256 is exact.",
+    "All24 manifest entries and12 raw wrappers match byte counts/hashes; base64 and gzip decoding reproduce original bytes.",
+    "The complete normal check failure is accurately labeled:1516tests1477pass27fail12skip0cancel0todo, all27 failure sections are unchanged isolation listen EPERM cases.",
+    "The earlier optional-wrapper timeout/roadmap failure is retained. Isolated and complete-run later passes do not prove its original cause.",
+    "Docs separate authenticated poll receipt, possibly consumed capacity offers and past agent-reported outcomes from unknown current executor health; explicit-target and post-read admission-freshness scope is accurate.",
+    "Docs retain old-row/wire-v1 compatibility, fixed outcomes/whitelists, conservative metadata on persistence failure, and no new atomicity/deployment/real-Workers/browser/whole-feature claims.",
+    "Eight previous-cycle receipt files byte-match producer files; no trailing whitespace in the46 current changed/new files.",
+    "Existing package/workflow/dependency files remain exact baseline. Only two runtime and two test files differ outside docs."
+  ],
+  "records": {
+    "structural-review.json": {
+      "recordedAt": "2026-11-12T21:48:28.618302+00:00",
+      "base": "da03dc5255976b1524b22796fffadb01e50a5149",
+      "progressRows": 300,
+      "progressChanges": [
+        {
+          "id": "CLI-200",
+          "fields": [
+            "evidence",
+            "notes",
+            "reviewer"
+          ]
+        },
+        {
+          "id": "CLI-206",
+          "fields": [
+            "evidence",
+            "notes",
+            "reviewer"
+          ]
+        },
+        {
+          "id": "CLI-286",
+          "fields": [
+            "evidence",
+            "notes",
+            "reviewer"
+          ]
+        },
+        {
+          "id": "CLI-287",
+          "fields": [
+            "evidence",
+            "notes",
+            "reviewer"
+          ]
+        },
+        {
+          "id": "CLI-291",
+          "fields": [
+            "evidence",
+            "notes",
+            "reviewer"
+          ]
+        },
+        {
+          "id": "CLI-299",
+          "fields": [
+            "evidence",
+            "notes",
+            "reviewer"
+          ]
+        }
+      ],
+      "progressTopLevelUnchanged": true,
+      "registerChangedTopLevelKeys": [
+        "metricBaselineEvidence"
+      ],
+      "registerHistoricalBaselinePreserved": true,
+      "sourceFiles": [
+        {
+          "path": "gateway/dashboard.mjs",
+          "bytes": 16243,
+          "sha256": "af9a1929c50febdd62be7c79364d39ba21bcd53d49c585c9a73cb8e5aa8e7781",
+          "gitBlob": "ceacc028b9df8806cafd0e6f695de981f858123c",
+          "mode": "100644"
+        },
+        {
+          "path": "gateway/registry.mjs",
+          "bytes": 35160,
+          "sha256": "9ffc114472f2a5f1394c90ee9b83033938f1bccf8c2a34ebd6db29d841f45caa",
+          "gitBlob": "aa71e61f20fde8483d377f434b6ef69226bea924",
+          "mode": "100644"
+        },
+        {
+          "path": "tests/remote-device-readiness.test.mjs",
+          "bytes": 21084,
+          "sha256": "ac836425b5fdf7cf2263caa80d06afaa33712b8fa8b931731ee92bcc9a31b742",
+          "gitBlob": "f41af2ccd489970d63cab4d42cf2ebb33937ffd1",
+          "mode": "100644"
+        },
+        {
+          "path": "tests/remote-occupancy.test.mjs",
+          "bytes": 47988,
+          "sha256": "db0c76bd4272773c03937e00df393004b43dd89b2897cd2644de3e0a4b89ffaa",
+          "gitBlob": "27d7c5719e808c6743d3890359b130765454763b",
+          "mode": "100644"
+        }
+      ],
+      "validationManifestEntries": 24,
+      "wrapperChecks": [
+        {
+          "path": "peer-focused-existing-green.tap.json",
+          "rawBytes": 237144,
+          "rawSha256": "14ff03b2f6e3cd12136ec0b9d3626853d365ba60192184d3afa4adf2f4307028",
+          "summary": {
+            "tests": 118,
+            "pass": 118,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          }
+        },
+        {
+          "path": "peer-freshness-red.tap.json",
+          "rawBytes": 2316,
+          "rawSha256": "9cbe02a065741ba22ec47954f0031e968df5cda6c10e164031a06613db56d185",
+          "summary": {
+            "tests": 4,
+            "pass": 2,
+            "fail": 2,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          }
+        },
+        {
+          "path": "peer-independent-boundaries-green.tap.json",
+          "rawBytes": 1410,
+          "rawSha256": "5f4326ff29b3ecdf12d61738f74909fba4f500ba51cf17b39794486bec87654a",
+          "summary": {
+            "tests": 5,
+            "pass": 5,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          }
+        },
+        {
+          "path": "peer-original-freshness-green.tap.json",
+          "rawBytes": 1007,
+          "rawSha256": "786224f7e8d031a4cc45d0af71917ecb8eaa336ef3ce1bf3f295322cc9c6eb8a",
+          "summary": {
+            "tests": 4,
+            "pass": 4,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          }
+        },
+        {
+          "path": "readiness-dashboard-red.tap.json",
+          "rawBytes": 17756,
+          "rawSha256": "e2d367a2c77dc4f0384a988d1126fb0f24a6bde5930aced162ea9cca1e7ac18a",
+          "summary": {
+            "tests": 2,
+            "pass": 0,
+            "fail": 2,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          }
+        },
+        {
+          "path": "readiness-direct-build.log.json",
+          "rawBytes": 3460,
+          "rawSha256": "4edfa4f8c18cd50bec933bcff9337f2e1882d6793394418dc5b583d14c8a1840",
+          "summary": {}
+        },
+        {
+          "path": "readiness-direct-check.log.json",
+          "rawBytes": 753982,
+          "rawSha256": "71803a7a9e160e5a0aac04083c0892c8917547fed532b67336026cd92f022339",
+          "summary": {}
+        },
+        {
+          "path": "readiness-focused-green.tap.json",
+          "rawBytes": 221761,
+          "rawSha256": "a328b7bbda7506bff9fcfd34b97efd61903962c38ec9710f603237f6cf24955d",
+          "summary": {
+            "tests": 54,
+            "pass": 54,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          }
+        },
+        {
+          "path": "readiness-freshness-red.tap.json",
+          "rawBytes": 2276,
+          "rawSha256": "6903cd390b06b9656b2c636c6c6d8c27884867f9698a131d96a2f91feccdf3ea",
+          "summary": {
+            "tests": 4,
+            "pass": 2,
+            "fail": 2,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          }
+        },
+        {
+          "path": "readiness-normal-quick.log.json",
+          "rawBytes": 707691,
+          "rawSha256": "f40381bd489b21b284bdf1664a45b791cf06ce4a13342a8dbb6de3aaa68ffc3a",
+          "summary": {}
+        },
+        {
+          "path": "readiness-observations-red.tap.json",
+          "rawBytes": 27507,
+          "rawSha256": "f0d5f2a2ff4cacf34f47a5779fc73ce35f3ca044ff55198664ff6f0b8afed25f",
+          "summary": {
+            "tests": 37,
+            "pass": 9,
+            "fail": 28,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          }
+        },
+        {
+          "path": "readiness-roadmap-investigation.tap.json",
+          "rawBytes": 375,
+          "rawSha256": "777477946177793725930610c8d087e0dc12c6cfcd02b5145119df36a5e2e7f1",
+          "summary": {
+            "tests": 1,
+            "pass": 1,
+            "fail": 0,
+            "cancelled": 0,
+            "skipped": 0,
+            "todo": 0
+          }
+        }
+      ],
+      "localCheck": {
+        "command": "npm run check",
+        "exitCode": 1,
+        "result": "FAIL",
+        "tests": 1516,
+        "pass": 1477,
+        "fail": 27,
+        "skipped": 12,
+        "cancelled": 0,
+        "todo": 0,
+        "durationMs": 275590.079792,
+        "failureScope": "All 27 complete failure sections are tests/isolation.test.mjs listen EPERM Unix socket fixtures. Existing 12 Windows-only skips. The roadmap expansion-inputs test passed in this complete run."
+      }
+    },
+    "delivery-evidence-review.json": {
+      "fileCount": 46,
+      "trailingWhitespace": [],
+      "producerReceipts": [
+        {
+          "path": "docs/engineering-runs/evidence/peer-access-main-ff31efca-receipt.json",
+          "bytes": 43147,
+          "sha256": "a6596c51fec5a8ed790a74ea1a77e95b976dd75fcac4396da895033cad094b88",
+          "matchesProducer": true
+        },
+        {
+          "path": "docs/engineering-runs/evidence/peer-access-main-ff31efca-receipt.md",
+          "bytes": 3013,
+          "sha256": "48ed8f8c218f6f9ec358446be9b2619b42b8137b6f5892ad5b2daa6e887af3b3",
+          "matchesProducer": true
+        },
+        {
+          "path": "docs/engineering-runs/evidence/peer-access28-f422b4d0-receipt.json",
+          "bytes": 42245,
+          "sha256": "c362b9217b024c3895540aa49b547efa4edc67557160a34fb8c8df230f146826",
+          "matchesProducer": true
+        },
+        {
+          "path": "docs/engineering-runs/evidence/peer-access28-f422b4d0-receipt.md",
+          "bytes": 3002,
+          "sha256": "87e4a6f22df916e591cd5db64a3de8955d9aefc617451697720ff81933dd5bae",
+          "matchesProducer": true
+        },
+        {
+          "path": "docs/engineering-runs/evidence/peer-mterm-main-da03dc52-receipt.json",
+          "bytes": 291849,
+          "sha256": "f65f4b6320984a752641047d999fcb95b9500416cc011b45395658d9b7d9dcee",
+          "matchesProducer": true
+        },
+        {
+          "path": "docs/engineering-runs/evidence/peer-mterm-main-da03dc52-receipt.md",
+          "bytes": 4027,
+          "sha256": "87633f2fe4119351b962dd2c4a6598bc568b4444acccf0cff25fa3afe1904a44",
+          "matchesProducer": true
+        },
+        {
+          "path": "docs/engineering-runs/evidence/peer-mterm258-01c0fc0d-receipt.json",
+          "bytes": 290285,
+          "sha256": "97d356981e264a4d1905019f1c9409ef2d91a448eeb2947d12556b9c2b824dab",
+          "matchesProducer": true
+        },
+        {
+          "path": "docs/engineering-runs/evidence/peer-mterm258-01c0fc0d-receipt.md",
+          "bytes": 4163,
+          "sha256": "19cb6e0826ff5f8983186e31bdc9b9168a86e1264f0b31e9d1c88752b519f64f",
+          "matchesProducer": true
+        }
+      ],
+      "completeNormalCheckFailureSections": 27,
+      "allFailureSectionsUnchangedIsolationListenEperm": true,
+      "noSourcePackageDependencyWorkflowDeltaOutsideApprovedFourFiles": true
+    }
+  },
+  "actions": {
+    "sourceMutation": false,
+    "githubMutation": false,
+    "newRuntimeTestsRun": false,
+    "productionContact": false,
+    "modelCalls": 0
+  },
+  "remaining": [
+    "Bind the final explicitly reviewed local commit/tree and any intervening documentation delta.",
+    "Independently inspect the complete published remote Git tree and exact parent/source identities.",
+    "Require all six hosted candidate checks, normal expected-head merge and fresh actual-main qualification; this review does not establish those outcomes."
+  ]
+}

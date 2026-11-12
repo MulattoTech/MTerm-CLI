@@ -481,8 +481,9 @@ slots do not promise admission or report the agent's transient `availableSlots` 
 Authorization, capabilities, device presence, shared retained-job capacity and rate
 checks continue to apply. Counters aggregate the authenticated owner's grants and
 filter both owner and returned device IDs. Existing sessions retain their original
-owner plus queued/delivered predicate and projection; public MCP device fields and
-shared device cleaning remain unchanged. Device-card values use text nodes.
+owner plus queued/delivered predicate and projection. The later device-observation
+slice adds only the bounded object documented below to the existing public MCP
+device fields; `registryAdmission` stays dashboard-only. Device-card values use text nodes.
 
 The counters and sessions share the existing job snapshot. A dashboard read does not
 consume a result or add a job transition; existing expired-row pruning and alarm
@@ -491,6 +492,32 @@ through expired rows. The [dated source evidence](validation/2026-11-10-remote-o
 distinguishes authenticated in-memory fixtures and the actual served-script DOM
 adapter from real Durable Object storage, browser/accessibility, load and deployment
 qualification. Issue241 adds no such operational acceptance.
+
+The device-observation slice under issues58/62 records an authenticated inbound
+poll, its explicitly offered capacity, and the time/outcome of an accepted agent
+result. These are separate observations, not a health attestation or a completed
+round-trip claim. `executorHealth` remains `unknown`. Legacy capacity omission
+overwrites any older explicit offer with `null` while preserving four-request
+delivery compatibility. An offer can be allocated in the same poll response and
+must never be presented as current free capacity. A result does not refresh the
+poll timestamp or offer.
+
+Projection uses an exact whitelist: safe nonfuture timestamps, capacity0..4/null,
+and the two fixed result outcomes. It excludes device credentials, token hashes,
+job/request IDs, arguments, result bodies, private paths and arbitrary error text.
+An accepted result is agent-reported historical execution evidence; it cannot
+establish that an agent is honest or currently healthy. Its observation is written
+after successful result completion; an interrupted metadata write can leave older
+or absent evidence, and no new atomic-completion guarantee is claimed.
+
+The final admission decision requires a valid poll age in `[0, 15000)` milliseconds
+after all asynchronous job/lease reads, before the first admission write. The early
+check remains as a fast refusal. Negative and future timestamps cannot pass by
+coercion. Dashboard presence is projected at one fresh time after its storage reads.
+An explicit stale target is refused rather than silently replaced by a fresh device.
+No authentication scope, agent wire version, queue limit or existing cancellation
+policy changes in this slice. The existing serialized Durable Object boundary and
+storage API remain intact; no new namespace, migration or deployment is performed.
 
 Registration, pairing, refresh and tool submission have additional bounded admission/rate
 checks. The single shared staging registry and polling design are not a production scale

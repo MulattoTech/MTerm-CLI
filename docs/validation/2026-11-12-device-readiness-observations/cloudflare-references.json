@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "retrievedAt": "2026-11-12T21:31:48.088926+00:00",
+  "sources": [
+    {
+      "url": "https://developers.cloudflare.com/durable-objects/api/state/",
+      "updated": "2026-09-30",
+      "relevance": "blockConcurrencyWhile orders events and has a 30-second timeout; retain the existing serialized private registry boundary rather than mixing an authorization fix with a coordination refactor."
+    },
+    {
+      "url": "https://developers.cloudflare.com/durable-objects/api/legacy-kv-storage-api/",
+      "updated": "2026-04-21",
+      "relevance": "Async KV APIs and storage gates are also available on SQLite-backed classes. Maintain the existing API/backend; new result-observation metadata is not claimed as a new atomic completion transaction."
+    },
+    {
+      "url": "https://developers.cloudflare.com/durable-objects/examples/testing-with-durable-objects/",
+      "updated": "2026-10-12",
+      "relevance": "Cloudflare runtime tests use its Vitest integration. This repository instead retains its existing Node synthetic-storage suite; no real Workers storage/runtime claim follows from those tests."
+    }
+  ],
+  "decisions": [
+    "No namespace, backend, class, migration, binding, permission or dependency changes.",
+    "Keep Node test infrastructure and label synthetic storage, controlled-clock and DOM-adapter scope honestly.",
+    "Fresh clock decisions after asynchronous reads are required even when concurrent events are serialized."
+  ]
+}

@@ -1,0 +1,315 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-12T21:49:43.419776+00:00",
+  "verdict": "WRAPPER_TIMEOUT_CONFIRMED_ROADMAP_FAILURE_UNATTRIBUTED",
+  "reviewer": "/root/main_qualification",
+  "independentSourceOnlyReviewer": "/root/main_qualification/native_main_da03_review",
+  "repository": "MulattoTech/MTerm-CLI",
+  "worktree": "/workspace/scratch/a92a3aacdca1/MTerm-CLI-Readiness",
+  "observedLocalHead": "1de652e05405968f012d17119ade1e2c73b06ba5",
+  "qualifiedMainBaseline": "da03dc5255976b1524b22796fffadb01e50a5149",
+  "inputs": [
+    {
+      "original": "/workspace/scratch/a92a3aacdca1/readiness-normal-quick.log",
+      "snapshot": "/workspace/scratch/a92a3aacdca1/peer-readiness-quick-diagnostic-20261112/readiness-normal-quick.log",
+      "bytes": 707691,
+      "sha256": "f40381bd489b21b284bdf1664a45b791cf06ce4a13342a8dbb6de3aaa68ffc3a"
+    },
+    {
+      "original": "/workspace/scratch/a92a3aacdca1/readiness-roadmap-investigation.tap",
+      "snapshot": "/workspace/scratch/a92a3aacdca1/peer-readiness-quick-diagnostic-20261112/readiness-roadmap-investigation.tap",
+      "bytes": 375,
+      "sha256": "777477946177793725930610c8d087e0dc12c6cfcd02b5145119df36a5e2e7f1"
+    },
+    {
+      "original": "/workspace/scratch/a92a3aacdca1/readiness-direct-check.log",
+      "snapshot": "/workspace/scratch/a92a3aacdca1/peer-readiness-quick-diagnostic-20261112/readiness-direct-check.log",
+      "bytes": 753982,
+      "sha256": "71803a7a9e160e5a0aac04083c0892c8917547fed532b67336026cd92f022339"
+    }
+  ],
+  "sourceBindings": [
+    {
+      "path": "tests/roadmap.test.mjs",
+      "snapshot": "/workspace/scratch/a92a3aacdca1/peer-readiness-quick-diagnostic-20261112/source/tests/roadmap.test.mjs",
+      "bytes": 7817,
+      "sha256": "16f8640897aaef65806df6e6aa90b5b3ee10c49d77281be190307d92548c81b8",
+      "equalsObservedHead": true,
+      "equalsQualifiedMainDa03": true
+    },
+    {
+      "path": "scripts/roadmap.mjs",
+      "snapshot": "/workspace/scratch/a92a3aacdca1/peer-readiness-quick-diagnostic-20261112/source/scripts/roadmap.mjs",
+      "bytes": 15433,
+      "sha256": "ca0fe5cde3a8278ca62391ee7daef5e1f23d9ebc2a9f3fab54cdb4b965d03672",
+      "equalsObservedHead": true,
+      "equalsQualifiedMainDa03": true
+    },
+    {
+      "path": "scripts/expansion-matrix.mjs",
+      "snapshot": "/workspace/scratch/a92a3aacdca1/peer-readiness-quick-diagnostic-20261112/source/scripts/expansion-matrix.mjs",
+      "bytes": 33359,
+      "sha256": "0c1869f91480c633e56ec1b37b2fede5010f562d199d66910a88ee6ce381004c",
+      "equalsObservedHead": true,
+      "equalsQualifiedMainDa03": true
+    },
+    {
+      "path": "scripts/review-source.mjs",
+      "snapshot": "/workspace/scratch/a92a3aacdca1/peer-readiness-quick-diagnostic-20261112/source/scripts/review-source.mjs",
+      "bytes": 9179,
+      "sha256": "9e6286c41ef0da4e8725513c0014deb8601aa7b582165873a3c7f5f929f70f44",
+      "equalsObservedHead": true,
+      "equalsQualifiedMainDa03": true
+    },
+    {
+      "path": "scripts/orchestration/verify.mjs",
+      "snapshot": "/workspace/scratch/a92a3aacdca1/peer-readiness-quick-diagnostic-20261112/source/scripts/orchestration/verify.mjs",
+      "bytes": 3165,
+      "sha256": "385eb3d3f0642da17d1dc6f9d57d854bed5b8901e2096520da860b317ff9f350",
+      "equalsObservedHead": true,
+      "equalsQualifiedMainDa03": true
+    },
+    {
+      "path": "package.json",
+      "snapshot": "/workspace/scratch/a92a3aacdca1/peer-readiness-quick-diagnostic-20261112/source/package.json",
+      "bytes": 1865,
+      "sha256": "7df8054332c8f992295404ee58744c3c1a04c58d86a2f996f11e4d861c65fad1",
+      "equalsObservedHead": true,
+      "equalsQualifiedMainDa03": true
+    }
+  ],
+  "quickWrapper": {
+    "outcome": "failed and incomplete",
+    "normalAcceptanceTimeoutMs": 360000,
+    "observedError": "normal acceptance tests failed: spawnSync node ETIMEDOUT",
+    "sourceMechanism": "scripts/orchestration/verify.mjs:41-45,84-92 passes the six-minute budget to spawnSync for npm run check and throws on result.error",
+    "suiteSummaryPresent": false,
+    "failedTestMarkers": [
+      {
+        "name": "synthetic Engine success captures immediate stdout/stderr and removes the exact owned container",
+        "durationMs": 4.312769
+      },
+      {
+        "name": "synthetic Engine creation has no host mounts, inherited env, logs, shell interpolation or privilege expansion",
+        "durationMs": 3.742419
+      },
+      {
+        "name": "synthetic Engine request cannot select image, endpoint, mounts, environment or exceed owner ceilings",
+        "durationMs": 1.880871
+      },
+      {
+        "name": "synthetic Engine rejects unqualified cgroup drivers before create and start",
+        "durationMs": 2.196331
+      },
+      {
+        "name": "synthetic Engine rejects image volumes and stale/unqualified backends before create",
+        "durationMs": 2.316569
+      },
+      {
+        "name": "synthetic Engine permission and malformed/oversized JSON failures remain sanitized",
+        "durationMs": 2.313184
+      },
+      {
+        "name": "synthetic Engine verifies effective profile and create warnings before any start",
+        "durationMs": 2.454035
+      },
+      {
+        "name": "synthetic Engine split multiplex frames and upgrade-head bytes preserve UTF-8 output",
+        "durationMs": 2.060777
+      },
+      {
+        "name": "synthetic Engine clean pre-start EOF is a denial and never starts a container",
+        "durationMs": 2.925985
+      },
+      {
+        "name": "synthetic Engine invalid upgrade-head frame is latched before container start",
+        "durationMs": 2.336851
+      },
+      {
+        "name": "synthetic Engine malformed frame, truncation and output flood fail closed and remove ownership",
+        "durationMs": 2.309471
+      },
+      {
+        "name": "synthetic Engine pre-abort and cancellation after create never start denied work",
+        "durationMs": 2.17263
+      },
+      {
+        "name": "synthetic Engine timeout and cancellation run independent confirmed cleanup",
+        "durationMs": 2.07848
+      },
+      {
+        "name": "synthetic Engine deadline before admission never creates a container",
+        "durationMs": 1.856548
+      },
+      {
+        "name": "synthetic Engine writes bounded ownership before create without code or output",
+        "durationMs": 2.956977
+      },
+      {
+        "name": "ownership journal completes a real partial filesystem write before create",
+        "durationMs": 2.33638
+      },
+      {
+        "name": "ownership journal refuses zero-progress writes before any container creation",
+        "durationMs": 2.154095
+      },
+      {
+        "name": "synthetic Engine lost create response is reconciled by the original name without duplicate work",
+        "durationMs": 1.767964
+      },
+      {
+        "name": "synthetic Engine ambiguous create plus immediate 404 retains quarantine and its shared lease",
+        "durationMs": 1.619666
+      },
+      {
+        "name": "synthetic Engine lost start response removes only confirmed owned identity",
+        "durationMs": 1.399239
+      },
+      {
+        "name": "synthetic Engine changed cgroup driver blocks new admission without blocking owned cleanup",
+        "durationMs": 1.726078
+      },
+      {
+        "name": "synthetic Engine cleanup denial quarantines accounting and recovery is explicit and owned",
+        "durationMs": 1.575317
+      },
+      {
+        "name": "synthetic Engine daemon or owner-label mismatch never deletes an unrelated container",
+        "durationMs": 2.002416
+      },
+      {
+        "name": "synthetic Engine replacement during cleanup absence cannot release original ownership",
+        "durationMs": 1.906937
+      },
+      {
+        "name": "isolated leases and actual native children share the owner active-job ceiling",
+        "durationMs": 1.922999
+      },
+      {
+        "name": "isolation status is local and bounded while active jobs retain output/runtime owner ceilings",
+        "durationMs": 1.474741
+      },
+      {
+        "name": "actual SDK isolated-only grant is independent and unsupported client platforms fail before daemon contact",
+        "durationMs": 1.477969
+      },
+      {
+        "name": "all expansion inputs invalidate reviewed metrics while report generation awards no approval",
+        "durationMs": 7088.775721
+      }
+    ],
+    "failedMarkerCount": 28,
+    "roadmapExceptionDetailsPresent": false,
+    "historicalRoadmapCause": "undetermined"
+  },
+  "isolatedRoadmap": {
+    "test": "all expansion inputs invalidate reviewed metrics while report generation awards no approval",
+    "tests": 1,
+    "pass": 1,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0,
+    "testDurationMs": 1108.306316
+  },
+  "completedDirectCheck": {
+    "outcome": "failed",
+    "exitCodeReportedByParent": 1,
+    "summary": {
+      "tests": 1516,
+      "suites": 0,
+      "pass": 1477,
+      "fail": 27,
+      "cancelled": 0,
+      "skipped": 12,
+      "todo": 0,
+      "duration_ms": 275590.079792
+    },
+    "allFailureSectionsAreIsolationListenEperm": true,
+    "failureSectionCount": 27,
+    "failureLocations": [
+      "tests/isolation.test.mjs:313:1",
+      "tests/isolation.test.mjs:331:1",
+      "tests/isolation.test.mjs:367:1",
+      "tests/isolation.test.mjs:383:1",
+      "tests/isolation.test.mjs:409:1",
+      "tests/isolation.test.mjs:452:1",
+      "tests/isolation.test.mjs:472:1",
+      "tests/isolation.test.mjs:520:1",
+      "tests/isolation.test.mjs:553:1",
+      "tests/isolation.test.mjs:574:1",
+      "tests/isolation.test.mjs:591:1",
+      "tests/isolation.test.mjs:614:1",
+      "tests/isolation.test.mjs:669:1",
+      "tests/isolation.test.mjs:708:1",
+      "tests/isolation.test.mjs:738:1",
+      "tests/isolation.test.mjs:760:1",
+      "tests/isolation.test.mjs:791:1",
+      "tests/isolation.test.mjs:804:1",
+      "tests/isolation.test.mjs:813:1",
+      "tests/isolation.test.mjs:831:1",
+      "tests/isolation.test.mjs:839:1",
+      "tests/isolation.test.mjs:859:1",
+      "tests/isolation.test.mjs:874:1",
+      "tests/isolation.test.mjs:895:1",
+      "tests/isolation.test.mjs:913:1",
+      "tests/isolation.test.mjs:928:1",
+      "tests/isolation.test.mjs:962:1"
+    ],
+    "socketError": "listen EPERM on owned temporary engine.sock",
+    "quickIsolationFailureNamesExactlyMatchDirectCheck": true,
+    "roadmapPassed": true,
+    "roadmapDurationMs": 630.781459
+  },
+  "sourceAnalysis": {
+    "testHasExplicitTimeout": false,
+    "testSpawnsSubprocess": false,
+    "successfulPathReviewRenderCheckOperations": 18,
+    "matrixDefaultDeadlineMsPerInspection": 3000,
+    "matrixClock": "performance.now()",
+    "matrixDeadlineType": "cooperative checkpoint deadline; not an interrupt of outstanding filesystem I/O",
+    "matrixDeadlineError": {
+      "class": "MatrixError",
+      "code": "DEADLINE",
+      "message": "Evidence inspection deadline reached"
+    },
+    "matrixBudgetCreatedPerCall": true,
+    "matrixErrorCanPrecedeStaleReviewAssertion": true,
+    "sourceFingerprintElapsedDeadlineOnThisCallPath": false,
+    "otherPossibleFailureClasses": [
+      "fixture setup/cleanup or filesystem access/identity failure",
+      "ledger/evidence validation failure",
+      "generated-output mismatch",
+      "final sourceFiles membership assertion failure"
+    ],
+    "historicalDeadlineOccurrenceProved": false,
+    "loadAttributionProved": false,
+    "totalTestDurationIdentifiesSpecificFailure": false
+  },
+  "conclusion": "The wrapper timeout has a concrete retained cause. The separate roadmap subtest failure lacks its error/stack, so its cause cannot be established from the retained evidence. A three-second per-inspection deadline is a real source mechanism, not a proved historical cause. Isolated and normal-check passes are separate successful observations and do not erase the earlier failure or make either complete local gate pass.",
+  "reviewerActions": {
+    "sourceMutation": false,
+    "githubMutation": false,
+    "testExecution": false,
+    "assertionChanges": false,
+    "rootOwnedSessionInteraction": false,
+    "productionAction": false,
+    "modelCalls": 0,
+    "ownedScratchEvidenceCopies": true
+  },
+  "qualificationPreparation": {
+    "exactRemoteCandidateProvided": false,
+    "candidateQualificationClaimed": false,
+    "requiredFreshJobs": 6,
+    "expectedSourceTests": 1516,
+    "expectedWindowsPass": 1516,
+    "expectedOtherSourcePass": 1504,
+    "expectedOtherSourceSkips": 12,
+    "expectedInstalledEndpointTestsPerPackageLane": 81,
+    "expectedInstalledProfileTestsPerPackageLane": 24,
+    "expectedInstalledSyntheticIsolationTestsPerPackageLane": 31,
+    "expectedInstalledProvenanceTestsPerPackageLane": 18,
+    "expectedPackageLanes": 5,
+    "nextDependency": "Exact remote candidate SHA, tree, parents and immutable review from root; full hosted qualification remains separate."
+  }
+}

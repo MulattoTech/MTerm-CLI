@@ -1520,3 +1520,12 @@ the final sprint report/PR for delivery status.
 ## 2026-11-12 — comprehensive reconciliation in progress
 
 See [the current run record](engineering-runs/mterm-comprehensive-reconciliation-2026-11-12.md). Issue #248 integrates #245 on current main with new request-scope, file-bound, cancellation, session-isolation and formatting regressions. Compiler MCP execution and experimental Win32 attachment are inactive; original main process controls remain. No formal requirement acceptance or production deployment is claimed. Continue from the exact next action in that record.
+
+
+## 2026-11-12 — qualified modernization and local remote-profile foundation
+
+PR249 merged at `83a97daed6ef92b69e681b6b68f982f5d4266a51`; all six checks passed on candidate09097ee and actual main. PR244/245 closed as superseded, issue248 closed for integration controls. Full requirement acceptance remains unchanged.
+
+Issue250 now has a local named gateway-state implementation with explicit environment selection, scoped v2 credentials, profile-owned lifecycle controls and bounded public inventory. See REMOTE_MCP.md and the engineering checkpoint.104 focused tests pass;24 profile cases also run against installed packages. Windows case-alias and legacy-parent regressions were reproduced before repair. Exact-candidate independent review and full hosted qualification are still required at this source checkpoint. Full registry/provider/UI/two-computer acceptance remains open under250–253/62/65.
+
+Resume from the exact GitHub branch/head and current checks. Do not restart production, remove the working wrapper, or retry the232 token-create experiment without new evidence.

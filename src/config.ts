@@ -17,12 +17,12 @@ export const configSchema = z.strictObject({
   codexExecutable: absolute.optional(),
 });
 export type Settings = z.infer<typeof configSchema>;
-export function isDevEnvironment(): boolean {
-  return process.env.MTERM_ENV === 'development' || process.argv.includes('--dev');
+export function isDevEnvironment(args: readonly string[] = process.argv): boolean {
+  return process.env.MTERM_ENV === 'development' || args.includes('--dev');
 }
 
-export function getEnvironmentName(): 'production' | 'development' {
-  return isDevEnvironment() ? 'development' : 'production';
+export function getEnvironmentName(args: readonly string[] = process.argv): 'production' | 'development' {
+  return isDevEnvironment(args) ? 'development' : 'production';
 }
 
 export function configPath(): string {

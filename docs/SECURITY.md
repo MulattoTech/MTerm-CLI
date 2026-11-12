@@ -602,3 +602,35 @@ Ownership is journaled before create, uncertain cleanup keeps its shared capacit
 ## Offline pack update checks
 
 The explicit packs update --check command is read-only and rooted. It captures verified bounded UTF-8 payload bytes, binds every candidate location/raw hash to pinned provenance and requires complete review for contributing sources. It checks the registry raw version before and after file work. Its plan SHA is a deterministic report identity, not a signature or an activation token. Registry ABA/path changes after observation and hostile local pathname races are not prevented. No installation, download, process launch, credential access or global agent configuration occurs. The [contract](parity/PACK_UPDATES.md) distinguishes conditional previous-registration recovery from retained backup/rollback, and local license evidence from authenticated upstream rights. Existing pathname-to-Node execution and unconstrained import-closure limits remain; full CLI165 is unaccepted.
+
+## Named remote state and environment isolation — 2026-11-12
+
+Remote profile selection is explicit and remains independent of Codex/browser auth.
+Named and development stores require a strict public `stateScope` containing their
+environment and canonical directory. The protected v2 credential repeats that scope
+alongside gateway, root and device identity. All local lifecycle operations check
+public scope; status/inventory/stop never need to decrypt a secret. Legacy unbound
+production state remains readable without migration, but development cannot adopt it.
+An explicit state path cannot override a known managed environment or a bound scope.
+
+Remote roots cannot overlap either managed environment namespace or the selected
+explicit state in either direction. Setup checks this before creating state. Managed
+parents must be regular directories with current-user ownership. POSIX namespace
+ancestors may be readable but cannot be writable by other users; credential-bearing
+leaves and profile collections remain private. Windows case and canonical short-name
+aliases cannot downgrade a named store to legacy unbound state.
+New bound stores record directory identities and recheck them before reads/lifecycle
+admission and writes. Replaced or linked managed parents are refused; uncertain
+temporary-file cleanup retains the old private file rather than deleting through a
+changed path. Arbitrary historical explicit stores are not globally discoverable.
+
+These controls prevent accidental cross-profile grant reuse. They do not sandbox a
+hostile process with the same OS-user authority or close every local pathname race.
+Current-user DPAPI on Windows and private mode-0600 POSIX credential files remain
+the protection mechanisms. The live production bridge, its Access policy and shared
+App grant are separate deployments and are not changed by this CLI feature.
+
+Inventory is bounded, local and limited to allowlisted public runtime fields. A
+recorded device ID is not fresh credential or executor readiness proof. Invalid
+metadata yields an unknown pairing state. An owned stop checks state scope and lock
+identity without requiring the exposed workspace to remain accessible.

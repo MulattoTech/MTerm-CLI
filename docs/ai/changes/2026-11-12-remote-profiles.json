@@ -1,0 +1,141 @@
+{
+  "change_id": "2026-11-12-remote-profiles",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "updated_at": "2026-11-12T17:54:32.242989+00:00",
+  "base_sha": "83a97daed6ef92b69e681b6b68f982f5d4266a51",
+  "issues": [
+    250,
+    61,
+    64,
+    146
+  ],
+  "requirements": [
+    "CLI-090",
+    "CLI-091",
+    "CLI-095",
+    "CLI-096",
+    "CLI-266",
+    "CLI-267",
+    "CLI-287",
+    "CLI-290",
+    "CLI-296",
+    "CLI-299"
+  ],
+  "files": [
+    "src/config.ts",
+    "src/remote/profiles.ts",
+    "src/remote/state.ts",
+    "src/remote/cli.ts",
+    "tests/remote-profiles.test.mjs",
+    "tests/remote-state.test.mjs",
+    "scripts/verify-package.mjs",
+    "docs/REMOTE_MCP.md",
+    "docs/SECURITY.md"
+  ],
+  "decisions": [
+    "Use explicit mutually exclusive profile/state-directory selectors and explicit environment pinning for every lifecycle command; default production path remains compatible.",
+    "Bind named/development configuration and protected v2 credentials to the independently admitted canonical state directory and environment; never migrate/copy/fallback production grants.",
+    "Keep credential leaves and profile collections private; permit existing owner-controlled readable but nonwritable namespace ancestors. Preserve Windows case/canonical alias classification and lexical link checks.",
+    "Pin managed directory identities, refuse root/state overlap before setup writes, preserve owned-stop capability after workspace loss, and enumerate only bounded local public metadata.",
+    "Keep the existing MTerm HTTPS-origin pairing/agent protocol. Arbitrary external MCP paths, provider authentication adapters, web registry/UI and real multi-computer acceptance remain separate unimplemented scope.",
+    "Run all 24 profile regressions against source and the installed package outside the checkout. No live enrollment or model/API consumption."
+  ],
+  "tests": [
+    {
+      "command": "Initial profile regression suite before implementation",
+      "result": "RED: 8 of 9 cases failed, with invalid-selector rejection already passing."
+    },
+    {
+      "command": "Managed parent replacement regression before identity pinning",
+      "result": "RED: reproduced write after a replaced managed collection."
+    },
+    {
+      "command": "Owned stop, inventory uncertainty and valid inventory-probe regressions",
+      "result": "RED: three failures reproduced before repair following independent adversarial review."
+    },
+    {
+      "command": "Legacy0700 state under safe0755 namespace",
+      "result": "RED: reproduced compatibility rejection before ancestor mode repair."
+    },
+    {
+      "command": "Owned Windows compiled-module uppercase collection fixture",
+      "result": "RED then GREEN: prospective/existing named scope was false/false, now true/true. Native host uses Node27 alpha; this is not supported Node24 package qualification."
+    },
+    {
+      "command": "npm run build:code; nine remote/environment focused test files serially",
+      "result": "GREEN:104 passed,0 failed/cancelled/skipped/todo; includes24 new profile cases."
+    },
+    {
+      "command": "Explicit roadmap review/render/check, parity check, normal build, typecheck, full format check, git diff --check",
+      "result": "PASS; CLI300 maturity remains29.36%,0 complete; DCP48 acceptance unchanged."
+    },
+    {
+      "command": "Exact-candidate hosted six-job and independent immutable review",
+      "result": "Pending at this prepublication checkpoint; required before merge, with actual-main requalification after merge."
+    },
+    {
+      "command": "Hosted candidate4742 installed-package verification",
+      "result": "RED: independent reviewer identified CLI executable supplied where package root was required. Corrected path only; revised exact-candidate/platform qualification pending."
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "id": "CLI-090",
+      "stage_change": false,
+      "reason": "Reviewed profile isolation strengthens the scoped local gateway foundation; full multi-provider/deployed acceptance and the complete original criterion remain unestablished."
+    },
+    {
+      "id": "CLI-091",
+      "stage_change": false,
+      "reason": "Reviewed profile isolation strengthens the scoped local gateway foundation; full multi-provider/deployed acceptance and the complete original criterion remain unestablished."
+    },
+    {
+      "id": "CLI-095",
+      "stage_change": false,
+      "reason": "Reviewed profile isolation strengthens the scoped local gateway foundation; full multi-provider/deployed acceptance and the complete original criterion remain unestablished."
+    },
+    {
+      "id": "CLI-096",
+      "stage_change": false,
+      "reason": "Reviewed profile isolation strengthens the scoped local gateway foundation; full multi-provider/deployed acceptance and the complete original criterion remain unestablished."
+    },
+    {
+      "id": "CLI-266",
+      "stage_change": false,
+      "reason": "Reviewed profile isolation strengthens the scoped local gateway foundation; full multi-provider/deployed acceptance and the complete original criterion remain unestablished."
+    },
+    {
+      "id": "CLI-267",
+      "stage_change": false,
+      "reason": "Reviewed profile isolation strengthens the scoped local gateway foundation; full multi-provider/deployed acceptance and the complete original criterion remain unestablished."
+    },
+    {
+      "id": "CLI-287",
+      "stage_change": false,
+      "reason": "Reviewed profile isolation strengthens the scoped local gateway foundation; full multi-provider/deployed acceptance and the complete original criterion remain unestablished."
+    },
+    {
+      "id": "CLI-290",
+      "stage_change": false,
+      "reason": "Reviewed profile isolation strengthens the scoped local gateway foundation; full multi-provider/deployed acceptance and the complete original criterion remain unestablished."
+    },
+    {
+      "id": "CLI-296",
+      "stage_change": false,
+      "reason": "Reviewed profile isolation strengthens the scoped local gateway foundation; full multi-provider/deployed acceptance and the complete original criterion remain unestablished."
+    },
+    {
+      "id": "CLI-299",
+      "stage_change": false,
+      "reason": "Reviewed profile isolation strengthens the scoped local gateway foundation; full multi-provider/deployed acceptance and the complete original criterion remain unestablished."
+    }
+  ],
+  "limitations": [
+    "Issue250 remains open: this is the local gateway-state foundation, not the full connection-profile registry.",
+    "Legacy arbitrary explicit production stores remain compatible and are not globally discoverable; same-user pathname attacks are not sandboxed.",
+    "No production manager/Worker/plugin/Access grant changes, no real enrollment, no paid model calls.",
+    "Supported Node24 source/installed platform CI and independent final review are pending."
+  ],
+  "checkpoint": "docs/engineering-runs/mterm-comprehensive-reconciliation-2026-11-12.md"
+}

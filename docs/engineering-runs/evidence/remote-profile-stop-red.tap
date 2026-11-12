@@ -1,0 +1,28 @@
+✖ owned profile stop remains available after its exposed workspace disappears (49.698445ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 426.870458
+
+✖ failing tests:
+
+test at tests/remote-profiles.test.mjs:325:1
+✖ owned profile stop remains available after its exposed workspace disappears (49.698445ms)
+  Error: ENOENT: no such file or directory, realpath '/tmp/mterm-profiles-TVdkIP/workspace'
+      at async Object.realpath (node:internal/fs/promises:1896:10)
+      at async remoteRoot (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/dist/remote/adapter.js:15:18)
+      at async RemoteStateStore.config (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/dist/remote/state.js:337:28)
+      at async remoteMain (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/dist/remote/cli.js:268:5)
+      at async Object.run (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/tests/remote-profiles.test.mjs:39:18)
+      at async TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/tests/remote-profiles.test.mjs:331:19)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    errno: -2,
+    code: 'ENOENT',
+    syscall: 'realpath',
+    path: '/tmp/mterm-profiles-TVdkIP/workspace'
+  }

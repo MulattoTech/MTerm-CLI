@@ -1,0 +1,147 @@
+✖ remote default state isolates development without moving production state (25.519077ms)
+✖ remote-owned dev and named-profile preview performs no mutation or network call (8.088203ms)
+✖ two named profiles configure independent directories and default remains an alias (3.461382ms)
+✖ setup next-command argv preserves an explicit shell-sensitive state path (13.456246ms)
+✖ remote root cannot expose another managed environment or profile namespace (8.697741ms)
+✖ overlapping setup root is rejected before creating any remote state (6.231416ms)
+✖ profile inventory is local, bounded and does not decrypt credentials or expose arbitrary runtime fields (3.011968ms)
+✔ invalid or conflicting selectors refuse before creating state (3.099151ms)
+✖ profile credentials cannot be adopted by copying configuration and protected bytes (1.999534ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 1
+ℹ fail 8
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 475.977694
+
+✖ failing tests:
+
+test at tests/remote-profiles.test.mjs:41:1
+✖ remote default state isolates development without moving production state (25.519077ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + '/tmp/mterm-profiles-aPjHta/state-home/MTerm-CLI/remote'
+  - '/tmp/mterm-profiles-aPjHta/state-home/MTerm-CLI-DEV/remote'
+
+      at TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/tests/remote-profiles.test.mjs:46:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: '/tmp/mterm-profiles-aPjHta/state-home/MTerm-CLI/remote',
+    expected: '/tmp/mterm-profiles-aPjHta/state-home/MTerm-CLI-DEV/remote',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/remote-profiles.test.mjs:50:1
+✖ remote-owned dev and named-profile preview performs no mutation or network call (8.088203ms)
+  Error [ToolError]: Unsupported remote command option.
+      at fail (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/dist/errors.js:12:11)
+      at options (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/dist/remote/cli.js:60:9)
+      at remoteMain (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/dist/remote/cli.js:189:18)
+      at Object.run (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/tests/remote-profiles.test.mjs:34:24)
+      at TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/tests/remote-profiles.test.mjs:52:26)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'USAGE'
+  }
+
+test at tests/remote-profiles.test.mjs:60:1
+✖ two named profiles configure independent directories and default remains an alias (3.461382ms)
+  Error [ToolError]: Unsupported remote command option.
+      at fail (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/dist/errors.js:12:11)
+      at options (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/dist/remote/cli.js:60:9)
+      at remoteMain (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/dist/remote/cli.js:189:18)
+      at Object.run (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/tests/remote-profiles.test.mjs:34:24)
+      at TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/tests/remote-profiles.test.mjs:62:21)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'USAGE'
+  }
+
+test at tests/remote-profiles.test.mjs:73:1
+✖ setup next-command argv preserves an explicit shell-sensitive state path (13.456246ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+
+  + undefined
+  - {
+  -   args: [
+  -     'remote',
+  -     'pair',
+  -     '--state-dir',
+  -     "/tmp/mterm-profiles-v9ul3j/owned state ' & literal"
+  -   ],
+  -   executable: 'mterm-cli'
+  - }
+
+      at TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/tests/remote-profiles.test.mjs:77:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: { executable: 'mterm-cli', args: [ 'remote', 'pair', '--state-dir', "/tmp/mterm-profiles-v9ul3j/owned state ' & literal" ] },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/remote-profiles.test.mjs:83:1
+✖ remote root cannot expose another managed environment or profile namespace (8.697741ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/tests/remote-profiles.test.mjs:88:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    operator: 'rejects',
+    diff: 'simple'
+  }
+
+test at tests/remote-profiles.test.mjs:93:1
+✖ overlapping setup root is rejected before creating any remote state (6.231416ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  true !== false
+
+      at TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/tests/remote-profiles.test.mjs:98:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/remote-profiles.test.mjs:101:1
+✖ profile inventory is local, bounded and does not decrypt credentials or expose arbitrary runtime fields (3.011968ms)
+  Error [ToolError]: Unsupported remote command option.
+      at fail (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/dist/errors.js:12:11)
+      at options (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/dist/remote/cli.js:60:9)
+      at remoteMain (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/dist/remote/cli.js:189:18)
+      at Object.run (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/tests/remote-profiles.test.mjs:34:24)
+      at TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/tests/remote-profiles.test.mjs:103:21)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'USAGE'
+  }
+
+test at tests/remote-profiles.test.mjs:126:1
+✖ profile credentials cannot be adopted by copying configuration and protected bytes (1.999534ms)
+  Error [ToolError]: Unsupported remote command option.
+      at fail (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/dist/errors.js:12:11)
+      at options (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/dist/remote/cli.js:60:9)
+      at remoteMain (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/dist/remote/cli.js:189:18)
+      at Object.run (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/tests/remote-profiles.test.mjs:34:24)
+      at TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/tests/remote-profiles.test.mjs:128:21)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'USAGE'
+  }

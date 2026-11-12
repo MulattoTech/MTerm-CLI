@@ -1,0 +1,126 @@
+✖ normal prepack builds a clean package and installs exactly the tested bytes (1826.064932ms)
+✖ stale passing output cannot allow newly failing source into an archive (1483.581516ms)
+✖ stale failing output cannot block newly passing source from normal packing (1391.226398ms)
+✖ a failed post-build check prevents any new package archive (1353.313909ms)
+✔ failed roadmap:check prevents compilation and publication (1019.978284ms)
+✔ failed parity:check prevents compilation and publication (1029.177572ms)
+✖ failed capabilities:check prevents compilation and publication (1386.337511ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 2
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 9722.279746
+
+✖ failing tests:
+
+test at tests/prepack-lifecycle.test.mjs:179:1
+✖ normal prepack builds a clean package and installs exactly the tested bytes (1826.064932ms)
+  AssertionError [ERR_ASSERTION]: npm error Missing script: "capabilities:check"
+  npm error
+  npm error To see a list of scripts, run:
+  npm error   npm run
+  npm error A complete log of this run can be found in: /tmp/mterm-prepack-eAl3fk/npm/cache/_logs/2026-11-12T18_25_07_813Z-debug-0.log
+  npm error code 1
+  npm error path /tmp/mterm-prepack-eAl3fk/package
+  npm error command failed
+  npm error command sh -c npm run build && npm run check
+  npm error A complete log of this run can be found in: /tmp/mterm-prepack-eAl3fk/npm/cache/_logs/2026-11-12T18_25_06_298Z-debug-0.log
+  
+  
+  1 !== 0
+  
+      at assertPackedFresh (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Register/tests/prepack-lifecycle.test.mjs:146:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Register/tests/prepack-lifecycle.test.mjs:182:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/prepack-lifecycle.test.mjs:185:1
+✖ stale passing output cannot allow newly failing source into an archive (1483.581516ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Register/tests/prepack-lifecycle.test.mjs:191:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/prepack-lifecycle.test.mjs:196:1
+✖ stale failing output cannot block newly passing source from normal packing (1391.226398ms)
+  AssertionError [ERR_ASSERTION]: npm error Missing script: "capabilities:check"
+  npm error
+  npm error To see a list of scripts, run:
+  npm error   npm run
+  npm error A complete log of this run can be found in: /tmp/mterm-prepack-CqtctH/npm/cache/_logs/2026-11-12T18_25_10_711Z-debug-0.log
+  npm error code 1
+  npm error path /tmp/mterm-prepack-CqtctH/package
+  npm error command failed
+  npm error command sh -c npm run build && npm run check
+  npm error A complete log of this run can be found in: /tmp/mterm-prepack-CqtctH/npm/cache/_logs/2026-11-12T18_25_09_503Z-debug-0.log
+  
+  
+  1 !== 0
+  
+      at assertPackedFresh (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Register/tests/prepack-lifecycle.test.mjs:146:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Register/tests/prepack-lifecycle.test.mjs:197:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/prepack-lifecycle.test.mjs:200:1
+✖ a failed post-build check prevents any new package archive (1353.313909ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Register/tests/prepack-lifecycle.test.mjs:206:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/prepack-lifecycle.test.mjs:212:3
+✖ failed capabilities:check prevents compilation and publication (1386.337511ms)
+  AssertionError [ERR_ASSERTION]: The failing gate must execute before rejecting the package
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Register/tests/prepack-lifecycle.test.mjs:217:12)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

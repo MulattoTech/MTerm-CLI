@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-12T18:19:40.403935+00:00",
+  "reviewer": "independent architecture peer",
+  "provider": "OpenAI ChatGPT",
+  "model": "GPT-6 Astra Pro (session identity; self-reported)",
+  "decision": "APPROVE_IMMUTABLE_SOURCE",
+  "commit": "d61d280c371a66578c4a93aa1df50907c0424347",
+  "tree": "da030a4d25c68efa6cd4c9faa203ff4266fa730f",
+  "base": "4fb205088e77731e42da5adaca6bf167f8b75194",
+  "scope": "Capability register validator, build/check/fingerprint integration, immutable data and generated reports",
+  "blockingFindings": [],
+  "repairsVerified": [
+    "qualifiedSource evidenceKey/repository/productLayers identity binding",
+    "exact required main check-name set",
+    "hash binding of all validator-consumed external evidence text",
+    "unknown delivery kinds rejected",
+    "final acceptance prerequisites enforced",
+    "stale current limitations separated into historical statements"
+  ],
+  "validation": {
+    "node": "v24.22.1",
+    "focusedCommand": "node --test --test-reporter=tap --test-concurrency=1 tests/capability-register.test.mjs tests/roadmap.test.mjs",
+    "focusedExitCode": 0,
+    "focusedTests": {
+      "tests": 25,
+      "suites": 0,
+      "pass": 25,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "focusedLog": "register-final-d61-focused.tap",
+    "focusedLogSha256": "cb382bc7a4c44b120aa60c105d6c37de16b9047090509ca28ecef484131979e4",
+    "capabilityCheck": {
+      "command": "node scripts/capability-register.mjs --check",
+      "exitCode": 0,
+      "outputSha256": "0a718b9ec694ce414caccc86daa9f8e51c15fd605f787c63bbb82442b5dbf728"
+    },
+    "roadmapCheck": {
+      "command": "node scripts/roadmap.mjs --check",
+      "exitCode": 0,
+      "outputSha256": "347c2527601dc28d23f4107434b2b02f35c33ed6cba57ab6ae684bb37e1cd302"
+    },
+    "exactArchiveBlobChecks": 968,
+    "exactArchiveMismatches": []
+  },
+  "sourceSha256": {
+    "scripts/capability-register.mjs": "3a7788d328f9bd855eeab9226e6e2dcfa1df55ffb06ba7f230a82a215649d239",
+    "tests/capability-register.test.mjs": "738582c8d724ab5d08b762a9b520debc8500071897379fbb3a11a5ad3ab2c297",
+    "scripts/review-source.mjs": "9e6286c41ef0da4e8725513c0014deb8601aa7b582165873a3c7f5f929f70f44",
+    "package.json": "7df8054332c8f992295404ee58744c3c1a04c58d86a2f996f11e4d861c65fad1",
+    "docs/capabilities/register.json": "41ff91a725cdc5222dc76e946734c970b68bda10c40e8e54fe28815d75e21340",
+    "docs/capabilities/REPORT.md": "8cff1c75885fc153187026d85c9072138fc35451f2d48d6d6dd9de531a3f3e9a",
+    "docs/capabilities/summary.json": "9b04a286ff44b24fa66bbe6229fb7ab972f0fb577b4ae65969b08d21b8694ed8"
+  },
+  "metadataReview": {
+    "missionBullets": 488,
+    "productFeatureBullets": 272,
+    "requirements": 143,
+    "separateBaselineTotals": [
+      300,
+      48,
+      12,
+      117
+    ],
+    "pinnedCliFileHashesVerified": 56,
+    "sourceUrlIdentitiesVerified": 62,
+    "issueOwnerIdentitiesVerified": 143,
+    "consumedEvidenceHashesVerified": 2,
+    "realWholeAxisCounts": {
+      "codeComplete": 0,
+      "tested": 0,
+      "merged": 0,
+      "deployed": 0,
+      "accepted": 0
+    },
+    "missionMaturityCalculated": false
+  },
+  "nonBlockingNotes": [
+    {
+      "path": "docs/capabilities/register.json",
+      "field": "historicalInventoryLimitations.observedAt",
+      "note": "17:02:47 labels an archived collection that also mentions evidence dated17:16/17:21; distinguish initial inventory time from collected historical snapshot time in later documentary cleanup."
+    },
+    {
+      "path": "docs/capabilities/register.json",
+      "field": "evidenceSources.architecture.artifact",
+      "note": "Bare architecture-audit.json is a descriptive reference, not a validator-consumed input. A repository-relative path would improve navigation."
+    }
+  ],
+  "limits": [
+    "No repository source edits, dependency installation, full suite, model calls, production execution, deployment or plugin modification performed.",
+    "Coherence checks do not authenticate external assertions or grant whole-requirement acceptance.",
+    "This is a source-review decision, not a GitHub platform review event or merge/deployment approval override.",
+    "All applicable exact-head hosted checks and actual-main post-merge checks remain required; they were not queried or replaced by this focused review."
+  ]
+}

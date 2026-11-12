@@ -59,7 +59,15 @@ async function fixture(t, { source = 'pass', stale, failGate } = {}) {
     assert.equal(typeof actual.scripts[name], 'string');
     scripts[name] = actual.scripts[name];
   }
-  for (const name of ['roadmap:check', 'parity:check', 'build:code', 'typecheck', 'format:check', 'test'])
+  for (const name of [
+    'roadmap:check',
+    'parity:check',
+    'capabilities:check',
+    'build:code',
+    'typecheck',
+    'format:check',
+    'test',
+  ])
     scripts[name] = 'node scripts/leaf.mjs ' + name;
   await save(
     'package.json',
@@ -208,12 +216,17 @@ test('a failed post-build check prevents any new package archive', async (t) => 
   assert.equal(events.filter((event) => event.phase === 'test').length, 0);
 });
 
-for (const gate of ['roadmap:check', 'parity:check']) {
+for (const gate of ['roadmap:check', 'parity:check', 'capabilities:check']) {
   test('failed ' + gate + ' prevents compilation and publication', async (t) => {
     const f = await fixture(t, { failGate: gate });
     const result = await f.pack();
     assert.equal(result.code, 1, result.stdout + result.stderr);
     assert.deepEqual(await f.archives(), []);
+    assert.equal(
+      (await f.events()).filter((event) => event.phase === gate).length,
+      1,
+      'The failing gate must execute before rejecting the package',
+    );
     assert.equal(
       (await f.events()).some((event) => event.phase === 'build:code'),
       false,

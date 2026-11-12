@@ -2,7 +2,7 @@
   "change_id": "2026-11-12-capability-register",
   "provider": "OpenAI",
   "model": "GPT-6 Astra Pro",
-  "updated_at": "2026-11-12T18:13:00.707162+00:00",
+  "updated_at": "2026-11-12T18:25:50.654864+00:00",
   "base_sha": "4fb205088e77731e42da5adaca6bf167f8b75194",
   "issues": [
     255,
@@ -30,7 +30,8 @@
     "docs/capabilities/mission-2026-11-12.md",
     "docs/capabilities/README.md",
     "docs/capabilities/REPORT.md",
-    "docs/capabilities/summary.json"
+    "docs/capabilities/summary.json",
+    "tests/prepack-lifecycle.test.mjs"
   ],
   "decisions": [
     "Preserve four overlapping catalog denominators/hashes and existing CLI stage/weight snapshot. Map143 product rows to all272 feature bullets and488 total mission bullets, with11 separate governance groups.",
@@ -38,7 +39,8 @@
     "Require exact source/layer/environment/criteria and full-scope evidence for any whole-requirement credit; issue closure, existing files and historical tests cannot grant it.",
     "Validate source references, baseline IDs, issue ownership URLs, mission coverage, dependencies and saved main delivery receipts; reject stale generated output in normal build/check/package gates.",
     "Include the capabilities input and output directory in explicit reviewed-source freshness; rendering never approves source.",
-    "Bind consumed research/main-receipt bytes to reviewed hashes; require exact six main check names and explicit evidence-source repository/layer ownership. Unknown delivery labels and unaccepted final prerequisites fail closed."
+    "Bind consumed research/main-receipt bytes to reviewed hashes; require exact six main check names and explicit evidence-source repository/layer ownership. Unknown delivery labels and unaccepted final prerequisites fail closed.",
+    "Repair the prepack fixture leaf inventory for the real capability gate, preserving normal build/check/prepack policy. Require each rejected gate to have executed before compilation/publication is blocked."
   ],
   "tests": [
     {
@@ -64,6 +66,18 @@
     {
       "command": "Exact immutable independent review and full hosted qualification",
       "result": "Pending before publication; source candidate and actual main require normal gates."
+    },
+    {
+      "command": "Hosted exact d61d280 CI/compatibility",
+      "result": "RED: prepack fixture omitted capabilities:check; four lifecycle assertions failed. Native Linux containment passed; failed platform lanes are not qualified."
+    },
+    {
+      "command": "node --test tests/prepack-lifecycle.test.mjs with new gate-execution assertion, before fixture repair",
+      "result": "RED: 7 tests, 2 passed, 5 failed including the new capability gate execution assertion."
+    },
+    {
+      "command": "node --test tests/prepack-lifecycle.test.mjs tests/capability-register.test.mjs tests/roadmap.test.mjs after fixture repair",
+      "result": "GREEN: 32/32 passed, zero failure/skip/cancellation. Full exact revised candidate hosted jobs remain pending."
     }
   ],
   "roadmap_updates": [

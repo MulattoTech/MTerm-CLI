@@ -1,0 +1,1513 @@
+{
+  "schemaVersion": 1,
+  "repository": "MulattoTech/MTechLabs-Access",
+  "pullRequestNumber": 24,
+  "captureType": "PINNED_GITHUB_IDENTITY_INPUT",
+  "preparedAt": "2026-11-12T22:14:40.814032+00:00",
+  "pullRequest": {
+    "tool": "github_get_pr_info",
+    "arguments": {
+      "repository_full_name": "MulattoTech/MTechLabs-Access",
+      "pr_number": 24
+    },
+    "requestUrl": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/pulls/24",
+    "responseKind": "CONNECTOR_NORMALIZED_IDENTITY_FIELDS",
+    "response": {
+      "url": "https://github.com/MulattoTech/MTechLabs-Access/pull/24",
+      "number": 24,
+      "state": "closed",
+      "merged": true,
+      "draft": false,
+      "base": "main",
+      "base_sha": "499255adf0c3988558eb4b1dd04ee95ad3c7da33",
+      "head": "qualify/upstream-033-20261112",
+      "head_sha": "4bd2b6bc5aeeec17e4b076eec4947081d2363c1d",
+      "head_repo_id": 1440397731,
+      "head_repo_full_name": "MulattoTech/MTechLabs-Access",
+      "merge_commit_sha": "ef8dce0e1863e63958c4421e8506c9bdb5e881e0",
+      "created_at": "2026-11-12T18:59:36Z",
+      "updated_at": "2026-11-12T20:05:31Z",
+      "closed_at": "2026-11-12T20:05:30Z",
+      "merged_at": "2026-11-12T20:05:30Z"
+    }
+  },
+  "candidate": {
+    "commit": {
+      "requestUrl": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/git/commits/4bd2b6bc5aeeec17e4b076eec4947081d2363c1d",
+      "response": {
+        "sha": "4bd2b6bc5aeeec17e4b076eec4947081d2363c1d",
+        "node_id": "C_kwDOVdq5o9oAKDRiZDJiNmJjNWFlZWVjMTdlNGIwNzZlZWM0OTQ3MDgxZDIzNjNjMWQ",
+        "url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/git/commits/4bd2b6bc5aeeec17e4b076eec4947081d2363c1d",
+        "html_url": "https://github.com/MulattoTech/MTechLabs-Access/commit/4bd2b6bc5aeeec17e4b076eec4947081d2363c1d",
+        "author": {
+          "name": "Dylan",
+          "email": "5900632+MulattoTech@users.noreply.github.com",
+          "date": "2026-11-12T19:59:05Z"
+        },
+        "committer": {
+          "name": "Dylan",
+          "email": "5900632+MulattoTech@users.noreply.github.com",
+          "date": "2026-11-12T19:59:05Z"
+        },
+        "tree": {
+          "sha": "fe52f5d5720c6a34ee6bbec387b1dc098ea8f2d3",
+          "url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/git/trees/fe52f5d5720c6a34ee6bbec387b1dc098ea8f2d3"
+        },
+        "message": "test(mcp): leave Unix socket room in owned browser temp paths",
+        "parents": [
+          {
+            "sha": "ad4dc29f5f848368ccd5fd93373f4bc498784dfa",
+            "url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/git/commits/ad4dc29f5f848368ccd5fd93373f4bc498784dfa",
+            "html_url": "https://github.com/MulattoTech/MTechLabs-Access/commit/ad4dc29f5f848368ccd5fd93373f4bc498784dfa"
+          }
+        ],
+        "verification": {
+          "verified": false,
+          "reason": "unsigned",
+          "signature": null,
+          "payload": null,
+          "verified_at": null
+        }
+      }
+    },
+    "workflows": [
+      {
+        "requestUrl": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/contents/.github/workflows/check.yml?ref=4bd2b6bc5aeeec17e4b076eec4947081d2363c1d",
+        "path": ".github/workflows/check.yml",
+        "ref": "4bd2b6bc5aeeec17e4b076eec4947081d2363c1d",
+        "responseKind": "DECODED_FILE_CONTENT",
+        "content": "name: Verify access controls and code monitoring\n\non:\n  pull_request:\n  push:\n    branches: [main]\n\npermissions:\n  contents: read\n\njobs:\n  test:\n    runs-on: ubuntu-latest\n    timeout-minutes: 10\n    steps:\n      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262\n      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020\n        with:\n          node-version: '24'\n      - run: npm test\n      - run: npm run check\n      - run: npm run build\n      - name: Check generated UI matches its sources\n        run: git diff --exit-code -- src/ui.generated.js\n\n  managed-mcp:\n    runs-on: ubuntu-latest\n    timeout-minutes: 5\n    defaults:\n      run:\n        working-directory: integrations/mcp-manager\n    steps:\n      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262\n      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020\n        with:\n          node-version: '24'\n      - run: npm ci --ignore-scripts --no-audit --no-fund\n      - run: npm test\n\n  upstream-qualification:\n    name: Upstream qualification / ${{ matrix.os }} / Node 24\n    strategy:\n      fail-fast: false\n      matrix:\n        os: [ubuntu-latest, windows-latest]\n    runs-on: ${{ matrix.os }}\n    timeout-minutes: 20\n    defaults:\n      run:\n        working-directory: integrations/mcp-manager\n    steps:\n      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262\n        with:\n          persist-credentials: false\n      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020\n        with:\n          node-version: '24'\n      - name: Install the exact manager SDK without lifecycle scripts\n        run: npm ci --ignore-scripts --no-audit --no-fund\n      - name: Verify manager and qualification guards on this platform\n        run: npm test\n      - name: Compare real pinned upstream packages in disposable stores\n        run: npm run qualify:upstream\n        env:\n          MTERM_DISPOSABLE_UPSTREAM_QUALIFICATION: '1'\n          MTERM_QUALIFICATION_CANDIDATE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}\n      - name: Verify tracked source remains unchanged\n        if: always()\n        run: git diff --exit-code\n      - name: Preserve exact qualification and contract evidence\n        if: always()\n        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9\n        with:\n          name: upstream-qualification-${{ matrix.os }}-${{ github.run_id }}-${{ github.run_attempt }}\n          path: ${{ runner.temp }}/mterm-q-*/reports/\n          retention-days: 14\n          if-no-files-found: warn\n"
+      }
+    ],
+    "runs": [
+      {
+        "requestUrl": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/runs/43295709466",
+        "response": {
+          "id": 43295709466,
+          "name": "Verify access controls and code monitoring",
+          "node_id": "WFR_kwLOVdq5o88AAAAKFKAZGg",
+          "head_branch": "qualify/upstream-033-20261112",
+          "head_sha": "4bd2b6bc5aeeec17e4b076eec4947081d2363c1d",
+          "path": ".github/workflows/check.yml",
+          "display_title": "test(mcp): qualify pinned Desktop Commander 0.3.3 on disposable runners",
+          "run_number": 51,
+          "event": "pull_request",
+          "status": "completed",
+          "conclusion": "success",
+          "workflow_id": 402397153,
+          "check_suite_id": 117245013347,
+          "check_suite_node_id": "CS_kwDOVdq5o88AAAAbTFjtYw",
+          "url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/runs/43295709466",
+          "html_url": "https://github.com/MulattoTech/MTechLabs-Access/actions/runs/43295709466",
+          "pull_requests": [],
+          "created_at": "2026-11-12T19:59:12Z",
+          "updated_at": "2026-11-12T20:01:39Z",
+          "actor": {
+            "login": "MulattoTech",
+            "id": 5900632,
+            "node_id": "MDQ6VXNlcjU5MDA2MzI=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/5900632?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/MulattoTech",
+            "html_url": "https://github.com/MulattoTech",
+            "followers_url": "https://api.github.com/users/MulattoTech/followers",
+            "following_url": "https://api.github.com/users/MulattoTech/following{/other_user}",
+            "gists_url": "https://api.github.com/users/MulattoTech/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/MulattoTech/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/MulattoTech/subscriptions",
+            "organizations_url": "https://api.github.com/users/MulattoTech/orgs",
+            "repos_url": "https://api.github.com/users/MulattoTech/repos",
+            "events_url": "https://api.github.com/users/MulattoTech/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/MulattoTech/received_events",
+            "type": "User",
+            "user_view_type": "public",
+            "site_admin": false
+          },
+          "run_attempt": 1,
+          "referenced_workflows": [],
+          "run_started_at": "2026-11-12T19:59:12Z",
+          "triggering_actor": {
+            "login": "MulattoTech",
+            "id": 5900632,
+            "node_id": "MDQ6VXNlcjU5MDA2MzI=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/5900632?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/MulattoTech",
+            "html_url": "https://github.com/MulattoTech",
+            "followers_url": "https://api.github.com/users/MulattoTech/followers",
+            "following_url": "https://api.github.com/users/MulattoTech/following{/other_user}",
+            "gists_url": "https://api.github.com/users/MulattoTech/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/MulattoTech/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/MulattoTech/subscriptions",
+            "organizations_url": "https://api.github.com/users/MulattoTech/orgs",
+            "repos_url": "https://api.github.com/users/MulattoTech/repos",
+            "events_url": "https://api.github.com/users/MulattoTech/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/MulattoTech/received_events",
+            "type": "User",
+            "user_view_type": "public",
+            "site_admin": false
+          },
+          "jobs_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/runs/43295709466/jobs",
+          "logs_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/runs/43295709466/logs",
+          "check_suite_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/check-suites/117245013347",
+          "artifacts_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/runs/43295709466/artifacts",
+          "cancel_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/runs/43295709466/cancel",
+          "rerun_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/runs/43295709466/rerun",
+          "previous_attempt_url": null,
+          "workflow_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/workflows/402397153",
+          "head_commit": {
+            "id": "4bd2b6bc5aeeec17e4b076eec4947081d2363c1d",
+            "tree_id": "fe52f5d5720c6a34ee6bbec387b1dc098ea8f2d3",
+            "message": "test(mcp): leave Unix socket room in owned browser temp paths",
+            "timestamp": "2026-11-12T19:59:05Z",
+            "author": {
+              "name": "Dylan",
+              "email": "5900632+MulattoTech@users.noreply.github.com"
+            },
+            "committer": {
+              "name": "Dylan",
+              "email": "5900632+MulattoTech@users.noreply.github.com"
+            }
+          },
+          "repository": {
+            "id": 1440397731,
+            "node_id": "R_kgDOVdq5ow",
+            "name": "MTechLabs-Access",
+            "full_name": "MulattoTech/MTechLabs-Access",
+            "private": true,
+            "owner": {
+              "login": "MulattoTech",
+              "id": 5900632,
+              "node_id": "MDQ6VXNlcjU5MDA2MzI=",
+              "avatar_url": "https://avatars.githubusercontent.com/u/5900632?v=4",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/MulattoTech",
+              "html_url": "https://github.com/MulattoTech",
+              "followers_url": "https://api.github.com/users/MulattoTech/followers",
+              "following_url": "https://api.github.com/users/MulattoTech/following{/other_user}",
+              "gists_url": "https://api.github.com/users/MulattoTech/gists{/gist_id}",
+              "starred_url": "https://api.github.com/users/MulattoTech/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/MulattoTech/subscriptions",
+              "organizations_url": "https://api.github.com/users/MulattoTech/orgs",
+              "repos_url": "https://api.github.com/users/MulattoTech/repos",
+              "events_url": "https://api.github.com/users/MulattoTech/events{/privacy}",
+              "received_events_url": "https://api.github.com/users/MulattoTech/received_events",
+              "type": "User",
+              "user_view_type": "public",
+              "site_admin": false
+            },
+            "html_url": "https://github.com/MulattoTech/MTechLabs-Access",
+            "description": "M-TechLabs central access management and deterministic Tacticus Code Watch",
+            "fork": false,
+            "url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access",
+            "forks_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/forks",
+            "keys_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/keys{/key_id}",
+            "collaborators_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/collaborators{/collaborator}",
+            "teams_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/teams",
+            "hooks_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/hooks",
+            "issue_events_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/issues/events{/number}",
+            "events_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/events",
+            "assignees_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/assignees{/user}",
+            "branches_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/branches{/branch}",
+            "tags_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/tags",
+            "blobs_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/git/blobs{/sha}",
+            "git_tags_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/git/tags{/sha}",
+            "git_refs_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/git/refs{/sha}",
+            "trees_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/git/trees{/sha}",
+            "statuses_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/statuses/{sha}",
+            "languages_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/languages",
+            "stargazers_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/stargazers",
+            "contributors_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/contributors",
+            "subscribers_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/subscribers",
+            "subscription_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/subscription",
+            "commits_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/commits{/sha}",
+            "git_commits_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/git/commits{/sha}",
+            "comments_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/comments{/number}",
+            "issue_comment_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/issues/comments{/number}",
+            "contents_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/contents/{+path}",
+            "compare_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/compare/{base}...{head}",
+            "merges_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/merges",
+            "archive_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/{archive_format}{/ref}",
+            "downloads_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/downloads",
+            "issues_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/issues{/number}",
+            "pulls_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/pulls{/number}",
+            "milestones_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/milestones{/number}",
+            "notifications_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/notifications{?since,all,participating}",
+            "labels_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/labels{/name}",
+            "releases_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/releases{/id}",
+            "deployments_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/deployments"
+          },
+          "head_repository": {
+            "id": 1440397731,
+            "node_id": "R_kgDOVdq5ow",
+            "name": "MTechLabs-Access",
+            "full_name": "MulattoTech/MTechLabs-Access",
+            "private": true,
+            "owner": {
+              "login": "MulattoTech",
+              "id": 5900632,
+              "node_id": "MDQ6VXNlcjU5MDA2MzI=",
+              "avatar_url": "https://avatars.githubusercontent.com/u/5900632?v=4",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/MulattoTech",
+              "html_url": "https://github.com/MulattoTech",
+              "followers_url": "https://api.github.com/users/MulattoTech/followers",
+              "following_url": "https://api.github.com/users/MulattoTech/following{/other_user}",
+              "gists_url": "https://api.github.com/users/MulattoTech/gists{/gist_id}",
+              "starred_url": "https://api.github.com/users/MulattoTech/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/MulattoTech/subscriptions",
+              "organizations_url": "https://api.github.com/users/MulattoTech/orgs",
+              "repos_url": "https://api.github.com/users/MulattoTech/repos",
+              "events_url": "https://api.github.com/users/MulattoTech/events{/privacy}",
+              "received_events_url": "https://api.github.com/users/MulattoTech/received_events",
+              "type": "User",
+              "user_view_type": "public",
+              "site_admin": false
+            },
+            "html_url": "https://github.com/MulattoTech/MTechLabs-Access",
+            "description": "M-TechLabs central access management and deterministic Tacticus Code Watch",
+            "fork": false,
+            "url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access",
+            "forks_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/forks",
+            "keys_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/keys{/key_id}",
+            "collaborators_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/collaborators{/collaborator}",
+            "teams_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/teams",
+            "hooks_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/hooks",
+            "issue_events_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/issues/events{/number}",
+            "events_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/events",
+            "assignees_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/assignees{/user}",
+            "branches_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/branches{/branch}",
+            "tags_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/tags",
+            "blobs_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/git/blobs{/sha}",
+            "git_tags_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/git/tags{/sha}",
+            "git_refs_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/git/refs{/sha}",
+            "trees_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/git/trees{/sha}",
+            "statuses_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/statuses/{sha}",
+            "languages_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/languages",
+            "stargazers_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/stargazers",
+            "contributors_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/contributors",
+            "subscribers_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/subscribers",
+            "subscription_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/subscription",
+            "commits_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/commits{/sha}",
+            "git_commits_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/git/commits{/sha}",
+            "comments_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/comments{/number}",
+            "issue_comment_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/issues/comments{/number}",
+            "contents_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/contents/{+path}",
+            "compare_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/compare/{base}...{head}",
+            "merges_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/merges",
+            "archive_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/{archive_format}{/ref}",
+            "downloads_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/downloads",
+            "issues_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/issues{/number}",
+            "pulls_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/pulls{/number}",
+            "milestones_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/milestones{/number}",
+            "notifications_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/notifications{?since,all,participating}",
+            "labels_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/labels{/name}",
+            "releases_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/releases{/id}",
+            "deployments_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/deployments"
+          }
+        }
+      }
+    ],
+    "jobLists": [
+      {
+        "requestUrl": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/runs/43295709466/jobs?per_page=100",
+        "response": {
+          "total_count": 4,
+          "jobs": [
+            {
+              "id": 131453368713,
+              "run_id": 43295709466,
+              "workflow_name": "Verify access controls and code monitoring",
+              "head_branch": "qualify/upstream-033-20261112",
+              "run_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/runs/43295709466",
+              "run_attempt": 1,
+              "node_id": "CR_kwDOVdq5o88AAAAemzs5iQ",
+              "head_sha": "4bd2b6bc5aeeec17e4b076eec4947081d2363c1d",
+              "url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/jobs/131453368713",
+              "html_url": "https://github.com/MulattoTech/MTechLabs-Access/actions/runs/43295709466/job/131453368713",
+              "status": "completed",
+              "conclusion": "success",
+              "created_at": "2026-11-12T19:59:12Z",
+              "started_at": "2026-11-12T19:59:14Z",
+              "completed_at": "2026-11-12T19:59:21Z",
+              "name": "test",
+              "steps": [
+                {
+                  "name": "Set up job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 1,
+                  "started_at": "2026-11-12T19:59:14Z",
+                  "completed_at": "2026-11-12T19:59:15Z"
+                },
+                {
+                  "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 2,
+                  "started_at": "2026-11-12T19:59:15Z",
+                  "completed_at": "2026-11-12T19:59:16Z"
+                },
+                {
+                  "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 3,
+                  "started_at": "2026-11-12T19:59:16Z",
+                  "completed_at": "2026-11-12T19:59:17Z"
+                },
+                {
+                  "name": "Run npm test",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 4,
+                  "started_at": "2026-11-12T19:59:17Z",
+                  "completed_at": "2026-11-12T19:59:18Z"
+                },
+                {
+                  "name": "Run npm run check",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 5,
+                  "started_at": "2026-11-12T19:59:18Z",
+                  "completed_at": "2026-11-12T19:59:18Z"
+                },
+                {
+                  "name": "Run npm run build",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 6,
+                  "started_at": "2026-11-12T19:59:18Z",
+                  "completed_at": "2026-11-12T19:59:18Z"
+                },
+                {
+                  "name": "Check generated UI matches its sources",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 7,
+                  "started_at": "2026-11-12T19:59:18Z",
+                  "completed_at": "2026-11-12T19:59:18Z"
+                },
+                {
+                  "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 13,
+                  "started_at": "2026-11-12T19:59:18Z",
+                  "completed_at": "2026-11-12T19:59:19Z"
+                },
+                {
+                  "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 14,
+                  "started_at": "2026-11-12T19:59:19Z",
+                  "completed_at": "2026-11-12T19:59:19Z"
+                },
+                {
+                  "name": "Complete job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 15,
+                  "started_at": "2026-11-12T19:59:19Z",
+                  "completed_at": "2026-11-12T19:59:19Z"
+                }
+              ],
+              "check_run_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/check-runs/131453368713",
+              "labels": [
+                "ubuntu-latest"
+              ],
+              "runner_id": 1000037042,
+              "runner_name": "GitHub Actions 1000037042",
+              "runner_group_id": 0,
+              "runner_group_name": "GitHub Actions"
+            },
+            {
+              "id": 131453369219,
+              "run_id": 43295709466,
+              "workflow_name": "Verify access controls and code monitoring",
+              "head_branch": "qualify/upstream-033-20261112",
+              "run_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/runs/43295709466",
+              "run_attempt": 1,
+              "node_id": "CR_kwDOVdq5o88AAAAemzs7gw",
+              "head_sha": "4bd2b6bc5aeeec17e4b076eec4947081d2363c1d",
+              "url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/jobs/131453369219",
+              "html_url": "https://github.com/MulattoTech/MTechLabs-Access/actions/runs/43295709466/job/131453369219",
+              "status": "completed",
+              "conclusion": "success",
+              "created_at": "2026-11-12T19:59:12Z",
+              "started_at": "2026-11-12T19:59:14Z",
+              "completed_at": "2026-11-12T19:59:37Z",
+              "name": "managed-mcp",
+              "steps": [
+                {
+                  "name": "Set up job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 1,
+                  "started_at": "2026-11-12T19:59:15Z",
+                  "completed_at": "2026-11-12T19:59:16Z"
+                },
+                {
+                  "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 2,
+                  "started_at": "2026-11-12T19:59:16Z",
+                  "completed_at": "2026-11-12T19:59:17Z"
+                },
+                {
+                  "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 3,
+                  "started_at": "2026-11-12T19:59:17Z",
+                  "completed_at": "2026-11-12T19:59:18Z"
+                },
+                {
+                  "name": "Run npm ci --ignore-scripts --no-audit --no-fund",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 4,
+                  "started_at": "2026-11-12T19:59:18Z",
+                  "completed_at": "2026-11-12T19:59:20Z"
+                },
+                {
+                  "name": "Run npm test",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 5,
+                  "started_at": "2026-11-12T19:59:20Z",
+                  "completed_at": "2026-11-12T19:59:34Z"
+                },
+                {
+                  "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 9,
+                  "started_at": "2026-11-12T19:59:34Z",
+                  "completed_at": "2026-11-12T19:59:35Z"
+                },
+                {
+                  "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 10,
+                  "started_at": "2026-11-12T19:59:35Z",
+                  "completed_at": "2026-11-12T19:59:35Z"
+                },
+                {
+                  "name": "Complete job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 11,
+                  "started_at": "2026-11-12T19:59:35Z",
+                  "completed_at": "2026-11-12T19:59:35Z"
+                }
+              ],
+              "check_run_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/check-runs/131453369219",
+              "labels": [
+                "ubuntu-latest"
+              ],
+              "runner_id": 1000037043,
+              "runner_name": "GitHub Actions 1000037043",
+              "runner_group_id": 0,
+              "runner_group_name": "GitHub Actions"
+            },
+            {
+              "id": 131453369237,
+              "run_id": 43295709466,
+              "workflow_name": "Verify access controls and code monitoring",
+              "head_branch": "qualify/upstream-033-20261112",
+              "run_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/runs/43295709466",
+              "run_attempt": 1,
+              "node_id": "CR_kwDOVdq5o88AAAAemzs7lQ",
+              "head_sha": "4bd2b6bc5aeeec17e4b076eec4947081d2363c1d",
+              "url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/jobs/131453369237",
+              "html_url": "https://github.com/MulattoTech/MTechLabs-Access/actions/runs/43295709466/job/131453369237",
+              "status": "completed",
+              "conclusion": "success",
+              "created_at": "2026-11-12T19:59:12Z",
+              "started_at": "2026-11-12T19:59:14Z",
+              "completed_at": "2026-11-12T20:00:17Z",
+              "name": "Upstream qualification / ubuntu-latest / Node 24",
+              "steps": [
+                {
+                  "name": "Set up job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 1,
+                  "started_at": "2026-11-12T19:59:15Z",
+                  "completed_at": "2026-11-12T19:59:16Z"
+                },
+                {
+                  "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 2,
+                  "started_at": "2026-11-12T19:59:16Z",
+                  "completed_at": "2026-11-12T19:59:17Z"
+                },
+                {
+                  "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 3,
+                  "started_at": "2026-11-12T19:59:17Z",
+                  "completed_at": "2026-11-12T19:59:21Z"
+                },
+                {
+                  "name": "Install the exact manager SDK without lifecycle scripts",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 4,
+                  "started_at": "2026-11-12T19:59:21Z",
+                  "completed_at": "2026-11-12T19:59:25Z"
+                },
+                {
+                  "name": "Verify manager and qualification guards on this platform",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 5,
+                  "started_at": "2026-11-12T19:59:25Z",
+                  "completed_at": "2026-11-12T19:59:37Z"
+                },
+                {
+                  "name": "Compare real pinned upstream packages in disposable stores",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 6,
+                  "started_at": "2026-11-12T19:59:37Z",
+                  "completed_at": "2026-11-12T20:00:10Z"
+                },
+                {
+                  "name": "Verify tracked source remains unchanged",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 7,
+                  "started_at": "2026-11-12T20:00:10Z",
+                  "completed_at": "2026-11-12T20:00:10Z"
+                },
+                {
+                  "name": "Preserve exact qualification and contract evidence",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 8,
+                  "started_at": "2026-11-12T20:00:10Z",
+                  "completed_at": "2026-11-12T20:00:11Z"
+                },
+                {
+                  "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 15,
+                  "started_at": "2026-11-12T20:00:11Z",
+                  "completed_at": "2026-11-12T20:00:11Z"
+                },
+                {
+                  "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 16,
+                  "started_at": "2026-11-12T20:00:11Z",
+                  "completed_at": "2026-11-12T20:00:12Z"
+                },
+                {
+                  "name": "Complete job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 17,
+                  "started_at": "2026-11-12T20:00:12Z",
+                  "completed_at": "2026-11-12T20:00:12Z"
+                }
+              ],
+              "check_run_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/check-runs/131453369237",
+              "labels": [
+                "ubuntu-latest"
+              ],
+              "runner_id": 1000037044,
+              "runner_name": "GitHub Actions 1000037044",
+              "runner_group_id": 0,
+              "runner_group_name": "GitHub Actions"
+            },
+            {
+              "id": 131453369301,
+              "run_id": 43295709466,
+              "workflow_name": "Verify access controls and code monitoring",
+              "head_branch": "qualify/upstream-033-20261112",
+              "run_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/runs/43295709466",
+              "run_attempt": 1,
+              "node_id": "CR_kwDOVdq5o88AAAAemzs71Q",
+              "head_sha": "4bd2b6bc5aeeec17e4b076eec4947081d2363c1d",
+              "url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/jobs/131453369301",
+              "html_url": "https://github.com/MulattoTech/MTechLabs-Access/actions/runs/43295709466/job/131453369301",
+              "status": "completed",
+              "conclusion": "success",
+              "created_at": "2026-11-12T19:59:12Z",
+              "started_at": "2026-11-12T19:59:14Z",
+              "completed_at": "2026-11-12T20:01:38Z",
+              "name": "Upstream qualification / windows-latest / Node 24",
+              "steps": [
+                {
+                  "name": "Set up job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 1,
+                  "started_at": "2026-11-12T19:59:15Z",
+                  "completed_at": "2026-11-12T19:59:16Z"
+                },
+                {
+                  "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 2,
+                  "started_at": "2026-11-12T19:59:16Z",
+                  "completed_at": "2026-11-12T19:59:24Z"
+                },
+                {
+                  "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 3,
+                  "started_at": "2026-11-12T19:59:24Z",
+                  "completed_at": "2026-11-12T19:59:30Z"
+                },
+                {
+                  "name": "Install the exact manager SDK without lifecycle scripts",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 4,
+                  "started_at": "2026-11-12T19:59:30Z",
+                  "completed_at": "2026-11-12T19:59:38Z"
+                },
+                {
+                  "name": "Verify manager and qualification guards on this platform",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 5,
+                  "started_at": "2026-11-12T19:59:38Z",
+                  "completed_at": "2026-11-12T20:00:09Z"
+                },
+                {
+                  "name": "Compare real pinned upstream packages in disposable stores",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 6,
+                  "started_at": "2026-11-12T20:00:09Z",
+                  "completed_at": "2026-11-12T20:01:24Z"
+                },
+                {
+                  "name": "Verify tracked source remains unchanged",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 7,
+                  "started_at": "2026-11-12T20:01:24Z",
+                  "completed_at": "2026-11-12T20:01:24Z"
+                },
+                {
+                  "name": "Preserve exact qualification and contract evidence",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 8,
+                  "started_at": "2026-11-12T20:01:24Z",
+                  "completed_at": "2026-11-12T20:01:26Z"
+                },
+                {
+                  "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 15,
+                  "started_at": "2026-11-12T20:01:26Z",
+                  "completed_at": "2026-11-12T20:01:26Z"
+                },
+                {
+                  "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 16,
+                  "started_at": "2026-11-12T20:01:26Z",
+                  "completed_at": "2026-11-12T20:01:29Z"
+                },
+                {
+                  "name": "Complete job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 17,
+                  "started_at": "2026-11-12T20:01:29Z",
+                  "completed_at": "2026-11-12T20:01:29Z"
+                }
+              ],
+              "check_run_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/check-runs/131453369301",
+              "labels": [
+                "windows-latest"
+              ],
+              "runner_id": 1000037045,
+              "runner_name": "GitHub Actions 1000037045",
+              "runner_group_id": 0,
+              "runner_group_name": "GitHub Actions"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "main": {
+    "commit": {
+      "requestUrl": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/git/commits/ef8dce0e1863e63958c4421e8506c9bdb5e881e0",
+      "response": {
+        "sha": "ef8dce0e1863e63958c4421e8506c9bdb5e881e0",
+        "node_id": "C_kwDOVdq5o9oAKGVmOGRjZTBlMTg2M2U2Mzk1OGM0NDIxZTg1MDZjOWJkYjVlODgxZTA",
+        "url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/git/commits/ef8dce0e1863e63958c4421e8506c9bdb5e881e0",
+        "html_url": "https://github.com/MulattoTech/MTechLabs-Access/commit/ef8dce0e1863e63958c4421e8506c9bdb5e881e0",
+        "author": {
+          "name": "Dylan",
+          "email": "5900632+MulattoTech@users.noreply.github.com",
+          "date": "2026-11-12T20:05:30Z"
+        },
+        "committer": {
+          "name": "GitHub",
+          "email": "noreply@github.com",
+          "date": "2026-11-12T20:05:30Z"
+        },
+        "tree": {
+          "sha": "fe52f5d5720c6a34ee6bbec387b1dc098ea8f2d3",
+          "url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/git/trees/fe52f5d5720c6a34ee6bbec387b1dc098ea8f2d3"
+        },
+        "message": "Merge PR #24: qualify pinned Desktop Commander 0.3.3\n\nExact candidate4bd2b6bc independently reviewed; all234 Git blobs and101 manager tests verified. All four hosted candidate jobs pass, including all ten real stages on Linux and Windows for both0.3.1 and0.3.3. Package integrity, contract preservation and owned cleanup recorded. This is source qualification only; no production deployment or remote OAuth exposure claim.",
+        "parents": [
+          {
+            "sha": "499255adf0c3988558eb4b1dd04ee95ad3c7da33",
+            "url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/git/commits/499255adf0c3988558eb4b1dd04ee95ad3c7da33",
+            "html_url": "https://github.com/MulattoTech/MTechLabs-Access/commit/499255adf0c3988558eb4b1dd04ee95ad3c7da33"
+          },
+          {
+            "sha": "4bd2b6bc5aeeec17e4b076eec4947081d2363c1d",
+            "url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/git/commits/4bd2b6bc5aeeec17e4b076eec4947081d2363c1d",
+            "html_url": "https://github.com/MulattoTech/MTechLabs-Access/commit/4bd2b6bc5aeeec17e4b076eec4947081d2363c1d"
+          }
+        ],
+        "verification": {
+          "verified": true,
+          "reason": "valid",
+          "signature": "-----BEGIN PGP SIGNATURE-----\n\nwsFcBAABCAAQBQJq9hwKCRC1aQ7uu5UhlAAAuE0QACu5kkYB13CQ8GNHS6fQMmtn\nwCKYaqQfEhzAjFPGqr6ArF1+ncPsFc4FjRDBajaOn0YlmTNKUsMNxQVDObyUXsRa\nxUxrpYFJgtEoCK2Sm3tGZJjj2XoV8GYYPSmSCQwvyg7yq8Jmy4t8XAltZRP4tSE5\nsafKOtMXwHY7rSWVuSV9aOtdmJP/UCpqz18szFLyv+PXswy/fd19nTDN75zMqWj8\nt+kjeptiypZ3y0Y54nSGx0DD2BKWsPED1aHoe6MHkOfpsurMzP4TyAyEU+nU8Ii8\nfYS6JwSb0M+ZL3k5iZrtx0uQsPC9HB9nhnTyAIgJ1onAc6HR3BsGtE+q6nvrBG0t\nboU30Lo6tcQ9dbVC8oWE5sCDsgXbZY1RYLUeXBWeEX0Ro6NWxeEdqMPo7XFNzWW9\nqqkRkq0Dxs51tHDUyZJqcZ7mqmphN+lAUdL0XPbzKOhkcchKHrHdEi1iO3TXorCo\npVgMVem6pB6sTm1UlLSxVSgdTNJMBbRkl//5BzR1mInXX2Um2eBM8NTWqkt3biuq\nG5Y56cvthhtJLDX9d7kwFA978DkpJo0zFYjCT/rtaYRFBG9cU5Wkxu11PHTIuZg8\nChzPKxnNhpo820R5BvY/3kPgAKweY6o2leok6xDY24sc0c31yjMYBu/qdC5SOaw1\nD6GQjqkdreDAZAxzAag4\n=rv4E\n-----END PGP SIGNATURE-----\n",
+          "payload": "tree fe52f5d5720c6a34ee6bbec387b1dc098ea8f2d3\nparent 499255adf0c3988558eb4b1dd04ee95ad3c7da33\nparent 4bd2b6bc5aeeec17e4b076eec4947081d2363c1d\nauthor Dylan <5900632+MulattoTech@users.noreply.github.com> 1794513930 -0600\ncommitter GitHub <noreply@github.com> 1794513930 -0600\n\nMerge PR #24: qualify pinned Desktop Commander 0.3.3\n\nExact candidate4bd2b6bc independently reviewed; all234 Git blobs and101 manager tests verified. All four hosted candidate jobs pass, including all ten real stages on Linux and Windows for both0.3.1 and0.3.3. Package integrity, contract preservation and owned cleanup recorded. This is source qualification only; no production deployment or remote OAuth exposure claim.",
+          "verified_at": "2026-11-12T20:05:30Z"
+        }
+      }
+    },
+    "workflows": [
+      {
+        "requestUrl": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/contents/.github/workflows/check.yml?ref=ef8dce0e1863e63958c4421e8506c9bdb5e881e0",
+        "path": ".github/workflows/check.yml",
+        "ref": "ef8dce0e1863e63958c4421e8506c9bdb5e881e0",
+        "responseKind": "DECODED_FILE_CONTENT",
+        "content": "name: Verify access controls and code monitoring\n\non:\n  pull_request:\n  push:\n    branches: [main]\n\npermissions:\n  contents: read\n\njobs:\n  test:\n    runs-on: ubuntu-latest\n    timeout-minutes: 10\n    steps:\n      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262\n      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020\n        with:\n          node-version: '24'\n      - run: npm test\n      - run: npm run check\n      - run: npm run build\n      - name: Check generated UI matches its sources\n        run: git diff --exit-code -- src/ui.generated.js\n\n  managed-mcp:\n    runs-on: ubuntu-latest\n    timeout-minutes: 5\n    defaults:\n      run:\n        working-directory: integrations/mcp-manager\n    steps:\n      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262\n      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020\n        with:\n          node-version: '24'\n      - run: npm ci --ignore-scripts --no-audit --no-fund\n      - run: npm test\n\n  upstream-qualification:\n    name: Upstream qualification / ${{ matrix.os }} / Node 24\n    strategy:\n      fail-fast: false\n      matrix:\n        os: [ubuntu-latest, windows-latest]\n    runs-on: ${{ matrix.os }}\n    timeout-minutes: 20\n    defaults:\n      run:\n        working-directory: integrations/mcp-manager\n    steps:\n      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262\n        with:\n          persist-credentials: false\n      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020\n        with:\n          node-version: '24'\n      - name: Install the exact manager SDK without lifecycle scripts\n        run: npm ci --ignore-scripts --no-audit --no-fund\n      - name: Verify manager and qualification guards on this platform\n        run: npm test\n      - name: Compare real pinned upstream packages in disposable stores\n        run: npm run qualify:upstream\n        env:\n          MTERM_DISPOSABLE_UPSTREAM_QUALIFICATION: '1'\n          MTERM_QUALIFICATION_CANDIDATE_SHA: ${{ github.event.pull_request.head.sha || github.sha }}\n      - name: Verify tracked source remains unchanged\n        if: always()\n        run: git diff --exit-code\n      - name: Preserve exact qualification and contract evidence\n        if: always()\n        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9\n        with:\n          name: upstream-qualification-${{ matrix.os }}-${{ github.run_id }}-${{ github.run_attempt }}\n          path: ${{ runner.temp }}/mterm-q-*/reports/\n          retention-days: 14\n          if-no-files-found: warn\n"
+      }
+    ],
+    "runs": [
+      {
+        "requestUrl": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/runs/43296801071",
+        "response": {
+          "id": 43296801071,
+          "name": "Verify access controls and code monitoring",
+          "node_id": "WFR_kwLOVdq5o88AAAAKFLDBLw",
+          "head_branch": "main",
+          "head_sha": "ef8dce0e1863e63958c4421e8506c9bdb5e881e0",
+          "path": ".github/workflows/check.yml",
+          "display_title": "Merge PR #24: qualify pinned Desktop Commander 0.3.3",
+          "run_number": 53,
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "workflow_id": 402397153,
+          "check_suite_id": 117248011940,
+          "check_suite_node_id": "CS_kwDOVdq5o88AAAAbTIaupA",
+          "url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/runs/43296801071",
+          "html_url": "https://github.com/MulattoTech/MTechLabs-Access/actions/runs/43296801071",
+          "pull_requests": [],
+          "created_at": "2026-11-12T20:05:33Z",
+          "updated_at": "2026-11-12T20:08:00Z",
+          "actor": {
+            "login": "MulattoTech",
+            "id": 5900632,
+            "node_id": "MDQ6VXNlcjU5MDA2MzI=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/5900632?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/MulattoTech",
+            "html_url": "https://github.com/MulattoTech",
+            "followers_url": "https://api.github.com/users/MulattoTech/followers",
+            "following_url": "https://api.github.com/users/MulattoTech/following{/other_user}",
+            "gists_url": "https://api.github.com/users/MulattoTech/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/MulattoTech/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/MulattoTech/subscriptions",
+            "organizations_url": "https://api.github.com/users/MulattoTech/orgs",
+            "repos_url": "https://api.github.com/users/MulattoTech/repos",
+            "events_url": "https://api.github.com/users/MulattoTech/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/MulattoTech/received_events",
+            "type": "User",
+            "user_view_type": "public",
+            "site_admin": false
+          },
+          "run_attempt": 1,
+          "referenced_workflows": [],
+          "run_started_at": "2026-11-12T20:05:33Z",
+          "triggering_actor": {
+            "login": "MulattoTech",
+            "id": 5900632,
+            "node_id": "MDQ6VXNlcjU5MDA2MzI=",
+            "avatar_url": "https://avatars.githubusercontent.com/u/5900632?v=4",
+            "gravatar_id": "",
+            "url": "https://api.github.com/users/MulattoTech",
+            "html_url": "https://github.com/MulattoTech",
+            "followers_url": "https://api.github.com/users/MulattoTech/followers",
+            "following_url": "https://api.github.com/users/MulattoTech/following{/other_user}",
+            "gists_url": "https://api.github.com/users/MulattoTech/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/MulattoTech/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/MulattoTech/subscriptions",
+            "organizations_url": "https://api.github.com/users/MulattoTech/orgs",
+            "repos_url": "https://api.github.com/users/MulattoTech/repos",
+            "events_url": "https://api.github.com/users/MulattoTech/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/MulattoTech/received_events",
+            "type": "User",
+            "user_view_type": "public",
+            "site_admin": false
+          },
+          "jobs_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/runs/43296801071/jobs",
+          "logs_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/runs/43296801071/logs",
+          "check_suite_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/check-suites/117248011940",
+          "artifacts_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/runs/43296801071/artifacts",
+          "cancel_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/runs/43296801071/cancel",
+          "rerun_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/runs/43296801071/rerun",
+          "previous_attempt_url": null,
+          "workflow_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/workflows/402397153",
+          "head_commit": {
+            "id": "ef8dce0e1863e63958c4421e8506c9bdb5e881e0",
+            "tree_id": "fe52f5d5720c6a34ee6bbec387b1dc098ea8f2d3",
+            "message": "Merge PR #24: qualify pinned Desktop Commander 0.3.3\n\nExact candidate4bd2b6bc independently reviewed; all234 Git blobs and101 manager tests verified. All four hosted candidate jobs pass, including all ten real stages on Linux and Windows for both0.3.1 and0.3.3. Package integrity, contract preservation and owned cleanup recorded. This is source qualification only; no production deployment or remote OAuth exposure claim.",
+            "timestamp": "2026-11-12T20:05:30Z",
+            "author": {
+              "name": "Dylan",
+              "email": "5900632+MulattoTech@users.noreply.github.com"
+            },
+            "committer": {
+              "name": "GitHub",
+              "email": "noreply@github.com"
+            }
+          },
+          "repository": {
+            "id": 1440397731,
+            "node_id": "R_kgDOVdq5ow",
+            "name": "MTechLabs-Access",
+            "full_name": "MulattoTech/MTechLabs-Access",
+            "private": true,
+            "owner": {
+              "login": "MulattoTech",
+              "id": 5900632,
+              "node_id": "MDQ6VXNlcjU5MDA2MzI=",
+              "avatar_url": "https://avatars.githubusercontent.com/u/5900632?v=4",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/MulattoTech",
+              "html_url": "https://github.com/MulattoTech",
+              "followers_url": "https://api.github.com/users/MulattoTech/followers",
+              "following_url": "https://api.github.com/users/MulattoTech/following{/other_user}",
+              "gists_url": "https://api.github.com/users/MulattoTech/gists{/gist_id}",
+              "starred_url": "https://api.github.com/users/MulattoTech/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/MulattoTech/subscriptions",
+              "organizations_url": "https://api.github.com/users/MulattoTech/orgs",
+              "repos_url": "https://api.github.com/users/MulattoTech/repos",
+              "events_url": "https://api.github.com/users/MulattoTech/events{/privacy}",
+              "received_events_url": "https://api.github.com/users/MulattoTech/received_events",
+              "type": "User",
+              "user_view_type": "public",
+              "site_admin": false
+            },
+            "html_url": "https://github.com/MulattoTech/MTechLabs-Access",
+            "description": "M-TechLabs central access management and deterministic Tacticus Code Watch",
+            "fork": false,
+            "url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access",
+            "forks_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/forks",
+            "keys_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/keys{/key_id}",
+            "collaborators_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/collaborators{/collaborator}",
+            "teams_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/teams",
+            "hooks_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/hooks",
+            "issue_events_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/issues/events{/number}",
+            "events_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/events",
+            "assignees_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/assignees{/user}",
+            "branches_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/branches{/branch}",
+            "tags_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/tags",
+            "blobs_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/git/blobs{/sha}",
+            "git_tags_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/git/tags{/sha}",
+            "git_refs_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/git/refs{/sha}",
+            "trees_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/git/trees{/sha}",
+            "statuses_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/statuses/{sha}",
+            "languages_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/languages",
+            "stargazers_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/stargazers",
+            "contributors_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/contributors",
+            "subscribers_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/subscribers",
+            "subscription_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/subscription",
+            "commits_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/commits{/sha}",
+            "git_commits_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/git/commits{/sha}",
+            "comments_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/comments{/number}",
+            "issue_comment_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/issues/comments{/number}",
+            "contents_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/contents/{+path}",
+            "compare_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/compare/{base}...{head}",
+            "merges_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/merges",
+            "archive_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/{archive_format}{/ref}",
+            "downloads_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/downloads",
+            "issues_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/issues{/number}",
+            "pulls_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/pulls{/number}",
+            "milestones_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/milestones{/number}",
+            "notifications_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/notifications{?since,all,participating}",
+            "labels_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/labels{/name}",
+            "releases_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/releases{/id}",
+            "deployments_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/deployments"
+          },
+          "head_repository": {
+            "id": 1440397731,
+            "node_id": "R_kgDOVdq5ow",
+            "name": "MTechLabs-Access",
+            "full_name": "MulattoTech/MTechLabs-Access",
+            "private": true,
+            "owner": {
+              "login": "MulattoTech",
+              "id": 5900632,
+              "node_id": "MDQ6VXNlcjU5MDA2MzI=",
+              "avatar_url": "https://avatars.githubusercontent.com/u/5900632?v=4",
+              "gravatar_id": "",
+              "url": "https://api.github.com/users/MulattoTech",
+              "html_url": "https://github.com/MulattoTech",
+              "followers_url": "https://api.github.com/users/MulattoTech/followers",
+              "following_url": "https://api.github.com/users/MulattoTech/following{/other_user}",
+              "gists_url": "https://api.github.com/users/MulattoTech/gists{/gist_id}",
+              "starred_url": "https://api.github.com/users/MulattoTech/starred{/owner}{/repo}",
+              "subscriptions_url": "https://api.github.com/users/MulattoTech/subscriptions",
+              "organizations_url": "https://api.github.com/users/MulattoTech/orgs",
+              "repos_url": "https://api.github.com/users/MulattoTech/repos",
+              "events_url": "https://api.github.com/users/MulattoTech/events{/privacy}",
+              "received_events_url": "https://api.github.com/users/MulattoTech/received_events",
+              "type": "User",
+              "user_view_type": "public",
+              "site_admin": false
+            },
+            "html_url": "https://github.com/MulattoTech/MTechLabs-Access",
+            "description": "M-TechLabs central access management and deterministic Tacticus Code Watch",
+            "fork": false,
+            "url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access",
+            "forks_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/forks",
+            "keys_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/keys{/key_id}",
+            "collaborators_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/collaborators{/collaborator}",
+            "teams_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/teams",
+            "hooks_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/hooks",
+            "issue_events_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/issues/events{/number}",
+            "events_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/events",
+            "assignees_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/assignees{/user}",
+            "branches_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/branches{/branch}",
+            "tags_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/tags",
+            "blobs_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/git/blobs{/sha}",
+            "git_tags_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/git/tags{/sha}",
+            "git_refs_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/git/refs{/sha}",
+            "trees_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/git/trees{/sha}",
+            "statuses_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/statuses/{sha}",
+            "languages_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/languages",
+            "stargazers_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/stargazers",
+            "contributors_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/contributors",
+            "subscribers_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/subscribers",
+            "subscription_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/subscription",
+            "commits_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/commits{/sha}",
+            "git_commits_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/git/commits{/sha}",
+            "comments_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/comments{/number}",
+            "issue_comment_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/issues/comments{/number}",
+            "contents_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/contents/{+path}",
+            "compare_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/compare/{base}...{head}",
+            "merges_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/merges",
+            "archive_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/{archive_format}{/ref}",
+            "downloads_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/downloads",
+            "issues_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/issues{/number}",
+            "pulls_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/pulls{/number}",
+            "milestones_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/milestones{/number}",
+            "notifications_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/notifications{?since,all,participating}",
+            "labels_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/labels{/name}",
+            "releases_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/releases{/id}",
+            "deployments_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/deployments"
+          }
+        }
+      }
+    ],
+    "jobLists": [
+      {
+        "requestUrl": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/runs/43296801071/jobs?per_page=100",
+        "response": {
+          "total_count": 4,
+          "jobs": [
+            {
+              "id": 131457150428,
+              "run_id": 43296801071,
+              "workflow_name": "Verify access controls and code monitoring",
+              "head_branch": "main",
+              "run_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/runs/43296801071",
+              "run_attempt": 1,
+              "node_id": "CR_kwDOVdq5o88AAAAem3Tt3A",
+              "head_sha": "ef8dce0e1863e63958c4421e8506c9bdb5e881e0",
+              "url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/jobs/131457150428",
+              "html_url": "https://github.com/MulattoTech/MTechLabs-Access/actions/runs/43296801071/job/131457150428",
+              "status": "completed",
+              "conclusion": "success",
+              "created_at": "2026-11-12T20:05:34Z",
+              "started_at": "2026-11-12T20:05:36Z",
+              "completed_at": "2026-11-12T20:05:47Z",
+              "name": "test",
+              "steps": [
+                {
+                  "name": "Set up job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 1,
+                  "started_at": "2026-11-12T20:05:37Z",
+                  "completed_at": "2026-11-12T20:05:38Z"
+                },
+                {
+                  "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 2,
+                  "started_at": "2026-11-12T20:05:38Z",
+                  "completed_at": "2026-11-12T20:05:39Z"
+                },
+                {
+                  "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 3,
+                  "started_at": "2026-11-12T20:05:39Z",
+                  "completed_at": "2026-11-12T20:05:40Z"
+                },
+                {
+                  "name": "Run npm test",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 4,
+                  "started_at": "2026-11-12T20:05:40Z",
+                  "completed_at": "2026-11-12T20:05:42Z"
+                },
+                {
+                  "name": "Run npm run check",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 5,
+                  "started_at": "2026-11-12T20:05:42Z",
+                  "completed_at": "2026-11-12T20:05:42Z"
+                },
+                {
+                  "name": "Run npm run build",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 6,
+                  "started_at": "2026-11-12T20:05:42Z",
+                  "completed_at": "2026-11-12T20:05:43Z"
+                },
+                {
+                  "name": "Check generated UI matches its sources",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 7,
+                  "started_at": "2026-11-12T20:05:43Z",
+                  "completed_at": "2026-11-12T20:05:43Z"
+                },
+                {
+                  "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 13,
+                  "started_at": "2026-11-12T20:05:43Z",
+                  "completed_at": "2026-11-12T20:05:43Z"
+                },
+                {
+                  "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 14,
+                  "started_at": "2026-11-12T20:05:43Z",
+                  "completed_at": "2026-11-12T20:05:43Z"
+                },
+                {
+                  "name": "Complete job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 15,
+                  "started_at": "2026-11-12T20:05:43Z",
+                  "completed_at": "2026-11-12T20:05:43Z"
+                }
+              ],
+              "check_run_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/check-runs/131457150428",
+              "labels": [
+                "ubuntu-latest"
+              ],
+              "runner_id": 1000037051,
+              "runner_name": "GitHub Actions 1000037051",
+              "runner_group_id": 0,
+              "runner_group_name": "GitHub Actions"
+            },
+            {
+              "id": 131457150714,
+              "run_id": 43296801071,
+              "workflow_name": "Verify access controls and code monitoring",
+              "head_branch": "main",
+              "run_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/runs/43296801071",
+              "run_attempt": 1,
+              "node_id": "CR_kwDOVdq5o88AAAAem3Tu-g",
+              "head_sha": "ef8dce0e1863e63958c4421e8506c9bdb5e881e0",
+              "url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/jobs/131457150714",
+              "html_url": "https://github.com/MulattoTech/MTechLabs-Access/actions/runs/43296801071/job/131457150714",
+              "status": "completed",
+              "conclusion": "success",
+              "created_at": "2026-11-12T20:05:34Z",
+              "started_at": "2026-11-12T20:05:36Z",
+              "completed_at": "2026-11-12T20:08:00Z",
+              "name": "Upstream qualification / windows-latest / Node 24",
+              "steps": [
+                {
+                  "name": "Set up job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 1,
+                  "started_at": "2026-11-12T20:05:37Z",
+                  "completed_at": "2026-11-12T20:05:38Z"
+                },
+                {
+                  "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 2,
+                  "started_at": "2026-11-12T20:05:38Z",
+                  "completed_at": "2026-11-12T20:05:47Z"
+                },
+                {
+                  "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 3,
+                  "started_at": "2026-11-12T20:05:47Z",
+                  "completed_at": "2026-11-12T20:05:56Z"
+                },
+                {
+                  "name": "Install the exact manager SDK without lifecycle scripts",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 4,
+                  "started_at": "2026-11-12T20:05:56Z",
+                  "completed_at": "2026-11-12T20:06:05Z"
+                },
+                {
+                  "name": "Verify manager and qualification guards on this platform",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 5,
+                  "started_at": "2026-11-12T20:06:05Z",
+                  "completed_at": "2026-11-12T20:06:40Z"
+                },
+                {
+                  "name": "Compare real pinned upstream packages in disposable stores",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 6,
+                  "started_at": "2026-11-12T20:06:40Z",
+                  "completed_at": "2026-11-12T20:07:47Z"
+                },
+                {
+                  "name": "Verify tracked source remains unchanged",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 7,
+                  "started_at": "2026-11-12T20:07:47Z",
+                  "completed_at": "2026-11-12T20:07:48Z"
+                },
+                {
+                  "name": "Preserve exact qualification and contract evidence",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 8,
+                  "started_at": "2026-11-12T20:07:48Z",
+                  "completed_at": "2026-11-12T20:07:50Z"
+                },
+                {
+                  "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 15,
+                  "started_at": "2026-11-12T20:07:50Z",
+                  "completed_at": "2026-11-12T20:07:50Z"
+                },
+                {
+                  "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 16,
+                  "started_at": "2026-11-12T20:07:50Z",
+                  "completed_at": "2026-11-12T20:07:52Z"
+                },
+                {
+                  "name": "Complete job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 17,
+                  "started_at": "2026-11-12T20:07:52Z",
+                  "completed_at": "2026-11-12T20:07:52Z"
+                }
+              ],
+              "check_run_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/check-runs/131457150714",
+              "labels": [
+                "windows-latest"
+              ],
+              "runner_id": 1000037052,
+              "runner_name": "GitHub Actions 1000037052",
+              "runner_group_id": 0,
+              "runner_group_name": "GitHub Actions"
+            },
+            {
+              "id": 131457150891,
+              "run_id": 43296801071,
+              "workflow_name": "Verify access controls and code monitoring",
+              "head_branch": "main",
+              "run_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/runs/43296801071",
+              "run_attempt": 1,
+              "node_id": "CR_kwDOVdq5o88AAAAem3Tvqw",
+              "head_sha": "ef8dce0e1863e63958c4421e8506c9bdb5e881e0",
+              "url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/jobs/131457150891",
+              "html_url": "https://github.com/MulattoTech/MTechLabs-Access/actions/runs/43296801071/job/131457150891",
+              "status": "completed",
+              "conclusion": "success",
+              "created_at": "2026-11-12T20:05:34Z",
+              "started_at": "2026-11-12T20:05:35Z",
+              "completed_at": "2026-11-12T20:05:56Z",
+              "name": "managed-mcp",
+              "steps": [
+                {
+                  "name": "Set up job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 1,
+                  "started_at": "2026-11-12T20:05:36Z",
+                  "completed_at": "2026-11-12T20:05:37Z"
+                },
+                {
+                  "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 2,
+                  "started_at": "2026-11-12T20:05:37Z",
+                  "completed_at": "2026-11-12T20:05:38Z"
+                },
+                {
+                  "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 3,
+                  "started_at": "2026-11-12T20:05:38Z",
+                  "completed_at": "2026-11-12T20:05:39Z"
+                },
+                {
+                  "name": "Run npm ci --ignore-scripts --no-audit --no-fund",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 4,
+                  "started_at": "2026-11-12T20:05:39Z",
+                  "completed_at": "2026-11-12T20:05:42Z"
+                },
+                {
+                  "name": "Run npm test",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 5,
+                  "started_at": "2026-11-12T20:05:42Z",
+                  "completed_at": "2026-11-12T20:05:55Z"
+                },
+                {
+                  "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 9,
+                  "started_at": "2026-11-12T20:05:55Z",
+                  "completed_at": "2026-11-12T20:05:55Z"
+                },
+                {
+                  "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 10,
+                  "started_at": "2026-11-12T20:05:55Z",
+                  "completed_at": "2026-11-12T20:05:55Z"
+                },
+                {
+                  "name": "Complete job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 11,
+                  "started_at": "2026-11-12T20:05:55Z",
+                  "completed_at": "2026-11-12T20:05:55Z"
+                }
+              ],
+              "check_run_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/check-runs/131457150891",
+              "labels": [
+                "ubuntu-latest"
+              ],
+              "runner_id": 1000037054,
+              "runner_name": "GitHub Actions 1000037054",
+              "runner_group_id": 0,
+              "runner_group_name": "GitHub Actions"
+            },
+            {
+              "id": 131457150952,
+              "run_id": 43296801071,
+              "workflow_name": "Verify access controls and code monitoring",
+              "head_branch": "main",
+              "run_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/runs/43296801071",
+              "run_attempt": 1,
+              "node_id": "CR_kwDOVdq5o88AAAAem3Tv6A",
+              "head_sha": "ef8dce0e1863e63958c4421e8506c9bdb5e881e0",
+              "url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/actions/jobs/131457150952",
+              "html_url": "https://github.com/MulattoTech/MTechLabs-Access/actions/runs/43296801071/job/131457150952",
+              "status": "completed",
+              "conclusion": "success",
+              "created_at": "2026-11-12T20:05:34Z",
+              "started_at": "2026-11-12T20:05:36Z",
+              "completed_at": "2026-11-12T20:06:28Z",
+              "name": "Upstream qualification / ubuntu-latest / Node 24",
+              "steps": [
+                {
+                  "name": "Set up job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 1,
+                  "started_at": "2026-11-12T20:05:37Z",
+                  "completed_at": "2026-11-12T20:05:37Z"
+                },
+                {
+                  "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 2,
+                  "started_at": "2026-11-12T20:05:37Z",
+                  "completed_at": "2026-11-12T20:05:39Z"
+                },
+                {
+                  "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 3,
+                  "started_at": "2026-11-12T20:05:39Z",
+                  "completed_at": "2026-11-12T20:05:39Z"
+                },
+                {
+                  "name": "Install the exact manager SDK without lifecycle scripts",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 4,
+                  "started_at": "2026-11-12T20:05:39Z",
+                  "completed_at": "2026-11-12T20:05:42Z"
+                },
+                {
+                  "name": "Verify manager and qualification guards on this platform",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 5,
+                  "started_at": "2026-11-12T20:05:42Z",
+                  "completed_at": "2026-11-12T20:05:55Z"
+                },
+                {
+                  "name": "Compare real pinned upstream packages in disposable stores",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 6,
+                  "started_at": "2026-11-12T20:05:55Z",
+                  "completed_at": "2026-11-12T20:06:21Z"
+                },
+                {
+                  "name": "Verify tracked source remains unchanged",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 7,
+                  "started_at": "2026-11-12T20:06:21Z",
+                  "completed_at": "2026-11-12T20:06:21Z"
+                },
+                {
+                  "name": "Preserve exact qualification and contract evidence",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 8,
+                  "started_at": "2026-11-12T20:06:21Z",
+                  "completed_at": "2026-11-12T20:06:23Z"
+                },
+                {
+                  "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 15,
+                  "started_at": "2026-11-12T20:06:23Z",
+                  "completed_at": "2026-11-12T20:06:23Z"
+                },
+                {
+                  "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 16,
+                  "started_at": "2026-11-12T20:06:23Z",
+                  "completed_at": "2026-11-12T20:06:23Z"
+                },
+                {
+                  "name": "Complete job",
+                  "status": "completed",
+                  "conclusion": "success",
+                  "number": 17,
+                  "started_at": "2026-11-12T20:06:23Z",
+                  "completed_at": "2026-11-12T20:06:24Z"
+                }
+              ],
+              "check_run_url": "https://api.github.com/repos/MulattoTech/MTechLabs-Access/check-runs/131457150952",
+              "labels": [
+                "ubuntu-latest"
+              ],
+              "runner_id": 1000037053,
+              "runner_name": "GitHub Actions 1000037053",
+              "runner_group_id": 0,
+              "runner_group_name": "GitHub Actions"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "captureSources": [
+    {
+      "file": "fresh-pr-identity.json",
+      "bytes": 48524,
+      "sha256": "a39925e8eca04820aba3294cc82bc3207a7854fb90485d1634ccac16f4bec0b2"
+    },
+    {
+      "file": "fresh-commit-api.json",
+      "bytes": 48048,
+      "sha256": "595949418f107476a407ef1c4e6183c164d4b1c19784c6df4e5c27f3201966ba"
+    },
+    {
+      "file": "fresh-job-api.json",
+      "bytes": 419024,
+      "sha256": "ee4efad9ea8c8dfb1253e208cddd993a805f23a9bdd4a12c99ea704f9b95c451"
+    },
+    {
+      "file": "fresh-run-api.json",
+      "bytes": 384955,
+      "sha256": "0a0a544a0babfd433878b8879f4551cc9fe6f965104dc9e5626d8b5f362ea209"
+    },
+    {
+      "file": "fresh-workflow-contents.json",
+      "bytes": 70715,
+      "sha256": "e2267b6be7361ef7a97c6c6e510c47b8415132437c01f5ed3337f84a7b26b335"
+    }
+  ],
+  "notes": [
+    "Commit, run and job response objects are the unmodified parsed JSON returned by GitHub API fetches.",
+    "PR identity fields retain original connector field names and values; this tool normalized GitHub metadata before returning it. The full tool response remains in the hashed source capture.",
+    "Workflow content is the exact returned text from the immutable-ref contents request. The connector returned decoded file content rather than the REST base64 envelope. Recompute Git blob and SHA256 from this text and bind the request URL/ref to the candidate or main commit.",
+    "Source capture filenames are relative to accounting-evidence. No new network calls or original-capture rewrites were made while preparing these identity inputs.",
+    "Display text, PR body and user fields are omitted from the PR identity projection; no identity field was synthesized from a normalized delivery receipt."
+  ]
+}

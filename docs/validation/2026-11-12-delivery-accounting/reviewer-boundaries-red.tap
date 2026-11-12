@@ -1,0 +1,141 @@
+✖ duplicate row references cannot inflate its qualified component count (69.500026ms)
+✖ missing workflow identities cannot agree through two undefined values (65.47333ms)
+✖ candidate branch identity remains required when both captured fields are omitted (43.009936ms)
+✖ one physical run or job cannot attest both candidate and actual main (153.475408ms)
+✖ captured API URLs must agree with their recorded run and job identities (27.234764ms)
+✖ qualification cannot be observed before the source merge or completed main checks (27.457966ms)
+✖ repeat observation of a saved package cannot count as another release (20.250319ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 0
+ℹ fail 7
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 638.927244
+
+✖ failing tests:
+
+test at tests/capability-delivery.test.mjs:416:1
+✖ duplicate row references cannot inflate its qualified component count (69.500026ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Accounting/tests/capability-delivery.test.mjs:419:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /DUPLICATE_ID/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/capability-delivery.test.mjs:422:1
+✖ missing workflow identities cannot agree through two undefined values (65.47333ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Accounting/tests/capability-delivery.test.mjs:426:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /SOURCE_BINDING/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/capability-delivery.test.mjs:429:1
+✖ candidate branch identity remains required when both captured fields are omitted (43.009936ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Accounting/tests/capability-delivery.test.mjs:435:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /SOURCE_BINDING/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/capability-delivery.test.mjs:438:1
+✖ one physical run or job cannot attest both candidate and actual main (153.475408ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Accounting/tests/capability-delivery.test.mjs:461:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /SOURCE_BINDING/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/capability-delivery.test.mjs:464:1
+✖ captured API URLs must agree with their recorded run and job identities (27.234764ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Accounting/tests/capability-delivery.test.mjs:472:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /SOURCE_BINDING/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/capability-delivery.test.mjs:476:1
+✖ qualification cannot be observed before the source merge or completed main checks (27.457966ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Accounting/tests/capability-delivery.test.mjs:481:12)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /SOURCE_BINDING/,
+    operator: 'throws',
+    diff: 'simple'
+  }
+
+test at tests/capability-delivery.test.mjs:485:1
+✖ repeat observation of a saved package cannot count as another release (20.250319ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Accounting/tests/capability-delivery.test.mjs:488:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: /DUPLICATE_ID/,
+    operator: 'throws',
+    diff: 'simple'
+  }

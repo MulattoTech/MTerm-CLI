@@ -1,0 +1,583 @@
+{
+  "schemaVersion": 1,
+  "reviewer": {
+    "agent": "/root/readiness_review",
+    "role": "independent source/criterion reviewer",
+    "provider": "OpenAI",
+    "model": "GPT-6 Astra Pro",
+    "identityProvenance": "session-declared; not an external attestation"
+  },
+  "assessedAt": "2026-11-12T22:31:10.819553+00:00",
+  "requirementId": "MTR-METRIC-01",
+  "sourceIssue": "https://github.com/MulattoTech/MTerm-CLI/issues/255",
+  "scope": "Criterion-scoped source implementation and tests of evidence-driven capability accounting; not acceptance of every referenced product requirement.",
+  "status": "APPROVE_FROZEN_SOURCE_CRITERIA_PENDING_NORMAL_DELIVERY_GATES",
+  "sourceCriteriaComplete": true,
+  "findings": [],
+  "snapshotManifest": {
+    "path": "snapshot-manifest.json",
+    "sha256": "5e37b8418b181952041836cebe2a3eb7766211ba0af45b1882618962b6544773",
+    "base": "6a6a883f3ce1cd86a7405d2c53a1fb08cd1210c2",
+    "capturedAt": "2026-11-12T22:28:08.008828+00:00",
+    "fileCount": 1112,
+    "reviewedSourceMatchesLiveAtReceiptCreation": true
+  },
+  "sourceHashes": [
+    {
+      "path": "scripts/capability-register.mjs",
+      "bytes": 41667,
+      "sha256": "b5f1f3b9b03690d199e2c3b480bac53cae875bac801e04f757245cb398aca03f"
+    },
+    {
+      "path": "scripts/capability-delivery-evidence.mjs",
+      "bytes": 6835,
+      "sha256": "f10c48827760a2954310bd69be2dde014bce8b5826f32e6e9844cc5b182b5983"
+    },
+    {
+      "path": "tests/capability-register.test.mjs",
+      "bytes": 11261,
+      "sha256": "828f6bd8698975605056cd70f3cde90c987f5c6b0b091e7d1c4b3877bd8d9202"
+    },
+    {
+      "path": "tests/capability-delivery.test.mjs",
+      "bytes": 19037,
+      "sha256": "422889b0792afdd10c1fb5306ee8525ebb49d6c02121637ceea7fd14117f525b"
+    },
+    {
+      "path": "docs/capabilities/register.json",
+      "bytes": 971748,
+      "sha256": "9ab4dd6f5d01c502d34870ebfc3060a84cc78153202f824bf3779195b4786015"
+    },
+    {
+      "path": "docs/capabilities/README.md",
+      "bytes": 6601,
+      "sha256": "1fe9871dd1973abd641079c802239809a2926e96a4f57bccd5cb55a526252dc8"
+    },
+    {
+      "path": "docs/capabilities/REPORT.md",
+      "bytes": 37378,
+      "sha256": "5f4081d2ae2723e17effe576a3bac22ad92b12ced515004f79a9634d70f9c863"
+    },
+    {
+      "path": "docs/capabilities/summary.json",
+      "bytes": 2199,
+      "sha256": "fa7e3a4ca40a83a3b543938dd9c177d66b49c88ad5a0e0246e3ae233f455353e"
+    }
+  ],
+  "criteria": [
+    "Machine-readable mission rows cover every requested feature and map to existing CLI/DCP/WEB/AUG issues.",
+    "Preserve the 300-item seed and its frozen weights; separate inventory coverage, partial implementation, code-complete, tested, merged, deployed and accepted counts.",
+    "Validate IDs, references, evidence/version/layer bindings and dependencies; stale evidence cannot silently award current acceptance.",
+    "Readable dashboard/report derives metrics from evidence and clearly separates overlapping catalogs and unknown/unverified states."
+  ],
+  "criteriaSha256": "bb3a9223e55b0d17b002efa92172dacdaa3aed8a57dea64bbfd7d2d8775c73be",
+  "criteriaHistory": [
+    {
+      "criteria": [
+        "Deliver and verify: Meaningful work-progress measurement"
+      ],
+      "supersededAt": "2026-11-12T22:27:25.714534+00:00",
+      "sourceIssue": "https://github.com/MulattoTech/MTerm-CLI/issues/255",
+      "reason": "Clarification to the existing acceptance-owner contract; no scope reduction. Original mission wording is retained here."
+    }
+  ],
+  "criteriaSourceObservation": {
+    "path": "issue255-observation.json",
+    "sha256": "7482eb43f5dd4d2586872cd6d3b040d1579fba514fc08353e3ef0843cba09315"
+  },
+  "criterionAssessments": [
+    {
+      "id": "C1",
+      "criterion": "Machine-readable mission rows cover every requested feature and map to existing CLI/DCP/WEB/AUG issues.",
+      "implementationEvidence": [
+        "docs/capabilities/register.json",
+        "scripts/capability-register.mjs"
+      ],
+      "testEvidence": [
+        "capability report derives complete coverage without combining overlapping catalogs or granting acceptance",
+        "duplicate product and crosswalk IDs fail instead of increasing coverage",
+        "missing mission bullets and a product bullet hidden in governance fail coverage",
+        "dangling issue, catalog, source, historical and delivery references fail closed"
+      ],
+      "result": "PASS_SOURCE: 143 product rows cover all 272 feature bullets and all 488 mission bullets; catalog references and acceptance-owner issue mappings validate, with run obligations separately classified."
+    },
+    {
+      "id": "C2",
+      "criterion": "Preserve the 300-item seed and its frozen weights; separate inventory coverage, partial implementation, code-complete, tested, merged, deployed and accepted counts.",
+      "implementationEvidence": [
+        "docs/capabilities/register.json",
+        "scripts/capability-register.mjs",
+        "docs/roadmap/requirements-seed.json",
+        "docs/roadmap/progress.json"
+      ],
+      "testEvidence": [
+        "altered baseline denominators, hashes and cached coverage totals are rejected",
+        "issue closure and historical green CI never create whole-requirement credit",
+        "source implementation, tests and merge can qualify without runtime deployment or acceptance",
+        "a qualified component cannot implicitly claim deployment or whole acceptance"
+      ],
+      "result": "PASS_SOURCE: the 300-item seed including frozen weights, roadmap progress and other baseline ledgers are byte-identical to base. Nine qualified component deliveries map to 40 partial rows and one saved package; all five whole-requirement axes remain separately derived and zero."
+    },
+    {
+      "id": "C3",
+      "criterion": "Validate IDs, references, evidence/version/layer bindings and dependencies; stale evidence cannot silently award current acceptance.",
+      "implementationEvidence": [
+        "scripts/capability-register.mjs",
+        "scripts/capability-delivery-evidence.mjs",
+        "tests/capability-delivery.test.mjs"
+      ],
+      "testEvidence": [
+        "implementation and final-acceptance dependency cycles are rejected",
+        "stale source, wrong layer and changed acceptance criteria invalidate qualification",
+        "workflow content, source pins and exact check sets cannot be substituted",
+        "internally consistent invented job identities cannot replace saved GitHub observations",
+        "joint run and job edits cannot invent a later attempt or reuse another phase",
+        "the raw evidence input must belong to the source being summarized",
+        "saved plugin metadata cannot claim OAuth, UI or runtime deployment verification",
+        "duplicate row references cannot inflate its qualified component count",
+        "missing workflow identities cannot agree through two undefined values",
+        "candidate branch identity remains required when both captured fields are omitted",
+        "one physical run or job cannot attest both candidate and actual main",
+        "captured API URLs must agree with their recorded run and job identities",
+        "qualification cannot be observed before the source merge or completed main checks",
+        "repeat observation of a saved package cannot count as another release"
+      ],
+      "result": "PASS_SOURCE: 46 focused tests pass, including the seven final adversarial boundaries. Raw identity captures, source commits/trees/parents, repository/layer ownership, workflow bytes, branch/event/run/attempt/job identities, temporal ordering, reciprocal scope and criteria hashes are checked. Authenticity and fresh live verification remain external reviewer responsibilities."
+    },
+    {
+      "id": "C4",
+      "criterion": "Readable dashboard/report derives metrics from evidence and clearly separates overlapping catalogs and unknown/unverified states.",
+      "implementationEvidence": [
+        "scripts/capability-register.mjs",
+        "docs/capabilities/REPORT.md",
+        "docs/capabilities/summary.json",
+        "docs/capabilities/README.md"
+      ],
+      "testEvidence": [
+        "report rendering is deterministic and keeps unsafe presentation characters literal",
+        "delivery links use the owning repository, including historical records",
+        "package readback time cannot be backfilled from its later source reconciliation"
+      ],
+      "result": "PASS_SOURCE: current README reflects repository-specific contracts, deterministic generated report and summary pass byte comparison, repository-aware links and preserved histories render coherently, and package evidence is separate from runtime/OAuth/UI deployment and full acceptance."
+    }
+  ],
+  "executedChecks": [
+    {
+      "command": [
+        "node",
+        "--test",
+        "tests/capability-register.test.mjs",
+        "tests/capability-delivery.test.mjs"
+      ],
+      "cwd": "snapshot",
+      "startedAt": "2026-11-12T22:30:00.609244+00:00",
+      "completedAt": "2026-11-12T22:30:11.934463+00:00",
+      "durationSeconds": 11.325,
+      "exitCode": 0,
+      "log": "focused-tests-final.tap",
+      "logSha256": "3c1c1e753f4702abfe41d2d36ebebb39f9afd8ff8a0f70c7a57a08b8931bb579",
+      "tests": 46,
+      "pass": 46,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    {
+      "command": [
+        "node",
+        "scripts/capability-register.mjs",
+        "--check"
+      ],
+      "cwd": "snapshot",
+      "startedAt": "2026-11-12T22:30:11.934636+00:00",
+      "completedAt": "2026-11-12T22:30:12.330233+00:00",
+      "durationSeconds": 0.396,
+      "exitCode": 0,
+      "log": "capability-check-final.log",
+      "logSha256": "880d418dfd966088b110ad2a4a07564af3a9909778107ae202d78ec1887a81ca",
+      "generatedReportAndSummaryByteEquality": true
+    }
+  ],
+  "derivedMetrics": {
+    "schemaVersion": 1,
+    "catalog": "mterm-comprehensive-capabilities-2026-11-12",
+    "inventoryObservedAt": "2026-11-12T17:21:23.133206+00:00",
+    "missionBullets": 488,
+    "mappedMissionBullets": 488,
+    "featureBullets": 272,
+    "mappedFeatureBullets": 272,
+    "productRequirements": 143,
+    "runObligationGroups": 11,
+    "trackedProductRequirements": 143,
+    "linkedGitHubIssues": 143,
+    "resolvedProposedScopes": 9,
+    "issuesCreatedForMission": 6,
+    "existingIssueAddendaVerified": 14,
+    "unresolvedIssueCandidates": 0,
+    "registeredRequirements": 143,
+    "codeComplete": 0,
+    "tested": 0,
+    "merged": 0,
+    "deployed": 0,
+    "accepted": 0,
+    "partialSourceRows": 117,
+    "partialMergedRows": 84,
+    "qualifiedPartialRows": 40,
+    "qualifiedComponentDeliveries": 9,
+    "verifiedSavedPluginPackages": 1,
+    "qualifiedDeliveriesByRepository": {
+      "MulattoTech/MTechLabs-Access": 4,
+      "MulattoTech/MTerm-CLI": 5
+    },
+    "inProgress": 113,
+    "roadmapMaturity": null,
+    "baselines": [
+      {
+        "id": "CLI-300",
+        "total": 300,
+        "sha256": "af0e40402e186c4223e7e513f64230dd3740b9f882e99ecb4f6229ba81cf103c"
+      },
+      {
+        "id": "DCP-48",
+        "total": 48,
+        "sha256": "3d6f19827f7a6fa7411e941d22e6e1bc80ca702e1dfcd1302b2b674f3d3089c4"
+      },
+      {
+        "id": "WEB-12",
+        "total": 12,
+        "sha256": "907f56220926d77163cff2c0f3f568ea26c223646b5170308d9f63c4786c348f"
+      },
+      {
+        "id": "AUG-117",
+        "total": 117,
+        "sha256": "5a6053af704337f15ed5d99c31bca2e3d39e7cdf9876f8c88f92ec07cc563adb"
+      }
+    ],
+    "byCategory": {
+      "upstream_security": 2,
+      "process_reliability": 4,
+      "files": 5,
+      "capability_registry": 3,
+      "device_registration": 18,
+      "runtime": 3,
+      "transport": 2,
+      "observability": 12,
+      "orchestration": 10,
+      "documents": 5,
+      "packaging": 5,
+      "client_integration": 12,
+      "knowledge_skills": 13,
+      "verification": 4,
+      "source_truth": 1,
+      "plugin": 4,
+      "connection_profiles": 12,
+      "repository_engineering": 17,
+      "progress": 1,
+      "system_operations": 10
+    },
+    "rule": "Distinct axes; partial components and issue states never award whole-requirement acceptance. Overlapping catalog totals are never summed."
+  },
+  "protectedLedgers": [
+    {
+      "path": "docs/roadmap/requirements-seed.json",
+      "byteIdenticalToBase": true,
+      "sha256": "af0e40402e186c4223e7e513f64230dd3740b9f882e99ecb4f6229ba81cf103c"
+    },
+    {
+      "path": "docs/roadmap/progress.json",
+      "byteIdenticalToBase": true,
+      "sha256": "623a679c817c81c8aaa2bf27302d5564c16c866a5ddac32eb6383287be82cff4"
+    },
+    {
+      "path": "docs/roadmap/desktop-commander-parity.json",
+      "byteIdenticalToBase": true,
+      "sha256": "3d6f19827f7a6fa7411e941d22e6e1bc80ca702e1dfcd1302b2b674f3d3089c4"
+    },
+    {
+      "path": "docs/roadmap/remote-web-progress.json",
+      "byteIdenticalToBase": true,
+      "sha256": "907f56220926d77163cff2c0f3f568ea26c223646b5170308d9f63c4786c348f"
+    },
+    {
+      "path": "docs/expansion/queue.json",
+      "byteIdenticalToBase": true,
+      "sha256": "5a6053af704337f15ed5d99c31bca2e3d39e7cdf9876f8c88f92ec07cc563adb"
+    }
+  ],
+  "evidenceInputs": [
+    {
+      "path": "docs/engineering-runs/evidence/upstream-research.json",
+      "bytes": 69332,
+      "sha256": "0162a83c00d51a023908380c22ffad7c2227d82645cc34e04c9866ea39033086"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/delivery-cli249-origin-candidate-source-review.json",
+      "bytes": 28220,
+      "sha256": "f480939f9d6ff19535a528e631bcbc923c04eeb009a57e908355d86b108e242d"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/peer-main-83a97dae-receipt.json",
+      "bytes": 74152,
+      "sha256": "1fd8aefb710a486d63cff7aeb5f4bc0ceb2db1de1c0637e8cc23f5e1afccadc3"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/delivery-cli249-api-identity.json",
+      "bytes": 156743,
+      "sha256": "61aecb50dfa67b88f545aeb383cf86cd7958b2934b536d71dd95761fc755cc34"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/delivery-cli249.json",
+      "bytes": 11313,
+      "sha256": "1343f383aec858d62bb12394396b90c2f377f01822bbf92129c0cdd575f72ca0"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/delivery-cli256-origin-candidate-source-review.json",
+      "bytes": 6746,
+      "sha256": "650e09f78d787a0fc996922e184b3a0a1052b4a7e3956fe0b38fddbf758219c4"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/peer-profile-d412-ci-receipt.json",
+      "bytes": 252257,
+      "sha256": "cf593d1b9a75cba43ad19dc7e06a57a04d3814290f97823353189964529d232a"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/delivery-cli256-origin-actual-main.json",
+      "bytes": 252898,
+      "sha256": "4a1a38d25f90fb0e2288ed657043224082ab503da988c9cc8567b99568f9d7d4"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/delivery-cli256-api-identity.json",
+      "bytes": 154470,
+      "sha256": "ba16c354e6ec486c76f9eea206cb4562051e41d8957cd2e1ca12dd4995916626"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/delivery-cli256.json",
+      "bytes": 11283,
+      "sha256": "d5ac6e3869c143d5a564c81db465aae9e233d954f0cf04b9606b0c6a37e1fbec"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/delivery-cli257-origin-candidate-source-review.json",
+      "bytes": 3916,
+      "sha256": "1fd15e5bcfdbf1ee354497d5f8452a783c938a3c399baf904c0f3ec89a9dc3f4"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/delivery-cli257-origin-candidate-qualification.json",
+      "bytes": 31597,
+      "sha256": "c376a02f6476dc650fd4c73e11fcff026d886c97e9099d633e20124dddcebe55"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/peer-mterm-main-f447c0ba-receipt.json",
+      "bytes": 268354,
+      "sha256": "6abf0091556faf97745c66932ddad8f8ae7360580ee28fbee3cda2067b0404d7"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/delivery-cli257-api-identity.json",
+      "bytes": 154358,
+      "sha256": "559e6b1d9f62cd16265ee0a8e67431fdbeba8e86d8ec023ea1d8430078931434"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/delivery-cli257.json",
+      "bytes": 11205,
+      "sha256": "d07fabdd72d0a30af849a70786eacde74c5a08543e2b25684b06efe2bf8beb7f"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/peer-mterm258-01c0fc0d-receipt.json",
+      "bytes": 290285,
+      "sha256": "97d356981e264a4d1905019f1c9409ef2d91a448eeb2947d12556b9c2b824dab"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/peer-mterm-main-da03dc52-receipt.json",
+      "bytes": 291849,
+      "sha256": "f65f4b6320984a752641047d999fcb95b9500416cc011b45395658d9b7d9dcee"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/delivery-cli258-api-identity.json",
+      "bytes": 155495,
+      "sha256": "ee041530b39de0ebb348d135365335fcdc0f274aa3378a301221ea54a1d17c2f"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/delivery-cli258.json",
+      "bytes": 11007,
+      "sha256": "aacdfc709ba96fee441a7e62bef21ef32e2965f0f05488160434c584dfd4c9af"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/delivery-access24-origin-candidate-source-review.json",
+      "bytes": 4684,
+      "sha256": "4ad72dffef22dcb208d765a83f3257abda0dc2169e8ece1c6fb9cb860dda856c"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/delivery-access24-origin-candidate-qualification.json",
+      "bytes": 50069,
+      "sha256": "651fecce43711b7d5f5300c11adf6f25fc5e988c7a87f55eaf28b8624b969af7"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/peer-access-main-ef8dce0e-receipt.json",
+      "bytes": 40890,
+      "sha256": "de943aed3b8dfccd7b2c7e49395f3446b81d5f28dc86155a99c5ebb7a1dd153e"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/delivery-access24-api-identity.json",
+      "bytes": 87212,
+      "sha256": "711112b17723f63b6e29bdb62af1cd36eb8880c8670fcc244c4e214ae440b47e"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/delivery-access24.json",
+      "bytes": 8276,
+      "sha256": "f84bd80518bb9b461fee8b1e227546f28cf3ec8bcf405d82ef9fe0267bf7fb99"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/delivery-access25-origin-candidate-source-review.json",
+      "bytes": 6718,
+      "sha256": "4b8bbd00627f3aa331210a522642b83ef602d740fcbd7a3cf5b61829b46cce53"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/delivery-access25-origin-candidate-qualification.json",
+      "bytes": 6915,
+      "sha256": "209b98dc8fab80b3628c0b55c02fbe42a1044af7c6ed42b81b9c4b94e7a6174b"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/peer-access-main-499255ad-receipt.json",
+      "bytes": 5352,
+      "sha256": "e341a67a133ac346052796a3d627f826f8d486a7b7005f06055168df35fbfd9d"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/delivery-access25-api-identity.json",
+      "bytes": 62752,
+      "sha256": "604bf3c6b5e9c34fc8e0ab01eb5e2823083b221c84bf14694e5eeb91c0294522"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/delivery-access25.json",
+      "bytes": 6243,
+      "sha256": "cddc2257633921b5755b393f6a143e6ca805e9e3e7e677d5fdf643db1c46db1c"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/peer-access27-162e829a-receipt.json",
+      "bytes": 43588,
+      "sha256": "3040ae584a65eddf7893e3c6c4ea85e26bcde5fbe7824218ad0b5c48dbac973d"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/peer-access-main-9353b53a-receipt.json",
+      "bytes": 42556,
+      "sha256": "5d9308cc52401a16d500e92a6c8a083c49e1d5fe202e2b3eb9778e3105f504db"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/delivery-access27-api-identity.json",
+      "bytes": 97596,
+      "sha256": "58c35d8e49f220a006276c7a21909bb27a1391df9d05b66a7d185047e2116eee"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/delivery-access27.json",
+      "bytes": 8631,
+      "sha256": "f927b9ed73cbe52cb0caf4bf4314e95a6210938d0ba4d2dfea79e998f9a087aa"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/peer-access28-f422b4d0-receipt.json",
+      "bytes": 42245,
+      "sha256": "c362b9217b024c3895540aa49b547efa4edc67557160a34fb8c8df230f146826"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/peer-access-main-ff31efca-receipt.json",
+      "bytes": 43147,
+      "sha256": "a6596c51fec5a8ed790a74ea1a77e95b976dd75fcac4396da895033cad094b88"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/delivery-access28-api-identity.json",
+      "bytes": 96176,
+      "sha256": "ae345e750c11916741b3a494ec4c44fb22119d6ad3dd366bc80a306bd646166b"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/delivery-access28.json",
+      "bytes": 8868,
+      "sha256": "aab921ad50b6bbcf827e839ded93b50f298caa64ee632d8b1a6444f33da64e7a"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/delivery-cli259-origin-candidate-qualification.json",
+      "bytes": 20771,
+      "sha256": "b26991014a0fcd2c895763db6d5a840f6104aa56742f650281b4c48aec089953"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/delivery-cli259-origin-actual-main.json",
+      "bytes": 19106,
+      "sha256": "f7910713d83839164ce67701f48db8bd77428af79b4dbdf3588e8fcbad0d5218"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/delivery-cli259-api-identity.json",
+      "bytes": 157323,
+      "sha256": "1d877d5b9cf1795b84706cf5e12ed383e658822b6c7e22419cf8e3fa33cbf4da"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/delivery-cli259.json",
+      "bytes": 12259,
+      "sha256": "a2b606d88f17875e38ca634ddedcd0cfdc6a0e0e042f41ee03cc1222cc35a551"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/canonical-plugin-readback-manifest-023.json",
+      "bytes": 3124,
+      "sha256": "8c34150376bbe737f0254692510b7757a2226b34f77428cbba119f6562784d9b"
+    },
+    {
+      "path": "docs/engineering-runs/evidence/canonical-plugin-saved-release-023.json",
+      "bytes": 3193,
+      "sha256": "8cfff8925b74a7d3ee3f6a2f7bfd1d1002ebaa2bb7c563dd25e492403f938e9b"
+    }
+  ],
+  "historyPreservation": {
+    "historicalEvidenceSourceRecordsPreserved": 20,
+    "priorEvidenceSourceRecordsPreserved": 38,
+    "oldFailureAndPendingDeliveryFieldsPreserved": true,
+    "originalModernizationObservationPreservedInHistoricalDeliveryObservations": true,
+    "originalModernizationAndUpstreamEvidenceFilesByteIdenticalToBase": true,
+    "requalifiedModernizationRecordUsesNewReceiptWithoutOverwritingOriginal": true
+  },
+  "axisRecommendations": {
+    "implementation": {
+      "eligible": true,
+      "when": "This complete four-criterion source snapshot is bound to an immutable candidate and passes required normal repository gates; no additional umbrella issue closure is needed."
+    },
+    "test": {
+      "eligible": true,
+      "when": "The final immutable candidate passes normal required checks for this accounting change; this receipt proves 46 focused tests and generated artifact coherence for the listed exact hashes."
+    },
+    "merge": {
+      "eligible": true,
+      "when": "This accounting change itself completes normal qualified merge and actual-main commit/tree/parent plus required main check verification."
+    },
+    "deployment": {
+      "eligible": false,
+      "why": "No runtime or portal deployment of this complete requirement is proven by this source review or saved plugin package."
+    },
+    "acceptance": {
+      "eligible": false,
+      "why": "Final whole-requirement acceptance and its required deployment/final prerequisites are not established."
+    }
+  },
+  "scopeClarifications": [
+    "#81 and #136 are supporting/overlap links, not completion prerequisites for MTR-METRIC-01.",
+    "CLI/DCP/WEB/AUG refs map overlapping coverage; this metric capability does not accept those underlying product requirements.",
+    "A green source register can accurately report no whole product acceptance; zero acceptance does not prevent the register implementation itself becoming code-complete/tested/merged.",
+    "Evidence validation is offline coherence checking, not an authenticity attestation or live monitor."
+  ],
+  "maintainabilityAssessment": [
+    "Uses existing source/roadmap/build pipeline and Node built-ins; no new runtime or production dependency.",
+    "Separates raw GitHub-identity checks into capability-delivery-evidence.mjs; exact workflow contracts are deliberately reviewed immutable metadata, not fabricated fixed progress totals.",
+    "Historical contracts preserve earlier two/four/five-job Access workflows while preventing substitution of a weaker old workflow on newer source.",
+    "Saved plugin file manifest is independently modeled; publishing source or observing package bytes cannot automatically assert backend/OAuth/UI activation."
+  ],
+  "remainingDeliveryChecks": [
+    "Bind reviewed hashes and exact criteria hash to final immutable accounting candidate.",
+    "Run and retain normal local and hosted required candidate gates; reviewer did not run full heavy suite in this task.",
+    "Perform normal expected-head merge and qualify actual-main tree, parents and fresh required checks for the accounting PR.",
+    "Any later edits outside these exact hashes require a bounded delta review; no source axis is awarded by this receipt alone."
+  ],
+  "limits": [
+    "Offline evidence validation checks captured-byte coherence, not GitHub authenticity or a live environment.",
+    "No full repository test suite, cross-platform/native suite, or fresh hosted accounting-candidate run was independently executed by this reviewer; parent owns those normal gates.",
+    "This review does not award acceptance to the underlying 143 product requirements, deploy a portal/backend, activate OAuth/UI state, or remove wrapper tools."
+  ],
+  "actions": {
+    "sourceMutation": false,
+    "githubMutation": false,
+    "productionAction": false
+  }
+}

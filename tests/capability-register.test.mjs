@@ -195,6 +195,21 @@ test('explicit full-scope receipts produce separate counts without partial compo
   assert.equal(result.roadmapMaturity, null);
 });
 
+test('source implementation, tests and merge can qualify without runtime deployment or acceptance', () => {
+  const value = copy();
+  const row = completeOne(value);
+  row.deployment.requirementCompleteDeployed = false;
+  row.acceptance.status = 'NOT_ACCEPTED';
+  row.lifecycleState = 'MERGED';
+  row.lastVerifiedAt = row.acceptance.lastVerifiedAt = null;
+  const result = validateCapabilityRegister(value, context);
+  assert.equal(result.codeComplete, 1);
+  assert.equal(result.tested, 1);
+  assert.equal(result.merged, 1);
+  assert.equal(result.deployed, 0);
+  assert.equal(result.accepted, 0);
+});
+
 test('full acceptance cannot bypass its explicit final-qualification prerequisites', () => {
   const value = copy();
   const row = completeOne(value);
@@ -232,7 +247,7 @@ test('six unrelated green jobs cannot substitute for the required platform and i
   const value = copy(),
     input = register.deliveryObservations[0].evidencePath;
   const receipt = JSON.parse(changed.evidenceTexts[input]);
-  receipt.checkRuns[0].name = 'unrelated-trivial-check';
+  receipt.main.checks[0].name = 'unrelated-trivial-check';
   changed.evidenceTexts[input] = JSON.stringify(receipt);
   value.inputEvidenceHashes[input] = createHash('sha256').update(changed.evidenceTexts[input]).digest('hex');
   assert.throws(() => validateCapabilityRegister(value, changed), /SOURCE_BINDING/);

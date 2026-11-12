@@ -1,0 +1,712 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-12T17:22:09.890824+00:00",
+  "reviewer": {
+    "provider": "OpenAI",
+    "model": "GPT-6 Astra Pro",
+    "agent": "/root/architecture",
+    "role": "independent read-only delta review"
+  },
+  "repository": "MulattoTech/MTerm-CLI",
+  "pr": 249,
+  "reviewedSha": "09097ee82028ce01e069c6d555e7ab65b8add2e0",
+  "reviewedTree": "c4d2c52442daf652af4323827cda91b6f32cd538",
+  "parentSha": "f3e9615a6e808c855177b252c1f057c7df62737a",
+  "githubCommitAndTreeIndependentlyVerified": true,
+  "decision": "APPROVED_SOURCE_DELTA_SUBJECT_TO_REQUIRED_EXACT_HEAD_CI",
+  "scope": "Two-line package license/count correction and accompanying documentation/review metadata; prior full source review remains separate.",
+  "codeDeltaExact": true,
+  "sourceHashes": {
+    "beforeVerifyPackage": "9866b91f6269e17fcf5e3b9f3f63c7bd6b01e91c2ae52592a49edc0f04c8a7a9",
+    "afterVerifyPackage": "dcd5aad34aebc3de44eff103160136eb6ac0d8993bbadf385b27b0d8f830dfeb",
+    "acornLicense": "76a876cf886ff9be2a8b5e2e86514fed06223c8c9f0c1e9ee9606e93841e00b7"
+  },
+  "diagnosis": {
+    "failure": "AssertionError [ERR_ASSERTION]: Unreviewed production package",
+    "source": "scripts/verify-package.mjs:1330 on parent candidate",
+    "cause": "Acorn8.19.0 was already a pinned runtime dependency but omitted from reviewedLicenses. The following evidence count also expected4 rather than5.",
+    "classification": "deterministic package qualification/provenance bookkeeping failure, not infrastructure",
+    "ciCheckoutMergeSha": "a989fd8d1e33900c9cc668ceafa3e42767c0b8b7",
+    "nativeSourceContainment": "passed step; installed-package gate failed later",
+    "failureLogs": [
+      {
+        "jobId": 131352521815,
+        "name": "ubuntu",
+        "savedDecodedLog": "/workspace/scratch/a92a3aacdca1/pr249-ci-failure/ubuntu.log",
+        "savedLogSha256": "716484b184c294e7ff63c0afe6917f18f3073948720a8bb5b3ff287e575d3c16",
+        "savedLogBytes": 766773,
+        "failureExcerpt": [
+          "2026-11-12T17:15:38.2829680Z     ^",
+          "2026-11-12T17:15:38.2829825Z ",
+          "2026-11-12T17:15:38.2830172Z AssertionError [ERR_ASSERTION]: Unreviewed production package",
+          "2026-11-12T17:15:38.2830867Z     at file:///home/runner/work/MTerm-CLI/MTerm-CLI/scripts/verify-package.mjs:1330:14",
+          "2026-11-12T17:15:38.2831841Z     at async withPackageWorkspace (file:///home/runner/work/MTerm-CLI/MTerm-CLI/scripts/package-workspace.mjs:123:14)",
+          "2026-11-12T17:15:38.2832465Z     at async file:///home/runner/work/MTerm-CLI/MTerm-CLI/scripts/verify-package.mjs:38:16 {",
+          "2026-11-12T17:15:38.2832837Z   generatedMessage: false,",
+          "2026-11-12T17:15:38.2833045Z   code: 'ERR_ASSERTION',",
+          "2026-11-12T17:15:38.2833296Z   actual: false,",
+          "2026-11-12T17:15:38.2833478Z   expected: true,",
+          "2026-11-12T17:15:38.2833650Z   operator: '==',",
+          "2026-11-12T17:15:38.2833817Z   diff: 'simple'",
+          "2026-11-12T17:15:38.2833987Z }",
+          "2026-11-12T17:15:38.2834081Z ",
+          "2026-11-12T17:15:38.2834153Z Node.js v24.21.0",
+          "2026-11-12T17:15:38.2913830Z ##[error]Process completed with exit code 1."
+        ],
+        "deterministicSuiteSummary": {
+          "tests": 1351,
+          "pass": 1339,
+          "fail": 0,
+          "skipped": 12
+        },
+        "skipNames": [
+          "2026-11-12T17:12:08.0224335Z \ufe63 automation PowerShell scripts parse without executing (0.702961ms) # SKIP",
+          "2026-11-12T17:12:08.0227279Z \ufe63 one-command setup preview is read-only and permission-conservative (0.747438ms) # SKIP",
+          "2026-11-12T17:12:08.0262099Z \ufe63 one-command setup refuses a whole-drive root (0.079629ms) # SKIP",
+          "2026-11-12T17:12:08.0296269Z \ufe63 top-level MTerm CLI launcher parses as PowerShell without execution (0.309353ms) # SKIP",
+          "2026-11-12T17:12:08.0300254Z \ufe63 top-level Plan and Install preview do not modify the selected workspace (0.105007ms) # SKIP",
+          "2026-11-12T17:12:08.0301728Z \ufe63 top-level Verify reports explicit local versus remote readiness without mutation (0.095833ms) # SKIP",
+          "2026-11-12T17:12:08.0302797Z \ufe63 top-level launcher refuses unsafe root and unapproved execution paths (0.051707ms) # SKIP",
+          "2026-11-12T17:12:18.8979196Z \ufe63 Windows short filenames cannot expose existing compatibility policy storage (0.130986ms) # SKIP",
+          "2026-11-12T17:12:57.4079177Z \ufe63 Windows short file aliases return canonical identities and cannot evade the request guard (0.18276ms) # SKIP",
+          "2026-11-12T17:12:57.4080503Z \ufe63 Windows short file aliases cannot conceal a private canonical filename (0.049663ms) # SKIP",
+          "2026-11-12T17:12:57.4083162Z \ufe63 Windows missing leaves retain their canonical parent and final request guard (0.034371ms) # SKIP",
+          "2026-11-12T17:12:57.4089113Z \ufe63 Windows missing leaves cannot be created below an aliased private directory (0.030345ms) # SKIP"
+        ]
+      },
+      {
+        "jobId": 131352521953,
+        "name": "macos_arm",
+        "savedDecodedLog": "/workspace/scratch/a92a3aacdca1/pr249-ci-failure/macos_arm.log",
+        "savedLogSha256": "603b36fdb35deb8c49d555214bfc4f8bf355932a380cd8474ec32d061c76fa2a",
+        "savedLogBytes": 772297,
+        "failureExcerpt": [
+          "2026-11-12T17:16:35.9061950Z     ^",
+          "2026-11-12T17:16:35.9062070Z ",
+          "2026-11-12T17:16:35.9062500Z AssertionError [ERR_ASSERTION]: Unreviewed production package",
+          "2026-11-12T17:16:35.9063280Z     at file:///Users/runner/work/MTerm-CLI/MTerm-CLI/scripts/verify-package.mjs:1330:14",
+          "2026-11-12T17:16:35.9064220Z     at async withPackageWorkspace (file:///Users/runner/work/MTerm-CLI/MTerm-CLI/scripts/package-workspace.mjs:123:14)",
+          "2026-11-12T17:16:35.9065190Z     at async file:///Users/runner/work/MTerm-CLI/MTerm-CLI/scripts/verify-package.mjs:38:16 {",
+          "2026-11-12T17:16:35.9065820Z   generatedMessage: false,",
+          "2026-11-12T17:16:35.9066210Z   code: 'ERR_ASSERTION',",
+          "2026-11-12T17:16:35.9066910Z   actual: false,",
+          "2026-11-12T17:16:35.9067300Z   expected: true,",
+          "2026-11-12T17:16:35.9067560Z   operator: '==',",
+          "2026-11-12T17:16:35.9068030Z   diff: 'simple'",
+          "2026-11-12T17:16:35.9068420Z }",
+          "2026-11-12T17:16:35.9068650Z ",
+          "2026-11-12T17:16:35.9068800Z Node.js v24.21.0",
+          "2026-11-12T17:16:35.9265060Z ##[error]Process completed with exit code 1."
+        ],
+        "deterministicSuiteSummary": {
+          "tests": 1351,
+          "pass": 1339,
+          "fail": 0,
+          "skipped": 12
+        },
+        "skipNames": [
+          "2026-11-12T17:12:15.3860260Z \ufe63 automation PowerShell scripts parse without executing (0.520708ms) # SKIP",
+          "2026-11-12T17:12:15.3861070Z \ufe63 one-command setup preview is read-only and permission-conservative (0.616042ms) # SKIP",
+          "2026-11-12T17:12:15.3861730Z \ufe63 one-command setup refuses a whole-drive root (0.098417ms) # SKIP",
+          "2026-11-12T17:12:15.3883070Z \ufe63 top-level MTerm CLI launcher parses as PowerShell without execution (0.179167ms) # SKIP",
+          "2026-11-12T17:12:15.3883870Z \ufe63 top-level Plan and Install preview do not modify the selected workspace (0.052459ms) # SKIP",
+          "2026-11-12T17:12:15.3884780Z \ufe63 top-level Verify reports explicit local versus remote readiness without mutation (0.046541ms) # SKIP",
+          "2026-11-12T17:12:15.3885670Z \ufe63 top-level launcher refuses unsafe root and unapproved execution paths (0.037459ms) # SKIP",
+          "2026-11-12T17:12:27.3302750Z \ufe63 Windows short filenames cannot expose existing compatibility policy storage (0.101791ms) # SKIP",
+          "2026-11-12T17:13:22.1923710Z \ufe63 Windows short file aliases return canonical identities and cannot evade the request guard (0.303417ms) # SKIP",
+          "2026-11-12T17:13:22.1930960Z \ufe63 Windows short file aliases cannot conceal a private canonical filename (0.090709ms) # SKIP",
+          "2026-11-12T17:13:22.1933240Z \ufe63 Windows missing leaves retain their canonical parent and final request guard (0.060458ms) # SKIP",
+          "2026-11-12T17:13:22.1936870Z \ufe63 Windows missing leaves cannot be created below an aliased private directory (0.083333ms) # SKIP"
+        ]
+      },
+      {
+        "jobId": 131352521281,
+        "name": "native_linux",
+        "savedDecodedLog": "/workspace/scratch/a92a3aacdca1/pr249-ci-failure/native_linux.log",
+        "savedLogSha256": "296f085aab8df2f4a0e60f59dd4c6a0194f33672845992bba3e8c18bb42d36d7",
+        "savedLogBytes": 269090,
+        "failureExcerpt": [
+          "2026-11-12T17:13:46.0209405Z     ^",
+          "2026-11-12T17:13:46.0209626Z ",
+          "2026-11-12T17:13:46.0210109Z AssertionError [ERR_ASSERTION]: Unreviewed production package",
+          "2026-11-12T17:13:46.0211178Z     at file:///home/runner/work/MTerm-CLI/MTerm-CLI/scripts/verify-package.mjs:1330:14",
+          "2026-11-12T17:13:46.0212601Z     at async withPackageWorkspace (file:///home/runner/work/MTerm-CLI/MTerm-CLI/scripts/package-workspace.mjs:123:14)",
+          "2026-11-12T17:13:46.0213971Z     at async file:///home/runner/work/MTerm-CLI/MTerm-CLI/scripts/verify-package.mjs:38:16 {",
+          "2026-11-12T17:13:46.0215073Z   generatedMessage: false,",
+          "2026-11-12T17:13:46.0215522Z   code: 'ERR_ASSERTION',",
+          "2026-11-12T17:13:46.0215929Z   actual: false,",
+          "2026-11-12T17:13:46.0216308Z   expected: true,",
+          "2026-11-12T17:13:46.0216724Z   operator: '==',",
+          "2026-11-12T17:13:46.0217110Z   diff: 'simple'",
+          "2026-11-12T17:13:46.0217463Z }",
+          "2026-11-12T17:13:46.0217689Z ",
+          "2026-11-12T17:13:46.0217889Z Node.js v24.21.0",
+          "2026-11-12T17:13:46.0285481Z ##[error]Process completed with exit code 1."
+        ],
+        "deterministicSuiteSummary": null,
+        "skipNames": []
+      },
+      {
+        "jobId": 131352521733,
+        "name": "windows",
+        "savedDecodedLog": "/workspace/scratch/a92a3aacdca1/pr249-ci-failure/windows.log",
+        "savedLogSha256": "dbea91d6cd767b9aa554e8e241d0c5d3eecd3e29015dd188409cdc127a105c17",
+        "savedLogBytes": 768787,
+        "failureExcerpt": [
+          "2026-11-12T17:18:49.0616957Z     ^",
+          "2026-11-12T17:18:49.0617067Z ",
+          "2026-11-12T17:18:49.0617513Z AssertionError [ERR_ASSERTION]: Unreviewed production package",
+          "2026-11-12T17:18:49.0618109Z     at file:///D:/a/MTerm-CLI/MTerm-CLI/scripts/verify-package.mjs:1330:14",
+          "2026-11-12T17:18:49.0618821Z     at async withPackageWorkspace (file:///D:/a/MTerm-CLI/MTerm-CLI/scripts/package-workspace.mjs:123:14)",
+          "2026-11-12T17:18:49.0619331Z     at async file:///D:/a/MTerm-CLI/MTerm-CLI/scripts/verify-package.mjs:38:16 {",
+          "2026-11-12T17:18:49.0619679Z   generatedMessage: false,",
+          "2026-11-12T17:18:49.0619933Z   code: 'ERR_ASSERTION',",
+          "2026-11-12T17:18:49.0620106Z   actual: false,",
+          "2026-11-12T17:18:49.0620263Z   expected: true,",
+          "2026-11-12T17:18:49.0620417Z   operator: '==',",
+          "2026-11-12T17:18:49.0620572Z   diff: 'simple'",
+          "2026-11-12T17:18:49.0620731Z }",
+          "2026-11-12T17:18:49.0620805Z ",
+          "2026-11-12T17:18:49.0620875Z Node.js v24.21.0",
+          "2026-11-12T17:18:49.1362658Z ##[error]Process completed with exit code 1."
+        ],
+        "deterministicSuiteSummary": {
+          "tests": 1351,
+          "pass": 1351,
+          "fail": 0,
+          "skipped": 0
+        },
+        "skipNames": []
+      }
+    ]
+  },
+  "preservedGates": [
+    "installed core footprint <50000000 bytes",
+    "exact reviewed license identifiers",
+    "installed metadata version equals installed lock version",
+    "full source/installed license and notice byte comparisons",
+    "archive/source integrity and5packages/6edges provenance checks",
+    "development dependency exclusion",
+    "existing independent full-source review and exact-head platform checks"
+  ],
+  "noOtherCountChanges": "Synthetic four-package provenance fixtures intentionally remain4. No other fixed-four production check found downstream.",
+  "documentationReview": "Acorn provenance receipt and prior source review are retained; hosted failures and revised qualification pending remain explicit.",
+  "annotations": {
+    "attempted": [
+      131352521815,
+      131352521953,
+      131352521281
+    ],
+    "result": "GitHub Fetch rejected annotation endpoint as unsupported; full job logs and check/job summaries independently retrieved."
+  },
+  "oldJobs": [
+    {
+      "id": 131352521281,
+      "name": "Native Linux isolation / Node 24",
+      "status": "completed",
+      "conclusion": "failure",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Reproducible dependencies and reviewed source",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Prepare signed pinned runtime on the disposable runner",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Mandatory real source containment and cleanup",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Mandatory actual installed-package containment and cleanup",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 7
+        },
+        {
+          "name": "Exact source remains unchanged by live tests",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 8
+        },
+        {
+          "name": "Retain qualification evidence even after a failed gate",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9
+        },
+        {
+          "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 17
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19
+        }
+      ]
+    },
+    {
+      "id": 131352521733,
+      "name": "windows-2022 / Node 24",
+      "status": "completed",
+      "conclusion": "failure",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Verify actual runtime architecture",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Reproducible dependencies without lifecycle side effects",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Reviewed source and pinned parity baseline",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Typecheck formatting and deterministic tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Verify packed install and isolated npm link",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 8
+        },
+        {
+          "name": "Install pinned Codex into test-owned prefix",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 9
+        },
+        {
+          "name": "Real Codex registration without login or model calls",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 10
+        },
+        {
+          "name": "Exact source remains unchanged by tests",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 11
+        },
+        {
+          "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 21
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23
+        }
+      ]
+    },
+    {
+      "id": 131352521815,
+      "name": "ubuntu-24.04 / Node 24",
+      "status": "completed",
+      "conclusion": "failure",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Verify actual runtime architecture",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Reproducible dependencies without lifecycle side effects",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Reviewed source and pinned parity baseline",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Typecheck formatting and deterministic tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Verify packed install and isolated npm link",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 8
+        },
+        {
+          "name": "Install pinned Codex into test-owned prefix",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 9
+        },
+        {
+          "name": "Real Codex registration without login or model calls",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 10
+        },
+        {
+          "name": "Exact source remains unchanged by tests",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 11
+        },
+        {
+          "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 21
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23
+        }
+      ]
+    },
+    {
+      "id": 131352521899,
+      "name": "macos-15-intel / Node 24",
+      "status": "completed",
+      "conclusion": "cancelled",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Verify actual runtime architecture",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Reproducible dependencies without lifecycle side effects",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Reviewed source and pinned parity baseline",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Typecheck formatting and deterministic tests",
+          "status": "completed",
+          "conclusion": "cancelled",
+          "number": 7
+        },
+        {
+          "name": "Verify packed install and isolated npm link",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 8
+        },
+        {
+          "name": "Install pinned Codex into test-owned prefix",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 9
+        },
+        {
+          "name": "Real Codex registration without login or model calls",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 10
+        },
+        {
+          "name": "Exact source remains unchanged by tests",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 11
+        },
+        {
+          "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 21
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23
+        }
+      ]
+    },
+    {
+      "id": 131352521953,
+      "name": "macos-15 / Node 24",
+      "status": "completed",
+      "conclusion": "failure",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1
+        },
+        {
+          "name": "Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2
+        },
+        {
+          "name": "Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3
+        },
+        {
+          "name": "Verify actual runtime architecture",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4
+        },
+        {
+          "name": "Reproducible dependencies without lifecycle side effects",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5
+        },
+        {
+          "name": "Reviewed source and pinned parity baseline",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6
+        },
+        {
+          "name": "Typecheck formatting and deterministic tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7
+        },
+        {
+          "name": "Verify packed install and isolated npm link",
+          "status": "completed",
+          "conclusion": "failure",
+          "number": 8
+        },
+        {
+          "name": "Install pinned Codex into test-owned prefix",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 9
+        },
+        {
+          "name": "Real Codex registration without login or model calls",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 10
+        },
+        {
+          "name": "Exact source remains unchanged by tests",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 11
+        },
+        {
+          "name": "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020",
+          "status": "completed",
+          "conclusion": "skipped",
+          "number": 21
+        },
+        {
+          "name": "Post Run actions/checkout@11d5960a326750d5838078e36cf38b85af677262",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23
+        }
+      ]
+    }
+  ],
+  "newChecksAtObservation": [
+    {
+      "id": 131357453929,
+      "name": "ubuntu-24.04 / Node 24",
+      "head_sha": "09097ee82028ce01e069c6d555e7ab65b8add2e0",
+      "status": "in_progress",
+      "conclusion": null,
+      "html_url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43268163911/job/131357453929"
+    },
+    {
+      "id": 131357453829,
+      "name": "windows-2022 / Node 24",
+      "head_sha": "09097ee82028ce01e069c6d555e7ab65b8add2e0",
+      "status": "in_progress",
+      "conclusion": null,
+      "html_url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43268163911/job/131357453829"
+    },
+    {
+      "id": 131357453804,
+      "name": "Native Linux isolation / Node 24",
+      "head_sha": "09097ee82028ce01e069c6d555e7ab65b8add2e0",
+      "status": "in_progress",
+      "conclusion": null,
+      "html_url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43268163911/job/131357453804"
+    },
+    {
+      "id": 131357453774,
+      "name": "macos-15-intel / Node 24",
+      "head_sha": "09097ee82028ce01e069c6d555e7ab65b8add2e0",
+      "status": "in_progress",
+      "conclusion": null,
+      "html_url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43268163911/job/131357453774"
+    },
+    {
+      "id": 131357453288,
+      "name": "macos-15 / Node 24",
+      "head_sha": "09097ee82028ce01e069c6d555e7ab65b8add2e0",
+      "status": "in_progress",
+      "conclusion": null,
+      "html_url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43268163911/job/131357453288"
+    },
+    {
+      "id": 131357233504,
+      "name": "CI / fast",
+      "head_sha": "09097ee82028ce01e069c6d555e7ab65b8add2e0",
+      "status": "in_progress",
+      "conclusion": null,
+      "html_url": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43268163525/job/131357233504"
+    }
+  ],
+  "testsExecutedByThisReviewer": false,
+  "staticExactDeltaAndReviewHashChecks": true,
+  "sourceMutations": false,
+  "workflowMutations": false,
+  "productionMutations": false,
+  "limitations": [
+    "No new exact-head CI conclusion inferred while six checks are in progress.",
+    "Old macOS Intel job concluded cancelled; no result is inferred for its remaining gates.",
+    "Linux/macOS ARM deterministic suites each contain12 existing Windows-only PowerShell/path skips; old Windows source suite passed1351/1351 with0skips."
+  ]
+}

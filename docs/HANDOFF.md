@@ -1,3 +1,28 @@
+# Resumed mission: qualified readiness and delivery accounting — November 12, 2026
+
+This checkpoint supersedes the preparation instructions below. PR259 merged normally
+at `6a6a883f3ce1cd86a7405d2c53a1fb08cd1210c2`; the exact candidate and actual main
+both passed all six hosted jobs. Windows1516/1516, other ordinary lanes1504+12 skips,
+installed profiles24/endpoints81 per package lane, native12 source+12 installed
+all passed. The complete prior local27 Unix-socket failures remain preserved.
+The [engineering run](engineering-runs/mterm-comprehensive-reconciliation-2026-11-12.md)
+and [receipt](engineering-runs/evidence/delivery-cli259-origin-actual-main.json)
+record immutable identity, tests and limits.
+
+The active isolated accounting worktree corrects repository ownership and historical
+workflow contracts, validates normalized source/run/job records against captured API
+identities, and reconciles nine qualified source deliveries across40 partial rows.
+Saved plugin package0.2.3 is a separate readback observation, with exact eight-file
+hashes and its original time. Production runtime, OAuth/UI activation and wrapper
+removal remain unverified. CLI300 stages/weights and full-mission acceptance are unchanged.
+
+Next: complete the accounting source review and normal local/hosted gates, publish
+and merge the exact candidate, qualify actual main, then explicitly assess justified
+MTR-METRIC-01 source axes. Preserve the owner's work, active services, working connector
+and the issue232 staging-token HOLD. No production rollout is included in this slice.
+
+---
+
 # Device observations and final admission freshness — November 12, 2026
 
 Active source work is under issues58/62, on the exact merged endpoint tree from
@@ -1641,3 +1666,22 @@ PR256 successor d412b774 has independent source/delta approval and104 focused so
 ### Capability register packaging fixture correction — 2026-11-12
 
 Exact candidate `d61d280` received independent source approval but failed five hosted source-test jobs because the offline prepack fixture omitted the new `capabilities:check` leaf. Native Linux isolation passed; that does not qualify the failed platforms. The narrow follow-up adds that leaf, exercises its failure before compilation/packing, and requires every tested failed gate to execute. Local RED: 5 failures/7 tests; GREEN: 32/32 focused tests. Root build/check/prepack commands and capability acceptance rules are unchanged. Fresh exact candidate and actual main gates remain required; no progress or acceptance credit was added.
+
+
+### Accounting local and independent validation checkpoint
+
+Normal build passed. The complete ordinary check finished1,543 tests:1,504 passed,
+27 failed and12 existing Windows-only skips, with zero cancellations/TODOs. All27
+failures are unchanged `tests/isolation.test.mjs` Unix-domain-socket fixtures with
+`listen EPERM`; the source file is byte-identical to base. Roadmap, parity, capability
+output, typecheck and formatting passed. The full756,905-byte failed log is retained
+losslessly in `docs/validation/2026-11-12-delivery-accounting/check.log.gz` with
+its exact raw/archive hashes in `complete-check.json`. This remains a failed local
+full check, not a package or runtime qualification.
+
+Independent frozen review passed46/46 focused tests and rejected all14 adversarial
+probes. A separate criterion review approves all four existing issue255 source
+criteria and recomputed all43 consumed input hashes. Both receipts bind the exact
+reviewed source; they are retained in the same validation directory. The corrected
+immutable candidate still requires all six hosted checks, normal expected-head
+merge and actual-main qualification before delivery/source-axis credit.

@@ -1,0 +1,157 @@
+{
+  "change_id": "2026-11-12-capability-delivery-accounting",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "updated_at": "2026-11-12T22:34:52.109667+00:00",
+  "base_sha": "6a6a883f3ce1cd86a7405d2c53a1fb08cd1210c2",
+  "issues": [
+    255
+  ],
+  "requirements": [
+    "CLI-217",
+    "CLI-219",
+    "CLI-220",
+    "CLI-222",
+    "CLI-224",
+    "CLI-231"
+  ],
+  "files": [
+    "docs/HANDOFF.md",
+    "docs/ai/changes/2026-11-12-capability-delivery-accounting.json",
+    "docs/capabilities/README.md",
+    "docs/capabilities/REPORT.md",
+    "docs/capabilities/register.json",
+    "docs/capabilities/summary.json",
+    "docs/engineering-runs/evidence/canonical-plugin-readback-manifest-023.json",
+    "docs/engineering-runs/evidence/canonical-plugin-saved-release-023.json",
+    "docs/engineering-runs/evidence/delivery-access24-api-identity.json",
+    "docs/engineering-runs/evidence/delivery-access24-origin-candidate-qualification.json",
+    "docs/engineering-runs/evidence/delivery-access24-origin-candidate-source-review.json",
+    "docs/engineering-runs/evidence/delivery-access24.json",
+    "docs/engineering-runs/evidence/delivery-access25-api-identity.json",
+    "docs/engineering-runs/evidence/delivery-access25-origin-candidate-qualification.json",
+    "docs/engineering-runs/evidence/delivery-access25-origin-candidate-source-review.json",
+    "docs/engineering-runs/evidence/delivery-access25.json",
+    "docs/engineering-runs/evidence/delivery-access27-api-identity.json",
+    "docs/engineering-runs/evidence/delivery-access27.json",
+    "docs/engineering-runs/evidence/delivery-access28-api-identity.json",
+    "docs/engineering-runs/evidence/delivery-access28.json",
+    "docs/engineering-runs/evidence/delivery-cli249-api-identity.json",
+    "docs/engineering-runs/evidence/delivery-cli249-origin-candidate-source-review.json",
+    "docs/engineering-runs/evidence/delivery-cli249.json",
+    "docs/engineering-runs/evidence/delivery-cli256-api-identity.json",
+    "docs/engineering-runs/evidence/delivery-cli256-origin-actual-main.json",
+    "docs/engineering-runs/evidence/delivery-cli256-origin-candidate-source-review.json",
+    "docs/engineering-runs/evidence/delivery-cli256.json",
+    "docs/engineering-runs/evidence/delivery-cli257-api-identity.json",
+    "docs/engineering-runs/evidence/delivery-cli257-origin-candidate-qualification.json",
+    "docs/engineering-runs/evidence/delivery-cli257-origin-candidate-source-review.json",
+    "docs/engineering-runs/evidence/delivery-cli257.json",
+    "docs/engineering-runs/evidence/delivery-cli258-api-identity.json",
+    "docs/engineering-runs/evidence/delivery-cli258.json",
+    "docs/engineering-runs/evidence/delivery-cli259-api-identity.json",
+    "docs/engineering-runs/evidence/delivery-cli259-origin-actual-main.json",
+    "docs/engineering-runs/evidence/delivery-cli259-origin-candidate-qualification.json",
+    "docs/engineering-runs/evidence/delivery-cli259.json",
+    "docs/engineering-runs/mterm-comprehensive-reconciliation-2026-11-12.md",
+    "docs/roadmap/review.json",
+    "docs/validation/2026-11-12-delivery-accounting/README.md",
+    "docs/validation/2026-11-12-delivery-accounting/check.log.gz",
+    "docs/validation/2026-11-12-delivery-accounting/complete-check.json",
+    "docs/validation/2026-11-12-delivery-accounting/criterion-review/executed-checks.json",
+    "docs/validation/2026-11-12-delivery-accounting/criterion-review/focused-tests-final.tap",
+    "docs/validation/2026-11-12-delivery-accounting/criterion-review/issue255-observation.json",
+    "docs/validation/2026-11-12-delivery-accounting/criterion-review/receipt.json",
+    "docs/validation/2026-11-12-delivery-accounting/criterion-review/receipt.md",
+    "docs/validation/2026-11-12-delivery-accounting/criterion-review/snapshot-manifest.json",
+    "docs/validation/2026-11-12-delivery-accounting/focused.tap",
+    "docs/validation/2026-11-12-delivery-accounting/identity-binding-red.tap",
+    "docs/validation/2026-11-12-delivery-accounting/independent-adversarial-probes.mjs",
+    "docs/validation/2026-11-12-delivery-accounting/independent-adversarial-results.json",
+    "docs/validation/2026-11-12-delivery-accounting/independent-review.json",
+    "docs/validation/2026-11-12-delivery-accounting/manifest.json",
+    "docs/validation/2026-11-12-delivery-accounting/package-manifest-red.tap",
+    "docs/validation/2026-11-12-delivery-accounting/repository-contract-red.tap",
+    "docs/validation/2026-11-12-delivery-accounting/reviewer-boundaries-red.tap",
+    "scripts/capability-delivery-evidence.mjs",
+    "scripts/capability-register.mjs",
+    "tests/capability-delivery.test.mjs",
+    "tests/capability-register.test.mjs"
+  ],
+  "decisions": [
+    "Resume the preserved clean accounting worktree after exact-head readiness merge; root is the sole implementation/publication owner.",
+    "Bind partial deliveries to each owning repository, exact candidate/main workflow content and checks; preserve historical observations and independently identified runtime deployment.",
+    "Keep original CLI300/DCP48/WEB12/AUG117 stages, weights and acceptance unchanged. Whole-source MTR-METRIC-01 axes require a separate criterion-scoped review of the corrected source.",
+    "Clarify MTR-METRIC-01 to issue255's four existing acceptance criteria; preserve the prior generic criterion in criteriaHistory with no scope reduction or new umbrella closure prerequisite."
+  ],
+  "tests": [
+    {
+      "command": "Initial repository-specific regression suite",
+      "result": "RED: 11 cases, 8 passed and 3 failed as expected; original log retained."
+    },
+    {
+      "command": "Identity-binding and saved-package regressions",
+      "result": "RED: all 3 selected cases failed before repair; original log retained."
+    },
+    {
+      "command": "Saved-package exact manifest regression",
+      "result": "RED: selected case failed before repair; original log retained."
+    },
+    {
+      "command": "node --test tests/capability-delivery.test.mjs tests/capability-register.test.mjs",
+      "result": "46 passed, 0 failed/skipped/cancelled, including all seven reproduced independent boundary defects after correction; ordinary complete check pending."
+    },
+    {
+      "command": "Seven independent reviewer boundary regressions before correction",
+      "result": "RED: 7/7 failed; duplicate row/package counts, paired missing workflow/branch identity, reused physical IDs, inconsistent API URLs and impossible chronology. Original log retained."
+    },
+    {
+      "command": "npm run build",
+      "result": "PASS: normal roadmap/parity/capabilities checks and TypeScript build."
+    },
+    {
+      "command": "npm run check",
+      "result": "FAIL: 1543 tests, 1504 pass, 27 unchanged isolation listen EPERM failures, 12 existing Windows-only skips, 0 cancelled/TODOs; all pre-test gates passed. Lossless log and metadata retained."
+    },
+    {
+      "command": "Independent exact-source adversarial and criterion reviews",
+      "result": "APPROVED:46/46 focused tests,14 original mutations reject,43 evidence hashes recomputed, all9real deliveries validate, all5protected baselinefiles unchanged. Source criteria approved pending immutable-candidate/main gates."
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "id": "CLI-217",
+      "stage_change": false,
+      "reason": "Accounting correction and scoped delivery evidence do not complete the broader original CLI acceptance scope."
+    },
+    {
+      "id": "CLI-219",
+      "stage_change": false,
+      "reason": "Accounting correction and scoped delivery evidence do not complete the broader original CLI acceptance scope."
+    },
+    {
+      "id": "CLI-220",
+      "stage_change": false,
+      "reason": "Accounting correction and scoped delivery evidence do not complete the broader original CLI acceptance scope."
+    },
+    {
+      "id": "CLI-222",
+      "stage_change": false,
+      "reason": "Accounting correction and scoped delivery evidence do not complete the broader original CLI acceptance scope."
+    },
+    {
+      "id": "CLI-224",
+      "stage_change": false,
+      "reason": "Accounting correction and scoped delivery evidence do not complete the broader original CLI acceptance scope."
+    },
+    {
+      "id": "CLI-231",
+      "stage_change": false,
+      "reason": "Accounting correction and scoped delivery evidence do not complete the broader original CLI acceptance scope."
+    }
+  ],
+  "limitations": [
+    "No deployment, service restart, authentication change, model call or whole-feature acceptance."
+  ],
+  "checkpoint": "docs/engineering-runs/mterm-comprehensive-reconciliation-2026-11-12.md"
+}

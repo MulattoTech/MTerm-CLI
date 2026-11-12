@@ -1,0 +1,567 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root/readiness_review",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro (inherited; self-reported)",
+  "verifiedAt": "2026-11-12T22:07:50.215551+00:00",
+  "repository": "MulattoTech/MTerm-CLI",
+  "pullRequest": 259,
+  "verdict": "APPROVE_EXACT_CANDIDATE_FOR_NORMAL_EXPECTED_HEAD_MERGE",
+  "candidateSha": "f6b17c72bfabe0da684bead0905608d4edf7cff2",
+  "tree": "ea714fd37926cb49325d9a4c6b60011cd01f021c",
+  "baseSha": "da03dc5255976b1524b22796fffadb01e50a5149",
+  "syntheticMergeSha": "5461a3b8ef6d8378834c443c2a7261755b501a10",
+  "syntheticMergeTreeEqualsCandidate": true,
+  "completeRemoteTreeMatchesLocal": true,
+  "remoteTreeBlobs": 1072,
+  "remoteTreeDirectories": 52,
+  "findings": [],
+  "sourceReview": {
+    "reviewedDelta": [
+      "gateway/registry.mjs",
+      "gateway/dashboard.mjs",
+      "tests/remote-device-readiness.test.mjs",
+      "tests/remote-occupancy.test.mjs"
+    ],
+    "priorImmutableReviewSha256": "f6a4006a69e44a0614581e8cf8e299c022b6914c73b5ab61f60e756bb3ccfa6b",
+    "priorRuntimeReceiptSha256": "ca3209bd33a8bc99cd11fc447239947dacd2104bd6ec64557891bf04a939ef86",
+    "allFourRuntimeTestHashesMatch": true,
+    "priorIndependentRuntimeResults": {
+      "sixSuites": 118,
+      "passed": 118,
+      "overlappingOriginalRegressions": 4,
+      "additionalBoundaries": 5
+    },
+    "newLocalRuntimeTests": false,
+    "reviewedBoundaries": [
+      "Final poll freshness is checked after admission reads and before admission writes; malformed/future stored times reject.",
+      "One post-read projection timestamp is used for each inventory surface.",
+      "Owner/device scopes and read-only explicit targeting remain intact.",
+      "Capacity is an historical offer, accepted outcomes are bounded agent-reported history, and executor health stays unknown.",
+      "Legacy omitted capacity clears prior observation and preserves delivery default.",
+      "Result observation follows successful result storage; failures may leave old/missing observation, without claiming atomic multi-record storage.",
+      "Dashboard renders observed values through text nodes; readiness claims remain conservative."
+    ]
+  },
+  "requiredHostedJobs": [
+    {
+      "id": 131519472535,
+      "name": "CI / fast",
+      "runId": 43314682205,
+      "status": "completed",
+      "conclusion": "success",
+      "logSha256": "2f783caf89d5c610b3df11c28a40b27ed3d61ee379eb48f8f295737b25fe58fb",
+      "logBytes": 795574,
+      "testSummary": {
+        "tests": 1516,
+        "pass": 1504,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 12,
+        "todo": 0
+      },
+      "allNamedStepsSucceeded": true
+    },
+    {
+      "id": 131519471722,
+      "name": "Native Linux isolation / Node 24",
+      "runId": 43314682188,
+      "status": "completed",
+      "conclusion": "success",
+      "logSha256": "50930362a1cbe8e66f3a39b0af345384b6debfcb54c52ea8eddea9fcd8c42821",
+      "logBytes": 645740,
+      "testSummary": null,
+      "allNamedStepsSucceeded": true,
+      "installedPackage": {
+        "profiles": 24,
+        "endpoints": 81,
+        "fromOutsideCheckout": true,
+        "ownedLoopbackTlsQualified": true,
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "archiveBytes": 163559,
+        "productionLicenseEvidence": [
+          {
+            "name": "@modelcontextprotocol/core",
+            "version": "2.3.0",
+            "license": "Apache-2.0",
+            "integrity": "sha512-09BHFaNVBe5pB2AhzCfLj0cqmsKLERvZQ4FblzP90UMGLaXVqdZPByFjURwsUYCmxonUW2yAwgTTvle+8O2/8w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "@modelcontextprotocol/server",
+            "version": "2.3.0-mterm.1",
+            "license": "Apache-2.0",
+            "integrity": "sha512-RNlauLPhVz8rUV8EvE1jsPmzBtb84j1HIBFGaTyANRbSHjwEBjl0th5idsfHRcGLT5TWZVfFFzlZhk/zJWXY4w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "acorn",
+            "version": "8.19.0",
+            "license": "MIT",
+            "integrity": "sha512-oJlA3XiRm7Cyk6qFD2Jn8ak9B7jSy0qy00ADO3+8dpT0LSjFihQYv4C02LFCSYJV3Q37xYwwRy5m+IpIiUzqWw==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "76a876cf886ff9be2a8b5e2e86514fed06223c8c9f0c1e9ee9606e93841e00b7"
+              }
+            ]
+          },
+          {
+            "name": "mterm-cli",
+            "version": "0.0.1-preview.1",
+            "license": "MIT",
+            "integrity": "sha512-o4gbRreuXZb53rjqz8aVm+S/Ou6yEcYIdViDImF//Gq5QuZC3rT0piAITq2j05fU/OFi7k31rpFsYg8E7JEh7Q==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "057801cf89de394d84ca2f5797e31619cb5fd66e6f4b7da7058db7887633ba37"
+              }
+            ]
+          },
+          {
+            "name": "zod",
+            "version": "4.6.7",
+            "license": "MIT",
+            "integrity": "sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8"
+              }
+            ]
+          }
+        ],
+        "fullTransitiveLicenseClearance": false,
+        "fullDesktopCommanderParity": false,
+        "installedStandaloneCoreUnder50MB": true,
+        "fullThreeComponentUnder50MB": "NOT VERIFIED; this is a dependency-reuse local host, not that bundle"
+      },
+      "nativeInstalled": {
+        "passed": true,
+        "scenarios": 12,
+        "allCleanupVerified": true,
+        "sourceCommit": "5461a3b8ef6d8378834c443c2a7261755b501a10"
+      },
+      "nativeSource": {
+        "passed": true,
+        "scenarios": 12,
+        "allCleanupVerified": true,
+        "sourceCommit": "5461a3b8ef6d8378834c443c2a7261755b501a10"
+      }
+    },
+    {
+      "id": 131519472079,
+      "name": "ubuntu-24.04 / Node 24",
+      "runId": 43314682188,
+      "status": "completed",
+      "conclusion": "success",
+      "logSha256": "68ed1a7d0ef06ba00d5a1016ca751b8e4e4485466ce73a5e7204e5d433195c80",
+      "logBytes": 913256,
+      "testSummary": {
+        "tests": 1516,
+        "pass": 1504,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 12,
+        "todo": 0
+      },
+      "allNamedStepsSucceeded": true,
+      "installedPackage": {
+        "profiles": 24,
+        "endpoints": 81,
+        "fromOutsideCheckout": true,
+        "ownedLoopbackTlsQualified": true,
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "archiveBytes": 163559,
+        "productionLicenseEvidence": [
+          {
+            "name": "@modelcontextprotocol/core",
+            "version": "2.3.0",
+            "license": "Apache-2.0",
+            "integrity": "sha512-09BHFaNVBe5pB2AhzCfLj0cqmsKLERvZQ4FblzP90UMGLaXVqdZPByFjURwsUYCmxonUW2yAwgTTvle+8O2/8w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "@modelcontextprotocol/server",
+            "version": "2.3.0-mterm.1",
+            "license": "Apache-2.0",
+            "integrity": "sha512-RNlauLPhVz8rUV8EvE1jsPmzBtb84j1HIBFGaTyANRbSHjwEBjl0th5idsfHRcGLT5TWZVfFFzlZhk/zJWXY4w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "acorn",
+            "version": "8.19.0",
+            "license": "MIT",
+            "integrity": "sha512-oJlA3XiRm7Cyk6qFD2Jn8ak9B7jSy0qy00ADO3+8dpT0LSjFihQYv4C02LFCSYJV3Q37xYwwRy5m+IpIiUzqWw==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "76a876cf886ff9be2a8b5e2e86514fed06223c8c9f0c1e9ee9606e93841e00b7"
+              }
+            ]
+          },
+          {
+            "name": "mterm-cli",
+            "version": "0.0.1-preview.1",
+            "license": "MIT",
+            "integrity": "sha512-o4gbRreuXZb53rjqz8aVm+S/Ou6yEcYIdViDImF//Gq5QuZC3rT0piAITq2j05fU/OFi7k31rpFsYg8E7JEh7Q==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "057801cf89de394d84ca2f5797e31619cb5fd66e6f4b7da7058db7887633ba37"
+              }
+            ]
+          },
+          {
+            "name": "zod",
+            "version": "4.6.7",
+            "license": "MIT",
+            "integrity": "sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8"
+              }
+            ]
+          }
+        ],
+        "fullTransitiveLicenseClearance": false,
+        "fullDesktopCommanderParity": false,
+        "installedStandaloneCoreUnder50MB": true,
+        "fullThreeComponentUnder50MB": "NOT VERIFIED; this is a dependency-reuse local host, not that bundle"
+      }
+    },
+    {
+      "id": 131519472262,
+      "name": "windows-2022 / Node 24",
+      "runId": 43314682188,
+      "status": "completed",
+      "conclusion": "success",
+      "logSha256": "4bc42ee98b15d11c9e2fd339b56cc0b103f2ff75ad3dcd80bb05043a14e34932",
+      "logBytes": 922901,
+      "testSummary": {
+        "tests": 1516,
+        "pass": 1516,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "allNamedStepsSucceeded": true,
+      "installedPackage": {
+        "profiles": 24,
+        "endpoints": 81,
+        "fromOutsideCheckout": true,
+        "ownedLoopbackTlsQualified": true,
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "archiveBytes": 163551,
+        "productionLicenseEvidence": [
+          {
+            "name": "@modelcontextprotocol/core",
+            "version": "2.3.0",
+            "license": "Apache-2.0",
+            "integrity": "sha512-09BHFaNVBe5pB2AhzCfLj0cqmsKLERvZQ4FblzP90UMGLaXVqdZPByFjURwsUYCmxonUW2yAwgTTvle+8O2/8w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "@modelcontextprotocol/server",
+            "version": "2.3.0-mterm.1",
+            "license": "Apache-2.0",
+            "integrity": "sha512-RNlauLPhVz8rUV8EvE1jsPmzBtb84j1HIBFGaTyANRbSHjwEBjl0th5idsfHRcGLT5TWZVfFFzlZhk/zJWXY4w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "acorn",
+            "version": "8.19.0",
+            "license": "MIT",
+            "integrity": "sha512-oJlA3XiRm7Cyk6qFD2Jn8ak9B7jSy0qy00ADO3+8dpT0LSjFihQYv4C02LFCSYJV3Q37xYwwRy5m+IpIiUzqWw==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "76a876cf886ff9be2a8b5e2e86514fed06223c8c9f0c1e9ee9606e93841e00b7"
+              }
+            ]
+          },
+          {
+            "name": "mterm-cli",
+            "version": "0.0.1-preview.1",
+            "license": "MIT",
+            "integrity": "sha512-wx8kF7+GYc7tWAVVYK5eOzy+oNBE6VqMawbe4aAkJwFrqATrv0IvlfnSAcS823vAXFDCQIN4oFFn3hHXuHA+Nw==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "057801cf89de394d84ca2f5797e31619cb5fd66e6f4b7da7058db7887633ba37"
+              }
+            ]
+          },
+          {
+            "name": "zod",
+            "version": "4.6.7",
+            "license": "MIT",
+            "integrity": "sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8"
+              }
+            ]
+          }
+        ],
+        "fullTransitiveLicenseClearance": false,
+        "fullDesktopCommanderParity": false,
+        "installedStandaloneCoreUnder50MB": true,
+        "fullThreeComponentUnder50MB": "NOT VERIFIED; this is a dependency-reuse local host, not that bundle"
+      }
+    },
+    {
+      "id": 131519472303,
+      "name": "macos-15-intel / Node 24",
+      "runId": 43314682188,
+      "status": "completed",
+      "conclusion": "success",
+      "logSha256": "9b3084a2b198fc15ecd1fe5cda57c7e95838c170e97d73457f1b2dadde4cc4e7",
+      "logBytes": 920822,
+      "testSummary": {
+        "tests": 1516,
+        "pass": 1504,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 12,
+        "todo": 0
+      },
+      "allNamedStepsSucceeded": true,
+      "installedPackage": {
+        "profiles": 24,
+        "endpoints": 81,
+        "fromOutsideCheckout": true,
+        "ownedLoopbackTlsQualified": true,
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "archiveBytes": 163559,
+        "productionLicenseEvidence": [
+          {
+            "name": "@modelcontextprotocol/core",
+            "version": "2.3.0",
+            "license": "Apache-2.0",
+            "integrity": "sha512-09BHFaNVBe5pB2AhzCfLj0cqmsKLERvZQ4FblzP90UMGLaXVqdZPByFjURwsUYCmxonUW2yAwgTTvle+8O2/8w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "@modelcontextprotocol/server",
+            "version": "2.3.0-mterm.1",
+            "license": "Apache-2.0",
+            "integrity": "sha512-RNlauLPhVz8rUV8EvE1jsPmzBtb84j1HIBFGaTyANRbSHjwEBjl0th5idsfHRcGLT5TWZVfFFzlZhk/zJWXY4w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "acorn",
+            "version": "8.19.0",
+            "license": "MIT",
+            "integrity": "sha512-oJlA3XiRm7Cyk6qFD2Jn8ak9B7jSy0qy00ADO3+8dpT0LSjFihQYv4C02LFCSYJV3Q37xYwwRy5m+IpIiUzqWw==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "76a876cf886ff9be2a8b5e2e86514fed06223c8c9f0c1e9ee9606e93841e00b7"
+              }
+            ]
+          },
+          {
+            "name": "mterm-cli",
+            "version": "0.0.1-preview.1",
+            "license": "MIT",
+            "integrity": "sha512-o4gbRreuXZb53rjqz8aVm+S/Ou6yEcYIdViDImF//Gq5QuZC3rT0piAITq2j05fU/OFi7k31rpFsYg8E7JEh7Q==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "057801cf89de394d84ca2f5797e31619cb5fd66e6f4b7da7058db7887633ba37"
+              }
+            ]
+          },
+          {
+            "name": "zod",
+            "version": "4.6.7",
+            "license": "MIT",
+            "integrity": "sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8"
+              }
+            ]
+          }
+        ],
+        "fullTransitiveLicenseClearance": false,
+        "fullDesktopCommanderParity": false,
+        "installedStandaloneCoreUnder50MB": true,
+        "fullThreeComponentUnder50MB": "NOT VERIFIED; this is a dependency-reuse local host, not that bundle"
+      }
+    },
+    {
+      "id": 131519472356,
+      "name": "macos-15 / Node 24",
+      "runId": 43314682188,
+      "status": "completed",
+      "conclusion": "success",
+      "logSha256": "6f245bf89c59452c913fda08d58b7606bcd0e84d98ac55c39826cccd0c4ea103",
+      "logBytes": 920419,
+      "testSummary": {
+        "tests": 1516,
+        "pass": 1504,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 12,
+        "todo": 0
+      },
+      "allNamedStepsSucceeded": true,
+      "installedPackage": {
+        "profiles": 24,
+        "endpoints": 81,
+        "fromOutsideCheckout": true,
+        "ownedLoopbackTlsQualified": true,
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "archiveBytes": 163559,
+        "productionLicenseEvidence": [
+          {
+            "name": "@modelcontextprotocol/core",
+            "version": "2.3.0",
+            "license": "Apache-2.0",
+            "integrity": "sha512-09BHFaNVBe5pB2AhzCfLj0cqmsKLERvZQ4FblzP90UMGLaXVqdZPByFjURwsUYCmxonUW2yAwgTTvle+8O2/8w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "@modelcontextprotocol/server",
+            "version": "2.3.0-mterm.1",
+            "license": "Apache-2.0",
+            "integrity": "sha512-RNlauLPhVz8rUV8EvE1jsPmzBtb84j1HIBFGaTyANRbSHjwEBjl0th5idsfHRcGLT5TWZVfFFzlZhk/zJWXY4w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "acorn",
+            "version": "8.19.0",
+            "license": "MIT",
+            "integrity": "sha512-oJlA3XiRm7Cyk6qFD2Jn8ak9B7jSy0qy00ADO3+8dpT0LSjFihQYv4C02LFCSYJV3Q37xYwwRy5m+IpIiUzqWw==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "76a876cf886ff9be2a8b5e2e86514fed06223c8c9f0c1e9ee9606e93841e00b7"
+              }
+            ]
+          },
+          {
+            "name": "mterm-cli",
+            "version": "0.0.1-preview.1",
+            "license": "MIT",
+            "integrity": "sha512-o4gbRreuXZb53rjqz8aVm+S/Ou6yEcYIdViDImF//Gq5QuZC3rT0piAITq2j05fU/OFi7k31rpFsYg8E7JEh7Q==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "057801cf89de394d84ca2f5797e31619cb5fd66e6f4b7da7058db7887633ba37"
+              }
+            ]
+          },
+          {
+            "name": "zod",
+            "version": "4.6.7",
+            "license": "MIT",
+            "integrity": "sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8"
+              }
+            ]
+          }
+        ],
+        "fullTransitiveLicenseClearance": false,
+        "fullDesktopCommanderParity": false,
+        "installedStandaloneCoreUnder50MB": true,
+        "fullThreeComponentUnder50MB": "NOT VERIFIED; this is a dependency-reuse local host, not that bundle"
+      }
+    }
+  ],
+  "requiredJobCount": 6,
+  "allRequiredJobsSuccessful": true,
+  "localHistoricalFailurePreserved": {
+    "command": "npm run check",
+    "exitCode": 1,
+    "result": "FAIL",
+    "tests": 1516,
+    "pass": 1477,
+    "fail": 27,
+    "skipped": 12,
+    "cancelled": 0,
+    "todo": 0,
+    "durationMs": 275590.079792,
+    "failureScope": "All 27 complete failure sections are tests/isolation.test.mjs listen EPERM Unix socket fixtures. Existing 12 Windows-only skips. The roadmap expansion-inputs test passed in this complete run."
+  },
+  "limitations": [
+    "Actual-main commit/tree and fresh main workflow qualification are still required after normal merge.",
+    "No production deployment, real Workers durability, browser/accessibility, live two-device acceptance, executor health or canonical-only OAuth acceptance is claimed.",
+    "The 12 non-Windows skips in hosted Linux/macOS/fast lanes are existing Windows-specific cases, not silently omitted required jobs.",
+    "This is a source/CI qualification review, not a GitHub platform review event."
+  ],
+  "actions": {
+    "githubMutation": false,
+    "productSourceMutation": false,
+    "productionAccess": false,
+    "modelCalls": 0
+  },
+  "validationManifest": {
+    "entries": 28,
+    "allExactCommittedFileHashesVerified": true
+  }
+}

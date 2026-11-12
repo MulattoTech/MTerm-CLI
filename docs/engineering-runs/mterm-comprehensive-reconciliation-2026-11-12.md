@@ -341,7 +341,7 @@ CLI300/DCP48/WEB12/AUG117 denominators remain separate; CLI maturity remains
 qualification, executor health/version telemetry, deployment and whole-feature
 acceptance remain separate work.
 
-## Current next action and preserved boundaries
+## Cycle9 preparation checkpoint (superseded by qualification below)
 
 Finish final readiness documentation/metric and immutable-tree review, publish the
 exact candidate, qualify all six hosted jobs, merge normally with an expected-head
@@ -359,3 +359,90 @@ separate from the backend. Preserve active services, the working connector, all
 owner Windows work and every failed test/CI record. No force push, credential
 export, authentication weakening, paid model call, unrelated workload change or
 backend production deployment is authorized by this checkpoint.
+
+
+## Cycle9 actual-main qualification — resumed conversation
+
+PR259 was recovered at candidate `f6b17c72bfabe0da684bead0905608d4edf7cff2`.
+Independent inspection matched all 1,072 blobs and 52 directories, the four
+runtime/test hashes, all 28 retained evidence entries and the exact candidate tree.
+All six candidate jobs passed before the normal expected-head merge at 22:08:29 UTC.
+Actual main is `6a6a883f3ce1cd86a7405d2c53a1fb08cd1210c2`, tree
+`ea714fd37926cb49325d9a4c6b60011cd01f021c`, with ordered parents prior main
+`da03dc5255976b1524b22796fffadb01e50a5149` and the reviewed candidate.
+
+All six fresh push jobs passed in runs43317097626/43317097644. Windows passed
+1,516/1,516. Other ordinary lanes passed1,504 with the same12 Windows-only skips.
+Each package lane passed24 profile and81 endpoint tests outside the checkout;
+compiled remote-module bindings match the candidate. Native Linux passed12 source
+and12 installed scenarios with cleanup. The [candidate receipt](evidence/delivery-cli259-origin-candidate-qualification.json)
+and [actual-main receipt](evidence/delivery-cli259-origin-actual-main.json) preserve
+the independent evidence, and [normalized delivery](evidence/delivery-cli259.json)
+binds captured GitHub identities. Prior local failures remain failed observations.
+No runtime deployment, executor-health inference or whole-feature acceptance was awarded.
+
+## Cycle10 — repository-specific component delivery accounting
+
+The preserved isolated accounting worktree was clean and fast-forwarded normally
+to qualified main6a6a883f. Root remains sole implementation/publication owner;
+independent agents recover delivery evidence and review the validator and criteria.
+A read-only MTerm Live Connection metadata command succeeded on MULATTOTECHBOX.
+The alternative RDC inventory reported the workstation offline, so the working
+connector was preserved. The owner's dirty Windows checkout and services are untouched.
+
+The previous register required six CLI jobs for every component and rendered every
+PR under the CLI repository. It could also relabel a CLI delivery as a bridge
+component. Three regression failures reproduced those defects. The correction
+binds repository, layer, exact workflow content, candidate and actual-main commits,
+ordered parents/equal trees, runs, attempts, jobs, outcomes and URLs. Captured source
+bytes and GitHub API identities reject a valid but older/smaller Access workflow
+being substituted at a newer source commit. A separate three-case RED run and
+independent adversarial review exposed this and invented-ID/package-claim defects;
+the failures are retained in the validation evidence. A further saved-manifest RED
+case establishes that unrelated paths or changed file hashes/sizes cannot be accepted.
+
+Nine source deliveries are reconciled: CLI249/256/257/258/259 and Access24/25/27/28.
+They support40 distinct partial requirement rows, with explicit reciprocal scope.
+Each repository/PR counts once; the previously failed and pending profile records
+remain visible as superseded history. The CLI source observation advances to6a6a883f;
+the bridge's prior production observation remains ba4a55b7. Original baseline
+observations, hashes and failed tests are retained rather than rewritten as current.
+
+The canonical plugin's verified saved package0.2.3 has a separate count and exact
+eight-file manifest. Its readback at21:17:52 UTC predates the later Access28 source
+reconciliation; the two observation times remain distinct. Private plugin/release
+identifiers are omitted from the new public-safe manifest. The saved package does
+not establish backend deployment, canonical-only OAuth, UI activation or wrapper removal.
+
+The current whole-requirement axes remain zero until criterion-scoped qualification
+of the corrected source justifies each axis. Implementation/test/merge may qualify
+independently; deployment and acceptance require separate evidence. The original
+CLI300/DCP48/WEB12/AUG117 denominators, stages and weights are unchanged.
+
+### Current action
+
+Finish independent accounting review and ordinary validation, publish the exact
+reviewed tree, qualify all six hosted candidate jobs, merge normally with expected
+head, then qualify actual main. Preserve all earlier failures and current operational
+boundaries. MTR-METRIC-01 source-axis qualification is a separate explicit decision
+against the corrected immutable source; neither inventory refresh nor issue closure
+awards it automatically. Runtime rollout and broader mission acceptance remain open.
+
+
+### Accounting local and independent validation checkpoint
+
+Normal build passed. The complete ordinary check finished1,543 tests:1,504 passed,
+27 failed and12 existing Windows-only skips, with zero cancellations/TODOs. All27
+failures are unchanged `tests/isolation.test.mjs` Unix-domain-socket fixtures with
+`listen EPERM`; the source file is byte-identical to base. Roadmap, parity, capability
+output, typecheck and formatting passed. The full756,905-byte failed log is retained
+losslessly in `docs/validation/2026-11-12-delivery-accounting/check.log.gz` with
+its exact raw/archive hashes in `complete-check.json`. This remains a failed local
+full check, not a package or runtime qualification.
+
+Independent frozen review passed46/46 focused tests and rejected all14 adversarial
+probes. A separate criterion review approves all four existing issue255 source
+criteria and recomputed all43 consumed input hashes. Both receipts bind the exact
+reviewed source; they are retained in the same validation directory. The corrected
+immutable candidate still requires all six hosted checks, normal expected-head
+merge and actual-main qualification before delivery/source-axis credit.

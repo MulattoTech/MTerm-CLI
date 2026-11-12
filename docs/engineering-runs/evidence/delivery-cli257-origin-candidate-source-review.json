@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-12T18:31:30.853789+00:00",
+  "reviewer": "independent architecture agent",
+  "repository": "MulattoTech/MTerm-CLI",
+  "pullRequest": 257,
+  "head": "b0348d901b27975789d8764397a103204e08aaf0",
+  "tree": "cbb3b682c4bfdf472bdfbc1ebfce5cd2e71174fc",
+  "parent": "d61d280c371a66578c4a93aa1df50907c0424347",
+  "base": "4fb205088e77731e42da5adaca6bf167f8b75194",
+  "decision": "APPROVED_IMMUTABLE_SOURCE_DELTA",
+  "blockingFindings": [],
+  "scope": "Narrow seven-file revision after independently reviewed d61d280; no runtime, workflow, package scripts, validator, capability data, baseline or acceptance changes.",
+  "changedFiles": [
+    "docs/HANDOFF.md",
+    "docs/ai/changes/2026-11-12-capability-register.json",
+    "docs/engineering-runs/evidence/peer-register-review-d61d280.json",
+    "docs/engineering-runs/evidence/register-prepack-green.tap",
+    "docs/engineering-runs/evidence/register-prepack-red.tap",
+    "docs/roadmap/review.json",
+    "tests/prepack-lifecycle.test.mjs"
+  ],
+  "codeReview": [
+    "Prepack fixture declares the new capabilities:check leaf used by actual build/check scripts.",
+    "Capability gate is exercised in the existing publication-blocking failure loop.",
+    "Each intended gate must execute exactly once before no-archive and no-compilation assertions; a missing script cannot masquerade as a working negative gate.",
+    "Existing actual offline npm lifecycle, source-built-tested-installed byte equality, stale-output and publication assertions remain intact."
+  ],
+  "immutableExtraction": {
+    "directory": "/workspace/scratch/a92a3aacdca1/register-final-review-b0348d9",
+    "verifiedTrackedBlobs": 971,
+    "allGitBlobIdentitiesMatch": true
+  },
+  "validation": {
+    "node": "v24.22.1",
+    "focusedTests": {
+      "tests": 32,
+      "pass": 32,
+      "fail": 0,
+      "skip": 0,
+      "cancel": 0,
+      "files": [
+        "tests/prepack-lifecycle.test.mjs",
+        "tests/capability-register.test.mjs",
+        "tests/roadmap.test.mjs"
+      ]
+    },
+    "capabilityRegisterCheck": "pass",
+    "roadmapCheck": "pass",
+    "preservedDenominators": [
+      "CLI-300",
+      "DCP-48",
+      "WEB-12",
+      "AUG-117"
+    ],
+    "wholeRequirementAxes": {
+      "codeComplete": 0,
+      "tested": 0,
+      "merged": 0,
+      "deployed": 0,
+      "accepted": 0
+    }
+  },
+  "priorHostedFailure": {
+    "head": "d61d280c371a66578c4a93aa1df50907c0424347",
+    "result": "Five source jobs failed the same four prepack fixture tests; native isolation passed. Failed receipt retained, never qualified.",
+    "receipt": "/workspace/scratch/a92a3aacdca1/pr257-ci-d61d280/qualification-failure.json"
+  },
+  "evidence": [
+    {
+      "path": "/workspace/scratch/a92a3aacdca1/register-final-b034-focused.tap",
+      "sha256": "472389b3705920b834bf9b063f0b2d5ad98e91d12e0f3331a1f88620f025848e"
+    },
+    {
+      "path": "/workspace/scratch/a92a3aacdca1/register-final-b034-check.json",
+      "sha256": "0a718b9ec694ce414caccc86daa9f8e51c15fd605f787c63bbb82442b5dbf728"
+    },
+    {
+      "path": "/workspace/scratch/a92a3aacdca1/register-final-b034-roadmap-check.txt",
+      "sha256": "347c2527601dc28d23f4107434b2b02f35c33ed6cba57ab6ae684bb37e1cd302"
+    },
+    {
+      "path": "/workspace/scratch/a92a3aacdca1/register-final-b034-unchanged-evidence.json",
+      "sha256": "3a623bf58f1cac260aca077ddd95ab96642f902c0888016da85e278dedc0e1fc"
+    },
+    {
+      "path": "/workspace/scratch/a92a3aacdca1/pr257-ci-d61d280/qualification-failure.json",
+      "sha256": "76b8f0fa318a4814a0c79795bb6afdbbf52f24036a262ce7cd512710ba44bee4"
+    }
+  ],
+  "qualificationLimits": [
+    "Revised exact-head hosted canonical six checks still pending at source approval.",
+    "Actual merged-main checks remain required.",
+    "No production execution, deployment, enrollment, MCP metadata publication or complete mission acceptance performed."
+  ]
+}

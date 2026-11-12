@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "command": "npm run check",
+  "exitCode": 1,
+  "node": "v24.22.1",
+  "observedAt": "2026-11-12T22:34:52.107273+00:00",
+  "baseSha": "6a6a883f3ce1cd86a7405d2c53a1fb08cd1210c2",
+  "summary": {
+    "tests": 1543,
+    "suites": 0,
+    "pass": 1504,
+    "fail": 27,
+    "cancelled": 0,
+    "skipped": 12,
+    "todo": 0,
+    "duration_ms": 294296.758359
+  },
+  "failureCategory": "27 unchanged isolation Unix-domain-socket fixtures cannot listen in this environment (EPERM).",
+  "failingTestFiles": [
+    "tests/isolation.test.mjs"
+  ],
+  "failingSourceUnchangedFromBase": {
+    "tests/isolation.test.mjs": true
+  },
+  "ordinaryPreTestGates": "roadmap, parity, capability output, typecheck and formatting passed before the complete suite",
+  "uncompressed": {
+    "filename": "check.log",
+    "bytes": 756905,
+    "sha256": "71202de6618aea9791952a64a49777394e54c098970e9da8dc267f7ee149bded"
+  },
+  "losslessArchive": {
+    "filename": "check.log.gz",
+    "bytes": 84153,
+    "sha256": "6d2d87e287334c55da3ead626cd77899a5ee7041f6e3d5a2ff5185b99f0b9a37"
+  },
+  "claim": "Local complete check failed; no local full-suite or local installed-package PASS is inferred. Hosted exact-candidate/main gates remain required."
+}

@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-12T19:40:38.263Z",
+  "reviewer": "/root/architecture",
+  "decision": "APPROVE_SOURCE_ONLY",
+  "repository": "MulattoTech/MTechLabs-Access",
+  "pullRequest": 25,
+  "url": "https://github.com/MulattoTech/MTechLabs-Access/pull/25",
+  "commit": "60f188a805f59eeb13d04f27285ab7b55d1d6507",
+  "tree": "04d1d397de37cb730b191f47bbe9877d0a94b7a3",
+  "parent": "834bd0154a6838475dfdd1c10fd79d162edb7949",
+  "base": "ba4a55b7ed351f7e60928179edaa7449de00be7d",
+  "parentTree": "19081c847f0cba092eaba7c5c28423791edec058",
+  "baseTree": "ec74014abab108fbd3476c2f5e74771d7af0d638",
+  "localSyntheticCheckpoint": "4ab98c6f9571b34def09e6aa63679804bb48dc0d",
+  "sourceIdentity": {
+    "publishedGitCommitAndParentsReadFromApi": true,
+    "publishedRecursiveTreeComplete": true,
+    "matchingBlobs": 140,
+    "archive": "/workspace/scratch/a92a3aacdca1/access-descriptions-final-review-60f188a8",
+    "trackedBytesReverifiedAfterTests": true,
+    "syntheticHistoryNotPublished": true
+  },
+  "scope": {
+    "changedFiles": [
+      "docs/engineering/2026-11-12-engineering-descriptions.json",
+      "integrations/mcp-manager/METADATA.md",
+      "integrations/mcp-manager/README.md",
+      "integrations/mcp-manager/lib/engineering-descriptions.mjs",
+      "integrations/mcp-manager/lib/engineering-tools.mjs",
+      "integrations/mcp-manager/metadata-evidence/access-descriptions-barrier-green.tap",
+      "integrations/mcp-manager/metadata-evidence/access-descriptions-green.tap",
+      "integrations/mcp-manager/metadata-evidence/access-descriptions-red.tap",
+      "integrations/mcp-manager/metadata-evidence/engineering-accuracy-findings.md",
+      "integrations/mcp-manager/metadata-evidence/peer-access25-834bd015-receipt.json",
+      "integrations/mcp-manager/metadata-evidence/peer-access25-834bd015-receipt.md",
+      "integrations/mcp-manager/test/engineering-descriptions.test.mjs",
+      "integrations/mcp-manager/test/fixtures/engineering-contract-ba4a55b7.json",
+      "integrations/mcp-manager/test/gateway.test.mjs"
+    ],
+    "productionBehaviorChanged": false,
+    "descriptorCount": 28,
+    "publicContract": {
+      "baseSha256": "2f66aaf72db1583aa3940acb5a0374bb5298e90eec5e5bba0ec733ba25549cfe",
+      "candidateSha256": "2f66aaf72db1583aa3940acb5a0374bb5298e90eec5e5bba0ec733ba25549cfe",
+      "fixtureMatchedActualBase": true,
+      "tools": 28,
+      "readOnlyCount": 19,
+      "dispatchAndReadOnlyCodeIdentical": true
+    },
+    "pauseFixture": "Replaces sleep-based timing with explicit started/queued/release barriers; asserts queued denial while dispatched work remains active, then releases and observes completion. Runtime admission code is byte-identical to base.",
+    "dependencyAndWorkflowChanges": false
+  },
+  "findings": [],
+  "semanticReview": {
+    "reviewer": "/root/metadata_review",
+    "decision": "APPROVE_SOURCE_ONLY",
+    "result": "All 28 descriptions, exact key wiring, permissions, side effects and limitations checked against the implementation and prior proposals. Nine provider/policy/runner/gateway files remain byte-identical to the baseline. No semantic blocker found."
+  },
+  "validation": {
+    "command": "node --test --test-reporter=tap test/*.test.mjs",
+    "workingDirectory": "/workspace/scratch/a92a3aacdca1/access-descriptions-final-review-60f188a8/integrations/mcp-manager",
+    "tests": 79,
+    "pass": 79,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "tapPath": "/workspace/scratch/a92a3aacdca1/access-descriptions-review-60f188a8-manager.tap",
+    "tapSha256": "aa9fcc3b0f8bd2020581b8a1dc6634c891daf9238df135758c90ed12d2440860",
+    "tapBytes": 18625
+  },
+  "evidenceHashesVerified": [
+    {
+      "name": "access-descriptions-red.tap",
+      "sha256": "06834f5e13e92beb5f68eda80ff3b734cbf52222c58dd531ce0d097ebd9a8bc2",
+      "bytes": 3631,
+      "normalization": "Trailing line whitespace removed; test results unchanged."
+    },
+    {
+      "name": "access-descriptions-green.tap",
+      "sha256": "bb6a049247174b07f29459349b50d3a683096e67f7906fa2834cf54e99692758",
+      "bytes": 8152,
+      "normalization": "Trailing line whitespace removed; test results unchanged."
+    },
+    {
+      "name": "peer-access25-834bd015-receipt.json",
+      "sha256": "e3f4642a23aae76d2c1797cf58759bb32ab465b9b3c830e25782605e1136e103",
+      "bytes": 3168,
+      "normalization": "None; exact receipt bytes."
+    },
+    {
+      "name": "peer-access25-834bd015-receipt.md",
+      "sha256": "96b5c7f7546afb028901257017836627e0a59f9ec948f3ff3ce9b6fb74a0defc",
+      "bytes": 2030,
+      "normalization": "None; exact receipt bytes."
+    },
+    {
+      "name": "access-descriptions-barrier-green.tap",
+      "sha256": "41738158185d99aa40c296a8945f33fd7ba6f6f210855e204f83f26bc0dd61c5",
+      "bytes": 8158,
+      "normalization": "None; exact receipt bytes."
+    }
+  ],
+  "reviewInputs": [
+    {
+      "file": "/workspace/scratch/a92a3aacdca1/access-descriptions-review-60f188a8-verification.json",
+      "sha256": "8c2c8b5bad74c089251b7578045898836ec732c1ddcadcf4bc49ba4722ce5523"
+    },
+    {
+      "file": "/workspace/scratch/a92a3aacdca1/access-desc60-remote-commit.json",
+      "sha256": "c6ebca0633158e9fcd3b39f50382c6f2917db1cc8d7b833d56060408a8b0522b"
+    },
+    {
+      "file": "/workspace/scratch/a92a3aacdca1/access-desc60-remote-tree.json",
+      "sha256": "5194bba1925e7f254b5954a395fc786c600bf0e1cc888c3a754939791d9f4381"
+    }
+  ],
+  "historicalFailure": "Original 834 candidate hosted root tests passed123/123; manager failed78/79 only in inherited pause timing fixture. Its receipt and source RED/Green evidence remain committed, hashed and do not qualify the superseded candidate.",
+  "limitations": [
+    "Approval is bound only to this exact commit and tree. A later source delta needs review.",
+    "Final exact-head hosted test and managed-mcp checks are owned by github_inventory; this receipt does not substitute for them. Actual merged-main checks remain required after merge.",
+    "Actual ChatGPT settings/tool-card rendering and authenticated staging are not established by JSON/MCP tools/list serialization tests.",
+    "Existing provider limitations, including target-host Stop-VM -Shutdown compatibility, remain unqualified by this metadata-only slice.",
+    "No upstream package, provider operation, production runtime, deployment, owner data, credentials or paid model calls were executed or changed."
+  ],
+  "cli257Observation": {
+    "observedAt": "2026-11-12T19:40:38.265Z",
+    "state": "open",
+    "merged": false,
+    "head": "b0348d901b27975789d8764397a103204e08aaf0",
+    "main": "4fb205088e77731e42da5adaca6bf167f8b75194",
+    "action": "Read-only observation. No merge retry."
+  }
+}

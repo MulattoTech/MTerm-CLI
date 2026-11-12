@@ -1,0 +1,72 @@
+[
+  {
+    "name": "duplicate qualified component reference in one row",
+    "accepted": false,
+    "error": "[DUPLICATE_ID] MTR-SKILL-02: component delivery references"
+  },
+  {
+    "name": "missing workflow ID in both normalized and captured run",
+    "accepted": false,
+    "error": "[SOURCE_BINDING] engineering-descriptions-qualified-main: main run identity/result"
+  },
+  {
+    "name": "missing candidate branch in both PR and captured run",
+    "accepted": false,
+    "error": "[SOURCE_BINDING] engineering-descriptions-qualified-main: captured PR identity"
+  },
+  {
+    "name": "same physical run and job IDs describe contradictory candidate and main sources in both representations",
+    "accepted": false,
+    "error": "[SOURCE_BINDING] engineering-descriptions-qualified-main: candidate/main runs must have distinct physical identities"
+  },
+  {
+    "name": "qualification observation predates actual source merge and green main",
+    "accepted": false,
+    "error": "[SOURCE_BINDING] engineering-descriptions-qualified-main: repository/source/scope/merge identity"
+  },
+  {
+    "name": "authentic but unrelated complete GitHub original substituted with correct hashes",
+    "accepted": false,
+    "error": "[SOURCE_BINDING] engineering-descriptions-qualified-main: captured PR identity"
+  },
+  {
+    "name": "merged pending supersession changes candidate identity",
+    "accepted": false,
+    "error": "[SOURCE_BINDING] remote-profiles-corrected-candidate: supersession cannot replace a merged source identity"
+  },
+  {
+    "name": "qualified observation superseded by later candidate",
+    "accepted": false,
+    "error": "[SOURCE_BINDING] engineering-descriptions-qualified-main: supersession cannot replace a merged source identity"
+  },
+  {
+    "name": "receipt claims runtime deployment while item does not",
+    "accepted": false,
+    "error": "[SOURCE_BINDING] engineering-descriptions-qualified-main: repository/source/scope/merge identity"
+  },
+  {
+    "name": "raw main job list truncated relative to total_count",
+    "accepted": false,
+    "error": "[SOURCE_BINDING] engineering-descriptions-qualified-main: captured main complete job set"
+  },
+  {
+    "name": "missing pull request object fails closed",
+    "accepted": false,
+    "error": "[SOURCE_BINDING] engineering-descriptions-qualified-main: captured PR identity"
+  },
+  {
+    "name": "missing candidate phase fails closed",
+    "accepted": false,
+    "error": "[SOURCE_BINDING] engineering-descriptions-qualified-main: captured candidate commit/tree/parents"
+  },
+  {
+    "name": "missing source snapshot does not gain whole credit",
+    "accepted": false,
+    "error": "[QUALIFICATION_REQUIRED] MTR-SKILL-02 implementation"
+  },
+  {
+    "name": "repeat saved package counted as a separate release",
+    "accepted": false,
+    "error": "[DUPLICATE_ID] Saved plugin package identities"
+  }
+]

@@ -208,7 +208,7 @@ did not detect the three independent findings and is not presented as final
 approval. [The retained evidence](../validation/2026-11-12-public-endpoint-inspector/README.md)
 distinguishes research inputs, initial review, regression failures and corrected tests.
 
-## Current next action and preserved boundaries
+## Historical next action from endpoint preparation
 
 Finish immutable endpoint review, normal local and installed-package gates,
 integrate the newly merged register, publish the exact endpoint candidate, require
@@ -227,3 +227,135 @@ All CLI300/DCP48/WEB12/AUG117 IDs, original acceptance text and weights remain.
 CLI maturity remains29.36%,0/300 complete. No source delivery grants complete
 mission acceptance. Authenticated provider credentials252, profile portal253,
 explicit target routing62 and real two-computer acceptance65/53 remain open.
+
+
+## Cycle7 — qualified endpoint delivery
+
+[CLI PR258](https://github.com/MulattoTech/MTerm-CLI/pull/258) merged normally at
+`da03dc5255976b1524b22796fffadb01e50a5149` on November 12 at 21:25:04 UTC,
+with reviewed tree `2ee6ecc09206ca3f8e64edc34635b3820383e00b`. The ordered
+parents are `f447c0baac3f36470d6fd96360928c6a2a192c4b` and qualified candidate
+`01c0fc0dc236fbb09d0400f9119df9147c6580f7`. The merge API timed out, but fresh
+PR/main/Git-commit reads proved completion; no duplicate merge was attempted.
+
+All six candidate checks and all six fresh actual-main jobs passed. Main runs
+43310056791/43310058292 completed on attempt 1. Windows passed 1,476/1,476;
+other source lanes passed 1,464 with the same 12 Windows-only skips. All five
+installed-package lanes passed all 81 endpoint cases and the existing profile,
+isolation and provenance gates. All eight compiled remote modules match the
+independently frozen source. Four Codex 0.160.1 lanes passed real registration,
+configuration, SDK rounds, restart persistence, shutdown and removal with zero
+model calls. Native source and installed lanes passed 12/12 each, with 24 cleanups,
+16 OOM observations and the retained signed index and notices independently checked.
+
+[Candidate receipt](evidence/peer-mterm258-01c0fc0d-receipt.json) and
+[actual-main receipt](evidence/peer-mterm-main-da03dc52-receipt.json) retain exact
+identities, checks and evidence hashes; the latter binds 5,082,845 full decoded
+log bytes and a fresh 252,007-byte native ZIP. Earlier local ordinary/package
+socket failures remain failures in the source evidence. Issue251 remains open for
+profile application, authenticated providers and the rest of its acceptance.
+No live external endpoint probe or source deployment occurred.
+
+## Cycle8 — canonical plugin recovery package and source reconciliation
+
+The supported App-backed package update published canonical MTerm-CLI version
+0.2.3 as `pluginrel_6af62cc94f208191ae197a1a9ae7aa65`, guarded against its prior
+release. All eight returned files were independently compared to the reviewed
+package. The release changes the README, recovery skill and two version literals;
+App/MCP bindings, OAuth, identity, audience, presentation and icon are preserved.
+
+Recovery guidance preserves the working connection if a supported Connect or
+Reconnect path is not offered. It no longer gives uninstall/recreate advice or
+assumes a hardcoded drive path is authorized for a metadata probe. Success is
+limited to the active chat, tool path and observation time. The working Live
+Connection remains installed. Canonical-only consent, UI activation and wrapper
+removal remain unverified. A literal Unicode escape decoded to the same character
+and was not classified as a defect. App-owned descriptive text and the website's
+older archive are separate release channels and remain unchanged.
+
+[Access PR28](https://github.com/MulattoTech/MTechLabs-Access/pull/28) reconciles
+the canonical package source and release evidence. It merged at
+`ff31efca7c94ca4653305c61e9b933ce835cc04f`, tree
+`19a4dd1a9e1bed2bfb9b3e1d5954a7e2e0716691`, on November 12 at 21:24:26 UTC.
+All five candidate jobs and all five fresh actual-main jobs passed. Main run
+43309952009 passed root 123/123, both platform managers 115/115, both upstream
+guard suites 115/115 and all four real version/platform lanes with ten stages each.
+[Candidate evidence](evidence/peer-access28-f422b4d0-receipt.json) and
+[main evidence](evidence/peer-access-main-ff31efca-receipt.json) bind source and
+qualification. The main receipt records 165,915 full decoded log bytes and two
+fresh artifacts with 20 verified reports. CLI209/246 remain open for their full
+integration, UI and deployment acceptance. No Worker, manager or Tunnel restart
+or backend production deployment occurred.
+
+## Cycle9 — device observations and final admission freshness
+
+Root is the sole writer on `feat/device-readiness-observations-20261112` in the
+isolated `MTerm-CLI-Readiness` worktree. A normal local merge incorporates actual
+main `da03dc5255976b1524b22796fffadb01e50a5149`; the local preparation merge is
+`1de652e05405968f012d17119ade1e2c73b06ba5`. Issues58/62 own the broader device
+inventory and routing requirements and remain open.
+
+Only gateway registry/dashboard runtime files change. Owned-device observations
+separate authenticated poll receipt, a timestamped capacity offer, and a past
+accepted result outcome from executor health, which remains unknown. Old records
+and legacy wire version1 remain compatible. An omitted capacity report clears the
+old observation while preserving the existing four-request delivery default.
+Offers may be consumed in the same reply; accepted results never refresh polling.
+Projection uses an explicit whitelist and one time after asynchronous dashboard
+reads. Invalid/future timestamps cannot imply online presence.
+
+The reproduced admission race crossed 14,999 to 15,000 milliseconds during actual
+job-list or lease reads. The final enqueue decision now rechecks a valid nonnegative
+poll age less than 15 seconds before its first job write. It preserves explicit
+targeting, authorization, limits, queuing, cancellation and the existing offline
+error. No fallback target is selected. Dashboard labels and text nodes show recent,
+overdue or missing polls, historical offers/results, and unverified executor health.
+
+Actual RED evidence is retained: freshness four cases with two failures/two controls;
+observations 37 cases with 28 failures/nine controls; two dashboard/whitelist
+failures. Corrected focused source passes 54/54. The independent frozen review
+approves six related suites 118/118, the original four regressions 4/4 with only
+import paths changed, and five independent boundary cases 5/5. Those four
+regressions overlap product cases. The review additionally exercises failed result
+persistence and a later observation-write failure: a completed result remains
+consumable once and metadata stays conservatively older/absent. No new transaction
+atomicity or Cloudflare crash-durability guarantee is claimed.
+
+Ordinary build passed. The optional quick wrapper hit its unchanged six-minute
+subprocess timeout, preserving partial socket failures and one roadmap failure.
+That roadmap test passed alone and in the subsequent complete ordinary check;
+its original failure cause remains unestablished. The complete check finished
+1,516 cases: 1,477 passed, 27 `listen EPERM` Unix-socket fixture failures, 12 existing
+Windows-only skips, zero cancellations/TODOs. Every failure is in the unchanged
+isolation test file. The complete 753,982-byte log is retained losslessly. The
+four runtime/test hashes still match the independently reviewed snapshot. No local
+full-suite or installed-package PASS is inferred. See the
+[readiness evidence](../validation/2026-11-12-device-readiness-observations/README.md).
+
+All 300 original progress objects were compared. Only evidence, notes and reviewer
+fields change on CLI-200/206/286/287/291/299. Stages, weights, original acceptance,
+estimates, blockers and platform credit remain unchanged. Explicit evidence-hash
+reconciliation preserves the entire preceding metric object and its history.
+CLI300/DCP48/WEB12/AUG117 denominators remain separate; CLI maturity remains
+29.36%, with zero of 300 complete. Real Workers execution, real device/browser
+qualification, executor health/version telemetry, deployment and whole-feature
+acceptance remain separate work.
+
+## Current next action and preserved boundaries
+
+Finish final readiness documentation/metric and immutable-tree review, publish the
+exact candidate, qualify all six hosted jobs, merge normally with an expected-head
+check, then qualify actual main. Candidate CI must retain all package/platform,
+license, native isolation and zero-model Codex checks. Continue a separate,
+reviewed capability-register accounting slice so delivered components are visible
+without inventing deployment or whole-requirement acceptance. The current register
+still has stale pending observations from earlier preparation; its correction is
+separate from this runtime change.
+
+Production remains the previously source-matched Access `ba4a55b7` manager0.4.0,
+Desktop Commander0.3.1/SDK1.32.2 observation unless a later verified deployment
+establishes otherwise. The plugin documentation/skill package release above is
+separate from the backend. Preserve active services, the working connector, all
+owner Windows work and every failed test/CI record. No force push, credential
+export, authentication weakening, paid model call, unrelated workload change or
+backend production deployment is authorized by this checkpoint.

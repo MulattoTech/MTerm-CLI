@@ -1,3 +1,65 @@
+# Device observations and final admission freshness — November 12, 2026
+
+Active source work is under issues58/62, on the exact merged endpoint tree from
+`da03dc5255976b1524b22796fffadb01e50a5149`. The isolated readiness worktree
+retains a normal local merge of that real main; no shared history is rewritten.
+
+The gateway now projects authenticated poll time, the last timestamped capacity
+offer and the accepted-result time/outcome separately. Executor health stays
+unknown. Old records and legacy wire-v1 agents remain compatible; omitted capacity
+clears the prior claim while preserving four-request delivery. Result acceptance
+does not refresh presence or capacity. Values are whitelisted and owner-filtered.
+The dashboard labels recent/overdue/missing polls, capacity offers and past results
+without calling them current readiness. Existing registry-admission counts remain.
+
+A concrete timing failure is fixed: a device fresh at entry could cross 15 seconds
+during job/lease reads and still receive a new queued job. Final admission now
+checks a valid nonnegative age immediately before its first write. It keeps the
+explicit target, existing error, authorization, limits and queuing behavior.
+Dashboard projection likewise uses one fresh time after its storage reads.
+
+Actual RED: freshness4 cases (2 failures,2 controls), observations37 (28 failures,
+9 controls), dashboard2 failures. Corrected focused54/54 passes:40 readiness tests
+plus all14 occupancy groups, including the actual served script in a DOM adapter.
+Independent frozen review approves the source: six suites 118/118, original four
+regressions 4/4 and five additional boundaries 5/5. Ordinary build passed. Complete
+ordinary check failed with 1,516 tests: 1,477 pass, 27 Unix-socket `listen EPERM`
+failures, 12 existing Windows-only skips and zero cancellations/TODOs. Its roadmap
+test passed; the earlier six-minute wrapper timeout and partial roadmap failure
+are retained. No local full-suite, real Workers/browser/deployment or whole-feature
+pass is claimed. Hosted candidate/main gates remain pending. The source evidence is in
+`docs/validation/2026-11-12-device-readiness-observations/`.
+
+All300 CLI rows were compared. Exactly CLI-200/206/286/287/291/299 change only
+notes/evidence/reviewer. The capability guard correctly refused the changed
+progress-file hash; reconciliation retains its entire previous evidence object.
+Stages, weights, acceptance, estimates and all other baselines remain unchanged.
+CLI maturity remains29.36% with0/300 complete and all whole-mission axes atzero.
+
+CLI258 merged normally at `da03dc5255976b1524b22796fffadb01e50a5149`; the merge
+API timed out, but immediate fresh PR/main/commit reads proved it completed, so
+no retry occurred. All6 exact candidate checks passed (Windows1476, others1464
+plus12 skips; installed endpoint81 on all5 package lanes). All six fresh actual-main
+jobs also passed in runs 43310056791/43310058292, with the same source and installed
+counts, four real Codex registration/configuration lanes with zero model calls, and
+native source/installed 12/12 each. The independent main receipt is
+`f65f4b6320984a752641047d999fcb95b9500416cc011b45395658d9b7d9dcee`.
+
+The canonical plugin documentation/skill release0.2.3 was independently read back
+at `pluginrel_6af62cc94f208191ae197a1a9ae7aa65`. Its source reconciliation Access28
+merged at `ff31efca7c94ca4653305c61e9b933ce835cc04f` and passed all5 fresh main
+jobs:root123, both managers115, both upstream guards115 and all40 real stages.
+The existing App, OAuth/MCP config, presentation, audience and wrapper remain.
+Website archive and runtime deployment are separate and unchanged. Canonical-only
+consent, UI activation and wrapper removal are still unverified.
+
+Next: bind final documentation and evidence to the reviewed source, publish the reviewed
+readiness tree, qualify all6 candidate jobs, merge normally with expected head,
+and qualify actual main. Keep issues58/62 open for their full acceptance. Preserve
+the owner's dirty Windows work, active services and all earlier failed evidence.
+
+---
+
 # Comprehensive mission continuation — 2026-11-12 UTC
 
 The current [engineering checkpoint](engineering-runs/mterm-comprehensive-reconciliation-2026-11-12.md)

@@ -1,0 +1,448 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-12T21:24:17.039855+00:00",
+  "status": "READ_ONLY_DESIGN_WITH_VALIDATED_CAUSAL_REGRESSIONS",
+  "source": {
+    "observedAt": "2026-11-12T21:19:00.996442+00:00",
+    "sourceCommit": "ddbb14d8c4f066c48ce416ec25cbe5c14167949f",
+    "tree": "2ee6ecc09206ca3f8e64edc34635b3820383e00b",
+    "sourceFiles": [
+      {
+        "path": "gateway/registry.mjs",
+        "bytes": 32572,
+        "sha256": "3970f0a32a6f512124d8a7003c755085f325c5414e28a441e023f9286eb573d3",
+        "currentWorktreeMatchesCommit": true
+      },
+      {
+        "path": "gateway/app.mjs",
+        "bytes": 14797,
+        "sha256": "61b5c43a8ce7dc6fc61d772fcc16c4a4b7d5cb8f17c70555829fae3ce53e42a1",
+        "currentWorktreeMatchesCommit": true
+      },
+      {
+        "path": "gateway/dashboard.mjs",
+        "bytes": 15252,
+        "sha256": "0371785ccd9a3ff3617041e237d59df163b03ecc21605d2aa4c58de817fb1399",
+        "currentWorktreeMatchesCommit": true
+      },
+      {
+        "path": "gateway/security.mjs",
+        "bytes": 9491,
+        "sha256": "78aa4d7f9f632568d2247d249691b7583dbf73d344bd040d6512104741183b7b",
+        "currentWorktreeMatchesCommit": true
+      },
+      {
+        "path": "src/remote/agent.ts",
+        "bytes": 10275,
+        "sha256": "96ecac93e03f84cd931b71f27e0932120f475f10f6d5e7e61579eb8a93c0e8db",
+        "currentWorktreeMatchesCommit": true
+      },
+      {
+        "path": "src/remote/protocol.ts",
+        "bytes": 3503,
+        "sha256": "43e8c5067e8a2e4878b76f2ec6c0871dca499a02d5cd02cd31ecef57a8a3ed28",
+        "currentWorktreeMatchesCommit": true
+      },
+      {
+        "path": "src/remote/adapter.ts",
+        "bytes": 6305,
+        "sha256": "6f0732d714b099c418eafd81703224f2e28ceb981be69658dfb5c9dfb49606fc",
+        "currentWorktreeMatchesCommit": true
+      },
+      {
+        "path": "src/remote/cli.ts",
+        "bytes": 16076,
+        "sha256": "0f8ae76ee0e1b9c43b71c208e544d7d0dcc1bf28781913e2418b7b4002c321d5",
+        "currentWorktreeMatchesCommit": true
+      },
+      {
+        "path": "tests/remote-gateway.test.mjs",
+        "bytes": 52573,
+        "sha256": "dfbb1bc65c6c33c00b9acccd0d481ba0052e433ec324dd38bc616fa4f77094b1",
+        "currentWorktreeMatchesCommit": true
+      },
+      {
+        "path": "tests/remote-agent.test.mjs",
+        "bytes": 5357,
+        "sha256": "53b63b74cf38d70c29291b50c739ed13455bf0903adf5a966eea4dcc3a3a5019",
+        "currentWorktreeMatchesCommit": true
+      },
+      {
+        "path": "tests/remote-adapter.test.mjs",
+        "bytes": 5193,
+        "sha256": "4fa2350437c4bda0aeb64c52c4be0e8815fb3b1b8c83c2f7796ad33ac55ffb3e",
+        "currentWorktreeMatchesCommit": true
+      },
+      {
+        "path": "tests/remote-admission.test.mjs",
+        "bytes": 18326,
+        "sha256": "885e136acf1a618d3fd9465126410df336323305c7ebb37a6ac80544cf3254ff",
+        "currentWorktreeMatchesCommit": true
+      },
+      {
+        "path": "tests/remote-occupancy.test.mjs",
+        "bytes": 46982,
+        "sha256": "51612dd8ebfe90d2b2e70d9291da6dd603ce8d50bd066fcecf1b248210d846b0",
+        "currentWorktreeMatchesCommit": true
+      },
+      {
+        "path": "docs/REMOTE_MCP.md",
+        "bytes": 25429,
+        "sha256": "7ac853f7e536a36b3b77cb28c6fb6a467c9fd92e10468f7f72574c91ac96a4d9",
+        "currentWorktreeMatchesCommit": true
+      },
+      {
+        "path": "package.json",
+        "bytes": 1865,
+        "sha256": "7df8054332c8f992295404ee58744c3c1a04c58d86a2f996f11e4d861c65fad1",
+        "currentWorktreeMatchesCommit": true
+      },
+      {
+        "path": "versions.json",
+        "bytes": 6395,
+        "sha256": "3992c1bf092e126ae5d89369bb5585bfc94d2eef6b7f1850898321857e9eb065",
+        "currentWorktreeMatchesCommit": true
+      }
+    ]
+  },
+  "publishedEquivalent": "01c0fc0dc236fbb09d0400f9119df9147c6580f7",
+  "issues": [
+    58,
+    62
+  ],
+  "scope": "Narrow observational inventory and final explicit-admission freshness; parent directed no version/update/new-protocol expansion.",
+  "contract": {
+    "name": "Bounded device readiness observations and fresh explicit admission",
+    "projection": {
+      "existingFields": "Preserve id/name/platform/capabilities/permissions/createdAt/lastSeen/status and existing status enum/normal thresholds. Add one whitelisted observations object.",
+      "observations": {
+        "registration": "paired; derived from the existing owned, unrevoked device record",
+        "poll": {
+          "at": "server timestamp of authenticated accepted poll or null",
+          "reportedSlots": "integer 0..4 when explicitly supplied; null when omitted by a legacy agent",
+          "meaning": "A timestamped delivery-capacity offer, possibly already consumed in that poll response; never a current-free-capacity guarantee"
+        },
+        "lastAcceptedResult": "null or {at: server timestamp, outcome: success|error}; broker accepted a matching authorized unexpired agent result, not an independent execution/health proof",
+        "executorHealth": "unknown",
+        "transportMeaning": "Gateway observed an authenticated inbound poll; successful return-path delivery or a live persistent connection is not established"
+      }
+    },
+    "storage": "Attach the bounded poll observation to the existing authenticated device write. Replace it on every valid poll, including explicit null capacity for legacy omission. Store lastAcceptedResult only on successful completion of the existing agentResult acceptance path. Do not refresh presence from result acceptance.",
+    "freshness": "Use one numeric age helper. For admission require a valid server timestamp and 0 <= decisionTime - lastSeen < 15000. Repeat this check after all job/active-lease reads and before the first admission write. Preserve existing ownership/capability/grant/limit checks and error device_offline.",
+    "compatibility": [
+      "Wire version remains 1 and poll inputs remain unchanged.",
+      "Omitted availableSlots retains four-delivery fallback but projects capacity as unknown; do not synthesize a four-slot report.",
+      "Zero-slot polls still refresh presence, process cancellation/expiry and do not deliver work; queued admission behavior remains unchanged.",
+      "Existing status remains a presence alias. No readiness or successful-result field makes a device automatically selected or authorized.",
+      "Public no-argument mterm_list_devices gains only the explicit additive observations object. Update OCC-13 to assert exactly legacy fields plus observations, while keeping registryAdmission and all secret/result fields absent. Strict downstream JSON shape consumers should treat this as an intentional output extension.",
+      "No device record migration or restart is required; older records project null observations."
+    ],
+    "dashboard": [
+      "Keep presence status badge but label it as recent polling/presence.",
+      "Show the last capacity offer with its timestamp and state that it is not a current free-slot guarantee.",
+      "Show last broker-accepted result time/outcome without request IDs, arguments, file bodies or error text.",
+      "Display executor health as unverified/unknown; do not show a Ready indicator from these observations.",
+      "Keep registry-admission counts separate; completed unconsumed results can fill registry admission while an agent later offers capacity.",
+      "Continue textContent rendering and owner-filtered device projection."
+    ]
+  },
+  "currentExecutedObservations": [
+    {
+      "id": "zero-capacity-presence",
+      "registeredWithoutPoll": "offline",
+      "pollOffer": 0,
+      "returnedStatus": "online",
+      "inventoryHasReadiness": false,
+      "storedOffer": null,
+      "conclusion": "Presence survives busy/cleanup capacity zero; current online is not executor availability."
+    },
+    {
+      "id": "legacy-omitted-capacity",
+      "delivered": 4,
+      "hasActualReportedCapacity": false,
+      "conclusion": "The legacy delivery default must not become a reported four-slot readiness claim."
+    },
+    {
+      "id": "offer-consumed-in-same-poll",
+      "offered": 1,
+      "delivered": 1,
+      "unallocatedAtReply": 0,
+      "returnedStatus": "online",
+      "conclusion": "A future projection must distinguish original offer from slots already allocated in its reply."
+    },
+    {
+      "id": "stale-admission-after-job-list",
+      "initialAgeMs": 14999,
+      "finalAgeMs": 15000,
+      "enqueueStatus": 200,
+      "resultingPresence": "reconnecting",
+      "conclusion": "Current enqueue admits after crossing its freshness deadline during a storage await."
+    },
+    {
+      "id": "stale-admission-after-active-lookup",
+      "initialAgeMs": 14999,
+      "finalAgeMs": 15000,
+      "enqueueStatus": 200,
+      "resultingPresence": "reconnecting",
+      "conclusion": "Current enqueue admits after crossing its freshness deadline during a storage await."
+    },
+    {
+      "id": "stale-at-entry-control",
+      "ageMs": 15000,
+      "enqueueStatus": 409,
+      "error": "device_offline"
+    },
+    {
+      "id": "accepted-request-is-not-successful-roundtrip",
+      "agentStates": [
+        "connecting",
+        "reconnecting",
+        "stopped"
+      ],
+      "gatewayPresence": "online",
+      "conclusion": "Authenticated inbound poll can update online while the actual agent rejects the poll response."
+    }
+  ],
+  "freshnessRed": {
+    "command": "node --test --test-reporter=tap --test-concurrency=1 freshness-regressions.test.mjs",
+    "exitCode": 1,
+    "tests": 4,
+    "pass": 2,
+    "fail": 2,
+    "skip": 0,
+    "cancelled": 0,
+    "failure": "Existing source returns200 after freshness expires during each tested async admission boundary; required result409."
+  },
+  "regressionCandidates": [
+    {
+      "id": "READINESS-01",
+      "case": "Registered, never-polled device",
+      "expected": "Existing offline status; null poll/capacity/result; executorHealth unknown; explicit enqueue device_offline."
+    },
+    {
+      "id": "READINESS-02",
+      "case": "Authenticated zero-capacity poll",
+      "expected": "Presence becomes online but offer is exactly 0; no delivery, cancellation/expiry still processed, executor health unknown."
+    },
+    {
+      "id": "READINESS-03",
+      "case": "Legacy poll after a prior explicit positive offer",
+      "expected": "Delivery fallback remains four; projection becomes reportedSlots null rather than retaining or fabricating a fresh positive offer."
+    },
+    {
+      "id": "READINESS-04",
+      "case": "One slot offered and one job delivered in the same response",
+      "expected": "Display only the timestamped original offer; no current free-slot claim or admission permission inferred."
+    },
+    {
+      "id": "READINESS-05",
+      "case": "Broker accepts inbound poll but actual RemoteAgent rejects malformed response",
+      "expected": "Gateway records the inbound observation; health/roundtrip remain unknown even though local agent state reconnects."
+    },
+    {
+      "id": "READINESS-06",
+      "case": "Freshness expires during job-list and active-lease reads",
+      "expected": "Both return device_offline before any job/active writes; actual existing-source RED is 2 failed and 2 passing controls."
+    },
+    {
+      "id": "READINESS-07",
+      "case": "Exact 14999/15000/44999/45000 ms boundaries and future timestamp",
+      "expected": "Consistent existing presence thresholds; no fresh admission at 15000 or for negative/future age. Invalid persisted timestamps yield no positive readiness claim."
+    },
+    {
+      "id": "READINESS-08",
+      "case": "Valid matching success/error agent results",
+      "expected": "Only sanitized outcome and server acceptance time update after accepted result; presence/capacity do not refresh."
+    },
+    {
+      "id": "READINESS-09",
+      "case": "Expired, replayed, cross-device, revoked-grant, malformed or oversized result",
+      "expected": "No accepted-result observation update, and existing error/cancellation/replay behavior retained."
+    },
+    {
+      "id": "READINESS-10",
+      "case": "Other-owner devices, revoked device/epoch and sensitive result sentinels",
+      "expected": "No foreign observation leak; exact allowlisted public fields; no secrets, roots, payloads, arguments or arbitrary error strings."
+    },
+    {
+      "id": "READINESS-11",
+      "case": "Missing/invalid/stale explicitly selected device while another device is fresh",
+      "expected": "Original explicit-target errors; no fallback or automatic selection and no dispatch on the other device."
+    },
+    {
+      "id": "READINESS-12",
+      "case": "Existing registry occupancy scenarios and actual dashboard script",
+      "expected": "Admission counts and sessions unchanged, labels distinguish observations, DOM uses textContent; exact MCP keys intentionally extended once."
+    }
+  ],
+  "sourceReferences": [
+    {
+      "path": "gateway/registry.mjs",
+      "lines": [
+        32,
+        49
+      ],
+      "finding": "cleanDevice derives online/reconnecting/offline solely from lastSeen."
+    },
+    {
+      "path": "gateway/registry.mjs",
+      "lines": [
+        118,
+        122
+      ],
+      "finding": "Existing device inventory uses owner index and epoch/revocation filtering."
+    },
+    {
+      "path": "gateway/registry.mjs",
+      "lines": [
+        545,
+        589
+      ],
+      "finding": "Poll validates 0..4 or legacy fallback4; updates lastSeen before scanning jobs; current report not retained."
+    },
+    {
+      "path": "gateway/registry.mjs",
+      "lines": [
+        590,
+        625
+      ],
+      "finding": "agentResult authenticates device, job, grant, epoch, deadline and bounded result before accepting."
+    },
+    {
+      "path": "gateway/registry.mjs",
+      "lines": [
+        635,
+        671
+      ],
+      "finding": "enqueue freshness check precedes asynchronous job and active-lease reads."
+    },
+    {
+      "path": "src/remote/agent.ts",
+      "lines": [
+        225,
+        255
+      ],
+      "finding": "Agent offers retained active/seen-map capacity and emits online only after parsing the reply; gateway cannot infer that parsing from inbound receipt."
+    },
+    {
+      "path": "src/remote/cli.ts",
+      "lines": [
+        211,
+        252
+      ],
+      "finding": "Actual read adapter is created before starting the poll loop, but this does not produce gateway health attestation."
+    },
+    {
+      "path": "src/remote/adapter.ts",
+      "lines": [
+        45,
+        51
+      ],
+      "finding": "Root/file-service validation occurs during adapter creation; request-specific filesystem success remains separate."
+    },
+    {
+      "path": "gateway/app.mjs",
+      "lines": [
+        159,
+        172
+      ],
+      "finding": "Every routed read requires explicit UUID deviceId; no automatic target fallback."
+    },
+    {
+      "path": "gateway/dashboard.mjs",
+      "lines": [
+        90,
+        91
+      ],
+      "finding": "Existing card shows presence badge and distinct registry occupancy with textContent."
+    },
+    {
+      "path": "tests/remote-admission.test.mjs",
+      "lines": [
+        144,
+        231
+      ],
+      "finding": "Existing capacity, invalid-offer, legacy, zero-slot, cancellation/expiry and authorization controls must remain."
+    },
+    {
+      "path": "tests/remote-occupancy.test.mjs",
+      "lines": [
+        1157,
+        1163
+      ],
+      "finding": "Exact public device-field whitelist and no registryAdmission must be deliberately maintained for the output extension."
+    }
+  ],
+  "implementationFiles": [
+    "gateway/registry.mjs",
+    "gateway/dashboard.mjs",
+    "gateway/app.mjs (inventory description only if useful)",
+    "tests/remote-gateway.test.mjs or focused new gateway readiness test",
+    "tests/remote-occupancy.test.mjs",
+    "tests/remote-admission.test.mjs (preserve existing controls)",
+    "docs/REMOTE_MCP.md",
+    "dated AI/evidence/checkpoint/metric-review files"
+  ],
+  "outOfScope": [
+    "Agent version/update telemetry, labels/groups, independent executor health probe or new protocol handshake",
+    "Automatic/default target selection, profile tuple binding and credential routing",
+    "Production deployment, real two-owner/two-computer acceptance, framework/dependency addition",
+    "Whole acceptance or closure of #58/#62/#53"
+  ],
+  "artifacts": [
+    {
+      "path": "source-manifest.json",
+      "bytes": 3412,
+      "sha256": "b993824a7092093776b12cdc44ba482bfbad23362df17ad21239c4c4a301349c"
+    },
+    {
+      "path": "issue58.json",
+      "bytes": 11084,
+      "sha256": "cf29b416ac9ea6de65d3f4aeb7f9626557445d98e66d34a87432ff403d1f2160"
+    },
+    {
+      "path": "comments58.json",
+      "bytes": 3,
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570"
+    },
+    {
+      "path": "issue62.json",
+      "bytes": 11618,
+      "sha256": "db00ee7cbdbf36bfdcfa796ca986dc6930bb49356121955a496961e1a1253d9a"
+    },
+    {
+      "path": "comments62.json",
+      "bytes": 25897,
+      "sha256": "78f85dc80de3cf874c2b84c2fccdc0e9661521409dc0d68d6c877e2cf1ac7f8d"
+    },
+    {
+      "path": "current-observations.mjs",
+      "bytes": 8189,
+      "sha256": "5c8a94442bca094c3a6923c2ba4e3d6d0b8fb3714c613e140ab623e3d0a086fb"
+    },
+    {
+      "path": "current-observations.json",
+      "bytes": 2253,
+      "sha256": "38764b8172d065b7eca7c61b8c85ac99b7c2230b6dd5eb68274fbcd3fa94bc94"
+    },
+    {
+      "path": "freshness-regressions.test.mjs",
+      "bytes": 5081,
+      "sha256": "35ea2e167c64ccbcc49846a32bd9585777b6e76db86cf0ab877a3f2d29ac574c"
+    },
+    {
+      "path": "freshness-red.tap",
+      "bytes": 2316,
+      "sha256": "9cbe02a065741ba22ec47954f0031e968df5cda6c10e164031a06613db56d185"
+    }
+  ],
+  "safety": {
+    "sourceMutated": false,
+    "githubMutated": false,
+    "networkProbes": 0,
+    "realCredentials": false,
+    "productionActions": false,
+    "childAgents": false,
+    "execution": "Owned in-memory registry, controlled Date.now/storage awaits and controlled agent transport; frozen archived source only."
+  }
+}

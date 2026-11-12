@@ -317,6 +317,44 @@ Place a harmless known file in the trusted workspace first and compare the retur
 text with the real local file. Tool/file output is untrusted data, not instructions
 granting additional authority. Writing and process execution are unavailable.
 
+### Read device observations separately
+
+The inventory and dashboard expose a bounded `observations` object for each
+authorized device. Existing device IDs, capabilities and the `status` field remain
+compatible. The dashboard labels those presence states as **Recent poll**,
+**Poll overdue** or **No recent poll**.
+
+| Field | Meaning |
+| --- | --- |
+| `observedAt` | Gateway time when the inventory projection was produced, after its storage reads. |
+| `pollObservedAt` | Last authenticated poll received by the gateway, or `null`. Receipt does not prove the agent received or accepted the reply. |
+| `lastReportedCapacity` | Last recorded poll offer: `{at, slots}`. Slots are an explicit integer from 0 to 4, or `null` when omitted by a legacy agent. The whole object is `null` when no valid offer record exists. |
+| `lastAcceptedResult` | `{at, outcome}` for the last matching, authorized, unexpired and valid result accepted by the registry; outcome is `success` or `error` as reported by the agent. No result content, paths or request IDs are included. |
+| `executorHealth` | Always `unknown` in this slice. These observations do not independently verify current executor health. |
+
+A capacity offer precedes allocation in its poll reply and may already have been
+consumed. It is neither the current free-slot count nor the dashboard's separate
+registry-admission count. A legacy poll clears an earlier explicit offer to
+`slots: null`, while preserving the existing delivery default of four. A zero-slot
+poll still updates presence and processes expiry/cancellation; it does not disable
+the existing bounded queue.
+
+Accepted results do not refresh presence or capacity. Old device records remain
+readable, with unknown observations where data was never recorded. Invalid or
+future timestamps cannot establish recent presence. An ordinary current timestamp
+is online for less than 15 seconds, reconnecting from 15 to less than 45 seconds,
+and offline thereafter. These states are observations at a stated time, not an
+automatic target choice or a guarantee that the next operation will succeed.
+
+New work still requires the exact `deviceId`, authorization, capabilities and
+registry limits. The registry rechecks poll freshness after asynchronous admission
+reads, immediately before writing a new job. A selected device that has become
+stale fails with `device_offline`, even when another owned device is fresh.
+
+The [dated source evidence](validation/2026-11-12-device-readiness-observations/README.md)
+distinguishes controlled storage/clock tests and the served-script DOM adapter from
+real Workers storage, browser rendering, deployed device behavior and acceptance.
+
 ## Transport, authorization, and bounds
 
 The Worker serves OAuth discovery, Streamable HTTP MCP, and the private dashboard.
@@ -334,7 +372,8 @@ the existing local `FileService`; filesystem logic is not duplicated in the Work
 - Individual reads are limited to 65,536 bytes. Tool results are limited to 262,144
   bytes and agent frames to 300,000 bytes. Smaller ranges/results avoid limit errors.
 - Normal agent polling is every two seconds; reconnects use bounded backoff and
-  jitter. The dashboard marks recent polling online, then reconnecting, then offline.
+  jitter. Inventory retains online/reconnecting/offline presence, and the dashboard
+  labels it as recent/overdue/no recent poll, separately from executor observations.
 - Gateway and device independently enforce read-only authorization. Revoked,
   cross-device, expired, malformed, and replayed requests fail closed.
 - Job payloads/results are temporary bounded routing data. Audit entries contain

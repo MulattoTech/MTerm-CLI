@@ -1,0 +1,277 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-12T21:33:42.576969+00:00",
+  "reviewer": "Independent peer /root/job_integration_review",
+  "verdict": "APPROVED_FROZEN_SOURCE_SLICE_PENDING_FINAL_IMMUTABLE_BINDING_AND_REQUIRED_GATES",
+  "scope": "Bounded independent readiness/projection/admission review of two gateway runtime files and two test files. Not an exhaustive security scan.",
+  "source": {
+    "worktree": "/workspace/scratch/a92a3aacdca1/MTerm-CLI-Readiness",
+    "snapshot": "/workspace/scratch/a92a3aacdca1/peer-device-readiness-review-20261112/snapshot",
+    "freezeTime": "2026-11-12T21:30:17.727406+00:00",
+    "baselineLocalCommit": "1de652e05405968f012d17119ade1e2c73b06ba5",
+    "baselineActualMain": "da03dc5255976b1524b22796fffadb01e50a5149",
+    "baselineTree": "2ee6ecc09206ca3f8e64edc34635b3820383e00b",
+    "snapshotMethod": "Immutable HEAD git archive plus exact four stable source/test worktree overlays; later worktree documentation changes excluded.",
+    "manifestSha256": "5b6abd83ad8492534318feab8b0150cb8aff85842119fad5c619f216ec4bb439",
+    "snapshotFileCount": 1034,
+    "changedDuringFreeze": [],
+    "overlayFiles": [
+      {
+        "path": "gateway/dashboard.mjs",
+        "bytes": 16243,
+        "sha256": "af9a1929c50febdd62be7c79364d39ba21bcd53d49c585c9a73cb8e5aa8e7781",
+        "gitBlob": "ceacc028b9df8806cafd0e6f695de981f858123c",
+        "mode": "100644"
+      },
+      {
+        "path": "gateway/registry.mjs",
+        "bytes": 35160,
+        "sha256": "9ffc114472f2a5f1394c90ee9b83033938f1bccf8c2a34ebd6db29d841f45caa",
+        "gitBlob": "aa71e61f20fde8483d377f434b6ef69226bea924",
+        "mode": "100644"
+      },
+      {
+        "path": "tests/remote-device-readiness.test.mjs",
+        "bytes": 21084,
+        "sha256": "ac836425b5fdf7cf2263caa80d06afaa33712b8fa8b931731ee92bcc9a31b742",
+        "gitBlob": "f41af2ccd489970d63cab4d42cf2ebb33937ffd1",
+        "mode": "100644"
+      },
+      {
+        "path": "tests/remote-occupancy.test.mjs",
+        "bytes": 47988,
+        "sha256": "db0c76bd4272773c03937e00df393004b43dd89b2897cd2644de3e0a4b89ffaa",
+        "gitBlob": "27d7c5719e808c6743d3890359b130765454763b",
+        "mode": "100644"
+      }
+    ],
+    "snapshotMismatchesAfterTests": [],
+    "worktreeOverlayMismatchesAtFinalRead": []
+  },
+  "findings": [],
+  "verifiedBehavior": [
+    "recentPoll validates finite safe integer server time and nonnegative age, with strict15000ms admission threshold; freshness is repeated after the final active-lease read before new job/active writes.",
+    "MCP listDevices projects one time after owner-device reads; dashboard projects one time after grants/jobs/audit awaits.",
+    "Poll updates store explicit0..4 offer or null legacy omission together with the poll timestamp; legacy default4 delivery and zero-slot cancellation/expiry/queuing remain.",
+    "Capacity projection requires valid bounded count and a timestamp matching the last observed poll; old rows or malformed/mismatched fields project null. The field is an historical offer, never current free capacity.",
+    "Only authorized matching unexpired valid bounded agentResult completion records a whitelisted timestamp plus success/error outcome. Existing result rejection/replay checks precede the observation.",
+    "Result completion does not refresh lastSeen or capacity. No payload, arguments, request IDs, credential values or arbitrary errors enter the projected observation.",
+    "Executor health remains unknown in every device state; UI calls status recent/overdue/no recent poll, displays dated offers/results, and explicitly disclaims roundtrip/readiness proof.",
+    "Explicit deviceId and unchanged grant/owner/capability checks retain routing scope; stale selection never falls back to another fresh device.",
+    "Existing occupancy counts, pending sessions, read-only permissions, public inventory registryAdmission exclusion and textContent rendering remain. Exact public field whitelist intentionally adds observations and whitelists its five keys."
+  ],
+  "executed": {
+    "environment": {
+      "node": "v24.22.1",
+      "npm": "11.9.0"
+    },
+    "steps": [
+      {
+        "name": "offline-install",
+        "command": [
+          "npm",
+          "ci",
+          "--offline",
+          "--ignore-scripts",
+          "--no-audit",
+          "--no-fund"
+        ],
+        "exitCode": 0,
+        "log": "../offline-install.log",
+        "finishedAt": "2026-11-12T21:30:43.909349+00:00"
+      },
+      {
+        "name": "build-code",
+        "command": [
+          "npm",
+          "run",
+          "build:code"
+        ],
+        "exitCode": 0,
+        "log": "../build-code.log",
+        "finishedAt": "2026-11-12T21:30:45.630751+00:00"
+      },
+      {
+        "name": "focused-existing-green",
+        "command": [
+          "node",
+          "--test",
+          "--test-reporter=tap",
+          "--test-concurrency=1",
+          "tests/remote-device-readiness.test.mjs",
+          "tests/remote-occupancy.test.mjs",
+          "tests/remote-admission.test.mjs",
+          "tests/remote-gateway.test.mjs",
+          "tests/remote-agent.test.mjs",
+          "tests/remote-adapter.test.mjs"
+        ],
+        "exitCode": 0,
+        "log": "../focused-existing-green.tap",
+        "finishedAt": "2026-11-12T21:30:53.141521+00:00"
+      },
+      {
+        "name": "original-freshness-green",
+        "command": [
+          "node",
+          "--test",
+          "--test-reporter=tap",
+          "--test-concurrency=1",
+          "../original-freshness-regressions.test.mjs"
+        ],
+        "exitCode": 0,
+        "log": "../original-freshness-green.tap",
+        "finishedAt": "2026-11-12T21:30:53.385840+00:00"
+      }
+    ],
+    "runs": [
+      {
+        "path": "focused-existing-green.tap",
+        "bytes": 237144,
+        "sha256": "14ff03b2f6e3cd12136ec0b9d3626853d365ba60192184d3afa4adf2f4307028",
+        "summary": {
+          "tests": 118,
+          "pass": 118,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      },
+      {
+        "path": "original-freshness-green.tap",
+        "bytes": 1007,
+        "sha256": "786224f7e8d031a4cc45d0af71917ecb8eaa336ef3ce1bf3f295322cc9c6eb8a",
+        "summary": {
+          "tests": 4,
+          "pass": 4,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      },
+      {
+        "path": "independent-boundaries-green.tap",
+        "bytes": 1410,
+        "sha256": "5f4326ff29b3ecdf12d61738f74909fba4f500ba51cf17b39794486bec87654a",
+        "summary": {
+          "tests": 5,
+          "pass": 5,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        }
+      }
+    ],
+    "suiteFiles": [
+      "tests/remote-device-readiness.test.mjs",
+      "tests/remote-occupancy.test.mjs",
+      "tests/remote-admission.test.mjs",
+      "tests/remote-gateway.test.mjs",
+      "tests/remote-agent.test.mjs",
+      "tests/remote-adapter.test.mjs"
+    ],
+    "originalFreshnessRegression": {
+      "priorRedTests": 4,
+      "priorRedPass": 2,
+      "priorRedFail": 2,
+      "sourceAssertionsUnchanged": true,
+      "onlyImportTargetsChanged": 3,
+      "fixedPass": 4
+    },
+    "independentAdditionalCases": [
+      "MCP inventory time after final owner epoch read",
+      "Mismatched capacity and future accepted-result timestamps suppressed without leaking added sentinels",
+      "Failure before result persistence preserves prior observation and leaves delivered job",
+      "Failure of later observation write leaves a complete consumable result and conservative prior metadata; replay cannot add observation",
+      "Same-tick legacy omission clears previous positive offer while delivering four queued requests"
+    ],
+    "caseCountingNote": "118 repository cases, plus rerun of four original regressions (overlapping the ported cases), plus five independent boundary cases; not127 distinct product tests."
+  },
+  "partialFailureQualification": {
+    "resultPersistenceFailure": "No new accepted-result observation when finish fails before result persistence.",
+    "observationPersistenceFailure": "Completion can persist while the later device metadata write fails. AgentResult returns500; the client can still consume the completed result once, prior observation remains, and replay cannot fabricate an update.",
+    "atomicityClaim": false,
+    "classification": "Conservative missing/stale metadata; does not claim all related writes are atomic."
+  },
+  "reviewerActions": {
+    "implementationSourceMutation": false,
+    "githubMutation": false,
+    "productionMutation": false,
+    "externalNetworkProbe": false,
+    "realCredentialsUsed": false,
+    "modelCalls": 0,
+    "realUpstreamExecution": false,
+    "ownedScratchBuildAndTests": true
+  },
+  "evidence": [
+    {
+      "path": "snapshot-manifest.json",
+      "bytes": 270881,
+      "sha256": "5b6abd83ad8492534318feab8b0150cb8aff85842119fad5c619f216ec4bb439"
+    },
+    {
+      "path": "registry.mjs.diff",
+      "bytes": 8320,
+      "sha256": "bf81c4074bfc2d4ec2a4285031d1d3b051859cf9cfa1284fe2a1fc1ee9222757"
+    },
+    {
+      "path": "dashboard.mjs.diff",
+      "bytes": 16017,
+      "sha256": "5801b04c320a27d5b2d37f108f1a7a23bec45a67605a690b4b01443f7fa8b901"
+    },
+    {
+      "path": "remote-occupancy.test.mjs.diff",
+      "bytes": 2219,
+      "sha256": "7cb6562f9ef2ef52fb42f78f7e3c5f58ba71e03c3a1fb70fb4c07192f9035780"
+    },
+    {
+      "path": "run-steps.json",
+      "bytes": 1343,
+      "sha256": "cb8df2698d8a6a558de30347fe48dd7e55d56ecd3e42949591c420d4099f0255"
+    },
+    {
+      "path": "offline-install.log",
+      "bytes": 124,
+      "sha256": "9de28642a2f7030e46fe92aa2c04ce90db49412add2c5561f01b797048000950"
+    },
+    {
+      "path": "build-code.log",
+      "bytes": 203,
+      "sha256": "e62997662c4dd10ffc25181b219d4e133badd40304784482f424ab9e7fecf5ea"
+    },
+    {
+      "path": "original-freshness-regressions.test.mjs",
+      "bytes": 4979,
+      "sha256": "0c72f739172aaf394abddcab64f651a6e5b8cce922158dc02bbefafb26588107"
+    },
+    {
+      "path": "independent-boundaries.test.mjs",
+      "bytes": 7878,
+      "sha256": "2251d4cbe0e70894381e0e1a1a2090fae87e519d8545646cf822395aa0331086"
+    },
+    {
+      "path": "focused-existing-green.tap",
+      "bytes": 237144,
+      "sha256": "14ff03b2f6e3cd12136ec0b9d3626853d365ba60192184d3afa4adf2f4307028"
+    },
+    {
+      "path": "original-freshness-green.tap",
+      "bytes": 1007,
+      "sha256": "786224f7e8d031a4cc45d0af71917ecb8eaa336ef3ce1bf3f295322cc9c6eb8a"
+    },
+    {
+      "path": "independent-boundaries-green.tap",
+      "bytes": 1410,
+      "sha256": "5f4326ff29b3ecdf12d61738f74909fba4f500ba51cf17b39794486bec87654a"
+    }
+  ],
+  "limits": [
+    "Review binds only the four frozen source/test files and the recorded immutable baseline. Root documentation/AI/roadmap edits were deliberately excluded from this snapshot. Final published commit/tree and any subsequent delta require binding.",
+    "No full local gate, hosted matrix, actual-main qualification, deployed Durable Object or real two-owner/two-computer test is claimed here.",
+    "Test behavior used owned in-memory registry and controlled local fixtures; production was not contacted.",
+    "Additive MCP output may require strict external JSON shape consumers to accept the documented observations field; legacy field meanings, protocol inputs and read-only scope remain.",
+    "This does not verify executor health, implement version/update telemetry, enable routing defaults or satisfy the entire #58/#62/#53 acceptance scope."
+  ]
+}

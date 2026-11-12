@@ -1069,6 +1069,15 @@ scenario(
     );
     assert.equal(rendered.unsafeHtmlAssignments, 0);
     assert.equal(rendered.tags.includes('img'), false);
+    for (const deviceCard of rendered.cards) {
+      assert.match(deviceCard.textContent, /executor health is unverified/i);
+      assert.match(deviceCard.textContent, /poll receipt does not prove.*response/i);
+    }
+    assert.match(card(mixed.deviceId).textContent, /last capacity offer: 1 slot/i);
+    assert.match(card(mixed.deviceId).textContent, /offer may already be consumed/i);
+    assert.match(card(device.deviceId).textContent, /last accepted result: success/i);
+    assert.match(card(empty.deviceId).textContent, /no capacity offer recorded/i);
+    assert.match(card(empty.deviceId).textContent, /no accepted result recorded/i);
     const expected = [
       [device.deviceId, 0, 0, 4, 4, 0],
       [empty.deviceId, 0, 0, 0, 0, 4],
@@ -1110,7 +1119,7 @@ scenario(
 
 scenario(
   'OCC-13',
-  'existing public MCP inventory retains its exact legacy device fields',
+  'public MCP inventory adds only whitelisted observations to its legacy fields',
   async (f, report) => {
     const { owner, device } = await f.ready();
     const listed = f.expect(
@@ -1156,8 +1165,23 @@ scenario(
     assert.equal(devices[0].id, device.deviceId);
     assert.deepEqual(
       Object.keys(devices[0]).sort(),
-      ['id', 'name', 'platform', 'capabilities', 'permissions', 'createdAt', 'lastSeen', 'status'].sort(),
+      [
+        'id',
+        'name',
+        'platform',
+        'capabilities',
+        'permissions',
+        'createdAt',
+        'lastSeen',
+        'status',
+        'observations',
+      ].sort(),
     );
+    assert.deepEqual(
+      Object.keys(devices[0].observations).sort(),
+      ['observedAt', 'pollObservedAt', 'lastReportedCapacity', 'lastAcceptedResult', 'executorHealth'].sort(),
+    );
+    assert.equal(devices[0].observations.executorHealth, 'unknown');
     assert.equal(Object.hasOwn(devices[0], 'registryAdmission'), false);
     assert.equal(devices[0].permissions, 'read-only');
     assert.deepEqual(devices[0].capabilities, [tool]);

@@ -1,0 +1,368 @@
+✔ admission expiry: token at offset -1 during job-list (194.934981ms)
+✖ admission expiry: token at offset 0 during job-list (166.660099ms)
+✖ admission expiry: token at offset 1 during job-list (176.795882ms)
+✔ admission expiry: token at offset -1 during rpc-digest (114.010102ms)
+✖ admission expiry: token at offset 0 during rpc-digest (36.120342ms)
+✖ admission expiry: token at offset 1 during rpc-digest (46.724023ms)
+✔ admission expiry: token at offset -1 during active-lookup (64.128396ms)
+✖ admission expiry: token at offset 0 during active-lookup (99.427822ms)
+✖ admission expiry: token at offset 1 during active-lookup (77.350576ms)
+✖ admission expiry: public tools/call denies token expiry without queue side effects (64.889635ms)
+✔ admission expiry: valid token decision may finish persistence after expiry (36.950382ms)
+✖ admission expiry: another live client can enqueue after token refusal (51.867709ms)
+✔ admission expiry: existing request_in_progress precedence survives late token expiry (53.162943ms)
+✔ admission expiry: existing device_offline precedence survives late token expiry (44.336549ms)
+✔ admission expiry: grant at offset -1 during job-list (61.347286ms)
+✖ admission expiry: grant at offset 0 during job-list (108.732333ms)
+✖ admission expiry: grant at offset 1 during job-list (115.271742ms)
+✔ admission expiry: grant at offset -1 during rpc-digest (93.867254ms)
+✖ admission expiry: grant at offset 0 during rpc-digest (79.901366ms)
+✖ admission expiry: grant at offset 1 during rpc-digest (53.068064ms)
+✔ admission expiry: grant at offset -1 during active-lookup (63.20718ms)
+✖ admission expiry: grant at offset 0 during active-lookup (37.040437ms)
+✖ admission expiry: grant at offset 1 during active-lookup (64.500036ms)
+✖ admission expiry: public tools/call denies grant expiry without queue side effects (58.296058ms)
+✔ admission expiry: valid grant decision may finish persistence after expiry (39.47889ms)
+✖ admission expiry: another live client can enqueue after grant refusal (80.656708ms)
+✔ admission expiry: existing request_in_progress precedence survives late grant expiry (111.672707ms)
+✔ admission expiry: existing device_offline precedence survives late grant expiry (49.887886ms)
+ℹ tests 28
+ℹ suites 0
+ℹ pass 12
+ℹ fail 16
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2456.179085
+
+✖ failing tests:
+
+test at tests/remote-gateway.test.mjs:1498:7
+✖ admission expiry: token at offset 0 during job-list (166.660099ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 401
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/267bdf8cab08/MTerm-CLI-Admission/tests/remote-gateway.test.mjs:1503:16)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 401,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/remote-gateway.test.mjs:1498:7
+✖ admission expiry: token at offset 1 during job-list (176.795882ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 401
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/267bdf8cab08/MTerm-CLI-Admission/tests/remote-gateway.test.mjs:1503:16)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 401,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/remote-gateway.test.mjs:1498:7
+✖ admission expiry: token at offset 0 during rpc-digest (36.120342ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 401
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/267bdf8cab08/MTerm-CLI-Admission/tests/remote-gateway.test.mjs:1503:16)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 401,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/remote-gateway.test.mjs:1498:7
+✖ admission expiry: token at offset 1 during rpc-digest (46.724023ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 401
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/267bdf8cab08/MTerm-CLI-Admission/tests/remote-gateway.test.mjs:1503:16)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 401,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/remote-gateway.test.mjs:1498:7
+✖ admission expiry: token at offset 0 during active-lookup (99.427822ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 401
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/267bdf8cab08/MTerm-CLI-Admission/tests/remote-gateway.test.mjs:1503:16)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 401,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/remote-gateway.test.mjs:1498:7
+✖ admission expiry: token at offset 1 during active-lookup (77.350576ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 401
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/267bdf8cab08/MTerm-CLI-Admission/tests/remote-gateway.test.mjs:1503:16)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 401,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/remote-gateway.test.mjs:1524:3
+✖ admission expiry: public tools/call denies token expiry without queue side effects (64.889635ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   [
+  +     'job:d2903d9e-121f-4d40-a6cd-3b2940143e7a',
+  +     {
+  +       arguments: {
+  +         path: 'owned-expiry-fixture.txt'
+  +       },
+  +       clientId: 'QSDK9LjPwO--uFLDERSXPA1zyLd9WhY1',
+  +       deadline: 1794523217045,
+  +       deviceId: '72229b17-ee0f-40e0-804e-8a99231081bc',
+  +       epoch: 0,
+  +       expiresAt: 1794523337045,
+  +       grantId: '07ed0744-ec87-4b04-93e4-e9f5a48a3bfa',
+  +       requestId: 'd2903d9e-121f-4d40-a6cd-3b2940143e7a',
+  +       rpcKey: 'active:6888f128c9d72f3c4a126776d48e1b5c82c80168409c84c19aa5174955e80058:616c764ae42dd03d9f3f42309cccc36e3335d28384c9e3b02fe7acd5199741a3',
+  +       status: 'queued',
+  +       tool: 'mterm_file_info',
+  +       userId: '86be553024f54f8810143175ceb5f41878c99c304aa487ffb0d5499b8065308f'
+  +     }
+  +   ],
+  +   [
+  +     'active:6888f128c9d72f3c4a126776d48e1b5c82c80168409c84c19aa5174955e80058:616c764ae42dd03d9f3f42309cccc36e3335d28384c9e3b02fe7acd5199741a3',
+  +     {
+  +       expiresAt: 1794523218045,
+  +       requestId: 'd2903d9e-121f-4d40-a6cd-3b2940143e7a'
+  +     }
+  +   ]
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/267bdf8cab08/MTerm-CLI-Admission/tests/remote-gateway.test.mjs:1537:12)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ [ 'job:d2903d9e-121f-4d40-a6cd-3b2940143e7a', [Object] ], [ 'active:6888f128c9d72f3c4a126776d48e1b5c82c80168409c84c19aa5174955e80058:616c764ae42dd03d9f3f42309cccc36e3335d28384c9e3b02fe7acd5199741a3', [Object] ] ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/remote-gateway.test.mjs:1552:3
+✖ admission expiry: another live client can enqueue after token refusal (51.867709ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 401
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/267bdf8cab08/MTerm-CLI-Admission/tests/remote-gateway.test.mjs:1555:12)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 401,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/remote-gateway.test.mjs:1498:7
+✖ admission expiry: grant at offset 0 during job-list (108.732333ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 401
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/267bdf8cab08/MTerm-CLI-Admission/tests/remote-gateway.test.mjs:1503:16)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 401,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/remote-gateway.test.mjs:1498:7
+✖ admission expiry: grant at offset 1 during job-list (115.271742ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 401
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/267bdf8cab08/MTerm-CLI-Admission/tests/remote-gateway.test.mjs:1503:16)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 401,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/remote-gateway.test.mjs:1498:7
+✖ admission expiry: grant at offset 0 during rpc-digest (79.901366ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 401
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/267bdf8cab08/MTerm-CLI-Admission/tests/remote-gateway.test.mjs:1503:16)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 401,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/remote-gateway.test.mjs:1498:7
+✖ admission expiry: grant at offset 1 during rpc-digest (53.068064ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 401
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/267bdf8cab08/MTerm-CLI-Admission/tests/remote-gateway.test.mjs:1503:16)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 401,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/remote-gateway.test.mjs:1498:7
+✖ admission expiry: grant at offset 0 during active-lookup (37.040437ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 401
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/267bdf8cab08/MTerm-CLI-Admission/tests/remote-gateway.test.mjs:1503:16)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 401,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/remote-gateway.test.mjs:1498:7
+✖ admission expiry: grant at offset 1 during active-lookup (64.500036ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 401
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/267bdf8cab08/MTerm-CLI-Admission/tests/remote-gateway.test.mjs:1503:16)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 401,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/remote-gateway.test.mjs:1524:3
+✖ admission expiry: public tools/call denies grant expiry without queue side effects (58.296058ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+  + [
+  +   [
+  +     'job:19869c33-80ba-4aa1-b522-502155f774cb',
+  +     {
+  +       arguments: {
+  +         path: 'owned-expiry-fixture.txt'
+  +       },
+  +       clientId: 'qP8gQpBabshLVSb_D6W_ZJASqRFkz6sO',
+  +       deadline: 1794523217975,
+  +       deviceId: 'f4162179-795b-4934-bb26-e8fce5f49a2a',
+  +       epoch: 0,
+  +       expiresAt: 1794523337975,
+  +       grantId: '1f7ff3ce-0d64-46d2-a9ee-68c432501eb4',
+  +       requestId: '19869c33-80ba-4aa1-b522-502155f774cb',
+  +       rpcKey: 'active:23d58b0abe537153cc48f9d371620098e96520f85373f508c8b9a63752013937:616c764ae42dd03d9f3f42309cccc36e3335d28384c9e3b02fe7acd5199741a3',
+  +       status: 'queued',
+  +       tool: 'mterm_file_info',
+  +       userId: '86be553024f54f8810143175ceb5f41878c99c304aa487ffb0d5499b8065308f'
+  +     }
+  +   ],
+  +   [
+  +     'active:23d58b0abe537153cc48f9d371620098e96520f85373f508c8b9a63752013937:616c764ae42dd03d9f3f42309cccc36e3335d28384c9e3b02fe7acd5199741a3',
+  +     {
+  +       expiresAt: 1794523218975,
+  +       requestId: '19869c33-80ba-4aa1-b522-502155f774cb'
+  +     }
+  +   ]
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/267bdf8cab08/MTerm-CLI-Admission/tests/remote-gateway.test.mjs:1537:12)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ [ 'job:19869c33-80ba-4aa1-b522-502155f774cb', [Object] ], [ 'active:23d58b0abe537153cc48f9d371620098e96520f85373f508c8b9a63752013937:616c764ae42dd03d9f3f42309cccc36e3335d28384c9e3b02fe7acd5199741a3', [Object] ] ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/remote-gateway.test.mjs:1552:3
+✖ admission expiry: another live client can enqueue after grant refusal (80.656708ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  200 !== 401
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/267bdf8cab08/MTerm-CLI-Admission/tests/remote-gateway.test.mjs:1555:12)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 200,
+    expected: 401,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

@@ -1420,3 +1420,202 @@ test('OAuth expiry: another live client token remains authorized after the first
   assert.equal(live.status, 200);
   assert.deepEqual(await live.json(), { jsonrpc: '2.0', id: 'oauth-expiry', result: {} });
 });
+
+async function admissionExpiryFixture(t, lifetime) {
+  const f = await oauthExpiryFixture(t);
+  if (lifetime === 'grant') {
+    f.token.expiresAt = f.expiry + 60000;
+    f.grant.expiresAt = f.expiry;
+    await f.storage.put(f.tokenKey, f.token);
+    await f.storage.put(f.grantKey, f.grant);
+  }
+  const device = await f.pair(),
+    rpcId = 'admission-expiry-boundary';
+  async function poll() {
+    const response = await f.req('/api/agent/poll', {
+      method: 'POST',
+      token: device.deviceToken,
+      body: { version: 1, deviceId: device.deviceId, availableSlots: 1 },
+    });
+    assert.equal(response.status, 200);
+    return response.json();
+  }
+  await poll();
+  let transition;
+  const observed = { crossings: 0 };
+  function cross(phase) {
+    if (transition?.phase !== phase) return;
+    f.setClock(transition.at);
+    transition = undefined;
+    observed.crossings++;
+  }
+  const read = f.storage.get,
+    list = f.storage.list,
+    write = f.storage.put;
+  t.mock.method(f.storage, 'get', async function (key) {
+    const value = await read.call(this, key);
+    if (key.startsWith('active:')) cross('active-lookup');
+    return value;
+  });
+  t.mock.method(f.storage, 'list', async function (options) {
+    const value = await list.call(this, options);
+    if (options?.prefix === 'job:') cross('job-list');
+    return value;
+  });
+  t.mock.method(f.storage, 'put', async function (key, value) {
+    const result = await write.call(this, key, value);
+    if (key.startsWith('job:')) cross('job-write');
+    return result;
+  });
+  const digest = crypto.subtle.digest;
+  t.mock.method(crypto.subtle, 'digest', async function (...args) {
+    const value = await digest.apply(this, args);
+    if (new TextDecoder().decode(args[1]) === JSON.stringify(rpcId)) cross('rpc-digest');
+    return value;
+  });
+  const dispatch = async (action, data) => {
+    const response = await f.registry.fetch(
+      new Request('https://registry.internal/dispatch', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ action, data }),
+      }),
+    );
+    return { status: response.status, data: await response.json() };
+  };
+  return {
+    ...f,
+    device,
+    rpcId,
+    observed,
+    poll,
+    dispatch,
+    crossAt(phase, at) {
+      transition = { phase, at };
+    },
+    enqueue(credentials = f.auth) {
+      return dispatch('enqueue', {
+        token: credentials.access_token,
+        deviceId: device.deviceId,
+        tool: 'mterm_file_info',
+        arguments: { path: 'owned-expiry-fixture.txt' },
+        rpcId,
+      });
+    },
+    admissionRows() {
+      return [...f.storage.data].filter(([key]) => key.startsWith('job:') || key.startsWith('active:'));
+    },
+    queuedAudits() {
+      return [...f.storage.data].filter(
+        ([key, value]) =>
+          key.startsWith('audit:') && value.decision === 'allow-read' && value.result === 'queued',
+      );
+    },
+  };
+}
+
+for (const lifetime of ['token', 'grant']) {
+  for (const phase of ['job-list', 'rpc-digest', 'active-lookup']) {
+    for (const delta of [-1, 0, 1]) {
+      test(`admission expiry: ${lifetime} at offset ${delta} during ${phase}`, async (t) => {
+        const f = await admissionExpiryFixture(t, lifetime);
+        f.crossAt(phase, f.expiry + delta);
+        const response = await f.enqueue();
+        assert.equal(f.observed.crossings, 1, 'The actual awaited operation must cross the boundary');
+        assert.equal(response.status, delta < 0 ? 200 : 401);
+        if (delta >= 0) {
+          assert.deepEqual(response.data, { error: 'invalid_token' });
+          assert.deepEqual(f.admissionRows(), [], 'No job or active lease may be admitted after expiry');
+          assert.deepEqual(f.queuedAudits(), [], 'No allow-read/queued audit may claim admission');
+          assert.deepEqual((await f.poll()).requests, []);
+        } else {
+          const job = await f.storage.get('job:' + response.data.requestId);
+          assert.equal(job.deviceId, f.device.deviceId);
+          assert.equal(job.userId, f.token.userId);
+          assert.equal(job.clientId, f.token.clientId);
+          assert.equal(job.grantId, f.token.grantId);
+          assert.equal(f.admissionRows().length, 2);
+          assert.equal(f.queuedAudits().length, 1);
+          assert.equal((await f.poll()).requests[0].requestId, job.requestId);
+          const access = await f.dispatch('access', { token: f.auth.access_token });
+          assert.deepEqual(access.data, {
+            userId: f.token.userId,
+            clientId: f.token.clientId,
+            scope: 'mterm:read',
+          });
+        }
+      });
+    }
+  }
+  test(`admission expiry: public tools/call denies ${lifetime} expiry without queue side effects`, async (t) => {
+    const f = await admissionExpiryFixture(t, lifetime);
+    f.crossAt('active-lookup', f.expiry);
+    const response = await f.req('/mcp', {
+      method: 'POST',
+      token: f.auth.access_token,
+      body: {
+        jsonrpc: '2.0',
+        id: f.rpcId,
+        method: 'tools/call',
+        params: {
+          name: 'mterm_file_info',
+          arguments: { deviceId: f.device.deviceId, path: 'owned-expiry-fixture.txt' },
+        },
+      },
+    });
+    assert.equal(f.observed.crossings, 1);
+    assert.equal(response.status, 401);
+    assert.deepEqual(await response.json(), { error: 'invalid_token' });
+    assert.match(response.headers.get('www-authenticate'), /^Bearer .*error="invalid_token"/);
+    // A later jobResult refusal previously hid successful enqueue from the public status.
+    assert.deepEqual(f.admissionRows(), []);
+    assert.deepEqual(f.queuedAudits(), []);
+    assert.deepEqual((await f.poll()).requests, []);
+  });
+  test(`admission expiry: valid ${lifetime} decision may finish persistence after expiry`, async (t) => {
+    const f = await admissionExpiryFixture(t, lifetime);
+    f.setClock(f.expiry - 1);
+    f.crossAt('job-write', f.expiry + 1);
+    const response = await f.enqueue();
+    assert.equal(f.observed.crossings, 1);
+    assert.equal(response.status, 200);
+    assert.equal((await f.storage.get('job:' + response.data.requestId)).status, 'queued');
+    assert.equal(f.admissionRows().length, 2);
+    assert.equal(f.queuedAudits().length, 1);
+  });
+  test(`admission expiry: another live client can enqueue after ${lifetime} refusal`, async (t) => {
+    const f = await admissionExpiryFixture(t, lifetime),
+      other = await f.oauth();
+    f.crossAt('active-lookup', f.expiry);
+    assert.equal((await f.enqueue()).status, 401);
+    assert.deepEqual(f.admissionRows(), []);
+    const admitted = await f.enqueue(other);
+    assert.equal(admitted.status, 200);
+    const job = await f.storage.get('job:' + admitted.data.requestId);
+    assert.equal(job.clientId, other.client.client_id);
+    assert.notEqual(job.grantId, f.token.grantId);
+    assert.equal((await f.poll()).requests[0].requestId, admitted.data.requestId);
+  });
+  for (const reason of ['request_in_progress', 'device_offline']) {
+    test(`admission expiry: existing ${reason} precedence survives late ${lifetime} expiry`, async (t) => {
+      const f = await admissionExpiryFixture(t, lifetime);
+      if (reason === 'request_in_progress') {
+        const rpcKey =
+          'active:' + (await sha256(f.auth.access_token)) + ':' + (await sha256(JSON.stringify(f.rpcId)));
+        await f.storage.put(rpcKey, { requestId: crypto.randomUUID(), expiresAt: f.expiry + 60000 });
+      } else {
+        const device = await f.storage.get('device:' + f.device.deviceId);
+        device.lastSeen = f.expiry - 15000;
+        await f.storage.put('device:' + device.id, device);
+      }
+      const before = structuredClone(f.admissionRows());
+      f.crossAt('active-lookup', f.expiry);
+      const response = await f.enqueue();
+      assert.equal(f.observed.crossings, 1);
+      assert.equal(response.status, 409);
+      assert.deepEqual(response.data, { error: reason });
+      assert.deepEqual(f.admissionRows(), before);
+      assert.deepEqual(f.queuedAudits(), []);
+    });
+  }
+}

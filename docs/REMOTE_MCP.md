@@ -351,6 +351,14 @@ registry limits. The registry rechecks poll freshness after asynchronous admissi
 reads, immediately before writing a new job. A selected device that has become
 stale fails with `device_offline`, even when another owned device is fresh.
 
+For an otherwise admissible request, both its client token and OAuth grant must
+still be valid at that final decision. Expiry during admission reads or the RPC-ID
+digest returns `401 invalid_token` before any job, active lease or queued-read
+audit is created. The public MCP endpoint retains its Bearer challenge. Existing
+duplicate-request, capacity and offline refusals retain their order. A decision
+made while valid may finish persistence after expiry; it does not change the
+lifetime or cancellation rules for previously admitted work.
+
 The [dated source evidence](validation/2026-11-12-device-readiness-observations/README.md)
 distinguishes controlled storage/clock tests and the served-script DOM adapter from
 real Workers storage, browser rendering, deployed device behavior and acceptance.

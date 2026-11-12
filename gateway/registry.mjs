@@ -7,6 +7,7 @@
 // Modified: 2026-11-09-pairing-expiry; authorize final pairing decisions after asynchronous checks.
 // Modified: 2026-11-10-remote-occupancy; expose owner-filtered dashboard admission counts.
 // Modified: 2026-11-12-device-readiness-observations; separate poll/result evidence and final admission freshness.
+// Modified: 2026-11-12-final-admission-authorization; retain both validated lifetimes through new-job admission.
 import {
   READ_TOOLS,
   WIRE_VERSION,
@@ -185,7 +186,8 @@ export class MTermRegistry {
       401,
       'invalid_token',
     );
-    return { ...t, tokenHash: hash };
+    // Internal authorization snapshot; public callers use explicit projections.
+    return { ...t, tokenHash: hash, grantExpiresAt: grant.expiresAt };
   }
   async device(token, deviceId) {
     requireValue(uuid(deviceId), 400, 'invalid_device');
@@ -697,6 +699,9 @@ export class MTermRegistry {
       requireValue(!active || active.expiresAt <= checkedAt, 409, 'request_in_progress');
       // Job/lease reads can cross the presence deadline. No admission write precedes this check.
       requireValue(recentPoll(d, checkedAt), 409, 'device_offline');
+      // The same awaited work can exhaust either lifetime validated by access().
+      // Preserve prior refusal precedence and decide before the first admission write.
+      requireValue(t.expiresAt > checkedAt && t.grantExpiresAt > checkedAt, 401, 'invalid_token');
       const requestId = crypto.randomUUID(),
         deadline = checkedAt + JOB_TIMEOUT_MS;
       const job = {

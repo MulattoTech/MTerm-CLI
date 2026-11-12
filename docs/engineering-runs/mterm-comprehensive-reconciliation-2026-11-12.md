@@ -446,3 +446,68 @@ criteria and recomputed all43 consumed input hashes. Both receipts bind the exac
 reviewed source; they are retained in the same validation directory. The corrected
 immutable candidate still requires all six hosted checks, normal expected-head
 merge and actual-main qualification before delivery/source-axis credit.
+
+
+## Cycle11 — final admission token/grant lifetime
+
+A separate read-only source investigation confirmed late new-job admission on6a6a883f.
+The client token and grant were valid when access() returned, then could expire
+during actual job-list, RPC digest or active-lease awaits. The registry still created
+job/active/audit records. A live grant permitted later delivery despite admitting
+bearer expiry; grant expiry was rejected later at delivery. Expired-bearer result
+retrieval remained401. No result-disclosure bypass was established.
+
+Root owns the isolated `fix/final-admission-authorization-20261112` worktree. The
+patch retains the validated grant expiry alongside the unchanged token expiry and
+rechecks both against the existing fresh final decision time. No new await sits
+between that decision and the first admission write. Existing scope/resource,
+owner/client/grant/epoch, explicit target, read-only tools and error precedence
+remain enforced. A valid decision may finish persistence after expiry; no rollback,
+retroactive token cancellation or new durability guarantee is introduced.
+
+Twenty-eight actual regression cases produced16 RED failures and12 passing controls
+before the runtime change. The unchanged final test bytes were separately replayed
+against original runtime and reproduced the same result. Corrected28/28 and four
+nearest integration suites138/138 passed. A fresh fork-without-history investigator
+traced the boundary before implementation. A separate fresh reviewer challenged
+all eight awaited phases, both lifetimes, numeric/string IDs, all five public tools,
+projection integrity, independent clients and valid-decision persistence:65 independent
+cases and84 repository gateway/admission tests passed, with no confirmed finding.
+The original failures and producer evidence are retained in the
+[validation directory](../validation/2026-11-12-final-admission-authorization/README.md).
+
+Source preparation normally integrated accounting candidatebbcd4462 while that
+candidate's six hosted gates remained pending. Registry/test hashes stayed exactly
+93e500ddfbcdd6d1d16e099692fff2252ebabe5fc7987a2127be2ae1a7cc87f7 and
+5e74025e5ada1dae57336a9b93133d022f99335b032784532da8fedc40c21b24. Normal integrated
+build passed. The complete ordinary check is in progress and its actual outcome will
+be recorded separately. All protected catalogs/progress/register bytes remain
+identical to the integrated accounting baseline; CLI-290 is an explicit unchanged-stage
+review, not whole authorization/deployment acceptance.
+
+
+### Cycle11 complete ordinary result
+
+The full ordinary integrated check finished with 1,571 tests: 1,532 passed, 27
+unchanged isolation Unix-socket fixtures failed with `listen EPERM`, and 12 existing
+Windows-only tests skipped. No cancellation/TODO occurred. All pre-test gates
+passed. The failed test file is byte-identical to the integrated baseline; the
+complete 758,988-byte failed log is retained losslessly with raw/archive hashes.
+Both reviewed runtime/test hashes remain unchanged. No local full-suite or installed
+gateway pass is inferred. Exact hosted candidate/main qualification remains required.
+
+### Cycle11 publication checkpoint — 2026-11-12T23:02:02.587596+00:00
+
+Accounting PR261 completed all six exact-candidate jobs, including Windows1543/1543,
+other ordinary lanes1531 plus12 existing skips, five package lanes, four zero-model
+Codex parser/configuration lanes and12source+12installed native scenarios. Its
+normal expected-head merge is `d430ec5e0d7dcefc041df4ab5f80cb32382c5ac3`, tree62b35e96,
+ordered parents6a6a883f/bbcd4462. Actual-main checks are running separately. The
+admission worktree normally fast-forwarded to this equal-tree merge, preserving
+the reviewed source and the original full-check observation.
+
+The bounded documentation reviewer found no unsupported claims and independently
+verified the complete failed-check archive. The ignored nested protocol fixture
+is explicitly included with all owned evidence, and the prepared-tree manifest
+is checked before publication. Admission candidate/main qualification remains
+pending; no deployed or whole-requirement acceptance is claimed.

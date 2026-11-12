@@ -337,6 +337,24 @@ client, scope, resource, epoch and revocation checks remain enforced. This does 
 revoke operations admitted while valid or guarantee response arrival before expiry.
 See the [OAuth expiry evidence](validation/2026-11-09-oauth-expiry.md).
 
+New job admission also checks both validated lifetimes at its final decision,
+after the awaited rate, device, job-list, RPC-ID digest and active-lease work.
+The internal authorization snapshot retains the grant expiry alongside the
+token's original expiry; public access responses keep their explicit projection.
+Both lifetimes must be strictly later than the same fresh time used for final
+lease and poll-freshness checks. An otherwise admissible expired request returns
+`401 invalid_token` before creating a job, active lease or queued-read audit.
+Existing capacity, duplicate-request and offline refusal precedence is preserved.
+Rate bookkeeping and expired-row cleanup can still occur before refusal.
+
+This guard covers new admission. A valid decision may finish storage I/O after
+expiry, and bearer expiry does not retroactively cancel work admitted while valid.
+Grant/epoch checks at delivery and result settlement retain their existing roles.
+Controlled fixtures reproduce late queue creation, including a public MCP response
+that later became401 while leaving the earlier queue side effects; they do not
+establish a result-disclosure bypass or live Workers timing/crash guarantees.
+See the [final-admission evidence](validation/2026-11-12-final-admission-authorization/README.md).
+
 Pairing retains its initial deadline checks and rechecks expiry after asynchronous
 work at each final successful decision: before persisting approval, before returning
 pending, and before consuming an approved claim to create credentials. Approval

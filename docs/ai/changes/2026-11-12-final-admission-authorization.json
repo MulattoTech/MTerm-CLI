@@ -1,0 +1,124 @@
+{
+  "change_id": "2026-11-12-final-admission-authorization",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "updated_at": "2026-11-12T23:02:02.587596+00:00",
+  "base_sha": "6a6a883f3ce1cd86a7405d2c53a1fb08cd1210c2",
+  "issues": [
+    62,
+    65
+  ],
+  "related_issues": [
+    55,
+    224
+  ],
+  "requirements": [
+    "CLI-290"
+  ],
+  "files": [
+    "docs/HANDOFF.md",
+    "docs/REMOTE_MCP.md",
+    "docs/SECURITY.md",
+    "docs/ai/changes/2026-11-12-final-admission-authorization.json",
+    "docs/engineering-runs/mterm-comprehensive-reconciliation-2026-11-12.md",
+    "docs/roadmap/review.json",
+    "docs/validation/2026-11-12-final-admission-authorization/README.md",
+    "docs/validation/2026-11-12-final-admission-authorization/build.log",
+    "docs/validation/2026-11-12-final-admission-authorization/check.log.gz",
+    "docs/validation/2026-11-12-final-admission-authorization/complete-check.json",
+    "docs/validation/2026-11-12-final-admission-authorization/documentation-review/REVIEW.md",
+    "docs/validation/2026-11-12-final-admission-authorization/documentation-review/complete-result-review.json",
+    "docs/validation/2026-11-12-final-admission-authorization/documentation-review/manifest.json",
+    "docs/validation/2026-11-12-final-admission-authorization/documentation-review/snapshot.json",
+    "docs/validation/2026-11-12-final-admission-authorization/focused-green.tap",
+    "docs/validation/2026-11-12-final-admission-authorization/independent-investigation.md",
+    "docs/validation/2026-11-12-final-admission-authorization/independent-review/REVIEW.md",
+    "docs/validation/2026-11-12-final-admission-authorization/independent-review/baseline/dist/remote/protocol.js",
+    "docs/validation/2026-11-12-final-admission-authorization/independent-review/baseline/gateway/registry.mjs",
+    "docs/validation/2026-11-12-final-admission-authorization/independent-review/baseline/gateway/security.mjs",
+    "docs/validation/2026-11-12-final-admission-authorization/independent-review/baseline/package.json",
+    "docs/validation/2026-11-12-final-admission-authorization/independent-review/diff-check.json",
+    "docs/validation/2026-11-12-final-admission-authorization/independent-review/evidence-manifest.json",
+    "docs/validation/2026-11-12-final-admission-authorization/independent-review/independent-boundary-command.json",
+    "docs/validation/2026-11-12-final-admission-authorization/independent-review/independent-boundary.stderr",
+    "docs/validation/2026-11-12-final-admission-authorization/independent-review/independent-boundary.tap",
+    "docs/validation/2026-11-12-final-admission-authorization/independent-review/independent-boundary.test.mjs",
+    "docs/validation/2026-11-12-final-admission-authorization/independent-review/repository-focused-command.json",
+    "docs/validation/2026-11-12-final-admission-authorization/independent-review/repository-focused.stderr",
+    "docs/validation/2026-11-12-final-admission-authorization/independent-review/repository-focused.tap",
+    "docs/validation/2026-11-12-final-admission-authorization/independent-review/source-hashes-after.json",
+    "docs/validation/2026-11-12-final-admission-authorization/independent-review/source-hashes-before.json",
+    "docs/validation/2026-11-12-final-admission-authorization/independent-review/syntax.json",
+    "docs/validation/2026-11-12-final-admission-authorization/manifest.json",
+    "docs/validation/2026-11-12-final-admission-authorization/nearby-green.tap",
+    "docs/validation/2026-11-12-final-admission-authorization/red-replay-final-tests.tap",
+    "docs/validation/2026-11-12-final-admission-authorization/red-replay-inputs.json",
+    "docs/validation/2026-11-12-final-admission-authorization/red.tap",
+    "gateway/registry.mjs",
+    "tests/remote-gateway.test.mjs"
+  ],
+  "decisions": [
+    "Root owns implementation/publication in an isolated worktree; fresh read-only security-boundary and bypass reviewers are separate.",
+    "Retain the checked grant expiry alongside the original token expiry in the internal access snapshot; enforce both at the shared final new-job decision with no new await.",
+    "Preserve owner/client/grant/epoch/resource/scope, explicit device targeting, read-only capability policy, existing refusal precedence and valid-decision persistence semantics.",
+    "Scope is late new-job admission, not result disclosure, live deployment or retroactive cancellation of previously admitted work.",
+    "The fix-finding skill was read in full; its referenced artifact-storage resource was unavailable through three supported reads. Existing project-owned source/evidence paths and the higher-priority repository storage policy are retained.",
+    "Parent challenged all access() callers and both guard outcomes: public projections remain explicit, no new await precedes admission, prior refusal order and already-valid storage completion are preserved. Independent reviewer additionally covers eight awaited phases and all five public tools."
+  ],
+  "tests": [
+    {
+      "command": "node --check gateway/registry.mjs; node --check tests/remote-gateway.test.mjs",
+      "result": "PASS."
+    },
+    {
+      "command": "node --test --test-concurrency=1 --test-name-pattern='admission expiry:' tests/remote-gateway.test.mjs",
+      "result": "Original RED:28 cases,16 failed,12 controls passed. Corrected GREEN:28/28,0skip/cancel/TODO. Both original logs retained."
+    },
+    {
+      "command": "node --test --test-concurrency=1 tests/remote-gateway.test.mjs tests/remote-device-readiness.test.mjs tests/remote-admission.test.mjs tests/remote-occupancy.test.mjs",
+      "result": "PASS138/138;0fail/skip/cancel/TODO."
+    },
+    {
+      "command": "Original-runtime replay with unchanged final regression-test bytes",
+      "result": "RED reproduced:28 cases,16 fail12 controls pass; exact test SHA5e74025e and baseline6a6a runtime retained in red-replay-inputs.json."
+    },
+    {
+      "command": "Fresh independent bypass/regression review",
+      "result": "APPROVED:65 independently authored baseline/candidate boundary cases and84 complete gateway/admission cases pass; source/test diff unchanged; no confirmed bypass/regression. Actual hosted/deployment gates not inferred."
+    },
+    {
+      "command": "npm run build",
+      "result": "PASS after normal integration of reviewed accounting candidate; all normal source/baseline/output guards passed."
+    },
+    {
+      "command": "npm run check",
+      "result": "FAIL:1571 tests,1532 pass,27 unchanged tests/isolation.test.mjs listen EPERM failures,12 existing Windows-only skips,0cancel/TODO. All pre-test gates passed. Complete758988-byte log retained losslessly."
+    },
+    {
+      "command": "Independent documentation/evidence review and prepared Git index check",
+      "result": "No unsupported claims; all producer bytes and full failed-check archive verified. Ignored nested protocol fixture explicitly staged. Every final validation manifest member must match indexed bytes before publication."
+    },
+    {
+      "command": "git diff --cached --check",
+      "result": "Whole patch reports whitespace retained in original validation logs/producer reports. Source and authored documentation excluding the immutable validation bundle pass; producer bytes are not rewritten."
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "id": "CLI-290",
+      "stage_change": false,
+      "reason": "Narrow final-admission source correction and controlled fixtures do not complete full remote authorization/client/platform/deployment acceptance. Original stages, weights and protected catalogs remain unchanged."
+    }
+  ],
+  "limitations": [
+    "Exact published candidate artifact checks, six hosted candidate jobs and actual-main qualification remain required; full ordinary local failure and historical review observations are retained.",
+    "No live Workers, browser, two-device, production rollout or whole-feature acceptance qualification."
+  ],
+  "integration_base_sha": "d430ec5e0d7dcefc041df4ab5f80cb32382c5ac3",
+  "integration_base_status": "Normal PR261 expected-head merge after all six candidate jobs and independent exact-tree approval; tree equals tested bbcd4462 candidate. Actual-main checks pending. Original full-check base observation retained.",
+  "reviewed_source_sha256": {
+    "gateway/registry.mjs": "93e500ddfbcdd6d1d16e099692fff2252ebabe5fc7987a2127be2ae1a7cc87f7",
+    "tests/remote-gateway.test.mjs": "5e74025e5ada1dae57336a9b93133d022f99335b032784532da8fedc40c21b24"
+  },
+  "publication_evidence_correction": "Explicitly include every owned evidence file, including independent-review/baseline/dist/remote/protocol.js and log files ignored by generic rules; verify index bytes against manifest."
+}

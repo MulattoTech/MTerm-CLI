@@ -1,0 +1,128 @@
+{
+  "change_id": "2026-11-12-capability-register",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "updated_at": "2026-11-12T18:13:00.707162+00:00",
+  "base_sha": "4fb205088e77731e42da5adaca6bf167f8b75194",
+  "issues": [
+    255,
+    81,
+    136
+  ],
+  "requirements": [
+    "CLI-219",
+    "CLI-220",
+    "CLI-221",
+    "CLI-222",
+    "CLI-223",
+    "CLI-228",
+    "CLI-230",
+    "CLI-231",
+    "CLI-233",
+    "CLI-235"
+  ],
+  "files": [
+    "scripts/capability-register.mjs",
+    "scripts/review-source.mjs",
+    "tests/capability-register.test.mjs",
+    "package.json",
+    "docs/capabilities/register.json",
+    "docs/capabilities/mission-2026-11-12.md",
+    "docs/capabilities/README.md",
+    "docs/capabilities/REPORT.md",
+    "docs/capabilities/summary.json"
+  ],
+  "decisions": [
+    "Preserve four overlapping catalog denominators/hashes and existing CLI stage/weight snapshot. Map143 product rows to all272 feature bullets and488 total mission bullets, with11 separate governance groups.",
+    "Represent inventory, partial implementation, current qualification, merge, deployment and acceptance independently. Historical source/issue observations are not silently refreshed.",
+    "Require exact source/layer/environment/criteria and full-scope evidence for any whole-requirement credit; issue closure, existing files and historical tests cannot grant it.",
+    "Validate source references, baseline IDs, issue ownership URLs, mission coverage, dependencies and saved main delivery receipts; reject stale generated output in normal build/check/package gates.",
+    "Include the capabilities input and output directory in explicit reviewed-source freshness; rendering never approves source.",
+    "Bind consumed research/main-receipt bytes to reviewed hashes; require exact six main check names and explicit evidence-source repository/layer ownership. Unknown delivery labels and unaccepted final prerequisites fail closed."
+  ],
+  "tests": [
+    {
+      "command": "node --test tests/capability-register.test.mjs before implementation",
+      "result": "RED: missing validator/renderer module; desired data-invariant tests were written first."
+    },
+    {
+      "command": "Acceptance URL and saved qualified-main binding regressions",
+      "result": "RED: two new cases demonstrated unchecked ownership URL and unbound saved delivery receipt before repair."
+    },
+    {
+      "command": "node --test tests/capability-register.test.mjs",
+      "result": "GREEN:14/14 tests passed, no failures/skips/cancellations. Covers missing/duplicate mappings, cycles, catalog/hash drift, stale/mismatched/partial qualification, unsafe presentation and deterministic output."
+    },
+    {
+      "command": "Acceptance prerequisite, internally consistent wrong-layer ownership, required-check substitution, evidence-byte and unknown-delivery-kind regressions",
+      "result": "RED before repair. Independent reviewer reproduced ownership and required-check defects; all five rejection cases now covered. Historical contradictory limitations were moved to an explicitly dated archive."
+    },
+    {
+      "command": "node --test tests/capability-register.test.mjs tests/roadmap.test.mjs",
+      "result": "GREEN:25/25 passed, zero failures/skips/cancellations;19 capability tests and6 original roadmap tests."
+    },
+    {
+      "command": "Exact immutable independent review and full hosted qualification",
+      "result": "Pending before publication; source candidate and actual main require normal gates."
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "id": "CLI-219",
+      "stage_change": false,
+      "reason": "The new overlapping mission register strengthens evidence accounting. No original CLI requirement acceptance or weight change is established by metadata validation."
+    },
+    {
+      "id": "CLI-220",
+      "stage_change": false,
+      "reason": "The new overlapping mission register strengthens evidence accounting. No original CLI requirement acceptance or weight change is established by metadata validation."
+    },
+    {
+      "id": "CLI-221",
+      "stage_change": false,
+      "reason": "The new overlapping mission register strengthens evidence accounting. No original CLI requirement acceptance or weight change is established by metadata validation."
+    },
+    {
+      "id": "CLI-222",
+      "stage_change": false,
+      "reason": "The new overlapping mission register strengthens evidence accounting. No original CLI requirement acceptance or weight change is established by metadata validation."
+    },
+    {
+      "id": "CLI-223",
+      "stage_change": false,
+      "reason": "The new overlapping mission register strengthens evidence accounting. No original CLI requirement acceptance or weight change is established by metadata validation."
+    },
+    {
+      "id": "CLI-228",
+      "stage_change": false,
+      "reason": "The new overlapping mission register strengthens evidence accounting. No original CLI requirement acceptance or weight change is established by metadata validation."
+    },
+    {
+      "id": "CLI-230",
+      "stage_change": false,
+      "reason": "The new overlapping mission register strengthens evidence accounting. No original CLI requirement acceptance or weight change is established by metadata validation."
+    },
+    {
+      "id": "CLI-231",
+      "stage_change": false,
+      "reason": "The new overlapping mission register strengthens evidence accounting. No original CLI requirement acceptance or weight change is established by metadata validation."
+    },
+    {
+      "id": "CLI-233",
+      "stage_change": false,
+      "reason": "The new overlapping mission register strengthens evidence accounting. No original CLI requirement acceptance or weight change is established by metadata validation."
+    },
+    {
+      "id": "CLI-235",
+      "stage_change": false,
+      "reason": "The new overlapping mission register strengthens evidence accounting. No original CLI requirement acceptance or weight change is established by metadata validation."
+    }
+  ],
+  "limitations": [
+    "Register validation checks coherence and saved evidence bindings; it cannot authenticate artifacts or establish behavioral truth.",
+    "Historical observations retain their recorded times. Latest live runtime and issue state are not polled by the offline report.",
+    "No composite mission maturity percentage or whole-requirement acceptance is awarded in this snapshot.",
+    "No deployment, runtime/auth changes, paid model calls or user-state mutations."
+  ],
+  "checkpoint": "docs/engineering-runs/mterm-comprehensive-reconciliation-2026-11-12.md"
+}

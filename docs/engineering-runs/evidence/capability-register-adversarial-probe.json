@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-12T18:09:13.409Z",
+  "worktree": "/workspace/scratch/a92a3aacdca1/MTerm-CLI-Register",
+  "base": "d412b7748ad6747f0b7fbc670e6ec252b74ebdf5",
+  "frozenCandidate": false,
+  "scope": "Read-only source review and bounded in-memory fixture mutations; no repository edits/builds/installs/full suites",
+  "sourceStableDuringProbe": true,
+  "fingerprints": {
+    "scripts/capability-register.mjs": "0691556737638aff55e26c29d549d26f989632b67620ed295620554bf08d8800",
+    "tests/capability-register.test.mjs": "8a0cf8b919296da6e8995fcdbe25bdcad394013200d8c97ab4ccf78ce6fda4dd",
+    "package.json": "7df8054332c8f992295404ee58744c3c1a04c58d86a2f996f11e4d861c65fad1",
+    "scripts/review-source.mjs": "9e6286c41ef0da4e8725513c0014deb8601aa7b582165873a3c7f5f929f70f44",
+    "docs/capabilities/register.json": "824c2eb2e21c0dff61756bb78313f70a9d7586a49d73c03151da165afdca6209",
+    "docs/capabilities/README.md": "feb25ba73f84856f5799d01e300960b02dc701a95eaf89f7ede563ff3227e660"
+  },
+  "results": [
+    {
+      "case": "unmodified_register",
+      "acceptedByValidator": true,
+      "acceptedRequirements": 0,
+      "qualifiedPartialRows": 19,
+      "detail": {}
+    },
+    {
+      "case": "valid_synthetic_full_receipts",
+      "acceptedByValidator": true,
+      "acceptedRequirements": 1,
+      "qualifiedPartialRows": 19,
+      "detail": {
+        "layer": "standalone_staging_gateway"
+      }
+    },
+    {
+      "case": "cross_repository_layer",
+      "acceptedByValidator": false,
+      "error": "[QUALIFICATION_SCOPE] MTR-AUTH-01 implementation: exact source/layer/environment/criteria and full-scope evidence required",
+      "detail": {
+        "sourceSha": "cbfd29039fe84cd163a86090c8bcbffaa2b40174",
+        "sourceRepository": "MulattoTech/MTerm-CLI",
+        "claimedLayer": "managed_bridge",
+        "layerRepository": "MulattoTech/MTechLabs-Access"
+      }
+    },
+    {
+      "case": "unaccepted_final_prerequisite",
+      "acceptedByValidator": false,
+      "error": "[QUALIFICATION_SCOPE] MTR-AUTH-01 has unaccepted final-qualification prerequisites",
+      "detail": {
+        "prerequisite": "MTR-EXEC-01",
+        "prerequisiteStatus": "NOT_ACCEPTED"
+      }
+    },
+    {
+      "case": "unrelated_required_check_name",
+      "acceptedByValidator": false,
+      "error": "[SOURCE_BINDING] modernization-qualified-main",
+      "detail": {
+        "receipt": "docs/engineering-runs/evidence/modernization-main-qualification.json"
+      }
+    },
+    {
+      "case": "unknown_delivery_kind",
+      "acceptedByValidator": true,
+      "acceptedRequirements": 0,
+      "qualifiedPartialRows": 0,
+      "detail": {
+        "observation": "modernization-qualified-main"
+      }
+    }
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "github_inventory independent read-only peer",
+  "implementationOwner": "root",
+  "base": "83a97daed6ef92b69e681b6b68f982f5d4266a51",
+  "initialCandidate": "4742c179cbb94a0e0c5cefdff1df32ba50ebdc66",
+  "initialTree": "36e1c1114c60b21a9d603904fbd5c3be522a6d6d",
+  "candidate": "d412b7748ad6747f0b7fbc670e6ec252b74ebdf5",
+  "tree": "a41dd2124f4f9106ae86fbd6c42022bf44a9f9c3",
+  "sourceVerdict": "APPROVE",
+  "mergeQualification": "PENDING_SIX_EXACT_CANDIDATE_GATES",
+  "scope": [
+    "src/remote/profiles.ts",
+    "src/remote/state.ts",
+    "src/remote/cli.ts",
+    "src/config.ts",
+    "scripts/verify-package.mjs",
+    "focused tests and bounded supporting evidence"
+  ],
+  "initialCandidateVerdict": "BLOCKED_INSTALLED_VERIFIER_ROOT",
+  "initialFinding": {
+    "id": "PROFILE-INSTALLED-ROOT",
+    "severity": "merge-blocking qualification regression",
+    "file": "scripts/verify-package.mjs",
+    "initialLines": [
+      103,
+      226,
+      246
+    ],
+    "consumer": "tests/remote-profiles.test.mjs:13-15",
+    "actual": "CLI executable supplied as module package root, so imports resolve under bin/mterm-cli.js/dist/remote/cli.js",
+    "hostedRedJobs": [
+      131375664182,
+      131375238215,
+      131375664499
+    ],
+    "resolvedBy": "d412b7748ad6747f0b7fbc670e6ec252b74ebdf5",
+    "resolution": "One installedPackageRoot derives the executable and is used for test environment/report; all existing installed checks retained."
+  },
+  "priorFindings": [
+    {
+      "id": "PROFILE-STOP-ROOT",
+      "status": "repaired",
+      "evidence": "CLI stop selects open/requestStop without config() root-liveness validation; focused regression renames enrolled workspace and confirms owned stop marker."
+    },
+    {
+      "id": "PROFILE-INVENTORY-UNKNOWN",
+      "status": "repaired",
+      "evidence": "Inventory returns paired:null with invalid-or-unconfigured status when status metadata cannot be read; it cannot claim a recorded device is unpaired."
+    },
+    {
+      "id": "PROFILE-INVENTORY-PROBE",
+      "status": "repaired",
+      "evidence": "discoverRemoteTargets admits namespace/collection directly; inventory-probe is an ordinary entry, invalid files are counted and do not suppress other profiles."
+    },
+    {
+      "id": "PROFILE-LEGACY-PARENT",
+      "status": "repaired",
+      "evidence": "Owned namespace may be mode0755, while private leaf and named collection remain mode0700; writable-by-others ancestors still fail. Legacy v1 state stays unbound and is not rewritten."
+    },
+    {
+      "id": "PROFILE-WINDOWS-ALIAS",
+      "status": "repaired",
+      "evidence": "Windows reserved collection comparison is case-insensitive and canonical membership is checked too. Named stores require bound scope, including prospective uppercase collection paths. Native Node24 Windows source suite initially passed all1375 tests; installed qualification remained blocked by harness defect."
+    }
+  ],
+  "localVerification": {
+    "exitCode": 0,
+    "timedOut": false,
+    "command": [
+      "node",
+      "--test",
+      "--test-concurrency=1",
+      "tests/remote-profiles.test.mjs",
+      "tests/remote-state.test.mjs",
+      "tests/remote-state-lock.test.mjs",
+      "tests/remote-run-lock.test.mjs",
+      "tests/remote-state-dpapi.test.mjs",
+      "tests/remote-agent.test.mjs",
+      "tests/remote-adapter.test.mjs",
+      "tests/remote-admission.test.mjs",
+      "tests/environment-isolation.test.mjs"
+    ],
+    "seconds": 5.438,
+    "log": "/workspace/scratch/a92a3aacdca1/peer-profile-4742-focused.log",
+    "node": "v24.22.1",
+    "sha": "4742c179cbb94a0e0c5cefdff1df32ba50ebdc66",
+    "tests": 104,
+    "pass": 104,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "todo": 0,
+    "typecheck": {
+      "command": "node node_modules/typescript/bin/tsc --noEmit -p tsconfig.json",
+      "exitCode": 0
+    },
+    "logSha256": "31ff7ee6c9380d751b03b35dbc09e535a7bc6236cee95eafb399a9674a9139d1"
+  },
+  "delta": {
+    "files": [
+      "docs/ai/changes/2026-11-12-remote-profiles.json",
+      "docs/engineering-runs/evidence/profile-installed-root-red.json",
+      "docs/roadmap/review.json",
+      "scripts/verify-package.mjs"
+    ],
+    "runtimeSourceTreeUnchanged": true,
+    "testTreeUnchanged": true,
+    "allPackageManifestsUnchanged": true,
+    "review": "Four-file delta only; verifier path fix plus failure evidence, dated record and matching roadmap fingerprint. No validation weakened."
+  },
+  "positiveSecurityReview": [
+    "Explicit and duplicate/conflicting option validation with environment pinned in generated argv.",
+    "Named and DEV state require canonical-directory/environment binding in public config and protected credential payload; copied state/credentials fail cross-scope.",
+    "Managed parents and private leaves are admitted with link/owner/permission checks and pinned identities for bound-store operations.",
+    "Profile inventory is bounded and reads public local metadata only, with no credential decryption or network access.",
+    "Root overlap protects selected state and both managed namespaces before configuration.",
+    "Lifecycle actions select one store; tests preserve sibling configuration, credentials and locks byte-for-byte.",
+    "Legacy production v1 compatibility preserved for supported owner-controlled namespace; remote/environment default APIs ignore ambient unrelated argv when selecting credentials.",
+    "Gateway transport, protocol, adapter, package dependency manifests and production services unchanged."
+  ],
+  "limits": [
+    "Local focused verification used Linux Node24.22.1 and owned fixtures; it is not Windows installed-package or live remote enrollment evidence.",
+    "The complete first candidate cannot be accepted because package verification aborted; original green source suites do not satisfy its missing installed/native gates.",
+    "General profile registry, arbitrary remote MCP servers, provider OAuth, real remote enrollment, deployments and broad issue250 completion are outside this slice.",
+    "State-path hardening is not a sandbox against a hostile process with the same OS user.",
+    "No source/GitHub/production mutation by reviewer."
+  ],
+  "hostedRuns": {
+    "pullRequestFast": 43274453513,
+    "pullRequestCompatibility": 43274453565,
+    "duplicateBranchCompatibility": 43274440733
+  },
+  "objectEvidence": "/workspace/scratch/a92a3aacdca1/peer-profile-object-evidence.json",
+  "failureEvidenceDirectory": "/workspace/scratch/a92a3aacdca1/peer-profile-4742-evidence"
+}

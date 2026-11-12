@@ -22,6 +22,7 @@ const roots = [
   '.github',
   'docs/parity',
   'docs/provenance',
+  'docs/capabilities',
   'vendor',
 ];
 const singles = [

@@ -1529,3 +1529,10 @@ PR249 merged at `83a97daed6ef92b69e681b6b68f982f5d4266a51`; all six checks passe
 Issue250 now has a local named gateway-state implementation with explicit environment selection, scoped v2 credentials, profile-owned lifecycle controls and bounded public inventory. See REMOTE_MCP.md and the engineering checkpoint.104 focused tests pass;24 profile cases also run against installed packages. Windows case-alias and legacy-parent regressions were reproduced before repair. Exact-candidate independent review and full hosted qualification are still required at this source checkpoint. Full registry/provider/UI/two-computer acceptance remains open under250–253/62/65.
 
 Resume from the exact GitHub branch/head and current checks. Do not restart production, remove the working wrapper, or retry the232 token-create experiment without new evidence.
+
+
+## 2026-11-12 — mission capability register and checked reports
+
+Issue255 adds docs/capabilities/register.json and an offline report derived by scripts/capability-register.mjs.143 product rows cover272 feature bullets; all488 mission bullets map to products or11 governance groups. Separate CLI300/DCP48/WEB12/AUG117 baselines and the existing29.36% CLI assessment remain unchanged.19 focused negative/positive tests pass;25 including the existing roadmap regressions. Normal build/check validates references, cycles, evidence bindings and generated output; explicit source review includes the entire capabilities directory. Independent immutable review and full hosted delivery gates remain pending at this prepublication checkpoint.
+
+PR256 successor d412b774 has independent source/delta approval and104 focused source passes. Corrected installed-profile tests pass24/24 locally; the full local package verifier still fails27 Unix-socket EPERM containment cases. Required native CI is separate. Use exact current GitHub checks before merging or claiming delivery.

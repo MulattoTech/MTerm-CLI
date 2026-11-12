@@ -1,0 +1,76 @@
+TAP version 13
+# Subtest: remote status freshness: current timestamp
+ok 1 - remote status freshness: current timestamp
+  ---
+  duration_ms: 76.089049
+  type: 'test'
+  ...
+# Subtest: remote status freshness: one millisecond old
+ok 2 - remote status freshness: one millisecond old
+  ---
+  duration_ms: 33.438067
+  type: 'test'
+  ...
+# Subtest: remote status freshness: last fresh millisecond
+ok 3 - remote status freshness: last fresh millisecond
+  ---
+  duration_ms: 55.293955
+  type: 'test'
+  ...
+# Subtest: remote status freshness: exact expiry boundary
+ok 4 - remote status freshness: exact expiry boundary
+  ---
+  duration_ms: 44.54659
+  type: 'test'
+  ...
+# Subtest: remote status freshness: past expiry boundary
+ok 5 - remote status freshness: past expiry boundary
+  ---
+  duration_ms: 62.644986
+  type: 'test'
+  ...
+# Subtest: remote status freshness: one millisecond in future
+ok 6 - remote status freshness: one millisecond in future
+  ---
+  duration_ms: 85.316326
+  type: 'test'
+  ...
+# Subtest: remote status freshness: one minute in future
+ok 7 - remote status freshness: one minute in future
+  ---
+  duration_ms: 50.287252
+  type: 'test'
+  ...
+# Subtest: remote status freshness: one day in future
+ok 8 - remote status freshness: one day in future
+  ---
+  duration_ms: 49.49537
+  type: 'test'
+  ...
+# Subtest: remote status freshness: invalid timestamp
+ok 9 - remote status freshness: invalid timestamp
+  ---
+  duration_ms: 55.8913
+  type: 'test'
+  ...
+# Subtest: remote status freshness: missing timestamp
+ok 10 - remote status freshness: missing timestamp
+  ---
+  duration_ms: 62.040107
+  type: 'test'
+  ...
+# Subtest: remote status freshness: missing runtime record
+ok 11 - remote status freshness: missing runtime record
+  ---
+  duration_ms: 35.84122
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 11
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 881.125974

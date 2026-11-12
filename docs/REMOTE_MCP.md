@@ -273,7 +273,11 @@ node .\bin\mterm-cli.js remote status --state-dir "$env:LOCALAPPDATA\MTerm-CLI\r
 node .\bin\mterm-cli.js remote stop --state-dir "$env:LOCALAPPDATA\MTerm-CLI\remote-staging"
 ```
 
-`status` reports local observations without making a network request. Use the
+`status` reports local observations without making a network request. A saved
+runtime timestamp is recent only when it is no later than the local clock and
+less than 45 seconds old. Future, stale, missing or invalid timestamps produce
+`offline-or-not-observed`; valid saved runtime observations remain in the report.
+`networkChecked` stays false, and executor liveness remains unverified. Use the
 authenticated dashboard to inspect the gateway's current presence view. `stop`
 requests shutdown of only the session owning this state directory; Ctrl+C in its
 terminal also stops it. A stop request is not proof of completed shutdown: check

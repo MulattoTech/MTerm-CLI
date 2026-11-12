@@ -1,0 +1,492 @@
+TAP version 13
+# Subtest: remote default state isolates development without moving production state
+ok 1 - remote default state isolates development without moving production state
+  ---
+  duration_ms: 17.636379
+  type: 'test'
+  ...
+# Subtest: remote-owned dev and named-profile preview performs no mutation or network call
+ok 2 - remote-owned dev and named-profile preview performs no mutation or network call
+  ---
+  duration_ms: 9.157895
+  type: 'test'
+  ...
+# Subtest: two named profiles configure independent directories and default remains an alias
+ok 3 - two named profiles configure independent directories and default remains an alias
+  ---
+  duration_ms: 31.489327
+  type: 'test'
+  ...
+# Subtest: setup next-command argv preserves an explicit shell-sensitive state path
+ok 4 - setup next-command argv preserves an explicit shell-sensitive state path
+  ---
+  duration_ms: 10.430226
+  type: 'test'
+  ...
+# Subtest: remote root cannot expose another managed environment or profile namespace
+ok 5 - remote root cannot expose another managed environment or profile namespace
+  ---
+  duration_ms: 7.40577
+  type: 'test'
+  ...
+# Subtest: overlapping setup root is rejected before creating any remote state
+ok 6 - overlapping setup root is rejected before creating any remote state
+  ---
+  duration_ms: 4.118243
+  type: 'test'
+  ...
+# Subtest: profile inventory is local, bounded and does not decrypt credentials or expose arbitrary runtime fields
+ok 7 - profile inventory is local, bounded and does not decrypt credentials or expose arbitrary runtime fields
+  ---
+  duration_ms: 29.127807
+  type: 'test'
+  ...
+# Subtest: invalid or conflicting selectors refuse before creating state
+ok 8 - invalid or conflicting selectors refuse before creating state
+  ---
+  duration_ms: 3.648285
+  type: 'test'
+  ...
+# Subtest: profile credentials cannot be adopted by copying configuration and protected bytes
+ok 9 - profile credentials cannot be adopted by copying configuration and protected bytes
+  ---
+  duration_ms: 47.41269
+  type: 'test'
+  ...
+# Subtest: an opened named store refuses a substituted managed parent before writing
+ok 10 - an opened named store refuses a substituted managed parent before writing
+  ---
+  duration_ms: 45.015981
+  type: 'test'
+  ...
+# Subtest: protected profile scope rejects copied credentials even when public configuration has the new scope
+ok 11 - protected profile scope rejects copied credentials even when public configuration has the new scope
+  ---
+  duration_ms: 294.519312
+  type: 'test'
+  ...
+# Subtest: development refuses legacy production config before status or stop and preserves every state byte
+ok 12 - development refuses legacy production config before status or stop and preserves every state byte
+  ---
+  duration_ms: 136.341025
+  type: 'test'
+  ...
+# Subtest: development-bound arbitrary state is not readable or stoppable through a production selection
+ok 13 - development-bound arbitrary state is not readable or stoppable through a production selection
+  ---
+  duration_ms: 79.924036
+  type: 'test'
+  ...
+# Subtest: explicit environment and generated argv retain their target across ambient environment changes
+ok 14 - explicit environment and generated argv retain their target across ambient environment changes
+  ---
+  duration_ms: 109.004592
+  type: 'test'
+  ...
+# Subtest: linked managed collections are refused without writing through the link
+ok 15 - linked managed collections are refused without writing through the link
+  ---
+  duration_ms: 24.436167
+  type: 'test'
+  ...
+# Subtest: profile inventory bounds entry count and does not guess an unknown profile
+ok 16 - profile inventory bounds entry count and does not guess an unknown profile
+  ---
+  duration_ms: 355.989426
+  type: 'test'
+  ...
+# Subtest: stop and revoke select one profile without changing the other profile or its owned lock
+ok 17 - stop and revoke select one profile without changing the other profile or its owned lock
+  ---
+  duration_ms: 544.909883
+  type: 'test'
+  ...
+# MTerm remote: connecting
+# MTerm remote: revoked
+# Subtest: pairing and actual foreground agent startup retain the selected profile and protected credential
+ok 18 - pairing and actual foreground agent startup retain the selected profile and protected credential
+  ---
+  duration_ms: 1239.333842
+  type: 'test'
+  ...
+# Subtest: actual CLI status honors explicit profile/environment and ignores launcher configuration
+ok 19 - actual CLI status honors explicit profile/environment and ignores launcher configuration
+  ---
+  duration_ms: 391.834639
+  type: 'test'
+  ...
+# Subtest: remote status freshness: current timestamp
+ok 20 - remote status freshness: current timestamp
+  ---
+  duration_ms: 72.121441
+  type: 'test'
+  ...
+# Subtest: remote status freshness: one millisecond old
+ok 21 - remote status freshness: one millisecond old
+  ---
+  duration_ms: 56.17405
+  type: 'test'
+  ...
+# Subtest: remote status freshness: last fresh millisecond
+ok 22 - remote status freshness: last fresh millisecond
+  ---
+  duration_ms: 68.614711
+  type: 'test'
+  ...
+# Subtest: remote status freshness: exact expiry boundary
+ok 23 - remote status freshness: exact expiry boundary
+  ---
+  duration_ms: 67.04862
+  type: 'test'
+  ...
+# Subtest: remote status freshness: past expiry boundary
+ok 24 - remote status freshness: past expiry boundary
+  ---
+  duration_ms: 43.88859
+  type: 'test'
+  ...
+# Subtest: remote status freshness: one millisecond in future
+ok 25 - remote status freshness: one millisecond in future
+  ---
+  duration_ms: 23.92166
+  type: 'test'
+  ...
+# Subtest: remote status freshness: one minute in future
+ok 26 - remote status freshness: one minute in future
+  ---
+  duration_ms: 25.107537
+  type: 'test'
+  ...
+# Subtest: remote status freshness: one day in future
+ok 27 - remote status freshness: one day in future
+  ---
+  duration_ms: 23.851296
+  type: 'test'
+  ...
+# Subtest: remote status freshness: invalid timestamp
+ok 28 - remote status freshness: invalid timestamp
+  ---
+  duration_ms: 23.606781
+  type: 'test'
+  ...
+# Subtest: remote status freshness: missing timestamp
+ok 29 - remote status freshness: missing timestamp
+  ---
+  duration_ms: 27.469465
+  type: 'test'
+  ...
+# Subtest: remote status freshness: missing runtime record
+ok 30 - remote status freshness: missing runtime record
+  ---
+  duration_ms: 19.917489
+  type: 'test'
+  ...
+# Subtest: owned profile stop remains available after its exposed workspace disappears
+ok 31 - owned profile stop remains available after its exposed workspace disappears
+  ---
+  duration_ms: 22.563217
+  type: 'test'
+  ...
+# Subtest: invalid runtime metadata does not turn a recorded pairing into a false unpaired claim
+ok 32 - invalid runtime metadata does not turn a recorded pairing into a false unpaired claim
+  ---
+  duration_ms: 27.374465
+  type: 'test'
+  ...
+# Subtest: a user-valid profile name cannot act as a hidden collection admission probe
+ok 33 - a user-valid profile name cannot act as a hidden collection admission probe
+  ---
+  duration_ms: 13.953548
+  type: 'test'
+  ...
+# Subtest: legacy private state remains usable under an owner-controlled readable namespace
+ok 34 - legacy private state remains usable under an owner-controlled readable namespace
+  ---
+  duration_ms: 7.268661
+  type: 'test'
+  ...
+# Subtest: platform path aliases cannot downgrade named profile state to a legacy store
+ok 35 - platform path aliases cannot downgrade named profile state to a legacy store
+  ---
+  duration_ms: 13.860112
+  type: 'test'
+  ...
+# Subtest: remote run lock preserves successful ownership, duplicate refusal and explicit owner release
+ok 36 - remote run lock preserves successful ownership, duplicate refusal and explicit owner release
+  ---
+  duration_ms: 26.461221
+  type: 'test'
+  ...
+# Subtest: remote run lock never removes a preexisting malformed lock
+ok 37 - remote run lock never removes a preexisting malformed lock
+  ---
+  duration_ms: 4.758292
+  type: 'test'
+  ...
+# Subtest: remote run lock recovers an owned empty initialization failure for an explicit retry
+ok 38 - remote run lock recovers an owned empty initialization failure for an explicit retry
+  ---
+  duration_ms: 6.47052
+  type: 'test'
+  ...
+# Subtest: remote run lock recovers an owned partial initialization failure for an explicit retry
+ok 39 - remote run lock recovers an owned partial initialization failure for an explicit retry
+  ---
+  duration_ms: 6.876343
+  type: 'test'
+  ...
+# Subtest: remote run lock keeps admission occupied until failed initialization closes its real handle
+ok 40 - remote run lock keeps admission occupied until failed initialization closes its real handle
+  ---
+  duration_ms: 8.627759
+  type: 'test'
+  ...
+# Subtest: remote run lock closes but retains ownership when descriptor identity inspection fails
+ok 41 - remote run lock closes but retains ownership when descriptor identity inspection fails
+  ---
+  duration_ms: 3.464761
+  type: 'test'
+  ...
+# Subtest: remote run lock preserves an initialization error when close confirmation also fails
+ok 42 - remote run lock preserves an initialization error when close confirmation also fails
+  ---
+  duration_ms: 3.569892
+  type: 'test'
+  ...
+# Subtest: remote run lock retains a completed payload when only close confirmation fails
+ok 43 - remote run lock retains a completed payload when only close confirmation fails
+  ---
+  duration_ms: 4.078738
+  type: 'test'
+  ...
+# Subtest: remote run lock cleanup preserves a replacement and the renamed original
+ok 44 - remote run lock cleanup preserves a replacement and the renamed original
+  ---
+  duration_ms: 5.367452
+  type: 'test'
+  ...
+# Subtest: remote run lock cleanup retains an inode with an additional hard link
+ok 45 - remote run lock cleanup retains an inode with an additional hard link
+  ---
+  duration_ms: 3.563229
+  type: 'test'
+  ...
+# Subtest: remote run lock cleanup preserves a symlink or junction replacement and its target
+ok 46 - remote run lock cleanup preserves a symlink or junction replacement and its target
+  ---
+  duration_ms: 4.499667
+  type: 'test'
+  ...
+# Subtest: remote run lock retains the file when cleanup identity cannot be inspected
+ok 47 - remote run lock retains the file when cleanup identity cannot be inspected
+  ---
+  duration_ms: 4.777588
+  type: 'test'
+  ...
+# Subtest: remote run lock preserves the initialization error when its one cleanup unlink fails
+ok 48 - remote run lock preserves the initialization error when its one cleanup unlink fails
+  ---
+  duration_ms: 3.28687
+  type: 'test'
+  ...
+# Subtest: remote run lock cleanup refuses a redirected parent and preserves both lock locations
+ok 49 - remote run lock cleanup refuses a redirected parent and preserves both lock locations
+  ---
+  duration_ms: 5.183603
+  type: 'test'
+  ...
+# Subtest: remote run lock cleanup retains its inode after that inode moves under a replacement parent
+ok 50 - remote run lock cleanup retains its inode after that inode moves under a replacement parent
+  ---
+  duration_ms: 3.616585
+  type: 'test'
+  ...
+# Subtest: remote run lock propagates an initial open error without acquiring cleanup authority
+ok 51 - remote run lock propagates an initial open error without acquiring cleanup authority
+  ---
+  duration_ms: 2.941278
+  type: 'test'
+  ...
+# Subtest: remote state lock preserves successful configuration and explicit subsequent mutation
+ok 52 - remote state lock preserves successful configuration and explicit subsequent mutation
+  ---
+  duration_ms: 33.398935
+  type: 'test'
+  ...
+# Subtest: remote state lock preserves initialized operation failure and releases normal admission
+ok 53 - remote state lock preserves initialized operation failure and releases normal admission
+  ---
+  duration_ms: 15.368083
+  type: 'test'
+  ...
+# Subtest: remote state lock never removes a preexisting malformed lock
+ok 54 - remote state lock never removes a preexisting malformed lock
+  ---
+  duration_ms: 8.764613
+  type: 'test'
+  ...
+# Subtest: remote state lock preserves an exclusive-open failure without claiming cleanup ownership
+ok 55 - remote state lock preserves an exclusive-open failure without claiming cleanup ownership
+  ---
+  duration_ms: 4.569329
+  type: 'test'
+  ...
+# Subtest: remote state lock recovers owned empty initialization for an explicit retry
+ok 56 - remote state lock recovers owned empty initialization for an explicit retry
+  ---
+  duration_ms: 11.51421
+  type: 'test'
+  ...
+# Subtest: remote state lock recovers owned partial initialization for an explicit retry
+ok 57 - remote state lock recovers owned partial initialization for an explicit retry
+  ---
+  duration_ms: 8.764004
+  type: 'test'
+  ...
+# Subtest: remote state lock preserves a falsy initialization rejection
+ok 58 - remote state lock preserves a falsy initialization rejection
+  ---
+  duration_ms: 6.669402
+  type: 'test'
+  ...
+# Subtest: remote state lock treats a complete nonce write followed by rejection as failed initialization
+ok 59 - remote state lock treats a complete nonce write followed by rejection as failed initialization
+  ---
+  duration_ms: 11.267928
+  type: 'test'
+  ...
+# Subtest: remote state lock keeps admission until failed initialization confirms handle closure
+ok 60 - remote state lock keeps admission until failed initialization confirms handle closure
+  ---
+  duration_ms: 7.898335
+  type: 'test'
+  ...
+# Subtest: remote state lock retains unknown descriptor identity while closing its acquired handle
+ok 61 - remote state lock retains unknown descriptor identity while closing its acquired handle
+  ---
+  duration_ms: 4.70852
+  type: 'test'
+  ...
+# Subtest: remote state lock preserves initialization failure if close confirmation also fails
+ok 62 - remote state lock preserves initialization failure if close confirmation also fails
+  ---
+  duration_ms: 5.715049
+  type: 'test'
+  ...
+# Subtest: remote state lock keeps committed operation bytes when only close confirmation fails
+ok 63 - remote state lock keeps committed operation bytes when only close confirmation fails
+  ---
+  duration_ms: 8.51441
+  type: 'test'
+  ...
+# Subtest: remote state lock recovery preserves a replaced leaf and its renamed original
+ok 64 - remote state lock recovery preserves a replaced leaf and its renamed original
+  ---
+  duration_ms: 5.775158
+  type: 'test'
+  ...
+# Subtest: remote state lock recovery retains an inode with an additional hard link
+ok 65 - remote state lock recovery retains an inode with an additional hard link
+  ---
+  duration_ms: 4.876089
+  type: 'test'
+  ...
+# Subtest: remote state lock recovery requires original parent identity even for the original leaf
+ok 66 - remote state lock recovery requires original parent identity even for the original leaf
+  ---
+  duration_ms: 8.078367
+  type: 'test'
+  ...
+# Subtest: remote state lock recovery preserves a redirected parent and its unrelated target
+ok 67 - remote state lock recovery preserves a redirected parent and its unrelated target
+  ---
+  duration_ms: 6.252234
+  type: 'test'
+  ...
+# Subtest: remote state lock recovery preserves a replaced link leaf and its unrelated target
+ok 68 - remote state lock recovery preserves a replaced link leaf and its unrelated target
+  ---
+  duration_ms: 6.012661
+  type: 'test'
+  ...
+# Subtest: remote state lock refuses an aliased parent before acquiring a new lock
+ok 69 - remote state lock refuses an aliased parent before acquiring a new lock
+  ---
+  duration_ms: 3.359728
+  type: 'test'
+  ...
+# Subtest: remote state lock recovery retains changed parent ownership metadata
+ok 70 - remote state lock recovery retains changed parent ownership metadata
+  ---
+  duration_ms: 4.673582
+  type: 'test'
+  ...
+# Subtest: remote state lock recovery retains changed leaf ownership metadata
+ok 71 - remote state lock recovery retains changed leaf ownership metadata
+  ---
+  duration_ms: 7.854595
+  type: 'test'
+  ...
+# Subtest: remote state lock preserves primary failure if cleanup inspection fails
+ok 72 - remote state lock preserves primary failure if cleanup inspection fails
+  ---
+  duration_ms: 3.539812
+  type: 'test'
+  ...
+# Subtest: remote state lock attempts one unlink and preserves primary failure when cleanup fails
+ok 73 - remote state lock attempts one unlink and preserves primary failure when cleanup fails
+  ---
+  duration_ms: 5.642816
+  type: 'test'
+  ...
+# Subtest: remote state lock failed initialization never enters savePairing
+ok 74 - remote state lock failed initialization never enters savePairing
+  ---
+  duration_ms: 7.86859
+  type: 'test'
+  ...
+# Subtest: remote state lock failed initialization never enters clearPairing
+ok 75 - remote state lock failed initialization never enters clearPairing
+  ---
+  duration_ms: 8.813917
+  type: 'test'
+  ...
+# Subtest: remote state separates public config from protected credentials and round-trips local protection
+ok 76 - remote state separates public config from protected credentials and round-trips local protection
+  ---
+  duration_ms: 42.825292
+  type: 'test'
+  ...
+# Subtest: remote state refuses exposing its credential directory and unapproved reconfiguration of a paired device
+ok 77 - remote state refuses exposing its credential directory and unapproved reconfiguration of a paired device
+  ---
+  duration_ms: 18.154668
+  type: 'test'
+  ...
+# Subtest: concurrent pair saves retain one coherent device/token binding
+ok 78 - concurrent pair saves retain one coherent device/token binding
+  ---
+  duration_ms: 13.376117
+  type: 'test'
+  ...
+# Subtest: device credential binds its enrolled root and refuses a retargeted root
+ok 79 - device credential binds its enrolled root and refuses a retargeted root
+  ---
+  duration_ms: 17.018442
+  type: 'test'
+  ...
+# Subtest: idempotent remote setup reports an existing pairing accurately
+ok 80 - idempotent remote setup reports an existing pairing accurately
+  ---
+  duration_ms: 20.981718
+  type: 'test'
+  ...
+1..80
+# tests 80
+# suites 0
+# pass 80
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5426.242147

@@ -1,0 +1,80 @@
+[
+  {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "cwd": "/workspace/scratch/267bdf8cab08/MTerm-CLI-Status",
+    "exit_code": 0,
+    "stdout": "55ac8b1f35f657b079c191292219b0ae576d7164\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "status",
+      "--short"
+    ],
+    "cwd": "/workspace/scratch/267bdf8cab08/MTerm-CLI-Status",
+    "exit_code": 0,
+    "stdout": " M docs/HANDOFF.md\n M docs/REMOTE_MCP.md\n M docs/engineering-runs/mterm-comprehensive-reconciliation-2026-11-12.md\n M docs/roadmap/review.json\n M scripts/verify-package.mjs\n M src/remote/cli.ts\n M tests/remote-profiles.test.mjs\n?? docs/ai/changes/2026-11-12-remote-status-freshness.json\n?? docs/validation/2026-11-12-remote-status-freshness/\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--stat",
+      "55ac8b1f35f657b079c191292219b0ae576d7164",
+      "--",
+      "src/remote/cli.ts",
+      "tests/remote-profiles.test.mjs",
+      "scripts/verify-package.mjs"
+    ],
+    "cwd": "/workspace/scratch/267bdf8cab08/MTerm-CLI-Status",
+    "exit_code": 0,
+    "stdout": " scripts/verify-package.mjs     |  5 ++++-\n src/remote/cli.ts              |  3 ++-\n tests/remote-profiles.test.mjs | 46 ++++++++++++++++++++++++++++++++++++++++++\n 3 files changed, 52 insertions(+), 2 deletions(-)\n",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "diff",
+      "--check",
+      "55ac8b1f35f657b079c191292219b0ae576d7164",
+      "--",
+      "src/remote/cli.ts",
+      "tests/remote-profiles.test.mjs",
+      "scripts/verify-package.mjs"
+    ],
+    "cwd": "/workspace/scratch/267bdf8cab08/MTerm-CLI-Status",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "diff",
+      "55ac8b1f35f657b079c191292219b0ae576d7164",
+      "--",
+      "src/remote/state.ts",
+      "src/remote/profiles.ts"
+    ],
+    "cwd": "/workspace/scratch/267bdf8cab08/MTerm-CLI-Status",
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "node",
+      "--version"
+    ],
+    "cwd": "/workspace/scratch/267bdf8cab08/MTerm-CLI-Status",
+    "exit_code": 0,
+    "stdout": "v24.22.1\n",
+    "stderr": ""
+  }
+]

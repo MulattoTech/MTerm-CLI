@@ -1,0 +1,142 @@
+TAP version 13
+# Subtest: equivalent explicit timezone retains raw observation
+ok 1 - equivalent explicit timezone retains raw observation
+  ---
+  duration_ms: 61.861534
+  type: 'test'
+  ...
+# Subtest: future explicit timezone is not fresh
+ok 2 - future explicit timezone is not fresh
+  ---
+  duration_ms: 32.43498
+  type: 'test'
+  ...
+# Subtest: maximum representable timestamp is not fresh
+ok 3 - maximum representable timestamp is not fresh
+  ---
+  duration_ms: 27.604187
+  type: 'test'
+  ...
+# Subtest: minimum representable timestamp is stale
+ok 4 - minimum representable timestamp is stale
+  ---
+  duration_ms: 43.784057
+  type: 'test'
+  ...
+# Subtest: numeric timestamp is not coerced
+ok 5 - numeric timestamp is not coerced
+  ---
+  duration_ms: 20.140995
+  type: 'test'
+  ...
+# Subtest: object timestamp is not coerced
+ok 6 - object timestamp is not coerced
+  ---
+  duration_ms: 23.391074
+  type: 'test'
+  ...
+# Subtest: array timestamp is not coerced
+ok 7 - array timestamp is not coerced
+  ---
+  duration_ms: 20.576937
+  type: 'test'
+  ...
+# Subtest: empty timestamp is absent
+ok 8 - empty timestamp is absent
+  ---
+  duration_ms: 26.736281
+  type: 'test'
+  ...
+# Subtest: parseable timestamp exceeding the public length bound is absent
+ok 9 - parseable timestamp exceeding the public length bound is absent
+  ---
+  duration_ms: 20.616355
+  type: 'test'
+  ...
+# Subtest: fresh observation preserves recorded state connecting
+ok 10 - fresh observation preserves recorded state connecting
+  ---
+  duration_ms: 18.9971
+  type: 'test'
+  ...
+# Subtest: fresh observation preserves recorded state reconnecting
+ok 11 - fresh observation preserves recorded state reconnecting
+  ---
+  duration_ms: 19.194138
+  type: 'test'
+  ...
+# Subtest: fresh observation preserves recorded state revoked
+ok 12 - fresh observation preserves recorded state revoked
+  ---
+  duration_ms: 21.574782
+  type: 'test'
+  ...
+# Subtest: fresh observation preserves recorded state stopped
+ok 13 - fresh observation preserves recorded state stopped
+  ---
+  duration_ms: 20.121398
+  type: 'test'
+  ...
+# Subtest: recent startedAt cannot make stale at fresh
+ok 14 - recent startedAt cannot make stale at fresh
+  ---
+  duration_ms: 52.102775
+  type: 'test'
+  ...
+# Subtest: array runtime yields no observation
+ok 15 - array runtime yields no observation
+  ---
+  duration_ms: 24.50654
+  type: 'test'
+  ...
+# Subtest: nonfinite observer clock NaN cannot claim freshness
+ok 16 - nonfinite observer clock NaN cannot claim freshness
+  ---
+  duration_ms: 20.925335
+  type: 'test'
+  ...
+# Subtest: nonfinite observer clock Infinity cannot claim freshness
+ok 17 - nonfinite observer clock Infinity cannot claim freshness
+  ---
+  duration_ms: 23.758279
+  type: 'test'
+  ...
+# Subtest: nonfinite observer clock -Infinity cannot claim freshness
+ok 18 - nonfinite observer clock -Infinity cannot claim freshness
+  ---
+  duration_ms: 18.807023
+  type: 'test'
+  ...
+# Subtest: freshness is assessed after awaited status reads
+ok 19 - freshness is assessed after awaited status reads
+  ---
+  duration_ms: 20.561154
+  type: 'test'
+  ...
+# Subtest: malformed runtime JSON retains existing refusal and owned bytes
+ok 20 - malformed runtime JSON retains existing refusal and owned bytes
+  ---
+  duration_ms: 15.319801
+  type: 'test'
+  ...
+# Subtest: cross-environment status retains scope refusal before observation
+ok 21 - cross-environment status retains scope refusal before observation
+  ---
+  duration_ms: 19.828032
+  type: 'test'
+  ...
+# Subtest: missing profile status does not create or fall back to another store
+ok 22 - missing profile status does not create or fall back to another store
+  ---
+  duration_ms: 16.66001
+  type: 'test'
+  ...
+1..22
+# tests 22
+# suites 0
+# pass 22
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 812.300283

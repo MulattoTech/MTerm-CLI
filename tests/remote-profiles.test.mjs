@@ -499,6 +499,52 @@ test('actual CLI status honors explicit profile/environment and ignores launcher
   );
 });
 
+const statusClock = Date.UTC(2026, 10, 12, 20, 0, 0);
+for (const [name, timestamp, expected] of [
+  ['current timestamp', new Date(statusClock).toISOString(), 'online'],
+  ['one millisecond old', new Date(statusClock - 1).toISOString(), 'online'],
+  ['last fresh millisecond', new Date(statusClock - 44999).toISOString(), 'online'],
+  ['exact expiry boundary', new Date(statusClock - 45000).toISOString(), 'offline-or-not-observed'],
+  ['past expiry boundary', new Date(statusClock - 45001).toISOString(), 'offline-or-not-observed'],
+  ['one millisecond in future', new Date(statusClock + 1).toISOString(), 'offline-or-not-observed'],
+  ['one minute in future', new Date(statusClock + 60000).toISOString(), 'offline-or-not-observed'],
+  ['one day in future', new Date(statusClock + 86400000).toISOString(), 'offline-or-not-observed'],
+  ['invalid timestamp', 'not-a-date', 'offline-or-not-observed'],
+  ['missing timestamp', undefined, 'offline-or-not-observed'],
+  ['missing runtime record', null, 'offline-or-not-observed'],
+]) {
+  test(`remote status freshness: ${name}`, async (t) => {
+    const f = await fixture(t);
+    const setup = await f.run([...f.setup, '--profile', 'freshness', '--apply']);
+    const store = await RemoteStateStore.open(setup.stateDirectory, false, 'production');
+    if (timestamp !== null)
+      await store.runtime({ at: timestamp, state: 'online', rawSecret: 'STATUS_FIXTURE_PRIVATE_SENTINEL' });
+    const snapshot = async () => {
+      const names = (await fs.readdir(setup.stateDirectory)).sort();
+      return Promise.all(
+        names.map(async (name) => [name, await fs.readFile(path.join(setup.stateDirectory, name))]),
+      );
+    };
+    const before = await snapshot();
+    t.mock.method(Date, 'now', () => statusClock);
+    t.mock.method(process, 'kill', () => {
+      throw Error('Status must not operate on a process');
+    });
+    const status = await f.run(['status', '--environment', 'production', '--profile', 'freshness']);
+    assert.equal(status.observedStatus, expected);
+    assert.equal(status.networkChecked, false);
+    assert.equal(globalThis.fetch.mock.callCount(), 0);
+    assert.equal(process.kill.mock.callCount(), 0);
+    assert.equal(status.stateDirectory, setup.stateDirectory);
+    assert.equal(JSON.stringify(status).includes('STATUS_FIXTURE_PRIVATE_SENTINEL'), false);
+    if (typeof timestamp === 'string' && Number.isFinite(Date.parse(timestamp))) {
+      assert.equal(status.runtime.at, timestamp, 'Retain the original bounded runtime observation');
+      assert.equal(status.runtime.state, 'online');
+    }
+    assert.deepEqual(await snapshot(), before, 'Status must preserve all owned state bytes');
+  });
+}
+
 test('owned profile stop remains available after its exposed workspace disappears', async (t) => {
   const f = await fixture(t);
   const report = await f.run([...f.setup, '--profile', 'alpha', '--apply']);

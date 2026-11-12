@@ -511,3 +511,46 @@ verified the complete failed-check archive. The ignored nested protocol fixture
 is explicitly included with all owned evidence, and the prepared-tree manifest
 is checked before publication. Admission candidate/main qualification remains
 pending; no deployed or whole-requirement acceptance is claimed.
+
+## Cycle12 — local remote-status freshness, 2026-11-12T23:24:25.720183+00:00
+
+The last inherited triage item is reproducible: runtime timestamps one millisecond,
+one minute or one day in the future all yielded observedStatus online on unchanged
+source. Eleven real public-command/profile tests yield3RED failures and8controls.
+The correction requires finite nonnegative age below the existing45000ms threshold.
+Corrected11/11 and80/80 nearby integration tests pass; the installed-package suite
+will run all35 profile cases outside checkout with no skipped/failing cases.
+
+The saved runtime observation and state files are preserved; the command performs
+no network check and does not establish executor liveness. Separate independent investigation and
+source review are in progress. Normal local, candidate and actual-main gates remain
+required. No CLI baseline stage or whole mission acceptance is awarded.
+
+Accounting PR261 now has all six candidate and all six actual-main jobs qualified
+atd430ec5e0d7dcefc041df4ab5f80cb32382c5ac3; its independent main receipt SHA256 is
+c5682de5081188ee12aa87f39841b0442f94b036d3d9504ff8a824174112f289. Admission PR262
+remains a separate candidate/main delivery. Final add-only evidence reconciliation
+will follow the qualified source deliveries rather than publishing pending facts.
+
+The issue232 historical evidence was rechecked: two actual provider HTTP creation
+rejections, second400/code12121, caused the operational HOLD. No automatic approval
+denial, duration/name restriction or credential-permission cause is established.
+Standing owner authorization remains; avoid another unsupported blind retry.
+
+### Cycle12 final source/prepublication observations
+
+Fresh independent review approved the exact three source/test/verifier files and
+passed22/22 adversarial cases without network/process/credential operations or
+state mutation. Report SHA256:
+56e46e32aebdb502e1b64eaec2bcd258a96895f1dee7688d4656c0f1732593cb.
+Normal build passed. Complete ordinary check:1582tests,1543pass,27unchanged
+isolation listen EPERM failures,12Windows-onlyskips,0cancel/TODO. Raw759224-byte
+log SHA25656a5d6ef07ed07b57d5bd334a098ed5087a520feb9d9256f922d2a66542b9216
+is retained losslessly. Original failures remain failures.
+
+Admission PR262 passed all6candidate jobs and independent exact-tree review, then
+merged normally atb2b62156bde7d75b2a36b0af0fd677ef1ad514dd, tree4e5f026a,
+parents[d430ec5e,55ac8b1f]. Fresh main checks are separate and running. The status
+worktree fast-forwarded normally to that equal-tree main with all three reviewed
+source hashes unchanged. Final metadata/artifact review, six candidate checks and
+actual-main qualification remain; no provider or runtime mutation occurred.

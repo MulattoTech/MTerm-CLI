@@ -1,0 +1,157 @@
+{
+  "change_id": "2026-11-12-remote-status-freshness",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "updated_at": "2026-11-12T23:40:42.500317+00:00",
+  "base_sha": "55ac8b1f35f657b079c191292219b0ae576d7164",
+  "issues": [
+    58
+  ],
+  "requirements": [
+    "CLI-064",
+    "CLI-290"
+  ],
+  "files": [
+    "docs/HANDOFF.md",
+    "docs/REMOTE_MCP.md",
+    "docs/ai/changes/2026-11-12-remote-status-freshness.json",
+    "docs/engineering-runs/mterm-comprehensive-reconciliation-2026-11-12.md",
+    "docs/roadmap/review.json",
+    "docs/validation/2026-11-12-remote-status-freshness/README.md",
+    "docs/validation/2026-11-12-remote-status-freshness/build.log",
+    "docs/validation/2026-11-12-remote-status-freshness/check.log.gz",
+    "docs/validation/2026-11-12-remote-status-freshness/complete-check.json",
+    "docs/validation/2026-11-12-remote-status-freshness/development-build-after.log",
+    "docs/validation/2026-11-12-remote-status-freshness/development-build-before.log",
+    "docs/validation/2026-11-12-remote-status-freshness/focused-green.tap",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-investigation/REPORT.md",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-investigation/execution-receipt.json",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-investigation/observations.json",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-investigation/probe.mjs",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-investigation/source-identity.json",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-review/adversarial-execution.json",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-review/adversarial-status.tap",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-review/adversarial-status.test.mjs",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-review/after-source-hashes.json",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-review/artifact-manifest.json",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-review/baseline/scripts/verify-package.mjs",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-review/baseline/src/remote/cli.ts",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-review/baseline/tests/remote-profiles.test.mjs",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-review/before-runtime-hashes.json",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-review/before-source-hashes.json",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-review/commands.md",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-review/frozen-source.patch",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-review/inspection-commands.json",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-review/results.json",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-review/review.md",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-review/source/dist/remote/cli.js",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-review/source/dist/remote/profiles.js",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-review/source/dist/remote/state.js",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-review/source/scripts/verify-package.mjs",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-review/source/src/remote/cli.ts",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-review/source/src/remote/profiles.ts",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-review/source/src/remote/state.ts",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-review/source/tests/remote-profiles.test.mjs",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-review/status-build-after.log",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-review/status-focused-green.tap",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-review/status-freshness-red.tap",
+    "docs/validation/2026-11-12-remote-status-freshness/independent-review/status-nearby-green.tap",
+    "docs/validation/2026-11-12-remote-status-freshness/manifest.json",
+    "docs/validation/2026-11-12-remote-status-freshness/metadata-review/after-index-manifest.json",
+    "docs/validation/2026-11-12-remote-status-freshness/metadata-review/artifact-manifest.json",
+    "docs/validation/2026-11-12-remote-status-freshness/metadata-review/before-index-manifest.json",
+    "docs/validation/2026-11-12-remote-status-freshness/metadata-review/commands.json",
+    "docs/validation/2026-11-12-remote-status-freshness/metadata-review/complete-check-inspection.json",
+    "docs/validation/2026-11-12-remote-status-freshness/metadata-review/preserved-evidence-whitespace.log",
+    "docs/validation/2026-11-12-remote-status-freshness/metadata-review/results.json",
+    "docs/validation/2026-11-12-remote-status-freshness/metadata-review/review.md",
+    "docs/validation/2026-11-12-remote-status-freshness/metadata-review/snapshot/docs/HANDOFF.md",
+    "docs/validation/2026-11-12-remote-status-freshness/metadata-review/snapshot/docs/REMOTE_MCP.md",
+    "docs/validation/2026-11-12-remote-status-freshness/metadata-review/snapshot/docs/ai/changes/2026-11-12-remote-status-freshness.json",
+    "docs/validation/2026-11-12-remote-status-freshness/metadata-review/snapshot/docs/engineering-runs/mterm-comprehensive-reconciliation-2026-11-12.md",
+    "docs/validation/2026-11-12-remote-status-freshness/metadata-review/snapshot/docs/roadmap/review.json",
+    "docs/validation/2026-11-12-remote-status-freshness/metadata-review/snapshot/docs/validation/2026-11-12-remote-status-freshness/README.md",
+    "docs/validation/2026-11-12-remote-status-freshness/metadata-review/snapshot/docs/validation/2026-11-12-remote-status-freshness/complete-check.json",
+    "docs/validation/2026-11-12-remote-status-freshness/metadata-review/snapshot/docs/validation/2026-11-12-remote-status-freshness/manifest.json",
+    "docs/validation/2026-11-12-remote-status-freshness/metadata-review/snapshot/docs/validation/2026-11-12-remote-status-freshness/source-inputs.json",
+    "docs/validation/2026-11-12-remote-status-freshness/metadata-review/verify_metadata.py",
+    "docs/validation/2026-11-12-remote-status-freshness/nearby-green.tap",
+    "docs/validation/2026-11-12-remote-status-freshness/red.tap",
+    "docs/validation/2026-11-12-remote-status-freshness/source-inputs.json",
+    "scripts/verify-package.mjs",
+    "src/remote/cli.ts",
+    "tests/remote-profiles.test.mjs"
+  ],
+  "decisions": [
+    "Root owns a separate isolated source slice; investigation and candidate review are read-only peers.",
+    "Require a finite nonnegative runtime age strictly below the existing 45-second threshold. Preserve the original saved observation and offline/no-side-effect status semantics.",
+    "Use the existing real public remoteMain/profile test harness so every new controlled-clock case also runs against the installed package outside checkout; strengthen the count gate to35.",
+    "This is local observation classification only; no network/process readiness, live deployment or full device-presence acceptance is inferred."
+  ],
+  "tests": [
+    {
+      "command": "Unchanged original CLI runtime with the final11 controlled-clock regression cases",
+      "result": "RED11total/3future-datefailures/8controls,0skip/cancel/TODO."
+    },
+    {
+      "command": "Development compilation before and after source change",
+      "result": "PASS; normal gated build remains separate."
+    },
+    {
+      "command": "Corrected11 controlled-clock cases",
+      "result": "PASS11/11,0skip/cancel/TODO."
+    },
+    {
+      "command": "Profile/state/state-lock/run-lock suites",
+      "result": "PASS80/80,0skip/cancel/TODO."
+    },
+    {
+      "command": "Fresh independent source/compatibility review",
+      "result": "APPROVED exact frozen three-file patch.22/22 adversarial cases,0fail/skip/cancel/TODO; no network/process/credential operations; source hashes unchanged."
+    },
+    {
+      "command": "npm run build",
+      "result": "PASS with normal roadmap/parity/capability guards."
+    },
+    {
+      "command": "npm run check",
+      "result": "FAIL:1582tests,1543pass,27unchanged tests/isolation.test.mjs listen EPERM failures,12existingWindows-onlyskips,0cancel/TODO. All pre-test gates pass; complete759224-byte failed output retained losslessly."
+    },
+    {
+      "command": "Separate original-source public-command investigation",
+      "result": "Confirmed3future timestamp false-freshness cases with8controls on exact55ac source. Lock/PID variants do not guard status freshness. Zero network/process/PID/credential/lock reads or status mutations; original evidence retained."
+    },
+    {
+      "command": "Independent final metadata/evidence review",
+      "result": "APPROVED51-path prepared snapshot; all42validation members,27source-reviewer files and5investigator files exact; complete check archive verified. ReviewSHA256804be8d333b745e9b012d0f5f03e44e7733133c90906342eca6e4cb2adfd665f. Later additions preserve this producer output and update only manifest/AI path bookkeeping."
+    },
+    {
+      "command": "git diff --cached --check",
+      "result": "Whole snapshot reports only retained original log/patch whitespace; authored source and metadata pass scoped check. Immutable evidence bytes are preserved."
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "id": "CLI-064",
+      "stage_change": false,
+      "reason": "Narrow local remote-status observation correction preserves daemon-free/offline behavior and explicit transport trust. It does not complete the full original requirement or deployed presence/relay acceptance."
+    },
+    {
+      "id": "CLI-290",
+      "stage_change": false,
+      "reason": "Narrow local remote-status observation correction preserves daemon-free/offline behavior and explicit transport trust. It does not complete the full original requirement or deployed presence/relay acceptance."
+    }
+  ],
+  "reviewed_source_sha256": {
+    "src/remote/cli.ts": "05759f21585edb8ebcb6ffa9360be564fd7ea12efed96ad53606ad625bc0da22",
+    "scripts/verify-package.mjs": "be06f50633a444fd604c4dba1fb1bef46bcfbc0e46f99f5d15949a0932e11886",
+    "tests/remote-profiles.test.mjs": "3049c398bac8621ae293860ca54aac281e535887ffa64906036bae60ae241618"
+  },
+  "limitations": [
+    "Final metadata/tree checks, all six exact-candidate hosted jobs and actual-main qualification remain required. The complete ordinary local failure is retained.",
+    "Parent admission main qualification remains required before this source change merges. Local integration preserved exact reviewed source and the original failed-check receipt.",
+    "No runtime deployment, provider lifecycle, real browser/client/two-device or full-feature acceptance."
+  ],
+  "integration_base_sha": "b2b62156bde7d75b2a36b0af0fd677ef1ad514dd",
+  "integration_base_status": "Normal PR262 expected-head merge after exact candidate qualification; tree equals tested55ac candidate. Three frozen source hashes unchanged; original check input base retained. Parent actual-main checks are running and required before merge."
+}

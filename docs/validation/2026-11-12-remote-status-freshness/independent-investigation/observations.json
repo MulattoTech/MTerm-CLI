@@ -1,0 +1,928 @@
+{
+  "schemaVersion": 1,
+  "executedAt": "2026-11-12T23:33:22.556Z",
+  "sourceSha": "55ac8b1f35f657b079c191292219b0ae576d7164",
+  "command": "node probe.mjs",
+  "classification": "ORIGINAL_SOURCE_OBSERVATIONS_NOT_FIXED_SOURCE_QUALIFICATION",
+  "fixtureUses": "Owned scratch config/running/lock files and frozen Date.now; no running agent or real credentials",
+  "pidLimit": "Synthetic numbers plus this fixture process PID; no existence or command probe was made",
+  "forbiddenCalls": [],
+  "cases": [
+    {
+      "id": "future-one-ms-no-lock",
+      "runtime": {
+        "at": "2026-11-12T23:00:00.001Z",
+        "state": "online",
+        "pid": 2,
+        "instanceId": "22222222-2222-4222-8222-222222222222"
+      },
+      "lock": null,
+      "proposed": "offline-or-not-observed",
+      "now": 1794524400000,
+      "nowIso": "2026-11-12T23:00:00.000Z",
+      "inputAgeMs": -1,
+      "exitCode": 0,
+      "actual": "online",
+      "meetsProposedFreshness": false,
+      "report": {
+        "schemaVersion": 1,
+        "gateway": "https://owned-status.invalid",
+        "dashboard": "https://owned-status.invalid",
+        "root": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/workspace",
+        "name": "Owned status observation fixture",
+        "stateScope": {
+          "environment": "development",
+          "directory": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state"
+        },
+        "deviceId": "11111111-1111-4111-8111-111111111111",
+        "paired": true,
+        "permissions": "read-only",
+        "autostart": false,
+        "runtime": {
+          "state": "online",
+          "at": "2026-11-12T23:00:00.001Z",
+          "pid": 2
+        },
+        "environment": "development",
+        "selection": "explicit-directory",
+        "stateDirectory": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state",
+        "observedStatus": "online",
+        "networkChecked": false
+      },
+      "filesBefore": [
+        {
+          "name": "config.json",
+          "bytes": 494,
+          "sha256": "e92f300e941b0e5984a2e8180f01854301adfe69dc9d322d074377b03bb894c3"
+        },
+        {
+          "name": "running.json",
+          "bytes": 128,
+          "sha256": "51c1d8a6aba40dbf473f6e1e0d59fac98ec1b47f1ba5608f6d1d67a218b6f839"
+        }
+      ],
+      "filesAfter": [
+        {
+          "name": "config.json",
+          "bytes": 494,
+          "sha256": "e92f300e941b0e5984a2e8180f01854301adfe69dc9d322d074377b03bb894c3"
+        },
+        {
+          "name": "running.json",
+          "bytes": 128,
+          "sha256": "51c1d8a6aba40dbf473f6e1e0d59fac98ec1b47f1ba5608f6d1d67a218b6f839"
+        }
+      ],
+      "opened": [
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/config.json",
+          "flags": 131072
+        },
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/config.json",
+          "flags": 131072
+        },
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/running.json",
+          "flags": 131072
+        }
+      ],
+      "statusMutation": false
+    },
+    {
+      "id": "future-day-matching-lock",
+      "runtime": {
+        "at": "2026-11-13T23:00:00.000Z",
+        "state": "online",
+        "pid": 2147483647,
+        "instanceId": "22222222-2222-4222-8222-222222222222"
+      },
+      "lock": {
+        "instanceId": "22222222-2222-4222-8222-222222222222",
+        "pid": 2147483647
+      },
+      "proposed": "offline-or-not-observed",
+      "now": 1794524400000,
+      "nowIso": "2026-11-12T23:00:00.000Z",
+      "inputAgeMs": -86400000,
+      "exitCode": 0,
+      "actual": "online",
+      "meetsProposedFreshness": false,
+      "report": {
+        "schemaVersion": 1,
+        "gateway": "https://owned-status.invalid",
+        "dashboard": "https://owned-status.invalid",
+        "root": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/workspace",
+        "name": "Owned status observation fixture",
+        "stateScope": {
+          "environment": "development",
+          "directory": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state"
+        },
+        "deviceId": "11111111-1111-4111-8111-111111111111",
+        "paired": true,
+        "permissions": "read-only",
+        "autostart": false,
+        "runtime": {
+          "state": "online",
+          "at": "2026-11-13T23:00:00.000Z",
+          "pid": 2147483647
+        },
+        "environment": "development",
+        "selection": "explicit-directory",
+        "stateDirectory": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state",
+        "observedStatus": "online",
+        "networkChecked": false
+      },
+      "filesBefore": [
+        {
+          "name": "config.json",
+          "bytes": 494,
+          "sha256": "e92f300e941b0e5984a2e8180f01854301adfe69dc9d322d074377b03bb894c3"
+        },
+        {
+          "name": "run.lock",
+          "bytes": 71,
+          "sha256": "9cbbba2fac38787ce411ef81f1bd1e22862314ab1b9612e4512e732a1a9a9301"
+        },
+        {
+          "name": "running.json",
+          "bytes": 137,
+          "sha256": "e90ae6e2b932f8610403af835e0fedca00c861fc34eb27d4fceb225ebf148245"
+        }
+      ],
+      "filesAfter": [
+        {
+          "name": "config.json",
+          "bytes": 494,
+          "sha256": "e92f300e941b0e5984a2e8180f01854301adfe69dc9d322d074377b03bb894c3"
+        },
+        {
+          "name": "run.lock",
+          "bytes": 71,
+          "sha256": "9cbbba2fac38787ce411ef81f1bd1e22862314ab1b9612e4512e732a1a9a9301"
+        },
+        {
+          "name": "running.json",
+          "bytes": 137,
+          "sha256": "e90ae6e2b932f8610403af835e0fedca00c861fc34eb27d4fceb225ebf148245"
+        }
+      ],
+      "opened": [
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/config.json",
+          "flags": 131072
+        },
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/config.json",
+          "flags": 131072
+        },
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/running.json",
+          "flags": 131072
+        }
+      ],
+      "statusMutation": false
+    },
+    {
+      "id": "future-year-mismatched-lock",
+      "runtime": {
+        "at": "2027-11-12T23:00:00.000Z",
+        "state": "online",
+        "pid": 2147483647,
+        "instanceId": "22222222-2222-4222-8222-222222222222"
+      },
+      "lock": {
+        "instanceId": "33333333-3333-4333-8333-333333333333",
+        "pid": 2
+      },
+      "proposed": "offline-or-not-observed",
+      "now": 1794524400000,
+      "nowIso": "2026-11-12T23:00:00.000Z",
+      "inputAgeMs": -31536000000,
+      "exitCode": 0,
+      "actual": "online",
+      "meetsProposedFreshness": false,
+      "report": {
+        "schemaVersion": 1,
+        "gateway": "https://owned-status.invalid",
+        "dashboard": "https://owned-status.invalid",
+        "root": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/workspace",
+        "name": "Owned status observation fixture",
+        "stateScope": {
+          "environment": "development",
+          "directory": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state"
+        },
+        "deviceId": "11111111-1111-4111-8111-111111111111",
+        "paired": true,
+        "permissions": "read-only",
+        "autostart": false,
+        "runtime": {
+          "state": "online",
+          "at": "2027-11-12T23:00:00.000Z",
+          "pid": 2147483647
+        },
+        "environment": "development",
+        "selection": "explicit-directory",
+        "stateDirectory": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state",
+        "observedStatus": "online",
+        "networkChecked": false
+      },
+      "filesBefore": [
+        {
+          "name": "config.json",
+          "bytes": 494,
+          "sha256": "e92f300e941b0e5984a2e8180f01854301adfe69dc9d322d074377b03bb894c3"
+        },
+        {
+          "name": "run.lock",
+          "bytes": 62,
+          "sha256": "c9159db835b976dbb23eef45692b51395f1008e0a60ded3a1c598341a8cbdaa2"
+        },
+        {
+          "name": "running.json",
+          "bytes": 137,
+          "sha256": "56364c4533760324d61e88b2ba86c6287cf2b03bb125b9592b877115a23b7785"
+        }
+      ],
+      "filesAfter": [
+        {
+          "name": "config.json",
+          "bytes": 494,
+          "sha256": "e92f300e941b0e5984a2e8180f01854301adfe69dc9d322d074377b03bb894c3"
+        },
+        {
+          "name": "run.lock",
+          "bytes": 62,
+          "sha256": "c9159db835b976dbb23eef45692b51395f1008e0a60ded3a1c598341a8cbdaa2"
+        },
+        {
+          "name": "running.json",
+          "bytes": 137,
+          "sha256": "56364c4533760324d61e88b2ba86c6287cf2b03bb125b9592b877115a23b7785"
+        }
+      ],
+      "opened": [
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/config.json",
+          "flags": 131072
+        },
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/config.json",
+          "flags": 131072
+        },
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/running.json",
+          "flags": 131072
+        }
+      ],
+      "statusMutation": false
+    },
+    {
+      "id": "current-time-control",
+      "runtime": {
+        "at": "2026-11-12T23:00:00.000Z",
+        "state": "online",
+        "pid": 2
+      },
+      "lock": null,
+      "proposed": "online",
+      "now": 1794524400000,
+      "nowIso": "2026-11-12T23:00:00.000Z",
+      "inputAgeMs": 0,
+      "exitCode": 0,
+      "actual": "online",
+      "meetsProposedFreshness": true,
+      "report": {
+        "schemaVersion": 1,
+        "gateway": "https://owned-status.invalid",
+        "dashboard": "https://owned-status.invalid",
+        "root": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/workspace",
+        "name": "Owned status observation fixture",
+        "stateScope": {
+          "environment": "development",
+          "directory": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state"
+        },
+        "deviceId": "11111111-1111-4111-8111-111111111111",
+        "paired": true,
+        "permissions": "read-only",
+        "autostart": false,
+        "runtime": {
+          "state": "online",
+          "at": "2026-11-12T23:00:00.000Z",
+          "pid": 2
+        },
+        "environment": "development",
+        "selection": "explicit-directory",
+        "stateDirectory": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state",
+        "observedStatus": "online",
+        "networkChecked": false
+      },
+      "filesBefore": [
+        {
+          "name": "config.json",
+          "bytes": 494,
+          "sha256": "e92f300e941b0e5984a2e8180f01854301adfe69dc9d322d074377b03bb894c3"
+        },
+        {
+          "name": "running.json",
+          "bytes": 72,
+          "sha256": "65375932f21564e1fdbeee1cef15659ab6286ba21938e6983968e08b27810dd9"
+        }
+      ],
+      "filesAfter": [
+        {
+          "name": "config.json",
+          "bytes": 494,
+          "sha256": "e92f300e941b0e5984a2e8180f01854301adfe69dc9d322d074377b03bb894c3"
+        },
+        {
+          "name": "running.json",
+          "bytes": 72,
+          "sha256": "65375932f21564e1fdbeee1cef15659ab6286ba21938e6983968e08b27810dd9"
+        }
+      ],
+      "opened": [
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/config.json",
+          "flags": 131072
+        },
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/config.json",
+          "flags": 131072
+        },
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/running.json",
+          "flags": 131072
+        }
+      ],
+      "statusMutation": false
+    },
+    {
+      "id": "recent-44999-control",
+      "runtime": {
+        "at": "2026-11-12T22:59:15.001Z",
+        "state": "online",
+        "pid": 2147483647
+      },
+      "lock": {
+        "instanceId": "22222222-2222-4222-8222-222222222222",
+        "pid": 2147483647
+      },
+      "proposed": "online",
+      "now": 1794524400000,
+      "nowIso": "2026-11-12T23:00:00.000Z",
+      "inputAgeMs": 44999,
+      "exitCode": 0,
+      "actual": "online",
+      "meetsProposedFreshness": true,
+      "report": {
+        "schemaVersion": 1,
+        "gateway": "https://owned-status.invalid",
+        "dashboard": "https://owned-status.invalid",
+        "root": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/workspace",
+        "name": "Owned status observation fixture",
+        "stateScope": {
+          "environment": "development",
+          "directory": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state"
+        },
+        "deviceId": "11111111-1111-4111-8111-111111111111",
+        "paired": true,
+        "permissions": "read-only",
+        "autostart": false,
+        "runtime": {
+          "state": "online",
+          "at": "2026-11-12T22:59:15.001Z",
+          "pid": 2147483647
+        },
+        "environment": "development",
+        "selection": "explicit-directory",
+        "stateDirectory": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state",
+        "observedStatus": "online",
+        "networkChecked": false
+      },
+      "filesBefore": [
+        {
+          "name": "config.json",
+          "bytes": 494,
+          "sha256": "e92f300e941b0e5984a2e8180f01854301adfe69dc9d322d074377b03bb894c3"
+        },
+        {
+          "name": "run.lock",
+          "bytes": 71,
+          "sha256": "9cbbba2fac38787ce411ef81f1bd1e22862314ab1b9612e4512e732a1a9a9301"
+        },
+        {
+          "name": "running.json",
+          "bytes": 81,
+          "sha256": "c189f17e2aba751a918fb18f79eb35167c520e4a8f0888f1fe2f39b22cbcc043"
+        }
+      ],
+      "filesAfter": [
+        {
+          "name": "config.json",
+          "bytes": 494,
+          "sha256": "e92f300e941b0e5984a2e8180f01854301adfe69dc9d322d074377b03bb894c3"
+        },
+        {
+          "name": "run.lock",
+          "bytes": 71,
+          "sha256": "9cbbba2fac38787ce411ef81f1bd1e22862314ab1b9612e4512e732a1a9a9301"
+        },
+        {
+          "name": "running.json",
+          "bytes": 81,
+          "sha256": "c189f17e2aba751a918fb18f79eb35167c520e4a8f0888f1fe2f39b22cbcc043"
+        }
+      ],
+      "opened": [
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/config.json",
+          "flags": 131072
+        },
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/config.json",
+          "flags": 131072
+        },
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/running.json",
+          "flags": 131072
+        }
+      ],
+      "statusMutation": false
+    },
+    {
+      "id": "boundary-45000-control",
+      "runtime": {
+        "at": "2026-11-12T22:59:15.000Z",
+        "state": "online"
+      },
+      "lock": null,
+      "proposed": "offline-or-not-observed",
+      "now": 1794524400000,
+      "nowIso": "2026-11-12T23:00:00.000Z",
+      "inputAgeMs": 45000,
+      "exitCode": 0,
+      "actual": "offline-or-not-observed",
+      "meetsProposedFreshness": true,
+      "report": {
+        "schemaVersion": 1,
+        "gateway": "https://owned-status.invalid",
+        "dashboard": "https://owned-status.invalid",
+        "root": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/workspace",
+        "name": "Owned status observation fixture",
+        "stateScope": {
+          "environment": "development",
+          "directory": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state"
+        },
+        "deviceId": "11111111-1111-4111-8111-111111111111",
+        "paired": true,
+        "permissions": "read-only",
+        "autostart": false,
+        "runtime": {
+          "state": "online",
+          "at": "2026-11-12T22:59:15.000Z"
+        },
+        "environment": "development",
+        "selection": "explicit-directory",
+        "stateDirectory": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state",
+        "observedStatus": "offline-or-not-observed",
+        "networkChecked": false
+      },
+      "filesBefore": [
+        {
+          "name": "config.json",
+          "bytes": 494,
+          "sha256": "e92f300e941b0e5984a2e8180f01854301adfe69dc9d322d074377b03bb894c3"
+        },
+        {
+          "name": "running.json",
+          "bytes": 60,
+          "sha256": "a38033f47fb5ab9ad901aa87948d6fdf13afa447c06a6c4a3edf7f5f8cdf0cfe"
+        }
+      ],
+      "filesAfter": [
+        {
+          "name": "config.json",
+          "bytes": 494,
+          "sha256": "e92f300e941b0e5984a2e8180f01854301adfe69dc9d322d074377b03bb894c3"
+        },
+        {
+          "name": "running.json",
+          "bytes": 60,
+          "sha256": "a38033f47fb5ab9ad901aa87948d6fdf13afa447c06a6c4a3edf7f5f8cdf0cfe"
+        }
+      ],
+      "opened": [
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/config.json",
+          "flags": 131072
+        },
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/config.json",
+          "flags": 131072
+        },
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/running.json",
+          "flags": 131072
+        }
+      ],
+      "statusMutation": false
+    },
+    {
+      "id": "stale-45001-control",
+      "runtime": {
+        "at": "2026-11-12T22:59:14.999Z",
+        "state": "online"
+      },
+      "lock": null,
+      "proposed": "offline-or-not-observed",
+      "now": 1794524400000,
+      "nowIso": "2026-11-12T23:00:00.000Z",
+      "inputAgeMs": 45001,
+      "exitCode": 0,
+      "actual": "offline-or-not-observed",
+      "meetsProposedFreshness": true,
+      "report": {
+        "schemaVersion": 1,
+        "gateway": "https://owned-status.invalid",
+        "dashboard": "https://owned-status.invalid",
+        "root": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/workspace",
+        "name": "Owned status observation fixture",
+        "stateScope": {
+          "environment": "development",
+          "directory": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state"
+        },
+        "deviceId": "11111111-1111-4111-8111-111111111111",
+        "paired": true,
+        "permissions": "read-only",
+        "autostart": false,
+        "runtime": {
+          "state": "online",
+          "at": "2026-11-12T22:59:14.999Z"
+        },
+        "environment": "development",
+        "selection": "explicit-directory",
+        "stateDirectory": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state",
+        "observedStatus": "offline-or-not-observed",
+        "networkChecked": false
+      },
+      "filesBefore": [
+        {
+          "name": "config.json",
+          "bytes": 494,
+          "sha256": "e92f300e941b0e5984a2e8180f01854301adfe69dc9d322d074377b03bb894c3"
+        },
+        {
+          "name": "running.json",
+          "bytes": 60,
+          "sha256": "41c81938cd751f06427c883abb1d3340859edcb20c3313c7ba7f55472cfab36d"
+        }
+      ],
+      "filesAfter": [
+        {
+          "name": "config.json",
+          "bytes": 494,
+          "sha256": "e92f300e941b0e5984a2e8180f01854301adfe69dc9d322d074377b03bb894c3"
+        },
+        {
+          "name": "running.json",
+          "bytes": 60,
+          "sha256": "41c81938cd751f06427c883abb1d3340859edcb20c3313c7ba7f55472cfab36d"
+        }
+      ],
+      "opened": [
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/config.json",
+          "flags": 131072
+        },
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/config.json",
+          "flags": 131072
+        },
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/running.json",
+          "flags": 131072
+        }
+      ],
+      "statusMutation": false
+    },
+    {
+      "id": "missing-timestamp-control",
+      "runtime": {
+        "state": "online"
+      },
+      "lock": null,
+      "proposed": "offline-or-not-observed",
+      "now": 1794524400000,
+      "nowIso": "2026-11-12T23:00:00.000Z",
+      "inputAgeMs": null,
+      "exitCode": 0,
+      "actual": "offline-or-not-observed",
+      "meetsProposedFreshness": true,
+      "report": {
+        "schemaVersion": 1,
+        "gateway": "https://owned-status.invalid",
+        "dashboard": "https://owned-status.invalid",
+        "root": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/workspace",
+        "name": "Owned status observation fixture",
+        "stateScope": {
+          "environment": "development",
+          "directory": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state"
+        },
+        "deviceId": "11111111-1111-4111-8111-111111111111",
+        "paired": true,
+        "permissions": "read-only",
+        "autostart": false,
+        "runtime": {
+          "state": "online"
+        },
+        "environment": "development",
+        "selection": "explicit-directory",
+        "stateDirectory": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state",
+        "observedStatus": "offline-or-not-observed",
+        "networkChecked": false
+      },
+      "filesBefore": [
+        {
+          "name": "config.json",
+          "bytes": 494,
+          "sha256": "e92f300e941b0e5984a2e8180f01854301adfe69dc9d322d074377b03bb894c3"
+        },
+        {
+          "name": "running.json",
+          "bytes": 24,
+          "sha256": "9fee5bb0ecd18cf0bcbdf3278e950bdfbd5dca3257c821a1883ee68a472f0cda"
+        }
+      ],
+      "filesAfter": [
+        {
+          "name": "config.json",
+          "bytes": 494,
+          "sha256": "e92f300e941b0e5984a2e8180f01854301adfe69dc9d322d074377b03bb894c3"
+        },
+        {
+          "name": "running.json",
+          "bytes": 24,
+          "sha256": "9fee5bb0ecd18cf0bcbdf3278e950bdfbd5dca3257c821a1883ee68a472f0cda"
+        }
+      ],
+      "opened": [
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/config.json",
+          "flags": 131072
+        },
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/config.json",
+          "flags": 131072
+        },
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/running.json",
+          "flags": 131072
+        }
+      ],
+      "statusMutation": false
+    },
+    {
+      "id": "malformed-timestamp-control",
+      "runtime": {
+        "at": "not-a-date",
+        "state": "online"
+      },
+      "lock": null,
+      "proposed": "offline-or-not-observed",
+      "now": 1794524400000,
+      "nowIso": "2026-11-12T23:00:00.000Z",
+      "inputAgeMs": null,
+      "exitCode": 0,
+      "actual": "offline-or-not-observed",
+      "meetsProposedFreshness": true,
+      "report": {
+        "schemaVersion": 1,
+        "gateway": "https://owned-status.invalid",
+        "dashboard": "https://owned-status.invalid",
+        "root": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/workspace",
+        "name": "Owned status observation fixture",
+        "stateScope": {
+          "environment": "development",
+          "directory": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state"
+        },
+        "deviceId": "11111111-1111-4111-8111-111111111111",
+        "paired": true,
+        "permissions": "read-only",
+        "autostart": false,
+        "runtime": {
+          "state": "online"
+        },
+        "environment": "development",
+        "selection": "explicit-directory",
+        "stateDirectory": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state",
+        "observedStatus": "offline-or-not-observed",
+        "networkChecked": false
+      },
+      "filesBefore": [
+        {
+          "name": "config.json",
+          "bytes": 494,
+          "sha256": "e92f300e941b0e5984a2e8180f01854301adfe69dc9d322d074377b03bb894c3"
+        },
+        {
+          "name": "running.json",
+          "bytes": 46,
+          "sha256": "ed6c4cfccf899e59278c762b0f2b620b10af2f109de160eb23c2f7c2efc0e736"
+        }
+      ],
+      "filesAfter": [
+        {
+          "name": "config.json",
+          "bytes": 494,
+          "sha256": "e92f300e941b0e5984a2e8180f01854301adfe69dc9d322d074377b03bb894c3"
+        },
+        {
+          "name": "running.json",
+          "bytes": 46,
+          "sha256": "ed6c4cfccf899e59278c762b0f2b620b10af2f109de160eb23c2f7c2efc0e736"
+        }
+      ],
+      "opened": [
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/config.json",
+          "flags": 131072
+        },
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/config.json",
+          "flags": 131072
+        },
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/running.json",
+          "flags": 131072
+        }
+      ],
+      "statusMutation": false
+    },
+    {
+      "id": "numeric-timestamp-control",
+      "runtime": {
+        "at": 1794524400000,
+        "state": "online"
+      },
+      "lock": null,
+      "proposed": "offline-or-not-observed",
+      "now": 1794524400000,
+      "nowIso": "2026-11-12T23:00:00.000Z",
+      "inputAgeMs": null,
+      "exitCode": 0,
+      "actual": "offline-or-not-observed",
+      "meetsProposedFreshness": true,
+      "report": {
+        "schemaVersion": 1,
+        "gateway": "https://owned-status.invalid",
+        "dashboard": "https://owned-status.invalid",
+        "root": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/workspace",
+        "name": "Owned status observation fixture",
+        "stateScope": {
+          "environment": "development",
+          "directory": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state"
+        },
+        "deviceId": "11111111-1111-4111-8111-111111111111",
+        "paired": true,
+        "permissions": "read-only",
+        "autostart": false,
+        "runtime": {
+          "state": "online"
+        },
+        "environment": "development",
+        "selection": "explicit-directory",
+        "stateDirectory": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state",
+        "observedStatus": "offline-or-not-observed",
+        "networkChecked": false
+      },
+      "filesBefore": [
+        {
+          "name": "config.json",
+          "bytes": 494,
+          "sha256": "e92f300e941b0e5984a2e8180f01854301adfe69dc9d322d074377b03bb894c3"
+        },
+        {
+          "name": "running.json",
+          "bytes": 47,
+          "sha256": "624e9d137fbf0fb42c0e915d6a1e12a4dcf64284a7fd02b4dc70a49bbc32475c"
+        }
+      ],
+      "filesAfter": [
+        {
+          "name": "config.json",
+          "bytes": 494,
+          "sha256": "e92f300e941b0e5984a2e8180f01854301adfe69dc9d322d074377b03bb894c3"
+        },
+        {
+          "name": "running.json",
+          "bytes": 47,
+          "sha256": "624e9d137fbf0fb42c0e915d6a1e12a4dcf64284a7fd02b4dc70a49bbc32475c"
+        }
+      ],
+      "opened": [
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/config.json",
+          "flags": 131072
+        },
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/config.json",
+          "flags": 131072
+        },
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/running.json",
+          "flags": 131072
+        }
+      ],
+      "statusMutation": false
+    },
+    {
+      "id": "null-timestamp-control",
+      "runtime": {
+        "at": null,
+        "state": "online"
+      },
+      "lock": null,
+      "proposed": "offline-or-not-observed",
+      "now": 1794524400000,
+      "nowIso": "2026-11-12T23:00:00.000Z",
+      "inputAgeMs": null,
+      "exitCode": 0,
+      "actual": "offline-or-not-observed",
+      "meetsProposedFreshness": true,
+      "report": {
+        "schemaVersion": 1,
+        "gateway": "https://owned-status.invalid",
+        "dashboard": "https://owned-status.invalid",
+        "root": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/workspace",
+        "name": "Owned status observation fixture",
+        "stateScope": {
+          "environment": "development",
+          "directory": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state"
+        },
+        "deviceId": "11111111-1111-4111-8111-111111111111",
+        "paired": true,
+        "permissions": "read-only",
+        "autostart": false,
+        "runtime": {
+          "state": "online"
+        },
+        "environment": "development",
+        "selection": "explicit-directory",
+        "stateDirectory": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state",
+        "observedStatus": "offline-or-not-observed",
+        "networkChecked": false
+      },
+      "filesBefore": [
+        {
+          "name": "config.json",
+          "bytes": 494,
+          "sha256": "e92f300e941b0e5984a2e8180f01854301adfe69dc9d322d074377b03bb894c3"
+        },
+        {
+          "name": "running.json",
+          "bytes": 38,
+          "sha256": "fe20c13f44aa2d527d131b4e5813221ed09b02276864a227338716acc1661b0d"
+        }
+      ],
+      "filesAfter": [
+        {
+          "name": "config.json",
+          "bytes": 494,
+          "sha256": "e92f300e941b0e5984a2e8180f01854301adfe69dc9d322d074377b03bb894c3"
+        },
+        {
+          "name": "running.json",
+          "bytes": 38,
+          "sha256": "fe20c13f44aa2d527d131b4e5813221ed09b02276864a227338716acc1661b0d"
+        }
+      ],
+      "opened": [
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/config.json",
+          "flags": 131072
+        },
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/config.json",
+          "flags": 131072
+        },
+        {
+          "path": "/workspace/scratch/267bdf8cab08/remote-status-future-time-investigation/owned-fixture/state/running.json",
+          "flags": 131072
+        }
+      ],
+      "statusMutation": false
+    }
+  ],
+  "totals": {
+    "observations": 11,
+    "futureFalseFreshness": 3,
+    "preservedControls": 8,
+    "networkOperations": 0,
+    "childProcessOperations": 0,
+    "pidProbes": 0,
+    "credentialReads": 0,
+    "runLockReads": 0,
+    "statusMutations": 0
+  }
+}

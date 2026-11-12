@@ -234,7 +234,10 @@ const report = await withPackageWorkspace(
     const profileLog = path.join(output, 'remote-profile-tests.tap');
     await fs.writeFile(profileLog, profileVerification.stdout + profileVerification.stderr);
     const profileTestCount = Number(profileVerification.stdout.match(/^# tests (\d+)$/m)?.[1]);
-    assert.ok(profileTestCount >= 24, 'Installed remote-profile qualification is incomplete');
+    assert.ok(
+      profileTestCount >= 35,
+      'Installed remote-profile and status-freshness qualification is incomplete',
+    );
     for (const field of ['fail', 'cancelled', 'skipped', 'todo'])
       assert.match(profileVerification.stdout, new RegExp('^# ' + field + ' 0$', 'm'));
     const profileCwdRelative = path.relative(root, await fs.realpath(home));

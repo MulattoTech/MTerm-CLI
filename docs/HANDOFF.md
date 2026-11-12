@@ -1,3 +1,37 @@
+# Local remote-status freshness source correction — November 12, 2026
+
+A reproduced local status defect treated future runtime timestamps as recent and
+reported their saved online state. Eleven new real-command/profile fixtures
+produced3future-date failures and8controls on unchanged source; the correction
+passes11/11 and80/80 nearby integration cases. Status now uses finite ages in
+0 <= age <45000ms, preserving saved observations, profile scope, local state bytes
+and networkChecked:false. The installed-package test floor rises to35.
+
+This is a separate source-only slice under issue58, with CLI064/290 reviewed and
+no stage changes. Fresh independent review passed22 additional adversarial cases
+with unchanged source hashes and no findings. Normal build passed. The complete
+local check failed:1582tests,1543pass,27unchanged isolation listen EPERM failures,
+12existingWindows-onlyskips and0cancel/TODO; its full log is retained losslessly.
+Exact hosted candidate and actual-main qualification remain required.
+
+Parent admission PR262 merged normally at
+`b2b62156bde7d75b2a36b0af0fd677ef1ad514dd`, equal tree4e5f026a, ordered parents
+d430ec5e/55ac8b1f; its fresh actual-main checks are running. This worktree normally
+fast-forwarded to that equal-tree merge without changing the three reviewed source
+files. Accounting PR261 is fully qualified atd430ec5e. Final add-only reconciliation
+will follow these three source deliveries and separately qualify MTR-METRIC-01
+source axes; no runtime deployment or whole-feature acceptance is inferred.
+
+Preserve the dirty owner Windows checkout, active services and working connector.
+Issue232 remains on its diagnosed provider HOLD after two rejected HTTP creates
+(second HTTP400/code12121, unresolved cause, zero acknowledged creations). No
+blind third provider attempt, restart or deployment is included.
+
+See [status evidence](validation/2026-11-12-remote-status-freshness/README.md) and the
+[run record](engineering-runs/mterm-comprehensive-reconciliation-2026-11-12.md).
+
+---
+
 # Final admission authorization source correction — November 12, 2026
 
 Active isolated source work fixes token/grant expiry during new-job admission,

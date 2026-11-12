@@ -393,7 +393,8 @@ export async function remoteMain(args: string[]): Promise<number> {
   if (command === 'status') {
     const status = await store.status();
     const runtime = status.runtime as { at?: string; state?: string } | null;
-    const recent = !!runtime?.at && Date.now() - Date.parse(runtime.at) < 45000;
+    const age = runtime?.at ? Date.now() - Date.parse(runtime.at) : NaN;
+    const recent = Number.isFinite(age) && age >= 0 && age < 45000;
     console.log(
       JSON.stringify(
         {

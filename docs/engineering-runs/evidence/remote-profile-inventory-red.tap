@@ -1,0 +1,45 @@
+✖ invalid runtime metadata does not turn a recorded pairing into a false unpaired claim (59.188876ms)
+✖ a user-valid profile name cannot act as a hidden collection admission probe (17.284858ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 402.682084
+
+✖ failing tests:
+
+test at tests/remote-profiles.test.mjs:337:1
+✖ invalid runtime metadata does not turn a recorded pairing into a false unpaired claim (59.188876ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+
+  false !== null
+
+      at TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/tests/remote-profiles.test.mjs:344:10)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: null,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/remote-profiles.test.mjs:349:1
+✖ a user-valid profile name cannot act as a hidden collection admission probe (17.284858ms)
+  Error [ToolError]: Remote state must use regular directories without linked managed parents.
+      at fail (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/dist/errors.js:12:11)
+      at privateDirectory (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/dist/remote/profiles.js:89:9)
+      at async inspect (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/dist/remote/profiles.js:103:22)
+      at async admitRemoteStateDirectory (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/dist/remote/profiles.js:133:13)
+      at async discoverRemoteTargets (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/dist/remote/profiles.js:210:5)
+      at async remoteMain (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/dist/remote/cli.js:220:27)
+      at async Object.run (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/tests/remote-profiles.test.mjs:39:18)
+      at async TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI-Profiles/tests/remote-profiles.test.mjs:353:21)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    code: 'REMOTE_STATE'
+  }

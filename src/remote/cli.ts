@@ -7,8 +7,17 @@ import { setTimeout as delay } from 'node:timers/promises';
 import { fail, plain } from '../errors.js';
 import { RemoteReadAdapter, remoteRoot } from './adapter.js';
 import { GatewayTransport, normalizeGateway, RemoteAgent } from './agent.js';
-import { defaultRemoteStateDirectory, RemoteStateStore, type RemoteConfig } from './state.js';
+import { RemoteStateStore, type RemoteConfig } from './state.js';
 import { READ_TOOLS, UUID_PATTERN, WIRE_VERSION } from './protocol.js';
+import {
+  admitRemoteStateDirectory,
+  assertRemoteRootOutsideState,
+  discoverRemoteTargets,
+  remoteTargetArguments,
+  resolveRemoteTarget,
+  type RemoteEnvironment,
+  type RemoteTarget,
+} from './profiles.js';
 
 export const REMOTE_HELP = `MTerm remote — opt-in outbound read-only agent
 
@@ -18,6 +27,13 @@ export const REMOTE_HELP = `MTerm remote — opt-in outbound read-only agent
   mterm-cli remote status [--state-dir PATH] [--json]
   mterm-cli remote stop [--state-dir PATH]
   mterm-cli remote revoke [--state-dir PATH]
+  mterm-cli remote profiles [--dev | --environment production|development] [--json]
+
+All six lifecycle commands accept [--profile NAME | --state-dir PATH] and
+[--dev | --environment production|development]. Names are lowercase ASCII slugs;
+default is an alias, never a copy. Explicit --environment overrides MTERM_ENV.
+Development state is separate and never imports production credentials.
+Profiles select the MTerm HTTPS-origin pairing/agent protocol, not arbitrary MCP paths.
 
 Setup previews by default. --apply saves only MTerm remote configuration.
 Pairing requires owner approval in the private browser dashboard.
@@ -26,7 +42,7 @@ Write and process tools are unavailable. Stop affects only this state directory�
 Windows credentials use current-user DPAPI; POSIX credentials use private mode-0600 storage.
 `;
 interface Options {
-  state: string;
+  target: RemoteTarget;
   gateway?: string;
   dashboard?: string;
   root?: string;
@@ -35,7 +51,13 @@ interface Options {
   json: boolean;
 }
 function options(args: string[], command: string): Options {
-  const out: Options = { state: defaultRemoteStateDirectory(), apply: false, json: false };
+  const selected: {
+    environment?: RemoteEnvironment;
+    dev?: boolean;
+    profile?: string;
+    stateDirectory?: string;
+  } = {};
+  const out = { apply: false, json: false } as Options;
   const seen = new Set<string>();
   for (let i = 0; i < args.length; i++) {
     const key = args[i]!;
@@ -45,18 +67,27 @@ function options(args: string[], command: string): Options {
       out.apply = true;
       continue;
     }
-    if (key === '--json' && ['status', 'setup'].includes(command)) {
+    if (key === '--dev') {
+      selected.dev = true;
+      continue;
+    }
+    if (key === '--json' && ['status', 'setup', 'profiles'].includes(command)) {
       out.json = true;
       continue;
     }
     if (
-      key === '--state-dir' ||
+      key === '--environment' ||
+      (command !== 'profiles' && ['--state-dir', '--profile'].includes(key)) ||
       (command === 'setup' && ['--gateway', '--dashboard', '--root', '--name'].includes(key))
     ) {
       const value = args[++i];
       if (!value || value.startsWith('--')) fail('USAGE', 'Remote option is missing its value.');
-      if (key === '--state-dir') out.state = path.resolve(value);
-      else if (key === '--gateway') out.gateway = value;
+      if (key === '--state-dir') selected.stateDirectory = path.resolve(value);
+      else if (key === '--profile') selected.profile = value;
+      else if (key === '--environment') {
+        if (!['production', 'development'].includes(value)) fail('USAGE', 'Unknown remote environment.');
+        selected.environment = value as RemoteEnvironment;
+      } else if (key === '--gateway') out.gateway = value;
       else if (key === '--dashboard') out.dashboard = value;
       else if (key === '--root') out.root = value;
       else out.name = value;
@@ -64,6 +95,7 @@ function options(args: string[], command: string): Options {
     }
     fail('USAGE', 'Unsupported remote command option.');
   }
+  out.target = resolveRemoteTarget(selected);
   return out;
 }
 function ownSignals(controller: AbortController): () => void {
@@ -76,7 +108,10 @@ function ownSignals(controller: AbortController): () => void {
   };
 }
 
-async function pair(store: RemoteStateStore): Promise<number> {
+function nextCommand(command: string, target: RemoteTarget) {
+  return { executable: 'mterm-cli', args: ['remote', command, ...remoteTargetArguments(target)] };
+}
+async function pair(store: RemoteStateStore, target: RemoteTarget): Promise<number> {
   const config = await store.config();
   if (config.deviceId)
     fail('REMOTE_PAIRED', 'This computer is already paired. Revoke its current pairing before replacing it.');
@@ -143,7 +178,17 @@ async function pair(store: RemoteStateStore): Promise<number> {
         fail('REMOTE_PROTOCOL', 'Gateway did not provide a complete approved pairing.');
       await store.savePairing(result.deviceId, result.deviceToken);
       console.log(
-        'Computer paired with read-only permissions. Start the foreground agent with mterm-cli remote start.',
+        JSON.stringify(
+          {
+            paired: true,
+            permissions: 'read-only',
+            ...target,
+            next: 'Start the selected foreground agent using nextCommand arguments.',
+            nextCommand: nextCommand('start', target),
+          },
+          null,
+          2,
+        ),
       );
       return 0;
     }
@@ -216,14 +261,50 @@ export async function remoteMain(args: string[]): Promise<number> {
     console.log(REMOTE_HELP);
     return 0;
   }
-  if (!['setup', 'pair', 'start', 'status', 'stop', 'revoke'].includes(command))
+  if (!['setup', 'pair', 'start', 'status', 'stop', 'revoke', 'profiles'].includes(command))
     fail('USAGE', 'Unknown remote command. See remote help.');
   const opts = options(args.slice(1), command);
+  let target = opts.target;
+  if (command === 'profiles') {
+    const inventory = await discoverRemoteTargets(target.environment);
+    const profiles: Record<string, unknown>[] = [];
+    for (const item of inventory.targets) {
+      try {
+        const store = await RemoteStateStore.open(item.stateDirectory, false, item.environment);
+        profiles.push({
+          ...item,
+          stateDirectory: store.directory,
+          ...(await store.status()),
+          status: 'configured-local-only',
+        });
+      } catch {
+        profiles.push({ ...item, status: 'invalid-or-unconfigured', paired: null });
+      }
+    }
+    console.log(
+      JSON.stringify(
+        {
+          environment: target.environment,
+          profiles,
+          truncated: inventory.truncated,
+          invalidEntries: inventory.invalidEntries,
+          networkChecked: false,
+          credentialsChecked: false,
+        },
+        null,
+        2,
+      ),
+    );
+    return 0;
+  }
+  const admission = await admitRemoteStateDirectory(target.stateDirectory, target.environment, false, true);
+  target = { ...target, stateDirectory: admission.directory };
   if (command === 'setup') {
     if (!opts.gateway || !opts.root)
       fail('USAGE', 'Remote setup requires --gateway HTTPS_ORIGIN and --root ABSOLUTE_PATH.');
     const gateway = normalizeGateway(opts.gateway),
       root = await remoteRoot(opts.root);
+    await assertRemoteRootOutsideState(root, target.stateDirectory);
     let config: RemoteConfig = {
       schemaVersion: 1,
       gateway,
@@ -232,21 +313,23 @@ export async function remoteMain(args: string[]): Promise<number> {
       name: plain(opts.name ?? os.hostname()).slice(0, 80),
     };
     if (!config.name.trim()) fail('USAGE', 'Device name must be nonempty.');
-    if (opts.apply) config = await (await RemoteStateStore.open(opts.state)).configure(config);
+    if (opts.apply)
+      config = await (
+        await RemoteStateStore.open(target.stateDirectory, true, target.environment)
+      ).configure(config);
     console.log(
       JSON.stringify(
         {
           ...config,
-          stateDirectory: opts.state,
+          ...target,
           applied: opts.apply,
           paired: !!config.deviceId,
           permissions: 'read-only',
           autostart: false,
           next: opts.apply
-            ? config.deviceId
-              ? 'mterm-cli remote start'
-              : 'mterm-cli remote pair'
+            ? 'Use nextCommand arguments for the selected target.'
             : 'Repeat with --apply to save this configuration.',
+          ...(opts.apply ? { nextCommand: nextCommand(config.deviceId ? 'start' : 'pair', target) } : {}),
         },
         null,
         2,
@@ -254,8 +337,10 @@ export async function remoteMain(args: string[]): Promise<number> {
     );
     return 0;
   }
-  const store = await RemoteStateStore.open(opts.state, false);
-  if (command === 'pair') return pair(store);
+  const store = await RemoteStateStore.open(target.stateDirectory, false, target.environment);
+  // open/requestStop validate state scope without requiring the exposed root
+  // to remain accessible; an owned stop must survive workspace loss.
+  if (command === 'pair') return pair(store, target);
   if (command === 'start') return start(store);
   if (command === 'status') {
     const status = await store.status();
@@ -265,6 +350,7 @@ export async function remoteMain(args: string[]): Promise<number> {
       JSON.stringify(
         {
           ...status,
+          ...target,
           observedStatus: runtime && recent ? runtime.state : 'offline-or-not-observed',
           networkChecked: false,
         },
@@ -276,7 +362,11 @@ export async function remoteMain(args: string[]): Promise<number> {
   }
   if (command === 'stop') {
     console.log(
-      JSON.stringify({ stopRequested: await store.requestStop(), scope: 'owned remote session only' }),
+      JSON.stringify({
+        stopRequested: await store.requestStop(),
+        scope: 'owned remote session only',
+        ...target,
+      }),
     );
     return 0;
   }
@@ -288,6 +378,12 @@ export async function remoteMain(args: string[]): Promise<number> {
   });
   await store.requestStop();
   await store.clearPairing();
-  console.log('Remote pairing revoked. Local credentials removed; the owned agent will stop.');
+  console.log(
+    JSON.stringify({
+      revoked: true,
+      ...target,
+      message: 'Selected pairing revoked; local credentials removed and its owned agent stop requested.',
+    }),
+  );
   return 0;
 }

@@ -213,6 +213,46 @@ const report = await withPackageWorkspace(
     assert.equal(remoteState.syntheticOnly, true);
     assert.equal(remoteState.actualRemoteEnrollment, false);
     assert.equal(remoteState.modelCalls, 0);
+    const profileVerification = await exec(
+      process.execPath,
+      [
+        '--test',
+        '--test-reporter=tap',
+        '--test-concurrency=1',
+        path.join(root, 'tests/remote-profiles.test.mjs'),
+      ],
+      {
+        cwd: home,
+        env: { ...env, MTERM_PROFILE_VERIFY_ROOT: installed },
+        timeout: 120000,
+        maxBuffer: 1048576,
+        windowsHide: true,
+      },
+    );
+    const profileLog = path.join(output, 'remote-profile-tests.tap');
+    await fs.writeFile(profileLog, profileVerification.stdout + profileVerification.stderr);
+    const profileTestCount = Number(profileVerification.stdout.match(/^# tests (\d+)$/m)?.[1]);
+    assert.ok(profileTestCount >= 24, 'Installed remote-profile qualification is incomplete');
+    for (const field of ['fail', 'cancelled', 'skipped', 'todo'])
+      assert.match(profileVerification.stdout, new RegExp('^# ' + field + ' 0$', 'm'));
+    const profileCwdRelative = path.relative(root, await fs.realpath(home));
+    const profileOutsideCheckout =
+      path.isAbsolute(profileCwdRelative) ||
+      profileCwdRelative === '..' ||
+      profileCwdRelative.startsWith('..' + path.sep);
+    assert.equal(profileOutsideCheckout, true, 'Profile tests must execute outside the checkout');
+    const remoteProfiles = {
+      tests: profileTestCount,
+      packageRoot: installed,
+      fromOutsideCheckout: profileOutsideCheckout,
+      syntheticOnly: true,
+      actualRemoteEnrollment: false,
+      modelCalls: 0,
+      log: profileLog,
+      moduleBindings: remoteSourceFiles.filter((file) =>
+        ['dist/remote/cli.js', 'dist/remote/state.js', 'dist/remote/profiles.js'].includes(file.path),
+      ),
+    };
     const packBindings = [];
     for (const name of [
       'cli.js',
@@ -1388,6 +1428,7 @@ const report = await withPackageWorkspace(
       installedCompatibility: compatibility,
       installedConfiguration: configuration,
       installedRemoteState: remoteState,
+      installedRemoteProfiles: remoteProfiles,
       installedOptionalPacks,
       installedPackUpdateCheck,
       installedRegistryPersistence,

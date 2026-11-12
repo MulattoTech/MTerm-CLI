@@ -9,6 +9,67 @@ tool-call results, and client acceptance must be tied to a dated validation repo
 and exact source/deployment commit. The instructions below do not establish that
 the owner has completed Google sign-in or connected ChatGPT.
 
+## Named local gateway profiles
+
+Use `--profile NAME` to keep independent configurations, credentials, runtime files
+and owned-session locks for the existing MTerm gateway protocol. Names are lowercase
+ASCII slugs, begin with a letter and have at most 48 characters. `default` aliases the
+existing default slot; it does not copy or migrate it.
+
+```text
+mterm-cli remote setup --environment development --profile staging --gateway https://gateway.example --root ABSOLUTE_DIRECTORY
+mterm-cli remote setup --environment development --profile staging --gateway https://gateway.example --root ABSOLUTE_DIRECTORY --apply
+mterm-cli remote pair --environment development --profile staging
+mterm-cli remote start --environment development --profile staging
+mterm-cli remote status --environment development --profile staging --json
+mterm-cli remote stop --environment development --profile staging
+mterm-cli remote revoke --environment development --profile staging
+mterm-cli remote profiles --environment development --json
+```
+
+Setup remains a preview until `--apply`. Pairing still requires authenticated browser
+approval, and start remains a foreground read-only agent. `--dev` is shorthand for
+the development environment; it cannot be combined with `--environment`.
+An explicit environment overrides `MTERM_ENV`. Otherwise only
+`MTERM_ENV=development` selects development. A profile named `staging` does not infer
+an environment, gateway, identity or authorization.
+
+Let `B` be the existing remote state base: Windows `LOCALAPPDATA`, or
+`XDG_STATE_HOME` on POSIX, with the existing per-user fallbacks.
+
+| Selection | State location |
+| --- | --- |
+| Production default | `B/MTerm-CLI/remote` — unchanged |
+| Production named profile | `B/MTerm-CLI/remote-profiles/NAME` |
+| Development default | `B/MTerm-CLI-DEV/remote` |
+| Development named profile | `B/MTerm-CLI-DEV/remote-profiles/NAME` |
+
+`--state-dir PATH` remains an explicit alternative to `--profile`; combining them
+is an error. An explicit path does not override environment checks. Development
+does not import, copy, migrate or fall back to production state. Existing unbound
+production configurations remain compatible; named/development configurations bind
+their public metadata and protected credential to their canonical directory and
+environment. Moving or copying a bound store requires explicit reconfiguration and
+pairing; it cannot adopt another profile's grant.
+
+Setup and pair emit `nextCommand` with an executable and argument array. Preserve
+that array, including its explicit environment and selection, instead of constructing
+a shell command from a state path. This supports paths containing spaces or shell
+metacharacters without interpolation.
+
+`remote profiles` lists only the selected environment's managed collection, with
+at most 64 records and 256 inspected entries. It does not discover arbitrary
+`--state-dir` locations, access the network or decrypt credentials. Local pairing
+metadata and runtime observations are not a fresh readiness check. Invalid entries
+are reported explicitly, and unavailable pairing state is `null`, not a false
+unpaired assertion. Stop remains available for its owned session if the exposed
+workspace disappears, provided the selected state remains valid.
+
+This interface speaks MTerm's HTTPS-origin `/api/pair/*` and `/api/agent/*` protocol.
+It does not provide arbitrary external MCP paths, provider OAuth adapters, a web
+Profiles page or demonstrated compatibility with the separate production manager.
+Those follow #250–253; final two-computer/two-profile acceptance belongs to #65.
+
 ## Staging addresses and identities
 
 | Purpose | Staging address |

@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-12T17:42:21.036576+00:00",
+  "kind": "evolving_tree_read_only_review",
+  "baseSha": "83a97daed6ef92b69e681b6b68f982f5d4266a51",
+  "approved": false,
+  "findings": [
+    {
+      "id": "PROFILE-REVIEW-01",
+      "title": "Stop requires workspace liveness",
+      "evidence": "source; owner independently reproduced",
+      "ownerStatus": "repair in progress"
+    },
+    {
+      "id": "PROFILE-REVIEW-02",
+      "title": "Inventory falsely reports unpaired after status failure",
+      "evidence": "source",
+      "ownerStatus": "repair in progress"
+    },
+    {
+      "id": "PROFILE-REVIEW-03",
+      "title": "User-valid inventory-probe name aborts enumeration",
+      "evidence": "source",
+      "ownerStatus": "repair in progress"
+    },
+    {
+      "id": "PROFILE-REVIEW-04",
+      "title": "Legacy private state rejected under safe0755namespace",
+      "evidence": "owned Linux fixture with fresh compiled files",
+      "artifact": "profile-legacy-parent-reproduction.json"
+    },
+    {
+      "id": "PROFILE-REVIEW-05",
+      "title": "Windows collection case alias bypasses mandatory named scope",
+      "evidence": "source-level path classification counterexample; native Windows not run"
+    }
+  ],
+  "latestSourcePins": [
+    {
+      "path": "src/remote/profiles.ts",
+      "sha256": "69d5eea6553dfee1e5a8f892e5697c10ebabca9b8ef15f372c25a9f58e47b349",
+      "compiledFresh": false
+    },
+    {
+      "path": "src/remote/state.ts",
+      "sha256": "2236c828707cb353fc6ec439ea7eeaee79885dd0ea13e6ead01a9a89b4a0cce6",
+      "compiledFresh": false
+    },
+    {
+      "path": "src/remote/cli.ts",
+      "sha256": "a02648b99b74161f79ebcf4a16048a528a5d6c62864f1ac05d41122857efcf42",
+      "compiledFresh": false
+    }
+  ],
+  "fixtureRuns": 1,
+  "staleCompiledFixtureRefusals": 1,
+  "repositoryEdits": false,
+  "builds": false,
+  "fullSuite": false,
+  "networkOperations": false,
+  "productionMutations": false
+}

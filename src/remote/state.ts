@@ -6,13 +6,27 @@
 import fs from 'node:fs/promises';
 import { constants } from 'node:fs';
 import path from 'node:path';
-import os from 'node:os';
 import { randomUUID } from 'node:crypto';
 import { spawn } from 'node:child_process';
 import { fail } from '../errors.js';
 import { remoteRoot } from './adapter.js';
 import { normalizeGateway } from './agent.js';
 import { UUID_PATTERN } from './protocol.js';
+import { getEnvironmentName } from '../config.js';
+import {
+  admitRemoteStateDirectory,
+  assertRemoteRootOutsideState,
+  assertRemoteStateAdmission,
+  publicRemoteRuntime,
+  remoteStateLayout,
+  type RemoteEnvironment,
+  type RemoteStateAdmission,
+} from './profiles.js';
+
+interface RemoteStateScope {
+  environment: RemoteEnvironment;
+  directory: string;
+}
 
 export interface RemoteConfig {
   schemaVersion: 1;
@@ -21,6 +35,7 @@ export interface RemoteConfig {
   root: string;
   name: string;
   deviceId?: string;
+  stateScope?: RemoteStateScope;
 }
 const LIMIT = 32768;
 const DPAPI_TIMEOUT_MS = 30000;
@@ -34,16 +49,8 @@ function protectionError(unconfirmed = false): Error {
   if (unconfirmed) unconfirmedDpapiErrors.add(error);
   return error;
 }
-const inside = (root: string, candidate: string) => {
-  const rel = path.relative(root, candidate);
-  return !rel || (!path.isAbsolute(rel) && rel !== '..' && !rel.startsWith('..' + path.sep));
-};
 export function defaultRemoteStateDirectory(): string {
-  const base =
-    process.platform === 'win32'
-      ? (process.env.LOCALAPPDATA ?? path.join(os.homedir(), 'AppData', 'Local'))
-      : (process.env.XDG_STATE_HOME ?? path.join(os.homedir(), '.local', 'state'));
-  return path.join(base, 'MTerm-CLI', 'remote');
+  return remoteStateLayout(getEnvironmentName([])).defaultDirectory;
 }
 function validateConfig(value: unknown): RemoteConfig {
   const c = value as RemoteConfig;
@@ -58,8 +65,17 @@ function validateConfig(value: unknown): RemoteConfig {
     c.name.length > 80 ||
     /[\x00-\x1f\x7f]/.test(c.name) ||
     (c.deviceId !== undefined && !UUID_PATTERN.test(c.deviceId)) ||
+    (c.stateScope !== undefined &&
+      (!c.stateScope ||
+        typeof c.stateScope !== 'object' ||
+        Array.isArray(c.stateScope) ||
+        !['production', 'development'].includes(c.stateScope.environment) ||
+        typeof c.stateScope.directory !== 'string' ||
+        !path.isAbsolute(c.stateScope.directory) ||
+        /[\x00-\x1f\x7f]/.test(c.stateScope.directory) ||
+        Object.keys(c.stateScope).some((key) => !['environment', 'directory'].includes(key)))) ||
     Object.keys(c).some(
-      (k) => !['schemaVersion', 'gateway', 'dashboard', 'root', 'name', 'deviceId'].includes(k),
+      (k) => !['schemaVersion', 'gateway', 'dashboard', 'root', 'name', 'deviceId', 'stateScope'].includes(k),
     )
   )
     fail('REMOTE_CONFIG', 'Remote configuration is invalid; preserve and repair it explicitly.');
@@ -164,20 +180,35 @@ async function dpapi(mode: 'Protect' | 'Unprotect', input: string): Promise<stri
 }
 
 export class RemoteStateStore {
-  private constructor(readonly directory: string) {}
-  static async open(input = defaultRemoteStateDirectory(), create = true): Promise<RemoteStateStore> {
-    if (!path.isAbsolute(input) || /[\x00-\x1f\x7f]/.test(input))
-      fail('REMOTE_STATE', 'Select an absolute remote state directory.');
-    if (create) await fs.mkdir(input, { recursive: true, mode: 0o700 });
-    const st = await fs.lstat(input);
-    if (!st.isDirectory() || st.isSymbolicLink())
-      fail('REMOTE_STATE', 'Remote state must be an owned regular directory.');
-    if (process.platform !== 'win32' && ((st.mode & 0o077) !== 0 || st.uid !== process.getuid?.()))
-      fail(
-        'REMOTE_STATE_PERMISSIONS',
-        'Remote state directory must be owned by the current user with mode 0700.',
-      );
-    return new RemoteStateStore(await fs.realpath(input));
+  readonly directory: string;
+  private constructor(private readonly admission: RemoteStateAdmission) {
+    this.directory = admission.directory;
+  }
+  static async open(
+    input = defaultRemoteStateDirectory(),
+    create = true,
+    environment: RemoteEnvironment = getEnvironmentName([]),
+  ): Promise<RemoteStateStore> {
+    const store = new RemoteStateStore(await admitRemoteStateDirectory(input, environment, create));
+    await store.assertScopeIfConfigured(create);
+    return store;
+  }
+  private assertScope(config: RemoteConfig): void {
+    const scope = config.stateScope;
+    if (
+      (!scope && this.admission.requiresBoundScope) ||
+      (scope &&
+        (scope.environment !== this.admission.environment ||
+          path.relative(scope.directory, this.directory) !== ''))
+    )
+      fail('REMOTE_SCOPE', 'Remote configuration belongs to another state directory or environment.');
+  }
+  private async assertScopeIfConfigured(allowUnconfigured = false): Promise<void> {
+    await assertRemoteStateAdmission(this.admission);
+    const raw = await this.read('config.json');
+    if (raw) this.assertScope(validateConfig(raw));
+    else if (this.admission.requiresBoundScope && !allowUnconfigured)
+      fail('REMOTE_UNCONFIGURED', 'The selected remote profile is not configured.');
   }
   private async read(name: string): Promise<unknown | undefined> {
     const file = path.join(this.directory, name);
@@ -216,6 +247,7 @@ export class RemoteStateStore {
     }
   }
   private async write(name: string, value: unknown): Promise<void> {
+    await assertRemoteStateAdmission(this.admission);
     await this.read(name); // Reject unsafe existing destinations before replacing them.
     const bytes = Buffer.from(JSON.stringify(value, null, 2) + '\n');
     if (bytes.length > LIMIT) fail('REMOTE_STATE', 'Remote state exceeds its byte limit.');
@@ -228,13 +260,20 @@ export class RemoteStateStore {
       await h.close();
     }
     try {
+      await assertRemoteStateAdmission(this.admission);
       await fs.rename(temp, path.join(this.directory, name));
     } finally {
-      await fs.unlink(temp).catch(() => {});
+      try {
+        await assertRemoteStateAdmission(this.admission);
+        await fs.unlink(temp).catch(() => {});
+      } catch {
+        // Retain a temporary file in the old private directory if ownership changed.
+      }
     }
   }
   /** Cross-process admission keeps config and its credential binding coherent during pairing. */
-  private async mutate<T>(operation: () => Promise<T>): Promise<T> {
+  private async mutate<T>(operation: () => Promise<T>, allowUnconfigured = false): Promise<T> {
+    await this.assertScopeIfConfigured(allowUnconfigured);
     const file = path.join(this.directory, 'state.lock'),
       nonce = randomUUID();
     const parent = await fs.lstat(this.directory);
@@ -315,29 +354,44 @@ export class RemoteStateStore {
     }
   }
   async config(): Promise<RemoteConfig> {
+    await assertRemoteStateAdmission(this.admission);
     const raw = await this.read('config.json');
     if (!raw) fail('REMOTE_UNCONFIGURED', 'Run remote setup with an explicit gateway and trusted directory.');
     const config = validateConfig(raw);
+    this.assertScope(config);
     const actualRoot = await remoteRoot(config.root);
     if (path.relative(actualRoot, config.root) !== '')
       fail(
         'REMOTE_ROOT_CHANGED',
         'The enrolled directory now resolves elsewhere. Revoke and configure the intended directory explicitly.',
       );
-    if (inside(config.root, this.directory))
-      fail('STATE_IN_ROOT', 'Remote credential storage cannot be within the exposed root.');
+    await assertRemoteRootOutsideState(config.root, this.directory);
     return config;
   }
   async configure(input: RemoteConfig): Promise<RemoteConfig> {
     return this.mutate(async () => {
       const root = await remoteRoot(input.root);
-      const next = validateConfig({ ...input, root });
+      if (input.stateScope !== undefined)
+        fail('REMOTE_CONFIG', 'State scope is assigned by the selected directory.');
+      const next = validateConfig({
+        ...input,
+        root,
+        ...(this.admission.requiresBoundScope
+          ? {
+              stateScope: {
+                environment: this.admission.environment,
+                directory: this.directory,
+              },
+            }
+          : {}),
+      });
       if (next.deviceId) fail('REMOTE_CONFIG', 'Device identity is assigned by authenticated pairing only.');
-      if (inside(root, this.directory))
-        fail('STATE_IN_ROOT', 'Remote credential storage cannot be within the exposed root.');
+      await assertRemoteRootOutsideState(root, this.directory);
       const prior = await this.read('config.json');
       if (prior) {
         const old = validateConfig(prior);
+        this.assertScope(old);
+        if (old.stateScope) next.stateScope = old.stateScope;
         if (old.deviceId) {
           if (
             old.root === next.root &&
@@ -354,7 +408,7 @@ export class RemoteStateStore {
       }
       await this.write('config.json', next);
       return next;
-    });
+    }, true);
   }
   async savePairing(deviceId: string, token: string): Promise<void> {
     await this.mutate(async () => {
@@ -369,11 +423,17 @@ export class RemoteStateStore {
         /[\x00-\x20\x7f]/.test(token)
       )
         fail('REMOTE_CREDENTIAL', 'Gateway supplied an invalid device credential.');
-      const json = JSON.stringify({ deviceId, token, gateway: config.gateway, root: config.root });
+      const json = JSON.stringify({
+        deviceId,
+        token,
+        gateway: config.gateway,
+        root: config.root,
+        ...(config.stateScope ? { stateScope: config.stateScope } : {}),
+      });
       const protectedValue =
         process.platform === 'win32' ? await dpapi('Protect', Buffer.from(json).toString('base64')) : json;
       await this.write('credential.json', {
-        schemaVersion: 1,
+        schemaVersion: config.stateScope ? 2 : 1,
         protection: process.platform === 'win32' ? 'windows-dpapi-current-user' : 'posix-0600',
         value: protectedValue,
       });
@@ -387,9 +447,20 @@ export class RemoteStateStore {
     const raw = (await this.read('credential.json')) as
       { schemaVersion?: number; protection?: string; value?: string } | undefined;
     const expected = process.platform === 'win32' ? 'windows-dpapi-current-user' : 'posix-0600';
-    if (!raw || raw.schemaVersion !== 1 || raw.protection !== expected || typeof raw.value !== 'string')
+    if (
+      !raw ||
+      raw.schemaVersion !== (config.stateScope ? 2 : 1) ||
+      raw.protection !== expected ||
+      typeof raw.value !== 'string'
+    )
       fail('REMOTE_CREDENTIAL', 'Device credential is missing or uses an unsupported protection format.');
-    let value: { deviceId?: string; token?: string; gateway?: string; root?: string };
+    let value: {
+      deviceId?: string;
+      token?: string;
+      gateway?: string;
+      root?: string;
+      stateScope?: RemoteStateScope;
+    };
     try {
       const json =
         process.platform === 'win32'
@@ -403,6 +474,10 @@ export class RemoteStateStore {
       value.deviceId !== config.deviceId ||
       value.gateway !== config.gateway ||
       value.root !== config.root ||
+      (config.stateScope
+        ? value.stateScope?.environment !== config.stateScope.environment ||
+          value.stateScope?.directory !== config.stateScope.directory
+        : value.stateScope !== undefined) ||
       !value.token ||
       typeof value.token !== 'string' ||
       value.token.length > 4096
@@ -429,16 +504,19 @@ export class RemoteStateStore {
       paired: !!config.deviceId,
       permissions: 'read-only',
       autostart: false,
-      runtime: run ?? null,
+      runtime: publicRemoteRuntime(run),
     };
   }
   async runtime(value: Record<string, unknown>): Promise<void> {
+    await this.assertScopeIfConfigured();
     await this.write('running.json', value);
   }
   async readRuntime(): Promise<Record<string, unknown> | undefined> {
+    await this.assertScopeIfConfigured();
     return (await this.read('running.json')) as Record<string, unknown> | undefined;
   }
   async acquire(instanceId: string): Promise<void> {
+    await this.assertScopeIfConfigured();
     const file = path.join(this.directory, 'run.lock');
     const parent = await fs.lstat(this.directory);
     if (
@@ -508,16 +586,19 @@ export class RemoteStateStore {
     }
   }
   async release(instanceId: string): Promise<void> {
+    await this.assertScopeIfConfigured();
     const lock = (await this.read('run.lock')) as { instanceId?: string } | undefined;
     if (lock?.instanceId === instanceId) await fs.unlink(path.join(this.directory, 'run.lock'));
   }
   async requestStop(): Promise<boolean> {
+    await this.assertScopeIfConfigured();
     const lock = (await this.read('run.lock')) as { instanceId?: string } | undefined;
     if (!lock?.instanceId || !UUID_PATTERN.test(lock.instanceId)) return false;
     await this.write('stop.json', { instanceId: lock.instanceId });
     return true;
   }
   async stopRequested(instanceId: string): Promise<boolean> {
+    await this.assertScopeIfConfigured();
     const stop = (await this.read('stop.json')) as { instanceId?: string } | undefined;
     return stop?.instanceId === instanceId;
   }

@@ -131,7 +131,10 @@ test('idempotent remote setup reports an existing pairing accurately', async () 
     const report = JSON.parse(messages.at(-1));
     assert.equal(report.paired, true);
     assert.equal(report.deviceId, deviceId);
-    assert.equal(report.next, 'mterm-cli remote start');
+    assert.deepEqual(report.nextCommand, {
+      executable: 'mterm-cli',
+      args: ['remote', 'start', '--environment', 'production', '--state-dir', await fs.realpath(state)],
+    });
     assert.ok(!JSON.stringify(messages).includes('fixture-setup-token'));
   } finally {
     console.log = originalLog;

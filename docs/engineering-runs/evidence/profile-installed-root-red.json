@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-11-12T17:54:32.242989+00:00",
+  "candidate": "4742c179cbb94a0e0c5cefdff1df32ba50ebdc66",
+  "pullRequest": 256,
+  "result": "FAIL",
+  "cause": "verify-package passed the installed CLI executable as MTERM_PROFILE_VERIFY_ROOT; profile tests require the package directory, causing ERR_MODULE_NOT_FOUND before installed native containment.",
+  "repair": "Use one explicit installedPackageRoot for the executable path, profile test environment and reported package root; retain all installed-profile tests.",
+  "jobs": [
+    131375664182,
+    131375238215,
+    131375664499
+  ],
+  "logHashes": [
+    {
+      "log": "job-131375664182.log",
+      "bytes": 272758,
+      "sha256": "847b8a01f1297ee66cd389114337c94985e7e946d13fa56da936606ad6ee7c38"
+    },
+    {
+      "log": "job-131375664499.log",
+      "bytes": 773828,
+      "sha256": "f7a90f9e0aa619f844c2545ab42d4765acc98cc3a09dec84405fd6002645e252"
+    },
+    {
+      "log": "job-131375238215.log",
+      "bytes": 271851,
+      "sha256": "adae5e52ce124960701b67bdf839bdec13119a807acc29f1414abfc0eacb98d0"
+    }
+  ],
+  "revisedQualification": "PENDING"
+}

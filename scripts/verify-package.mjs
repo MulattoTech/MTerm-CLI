@@ -100,7 +100,8 @@ const report = await withPackageWorkspace(
       '--no-audit',
       '--no-fund',
     ]);
-    const installed = path.join(prefix, 'node_modules', 'mterm-cli', 'bin', 'mterm-cli.js');
+    const installedPackageRoot = path.join(prefix, 'node_modules', 'mterm-cli');
+    const installed = path.join(installedPackageRoot, 'bin', 'mterm-cli.js');
     const standaloneIsolation = await inspectPackageLocations(root, {
       runtimeOutput: output,
       installedPrefix: prefix,
@@ -223,7 +224,7 @@ const report = await withPackageWorkspace(
       ],
       {
         cwd: home,
-        env: { ...env, MTERM_PROFILE_VERIFY_ROOT: installed },
+        env: { ...env, MTERM_PROFILE_VERIFY_ROOT: installedPackageRoot },
         timeout: 120000,
         maxBuffer: 1048576,
         windowsHide: true,
@@ -243,7 +244,7 @@ const report = await withPackageWorkspace(
     assert.equal(profileOutsideCheckout, true, 'Profile tests must execute outside the checkout');
     const remoteProfiles = {
       tests: profileTestCount,
-      packageRoot: installed,
+      packageRoot: installedPackageRoot,
       fromOutsideCheckout: profileOutsideCheckout,
       syntheticOnly: true,
       actualRemoteEnrollment: false,

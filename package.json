@@ -25,7 +25,7 @@
     "test": "node --test --test-concurrency=1 tests/*.test.mjs",
     "check": "npm run roadmap:check && npm run parity:check && npm run typecheck && npm run format:check && npm test",
     "roadmap:check": "node scripts/roadmap.mjs --check",
-    "build:code": "tsc -p tsconfig.json",
+    "build:code": "tsc -p tsconfig.json && node scripts/copy-runtime-assets.mjs",
     "format:check": "prettier --check \"src/**/*.ts\" \"bin/*.js\" \"scripts/*.mjs\" \"tests/*.mjs\" \"gateway/*.mjs\"",
     "prepack": "npm run build && npm run check",
     "roadmap:render": "node scripts/roadmap.mjs --render",
@@ -34,6 +34,7 @@
   },
   "dependencies": {
     "@modelcontextprotocol/server": "https://raw.githubusercontent.com/MulattoTech/MTerm-CLI/8e6f2336d995b5c1cb5ff044071ed186cce03567/vendor/modelcontextprotocol-server/server-2.3.0-mterm.1.tgz",
+    "acorn": "8.19.0",
     "zod": "4.6.7"
   },
   "devDependencies": {

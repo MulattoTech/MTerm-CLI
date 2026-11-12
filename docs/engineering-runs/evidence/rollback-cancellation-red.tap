@@ -1,0 +1,24 @@
+✖ rollback cancellation during snapshot lookup cannot mutate a file (40.902798ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 340.282372
+
+✖ failing tests:
+
+test at tests/modernization-boundaries.test.mjs:149:1
+✖ rollback cancellation during snapshot lookup cannot mutate a file (40.902798ms)
+  AssertionError [ERR_ASSERTION]: Missing expected rejection.
+      at async TestContext.<anonymous> (file:///workspace/scratch/a92a3aacdca1/MTerm-CLI/tests/modernization-boundaries.test.mjs:159:3)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    operator: 'rejects',
+    diff: 'simple'
+  }

@@ -47,7 +47,11 @@ export async function runMcp(options: HostOptions): Promise<void> {
         allowedShells: options.allowedShells,
       })
     : undefined;
-  const files = await FileService.create(roots, { allowWrite: options.allowWrite, maxBytes: 262144 });
+  const files = await FileService.create(roots, {
+    allowWrite: options.allowWrite,
+    allowExec: options.allowExec,
+    maxBytes: 262144,
+  });
   const jobs = await ProcessService.create(roots, {
     allowExec: options.allowExec,
     budgets: options.processBudget,
@@ -460,7 +464,114 @@ export async function runMcp(options: HostOptions): Promise<void> {
         true,
         (a, s) => files.search({ ...(a as object), mode: 'content' }, s),
       );
+      add(
+        'mterm_validate_syntax',
+        'In-process JavaScript, erasable TypeScript and JSON syntax validation; unsupported languages fail closed. Uses module syntax except for .cjs/.cts.',
+        fileSchemas.validateSyntax,
+        true,
+        (a, s) => files.validateSyntax(a, s),
+      );
+      add(
+        'mterm_lint_check',
+        'Run safe built-in syntax and whitespace heuristics; not an external ESLint/Ruff integration.',
+        fileSchemas.lintCheck,
+        true,
+        (a, s) => files.lintCheck(a, s),
+      );
+      // Compiler execution remains unavailable until it uses the same scoped
+      // process admission, cancellation and resource controls as process tools.
+      add(
+        'mterm_repo_map',
+        'Generate a bounded fresh repository symbol outline; no disk cache or file mutations.',
+        fileSchemas.repoMap,
+        true,
+        (a, s) => files.repoMap(a, s),
+      );
+      add(
+        'mterm_lsp_definition',
+        'Heuristic declaration search in a source file and its siblings (not a language-server protocol client).',
+        fileSchemas.lspDefinition,
+        true,
+        (a, s) => files.lspDefinition(a, s),
+      );
+      add(
+        'mterm_lsp_references',
+        'Find bounded textual symbol mentions; not compiler-resolved references.',
+        fileSchemas.lspReferences,
+        true,
+        (a, s) => files.lspReferences(a, s),
+      );
+      add(
+        'mterm_lsp_symbols',
+        'Extract heuristic function/class/type declarations; not a hierarchical LSP result.',
+        fileSchemas.lspSymbols,
+        true,
+        (a, s) => files.lspSymbols(a, s),
+      );
+      add(
+        'mterm_ai_review_diff',
+        'Run deterministic diff heuristics; no cloud model is configured or invoked by default.',
+        fileSchemas.aiReviewDiff,
+        true,
+        (a) => files.aiReviewDiff(a),
+      );
+      add(
+        'mterm_fleet_status',
+        'Report local in-memory logical task records (not actual ChatGPT session execution).',
+        empty,
+        true,
+        () => files.fleetStatus(),
+      );
       if (files.allowWrite) {
+        add(
+          'mterm_fleet_submit',
+          'Submit an idempotent task to the fleet supervisor queue.',
+          fileSchemas.fleetSubmit,
+          false,
+          (a) => files.fleetSubmit(a),
+        );
+        add(
+          'mterm_fleet_checkpoint',
+          'Save intermediate checkpoint state for an in-flight fleet task.',
+          fileSchemas.fleetCheckpoint,
+          false,
+          (a) => files.fleetCheckpoint(a),
+        );
+        add(
+          'mterm_fleet_halt',
+          'Stop admissions and cancel in-memory task records only; does not stop real sessions.',
+          empty,
+          false,
+          () => files.fleetHalt(),
+        );
+        add(
+          'mterm_format_file',
+          'Normalize trailing whitespace and final newline without launching project tools.',
+          fileSchemas.formatFile,
+          false,
+          (a, s) => files.formatFile(a, s),
+        );
+        add(
+          'mterm_refine_pipeline',
+          'One-pass patch/syntax/normalization/heuristic checks; no autonomous code repair.',
+          fileSchemas.refine,
+          false,
+          (a, s) => files.refine(a, s),
+        );
+        add(
+          'mterm_rollback',
+          'Guarded single-file rollback using a per-root journal and current-version conflict check.',
+          fileSchemas.rollback,
+          false,
+          (a, s) => files.rollback(a, s),
+        );
+        add(
+          'mterm_apply_patch',
+          'Context-aware unified diff patch application with optional AST syntax pre-validation and dry-run preview.',
+          fileSchemas.patch,
+          false,
+          (a, s) => files.applyPatch(a, s),
+        );
         add(
           'mterm_write_file',
           'Atomic text save requiring expectedVersion: missing for create, SHA-256 for update.',

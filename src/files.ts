@@ -12,6 +12,20 @@ import { createHash, randomUUID } from 'node:crypto';
 import { z } from 'zod';
 import { RootPolicy, ignored, privateName } from './policy.js';
 import { fail, cancelled, safeError, ToolError } from './errors.js';
+import { parseUnifiedDiff, applyHunks, createDiffPreview } from './editing/semantic-editor.js';
+import { SyntaxValidator } from './editing/syntax-validator.js';
+import { CodeFormatter } from './quality/formatter.js';
+import { CodeLinter } from './quality/linter.js';
+import { TypeChecker } from './quality/typecheck.js';
+import { RefineEngine } from './quality/refine-pipeline.js';
+import { ShadowJournal } from './journaling/shadow-journal.js';
+import { RepoMapGenerator } from './intelligence/repomap.js';
+import { LspManager } from './lsp/manager.js';
+import type { SourceReaderOptions } from './intelligence/source-reader.js';
+import { ModelRouter } from './ai/router.js';
+import { FleetSupervisor } from './orchestration/fleet-manager.js';
+import { WindowsRetryStrategy } from './files/retry-strategy.js';
+export { WindowsRetryStrategy };
 const pathname = z.string().min(1).max(4096);
 const version = z.union([z.literal('missing'), z.string().regex(/^[a-f0-9]{64}$/)]);
 export const fileSchemas = {
@@ -25,6 +39,72 @@ export const fileSchemas = {
   mkdir: z.strictObject({ path: pathname }),
   list: z.strictObject({ path: pathname.default('.'), limit: z.number().int().min(1).max(500).default(100) }),
   move: z.strictObject({ source: pathname, destination: pathname }),
+  patch: z.strictObject({
+    path: pathname,
+    patch: z.string().min(1).max(1048576),
+    dryRun: z.boolean().default(false),
+    validateSyntax: z.boolean().default(true),
+  }),
+  validateSyntax: z.strictObject({
+    path: pathname,
+    text: z.string().max(1048576).optional(),
+    language: z.string().max(32).optional(),
+  }),
+  formatFile: z.strictObject({
+    path: pathname,
+    write: z.boolean().default(true),
+  }),
+  lintCheck: z.strictObject({
+    path: pathname,
+  }),
+  typeCheck: z.strictObject({
+    project: pathname.optional(),
+  }),
+  refine: z.strictObject({
+    path: pathname,
+    patch: z.string().max(1048576).optional(),
+    autoFormat: z.boolean().default(true),
+    runLinter: z.boolean().default(true),
+    runTypeCheck: z.boolean().default(false),
+  }),
+  rollback: z.strictObject({
+    transactionId: z.string().max(64).optional(),
+    file: pathname.optional(),
+    stepsBack: z.number().int().min(1).max(20).default(1),
+  }),
+  repoMap: z.strictObject({
+    path: pathname.default('.'),
+    maxLines: z.number().int().min(10).max(500).default(120),
+    maxFiles: z.number().int().min(1).max(200).default(50),
+  }),
+  lspDefinition: z.strictObject({
+    path: pathname,
+    symbol: z.string().min(1).max(128),
+  }),
+  lspReferences: z.strictObject({
+    path: pathname.default('.'),
+    symbol: z.string().min(1).max(128),
+    limit: z.number().int().min(1).max(100).default(50),
+  }),
+  lspSymbols: z.strictObject({
+    path: pathname,
+  }),
+  aiReviewDiff: z.strictObject({
+    diff: z.string().min(1).max(1048576),
+    provider: z.string().max(32).optional(),
+    focus: z.enum(['readability', 'security', 'performance', 'architecture']).optional(),
+  }),
+  fleetSubmit: z.strictObject({
+    sessionId: z.string().min(1).max(64),
+    clientLabel: z.string().min(1).max(64),
+    name: z.string().min(1).max(128),
+    taskId: z.string().max(64).optional(),
+    payload: z.record(z.string(), z.unknown()).optional(),
+  }),
+  fleetCheckpoint: z.strictObject({
+    taskId: z.string().min(1).max(64),
+    checkpointData: z.record(z.string(), z.unknown()),
+  }),
   search: z.strictObject({
     path: pathname.default('.'),
     query: z.string().min(1).max(256),
@@ -65,19 +145,30 @@ export class FileWriteCleanupError extends ToolError {
 }
 export class FileService {
   private queue: Promise<unknown> = Promise.resolve();
+  readonly journal: ShadowJournal;
+  private readonly fleet = new FleetSupervisor();
+  private readonly modelRouter = new ModelRouter();
   private constructor(
     readonly policy: RootPolicy,
     readonly allowWrite: boolean,
     readonly maxBytes: number,
-  ) {}
+    readonly allowExec: boolean,
+  ) {
+    this.journal = new ShadowJournal(this.policy.root);
+  }
   static async create(
     root: string | readonly string[],
-    options: { allowWrite?: boolean; maxBytes?: number } = {},
+    options: { allowWrite?: boolean; maxBytes?: number; allowExec?: boolean } = {},
   ): Promise<FileService> {
     const max = options.maxBytes ?? 1048576;
     if (!Number.isInteger(max) || max < 1 || max > 1048576)
       fail('INVALID_ARGUMENT', 'Invalid file byte limit.');
-    return new FileService(await RootPolicy.create(root), options.allowWrite === true, max);
+    return new FileService(
+      await RootPolicy.create(root),
+      options.allowWrite === true,
+      max,
+      options.allowExec === true,
+    );
   }
   private mutation<T>(action: () => Promise<T>): Promise<T> {
     if (!this.allowWrite)
@@ -217,6 +308,11 @@ export class FileService {
       }
       if ((old === undefined ? 'missing' : sha(old)) !== a.expectedVersion)
         fail('CONFLICT', 'File changed or already exists; read it again before saving.');
+      if (old !== undefined) {
+        const anchor = this.policy.anchor(full);
+        const journal = anchor === this.policy.root ? this.journal : new ShadowJournal(anchor);
+        await journal.recordSnapshot(path.relative(anchor, full), this.text(old), 'write', undefined, a.text);
+      }
       const temp = path.join(parentPath, '.mterm-' + randomUUID() + '.tmp');
       let owned = false;
       let created = false;
@@ -588,5 +684,250 @@ export class FileService {
     await visit(root, 0);
     cancelled(signal);
     return { root: this.policy.relative(root), results, visited, readBytes, truncated };
+  }
+  async applyPatch(input: unknown, signal?: AbortSignal) {
+    const a = fileSchemas.patch.parse(input);
+    cancelled(signal);
+    const current = await this.read({ path: a.path }, signal);
+    cancelled(signal);
+
+    const parsedDiffs = parseUnifiedDiff(a.patch);
+    if (parsedDiffs.length === 0 || !parsedDiffs[0] || parsedDiffs[0].hunks.length === 0) {
+      fail('MALFORMED_DIFF', 'Supplied patch contains no valid unified diff hunks.');
+    }
+    if (parsedDiffs.length !== 1) fail('MULTI_FILE_PATCH', 'One patch operation can change only one file.');
+    const full = await this.policy.resolve(a.path);
+    const target = path.relative(this.policy.anchor(full), full).replace(/\\/g, '/');
+    if (parsedDiffs[0].oldPath !== target || parsedDiffs[0].newPath !== target) {
+      fail('PATCH_PATH_MISMATCH', 'Diff headers must identify the requested file exactly.');
+    }
+
+    const patchResult = applyHunks(current.text, parsedDiffs[0].hunks);
+    if (!patchResult.ok) {
+      fail('PATCH_CONFLICT', patchResult.error ?? 'Failed to apply diff hunks to current file content.');
+    }
+
+    let syntaxValid = true;
+    if (a.validateSyntax) {
+      const syntaxResult = SyntaxValidator.validate(patchResult.patchedText, a.path);
+      syntaxValid = syntaxResult.valid;
+      if (!syntaxResult.valid) {
+        const first = syntaxResult.diagnostics[0];
+        const msg = first ? ` at line ${first.line}, col ${first.column}: ${first.message}` : '';
+        fail('SYNTAX_ERROR', `Patch rejected: resulting code contains syntax errors${msg}`);
+      }
+    }
+
+    if (a.dryRun) {
+      return {
+        path: current.path,
+        ok: true,
+        dryRun: true,
+        hunksApplied: patchResult.hunksApplied,
+        hunksTotal: patchResult.hunksTotal,
+        syntaxValid,
+        diffPreview: createDiffPreview(a.path, current.text, patchResult.patchedText),
+      };
+    }
+
+    const writeResult = await this.write(
+      { path: a.path, text: patchResult.patchedText, expectedVersion: current.version },
+      signal,
+    );
+    return {
+      path: current.path,
+      ok: true,
+      dryRun: false,
+      hunksApplied: patchResult.hunksApplied,
+      hunksTotal: patchResult.hunksTotal,
+      syntaxValid,
+      bytes: writeResult.bytes,
+      version: writeResult.version,
+    };
+  }
+  async validateSyntax(input: unknown, signal?: AbortSignal) {
+    cancelled(signal);
+    const a = fileSchemas.validateSyntax.parse(input);
+    let content = a.text;
+    if (content === undefined) {
+      const current = await this.read({ path: a.path }, signal);
+      content = current.text;
+    }
+    return SyntaxValidator.validate(content, a.path, a.language);
+  }
+  async formatFile(input: unknown, signal?: AbortSignal) {
+    const a = fileSchemas.formatFile.parse(input);
+    cancelled(signal);
+    const current = await this.read({ path: a.path }, signal);
+    cancelled(signal);
+    const full = await this.policy.resolve(a.path);
+    const { formattedText, engine } = await CodeFormatter.formatText(current.text, full);
+    const changed = formattedText !== current.text;
+    if (a.write && changed) {
+      const writeResult = await this.write(
+        { path: a.path, text: formattedText, expectedVersion: current.version },
+        signal,
+      );
+      return {
+        path: current.path,
+        formatted: true,
+        changed: true,
+        originalBytes: current.bytes,
+        formattedBytes: writeResult.bytes,
+        engine,
+      };
+    }
+    return {
+      path: current.path,
+      formatted: true,
+      changed,
+      originalBytes: current.bytes,
+      formattedBytes: Buffer.byteLength(formattedText, 'utf8'),
+      engine,
+    };
+  }
+  async lintCheck(input: unknown, signal?: AbortSignal) {
+    const a = fileSchemas.lintCheck.parse(input);
+    cancelled(signal);
+    const current = await this.read({ path: a.path }, signal);
+    cancelled(signal);
+    const full = await this.policy.resolve(a.path);
+    return CodeLinter.lintFile(full, current.text, { root: this.policy.root });
+  }
+  async typeCheck(input: unknown, signal?: AbortSignal) {
+    const a = fileSchemas.typeCheck.parse(input);
+    cancelled(signal);
+    if (!this.allowExec)
+      fail('EXEC_DISABLED', 'Typechecking requires explicit process-execution permission.');
+    const targetProject = await this.policy.resolve(a.project ?? 'tsconfig.json');
+    return TypeChecker.checkProject(targetProject, { allowExec: false });
+  }
+  async refine(input: unknown, signal?: AbortSignal) {
+    const a = fileSchemas.refine.parse(input);
+    cancelled(signal);
+    const current = await this.read({ path: a.path }, signal);
+    cancelled(signal);
+    const full = await this.policy.resolve(a.path);
+    if (a.patch) {
+      const parsed = parseUnifiedDiff(a.patch);
+      const target = path.relative(this.policy.anchor(full), full).replace(/\\/g, '/');
+      if (
+        parsed.length !== 1 ||
+        !parsed[0]?.hunks.length ||
+        parsed[0].oldPath !== target ||
+        parsed[0].newPath !== target
+      ) {
+        fail('PATCH_PATH_MISMATCH', 'Refinement accepts only a single-file diff for the requested path.');
+      }
+    }
+    const report = await RefineEngine.run({
+      path: full,
+      originalText: current.text,
+      proposedPatch: a.patch,
+      autoFormat: a.autoFormat,
+      runLinter: a.runLinter,
+      runTypeCheck: a.runTypeCheck,
+    });
+    if (report.ok && report.changed) {
+      await this.write({ path: a.path, text: report.finalContent, expectedVersion: current.version }, signal);
+    }
+    return {
+      ...report,
+      path: current.path,
+    };
+  }
+  async rollback(input: unknown, signal?: AbortSignal) {
+    cancelled(signal);
+    const a = fileSchemas.rollback.parse(input);
+    if (!this.allowWrite) fail('WRITE_DISABLED', 'Rollback requires the local write capability.');
+    // Multi-file rollback needs a separately designed all-or-nothing commit protocol.
+    // Never advertise independent per-file writes as an atomic transaction.
+    if (!a.file) fail('ROLLBACK_SCOPE', 'Specify one file for guarded rollback.');
+    const full = await this.policy.resolve(a.file);
+    const anchor = this.policy.anchor(full);
+    const rel = path.relative(anchor, full);
+    const journal = anchor === this.policy.root ? this.journal : new ShadowJournal(anchor);
+    const snapshot = await journal.findSnapshot(rel, a.transactionId, a.stepsBack);
+    cancelled(signal);
+    if (!snapshot || !snapshot.nextVersion) {
+      fail('ROLLBACK_UNAVAILABLE', 'No verified post-write snapshot is available for the requested file.');
+    }
+    const current = await this.read({ path: a.file }, signal);
+    cancelled(signal);
+    if (current.version !== snapshot.nextVersion) {
+      fail('ROLLBACK_CONFLICT', 'The file changed after the journaled write; rollback was refused.');
+    }
+    await this.write(
+      { path: a.file, text: snapshot.previousContent, expectedVersion: current.version },
+      signal,
+    );
+    return { ok: true, restoredFiles: [rel.replace(/\\/g, '/')], transactionId: snapshot.transactionId };
+  }
+  private sourceReaderOptions(signal?: AbortSignal): SourceReaderOptions {
+    return {
+      policy: this.policy,
+      signal,
+      maxBytes: this.maxBytes,
+      readText: async (file, activeSignal) => (await this.read({ path: file }, activeSignal)).text,
+    };
+  }
+  async repoMap(input: unknown, signal?: AbortSignal) {
+    cancelled(signal);
+    const a = fileSchemas.repoMap.parse(input);
+    const root = await this.policy.resolve(a.path);
+    cancelled(signal);
+    const result = await RepoMapGenerator.generate(root, a, this.sourceReaderOptions(signal));
+    cancelled(signal);
+    return result;
+  }
+  async lspDefinition(input: unknown, signal?: AbortSignal) {
+    cancelled(signal);
+    const a = fileSchemas.lspDefinition.parse(input);
+    const full = await this.policy.resolve(a.path);
+    cancelled(signal);
+    const result = await LspManager.findDefinition(
+      full,
+      a.symbol,
+      this.policy.anchor(full),
+      this.sourceReaderOptions(signal),
+    );
+    cancelled(signal);
+    return result;
+  }
+  async lspReferences(input: unknown, signal?: AbortSignal) {
+    cancelled(signal);
+    const a = fileSchemas.lspReferences.parse(input);
+    const root = await this.policy.resolve(a.path);
+    cancelled(signal);
+    const result = await LspManager.findReferences(a.symbol, root, a.limit, this.sourceReaderOptions(signal));
+    cancelled(signal);
+    return result;
+  }
+  async lspSymbols(input: unknown, signal?: AbortSignal) {
+    cancelled(signal);
+    const a = fileSchemas.lspSymbols.parse(input);
+    const full = await this.policy.resolve(a.path);
+    cancelled(signal);
+    const result = await LspManager.getDocumentSymbols(full, this.sourceReaderOptions(signal));
+    cancelled(signal);
+    return result;
+  }
+  async aiReviewDiff(input: unknown) {
+    const a = fileSchemas.aiReviewDiff.parse(input);
+    return this.modelRouter.reviewDiff(a.diff, { provider: a.provider, focus: a.focus });
+  }
+  async fleetSubmit(input: unknown) {
+    const a = fileSchemas.fleetSubmit.parse(input);
+    return this.fleet.submitTask(a);
+  }
+  async fleetStatus() {
+    return this.fleet.getStatus();
+  }
+  async fleetCheckpoint(input: unknown) {
+    const a = fileSchemas.fleetCheckpoint.parse(input);
+    return { ok: this.fleet.saveCheckpoint(a.taskId, a.checkpointData) };
+  }
+  async fleetHalt() {
+    return this.fleet.emergencyHalt();
   }
 }

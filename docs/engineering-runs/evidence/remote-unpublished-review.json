@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "observedOn": "2026-11-12",
+  "mode": "read-only",
+  "remoteChangesMade": false,
+  "reconciliationTree": {
+    "path": "C:\\Tools\\Dev\\MTerm-CLI-PR244-Reconcile-20261110-081859",
+    "branch": "reconcile/pr244-current-main-20261110",
+    "head": "e6ae410a3045a0cd2eb92380348e8432fc3ea06a",
+    "stagedPaths": 194,
+    "stagedBlobsMatchingMain": 190,
+    "comparisonMain": "cbfd29039fe84cd163a86090c8bcbffaa2b40174",
+    "stagedPathsNeedingBaseAwareMerge": [
+      "src/cli.ts",
+      "src/files.ts",
+      "src/mcp.ts",
+      "src/processes.ts"
+    ],
+    "unstagedPaths": [
+      {
+        "path": "docs/plans/MODERNIZATION_STATUS.json",
+        "sha256": "3145e51d2c5ffe2333a19426c19e6b191d95d5c5edb33b62816955a87b1da917",
+        "normalizedSha256": "046c76fcf52953b6649d0a537d66c68b5526e0c0874c8c86ad8a31fc5f10df17",
+        "bytes": 5995
+      },
+      {
+        "path": "docs/status/MTERM_IMPLEMENTATION_STATUS.md",
+        "sha256": "6a27a6b0d416f0e624c1d8b061e835ff50c74c74ab7dc7c2a30168cc0ac2d576",
+        "normalizedSha256": "6a27a6b0d416f0e624c1d8b061e835ff50c74c74ab7dc7c2a30168cc0ac2d576",
+        "bytes": 4767
+      },
+      {
+        "path": "src/ai/router.ts",
+        "sha256": "21c401ad82bf9057a9403a06290204c9e81c14ea0899345f357c28eca65922b6",
+        "normalizedSha256": "21c401ad82bf9057a9403a06290204c9e81c14ea0899345f357c28eca65922b6",
+        "bytes": 2675
+      },
+      {
+        "path": "src/lsp/manager.ts",
+        "sha256": "1b509c6a5867511c0885fa26a8bb7ec799ce1017fa8483b4417fe788f3112e05",
+        "normalizedSha256": "1b509c6a5867511c0885fa26a8bb7ec799ce1017fa8483b4417fe788f3112e05",
+        "bytes": 5841
+      },
+      {
+        "path": "src/orchestration/fleet-manager.ts",
+        "sha256": "29ec9857406483ea2ca2c2bea46def7af6e3e052abe3483fadb5317eb4076c08",
+        "normalizedSha256": "29ec9857406483ea2ca2c2bea46def7af6e3e052abe3483fadb5317eb4076c08",
+        "bytes": 7007
+      },
+      {
+        "path": "src/quality/refine-pipeline.ts",
+        "sha256": "55303a9dc54726bdea7d798d8663848b9233fdb33541e6a70b7a430a59e61ca4",
+        "normalizedSha256": "55303a9dc54726bdea7d798d8663848b9233fdb33541e6a70b7a430a59e61ca4",
+        "bytes": 5342
+      },
+      {
+        "path": "tests/fleet-orchestration.test.mjs",
+        "sha256": "6aae8e600eb93e621f73e93a78ab8215a91a2c12a9e0a0ff9a23861d1ba2e366",
+        "normalizedSha256": "6aae8e600eb93e621f73e93a78ab8215a91a2c12a9e0a0ff9a23861d1ba2e366",
+        "bytes": 2550
+      }
+    ],
+    "unstagedBehaviorChanges": false,
+    "unstagedValue": "Accurate implementation boundaries and completion claims",
+    "pr245Head": "1bf3efca0b112395c01d46ed52cd4ea6f75c2257",
+    "unpublishedCorrectionsAbsentFromPR245": true
+  },
+  "legacyTree": {
+    "path": "C:\\Tools\\Dev\\MTerm-CLI",
+    "branch": "feat/codex-parity-foundation-20261005",
+    "head": "1d900464ba8a36a1121e2ae51ea65c14c3ee41c1",
+    "modifiedFiles": 8,
+    "untrackedFiles": 3,
+    "all11FilesRecoveredExactlyIgnoringCRLF": true,
+    "recoveredCommit": "0a21d3013d75f4be6c88a5f54638b8d6379b74bb",
+    "recoveredCommitIsAncestorOfMain": true,
+    "currentTestsPreserveAll20OldCaseNames": true,
+    "recommendation": "Preserve recovery tree. No transplant needed; do not replace hardened current source with old recovered files."
+  },
+  "adoptionAdvice": [
+    "Reapply four source comment corrections and the test title correction surgically to current reviewed code; do not overwrite whole remote source files.",
+    "Reconcile two status documents into current truthful metrics; retain partial classifications, but update dated SHA, counts, file lengths and test status from current evidence.",
+    "Do not cherry-pick the entire remote index: 190 of 194 staged blobs already equal main; four combine old modernization source with the main merge.",
+    "Do not reset, clean, stash, switch branches, commit, remove worktrees or kill sessions in either remote tree without a separate explicit reconciliation decision."
+  ],
+  "recoveryArtifacts": [
+    "remote-unpublished-snapshot.json",
+    "remote-unpublished-review.patch",
+    "remote-unpublished-comparison.json",
+    "remote-unpublished-versus-current.patch",
+    "remote-legacy-snapshot.json",
+    "remote-legacy-review.patch",
+    "remote-legacy-recovered-lineage.json"
+  ],
+  "profileSlice": {
+    "finding": "Current --gateway already permits custom HTTPS gateway origins, but only the MTerm device protocol, not arbitrary MCP servers.",
+    "files": [
+      "src/remote/cli.ts",
+      "src/remote/state.ts",
+      "src/remote/agent.ts",
+      "gateway/app.mjs",
+      "gateway/registry.mjs"
+    ],
+    "newSecurityGap": "defaultRemoteStateDirectory does not honor MTERM_ENV or --dev; default remote credentials can be shared between production and development.",
+    "recommendedFirstSlice": "Named explicit per-profile remote state selection plus production/development isolation, reusing existing protected credential storage and immutable pairing bindings.",
+    "noFalseClaims": [
+      "Generic external MCP execution",
+      "Custom MCP path routing",
+      "Cloudflare Access service-token support",
+      "Website profile management",
+      "Verified executor readiness",
+      "Two physical devices accepted"
+    ]
+  }
+}

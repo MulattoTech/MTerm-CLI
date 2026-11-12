@@ -5,6 +5,7 @@ MTerm-owned code is MIT. Dependencies retain their own notices and are not re-li
 - @modelcontextprotocol/server 2.3.0-mterm.1: package declaration Apache-2.0; retained root license includes the Apache/MIT transition and documentation notice; runtime. Integrity is recorded in the npm lock/shrinkwrap and versions.json.
 - @modelcontextprotocol/core 2.3.0: same SDK mixed root notice; transitive runtime dependency.
 - @modelcontextprotocol/client 2.3.0: same SDK mixed root notice; development only. Integrity is recorded in the npm lock/shrinkwrap and versions.json.
+- acorn 8.19.0: MIT; runtime JavaScript parser. [Upstream source](https://github.com/acornjs/acorn/tree/0e0ece7cc7202624d4aca531be4b515b0114b5d0); complete LICENSE is retained in the installed package. Integrity and license hash are recorded in the npm lock/shrinkwrap and versions.json.
 - zod 4.6.7: MIT; runtime. Integrity is recorded in the npm lock/shrinkwrap and versions.json.
 - typescript 7.0.2: Apache-2.0; development only. Integrity is recorded in the npm lock/shrinkwrap and versions.json.
 - @types/node 26.6.4: MIT; development only. Integrity is recorded in the npm lock/shrinkwrap and versions.json.

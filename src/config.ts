@@ -17,19 +17,28 @@ export const configSchema = z.strictObject({
   codexExecutable: absolute.optional(),
 });
 export type Settings = z.infer<typeof configSchema>;
+export function isDevEnvironment(): boolean {
+  return process.env.MTERM_ENV === 'development' || process.argv.includes('--dev');
+}
+
+export function getEnvironmentName(): 'production' | 'development' {
+  return isDevEnvironment() ? 'development' : 'production';
+}
+
 export function configPath(): string {
   const explicit = process.env.MTERM_CONFIG_PATH;
   if (explicit) {
     if (!path.isAbsolute(explicit)) fail('CONFIG_PATH', 'MTERM_CONFIG_PATH must be absolute.');
     return explicit;
   }
+  const isDev = isDevEnvironment();
   const base =
     process.platform === 'win32'
       ? (process.env.APPDATA ?? path.join(os.homedir(), 'AppData', 'Roaming'))
       : process.platform === 'darwin'
         ? path.join(os.homedir(), 'Library', 'Application Support')
         : (process.env.XDG_CONFIG_HOME ?? path.join(os.homedir(), '.config'));
-  return path.join(base, 'MTermCLI', 'config.json');
+  return path.join(base, isDev ? 'MTermCLI-DEV' : 'MTermCLI', 'config.json');
 }
 async function readBytes(file: string): Promise<Buffer | undefined> {
   let handle;

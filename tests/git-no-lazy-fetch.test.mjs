@@ -25,16 +25,24 @@ const baseText = 'HEAD_ONLY_237\n';
 const indexText = 'INDEX_ONLY_237_DIFFERENT_LENGTH\n';
 const worktreeText = 'WORKTREE_ONLY_237_A_THIRD_DIFFERENT_LENGTH\n';
 const readonlyTools = [
+  'mterm_ai_review_diff',
   'mterm_audit_list',
   'mterm_capabilities',
   'mterm_file_info',
+  'mterm_fleet_status',
   'mterm_git_diff',
   'mterm_git_status',
+  'mterm_lint_check',
   'mterm_list_directory',
+  'mterm_lsp_definition',
+  'mterm_lsp_references',
+  'mterm_lsp_symbols',
   'mterm_read_file',
+  'mterm_repo_map',
   'mterm_search_content',
   'mterm_search_files',
   'mterm_system_info',
+  'mterm_validate_syntax',
 ];
 const operations = [
   ['mterm_git_status', {}],

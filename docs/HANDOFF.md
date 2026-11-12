@@ -1,3 +1,37 @@
+# Final admission authorization source correction — November 12, 2026
+
+Active isolated source work fixes token/grant expiry during new-job admission,
+under issues62/65 with CLI-290 reviewed and no stage change. Original6a6a883f
+accepted expired authorization after asynchronous job/digest/lease work. The
+corrected registry retains the validated grant expiry internally and checks both
+lifetimes at the existing final decision, before any new job/lease/queued-read audit.
+Existing target, read-only capabilities, refusal precedence and valid-decision
+persistence behavior remain. No result-disclosure bypass was established.
+
+Original RED28cases:16fail/12controls; exact final-test-byte replay reproduces those
+same results. Corrected28/28 and nearest integration138/138 pass. The fresh independent
+review passes65 adversarial/compatibility cases and84 gateway/admission cases with
+no findings. The source registry/test hashes are93e500dd/5e74025e. Normal integrated
+build passed. Complete check: 1,571 tests, 1,532 pass, 27 unchanged isolation
+`listen EPERM` failures, 12 existing Windows-only skips; no cancellations/TODOs.
+The full failed log is retained losslessly. No live deployment is included.
+
+Accounting PR261 passed all six candidate jobs and independent immutable-tree
+review, then merged normally at `d430ec5e0d7dcefc041df4ab5f80cb32382c5ac3`.
+Its tree `62b35e966af7aaf8ea0b85e1db465a182369c640` equals the reviewed candidate,
+with ordered parents6a6a883f/bbcd4462. Fresh actual-main checks are in progress.
+This worktree normally fast-forwarded to that merge without changing reviewed
+admission source bytes. Finish this separate admission delivery through its own
+exact candidate, expected-head normal merge and actual-main gates. A later
+evidence-only reconciliation will award justified source axes after those gates.
+
+Preserve the owner's dirty Windows checkout, active services and working connector.
+The issue232 staging-token HOLD remains. Original tests and all baseline ledgers
+are retained. See the [source evidence](validation/2026-11-12-final-admission-authorization/README.md)
+and [engineering run](engineering-runs/mterm-comprehensive-reconciliation-2026-11-12.md).
+
+---
+
 # Resumed mission: qualified readiness and delivery accounting — November 12, 2026
 
 This checkpoint supersedes the preparation instructions below. PR259 merged normally

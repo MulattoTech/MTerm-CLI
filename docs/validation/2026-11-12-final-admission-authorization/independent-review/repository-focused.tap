@@ -1,0 +1,514 @@
+TAP version 13
+# Subtest: gateway delivers only the offered slots and retains queued deadlines and arguments
+ok 1 - gateway delivers only the offered slots and retains queued deadlines and arguments
+  ---
+  duration_ms: 141.930633
+  type: 'test'
+  ...
+# Subtest: gateway rejects malformed slot offers before changing jobs or heartbeat
+ok 2 - gateway rejects malformed slot offers before changing jobs or heartbeat
+  ---
+  duration_ms: 25.141422
+  type: 'test'
+  ...
+# Subtest: omitted capacity preserves the legacy four-request poll contract
+ok 3 - omitted capacity preserves the legacy four-request poll contract
+  ---
+  duration_ms: 31.432391
+  type: 'test'
+  ...
+# Subtest: zero-capacity polls still report cancellation and expiry without later executing expired work
+ok 4 - zero-capacity polls still report cancellation and expiry without later executing expired work
+  ---
+  duration_ms: 16.294619
+  type: 'test'
+  ...
+# Subtest: capacity offers do not bypass device authentication, ownership or revocation
+ok 5 - capacity offers do not bypass device authentication, ownership or revocation
+  ---
+  duration_ms: 12.308329
+  type: 'test'
+  ...
+# Subtest: agent retains delivery capacity through cancelled cleanup and resumes each queued request once
+ok 6 - agent retains delivery capacity through cancelled cleanup and resumes each queued request once
+  ---
+  duration_ms: 119.399187
+  type: 'test'
+  ...
+# Subtest: agent retains delivery capacity through timed-out cleanup and resumes each queued request once
+ok 7 - agent retains delivery capacity through timed-out cleanup and resumes each queued request once
+  ---
+  duration_ms: 51.224196
+  type: 'test'
+  ...
+# Subtest: agent retains delivery capacity through result delivery and resumes each queued request once
+ok 8 - agent retains delivery capacity through result delivery and resumes each queued request once
+  ---
+  duration_ms: 55.80503
+  type: 'test'
+  ...
+# Subtest: grant expiry: legacy poll cancels queued and delivered work without an alarm sweep
+ok 9 - grant expiry: legacy poll cancels queued and delivered work without an alarm sweep
+  ---
+  duration_ms: 130.047098
+  type: 'test'
+  ...
+# Subtest: grant expiry: 0-slot poll cancels queued and delivered work without an alarm sweep
+ok 10 - grant expiry: 0-slot poll cancels queued and delivered work without an alarm sweep
+  ---
+  duration_ms: 106.557857
+  type: 'test'
+  ...
+# Subtest: grant expiry: 4-slot poll cancels queued and delivered work without an alarm sweep
+ok 11 - grant expiry: 4-slot poll cancels queued and delivered work without an alarm sweep
+  ---
+  duration_ms: 121.321191
+  type: 'test'
+  ...
+# Subtest: grant expiry: result acceptance rejects exact expiry before retaining output
+ok 12 - grant expiry: result acceptance rejects exact expiry before retaining output
+  ---
+  duration_ms: 156.428725
+  type: 'test'
+  ...
+# Subtest: grant expiry: result acceptance rejects after expiry before retaining output
+ok 13 - grant expiry: result acceptance rejects after expiry before retaining output
+  ---
+  duration_ms: 101.488702
+  type: 'test'
+  ...
+# Subtest: grant expiry: result acceptance rejects missing expiry before retaining output
+ok 14 - grant expiry: result acceptance rejects missing expiry before retaining output
+  ---
+  duration_ms: 162.976276
+  type: 'test'
+  ...
+# Subtest: grant expiry: just-before success and another live client grant remain independent
+ok 15 - grant expiry: just-before success and another live client grant remain independent
+  ---
+  duration_ms: 234.476829
+  type: 'test'
+  ...
+# Subtest: grant expiry: existing request deadline takes precedence when both boundaries expire
+ok 16 - grant expiry: existing request deadline takes precedence when both boundaries expire
+  ---
+  duration_ms: 88.1196
+  type: 'test'
+  ...
+# Subtest: grant expiry: poll rechecks grant after asynchronous grant and epoch reads
+ok 17 - grant expiry: poll rechecks grant after asynchronous grant and epoch reads
+  ---
+  duration_ms: 137.990745
+  type: 'test'
+  ...
+# Subtest: grant expiry: poll rechecks deadline after asynchronous grant and epoch reads
+ok 18 - grant expiry: poll rechecks deadline after asynchronous grant and epoch reads
+  ---
+  duration_ms: 88.486534
+  type: 'test'
+  ...
+# Subtest: grant expiry: result rechecks grant after asynchronous grant and epoch reads
+ok 19 - grant expiry: result rechecks grant after asynchronous grant and epoch reads
+  ---
+  duration_ms: 102.074424
+  type: 'test'
+  ...
+# Subtest: grant expiry: result rechecks deadline after asynchronous grant and epoch reads
+ok 20 - grant expiry: result rechecks deadline after asynchronous grant and epoch reads
+  ---
+  duration_ms: 54.177391
+  type: 'test'
+  ...
+# Subtest: gateway fails closed; discovery is public, bounded, and precise
+ok 21 - gateway fails closed; discovery is public, bounded, and precise
+  ---
+  duration_ms: 125.991162
+  type: 'test'
+  ...
+# Subtest: Access JWT signature, audience, expiry and allowlist are enforced independently of headers
+ok 22 - Access JWT signature, audience, expiry and allowlist are enforced independently of headers
+  ---
+  duration_ms: 128.783963
+  type: 'test'
+  ...
+# Subtest: PKCE code is single use and tokens are resource-bound
+ok 23 - PKCE code is single use and tokens are resource-bound
+  ---
+  duration_ms: 35.253418
+  type: 'test'
+  ...
+# Subtest: pairing requires authenticated approval, is one-time, and never grants execution
+ok 24 - pairing requires authenticated approval, is one-time, and never grants execution
+  ---
+  duration_ms: 70.850664
+  type: 'test'
+  ...
+# Subtest: real relay request travels gateway queue to selected agent and result returns once
+ok 25 - real relay request travels gateway queue to selected agent and result returns once
+  ---
+  duration_ms: 632.153118
+  type: 'test'
+  ...
+# Subtest: cross-user and cross-device access, mutation names, and revoked credentials fail closed
+ok 26 - cross-user and cross-device access, mutation names, and revoked credentials fail closed
+  ---
+  duration_ms: 56.896524
+  type: 'test'
+  ...
+# Subtest: frequent polling cannot defer expiry cleanup and the sweep reaches beyond 1000 rows
+ok 27 - frequent polling cannot defer expiry cleanup and the sweep reaches beyond 1000 rows
+  ---
+  duration_ms: 136.432576
+  type: 'test'
+  ...
+# Subtest: refresh rotation is single use, replay revokes its whole grant, and resource mismatch fails
+ok 28 - refresh rotation is single use, replay revokes its whole grant, and resource mismatch fails
+  ---
+  duration_ms: 86.303246
+  type: 'test'
+  ...
+# Subtest: request cancellation is scoped, delivered requests never replay, and late results fail
+ok 29 - request cancellation is scoped, delivered requests never replay, and late results fail
+  ---
+  duration_ms: 592.458898
+  type: 'test'
+  ...
+# Subtest: offline, expired, malformed and oversized requests have bounded safe failures
+ok 30 - offline, expired, malformed and oversized requests have bounded safe failures
+  ---
+  duration_ms: 244.331873
+  type: 'test'
+  ...
+# Subtest: dashboard cancellation checks ownership and service identities require exact app-token claims
+ok 31 - dashboard cancellation checks ownership and service identities require exact app-token claims
+  ---
+  duration_ms: 106.104811
+  type: 'test'
+  ...
+# Subtest: revoke-all invalidates unredeemed authorization codes and approved unclaimed pairings
+ok 32 - revoke-all invalidates unredeemed authorization codes and approved unclaimed pairings
+  ---
+  duration_ms: 121.661645
+  type: 'test'
+  ...
+# Subtest: MCP optional arguments and JSON-RPC parse errors follow the advertised protocol
+ok 33 - MCP optional arguments and JSON-RPC parse errors follow the advertised protocol
+  ---
+  duration_ms: 247.805778
+  type: 'test'
+  ...
+# Subtest: pairing stays consumed after a credential-store failure and consent CSP permits only its callback
+ok 34 - pairing stays consumed after a credential-store failure and consent CSP permits only its callback
+  ---
+  duration_ms: 122.21817
+  type: 'test'
+  ...
+# Subtest: request ownership: consuming an old timeout preserves the replacement RPC lease
+ok 35 - request ownership: consuming an old timeout preserves the replacement RPC lease
+  ---
+  duration_ms: 144.626485
+  type: 'test'
+  ...
+# Subtest: request ownership: consuming an old cancelled preserves the replacement RPC lease
+ok 36 - request ownership: consuming an old cancelled preserves the replacement RPC lease
+  ---
+  duration_ms: 63.881773
+  type: 'test'
+  ...
+# Subtest: request ownership: consuming an old complete preserves the replacement RPC lease
+ok 37 - request ownership: consuming an old complete preserves the replacement RPC lease
+  ---
+  duration_ms: 57.669417
+  type: 'test'
+  ...
+# Subtest: request ownership: public cancellation still reaches a replacement after old result consumption
+ok 38 - request ownership: public cancellation still reaches a replacement after old result consumption
+  ---
+  duration_ms: 83.507338
+  type: 'test'
+  ...
+# Subtest: request ownership: repeated consumption rejects before modifying a reused RPC lease
+ok 39 - request ownership: repeated consumption rejects before modifying a reused RPC lease
+  ---
+  duration_ms: 62.622135
+  type: 'test'
+  ...
+# Subtest: request ownership: delayed old HTTP abort cleanup cannot cancel a replacement
+ok 40 - request ownership: delayed old HTTP abort cleanup cannot cancel a replacement
+  ---
+  duration_ms: 118.011279
+  type: 'test'
+  ...
+# Subtest: request ownership: delayed old HTTP deadline cleanup cannot cancel a replacement
+ok 41 - request ownership: delayed old HTTP deadline cleanup cannot cancel a replacement
+  ---
+  duration_ms: 559.34653
+  type: 'test'
+  ...
+# Subtest: request ownership: malformed private expected IDs cannot fall back to unbound cancellation
+ok 42 - request ownership: malformed private expected IDs cannot fall back to unbound cancellation
+  ---
+  duration_ms: 89.75644
+  type: 'test'
+  ...
+# Subtest: request ownership: private stale IDs require authentication and cannot select another job
+ok 43 - request ownership: private stale IDs require authentication and cannot select another job
+  ---
+  duration_ms: 166.454653
+  type: 'test'
+  ...
+# Subtest: request ownership: public notifications isolate bearer credentials and numeric versus string IDs
+ok 44 - request ownership: public notifications isolate bearer credentials and numeric versus string IDs
+  ---
+  duration_ms: 98.932841
+  type: 'test'
+  ...
+# Subtest: request ownership: a matching private expected ID still cancels its current job
+ok 45 - request ownership: a matching private expected ID still cancels its current job
+  ---
+  duration_ms: 125.997815
+  type: 'test'
+  ...
+# Subtest: request ownership: an absent active pointer permits first authorized terminal consumption
+ok 46 - request ownership: an absent active pointer permits first authorized terminal consumption
+  ---
+  duration_ms: 101.099235
+  type: 'test'
+  ...
+# Subtest: OAuth expiry: public MCP authorization settles just before token expiry during epoch read
+ok 47 - OAuth expiry: public MCP authorization settles just before token expiry during epoch read
+  ---
+  duration_ms: 31.264578
+  type: 'test'
+  ...
+# Subtest: OAuth expiry: public MCP authorization settles exactly at token expiry during epoch read
+ok 48 - OAuth expiry: public MCP authorization settles exactly at token expiry during epoch read
+  ---
+  duration_ms: 201.617654
+  type: 'test'
+  ...
+# Subtest: OAuth expiry: public MCP authorization settles after token expiry during epoch read
+ok 49 - OAuth expiry: public MCP authorization settles after token expiry during epoch read
+  ---
+  duration_ms: 68.311021
+  type: 'test'
+  ...
+# Subtest: OAuth expiry: public MCP authorization still rejects grant expiry during epoch read
+ok 50 - OAuth expiry: public MCP authorization still rejects grant expiry during epoch read
+  ---
+  duration_ms: 104.700524
+  type: 'test'
+  ...
+# Subtest: OAuth expiry: public MCP authorization settles just before token expiry during grant read
+ok 51 - OAuth expiry: public MCP authorization settles just before token expiry during grant read
+  ---
+  duration_ms: 23.986288
+  type: 'test'
+  ...
+# Subtest: OAuth expiry: public MCP authorization settles exactly at token expiry during grant read
+ok 52 - OAuth expiry: public MCP authorization settles exactly at token expiry during grant read
+  ---
+  duration_ms: 52.79288
+  type: 'test'
+  ...
+# Subtest: OAuth expiry: public MCP authorization settles after token expiry during grant read
+ok 53 - OAuth expiry: public MCP authorization settles after token expiry during grant read
+  ---
+  duration_ms: 131.785845
+  type: 'test'
+  ...
+# Subtest: OAuth expiry: public MCP authorization still rejects grant expiry during grant read
+ok 54 - OAuth expiry: public MCP authorization still rejects grant expiry during grant read
+  ---
+  duration_ms: 42.676792
+  type: 'test'
+  ...
+# Subtest: OAuth expiry: an already-expired access token rejects before epoch and grant reads
+ok 55 - OAuth expiry: an already-expired access token rejects before epoch and grant reads
+  ---
+  duration_ms: 49.47522
+  type: 'test'
+  ...
+# Subtest: OAuth expiry: another live client token remains authorized after the first token expires
+ok 56 - OAuth expiry: another live client token remains authorized after the first token expires
+  ---
+  duration_ms: 38.88063
+  type: 'test'
+  ...
+# Subtest: admission expiry: token at offset -1 during job-list
+ok 57 - admission expiry: token at offset -1 during job-list
+  ---
+  duration_ms: 63.4246
+  type: 'test'
+  ...
+# Subtest: admission expiry: token at offset 0 during job-list
+ok 58 - admission expiry: token at offset 0 during job-list
+  ---
+  duration_ms: 65.132197
+  type: 'test'
+  ...
+# Subtest: admission expiry: token at offset 1 during job-list
+ok 59 - admission expiry: token at offset 1 during job-list
+  ---
+  duration_ms: 60.803546
+  type: 'test'
+  ...
+# Subtest: admission expiry: token at offset -1 during rpc-digest
+ok 60 - admission expiry: token at offset -1 during rpc-digest
+  ---
+  duration_ms: 45.721937
+  type: 'test'
+  ...
+# Subtest: admission expiry: token at offset 0 during rpc-digest
+ok 61 - admission expiry: token at offset 0 during rpc-digest
+  ---
+  duration_ms: 48.12475
+  type: 'test'
+  ...
+# Subtest: admission expiry: token at offset 1 during rpc-digest
+ok 62 - admission expiry: token at offset 1 during rpc-digest
+  ---
+  duration_ms: 33.325474
+  type: 'test'
+  ...
+# Subtest: admission expiry: token at offset -1 during active-lookup
+ok 63 - admission expiry: token at offset -1 during active-lookup
+  ---
+  duration_ms: 143.586957
+  type: 'test'
+  ...
+# Subtest: admission expiry: token at offset 0 during active-lookup
+ok 64 - admission expiry: token at offset 0 during active-lookup
+  ---
+  duration_ms: 33.345699
+  type: 'test'
+  ...
+# Subtest: admission expiry: token at offset 1 during active-lookup
+ok 65 - admission expiry: token at offset 1 during active-lookup
+  ---
+  duration_ms: 75.502555
+  type: 'test'
+  ...
+# Subtest: admission expiry: public tools/call denies token expiry without queue side effects
+ok 66 - admission expiry: public tools/call denies token expiry without queue side effects
+  ---
+  duration_ms: 102.796756
+  type: 'test'
+  ...
+# Subtest: admission expiry: valid token decision may finish persistence after expiry
+ok 67 - admission expiry: valid token decision may finish persistence after expiry
+  ---
+  duration_ms: 49.155794
+  type: 'test'
+  ...
+# Subtest: admission expiry: another live client can enqueue after token refusal
+ok 68 - admission expiry: another live client can enqueue after token refusal
+  ---
+  duration_ms: 212.192542
+  type: 'test'
+  ...
+# Subtest: admission expiry: existing request_in_progress precedence survives late token expiry
+ok 69 - admission expiry: existing request_in_progress precedence survives late token expiry
+  ---
+  duration_ms: 123.723414
+  type: 'test'
+  ...
+# Subtest: admission expiry: existing device_offline precedence survives late token expiry
+ok 70 - admission expiry: existing device_offline precedence survives late token expiry
+  ---
+  duration_ms: 32.734031
+  type: 'test'
+  ...
+# Subtest: admission expiry: grant at offset -1 during job-list
+ok 71 - admission expiry: grant at offset -1 during job-list
+  ---
+  duration_ms: 85.466345
+  type: 'test'
+  ...
+# Subtest: admission expiry: grant at offset 0 during job-list
+ok 72 - admission expiry: grant at offset 0 during job-list
+  ---
+  duration_ms: 51.233726
+  type: 'test'
+  ...
+# Subtest: admission expiry: grant at offset 1 during job-list
+ok 73 - admission expiry: grant at offset 1 during job-list
+  ---
+  duration_ms: 58.198371
+  type: 'test'
+  ...
+# Subtest: admission expiry: grant at offset -1 during rpc-digest
+ok 74 - admission expiry: grant at offset -1 during rpc-digest
+  ---
+  duration_ms: 48.391542
+  type: 'test'
+  ...
+# Subtest: admission expiry: grant at offset 0 during rpc-digest
+ok 75 - admission expiry: grant at offset 0 during rpc-digest
+  ---
+  duration_ms: 35.835904
+  type: 'test'
+  ...
+# Subtest: admission expiry: grant at offset 1 during rpc-digest
+ok 76 - admission expiry: grant at offset 1 during rpc-digest
+  ---
+  duration_ms: 26.202839
+  type: 'test'
+  ...
+# Subtest: admission expiry: grant at offset -1 during active-lookup
+ok 77 - admission expiry: grant at offset -1 during active-lookup
+  ---
+  duration_ms: 53.063456
+  type: 'test'
+  ...
+# Subtest: admission expiry: grant at offset 0 during active-lookup
+ok 78 - admission expiry: grant at offset 0 during active-lookup
+  ---
+  duration_ms: 50.620568
+  type: 'test'
+  ...
+# Subtest: admission expiry: grant at offset 1 during active-lookup
+ok 79 - admission expiry: grant at offset 1 during active-lookup
+  ---
+  duration_ms: 122.139244
+  type: 'test'
+  ...
+# Subtest: admission expiry: public tools/call denies grant expiry without queue side effects
+ok 80 - admission expiry: public tools/call denies grant expiry without queue side effects
+  ---
+  duration_ms: 51.160916
+  type: 'test'
+  ...
+# Subtest: admission expiry: valid grant decision may finish persistence after expiry
+ok 81 - admission expiry: valid grant decision may finish persistence after expiry
+  ---
+  duration_ms: 43.345535
+  type: 'test'
+  ...
+# Subtest: admission expiry: another live client can enqueue after grant refusal
+ok 82 - admission expiry: another live client can enqueue after grant refusal
+  ---
+  duration_ms: 83.900218
+  type: 'test'
+  ...
+# Subtest: admission expiry: existing request_in_progress precedence survives late grant expiry
+ok 83 - admission expiry: existing request_in_progress precedence survives late grant expiry
+  ---
+  duration_ms: 83.5571
+  type: 'test'
+  ...
+# Subtest: admission expiry: existing device_offline precedence survives late grant expiry
+ok 84 - admission expiry: existing device_offline precedence survives late grant expiry
+  ---
+  duration_ms: 73.347145
+  type: 'test'
+  ...
+1..84
+# tests 84
+# suites 0
+# pass 84
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 9589.090641

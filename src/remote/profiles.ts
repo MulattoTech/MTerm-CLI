@@ -1,9 +1,10 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-13-exact-state-identity; preserve exact admitted directory identities internally.
 // Explicit local state selection for the MTerm pairing/agent protocol.
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import os from 'node:os';
-import type { Stats } from 'node:fs';
+import type { BigIntStats } from 'node:fs';
 import { getEnvironmentName } from '../config.js';
 import { fail } from '../errors.js';
 
@@ -21,10 +22,10 @@ export interface RemoteStateAdmission {
   directories: Array<{
     path: string;
     canonical: string;
-    dev: number;
-    ino: number;
-    mode: number;
-    uid: number;
+    dev: bigint;
+    ino: bigint;
+    mode: bigint;
+    uid: bigint;
   }>;
 }
 
@@ -119,12 +120,12 @@ async function privateDirectory(
   create: boolean,
   allowMissing: boolean,
   privateMode = true,
-): Promise<Stats | undefined> {
+): Promise<BigIntStats | undefined> {
   if (create)
     await fs.mkdir(input, { mode: 0o700 }).catch((error: NodeJS.ErrnoException) => {
       if (error.code !== 'EEXIST') throw error;
     });
-  const stat = await fs.lstat(input).catch((error: NodeJS.ErrnoException) => {
+  const stat = await fs.lstat(input, { bigint: true }).catch((error: NodeJS.ErrnoException) => {
     if (allowMissing && error.code === 'ENOENT') return undefined;
     throw error;
   });
@@ -133,7 +134,7 @@ async function privateDirectory(
     fail('REMOTE_STATE', 'Remote state must use regular directories without linked managed parents.');
   if (
     process.platform !== 'win32' &&
-    ((stat.mode & (privateMode ? 0o077 : 0o022)) !== 0 || stat.uid !== process.getuid?.())
+    ((stat.mode & (privateMode ? 0o077n : 0o022n)) !== 0n || stat.uid !== BigInt(process.getuid?.() ?? -1))
   )
     fail(
       'REMOTE_STATE_PERMISSIONS',
@@ -218,7 +219,7 @@ export async function admitRemoteStateDirectory(
 export async function assertRemoteStateAdmission(admission: RemoteStateAdmission): Promise<void> {
   if (!admission.requiresBoundScope) return;
   for (const expected of admission.directories) {
-    const current = await fs.lstat(expected.path).catch(() => undefined);
+    const current = await fs.lstat(expected.path, { bigint: true }).catch(() => undefined);
     if (
       !current ||
       !current.isDirectory() ||

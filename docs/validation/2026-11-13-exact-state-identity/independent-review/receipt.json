@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "kind": "independent-source-and-local-qualification-review",
+  "signedAt": "2026-11-13T00:34:48.198Z",
+  "signedAs": "/root/delivery_evidence",
+  "model": "GPT-6 Astra Pro",
+  "signatureKind": "Self-attribution only; SHA256 evidence integrity is not a cryptographic reviewer signature.",
+  "baseSha": "15dd5de8387507774f6471e4b34d108a492393dc",
+  "verdict": "APPROVED_FROZEN_SOURCE_TESTS_AND_VERIFIER_WITH_BOUNDED_LOCAL_QUALIFICATION",
+  "blockingFindings": [],
+  "sourceHashes": {
+    "src/remote/state.ts": "6943b20fc1a0502dbafa46d2ecca8e7e007ccf94e33f3a794bf0a9caea98510e",
+    "src/remote/profiles.ts": "da5ea619c58e7990bf35d935dd31c9603a9a8528174bae3d26b0a87aff7e9320",
+    "scripts/verify-package.mjs": "08804a80f90e5d6437e258e280ba3c10e7ebf2b695ed2e9fdd1019c09dc61713",
+    "tests/remote-state-identity.test.mjs": "ec7ab421d5ecc19d74c0f22d485e4a439d6d80d8c9e83daf58b13fdb12ba3bc1",
+    "tests/remote-run-lock.test.mjs": "638b2bda6585f252bbba4b931e9357f573a281648fd33652762a8d99694a44c0",
+    "tests/remote-state-lock.test.mjs": "0c9eed702980069ba6de40601fe4fde592e499feb348c179e3bc0da2e9b56ce4",
+    "dist/remote/state.js": "e1ab26f23ba2ce2e0653c54017522220a7f5e36681d577aa88955494a9865f61",
+    "dist/remote/profiles.js": "14b89b5e2e039bb77e5ce868a87b4a467c16389be123fc0f0a01cc472978d235",
+    "dist/config.js": "103053c9226c6684a6149553e5093436d9d38251dbc42fdbb6193da4743023ad",
+    "dist/errors.js": "26fa1c3341396a1f9eda45debe86dc2295cb997b9dd7e525e70ac17ef2c910a9"
+  },
+  "sourceUnchangedDuringIndependentExecution": true,
+  "independentTests": {
+    "tests": 12,
+    "pass": 12,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "independentExecution": {
+    "startedAt": "2026-11-13T00:33:01.465Z",
+    "finishedAt": "2026-11-13T00:33:01.805Z",
+    "node": "v24.21.0",
+    "platform": "win32",
+    "logSha256": "843a060359858a8b1afea92544a30e31cc8b273de02356c63bb7e016170ea648"
+  },
+  "producerEvidence": {
+    "observer": "/root",
+    "greenReceiptSha256": "cc6c0ec6e04d301c62348ce93584871f6484ddf0308183e01f31042f5c73901b",
+    "greenLog": {
+      "sourceFilename": "green-nearby.tap",
+      "sha256": "cc902acecad2619bc69ff938d238f75d018b3239faa61b06d16f461ed7bea96b",
+      "bytes": 24714
+    },
+    "independentlyRerun": false
+  },
+  "fixtureCleanupVerified": true,
+  "productRepositoryWrites": 0,
+  "githubWrites": 0,
+  "productionChanges": 0,
+  "modelCalls": 0,
+  "sourceDiagnosis": "Number-valued filesystem identity comparisons can alias distinct large IDs in both failed lock cleanup paths and bound-directory admission. Exact BigInt capture/rechecks eliminate that representation collision.",
+  "hostedFailureAttribution": "The reported Windows ENOENT is consistent with the proven collision class. Exact raw IDs from that hosted failure were not recovered by this reviewer.",
+  "remainingQualification": "Exact candidate/main hosted gates for the correction remain independent; original failed PR263 main is not retroactively qualified.",
+  "safetyLimit": "Pathname lstat/realpath followed by unlink is not atomic; residual TOCTOU and crash-durability guarantees remain outside this correction.",
+  "artifacts": [
+    {
+      "path": "REVIEW.md",
+      "bytes": 5761,
+      "sha256": "1a3bcd01972c9cb85ca3268c1f5b1d35c84648d62ff7791f167a5cee9407b166"
+    },
+    {
+      "path": "source-captures.json",
+      "bytes": 65817,
+      "sha256": "ee48552dbc22f220641bff2daef0602a1db4a803f32ef33e55650e3232d0ae6e"
+    },
+    {
+      "path": "managed-parent-review.test.mjs",
+      "bytes": 6496,
+      "sha256": "2c85883dac816d022d05bc2f579f127caa22767805d5ebb50d7098f174e184e6"
+    },
+    {
+      "path": "run-managed-parent-review.mjs",
+      "bytes": 5161,
+      "sha256": "585dd17a3655f7b5aa70b3809cde8c1b10b39927a32f00710e3f5a4b29718037"
+    },
+    {
+      "path": "managed-parent-review.tap",
+      "bytes": 2340,
+      "sha256": "843a060359858a8b1afea92544a30e31cc8b273de02356c63bb7e016170ea648"
+    },
+    {
+      "path": "managed-parent-review.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "managed-parent-observations.json",
+      "bytes": 6054,
+      "sha256": "5f243aaaf39f9c3a6adcfc1b71311577fae79364e832753726c11c46c509f63c"
+    },
+    {
+      "path": "managed-parent-receipt.json",
+      "bytes": 3661,
+      "sha256": "f8739fa2d7053ef9c19ff03132df8caaa629c9ea784af21d239a2c7c90e1dffd"
+    },
+    {
+      "path": "hashes-before.json",
+      "bytes": 979,
+      "sha256": "de98e311c616ebe1e3936535cd5e5377c48bb0a5d374389b92867e21c82fe4a0"
+    },
+    {
+      "path": "hashes-after.json",
+      "bytes": 979,
+      "sha256": "de98e311c616ebe1e3936535cd5e5377c48bb0a5d374389b92867e21c82fe4a0"
+    },
+    {
+      "path": "producer-green-receipt.json",
+      "bytes": 1562,
+      "sha256": "cc6c0ec6e04d301c62348ce93584871f6484ddf0308183e01f31042f5c73901b"
+    },
+    {
+      "path": "producer-green.tap",
+      "bytes": 24714,
+      "sha256": "cc902acecad2619bc69ff938d238f75d018b3239faa61b06d16f461ed7bea96b"
+    },
+    {
+      "path": "finalize-review.mjs",
+      "bytes": 3352,
+      "sha256": "b4cba6f68d773d3b50731fb880e64e75b4aeba7105006ee74b524b2d1eafb9b7"
+    }
+  ]
+}

@@ -1,0 +1,1218 @@
+{
+  "schemaVersion": 1,
+  "repository": "MulattoTech/MTerm-CLI",
+  "pullRequest": 263,
+  "reviewer": "/root/status_freshness_review",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro (inherited; self-reported)",
+  "verifiedAt": "2026-11-13T00:30:33.980Z",
+  "verdict": "BLOCKED_ACTUAL_MAIN_HOSTED_GATE_FAILURE",
+  "receiptKind": "NEW_RECOVERY_ACTUAL_MAIN_FAILURE_QUALIFICATION",
+  "candidateSha": "f8a861e41354116c4706861d706f621fabf589eb",
+  "candidateBase": "b2b62156bde7d75b2a36b0af0fd677ef1ad514dd",
+  "mainSha": "15dd5de8387507774f6471e4b34d108a492393dc",
+  "mergedMain": "15dd5de8387507774f6471e4b34d108a492393dc",
+  "mainBranch": "main",
+  "tree": "ab0200266b687dbd695ec808028be7342fb8dc80",
+  "parents": [
+    "b2b62156bde7d75b2a36b0af0fd677ef1ad514dd",
+    "f8a861e41354116c4706861d706f621fabf589eb"
+  ],
+  "mergedAt": "2026-11-12T23:58:55Z",
+  "mergedPrVerified": true,
+  "candidateAndMainTreesEqual": true,
+  "currentMainRefVerifiedAt": "2026-11-13T00:20:50.857Z",
+  "candidateReviewReceipt": {
+    "path": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\receipt.json",
+    "bytes": 50804,
+    "sha256": "35a98d75001f1d8f3a98964f1c02f35eecf21b166aaf7d419b33b19e6df8c759"
+  },
+  "originalCandidateAttestation": {
+    "path": "/workspace/scratch/267bdf8cab08/review-pr263/receipt.json",
+    "bytes": 75275,
+    "sha256": "8c897cbacb77d09e33a543aa03b9312981fa752e428a5c410fcd4a6fafc9ea5c",
+    "bodyAvailableInRecoveredState": false,
+    "priorApprovalPreserved": true,
+    "approvalCompletedBeforeMergedAt": "2026-11-12T23:58:55Z",
+    "attestationCorroboratedInMergedPullRequestBody": true,
+    "reconstructedByteExactCopy": false
+  },
+  "candidateChecksPassed": 6,
+  "mainChecksPassed": 5,
+  "candidateRuns": [
+    {
+      "repository": "MulattoTech/MTerm-CLI",
+      "id": 43331573155,
+      "name": "CLI fast checks",
+      "headSha": "f8a861e41354116c4706861d706f621fabf589eb",
+      "headBranch": "fix/remote-runtime-freshness-20261112",
+      "event": "pull_request",
+      "path": ".github/workflows/ci-fast.yml",
+      "workflowId": 393731387,
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "htmlUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43331573155",
+      "apiUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43331573155",
+      "createdAt": "2026-11-12T23:45:52Z",
+      "updatedAt": "2026-11-12T23:49:20Z"
+    },
+    {
+      "repository": "MulattoTech/MTerm-CLI",
+      "id": 43331573133,
+      "name": "CLI compatibility foundation",
+      "headSha": "f8a861e41354116c4706861d706f621fabf589eb",
+      "headBranch": "fix/remote-runtime-freshness-20261112",
+      "event": "pull_request",
+      "path": ".github/workflows/cli-ci.yml",
+      "workflowId": 375792633,
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "htmlUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43331573133",
+      "apiUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43331573133",
+      "createdAt": "2026-11-12T23:45:52Z",
+      "updatedAt": "2026-11-12T23:56:36Z"
+    }
+  ],
+  "mainRuns": [
+    {
+      "repository": "MulattoTech/MTerm-CLI",
+      "id": 43333320006,
+      "name": "CLI fast checks",
+      "headSha": "15dd5de8387507774f6471e4b34d108a492393dc",
+      "headBranch": "main",
+      "event": "push",
+      "path": ".github/workflows/ci-fast.yml",
+      "workflowId": 393731387,
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "htmlUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43333320006",
+      "apiUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43333320006",
+      "createdAt": "2026-11-12T23:58:58Z",
+      "updatedAt": "2026-11-13T00:01:55Z"
+    },
+    {
+      "repository": "MulattoTech/MTerm-CLI",
+      "id": 43333319809,
+      "name": "CLI compatibility foundation",
+      "headSha": "15dd5de8387507774f6471e4b34d108a492393dc",
+      "headBranch": "main",
+      "event": "push",
+      "path": ".github/workflows/cli-ci.yml",
+      "workflowId": 375792633,
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "failure",
+      "htmlUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43333319809",
+      "apiUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43333319809",
+      "createdAt": "2026-11-12T23:58:57Z",
+      "updatedAt": "2026-11-13T00:11:38Z"
+    }
+  ],
+  "workflowContracts": [
+    {
+      "path": ".github/workflows/ci-fast.yml",
+      "ref": "15dd5de8387507774f6471e4b34d108a492393dc",
+      "gitBlob": "8d564a5ed8743b8186d628d796d057c3131a98b6",
+      "sha256": "78ea3ed7766e9ae4061dc8ec3abae8fd21eedbf90e8daf731b693c9043e1327f",
+      "contentBytes": 973,
+      "candidateContentEqual": true
+    },
+    {
+      "path": ".github/workflows/cli-ci.yml",
+      "ref": "15dd5de8387507774f6471e4b34d108a492393dc",
+      "gitBlob": "1120c455f1ccf743b2e27f99b6f4ed3d57b06319",
+      "sha256": "5b4fbe4bf4f8debf43653909d7f8e18357f1a39ae2736f8a6a2f0119aa1a62a5",
+      "contentBytes": 4005,
+      "candidateContentEqual": true
+    }
+  ],
+  "requiredHostedJobs": [
+    {
+      "id": 131583156460,
+      "name": "CI / fast",
+      "runId": 43333320006,
+      "runAttempt": 1,
+      "headSha": "15dd5de8387507774f6471e4b34d108a492393dc",
+      "htmlUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43333320006/job/131583156460",
+      "status": "completed",
+      "conclusion": "success",
+      "allNamedStepsSucceeded": true,
+      "qualified": true,
+      "rawLogFile": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\main-fast-raw.log",
+      "logCaptureFile": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\main-fast-log.json",
+      "logSha256": "bfbb2c326dfaf1d218c010acb3be0cae8eb94b8b980c89a6cc42b5040d27d137",
+      "logBytes": 802583,
+      "logCaptureSha256": "5cc2783e8d38dd4b95a77c4bc2c89f7bca3143770a497bd88872bf9f87a363f2",
+      "logCaptureBytes": 870132,
+      "testedCheckoutSha": "15dd5de8387507774f6471e4b34d108a492393dc",
+      "testSummary": {
+        "tests": 1582,
+        "suites": 0,
+        "pass": 1570,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 12,
+        "todo": 0
+      },
+      "checkRunId": 131583156460,
+      "checkRunUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/check-runs/131583156460",
+      "checkRunConclusion": "success"
+    },
+    {
+      "id": 131583155224,
+      "name": "ubuntu-24.04 / Node 24",
+      "runId": 43333319809,
+      "runAttempt": 1,
+      "headSha": "15dd5de8387507774f6471e4b34d108a492393dc",
+      "htmlUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43333319809/job/131583155224",
+      "status": "completed",
+      "conclusion": "success",
+      "allNamedStepsSucceeded": true,
+      "qualified": true,
+      "rawLogFile": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\main-ubuntu-raw.log",
+      "logCaptureFile": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\main-ubuntu-log.json",
+      "logSha256": "040c611f57bfb070de6f3ee30701ed88ee581c2f9443934ecc8267d11cc278fb",
+      "logBytes": 920275,
+      "logCaptureSha256": "027f3d4ce71716026a02eb8ad9172f3542bf3eaec3f9351e30d0a55471928ca8",
+      "logCaptureBytes": 993339,
+      "testedCheckoutSha": "15dd5de8387507774f6471e4b34d108a492393dc",
+      "testSummary": {
+        "tests": 1582,
+        "suites": 0,
+        "pass": 1570,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 12,
+        "todo": 0
+      },
+      "checkRunId": 131583155224,
+      "checkRunUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/check-runs/131583155224",
+      "checkRunConclusion": "success",
+      "runtimeArchitecture": {
+        "node": "v24.21.0",
+        "platform": "linux",
+        "arch": "x64"
+      },
+      "installedPackage": {
+        "profiles": 35,
+        "endpoints": 81,
+        "fromOutsideCheckout": true,
+        "ownedLoopbackTlsQualified": true,
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "archiveBytes": 163582,
+        "installedStandaloneCoreUnder50MB": true,
+        "productionLicenseEvidence": [
+          {
+            "name": "@modelcontextprotocol/core",
+            "version": "2.3.0",
+            "license": "Apache-2.0",
+            "integrity": "sha512-09BHFaNVBe5pB2AhzCfLj0cqmsKLERvZQ4FblzP90UMGLaXVqdZPByFjURwsUYCmxonUW2yAwgTTvle+8O2/8w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "@modelcontextprotocol/server",
+            "version": "2.3.0-mterm.1",
+            "license": "Apache-2.0",
+            "integrity": "sha512-RNlauLPhVz8rUV8EvE1jsPmzBtb84j1HIBFGaTyANRbSHjwEBjl0th5idsfHRcGLT5TWZVfFFzlZhk/zJWXY4w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "acorn",
+            "version": "8.19.0",
+            "license": "MIT",
+            "integrity": "sha512-oJlA3XiRm7Cyk6qFD2Jn8ak9B7jSy0qy00ADO3+8dpT0LSjFihQYv4C02LFCSYJV3Q37xYwwRy5m+IpIiUzqWw==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "76a876cf886ff9be2a8b5e2e86514fed06223c8c9f0c1e9ee9606e93841e00b7"
+              }
+            ]
+          },
+          {
+            "name": "mterm-cli",
+            "version": "0.0.1-preview.1",
+            "license": "MIT",
+            "integrity": "sha512-vAgb7hUDkFsmGVYAnNLd4Qk1Jr317T6bivYROE0QgQsPiit+oTCpHSdz05t15VgtKu5mmtIkM8G9OK4ZYpdbQA==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "057801cf89de394d84ca2f5797e31619cb5fd66e6f4b7da7058db7887633ba37"
+              }
+            ]
+          },
+          {
+            "name": "zod",
+            "version": "4.6.7",
+            "license": "MIT",
+            "integrity": "sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8"
+              }
+            ]
+          }
+        ],
+        "fullTransitiveLicenseClearance": false,
+        "fullDesktopCommanderParity": false,
+        "fullThreeComponentUnder50MB": "NOT VERIFIED; this is a dependency-reuse local host, not that bundle",
+        "packagedMcpRoundTrip": true,
+        "ownedPrefixNpmLink": true,
+        "offlineNpmExecFromTarball": true,
+        "profileModuleBindings": [
+          {
+            "path": "dist/remote/cli.js",
+            "bytes": 16217,
+            "sha256": "81d3ec8d2b57412fae269a78098070a61c69fef275ef230a78f4b4a4e9b5a7cb"
+          },
+          {
+            "path": "dist/remote/profiles.js",
+            "bytes": 12397,
+            "sha256": "61a471d8b405c196114795696c8ec7d9f12df9eea60c29bfa3afebefcc393d50"
+          },
+          {
+            "path": "dist/remote/state.js",
+            "bytes": 24190,
+            "sha256": "57b4ae00ba82cdde25bd7d96f7a3a216dc45bf50a06f02c2c408909b8c467a52"
+          }
+        ],
+        "endpointModuleBindings": [
+          {
+            "path": "dist/remote/cli.js",
+            "bytes": 16217,
+            "sha256": "81d3ec8d2b57412fae269a78098070a61c69fef275ef230a78f4b4a4e9b5a7cb"
+          },
+          {
+            "path": "dist/remote/endpoint-policy.js",
+            "bytes": 4704,
+            "sha256": "7e1a9ccd003d26e3f805eeb2f2343ec843e5a97a7369ca3d6d8e7e858a2fad3a"
+          },
+          {
+            "path": "dist/remote/endpoint-probe.js",
+            "bytes": 24322,
+            "sha256": "a2102578b922586adbf94b39cb9bdd7e7f4e3cca6d8b45ee9c88d7abca805246"
+          }
+        ],
+        "profileSyntheticOnly": true,
+        "actualRemoteEnrollment": false,
+        "externalEndpointProbed": false,
+        "realCredentialsUsed": false,
+        "installedIsolationProtocolTests": 31
+      },
+      "managedCodex": {
+        "codexVersion": "codex-cli 0.160.1",
+        "codexExpectedVersion": "0.160.1",
+        "testOwnedCodex": true,
+        "configurationParsedByCodex": true,
+        "setupApplied": true,
+        "setupIdempotent": true,
+        "registeredCommandMcpRounds": 2,
+        "shutdownVerified": true,
+        "actualCodexAgentToolInvocation": false,
+        "realUserConfigChanged": false,
+        "modelCalls": 0,
+        "node": "v24.21.0",
+        "platform": "linux",
+        "arch": "x64"
+      }
+    },
+    {
+      "id": 131583155535,
+      "name": "windows-2022 / Node 24",
+      "runId": 43333319809,
+      "runAttempt": 1,
+      "headSha": "15dd5de8387507774f6471e4b34d108a492393dc",
+      "htmlUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43333319809/job/131583155535",
+      "status": "completed",
+      "conclusion": "failure",
+      "allNamedStepsSucceeded": false,
+      "qualified": false,
+      "rawLogFile": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\main-windows-raw.log",
+      "logCaptureFile": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\main-windows-log.json",
+      "logSha256": "ddc9fe9ab4c7bc54e03616f4135c77afc9848d41dd41092b6ec91cd724483562",
+      "logBytes": 806724,
+      "logCaptureSha256": "1ab834407b76f3b2ed5f35ab5bcb1b3f460d6e3eed7e60a34be080f363a778d9",
+      "logCaptureBytes": 879854,
+      "testedCheckoutSha": "15dd5de8387507774f6471e4b34d108a492393dc",
+      "testSummary": {
+        "tests": 1582,
+        "suites": 0,
+        "pass": 1581,
+        "fail": 1,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "checkRunId": 131583155535,
+      "checkRunUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/check-runs/131583155535",
+      "checkRunConclusion": "failure",
+      "runtimeArchitecture": {
+        "node": "v24.21.0",
+        "platform": "win32",
+        "arch": "x64"
+      },
+      "failure": {
+        "testFile": "tests/remote-run-lock.test.mjs",
+        "testDeclarationLine": 353,
+        "failingReadLine": 369,
+        "test": "remote run lock cleanup retains its inode after that inode moves under a replacement parent",
+        "code": "ENOENT",
+        "suiteFail": 1,
+        "missingPath": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\mterm-run-lock-37Z6EX\\state\\run.lock",
+        "failedStep": [
+          "Typecheck formatting and deterministic tests"
+        ],
+        "skippedSteps": [
+          "Verify packed install and isolated npm link",
+          "Install pinned Codex into test-owned prefix",
+          "Real Codex registration without login or model calls",
+          "Exact source remains unchanged by tests",
+          "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020"
+        ],
+        "packageQualified": false,
+        "ownedCodexQualified": false,
+        "rootCause": "Not established by this review; root investigating separately",
+        "notWaived": true
+      }
+    },
+    {
+      "id": 131583155584,
+      "name": "macos-15 / Node 24",
+      "runId": 43333319809,
+      "runAttempt": 1,
+      "headSha": "15dd5de8387507774f6471e4b34d108a492393dc",
+      "htmlUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43333319809/job/131583155584",
+      "status": "completed",
+      "conclusion": "success",
+      "allNamedStepsSucceeded": true,
+      "qualified": true,
+      "rawLogFile": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\main-arm-raw.log",
+      "logCaptureFile": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\main-arm-log.json",
+      "logSha256": "04b98aa19dee272302c342858e40b0b63ca995930bb6cd981aeeaa18620c6ba9",
+      "logBytes": 928578,
+      "logCaptureSha256": "a322cc4b659ba2f106c24b5845d869c70813f06663f17d8770d2acd186873349",
+      "logCaptureBytes": 1001644,
+      "testedCheckoutSha": "15dd5de8387507774f6471e4b34d108a492393dc",
+      "testSummary": {
+        "tests": 1582,
+        "suites": 0,
+        "pass": 1570,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 12,
+        "todo": 0
+      },
+      "checkRunId": 131583155584,
+      "checkRunUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/check-runs/131583155584",
+      "checkRunConclusion": "success",
+      "runtimeArchitecture": {
+        "node": "v24.21.0",
+        "platform": "darwin",
+        "arch": "arm64"
+      },
+      "installedPackage": {
+        "profiles": 35,
+        "endpoints": 81,
+        "fromOutsideCheckout": true,
+        "ownedLoopbackTlsQualified": true,
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "archiveBytes": 163582,
+        "installedStandaloneCoreUnder50MB": true,
+        "productionLicenseEvidence": [
+          {
+            "name": "@modelcontextprotocol/core",
+            "version": "2.3.0",
+            "license": "Apache-2.0",
+            "integrity": "sha512-09BHFaNVBe5pB2AhzCfLj0cqmsKLERvZQ4FblzP90UMGLaXVqdZPByFjURwsUYCmxonUW2yAwgTTvle+8O2/8w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "@modelcontextprotocol/server",
+            "version": "2.3.0-mterm.1",
+            "license": "Apache-2.0",
+            "integrity": "sha512-RNlauLPhVz8rUV8EvE1jsPmzBtb84j1HIBFGaTyANRbSHjwEBjl0th5idsfHRcGLT5TWZVfFFzlZhk/zJWXY4w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "acorn",
+            "version": "8.19.0",
+            "license": "MIT",
+            "integrity": "sha512-oJlA3XiRm7Cyk6qFD2Jn8ak9B7jSy0qy00ADO3+8dpT0LSjFihQYv4C02LFCSYJV3Q37xYwwRy5m+IpIiUzqWw==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "76a876cf886ff9be2a8b5e2e86514fed06223c8c9f0c1e9ee9606e93841e00b7"
+              }
+            ]
+          },
+          {
+            "name": "mterm-cli",
+            "version": "0.0.1-preview.1",
+            "license": "MIT",
+            "integrity": "sha512-vAgb7hUDkFsmGVYAnNLd4Qk1Jr317T6bivYROE0QgQsPiit+oTCpHSdz05t15VgtKu5mmtIkM8G9OK4ZYpdbQA==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "057801cf89de394d84ca2f5797e31619cb5fd66e6f4b7da7058db7887633ba37"
+              }
+            ]
+          },
+          {
+            "name": "zod",
+            "version": "4.6.7",
+            "license": "MIT",
+            "integrity": "sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8"
+              }
+            ]
+          }
+        ],
+        "fullTransitiveLicenseClearance": false,
+        "fullDesktopCommanderParity": false,
+        "fullThreeComponentUnder50MB": "NOT VERIFIED; this is a dependency-reuse local host, not that bundle",
+        "packagedMcpRoundTrip": true,
+        "ownedPrefixNpmLink": true,
+        "offlineNpmExecFromTarball": true,
+        "profileModuleBindings": [
+          {
+            "path": "dist/remote/cli.js",
+            "bytes": 16217,
+            "sha256": "81d3ec8d2b57412fae269a78098070a61c69fef275ef230a78f4b4a4e9b5a7cb"
+          },
+          {
+            "path": "dist/remote/profiles.js",
+            "bytes": 12397,
+            "sha256": "61a471d8b405c196114795696c8ec7d9f12df9eea60c29bfa3afebefcc393d50"
+          },
+          {
+            "path": "dist/remote/state.js",
+            "bytes": 24190,
+            "sha256": "57b4ae00ba82cdde25bd7d96f7a3a216dc45bf50a06f02c2c408909b8c467a52"
+          }
+        ],
+        "endpointModuleBindings": [
+          {
+            "path": "dist/remote/cli.js",
+            "bytes": 16217,
+            "sha256": "81d3ec8d2b57412fae269a78098070a61c69fef275ef230a78f4b4a4e9b5a7cb"
+          },
+          {
+            "path": "dist/remote/endpoint-policy.js",
+            "bytes": 4704,
+            "sha256": "7e1a9ccd003d26e3f805eeb2f2343ec843e5a97a7369ca3d6d8e7e858a2fad3a"
+          },
+          {
+            "path": "dist/remote/endpoint-probe.js",
+            "bytes": 24322,
+            "sha256": "a2102578b922586adbf94b39cb9bdd7e7f4e3cca6d8b45ee9c88d7abca805246"
+          }
+        ],
+        "profileSyntheticOnly": true,
+        "actualRemoteEnrollment": false,
+        "externalEndpointProbed": false,
+        "realCredentialsUsed": false,
+        "installedIsolationProtocolTests": 31
+      },
+      "managedCodex": {
+        "codexVersion": "codex-cli 0.160.1",
+        "codexExpectedVersion": "0.160.1",
+        "testOwnedCodex": true,
+        "configurationParsedByCodex": true,
+        "setupApplied": true,
+        "setupIdempotent": true,
+        "registeredCommandMcpRounds": 2,
+        "shutdownVerified": true,
+        "actualCodexAgentToolInvocation": false,
+        "realUserConfigChanged": false,
+        "modelCalls": 0,
+        "node": "v24.21.0",
+        "platform": "darwin",
+        "arch": "arm64"
+      }
+    },
+    {
+      "id": 131583155591,
+      "name": "Native Linux isolation / Node 24",
+      "runId": 43333319809,
+      "runAttempt": 1,
+      "headSha": "15dd5de8387507774f6471e4b34d108a492393dc",
+      "htmlUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43333319809/job/131583155591",
+      "status": "completed",
+      "conclusion": "success",
+      "allNamedStepsSucceeded": true,
+      "qualified": true,
+      "rawLogFile": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\main-native-raw.log",
+      "logCaptureFile": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\main-native-log.json",
+      "logSha256": "38481dd9bc1c8bc6cae9704c4175de3cb04856252825738ec3742aa2608fec3c",
+      "logBytes": 645036,
+      "logCaptureSha256": "994d3b66ebb58f2cc5b3d79527cbbb2bc29bd31a6260c539f86da558a6113af3",
+      "logCaptureBytes": 676728,
+      "testedCheckoutSha": "15dd5de8387507774f6471e4b34d108a492393dc",
+      "testSummary": null,
+      "checkRunId": 131583155591,
+      "checkRunUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/check-runs/131583155591",
+      "checkRunConclusion": "success",
+      "installedPackage": {
+        "profiles": 35,
+        "endpoints": 81,
+        "fromOutsideCheckout": true,
+        "ownedLoopbackTlsQualified": true,
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "archiveBytes": 163582,
+        "installedStandaloneCoreUnder50MB": true,
+        "productionLicenseEvidence": [
+          {
+            "name": "@modelcontextprotocol/core",
+            "version": "2.3.0",
+            "license": "Apache-2.0",
+            "integrity": "sha512-09BHFaNVBe5pB2AhzCfLj0cqmsKLERvZQ4FblzP90UMGLaXVqdZPByFjURwsUYCmxonUW2yAwgTTvle+8O2/8w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "@modelcontextprotocol/server",
+            "version": "2.3.0-mterm.1",
+            "license": "Apache-2.0",
+            "integrity": "sha512-RNlauLPhVz8rUV8EvE1jsPmzBtb84j1HIBFGaTyANRbSHjwEBjl0th5idsfHRcGLT5TWZVfFFzlZhk/zJWXY4w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "acorn",
+            "version": "8.19.0",
+            "license": "MIT",
+            "integrity": "sha512-oJlA3XiRm7Cyk6qFD2Jn8ak9B7jSy0qy00ADO3+8dpT0LSjFihQYv4C02LFCSYJV3Q37xYwwRy5m+IpIiUzqWw==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "76a876cf886ff9be2a8b5e2e86514fed06223c8c9f0c1e9ee9606e93841e00b7"
+              }
+            ]
+          },
+          {
+            "name": "mterm-cli",
+            "version": "0.0.1-preview.1",
+            "license": "MIT",
+            "integrity": "sha512-vAgb7hUDkFsmGVYAnNLd4Qk1Jr317T6bivYROE0QgQsPiit+oTCpHSdz05t15VgtKu5mmtIkM8G9OK4ZYpdbQA==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "057801cf89de394d84ca2f5797e31619cb5fd66e6f4b7da7058db7887633ba37"
+              }
+            ]
+          },
+          {
+            "name": "zod",
+            "version": "4.6.7",
+            "license": "MIT",
+            "integrity": "sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8"
+              }
+            ]
+          }
+        ],
+        "fullTransitiveLicenseClearance": false,
+        "fullDesktopCommanderParity": false,
+        "fullThreeComponentUnder50MB": "NOT VERIFIED; this is a dependency-reuse local host, not that bundle",
+        "packagedMcpRoundTrip": true,
+        "ownedPrefixNpmLink": true,
+        "offlineNpmExecFromTarball": true,
+        "profileModuleBindings": [
+          {
+            "path": "dist/remote/cli.js",
+            "bytes": 16217,
+            "sha256": "81d3ec8d2b57412fae269a78098070a61c69fef275ef230a78f4b4a4e9b5a7cb"
+          },
+          {
+            "path": "dist/remote/profiles.js",
+            "bytes": 12397,
+            "sha256": "61a471d8b405c196114795696c8ec7d9f12df9eea60c29bfa3afebefcc393d50"
+          },
+          {
+            "path": "dist/remote/state.js",
+            "bytes": 24190,
+            "sha256": "57b4ae00ba82cdde25bd7d96f7a3a216dc45bf50a06f02c2c408909b8c467a52"
+          }
+        ],
+        "endpointModuleBindings": [
+          {
+            "path": "dist/remote/cli.js",
+            "bytes": 16217,
+            "sha256": "81d3ec8d2b57412fae269a78098070a61c69fef275ef230a78f4b4a4e9b5a7cb"
+          },
+          {
+            "path": "dist/remote/endpoint-policy.js",
+            "bytes": 4704,
+            "sha256": "7e1a9ccd003d26e3f805eeb2f2343ec843e5a97a7369ca3d6d8e7e858a2fad3a"
+          },
+          {
+            "path": "dist/remote/endpoint-probe.js",
+            "bytes": 24322,
+            "sha256": "a2102578b922586adbf94b39cb9bdd7e7f4e3cca6d8b45ee9c88d7abca805246"
+          }
+        ],
+        "profileSyntheticOnly": true,
+        "actualRemoteEnrollment": false,
+        "externalEndpointProbed": false,
+        "realCredentialsUsed": false,
+        "installedIsolationProtocolTests": 31
+      },
+      "nativeSource": {
+        "passed": true,
+        "scenarios": 12,
+        "allCleanupVerified": true,
+        "sourceCommit": "15dd5de8387507774f6471e4b34d108a492393dc",
+        "installedPackage": false,
+        "fromOutsideCheckout": true,
+        "syntheticOnly": false,
+        "modelCalls": 0,
+        "acceptedCapability": false,
+        "fullRuntimeImageRedistributionEligible": false
+      },
+      "nativeInstalled": {
+        "passed": true,
+        "scenarios": 12,
+        "allCleanupVerified": true,
+        "sourceCommit": "15dd5de8387507774f6471e4b34d108a492393dc",
+        "installedPackage": true,
+        "fromOutsideCheckout": true,
+        "syntheticOnly": false,
+        "modelCalls": 0,
+        "acceptedCapability": false,
+        "fullRuntimeImageRedistributionEligible": false
+      }
+    },
+    {
+      "id": 131583155628,
+      "name": "macos-15-intel / Node 24",
+      "runId": 43333319809,
+      "runAttempt": 1,
+      "headSha": "15dd5de8387507774f6471e4b34d108a492393dc",
+      "htmlUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43333319809/job/131583155628",
+      "status": "completed",
+      "conclusion": "success",
+      "allNamedStepsSucceeded": true,
+      "qualified": true,
+      "rawLogFile": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\main-intel-raw.log",
+      "logCaptureFile": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\main-intel-log.json",
+      "logSha256": "322203c95308de77729970db4f5f6a9aea846659ed2203013534f0eb13390d3b",
+      "logBytes": 929151,
+      "logCaptureSha256": "82207c138c81a83903c9422b6482d48936532a825e6aef3a21a30fb999c7c850",
+      "logCaptureBytes": 1002216,
+      "testedCheckoutSha": "15dd5de8387507774f6471e4b34d108a492393dc",
+      "testSummary": {
+        "tests": 1582,
+        "suites": 0,
+        "pass": 1570,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 12,
+        "todo": 0
+      },
+      "checkRunId": 131583155628,
+      "checkRunUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/check-runs/131583155628",
+      "checkRunConclusion": "success",
+      "runtimeArchitecture": {
+        "node": "v24.21.0",
+        "platform": "darwin",
+        "arch": "x64"
+      },
+      "installedPackage": {
+        "profiles": 35,
+        "endpoints": 81,
+        "fromOutsideCheckout": true,
+        "ownedLoopbackTlsQualified": true,
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "archiveBytes": 163582,
+        "installedStandaloneCoreUnder50MB": true,
+        "productionLicenseEvidence": [
+          {
+            "name": "@modelcontextprotocol/core",
+            "version": "2.3.0",
+            "license": "Apache-2.0",
+            "integrity": "sha512-09BHFaNVBe5pB2AhzCfLj0cqmsKLERvZQ4FblzP90UMGLaXVqdZPByFjURwsUYCmxonUW2yAwgTTvle+8O2/8w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "@modelcontextprotocol/server",
+            "version": "2.3.0-mterm.1",
+            "license": "Apache-2.0",
+            "integrity": "sha512-RNlauLPhVz8rUV8EvE1jsPmzBtb84j1HIBFGaTyANRbSHjwEBjl0th5idsfHRcGLT5TWZVfFFzlZhk/zJWXY4w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "acorn",
+            "version": "8.19.0",
+            "license": "MIT",
+            "integrity": "sha512-oJlA3XiRm7Cyk6qFD2Jn8ak9B7jSy0qy00ADO3+8dpT0LSjFihQYv4C02LFCSYJV3Q37xYwwRy5m+IpIiUzqWw==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "76a876cf886ff9be2a8b5e2e86514fed06223c8c9f0c1e9ee9606e93841e00b7"
+              }
+            ]
+          },
+          {
+            "name": "mterm-cli",
+            "version": "0.0.1-preview.1",
+            "license": "MIT",
+            "integrity": "sha512-vAgb7hUDkFsmGVYAnNLd4Qk1Jr317T6bivYROE0QgQsPiit+oTCpHSdz05t15VgtKu5mmtIkM8G9OK4ZYpdbQA==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "057801cf89de394d84ca2f5797e31619cb5fd66e6f4b7da7058db7887633ba37"
+              }
+            ]
+          },
+          {
+            "name": "zod",
+            "version": "4.6.7",
+            "license": "MIT",
+            "integrity": "sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8"
+              }
+            ]
+          }
+        ],
+        "fullTransitiveLicenseClearance": false,
+        "fullDesktopCommanderParity": false,
+        "fullThreeComponentUnder50MB": "NOT VERIFIED; this is a dependency-reuse local host, not that bundle",
+        "packagedMcpRoundTrip": true,
+        "ownedPrefixNpmLink": true,
+        "offlineNpmExecFromTarball": true,
+        "profileModuleBindings": [
+          {
+            "path": "dist/remote/cli.js",
+            "bytes": 16217,
+            "sha256": "81d3ec8d2b57412fae269a78098070a61c69fef275ef230a78f4b4a4e9b5a7cb"
+          },
+          {
+            "path": "dist/remote/profiles.js",
+            "bytes": 12397,
+            "sha256": "61a471d8b405c196114795696c8ec7d9f12df9eea60c29bfa3afebefcc393d50"
+          },
+          {
+            "path": "dist/remote/state.js",
+            "bytes": 24190,
+            "sha256": "57b4ae00ba82cdde25bd7d96f7a3a216dc45bf50a06f02c2c408909b8c467a52"
+          }
+        ],
+        "endpointModuleBindings": [
+          {
+            "path": "dist/remote/cli.js",
+            "bytes": 16217,
+            "sha256": "81d3ec8d2b57412fae269a78098070a61c69fef275ef230a78f4b4a4e9b5a7cb"
+          },
+          {
+            "path": "dist/remote/endpoint-policy.js",
+            "bytes": 4704,
+            "sha256": "7e1a9ccd003d26e3f805eeb2f2343ec843e5a97a7369ca3d6d8e7e858a2fad3a"
+          },
+          {
+            "path": "dist/remote/endpoint-probe.js",
+            "bytes": 24322,
+            "sha256": "a2102578b922586adbf94b39cb9bdd7e7f4e3cca6d8b45ee9c88d7abca805246"
+          }
+        ],
+        "profileSyntheticOnly": true,
+        "actualRemoteEnrollment": false,
+        "externalEndpointProbed": false,
+        "realCredentialsUsed": false,
+        "installedIsolationProtocolTests": 31
+      },
+      "managedCodex": {
+        "codexVersion": "codex-cli 0.160.1",
+        "codexExpectedVersion": "0.160.1",
+        "testOwnedCodex": true,
+        "configurationParsedByCodex": true,
+        "setupApplied": true,
+        "setupIdempotent": true,
+        "registeredCommandMcpRounds": 2,
+        "shutdownVerified": true,
+        "actualCodexAgentToolInvocation": false,
+        "realUserConfigChanged": false,
+        "modelCalls": 0,
+        "node": "v24.21.0",
+        "platform": "darwin",
+        "arch": "x64"
+      }
+    }
+  ],
+  "mainCheckRuns": [
+    {
+      "id": 131583156460,
+      "name": "CI / fast",
+      "headSha": "15dd5de8387507774f6471e4b34d108a492393dc",
+      "status": "completed",
+      "conclusion": "success",
+      "detailsUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43333320006/job/131583156460",
+      "apiUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/check-runs/131583156460"
+    },
+    {
+      "id": 131583155628,
+      "name": "macos-15-intel / Node 24",
+      "headSha": "15dd5de8387507774f6471e4b34d108a492393dc",
+      "status": "completed",
+      "conclusion": "success",
+      "detailsUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43333319809/job/131583155628",
+      "apiUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/check-runs/131583155628"
+    },
+    {
+      "id": 131583155591,
+      "name": "Native Linux isolation / Node 24",
+      "headSha": "15dd5de8387507774f6471e4b34d108a492393dc",
+      "status": "completed",
+      "conclusion": "success",
+      "detailsUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43333319809/job/131583155591",
+      "apiUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/check-runs/131583155591"
+    },
+    {
+      "id": 131583155584,
+      "name": "macos-15 / Node 24",
+      "headSha": "15dd5de8387507774f6471e4b34d108a492393dc",
+      "status": "completed",
+      "conclusion": "success",
+      "detailsUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43333319809/job/131583155584",
+      "apiUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/check-runs/131583155584"
+    },
+    {
+      "id": 131583155535,
+      "name": "windows-2022 / Node 24",
+      "headSha": "15dd5de8387507774f6471e4b34d108a492393dc",
+      "status": "completed",
+      "conclusion": "failure",
+      "detailsUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43333319809/job/131583155535",
+      "apiUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/check-runs/131583155535"
+    },
+    {
+      "id": 131583155224,
+      "name": "ubuntu-24.04 / Node 24",
+      "headSha": "15dd5de8387507774f6471e4b34d108a492393dc",
+      "status": "completed",
+      "conclusion": "success",
+      "detailsUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43333319809/job/131583155224",
+      "apiUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/check-runs/131583155224"
+    }
+  ],
+  "requiredJobCount": 6,
+  "allRequiredJobsSuccessful": false,
+  "allCandidateAndMainRunJobIdentitiesDistinct": true,
+  "findings": [
+    {
+      "id": "PR263-MAIN-WINDOWS-01",
+      "severity": "BLOCKER",
+      "summary": "Windows ordinary suite failed one remote run-lock cleanup case; required downstream package and owned Codex gates were skipped.",
+      "runId": 43333319809,
+      "jobId": 131583155535,
+      "jobUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43333319809/job/131583155535",
+      "logSha256": "ddc9fe9ab4c7bc54e03616f4135c77afc9848d41dd41092b6ec91cd724483562",
+      "logBytes": 806724,
+      "rawLogFile": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\main-windows-raw.log",
+      "testSummary": {
+        "tests": 1582,
+        "suites": 0,
+        "pass": 1581,
+        "fail": 1,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "testFile": "tests/remote-run-lock.test.mjs",
+      "testDeclarationLine": 353,
+      "failingReadLine": 369,
+      "test": "remote run lock cleanup retains its inode after that inode moves under a replacement parent",
+      "code": "ENOENT",
+      "suiteFail": 1,
+      "missingPath": "C:\\Users\\runneradmin\\AppData\\Local\\Temp\\mterm-run-lock-37Z6EX\\state\\run.lock",
+      "failedStep": [
+        "Typecheck formatting and deterministic tests"
+      ],
+      "skippedSteps": [
+        "Verify packed install and isolated npm link",
+        "Install pinned Codex into test-owned prefix",
+        "Real Codex registration without login or model calls",
+        "Exact source remains unchanged by tests",
+        "Post Run actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020"
+      ],
+      "packageQualified": false,
+      "ownedCodexQualified": false,
+      "rootCause": "Not established by this review; root investigating separately",
+      "notWaived": true,
+      "sourceRelationship": "The failing test is outside the frozen three-file status patch; that fact does not establish the failure's cause.",
+      "requiredDisposition": "Investigate the missing lock and preserve this failed attempt. Required successful source, package and platform evidence must be obtained for the exact delivery source before awarding actual-main qualification; no gate waiver is issued."
+    }
+  ],
+  "wholeRequirementAcceptance": false,
+  "productionDeploymentVerified": false,
+  "deliveryQualified": false,
+  "sourceReview": {
+    "frozenFiles": [
+      {
+        "path": "src/remote/cli.ts",
+        "ref": "f8a861e41354116c4706861d706f621fabf589eb",
+        "bytes": 16136,
+        "sha256": "05759f21585edb8ebcb6ffa9360be564fd7ea12efed96ad53606ad625bc0da22",
+        "gitBlob": "ac01d1521986d6597d7d674186fff8efa00d81d5"
+      },
+      {
+        "path": "tests/remote-profiles.test.mjs",
+        "ref": "f8a861e41354116c4706861d706f621fabf589eb",
+        "bytes": 26537,
+        "sha256": "3049c398bac8621ae293860ca54aac281e535887ffa64906036bae60ae241618",
+        "gitBlob": "46bc7543f52757f452675c60d79bbef90c1da27f"
+      },
+      {
+        "path": "scripts/verify-package.mjs",
+        "ref": "f8a861e41354116c4706861d706f621fabf589eb",
+        "bytes": 64772,
+        "sha256": "be06f50633a444fd604c4dba1fb1bef46bcfbc0e46f99f5d15949a0932e11886",
+        "gitBlob": "74057e89529e0af77660f25c952067ff7821c8c5"
+      }
+    ],
+    "sourceDiffSha256": "0c0366f3898a6040aeba7a2c63cdf1e5b1e06b2d8de55f4cfff7f6ebfeea06e1",
+    "sourceReceiptSha256": "56e46e32aebdb502e1b64eaec2bcd258a96895f1dee7688d4656c0f1732593cb",
+    "documentationReceiptSha256": "804be8d333b745e9b012d0f5f03e44e7733133c90906342eca6e4cb2adfd665f",
+    "sourceReportPath": "docs/validation/2026-11-12-remote-status-freshness/independent-review/review.md",
+    "documentationReportPath": "docs/validation/2026-11-12-remote-status-freshness/metadata-review/review.md",
+    "sourceReportRef": "f8a861e41354116c4706861d706f621fabf589eb",
+    "independentAdversarialCases": 22,
+    "independentAdversarialPass": 22,
+    "producerRed": {
+      "tests": 11,
+      "pass": 8,
+      "fail": 3
+    },
+    "producerCorrectedCases": 11,
+    "producerNearbyCases": 80,
+    "newLocalRuntimeTests": 11,
+    "installedProfileMinimum": 35,
+    "recoveryExtraTestsExecuted": false,
+    "priorSourceApprovalPreserved": true,
+    "priorMetadataApprovalPreserved": true,
+    "scope": "Local status freshness uses finite 0 <= age < 45000; preserves raw observations, local-only status semantics and existing refusal/state scope. No new network, credential or PID/liveness claim.",
+    "runtimeSha256": {
+      "dist/remote/cli.js": "81d3ec8d2b57412fae269a78098070a61c69fef275ef230a78f4b4a4e9b5a7cb",
+      "dist/remote/state.js": "57b4ae00ba82cdde25bd7d96f7a3a216dc45bf50a06f02c2c408909b8c467a52",
+      "dist/remote/profiles.js": "61a471d8b405c196114795696c8ec7d9f12df9eea60c29bfa3afebefcc393d50"
+    }
+  },
+  "localHistoricalFailurePreserved": {
+    "tests": 1582,
+    "suites": 0,
+    "pass": 1543,
+    "fail": 27,
+    "cancelled": 0,
+    "skipped": 12,
+    "todo": 0,
+    "source": "docs/validation/2026-11-12-remote-status-freshness/complete-check.json",
+    "classification": "Producer full local check retained as FAIL: 27 unchanged isolation listen EPERM failures and 12 Windows-only skips; never converted to a passing suite.",
+    "rawLogBytes": 759224,
+    "rawLogSha256": "56a5d6ef07ed07b57d5bd334a098ed5087a520feb9d9256f922d2a66542b9216",
+    "gzipBytes": 84691,
+    "gzipSha256": "9e6ccee4420c6101f349f5d22bf0ca6e361b15dfc3a680ea4bad90a6f95d42be",
+    "archiveGitBlob": "89df896b02def6962e87d1196373f779228dded8",
+    "recoveryScope": "Prior independent metadata review verified the complete log and lossless archive; that report's original bytes were re-fetched and hash-verified in this recovery. The full local suite was not rerun."
+  },
+  "limitations": [
+    "This is source and hosted qualification evidence only; no deployment, service restart, browser/OAuth activation, credential mutation, actual remote enrollment or whole-requirement acceptance is asserted.",
+    "Owned Codex 0.160.1 validation makes zero model calls and does not assert actual Codex agent tool invocation; native containment evidence does not grant full runtime-image redistribution rights or complete capability acceptance.",
+    "Original candidate receipt bytes are inaccessible after the local filesystem outage. The prior 8c897cba attestation is preserved separately and this newly serialized recovery receipt has its own identity.",
+    "The original 1,306-entry tree comparison, 69-path AI inventory and all 60 validation-member checks were independently completed before publication. Recovery rechecks immutable commit/tree identities, the three source hashes and both review reports, without claiming a fresh comparison against the unavailable original Linux index.",
+    "Complete decoded GitHub job-log strings are retained and hashed as UTF-8 bytes; these are not hashes of GitHub's compressed log downloads.",
+    "Candidate success does not override the actual-main failure. Only five main jobs qualified; Windows installed-package and Codex checks have no successful result in this push attempt.",
+    "Root is investigating the separate run-lock failure. This review does not classify it as flaky, platform noise, harmless or fixed."
+  ],
+  "actions": {
+    "githubMutation": false,
+    "sourceMutation": false,
+    "productionAction": false,
+    "modelCalls": 0,
+    "extraProductTests": false,
+    "authorizedReviewArtifactWrites": true
+  },
+  "apiIdentity": {
+    "path": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\api-identity.json",
+    "bytes": 155040,
+    "sha256": "87a4dd9ab1d23256959330beb36cffb9f9c4913546bfad1c0f11876f60b8fc85"
+  },
+  "storageOutage": {
+    "kind": "NEW_INDEPENDENT_RECOVERY_RECEIPT",
+    "startedAt": "2026-11-13T00:20:50.491Z",
+    "originalFilesystemAvailable": false,
+    "originalCandidateReceipt": {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr263/receipt.json",
+      "bytes": 75275,
+      "sha256": "8c897cbacb77d09e33a543aa03b9312981fa752e428a5c410fcd4a6fafc9ea5c",
+      "bodyAvailableInRecoveredState": false,
+      "priorApprovalPreserved": true,
+      "approvalCompletedBeforeMergedAt": "2026-11-12T23:58:55Z",
+      "attestationCorroboratedInMergedPullRequestBody": true,
+      "reconstructedByteExactCopy": false
+    },
+    "originalSourceAndMetadataReviewsRecoverableFromImmutableCommit": "f8a861e41354116c4706861d706f621fabf589eb",
+    "rawApiAndWorkflowLogEvidenceRecaptured": true,
+    "allTwelveDecodedLogsVerifiedAgainstInMemoryUtf8Hashes": true,
+    "originalNativeCandidateLogSurvivedAndMatchesRecaptureExactly": true,
+    "reviewArtifactDirectory": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263",
+    "storageAuthority": "Root expressly delegated reviewer-artifact writes only in this task-owned directory; repository, product and GitHub writes remain prohibited.",
+    "newProductTestsExecuted": false,
+    "originalReceiptReplaced": false,
+    "reason": "The prior Linux execution filesystem became unavailable before final actual-main qualification. This receipt is newly authored from fresh connector observations and surviving immutable/source evidence, not an exact reconstruction of the inaccessible original receipt."
+  },
+  "captureBindings": [
+    {
+      "path": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\fresh-api-captures.json",
+      "bytes": 234588,
+      "sha256": "7c6037891f9561f977f8ebe0c5a0e5356173105e8a5c2f95dfc5aee5bd0f601b"
+    },
+    {
+      "path": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\published-source-captures.json",
+      "bytes": 159619,
+      "sha256": "dd3192be0a77bf7a34301c892c0c3363ea10a5b37fe1b9a3ce66e6eac925ca22"
+    },
+    {
+      "path": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\retained-candidate-tree.json",
+      "bytes": 435086,
+      "sha256": "f0ce7ab668aad6da955f55400720b071bed8719626c6f717ee075d88def94270"
+    },
+    {
+      "path": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\surviving-original-snapshots.json",
+      "bytes": 299060,
+      "sha256": "51784e9d661de1aa8d30efadb38cc2519e05f46bc77f5fc767df5c8afa5871de"
+    },
+    {
+      "path": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\parsed-log-reports.json",
+      "bytes": 1470077,
+      "sha256": "b988447a462ce03f935c2e33e2ef0d13a36caafad0dd84d29ee1feebbcc57ea4"
+    },
+    {
+      "path": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\qualified-jobs.json",
+      "bytes": 80167,
+      "sha256": "2045109c8f67852d9be7508e13102f67b02a41113cc0ae78642b8c8487c0fab0"
+    },
+    {
+      "path": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\api-identity.json",
+      "bytes": 155040,
+      "sha256": "87a4dd9ab1d23256959330beb36cffb9f9c4913546bfad1c0f11876f60b8fc85"
+    },
+    {
+      "path": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\receipt.json",
+      "bytes": 50804,
+      "sha256": "35a98d75001f1d8f3a98964f1c02f35eecf21b166aaf7d419b33b19e6df8c759"
+    },
+    {
+      "path": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\main-fast-log.json",
+      "bytes": 870132,
+      "sha256": "5cc2783e8d38dd4b95a77c4bc2c89f7bca3143770a497bd88872bf9f87a363f2"
+    },
+    {
+      "path": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\main-fast-raw.log",
+      "bytes": 802583,
+      "sha256": "bfbb2c326dfaf1d218c010acb3be0cae8eb94b8b980c89a6cc42b5040d27d137"
+    },
+    {
+      "path": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\main-ubuntu-log.json",
+      "bytes": 993339,
+      "sha256": "027f3d4ce71716026a02eb8ad9172f3542bf3eaec3f9351e30d0a55471928ca8"
+    },
+    {
+      "path": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\main-ubuntu-raw.log",
+      "bytes": 920275,
+      "sha256": "040c611f57bfb070de6f3ee30701ed88ee581c2f9443934ecc8267d11cc278fb"
+    },
+    {
+      "path": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\main-windows-log.json",
+      "bytes": 879854,
+      "sha256": "1ab834407b76f3b2ed5f35ab5bcb1b3f460d6e3eed7e60a34be080f363a778d9"
+    },
+    {
+      "path": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\main-windows-raw.log",
+      "bytes": 806724,
+      "sha256": "ddc9fe9ab4c7bc54e03616f4135c77afc9848d41dd41092b6ec91cd724483562"
+    },
+    {
+      "path": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\main-arm-log.json",
+      "bytes": 1001644,
+      "sha256": "a322cc4b659ba2f106c24b5845d869c70813f06663f17d8770d2acd186873349"
+    },
+    {
+      "path": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\main-arm-raw.log",
+      "bytes": 928578,
+      "sha256": "04b98aa19dee272302c342858e40b0b63ca995930bb6cd981aeeaa18620c6ba9"
+    },
+    {
+      "path": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\main-native-log.json",
+      "bytes": 676728,
+      "sha256": "994d3b66ebb58f2cc5b3d79527cbbb2bc29bd31a6260c539f86da558a6113af3"
+    },
+    {
+      "path": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\main-native-raw.log",
+      "bytes": 645036,
+      "sha256": "38481dd9bc1c8bc6cae9704c4175de3cb04856252825738ec3742aa2608fec3c"
+    },
+    {
+      "path": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\main-intel-log.json",
+      "bytes": 1002216,
+      "sha256": "82207c138c81a83903c9422b6482d48936532a825e6aef3a21a30fb999c7c850"
+    },
+    {
+      "path": "C:\\Users\\Dylan\\AppData\\Local\\Temp\\MTerm-CLI-Qualification-20261113-394b73c1\\review-pr263\\main-intel-raw.log",
+      "bytes": 929151,
+      "sha256": "322203c95308de77729970db4f5f6a9aea846659ed2203013534f0eb13390d3b"
+    }
+  ]
+}

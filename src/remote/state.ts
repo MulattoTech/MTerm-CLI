@@ -1,10 +1,11 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-13-exact-state-identity; retain exact filesystem IDs in lock ownership checks.
 // Modified: 2026-11-09-state-lock-init; recover only confirmed owned failed mutation-lock initialization.
 // Modified: 2026-11-09-run-lock-recovery; clean only a failed attempt's confirmed closed and unchanged run lock.
 // AI-Change: 2026-11-02-remote-agent (OpenAI / GPT-6 Astra Pro; self-reported)
 // AI-Change: 2026-11-02-windows-dpapi-bounds (OpenAI / GPT-6 Astra Pro; self-reported)
 import fs from 'node:fs/promises';
-import { constants } from 'node:fs';
+import { constants, type BigIntStats } from 'node:fs';
 import path from 'node:path';
 import { randomUUID } from 'node:crypto';
 import { spawn } from 'node:child_process';
@@ -276,7 +277,7 @@ export class RemoteStateStore {
     await this.assertScopeIfConfigured(allowUnconfigured);
     const file = path.join(this.directory, 'state.lock'),
       nonce = randomUUID();
-    const parent = await fs.lstat(this.directory);
+    const parent = await fs.lstat(this.directory, { bigint: true });
     if (
       !parent.isDirectory() ||
       parent.isSymbolicLink() ||
@@ -294,9 +295,9 @@ export class RemoteStateStore {
         );
       throw error;
     }
-    let identity: Awaited<ReturnType<typeof handle.stat>> | undefined;
+    let identity: BigIntStats | undefined;
     try {
-      identity = await handle.stat();
+      identity = await handle.stat({ bigint: true });
       await handle.writeFile(JSON.stringify({ nonce }));
     } catch (error) {
       let closed = false;
@@ -308,7 +309,7 @@ export class RemoteStateStore {
       }
       if (closed && identity) {
         try {
-          const currentParent = await fs.lstat(this.directory);
+          const currentParent = await fs.lstat(this.directory, { bigint: true });
           if (
             currentParent.isDirectory() &&
             !currentParent.isSymbolicLink() &&
@@ -318,13 +319,13 @@ export class RemoteStateStore {
             currentParent.uid === parent.uid &&
             path.relative(this.directory, await fs.realpath(this.directory)) === ''
           ) {
-            const current = await fs.lstat(file);
+            const current = await fs.lstat(file, { bigint: true });
             if (
               identity.isFile() &&
-              identity.nlink === 1 &&
+              identity.nlink === 1n &&
               current.isFile() &&
               !current.isSymbolicLink() &&
-              current.nlink === 1 &&
+              current.nlink === 1n &&
               current.dev === identity.dev &&
               current.ino === identity.ino &&
               current.mode === identity.mode &&
@@ -518,7 +519,7 @@ export class RemoteStateStore {
   async acquire(instanceId: string): Promise<void> {
     await this.assertScopeIfConfigured();
     const file = path.join(this.directory, 'run.lock');
-    const parent = await fs.lstat(this.directory);
+    const parent = await fs.lstat(this.directory, { bigint: true });
     if (
       !parent.isDirectory() ||
       parent.isSymbolicLink() ||
@@ -536,11 +537,11 @@ export class RemoteStateStore {
         );
       throw e;
     }
-    let identity: Awaited<ReturnType<typeof handle.stat>> | undefined;
+    let identity: BigIntStats | undefined;
     let initializationFailure: { error: unknown } | undefined;
     let closed = false;
     try {
-      identity = await handle.stat();
+      identity = await handle.stat({ bigint: true });
       await handle.writeFile(JSON.stringify({ instanceId, pid: process.pid }));
     } catch (error) {
       initializationFailure = { error };
@@ -554,7 +555,7 @@ export class RemoteStateStore {
     if (initializationFailure) {
       if (closed && identity) {
         try {
-          const currentParent = await fs.lstat(this.directory);
+          const currentParent = await fs.lstat(this.directory, { bigint: true });
           if (
             currentParent.isDirectory() &&
             !currentParent.isSymbolicLink() &&
@@ -564,13 +565,13 @@ export class RemoteStateStore {
             currentParent.uid === parent.uid &&
             path.relative(this.directory, await fs.realpath(this.directory)) === ''
           ) {
-            const current = await fs.lstat(file);
+            const current = await fs.lstat(file, { bigint: true });
             if (
               identity.isFile() &&
-              identity.nlink === 1 &&
+              identity.nlink === 1n &&
               current.isFile() &&
               !current.isSymbolicLink() &&
-              current.nlink === 1 &&
+              current.nlink === 1n &&
               current.dev === identity.dev &&
               current.ino === identity.ino &&
               current.mode === identity.mode &&

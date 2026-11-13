@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-13-exact-state-identity; qualify exact lock and profile identities in the installed package.
 // Modified: 2026-11-12-public-endpoint-inspector; qualify installed endpoint policy, bounded discovery and actual owned TLS.
 // Modified: 2026-11-09-managed-process-budgets; bind installed managed-registration and existing resource cases.
 // Modified: 2026-11-09-state-lock-init; qualify installed mutation-lock initialization ownership/recovery.
@@ -964,6 +965,8 @@ const report = await withPackageWorkspace(
     const runLockBindings = [];
     for (const name of [
       'remote/state.js',
+      'remote/profiles.js',
+      'config.js',
       'remote/adapter.js',
       'remote/agent.js',
       'remote/protocol.js',
@@ -1142,6 +1145,95 @@ const report = await withPackageWorkspace(
       modelCalls: 0,
       log: stateLockLog,
       logSha256: createHash('sha256').update(stateLockOutput).digest('hex'),
+    };
+    const stateIdentityFixture = 'tests/remote-state-identity.test.mjs';
+    const stateIdentityFixtureSha256 = createHash('sha256')
+      .update(await fs.readFile(path.join(root, stateIdentityFixture)))
+      .digest('hex');
+    const stateIdentityCwd = await fs.mkdtemp(path.join(os.tmpdir(), 'mterm-state-identity-qualification-'));
+    const stateIdentityLog = path.join(output, 'remote-state-identity-tests.tap');
+    let stateIdentityAcceptance;
+    try {
+      const relative = path.relative(await fs.realpath(root), await fs.realpath(stateIdentityCwd));
+      assert.ok(
+        relative === '..' || relative.startsWith('..' + path.sep) || path.isAbsolute(relative),
+        'State-identity fixture working directory must be outside the checkout',
+      );
+      stateIdentityAcceptance = await exec(
+        process.execPath,
+        ['--test', '--test-reporter=tap', '--test-concurrency=1', path.join(root, stateIdentityFixture)],
+        {
+          cwd: stateIdentityCwd,
+          env: { ...env, MTERM_VERIFY_BIN: installed },
+          timeout: 60000,
+          maxBuffer: 1048576,
+          windowsHide: true,
+        },
+      ).then(
+        (result) => ({ ...result, exit: 0 }),
+        (error) => ({
+          stdout: error.stdout ?? '',
+          stderr: error.stderr ?? '',
+          exit: error.code ?? 'unknown',
+        }),
+      );
+      await fs.writeFile(stateIdentityLog, stateIdentityAcceptance.stdout + stateIdentityAcceptance.stderr);
+    } finally {
+      await fs.rm(stateIdentityCwd, { recursive: true, force: true, maxRetries: 3 });
+    }
+    const stateIdentityOutput = stateIdentityAcceptance.stdout + stateIdentityAcceptance.stderr;
+    assert.equal(
+      stateIdentityAcceptance.exit,
+      0,
+      'Installed state-identity recovery failed; see retained log',
+    );
+    const stateIdentityTests = Number(stateIdentityAcceptance.stdout.match(/^# tests (\d+)$/m)?.[1]);
+    assert.ok(stateIdentityTests >= 13, 'Installed state-identity recovery fixtures did not run');
+    for (const field of ['fail', 'skipped', 'cancelled', 'todo'])
+      assert.match(stateIdentityAcceptance.stdout, new RegExp('^# ' + field + ' 0$', 'm'));
+    for (const binding of runLockBindings) {
+      for (const base of [root, path.resolve(path.dirname(installed), '..')])
+        assert.equal(
+          createHash('sha256')
+            .update(await fs.readFile(path.join(base, binding.path)))
+            .digest('hex'),
+          binding.sha256,
+          'State-identity runtime bytes changed during installed qualification',
+        );
+    }
+    assert.equal(
+      createHash('sha256')
+        .update(await fs.readFile(path.join(root, stateIdentityFixture)))
+        .digest('hex'),
+      stateIdentityFixtureSha256,
+      'State-identity fixture changed during installed qualification',
+    );
+    const installedStateIdentity = {
+      ok: true,
+      tests: stateIdentityTests,
+      failed: 0,
+      skipped: 0,
+      cancelled: 0,
+      moduleBindings: runLockBindings,
+      fixtureSha256: stateIdentityFixtureSha256,
+      realTemporaryFiles: true,
+      deterministicFilesystemFaults: true,
+      exactIntegerIdentity: true,
+      collisionNegativeCases: 10,
+      unchangedIdentityControls: 3,
+      boundProfileAdmission: true,
+      initializationFailureOnly: true,
+      explicitRetryAfterConfirmedCleanup: true,
+      preexistingAndUncertainLocksRetained: true,
+      staleLockStealing: false,
+      credentialProtectionExercisedByFixture: false,
+      fullPairingRecoveryQualified: false,
+      hostileFilesystemRaceProtectionGuaranteed: false,
+      crashDurabilityQualified: false,
+      fromOutsideCheckout: standaloneIsolation.outsideCheckout,
+      modelCalls: 0,
+      log: stateIdentityLog,
+      logSha256: createHash('sha256').update(stateIdentityOutput).digest('hex'),
     };
     const admissionBindings = [];
     for (const name of ['remote/agent.js', 'remote/protocol.js', 'errors.js']) {
@@ -1485,6 +1577,7 @@ const report = await withPackageWorkspace(
       installedMoveCancellation,
       installedRunLockRecovery,
       installedStateLockRecovery,
+      installedStateIdentity,
       installedRemoteAdmission,
       installedIsolation,
       installedProvenance,

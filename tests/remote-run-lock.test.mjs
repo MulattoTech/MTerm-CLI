@@ -243,7 +243,10 @@ test('remote run lock cleanup preserves a replacement and the renamed original',
   await assert.rejects(f.store.acquire(randomUUID()), (error) => error === primary);
   assert.deepEqual(await fs.readFile(old), partial);
   assert.deepEqual(await fs.readFile(f.lock), sentinel);
-  assert.notEqual((await fs.lstat(old)).ino, (await fs.lstat(f.lock)).ino);
+  assert.notEqual(
+    (await fs.lstat(old, { bigint: true })).ino,
+    (await fs.lstat(f.lock, { bigint: true })).ino,
+  );
 });
 
 test('remote run lock cleanup retains an inode with an additional hard link', async (t) => {
@@ -359,7 +362,7 @@ test('remote run lock cleanup retains its inode after that inode moves under a r
     writeFile: failWrite(primary),
     close: async (close) => {
       await close();
-      inode = (await fs.lstat(f.lock)).ino;
+      inode = (await fs.lstat(f.lock, { bigint: true })).ino;
       await fs.rename(f.directory, old);
       await fs.mkdir(f.directory, { mode: 0o700 });
       await fs.rename(path.join(old, 'run.lock'), f.lock);
@@ -367,8 +370,11 @@ test('remote run lock cleanup retains its inode after that inode moves under a r
   });
   await assert.rejects(f.store.acquire(randomUUID()), (error) => error === primary);
   assert.deepEqual(await fs.readFile(f.lock), partial);
-  assert.equal((await fs.lstat(f.lock)).ino, inode);
-  assert.notEqual((await fs.lstat(f.directory)).ino, (await fs.lstat(old)).ino);
+  assert.equal((await fs.lstat(f.lock, { bigint: true })).ino, inode);
+  assert.notEqual(
+    (await fs.lstat(f.directory, { bigint: true })).ino,
+    (await fs.lstat(old, { bigint: true })).ino,
+  );
 });
 
 test('remote run lock propagates an initial open error without acquiring cleanup authority', async (t) => {

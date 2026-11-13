@@ -1,0 +1,208 @@
+{
+  "schemaVersion": 1,
+  "kind": "bounded-runtime-and-connector-freshness-observation",
+  "signedAt": "2026-11-12T23:53:24.167741Z",
+  "attestation": {
+    "signedAs": "/root/delivery_evidence",
+    "model": "GPT-6 Astra Pro",
+    "type": "self-attributed observation; no cryptographic signing key used",
+    "statement": "I observed the retained connected-tool responses and available tool registry directly. The browser receipt is copied unchanged from the root agent and is expressly attributed to that observer."
+  },
+  "verdict": "OBSERVATIONS_COMPLETE_WITH_EXPLICIT_ACCEPTANCE_LIMITS",
+  "mutationsPerformed": false,
+  "managedBridge": {
+    "metadataCall": {
+      "result": "SUCCESS",
+      "startedAt": "2026-11-12 23:50:09 UTC",
+      "finishedAt": "2026-11-12 23:50:13 UTC",
+      "tool": "mterm_cli_live_connection_get_file_info",
+      "scope": "Metadata only for the known project runtime package.json; no file content returned by this call."
+    },
+    "readOnlyProcess": {
+      "result": "SUCCESS_COMPLETED",
+      "startedAt": "2026-11-12 23:52:00 UTC",
+      "finishedAt": "2026-11-12 23:52:04 UTC",
+      "deviceObservedAt": "2026-11-12T23:52:04.6233949Z",
+      "scope": "Read only the three known project package manifests, project installation record, and listener existence for the known loopback admin port; only selected fields returned."
+    },
+    "manager": {
+      "name": "m-techlabs-mcp-manager",
+      "version": "0.4.0"
+    },
+    "upstream": {
+      "name": "@wonderwhy-er/desktop-commander",
+      "version": "0.3.1"
+    },
+    "sdk": {
+      "name": "@modelcontextprotocol/sdk",
+      "version": "1.32.2"
+    },
+    "loopbackAdminListener": {
+      "address": "127.0.0.1",
+      "port": 19740,
+      "listening": true,
+      "listenerCount": 1
+    },
+    "healthConclusion": "A current authenticated metadata call and read-only process succeeded through the selected shared connection, and the known loopback admin listener was present. This is bounded liveness evidence, not full service, executor, or browser acceptance.",
+    "recordedInstallation": {
+      "sourceCommit": "9373fadc00689dd782143ab5e49664536f460b8b",
+      "completedAt": "2026-11-07T04:47:34.007Z",
+      "workerVersion": "0d41b13b-9614-4574-8e54-6dd5cf760a10",
+      "evidence": "installation-record"
+    },
+    "recordedInstallationInterpretation": "This is the current contents of the historical installation record, not a current source-byte attestation. Its recorded source and Worker version differ from the previously independently matched source and the current production Worker version.",
+    "retainedHistoricalSourceByteMatch": {
+      "sourceCommit": "ba4a55b7ed351f7e60928179edaa7449de00be7d",
+      "basis": "Previously retained independent comparison: 43 non-test manager files matched; test differences meant the installation was not a pristine exact qualified checkout. This comparison was not rerun here.",
+      "freshlyRevalidated": false
+    },
+    "authenticatedAdminStatusRequested": false,
+    "adminStatusLimit": "Known /v1/status requires a bearer credential. No credential was read, no admin HTTP request was attempted, and no authentication endpoint was probed."
+  },
+  "advertisedToolInventory": {
+    "observedAt": "2026-11-12 23:52:24 UTC",
+    "mechanism": "Current ALL_TOOLS registry, filtered by the mcp__codex_apps__mterm_cli_live_connection namespace and deduplicated by exact tool name; no duplicate names were present.",
+    "count": 53,
+    "engineeringCount": 28,
+    "inheritedCount": 25,
+    "authenticatedToolsCalled": [
+      "get_file_info",
+      "start_process"
+    ],
+    "otherToolAvailability": "ADVERTISED_ONLY",
+    "pluginAttribution": [
+      "MTerm-CLI",
+      "MTerm-CLI Live Connection"
+    ]
+  },
+  "canonicalVersusWrapper": {
+    "status": "UNRESOLVED_SHARED_ATTRIBUTION",
+    "observation": "The current tool metadata attributes the same connection to both MTerm-CLI and MTerm-CLI Live Connection. Successful calls while both are selected do not establish canonical-only authorization.",
+    "savedCanonicalPackageVersion": "0.2.3",
+    "savedVersionBasis": "Retained package publication/readback evidence only; not re-read or installed in this bounded observation.",
+    "existingConnectionPreserved": true
+  },
+  "cloudflareWorkers": [
+    {
+      "worker": "mtechlabs-access-codes",
+      "observedAt": "2026-11-12T23:49:43.500Z",
+      "request": {
+        "method": "GET",
+        "path": "/accounts/[connected-account]/workers/scripts/mtechlabs-access-codes/deployments",
+        "query": {
+          "page": 1,
+          "per_page": 1
+        }
+      },
+      "success": true,
+      "deployment": {
+        "id": "61a5ad4c-0fb8-4069-af05-bb682465468e",
+        "created_on": "2026-11-10T07:58:31.887213Z",
+        "source": "api",
+        "strategy": "percentage",
+        "versions": [
+          {
+            "version_id": "a65ed883-30be-4bca-8d5a-697786ffd87a",
+            "percentage": 100
+          }
+        ]
+      },
+      "selectionBasis": "Supported Cloudflare deployments API documents the first listed deployment as the latest deployment actively serving traffic; requested page 1 with one entry.",
+      "versionSourceBytesFreshlyCompared": false,
+      "latestUploadedVersionIndependentlyQueried": false
+    },
+    {
+      "worker": "mterm-gateway-staging",
+      "observedAt": "2026-11-12T23:49:43.763Z",
+      "request": {
+        "method": "GET",
+        "path": "/accounts/[connected-account]/workers/scripts/mterm-gateway-staging/deployments",
+        "query": {
+          "page": 1,
+          "per_page": 1
+        }
+      },
+      "success": true,
+      "deployment": {
+        "id": "e9b702fb-c6c0-4b15-b101-a9c8307a654f",
+        "created_on": "2026-11-09T16:02:10.025895Z",
+        "source": "api",
+        "strategy": "percentage",
+        "versions": [
+          {
+            "version_id": "88e1a5ff-ac1e-4b9a-a4c2-31ba32d6221e",
+            "percentage": 100
+          }
+        ]
+      },
+      "selectionBasis": "Supported Cloudflare deployments API documents the first listed deployment as the latest deployment actively serving traffic; requested page 1 with one entry.",
+      "versionSourceBytesFreshlyCompared": false,
+      "latestUploadedVersionIndependentlyQueried": false
+    }
+  ],
+  "sourceBoundaries": {
+    "productionEdge": "Current active version matches retained a65ed883 identity. Historical 14-module source comparison to ba4a is preserved but was not rerun.",
+    "stagingGateway": "Current active version matches retained 88e1a5ff identity; sourceByteMatch remains NOT_VERIFIED.",
+    "newerQualifiedRepositoryChanges": "No inference that newer merged CLI or Access source is deployed."
+  },
+  "browserObservation": {
+    "observer": "/root",
+    "path": "browser-availability-observation.json",
+    "result": "UNAVAILABLE_ORIGINATING_CONTEXT",
+    "independentlyRetriedHere": false,
+    "limit": "No portal, OAuth, canonical-only plugin, ChatGPT client, or requested browser family acceptance is inferred."
+  },
+  "documentationAccess": {
+    "cloudSkillLookup": "The attempted c29/mterm-connection-recovery alias returned skill package is not available.",
+    "fallback": "Read the existing project source copy of integrations/m-techlabs-desktop/skills/connection-recovery/SKILL.md; no private plugin identifiers are included in this receipt.",
+    "impact": "Documentation lookup limitation only; connected runtime observation succeeded."
+  },
+  "excludedOperations": [
+    "deployments or runtime restarts",
+    "configuration, OAuth, auth policy or plugin changes",
+    "credential or secret inspection",
+    "provider creation or retries",
+    "model calls",
+    "real browser login",
+    "source byte rehashing",
+    "runtime feature acceptance or broad feature testing"
+  ],
+  "evidence": [
+    {
+      "path": "cloudflare-deployments-tool-result.json",
+      "sha256": "66ca43093fb83e91066cddbceab4b873f543914ddefa6fc7a01f9209e67eaa52",
+      "bytes": 2327,
+      "observer": "/root/delivery_evidence"
+    },
+    {
+      "path": "mterm-metadata-tool-result.json",
+      "sha256": "512054fe421beebec59704ca9eb7bcac2a82d54e21fee55d53d3eb751cfe3d7d",
+      "bytes": 621,
+      "observer": "/root/delivery_evidence"
+    },
+    {
+      "path": "mterm-installed-observation-tool-result.json",
+      "sha256": "4818aceb8de3a7af02ce66afe5d3ef2d977195c929ddb7829d7c0919ddbf316c",
+      "bytes": 2872,
+      "observer": "/root/delivery_evidence"
+    },
+    {
+      "path": "advertised-tools.json",
+      "sha256": "fcc8711ddbd94d0d85ba0557d8f3098565a9d26527d6982cd11993c0337f58e8",
+      "bytes": 11555,
+      "observer": "/root/delivery_evidence"
+    },
+    {
+      "path": "browser-availability-observation.json",
+      "sha256": "3783b53eff94b52d63bd70fe5c277320eece71c4fc3d03d3f787f753f73d5bc0",
+      "bytes": 807,
+      "observer": "/root"
+    }
+  ],
+  "limits": [
+    "Tool registry count is an advertised-inventory observation, separate from successful authenticated calls.",
+    "Installed package metadata and a listener are not proof all runtime features operate correctly.",
+    "The installation marker is historical metadata and differs from both retained source-byte provenance and the live Worker version.",
+    "No runtime rollout or completion of the original multi-client acceptance mission is claimed."
+  ]
+}

@@ -1,0 +1,756 @@
+{
+  "schemaVersion": 1,
+  "repository": "MulattoTech/MTerm-CLI",
+  "pullRequest": 261,
+  "reviewer": "/root/readiness_review",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "verifiedAt": "2026-11-12T22:59:19.624990+00:00",
+  "verdict": "APPROVE_EXACT_CANDIDATE_FOR_NORMAL_MERGE",
+  "candidateSha": "bbcd446207aa1147bf924d8d397570dc987ac308",
+  "baseSha": "6a6a883f3ce1cd86a7405d2c53a1fb08cd1210c2",
+  "tree": "62b35e966af7aaf8ea0b85e1db465a182369c640",
+  "syntheticMergeSha": "b7cf0257149fd3b4d47cbc8cf07186481a803742",
+  "syntheticMergeTreeEqualsCandidate": true,
+  "syntheticMergeParents": [
+    "6a6a883f3ce1cd86a7405d2c53a1fb08cd1210c2",
+    "bbcd446207aa1147bf924d8d397570dc987ac308"
+  ],
+  "completeRemoteTreeMatchesPreparedSource": true,
+  "remoteTreeBlobs": 1126,
+  "remoteTreeDirectories": 54,
+  "publicationManifest": {
+    "candidate": "bbcd446207aa1147bf924d8d397570dc987ac308",
+    "tree": "62b35e966af7aaf8ea0b85e1db465a182369c640",
+    "base": "6a6a883f3ce1cd86a7405d2c53a1fb08cd1210c2",
+    "changedFiles": 63,
+    "allPublishedManifestHashesVerified": true,
+    "allPublishedManifestGitBlobsVerified": true,
+    "aiChangedFileSetEqualsActualDiff": true,
+    "publicationManifestSha256": "b64f6749f4ad953eb8e553bbf156ce234e5df9b5f1bd142090f6fba330380eda"
+  },
+  "validationManifest": {
+    "path": "docs/validation/2026-11-12-delivery-accounting/manifest.json",
+    "sha256": "48d061573ffdd2b227284d946264ef4aa13951ea95d702f7d66f9801ec456bcb",
+    "entries": 19,
+    "allPublished": true,
+    "allHashesVerified": true
+  },
+  "sourceReview": {
+    "criterionReceiptPath": "docs/validation/2026-11-12-delivery-accounting/criterion-review/receipt.json",
+    "criterionReceiptSha256": "1136c26ad96b44dbdf403740915c08074993e903b9624480bf4c7d12eec277d7",
+    "fourSourceCriteriaComplete": true,
+    "criteriaSha256": "bb3a9223e55b0d17b002efa92172dacdaa3aed8a57dea64bbfd7d2d8775c73be",
+    "allEightFinalSourceHashesMatch": true,
+    "sourceHashes": [
+      {
+        "path": "scripts/capability-register.mjs",
+        "bytes": 41667,
+        "sha256": "b5f1f3b9b03690d199e2c3b480bac53cae875bac801e04f757245cb398aca03f"
+      },
+      {
+        "path": "scripts/capability-delivery-evidence.mjs",
+        "bytes": 6835,
+        "sha256": "f10c48827760a2954310bd69be2dde014bce8b5826f32e6e9844cc5b182b5983"
+      },
+      {
+        "path": "tests/capability-register.test.mjs",
+        "bytes": 11261,
+        "sha256": "828f6bd8698975605056cd70f3cde90c987f5c6b0b091e7d1c4b3877bd8d9202"
+      },
+      {
+        "path": "tests/capability-delivery.test.mjs",
+        "bytes": 19037,
+        "sha256": "422889b0792afdd10c1fb5306ee8525ebb49d6c02121637ceea7fd14117f525b"
+      },
+      {
+        "path": "docs/capabilities/register.json",
+        "bytes": 971748,
+        "sha256": "9ab4dd6f5d01c502d34870ebfc3060a84cc78153202f824bf3779195b4786015"
+      },
+      {
+        "path": "docs/capabilities/README.md",
+        "bytes": 6601,
+        "sha256": "1fe9871dd1973abd641079c802239809a2926e96a4f57bccd5cb55a526252dc8"
+      },
+      {
+        "path": "docs/capabilities/REPORT.md",
+        "bytes": 37378,
+        "sha256": "5f4081d2ae2723e17effe576a3bac22ad92b12ced515004f79a9634d70f9c863"
+      },
+      {
+        "path": "docs/capabilities/summary.json",
+        "bytes": 2199,
+        "sha256": "fa7e3a4ca40a83a3b543938dd9c177d66b49c88ad5a0e0246e3ae233f455353e"
+      }
+    ],
+    "all43InputEvidenceHashesMatch": true,
+    "inputEvidenceHashes": [
+      {
+        "path": "docs/engineering-runs/evidence/upstream-research.json",
+        "bytes": 69332,
+        "sha256": "0162a83c00d51a023908380c22ffad7c2227d82645cc34e04c9866ea39033086"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/delivery-cli249-origin-candidate-source-review.json",
+        "bytes": 28220,
+        "sha256": "f480939f9d6ff19535a528e631bcbc923c04eeb009a57e908355d86b108e242d"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/peer-main-83a97dae-receipt.json",
+        "bytes": 74152,
+        "sha256": "1fd8aefb710a486d63cff7aeb5f4bc0ceb2db1de1c0637e8cc23f5e1afccadc3"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/delivery-cli249-api-identity.json",
+        "bytes": 156743,
+        "sha256": "61aecb50dfa67b88f545aeb383cf86cd7958b2934b536d71dd95761fc755cc34"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/delivery-cli249.json",
+        "bytes": 11313,
+        "sha256": "1343f383aec858d62bb12394396b90c2f377f01822bbf92129c0cdd575f72ca0"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/delivery-cli256-origin-candidate-source-review.json",
+        "bytes": 6746,
+        "sha256": "650e09f78d787a0fc996922e184b3a0a1052b4a7e3956fe0b38fddbf758219c4"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/peer-profile-d412-ci-receipt.json",
+        "bytes": 252257,
+        "sha256": "cf593d1b9a75cba43ad19dc7e06a57a04d3814290f97823353189964529d232a"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/delivery-cli256-origin-actual-main.json",
+        "bytes": 252898,
+        "sha256": "4a1a38d25f90fb0e2288ed657043224082ab503da988c9cc8567b99568f9d7d4"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/delivery-cli256-api-identity.json",
+        "bytes": 154470,
+        "sha256": "ba16c354e6ec486c76f9eea206cb4562051e41d8957cd2e1ca12dd4995916626"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/delivery-cli256.json",
+        "bytes": 11283,
+        "sha256": "d5ac6e3869c143d5a564c81db465aae9e233d954f0cf04b9606b0c6a37e1fbec"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/delivery-cli257-origin-candidate-source-review.json",
+        "bytes": 3916,
+        "sha256": "1fd15e5bcfdbf1ee354497d5f8452a783c938a3c399baf904c0f3ec89a9dc3f4"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/delivery-cli257-origin-candidate-qualification.json",
+        "bytes": 31597,
+        "sha256": "c376a02f6476dc650fd4c73e11fcff026d886c97e9099d633e20124dddcebe55"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/peer-mterm-main-f447c0ba-receipt.json",
+        "bytes": 268354,
+        "sha256": "6abf0091556faf97745c66932ddad8f8ae7360580ee28fbee3cda2067b0404d7"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/delivery-cli257-api-identity.json",
+        "bytes": 154358,
+        "sha256": "559e6b1d9f62cd16265ee0a8e67431fdbeba8e86d8ec023ea1d8430078931434"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/delivery-cli257.json",
+        "bytes": 11205,
+        "sha256": "d07fabdd72d0a30af849a70786eacde74c5a08543e2b25684b06efe2bf8beb7f"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/peer-mterm258-01c0fc0d-receipt.json",
+        "bytes": 290285,
+        "sha256": "97d356981e264a4d1905019f1c9409ef2d91a448eeb2947d12556b9c2b824dab"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/peer-mterm-main-da03dc52-receipt.json",
+        "bytes": 291849,
+        "sha256": "f65f4b6320984a752641047d999fcb95b9500416cc011b45395658d9b7d9dcee"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/delivery-cli258-api-identity.json",
+        "bytes": 155495,
+        "sha256": "ee041530b39de0ebb348d135365335fcdc0f274aa3378a301221ea54a1d17c2f"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/delivery-cli258.json",
+        "bytes": 11007,
+        "sha256": "aacdfc709ba96fee441a7e62bef21ef32e2965f0f05488160434c584dfd4c9af"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/delivery-access24-origin-candidate-source-review.json",
+        "bytes": 4684,
+        "sha256": "4ad72dffef22dcb208d765a83f3257abda0dc2169e8ece1c6fb9cb860dda856c"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/delivery-access24-origin-candidate-qualification.json",
+        "bytes": 50069,
+        "sha256": "651fecce43711b7d5f5300c11adf6f25fc5e988c7a87f55eaf28b8624b969af7"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/peer-access-main-ef8dce0e-receipt.json",
+        "bytes": 40890,
+        "sha256": "de943aed3b8dfccd7b2c7e49395f3446b81d5f28dc86155a99c5ebb7a1dd153e"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/delivery-access24-api-identity.json",
+        "bytes": 87212,
+        "sha256": "711112b17723f63b6e29bdb62af1cd36eb8880c8670fcc244c4e214ae440b47e"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/delivery-access24.json",
+        "bytes": 8276,
+        "sha256": "f84bd80518bb9b461fee8b1e227546f28cf3ec8bcf405d82ef9fe0267bf7fb99"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/delivery-access25-origin-candidate-source-review.json",
+        "bytes": 6718,
+        "sha256": "4b8bbd00627f3aa331210a522642b83ef602d740fcbd7a3cf5b61829b46cce53"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/delivery-access25-origin-candidate-qualification.json",
+        "bytes": 6915,
+        "sha256": "209b98dc8fab80b3628c0b55c02fbe42a1044af7c6ed42b81b9c4b94e7a6174b"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/peer-access-main-499255ad-receipt.json",
+        "bytes": 5352,
+        "sha256": "e341a67a133ac346052796a3d627f826f8d486a7b7005f06055168df35fbfd9d"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/delivery-access25-api-identity.json",
+        "bytes": 62752,
+        "sha256": "604bf3c6b5e9c34fc8e0ab01eb5e2823083b221c84bf14694e5eeb91c0294522"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/delivery-access25.json",
+        "bytes": 6243,
+        "sha256": "cddc2257633921b5755b393f6a143e6ca805e9e3e7e677d5fdf643db1c46db1c"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/peer-access27-162e829a-receipt.json",
+        "bytes": 43588,
+        "sha256": "3040ae584a65eddf7893e3c6c4ea85e26bcde5fbe7824218ad0b5c48dbac973d"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/peer-access-main-9353b53a-receipt.json",
+        "bytes": 42556,
+        "sha256": "5d9308cc52401a16d500e92a6c8a083c49e1d5fe202e2b3eb9778e3105f504db"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/delivery-access27-api-identity.json",
+        "bytes": 97596,
+        "sha256": "58c35d8e49f220a006276c7a21909bb27a1391df9d05b66a7d185047e2116eee"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/delivery-access27.json",
+        "bytes": 8631,
+        "sha256": "f927b9ed73cbe52cb0caf4bf4314e95a6210938d0ba4d2dfea79e998f9a087aa"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/peer-access28-f422b4d0-receipt.json",
+        "bytes": 42245,
+        "sha256": "c362b9217b024c3895540aa49b547efa4edc67557160a34fb8c8df230f146826"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/peer-access-main-ff31efca-receipt.json",
+        "bytes": 43147,
+        "sha256": "a6596c51fec5a8ed790a74ea1a77e95b976dd75fcac4396da895033cad094b88"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/delivery-access28-api-identity.json",
+        "bytes": 96176,
+        "sha256": "ae345e750c11916741b3a494ec4c44fb22119d6ad3dd366bc80a306bd646166b"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/delivery-access28.json",
+        "bytes": 8868,
+        "sha256": "aab921ad50b6bbcf827e839ded93b50f298caa64ee632d8b1a6444f33da64e7a"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/delivery-cli259-origin-candidate-qualification.json",
+        "bytes": 20771,
+        "sha256": "b26991014a0fcd2c895763db6d5a840f6104aa56742f650281b4c48aec089953"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/delivery-cli259-origin-actual-main.json",
+        "bytes": 19106,
+        "sha256": "f7910713d83839164ce67701f48db8bd77428af79b4dbdf3588e8fcbad0d5218"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/delivery-cli259-api-identity.json",
+        "bytes": 157323,
+        "sha256": "1d877d5b9cf1795b84706cf5e12ed383e658822b6c7e22419cf8e3fa33cbf4da"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/delivery-cli259.json",
+        "bytes": 12259,
+        "sha256": "a2b606d88f17875e38ca634ddedcd0cfdc6a0e0e042f41ee03cc1222cc35a551"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/canonical-plugin-readback-manifest-023.json",
+        "bytes": 3124,
+        "sha256": "8c34150376bbe737f0254692510b7757a2226b34f77428cbba119f6562784d9b"
+      },
+      {
+        "path": "docs/engineering-runs/evidence/canonical-plugin-saved-release-023.json",
+        "bytes": 3193,
+        "sha256": "8cfff8925b74a7d3ee3f6a2f7bfd1d1002ebaa2bb7c563dd25e492403f938e9b"
+      }
+    ],
+    "originalProducerReceiptBytesPreserved": true,
+    "focusedIndependentTests": {
+      "tests": 46,
+      "pass": 46,
+      "fail": 0,
+      "skipped": 0
+    },
+    "independentAdversarialReview": {
+      "probes": 14,
+      "acceptedMutations": 0,
+      "sourceHashBindingsVerified": true
+    }
+  },
+  "candidateRuns": [
+    {
+      "repository": "MulattoTech/MTerm-CLI",
+      "id": 43322257308,
+      "name": "CLI fast checks",
+      "headSha": "bbcd446207aa1147bf924d8d397570dc987ac308",
+      "headBranch": "fix/capability-delivery-accounting-20261112",
+      "event": "pull_request",
+      "path": ".github/workflows/ci-fast.yml",
+      "workflowId": 393731387,
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "htmlUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43322257308",
+      "apiUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43322257308",
+      "headTree": "62b35e966af7aaf8ea0b85e1db465a182369c640",
+      "createdAt": "2026-11-12T22:41:42Z",
+      "updatedAt": "2026-11-12T22:45:01Z"
+    },
+    {
+      "repository": "MulattoTech/MTerm-CLI",
+      "id": 43322257223,
+      "name": "CLI compatibility foundation",
+      "headSha": "bbcd446207aa1147bf924d8d397570dc987ac308",
+      "headBranch": "fix/capability-delivery-accounting-20261112",
+      "event": "pull_request",
+      "path": ".github/workflows/cli-ci.yml",
+      "workflowId": 375792633,
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "htmlUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43322257223",
+      "apiUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43322257223",
+      "headTree": "62b35e966af7aaf8ea0b85e1db465a182369c640",
+      "createdAt": "2026-11-12T22:41:42Z",
+      "updatedAt": "2026-11-12T22:57:49Z"
+    }
+  ],
+  "candidateCheckRuns": [
+    {
+      "repository": "MulattoTech/MTerm-CLI",
+      "id": 131545768313,
+      "name": "CI / fast",
+      "headSha": "bbcd446207aa1147bf924d8d397570dc987ac308",
+      "headBranch": "fix/capability-delivery-accounting-20261112",
+      "runId": 43322257308,
+      "runAttempt": 1,
+      "workflowPath": ".github/workflows/ci-fast.yml",
+      "workflowId": 393731387,
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "htmlUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43322257308/job/131545768313",
+      "apiUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/jobs/131545768313",
+      "runUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43322257308",
+      "allNamedStepsSuccessful": true,
+      "startedAt": "2026-11-12T22:41:57Z",
+      "completedAt": "2026-11-12T22:45:00Z"
+    },
+    {
+      "repository": "MulattoTech/MTerm-CLI",
+      "id": 131545833257,
+      "name": "macos-15 / Node 24",
+      "headSha": "bbcd446207aa1147bf924d8d397570dc987ac308",
+      "headBranch": "fix/capability-delivery-accounting-20261112",
+      "runId": 43322257223,
+      "runAttempt": 1,
+      "workflowPath": ".github/workflows/cli-ci.yml",
+      "workflowId": 375792633,
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "htmlUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43322257223/job/131545833257",
+      "apiUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/jobs/131545833257",
+      "runUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43322257223",
+      "allNamedStepsSuccessful": true,
+      "startedAt": "2026-11-12T22:42:05Z",
+      "completedAt": "2026-11-12T22:47:50Z"
+    },
+    {
+      "repository": "MulattoTech/MTerm-CLI",
+      "id": 131545833698,
+      "name": "windows-2022 / Node 24",
+      "headSha": "bbcd446207aa1147bf924d8d397570dc987ac308",
+      "headBranch": "fix/capability-delivery-accounting-20261112",
+      "runId": 43322257223,
+      "runAttempt": 1,
+      "workflowPath": ".github/workflows/cli-ci.yml",
+      "workflowId": 375792633,
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "htmlUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43322257223/job/131545833698",
+      "apiUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/jobs/131545833698",
+      "runUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43322257223",
+      "allNamedStepsSuccessful": true,
+      "startedAt": "2026-11-12T22:42:05Z",
+      "completedAt": "2026-11-12T22:48:47Z"
+    },
+    {
+      "repository": "MulattoTech/MTerm-CLI",
+      "id": 131545833704,
+      "name": "macos-15-intel / Node 24",
+      "headSha": "bbcd446207aa1147bf924d8d397570dc987ac308",
+      "headBranch": "fix/capability-delivery-accounting-20261112",
+      "runId": 43322257223,
+      "runAttempt": 1,
+      "workflowPath": ".github/workflows/cli-ci.yml",
+      "workflowId": 375792633,
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "htmlUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43322257223/job/131545833704",
+      "apiUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/jobs/131545833704",
+      "runUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43322257223",
+      "allNamedStepsSuccessful": true,
+      "startedAt": "2026-11-12T22:42:07Z",
+      "completedAt": "2026-11-12T22:57:49Z"
+    },
+    {
+      "repository": "MulattoTech/MTerm-CLI",
+      "id": 131545833845,
+      "name": "Native Linux isolation / Node 24",
+      "headSha": "bbcd446207aa1147bf924d8d397570dc987ac308",
+      "headBranch": "fix/capability-delivery-accounting-20261112",
+      "runId": 43322257223,
+      "runAttempt": 1,
+      "workflowPath": ".github/workflows/cli-ci.yml",
+      "workflowId": 375792633,
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "htmlUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43322257223/job/131545833845",
+      "apiUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/jobs/131545833845",
+      "runUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43322257223",
+      "allNamedStepsSuccessful": true,
+      "startedAt": "2026-11-12T22:42:05Z",
+      "completedAt": "2026-11-12T22:44:03Z"
+    },
+    {
+      "repository": "MulattoTech/MTerm-CLI",
+      "id": 131545834047,
+      "name": "ubuntu-24.04 / Node 24",
+      "headSha": "bbcd446207aa1147bf924d8d397570dc987ac308",
+      "headBranch": "fix/capability-delivery-accounting-20261112",
+      "runId": 43322257223,
+      "runAttempt": 1,
+      "workflowPath": ".github/workflows/cli-ci.yml",
+      "workflowId": 375792633,
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success",
+      "htmlUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43322257223/job/131545834047",
+      "apiUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/jobs/131545834047",
+      "runUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43322257223",
+      "allNamedStepsSuccessful": true,
+      "startedAt": "2026-11-12T22:42:05Z",
+      "completedAt": "2026-11-12T22:46:49Z"
+    }
+  ],
+  "requiredJobCount": 6,
+  "allRequiredJobsSuccessful": true,
+  "logQualification": [
+    {
+      "jobId": 131545768313,
+      "rawLogFile": "job-131545768313-log.json",
+      "rawLogSha256": "5e2763e8620c1ed5fabda33ad3f70d8034f8ac73577424d84f9be91f3afcc971",
+      "rawLogBytes": 799555,
+      "testSummary": {
+        "tests": 1543,
+        "suites": 0,
+        "pass": 1531,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 12,
+        "todo": 0
+      },
+      "name": "CI / fast"
+    },
+    {
+      "jobId": 131545833257,
+      "rawLogFile": "job-131545833257-log.json",
+      "rawLogSha256": "35d5b792889d57a20d0e7aea104d0997e5a45b2de8cb609c6efc84aa2a5e0e9d",
+      "rawLogBytes": 924573,
+      "testSummary": {
+        "tests": 1543,
+        "suites": 0,
+        "pass": 1531,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 12,
+        "todo": 0
+      },
+      "package": {
+        "packageVersion": "0.0.1-preview.1",
+        "profileTests": 24,
+        "endpointTests": 81,
+        "fromOutsideCheckout": true,
+        "ownedLoopbackTlsQualified": true,
+        "compiledRemoteModuleBindingsEqualReviewedSource": true,
+        "actualRemoteEnrollment": false,
+        "externalEndpointProbed": false,
+        "realCredentialsUsed": false,
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "installedIsolationProtocolOk": true
+      },
+      "codex": {
+        "version": "codex-cli 0.160.1",
+        "testOwnedCodex": true,
+        "configurationParsedByCodex": true,
+        "setupIdempotent": true,
+        "shutdownVerified": true,
+        "modelCalls": 0,
+        "realUserConfigChanged": false,
+        "actualCodexAgentToolInvocation": false,
+        "platform": "darwin",
+        "arch": "arm64",
+        "node": "v24.21.0"
+      },
+      "name": "macos-15 / Node 24"
+    },
+    {
+      "jobId": 131545833698,
+      "rawLogFile": "job-131545833698-log.json",
+      "rawLogSha256": "1bfe5557a643b08be43a912f359e2551a7d124f1c360c2af34672cb72af5955a",
+      "rawLogBytes": 926807,
+      "testSummary": {
+        "tests": 1543,
+        "suites": 0,
+        "pass": 1543,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "package": {
+        "packageVersion": "0.0.1-preview.1",
+        "profileTests": 24,
+        "endpointTests": 81,
+        "fromOutsideCheckout": true,
+        "ownedLoopbackTlsQualified": true,
+        "compiledRemoteModuleBindingsEqualReviewedSource": true,
+        "actualRemoteEnrollment": false,
+        "externalEndpointProbed": false,
+        "realCredentialsUsed": false,
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "installedIsolationProtocolOk": true
+      },
+      "codex": {
+        "version": "codex-cli 0.160.1",
+        "testOwnedCodex": true,
+        "configurationParsedByCodex": true,
+        "setupIdempotent": true,
+        "shutdownVerified": true,
+        "modelCalls": 0,
+        "realUserConfigChanged": false,
+        "actualCodexAgentToolInvocation": false,
+        "platform": "win32",
+        "arch": "x64",
+        "node": "v24.21.0"
+      },
+      "name": "windows-2022 / Node 24"
+    },
+    {
+      "jobId": 131545833704,
+      "rawLogFile": "job-131545833704-log.json",
+      "rawLogSha256": "e8265fd63e7757527e1d14ac5492b9872a96bb594d9436acdd76e9f29ae66416",
+      "rawLogBytes": 925200,
+      "testSummary": {
+        "tests": 1543,
+        "suites": 0,
+        "pass": 1531,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 12,
+        "todo": 0
+      },
+      "package": {
+        "packageVersion": "0.0.1-preview.1",
+        "profileTests": 24,
+        "endpointTests": 81,
+        "fromOutsideCheckout": true,
+        "ownedLoopbackTlsQualified": true,
+        "compiledRemoteModuleBindingsEqualReviewedSource": true,
+        "actualRemoteEnrollment": false,
+        "externalEndpointProbed": false,
+        "realCredentialsUsed": false,
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "installedIsolationProtocolOk": true
+      },
+      "codex": {
+        "version": "codex-cli 0.160.1",
+        "testOwnedCodex": true,
+        "configurationParsedByCodex": true,
+        "setupIdempotent": true,
+        "shutdownVerified": true,
+        "modelCalls": 0,
+        "realUserConfigChanged": false,
+        "actualCodexAgentToolInvocation": false,
+        "platform": "darwin",
+        "arch": "x64",
+        "node": "v24.21.0"
+      },
+      "name": "macos-15-intel / Node 24"
+    },
+    {
+      "jobId": 131545833845,
+      "rawLogFile": "job-131545833845-log.json",
+      "rawLogSha256": "c241f375ce582164d2bf0e9f829f6759e35f9a6c65ad14743fa15fe3860ff23a",
+      "rawLogBytes": 646078,
+      "testSummary": null,
+      "package": {
+        "packageVersion": "0.0.1-preview.1",
+        "profileTests": 24,
+        "endpointTests": 81,
+        "fromOutsideCheckout": true,
+        "ownedLoopbackTlsQualified": true,
+        "compiledRemoteModuleBindingsEqualReviewedSource": true,
+        "actualRemoteEnrollment": false,
+        "externalEndpointProbed": false,
+        "realCredentialsUsed": false,
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "installedIsolationProtocolOk": true
+      },
+      "nativeInstalled": {
+        "sourceCommit": "b7cf0257149fd3b4d47cbc8cf07186481a803742",
+        "scenarios": 12,
+        "passed": true,
+        "allCleanupVerified": true,
+        "syntheticOnly": false,
+        "fromOutsideCheckout": true,
+        "modelCalls": 0
+      },
+      "nativeSource": {
+        "sourceCommit": "b7cf0257149fd3b4d47cbc8cf07186481a803742",
+        "scenarios": 12,
+        "passed": true,
+        "allCleanupVerified": true,
+        "syntheticOnly": false,
+        "fromOutsideCheckout": true,
+        "modelCalls": 0
+      },
+      "name": "Native Linux isolation / Node 24"
+    },
+    {
+      "jobId": 131545834047,
+      "rawLogFile": "job-131545834047-log.json",
+      "rawLogSha256": "5a8605c0dd76a6fd8f166bdf7297162d97e322c4954d094deb9f561b8f39d17d",
+      "rawLogBytes": 917350,
+      "testSummary": {
+        "tests": 1543,
+        "suites": 0,
+        "pass": 1531,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 12,
+        "todo": 0
+      },
+      "package": {
+        "packageVersion": "0.0.1-preview.1",
+        "profileTests": 24,
+        "endpointTests": 81,
+        "fromOutsideCheckout": true,
+        "ownedLoopbackTlsQualified": true,
+        "compiledRemoteModuleBindingsEqualReviewedSource": true,
+        "actualRemoteEnrollment": false,
+        "externalEndpointProbed": false,
+        "realCredentialsUsed": false,
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "installedIsolationProtocolOk": true
+      },
+      "codex": {
+        "version": "codex-cli 0.160.1",
+        "testOwnedCodex": true,
+        "configurationParsedByCodex": true,
+        "setupIdempotent": true,
+        "shutdownVerified": true,
+        "modelCalls": 0,
+        "realUserConfigChanged": false,
+        "actualCodexAgentToolInvocation": false,
+        "platform": "linux",
+        "arch": "x64",
+        "node": "v24.21.0"
+      },
+      "name": "ubuntu-24.04 / Node 24"
+    }
+  ],
+  "localHistoricalFailurePreserved": {
+    "losslessArchiveSha256": "6d2d87e287334c55da3ead626cd77899a5ee7041f6e3d5a2ff5185b99f0b9a37",
+    "uncompressedSha256": "71202de6618aea9791952a64a49777394e54c098970e9da8dc267f7ee149bded",
+    "uncompressedBytes": 756905,
+    "recordedSummary": {
+      "tests": 1543,
+      "suites": 0,
+      "pass": 1504,
+      "fail": 27,
+      "cancelled": 0,
+      "skipped": 12,
+      "todo": 0,
+      "duration_ms": 294296.758359
+    },
+    "localFullSuitePassed": false,
+    "failureFixturesUnchanged": true,
+    "criterionProducerFilesExact": [
+      "receipt.json",
+      "receipt.md",
+      "snapshot-manifest.json",
+      "executed-checks.json",
+      "focused-tests-final.tap",
+      "issue255-observation.json",
+      "capability-check-final.log"
+    ]
+  },
+  "resolvedFindings": [
+    {
+      "sha": "2206445c8498725f0f97098c83a4f21a7e0f69c9",
+      "finding": "Two manifest-referenced log artifacts absent from remote tree",
+      "resolved": true
+    }
+  ],
+  "findings": [],
+  "limitations": [
+    "The full ordinary local check remains failed with 27 unchanged isolation EPERM fixtures; hosted exact-candidate gates separately passed.",
+    "Expected-head normal merge must use this exact candidate, and actual-main parents/tree/fresh required checks must be independently qualified afterward.",
+    "Saved package and source delivery evidence do not establish runtime/OAuth/UI rollout, wrapper removal or whole-requirement acceptance."
+  ],
+  "wholeRequirementAcceptance": false,
+  "productionDeploymentVerified": false,
+  "actions": {
+    "sourceMutation": false,
+    "githubMutation": false,
+    "productionMutation": false
+  }
+}

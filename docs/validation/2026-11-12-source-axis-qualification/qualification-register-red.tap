@@ -1,0 +1,133 @@
+✖ capability report derives complete coverage without combining overlapping catalogs or granting acceptance (53.382135ms)
+✔ duplicate product and crosswalk IDs fail instead of increasing coverage (42.366281ms)
+✔ missing mission bullets and a product bullet hidden in governance fail coverage (43.459687ms)
+✔ dangling issue, catalog, source, historical and delivery references fail closed (100.350416ms)
+✔ implementation and final-acceptance dependency cycles are rejected (47.48288ms)
+✔ altered baseline denominators, hashes and cached coverage totals are rejected (80.367543ms)
+✔ moving branch source links cannot masquerade as pinned observations (31.35675ms)
+✔ acceptance ownership URLs cannot silently redirect readers to another issue or host (67.86474ms)
+✔ claimed qualified component delivery needs its matching saved main check receipt (17.647579ms)
+✔ consumed evidence bytes are pinned (7.29438ms)
+✔ unknown delivery labels cannot claim extra verification states (4.6624ms)
+✖ issue closure and historical green CI never create whole-requirement credit (21.319194ms)
+✖ explicit full-scope receipts produce separate counts without partial component inference (19.541809ms)
+✖ source implementation, tests and merge can qualify without runtime deployment or acceptance (20.371773ms)
+✔ full acceptance cannot bypass its explicit final-qualification prerequisites (18.765821ms)
+✔ stale source, wrong layer and changed acceptance criteria invalidate qualification (52.794603ms)
+✔ internally consistent receipts cannot attribute CLI source to the separate managed bridge (22.564015ms)
+✔ six unrelated green jobs cannot substitute for the required platform and isolation checks (54.874692ms)
+✔ partial receipts, unpinned evidence and unqualified verification timestamps cannot award acceptance (71.040585ms)
+✖ report rendering is deterministic and keeps unsafe presentation characters literal (24.953597ms)
+ℹ tests 20
+ℹ suites 0
+ℹ pass 15
+ℹ fail 5
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1068.936874
+
+✖ failing tests:
+
+test at tests/capability-register.test.mjs:22:1
+✖ capability report derives complete coverage without combining overlapping catalogs or granting acceptance (53.382135ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/267bdf8cab08/MTerm-CLI-Qualification/tests/capability-register.test.mjs:32:68)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.start (node:internal/test_runner/test:1262:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:387:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/capability-register.test.mjs:139:1
+✖ issue closure and historical green CI never create whole-requirement credit (21.319194ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/267bdf8cab08/MTerm-CLI-Qualification/tests/capability-register.test.mjs:144:68)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/capability-register.test.mjs:202:1
+✖ explicit full-scope receipts produce separate counts without partial component inference (19.541809ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 2
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/267bdf8cab08/MTerm-CLI-Qualification/tests/capability-register.test.mjs:206:68)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/capability-register.test.mjs:211:1
+✖ source implementation, tests and merge can qualify without runtime deployment or acceptance (20.371773ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 2
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/267bdf8cab08/MTerm-CLI-Qualification/tests/capability-register.test.mjs:219:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/capability-register.test.mjs:292:1
+✖ report rendering is deterministic and keeps unsafe presentation characters literal (24.953597ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(rendered.includes('| Code complete | 1 / 143 |'))
+  
+      at TestContext.<anonymous> (file:///workspace/scratch/267bdf8cab08/MTerm-CLI-Qualification/tests/capability-register.test.mjs:300:10)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1402:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:974:18)
+      at Test.postRun (node:internal/test_runner/test:1542:19)
+      at Test.run (node:internal/test_runner/test:1467:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

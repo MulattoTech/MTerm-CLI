@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "kind": "PRE_RECONCILIATION_REGRESSION_EXPECTATIONS",
+  "baseSha": "55ac8b1f35f657b079c191292219b0ae576d7164",
+  "registerSha256": "9ab4dd6f5d01c502d34870ebfc3060a84cc78153202f824bf3779195b4786015",
+  "testsSha256": "13f41b04b4b23fea191e3de05e83d537de38ea1f74804ef327bc4a49e6475ccb",
+  "command": "node --test --test-concurrency=1 tests/capability-register.test.mjs",
+  "format": "Original Node spec reporter output, preserved unchanged",
+  "result": {
+    "tests": 20,
+    "pass": 15,
+    "fail": 5,
+    "skipped": 0,
+    "cancelled": 0,
+    "todo": 0
+  },
+  "failureScope": "Five assertions still observe zero real source-qualified rows before the ledger update; existing rejection/control tests pass. No production or runtime behavior was changed.",
+  "log": {
+    "bytes": 6610,
+    "sha256": "aa7aa853a6bd0fb701fac389eb2c6c0ff027097466902686c8ab266cdb51a34a"
+  }
+}

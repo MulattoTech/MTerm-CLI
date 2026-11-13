@@ -1,0 +1,914 @@
+{
+  "schemaVersion": 1,
+  "repository": "MulattoTech/MTerm-CLI",
+  "pullRequest": 262,
+  "reviewer": "/root/delivery_evidence",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro (inherited; self-reported)",
+  "verifiedAt": "2026-11-12T23:45:24.025144+00:00",
+  "verdict": "QUALIFIED_ACTUAL_MAIN_SOURCE_AND_HOSTED_GATES",
+  "candidateSha": "55ac8b1f35f657b079c191292219b0ae576d7164",
+  "candidateBase": "d430ec5e0d7dcefc041df4ab5f80cb32382c5ac3",
+  "mainSha": "b2b62156bde7d75b2a36b0af0fd677ef1ad514dd",
+  "mergedMain": "b2b62156bde7d75b2a36b0af0fd677ef1ad514dd",
+  "mainBranch": "main",
+  "tree": "4e5f026abb4fb1f5ae2abab637c8f98d7dbe4d59",
+  "parents": [
+    "d430ec5e0d7dcefc041df4ab5f80cb32382c5ac3",
+    "55ac8b1f35f657b079c191292219b0ae576d7164"
+  ],
+  "mergedPrVerified": true,
+  "candidateAndMainTreesEqual": true,
+  "candidateReviewReceipt": {
+    "path": "receipt.json",
+    "sha256": "9db0e609be462c7c2d8b782343e2207e91ef3ccd6c2f79bbe7d2ec8bd65dd723"
+  },
+  "candidateChecksPassed": 6,
+  "mainChecksPassed": 6,
+  "candidateRuns": [
+    {
+      "repository": "MulattoTech/MTerm-CLI",
+      "id": 43325558761,
+      "name": "CLI fast checks",
+      "headSha": "55ac8b1f35f657b079c191292219b0ae576d7164",
+      "headBranch": "fix/final-admission-authorization-20261112",
+      "event": "pull_request",
+      "path": ".github/workflows/ci-fast.yml",
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "htmlUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43325558761",
+      "apiUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43325558761",
+      "createdAt": "2026-11-12T23:03:50Z",
+      "updatedAt": "2026-11-12T23:07:37Z"
+    },
+    {
+      "repository": "MulattoTech/MTerm-CLI",
+      "id": 43325558773,
+      "name": "CLI compatibility foundation",
+      "headSha": "55ac8b1f35f657b079c191292219b0ae576d7164",
+      "headBranch": "fix/final-admission-authorization-20261112",
+      "event": "pull_request",
+      "path": ".github/workflows/cli-ci.yml",
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "htmlUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43325558773",
+      "apiUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43325558773",
+      "createdAt": "2026-11-12T23:03:50Z",
+      "updatedAt": "2026-11-12T23:17:49Z"
+    }
+  ],
+  "mainRuns": [
+    {
+      "repository": "MulattoTech/MTerm-CLI",
+      "id": 43329822963,
+      "name": "CLI fast checks",
+      "headSha": "b2b62156bde7d75b2a36b0af0fd677ef1ad514dd",
+      "headBranch": "main",
+      "event": "push",
+      "path": ".github/workflows/ci-fast.yml",
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "htmlUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43329822963",
+      "apiUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43329822963",
+      "createdAt": "2026-11-12T23:33:15Z",
+      "updatedAt": "2026-11-12T23:36:51Z"
+    },
+    {
+      "repository": "MulattoTech/MTerm-CLI",
+      "id": 43329822970,
+      "name": "CLI compatibility foundation",
+      "headSha": "b2b62156bde7d75b2a36b0af0fd677ef1ad514dd",
+      "headBranch": "main",
+      "event": "push",
+      "path": ".github/workflows/cli-ci.yml",
+      "attempt": 1,
+      "status": "completed",
+      "conclusion": "success",
+      "htmlUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43329822970",
+      "apiUrl": "https://api.github.com/repos/MulattoTech/MTerm-CLI/actions/runs/43329822970",
+      "createdAt": "2026-11-12T23:33:15Z",
+      "updatedAt": "2026-11-12T23:44:49Z"
+    }
+  ],
+  "workflowContracts": [
+    {
+      "path": ".github/workflows/ci-fast.yml",
+      "ref": "b2b62156bde7d75b2a36b0af0fd677ef1ad514dd",
+      "gitBlob": "8d564a5ed8743b8186d628d796d057c3131a98b6",
+      "sha256": "78ea3ed7766e9ae4061dc8ec3abae8fd21eedbf90e8daf731b693c9043e1327f",
+      "candidateContentEqual": true
+    },
+    {
+      "path": ".github/workflows/cli-ci.yml",
+      "ref": "b2b62156bde7d75b2a36b0af0fd677ef1ad514dd",
+      "gitBlob": "1120c455f1ccf743b2e27f99b6f4ed3d57b06319",
+      "sha256": "5b4fbe4bf4f8debf43653909d7f8e18357f1a39ae2736f8a6a2f0119aa1a62a5",
+      "candidateContentEqual": true
+    }
+  ],
+  "requiredHostedJobs": [
+    {
+      "id": 131571437857,
+      "name": "CI / fast",
+      "runId": 43329822963,
+      "runAttempt": 1,
+      "headSha": "b2b62156bde7d75b2a36b0af0fd677ef1ad514dd",
+      "htmlUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43329822963/job/131571437857",
+      "status": "completed",
+      "conclusion": "success",
+      "allNamedStepsSucceeded": true,
+      "rawLogFile": "main-job-131571437857-log.json",
+      "logSha256": "5c3efca3809d3a7b9d8638a27dec7756a87d435febccd9e734940481c4c99e1e",
+      "logBytes": 801616,
+      "testedCheckoutSha": "b2b62156bde7d75b2a36b0af0fd677ef1ad514dd",
+      "testSummary": {
+        "tests": 1571,
+        "suites": 0,
+        "pass": 1559,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 12,
+        "todo": 0
+      }
+    },
+    {
+      "id": 131571437908,
+      "name": "macos-15-intel / Node 24",
+      "runId": 43329822970,
+      "runAttempt": 1,
+      "headSha": "b2b62156bde7d75b2a36b0af0fd677ef1ad514dd",
+      "htmlUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43329822970/job/131571437908",
+      "status": "completed",
+      "conclusion": "success",
+      "allNamedStepsSucceeded": true,
+      "rawLogFile": "main-job-131571437908-log.json",
+      "logSha256": "05e63d96c2100d4b4ff2d8e0b2ed8178b75658c0a1d4417cfd1bb066ba4e8779",
+      "logBytes": 928024,
+      "testedCheckoutSha": "b2b62156bde7d75b2a36b0af0fd677ef1ad514dd",
+      "testSummary": {
+        "tests": 1571,
+        "suites": 0,
+        "pass": 1559,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 12,
+        "todo": 0
+      },
+      "installedPackage": {
+        "profiles": 24,
+        "endpoints": 81,
+        "fromOutsideCheckout": true,
+        "ownedLoopbackTlsQualified": true,
+        "compiledRemoteModuleBindingsEqualCandidate": true,
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "archiveBytes": 163559,
+        "productionLicenseEvidence": [
+          {
+            "name": "@modelcontextprotocol/core",
+            "version": "2.3.0",
+            "license": "Apache-2.0",
+            "integrity": "sha512-09BHFaNVBe5pB2AhzCfLj0cqmsKLERvZQ4FblzP90UMGLaXVqdZPByFjURwsUYCmxonUW2yAwgTTvle+8O2/8w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "@modelcontextprotocol/server",
+            "version": "2.3.0-mterm.1",
+            "license": "Apache-2.0",
+            "integrity": "sha512-RNlauLPhVz8rUV8EvE1jsPmzBtb84j1HIBFGaTyANRbSHjwEBjl0th5idsfHRcGLT5TWZVfFFzlZhk/zJWXY4w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "acorn",
+            "version": "8.19.0",
+            "license": "MIT",
+            "integrity": "sha512-oJlA3XiRm7Cyk6qFD2Jn8ak9B7jSy0qy00ADO3+8dpT0LSjFihQYv4C02LFCSYJV3Q37xYwwRy5m+IpIiUzqWw==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "76a876cf886ff9be2a8b5e2e86514fed06223c8c9f0c1e9ee9606e93841e00b7"
+              }
+            ]
+          },
+          {
+            "name": "mterm-cli",
+            "version": "0.0.1-preview.1",
+            "license": "MIT",
+            "integrity": "sha512-o4gbRreuXZb53rjqz8aVm+S/Ou6yEcYIdViDImF//Gq5QuZC3rT0piAITq2j05fU/OFi7k31rpFsYg8E7JEh7Q==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "057801cf89de394d84ca2f5797e31619cb5fd66e6f4b7da7058db7887633ba37"
+              }
+            ]
+          },
+          {
+            "name": "zod",
+            "version": "4.6.7",
+            "license": "MIT",
+            "integrity": "sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8"
+              }
+            ]
+          }
+        ],
+        "installedStandaloneCoreUnder50MB": true,
+        "fullTransitiveLicenseClearance": false,
+        "fullDesktopCommanderParity": false,
+        "fullThreeComponentUnder50MB": "NOT VERIFIED; this is a dependency-reuse local host, not that bundle"
+      },
+      "runtimeArchitecture": {
+        "node": "v24.21.0",
+        "platform": "darwin",
+        "arch": "x64"
+      },
+      "managedCodex": {
+        "codexVersion": "codex-cli 0.160.1",
+        "codexExpectedVersion": "0.160.1",
+        "testOwnedCodex": true,
+        "configurationParsedByCodex": true,
+        "registeredCommandMcpRounds": 2,
+        "shutdownVerified": true,
+        "actualCodexAgentToolInvocation": false,
+        "realUserConfigChanged": false,
+        "modelCalls": 0
+      }
+    },
+    {
+      "id": 131571438452,
+      "name": "macos-15 / Node 24",
+      "runId": 43329822970,
+      "runAttempt": 1,
+      "headSha": "b2b62156bde7d75b2a36b0af0fd677ef1ad514dd",
+      "htmlUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43329822970/job/131571438452",
+      "status": "completed",
+      "conclusion": "success",
+      "allNamedStepsSucceeded": true,
+      "rawLogFile": "main-job-131571438452-log.json",
+      "logSha256": "fdc9379676a8103486d056996845dc65615258a6a97978a60b14f4cc8001e3a8",
+      "logBytes": 927664,
+      "testedCheckoutSha": "b2b62156bde7d75b2a36b0af0fd677ef1ad514dd",
+      "testSummary": {
+        "tests": 1571,
+        "suites": 0,
+        "pass": 1559,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 12,
+        "todo": 0
+      },
+      "installedPackage": {
+        "profiles": 24,
+        "endpoints": 81,
+        "fromOutsideCheckout": true,
+        "ownedLoopbackTlsQualified": true,
+        "compiledRemoteModuleBindingsEqualCandidate": true,
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "archiveBytes": 163559,
+        "productionLicenseEvidence": [
+          {
+            "name": "@modelcontextprotocol/core",
+            "version": "2.3.0",
+            "license": "Apache-2.0",
+            "integrity": "sha512-09BHFaNVBe5pB2AhzCfLj0cqmsKLERvZQ4FblzP90UMGLaXVqdZPByFjURwsUYCmxonUW2yAwgTTvle+8O2/8w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "@modelcontextprotocol/server",
+            "version": "2.3.0-mterm.1",
+            "license": "Apache-2.0",
+            "integrity": "sha512-RNlauLPhVz8rUV8EvE1jsPmzBtb84j1HIBFGaTyANRbSHjwEBjl0th5idsfHRcGLT5TWZVfFFzlZhk/zJWXY4w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "acorn",
+            "version": "8.19.0",
+            "license": "MIT",
+            "integrity": "sha512-oJlA3XiRm7Cyk6qFD2Jn8ak9B7jSy0qy00ADO3+8dpT0LSjFihQYv4C02LFCSYJV3Q37xYwwRy5m+IpIiUzqWw==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "76a876cf886ff9be2a8b5e2e86514fed06223c8c9f0c1e9ee9606e93841e00b7"
+              }
+            ]
+          },
+          {
+            "name": "mterm-cli",
+            "version": "0.0.1-preview.1",
+            "license": "MIT",
+            "integrity": "sha512-o4gbRreuXZb53rjqz8aVm+S/Ou6yEcYIdViDImF//Gq5QuZC3rT0piAITq2j05fU/OFi7k31rpFsYg8E7JEh7Q==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "057801cf89de394d84ca2f5797e31619cb5fd66e6f4b7da7058db7887633ba37"
+              }
+            ]
+          },
+          {
+            "name": "zod",
+            "version": "4.6.7",
+            "license": "MIT",
+            "integrity": "sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8"
+              }
+            ]
+          }
+        ],
+        "installedStandaloneCoreUnder50MB": true,
+        "fullTransitiveLicenseClearance": false,
+        "fullDesktopCommanderParity": false,
+        "fullThreeComponentUnder50MB": "NOT VERIFIED; this is a dependency-reuse local host, not that bundle"
+      },
+      "runtimeArchitecture": {
+        "node": "v24.21.0",
+        "platform": "darwin",
+        "arch": "arm64"
+      },
+      "managedCodex": {
+        "codexVersion": "codex-cli 0.160.1",
+        "codexExpectedVersion": "0.160.1",
+        "testOwnedCodex": true,
+        "configurationParsedByCodex": true,
+        "registeredCommandMcpRounds": 2,
+        "shutdownVerified": true,
+        "actualCodexAgentToolInvocation": false,
+        "realUserConfigChanged": false,
+        "modelCalls": 0
+      }
+    },
+    {
+      "id": 131571438528,
+      "name": "Native Linux isolation / Node 24",
+      "runId": 43329822970,
+      "runAttempt": 1,
+      "headSha": "b2b62156bde7d75b2a36b0af0fd677ef1ad514dd",
+      "htmlUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43329822970/job/131571438528",
+      "status": "completed",
+      "conclusion": "success",
+      "allNamedStepsSucceeded": true,
+      "rawLogFile": "main-job-131571438528-log.json",
+      "logSha256": "71b679ad2dddab5fd691c75964285eb134e96bf37ee0392d8b29a99b552c0091",
+      "logBytes": 645034,
+      "testedCheckoutSha": "b2b62156bde7d75b2a36b0af0fd677ef1ad514dd",
+      "testSummary": null,
+      "installedPackage": {
+        "profiles": 24,
+        "endpoints": 81,
+        "fromOutsideCheckout": true,
+        "ownedLoopbackTlsQualified": true,
+        "compiledRemoteModuleBindingsEqualCandidate": true,
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "archiveBytes": 163559,
+        "productionLicenseEvidence": [
+          {
+            "name": "@modelcontextprotocol/core",
+            "version": "2.3.0",
+            "license": "Apache-2.0",
+            "integrity": "sha512-09BHFaNVBe5pB2AhzCfLj0cqmsKLERvZQ4FblzP90UMGLaXVqdZPByFjURwsUYCmxonUW2yAwgTTvle+8O2/8w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "@modelcontextprotocol/server",
+            "version": "2.3.0-mterm.1",
+            "license": "Apache-2.0",
+            "integrity": "sha512-RNlauLPhVz8rUV8EvE1jsPmzBtb84j1HIBFGaTyANRbSHjwEBjl0th5idsfHRcGLT5TWZVfFFzlZhk/zJWXY4w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "acorn",
+            "version": "8.19.0",
+            "license": "MIT",
+            "integrity": "sha512-oJlA3XiRm7Cyk6qFD2Jn8ak9B7jSy0qy00ADO3+8dpT0LSjFihQYv4C02LFCSYJV3Q37xYwwRy5m+IpIiUzqWw==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "76a876cf886ff9be2a8b5e2e86514fed06223c8c9f0c1e9ee9606e93841e00b7"
+              }
+            ]
+          },
+          {
+            "name": "mterm-cli",
+            "version": "0.0.1-preview.1",
+            "license": "MIT",
+            "integrity": "sha512-o4gbRreuXZb53rjqz8aVm+S/Ou6yEcYIdViDImF//Gq5QuZC3rT0piAITq2j05fU/OFi7k31rpFsYg8E7JEh7Q==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "057801cf89de394d84ca2f5797e31619cb5fd66e6f4b7da7058db7887633ba37"
+              }
+            ]
+          },
+          {
+            "name": "zod",
+            "version": "4.6.7",
+            "license": "MIT",
+            "integrity": "sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8"
+              }
+            ]
+          }
+        ],
+        "installedStandaloneCoreUnder50MB": true,
+        "fullTransitiveLicenseClearance": false,
+        "fullDesktopCommanderParity": false,
+        "fullThreeComponentUnder50MB": "NOT VERIFIED; this is a dependency-reuse local host, not that bundle"
+      },
+      "nativeSource": {
+        "passed": true,
+        "scenarios": 12,
+        "allCleanupVerified": true,
+        "sourceCommit": "b2b62156bde7d75b2a36b0af0fd677ef1ad514dd",
+        "installedPackage": false,
+        "fromOutsideCheckout": true,
+        "modelCalls": 0,
+        "acceptedCapability": false,
+        "fullRuntimeImageRedistributionEligible": false
+      },
+      "nativeInstalled": {
+        "passed": true,
+        "scenarios": 12,
+        "allCleanupVerified": true,
+        "sourceCommit": "b2b62156bde7d75b2a36b0af0fd677ef1ad514dd",
+        "installedPackage": true,
+        "fromOutsideCheckout": true,
+        "modelCalls": 0,
+        "acceptedCapability": false,
+        "fullRuntimeImageRedistributionEligible": false
+      }
+    },
+    {
+      "id": 131571438535,
+      "name": "ubuntu-24.04 / Node 24",
+      "runId": 43329822970,
+      "runAttempt": 1,
+      "headSha": "b2b62156bde7d75b2a36b0af0fd677ef1ad514dd",
+      "htmlUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43329822970/job/131571438535",
+      "status": "completed",
+      "conclusion": "success",
+      "allNamedStepsSucceeded": true,
+      "rawLogFile": "main-job-131571438535-log.json",
+      "logSha256": "3f8918e8223df58157e3f1f8c71a86d8f6780b89aadb8f21b7038f69e86c6a9e",
+      "logBytes": 919307,
+      "testedCheckoutSha": "b2b62156bde7d75b2a36b0af0fd677ef1ad514dd",
+      "testSummary": {
+        "tests": 1571,
+        "suites": 0,
+        "pass": 1559,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 12,
+        "todo": 0
+      },
+      "installedPackage": {
+        "profiles": 24,
+        "endpoints": 81,
+        "fromOutsideCheckout": true,
+        "ownedLoopbackTlsQualified": true,
+        "compiledRemoteModuleBindingsEqualCandidate": true,
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "archiveBytes": 163559,
+        "productionLicenseEvidence": [
+          {
+            "name": "@modelcontextprotocol/core",
+            "version": "2.3.0",
+            "license": "Apache-2.0",
+            "integrity": "sha512-09BHFaNVBe5pB2AhzCfLj0cqmsKLERvZQ4FblzP90UMGLaXVqdZPByFjURwsUYCmxonUW2yAwgTTvle+8O2/8w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "@modelcontextprotocol/server",
+            "version": "2.3.0-mterm.1",
+            "license": "Apache-2.0",
+            "integrity": "sha512-RNlauLPhVz8rUV8EvE1jsPmzBtb84j1HIBFGaTyANRbSHjwEBjl0th5idsfHRcGLT5TWZVfFFzlZhk/zJWXY4w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "acorn",
+            "version": "8.19.0",
+            "license": "MIT",
+            "integrity": "sha512-oJlA3XiRm7Cyk6qFD2Jn8ak9B7jSy0qy00ADO3+8dpT0LSjFihQYv4C02LFCSYJV3Q37xYwwRy5m+IpIiUzqWw==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "76a876cf886ff9be2a8b5e2e86514fed06223c8c9f0c1e9ee9606e93841e00b7"
+              }
+            ]
+          },
+          {
+            "name": "mterm-cli",
+            "version": "0.0.1-preview.1",
+            "license": "MIT",
+            "integrity": "sha512-o4gbRreuXZb53rjqz8aVm+S/Ou6yEcYIdViDImF//Gq5QuZC3rT0piAITq2j05fU/OFi7k31rpFsYg8E7JEh7Q==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "057801cf89de394d84ca2f5797e31619cb5fd66e6f4b7da7058db7887633ba37"
+              }
+            ]
+          },
+          {
+            "name": "zod",
+            "version": "4.6.7",
+            "license": "MIT",
+            "integrity": "sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8"
+              }
+            ]
+          }
+        ],
+        "installedStandaloneCoreUnder50MB": true,
+        "fullTransitiveLicenseClearance": false,
+        "fullDesktopCommanderParity": false,
+        "fullThreeComponentUnder50MB": "NOT VERIFIED; this is a dependency-reuse local host, not that bundle"
+      },
+      "runtimeArchitecture": {
+        "node": "v24.21.0",
+        "platform": "linux",
+        "arch": "x64"
+      },
+      "managedCodex": {
+        "codexVersion": "codex-cli 0.160.1",
+        "codexExpectedVersion": "0.160.1",
+        "testOwnedCodex": true,
+        "configurationParsedByCodex": true,
+        "registeredCommandMcpRounds": 2,
+        "shutdownVerified": true,
+        "actualCodexAgentToolInvocation": false,
+        "realUserConfigChanged": false,
+        "modelCalls": 0
+      }
+    },
+    {
+      "id": 131571438835,
+      "name": "windows-2022 / Node 24",
+      "runId": 43329822970,
+      "runAttempt": 1,
+      "headSha": "b2b62156bde7d75b2a36b0af0fd677ef1ad514dd",
+      "htmlUrl": "https://github.com/MulattoTech/MTerm-CLI/actions/runs/43329822970/job/131571438835",
+      "status": "completed",
+      "conclusion": "success",
+      "allNamedStepsSucceeded": true,
+      "rawLogFile": "main-job-131571438835-log.json",
+      "logSha256": "c8c77119dcfa32e665b9a0de9df37cf8c652b4258ec2831c0a6e5c99bf5b9ebe",
+      "logBytes": 928817,
+      "testedCheckoutSha": "b2b62156bde7d75b2a36b0af0fd677ef1ad514dd",
+      "testSummary": {
+        "tests": 1571,
+        "suites": 0,
+        "pass": 1571,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "installedPackage": {
+        "profiles": 24,
+        "endpoints": 81,
+        "fromOutsideCheckout": true,
+        "ownedLoopbackTlsQualified": true,
+        "compiledRemoteModuleBindingsEqualCandidate": true,
+        "modelCalls": 0,
+        "userGlobalPrefixModified": false,
+        "archiveBytes": 163551,
+        "productionLicenseEvidence": [
+          {
+            "name": "@modelcontextprotocol/core",
+            "version": "2.3.0",
+            "license": "Apache-2.0",
+            "integrity": "sha512-09BHFaNVBe5pB2AhzCfLj0cqmsKLERvZQ4FblzP90UMGLaXVqdZPByFjURwsUYCmxonUW2yAwgTTvle+8O2/8w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "@modelcontextprotocol/server",
+            "version": "2.3.0-mterm.1",
+            "license": "Apache-2.0",
+            "integrity": "sha512-RNlauLPhVz8rUV8EvE1jsPmzBtb84j1HIBFGaTyANRbSHjwEBjl0th5idsfHRcGLT5TWZVfFFzlZhk/zJWXY4w==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "0382b0057770ca05e9c350a50aa3b1c1fea84da0bc81d723bf00b9aa841be58a"
+              }
+            ]
+          },
+          {
+            "name": "acorn",
+            "version": "8.19.0",
+            "license": "MIT",
+            "integrity": "sha512-oJlA3XiRm7Cyk6qFD2Jn8ak9B7jSy0qy00ADO3+8dpT0LSjFihQYv4C02LFCSYJV3Q37xYwwRy5m+IpIiUzqWw==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "76a876cf886ff9be2a8b5e2e86514fed06223c8c9f0c1e9ee9606e93841e00b7"
+              }
+            ]
+          },
+          {
+            "name": "mterm-cli",
+            "version": "0.0.1-preview.1",
+            "license": "MIT",
+            "integrity": "sha512-wx8kF7+GYc7tWAVVYK5eOzy+oNBE6VqMawbe4aAkJwFrqATrv0IvlfnSAcS823vAXFDCQIN4oFFn3hHXuHA+Nw==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "057801cf89de394d84ca2f5797e31619cb5fd66e6f4b7da7058db7887633ba37"
+              }
+            ]
+          },
+          {
+            "name": "zod",
+            "version": "4.6.7",
+            "license": "MIT",
+            "integrity": "sha512-g8W2D2kU6a8untc053fX1uVBKzM7yqAxW/3zwk83+6RyF2+SKOuV+c0wBDhUwzV1PaGapmZH+rmcUzPf+3CGwg==",
+            "files": [
+              {
+                "path": "LICENSE",
+                "sha256": "3f1189b28e3866e0d979968d466b78f813f76827cfdca1fbb124cc0a5c8841f8"
+              }
+            ]
+          }
+        ],
+        "installedStandaloneCoreUnder50MB": true,
+        "fullTransitiveLicenseClearance": false,
+        "fullDesktopCommanderParity": false,
+        "fullThreeComponentUnder50MB": "NOT VERIFIED; this is a dependency-reuse local host, not that bundle"
+      },
+      "runtimeArchitecture": {
+        "node": "v24.21.0",
+        "platform": "win32",
+        "arch": "x64"
+      },
+      "managedCodex": {
+        "codexVersion": "codex-cli 0.160.1",
+        "codexExpectedVersion": "0.160.1",
+        "testOwnedCodex": true,
+        "configurationParsedByCodex": true,
+        "registeredCommandMcpRounds": 2,
+        "shutdownVerified": true,
+        "actualCodexAgentToolInvocation": false,
+        "realUserConfigChanged": false,
+        "modelCalls": 0
+      }
+    }
+  ],
+  "requiredJobCount": 6,
+  "allRequiredJobsSuccessful": true,
+  "findings": [],
+  "wholeRequirementAcceptance": false,
+  "productionDeploymentVerified": false,
+  "localHistoricalFailurePreserved": {
+    "tests": 1571,
+    "pass": 1532,
+    "fail": 27,
+    "skipped": 12,
+    "source": "docs/validation/2026-11-12-final-admission-authorization/complete-check.json",
+    "classification": "Failed local ordinary check; unchanged isolation listen EPERM; not relabelled PASS."
+  },
+  "limitations": [
+    "Exact merged-main source and hosted gates only; no live gateway deployment or whole-requirement acceptance.",
+    "No real Workers storage/crash, external identity provider, browser or two-device qualification.",
+    "Package lanes qualify the standalone package, not an installed or deployed gateway.",
+    "Full transitive license, runtime-image redistribution, full parity and combined bundle-size claims remain unverified.",
+    "Original failed local check and expected platform skips remain recorded without relabelling."
+  ],
+  "actions": {
+    "githubMutation": false,
+    "sourceMutation": false,
+    "productionAction": false,
+    "modelCalls": 0
+  },
+  "captureBindings": [
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-commit.json",
+      "bytes": 2981,
+      "sha256": "8e2e8b82642e666a5fbcb3fdf1c9f1b6c72b233e31b903197cc74730fd106b7d"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-compat-jobs-final.json",
+      "bytes": 17371,
+      "sha256": "1e7e3aa809627185691ae231aeb5a7df1323e06e372912d188adc9494254e4d5"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-compat-jobs-initial.json",
+      "bytes": 15058,
+      "sha256": "a23b1f0c5ac7b8fad6ebb57cde5b33ebbf1f71ec9ea39bd4758f5f53239f78cf"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-compat-jobs-observation-1794526556828.json",
+      "bytes": 15555,
+      "sha256": "56d6e2d2d094771ecb8acde631f3ddc315a4068df7db7e6b828cd14b31d6b4d6"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-compat-jobs-observation-1794526643978.json",
+      "bytes": 15598,
+      "sha256": "297b1868b04f8f7d6398559c1b8a5fa7c3c914666f8427a1b484ff737ea2d072"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-compat-jobs-observation-1794526728763.json",
+      "bytes": 16052,
+      "sha256": "7b15e0b37ff945ce9fa853237a919e269d0b068c38652c005f4c4955be30e50d"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-compat-jobs-observation-1794526828195.json",
+      "bytes": 16506,
+      "sha256": "f617de0fa3f9eedf0e4ac82692fe1c1f2185ed4bb9180d130c9eb1165afc456a"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-compat-jobs-observation-1794526906225.json",
+      "bytes": 16721,
+      "sha256": "9259a5ad634fa4a6965f56d7e9318063bf9470a3a44408791653a1b1c8dc761f"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-compat-jobs-observation-1794526941150.json",
+      "bytes": 16960,
+      "sha256": "fbf6e9eabc5c4b48c8d29324d6c0a17b6c2d0757d7522421c21a66c4af254a63"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-compat-jobs-observation-1794527033088.json",
+      "bytes": 16960,
+      "sha256": "fbf6e9eabc5c4b48c8d29324d6c0a17b6c2d0757d7522421c21a66c4af254a63"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-compat-jobs-observation-1794527097269.json",
+      "bytes": 17371,
+      "sha256": "1e7e3aa809627185691ae231aeb5a7df1323e06e372912d188adc9494254e4d5"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-compat-run-final.json",
+      "bytes": 12736,
+      "sha256": "e049fafe755a6f9a9d5260f0bb98323a4e205a2acc069dc3af6fd9a4e336befc"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-compat-run-initial.json",
+      "bytes": 12733,
+      "sha256": "31c92682b443ea2f3df36d2288725c6ddc2650412b245e5cb09acd84ec3c9289"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-fast-jobs-final.json",
+      "bytes": 2734,
+      "sha256": "09d83557f57ec59dde175126bbb2151433f6efe9680ad6f5400f9e3d09c735f7"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-fast-jobs-initial.json",
+      "bytes": 2409,
+      "sha256": "33bfa7e54cca26d0563d8c8ac789314b3762ac41950bd88fd67df1d16c55e0c2"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-fast-jobs-observation-1794526556828.json",
+      "bytes": 2409,
+      "sha256": "33bfa7e54cca26d0563d8c8ac789314b3762ac41950bd88fd67df1d16c55e0c2"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-fast-jobs-observation-1794526643978.json",
+      "bytes": 2734,
+      "sha256": "09d83557f57ec59dde175126bbb2151433f6efe9680ad6f5400f9e3d09c735f7"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-fast-run-final.json",
+      "bytes": 12724,
+      "sha256": "92e3a2822e8ffe849d7c93935762eb97419b0a0a22d461f2c45d13d629a2185b"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-fast-run-initial.json",
+      "bytes": 12721,
+      "sha256": "cddce479a9e1e3eb4dd5e039a9c7e4bcc3d0d18a0bc252d82132019c6d9b11bb"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-job-131571437857-analysis.json",
+      "bytes": 420,
+      "sha256": "191a37b215c6f34148bf38480c70daf961d52ca9286edb6e077b5ec3da592789"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-job-131571437857-log.json",
+      "bytes": 868875,
+      "sha256": "caa82ea84214366c1bf40960c5b8761ac6dd271df17e4458968f2cf22e79a849"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-job-131571437908-analysis.json",
+      "bytes": 77366,
+      "sha256": "85cd9986940aca1b30c1f07928af14cc866987e2ba24e2e34235dcc1039ccc0a"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-job-131571437908-log.json",
+      "bytes": 1000800,
+      "sha256": "241cd189dfb66aeb4e17294eb27d06e8755893cd90e35407d7741a1630cf3870"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-job-131571438452-analysis.json",
+      "bytes": 77370,
+      "sha256": "d3c37b863f0a3c291a5fa8c17747b1f6a25a5a5f7c1a1655d5da91382f0375f0"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-job-131571438452-log.json",
+      "bytes": 1000441,
+      "sha256": "56b81f6c8330048624cb4053a82e533f7fc5d01ec8700e03a249e1ac8f9a7a72"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-job-131571438528-analysis.json",
+      "bytes": 400518,
+      "sha256": "eacb59c0fa44e054e4424b49e8ea90d93ed938ab27e3ce335e5ca7e10a5ec8cd"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-job-131571438528-log.json",
+      "bytes": 676448,
+      "sha256": "a45c85336fd5261c5f20407d635bbac4090ea23dee7715ea1bb759f73bfdddf2"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-job-131571438535-analysis.json",
+      "bytes": 75532,
+      "sha256": "d8b9f537946f19bff01261de01fb4a9b65423f044ba629f3f7f2846d867ec883"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-job-131571438535-log.json",
+      "bytes": 992082,
+      "sha256": "18c92b9f78d437bd28d4b5f7b224a67852bb3800994221307d76fb079c68589f"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-job-131571438835-analysis.json",
+      "bytes": 78398,
+      "sha256": "00216628ebf9783dcdbd176b3bf8e220f7dd15e700eb68902176828f1d53cbb3"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-job-131571438835-log.json",
+      "bytes": 1009778,
+      "sha256": "e811fed1185a6d89dd02ee875aeb87435b79fa8b3b9d9eff1cd52b8a68c84d78"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-runs-initial.json",
+      "bytes": 29952,
+      "sha256": "477fedfaeef2abc5fba140cc306d8fdf5f95eb4c2a5791fe017629ad41cb5338"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-workflow-compat.json",
+      "bytes": 9181,
+      "sha256": "4cbbc1b5e1d3e446b8fad2be9f0f816431853e3043e8d8bfbe4de08f00d51671"
+    },
+    {
+      "path": "/workspace/scratch/267bdf8cab08/review-pr262/main-workflow-fast.json",
+      "bytes": 2987,
+      "sha256": "7077813a68181978c5ca7c2ef0bd28fa76bc595acf325883019b0d575295a706"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "request": {
+    "tool": "mterm_cli_live_connection_start_process",
+    "command": "$ErrorActionPreference = 'Stop'\n$managerPackage = Get-Content -LiteralPath 'H:\\MTechLabs\\MCP\\runtime\\package.json' -Raw | ConvertFrom-Json\n$upstreamPackage = Get-Content -LiteralPath 'H:\\MTechLabs\\MCP\\node_modules\\@wonderwhy-er\\desktop-commander\\package.json' -Raw | ConvertFrom-Json\n$sdkPackage = Get-Content -LiteralPath 'H:\\MTechLabs\\MCP\\node_modules\\@modelcontextprotocol\\sdk\\package.json' -Raw | ConvertFrom-Json\n$installationRecord = Get-Content -LiteralPath 'H:\\MTechLabs\\MCP\\state\\deployment.json' -Raw | ConvertFrom-Json\n$listenerCount = @(Get-NetTCPConnection -LocalAddress '127.0.0.1' -LocalPort 19740 -State Listen -ErrorAction Stop).Count\n[ordered]@{\n  observedAt = [DateTime]::UtcNow.ToString('o')\n  manager = [ordered]@{ name = $managerPackage.name; version = $managerPackage.version }\n  upstream = [ordered]@{ name = $upstreamPackage.name; version = $upstreamPackage.version }\n  sdk = [ordered]@{ name = $sdkPackage.name; version = $sdkPackage.version }\n  installationRecord = [ordered]@{\n    sourceCommit = $installationRecord.sourceCommit\n    completedAt = $installationRecord.completedAt\n    workerVersion = $installationRecord.cloudflare.version\n    evidence = 'installation-record'\n  }\n  loopbackAdminListener = [ordered]@{ address = '127.0.0.1'; port = 19740; listening = ($listenerCount -gt 0); listenerCount = $listenerCount }\n  limits = 'Package metadata and recorded deployment fields only. No credential reads, HTTP admin authentication, configuration changes, source-byte comparison, or model calls.'\n} | ConvertTo-Json -Depth 5 -Compress",
+    "timeout_ms": 10000
+  },
+  "startedAt": "2026-11-12 23:52:00 UTC",
+  "finishedAt": "2026-11-12 23:52:04 UTC",
+  "response": {
+    "content": [
+      {
+        "type": "text",
+        "text": "Process started with PID 14732 (shell: pwsh.exe)\nInitial output:\n{\"observedAt\":\"2026-11-12T23:52:04.6233949Z\",\"manager\":{\"name\":\"m-techlabs-mcp-manager\",\"version\":\"0.4.0\"},\"upstream\":{\"name\":\"@wonderwhy-er/desktop-commander\",\"version\":\"0.3.1\"},\"sdk\":{\"name\":\"@modelcontextprotocol/sdk\",\"version\":\"1.32.2\"},\"installationRecord\":{\"sourceCommit\":\"9373fadc00689dd782143ab5e49664536f460b8b\",\"completedAt\":\"2026-11-07T04:47:34.007Z\",\"workerVersion\":\"0d41b13b-9614-4574-8e54-6dd5cf760a10\",\"evidence\":\"installation-record\"},\"loopbackAdminListener\":{\"address\":\"127.0.0.1\",\"port\":19740,\"listening\":true,\"listenerCount\":1},\"limits\":\"Package metadata and recorded deployment fields only. No credential reads, HTTP admin authentication, configuration changes, source-byte comparison, or model calls.\"}\r\n\n✅ Process 14732 has finished execution"
+      }
+    ],
+    "structuredContent": null,
+    "isError": false
+  }
+}
+

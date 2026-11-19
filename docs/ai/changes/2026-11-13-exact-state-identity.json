@@ -1,0 +1,137 @@
+{
+  "change_id": "2026-11-13-exact-state-identity",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "provenance": "Self-reported execution metadata; not cryptographic model attestation.",
+  "updated_at": "2026-11-13T00:37:57.359Z",
+  "base_sha": "15dd5de8387507774f6471e4b34d108a492393dc",
+  "issues": [
+    57,
+    58,
+    250
+  ],
+  "requirements": [
+    "CLI-095",
+    "CLI-266",
+    "CLI-286",
+    "CLI-287"
+  ],
+  "files": [
+    "docs/HANDOFF.md",
+    "docs/SECURITY.md",
+    "docs/ai/changes/2026-11-13-exact-state-identity.json",
+    "docs/roadmap/review.json",
+    "docs/validation/2026-11-13-exact-state-identity/README.md",
+    "docs/validation/2026-11-13-exact-state-identity/build.log",
+    "docs/validation/2026-11-13-exact-state-identity/check.log.gz",
+    "docs/validation/2026-11-13-exact-state-identity/complete-check.json",
+    "docs/validation/2026-11-13-exact-state-identity/development-build.log",
+    "docs/validation/2026-11-13-exact-state-identity/green-nearby.tap",
+    "docs/validation/2026-11-13-exact-state-identity/green-receipt.json",
+    "docs/validation/2026-11-13-exact-state-identity/independent-review/REVIEW.md",
+    "docs/validation/2026-11-13-exact-state-identity/independent-review/finalize-review.mjs",
+    "docs/validation/2026-11-13-exact-state-identity/independent-review/hashes-after.json",
+    "docs/validation/2026-11-13-exact-state-identity/independent-review/hashes-before.json",
+    "docs/validation/2026-11-13-exact-state-identity/independent-review/managed-parent-observations.json",
+    "docs/validation/2026-11-13-exact-state-identity/independent-review/managed-parent-receipt.json",
+    "docs/validation/2026-11-13-exact-state-identity/independent-review/managed-parent-review.stderr.log",
+    "docs/validation/2026-11-13-exact-state-identity/independent-review/managed-parent-review.tap",
+    "docs/validation/2026-11-13-exact-state-identity/independent-review/managed-parent-review.test.mjs",
+    "docs/validation/2026-11-13-exact-state-identity/independent-review/producer-green-receipt.json",
+    "docs/validation/2026-11-13-exact-state-identity/independent-review/producer-green.tap",
+    "docs/validation/2026-11-13-exact-state-identity/independent-review/receipt.json",
+    "docs/validation/2026-11-13-exact-state-identity/independent-review/run-managed-parent-review.mjs",
+    "docs/validation/2026-11-13-exact-state-identity/independent-review/source-captures.json",
+    "docs/validation/2026-11-13-exact-state-identity/manifest.json",
+    "docs/validation/2026-11-13-exact-state-identity/pr263-failure-preservation.json",
+    "docs/validation/2026-11-13-exact-state-identity/pr263-main-failure.json",
+    "docs/validation/2026-11-13-exact-state-identity/pr263-main-windows.log.gz",
+    "docs/validation/2026-11-13-exact-state-identity/preserved-log-whitespace.json",
+    "docs/validation/2026-11-13-exact-state-identity/red-initial-receipt.json",
+    "docs/validation/2026-11-13-exact-state-identity/red-initial.tap",
+    "docs/validation/2026-11-13-exact-state-identity/red-receipt.json",
+    "docs/validation/2026-11-13-exact-state-identity/red.tap",
+    "scripts/verify-package.mjs",
+    "src/remote/profiles.ts",
+    "src/remote/state.ts",
+    "tests/remote-run-lock.test.mjs",
+    "tests/remote-state-identity.test.mjs",
+    "tests/remote-state-lock.test.mjs"
+  ],
+  "decisions": [
+    "Preserve failed PR263 actual-main Windows evidence; no retry-only repair or false source delivery credit.",
+    "Use exact BigInt metadata for both failed initialization cleanup paths and bound profile admission; retain persisted/public schemas.",
+    "Model collisions with real owned file replacements and deterministic precision-only metadata; preserve all RED attempts.",
+    "Keep primary failure, confirmed-close and exact ownership requirements; no automatic retry or stale-lock stealing.",
+    "Bind the new 13-case suite to the actual installed package and expanded lock import graph."
+  ],
+  "tests": [
+    {
+      "command": "Exact final 13-case collision suite against unchanged15dd source and compilation",
+      "result": "RED: 10 failures, 3 controls; no skips/cancellations/TODO; source hashes unchanged.",
+      "receipt": "docs/validation/2026-11-13-exact-state-identity/red-receipt.json"
+    },
+    {
+      "command": "Development build and six nearby source suites on private Node24.21.0 Windows",
+      "result": "PASS: 110/110, zero failed/skipped/cancelled/TODO.",
+      "receipt": "docs/validation/2026-11-13-exact-state-identity/green-receipt.json"
+    },
+    {
+      "command": "npm run build; npm run check (complete normal gates)",
+      "result": "PASS: Windows Node24.21.0, 1595/1595; zero failed/skipped/cancelled/TODO.",
+      "receipt": "docs/validation/2026-11-13-exact-state-identity/complete-check.json"
+    },
+    {
+      "command": "Independent managed namespace/collection/profile replacement and unchanged-ID matrix",
+      "result": "PASS 12/12; exact source/runtime/verifier/test hashes unchanged.",
+      "receipt": "docs/validation/2026-11-13-exact-state-identity/independent-review/managed-parent-receipt.json"
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "id": "CLI-095",
+      "stage_change": false,
+      "reason": "Exact bound profile/mutation-lock identity is scoped safety evidence; full credential update acceptance remains open."
+    },
+    {
+      "id": "CLI-266",
+      "stage_change": false,
+      "reason": "Preserve precise admitted state-directory identity; no broad root-policy acceptance."
+    },
+    {
+      "id": "CLI-286",
+      "stage_change": false,
+      "reason": "Failed run/state lock cleanup retains admission under exact replacement identity; wider concurrency acceptance unchanged."
+    },
+    {
+      "id": "CLI-287",
+      "stage_change": false,
+      "reason": "Retain primary initialization errors and all existing cleanup refusal precedence; broader error acceptance unchanged."
+    }
+  ],
+  "limitations": [
+    "Original failed CI did not print IDs; numerical-collision attribution to that individual run is inferred, while the defect is deterministically reproduced.",
+    "Exact metadata checks are not atomic pathname mutation and do not prevent inode reuse or same-inode changes.",
+    "Managed runtime, real owner state, Cloudflare, provider HOLD and saved plugin remain untouched.",
+    "Source/installed/native platform gates and full requirement acceptance remain distinct."
+  ],
+  "independent_review": {
+    "reviewer": "/root/delivery_evidence",
+    "result": "APPROVED_FROZEN_SOURCE_TESTS_AND_VERIFIER_WITH_BOUNDED_LOCAL_QUALIFICATION",
+    "receipt": "docs/validation/2026-11-13-exact-state-identity/independent-review/receipt.json",
+    "sha256": "f3de90a430faaba1ab0d3a8f3406dd5ee6e3f2534ed7008d902c89ec3a81b202",
+    "independentTests": {
+      "tests": 12,
+      "pass": 12,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    }
+  },
+  "next_unverified_action": "Publish the frozen candidate, qualify all six hosted jobs, perform a normal expected-head merge, and independently qualify all six actual-main jobs.",
+  "preserved_evidence_whitespace": {
+    "receipt": "docs/validation/2026-11-13-exact-state-identity/preserved-log-whitespace.json",
+    "scope": "Two unchanged original build logs end with a blank line; authored source and all other indexed paths pass diff --check."
+  }
+}

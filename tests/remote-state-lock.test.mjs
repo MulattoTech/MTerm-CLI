@@ -301,7 +301,10 @@ test('remote state lock recovery preserves a replaced leaf and its renamed origi
   await assert.rejects(f.store.configure(f.input), (error) => error === primary);
   assert.deepEqual(await fs.readFile(old), partial);
   assert.deepEqual(await fs.readFile(f.lock), sentinel);
-  assert.notEqual((await fs.lstat(old)).ino, (await fs.lstat(f.lock)).ino);
+  assert.notEqual(
+    (await fs.lstat(old, { bigint: true })).ino,
+    (await fs.lstat(f.lock, { bigint: true })).ino,
+  );
 });
 
 test('remote state lock recovery retains an inode with an additional hard link', async (t) => {
@@ -330,7 +333,7 @@ test('remote state lock recovery requires original parent identity even for the 
     writeFile: failWrite(primary),
     close: async (close) => {
       await close();
-      originalInode = (await fs.lstat(f.lock)).ino;
+      originalInode = (await fs.lstat(f.lock, { bigint: true })).ino;
       await fs.rename(f.directory, moved);
       await fs.mkdir(f.directory, { mode: 0o700 });
       await fs.rename(path.join(moved, 'state.lock'), f.lock);
@@ -338,8 +341,11 @@ test('remote state lock recovery requires original parent identity even for the 
   });
   await assert.rejects(f.store.configure(f.input), (error) => error === primary);
   assert.deepEqual(await fs.readFile(f.lock), partial);
-  assert.equal((await fs.lstat(f.lock)).ino, originalInode);
-  assert.notEqual((await fs.lstat(f.directory)).ino, (await fs.lstat(moved)).ino);
+  assert.equal((await fs.lstat(f.lock, { bigint: true })).ino, originalInode);
+  assert.notEqual(
+    (await fs.lstat(f.directory, { bigint: true })).ino,
+    (await fs.lstat(moved, { bigint: true })).ino,
+  );
   await absent(f.config);
 });
 
@@ -401,7 +407,8 @@ for (const target of ['parent', 'leaf']) {
   test('remote state lock recovery retains changed ' + target + ' ownership metadata', async (t) => {
     const f = await fixture(t);
     const primary = fault('ENOSPC');
-    let closed = false;
+    let closed = false,
+      metadataChanged = false;
     instrument(t, f, {
       writeFile: failWrite(primary),
       close: async (close) => {
@@ -412,11 +419,17 @@ for (const target of ['parent', 'leaf']) {
     const lstat = fs.lstat.bind(fs);
     t.mock.method(fs, 'lstat', async (...args) => {
       const stat = await lstat(...args);
-      if (closed && args[0] === (target === 'parent' ? f.directory : f.lock))
-        return Object.assign(Object.create(stat), { mode: stat.mode ^ 0o200 });
+      if (closed && args[0] === (target === 'parent' ? f.directory : f.lock)) {
+        const changed = Object.assign(Object.create(stat), {
+          mode: stat.mode ^ (typeof stat.mode === 'bigint' ? 0o200n : 0o200),
+        });
+        metadataChanged = true;
+        return changed;
+      }
       return stat;
     });
     await assert.rejects(f.store.configure(f.input), (error) => error === primary);
+    assert.equal(metadataChanged, true, 'Ownership metadata must change without a swallowed hook error');
     assert.deepEqual(await fs.readFile(f.lock), partial);
     await absent(f.config);
   });

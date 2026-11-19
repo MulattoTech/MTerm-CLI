@@ -722,3 +722,20 @@ test data excluded from the product package. The actual inspection agent must
 reject that untrusted certificate and an incorrect hostname even with the ambient
 TLS-disable flag and a permissive per-request option. No CLI/environment switch
 bypasses endpoint address admission for those tests.
+
+## Exact remote-state identities — 2026-11-13
+
+Remote profile admission and failed initialization cleanup for both run.lock and
+state.lock retain filesystem device/inode identities as BigInt values. Ordinary
+Number-valued metadata can round distinct 64-bit IDs to the same value, including
+on Windows. Parent, leaf and descriptor comparisons now use exact integers;
+link-count, mode and UID checks retain their existing meaning. These values are
+internal admission metadata and do not change stored configuration, credential
+formats or public JSON responses.
+
+Cleanup still requires a confirmed closed descriptor, a known single-link regular
+file and the unchanged canonical parent and leaf. A replacement, uncertain close
+or failed lookup retains the lock and the original initialization error. Exact IDs
+do not make pathname checks followed by unlink atomic: hostile final-check races,
+inode reuse and same-inode content changes remain outside the private-directory
+guarantee. No stale-lock stealing or automatic retry is added.

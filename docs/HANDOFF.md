@@ -1,3 +1,28 @@
+# Exact remote-state identity repair — November 13, 2026
+
+PR #263 merged at 15dd5de8387507774f6471e4b34d108a492393dc after six successful
+candidate jobs, but actual-main Windows job 131583155535 failed a replacement-parent
+run-lock test. The other five main jobs passed. Package/native-Codex steps in the
+Windows job were skipped. This failed main has no qualified-delivery credit.
+
+The repair preserves device/inode identity as exact integers in both failed lock
+initialization paths and bound profile-directory admission. A deterministic suite
+on unchanged source produced 10 collision failures and 3 passing controls. The
+corrected source passes 110 nearby cases on private Node 24.21.0 on Windows,
+including the original run-lock test. Installed qualification adds all 13 new
+cases and binds the profile/config modules with the existing lock import graph.
+
+Normal build/check passed with all 1,595 Windows tests and no skips. Independent
+source/verifier review and 12 managed-parent cases passed with frozen hashes.
+CLI-095/266/286/287 were reviewed without stage or acceptance changes. All six
+exact candidate and six fresh actual-main hosted jobs remain required. Preserve the failed original CI evidence;
+any fully qualified successor is its own delivery, not a retroactive PR #263 PASS.
+No live service, real configuration/credential, provider or deployment changed.
+
+See [repair evidence](validation/2026-11-13-exact-state-identity/README.md).
+
+---
+
 # Local remote-status freshness source correction — November 12, 2026
 
 A reproduced local status defect treated future runtime timestamps as recent and

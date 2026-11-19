@@ -1,0 +1,672 @@
+TAP version 13
+# Subtest: remote default state isolates development without moving production state
+ok 1 - remote default state isolates development without moving production state
+  ---
+  duration_ms: 7.4701
+  type: 'test'
+  ...
+# Subtest: remote-owned dev and named-profile preview performs no mutation or network call
+ok 2 - remote-owned dev and named-profile preview performs no mutation or network call
+  ---
+  duration_ms: 5.9432
+  type: 'test'
+  ...
+# Subtest: two named profiles configure independent directories and default remains an alias
+ok 3 - two named profiles configure independent directories and default remains an alias
+  ---
+  duration_ms: 42.0069
+  type: 'test'
+  ...
+# Subtest: setup next-command argv preserves an explicit shell-sensitive state path
+ok 4 - setup next-command argv preserves an explicit shell-sensitive state path
+  ---
+  duration_ms: 14.1499
+  type: 'test'
+  ...
+# Subtest: remote root cannot expose another managed environment or profile namespace
+ok 5 - remote root cannot expose another managed environment or profile namespace
+  ---
+  duration_ms: 9.9097
+  type: 'test'
+  ...
+# Subtest: overlapping setup root is rejected before creating any remote state
+ok 6 - overlapping setup root is rejected before creating any remote state
+  ---
+  duration_ms: 3.3049
+  type: 'test'
+  ...
+# Subtest: profile inventory is local, bounded and does not decrypt credentials or expose arbitrary runtime fields
+ok 7 - profile inventory is local, bounded and does not decrypt credentials or expose arbitrary runtime fields
+  ---
+  duration_ms: 41.0844
+  type: 'test'
+  ...
+# Subtest: invalid or conflicting selectors refuse before creating state
+ok 8 - invalid or conflicting selectors refuse before creating state
+  ---
+  duration_ms: 1.8445
+  type: 'test'
+  ...
+# Subtest: profile credentials cannot be adopted by copying configuration and protected bytes
+ok 9 - profile credentials cannot be adopted by copying configuration and protected bytes
+  ---
+  duration_ms: 444.7579
+  type: 'test'
+  ...
+# Subtest: an opened named store refuses a substituted managed parent before writing
+ok 10 - an opened named store refuses a substituted managed parent before writing
+  ---
+  duration_ms: 30.8002
+  type: 'test'
+  ...
+# Subtest: protected profile scope rejects copied credentials even when public configuration has the new scope
+ok 11 - protected profile scope rejects copied credentials even when public configuration has the new scope
+  ---
+  duration_ms: 550.4581
+  type: 'test'
+  ...
+# Subtest: development refuses legacy production config before status or stop and preserves every state byte
+ok 12 - development refuses legacy production config before status or stop and preserves every state byte
+  ---
+  duration_ms: 373.1762
+  type: 'test'
+  ...
+# Subtest: development-bound arbitrary state is not readable or stoppable through a production selection
+ok 13 - development-bound arbitrary state is not readable or stoppable through a production selection
+  ---
+  duration_ms: 29.5894
+  type: 'test'
+  ...
+# Subtest: explicit environment and generated argv retain their target across ambient environment changes
+ok 14 - explicit environment and generated argv retain their target across ambient environment changes
+  ---
+  duration_ms: 31.3676
+  type: 'test'
+  ...
+# Subtest: linked managed collections are refused without writing through the link
+ok 15 - linked managed collections are refused without writing through the link
+  ---
+  duration_ms: 4.0377
+  type: 'test'
+  ...
+# Subtest: profile inventory bounds entry count and does not guess an unknown profile
+ok 16 - profile inventory bounds entry count and does not guess an unknown profile
+  ---
+  duration_ms: 151.5739
+  type: 'test'
+  ...
+# Subtest: stop and revoke select one profile without changing the other profile or its owned lock
+ok 17 - stop and revoke select one profile without changing the other profile or its owned lock
+  ---
+  duration_ms: 819.1839
+  type: 'test'
+  ...
+# MTerm remote: connecting
+# MTerm remote: revoked
+# Subtest: pairing and actual foreground agent startup retain the selected profile and protected credential
+ok 18 - pairing and actual foreground agent startup retain the selected profile and protected credential
+  ---
+  duration_ms: 1563.9909
+  type: 'test'
+  ...
+# Subtest: actual CLI status honors explicit profile/environment and ignores launcher configuration
+ok 19 - actual CLI status honors explicit profile/environment and ignores launcher configuration
+  ---
+  duration_ms: 199.2626
+  type: 'test'
+  ...
+# Subtest: remote status freshness: current timestamp
+ok 20 - remote status freshness: current timestamp
+  ---
+  duration_ms: 41.0212
+  type: 'test'
+  ...
+# Subtest: remote status freshness: one millisecond old
+ok 21 - remote status freshness: one millisecond old
+  ---
+  duration_ms: 40.3602
+  type: 'test'
+  ...
+# Subtest: remote status freshness: last fresh millisecond
+ok 22 - remote status freshness: last fresh millisecond
+  ---
+  duration_ms: 40.5324
+  type: 'test'
+  ...
+# Subtest: remote status freshness: exact expiry boundary
+ok 23 - remote status freshness: exact expiry boundary
+  ---
+  duration_ms: 44.4572
+  type: 'test'
+  ...
+# Subtest: remote status freshness: past expiry boundary
+ok 24 - remote status freshness: past expiry boundary
+  ---
+  duration_ms: 38.2746
+  type: 'test'
+  ...
+# Subtest: remote status freshness: one millisecond in future
+ok 25 - remote status freshness: one millisecond in future
+  ---
+  duration_ms: 40.6555
+  type: 'test'
+  ...
+# Subtest: remote status freshness: one minute in future
+ok 26 - remote status freshness: one minute in future
+  ---
+  duration_ms: 41.6956
+  type: 'test'
+  ...
+# Subtest: remote status freshness: one day in future
+ok 27 - remote status freshness: one day in future
+  ---
+  duration_ms: 40.1178
+  type: 'test'
+  ...
+# Subtest: remote status freshness: invalid timestamp
+ok 28 - remote status freshness: invalid timestamp
+  ---
+  duration_ms: 38.332
+  type: 'test'
+  ...
+# Subtest: remote status freshness: missing timestamp
+ok 29 - remote status freshness: missing timestamp
+  ---
+  duration_ms: 37.4159
+  type: 'test'
+  ...
+# Subtest: remote status freshness: missing runtime record
+ok 30 - remote status freshness: missing runtime record
+  ---
+  duration_ms: 29.4049
+  type: 'test'
+  ...
+# Subtest: owned profile stop remains available after its exposed workspace disappears
+ok 31 - owned profile stop remains available after its exposed workspace disappears
+  ---
+  duration_ms: 46.6699
+  type: 'test'
+  ...
+# Subtest: invalid runtime metadata does not turn a recorded pairing into a false unpaired claim
+ok 32 - invalid runtime metadata does not turn a recorded pairing into a false unpaired claim
+  ---
+  duration_ms: 214.1188
+  type: 'test'
+  ...
+# Subtest: a user-valid profile name cannot act as a hidden collection admission probe
+ok 33 - a user-valid profile name cannot act as a hidden collection admission probe
+  ---
+  duration_ms: 27.3056
+  type: 'test'
+  ...
+# Subtest: legacy private state remains usable under an owner-controlled readable namespace
+ok 34 - legacy private state remains usable under an owner-controlled readable namespace
+  ---
+  duration_ms: 13.0967
+  type: 'test'
+  ...
+# Subtest: platform path aliases cannot downgrade named profile state to a legacy store
+ok 35 - platform path aliases cannot downgrade named profile state to a legacy store
+  ---
+  duration_ms: 16.954
+  type: 'test'
+  ...
+# Subtest: remote run lock preserves successful ownership, duplicate refusal and explicit owner release
+ok 36 - remote run lock preserves successful ownership, duplicate refusal and explicit owner release
+  ---
+  duration_ms: 24.0147
+  type: 'test'
+  ...
+# Subtest: remote run lock never removes a preexisting malformed lock
+ok 37 - remote run lock never removes a preexisting malformed lock
+  ---
+  duration_ms: 7.1196
+  type: 'test'
+  ...
+# Subtest: remote run lock recovers an owned empty initialization failure for an explicit retry
+ok 38 - remote run lock recovers an owned empty initialization failure for an explicit retry
+  ---
+  duration_ms: 12.7499
+  type: 'test'
+  ...
+# Subtest: remote run lock recovers an owned partial initialization failure for an explicit retry
+ok 39 - remote run lock recovers an owned partial initialization failure for an explicit retry
+  ---
+  duration_ms: 9.0296
+  type: 'test'
+  ...
+# Subtest: remote run lock keeps admission occupied until failed initialization closes its real handle
+ok 40 - remote run lock keeps admission occupied until failed initialization closes its real handle
+  ---
+  duration_ms: 10.933
+  type: 'test'
+  ...
+# Subtest: remote run lock closes but retains ownership when descriptor identity inspection fails
+ok 41 - remote run lock closes but retains ownership when descriptor identity inspection fails
+  ---
+  duration_ms: 4.1973
+  type: 'test'
+  ...
+# Subtest: remote run lock preserves an initialization error when close confirmation also fails
+ok 42 - remote run lock preserves an initialization error when close confirmation also fails
+  ---
+  duration_ms: 4.9945
+  type: 'test'
+  ...
+# Subtest: remote run lock retains a completed payload when only close confirmation fails
+ok 43 - remote run lock retains a completed payload when only close confirmation fails
+  ---
+  duration_ms: 8.253
+  type: 'test'
+  ...
+# Subtest: remote run lock cleanup preserves a replacement and the renamed original
+ok 44 - remote run lock cleanup preserves a replacement and the renamed original
+  ---
+  duration_ms: 6.6039
+  type: 'test'
+  ...
+# Subtest: remote run lock cleanup retains an inode with an additional hard link
+ok 45 - remote run lock cleanup retains an inode with an additional hard link
+  ---
+  duration_ms: 4.7698
+  type: 'test'
+  ...
+# Subtest: remote run lock cleanup preserves a symlink or junction replacement and its target
+ok 46 - remote run lock cleanup preserves a symlink or junction replacement and its target
+  ---
+  duration_ms: 9.1795
+  type: 'test'
+  ...
+# Subtest: remote run lock retains the file when cleanup identity cannot be inspected
+ok 47 - remote run lock retains the file when cleanup identity cannot be inspected
+  ---
+  duration_ms: 3.9198
+  type: 'test'
+  ...
+# Subtest: remote run lock preserves the initialization error when its one cleanup unlink fails
+ok 48 - remote run lock preserves the initialization error when its one cleanup unlink fails
+  ---
+  duration_ms: 4.0405
+  type: 'test'
+  ...
+# Subtest: remote run lock cleanup refuses a redirected parent and preserves both lock locations
+ok 49 - remote run lock cleanup refuses a redirected parent and preserves both lock locations
+  ---
+  duration_ms: 9.1796
+  type: 'test'
+  ...
+# Subtest: remote run lock cleanup retains its inode after that inode moves under a replacement parent
+ok 50 - remote run lock cleanup retains its inode after that inode moves under a replacement parent
+  ---
+  duration_ms: 5.6316
+  type: 'test'
+  ...
+# Subtest: remote run lock propagates an initial open error without acquiring cleanup authority
+ok 51 - remote run lock propagates an initial open error without acquiring cleanup authority
+  ---
+  duration_ms: 2.8006
+  type: 'test'
+  ...
+# Subtest: DPAPI protection can finish after ten seconds within the bounded thirty-second budget
+ok 52 - DPAPI protection can finish after ten seconds within the bounded thirty-second budget
+  ---
+  duration_ms: 55.5301
+  type: 'test'
+  ...
+# Subtest: DPAPI unprotection can finish immediately before thirty seconds without altering stored bytes
+ok 53 - DPAPI unprotection can finish immediately before thirty seconds without altering stored bytes
+  ---
+  duration_ms: 31.1453
+  type: 'test'
+  ...
+# Subtest: DPAPI success waits for code-zero close even after an observed successful exit
+ok 54 - DPAPI success waits for code-zero close even after an observed successful exit
+  ---
+  duration_ms: 36.6619
+  type: 'test'
+  ...
+# Subtest: DPAPI exact deadline kills only its child once and cannot accept a late successful close
+ok 55 - DPAPI exact deadline kills only its child once and cannot accept a late successful close
+  ---
+  duration_ms: 24.5173
+  type: 'test'
+  ...
+# Subtest: DPAPI failure can observe exit before pipe close and release its pairing lock safely
+ok 56 - DPAPI failure can observe exit before pipe close and release its pairing lock safely
+  ---
+  duration_ms: 24.3898
+  type: 'test'
+  ...
+# Subtest: DPAPI unprotection accepts exactly thirty-two KiB of stdout
+ok 57 - DPAPI unprotection accepts exactly thirty-two KiB of stdout
+  ---
+  duration_ms: 26.1708
+  type: 'test'
+  ...
+# Subtest: DPAPI stdout overflow terminates once and refuses partial or late output
+ok 58 - DPAPI stdout overflow terminates once and refuses partial or late output
+  ---
+  duration_ms: 24.5802
+  type: 'test'
+  ...
+# Subtest: DPAPI nonzero close exposes no stderr or credential bytes and preserves configuration
+ok 59 - DPAPI nonzero close exposes no stderr or credential bytes and preserves configuration
+  ---
+  duration_ms: 23.889
+  type: 'test'
+  ...
+# Subtest: DPAPI synchronous spawn failure is generic and releases the pairing lock without a child
+ok 60 - DPAPI synchronous spawn failure is generic and releases the pairing lock without a child
+  ---
+  duration_ms: 24.225
+  type: 'test'
+  ...
+# Subtest: DPAPI asynchronous failed spawn with no child PID does not retain a stale lock
+ok 61 - DPAPI asynchronous failed spawn with no child PID does not retain a stale lock
+  ---
+  duration_ms: 26.1091
+  type: 'test'
+  ...
+# Subtest: DPAPI synchronous stdin.end throw waits for owned-child termination and preserves prior bytes
+ok 62 - DPAPI synchronous stdin.end throw waits for owned-child termination and preserves prior bytes
+  ---
+  duration_ms: 22.9161
+  type: 'test'
+  ...
+# Subtest: DPAPI asynchronous stdin error waits for owned-child termination and preserves prior bytes
+ok 63 - DPAPI asynchronous stdin error waits for owned-child termination and preserves prior bytes
+  ---
+  duration_ms: 23.237
+  type: 'test'
+  ...
+# Subtest: DPAPI spawned child error waits for owned-child termination and preserves prior bytes
+ok 64 - DPAPI spawned child error waits for owned-child termination and preserves prior bytes
+  ---
+  duration_ms: 22.5691
+  type: 'test'
+  ...
+# Subtest: DPAPI kill returns false has a bounded cleanup grace and retains unconfirmed pairing admission
+ok 65 - DPAPI kill returns false has a bounded cleanup grace and retains unconfirmed pairing admission
+  ---
+  duration_ms: 20.5862
+  type: 'test'
+  ...
+# Subtest: DPAPI kill throws has a bounded cleanup grace and retains unconfirmed pairing admission
+ok 66 - DPAPI kill throws has a bounded cleanup grace and retains unconfirmed pairing admission
+  ---
+  duration_ms: 20.7712
+  type: 'test'
+  ...
+# Subtest: DPAPI overflow cleanup uncertainty retains the lock even when kill reports success
+ok 67 - DPAPI overflow cleanup uncertainty retains the lock even when kill reports success
+  ---
+  duration_ms: 21.5822
+  type: 'test'
+  ...
+# Subtest: DPAPI unprotection errors stay generic and preserve both existing files
+ok 68 - DPAPI unprotection errors stay generic and preserve both existing files
+  ---
+  duration_ms: 23.7277
+  type: 'test'
+  ...
+# Subtest: exact identity retains run.lock after a parent ino Number collision
+ok 69 - exact identity retains run.lock after a parent ino Number collision
+  ---
+  duration_ms: 12.5322
+  type: 'test'
+  ...
+# Subtest: exact identity retains run.lock after a parent dev Number collision
+ok 70 - exact identity retains run.lock after a parent dev Number collision
+  ---
+  duration_ms: 7.3085
+  type: 'test'
+  ...
+# Subtest: exact identity retains run.lock after a leaf ino Number collision
+ok 71 - exact identity retains run.lock after a leaf ino Number collision
+  ---
+  duration_ms: 9.0255
+  type: 'test'
+  ...
+# Subtest: exact identity retains run.lock after a leaf dev Number collision
+ok 72 - exact identity retains run.lock after a leaf dev Number collision
+  ---
+  duration_ms: 7.8018
+  type: 'test'
+  ...
+# Subtest: exact identity permits confirmed run.lock cleanup and explicit retry with a large unchanged ID
+ok 73 - exact identity permits confirmed run.lock cleanup and explicit retry with a large unchanged ID
+  ---
+  duration_ms: 10.2402
+  type: 'test'
+  ...
+# Subtest: exact identity retains state.lock after a parent ino Number collision
+ok 74 - exact identity retains state.lock after a parent ino Number collision
+  ---
+  duration_ms: 6.5805
+  type: 'test'
+  ...
+# Subtest: exact identity retains state.lock after a parent dev Number collision
+ok 75 - exact identity retains state.lock after a parent dev Number collision
+  ---
+  duration_ms: 5.848
+  type: 'test'
+  ...
+# Subtest: exact identity retains state.lock after a leaf ino Number collision
+ok 76 - exact identity retains state.lock after a leaf ino Number collision
+  ---
+  duration_ms: 6.3713
+  type: 'test'
+  ...
+# Subtest: exact identity retains state.lock after a leaf dev Number collision
+ok 77 - exact identity retains state.lock after a leaf dev Number collision
+  ---
+  duration_ms: 6.3282
+  type: 'test'
+  ...
+# Subtest: exact identity permits confirmed state.lock cleanup and explicit retry with a large unchanged ID
+ok 78 - exact identity permits confirmed state.lock cleanup and explicit retry with a large unchanged ID
+  ---
+  duration_ms: 20.5588
+  type: 'test'
+  ...
+# Subtest: exact identity rejects a replaced admitted profile directory despite a ino Number collision
+ok 79 - exact identity rejects a replaced admitted profile directory despite a ino Number collision
+  ---
+  duration_ms: 5.916
+  type: 'test'
+  ...
+# Subtest: exact identity rejects a replaced admitted profile directory despite a dev Number collision
+ok 80 - exact identity rejects a replaced admitted profile directory despite a dev Number collision
+  ---
+  duration_ms: 5.7346
+  type: 'test'
+  ...
+# Subtest: exact identity admits an unchanged profile directory with a large ID
+ok 81 - exact identity admits an unchanged profile directory with a large ID
+  ---
+  duration_ms: 3.2328
+  type: 'test'
+  ...
+# Subtest: remote state lock preserves successful configuration and explicit subsequent mutation
+ok 82 - remote state lock preserves successful configuration and explicit subsequent mutation
+  ---
+  duration_ms: 41.895
+  type: 'test'
+  ...
+# Subtest: remote state lock preserves initialized operation failure and releases normal admission
+ok 83 - remote state lock preserves initialized operation failure and releases normal admission
+  ---
+  duration_ms: 23.3574
+  type: 'test'
+  ...
+# Subtest: remote state lock never removes a preexisting malformed lock
+ok 84 - remote state lock never removes a preexisting malformed lock
+  ---
+  duration_ms: 7.4998
+  type: 'test'
+  ...
+# Subtest: remote state lock preserves an exclusive-open failure without claiming cleanup ownership
+ok 85 - remote state lock preserves an exclusive-open failure without claiming cleanup ownership
+  ---
+  duration_ms: 3.472
+  type: 'test'
+  ...
+# Subtest: remote state lock recovers owned empty initialization for an explicit retry
+ok 86 - remote state lock recovers owned empty initialization for an explicit retry
+  ---
+  duration_ms: 17.6286
+  type: 'test'
+  ...
+# Subtest: remote state lock recovers owned partial initialization for an explicit retry
+ok 87 - remote state lock recovers owned partial initialization for an explicit retry
+  ---
+  duration_ms: 18.0254
+  type: 'test'
+  ...
+# Subtest: remote state lock preserves a falsy initialization rejection
+ok 88 - remote state lock preserves a falsy initialization rejection
+  ---
+  duration_ms: 4.4187
+  type: 'test'
+  ...
+# Subtest: remote state lock treats a complete nonce write followed by rejection as failed initialization
+ok 89 - remote state lock treats a complete nonce write followed by rejection as failed initialization
+  ---
+  duration_ms: 17.2439
+  type: 'test'
+  ...
+# Subtest: remote state lock keeps admission until failed initialization confirms handle closure
+ok 90 - remote state lock keeps admission until failed initialization confirms handle closure
+  ---
+  duration_ms: 15.8022
+  type: 'test'
+  ...
+# Subtest: remote state lock retains unknown descriptor identity while closing its acquired handle
+ok 91 - remote state lock retains unknown descriptor identity while closing its acquired handle
+  ---
+  duration_ms: 4.4872
+  type: 'test'
+  ...
+# Subtest: remote state lock preserves initialization failure if close confirmation also fails
+ok 92 - remote state lock preserves initialization failure if close confirmation also fails
+  ---
+  duration_ms: 5.2283
+  type: 'test'
+  ...
+# Subtest: remote state lock keeps committed operation bytes when only close confirmation fails
+ok 93 - remote state lock keeps committed operation bytes when only close confirmation fails
+  ---
+  duration_ms: 17.3436
+  type: 'test'
+  ...
+# Subtest: remote state lock recovery preserves a replaced leaf and its renamed original
+ok 94 - remote state lock recovery preserves a replaced leaf and its renamed original
+  ---
+  duration_ms: 6.1784
+  type: 'test'
+  ...
+# Subtest: remote state lock recovery retains an inode with an additional hard link
+ok 95 - remote state lock recovery retains an inode with an additional hard link
+  ---
+  duration_ms: 5.088
+  type: 'test'
+  ...
+# Subtest: remote state lock recovery requires original parent identity even for the original leaf
+ok 96 - remote state lock recovery requires original parent identity even for the original leaf
+  ---
+  duration_ms: 5.7564
+  type: 'test'
+  ...
+# Subtest: remote state lock recovery preserves a redirected parent and its unrelated target
+ok 97 - remote state lock recovery preserves a redirected parent and its unrelated target
+  ---
+  duration_ms: 9.9732
+  type: 'test'
+  ...
+# Subtest: remote state lock recovery preserves a replaced link leaf and its unrelated target
+ok 98 - remote state lock recovery preserves a replaced link leaf and its unrelated target
+  ---
+  duration_ms: 9.3376
+  type: 'test'
+  ...
+# Subtest: remote state lock refuses an aliased parent before acquiring a new lock
+ok 99 - remote state lock refuses an aliased parent before acquiring a new lock
+  ---
+  duration_ms: 4.0281
+  type: 'test'
+  ...
+# Subtest: remote state lock recovery retains changed parent ownership metadata
+ok 100 - remote state lock recovery retains changed parent ownership metadata
+  ---
+  duration_ms: 4.4181
+  type: 'test'
+  ...
+# Subtest: remote state lock recovery retains changed leaf ownership metadata
+ok 101 - remote state lock recovery retains changed leaf ownership metadata
+  ---
+  duration_ms: 6.3415
+  type: 'test'
+  ...
+# Subtest: remote state lock preserves primary failure if cleanup inspection fails
+ok 102 - remote state lock preserves primary failure if cleanup inspection fails
+  ---
+  duration_ms: 4.215
+  type: 'test'
+  ...
+# Subtest: remote state lock attempts one unlink and preserves primary failure when cleanup fails
+ok 103 - remote state lock attempts one unlink and preserves primary failure when cleanup fails
+  ---
+  duration_ms: 4.9438
+  type: 'test'
+  ...
+# Subtest: remote state lock failed initialization never enters savePairing
+ok 104 - remote state lock failed initialization never enters savePairing
+  ---
+  duration_ms: 22.8536
+  type: 'test'
+  ...
+# Subtest: remote state lock failed initialization never enters clearPairing
+ok 105 - remote state lock failed initialization never enters clearPairing
+  ---
+  duration_ms: 20.1675
+  type: 'test'
+  ...
+# Subtest: remote state separates public config from protected credentials and round-trips local protection
+ok 106 - remote state separates public config from protected credentials and round-trips local protection
+  ---
+  duration_ms: 399.8693
+  type: 'test'
+  ...
+# Subtest: remote state refuses exposing its credential directory and unapproved reconfiguration of a paired device
+ok 107 - remote state refuses exposing its credential directory and unapproved reconfiguration of a paired device
+  ---
+  duration_ms: 211.6728
+  type: 'test'
+  ...
+# Subtest: concurrent pair saves retain one coherent device/token binding
+ok 108 - concurrent pair saves retain one coherent device/token binding
+  ---
+  duration_ms: 379.3568
+  type: 'test'
+  ...
+# Subtest: device credential binds its enrolled root and refuses a retargeted root
+ok 109 - device credential binds its enrolled root and refuses a retargeted root
+  ---
+  duration_ms: 378.7043
+  type: 'test'
+  ...
+# Subtest: idempotent remote setup reports an existing pairing accurately
+ok 110 - idempotent remote setup reports an existing pairing accurately
+  ---
+  duration_ms: 199.7569
+  type: 'test'
+  ...
+1..110
+# tests 110
+# suites 0
+# pass 110
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 8549.3102

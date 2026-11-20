@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-11-20T05:26:06.148044+00:00",
+  "finishedAt": "2026-11-20T05:26:14.710608+00:00",
+  "command": [
+    "node",
+    "--test",
+    "--test-reporter=tap",
+    "--test-concurrency=1",
+    "tests/compat-read-cancellation.test.mjs",
+    "tests/compat-read-cancellation-mcp.test.mjs",
+    "tests/file-cancellation.test.mjs",
+    "tests/file-cancellation-mcp.test.mjs",
+    "tests/file-move-cancellation.test.mjs",
+    "tests/file-move-cancellation-mcp.test.mjs",
+    "tests/desktop-commander-files.test.mjs",
+    "tests/compat-file-info.test.mjs",
+    "tests/compat-edit-block.test.mjs",
+    "tests/compat-read-utf16.test.mjs"
+  ],
+  "exitCode": 0,
+  "counts": {
+    "tests": 181,
+    "pass": 181,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "before": {
+    "tests/compat-read-cancellation-fixture.mjs": "85e85c8bc9b4deb1fc7ba9d17b39dc9b4f2f16f9b72c91487dbadf40e77678b4",
+    "tests/compat-read-cancellation.test.mjs": "21b1aa9b24d321d7ab17d80079fad99a09e2b313e3d3cc9be0c01bddba1bc0bd",
+    "tests/compat-read-cancellation-mcp.test.mjs": "5b62b28af4230cf79408ac509ec2693d5d7d7158470f1516b3b105c5a42ea741",
+    "src/desktop-commander-files.ts": "d5d907ad57c360dca2928105c639ddf74e0cbadaf4939b2b7adbfc23a751ca37",
+    "dist/desktop-commander-files.js": "a748406408eecb9425508d2d2f9ab709b63fe6fe67b105547606e5c20bf855af"
+  },
+  "after": {
+    "tests/compat-read-cancellation-fixture.mjs": "85e85c8bc9b4deb1fc7ba9d17b39dc9b4f2f16f9b72c91487dbadf40e77678b4",
+    "tests/compat-read-cancellation.test.mjs": "21b1aa9b24d321d7ab17d80079fad99a09e2b313e3d3cc9be0c01bddba1bc0bd",
+    "tests/compat-read-cancellation-mcp.test.mjs": "5b62b28af4230cf79408ac509ec2693d5d7d7158470f1516b3b105c5a42ea741",
+    "src/desktop-commander-files.ts": "d5d907ad57c360dca2928105c639ddf74e0cbadaf4939b2b7adbfc23a751ca37",
+    "dist/desktop-commander-files.js": "a748406408eecb9425508d2d2f9ab709b63fe6fe67b105547606e5c20bf855af"
+  },
+  "log": {
+    "path": "green-nearby.tap.gz",
+    "rawBytes": 191019,
+    "rawSha256": "be0c44cc288dfc13b374652284b606fed8187f41b687ce76c6497fe402b04411",
+    "archiveSha256": "a75a76d6b4e023b0aaf70d313da96212fcda196384841beb4100a722a8f1623c",
+    "losslessRoundTrip": true
+  }
+}

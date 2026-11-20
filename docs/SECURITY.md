@@ -50,6 +50,14 @@ The request occupies its admission slot until awaited work and cleanup settle. N
 search's `timeoutMs` retains its existing truncated-results contract. See the
 [native cancellation evidence](validation/2026-11-09-file-cancellation.md).
 
+Compatibility metadata, write and exact-edit preflight reads also receive the
+owning request signal. Cancellation observed after a successful handle stat stops
+the reader before its next body read and still awaits descriptor cleanup. An
+omitted-mode write cancelled at that boundary returns `CANCELLED` before replacement
+intent validation. Existing I/O-error precedence and guarded mutation behavior are
+unchanged; no OS-I/O interruption or stronger path-race guarantee is added. See the
+[compatibility preflight evidence](validation/2026-11-20-compat-preflight-cancellation/README.md).
+
 ## Guarded file and registry persistence — 2026-11-08
 
 Existing-file writes use at most five Windows rename attempts, only for EPERM or

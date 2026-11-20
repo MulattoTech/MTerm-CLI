@@ -1,5 +1,46 @@
 # MTerm-CLI engineering run — November 12, 2026
 
+## Current continuation — November 20, 2026 UTC (November 19 Central)
+
+Resumed with the owner's Pro Autonomous Engineering brief. Canonical main is
+`e168b4c56e5df63fb5f5f17f228ab22419a84f74`, after normal merge PR264. Fresh GitHub
+inspection found zero open PRs, 191 open issues and all six actual-main jobs successful
+in runs44618031626/44618031072. Issue243 remains a confirmed three-call cancellation
+forwarding gap with a paused prior claim and no completed baseline. Its old scratch
+fixture path is unavailable; no prior draft/test outcome was assumed.
+
+One root implementation owner resumed #243 in an isolated ordinary clone on
+`fix/issue-243-compat-read-cancellation-20261120`; an independent read-only reviewer
+approved the frozen 24-direct/3-SDK matrix and then accepted the original-source RED.
+All eight feature cells performed two body reads/25 bytes after an actual abort;
+all 19 controls passed. The correction forwards the request signal at three nested
+reads only. The unchanged fixtures and nearby suites pass181/181. The package
+verifier now binds and requires all27 new installed cases without skips.
+
+The original raw RED and corrected focused outputs are retained losslessly with
+hash receipts in `docs/validation/2026-11-20-compat-preflight-cancellation/`.
+Independent source/fixture/verifier review and scoped installed qualification are
+approved: all27 packaged cases pass outside checkout with unchanged selected bytes.
+Normal build and pre-test guards pass. The full local check remains FAIL:1622tests,
+1583pass,27unchanged Unix-socket listen EPERM failures,12existingWindows-onlyskips,
+0cancel/TODO. The full original log is retained; production advisory audit reports0.
+Next gates: exact candidate six jobs including full package/native isolation,
+normal expected-head merge and distinct actual-main six jobs. Final receipts and
+next action are appended to issue243. Issue243 stays open until qualified delivery;
+parents22/26/27 and protected roadmap stages/weights/acceptance remain unchanged.
+
+Read-only live baseline: commands succeed on MULATTOTECHBOX; production management
+listens on127.0.0.1:19740 and requires authentication, public MCP refuses unauthenticated
+requests with401, and its fleet tunnel has four healthy connections. Installed bridge
+is Desktop Commander0.3.1, owned by MTechLabs-Access. The separate staging Worker
+reports read-only/enabled build9e2d6633294e22ff63053564bad1ebeda2dd4059. Port4320 is
+FleetControlHub; no18729 listener was observed. Jointly exposed connector tools do
+not prove two independent connectors. No deployment, restart, token/policy change,
+owner-state mutation or paid model call occurred. The dirty primary Windows checkout
+and the diagnosed issue232 provider HOLD are preserved.
+
+The sections below are immutable historical observations unless superseded explicitly.
+
 ## Authority and ownership
 
 Execution follows the attached comprehensive engineering mission and standing OWNER_AUTHORIZATION. OpenAI / GPT-6 Astra Pro is the integration owner. Independent read-only agents reviewed upstream, repository security, deployment identity and preserved work. No paid model/API lane, production restart, or credential/policy change is authorized by this checkpoint.

@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-20-compat-preflight-cancellation; preserve request cancellation in nested reads.
 // AI-Change: 2026-10-05-codex-parity-foundation (OpenAI / GPT-6 Astra Pro; self-reported)
 // Modified: 2026-11-02-directory-contract; bounded deterministic listing and honest partial diagnostics.
 // Modified: 2026-11-02-file-info-contract; bounded metadata rendering and fail-closed cancellation/policy.
@@ -165,7 +166,7 @@ export class DesktopCommanderFiles {
         fail('UNSUPPORTED_FORMAT', 'UI editing is outside this text compatibility profile.');
       let before: Awaited<ReturnType<FileService['read']>> | undefined;
       try {
-        before = await this.files.read({ path: full });
+        before = await this.files.read({ path: full }, signal);
       } catch (e) {
         if ((e as NodeJS.ErrnoException).code !== 'ENOENT') throw e;
       }
@@ -393,7 +394,7 @@ export class DesktopCommanderFiles {
     if (st.isDirectory()) fields.fileType = 'text';
     if (st.isFile() && !office.test(full))
       try {
-        const content = (await this.files.read({ path: full })).text;
+        const content = (await this.files.read({ path: full }, signal)).text;
         cancelled(signal);
         const count = countLines(content);
         fields.fileType = 'text';
@@ -429,7 +430,7 @@ export class DesktopCommanderFiles {
       const full = this.absolute(a.file_path);
       this.textOnly(full);
       if (a.origin === 'ui') fail('UNSUPPORTED_FORMAT', 'UI edits are not supported.');
-      const before = await this.files.read({ path: full });
+      const before = await this.files.read({ path: full }, signal);
       cancelled(signal);
       // The pinned edit contract uses the first newline, not the majority style.
       // Normalize only the request: mixed endings outside each match remain intact.

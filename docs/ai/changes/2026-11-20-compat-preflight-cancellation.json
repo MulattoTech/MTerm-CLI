@@ -1,0 +1,124 @@
+{
+  "change_id": "2026-11-20-compat-preflight-cancellation",
+  "provider": "OpenAI",
+  "model": "GPT-6 Astra Pro",
+  "provenance": "Self-reported execution metadata, not cryptographic model attestation.",
+  "updated_at": "2026-11-20T05:34:49.377274+00:00",
+  "base_sha": "e168b4c56e5df63fb5f5f17f228ab22419a84f74",
+  "issues": [
+    243
+  ],
+  "requirements": [
+    "CLI-268",
+    "CLI-269",
+    "CLI-272",
+    "CLI-287",
+    "CLI-288"
+  ],
+  "files": [
+    "docs/HANDOFF.md",
+    "docs/SECURITY.md",
+    "docs/ai/changes/2026-11-20-compat-preflight-cancellation.json",
+    "docs/engineering-runs/mterm-comprehensive-reconciliation-2026-11-12.md",
+    "docs/roadmap/review.json",
+    "docs/validation/2026-11-20-compat-preflight-cancellation/README.md",
+    "docs/validation/2026-11-20-compat-preflight-cancellation/frozen-plan.json",
+    "docs/validation/2026-11-20-compat-preflight-cancellation/green-nearby-receipt.json",
+    "docs/validation/2026-11-20-compat-preflight-cancellation/green-nearby.tap.gz",
+    "docs/validation/2026-11-20-compat-preflight-cancellation/independent-installed-review.json",
+    "docs/validation/2026-11-20-compat-preflight-cancellation/independent-review.json",
+    "docs/validation/2026-11-20-compat-preflight-cancellation/independent-reviewer-replay-receipt.json",
+    "docs/validation/2026-11-20-compat-preflight-cancellation/installed-focus-receipt.json",
+    "docs/validation/2026-11-20-compat-preflight-cancellation/installed-focus-workspace.json",
+    "docs/validation/2026-11-20-compat-preflight-cancellation/installed-focus.tap.gz",
+    "docs/validation/2026-11-20-compat-preflight-cancellation/npm-audit-production.json",
+    "docs/validation/2026-11-20-compat-preflight-cancellation/ordinary-check-receipt.json",
+    "docs/validation/2026-11-20-compat-preflight-cancellation/ordinary-check.log.gz",
+    "docs/validation/2026-11-20-compat-preflight-cancellation/red-original-receipt.json",
+    "docs/validation/2026-11-20-compat-preflight-cancellation/red-original.tap.gz",
+    "docs/validation/2026-11-20-compat-preflight-cancellation/run-installed-focus.mjs",
+    "scripts/verify-package.mjs",
+    "src/desktop-commander-files.ts",
+    "tests/compat-read-cancellation-fixture.mjs",
+    "tests/compat-read-cancellation-mcp.test.mjs",
+    "tests/compat-read-cancellation.test.mjs"
+  ],
+  "decisions": [
+    "Forward the existing request signal at exactly three compatibility preflight reads; preserve native reader, I/O errors, mutation staging, permissions and encoding.",
+    "Freeze 24 direct and three SDK cases before original-source RED; retain complete observations before assertions.",
+    "Require actual server-signal abort before SDK gate release, original service/audit results, owned child closure and state manifests.",
+    "Select installed modules explicitly, compare with source before and after, retain fixtures and exactly27 tests with no skips.",
+    "Resume existing engineering ledger and paused child; preserve historical observations and dirty owner checkout."
+  ],
+  "tests": [
+    {
+      "command": "Frozen 27-case suite on original main",
+      "result": "RED:8 valid feature failures,19 passing controls,0skip/cancel/todo; independent review accepted original observations.",
+      "receipt": "docs/validation/2026-11-20-compat-preflight-cancellation/red-original-receipt.json"
+    },
+    {
+      "command": "Unchanged27 fixtures plus existing neighboring suites",
+      "result": "PASS181/181;0fail/skip/cancel/todo.",
+      "receipt": "docs/validation/2026-11-20-compat-preflight-cancellation/green-nearby-receipt.json"
+    },
+    {
+      "command": "Independent focused review and replay",
+      "result": "APPROVED;27/27 independent replay,0skip/cancel/todo; exact runtime/fixture/verifier hashes verified.",
+      "receipt": "docs/validation/2026-11-20-compat-preflight-cancellation/independent-review.json"
+    },
+    {
+      "command": "Scoped outside-checkout packed installation with the frozen27 direct/SDK cases",
+      "result": "PASS27/27;0fail/skip/cancel/todo. Independent installed evidence review approved; this is not the full package gate.",
+      "receipt": "docs/validation/2026-11-20-compat-preflight-cancellation/installed-focus-receipt.json"
+    },
+    {
+      "command": "npm audit --omit=dev --json",
+      "result": "PASS:zero known production advisory findings; dependencies unchanged. Not a complete security certification.",
+      "receipt": "docs/validation/2026-11-20-compat-preflight-cancellation/npm-audit-production.json"
+    },
+    {
+      "command": "node scripts/orchestration/verify.mjs --quick",
+      "result": "FAIL full local check:1622 tests,1583pass,27unchanged isolation Unix socket listen EPERM failures,12existingWindows-onlyskips,0cancel/TODO. Reviewed build,roadmap/parity/capabilities,typecheck,formatting passed. Full log retained; no bypass or all-suite PASS.",
+      "receipt": "docs/validation/2026-11-20-compat-preflight-cancellation/ordinary-check-receipt.json"
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "id": "CLI-268",
+      "stage_change": false,
+      "reason": "Scoped compatibility preflight cancellation evidence; existing stages, weights, estimates, protected baselines and full CLI/DCP/WEB acceptance are unchanged."
+    },
+    {
+      "id": "CLI-269",
+      "stage_change": false,
+      "reason": "Scoped compatibility preflight cancellation evidence; existing stages, weights, estimates, protected baselines and full CLI/DCP/WEB acceptance are unchanged."
+    },
+    {
+      "id": "CLI-272",
+      "stage_change": false,
+      "reason": "Scoped compatibility preflight cancellation evidence; existing stages, weights, estimates, protected baselines and full CLI/DCP/WEB acceptance are unchanged."
+    },
+    {
+      "id": "CLI-287",
+      "stage_change": false,
+      "reason": "Scoped compatibility preflight cancellation evidence; existing stages, weights, estimates, protected baselines and full CLI/DCP/WEB acceptance are unchanged."
+    },
+    {
+      "id": "CLI-288",
+      "stage_change": false,
+      "reason": "Scoped compatibility preflight cancellation evidence; existing stages, weights, estimates, protected baselines and full CLI/DCP/WEB acceptance are unchanged."
+    }
+  ],
+  "limitations": [
+    "Cooperative cancellation cannot interrupt an already pending OS operation or close hostile local path races.",
+    "No production bridge/gateway deployment, actual user auth/configuration mutation, provider reconfiguration or model-consuming lane.",
+    "Parents22/26/27 and broader client-disconnect/server-exit acceptance remain open."
+  ],
+  "independent_review": {
+    "reviewer": "/root/cancellation_review",
+    "result": "APPROVED_FOCUSED_SOURCE_FIXTURES_AND_VERIFIER",
+    "receipt": "docs/validation/2026-11-20-compat-preflight-cancellation/independent-review.json",
+    "installed_receipt": "docs/validation/2026-11-20-compat-preflight-cancellation/independent-installed-review.json"
+  },
+  "next_unverified_action": "Publish draft; require all six exact candidate jobs including full package/native isolation, normal expected-head merge, six distinct actual-main jobs; append final delivery/resume checkpoint to issue243 and explicitly complete bounded child only after acceptance."
+}

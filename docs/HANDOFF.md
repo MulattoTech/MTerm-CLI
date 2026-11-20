@@ -1,3 +1,37 @@
+# Compatibility preflight cancellation — November 20, 2026 UTC
+
+The current engineering session resumed the paused issue #243 in a fresh ordinary
+clone on `fix/issue-243-compat-read-cancellation-20261120`, based on actual main
+`e168b4c56e5df63fb5f5f17f228ab22419a84f74`. PR #264 is now merged and all six
+actual-main jobs passed in runs 44618031626 and 44618031072. The historical pending
+and failed observations below remain preserved; this is fresh qualification.
+
+The three compatibility preflight reads now forward their existing request signal.
+Independently frozen original RED: 27 cases, 8 valid failures and 19 passing controls.
+Unchanged-fixture GREEN plus nearby suites: 181/181, with no skips/cancellations.
+The installed verifier requires all 27 new cases against selected packaged modules.
+Independent source/fixture/verifier review and scoped installed qualification passed,
+including all 27 packaged cases. Normal build and pre-test guards passed; the complete
+local check remains FAIL: 1,622 tests, 1,583 passed, 27 unchanged Unix-socket `listen EPERM`
+failures, 12 existing Windows-only skips, zero cancelled/TODO. The full log is retained.
+Publish the draft, require all six candidate jobs (including full package/isolation),
+then perform normal expected-head merge and qualify six distinct actual-main jobs.
+Final delivery receipts are appended to issue243. No deployment or full acceptance
+credit is inferred; CLI-268/269/272/287/288 stages stay unchanged.
+
+Live discovery verified working authenticated commands and a healthy production
+tunnel. The installed 53-tool bridge is Desktop Commander 0.3.1 in MTechLabs-Access's
+runtime, separate from this CLI. Staging `/health` reported read-only/enabled build
+`9e2d6633294e22ff63053564bad1ebeda2dd4059`. Port 4320 belongs to FleetControlHub;
+no 18729 listener was observed. These are point-in-time observations, not separate
+production/development connector or 30-session acceptance. The dirty Windows CLI
+checkout, active services and issue232 provider HOLD remain preserved.
+
+Resume from the [existing engineering run](engineering-runs/mterm-comprehensive-reconciliation-2026-11-12.md)
+and [bounded issue evidence](validation/2026-11-20-compat-preflight-cancellation/README.md).
+
+---
+
 # Exact remote-state identity repair — November 13, 2026
 
 PR #263 merged at 15dd5de8387507774f6471e4b34d108a492393dc after six successful

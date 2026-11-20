@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-11-20T05:29:10.494671+00:00",
+  "finishedAt": "2026-11-20T05:32:52.179928+00:00",
+  "command": [
+    "node",
+    "scripts/orchestration/verify.mjs",
+    "--quick"
+  ],
+  "exitCode": 1,
+  "counts": {
+    "tests": 1622,
+    "pass": 1583,
+    "fail": 27,
+    "cancelled": 0,
+    "skipped": 12,
+    "todo": 0
+  },
+  "log": {
+    "path": "ordinary-check.log.gz",
+    "rawBytes": 917152,
+    "rawSha256": "45fe49b63ecf62659191e993fe5ddaa767895490afa54c7bbc74711023f858cd",
+    "archiveSha256": "b1b44bba3e477b756c1b0a5772fe2ffa5fc72796567dba76da9348b59b7a9952",
+    "losslessRoundTrip": true
+  },
+  "classification": {
+    "fullLocalGate": "FAIL",
+    "onlyFailureFile": "tests/isolation.test.mjs",
+    "failureFileUnchangedFromBase": true,
+    "failureFileSha256": "668a5bbd1220506891320ec33dc8ad6e6d768904a3006d11ab6f843ce75d3258",
+    "errors": 27,
+    "code": "EPERM",
+    "syscall": "listen",
+    "transport": "Unix-domain sockets",
+    "interpretation": "Current execution environment refuses Unix socket binding; the unchanged fixture also failed this way in historical local evidence. No skipped or rewritten gate."
+  },
+  "countParser": "Node24 default spec reporter summary (\u2139); original raw archive unchanged."
+}

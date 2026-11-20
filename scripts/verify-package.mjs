@@ -1,4 +1,5 @@
 // SPDX-License-Identifier: MIT
+// Modified: 2026-11-20-compat-preflight-cancellation; require all 27 real-handle and SDK installed cases.
 // Modified: 2026-11-13-exact-state-identity; qualify exact lock and profile identities in the installed package.
 // Modified: 2026-11-12-public-endpoint-inspector; qualify installed endpoint policy, bounded discovery and actual owned TLS.
 // Modified: 2026-11-09-managed-process-budgets; bind installed managed-registration and existing resource cases.
@@ -853,6 +854,97 @@ const report = await withPackageWorkspace(
       log: cancellationLog,
       logSha256: createHash('sha256').update(cancellationOutput).digest('hex'),
     };
+    const compatPreflightBindings = [...packBindings];
+    for (const name of ['desktop-commander-files.js', 'compat-config.js', 'config.js']) {
+      const source = await fs.readFile(path.join(root, 'dist', name));
+      const bytes = await fs.readFile(path.resolve(path.dirname(installed), '../dist', name));
+      assert.deepEqual(bytes, source, 'Installed preflight module differs from compiled source');
+      compatPreflightBindings.push({
+        path: 'dist/' + name,
+        sha256: createHash('sha256').update(bytes).digest('hex'),
+      });
+    }
+    const compatPreflightInputs = await Promise.all(
+      [
+        'tests/compat-read-cancellation.test.mjs',
+        'tests/compat-read-cancellation-mcp.test.mjs',
+        'tests/compat-read-cancellation-fixture.mjs',
+      ].map(async (file) => ({
+        path: file,
+        sha256: createHash('sha256')
+          .update(await fs.readFile(path.join(root, file)))
+          .digest('hex'),
+      })),
+    );
+    const compatPreflightAcceptance = await exec(
+      process.execPath,
+      [
+        '--test',
+        '--test-reporter=tap',
+        '--test-concurrency=1',
+        ...compatPreflightInputs.slice(0, 2).map((file) => path.join(root, file.path)),
+      ],
+      {
+        cwd: home,
+        env: { ...env, MTERM_VERIFY_BIN: installed },
+        timeout: 90000,
+        maxBuffer: 1048576,
+        windowsHide: true,
+      },
+    ).then(
+      (result) => ({ ...result, exit: 0 }),
+      (error) => ({ stdout: error.stdout ?? '', stderr: error.stderr ?? '', exit: error.code ?? 'unknown' }),
+    );
+    const compatPreflightOutput = compatPreflightAcceptance.stdout + compatPreflightAcceptance.stderr;
+    const compatPreflightLog = path.join(output, 'compat-preflight-cancellation-tests.tap');
+    await fs.writeFile(compatPreflightLog, compatPreflightOutput);
+    assert.equal(
+      compatPreflightAcceptance.exit,
+      0,
+      'Installed compatibility preflight tests failed; see retained log',
+    );
+    const compatPreflightTests = Number(compatPreflightAcceptance.stdout.match(/^# tests (\d+)$/m)?.[1]);
+    assert.equal(compatPreflightTests, 27, 'All 24 direct and three SDK preflight cases are required');
+    for (const field of ['fail', 'skipped', 'cancelled', 'todo'])
+      assert.match(compatPreflightAcceptance.stdout, new RegExp('^# ' + field + ' 0$', 'm'));
+    for (const binding of compatPreflightBindings) {
+      for (const selected of [path.join(root, binding.path), path.join(installedPackageRoot, binding.path)])
+        assert.equal(
+          createHash('sha256')
+            .update(await fs.readFile(selected))
+            .digest('hex'),
+          binding.sha256,
+          'Preflight runtime changed during installed qualification',
+        );
+    }
+    for (const binding of compatPreflightInputs)
+      assert.equal(
+        createHash('sha256')
+          .update(await fs.readFile(path.join(root, binding.path)))
+          .digest('hex'),
+        binding.sha256,
+        'Preflight fixture changed during installed qualification',
+      );
+    const installedCompatPreflightCancellation = {
+      ok: true,
+      tests: compatPreflightTests,
+      directCases: 24,
+      sdkCases: 3,
+      failed: 0,
+      skipped: 0,
+      cancelled: 0,
+      todo: 0,
+      moduleBindings: compatPreflightBindings,
+      fixtures: compatPreflightInputs,
+      actualServerAbortBeforeGateRelease: true,
+      realFilesystemHandles: true,
+      pendingOsIoInterruptionGuaranteed: false,
+      deployedGatewayQualified: false,
+      fromOutsideCheckout: standaloneIsolation.outsideCheckout,
+      modelCalls: 0,
+      log: compatPreflightLog,
+      logSha256: createHash('sha256').update(compatPreflightOutput).digest('hex'),
+    };
     const moveCancellationBindings = [...packBindings];
     for (const name of ['desktop-commander-files.js', 'compat-config.js', 'config.js']) {
       const source = await fs.readFile(path.join(root, 'dist', name));
@@ -1574,6 +1666,7 @@ const report = await withPackageWorkspace(
       installedProcessStopRecovery,
       installedGitBoundaries,
       installedFileCancellation,
+      installedCompatPreflightCancellation,
       installedMoveCancellation,
       installedRunLockRecovery,
       installedStateLockRecovery,

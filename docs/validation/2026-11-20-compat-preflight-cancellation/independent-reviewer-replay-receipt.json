@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-11-20T05:31:25.554708+00:00",
+  "reviewer": "/root/cancellation_review",
+  "recordedBy": "Independent reviewer",
+  "result": "APPROVED_FOCUSED_SOURCE_FIXTURES_AND_INSTALLED_VERIFIER",
+  "findings": [],
+  "replay": {
+    "command": [
+      "node",
+      "--test",
+      "--test-reporter=tap",
+      "--test-concurrency=1",
+      "tests/compat-read-cancellation.test.mjs",
+      "tests/compat-read-cancellation-mcp.test.mjs"
+    ],
+    "exitCode": 0,
+    "counts": {
+      "tests": 27,
+      "pass": 27,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "diagnosticObservations": 27,
+    "stdoutBytes": 156259,
+    "stderrBytes": 0,
+    "stdoutSha256": "e17b8c2dd0bd3a859541d76ecadf11fd9df15950bacfb9c422bff06984db735a",
+    "rawStdoutRetained": false,
+    "rawStdoutUnavailableReason": "Captured into a terminated Python subprocess wrapper memory and summarized in the tool result; no raw file was written. Not rerun solely for logging.",
+    "originalToolChunkId": "59b78d"
+  },
+  "hashes": {
+    "src/desktop-commander-files.ts": "d5d907ad57c360dca2928105c639ddf74e0cbadaf4939b2b7adbfc23a751ca37",
+    "dist/desktop-commander-files.js": "a748406408eecb9425508d2d2f9ab709b63fe6fe67b105547606e5c20bf855af",
+    "scripts/verify-package.mjs": "864e5c504b21a0d87f6a290fdda500089d0e401fc39311fb9d167dc0b597e071",
+    "tests/compat-read-cancellation-fixture.mjs": "85e85c8bc9b4deb1fc7ba9d17b39dc9b4f2f16f9b72c91487dbadf40e77678b4",
+    "tests/compat-read-cancellation.test.mjs": "21b1aa9b24d321d7ab17d80079fad99a09e2b313e3d3cc9be0c01bddba1bc0bd",
+    "tests/compat-read-cancellation-mcp.test.mjs": "5b62b28af4230cf79408ac509ec2693d5d7d7158470f1516b3b105c5a42ea741"
+  },
+  "documentFactCheck": {
+    "docs/validation/2026-11-20-compat-preflight-cancellation/README.md": {
+      "sha256": "511f45c6c52a921aa532288d7e96b093235c7106ad447e26ab9f64178882979d",
+      "result": "Consistent with reviewer observations; no factual corrections required."
+    },
+    "docs/validation/2026-11-20-compat-preflight-cancellation/independent-review.json": {
+      "sha256": "e38d410472cb6d2cf96f4d0cc82a220de7775dad8ada4ecccbee7b98b72fad13",
+      "result": "Consistent with reviewer observations; no factual corrections required."
+    }
+  },
+  "limitations": [
+    "Actual installed execution and remaining ordinary, hosted candidate and distinct actual-main gates remain separate.",
+    "Independent replay raw stdout was not retained; the root original RED and181-case GREEN full logs were independently read and hash-verified."
+  ],
+  "sourceModifiedByReviewer": false
+}

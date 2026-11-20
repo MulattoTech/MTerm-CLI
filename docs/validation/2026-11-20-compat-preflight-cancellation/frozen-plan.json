@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "frozenAt": "2026-11-20T05:23:52.436Z",
+  "base": "e168b4c56e5df63fb5f5f17f228ab22419a84f74",
+  "issue": 243,
+  "counts": {
+    "direct": 24,
+    "sdk": 3,
+    "total": 27
+  },
+  "titles": [
+    "compat preflight cancellation stops body reads: metadata",
+    "compat preflight cancellation stops body reads: rewrite",
+    "compat preflight cancellation stops body reads: append",
+    "compat preflight cancellation stops body reads: omitted-mode",
+    "compat preflight cancellation stops body reads: edit",
+    "native preflight calibration: no abort",
+    "native preflight calibration: abort after stat",
+    "compat preflight preserves normal: metadata",
+    "compat preflight preserves normal: rewrite",
+    "compat preflight preserves normal: append",
+    "compat preflight preserves normal: omitted-mode",
+    "compat preflight preserves normal: edit",
+    "compat preflight pre-abort performs no I/O: metadata",
+    "compat preflight pre-abort performs no I/O: write",
+    "compat preflight pre-abort performs no I/O: edit",
+    "compat preflight write-disabled performs no I/O: write",
+    "compat preflight write-disabled performs no I/O: edit",
+    "compat preflight pending-stat EIO precedence: metadata",
+    "compat preflight pending-stat EIO precedence: write",
+    "compat preflight pending-stat EIO precedence: edit",
+    "compat preflight file-state control: missing metadata",
+    "compat preflight file-state control: missing edit",
+    "compat preflight file-state control: implicit write creates missing",
+    "compat preflight file-state control: implicit write replaces empty",
+    "actual SDK compatibility preflight cancellation: get_file_info",
+    "actual SDK compatibility preflight cancellation: write_file without mode",
+    "actual SDK compatibility preflight cancellation: edit_block"
+  ],
+  "hashes": {
+    "tests/compat-read-cancellation-fixture.mjs": "85e85c8bc9b4deb1fc7ba9d17b39dc9b4f2f16f9b72c91487dbadf40e77678b4",
+    "tests/compat-read-cancellation.test.mjs": "21b1aa9b24d321d7ab17d80079fad99a09e2b313e3d3cc9be0c01bddba1bc0bd",
+    "tests/compat-read-cancellation-mcp.test.mjs": "5b62b28af4230cf79408ac509ec2693d5d7d7158470f1516b3b105c5a42ea741",
+    "src/desktop-commander-files.ts": "94ea1c75df5d90c690a091e0c585dd25cd52590555c511774944f5e2ba3b77ea",
+    "dist/desktop-commander-files.js": "df055e25585342ed558e9952e9e4908f416ff0216640479ef7ed022ffd5e4196"
+  },
+  "bindings": {
+    "entry": "/workspace/scratch/86162842804d/MTerm-CLI/bin/mterm-cli.js",
+    "node": "v24.22.3",
+    "executable": "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+    "executableSha256": "acbe4b8d9153b841ed0697cbfc4f93e767386620edb745ab9358306c0a6f31aa",
+    "modules": [
+      {
+        "path": "/workspace/scratch/86162842804d/MTerm-CLI/bin/mterm-cli.js",
+        "sha256": "1376dfb68527a2fef2444be718a0011c53333c90f416eb377a8bde43e5dcc5b0"
+      },
+      {
+        "path": "/workspace/scratch/86162842804d/MTerm-CLI/dist/mcp.js",
+        "sha256": "c7377885573ec765799f7c0ab370c0db9ff9e7fb426095dd82f61b79b6417e3d"
+      },
+      {
+        "path": "/workspace/scratch/86162842804d/MTerm-CLI/dist/files.js",
+        "sha256": "12a5da37127c3f82b67d3a43688e98efb530889a48a640715699147eda7a505b"
+      },
+      {
+        "path": "/workspace/scratch/86162842804d/MTerm-CLI/dist/desktop-commander-files.js",
+        "sha256": "df055e25585342ed558e9952e9e4908f416ff0216640479ef7ed022ffd5e4196"
+      },
+      {
+        "path": "/workspace/scratch/86162842804d/MTerm-CLI/dist/errors.js",
+        "sha256": "26fa1c3341396a1f9eda45debe86dc2295cb997b9dd7e525e70ac17ef2c910a9"
+      },
+      {
+        "path": "/workspace/scratch/86162842804d/MTerm-CLI/dist/policy.js",
+        "sha256": "f4f5d6c1b4938e880edc9a024a8998dde4b9a8ea13a7fd737e981522da8e658d"
+      },
+      {
+        "path": "/workspace/scratch/86162842804d/MTerm-CLI/dist/compat-config.js",
+        "sha256": "f6f412a83d13a1aab24398f1d54ca1c301e093c6de1511f2097e0d43b720cc32"
+      },
+      {
+        "path": "/workspace/scratch/86162842804d/MTerm-CLI/dist/config.js",
+        "sha256": "103053c9226c6684a6149553e5093436d9d38251dbc42fdbb6193da4743023ad"
+      },
+      {
+        "path": "/workspace/scratch/86162842804d/MTerm-CLI/dist/processes.js",
+        "sha256": "490a57923f5f073a92a222f4c2428c3c11d283c061d00ccc1fedf3ee18e6bfeb"
+      },
+      {
+        "path": "/workspace/scratch/86162842804d/MTerm-CLI/node_modules/@modelcontextprotocol/client/package.json",
+        "sha256": "ca67d8ea48046c8ff2298654222f21e698251717bd6107ec72b72270fd775957"
+      },
+      {
+        "path": "/workspace/scratch/86162842804d/MTerm-CLI/node_modules/@modelcontextprotocol/client/dist/index.mjs",
+        "sha256": "8b370b8009c7b64834cc91bf5e6ab28e524d7c2ce952dfe57d943a6926f8d54b"
+      },
+      {
+        "path": "/workspace/scratch/86162842804d/MTerm-CLI/node_modules/@modelcontextprotocol/client/dist/stdio.mjs",
+        "sha256": "af887c8972a37b8c3fcc78192d8f1d56c099bf8ca365f4843ec51ced6f5650da"
+      },
+      {
+        "path": "/workspace/scratch/86162842804d/MTerm-CLI/node_modules/@modelcontextprotocol/server/package.json",
+        "sha256": "ef7164780855bec864f860d6dc5add847a3269d517509c4284820d7a4dfa973f"
+      },
+      {
+        "path": "/workspace/scratch/86162842804d/MTerm-CLI/node_modules/@modelcontextprotocol/server/dist/index.mjs",
+        "sha256": "c28d21c1a930f5ef68bb4d6bba922d25347fe6382807f05dbb5845518535e433"
+      },
+      {
+        "path": "/workspace/scratch/86162842804d/MTerm-CLI/node_modules/@modelcontextprotocol/server/dist/stdio.mjs",
+        "sha256": "5ed5ba736a1b4b488df45463c6dc2e36e37fa0ce9963a6020f928bbae9b6a5d7"
+      }
+    ]
+  },
+  "independentReview": {
+    "reviewer": "/root/cancellation_review",
+    "result": "APPROVED_PRE_RED_FIXTURE_FREEZE",
+    "noTestsRun": true
+  },
+  "captureRecipe": [
+    "Every feature observation records actual stat, abort, read calls/bytes, awaited close, descriptor probe, original service outcome, write entry and actual mutation attempts before assertions.",
+    "All tool-root/home/cwd/config entries have complete byte/identity/permission/mtime manifests; atime and deliberately modified control/gate/report files are excluded.",
+    "SDK release requires a file written by the actual server callback AbortSignal listener; client rejection and ping alone are insufficient.",
+    "SDK child close, termination attempts, errors, stderr byte count, subsequent service health/read and audit are captured before assertions. Unconfirmed child cleanup retains the owned fixture.",
+    "All first output including failures and setup/cleanup faults is retained losslessly; these faults are not feature RED."
+  ],
+  "limitations": [
+    "No OS read interruption guarantee, deployment, client-login or broad parity acceptance.",
+    "No paid/model requests."
+  ]
+}

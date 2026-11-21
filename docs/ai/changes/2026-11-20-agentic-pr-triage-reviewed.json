@@ -1,0 +1,76 @@
+{
+  "change_id": "2026-11-20-agentic-pr-triage-reviewed",
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "provenance": "Self-declared assistant execution, not cryptographic model attestation.",
+  "updated_at": "2026-11-21T04:05:10Z",
+  "base_sha": "6ebbcada48574efea86c41d264f1820f2e4da70c",
+  "issues": [],
+  "requirements": [
+    "CLI-207",
+    "CLI-208",
+    "CLI-212",
+    "CLI-216"
+  ],
+  "files": [
+    ".github/workflows/agentic-pr-triage.yml",
+    "tools/ci/pr_backlog_triage.py",
+    "docs/ai/changes/2026-11-20-agentic-pr-triage-reviewed.json",
+    "docs/roadmap/review.json",
+    "docs/validation/2026-11-20-agentic-pr-triage-review.md"
+  ],
+  "decisions": [
+    "Preserve all 300 requirements, stages, weights, evidence and prior acceptance: adding scheduled GitHub PR metadata triage is not CLI product maturity.",
+    "No privileged pull_request_target event; no untrusted PR code execution; do not bypass required status checks or branch protection.",
+    "Never auto-promote draft PRs, delete unique worktrees, or claim security acceptance.",
+    "Original live MTerm-CLI checkout remains untouched; this source is a separate exact-head isolated review checkout."
+  ],
+  "tests": [
+    {
+      "command": "python -m py_compile tools/ci/pr_backlog_triage.py",
+      "result": "PASS, separate isolated checkout",
+      "receipt": "docs/validation/2026-11-20-agentic-pr-triage-review.md"
+    },
+    {
+      "command": "Five offline synthetic source safety checks using Python unittest.mock",
+      "result": "PASS 5/5; import without network, check-run fail-closed, docs constraints and unknown commit age",
+      "receipt": "docs/validation/2026-11-20-agentic-pr-triage-review.md"
+    },
+    {
+      "command": "git diff --check HEAD^ HEAD",
+      "result": "PASS, original PR #266 head",
+      "receipt": "docs/validation/2026-11-20-agentic-pr-triage-review.md"
+    },
+    {
+      "command": "node scripts/roadmap.mjs --check before explicit review",
+      "result": "RED as expected; mandatory roadmap review stale",
+      "receipt": "docs/validation/2026-11-20-agentic-pr-triage-review.md"
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "id": "CLI-207",
+      "stage_change": false,
+      "reason": "Scheduled PR metadata triage only; no CLI acceptance progress, evidence credit, stage, baseline weight or estimate change."
+    },
+    {
+      "id": "CLI-208",
+      "stage_change": false,
+      "reason": "Scheduled PR metadata triage only; no CLI acceptance progress, evidence credit, stage, baseline weight or estimate change."
+    },
+    {
+      "id": "CLI-212",
+      "stage_change": false,
+      "reason": "Scheduled PR metadata triage only; no CLI acceptance progress, evidence credit, stage, baseline weight or estimate change."
+    },
+    {
+      "id": "CLI-216",
+      "stage_change": false,
+      "reason": "Scheduled PR metadata triage only; no CLI acceptance progress, evidence credit, stage, baseline weight or estimate change."
+    }
+  ],
+  "limitations": [
+    "Current exact-head GitHub CI requires rerun before normal merge.",
+    "No live deployment, independent approval or product acceptance claimed."
+  ]
+}

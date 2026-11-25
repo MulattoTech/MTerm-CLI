@@ -19,7 +19,7 @@ import { CodeLinter } from './quality/linter.js';
 import { TypeChecker } from './quality/typecheck.js';
 import { RefineEngine } from './quality/refine-pipeline.js';
 import { ShadowJournal } from './journaling/shadow-journal.js';
-import { RepoMapGenerator } from './intelligence/repomap.js';
+import { RepoMapGenerator, compactRepoMap } from './intelligence/repomap.js';
 import { LspManager } from './lsp/manager.js';
 import type { SourceReaderOptions } from './intelligence/source-reader.js';
 import { ModelRouter } from './ai/router.js';
@@ -76,6 +76,9 @@ export const fileSchemas = {
     path: pathname.default('.'),
     maxLines: z.number().int().min(10).max(500).default(120),
     maxFiles: z.number().int().min(1).max(200).default(50),
+    compact: z
+      .strictObject({ maxOutputBytes: z.number().int().min(1024).max(32768).default(8192) })
+      .optional(),
   }),
   lspDefinition: z.strictObject({
     path: pathname,
@@ -878,7 +881,9 @@ export class FileService {
     cancelled(signal);
     const result = await RepoMapGenerator.generate(root, a, this.sourceReaderOptions(signal));
     cancelled(signal);
-    return result;
+    const response = a.compact ? compactRepoMap(result, a.maxLines, a.compact.maxOutputBytes) : result;
+    cancelled(signal);
+    return response;
   }
   async lspDefinition(input: unknown, signal?: AbortSignal) {
     cancelled(signal);

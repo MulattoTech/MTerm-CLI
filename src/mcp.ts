@@ -482,7 +482,7 @@ export async function runMcp(options: HostOptions): Promise<void> {
       // process admission, cancellation and resource controls as process tools.
       add(
         'mterm_repo_map',
-        'Generate a bounded fresh repository symbol outline; no disk cache or file mutations.',
+        'Generate a bounded fresh repository symbol outline; optional compact view omits signatures and full outlines and caps serialized report bytes. No disk cache or file mutations.',
         fileSchemas.repoMap,
         true,
         (a, s) => files.repoMap(a, s),

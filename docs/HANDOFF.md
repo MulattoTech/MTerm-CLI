@@ -1812,3 +1812,7 @@ criteria and recomputed all43 consumed input hashes. Both receipts bind the exac
 reviewed source; they are retained in the same validation directory. The corrected
 immutable candidate still requires all six hosted checks, normal expected-head
 merge and actual-main qualification before delivery/source-axis credit.
+
+## 2026-11-25 opt-in compact repository context
+
+See [engineering receipt](engineering-runs/2026-11-25-compact-repo-context.md). Existing full map unchanged; compact-v1 output is bounded and discloses omitted indexed symbols. Focused and neighboring tests 28/28; actual SDK synthetic result 47069 to 2255 bytes. No acceptance stage advance, installed release or deployment. Independent review and local client integration remain pending.

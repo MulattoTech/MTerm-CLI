@@ -2,6 +2,7 @@
 // Module: MTerm-CLI Compact Repository Map & Symbol Indexer
 import path from 'node:path';
 import { SourceReader, type SourceReaderOptions } from './source-reader.js';
+import { fail } from '../errors.js';
 
 export interface RepoSymbol {
   name: string;
@@ -25,6 +26,80 @@ export interface RepoMapReport {
   markdownSummary: string;
   cacheHit: boolean;
   treeSha?: string;
+}
+
+// Compact reports describe the bounded scan, not all files in a repository.
+export interface CompactRepoMapReport {
+  format: 'compact-v1';
+  filesIndexed: number;
+  totalSymbols: number;
+  filesReturned: number;
+  symbolsReturned: number;
+  omittedFiles: number;
+  omittedSymbols: number;
+  truncated: boolean;
+  markdownSummary: string;
+  cacheHit: boolean;
+}
+
+/** Opt-in projection of an existing policy-filtered map. The byte cap applies
+ * to the UTF-8 serialized report, not its MCP envelope or tokenizer output.
+ * Preserve complete lines and disclose omissions; never slice arbitrary JSON.
+ */
+export function compactRepoMap(
+  source: RepoMapReport,
+  maxLines: number,
+  maxOutputBytes: number,
+): CompactRepoMapReport {
+  if (
+    !Number.isInteger(maxLines) ||
+    maxLines < 10 ||
+    maxLines > 500 ||
+    !Number.isInteger(maxOutputBytes) ||
+    maxOutputBytes < 1024 ||
+    maxOutputBytes > 32768
+  ) {
+    fail('INVALID_ARGUMENT', 'Compact map limits must match the tool schema.');
+  }
+  const lines = ['# Repository map (paths relative to requested root)'];
+  let files = 0;
+  let symbols = 0;
+  const snapshot = (): CompactRepoMapReport => ({
+    format: 'compact-v1',
+    filesIndexed: source.filesIndexed,
+    totalSymbols: source.totalSymbols,
+    filesReturned: files,
+    symbolsReturned: symbols,
+    omittedFiles: source.filesIndexed - files,
+    omittedSymbols: source.totalSymbols - symbols,
+    truncated: files !== source.filesIndexed || symbols !== source.totalSymbols,
+    markdownSummary: lines.join('\n'),
+    cacheHit: source.cacheHit,
+  });
+  const fits = () => Buffer.byteLength(JSON.stringify(snapshot()), 'utf8') <= maxOutputBytes;
+  if (!fits()) fail('RESPONSE_LIMIT', 'Compact map metadata exceeds its report budget.');
+  const append = (line: string, fileDelta: number, symbolDelta: number): boolean => {
+    if (lines.length >= maxLines) return false;
+    lines.push(line);
+    files += fileDelta;
+    symbols += symbolDelta;
+    if (fits()) return true;
+    lines.pop();
+    files -= fileDelta;
+    symbols -= symbolDelta;
+    return false;
+  };
+  // Escape paths and symbol names as data, so unusual filenames cannot
+  // introduce a new summary line. Signatures are intentionally omitted.
+  outer: for (const outline of source.outlines) {
+    if (!append('## ' + JSON.stringify(outline.path) + ' (' + outline.lines + 'L)', 1, 0)) break;
+    for (const sym of outline.symbols) {
+      if (!append('- ' + sym.kind + ' ' + JSON.stringify(sym.name) + ' (L' + sym.line + ')', 0, 1)) {
+        break outer;
+      }
+    }
+  }
+  return snapshot();
 }
 
 export class RepoMapGenerator {

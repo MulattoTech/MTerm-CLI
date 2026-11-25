@@ -1,0 +1,84 @@
+{
+  "change_id": "2026-11-25-compact-repo-context",
+  "provider": "OpenAI",
+  "model": "GPT-6.2",
+  "provenance": "Self-reported execution metadata, not cryptographic model attestation.",
+  "base_sha": "f49c01002b994d36ce55f4a9da3bd7126c3583fa",
+  "issues": [],
+  "requirements": [
+    "CLI-268",
+    "CLI-273",
+    "CLI-274",
+    "CLI-287",
+    "CLI-288"
+  ],
+  "files": [
+    "src/files.ts",
+    "src/intelligence/repomap.ts",
+    "src/mcp.ts",
+    "tests/compact-repo-context.test.mjs",
+    "docs/HANDOFF.md",
+    "docs/engineering-runs/2026-11-25-compact-repo-context.md",
+    "docs/ai/changes/2026-11-25-compact-repo-context.json",
+    "docs/roadmap/review.json"
+  ],
+  "decisions": [
+    "Opt-in compact view on existing read-only mterm_repo_map; leave default response and existing source scan, permission and cancellation controls unchanged.",
+    "Cap serialized UTF-8 report bytes and whole lines; omit full outlines and signatures; count omitted indexed files and symbols explicitly.",
+    "Reuse previously qualified local dependency tree by matching each locked dependency version, resolved and integrity record; no install or mutation of shared dependency tree.",
+    "Do not change model weights, existing profile, production plugin, billing or approval gates."
+  ],
+  "tests": [
+    {
+      "command": "Original build:code and tests/repomap-lsp.test.mjs",
+      "result": "PASS 3/3."
+    },
+    {
+      "command": "Original source with tests/compact-repo-context.test.mjs",
+      "result": "Expected RED 3/3: schema does not support compact option."
+    },
+    {
+      "command": "npm run build:code; node --test --test-concurrency=1 tests/compact-repo-context.test.mjs tests/repomap-lsp.test.mjs tests/mcp.test.mjs tests/compat-config-mcp.test.mjs tests/codex-budget-registration.test.mjs",
+      "result": "PASS 28/28; 0 fail/skip/cancel/todo. Synthetic 120-symbol fixture report 22631 -> 1015 UTF-8 bytes; actual SDK call-result serialization 47069 -> 2255 bytes."
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "id": "CLI-268",
+      "stage_change": false,
+      "reason": "Focused read-only navigation projection evidence; broader acceptance and stages unchanged."
+    },
+    {
+      "id": "CLI-273",
+      "stage_change": false,
+      "reason": "Focused read-only navigation projection evidence; broader acceptance and stages unchanged."
+    },
+    {
+      "id": "CLI-274",
+      "stage_change": false,
+      "reason": "Focused read-only navigation projection evidence; broader acceptance and stages unchanged."
+    },
+    {
+      "id": "CLI-287",
+      "stage_change": false,
+      "reason": "Focused read-only navigation projection evidence; broader acceptance and stages unchanged."
+    },
+    {
+      "id": "CLI-288",
+      "stage_change": false,
+      "reason": "Focused read-only navigation projection evidence; broader acceptance and stages unchanged."
+    }
+  ],
+  "limitations": [
+    "Indexed totals reflect bounded heuristic scan, not complete repository; omitted signatures and suffix of scan require narrower follow-up calls.",
+    "Cap applies to serialized report, not the MCP envelope, context token count or model performance. No local inference A/B run yet.",
+    "Standalone stdio candidate only; not installed, packaged, merged or deployed; no authenticated plugin or OpenHands integration claimed.",
+    "No hosted API call; organization grant and grant-only cash boundary not verified."
+  ],
+  "independent_review": {
+    "result": "NOT_PERFORMED",
+    "reason": "Focused source inspection and tests by implementing assistant only; independent reviewer still required before release."
+  },
+  "next_unverified_action": "Qualify an isolated Satelligence client and compare full and compact navigation on fixed local tasks; preserve exact installed pin and approval policy.",
+  "updated_at": "2026-11-25T19:38:16.5495155Z"
+}

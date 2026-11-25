@@ -1816,3 +1816,7 @@ merge and actual-main qualification before delivery/source-axis credit.
 ## 2026-11-25 opt-in compact repository context
 
 See [engineering receipt](engineering-runs/2026-11-25-compact-repo-context.md). Existing full map unchanged; compact-v1 output is bounded and discloses omitted indexed symbols. Focused and neighboring tests 28/28; actual SDK synthetic result 47069 to 2255 bytes. No acceptance stage advance, installed release or deployment. Independent review and local client integration remain pending.
+
+## 2026-11-25 local-only parity rebaseline evidence
+
+See [local 0.3.4 qualification](parity/LOCAL_PARITY_2026-11-25.md) and machine-readable inventory. Two new metadata-only compatibility aliases, 29/29 neighboring tests. No DCP gap closure or stage promotion. Next: actual bounded asynchronous search sessions.

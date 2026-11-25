@@ -1,0 +1,419 @@
+{
+  "schemaVersion": 1,
+  "scope": "Standalone MTerm local engineering runtime; no Desktop Commander cloud, subscription, hosted analytics or proprietary server copying. Security-preserving differences stay explicit.",
+  "reviewedAt": "2026-11-25",
+  "references": {
+    "local": {
+      "repository": "wonderwhy-er/DesktopCommanderMCP",
+      "version": "0.3.4",
+      "commit": "9a101b17e44577f0baefa4c7120f087881c5cc56",
+      "manifest": "manifest.json",
+      "schemas": "src/tools/schemas.ts",
+      "server": "src/server.ts",
+      "license": "MIT"
+    },
+    "remote": {
+      "repository": "desktop-commander/remote-desktop-commander",
+      "commit": "71d6444c59c36f2cba2f13e8f72785383a8528b5",
+      "sourceAvailable": false,
+      "reference": "README.md"
+    },
+    "historicBaseline": {
+      "version": "0.2.52",
+      "commit": "c774c3b505de990219637ecdc9a830c8772fae9d",
+      "tools": 26,
+      "ledger": "docs/roadmap/desktop-commander-parity.json"
+    },
+    "mtermBase": "e05d5f46ced98d0016af9a9c85198b81b1019853"
+  },
+  "statusDefinitions": {
+    "partial_alias": "Exact name exposed with partial local behavior; not full parity.",
+    "native_partial": "Comparable native operation exists; upstream name/schema or behavior differs.",
+    "missing": "No verified standalone equivalent for this contract.",
+    "excluded_external": "Vendor-hosted feature not required under local-only scope."
+  },
+  "manifestTools": [
+    "get_config",
+    "set_config_value",
+    "read_file",
+    "read_multiple_files",
+    "write_file",
+    "write_pdf",
+    "create_directory",
+    "list_directory",
+    "move_file",
+    "start_search",
+    "get_more_search_results",
+    "stop_search",
+    "list_searches",
+    "get_file_info",
+    "edit_block",
+    "start_process",
+    "read_process_output",
+    "interact_with_process",
+    "force_terminate",
+    "list_sessions",
+    "list_processes",
+    "kill_process",
+    "get_usage_stats",
+    "get_recent_tool_calls",
+    "give_feedback_to_desktop_commander"
+  ],
+  "tools": [
+    {
+      "name": "get_config",
+      "status": "partial_alias",
+      "gate": "read",
+      "native": [],
+      "dcp": [
+        "DCP-009",
+        "DCP-011",
+        "DCP-012",
+        "DCP-013",
+        "DCP-014",
+        "DCP-015",
+        "DCP-016"
+      ],
+      "gap": "Effective scoped preferences; no cloud telemetry. Complete current configuration/UI contract not established."
+    },
+    {
+      "name": "set_config_value",
+      "status": "partial_alias",
+      "gate": "config",
+      "native": [],
+      "dcp": [
+        "DCP-010",
+        "DCP-011",
+        "DCP-012",
+        "DCP-013",
+        "DCP-014",
+        "DCP-015",
+        "DCP-016"
+      ],
+      "gap": "Explicit config-write authority; cannot expand owner roots, executable ceilings or enable telemetry. Compare every supported preference and concurrent reload."
+    },
+    {
+      "name": "read_file",
+      "status": "partial_alias",
+      "gate": "read",
+      "native": [
+        "mterm_read_file"
+      ],
+      "dcp": [
+        "DCP-017",
+        "DCP-018",
+        "DCP-026",
+        "DCP-027",
+        "DCP-028"
+      ],
+      "gap": "Text ranges/tail and read-only BOM-marked UTF-16LE covered by earlier differential fixtures; URL, image, Excel, PDF, DOCX, preview options and additional encodings remain open."
+    },
+    {
+      "name": "read_multiple_files",
+      "status": "partial_alias",
+      "gate": "read",
+      "native": [],
+      "dcp": [
+        "DCP-019",
+        "DCP-026",
+        "DCP-027",
+        "DCP-028"
+      ],
+      "gap": "Bounded mixed success text batches; image/office output, upstream limit and format differential tests remain open."
+    },
+    {
+      "name": "write_file",
+      "status": "partial_alias",
+      "gate": "write",
+      "native": [
+        "mterm_write_file"
+      ],
+      "dcp": [
+        "DCP-020",
+        "DCP-026",
+        "DCP-028"
+      ],
+      "gap": "Guarded text rewrite/append; explicit authority; office creation/structured writes not implemented in standalone alias."
+    },
+    {
+      "name": "write_pdf",
+      "status": "missing",
+      "gate": null,
+      "native": [],
+      "dcp": [
+        "DCP-027"
+      ],
+      "gap": "Local PDF creation, insertion/deletion and verification need an owner-approved local document implementation; no hosted renderer."
+    },
+    {
+      "name": "create_directory",
+      "status": "partial_alias",
+      "gate": "write",
+      "native": [
+        "mterm_create_directory"
+      ],
+      "dcp": [
+        "DCP-021"
+      ],
+      "gap": "Idempotent nested directory creation; compare current errors, symlinks and cancellation."
+    },
+    {
+      "name": "list_directory",
+      "status": "partial_alias",
+      "gate": "read",
+      "native": [
+        "mterm_list_directory"
+      ],
+      "dcp": [
+        "DCP-022"
+      ],
+      "gap": "Bounded recursive listing and explicit partial diagnostics; compare 0.3.4 formatting/depth/preview behavior."
+    },
+    {
+      "name": "move_file",
+      "status": "partial_alias",
+      "gate": "write",
+      "native": [
+        "mterm_move"
+      ],
+      "dcp": [
+        "DCP-023"
+      ],
+      "gap": "No-overwrite regular-file moves; directory and cross-device moves remain open; preserve version/no-overwrite safeguards."
+    },
+    {
+      "name": "start_search",
+      "status": "native_partial",
+      "gate": null,
+      "native": [
+        "mterm_search_files",
+        "mterm_search_content"
+      ],
+      "dcp": [
+        "DCP-029",
+        "DCP-033"
+      ],
+      "gap": "Bounded synchronous case-insensitive literal search; upstream asynchronous ownership, regex/globs, context lines, case options, structured document search and early termination not qualified."
+    },
+    {
+      "name": "get_more_search_results",
+      "status": "missing",
+      "gate": null,
+      "native": [],
+      "dcp": [
+        "DCP-030"
+      ],
+      "gap": "Requires bounded owned search session and stable result paging."
+    },
+    {
+      "name": "stop_search",
+      "status": "missing",
+      "gate": null,
+      "native": [],
+      "dcp": [
+        "DCP-031"
+      ],
+      "gap": "Requires actual asynchronous cancellation and cleanup, not a simulated completed-session stop."
+    },
+    {
+      "name": "list_searches",
+      "status": "missing",
+      "gate": null,
+      "native": [],
+      "dcp": [
+        "DCP-032"
+      ],
+      "gap": "Requires bounded per-session inventory and eviction."
+    },
+    {
+      "name": "get_file_info",
+      "status": "partial_alias",
+      "gate": "read",
+      "native": [
+        "mterm_file_info"
+      ],
+      "dcp": [
+        "DCP-024",
+        "DCP-026"
+      ],
+      "gap": "Scoped text/directory metadata; office sheet metadata, formats and cross-platform behavior remain open."
+    },
+    {
+      "name": "edit_block",
+      "status": "partial_alias",
+      "gate": "write",
+      "native": [
+        "mterm_apply_patch"
+      ],
+      "dcp": [
+        "DCP-025",
+        "DCP-026",
+        "DCP-028"
+      ],
+      "gap": "Exact text replacement with match count; no fuzzy matching, XML or spreadsheet range edits in standalone alias."
+    },
+    {
+      "name": "start_process",
+      "status": "native_partial",
+      "gate": null,
+      "native": [
+        "mterm_start_process"
+      ],
+      "dcp": [
+        "DCP-034",
+        "DCP-035",
+        "DCP-042"
+      ],
+      "gap": "Scoped executable/argv and owned session IDs, not upstream PID/shell command/readiness behavior; retain executable gates."
+    },
+    {
+      "name": "read_process_output",
+      "status": "native_partial",
+      "gate": null,
+      "native": [
+        "mterm_read_process_output"
+      ],
+      "dcp": [
+        "DCP-037",
+        "DCP-043"
+      ],
+      "gap": "Sequence-based bounded event polling; line offsets/tail, prompt detection and encoding equivalence remain open."
+    },
+    {
+      "name": "interact_with_process",
+      "status": "native_partial",
+      "gate": null,
+      "native": [
+        "mterm_process_input"
+      ],
+      "dcp": [
+        "DCP-036",
+        "DCP-042"
+      ],
+      "gap": "Bounded input to owned session; upstream wait-for-prompt and interactive fidelity remain open."
+    },
+    {
+      "name": "force_terminate",
+      "status": "native_partial",
+      "gate": null,
+      "native": [
+        "mterm_stop_process"
+      ],
+      "dcp": [
+        "DCP-038"
+      ],
+      "gap": "Stops owned sessions; require identity-safe upstream adapter and process-tree differential tests."
+    },
+    {
+      "name": "list_sessions",
+      "status": "native_partial",
+      "gate": null,
+      "native": [
+        "mterm_list_sessions"
+      ],
+      "dcp": [
+        "DCP-039"
+      ],
+      "gap": "Owned session inventory and budgets; compare PID/status/retention contract."
+    },
+    {
+      "name": "list_processes",
+      "status": "missing",
+      "gate": null,
+      "native": [],
+      "dcp": [
+        "DCP-040"
+      ],
+      "gap": "System-wide inventory absent in standalone. Implement bounded local metadata, redact command secrets, and preserve host authorization."
+    },
+    {
+      "name": "kill_process",
+      "status": "missing",
+      "gate": null,
+      "native": [],
+      "dcp": [
+        "DCP-041"
+      ],
+      "gap": "No arbitrary-PID standalone kill. Require separate explicit host authority, exact PID identity and protected-process denial; do not widen existing owned-session policy."
+    },
+    {
+      "name": "get_usage_stats",
+      "status": "partial_alias",
+      "gate": "read",
+      "native": [
+        "mterm_audit_list"
+      ],
+      "dcp": [
+        "DCP-044"
+      ],
+      "gap": "New local retained-window call counts, failures and duration; not lifetime/account/billing statistics. No external tracking."
+    },
+    {
+      "name": "get_recent_tool_calls",
+      "status": "partial_alias",
+      "gate": "read",
+      "native": [
+        "mterm_audit_list"
+      ],
+      "dcp": [
+        "DCP-045",
+        "DCP-046"
+      ],
+      "gap": "New per-tool/time/count filters over bounded session metadata, no raw payloads or persistence. Persistent opt-in history/rotation remains open."
+    },
+    {
+      "name": "give_feedback_to_desktop_commander",
+      "status": "excluded_external",
+      "gate": null,
+      "native": [],
+      "dcp": [
+        "DCP-047"
+      ],
+      "gap": "Vendor-hosted feedback form and telemetry excluded; optional MTerm local issue/report export is a separate feature, not a required vendor call."
+    }
+  ],
+  "additional": [
+    {
+      "feature": "Local prompt library",
+      "status": "open",
+      "note": "get_prompts present in 0.2.52, absent from current manifest; hosted README still lists prompt library. Preserve local prompt/skill equivalent and DCP-048."
+    },
+    {
+      "feature": "MCP resources and local file preview/config editor",
+      "status": "open",
+      "note": "Current open-source UI components and resources; track_ui_event is outside manifest, no external telemetry required. Compare local display, edit, conflict and capability discovery; client-specific presentation may differ."
+    },
+    {
+      "feature": "Local installation, updates, removal, service lifecycle and OS coverage",
+      "status": "open",
+      "note": "Retain DCP-001–008, supported package installs and Windows/macOS/Linux execution evidence; no automatic unpinned update."
+    },
+    {
+      "feature": "Owned process isolation, in-memory REPL/code execution",
+      "status": "open",
+      "note": "Native process tools and optional isolation exist; verify Python/Node/R, long-running processes, cancellation and true sandbox capability separately."
+    },
+    {
+      "feature": "Local image/Office/PDF preview and manipulation",
+      "status": "open",
+      "note": "Covered by read/write/edit/search contracts; use safe local document tooling and resource caps; separately verify legacy XLS and macro handling."
+    },
+    {
+      "feature": "Device discovery, local health/ping and owned-agent stop",
+      "status": "open",
+      "note": "Hosted README documents devices/account controls. Local registry, local liveness and exact owned-agent stop remain product requirements where applicable; no vendor pairing account, external relay or subscription."
+    },
+    {
+      "feature": "Vendor-hosted identity, relay, billing, subscription, telemetry and feedback",
+      "status": "excluded_external",
+      "note": "Do not reproduce proprietary cloud internals or require third-party subscriptions. Existing independently authorized MTerm bridge is separate and not weakened."
+    }
+  ],
+  "bridgeObservation": {
+    "toolNames": 25,
+    "allManifestNamesAdvertised": true,
+    "additionalMtermNames": 28,
+    "evidence": "Authenticated Live Connection tool discovery in ChatGPT on 2026-11-25; names only, not execution/schema or behavioral proof."
+  },
+  "acceptance": "Full local parity requires per-operation differential fixtures against pinned upstream logic or documented contracts, intentional safety deviations reviewed, package/runtime/client verification and supported platforms. Old 48-gap ledger and release gates are unchanged; zero closure credit from this inventory."
+}

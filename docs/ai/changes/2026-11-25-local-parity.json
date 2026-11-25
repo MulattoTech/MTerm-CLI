@@ -1,0 +1,76 @@
+{
+  "change_id": "2026-11-25-local-parity",
+  "provider": "OpenAI",
+  "model": "GPT-6.2",
+  "provenance": "Self-reported execution metadata.",
+  "base_sha": "e05d5f46ced98d0016af9a9c85198b81b1019853",
+  "issues": [],
+  "requirements": [
+    "CLI-285",
+    "CLI-287",
+    "CLI-293",
+    "CLI-296"
+  ],
+  "files": [
+    "src/mcp.ts",
+    "tests/local-parity-audit.test.mjs",
+    "tests/local-parity-inventory.test.mjs",
+    "docs/parity/local-0.3.4.json",
+    "docs/parity/LOCAL_PARITY_2026-11-25.md",
+    "docs/ai/changes/2026-11-25-local-parity.json",
+    "docs/HANDOFF.md",
+    "docs/roadmap/review.json"
+  ],
+  "decisions": [
+    "Keep 0.2.52 and all 48 DCP gaps intact; supplement with pinned 0.3.4 manifest and documented local-scope coverage.",
+    "Add two opt-in read-only metadata-only compatibility aliases, preserving bounded ring and no cloud telemetry.",
+    "Distinguish discovered names, native partial equivalents, missing operations and verified behavior."
+  ],
+  "tests": [
+    {
+      "command": "node --test tests/local-parity-audit.test.mjs on base",
+      "result": "Expected RED 2/2: aliases absent."
+    },
+    {
+      "command": "node --test tests/local-parity-inventory.test.mjs tests/local-parity-audit.test.mjs",
+      "result": "PASS 4/4."
+    },
+    {
+      "command": "node --test --test-concurrency=1 tests/local-parity-audit.test.mjs tests/local-parity-inventory.test.mjs tests/compat-config-mcp.test.mjs tests/mcp.test.mjs tests/compact-repo-context.test.mjs tests/desktop-commander-files.test.mjs tests/parity-baseline.test.mjs",
+      "result": "PASS 29/29, zero failures or skips."
+    }
+  ],
+  "roadmap_updates": [
+    {
+      "id": "CLI-285",
+      "stage_change": false,
+      "reason": "Focused standalone audit/discovery evidence; no full acceptance or parity closure."
+    },
+    {
+      "id": "CLI-287",
+      "stage_change": false,
+      "reason": "Focused standalone audit/discovery evidence; no full acceptance or parity closure."
+    },
+    {
+      "id": "CLI-293",
+      "stage_change": false,
+      "reason": "Focused standalone audit/discovery evidence; no full acceptance or parity closure."
+    },
+    {
+      "id": "CLI-296",
+      "stage_change": false,
+      "reason": "Focused standalone audit/discovery evidence; no full acceptance or parity closure."
+    }
+  ],
+  "limitations": [
+    "No persistent raw history; per-process retained window only.",
+    "Current upstream full differential execution, cross-platform/package/client qualification and independent review pending.",
+    "No hosted billing or proprietary implementation access."
+  ],
+  "independent_review": {
+    "result": "NOT_PERFORMED",
+    "reason": "Implementing assistant source inspection and tests only."
+  },
+  "next_unverified_action": "DCP-029–033: real bounded owned search sessions with scope and cancellation tests.",
+  "updated_at": "2026-11-25T19:46:37.6346490Z"
+}

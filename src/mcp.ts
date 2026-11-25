@@ -158,7 +158,7 @@ export async function runMcp(options: HostOptions): Promise<void> {
               audit.push({
                 at: new Date().toISOString(),
                 tool: name,
-                outcome: 'ok',
+                outcome: rawText && (result as DesktopTextResult).isError ? 'TOOL_ERROR' : 'ok',
                 durationMs: Math.round(performance.now() - began),
               });
               if (rawText) {
@@ -247,6 +247,89 @@ export async function runMcp(options: HostOptions): Promise<void> {
         );
       }
       if (options.compatDesktopCommander && configuration) {
+        // Local-only, privacy-preserving compatibility view. Never retain arguments,
+        // result text, raw errors, account data or cross-connection history.
+        add(
+          'get_recent_tool_calls',
+          'Read filtered metadata for the most recent retained calls in this MCP session. No arguments, outputs, disk history or cloud telemetry.',
+          z.strictObject({
+            maxResults: z.number().int().min(1).max(1000).default(50),
+            toolName: z.string().min(1).max(128).optional(),
+            since: z.string().datetime({ offset: true }).optional(),
+          }),
+          true,
+          (input) => {
+            const a = input as { maxResults: number; toolName?: string; since?: string };
+            const since = a.since === undefined ? -Infinity : Date.parse(a.since);
+            const events = audit
+              .filter((event) => (!a.toolName || event.tool === a.toolName) && Date.parse(event.at) >= since)
+              .slice(-a.maxResults);
+            const report = { events, retainedEvents: audit.length, persistent: false, capacity: 256 };
+            return {
+              content: [
+                {
+                  type: 'text' as const,
+                  text:
+                    'Tool Call History (' +
+                    events.length +
+                    ' results, ' +
+                    audit.length +
+                    ' retained metadata entries)\n\n' +
+                    JSON.stringify(events, null, 2),
+                },
+              ],
+              structuredContent: report,
+            };
+          },
+          true,
+        );
+        add(
+          'get_usage_stats',
+          'Summarize successful and failed completed calls in the retained local metadata window. Not lifetime or billing statistics.',
+          z.strictObject({}),
+          true,
+          () => {
+            const counts = new Map<
+              string,
+              { tool: string; calls: number; successful: number; failed: number; totalDurationMs: number }
+            >();
+            for (const event of audit) {
+              const row = counts.get(event.tool) ?? {
+                tool: event.tool,
+                calls: 0,
+                successful: 0,
+                failed: 0,
+                totalDurationMs: 0,
+              };
+              row.calls++;
+              if (event.outcome === 'ok') row.successful++;
+              else row.failed++;
+              row.totalDurationMs += event.durationMs;
+              counts.set(event.tool, row);
+            }
+            const byTool = [...counts.values()].sort((a, b) => a.tool.localeCompare(b.tool));
+            const successful = byTool.reduce((sum, row) => sum + row.successful, 0);
+            const report = {
+              scope: 'retained-window',
+              persistent: false,
+              capacity: 256,
+              calls: audit.length,
+              successful,
+              failed: audit.length - successful,
+              byTool,
+            };
+            return {
+              content: [
+                {
+                  type: 'text' as const,
+                  text: 'Local tool usage (retained metadata window)\n\n' + JSON.stringify(report, null, 2),
+                },
+              ],
+              structuredContent: report,
+            };
+          },
+          true,
+        );
         const compat = DesktopCommanderFiles.using(files, () => configuration.current());
         add(
           'get_config',
